@@ -10,10 +10,10 @@ import { $, h, replace, typing } from './dom.ts';
 import { stageBlockers } from './logic.ts';
 import {
   STAGES, STAGE_SHORT, STAGE_TITLES, type FaceBundle, type LedgerFile, type PandCandidates, type PhotoCandidate, type PicksFile,
-  type EditsFile, type GroupingFile, type Pin, type PinsFile, type Stage, type StateAction, type StateFile,
+  type EditsFile, type GroupingFile, type MarksFile, type Pin, type PinsFile, type Stage, type StateAction, type StateFile,
 } from './types.ts';
 import { basePand, dividerFits, dividersOf, expandDescription, expandFace, houseLabels, housesFromDividers } from './houses.ts';
-import { go as goStage, keys3, keys4, renderStage2, renderStage3, renderStage4, type Catalogue, type Derived, type FaceCtx, type RenderInfo, type RowInfo } from './stages.ts';
+import { go as goStage, keys2, keys3, keys4, renderStage2, renderStage3, renderStage4, type Catalogue, type Derived, type FaceCtx, type RenderInfo, type RowInfo } from './stages.ts';
 
 const KEYS = ['1', '2', '3', '4', '5', '6'];
 const pct = (n: number, d: number) => d ? `${Math.round(100 * n / d)}%` : '–';
@@ -36,15 +36,22 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   // ------------------------------------------------------------------------------------------------- activity timer
   // Active = the tab is visible and there was input in the last 60 s. Posted every 30 s and on leaving.
   let lastInput = Date.now(), pending = 0, shown = b.ledger.david.activeSeconds;
+  // Seconds per house in view (stages 2–4), posted with the activity for the ledger's minutes per house.
+  let pendingByHouse: Record<string, number> = {};
+  let houseInView: () => string | null = () => null;
   const timer = h('span', { class: 'timer', title: 'Your active minutes on this block (ledger)' });
   for (const ev of ['keydown', 'pointerdown', 'pointermove', 'wheel', 'scroll']) addEventListener(ev, () => { lastInput = Date.now(); }, { passive: true });
   setInterval(() => {
-    if (document.visibilityState === 'visible' && Date.now() - lastInput < 60_000) { pending += 1; shown += 1; timer.textContent = `${fmtMin(shown)} active`; }
+    if (document.visibilityState === 'visible' && Date.now() - lastInput < 60_000) {
+      pending += 1; shown += 1; timer.textContent = `${fmtMin(shown)} active`;
+      const hid = houseInView(); if (hid) pendingByHouse[hid] = (pendingByHouse[hid] ?? 0) + 1;
+    }
   }, 1000);
   const flushActivity = (keepalive = false) => {
     if (pending < 1) return;
     const seconds = Math.min(pending, 120); pending -= seconds;
-    post<{ ledger: LedgerFile }>(`/faces/${faceId}/activity`, b.token, { seconds, stage: b.state.stage }, { keepalive })
+    const byHouse = pendingByHouse; pendingByHouse = {};
+    post<{ ledger: LedgerFile }>(`/faces/${faceId}/activity`, b.token, { seconds, stage: b.state.stage, byHouse }, { keepalive })
       .then(r => { b.ledger = r.ledger; }).catch(() => { pending += seconds; });
   };
   setInterval(flushActivity, 30_000);
@@ -84,7 +91,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   /** Stages 2–4 review houses: the bundle with split pands expanded (houses.ts), recomputed when the picks change. */
   let houses: { key: unknown; b: FaceBundle } | null = null;
   const houseBundle = (): FaceBundle => {
-    if (houses?.key !== b.picks || houses.b.edits !== b.edits || houses.b.grouping !== b.grouping || houses.b.pins !== b.pins || houses.b.state !== b.state || houses.b.ledger !== b.ledger) {
+    if (houses?.key !== b.picks || houses.b.edits !== b.edits || houses.b.grouping !== b.grouping || houses.b.pins !== b.pins || houses.b.marks !== b.marks || houses.b.state !== b.state || houses.b.ledger !== b.ledger) {
       const face = expandFace(b.face, b.picks);
       houses = { key: b.picks, b: { ...b, face: face as FaceBundle['face'], description: expandDescription(b.description, face) } };
     }
@@ -100,6 +107,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     photoPxPerM: (pandId: string) => pandPhoto(pandId)?.pxPerM ?? 50,
     saveEdits: (pandId, fields) => saveAnd<EditsFile>(`/faces/${faceId}/edits/${pandId}`, () => ({ expectedRevision: b.edits.edits[pandId]?.revision ?? 0, value: { fields } }), d => { b.edits = d; }, 'Saved; re-rendering'),
     saveGrouping: value => saveAnd<GroupingFile>(`/faces/${faceId}/grouping`, () => ({ expectedRevision: b.grouping.revision, value }), d => { b.grouping = d; }, 'Grouping saved'),
+    saveMark: (houseId, value) => saveAnd<MarksFile>(`/faces/${faceId}/marks/${encodeURIComponent(houseId)}`, () => ({ expectedRevision: b.marks.marks[houseId]?.revision ?? 0, value }), d => { b.marks = d; }, value.mark === 'wrong' ? 'Marked wrong: pin what is wrong' : `Marked ${value.mark === 'good' ? 'good' : "can't tell"}`),
     savePin: (pin: Partial<Pin> & { id: string }) => saveAnd<PinsFile>(`/faces/${faceId}/pins/${encodeURIComponent(pin.id)}`, () => ({ expectedRevision: b.pins.pins[pin.id]?.revision ?? 0, value: pin }), d => { b.pins = d; }, 'Pin saved'),
     renderInfo: (pandId: string) => {
       const key = `${pandId}:${derived?.pands[pandId]?.hash ?? ''}`;
@@ -139,6 +147,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   const overlay = h('div', { class: 'zoom', hidden: true });
   replace(root, header, main, footer, overlay);
   (ctx as { main: HTMLElement }).main = main;
+  houseInView = () => view === 2 ? houseBundle().face.pands[current]?.pandId ?? null : null;
 
   function renderHeader() {
     const st = b.state;
@@ -374,11 +383,12 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   }
 
   function renderFooter() {
-    const st = b.state, blockers = stageBlockers(view, { face: b.face, picks: b.picks, pins: b.pins });
+    const hashes = derived ? Object.fromEntries(Object.entries(derived.pands).map(([k, v]) => [k, v.hash])) : undefined;
+    const st = b.state, blockers = stageBlockers(view, { face: b.face, picks: b.picks, pins: b.pins, marks: b.marks, houses: houseBundle().face.pands.map(p => p.pandId), hashes });
     const l = b.ledger;
     const ledger = h('span', { class: 'ledger', title: `Fields from the library ${l.fields.fromLibrary}, needing a new read ${l.fields.fromNewRead}, edited ${l.fields.edited}; failures per stage ${JSON.stringify(l.stageFailures)}` },
       view === 1 ? `Picks ${l.photos.picked}/${l.photos.pands} · agreed with auto ${pct(l.photos.agreedWithAuto, l.photos.picked)} · none usable ${l.photos.noneUsable} · facade span corrected ${l.photos.spanCorrected ?? 0} · BAG pand split ${l.photos.pandSplits ?? 0} · passes ${l.passes}`
-      : view === 2 ? `Library ${pct(l.fields.fromLibrary, l.fields.fromLibrary + l.fields.fromNewRead)} of fields · ${l.fields.edited} edited · passes ${l.passes}`
+      : view === 2 ? `Marks G ${l.marks?.now.good ?? 0} · W ${l.marks?.now.wrong ?? 0} · ? ${l.marks?.now.unsure ?? 0} · pins ${l.pins.total} · ${fmtMin(Object.values(l.david.byHouse ?? {}).reduce((n, v) => n + v, 0))} on houses · passes ${l.passes}`
       : view === 3 ? `Grouping changes ${l.stageFailures['3'] ?? 0} · passes ${l.passes}`
       : `Pins ${l.pins.total} (${l.pins.open} open) · passes ${l.passes}`);
     const confirm = view === 4
@@ -416,6 +426,7 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
     if (k === 'Escape' && zoom) { zoom = null; renderZoom(); return; }
     if (k === 'Escape' && view === 3) { keys3(k); return; }
     if (k === 'R' && e.shiftKey) { e.preventDefault(); void reload(); return; }
+    if (view === 2 && k !== 'Enter' && keys2(ctx, k)) { e.preventDefault(); return; }
     if (k === '?') { $('#keys')?.toggleAttribute('hidden'); return; }
     if (k === 'Enter' && !zoom) {
       if (view === 4) void stateAction('accept'); else void stateAction('confirm-stage', view);

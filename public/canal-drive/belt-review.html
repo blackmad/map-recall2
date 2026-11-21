@@ -159,6 +159,20 @@ button.mini { padding: 0 6px; font-size: 11px; margin-left: 4px; }
 .units li::marker { color: var(--uc); } .units li { border-left: 4px solid var(--uc); padding-left: 6px; margin: 2px 0; list-style: none; }
 .units, .links { padding: 0; margin: 0; font-size: 13px; } .links li { list-style: none; margin: 2px 0; }
 .s3 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* stage 2: marks under the row, focus view */
+.markbar { position: relative; height: 26px; margin-top: 3px; }
+.markcell { position: absolute; top: 0; display: flex; gap: 2px; justify-content: center; padding: 0 1px; box-sizing: border-box; border-left: 1px solid #ffffff20; }
+.mb { padding: 0 5px; min-width: 0; font: 700 11px/20px ui-sans-serif, sans-serif; border-radius: 4px; }
+.mb.good.on { background: var(--ok); color: #000; border-color: var(--ok); }
+.mb.wrong.on { background: var(--bad); color: #fff; border-color: var(--bad); }
+.mb.unsure.on { background: var(--warn); color: #000; border-color: var(--warn); }
+.cell .mk { position: absolute; top: 4px; left: 4px; font: 700 11px/1.4 ui-sans-serif, sans-serif; padding: 0 5px; border-radius: 3px; background: #000b; }
+.cell .mk.m-good { color: var(--ok); } .cell .mk.m-wrong { color: #fff; background: var(--bad); } .cell .mk.m-unsure { color: var(--warn); } .cell .mk.m-changed { color: #000; background: var(--claude); white-space: nowrap; }
+.cell.m-wrong { box-shadow: inset 0 0 0 2px var(--bad); } .cell.m-changed { box-shadow: inset 0 0 0 2px var(--claude); }
+.focus { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.focus .stage4 { height: min(62dvh, 640px); }
+.wrongnote { display: flex; gap: 6px; align-items: center; } .wrongnote input { flex: 1; font: inherit; color: var(--text); background: var(--panel-2); border: 1px solid var(--bad); border-radius: 5px; padding: 4px 6px; }
+.fieldsbox summary { cursor: pointer; color: var(--muted); margin-top: 8px; }
 /* stage 4: views + pins */
 .s4 { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 12px; align-items: start; }
 .stage4 { display: flex; gap: 10px; align-items: flex-end; justify-content: center; height: var(--imgh); background: var(--photo-bg); border-radius: 6px; padding: 8px; }

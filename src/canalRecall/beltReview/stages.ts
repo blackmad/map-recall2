@@ -1,16 +1,19 @@
 /**
  * Belt review page, stages 2–4 (plan "The loop"):
- *   2  the description beside the chosen photo and its live render; correct a field by choosing a kit value
+ *   2  likeness at a glance: the whole face as two registered rows (picked photos over renders), one mark per house —
+ *      G good, W wrong (+ note), ? can't tell — worst first. A wrong house opens the focus view: photo and render large,
+ *      click to pin what is wrong with a tag, the kit gaps, and the fields folded away (weak ones unless "all").
+ *      Send to Claude hands the W marks and pins over; a house Claude re-renders comes back "changed, recheck".
  *   3  the row with design units and sameAs / basedOn links: join, split, identical to, based on
- *   4  photo and render at one scale (Q photo, W render, E side by side, R row, B blink), kit gaps, pins
+ *   4  open in game (stub), the pins to resolve, accept the block
  * faceView.ts owns the page shell, stage 1 and the saves; these render into `ctx.main` and handle their stage's keys.
  */
 import { h, replace } from './dom.ts';
 import { basePand } from './houses.ts';
 import { DESC_FIELDS, FIELD_SPECS, isKitValue, same, showValue, type DescField } from './fields.ts';
 import {
-  PIN_TAGS, PIN_TAG_LABELS, type DescFieldValue, type FaceBundle, type GroupingFile, type GroupingLinkKind, type Pin, type PinTag,
-  type PinTarget, type Stage,
+  FOCUS_PIN_TAGS, PIN_TAG_LABELS, type DescFieldValue, type FaceBundle, type GroupingFile, type GroupingLinkKind, type MarkValue, type Pin,
+  type PinTag, type PinTarget, type Stage,
 } from './types.ts';
 
 export interface DerivedPand {
@@ -20,6 +23,8 @@ export interface DerivedPand {
   notes: string[];
   cannotDraw: Array<{ field: string; value?: unknown; drawnAs?: unknown; why: string; gapId?: string }>;
   hash: string;
+  weak?: string[];
+  likeness?: number | null;
 }
 export interface Derived { ppm: number; pands: Record<string, DerivedPand> }
 export interface RenderInfo { hash: string; ms: number; cached: boolean; widthPx: number; heightPx: number; url: string; overrides?: { applied: string[]; notApplied: string[] } | null }
@@ -44,6 +49,7 @@ export interface FaceCtx {
   saveEdits(pandId: string, fields: Record<string, { value: unknown; note?: string }>): Promise<void>;
   saveGrouping(value: Pick<GroupingFile, 'units' | 'links'>): Promise<void>;
   savePin(pin: Partial<Pin> & { id: string }): Promise<void>;
+  saveMark(houseId: string, value: { mark: MarkValue; note?: string; hash: string | null }): Promise<void>;
   renderInfo(pandId: string): Promise<RenderInfo>;
   rowInfo(): Promise<RowInfo>;
 }
@@ -76,19 +82,155 @@ function renderImage(ctx: FaceCtx, pandId: string, meta?: HTMLElement, onInfo?: 
 }
 
 // ============================================================================================================ stage 2
+let focus: string | null = null;
+let order: 'worst' | 'street' = 'worst';
+let allFields = false;
+const MARK_KEYS: Record<string, MarkValue> = { g: 'good', w: 'wrong', '?': 'unsure' };
+const MARK_TEXT: Record<MarkValue, string> = { good: 'G', wrong: 'W', unsure: '?' };
+
+/** The houses in review order: worst first (lane C likeness when it has one, else the most weak fields), or street order. */
+export function reviewOrder(b: FaceBundle, derived: Derived | null, how: 'worst' | 'street'): string[] {
+  const street = b.face.pands.map(p => p.pandId);
+  if (how === 'street') return street;
+  const score = (id: string) => { const d = derived?.pands[id]; return d?.likeness ?? 1 - (d?.weak?.length ?? 0) / 100; };
+  return [...street].sort((x, y) => score(x) - score(y) || street.indexOf(x) - street.indexOf(y));
+}
+/** A house's mark state: none, its mark, or "changed" when the render moved on since the mark. */
+export function markState(b: FaceBundle, derived: Derived | null, id: string): MarkValue | 'changed' | null {
+  const m = b.marks.marks[id];
+  if (!m) return null;
+  const now = derived?.pands[id]?.hash;
+  return m.hash && now && m.hash !== now ? 'changed' : m.mark;
+}
+
 export function renderStage2(ctx: FaceCtx) {
-  const p = ctx.b.face.pands[ctx.current];
-  if (!p) { replace(ctx.main, h('p', { class: 'empty' }, 'This face has no houses.')); return; }
-  const desc = ctx.b.description?.pands.find(x => x.pandId === p.pandId);
-  const der = ctx.derived?.pands[p.pandId];
-  const edits = ctx.b.edits.edits[p.pandId]?.fields ?? {};
-  const can = ctx.editable(2);
+  const b = ctx.b, can = ctx.editable(2), houses = b.face.pands;
+  if (!houses.length) { replace(ctx.main, h('p', { class: 'empty' }, 'This face has no houses.')); return; }
+  const cur = houses[Math.min(ctx.current, houses.length - 1)];
+  const state = (id: string) => markState(b, ctx.derived, id);
+  const counts = { marked: 0, wrong: 0, changed: 0 };
+  for (const p of houses) { const st = state(p.pandId); if (st && st !== 'changed') counts.marked++; if (st === 'wrong') counts.wrong++; if (st === 'changed') counts.changed++; }
+
+  const row = h('div', { class: 'row-imgs' }, h('p', { class: 'muted' }, 'Loading the row (renders every house once, then cached)…'));
+  ctx.rowInfo().then(info => {
+    const W = info.layout.width, pos = (lp: { x: number; w: number }) => `left:${(100 * lp.x / W).toFixed(3)}%;width:${(100 * lp.w / W).toFixed(3)}%`;
+    const addr = (id: string) => houses.find(p => p.pandId === id)?.address ?? id;
+    const cells = info.layout.pands.map(lp => {
+      const st = state(lp.pandId), weak = ctx.derived?.pands[lp.pandId]?.weak?.length ?? 0;
+      return h('button', { class: `cell${lp.pandId === cur.pandId ? ' sel' : ''}${st ? ` m-${st}` : ''}`, style: pos(lp), title: `${addr(lp.pandId)}${weak ? ` · ${weak} weak fields` : ''}`, 'data-house': lp.pandId,
+        onclick: () => { ctx.current = houses.findIndex(p => p.pandId === lp.pandId); ctx.render(); } },
+        h('span', { class: 'a' }, addr(lp.pandId).replace(/^\D+/, '')), st ? h('span', { class: `mk m-${st}` }, st === 'changed' ? 'changed, recheck' : MARK_TEXT[st]) : null);
+    });
+    const bar = info.layout.pands.map(lp => h('div', { class: 'markcell', style: pos(lp) },
+      ...(['g', 'w', '?'] as const).map(k => h('button', { class: `mb ${MARK_KEYS[k]}${b.marks.marks[lp.pandId]?.mark === MARK_KEYS[k] && state(lp.pandId) !== 'changed' ? ' on' : ''}`, disabled: !can, title: `${MARK_KEYS[k]} (${k.toUpperCase()})`,
+        onclick: () => { ctx.current = houses.findIndex(p => p.pandId === lp.pandId); mark(ctx, lp.pandId, MARK_KEYS[k]); } }, k.toUpperCase()))));
+    replace(row, h('div', { class: 'rowscroll' },
+      h('div', { class: 'rowbox', style: `aspect-ratio:${W}/${info.layout.height * 2}` }, h('img', { src: info.photo, alt: 'photo row' }), h('img', { src: info.render, alt: 'render row' }), h('div', { class: 'cells' }, ...cells)),
+      h('div', { class: 'markbar', style: `width:${ctx.main.querySelector('.rowbox')?.clientWidth ?? 0}px` }, ...bar)),
+      h('p', { class: 'muted small' }, `Top: picked photos; bottom: renders; both at ${info.ppm} px/m, registered on each house's BAG front.`));
+    // The mark bar takes the row's drawn width (the row scrolls sideways on a narrow screen).
+    const rb = row.querySelector<HTMLElement>('.rowbox'), mb = row.querySelector<HTMLElement>('.markbar');
+    const fit = () => { if (rb && mb) mb.style.width = `${rb.clientWidth}px`; };
+    row.querySelectorAll('img').forEach(i => i.addEventListener('load', fit)); fit();
+    row.querySelector(`[data-house="${CSS.escape(cur.pandId)}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }).catch(e => replace(row, h('p', { class: 'locked' }, `Row failed: ${(e as Error).message}`)));
+
+  const seq = reviewOrder(b, ctx.derived, order), pos = seq.indexOf(cur.pandId);
+  const head = h('div', { class: 'pand-head' },
+    h('h2', {}, cur.address, h('small', {}, ` ${pos + 1} of ${seq.length} ${order === 'worst' ? 'worst first' : 'in street order'}`)),
+    h('button', { class: 'ghost', onclick: () => { order = order === 'worst' ? 'street' : 'worst'; ctx.render(); }, title: 'Review order (O)' }, h('span', { class: 'key' }, 'O'), order === 'worst' ? ' worst first' : ' street order'),
+    h('span', { class: 'muted small' }, `${counts.marked}/${houses.length} marked · ${counts.wrong} wrong${counts.changed ? ` · ${counts.changed} changed, recheck` : ''}`),
+    focus ? h('button', { class: 'ghost', onclick: () => { focus = null; ctx.render(); } }, 'Close focus (Esc)') : h('button', { class: 'ghost', onclick: () => { focus = cur.pandId; ctx.render(); } }, h('span', { class: 'key' }, 'F'), ' Focus'));
+  replace(ctx.main,
+    can ? null : h('p', { class: 'locked' }, ctx.b.state.status === 'accepted' ? 'The block is accepted.' : ctx.b.state.stage > 2 ? 'Stage 2 is confirmed; marks are read-only (pins can still be resolved).' : 'Stage 2 opens after stage 1.'),
+    head, row,
+    focus ? focusView(ctx, houses.find(p => p.pandId === focus) ?? cur) : null,
+    h('p', { id: 'keys', class: 'muted small' }, 'G good · W wrong (opens the focus view) · ? can\'t tell · ←/→ next/previous house (J/K too) · F focus · O order · in focus: click the photo or render to pin, then 1–8 tag · Esc close · Enter confirm stage'));
+}
+
+function mark(ctx: FaceCtx, id: string, m: MarkValue, note?: string) {
+  if (!ctx.editable(2)) { ctx.say('Marks are open while stage 2 is', 'err'); return; }
+  const hash = ctx.derived?.pands[id]?.hash ?? null;
+  const prior = ctx.b.marks.marks[id];
+  if (m === 'wrong') focus = id;
+  else if (focus === id) focus = null;
+  void ctx.saveMark(id, { mark: m, note: note ?? (m === 'wrong' ? prior?.note : undefined), hash }).then(() => {
+    // Good / can't tell move on to the next house still to mark (unmarked or changed) in review order, wrapping; wrong
+    // stays for pins.
+    if (m === 'wrong') return;
+    const seq = reviewOrder(ctx.b, ctx.derived, order), at = seq.indexOf(id);
+    const todo = [...seq.slice(at + 1), ...seq.slice(0, at)].find(x => { const st = markState(ctx.b, ctx.derived, x); return st === null || st === 'changed'; });
+    if (todo) { ctx.current = ctx.b.face.pands.findIndex(p => p.pandId === todo); ctx.render(); }
+  });
+}
+function step(ctx: FaceCtx, d: number) {
+  const seq = reviewOrder(ctx.b, ctx.derived, order), houses = ctx.b.face.pands;
+  const i = seq.indexOf(houses[ctx.current]?.pandId);
+  const next = seq[Math.max(0, Math.min(seq.length - 1, i + d))];
+  ctx.current = houses.findIndex(p => p.pandId === next);
+  if (focus) focus = ctx.b.marks.marks[next]?.mark === 'wrong' ? next : null;
+  ctx.render();
+}
+export function keys2(ctx: FaceCtx, k: string): boolean {
+  if (draft) {
+    const i = Number(k) - 1;
+    if (i >= 0 && i < FOCUS_PIN_TAGS.length) { ctx.main.querySelectorAll<HTMLButtonElement>('.tagbtns button')[i]?.click(); return true; }
+    if (k === 'Escape') { draft = null; ctx.render(); return true; }
+  }
+  const id = ctx.b.face.pands[ctx.current]?.pandId;
+  if (MARK_KEYS[k] && id) { mark(ctx, id, MARK_KEYS[k]); return true; }
+  if (k === 'ArrowRight' || k === 'j') { step(ctx, 1); return true; }
+  if (k === 'ArrowLeft' || k === 'k') { step(ctx, -1); return true; }
+  if (k === 'f' && id) { focus = focus === id ? null : id; ctx.render(); return true; }
+  if (k === 'o') { order = order === 'worst' ? 'street' : 'worst'; ctx.render(); return true; }
+  if (k === 'Escape' && focus) { focus = null; draft = null; ctx.render(); return true; }
+  return false;
+}
+
+/** The focus view of one house: photo and render large (pinnable), the W note, its pins, kit gaps, and the fields folded. */
+function focusView(ctx: FaceCtx, p: FaceBundle['face']['pands'][number]): HTMLElement {
+  const b = ctx.b, der = ctx.derived?.pands[p.pandId], can = b.state.status !== 'accepted' && b.state.stage >= 2;
+  const meta = h('span', { class: 'muted small' }, '');
+  const imgs: HTMLImageElement[] = [];
   const photo = ctx.photoUrl(p.pandId);
-  const meta = h('div', { class: 'muted small' }, 'rendering…');
-  const rows = DESC_FIELDS.map(f => {
+  const ph = photo ? h('img', { class: 'photo', src: photo, alt: 'photo' }) as HTMLImageElement : null;
+  const notApplied = h('div', { class: 'muted small' });
+  const rimg = renderImage(ctx, p.pandId, meta, r => {
+    const na = r.overrides?.notApplied ?? [];
+    replace(notApplied, na.length ? `Renderer did not apply: ${na.join(', ')}` : 'The renderer applied every stated field.');
+    alignScale(imgs, ctx, p.pandId);
+  });
+  if (ph) { imgs.push(ph); ph.addEventListener('load', () => alignScale(imgs, ctx, p.pandId)); }
+  imgs.push(rimg);
+  const own = () => p.pandId;
+  const m = b.marks.marks[p.pandId];
+  const note = h('input', { type: 'text', placeholder: 'What is wrong, in a few words (optional)', value: m?.note ?? '', disabled: !ctx.editable(2), 'aria-label': 'Note for the wrong mark' }) as HTMLInputElement;
+  note.addEventListener('change', () => { void ctx.saveMark(p.pandId, { mark: 'wrong', note: note.value.trim(), hash: der?.hash ?? null }); });
+  note.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === 'Escape') note.blur(); });
+  const gapList = der?.cannotDraw.length ? h('ul', { class: 'gaps' }, ...der.cannotDraw.map(g => h('li', {}, h('strong', {}, g.field), `: ${g.why}`, g.gapId ? h('span', { class: 'tag' }, g.gapId) : null))) : h('p', { class: 'muted small' }, 'No kit gaps listed for this house.');
+  const fields = h('details', { class: 'fieldsbox' }, h('summary', {}, `Fields (${der?.weak?.length ?? 0} weak)`), fieldTable(ctx, p.pandId));
+  return h('section', { class: 'focus' },
+    h('div', { class: 's4' },
+      h('div', { class: 's4-view' }, h('div', { class: 'stage4 pair' }, ph ? pinnable(ctx, ph, 'photo', own, p.pandId, can) : h('div', { class: 'nophoto' }, 'no usable photo'), pinnable(ctx, rimg, 'render', own, p.pandId, can)), meta),
+      h('aside', {},
+        m?.mark === 'wrong' ? h('label', { class: 'wrongnote' }, h('strong', {}, 'Wrong: '), note) : null,
+        pinForm(ctx, FOCUS_PIN_TAGS),
+        pinList(ctx, p.pandId, can),
+        h('h3', {}, 'Kit gaps'), gapList, notApplied,
+        fields)));
+}
+
+/** The description fields of one house, weak ones only unless "all": kit values in a select, the source beside each. */
+function fieldTable(ctx: FaceCtx, houseId: string): HTMLElement {
+  const desc = ctx.b.description?.pands.find(x => x.pandId === houseId);
+  const der = ctx.derived?.pands[houseId];
+  const edits = ctx.b.edits.edits[houseId]?.fields ?? {};
+  const can = ctx.b.state.status !== 'accepted' && ctx.b.state.stage >= 2;
+  const weak = new Set(der?.weak ?? []);
+  const shown = DESC_FIELDS.filter(f => allFields || weak.has(f) || !!edits[f]);
+  const rows = shown.map(f => {
     const spec = FIELD_SPECS[f], d = desc?.fields?.[f] as DescFieldValue | undefined, drawn = der?.fields[f], edited = !!edits[f];
     let value = edited ? edits[f].value : drawn?.value ?? d?.value;
-    // A bare door bay (a number) is the kit's {bay} without a doorcase.
     if (f === 'door' && typeof value === 'number') value = { bay: value };
     let control: Node;
     if (spec.options && can) {
@@ -107,9 +249,8 @@ export function renderStage2(ctx: FaceCtx) {
       sel.addEventListener('change', () => {
         if (!sel.value) return;
         const next = { ...edits, [f]: { value: JSON.parse(sel.value) } };
-        // Choosing the described value again drops the edit.
         if (d && same(d.value, next[f].value)) delete next[f];
-        void ctx.saveEdits(p.pandId, next);
+        void ctx.saveEdits(houseId, next);
       });
       control = sel;
     } else control = h('span', { class: 'val' }, showValue(f, value));
@@ -117,32 +258,17 @@ export function renderStage2(ctx: FaceCtx) {
       : drawn?.via ? h('span', { class: 'src mid', title: drawn.ref ?? '' }, `via ${drawn.source.split(':')[0]} ${drawn.via.slice(-6)}`)
       : d ? h('span', { class: `src ${SOURCE_CLASS(d.source)}`, title: d.ref }, `${d.source} ${Math.round(d.confidence * 100)}%`)
       : h('span', { class: 'src weak' }, 'missing');
-    const others = !edited && d?.others?.length ? h('div', { class: 'others' }, ...d.others.map(o => h('span', { title: o.ref }, `${o.source}: ${showValue(f, o.value)}`))) : null;
-    const agree = !edited && d?.agree?.length ? h('span', { class: 'muted small' }, ` + ${d.agree.join(', ')}`) : null;
-    return h('tr', { class: edited ? 'edited' : '' },
-      h('th', {}, spec.label),
-      h('td', {}, control, f === 'wallColour' && typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value) ? h('span', { class: 'swatch', style: `background:${value}`, title: value }) : null, edited && can ? h('button', { class: 'mini', title: 'Back to the description', onclick: () => { const next = { ...edits }; delete next[f]; void ctx.saveEdits(p.pandId, next); } }, 'reset') : null),
-      h('td', {}, src, agree, others));
+    return h('tr', { class: edited ? 'edited' : '' }, h('th', {}, spec.label),
+      h('td', {}, control, f === 'wallColour' && typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value) ? h('span', { class: 'swatch', style: `background:${value}`, title: value }) : null,
+        edited && can ? h('button', { class: 'mini', title: 'Back to the description', onclick: () => { const next = { ...edits }; delete next[f]; void ctx.saveEdits(houseId, next); } }, 'reset') : null),
+      h('td', {}, src));
   });
+  const toggle = h('label', { class: 'muted small' }, h('input', { type: 'checkbox', checked: allFields, onchange: () => { allFields = !allFields; ctx.render(); } }), ' all fields');
   const notes = [...(der?.chain.length ? [`drawn through ${der.chain.join(' → ')}`] : []), ...(der?.notes ?? [])];
-  const scaleImgs: HTMLImageElement[] = [];
-  const ph = photo ? h('img', { class: 'photo', src: photo, alt: 'chosen photo' }) as HTMLImageElement : null;
-  if (ph) scaleImgs.push(ph);
-  const rimg = renderImage(ctx, p.pandId, meta, () => alignScale(scaleImgs, ctx, p.pandId));
-  scaleImgs.push(rimg);
-  ph?.addEventListener('load', () => alignScale(scaleImgs, ctx, p.pandId));
-  replace(ctx.main, ctx.pandStrip(),
-    can ? null : h('p', { class: 'locked' }, ctx.b.state.stage > 2 ? 'Stage 2 is confirmed; fields are read-only.' : 'Stage 2 opens after stage 1.'),
-    header(ctx),
-    h('div', { class: 's2' },
-      h('div', { class: 'pair' },
-        h('figure', {}, ph ?? h('div', { class: 'nophoto' }, 'no usable photo'), h('figcaption', { class: 'muted small' }, 'photo')),
-        h('figure', {}, rimg, h('figcaption', {}, meta))),
-      h('div', { class: 'fields' },
-        h('table', {}, h('tbody', {}, ...rows)),
-        notes.length ? h('p', { class: 'muted small' }, notes.join(' · ')) : null,
-        desc ? null : h('p', { class: 'muted' }, 'No description.json entry for this house yet (lane C writes it).'))),
-    h('p', { id: 'keys', class: 'muted small' }, 'J/K next/previous house · choose a value to correct a field (saved at once, re-rendered) · Enter confirm stage'));
+  return h('div', { class: 'fields' }, toggle,
+    rows.length ? h('table', {}, h('tbody', {}, ...rows)) : h('p', { class: 'muted small' }, 'No weak fields: every field has a strong source.'),
+    notes.length ? h('p', { class: 'muted small' }, notes.join(' · ')) : null,
+    desc ? null : h('p', { class: 'muted' }, 'No description.json entry for this house yet (lane C writes it).'));
 }
 
 /** Show photo and render at one scale: both are px/m images (render at the face ppm, photo at its crop ppm). */
@@ -262,125 +388,72 @@ export function renderStage3(ctx: FaceCtx) {
 }
 export let keys3: (k: string) => boolean = () => false;
 
-// ============================================================================================================ stage 4
-type Layer = 'photo' | 'render' | 'pair' | 'row';
-let layer: Layer = 'pair', blink: ReturnType<typeof setInterval> | null = null;
+// ============================================================================================ pins (focus view, stage 4)
 let draft: { target: PinTarget; x: number; y: number; pandId: string | null } | null = null;
-const LAYER_KEYS: Record<string, Layer> = { q: 'photo', w: 'render', e: 'pair', r: 'row' };
 const STATUS_TEXT: Record<Pin['status'], string> = { open: 'open', fixed: 'fixed: check it', resolved: 'resolved', reopened: 'reopened' };
+const pinsSorted = (b: FaceBundle) => Object.values(b.pins.pins).sort((x, y) => x.createdAt.localeCompare(y.createdAt));
 
-export function renderStage4(ctx: FaceCtx) {
-  const b = ctx.b, p = b.face.pands[ctx.current];
-  if (!p) return;
-  const der = ctx.derived?.pands[p.pandId];
-  const meta = h('span', { class: 'muted small' }, '');
-  const pins = Object.values(b.pins.pins).sort((x, y) => x.createdAt.localeCompare(y.createdAt));
-  const num = new Map(pins.map((x, i) => [x.id, i + 1]));
-  const can = ctx.b.state.status !== 'accepted' && ctx.b.state.stage === 4;
-
-  /** A pinnable image: click drops a draft pin; existing pins of this target (and pand) are drawn on it. */
-  const pinnable = (img: HTMLImageElement, target: PinTarget, pandOf: (x: number) => string | null) => {
-    const box = h('div', { class: 'pinbox' }, img);
-    for (const pin of pins.filter(x => x.target === target && (target.startsWith('row') || x.pandId === p.pandId))) {
-      box.append(h('span', { class: `pin ${pin.status}`, style: `left:${pin.x * 100}%;top:${pin.y * 100}%`, title: `${PIN_TAG_LABELS[pin.tag]}: ${pin.note}` }, String(num.get(pin.id))));
-    }
-    if (draft && draft.target === target) box.append(h('span', { class: 'pin draft', style: `left:${draft.x * 100}%;top:${draft.y * 100}%` }, '+'));
-    img.addEventListener('click', e => {
-      if (!can) { ctx.say('Pins open at stage 4', 'err'); return; }
-      const r = img.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      draft = { target, x: +x.toFixed(4), y: +y.toFixed(4), pandId: pandOf(x) }; ctx.render();
-      setTimeout(() => (document.getElementById('pin-note') as HTMLInputElement | null)?.focus(), 0);
-    });
-    return box;
-  };
-
-  let view: Node;
-  const photo = ctx.photoUrl(p.pandId);
-  if (layer === 'row') {
-    const box = h('div', { class: 'rowimgs4' }, h('p', { class: 'muted' }, 'Loading the row…'));
-    ctx.rowInfo().then(info => {
-      const at = (x: number) => { const px = x * info.layout.width; return info.layout.pands.find(l => px >= l.x && px < l.x + l.w)?.pandId ?? null; };
-      replace(box, pinnable(h('img', { src: info.photo, alt: 'photo row' }) as HTMLImageElement, 'row-photo', at), pinnable(h('img', { src: info.render, alt: 'render row' }) as HTMLImageElement, 'row-render', at));
-    }).catch(e => replace(box, h('p', { class: 'locked' }, (e as Error).message)));
-    view = box;
-  } else {
-    const imgs: HTMLImageElement[] = [];
-    const ph = photo ? h('img', { class: 'photo', src: photo, alt: 'photo' }) as HTMLImageElement : null;
-    const rimg = renderImage(ctx, p.pandId, meta, r => { notDrawn(r); alignScale(imgs, ctx, p.pandId); });
-    if (ph) { imgs.push(ph); ph.addEventListener('load', () => alignScale(imgs, ctx, p.pandId)); }
-    imgs.push(rimg);
-    const own = () => p.pandId;
-    const parts = layer === 'photo' ? [ph ? pinnable(ph, 'photo', own) : h('div', { class: 'nophoto' }, 'no usable photo')]
-      : layer === 'render' ? [pinnable(rimg, 'render', own)]
-      : [ph ? pinnable(ph, 'photo', own) : h('div', { class: 'nophoto' }, 'no usable photo'), pinnable(rimg, 'render', own)];
-    if (layer === 'photo') rimg.hidden = true;
-    view = h('div', { class: `stage4 ${layer}` }, ...parts, layer === 'photo' ? rimg : null);
+/** A pinnable image: click drops a draft pin; this house's pins on this target are drawn on it. */
+function pinnable(ctx: FaceCtx, img: HTMLImageElement, target: PinTarget, pandOf: (x: number) => string | null, houseId: string, can: boolean) {
+  const pins = pinsSorted(ctx.b), num = new Map(pins.map((x, i) => [x.id, i + 1]));
+  const box = h('div', { class: 'pinbox' }, img);
+  for (const pin of pins.filter(x => x.target === target && x.pandId === houseId)) {
+    box.append(h('span', { class: `pin ${pin.status}`, style: `left:${pin.x * 100}%;top:${pin.y * 100}%`, title: `${PIN_TAG_LABELS[pin.tag]}: ${pin.note}` }, String(num.get(pin.id))));
   }
+  if (draft && draft.target === target && draft.pandId === houseId) box.append(h('span', { class: 'pin draft', style: `left:${draft.x * 100}%;top:${draft.y * 100}%` }, '+'));
+  img.addEventListener('click', e => {
+    if (!can) { ctx.say('The block is accepted', 'err'); return; }
+    const r = img.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    draft = { target, x: +x.toFixed(4), y: +y.toFixed(4), pandId: pandOf(x) }; ctx.render();
+    setTimeout(() => (document.getElementById('pin-note') as HTMLInputElement | null)?.focus(), 0);
+  });
+  return box;
+}
 
-  // Kit gaps: description fields the kit cannot draw (lane C), and design fields the renderer did not apply.
-  const gapList = h('ul', { class: 'gaps' }, ...(der?.cannotDraw ?? []).map(g => h('li', {}, h('strong', {}, g.field), `: ${g.why}`, g.gapId ? h('span', { class: 'tag' }, g.gapId) : null)));
-  const notApplied = h('div', { class: 'muted small' });
-  function notDrawn(r: RenderInfo) {
-    const na = r.overrides?.notApplied ?? [];
-    replace(notApplied, na.length ? `Renderer did not apply: ${na.join(', ')}` : 'The renderer applied every stated field.');
-  }
+function pinForm(ctx: FaceCtx, tags: readonly PinTag[]): HTMLElement | null {
+  if (!draft) return null;
+  const note = h('input', { id: 'pin-note', type: 'text', placeholder: `Note (optional), then a tag key 1–${tags.length} or click a tag`, 'aria-label': 'Pin note' }) as HTMLInputElement;
+  const make = (tag: PinTag) => { const d = draft!; draft = null; void ctx.savePin({ id: `pin-${Date.now().toString(36)}`, pandId: d.pandId, target: d.target, x: d.x, y: d.y, tag, note: note.value.trim(), status: 'open' }); };
+  // An empty note box takes a tag key straight away; once there is text, Enter files it under `other`.
+  note.addEventListener('keydown', e => {
+    const i = Number(e.key) - 1;
+    if (e.key === 'Escape') { draft = null; ctx.render(); }
+    else if (note.value === '' && Number.isInteger(i) && i >= 0 && i < tags.length) { e.preventDefault(); make(tags[i]); }
+    else if (e.key === 'Enter') make('other');
+  });
+  return h('div', { class: 'pinform' }, h('strong', {}, `New pin on the ${draft.target}`), note,
+    h('div', { class: 'tagbtns' }, ...tags.map((t, i) => h('button', { onclick: () => make(t) }, h('span', { class: 'key' }, String(i + 1)), ' ', PIN_TAG_LABELS[t]))),
+    h('button', { class: 'ghost', onclick: () => { draft = null; ctx.render(); } }, 'Cancel (Esc)'));
+}
 
-  const pinForm = draft ? (() => {
-    const note = h('input', { id: 'pin-note', type: 'text', placeholder: 'Note (optional), then a tag key 1–9 or click a tag', 'aria-label': 'Pin note' }) as HTMLInputElement;
-    const make = (tag: PinTag) => { const d = draft!; draft = null; void ctx.savePin({ id: `pin-${Date.now().toString(36)}`, pandId: d.pandId, target: d.target, x: d.x, y: d.y, tag, note: note.value.trim(), status: 'open' }); };
-    // An empty note box takes a tag key (1–9) straight away; once there is text, Enter files it under `other`
-    // unless a tag button is clicked.
-    note.addEventListener('keydown', e => {
-      const i = Number(e.key) - 1;
-      if (e.key === 'Escape') { draft = null; ctx.render(); }
-      else if (note.value === '' && Number.isInteger(i) && i >= 0 && i < PIN_TAGS.length) { e.preventDefault(); make(PIN_TAGS[i]); }
-      else if (e.key === 'Enter') make('other');
-    });
-    return h('div', { class: 'pinform' }, h('strong', {}, `New pin on ${draft!.target}${draft!.pandId ? ` · ${b.face.pands.find(x => x.pandId === draft!.pandId)?.address ?? ''}` : ''}`), note,
-      h('div', { class: 'tagbtns' }, ...PIN_TAGS.map((t, i) => h('button', { onclick: () => make(t) }, h('span', { class: 'key' }, String(i + 1)), ' ', PIN_TAG_LABELS[t]))),
-      h('button', { class: 'ghost', onclick: () => { draft = null; ctx.render(); } }, 'Cancel (Esc)'));
-  })() : null;
-
-  const shown = pins.filter(x => x.pandId === p.pandId || x.target.startsWith('row'));
-  const pinList = h('ol', { class: 'pins' }, ...shown.map(pin => {
-    const reply = h('input', { type: 'text', placeholder: 'Reply…', 'aria-label': 'Reply' }) as HTMLInputElement;
+/** Pins with resolve / reopen and a reply box; `houseId` null lists every pin with its house. */
+function pinList(ctx: FaceCtx, houseId: string | null, can: boolean): HTMLElement {
+  const b = ctx.b, all = pinsSorted(b), num = new Map(all.map((x, i) => [x.id, i + 1]));
+  const shown = all.filter(x => houseId === null || x.pandId === houseId);
+  const addr = (id: string | null) => b.face.pands.find(p => p.pandId === id)?.address ?? '';
+  const list = h('ol', { class: 'pins' }, ...shown.map(pin => {
+    const reply = h('input', { type: 'text', placeholder: 'Reply…', 'aria-label': 'Reply', disabled: !can }) as HTMLInputElement;
     reply.addEventListener('keydown', e => { if (e.key === 'Enter' && reply.value.trim()) void ctx.savePin({ ...pin, thread: [...pin.thread, { at: new Date().toISOString(), by: 'david', text: reply.value.trim() }] }); });
     return h('li', { class: `pinrow ${pin.status}` },
-      h('div', {}, h('span', { class: `pin ${pin.status} inline` }, String(num.get(pin.id))), ' ', h('strong', {}, PIN_TAG_LABELS[pin.tag]), ` · ${pin.target}`, pin.kind ? h('span', { class: 'tag' }, pin.kind) : null, h('span', { class: `tag st-${pin.status}` }, STATUS_TEXT[pin.status])),
+      h('div', {}, h('span', { class: `pin ${pin.status} inline` }, String(num.get(pin.id))), ' ', h('strong', {}, PIN_TAG_LABELS[pin.tag]), houseId === null ? ` · ${addr(pin.pandId)}` : '', ` · ${pin.target}`, pin.kind ? h('span', { class: 'tag' }, pin.kind) : null, h('span', { class: `tag st-${pin.status}` }, STATUS_TEXT[pin.status])),
       pin.note ? h('div', {}, pin.note) : null,
       ...pin.thread.map(m => h('div', { class: `msg ${m.by}` }, h('b', {}, m.by === 'claude' ? 'Claude' : 'You'), ` ${m.text}`)),
-      h('div', { class: 'pinacts' },
+      can ? h('div', { class: 'pinacts' },
         pin.status !== 'resolved' ? h('button', { onclick: () => ctx.savePin({ ...pin, status: 'resolved' }) }, 'Resolve') : h('button', { onclick: () => ctx.savePin({ ...pin, status: 'reopened' }) }, 'Reopen'),
-        reply));
+        reply) : null);
   }));
-
-  const layerBar = h('div', { class: 'layers' }, ...(['q', 'w', 'e', 'r'] as const).map(k => h('button', { class: layer === LAYER_KEYS[k] ? 'on' : '', onclick: () => setLayer(ctx, LAYER_KEYS[k]) }, h('span', { class: 'key' }, k.toUpperCase()), ' ', LAYER_KEYS[k] === 'pair' ? 'side by side' : LAYER_KEYS[k])),
-    h('button', { class: blink ? 'on' : '', onclick: () => toggleBlink(ctx), title: 'Blink photo and render (B)' }, h('span', { class: 'key' }, 'B'), ' blink'), meta);
-  replace(ctx.main, ctx.pandStrip(), header(ctx), layerBar,
-    h('div', { class: 's4' }, h('div', { class: 's4-view' }, view),
-      h('aside', {}, pinForm, h('h3', {}, `Pins (${shown.length})`), shown.length ? pinList : h('p', { class: 'muted small' }, can ? 'Click the photo or the render to drop a pin.' : 'Pins open at stage 4.'),
-        h('h3', {}, 'Kit gaps'), (der?.cannotDraw.length ? gapList : h('p', { class: 'muted small' }, 'Nothing listed for this house.')), notApplied,
-        h('button', { class: 'ghost', disabled: true, title: 'Opens this house in the game at a first-person pose (wired by the integrator, plan R8)' }, 'Open in game'))),
-    h('p', { id: 'keys', class: 'muted small' }, 'Q photo · W render · E side by side · R row · B blink · click to pin, then 1–9 tag · J/K next/previous house · Enter accept the block'));
+  return h('div', {}, h('h3', {}, `Pins (${shown.length})`), shown.length ? list : h('p', { class: 'muted small' }, can ? 'Click the photo or the render to pin what is wrong.' : 'No pins.'));
 }
 
-function setLayer(ctx: FaceCtx, l: Layer) { if (blink) { clearInterval(blink); blink = null; } layer = l; draft = null; ctx.render(); }
-function toggleBlink(ctx: FaceCtx) {
-  if (blink) { clearInterval(blink); blink = null; ctx.render(); return; }
-  layer = 'photo'; ctx.render();
-  blink = setInterval(() => {
-    const s = ctx.main.querySelector('.stage4'); if (!s) return;
-    const [ph, r] = [s.querySelector<HTMLImageElement>('img.photo'), s.querySelector<HTMLImageElement>('img.render')];
-    if (ph && r) { ph.hidden = !ph.hidden; r.hidden = !ph.hidden; (ph.closest('.pinbox') as HTMLElement | null)?.toggleAttribute('hidden', ph.hidden); }
-  }, 500);
+// ============================================================================================================ stage 4
+/** Stage 4: the block in the game (stub until the integrator wires R8), the pins left to resolve, accept. */
+export function renderStage4(ctx: FaceCtx) {
+  const b = ctx.b, can = b.state.status !== 'accepted';
+  const open = Object.values(b.pins.pins).filter(p => p.status !== 'resolved').length;
+  replace(ctx.main,
+    h('div', { class: 'pand-head' }, h('h2', {}, 'Open in game'), h('button', { class: 'ghost', disabled: true, title: 'Opens the block in the game at a first-person pose (wired by the integrator, plan R8)' }, 'Open in game')),
+    h('p', { class: 'muted' }, `Likeness was judged in stage 2; here the block is ridden in the game, the last pins resolved (${open} open), and the block accepted (Enter).`),
+    pinList(ctx, null, can),
+    h('p', { id: 'keys', class: 'muted small' }, 'Enter accept the block'));
 }
-export function keys4(ctx: FaceCtx, k: string): boolean {
-  if (draft) {
-    const i = Number(k) - 1;
-    if (i >= 0 && i < PIN_TAGS.length) { (ctx.main.querySelectorAll<HTMLButtonElement>('.tagbtns button'))[i]?.click(); return true; }
-    if (k === 'Escape') { draft = null; ctx.render(); return true; }
-  }
-  if (LAYER_KEYS[k]) { setLayer(ctx, LAYER_KEYS[k]); return true; }
-  if (k === 'b') { toggleBlink(ctx); return true; }
-  return false;
-}
+export function keys4(_ctx: FaceCtx, _k: string): boolean { return false; }

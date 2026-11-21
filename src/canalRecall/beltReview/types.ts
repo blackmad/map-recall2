@@ -30,12 +30,12 @@ export const STAGES = [1, 2, 3, 4] as const;
 export type Stage = typeof STAGES[number];
 export const STAGE_TITLES: Record<Stage, string> = {
   1: 'Is this crop right?',
-  2: 'Is the house description right?',
+  2: 'Does each render look like its photo?',
   3: 'Does it join another building or match a neighbour?',
-  4: 'Do we have the kit pieces, and is the render right?',
+  4: 'Does the block hold up in the game? Resolve the last pins and accept.',
 };
 
-export const STAGE_SHORT: Record<Stage, string> = { 1: 'Crop', 2: 'Description', 3: 'Grouping', 4: 'Kit and render' };
+export const STAGE_SHORT: Record<Stage, string> = { 1: 'Crop', 2: 'Likeness', 3: 'Grouping', 4: 'In game' };
 
 export const FACE_STATUSES =['with-david', 'with-claude', 'accepted'] as const;
 export type FaceStatus = typeof FACE_STATUSES[number];
@@ -215,12 +215,16 @@ export interface GroupingLink { pandId: string; kind: GroupingLinkKind; target: 
 export interface GroupingFile extends DocHeader { units: GroupingUnit[]; links: GroupingLink[] }
 
 /** pins.json: stage-4 pins. Coordinates are 0…1 on the image they were dropped on. */
-export const PIN_TAGS = ['grouping', 'height-roofline', 'gable-crown', 'windows', 'wall-colour-material', 'white-accents', 'ground-floor-door-stoop', 'missing-ornament', 'other'] as const;
+export const PIN_TAGS = ['grouping', 'height-roofline', 'gable-crown', 'windows', 'wall-colour-material', 'white-accents', 'ground-floor-door-stoop', 'missing-ornament', 'other',
+  'roof', 'storeys', 'colour', 'ground-floor', 'door-stoop', 'white-detail'] as const;
+/** The tags the stage 2 focus view offers (in key order 1–8); the older ones stay valid for pins already filed. */
+export const FOCUS_PIN_TAGS = ['roof', 'storeys', 'windows', 'colour', 'ground-floor', 'door-stoop', 'white-detail', 'other'] as const;
 export type PinTag = typeof PIN_TAGS[number];
 export const PIN_TAG_LABELS: Record<PinTag, string> = {
   'grouping': 'Grouping', 'height-roofline': 'Height / roofline', 'gable-crown': 'Gable / crown', 'windows': 'Windows',
   'wall-colour-material': 'Wall colour / material', 'white-accents': 'White accents', 'ground-floor-door-stoop': 'Ground floor / door / stoop',
   'missing-ornament': 'Missing ornament', 'other': 'Other',
+  'roof': 'Roof', 'storeys': 'Storeys', 'colour': 'Colour', 'ground-floor': 'Ground floor', 'door-stoop': 'Door / stoop', 'white-detail': 'White detail',
 };
 export const PIN_KINDS = ['local', 'rule', 'kit-gap', 'data'] as const;
 export type PinKind = typeof PIN_KINDS[number];
@@ -267,11 +271,13 @@ export interface StateFile extends DocHeader {
 
 /** ledger.json (plan "Ledger"). `david` and the derived sections are written by the server; `claude` by the integrator. */
 export interface LedgerFile extends DocHeader {
-  david: { activeSeconds: number; byStage: Record<string, number> };
+  david: { activeSeconds: number; byStage: Record<string, number>; /** stage 2 seconds per house (the house in view) */ byHouse?: Record<string, number> };
   claude: { tokens: number; passes: Array<{ at: string; tokens: number; note?: string }> };
   photos: { pands: number; picked: number; agreedWithAuto: number; overridden: number; noneUsable: number; spanCorrected?: number; pandSplits?: number };
   fields: { fromLibrary: number; fromNewRead: number; edited: number };
   pins: { total: number; open: number; byTag: Record<string, number>; byKind: Record<string, number> };
+  /** Stage 2 marks: G/W/? per pass (every mark ever made, by the pass it was made in) and now. */
+  marks?: { byPass: Record<string, { good: number; wrong: number; unsure: number }>; now: { good: number; wrong: number; unsure: number } };
   /** Failures per stage: 1 picks overriding the auto pick or none usable, 2 pands with field edits, 3 grouping changes, 4 pins. */
   stageFailures: Record<string, number>;
   reopens: Record<string, number>;
@@ -279,8 +285,15 @@ export interface LedgerFile extends DocHeader {
   acceptedAt: string | null;
 }
 
-export type DocName = 'picks' | 'edits' | 'grouping' | 'pins' | 'state' | 'ledger';
-export type EntryDocName = 'picks' | 'edits' | 'pins';
+/** marks.json (stage 2): David's at-a-glance verdict per house on the photo-over-render row. `hash` is the render he
+ *  judged; when Claude re-renders the house (another hash) the mark reads "changed, recheck" and no longer counts. */
+export const MARKS = ['good', 'wrong', 'unsure'] as const;
+export type MarkValue = typeof MARKS[number];
+export interface Mark extends Entry { mark: MarkValue; note?: string; hash: string | null; pass: number; history: Array<{ pass: number; mark: MarkValue; at: string }> }
+export interface MarksFile extends DocHeader { marks: Record<string, Mark> }
+
+export type DocName = 'picks' | 'edits' | 'grouping' | 'pins' | 'marks' | 'state' | 'ledger';
+export type EntryDocName = 'picks' | 'edits' | 'pins' | 'marks';
 
 /** Everything the page needs for one face, as GET /api/belt-review/faces/:faceId returns it. */
 export interface FaceBundle {
@@ -292,6 +305,7 @@ export interface FaceBundle {
   edits: EditsFile;
   grouping: GroupingFile;
   pins: PinsFile;
+  marks: MarksFile;
   state: StateFile;
   ledger: LedgerFile;
 }
@@ -321,6 +335,7 @@ export const initialDocs = {
   picks: (faceId: string): PicksFile => ({ ...header(faceId), picks: {} }),
   edits: (faceId: string): EditsFile => ({ ...header(faceId), edits: {} }),
   grouping: (faceId: string): GroupingFile => ({ ...header(faceId), units: [], links: [] }),
+  marks: (faceId: string): MarksFile => ({ ...header(faceId), marks: {} }),
   pins: (faceId: string): PinsFile => ({ ...header(faceId), pins: {} }),
   state: (faceId: string): StateFile => ({ ...header(faceId), stage: 1, status: 'with-david', confirmed: {}, passes: 0, events: [] }),
   ledger: (faceId: string): LedgerFile => ({

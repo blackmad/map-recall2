@@ -42,3 +42,28 @@ it('labels, dividers', () => {
   assert.deepEqual(housesFromDividers([-0.5, 9], [6], ['50', undefined]), [{ fromM: -0.5, toM: 6, label: '50' }, { fromM: 6, toM: 9 }]);
   assert.equal(dividerFits([0, 9], [6], 5.5), false); assert.equal(dividerFits([0, 9], [], 0.5), false); assert.equal(dividerFits([0, 9], [6], 3), true);
 });
+
+import { markGaps, validateMark } from './logic.ts';
+import { markState, reviewOrder } from './stages.ts';
+import { initialDocs, type FaceBundle } from './types.ts';
+
+it('marks: validate, history across passes, gaps against the current hashes', () => {
+  const m1 = validateMark(face, P, { mark: 'wrong', note: 'roof', hash: 'aaaaaaaa' }, undefined, 0, 't0');
+  const m2 = validateMark(face, P, { mark: 'good', hash: 'bbbbbbbb' }, { ...m1, revision: 1, at: 't0', by: 'david' }, 1, 't1');
+  assert.deepEqual(m2.history.map(h => [h.pass, h.mark]), [[0, 'wrong'], [1, 'good']]);
+  assert.throws(() => validateMark(face, 'x', { mark: 'good' }, undefined, 0, 't'));
+  const marks = { ...initialDocs.marks('f'), marks: { [P]: { ...m2, revision: 2, at: 't1', by: 'david' as const } } };
+  const r = { face, picks: initialDocs.picks('f'), pins: initialDocs.pins('f'), marks };
+  assert.deepEqual(markGaps({ ...r, hashes: { [P]: 'bbbbbbbb', [Q]: 'c' } }), { unmarked: [Q], changed: [] });
+  assert.deepEqual(markGaps({ ...r, hashes: { [P]: 'cccccccc', [Q]: 'c' } }), { unmarked: [Q], changed: [P] });
+});
+it('review order: worst first by likeness, else by weak fields; markState sees a changed render', () => {
+  const b = { face, marks: { ...initialDocs.marks('f'), marks: { [P]: { mark: 'good', hash: 'old', pass: 0, history: [], revision: 1, at: '', by: 'david' } } } } as unknown as FaceBundle;
+  const der = (a: object, z: object) => ({ ppm: 50, pands: { [P]: { hash: 'new', ...a }, [Q]: { hash: 'q', ...z } } }) as never;
+  assert.deepEqual(reviewOrder(b, der({ weak: ['a'] }, { weak: ['a', 'b', 'c'] }), 'worst'), [Q, P]);
+  assert.deepEqual(reviewOrder(b, der({ weak: [], likeness: 0.2 }, { weak: ['a'], likeness: 0.9 }), 'worst'), [P, Q]);
+  assert.deepEqual(reviewOrder(b, null, 'street'), [P, Q]);
+  assert.equal(markState(b, der({}, {}), P), 'changed');
+  assert.equal(markState(b, null, P), 'good');
+  assert.equal(markState(b, null, Q), null);
+});
