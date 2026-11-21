@@ -1,0 +1,669 @@
+{
+ "storeys": {
+  "n": 53,
+  "apriori": 0.7169811320754716,
+  "apriori_dev": 0.6666666666666666,
+  "apriori_test": 0.7692307692307693,
+  "within1": 0.9622641509433962,
+  "majority": 0.8490566037735849,
+  "majority_test": 0.8076923076923077,
+  "bag3d": 0.07547169811320754,
+  "bag3d_minus1": 0.7924528301886793,
+  "typeTruth": 0.6792452830188679,
+  "confusion": [
+   [
+    "4->4",
+    35
+   ],
+   [
+    "4->5",
+    4
+   ],
+   [
+    "3->4",
+    4
+   ],
+   [
+    "4->3",
+    4
+   ],
+   [
+    "3->3",
+    3
+   ],
+   [
+    "4->1",
+    2
+   ],
+   [
+    "3->2",
+    1
+   ]
+  ],
+  "tuned_on_dev": {
+   "params": [
+    0.5,
+    2.6,
+    0.34,
+    true
+   ],
+   "dev": 0.7407407407407407,
+   "test": 0.8461538461538461
+  },
+  "tuned_on_test": {
+   "params": [
+    0.3,
+    2.6,
+    0.34,
+    true
+   ],
+   "test": 0.8846153846153846,
+   "dev": 0.6666666666666666
+  }
+ },
+ "storeysV2": {
+  "n": 51,
+  "apriori": 0.8431372549019608,
+  "apriori_dev": 0.8,
+  "apriori_test": 0.8846153846153846,
+  "within1": 1.0,
+  "majority": 0.8235294117647058,
+  "majority_test": 0.8461538461538461,
+  "bag3d": 0.0196078431372549,
+  "bag3d_minus1": 0.8823529411764706,
+  "typeTruth": 0.7058823529411765,
+  "confusion": [
+   [
+    "4->4",
+    37
+   ],
+   [
+    "3->3",
+    6
+   ],
+   [
+    "4->5",
+    4
+   ],
+   [
+    "5->4",
+    1
+   ],
+   [
+    "3->4",
+    1
+   ],
+   [
+    "3->2",
+    1
+   ],
+   [
+    "4->3",
+    1
+   ]
+  ],
+  "tuned_on_dev": {
+   "params": [
+    0.5,
+    2.6,
+    0.34,
+    true
+   ],
+   "dev": 0.88,
+   "test": 0.8846153846153846
+  },
+  "tuned_on_test": {
+   "params": [
+    0.3,
+    2.6,
+    0.34,
+    true
+   ],
+   "test": 0.9230769230769231,
+   "dev": 0.8
+  }
+ },
+ "bays": {
+  "apriori": 0.8113207547169812,
+  "test": 0.8846153846153846,
+  "width_rule": 0.9622641509433962,
+  "confusion": [
+   [
+    "3->3",
+    33
+   ],
+   [
+    "2->2",
+    10
+   ],
+   [
+    "3->2",
+    5
+   ],
+   [
+    "3->7",
+    1
+   ],
+   [
+    "3->1",
+    1
+   ],
+   [
+    "3->4",
+    1
+   ],
+   [
+    "2->4",
+    1
+   ],
+   [
+    "3->11",
+    1
+   ]
+  ]
+ },
+ "per_front": {
+  "2": {
+   "file": "bellamydwars-4-12__0363100012146138.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "4": {
+   "file": "bellamydwars-4-12__0363100012115852.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "6": {
+   "file": "bellamyplein-18-38__0363100012164224.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 5,
+   "goldBays": 3,
+   "predBays": 2
+  },
+  "14": {
+   "file": "bellamyplein-18-38__0363100012164492.png",
+   "gold": 3,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "20": {
+   "file": "bloem-3-25__0363100012172768.png",
+   "gold": 4,
+   "goldV2": null,
+   "bag3d": 5,
+   "pred": 1,
+   "goldBays": 3,
+   "predBays": 7
+  },
+  "22": {
+   "file": "bloemgracht-121-197__0363100012174177.png",
+   "gold": 4,
+   "goldV2": 3,
+   "bag3d": 4,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "24": {
+   "file": "bloemgracht-121-197__0363100012174828.png",
+   "gold": 3,
+   "goldV2": 3,
+   "bag3d": 4,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "26": {
+   "file": "bloemgracht-138-300__0363100012174748.png",
+   "gold": 3,
+   "goldV2": 5,
+   "bag3d": 0,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "28": {
+   "file": "bloemgracht-138-300__0363100012174832.png",
+   "gold": 3,
+   "goldV2": 3,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "30": {
+   "file": "bloemgracht-16-32__0363100012173345.png",
+   "gold": 3,
+   "goldV2": 3,
+   "bag3d": 3,
+   "pred": 2,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "32": {
+   "file": "bloemgracht-53-95__0363100012170209.png",
+   "gold": 4,
+   "goldV2": null,
+   "bag3d": 5,
+   "pred": 1,
+   "goldBays": 3,
+   "predBays": 1
+  },
+  "34": {
+   "file": "bloemgracht-80-128__0363100012169916.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "36": {
+   "file": "bol-12-22__0363100012167250.png",
+   "gold": 3,
+   "goldV2": 3,
+   "bag3d": 5,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "38": {
+   "file": "bol-12-22__0363100012156333.png",
+   "gold": 3,
+   "goldV2": 3,
+   "bag3d": 5,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "40": {
+   "file": "bol-24-38__0363100012158811.png",
+   "gold": 4,
+   "goldV2": 3,
+   "bag3d": 4,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "42": {
+   "file": "bol-40-54__0363100012160619.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "44": {
+   "file": "bol-40-54__0363100012237226.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "46": {
+   "file": "bol-40-54__0363100012237278.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 5,
+   "goldBays": 3,
+   "predBays": 2
+  },
+  "48": {
+   "file": "cuyp-130-168__0363100012164103.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "52": {
+   "file": "cuyp-130-168__0363100012162980.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "54": {
+   "file": "cuyp-130-168__0363100012158812.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "56": {
+   "file": "cuyp-130-168__0363100012157319.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "58": {
+   "file": "florisz-2-10__0363100012159183.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "60": {
+   "file": "florisz-2-10__0363100012152951.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "64": {
+   "file": "hals-42-66__0363100012237026.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 5,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "74": {
+   "file": "hasebroek-1-41__0363100012153109.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 2
+  },
+  "76": {
+   "file": "hasebroek-1-41__0363100012164250.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 2
+  },
+  "78": {
+   "file": "hasebroek-1-41__0363100012166233.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "80": {
+   "file": "hasebroek-1-41__0363100012157271.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 4
+  },
+  "82": {
+   "file": "heije-41-53__0363100012109543.png",
+   "gold": 3,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "88": {
+   "file": "helst-39-49__0363100012158188.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "90": {
+   "file": "helst-39-49__0363100012158451.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "92": {
+   "file": "lelie-83-141__0363100012168148.png",
+   "gold": 4,
+   "goldV2": 3,
+   "bag3d": 4,
+   "pred": 3,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "94": {
+   "file": "lelie-83-141__0363100012169848.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 4
+  },
+  "96": {
+   "file": "retief-2-28__0363100012236810.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 3,
+   "goldBays": 3,
+   "predBays": 11
+  },
+  "98": {
+   "file": "saenredam-1-37__0363100012164149.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "100": {
+   "file": "saenredam-1-37__0363100012159703.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "102": {
+   "file": "saenredam-1-37__0363100012163619.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "104": {
+   "file": "saenredam-26-56__0363100012167431.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 0,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "106": {
+   "file": "saenredam-26-56__0363100012152867.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "108": {
+   "file": "saenredam-62-66__0363100012156620.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "110": {
+   "file": "stalpert-38-70__0363100012164016.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "112": {
+   "file": "stalpert-38-70__0363100012164659.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "114": {
+   "file": "stalpert-9-31__0363100012165989.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "116": {
+   "file": "stalpert-9-31__0363100012163767.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "118": {
+   "file": "stalpert-9-31__0363100012152613.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 2,
+   "predBays": 2
+  },
+  "120": {
+   "file": "wou-32-52__0363100012160499.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "124": {
+   "file": "wou-54-72__0363100012156067.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "126": {
+   "file": "wou-54-72__0363100012167117.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 5,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "128": {
+   "file": "wou-54-72__0363100012152366.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "130": {
+   "file": "wouwerman-2-44__0363100012114665.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 2
+  },
+  "132": {
+   "file": "wouwerman-2-44__0363100012138798.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  },
+  "134": {
+   "file": "wouwerman-2-44__0363100012078941.png",
+   "gold": 4,
+   "goldV2": 4,
+   "bag3d": 5,
+   "pred": 4,
+   "goldBays": 3,
+   "predBays": 3
+  }
+ },
+ "run": {
+  "device": "mps",
+  "dtype": "fp32",
+  "prompts": [
+   "window",
+   "dormer",
+   "balcony",
+   "door",
+   "shop window",
+   "stairs",
+   "railing",
+   "sidewalk",
+   "roof"
+  ],
+  "threshold": 0.3,
+  "load_s": 5.443204879760742,
+  "n": 53,
+  "sec_mean": 5.616055295152484,
+  "sec_median": 5.255136966705322,
+  "mem": {
+   "maxrss_gb": 1.255604224,
+   "mps_driver_gb": 5.559287808,
+   "mps_current_gb": 3.7029056
+  }
+ }
+}

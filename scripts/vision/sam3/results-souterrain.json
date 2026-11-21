@@ -1,0 +1,355 @@
+{
+ "A_low_window": {
+  "tp": 12,
+  "fp": 1,
+  "fn": 9,
+  "precision": 0.923,
+  "recall": 0.571,
+  "acc": 0.756
+ },
+ "B_low_window_and_stoop": {
+  "tp": 8,
+  "fp": 1,
+  "fn": 13,
+  "precision": 0.889,
+  "recall": 0.381,
+  "acc": 0.659
+ },
+ "C_low_window_or_stoop": {
+  "tp": 17,
+  "fp": 9,
+  "fn": 4,
+  "precision": 0.654,
+  "recall": 0.81,
+  "acc": 0.683
+ },
+ "A_strict_top12": {
+  "tp": 9,
+  "fp": 1,
+  "fn": 12,
+  "precision": 0.9,
+  "recall": 0.429,
+  "acc": 0.683
+ },
+ "A_loose_top20": {
+  "tp": 14,
+  "fp": 1,
+  "fn": 7,
+  "precision": 0.933,
+  "recall": 0.667,
+  "acc": 0.805
+ },
+ "A_thr03": {
+  "tp": 12,
+  "fp": 3,
+  "fn": 9,
+  "precision": 0.8,
+  "recall": 0.571,
+  "acc": 0.707
+ },
+ "A_thr05": {
+  "tp": 10,
+  "fp": 0,
+  "fn": 11,
+  "precision": 1.0,
+  "recall": 0.476,
+  "acc": 0.732
+ },
+ "stoop_only": {
+  "tp": 13,
+  "fp": 9,
+  "fn": 8,
+  "precision": 0.591,
+  "recall": 0.619,
+  "acc": 0.585
+ },
+ "per_front": [
+  {
+   "file": "valerius-3-37__0363100012166718.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "valerius-3-37__0363100012158233.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "valerius-3-37__0363100012164322.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "valerius-3-37__0363100012161861.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "valerius-4-38__0363100012166160.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "valerius-4-38__0363100012153385.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "lairesse-40-62__0363100012129826.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "lairesse-40-62__0363100012136080.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "hooft-135-177__0363100012162906.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "hooft-135-177__0363100012152280.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "hooft-135-177__0363100012155349.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "hooft-135-177__0363100012130582.png",
+   "gold": true,
+   "A": true,
+   "nLow": 16,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012157986.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012157074.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012165265.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": false
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012103513.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012125741.png",
+   "gold": true,
+   "A": true,
+   "nLow": 2,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012073967.png",
+   "gold": true,
+   "A": true,
+   "nLow": 2,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012166794.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012164344.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012158600.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012159984.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012156974.png",
+   "gold": true,
+   "A": true,
+   "nLow": 2,
+   "stoop": true
+  },
+  {
+   "file": "willemsparkweg-80-110__0363100012164610.png",
+   "gold": true,
+   "A": true,
+   "nLow": 2,
+   "stoop": false
+  },
+  {
+   "file": "baerle-52-88__0363100012155817.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012174186.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012168077.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012168076.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": false
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012168078.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012571976.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012169901.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "bloemgracht-80-128__0363100012169905.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "prinsengracht-312-328__0363100012173849.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "lauriergracht-62-110__0363100012169895.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "lauriergracht-62-110__0363100012169952.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "lauriergracht-62-110__0363100012169891.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": true
+  },
+  {
+   "file": "lauriergracht-62-110__0363100012169946.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "lauriergracht-62-110__0363100012169942.png",
+   "gold": true,
+   "A": true,
+   "nLow": 1,
+   "stoop": false
+  },
+  {
+   "file": "egelantiersgracht-47-101__0363100012172885.png",
+   "gold": false,
+   "A": true,
+   "nLow": 1,
+   "stoop": true
+  },
+  {
+   "file": "egelantiersgracht-47-101__0363100012172884.png",
+   "gold": false,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  },
+  {
+   "file": "egelantiersgracht-47-101__0363100012172882.png",
+   "gold": true,
+   "A": false,
+   "nLow": 0,
+   "stoop": false
+  }
+ ]
+}
