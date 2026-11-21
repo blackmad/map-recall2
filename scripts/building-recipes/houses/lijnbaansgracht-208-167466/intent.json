@@ -1,0 +1,741 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "lijnbaansgracht-208-167466",
+ "pandId": "0363100012167466",
+ "address": "Lijnbaansgracht 208-210 (+ Looiersgracht), Amsterdam-Centrum: 1991 housing block in grey-beige brick, glazed bay-window stacks alternating with loggias over a red brick plinth (kit batch 8504, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2021-01-22-w03-246",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001974_pano_0000_000872/",
+   "image": "source-data://pand-reference-walls/0363100012167466/w03-246.jpg",
+   "sha256": "1676a9d769c79d3da51f8a93b785b86507c9e475e7e876e5b942b5812ee6fcb8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-29-w05-220",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002550_pano_0000_001257/",
+   "image": "source-data://pand-reference-walls/0363100012167466/w05-220.jpg",
+   "sha256": "a28b52432b1b0933849e017928383ce0f587a1f198dc8f6752b47d09c59b8b0b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-30-w06-332L",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002951_pano_0003_000089/",
+   "image": "source-data://pand-reference-walls/0363100012167466/w06-332L.jpg",
+   "sha256": "394175574d852359202d4e08e40bbbb6450b952a1ee8ae572d9403e81d94e3a8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-30-w07-332L",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002951_pano_0003_000080/",
+   "image": "source-data://pand-reference-walls/0363100012167466/w07-332L.jpg",
+   "sha256": "177466e872ecce308db4aec9878c7521da16e9192f412ddf63e8049acd1c27e9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a8a095",
+  "frame": "#e8e6e0",
+  "stone": "#c8c4bc",
+  "door": "#2e3436"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "footprintParts": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "shell": 3,
+   "street": "Lijnbaansgracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "groundFactor": 1.35,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "palette": {
+    "brick": "#a8a095",
+    "frame": "#e8e6e0"
+   },
+   "houses": [
+    {
+     "w": 0.232,
+     "bays": 1,
+     "windows": "three-light",
+     "windowShape": {
+      "w": 0.56,
+      "h": 0.72,
+      "sill": 0.12
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.56,
+         "h": 0.42,
+         "sill": 0.54
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        2
+       ],
+       "pattern": [
+        {
+         "w": 0.56,
+         "h": 0.95,
+         "sill": 0.01
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.215,
+     "bays": 1,
+     "loggias": {
+      "storeys": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "w": 0.82,
+      "h": 0.86,
+      "sill": 0.0,
+      "deep": 0.45,
+      "rail": "solid",
+      "colour": "#6e7274",
+      "lining": "#55524d"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.78,
+         "h": 0.42,
+         "sill": 0.54
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.175,
+     "bays": 1,
+     "windows": "three-light",
+     "windowShape": {
+      "w": 0.72,
+      "h": 0.72,
+      "sill": 0.12
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.72,
+         "h": 0.42,
+         "sill": 0.54
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        2
+       ],
+       "pattern": [
+        {
+         "w": 0.72,
+         "h": 0.95,
+         "sill": 0.01
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.197,
+     "bays": 1,
+     "loggias": {
+      "storeys": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "w": 0.82,
+      "h": 0.86,
+      "sill": 0.0,
+      "deep": 0.45,
+      "rail": "solid",
+      "colour": "#6e7274",
+      "lining": "#55524d"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.78,
+         "h": 0.42,
+         "sill": 0.54
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.181,
+     "bays": 1,
+     "loggias": {
+      "storeys": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "w": 0.82,
+      "h": 0.86,
+      "sill": 0.0,
+      "deep": 0.45,
+      "rail": "solid",
+      "colour": "#6e7274",
+      "lining": "#55524d"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.45,
+         "at": -0.25,
+         "h": 0.8,
+         "sill": 0.0,
+         "door": true
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      4
+     ],
+     "storeys": [
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0.6
+     ],
+     "colour": "#6a3e36"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "accentPanels",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    28
+   ],
+   "shell": 3,
+   "street": "Lijnbaansgracht",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 2,
+   "groundFactor": 1.25,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.58,
+    "h": 0.68,
+    "sill": 0.15
+   },
+   "palette": {
+    "brick": "#a8a095",
+    "frame": "#e8e6e0"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.58,
+       "h": 0.5,
+       "sill": 0.45
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.58,
+       "h": 0.95,
+       "sill": 0.01
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0.6
+     ],
+     "colour": "#6a3e36"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "accentPanels",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    27
+   ],
+   "shell": 3,
+   "system": "brick-bay-grid",
+   "alignWith": 1,
+   "baysPerStorey": 1,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.68,
+    "sill": 0.15
+   },
+   "palette": {
+    "brick": "#a8a095",
+    "frame": "#e8e6e0"
+   },
+   "gateways": {
+    "bays": [
+     0
+    ]
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.72,
+       "h": 0.9,
+       "sill": 0.01
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "gateways"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "shell": 3,
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "groundFactor": 1.25,
+   "ground": "system",
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.54,
+    "h": 0.65,
+    "sill": 0.15
+   },
+   "palette": {
+    "brick": "#a8a095",
+    "frame": "#e8e6e0"
+   },
+   "houses": [
+    {
+     "w": 0.74,
+     "bays": 2,
+     "windows": "three-light",
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.54,
+         "at": -0.23,
+         "h": 0.49,
+         "sill": 0.46
+        },
+        {
+         "w": 0.33,
+         "at": -0.25,
+         "h": 0.49,
+         "sill": 0.46
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        2
+       ],
+       "pattern": [
+        {
+         "w": 0.54,
+         "at": -0.23,
+         "h": 0.95,
+         "sill": 0.01
+        },
+        {
+         "w": 0.33,
+         "at": -0.25,
+         "h": 0.62,
+         "sill": 0.18
+        }
+       ]
+      },
+      {
+       "storeys": [
+        3,
+        4,
+        5
+       ],
+       "pattern": [
+        {
+         "w": 0.54,
+         "at": -0.23,
+         "h": 0.65,
+         "sill": 0.15
+        },
+        {
+         "w": 0.33,
+         "at": -0.25,
+         "h": 0.62,
+         "sill": 0.18
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.26,
+     "bays": 1,
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "sill": 0.0,
+       "h": 0.96,
+       "lights": 4,
+       "spandrel": {
+        "h": 0.3,
+        "colour": "#4a4a4c"
+       },
+       "frame": "#8a8c8c"
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0.6
+     ],
+     "colour": "#6a3e36"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "accentPanels",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    20
+   ],
+   "shell": 2,
+   "street": "Lijnbaansgracht",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "groundFactor": 1.4,
+   "ground": "system",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#a8a095",
+    "frame": "#e8e6e0"
+   },
+   "houses": [
+    {
+     "w": 0.15,
+     "bays": 1,
+     "loggias": {
+      "storeys": [
+       1,
+       2,
+       3
+      ],
+      "w": 0.85,
+      "h": 0.86,
+      "sill": 0.0,
+      "deep": 0.45,
+      "rail": "solid",
+      "colour": "#6e7274",
+      "lining": "#55524d"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.7,
+         "h": 0.4,
+         "sill": 0.5
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.3,
+     "bays": 1,
+     "windows": "three-light",
+     "windowShape": {
+      "w": 0.66,
+      "h": 0.68,
+      "sill": 0.15
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.66,
+         "h": 0.5,
+         "sill": 0.46
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        2
+       ],
+       "pattern": [
+        {
+         "w": 0.66,
+         "h": 0.95,
+         "sill": 0.01
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.3,
+     "bays": 1,
+     "windows": "three-light",
+     "windowShape": {
+      "w": 0.66,
+      "h": 0.68,
+      "sill": 0.15
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.66,
+         "h": 0.5,
+         "sill": 0.46
+        }
+       ]
+      },
+      {
+       "storeys": [
+        1,
+        2
+       ],
+       "pattern": [
+        {
+         "w": 0.66,
+         "h": 0.95,
+         "sill": 0.01
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "w": 0.25,
+     "bays": 1,
+     "windowShape": {
+      "w": 0.52,
+      "h": 0.62,
+      "sill": 0.18
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        0
+       ],
+       "pattern": [
+        {
+         "w": 0.52,
+         "h": 0.4,
+         "sill": 0.5
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      0,
+      0
+     ],
+     "up": [
+      0,
+      0.6
+     ],
+     "colour": "#6a3e36"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "accentPanels",
+    "groundFactor"
+   ]
+  }
+ ],
+ "notes": [
+  "Groups: 0 the canal front on the Lijnbaansgracht (shell 3 surface 9, w03-246 2021-01-22): five fronts in a row, glazed white-framed bay stacks (bays 0 and 2: a two-storey glazed stack on storeys 1-2, three-light windows above) and loggias with grey perforated-metal rails (bays 1, 3, 4) over a raised ground with a red brick plinth; 1 the SW end (surface 28, w05-220 2022-04-29), two stacks over six storeys; 2 its lower SW wing (surface 27, same crop), one stack over the gateway; 3 the NW end (surface 2, w06-332L 2023-01-30), a stack and a punched column in brick and a glazed corner; 4 the second block's NW front on the Lijnbaansgracht (shell 2 surface 20, w07-332L 2023-01-30), a loggia, two three-storey glazed stacks and a punched column.",
+  "Colours: the crops are winter or overcast; brick sampled on the lit storeys of w05-220 (#a99f98) and lifted slightly; plinth red from w05-220 (#523a36 shaded).",
+  "Other walls (window grid): the set-back top storeys (no crop reaches them), the red-brick Looiersgracht wing (w01-152 2020-08-31 is 5 m away and oblique), the NE block's NE and SE walls (w02-62 at 34-44 deg; w04-153 misregistered) and the courtyard."
+ ]
+}

@@ -1,0 +1,331 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "laanweg-92-128179",
+ "pandId": "0363100012128179",
+ "address": "Laanweg 92-131, Amsterdam: 1987 L-shaped terrace of family houses, red-brown brick ground with white storage and blue front doors, grey-beige brick first floor, set-back top storey with small white and blue windows, gallery balcony at the back (kit2 recipe, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2025-06-30-w01-331s1",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_10-32-24_01134/",
+   "image": "source-data://pand-reference-walls/0363100012128179/w01-331s1.jpg",
+   "sha256": "1645387bc502f2c065ba12aa08355fa052fa3c37efe8dbc7ec6b0e468e3e2b1a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w01-331s2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_10-32-24_01128/",
+   "image": "source-data://pand-reference-walls/0363100012128179/w01-331s2.jpg",
+   "sha256": "25a9620cdef3317b1c6a0dab1e3687eac98d99bc3610261f74bc38d34cc75638",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-21-w01-331s3",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-21_11-29-07_00926/",
+   "image": "source-data://pand-reference-walls/0363100012128179/w01-331s3.jpg",
+   "sha256": "f66d16dab7e875d5922cc5dc1714077c8ccfc603bd6b858d0da5daef19933c2a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w03-293s2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_10-32-24_01078/",
+   "image": "source-data://pand-reference-walls/0363100012128179/w03-293s2.jpg",
+   "sha256": "89a3a73e85eff0e1a8a18f823a9a8ce41b0216aefd959e53eb2c287bf2a8ac2a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-21-w02-151s3",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-21_11-29-07_00951/",
+   "image": "source-data://pand-reference-walls/0363100012128179/w02-151s3.jpg",
+   "sha256": "375c5749b72fc70f64987424e5efab28e137d267c40b066adc58e312ce9dbeb5",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "street": "Laanweg",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 32,
+   "groundFactor": 0.8,
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#31689a"
+   },
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#b8ab98",
+    "frame": "#e8e8e2"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6a5650"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "residential",
+    "brickStoreys",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    10
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 32,
+   "ground": "system",
+   "blankStoreys": [
+    0,
+    1
+   ],
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.25,
+    "sill": 0.42
+   },
+   "palette": {
+    "brick": "#a39888",
+    "frame": "#e8e8e2"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.4,
+       "h": 0.25,
+       "sill": 0.42
+      },
+      {
+       "w": 0.27,
+       "h": 0.28,
+       "sill": 0.4,
+       "door": true
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "blankStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "street": "Laanweg",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 28,
+   "groundFactor": 0.8,
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#31689a"
+   },
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#b8ab98",
+    "frame": "#e8e8e2"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6a5650"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "residential",
+    "brickStoreys",
+    "groundFactor"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 28,
+   "ground": "system",
+   "blankStoreys": [
+    0,
+    1
+   ],
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.25,
+    "sill": 0.42
+   },
+   "palette": {
+    "brick": "#a39888",
+    "frame": "#e8e8e2"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.4,
+       "h": 0.25,
+       "sill": 0.42
+      },
+      {
+       "w": 0.27,
+       "h": 0.28,
+       "sill": 0.4,
+       "door": true
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "blankStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 31,
+   "ground": "system",
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#b8ab98",
+    "frame": "#e8e8e2"
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6a5650"
+    }
+   ],
+   "balconyBands": {
+    "storeys": [
+     2
+    ],
+    "kind": "bars",
+    "colour": "#d8d6cf",
+    "railColour": "#e8e8e2",
+    "deep": 0.5,
+    "rail": 0.33
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "brickStoreys",
+    "balconyBands"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#b8ab98",
+  "frame": "#e8e8e2",
+  "door": "#31689a",
+  "stone": "#d8d6cf"
+ },
+ "closedBands": true,
+ "budgetTriangles": 16000,
+ "measured": {
+  "date": "2026-11-21",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "notes": [
+  "Kit2 read (lane kit-batch-8504-20261121). Fronts on Laanweg: walls[0] the north-west front of the long wing (surface 1, 0-5.8 m) from w01-331s1/s2 (2025-06-30) and s3 (2024-10-21), walls[2] the west wing front (surface 4) from w03-293s2 (2025-06-30), same design. Each house is two 2.7 m bays: the ground row is red-brown brick with the front door bay (a white storage door beside a blue front door with a round light) and a window bay; the first floor grey-beige brick with one white two-light window per bay (groundFactor 0.8: the ground storey is about 2.7 m, the first floor about 3.4 m in the crops).",
+  "walls[1] and walls[3]: the set-back top storey (surfaces 10 and 7, 5.7-8.6 m), per house a small white two-light window and a blue square panel with a round light (bayWindows; the blue panel as a door leaf in the blue door colour). Partly hidden behind the front's roof edge in the crops, foliage 31 %: read from w01-331s1/s3.",
+  "walls[4] the back of the long wing (surface 8) from w02-151s3 (2024-10-21, 27.5 m of 82 m seen, hedges and sheds in front): red-brown ground, beige first floor, the top storey behind a continuous gallery balcony with white bar rails (balconyBands storey 2).",
+  "Colours white-balanced on the white storage doors (true white assumed): the 2025-06-30 crops are exposed for the sky (wall raw #51574e, door raw #5e6c6d), the overcast 2024-10-21 crop w01-331s3 has a cool cast (white door raw #bcdde7); both give the same light grey-beige brick (#b8ab98 used, from s3), red-brown ground #6a5650, top storey #a39888, doors #31689a. Listed in measured.groups so the look draws them as sampled.",
+  "No photo: the back of the west wing (surface 5, bearing 113) and both end walls (surfaces 2/3, 6/9): otherWalls window-grid. Not modelled: the glazed stair-hall bay with letterboxes at the north-east end of the front (w01-331s3), awnings, the black roller shutters."
+ ]
+}

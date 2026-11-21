@@ -1,0 +1,1259 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "flevoparkweg-2-136169",
+ "pandId": "0363100012136169",
+ "address": "Flevoparkweg 2-72, Amsterdam-Oost: 2002 housing, a long bent three-storey slab with a glazed attic, grey weathered timber boarding in units between white joints over a dark brick ground with blue front doors (kit batch 8504, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2024-10-16-w06-353",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-16_11-00-38_02090/",
+   "image": "source-data://pand-reference-walls/0363100012136169/w06-353.jpg",
+   "sha256": "5c95a2c10c0fab54b652dac4336ba70f9b34f30288cb6c4cbcd6673fd8a76dd4",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w02-345",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_13-32-36_00137/",
+   "image": "source-data://pand-reference-walls/0363100012136169/w02-345.jpg",
+   "sha256": "a907a03d78e49baec0696f0c966760763d6af2692571250f34075fbb1cf5508d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w01-352",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_13-32-36_00129/",
+   "image": "source-data://pand-reference-walls/0363100012136169/w01-352.jpg",
+   "sha256": "e6cb9eb6d287d5fdf7372c1deba8751eabdeddde1f950ef484f793be91f09b65",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#4e535b",
+  "frame": "#e2e2de",
+  "stone": "#d9d9d4",
+  "door": "#35558c"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "closedBands": true,
+ "budgetTriangles": 20000,
+ "walls": [
+  {
+   "wallSurfaces": [
+    10,
+    16,
+    32,
+    46,
+    74
+   ],
+   "mainSurface": 74,
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 16,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.58,
+    "h": 0.43,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#4e535b",
+    "frame": "#e2e2de",
+    "stone": "#d9d9d4"
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#77797a",
+    "lines": "#5e6062",
+    "pitch": 0.18,
+    "from": 0.21,
+    "to": 0.79
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.15,
+     "h": 0.78,
+     "lights": 2,
+     "frame": "#e2e2de"
+    }
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.51,
+       "at": -0.09,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.81,
+       "at": -0.07,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.81,
+       "at": -0.35,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.51,
+       "at": -0.27,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.51,
+       "at": -0.02,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.81,
+       "at": 0,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.81,
+       "at": -0.36,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.51,
+       "at": -0.28,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.81,
+       "at": 0.42,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.51,
+       "at": 0.18,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.81,
+       "at": -0.18,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.86,
+       "at": 0.44
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.31
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.49
+      },
+      {
+       "w": 0.86,
+       "at": -0.24
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.49
+      },
+      {
+       "w": 0.86,
+       "at": -0.24
+      },
+      {
+       "w": 0.86,
+       "at": 0.49
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.25
+      },
+      {
+       "w": 0.76,
+       "at": 0.42,
+       "sill": 0.18,
+       "h": 0.55
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.18
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.78,
+       "at": 0.07
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.78,
+       "at": 0.14
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.78,
+       "at": 0.14
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.78,
+       "at": 0.12
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.76,
+       "at": 0.42,
+       "sill": 0.18,
+       "h": 0.55
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.86,
+       "at": -0.18
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.1,
+      0.18
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.1,
+      0.18
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      9,
+      9
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.1,
+      0.18
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      12,
+      12
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.07,
+      0.15
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "cladding",
+    "ribbonStoreys",
+    "bayWindows",
+    "ground",
+    "accentPanels"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    5,
+    34,
+    36,
+    72
+   ],
+   "mainSurface": 72,
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 19,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.58,
+    "h": 0.43,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#4e535b",
+    "frame": "#e2e2de",
+    "stone": "#d9d9d4"
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#77797a",
+    "lines": "#5e6062",
+    "pitch": 0.18,
+    "from": 0.21,
+    "to": 0.79
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.15,
+     "h": 0.78,
+     "lights": 2,
+     "frame": "#e2e2de"
+    }
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.26,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.79,
+       "at": -0.26,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.79,
+       "at": 0.31,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.36,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.41,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.79,
+       "at": -0.41,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.79,
+       "at": 0.24,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.29,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.79,
+       "at": 0.13,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.08,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.79,
+       "at": 0.08,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.03,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.79,
+       "at": -0.21,
+       "sill": 0.25,
+       "h": 0.5
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.84,
+       "at": 0.28
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.49
+      },
+      {
+       "w": 0.84,
+       "at": 0.17
+      },
+      {
+       "w": 0.84,
+       "at": 0.39
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": 0.14
+      },
+      {
+       "w": 0.84,
+       "at": 0.36
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": 0.1
+      },
+      {
+       "w": 0.84,
+       "at": 0.32
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": 0.13
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.32,
+       "at": -0.5,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0.84,
+       "at": 0.08
+      },
+      {
+       "w": 0.32,
+       "at": 0.45,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.21
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.74,
+       "at": -0.11
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.74,
+       "at": -0.22
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.74,
+       "at": -0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.74,
+       "at": -0.29
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": 0.13
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.32,
+       "at": -0.5,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0.84,
+       "at": 0.08
+      },
+      {
+       "w": 0.32,
+       "at": 0.45,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.21
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      2,
+      2
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.75,
+      0.83
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      5,
+      5
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.73,
+      0.81
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      8,
+      8
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.7,
+      0.78
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      11,
+      11
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.64,
+      0.72
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      14,
+      14
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.59,
+      0.67
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      17,
+      17
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.54,
+      0.62
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "cladding",
+    "ribbonStoreys",
+    "bayWindows",
+    "ground",
+    "accentPanels"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    28,
+    100,
+    101
+   ],
+   "mainSurface": 100,
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 17,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.58,
+    "h": 0.43,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#4e535b",
+    "frame": "#e2e2de",
+    "stone": "#d9d9d4"
+   },
+   "cladding": {
+    "kind": "boards",
+    "colour": "#77797a",
+    "lines": "#5e6062",
+    "pitch": 0.18,
+    "from": 0.21,
+    "to": 0.79
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      3
+     ],
+     "sill": 0.15,
+     "h": 0.78,
+     "lights": 2,
+     "frame": "#e2e2de"
+    }
+   ],
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.02,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.78,
+       "at": -0.03,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.78,
+       "at": -0.07,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": -0.02,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": 0.37,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0.78,
+       "at": 0.37,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.78,
+       "at": 0.04,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": 0.09,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.78,
+       "at": -0.06,
+       "sill": 0.25,
+       "h": 0.5
+      },
+      {
+       "w": 0.5,
+       "at": -0.12,
+       "door": true,
+       "sill": 0,
+       "h": 0.78
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.78,
+       "at": -0.21,
+       "sill": 0.25,
+       "h": 0.5
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.47
+      },
+      {
+       "w": 0.84,
+       "at": -0.26
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.2
+      },
+      {
+       "w": 0.84,
+       "at": 0.01
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.08
+      },
+      {
+       "w": 0.84,
+       "at": 0.14
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.1
+      },
+      {
+       "w": 0.84,
+       "at": 0.12
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.06
+      },
+      {
+       "w": 0.31,
+       "at": 0.3,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.21
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.73,
+       "at": 0.13
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.73,
+       "at": 0.4
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.73,
+       "at": -0.47
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.73,
+       "at": -0.49
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.06
+      },
+      {
+       "w": 0.31,
+       "at": 0.3,
+       "sill": 0.45,
+       "h": 0.22
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.84,
+       "at": -0.21
+      }
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.23,
+      0.31
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      6,
+      6
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.5,
+      0.58
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      9,
+      9
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.48,
+      0.56
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      12,
+      12
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.46,
+      0.54
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    },
+    {
+     "bays": [
+      15,
+      15
+     ],
+     "storeys": [
+      1,
+      2
+     ],
+     "colour": "#d9d9d4",
+     "along": [
+      0.55,
+      0.63
+     ],
+     "up": [
+      0,
+      1
+     ],
+     "relief": "proud"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "cladding",
+    "ribbonStoreys",
+    "bayWindows",
+    "ground",
+    "accentPanels"
+   ]
+  }
+ ],
+ "notes": [
+  "Kit batch 8504 (lane kit-batch-8504-20261121, group 2). Groups: 0 the W segment N front (w06-353 2024-10-16), 1 the middle segment N front (w02-345 2025-09-26, a tree over the middle units), 2 the E segment N front (w01-352 2025-09-26, a willow over the left two units): units of about 5.6 m between white joints (accent strips), a triple window in the upper timber storey, two windows in the lower one, the glazed attic ribbon, a dark brick ground with one blue door per unit. Window positions are measured per unit and laid on a ~1.9 m bay grid with offsets.",
+  "The three S fronts have no usable crop (w04-172 2025 79 % foliage, w04-172o 2022 58 % foliage, no 2024-2025 panorama for w03/w05) and stay in the window grid; the orange-framed glazed atrium at the E end is seen only at the edge of w01-352 and is not modelled."
+ ]
+}

@@ -1,0 +1,568 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "lucien-gaudinstraat-144-094223",
+ "pandId": "0363100012094223",
+ "address": "Lucien Gaudinstraat 144-332, Amsterdam-Noord: 1996 bent housing slab of seven to ten storeys, buff brick, access galleries with frosted glass balustrades on the north side, window-and-balcony stacks on the south side, a buff brick end wall with one window column over a grey stone plinth (kit2 recipe, lane kit-batch-8504-20261121: not installed)",
+ "sources": [
+  {
+   "id": "pano-2025-06-30-w01-78",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_01899/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w01-78.jpg",
+   "sha256": "cae2c88a6049556405a51bc06fa8954a9cdbff91a5a0c7cef5a88d8e6d012208",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w16-9",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02033/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w16-9.jpg",
+   "sha256": "aad3d3de7224530b13a4237a04875b27f0369552190a72625716f31acb138694",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w09-354",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02033/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w09-354.jpg",
+   "sha256": "2f93443319b5e27856d5dfd4ca24d71e5f59897716a8601abaa95b71ff9a3074",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w15-23",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02032/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w15-23.jpg",
+   "sha256": "d455df9be1ca8f812bebfa4f1f17e36b881e7f23f7c742871252bac95da1d193",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-23-w17-37",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_11-21-30_00344/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w17-37.jpg",
+   "sha256": "8d2de8886a476b52196d85f528c2cad41678154d320814126fed7c30fd72041c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w13-28",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02023/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w13-28.jpg",
+   "sha256": "ee6348f973482900e176f76e5dc67ed718fcd1a1aa2d5d5565081380df41c370",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w03-36",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02025/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w03-36.jpg",
+   "sha256": "2b3aabb1a1b8c001e2bf026434d01ea3169cb10030713b1a8d95d8128cf9c855",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w04-44",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02027/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w04-44.jpg",
+   "sha256": "df45b33f2b161f1c8a9cdb95816eb90f8adb0a6813971587bf49731e2f21194e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w05-10",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02018/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w05-10.jpg",
+   "sha256": "0fb61f3702687ec627311afdbf46e1dfa2a709cd104011cd16372f4c01d4adbc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w06-18",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02020/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w06-18.jpg",
+   "sha256": "6747b684d1d3cdf071d12192927d61f1e139860ab621e26265281fc88a14a280",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w07-50",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02029/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w07-50.jpg",
+   "sha256": "cf25317713a77761091080b26fd70f5d528b85edf6ada7c195e0592a2aabea85",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w19-174",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02106/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w19-174.jpg",
+   "sha256": "4c638366d141b9cec0feb2a4a7c8da6596271a50096b4116a0ddfb4f9a33929e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-30-w20-216",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_07-34-08_02100/",
+   "image": "source-data://pand-reference-walls/0363100012094223/w20-216.jpg",
+   "sha256": "98616df9d7394b6e783c45c64b561d45ed685934d44b126149c093e9aaa93039",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "street": "Lucien Gaudinstraat",
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 3,
+   "groundFactor": 1.3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.45,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#ae9f82",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.5,
+       "at": -0.33
+      }
+     ]
+    }
+   ],
+   "stoneStoreys": [
+    0
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "bays": [
+     0,
+     2
+    ],
+    "lights": 2,
+    "pier": 0.12,
+    "sill": 0.05,
+    "h": 0.8
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "plinth",
+    "stoneStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1,
+    8,
+    36,
+    23
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 2,
+   "curve": true,
+   "groundFactor": 1.2,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c",
+    "glass": "#a9b8bb"
+   },
+   "stoneStoreys": [
+    0
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 2,
+    "pier": 0.15,
+    "sill": 0.05,
+    "h": 0.75
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "kind": "glass",
+    "deep": 0.55,
+    "rail": 0.38,
+    "colour": "#c8c8c0",
+    "railColour": "#d8d8d2"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "plinth",
+    "stoneStoreys"
+   ],
+   "street": "Lucien Gaudinstraat"
+  },
+  {
+   "wallSurfaces": [
+    48,
+    11,
+    71
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 2,
+   "curve": true,
+   "groundFactor": 1.2,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c",
+    "glass": "#a9b8bb"
+   },
+   "stoneStoreys": [
+    0
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 2,
+    "pier": 0.15,
+    "sill": 0.05,
+    "h": 0.75
+   },
+   "balconyBands": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "kind": "glass",
+    "deep": 0.55,
+    "rail": 0.38,
+    "colour": "#c8c8c0",
+    "railColour": "#d8d8d2"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "plinth",
+    "stoneStoreys"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    46,
+    41,
+    76
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 2,
+   "curve": true,
+   "groundFactor": 1.2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.82,
+    "h": 0.5,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#ae9f82",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "bays": [
+     1
+    ],
+    "w": 0.82,
+    "h": 0.6,
+    "sill": 0.28,
+    "deep": 0.5,
+    "rail": "none",
+    "lining": "#5a5048",
+    "back": "door-window"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "loggias",
+    "ground",
+    "residential"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    51,
+    116
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 2,
+   "curve": true,
+   "groundFactor": 1.2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.82,
+    "h": 0.5,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#ae9f82",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "bays": [
+     1
+    ],
+    "w": 0.82,
+    "h": 0.6,
+    "sill": 0.28,
+    "deep": 0.5,
+    "rail": "none",
+    "lining": "#5a5048",
+    "back": "door-window"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "loggias",
+    "ground",
+    "residential"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    10,
+    138
+   ],
+   "system": "curtain-wall",
+   "storeys": 11,
+   "palette": {
+    "brick": "#c9cdcb",
+    "frame": "#d8dcdc",
+    "glass": "#6f8a98"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    4,
+    7,
+    3,
+    111,
+    35,
+    115,
+    33,
+    72
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 2,
+   "curve": true,
+   "groundFactor": 1.3,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.75,
+    "h": 0.45,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#ae9f82",
+    "frame": "#e6e6e0",
+    "stone": "#a3a49c"
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "every": 2,
+    "first": 1,
+    "rail": "glass",
+    "deep": 0.35,
+    "colour": "#3f6f6a",
+    "edge": "#c8c8c0"
+   },
+   "stoneStoreys": [
+    0
+   ],
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 2,
+    "pier": 0.15,
+    "sill": 0.05,
+    "h": 0.8
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconies",
+    "plinth",
+    "stoneStoreys"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#ae9f82",
+  "frame": "#e6e6e0",
+  "door": "#3a3d3c",
+  "stone": "#a3a49c"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "notes": [
+  "Kit2 read (lane kit-batch-8504-20261121) of a bent slab whose 3DBAG walls are 3-11 m facets (no wall over 11 m), so all-walls.ts ran with --min-len=6 --max-dist=60 --date=2024,2025 and archived 20 facet crops (2025-06-30 and 2024-10-23); the long sides are drawn as facet chains (curve).",
+  "walls[0] the east end wall (surface 6, w01-78 2025-06-30, washed out 78 %, so read by eye with the 2016 triage crop): buff brick, one window column right of centre on nine storeys (bayWindows, an offset window in the third bay), a grey stone ground with two shop windows.",
+  "walls[1] (surfaces 1, 8, 36, 23; w09-354, w16-9, w15-23, w17-37) and walls[2] (48, 11, 71; w13-28, w03-36, w04-44): the access-gallery side, a frosted glass balustrade and pale slab edge on every upper storey (balconyBands glass) in front of the brown brick back wall; the glazed stair hall in the middle of w15-23 and the stairs at the gallery ends are not drawn.",
+  "walls[3] (46, 41, 76; w05-10, w06-18) and walls[4] (51, 116; w07-50): the punched-and-loggia fronts at the bend, a three-light window beside a recessed loggia with a brick parapet per storey (loggias with lining and door-window back), stair-hall doors in the ground row.",
+  "walls[5] the glazed curved stair tower facets (9, 10, 138), curtain wall, read from the left edge of w09-354.",
+  "walls[6] the south side (4, 7, 3, 111, 35, 115, 33, 72; w19-174, w20-216, w08-231): a three-light window column beside a column of projecting balconies with glass rails on every storey (balconies every second bay); striped awnings not modelled.",
+  "Colours by eye from the sunlit 2025-06-30 crops (the north faces are in shade and read dark grey-green raw): buff brick #ae9f82, gallery back wall #8a7766, stone ground #a3a49c. Not in measured.groups.",
+  "No photo: the west end, the lower south-west wing and the short return walls: otherWalls window-grid."
+ ]
+}
