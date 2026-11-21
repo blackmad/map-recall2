@@ -29,6 +29,14 @@ David chose **A** on #397 (2026-11-19): units are the identity everywhere, eleva
     - Roof storeys now come from photo evidence: the photo-row review of the 18 gate blocks (`scripts/design-units/roof-evidence.json`), else the members' D1 reads. That covers 247 segments with a roof storey and 12 without; 90% of the Ring's readable D1 roof reads show one.
     - The storey is drawn inside the measured top. The cornice drops 1.4 m for a hoist-dormer row, 2.6 m for a mansard. There is one dormer per house front.
     - The remaining ~2,970 segments have no evidence and stay flat. Deciding whether the 90% base rate becomes a prior is David's call.
+  - **Plot plan (2026-11-21, David on 9051 "we're getting the story count wrong", on 14817 "we missed the pointy ones", "the ground floors are very non-representative"; `designUnits/plotPlan.ts`):**
+    - Storeys come from a read (the gate photo rows `scripts/design-units/plot-reads.json`, else D1), else 4. 72 of 78 photo-read gate plots have 4 storeys over measured tops of 12.3 to 19.7 m; the eaves formula matched 7 of 78.
+    - The plot fit decides where the roof storey stands. A top within 0.6 m of the wall the count needs is the cornice, and the roof storey (2.8 m) goes on top: 9051. Otherwise it stands inside the top, 1.2 to 3 m: Rustenburgerstraat 1.2, Admiraal De Ruijterweg 3.
+    - Each plot draws its own roof element (dormer roof, mansard, or a planner gable on the cornice line). Unread plots are mirror-filled: Admiraal De Ruijterweg ABAABA, Ruyschstraat AABAABAABAA.
+    - Ground use comes from `specShop`; a souterrain gives a taller ground storey and a stoop.
+    - Balconies are a new kit part, `plotBalconies`: one per stated storey on the middle axis. A read that saw none switches off the dice balconettes.
+    - On the 18 gate blocks, r2's storeys now match the photo. today drew 3–6 and r1 5–6. Those 18 are the read source, so this is not an independent test.
+    - The preview row fix: Rustenburgerstraat drew 7 of 9 plots and Van Ostadestraat 7 of 11. Bilderdijkstraat drew 2 of 6 because an installed anchor drew only its model; all 6 of its pands are installed chunk faces, so the flag changes nothing there.
   - David's verdict on round 2 decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
 - **What the Ring tier does not draw:** bands, arched portals, stoops, French balconies, wall dormers. Wall colour is seeded where there is no photo read. These are the next kit work once #399 is answered.
 - **Under A, data only so far (staged in `artifacts/design-units/staging/`; `docs/reports/design-units-phase0-20261119.md`):**

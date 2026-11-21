@@ -20,7 +20,11 @@
 - **Review layers (2026-11-20):** `artifacts/design-units/r2/layers/<key>/` holds `{today,r1,r2}.jpg`, which share one scale and left edge, with shorter strips padded with sky. It also holds a `photo-NN.jpg` per pand, rectified wall crops from `house:crops` run into `r2/crops-archive` (manifests are in `r2/crops-manifests`, never the committed ones), plus `photo-row.jpg` and `photos.json`. Make them with `review-sheets.ts layers`. The local review tool (lane `belt-review-tool-20261120`) loads the folder as a compare round.
 - **Found in the photo rows:** many Ring rows have a mansard with dormers on every plot, even though the AHN rise is under 1.8 m: Rustenburgerstraat, Blasiusstraat, Van Ostadestraat, Ruyschstraat and Commelinstraat. The flat-top rule drops these, and the roof rule should be revisited after the verdict.
 - **Roof fix and photo registration (2026-11-20):** see the TODO entry. `photo-row.jpg` is now registered to the drawings. Each pand's rectified crop is resampled to its slice of the block line, at the strips' px/m and ground line. `photo-row.json` holds each pand's x0/x1. On Rustenburgerstraat, the last two pands appear in the photo but not in the drawing; the Node preview leaves them out (probably a tile edge).
-- **Next:** wait for David's verdict. No browser runs or lanes before it.
+- **2026-11-21, round 2b (flag only):**
+  - The preview row fix: `chunkFeatures` keeps every `PREVIEW_ROW_IDS` pand and loads their tiles. `review-sheets render` composites installed models over their own spans, anchors on a generic pand, and takes `--root` to render r1 from a worktree at d10e4790d6.
+  - The plot plan (`designUnits/plotPlan.ts`): storeys, cornice, the roof element per plot, ground use, balconies. The gate table is `scripts/design-units/plot-table.ts`.
+  - A's era default (`roofSource: 'default'`) stays the fallback roof for unread plots.
+  - B (pricing a narrow roof read) is next, then stop for David.
 
 This is for a fresh session that has only the repo. Read it first. Then read `docs/handoffs/design-units-plan-20261119.md`, `docs/handoffs/design-units-handoff-20261119.md` and `docs/reports/design-units-phase0-20261119.md`.
 

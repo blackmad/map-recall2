@@ -17,6 +17,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { GORDEL_RULE, RING_RULE, SEGMENTS_SCHEMA, segmentsOf, type MemberHeights, type Segment, type SegmentsExtract } from '../../src/canalRecall/designUnits/segments.ts';
 import type { DesignUnit } from '../../src/canalRecall/designUnits/types.ts';
+import { fillRoofPattern, type PlotFacts, type PlotRoof } from '../../src/canalRecall/designUnits/plotPlan.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const STAGING = path.join(ROOT, 'artifacts/design-units/staging');
@@ -47,7 +48,7 @@ for (const x of fs.readdirSync(TILES).filter(n => /^\d+$/.test(n))) for (const f
 }
 const heights = new Map<string, MemberHeights>([...want].map(id => [id, { ahnM: ahn[id]?.p90 ?? null, bagEavesM: bag.get(id) ?? null }]));
 
-type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[]; storeyParts?: { roof?: string }; dormers?: { count?: number; kind?: string } };
+type Answer = { readable?: boolean; whiteFrames?: boolean | null; pale?: boolean | null; finish?: string; bays?: number; heads?: string[]; storeyParts?: { roof?: string; full?: number | string; souterrain?: boolean }; dormers?: { count?: number; kind?: string }; ground?: string; basement?: string; crown?: string; balconies?: number[] };
 const readsDir = path.resolve(ROOT, arg('reads') ?? 'artifacts/design-units/staging/d1-ring-answers');
 const answers = new Map<string, Answer>();
 if (fs.existsSync(readsDir)) for (const f of fs.readdirSync(readsDir).filter(n => n.endsWith('.json'))) {
@@ -136,6 +137,29 @@ function defaultRoofOf(year: number | null | undefined): Segment['roofEvidence']
   return e?.included ? { storey: true, dormer: e.kind, form: e.form, source: `era default ${e.from}-${e.to - 1} (D1 reads: ${Math.round((1 - e.noneShare) * 100)} % roof storey, most common dormer ${e.kind})`, roofSource: 'default' } : undefined;
 }
 
+// Plot facts (2026-11-21, plotPlan.ts): the gate photo rows (scripts/design-units/plot-reads.json), else the member's D1
+// read: full storeys, ground use, souterrain, roof element (a pointed / stepped / bell crown is the plot's gable; a
+// mansard or roof storey, dormers, or none), dormer kind, balcony storeys.
+const plotReads = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/plot-reads.json'), 'utf8')).pands as Record<string, Omit<PlotFacts, 'src'> & { block: string }>;
+const D1_ROOF: Record<string, PlotRoof> = { dormers: 'dormers', mansard: 'mansard', 'roof-storey': 'mansard', none: 'flat', 'gable-attic': 'pointedGable' };
+const D1_CROWN: Record<string, PlotRoof> = { point: 'pointedGable', step: 'stepGable', bell: 'bellGable', neck: 'bellGable', 'raised-neck': 'bellGable' };
+function plotFactsOf(id: string): PlotFacts | undefined {
+  const ph = plotReads[id];
+  if (ph) { const { block: _b, ...f } = ph; return { ...f, src: 'photo' }; }
+  const a = answers.get(id);
+  if (!a) return undefined;
+  const f: PlotFacts = { src: 'reads' };
+  if (typeof a.storeyParts?.full === 'number' && a.storeyParts.full >= 2 && a.storeyParts.full <= 7) f.storeys = a.storeyParts.full;
+  if (a.ground === 'shopfront') f.ground = 'shop'; else if (a.ground === 'dwelling') f.ground = 'dwelling';
+  if (a.storeyParts?.souterrain === true || (a.basement && a.basement !== 'none' && a.basement !== 'not-visible')) f.souterrain = true;
+  const roof = (a.crown && D1_CROWN[a.crown]) || (a.storeyParts?.roof && D1_ROOF[a.storeyParts.roof]);
+  if (roof) f.roof = roof;
+  if (a.dormers?.kind === 'gabled' || a.dormers?.kind === 'plain' || a.dormers?.kind === 'pediment') f.dormer = a.dormers.kind;
+  if (Array.isArray(a.balconies)) f.balconies = a.balconies.filter(n => Number.isInteger(n) && n >= 1);
+  return Object.keys(f).length > 1 ? f : undefined;
+}
+const patternFilled: string[] = [];
+
 const segments: Segment[] = [];
 let splitUnits = 0;
 const med = (xs: number[]) => { const v = [...xs].sort((a, b) => a - b); return v.length ? v[Math.floor((v.length - 1) / 2)] : null; };
@@ -153,6 +177,19 @@ for (const u of units) {
     if (Object.keys(eaves).length) g.plotEavesM = eaves;
     const ev = roofEvidenceOf(g.id, g.members) ?? (layers.includes('ring') && g.id.startsWith('du:ring:') ? defaultRoofOf(g.year) : undefined);
     if (ev) g.roofEvidence = ev;
+    const plots: Record<string, PlotFacts> = {};
+    for (const m of g.members) { const f = plotFactsOf(m); if (f) plots[m] = f; }
+    if (Object.keys(plots).length) {
+      // The roof sequence along the main street (the street with the most slices), mirror-filled where one side is read.
+      const byStreet = new Map<string, typeof g.slices>();
+      for (const s of g.slices) byStreet.set(s.street, [...(byStreet.get(s.street) ?? []), s]);
+      const main = [...byStreet.values()].sort((x, y) => y.length - x.length)[0] ?? [];
+      const order = [...new Map(main.sort((x, y) => x.fromM - y.fromM).map(s => [s.pandId, 1])).keys()];
+      const { filled, pattern } = fillRoofPattern(order, plots);
+      patternFilled.push(...filled);
+      g.plots = plots;
+      if (/[A-Z]/.test(pattern)) g.roofPattern = pattern;
+    }
     const groups = plotGroupsOf(g.members);
     if (groups.length) g.plotGroups = groups;
     const r = readsOf(g.members);
@@ -170,6 +207,8 @@ const stat = {
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
   roofMeasured: multi.filter(s => typeof s.roofRiseM === 'number').length, roofStoreys: multi.filter(s => (s.roofRiseM ?? 0) >= 1.8).length,
   roofEras: eraDefaults,
+  plots: { photo: multi.reduce((t, s) => t + Object.values(s.plots ?? {}).filter(f => f.src === 'photo').length, 0), reads: multi.reduce((t, s) => t + Object.values(s.plots ?? {}).filter(f => f.src === 'reads').length, 0), patternFilled: patternFilled.length,
+    roofs: multi.reduce((t, s) => { for (const f of Object.values(s.plots ?? {})) if (f.roof) t[f.roof] = (t[f.roof] ?? 0) + 1; return t; }, {} as Record<string, number>) },
   roofEvidence: { photoRow: multi.filter(s => s.roofEvidence?.roofSource === 'photo').length, reads: multi.filter(s => s.roofEvidence?.roofSource === 'reads').length, default: multi.filter(s => s.roofEvidence?.roofSource === 'default').length,
     storey: multi.filter(s => s.roofEvidence?.storey).length, noStorey: multi.filter(s => s.roofEvidence && !s.roofEvidence.storey).length },
   oneFacadeEvidence: oneFacade.length, segmentsWithOneFacadeGroups: multi.filter(s => s.plotGroups?.length).length,

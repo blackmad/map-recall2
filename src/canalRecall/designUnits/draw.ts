@@ -26,6 +26,8 @@ import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/pa
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
 import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
+import { plotPlan, PLOT_GABLE_SHAPE, type PlotPlan } from './plotPlan.js';
+import { roofPlanForFeature } from '../roofMesh.js';
 
 export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
 
@@ -107,7 +109,8 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const plotEavesM = line === null ? undefined : +(typeof own === 'number' ? Math.min(line + PLOT_EAVES_M, Math.max(line - PLOT_EAVES_M, own)) : line).toFixed(2);
   return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
-    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}), ...(segment.roofEvidence ? { roofEvidence: segment.roofEvidence } : {}) };
+    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}), ...(segment.roofEvidence ? { roofEvidence: segment.roofEvidence } : {}),
+    ...(segment.plots?.[pandId] ? { plot: segment.plots[pandId] } : {}), ...(typeof segment.year === 'number' ? { year: segment.year } : {}) };
 }
 
 /** Step 1 (first in the chain): stamp the segment draw, the segment's line and year, and re-key the colour priors. */
@@ -170,6 +173,42 @@ export const EVIDENCE_HOIST_RISE_M = 1.4;
 /** One dormer per house front: a plot wider than this many metres per dormer draws more (a 9 m pand with two doors). */
 export const DORMER_FRONT_M = 5.5;
 
+/** The segment years the plot plan draws (inclusive): the 1860-1939 Ring rows. */
+export const PLOT_PLAN_YEARS = { from: 1860, to: 1939 } as const;
+
+/**
+ * A plot plan onto the mesher's properties: the storey count and ground height (`designStoreys`, laid out by the design
+ * branch of threeBuildingMesh priorBays; a stated HouseSpec count still wins), the ground use (`specShop`, unless a spec
+ * states it), balconies and a souterrain's stoop (`registerForce`), and the plot's roof element: a slate roof storey with
+ * its dormers on or inside the top, a gable the roof planner draws on the cornice line, or the flat top.
+ */
+function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknown>, d: DesignUnitDraw, plan: PlotPlan, roof: SegmentRoof): T {
+  const p = feature.properties;
+  const extra: Record<string, unknown> = { designStoreys: { storeys: plan.storeys, groundM: plan.groundM, src: plan.storeysSrc }, designPlot: { rule: plan.rule, roof: plan.roof, roofSrc: plan.roofSrc, wallM: plan.wallM, riseM: plan.riseM } };
+  if (plan.ground && p.specShop === undefined) extra.specShop = plan.ground === 'shop';
+  const force = Array.isArray(p.registerForce) ? [...p.registerForce as string[]] : [];
+  // Stated balconies, or a read that saw none (an empty list keeps the dice balconettes off the plot).
+  if (plan.balconies.length || d.plot?.balconies) extra.designBalconies = plan.balconies;
+  if (plan.souterrain && !force.includes('stoop')) force.push('stoop');
+  if (force.length) extra.registerForce = force;
+  const wall = plan.wallM;
+  if (plan.roof === 'flat') return { ...feature, properties: { ...rest, ...extra, height: wall, roofEavesHeightM: wall, roofPlanned: false, roofShape: 'flat' } };
+  const shape = PLOT_GABLE_SHAPE[plan.roof];
+  if (shape) {
+    // The planner's gable on this plot, its foot on the cornice line: plan it on a probe height, then stand it there.
+    const probe = { ...feature, properties: { ...rest, height: wall + 6, roofPlanned: false, monumentGable: shape } };
+    const g = roofPlanForFeature(probe as never);
+    if (g && g.kind === 'gable') return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + g.riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind, designPlot: { ...extra.designPlot as object, riseM: g.riseM } } };
+    // A plot the planner cannot gable (too narrow or ragged) keeps the row's dormer roof.
+  }
+  const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
+  const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: plan.dormer, ...(plan.hoist ? { hoist: true } : {}) }));
+  // Inside: wall + rise is the measured top; on top: the roof storey stands over it.
+  const rise = plan.riseM > 0.5 ? plan.riseM : EVIDENCE_HOIST_RISE_M, height = +(wall + rise).toFixed(3);
+  return { ...feature, properties: { ...rest, ...extra, height, roofEavesHeightM: wall, roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
+    rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true } } } };
+}
+
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */
 export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
@@ -182,6 +221,11 @@ export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   // A short slope behind the cornice for a hoist-dormer row or a dormer-form read/default; a full mansard otherwise.
   const rise = ev?.hoist || ev?.form === 'dormers' ? EVIDENCE_HOIST_RISE_M : EVIDENCE_ROOF_RISE_M;
   const style = String(p.facadeStyle ?? ''), lateStyle = style === 'postwar' || style === 'modern' || style === 'tower';
+  // 2026-11-21: a 1860-1939 plot draws its plot plan (plotPlan.ts): its storey count, its cornice, its own roof element.
+  if (!lateStyle && typeof d.year === 'number' && d.year >= PLOT_PLAN_YEARS.from && d.year <= PLOT_PLAN_YEARS.to && top > 6) {
+    const plan = plotPlan(top, d.plot, { ...(ev ? { storey: ev.storey, ...(ev.dormer ? { dormer: ev.dormer } : {}), ...(ev.hoist ? { hoist: true } : {}), ...(ev.form ? { form: ev.form } : {}), ...(ev.roofSource ? { roofSource: ev.roofSource } : {}) } : {}), ahnRiseM: d.roofRiseM ?? null });
+    return withPlotPlan(feature, rest, d, plan, roof);
+  }
   if (roof.kind === 'flat' && ev?.storey && !lateStyle && top - rise >= 6) {
     const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
     const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: ev.dormer ?? 'pediment', ...(ev.hoist ? { hoist: true } : {}) }));

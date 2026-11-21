@@ -74,6 +74,11 @@ export interface Segment {
    *  inside the DSM's flat top, so AHN reads them as no rise). `storey`: the top storey is a slate roof storey inside the
    *  measured top, one dormer per plot. Source: a photo-row review (staging/roof-evidence.json) or the members' D1 reads. */
   roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; form?: 'mansard' | 'dormers'; source: string; roofSource?: 'photo' | 'reads' | 'default' };
+  /** 2026-11-21: what is known about each plot (storeys, ground use, roof element, balconies): the gate photo rows
+   *  (scripts/design-units/plot-reads.json), else the member's D1 read; a roof filled by mirror symmetry says so. */
+  plots?: Record<string, import('./plotPlan.js').PlotFacts>;
+  /** The roof sequence left to right on the main street, one letter per plot element ('.' unread), e.g. ABAABA. */
+  roofPattern?: string;
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };

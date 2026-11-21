@@ -144,6 +144,10 @@ export type MeshBuilding = {
    */
   flatRoof?: { lip: boolean; box: boolean; /** Roof area (m²): the chunk's surface budget goes to the largest roofs first. */ areaM2?: number; /** The coarse tier (and the baked shell): no measured furniture, the coarse budget. */ coarse?: boolean };
   /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
+  /** Design units (2026-11-21): the plot plan's storey count and ground height (designUnits/plotPlan.ts). */
+  /** Design units plot plan: the plot's stated balcony storeys (facadeExtras.ts plotBalconies). */
+  plotBalconies?: number[];
+  designStoreys?: { storeys: number; groundM: number };
   layoutScale?: LayoutScale;
   /** Design units (`?designUnits=1`): the segment seed every per-building dice here hashes on instead of `id`, and the
    *  member's slice of the segment frontage (m from its left end), on which its street run's bays are laid out. */
@@ -290,10 +294,10 @@ export function designRunScale<S extends { bay: number }>(slice: { fromM: number
  *  (round 2, #399: each plot is its own house with its own door bay), the segment's before round 2. */
 /** Round 2 (#399): a design member's street wall dresses as its own plot (plotSeriesId) and breaks at its party walls:
  *  `plotBreak` (left/right as seen) mapped onto this wall's start/end; only a run's first and last wall reach a plot end. */
-function plotContext(b: MeshBuilding, leftToRight: boolean, runStart: boolean, runEnd: boolean): { plotSeriesId?: string; plotBreak?: { start: boolean; end: boolean } } {
+function plotContext(b: MeshBuilding, leftToRight: boolean, runStart: boolean, runEnd: boolean): { plotSeriesId?: string; plotBreak?: { start: boolean; end: boolean }; plotBalconies?: readonly number[] } {
   if (!b.plotSeed) return {};
   const pb = b.plotBreak, startSide = leftToRight ? pb?.left : pb?.right, endSide = leftToRight ? pb?.right : pb?.left;
-  return { plotSeriesId: b.plotSeed, ...(pb ? { plotBreak: { start: runStart && !!startSide, end: runEnd && !!endSide } } : {}) };
+  return { plotSeriesId: b.plotSeed, ...(pb ? { plotBreak: { start: runStart && !!startSide, end: runEnd && !!endSide } } : {}), ...(b.plotBalconies ? { plotBalconies: b.plotBalconies } : {}) };
 }
 function runSeed(b: MeshBuilding, first: { x0: number; y0: number }, streetRun: boolean): number {
   return b.designSlice && b.seed && streetRun ? hash01(b.plotSeed ? `${b.plotSeed}:front` : `${b.seed}:front`) : hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`);
@@ -301,12 +305,14 @@ function runSeed(b: MeshBuilding, first: { x0: number; y0: number }, streetRun: 
 function priorBays(b: MeshBuilding, streetRun: boolean, corner: boolean, base: number, exposedM: number, widthM: number): FrontageBays | undefined {
   // Design units (`?designUnits=1`): a pre-1920 member's window columns (its read, else the era prior by plot width) go
   // through the same fit as a stated count, on its own front; a run that is not the member's slice keeps the style.
-  if (b.designBays && streetRun && !b.recipe && base < 0.5) {
+  if ((b.designBays || b.designStoreys) && streetRun && !b.recipe && base < 0.5) {
     const len = b.designSlice ? b.designSlice.toM - b.designSlice.fromM : widthM;
     const matches = Math.abs(widthM - len) <= Math.max(DESIGN_SLICE_TOL.minM, DESIGN_SLICE_TOL.share * len);
-    const bays = matches ? b.designBays : b.designPitchM ? Math.max(1, Math.round(widthM / b.designPitchM)) : 0;
+    const bays = !b.designBays ? 0 : matches ? b.designBays : b.designPitchM ? Math.max(1, Math.round(widthM / b.designPitchM)) : 0;
+    // The plot plan's storey count (designUnits/plotPlan.ts) at its ground height, fitted to the wall (2026-11-21).
+    const st = b.designStoreys ? { storeys: b.designStoreys.storeys, exposedM, fit: 'nearest' as const, groundM: b.designStoreys.groundM } : {};
     // exact (as a house-row series' count): the 1.2 m axis floor, not MIN_COLUMN_M, so 1.7 m Ring pitches survive the fit.
-    if (bays) return { bays, exact: true, axesPerCell: b.openings?.upper?.axes.length ?? 1 };
+    if (bays || b.designStoreys) return { ...(bays ? { bays, exact: true as const } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...st };
   }
   // Off for a corner with two street fronts (a guess fitted on one-front houses), a recipe front, a back or raised run.
   if (!b.structurePrior || b.recipe || corner || !streetRun || base >= 0.5) return undefined;

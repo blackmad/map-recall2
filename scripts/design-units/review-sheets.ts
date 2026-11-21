@@ -16,10 +16,12 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
+import { coverOf } from '../house-preview/preview.ts';
 import { REGRESSION_ROWS } from '../../src/canalRecall/designUnits/regressionRows.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'artifacts/design-units/r2');
+const PPM = 50, SKY_RGB = [159, 184, 207]; // preview.ts px per metre and SKY
 const GATE = path.join(ROOT, 'artifacts/design-units/gate/desktop/after');
 type LngLat = [number, number];
 type Unit = { id: string; members: string[]; faces?: Array<{ street: string; slices: Array<{ pandId: string; fromM: number; toM: number; line?: [LngLat, LngLat] }> }> };
@@ -77,14 +79,46 @@ const all = blocks(), only = flag('--only')?.split(',');
 const todo = only ? all.filter(b => only.includes(b.key)) : all;
 
 if (cmd === 'render') {
-  const cond = argv[1], env: Record<string, string> = {};
+  // render <cond> [--env K=V,...] [--root <checkout>]: --root renders with another checkout's preview.ts and data (r1 from a
+  // worktree at the round-1 commit). The row is drawn as the game draws it: pands an installed model covers (chunk-*,
+  // ordinary-*) by that model, each over its own pands' span on the line; every other pand by the generic path, anchored on
+  // the first generic pand of the row (an installed anchor drew only its model: Bilderdijkstraat 2 of 6).
+  const cond = argv[1], env: Record<string, string> = {}, root = path.resolve(flag('--root') ?? ROOT);
   for (const kv of (flag('--env') ?? '').split(',').filter(Boolean)) { const [k, v] = kv.split('='); env[k] = v; }
   for (const b of todo) {
     const dir = path.join(OUT, b.key, cond), t0 = Date.now();
-    const r = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/house-preview/preview.ts', b.order[0], '--wall', `line:${b.line.join(',')}`, '--out', dir],
-      { cwd: ROOT, env: { ...process.env, ...env, PREVIEW_ROW_IDS: b.ids.join(',') }, encoding: 'utf8' });
-    console.log(`${b.key} ${cond} ${r.status === 0 ? 'ok' : 'FAILED'} ${((Date.now() - t0) / 1000).toFixed(1)}s`);
-    if (r.status !== 0) console.error((r.stderr || r.stdout).slice(-2000));
+    fs.rmSync(dir, { recursive: true, force: true });
+    fs.mkdirSync(dir, { recursive: true });
+    const covers = new Map<string, string[]>(), generic: string[] = [];
+    for (const id of b.ids) { const c = coverOf(id); if (c && c.kind !== 'landmark') covers.set(c.key, [...(covers.get(c.key) ?? []), id]); else generic.push(id); }
+    const run = (target: string, out: string, extra: string[], rowIds: string[]) => {
+      const r = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/house-preview/preview.ts', target, '--wall', `line:${b.line.join(',')}`, '--out', out, ...extra],
+        { cwd: root, env: { ...process.env, ...env, PREVIEW_ROW_IDS: rowIds.join(',') }, encoding: 'utf8' });
+      if (r.status !== 0) console.error((r.stderr || r.stdout).slice(-2000));
+      return r.status === 0;
+    };
+    const anchor = b.order.find(id => generic.includes(id)) ?? generic[0];
+    let ok = true;
+    if (anchor) ok = run(anchor, path.join(dir, 'generic'), ['--route', 'generic'], generic) && ok;
+    for (const [key, ids] of covers) ok = run(ids[0], path.join(dir, `installed-${key}`), ['--route', 'installed'], []) && ok;
+    // Composite onto one canvas: the line's length at PPM px/m, ground at the bottom, sky above.
+    const W = Math.ceil(Math.max(...Object.values(b.spans).map(s => s[1])) * PPM);
+    const parts: Array<{ file: string; x0: number; x1: number }> = [];
+    if (anchor && fs.existsSync(path.join(dir, 'generic/front.png'))) parts.push({ file: path.join(dir, 'generic/front.png'), x0: 0, x1: Infinity });
+    for (const [key, ids] of covers) {
+      const f = path.join(dir, `installed-${key}/front.png`); if (!fs.existsSync(f)) continue;
+      const sp = ids.map(id => b.spans[id]).filter(Boolean);
+      if (sp.length) parts.push({ file: f, x0: Math.floor(Math.min(...sp.map(s => s[0])) * PPM), x1: Math.ceil(Math.max(...sp.map(s => s[1])) * PPM) });
+    }
+    const metas = await Promise.all(parts.map(p => sharp(p.file).metadata()));
+    const H = Math.max(1, ...metas.map(m => m.height ?? 0)), Wc = Math.max(W, ...metas.map(m => m.width ?? 0));
+    const layers = await Promise.all(parts.map(async (p, i) => {
+      const m = metas[i], left = Math.max(0, p.x0), width = Math.max(1, Math.min(m.width ?? 0, p.x1) - left);
+      return { input: await sharp(p.file).extract({ left, top: 0, width, height: m.height ?? H }).png().toBuffer(), left, top: H - (m.height ?? H) };
+    }));
+    await sharp({ create: { width: Wc, height: H, channels: 3, background: { r: SKY_RGB[0], g: SKY_RGB[1], b: SKY_RGB[2] } } }).composite(layers).png().toFile(path.join(dir, 'front.png'));
+    fs.writeFileSync(path.join(dir, 'render.json'), JSON.stringify({ cond, root: path.relative(ROOT, root) || '.', env, anchor: anchor ?? null, generic, installed: Object.fromEntries(covers) }, null, 1));
+    console.log(`${b.key} ${cond} ${ok ? 'ok' : 'FAILED'} ${((Date.now() - t0) / 1000).toFixed(1)}s generic ${generic.length}, installed ${[...covers.values()].flat().length}`);
   }
 } else if (cmd === 'layers') {
   // Review layers (coordinator, 2026-11-20; read by the local review tool as a compare round): per block

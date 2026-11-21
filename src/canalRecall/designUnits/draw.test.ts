@@ -103,8 +103,10 @@ for (const [name, count] of [['Rustenburgerstraat', 3], ['Van Ostadestraat', 4]]
       for (const m of members) assert.equal(designUnitOf(m.f.properties)?.seed, s.seed, `${tag} ${m.id} drawn as a member`);
       const one = (label: string, xs: unknown[]) => assert.equal(new Set(xs.map(x => JSON.stringify(x))).size, 1, `${tag}: one ${label} (${xs.map(x => JSON.stringify(x)).join(' ')})`);
       for (const m of members) {
-        const h = Number(m.f.properties.roofEavesHeightM ?? m.f.properties.height);
-        assert.ok(Math.abs(h - s.eavesM!) <= PLOT_EAVES_M + 1e-9, `${tag} ${m.id}: cornice ${h} within ${PLOT_EAVES_M} m of the line ${s.eavesM}`);
+        // The measured top: the cornice, or (plot plan, a roof storey inside the top) the cornice plus that roof storey.
+        const dp = m.f.properties.designPlot as { rule: string; wallM: number; riseM: number } | undefined;
+        const h = dp ? dp.wallM + (dp.rule === 'inside' ? dp.riseM : 0) : Number(m.f.properties.roofEavesHeightM ?? m.f.properties.height);
+        assert.ok(Math.abs(h - s.eavesM!) <= PLOT_EAVES_M + 1e-6, `${tag} ${m.id}: top ${h} within ${PLOT_EAVES_M} m of the line ${s.eavesM}`);
       }
       one('roof kind', members.map(m => m.f.properties.roofShape));
       one('roof storey', members.map(m => { const r = m.f.properties.rowRoof as Record<string, unknown> | undefined; return r ? [r.riseM, r.material, r.tone, r.series, r.shape] : null; }));
@@ -292,10 +294,10 @@ test('round 2: plot tones stay inside the family brick (hue and chroma kept, L w
   assert.ok(seen.size >= 4, 'plots differ');
 });
 
-test('roof evidence: a photo-seen roof storey draws inside the measured top, the cornice under it, dormers per front', () => {
+test('roof evidence (a no style year, no plot plan): a photo-seen roof storey draws inside the measured top, the cornice under it, dormers per front', () => {
   const s = VO(), m = s.members[0];
   const top = (ev?: DrawSegment['roofEvidence']) => {
-    setDesignSegments(extract([{ ...s, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
+    setDesignSegments(extract([{ ...s, year: null, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
     try { return decorate(fx.pands.filter(p => s.members.includes(p.id)).map(p => tileFeature(p))).find(f => String(f.properties.id).endsWith(m))!.properties; } finally { flag(undefined); setDesignSegments(null); }
   };
   const flat = top(), hoist = top({ storey: true, dormer: 'pediment', hoist: true, source: 'test' }), mans = top({ storey: true, dormer: 'gabled', source: 'test' }), no = top({ storey: false, source: 'test' });
@@ -312,10 +314,10 @@ test('roof evidence: a photo-seen roof storey draws inside the measured top, the
   assert.equal((mans.rowRoof as { dormers: Array<{ kind: string }> }).dormers[0].kind, 'gabled');
 });
 
-test('roof evidence: an era default (roofSource default, dormer form) draws the short dormer slope with the era kind', () => {
+test('roof evidence (no style year): an era default (roofSource default, dormer form) draws the short dormer slope with the era kind', () => {
   const s = VO(), m = s.members[0];
   const props = (ev?: DrawSegment['roofEvidence']) => {
-    setDesignSegments(extract([{ ...s, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
+    setDesignSegments(extract([{ ...s, year: null, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
     try { return decorate(fx.pands.filter(p => s.members.includes(p.id)).map(p => tileFeature(p))).find(f => String(f.properties.id).endsWith(m))!.properties; } finally { flag(undefined); setDesignSegments(null); }
   };
   const flat = props(), def = props({ storey: true, dormer: 'gabled', form: 'dormers', source: 'era default', roofSource: 'default' });
@@ -323,4 +325,21 @@ test('roof evidence: an era default (roofSource default, dormer form) draws the 
   assert.equal(def.height, flat.height, 'the measured top stays the top');
   assert.equal((def.rowRoof as { riseM: number }).riseM, EVIDENCE_HOIST_RISE_M, 'dormer form: the short slope');
   assert.equal((def.rowRoof as { dormers: Array<{ kind: string }> }).dormers[0].kind, 'gabled');
+});
+
+test('plot plan: storeys, ground use, balconies and each plot its own roof element on one cornice line (Admiraal De Ruijterweg)', () => {
+  const s = VO(), [a, b] = s.members;
+  const plots = { [a]: { storeys: 4, ground: 'shop' as const, roof: 'dormers' as const, balconies: [1, 2, 3], src: 'photo' as const }, [b]: { storeys: 4, ground: 'dwelling' as const, roof: 'pointedGable' as const, src: 'photo' as const } };
+  setDesignSegments(extract([{ ...s, roofRiseM: 0, plots }])); flag(true);
+  let fs_: Array<{ properties: Record<string, unknown> }>;
+  try { fs_ = decorate(fx.pands.filter(p => s.members.includes(p.id)).map(p => tileFeature(p))); } finally { flag(undefined); setDesignSegments(null); }
+  const pa = fs_.find(f => String(f.properties.id).endsWith(a))!.properties, pb = fs_.find(f => String(f.properties.id).endsWith(b))!.properties;
+  assert.deepEqual((pa.designStoreys as { storeys: number }).storeys, 4);
+  assert.equal(pa.specShop, true);
+  assert.equal(pb.specShop, false);
+  assert.deepEqual(pa.designBalconies, [1, 2, 3]);
+  assert.equal(pa.roofShape, 'mansardHip');
+  assert.equal(pb.monumentGable, 'plain', 'the pointed gable plot draws the planner gable');
+  assert.equal(pb.roofShape, 'gable');
+  assert.ok(Math.abs(Number(pa.roofEavesHeightM) - Number(pb.roofEavesHeightM)) < 0.31, 'one cornice line (within the plot clamp)');
 });

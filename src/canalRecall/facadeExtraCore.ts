@@ -58,6 +58,8 @@ export type ExtraContext = {
   plotSeriesId?: string;
   /** Design units round 2: a party-wall break (pier, cornice end block) at this wall's start / end (designUnits/plotBreak.ts). */
   plotBreak?: { start: boolean; end: boolean };
+  /** Design units plot plan: the plot's stated balcony storeys (1 = first upper); facadeExtras.ts plotBalconies. */
+  plotBalconies?: readonly number[];
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;
