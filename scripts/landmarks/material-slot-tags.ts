@@ -24,17 +24,7 @@ export type SlotTag = {readonly slot: MaterialSlot; readonly why: string; readon
 export const MATERIAL_SLOT_TAG = 'builder';
 
 export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string, SlotTag>>>> = {
-  'bulldog-first': {
-    stone: {slot: 'stucco', why: 'white-plastered front (b_20250114_1026_Track02_Sphere_00186), not stone'},
-    blue: {slot: 'paint', why: 'painted mosaic and sign rim on the ground storey'},
-    gold: {slot: 'paint', why: 'painted mosaic and sign face, not metal'},
-    pink: {slot: 'paint', why: 'painted mosaic'},
-    ochre: {slot: 'paint', why: 'painted mosaic'},
-    copper: {slot: 'paint', why: 'painted mosaic, not metal'},
-    bronze: {slot: 'paint', why: 'painted brown window frame and the bulldog head on the sign'},
-    concrete: {slot: 'paint', why: 'painted window flower boxes'},
-    sandstone: {slot: 'paint', why: 'the bulldog sign muzzle, painted'},
-  },
+
   'erotic-museum': {
     bronze: {slot: 'paint', why: 'black painted sign board behind the neon'},
   },
@@ -58,15 +48,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     gold: {slot: 'paint', why: 'painted banana and sign border'},
     concrete: {slot: 'paint', why: 'painted steel roller shutter'},
   },
-  'in-t-aepjen': {
-    brick: {slot: 'paint', why: 'tarred black timber boarding, not brick'},
-    copper: {slot: 'paint', why: 'painted grey-blue timber planks, not metal'},
-    green: {slot: 'paint', why: 'painted timber hood and plinth'},
-    greyBrick: {slot: 'paint', why: 'plank seams and timber posts'},
-    sandstone: {slot: 'paint', why: 'cream painted timber shopfront pilasters'},
-    gold: {slot: 'paint', why: 'cream script lettering on the glass'},
-    bronze: {slot: 'paint', why: 'black sign rim and bracket'},
-  },
+
   'american-hotel': {
     slate: {slot: 'roofTile', why: 'red-orange clay tiles on the Leidseplein roofs (ref-se-sun.jpg), not slate'},
     sandstone: {slot: 'brick', why: 'the buff Jugendstil walls are yellow-buff brick with stone dressings (ref-se-sun.jpg); the shell walls are most of this material'},

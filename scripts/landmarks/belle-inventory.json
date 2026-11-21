@@ -1,0 +1,100 @@
+{
+ "schemaVersion": 1,
+ "id": "belle",
+ "signature": [
+  "b-woman",
+  "b-frame"
+ ],
+ "walls": [
+  {
+   "tag": "w-268",
+   "bearing": 268,
+   "lengthM": 0.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_03-29-47_02792",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "note": "Front: Commons photo 2020 Belle (Els Rijerse) (1).jpg (Ceescamel, CC BY-SA 4.0) and 2024/2025 panoramas square-on to the pedestal and plaque.",
+   "items": [
+    {
+     "id": "b-woman",
+     "kind": "sculpture",
+     "where": "bronze woman standing hands on hips, weight on one leg, on a small stepped bronze base",
+     "approxSizeM": [
+      0.4,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "TripoSR single-view figure from the Commons photo, sheared upright, decimated (installed record)",
+     "seenIn": "commons:2020_Belle_(Els_Rijerse)_(1).jpg"
+    },
+    {
+     "id": "b-frame",
+     "kind": "sculpture",
+     "where": "slim bronze door frame round the figure, posts 0.85-1.85 m, 0.365 m wide",
+     "approxSizeM": [
+      0.365,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "drawn from photo measurements (statue-parts.ts --frame); rembg drops the 30 mm bars",
+     "seenIn": "commons:2020_Belle_(Els_Rijerse)_(1).jpg"
+    },
+    {
+     "id": "b-pedestal",
+     "kind": "other",
+     "where": "black granite pedestal 0.47 x 0.47 x 0.80 m",
+     "approxSizeM": [
+      0.47,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "drawn box (statue-parts.ts --pedestal)",
+     "seenIn": "recording_2025-07-03_03-29-47_02792"
+    },
+    {
+     "id": "b-plaque",
+     "kind": "lettering",
+     "where": "bronze plaque on the pedestal front, 0.22 x 0.115 m (text: Respecteer sekswerkers over de hele wereld)",
+     "approxSizeM": [
+      0.22,
+      0.115
+     ],
+     "plan": "simplified",
+     "how": "plain plaque box; the text is too small to draw",
+     "seenIn": "commons:2020_Belle_(Els_Rijerse)_(1).jpg"
+    }
+   ],
+   "centre": [
+    4.89741,
+    52.3742
+   ]
+  },
+  {
+   "tag": "e-088",
+   "bearing": 88,
+   "lengthM": 0.6,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: the TripoSR back is invented from the front view; frame and pedestal are symmetric.",
+   "items": [],
+   "centre": [
+    4.89741,
+    52.3742
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

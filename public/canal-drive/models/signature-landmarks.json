@@ -120339,128 +120339,6 @@
         "triangles": 1497
       }
     },
-    "bulldog-first": {
-      "id": "bulldog-first",
-      "name": "The Bulldog The First, Oudezijds Voorburgwal 90",
-      "modelUrl": "./models/bulldog-first.glb",
-      "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012178229"
-      ],
-      "spatialSuppression": false,
-      "footprint": {
-        "centre": [
-          4.89765521,
-          52.37367817
-        ],
-        "headingDegrees": 0,
-        "lengthMetres": 8.3,
-        "widthMetres": 12.9
-      },
-      "surveyed": {
-        "anchor": [
-          4.89765521,
-          52.37367817
-        ],
-        "northOffsetDegrees": 0,
-        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178229 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Voorburgwal 90-H and 90-1) in native east/south metres (scripts/landmarks/bulldog-first-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the bell gable; the canal front (facade ring edge 2, 4.52 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track02_Sphere_00186 (2025-01-14), b_20250114_1026_Track02_Sphere_00088 (2025-01-14) and recording_2025-06-16_06-42-40_02070 (2025-06-16), CC BY 4.0. Per wall in scripts/landmarks/bulldog-first-inventory.json."
-      },
-      "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 0,
-      "heightMetres": 13.9,
-      "galleryView": {
-        "theta": 0.5,
-        "phi": 1.05
-      },
-      "bagYear": 1683,
-      "materialOverrides": {
-        "stone": "#f6f1e3",
-        "brick": "#6e4b3d",
-        "frame": "#2b302d",
-        "glass": "#2c3439",
-        "dark": "#1e2124",
-        "slate": "#4f4d4a",
-        "concrete": "#6d6f70",
-        "blue": "#2b3d8f",
-        "gold": "#e8b923",
-        "red": "#c8352b",
-        "green": "#3d8a48",
-        "pink": "#8f4a9e",
-        "ochre": "#de7a2a",
-        "copper": "#2a9aa8",
-        "bronze": "#7a4a28",
-        "sandstone": "#e3c9a0"
-      },
-      "attribution": {
-        "title": "The Bulldog The First, Oudezijds Voorburgwal 90, Amsterdam",
-        "author": "Map Recall",
-        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track02_Sphere_00186/",
-        "licence": "CC BY 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178229 (CC0): the white bell-gabled front, its dark-framed windows with red flower boxes, the round-headed attic windows, the painted mosaic ground storey and the two round bulldog-head hanging signs, read from Gemeente Amsterdam panoramas (CC BY 4.0). Door number in Archivo Black (SIL OFL 1.1). No pixels or meshes imported."
-      },
-      "buildingFootprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8975873,
-              52.3737153
-            ],
-            [
-              4.8975654,
-              52.3736833
-            ],
-            [
-              4.8977135,
-              52.3736412
-            ],
-            [
-              4.8977547,
-              52.3736729
-            ],
-            [
-              4.8975873,
-              52.3737153
-            ]
-          ]
-        ]
-      },
-      "status": "held",
-      "heldReason": "Blind judge 2026-11-21 (two rounds, fresh opus each): new beats today but absolute FAIL: the bell crown still reads too round and full, whites too flat, the mosaic ground storey has no Bulldog signage or logo. Next: lower bell with scrolled shoulders (the openings gate reads all front openings as buried with a crown over 13.6 m; investigate geometryAudit), painted Bulldog lettering over the shop window, wall lamps.",
-      "buildingCategory": "landmark",
-      "bounds": {
-        "min": [
-          -6.111999988555908,
-          -9.536743306171047e-8,
-          -4.1620001792907715
-        ],
-        "max": [
-          7.610708713531494,
-          13.721238136291504,
-          4.745700359344482
-        ]
-      },
-      "placement": {
-        "anchor": [
-          4.89765521,
-          52.37367817
-        ],
-        "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 0,
-        "scale": 1
-      },
-      "extent": {
-        "widthMetres": 13.722708702087402,
-        "heightMetres": 13.721238231658937,
-        "depthMetres": 8.907700538635254,
-        "depthCoverage": 0.6905194215996321
-      },
-      "triangles": 11266,
-      "bytes": 169628,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
-    },
     "erotic-museum": {
       "id": "erotic-museum",
       "name": "Erotic Museum, Oudezijds Achterburgwal 54",
@@ -121039,139 +120917,57 @@
       "bytes": 66856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
-    "in-t-aepjen": {
-      "id": "in-t-aepjen",
-      "name": "In 't Aepjen, Zeedijk 1",
-      "modelUrl": "./models/in-t-aepjen.glb",
-      "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012177880"
-      ],
+    "belle": {
+      "id": "belle",
+      "name": "Belle",
+      "assetKind": "memorial",
+      "modelUrl": "./models/belle.glb",
+      "suppressOsmIds": [],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
-          4.90013807,
-          52.37629298
+          4.89741,
+          52.3742
         ],
         "headingDegrees": 0,
-        "lengthMetres": 9.1,
-        "widthMetres": 9.2
+        "lengthMetres": 0.6,
+        "widthMetres": 0.6
       },
       "surveyed": {
         "anchor": [
-          4.90013807,
-          52.37629298
+          4.89741,
+          52.3742
         ],
         "northOffsetDegrees": 0,
-        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177880 (3DBAG CC BY 4.0, BAG CC0; Zeedijk 1) in native east/south metres (scripts/landmarks/in-t-aepjen-footprints.json, bag-shell-prepare.ts), its Zeedijk front replaced by the timber front; read from the rectified Gemeente Amsterdam panorama recording_2025-06-30_05-16-46_01845 (2025-06-30) and the aimed views b_20250114_1026_Track08_Sphere_00126 (2025-01-14) and recording_2025-06-30_05-16-46_01844 and _01846, CC BY 4.0. Rijksmonument 6500. Per wall in scripts/landmarks/in-t-aepjen-inventory.json."
+        "source": "Triangulated from eight 2024/2025 Gemeente Amsterdam panorama views (CC BY 4.0); OSM node 3371945363 (artwork Belle) sits 2.4 m south of the statue and is not used. Facing 268 deg (west) baked into the installed meshes, from panorama recording_2025-07-03_03-29-47_02792."
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
-      "heightMetres": 15.8,
-      "galleryView": {
-        "theta": 5.5,
-        "phi": 1.05
-      },
-      "bagYear": 1550,
-      "materialOverrides": {
-        "brick": "#2b2d2f",
-        "copper": "#8fa2ad",
-        "green": "#62737d",
-        "greyBrick": "#5d6c75",
-        "sandstone": "#f3ecd6",
-        "frame": "#1d201f",
-        "glass": "#30302e",
-        "bronze": "#161616",
-        "stone": "#f2f0ea",
-        "red": "#c8312b",
-        "gold": "#f1ead2",
-        "slate": "#4a4846"
-      },
       "attribution": {
-        "title": "In 't Aepjen, Zeedijk 1, Amsterdam",
-        "author": "Map Recall",
-        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01845/",
-        "licence": "CC BY 4.0",
-        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177880 (CC0): the cream timber shopfront with the cafe's name (Pacifico, SIL OFL 1.1) and the Gulpener disc, the tarred jettied storey with its window band, the pale planked upper storeys and the hood, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+        "title": "Belle - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Els Rijerse (2007); figure reconstructed from photographs by Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figures reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"2020 Belle (Els Rijerse) (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/belle.json."
       },
-      "buildingFootprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.9000798,
-              52.376319
-            ],
-            [
-              4.9001215,
-              52.3762844
-            ],
-            [
-              4.9001239,
-              52.3762855
-            ],
-            [
-              4.9001334,
-              52.3762775
-            ],
-            [
-              4.900131,
-              52.3762764
-            ],
-            [
-              4.9001385,
-              52.3762703
-            ],
-            [
-              4.9001376,
-              52.3762699
-            ],
-            [
-              4.9001402,
-              52.3762677
-            ],
-            [
-              4.9001438,
-              52.3762693
-            ],
-            [
-              4.9002157,
-              52.3763017
-            ],
-            [
-              4.9001513,
-              52.3763495
-            ],
-            [
-              4.9001402,
-              52.3763446
-            ],
-            [
-              4.9000798,
-              52.376319
-            ]
-          ]
-        ]
-      },
-      "status": "held",
-      "heldReason": "Blind judge 2026-11-21 (two rounds, fresh opus each): new beats today but absolute FAIL: reads as some old timber house, not In 't Aepjen. Needs visible stepped jetties (oversailing storeys), weathered blue-grey boarding, grouped leaded casements with posts and braces, a stronger Gulpener disc and name; the pointed top is inferred (not visible in any 2024-25 panorama).",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -4.7020440101623535,
-          -9.536743306171047e-8,
-          -6.2829999923706055
+          -0.2446921318769455,
+          0,
+          -0.2430582195520401
         ],
         "max": [
-          5.295000076293945,
-          15.947999954223633,
-          3.4485254287719727
+          0.2430582195520401,
+          1.850000023841858,
+          0.2430582195520401
         ]
       },
       "placement": {
         "anchor": [
-          4.90013807,
-          52.37629298
+          4.89741,
+          52.3742
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
@@ -121179,15 +120975,14 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 9.997044086456299,
-        "heightMetres": 15.948000049591066,
-        "depthMetres": 9.731525421142578,
-        "depthCoverage": 1.0577745022981064
+        "widthMetres": 0.4877503514289856,
+        "heightMetres": 1.850000023841858,
+        "depthMetres": 0.4861164391040802,
+        "depthCoverage": 0.810194065173467
       },
-      "triangles": 4820,
-      "bytes": 70264,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 5759,
+      "bytes": 42060,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

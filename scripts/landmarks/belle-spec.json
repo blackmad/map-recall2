@@ -1,0 +1,19 @@
+{
+  "id": "belle",
+  "name": "Belle",
+  "assetKind": "memorial",
+  "heightMetres": 1.85,
+  "galleryView": {
+    "theta": 4.7,
+    "phi": 1.2
+  },
+  "surveyedSource": "Position triangulated from eight 2024/2025 Gemeente Amsterdam panorama views (CC BY 4.0; OSM node 3371945363 sits 2.4 m south of the statue); facing 268 deg from panorama recording_2025-07-03_03-29-47_02792; height 1.85 m (pedestal 0.80 m) measured on three panorama views, +-0.1 m. Provenance: scripts/sculptures/rebuild-sources/belle.json.",
+  "attribution": {
+    "title": "Belle - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Els Rijerse (2007); figure reconstructed from photographs by Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figures reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"2020 Belle (Els Rijerse) (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2020_Belle_(Els_Rijerse)_(1).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/belle.json."
+  }
+}

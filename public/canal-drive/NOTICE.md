@@ -215,6 +215,7 @@ cuts are in `scripts/sculptures/installed/`. Statues still in copyright are
 shown under the Dutch freedom of panorama (Auteurswet art. 18).
 
 - `anne-frank-merwedeplein`: Jet Schepp (2005; in copyright, living). Photos: Ceescamel (CC BY-SA 4.0, x2); Christian Michelides (CC BY-SA 4.0, x2).
+- `belle`: Els Rijerse (2007; in copyright). Photos: Ceescamel (CC BY-SA 4.0). Door frame, pedestal and plaque drawn from measurements on Gemeente Amsterdam panoramas (CC BY 4.0), not kit models.
 - `carmiggelt-borstbeeld`: Kees Verkade (1988; in copyright, d. 2020). Photos: Ceescamel (CC BY-SA 4.0); Rob Croes / Anefo (CC0, x2).
 - `de-dokwerker`: Mari Andriessen (1952; in copyright, d. 1979). Photos: A.A.W.J. Rietman (CC BY-SA 4.0); Bert Verhoeff for Anefo (CC0); Joop van Bilsen for Anefo (CC0).
 - `gandhi-churchill-laan`: Gautam Pal (1990; in copyright). Photos: Antony Antony (CC BY 2.0); Ceescamel (CC BY-SA 4.0, x3).
