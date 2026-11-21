@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+## Valkenburgerstraat 69-165 hand model; four lanes started (2026-11-21, round 20261121m)
+
+- The kit-vs-hand test (`docs/reports/kit-vs-hand-20261120.md`, lane/kit-vs-hand-valkenburger-20261120) blind-judged both versions 5-0 over today; the hand model beat the kit 5-1. Hand model B (a22023b714, `valkenburgerstraat-69`, 19.7k tris, 268 KB) is installed with LODs, signature bundle and covers. Kit recipe A (1005bc1e27) is not merged: it would draw the block twice, and it is the test case for the large-kit-gaps lane.
+- David approved, 2026-11-21: close the large-tier kit gaps then batch-install the ~64 block-sized 1985+ blocks by kit, hand-modelling only walls with 3+ distinct fronts (lane/large-kit-gaps-20261121, with a triage report); post-war kit round 2 (lane/postwar-kit-r2-20261121); the Wallen theatres Casa Rosso and Moulin Rouge as landmarks (lane/lm-wallen-theatres-20261121); and an image-to-3D bake-off on canal-belt fronts and ornaments with TripoSR, TRELLIS.2 and Pixal3D (ComfyUI native), Hunyuan3D (David is in the US; shipping outputs to EU players is a separate licence question) and Hi3D (lane/tripo-ornaments-20261121, research only).
+
 ## A shop's windows look into one room (2026-11-20, round 20261120l)
 
 - David on the Shopfronts page after shop-variety: "these now look like they are different stores due to differing ambient colors" (IJscuypje, Bagels & Beans). Each goods cell and pane filler paints its own room, so a café's warm signature pane sat beside a white-tiled seating filler and a dark green blind.

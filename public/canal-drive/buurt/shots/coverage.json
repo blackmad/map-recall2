@@ -468,7 +468,7 @@
  },
  {
   "slug": "nieuwmarkt-lastage",
-  "buildings": 75,
+  "buildings": 76,
   "kits": 0,
   "facts": 172,
   "origins": 145,
@@ -804,13 +804,13 @@
  },
  {
   "slug": "valkenburg",
-  "buildings": 4,
+  "buildings": 5,
   "kits": 0,
   "facts": 8,
   "origins": 12,
   "bridges": 0,
   "shots": 3,
-  "plan": 3,
+  "plan": 4,
   "lacks": [
    "photo borrowed from Nieuwmarkt/Lastage",
    "bridges"

@@ -6575,5 +6575,17 @@
    "bytes": 7156,
    "triangles": 175
   }
+ },
+ "valkenburgerstraat-69": {
+  "sourceHash": "1868e147da6eab40",
+  "buildVersion": 2,
+  "bytes": 138808,
+  "triangles": 8794,
+  "lod2": {
+   "sourceHash": "1868e147da6eab40",
+   "buildVersion": 6,
+   "bytes": 30932,
+   "triangles": 1497
+  }
  }
 }

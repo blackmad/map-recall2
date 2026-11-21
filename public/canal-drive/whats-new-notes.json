@@ -2,6 +2,15 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-21",
+      "title": "Valkenburgerstraat 69-165 gets its real fronts",
+      "text": "The 1998 housing block between Valkenburgerstraat, Rapenburgerstraat and Koerierstersplein used to be a brick office grid with a shop band running all the way round. It now shows its several fronts: the white block over a brick base, the framed panel, the loggias and the balcony stack, with front doors where people live instead of shops.",
+      "where": [
+        4.9071,
+        52.3692
+      ]
+    },
+    {
       "date": "2026-11-20",
       "title": "A shop's windows look into one room",
       "text": "After the windows stopped repeating, some shops looked like three stores side by side: a white-tiled room next to a warm café next to a dark green blind. The other windows now take the light and brightness of the shop's main window, and blinds are plain cream instead of red or green. Bagels & Beans, Coffee Company, Starbucks and IJscuypje each read as one shop again.",
