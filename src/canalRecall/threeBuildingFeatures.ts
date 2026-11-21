@@ -467,7 +467,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (dd && typeof dd === 'object') building.designDress = { ...(dd.stone === 'plinth' || dd.stone === 'ground' ? { stone: dd.stone } : {}), ...(dd.bands === 'ground' || dd.bands === 'all' ? { bands: dd.bands } : {}), ...(dd.pilasters === 'corners' || dd.pilasters === 'centre' ? { pilasters: dd.pilasters } : {}) };
     // The plot's read white heads (plotPlan.ts WHITE_HEAD_DRESSING): the house rows' head dressing over every upper window.
     const dh = p.designHeads as { dressing?: unknown; shape?: unknown } | undefined;
-    if (dh && typeof dh.dressing === 'string' && (dh.shape === 'flat' || dh.shape === 'segmental')) building.rowDress = { ...(building.rowDress ?? {}), heads: [{ a0: 0, a1: 1, shape: dh.shape, dressing: dh.dressing as never }] }; }
+    if (dh && typeof dh.dressing === 'string' && (dh.shape === 'flat' || dh.shape === 'segmental')) building.rowDress = { ...(building.rowDress ?? {}), heads: [{ a0: 0, a1: 1, shape: dh.shape, dressing: dh.dressing as never }] };
+    // Belt review (designUnits/draw.ts withSoloPlot): the read cornice (row-cornice kinds) and the read door place.
+    if (typeof p.designCornice === 'string') building.rowDress = { ...(building.rowDress ?? {}), cornice: p.designCornice };
+    const dr = p.designDoor as { index?: unknown; of?: unknown } | undefined;
+    if (dr && Number.isInteger(dr.index) && Number.isInteger(dr.of) && Number(dr.of) > Number(dr.index)) building.rowDress = { ...(building.rowDress ?? {}), door: { side: 'left', index: Number(dr.index), bays: Number(dr.of) } }; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).

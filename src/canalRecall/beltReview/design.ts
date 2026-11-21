@@ -10,6 +10,7 @@ import { FAMILY_TONE } from '../houseSpec/wallColour.ts';
 import { applyBasedOn } from '../houseSpec/resolve.ts';
 import type { HouseSpec } from '../houseSpec/spec.ts';
 import { DESC_FIELDS, type DescField } from './fields.ts';
+import { beltPlotFacts, DARK_FRAME_HEX, type BeltPlot, type PhotoReadExtras } from './plotRead.ts';
 import type { DescFieldValue, DescriptionFile, EditsFile, FaceFile, GroupingFile } from './types.ts';
 
 /** Family -> drawn wall tone: houseSpec/wallColour.ts FAMILY_TONE, plus lane C's describer names for two brick families. */
@@ -24,7 +25,7 @@ export interface PandDesign {
   pandId: string;
   fields: FieldSet;
   /** HouseSpec-shaped design (design.fronts[0], palette, facts) for house preview. */
-  design: { fronts: Record<string, unknown>[]; palette: Record<string, unknown>; facts: Record<string, unknown> };
+  design: { fronts: Record<string, unknown>[]; palette: Record<string, unknown>; facts: Record<string, unknown>; plot?: BeltPlot };
   /** The link chain followed, e.g. ['basedOn:0363…']; empty when none. */
   chain: string[];
   /** Why a link was not followed (cycle, depth, target unknown). */
@@ -144,8 +145,24 @@ export function applyPathEdits(design: PandDesign['design'], edits: Record<strin
   return design;
 }
 
+/**
+ * The house's own photo read (lane C, houseRead.ts readExtras) on the drawn design: the plot facts house preview stamps
+ * (`design.plot`, plotRead.ts), the read wall colour over the family's stock tone (unless David chose the colour), and a dark
+ * frame when the read says the frames are not white. No read: the design is unchanged.
+ */
+export function withPhotoRead(design: PandDesign['design'], fields: FieldSet, entry: { photoRead?: PhotoReadExtras } | undefined, widthM: number | undefined): PandDesign['design'] {
+  const read = entry?.photoRead;
+  if (!read) return design;
+  const values: Record<string, unknown> = {};
+  for (const f of DESC_FIELDS) if (fields[f]) values[f] = fields[f]!.value;
+  const plot = beltPlotFacts(values, read, { widthM });
+  if (plot) design.plot = plot;
+  if (typeof read.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(read.wallHex) && !fields.wallColour?.edited) design.palette.brick = read.wallHex.toLowerCase();
+  if (fields.whiteFrames?.value === false) design.palette.frame = DARK_FRAME_HEX;
+  return design;
+}
+
 export function pandDesign(face: FaceFile, pandId: string, description: DescriptionFile | null, edits: EditsFile, grouping: GroupingFile): PandDesign {
-  void face;
   const display = resolveLinked(pandId, description, edits, grouping);
   const partFields = (id: string): FieldSet => {
     if (!grouping.links.some(l => l.pandId === id)) return ownFields(id, description, edits);
@@ -165,6 +182,7 @@ export function pandDesign(face: FaceFile, pandId: string, description: Descript
     notes.push(`${(e as Error).message}; drawn from the pand's own fields`);
     design = fieldsToDesign(ownFields(pandId, description, edits));
   }
+  withPhotoRead(design, display.fields, description?.pands.find(p => p.pandId === pandId) as { photoRead?: PhotoReadExtras } | undefined, (face as { pands?: Array<{ pandId: string; widthM?: number }> } | null)?.pands?.find(p => p.pandId === pandId)?.widthM);
   applyPathEdits(design, edits.edits[pandId]?.fields ?? {});
   return { pandId, fields: display.fields, design, chain: display.chain, notes };
 }

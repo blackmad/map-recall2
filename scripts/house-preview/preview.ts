@@ -20,6 +20,7 @@ import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
+import { beltDesignUnit, type BeltPlot } from '../../src/canalRecall/beltReview/plotRead.ts';
 import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
@@ -185,7 +186,7 @@ const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 // ---------------------------------------------------------------------------------------------------------------
 type Design = { fronts?: Record<string, unknown>[]; roof?: unknown; palette?: unknown; [k: string]: unknown };
 export type Override = { source: string; pandId?: string; design: Design };
-const GABLE_WORDS: Record<string, string> = { trap: 'step', trapgevel: 'step', hals: 'neck', halsgevel: 'neck', klok: 'bell', klokgevel: 'bell', tuit: 'spout', tuitgevel: 'spout', lijst: 'cornice', lijstgevel: 'cornice' };
+const GABLE_WORDS: Record<string, string> = { 'raised-neck': 'raisedNeck', point: 'plain', trap: 'step', trapgevel: 'step', hals: 'neck', halsgevel: 'neck', klok: 'bell', klokgevel: 'bell', tuit: 'spout', tuitgevel: 'spout', lijst: 'cornice', lijstgevel: 'cornice' };
 
 export function readOverride(file: string, kind: 'spec' | 'intent'): Override {
   const j = readJson(file);
@@ -226,6 +227,14 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
     applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}${held('shop')}`);
   }
   if (Object.keys(designView.src).length) patch.houseSpec = designView;
+  // Belt review (beltReview/plotRead.ts): the house's read plot facts as a one-plot design unit (`solo`), drawn by
+  // designUnits/draw.ts withSoloPlot: roof storey on the measured cornice, dormers, covering, white parts, cornice, door.
+  const plot = o.design.plot as BeltPlot | undefined;
+  if (plot && typeof plot === 'object' && plot.facts) {
+    patch.designUnit = beltDesignUnit(o.pandId ?? '0000000000000000', plot);
+    for (const k of ['cornice', 'roofStorey', 'readDormers', 'doorBay']) if (front[k] !== undefined) used.add(k);
+    applied.push(`plot -> designUnit (solo: ${JSON.stringify({ ...plot.facts, src: undefined })}, eaves ${plot.eavesM ?? 'tile height'})`);
+  }
   // A stoop (K-stoep #360), as the decorator writes it (houseSpec/decorate.ts specStoop): the measured fields, or {}.
   const stooped = front.basement === 'stoop' || front.basement === 'stoop-and-windows';
   if (stooped) { patch.specStoop = (front.stoop ?? {}) as Record<string, unknown>; applied.push(`fronts[0].basement${front.stoop ? '+stoop' : ''} -> specStoop`); used.add('basement').add('stoop'); }
@@ -235,7 +244,7 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
   if (wallKey) { patch.facadeMappedColour = palette[wallKey]; applied.push(`palette.${wallKey} -> facadeMappedColour=${palette[wallKey]}`); }
   for (const k of Object.keys(palette)) if (k !== wallKey && !(k === 'frame' && view.look?.dark !== undefined)) notApplied.push(`palette.${k}`);
-  for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette') notApplied.push(k);
+  for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette' && !(k === 'plot' && patch.designUnit)) notApplied.push(k);
   if ((o.design.fronts?.length ?? 0) > 1) notApplied.push(`fronts[1..${o.design.fronts!.length - 1}]`);
   return { patch, applied, notApplied };
 }

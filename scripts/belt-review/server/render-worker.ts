@@ -9,7 +9,18 @@
 import path from 'node:path';
 import { PreviewSession, parseArgs, renderGeneric } from '../../house-preview/preview.ts';
 
+/** The decorated properties that say what was drawn on top (roof, crown, plot plan, dressing), for the page and probes. */
+const DRAWN_PROPS = ['height', 'roofEavesHeightM', 'roofShape', 'roofPlanned', 'monumentGable', 'rowRoof', 'rowCrown', 'designPlot', 'designStoreys', 'designDress', 'designHeads', 'designWallHex', 'registerForce', 'specShop', 'specStoop', 'facadeStyle', 'constructionYear'];
+function drawnProps(p: unknown): Record<string, unknown> {
+  const q = (p ?? {}) as Record<string, unknown>, out: Record<string, unknown> = {};
+  for (const k of DRAWN_PROPS) if (q[k] !== undefined) out[k] = q[k];
+  return out;
+}
+
 type Job = { id: number; pandId: string; design: Record<string, unknown>; ppm: number; out: string };
+// The review draws what the description says: the window look and the shop ground the game still holds
+// (houseSpec/decorate.ts SPEC_DESIGN_HELD) are released here (BELT_REVIEW_HOLD=1 keeps the game's holds).
+if (process.env.BELT_REVIEW_HOLD !== '1') process.env.HOUSE_SPEC_DESIGN ??= '1';
 const session = new PreviewSession('photo');
 let chain: Promise<unknown> = Promise.resolve();
 
@@ -22,7 +33,7 @@ process.on('message', (job: Job) => {
       const m = r.measure as Record<string, any>;
       process.send!({
         id: job.id, ok: true, file: path.join(job.out, 'front.png'), ms: Math.round(performance.now() - t0), timings: r.timings,
-        measure: { heights: m.heights, layout: m.layout, wall: m.wall, overrides: m.overrides, render: m.render },
+        measure: { heights: m.heights, layout: m.layout, wall: m.wall, overrides: m.overrides, render: m.render, props: drawnProps(m.properties) },
       });
     } catch (e) {
       process.send!({ id: job.id, ok: false, error: String((e as Error)?.stack ?? e).slice(0, 2000), ms: Math.round(performance.now() - t0) });

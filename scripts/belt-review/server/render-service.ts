@@ -11,7 +11,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp, { type OverlayOptions } from 'sharp';
 
-export const RENDER_VERSION = 1;
+/** 2 (2026-11-21, render wiring): the photo read's plot (roof, dormers, white parts, door) and the released window look draw. */
+export const RENDER_VERSION = 2;
 export interface RenderMeta { hash: string; pandId: string; file: string; ms: number; cached: boolean; measure: Record<string, any>; widthPx: number; heightPx: number }
 export interface RenderStat { at: string; pandId: string; ms: number; cached: boolean; cold: boolean }
 

@@ -1634,6 +1634,9 @@ export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => 
     const id = String(feature.properties.id ?? '');
     // A kit part is the kit's own, landmark list or not: the Beurs van Berlage is not in the landmark
     // list, so its halls took house windows under the kit roofs (user 2026-10-03: "why does it have windows???").
+    // Belt review (designUnits/draw.ts withSoloPlot): a front a reviewed description states draws as that house, kit part or landmark
+    // (Herengracht 34, De Burght: the public-building hall kit drew a blank slab for a 4-bay front).
+    if ((feature.properties.designUnit as { solo?: unknown } | undefined)?.solo === true) return decorate(feature);
     if (modelled.has(id)) return feature;
     if (!ids.size || !ids.has(id)) return decorate(feature);
     const p = feature.properties, height = Number(p.height), year = Number(p.constructionYear);

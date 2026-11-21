@@ -638,6 +638,9 @@ type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geomet
 
 /** Lower a kit roof host's plain wall to its eaves and stop the flat lid; other features pass through. */
 export function decorateKitRoof<T extends GeoFeature>(feature: T): T {
+  // Belt review (designUnits/draw.ts withSoloPlot): a front a reviewed description states (a `solo` design-unit stamp) draws
+  // as that house, not as the public-building kit's plain hall (Herengracht 34, De Burght: a blank slab for a 4-bay front).
+  if ((feature.properties.designUnit as { solo?: unknown } | undefined)?.solo === true) return feature;
   const body = KIT_BODY.get(String(feature.properties.id ?? ''));
   if (body && !feature.properties.kitWall) {
     return { ...feature, properties: { ...feature.properties, facade: 'kit', facadeStyle: body.plain ? 'school' : body.style, kitWall: body.plain ? (body.flat ? 'flat' : 'plain') : 'grid', kitWallHex: body.hex, sideColour: body.hex } };

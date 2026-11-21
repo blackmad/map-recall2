@@ -49,6 +49,11 @@ export interface DesignUnitDraw {
   plot?: import('./plotPlan.js').PlotFacts;
   /** The segment's style year (median member BAG year): the plot plan draws 1860-1939 segments. */
   year?: number;
+  /** A one-plot draw stated by a reviewed description (belt review, beltReview/plotRead.ts), not by a segment: the plot plan
+   *  draws it whatever the flag and its year, `eavesM` is its measured cornice, and a stated gable keeps its own shape. */
+  solo?: true;
+  /** A solo plot's described gable (roofMesh.ts GableShape), or null for a cornice or flat front; absent: the pand's own. */
+  gable?: string | null;
 }
 
 /** A plot's cornice stays this close to its segment's eaves line (m). */

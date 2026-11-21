@@ -48,7 +48,7 @@ export const WHITE_HEAD_DRESSING: Readonly<Record<Exclude<WhiteHeads, 'none'>, {
 };
 /** The white parts a plot draws: frames by era, heads and string courses as read. */
 export function plotWhite(year: number | null | undefined, facts: PlotFacts | undefined): { frames: boolean; heads: WhiteHeads; courses: boolean } {
-  return { frames: typeof year === 'number' && year >= WHITE_FRAME_YEARS.from && year <= WHITE_FRAME_YEARS.to, heads: facts?.whiteHeads ?? 'none', courses: !!facts?.stringCourses };
+  return { frames: facts?.whiteFrames ?? (typeof year === 'number' && year >= WHITE_FRAME_YEARS.from && year <= WHITE_FRAME_YEARS.to), heads: facts?.whiteHeads ?? 'none', courses: !!facts?.stringCourses };
 }
 
 export const PLOT_ROOFS = ['flat', 'dormers', 'mansard', 'pointedGable', 'stepGable', 'bellGable'] as const;
@@ -77,6 +77,8 @@ export interface PlotFacts {
   whiteHeads?: WhiteHeads;
   /** White string courses through the sills. */
   stringCourses?: boolean;
+  /** White window frames as read (belt review); absent: by era (WHITE_FRAME_YEARS). */
+  whiteFrames?: boolean;
   /** Round 3 (ring-r2 verdicts): the window heads' shape (the kit's head grammar arches the glass). */
   headShape?: HeadShape;
   /** Grey stone at the foot: a bluestone plinth band, or a banded stucco ground storey. */
@@ -93,6 +95,14 @@ export interface PlotFacts {
   dormers?: number;
   /** The gable's read size, place and light. */
   gable?: PlotGable;
+  /** Belt review (2026-11-21, a per-house photo read): the roof covering seen behind the cornice (absent: the row slate). */
+  roofMaterial?: 'tile' | 'slate';
+  /** The main cornice as read (the house rows' row-cornice kinds); absent: the dice cornice. */
+  cornice?: 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
+  /** The street door: its 0-based place among `of` ground-storey openings, left to right as seen. */
+  door?: { index: number; of: number; surround?: boolean };
+  /** Street-furniture kit parts the read names (facadeExtras.ts `hoist-beam`, `wall-anchors`), forced as stated. */
+  parts?: Array<'hoist-beam' | 'wall-anchors'>;
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';
@@ -118,7 +128,9 @@ export interface PlotPlan {
 }
 
 /** The segment's own roof statement for a plot with no roof fact (segments.ts `roofEvidence`, AHN `roofRiseM`). */
-export interface SegmentRoofHint { storey?: boolean; dormer?: PlotDormer; hoist?: boolean; form?: 'mansard' | 'dormers'; roofSource?: string; ahnRiseM?: number | null }
+export interface SegmentRoofHint { storey?: boolean; dormer?: PlotDormer; hoist?: boolean; form?: 'mansard' | 'dormers'; roofSource?: string; ahnRiseM?: number | null;
+  /** The top is a measured cornice (belt review's survey eaves): the wall stops there and a roof storey stands on it. */
+  topIsCornice?: boolean }
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
@@ -143,7 +155,7 @@ export function plotPlan(topM: number, facts: PlotFacts | undefined, hint: Segme
   const need = groundM + (storeys - 1) * ERA_UPPER_M, excess = topM - need;
   const ahnRoof = typeof hint.ahnRiseM === 'number' && hint.ahnRiseM >= 1.8;
   // The cornice line: the measured top, or under it by the roof storey standing inside the top.
-  const onTop = ahnRoof || excess < ROOF_ON_TOP_SLACK_M;
+  const onTop = ahnRoof || excess < ROOF_ON_TOP_SLACK_M || !!hint.topIsCornice;
   const inside = onTop ? 0 : clamp(excess, ROOF_INSIDE_MIN_M, ROOF_INSIDE_MAX_M);
   if (roof === 'flat') return { ...base, wallM: topM, rule: 'none', riseM: 0 };
   const wallM = +(topM - inside).toFixed(3);
@@ -185,6 +197,8 @@ export function plotHeads(facts: PlotFacts | undefined): { dressing: string; sha
 /** The plot's roof windows, left to right: the read count (else one per DORMER_FRONT_M of front); a hoist sits on the
  *  middle one, the side ones plain (Tweede Jacob van Campenstraat 153395: a hoist dormer between two small lights). */
 export function plotDormers(frontM: number, perM: number, facts: PlotFacts | undefined, kind: PlotDormer, hoist: boolean): Array<{ a: number; kind: PlotDormer; hoist?: true }> {
+  // A read of no roof windows (dormers 0, belt review) draws none; unread (absent) keeps one per front.
+  if (facts?.dormers === 0) return [];
   const n = facts?.dormers && facts.dormers >= 1 ? Math.min(5, Math.round(facts.dormers)) : Math.max(1, Math.round(frontM / perM));
   const read = !!facts?.dormers, mid = (n - 1) / 2;
   return Array.from({ length: n }, (_, i) => {

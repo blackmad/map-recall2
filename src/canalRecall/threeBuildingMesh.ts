@@ -1085,7 +1085,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // A stoop front's street door is at the bel-etage over the stoop (facadeOrnaments row-stoop), not in the souterrain.
       if (b.rowSeries && b.rowDress?.stoop) layout.doorBays.length = 0;
       // A row front's street door where the record reads it (ground.doorSide / doorIndex of groundBays, as seen).
-      else if (b.rowSeries && b.rowDress?.door && !b.shopfront && layout.doorBays.length) {
+      // A design plot's read door (belt review, designUnits/draw.ts withSoloPlot `designDoor`) the same way.
+      else if ((b.rowSeries || b.designSlice) && b.rowDress?.door && !b.shopfront && layout.doorBays.length) {
         const look = b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo';
         const axis = (b.recipe ? recipeBayOpenings(b.id, b.recipe, look) : units ? units.openings : b.openings ?? presetOpenings(b.id, b.style)).door.axis;
         const placed = rowDoorBay(b.rowDress.door, seenLeftToRight(first), layout.bays, axis);

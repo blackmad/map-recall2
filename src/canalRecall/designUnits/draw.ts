@@ -186,7 +186,7 @@ export const PLOT_PLAN_YEARS = { from: 1860, to: 1939 } as const;
  * states it), balconies and a souterrain's stoop (`registerForce`), and the plot's roof element: a slate roof storey with
  * its dormers on or inside the top, a gable the roof planner draws on the cornice line, or the flat top.
  */
-function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknown>, d: DesignUnitDraw, plan: PlotPlan, roof: SegmentRoof): T {
+function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknown>, d: DesignUnitDraw, plan: PlotPlan, roof: SegmentRoof, gableShape?: string): T {
   const p = feature.properties;
   const extra: Record<string, unknown> = { designStoreys: { storeys: plan.storeys, groundM: plan.groundM, src: plan.storeysSrc }, designPlot: { rule: plan.rule, roof: plan.roof, roofSrc: plan.roofSrc, wallM: plan.wallM, riseM: plan.riseM } };
   if (plan.ground && p.specShop === undefined) extra.specShop = plan.ground === 'shop';
@@ -208,10 +208,21 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
   if (f?.pilasters === 'corners' || f?.pilasters === 'centre') { dress.pilasters = f.pilasters; if (!force.includes('corner-pilasters')) force.push('corner-pilasters'); }
   if (Object.keys(dress).length) extra.designDress = dress;
   if (typeof f?.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(f.wallHex)) extra.designWallHex = f.wallHex;
+  // Belt review: the read cornice (the house rows' row-cornice) and the read door place.
+  // A simple or frieze cornice is the house rows' row-cornice; a heavy or attic-frieze one the deep moulded kroonlijst on
+  // consoles, a bracketed one the console cornice (the row-cornice's heavy frieze is squeezed out under a tall top storey).
+  if (f?.cornice) {
+    const id = f.cornice === 'heavy' || f.cornice === 'attic-frieze' ? 'kroonlijst' : f.cornice === 'bracketed' ? 'console-cornice' : 'row-cornice';
+    if (id === 'row-cornice') extra.designCornice = f.cornice;
+    if (!force.includes(id)) force.push(id);
+  }
+  if (f?.door && Number.isInteger(f.door.index) && f.door.of > f.door.index) extra.designDoor = { index: f.door.index, of: f.door.of };
+  if (f?.door?.surround && !force.includes('door-surround')) force.push('door-surround');
+  for (const id of f?.parts ?? []) if (!force.includes(id)) force.push(id);
   if (force.length) extra.registerForce = force;
   const wall = plan.wallM;
   if (plan.roof === 'flat') return { ...feature, properties: { ...rest, ...extra, height: wall, roofEavesHeightM: wall, roofPlanned: false, roofShape: 'flat' } };
-  const shape = PLOT_GABLE_SHAPE[plan.roof];
+  const shape = gableShape ?? PLOT_GABLE_SHAPE[plan.roof];
   if (shape) {
     // The planner's gable on this plot, its foot on the cornice line: plan it on a probe height, then stand it there.
     const probe = { ...feature, properties: { ...rest, height: wall + 6, roofPlanned: false, monumentGable: shape } };
@@ -234,12 +245,32 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
   // Inside: wall + rise is the measured top; on top: the roof storey stands over it.
   const rise = plan.riseM > 0.5 ? plan.riseM : EVIDENCE_HOIST_RISE_M, height = +(wall + rise).toFixed(3);
   return { ...feature, properties: { ...rest, ...extra, height, roofEavesHeightM: wall, roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
-    rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true }, ...(plan.hoist ? { hoistOut: true } : {}) } } };
+    rowRoof: { riseM: rise, material: f?.roofMaterial ?? roof.material, dormers, series: d.seed, tone: roof.tone, joins: d.solo ? {} : { left: true, right: true }, ...(plan.hoist ? { hoistOut: true } : {}), ...(d.solo && plan.roof === 'dormers' ? { shape: 'hipped' } : {}) } } };
+}
+
+/**
+ * Belt review (2026-11-21): a one-plot draw a reviewed description states (`solo`, beltReview/plotRead.ts). Its plot plan
+ * runs whatever the flag and year: the measured eaves is the cornice (a roof storey stands on it), a stated gable
+ * (monumentGable, other than the cornice front) stands on the cornice line in its own shape, the read roof covering, cornice,
+ * door, white parts and stone go through the same kit parts as a segment plot.
+ */
+function withSoloPlot<T extends Feature>(feature: T, d: DesignUnitDraw): T {
+  const p = feature.properties;
+  if (!p.facade || p.kitRoof) return feature;
+  const top = typeof d.eavesM === 'number' && d.eavesM > 4 ? d.eavesM : Number(p.height);
+  if (!(top > 4)) return feature;
+  // The described crown wins over the register's gable (withMonumentGable ran before this step).
+  const stated = d.gable !== undefined ? d.gable : typeof p.monumentGable === 'string' ? p.monumentGable : null;
+  const gable = stated && stated !== 'cornice' ? stated : undefined;
+  const { roofDormer: _dice, roofShapeTag: _tag, monumentGable: _g, roofPlanned: _planned, ...rest } = p;
+  const plan = plotPlan(top, gable ? { ...d.plot, src: d.plot?.src ?? 'photo', roof: 'pointedGable' } : d.plot, { topIsCornice: true });
+  return withPlotPlan(feature, rest, d, plan, segmentRoof(d.seed, String(p.facadeStyle ?? ''), null), gable);
 }
 
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */
 export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
+  if (d?.solo) return withSoloPlot(feature, d);
   if (!d || d.eavesM === null || !(d.eavesM > 4) || !designUnitsOn()) return feature;
   if (!p.facade || p.rowFront || p.roofPlanned || typeof p.monumentGable === 'string' || p.kitRoof) return feature;
   const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.plotEavesM ?? d.eavesM;
