@@ -239,6 +239,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     sandstone: {slot: 'paint', why: 'palette name only: grey concrete eaves slab, balconies and copings (w04-147)'},
     bronze: {slot: 'paint', why: 'grey metal balcony rails and French rails, not bronze'},
     dark: {slot: 'frame', why: 'dark shopfront frames, fascias and doors (w01-329)'},
+  },
   'rinus-michelslaan-1': {
     greyBrick: {slot: 'brick', why: 'pale grey brick of the west slab and the north low block grid (w06-197, w01-6)'},
     ochre: {slot: 'brick', why: 'palette name only: mixed brown-grey brick of the north townhouses (w01-6)'},

@@ -25,7 +25,8 @@ const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['reci
 // row-cornice, row-heads: house rows (lane R), drawn only when a row series states them (rowDress); never rolled.
 const FORCED_ONLY = new Set(['vertical-fins', 'eared-surrounds', 'speklagen', 'row-cornice', 'row-heads', 'row-rustication', 'row-balcony', 'row-porch', 'row-stoop', 'row-glazing', 'row-shopfront', 'row-erker', 'row-floors', 'row-ground-wall', 'row-basement', 'row-sash', 'row-doorcase',
   // Post-war colour kit (2026-11-20): placed only by a pand's read in postwarKit/kit.ts, never by generic probability.
-  'postwar-balcony-band', 'postwar-round-balconies', 'postwar-projecting-balconies', 'postwar-arcade', 'postwar-dark-erkers']);
+  'postwar-balcony-band', 'postwar-round-balconies', 'postwar-projecting-balconies', 'postwar-arcade', 'postwar-dark-erkers',
+  'postwar-white-erkers', 'postwar-brick-erkers', 'postwar-stair-glazing']);
 // A row series' stated dressing (houseLine/rowFront.ts RowSeriesDraw via the mesher's rowDress): the three head kinds
 // across the wall in thirds under a heavy cornice, so row-heads and row-cornice build every branch.
 const rowDressFor = (c: ExtraContext): ExtraContext => {
@@ -42,7 +43,7 @@ const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
   const recipe = EXPLICIT_COMPONENTS[id];
   const c = wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});
   // Post-war colour kit components draw only with a pand's read (postwarKit/kit.ts); give them a measured-looking one.
-  if (id.startsWith('postwar-')) return { ...c, streetSide: true, postwarKit: { balconyHex: '#3f4244', pierHex: '#d9d4c8' } };
+  if (id.startsWith('postwar-')) return { ...c, streetSide: true, postwarKit: { balconyHex: '#3f4244', pierHex: '#d9d4c8', ...(id === 'postwar-stair-glazing' ? { stair: 'glazed-strip' as const } : {}), ...(id === 'postwar-white-erkers' ? { erker: 'white-glass' as const } : {}), ...(id === 'postwar-brick-erkers' ? { erker: 'brick' as const } : {}) } };
   return id.startsWith('row-') ? rowDressFor(c) : c;
 };
 const finite = (s: ExtraSink, what: string) => {
