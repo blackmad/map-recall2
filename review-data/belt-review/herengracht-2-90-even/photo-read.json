@@ -117,7 +117,7 @@
      "consoles": "none",
      "frieze": "plain"
     },
-    "corniceRatio": 0.089,
+    "corniceRatio": 0.127,
     "pixelMeasured": {
      "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
      "at": "2026-11-21",
@@ -126,6 +126,32 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 13.86,
+    "corniceProfile": {
+     "corona": 0.3,
+     "frieze": 0.6,
+     "architrave": 0.1
+    },
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "riseM": 1.3,
+     "share": 0.46,
+     "light": "square"
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceRatio",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: cornice 175-205, white plastered band to 275 (the pixel grid stopped at its ledge, 245), pavement 965 at 49.8 px/m; the stucco centre piece x 75-205 of 282 rises to 115 with scrolls either side, a square light 160-225"
     }
    },
    "crownRead": {
@@ -2141,6 +2167,30 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 14.96,
+    "corniceProfile": {
+     "attic": 0.36,
+     "corona": 0.1,
+     "frieze": 0.46,
+     "friezeBlocks": true,
+     "architrave": 0.08,
+     "friezeLights": "centre",
+     "lightHead": "round"
+    },
+    "centreDress": {
+     "centre": "none",
+     "light": "none"
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: white stucco attic band 150-200, cornice 200-215, stucco frieze with consoles and garlands 215-280, architrave 280-290; the lunette 200-290 (about 1.6 m wide) with its arched hood to 160, on the centre (the crop cuts the front)"
     }
    },
    "crownRead": {
@@ -2588,6 +2638,34 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 12.4,
+    "corniceProfile": {
+     "corona": 0.15,
+     "course": 0.31,
+     "carry": "modillions",
+     "count": 11,
+     "bed": 0.08,
+     "frieze": 0.31,
+     "architrave": 0.15
+    },
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "paint"
+     },
+     "riseM": 1.55,
+     "share": 0.45
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: corona 205-225, modillions 225-265 (11 across), bed 265-275, frieze 275-315, architrave to 335; the segmental pediment springs on the cornice (205) over x 200-525 of 725 and rises to 125 (1.55 m at 51.6 px/m), a moulded arc over a stucco tympanum"
     }
    },
    "crownRead": {
@@ -2883,6 +2961,37 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 17.12,
+    "corniceProfile": {
+     "corona": 0.23,
+     "course": 0.43,
+     "carry": "modillions",
+     "count": 8,
+     "coffers": true,
+     "bed": 0.06,
+     "frieze": 0.2,
+     "architrave": 0.08,
+     "friezeBlocks": true
+    },
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "riseM": 1.8,
+     "share": 0.25,
+     "light": "none"
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: corona 80-120, coffered modillions 120-195 (8 across), bed 195-205, frieze 205-240, architrave 240-255; the carved crest 0-80 over x 95-185 of 360 (a stucco piece with scrolls); blocks in the frieze over the piers"
     }
    },
    "crownRead": {
@@ -3304,6 +3413,33 @@
       "corniceRatio"
      ],
      "note": "corniceBottom under the attic light (the attic storey is the frieze zone)"
+    },
+    "photoWallM": 13.42,
+    "corniceProfile": {
+     "corona": 0.25,
+     "bed": 0.1,
+     "frieze": 0.65,
+     "friezeBody": "wall",
+     "friezeLights": "centre"
+    },
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "wall",
+      "springM": 0.67
+     },
+     "riseM": 0.6,
+     "share": 0.37
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: cream cornice 150-200 at the sides (corona 150-185, bed 185-200; the grid top 165 is mid-corona), brick attic storey 200-320 with one light 225-310 on the centre; the cornice bends up over x 40-120 of 214 (its foot 200 to 175, its top 150 to 115) over brick"
     }
    },
    "crownRead": {
@@ -3444,6 +3580,28 @@
       "corniceRatio"
      ],
      "note": "four window rows over a basement band (860-975 px, doors at pavement level): the ground storey runs from the pavement to the first floor with the band in it; the read counted the band as a fifth storey"
+    },
+    "photoWallM": 18.14,
+    "cornicePaint": "#857f76",
+    "corniceProfile": {
+     "corona": 0.3,
+     "course": 0.53,
+     "carry": "brackets",
+     "count": 14,
+     "coffers": true,
+     "bed": 0.15,
+     "dentils": true,
+     "architrave": 0.02
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "cornicePaint",
+      "corniceProfile"
+     ],
+     "note": "crop 1000 px: corona 125-178, scrolled brackets 178-265 (14 across, rosette coffers between), dentil bed 265-290; grey stone #867f76 sampled on the corona, as the wall"
     }
    },
    "crownRead": {
@@ -4140,6 +4298,31 @@
       "corniceRatio"
      ],
      "note": "corniceTop at the side wings; the raised centre attic stands over it"
+    },
+    "photoWallM": 11.97,
+    "corniceProfile": {
+     "corona": 0.55,
+     "bed": 0.25,
+     "architrave": 0.2
+    },
+    "centreDress": {
+     "centre": "attic",
+     "body": "wall",
+     "shoulders": "steps",
+     "cap": "flat",
+     "riseM": 1.9,
+     "share": 0.43,
+     "light": "square"
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: heavy cream cornice on the wings 300-345 (no frieze, no consoles), zone foot 360; brick centre attic x 55-160 of 242 capped by the same cornice at 205-250; an inner shoulder either side 255-290"
     }
    },
    "crownRead": {
@@ -5269,6 +5452,25 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 13.79,
+    "cornicePaint": "#85817a",
+    "corniceProfile": {
+     "corona": 0.36,
+     "bed": 0.14,
+     "frieze": 0.32,
+     "friezeBlocks": true,
+     "architrave": 0.18
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "cornicePaint",
+      "corniceProfile"
+     ],
+     "note": "crop 1000 px: corona 290-330, bed 330-345, frieze 345-380 with blocks over the pilasters, architrave 380-400; grey stone #878379 sampled on the frieze, as the wall; pediment 243-320 over x 75-330 of 412"
     }
    },
    "crownRead": {
@@ -5425,6 +5627,34 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 13.43,
+    "corniceProfile": {
+     "corona": 0.2,
+     "bed": 0.15,
+     "course": 0.5,
+     "carry": "consoles",
+     "coffers": true,
+     "architrave": 0.15
+    },
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "paint",
+      "springM": 1.55
+     },
+     "riseM": 0.82,
+     "share": 0.22
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: corona 205-235, upper bed 235-270, consoles over the pilasters with dark sunk panels 270-345, architrave 345-368; the arch springs at 290 (0.52 of the zone down) over x 160-245 of 385 and rises to 245, inside the cornice"
     }
    },
    "crownRead": {
@@ -5564,6 +5794,26 @@
       "groundWindowRatio",
       "corniceRatio"
      ]
+    },
+    "photoWallM": 14.78,
+    "corniceProfile": {
+     "corona": 0.25,
+     "course": 0.3,
+     "carry": "modillions",
+     "count": 19,
+     "bed": 0.2,
+     "dentils": true,
+     "frieze": 0.17,
+     "architrave": 0.08
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceProfile"
+     ],
+     "note": "crop 1000 px: corona 65-115, modillion course 115-170 (19 across), bed with dentils 170-210, plain frieze 210-248, architrave 248-260; wall pavement 975 to zone foot 260 at 48.6 px/m"
     }
    },
    "crownRead": {
@@ -5697,6 +5947,34 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "photoWallM": 15.85,
+    "corniceRatio": 0.126,
+    "corniceProfile": {
+     "corona": 0.3,
+     "course": 0.5,
+     "carry": "modillions",
+     "count": 10,
+     "frieze": 0.2
+    },
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "cap": "stepped",
+     "riseM": 2.0,
+     "share": 0.47,
+     "light": "none"
+    },
+    "corniceLaneMeasured": {
+     "by": "claude lane, measured by eye",
+     "at": "2026-11-21",
+     "fields": [
+      "photoWallM",
+      "corniceRatio",
+      "corniceProfile",
+      "centreDress"
+     ],
+     "note": "crop 1000 px: pavement 958, corona 205-235, brackets 235-285 (10 across), frieze 285-300 at 41.5 px/m; the stepped stone top piece x 55-165 of 184 rises to 120 (2.0 m)"
     }
    },
    "crownRead": {

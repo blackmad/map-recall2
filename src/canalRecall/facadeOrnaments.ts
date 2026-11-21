@@ -20,6 +20,7 @@ import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
 import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
+import { ENTABLATURE, entablatureBands, pieceCentres, pieceWidth, type CorniceProfile } from './houseLine/entablature.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -658,8 +659,16 @@ export function scaledTimberCornice(k: number | undefined): typeof ROW_TIMBER_CO
     frieze: { plain: K.frieze.plain * k, panels: K.frieze.panels * k, 'attic-lights': K.frieze['attic-lights'] * k, oculi: K.frieze.oculi * k, min: K.frieze.min } } as typeof ROW_TIMBER_CORNICE;
 }
 function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>): void {
-  const K = scaledTimberCornice(dr.scale), t = c.top, L = c.f.len;
+  const K = scaledTimberCornice(dr.scale);
   const P = dr.paint ? (K.paints as Record<string, string>)[dr.paint] ?? dr.paint : WHITE;
+  // A measured deep cornice (cornice lane) draws its own parts; else the timber cornice's frieze, supports, bed and corona.
+  if (dr.profile && dr.profile.depthM > 0) rowDeepCornice(c, s, dr.profile, K, P);
+  else timberCorniceBody(c, s, dr, K, P);
+  rowCorniceCentre(c, s, dr, K, P);
+}
+/** The timber cornice's frieze, supports, bed moulding and corona (rowTimberCornice without a profile). */
+function timberCorniceBody(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>, K: typeof ROW_TIMBER_CORNICE, P: string): void {
+  const t = c.top, L = c.f.len;
   const zc = t - K.corona, zb = zc - K.bed;
   // The frieze: from over the top windows' heads (their dressing included) up to the bed moulding.
   const ws = rowWindowsOf(c), topZ1 = ws.length ? Math.max(...ws.map(w => w.z1)) : zb - K.frieze.plain;
@@ -740,7 +749,12 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
   // The bed moulding (in the corona's shadow) and the corona.
   s.box(c.f, 0, L, 0, K.bedOut, zb, zc, shadeHex(P, 0.84), true);
   s.box(c.f, 0, L, 0, K.coronaOut, zc, t, P, true);
+}
+/** What stands on a timber or deep cornice: a cap over the centre, a raised attic, or a balustrade. */
+function rowCorniceCentre(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>, K: typeof ROW_TIMBER_CORNICE, P: string): void {
+  const t = c.top, L = c.f.len;
   // On top: a cap over the centre, or a balustrade.
+  if (dr.centre === 'segmental' && dr.centreArc) { arcCentre(c, s, dr, K, P); return; }
   if (dr.centre === 'pediment' || dr.centre === 'segmental') {
     // A measured rise (the crown read) over the slope rule; the segmental arch is drawn 1.3 times its rise.
     const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, b = a + w, mid = L / 2, B = K.pediment.band;
@@ -770,13 +784,19 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
     // A raised attic over the centre (Herengracht 30, 54, 60): a panel of wall standing on the cornice between two pilaster
     // strips, a moulded ledge on it, a pediment or segmental cap (or none), its light in the middle.
     const A = K.attic, w = L * (dr.centreShare ?? A.share), a = (L - w) / 2, b = a + w, mid = L / 2;
-    const H = Math.max(0.6, dr.centreRiseM ?? A.riseM), capH = dr.centreCap && dr.centreCap !== 'flat' ? Math.min(H * A.capShare, w / 2 * 0.45) : 0;
-    const bodyTop = t + H - capH - A.ledge;
-    s.box(c.f, a, b, 0, 0.1, t, bodyTop, c.wallHex);
-    for (const x of [a, b - A.pilaster]) s.box(c.f, x, x + A.pilaster, 0, 0.16, t, bodyTop, P);
-    s.box(c.f, a - 0.06, b + 0.06, 0, K.bedOut * 0.8, bodyTop, bodyTop + A.ledge, P, true);
-    const z1 = bodyTop + A.ledge;
-    if (dr.centreCap === 'pediment') {
+    const H = Math.max(0.6, dr.centreRiseM ?? A.riseM), capH = dr.centreCap && dr.centreCap !== 'flat' ? Math.min(H * (dr.centreCap === 'stepped' ? ATTIC_STEPPED.capShare : A.capShare), w / 2 * 0.45) : 0;
+    // Cornice lane: a flat cap on a measured deep cornice is that cornice's corona (30's heavy cap), not the stock ledge.
+    const ledge = dr.profile && !capH ? Math.max(A.ledge, profileBandM(dr.profile, 'corona')) : A.ledge;
+    const bodyTop = t + H - capH - ledge;
+    // Cornice lane: shoulders at the attic's foot either side (90's scrolls, 30's stepped shoulders).
+    if (dr.centreShoulders) atticShoulders(c, s, dr.centreShoulders, a, b, t, bodyTop - t, dr.centreBody === 'paint' ? P : c.wallHex, P, ledge, K);
+    const body = dr.centreBody === 'paint' ? P : c.wallHex;
+    s.box(c.f, a, b, 0, 0.1, t, bodyTop, body);
+    for (const x of [a, b - A.pilaster]) s.box(c.f, x, x + A.pilaster, 0, 0.16, t, bodyTop, dr.centreBody === 'paint' ? shadeHex(P, 0.9) : P);
+    s.box(c.f, a - 0.06, b + 0.06, 0, K.bedOut * 0.8, bodyTop, bodyTop + ledge, P, true);
+    const z1 = bodyTop + ledge;
+    if (dr.centreCap === 'stepped') steppedCap(c, s, a, b, z1, capH, P, K);
+    else if (dr.centreCap === 'pediment') {
       s.wallQuad(c.f, [[a, z1], [b, z1], [mid, z1 + capH], [mid, z1 + capH]], 0.12, P);
       for (const [p0, p1] of [[[a - 0.04, z1], [mid, z1 + capH]], [[mid, z1 + capH], [b + 0.04, z1]]] as Array<[[number, number], [number, number]]>) wallBar(c, s, p0, p1, 0.1, 0.2, shadeHex(P, 0.86));
     } else if (dr.centreCap === 'segmental') {
@@ -788,6 +808,8 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
       }
     }
     if (dr.centreLight) centreLight(c, s, dr.centreLight, mid, t + 0.2, bodyTop - 0.15, Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P);
+    // A round light in a stucco attic under its moulded arched hood (60's lunette).
+    if (dr.centreLight === 'round' && dr.centreBody === 'paint') roundHood(c, s, mid, t + 0.2, bodyTop - 0.15, Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P);
   } else if (dr.centre === 'balustrade') {
     const w = L * (dr.centreShare ?? 1), a = (L - w) / 2, b = a + w, Bq = K.balustrade, out = K.coronaOut - 0.12;
     s.box(c.f, a, b, 0.02, out, t, t + 0.12, P);
@@ -802,6 +824,191 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
     }
     for (const x of [a, b - 0.2]) s.box(c.f, x, x + 0.2, 0.02, out, t + 0.12, t + Bq.h - 0.12, P);
     s.box(c.f, a, b, 0.02, out, t + Bq.h - 0.12, t + Bq.h, P);
+  }
+}
+/** A stepped attic cap (Herengracht 8): two receding moulded steps, then a pointed block. */
+export const ATTIC_STEPPED = { capShare: 0.6, steps: [{ w: 0.82, h: 0.3 }, { w: 0.6, h: 0.3 }], point: { w: 0.4, h: 0.4 } } as const;
+/** A band of a measured deep cornice (m), 0 when the profile has none. */
+function profileBandM(p: CorniceProfile, part: 'corona' | 'course' | 'bed' | 'frieze' | 'architrave' | 'attic'): number {
+  const b = entablatureBands(p).find(x => x.part === part);
+  return b ? b.z1 - b.z0 : 0;
+}
+/**
+ * A deep stucco or stone cornice from its measured parts (houseLine/entablature.ts, cornice lane): top down, an attic band,
+ * the corona with its cymatium and drip shadow, the course that carries it as seen from the street (modillions, scrolled
+ * brackets or consoles light against the soffit's shadow, coffers between), the bed moulding with its dentils, the frieze
+ * (paint or the wall's own brick, its attic lights, blocks over the piers) and the architrave over the top storey.
+ */
+function rowDeepCornice(c: ExtraContext, s: ExtraSink, p: CorniceProfile, K: typeof ROW_TIMBER_CORNICE, P: string): void {
+  const t = c.top, L = c.f.len, E = ENTABLATURE, soffit = shadeHex(P, E.soffit), shade = shadeHex(P, 0.84);
+  for (const band of entablatureBands(p)) {
+    const z1 = t - band.z0, z0 = t - band.z1, h = z1 - z0;
+    if (band.part === 'attic') {
+      // A plain parapet band, its foot moulded.
+      s.strip(c.f, 0, L, 0.05, z0, z1, P);
+      s.box(c.f, 0, L, 0, K.archOut + 0.04, z0, z0 + Math.min(0.12, h * 0.2), shade, true);
+    } else if (band.part === 'corona') {
+      // The corona: its face, the cymatium over it a shade apart, the drip's shadow under its front edge.
+      s.box(c.f, 0, L, 0, K.coronaOut, z0, z1, P, true);
+      s.strip(c.f, 0, L, K.coronaOut + 0.01, z1 - h * 0.28, z1 - h * 0.2, shadeHex(P, 0.9), 0.01);
+      s.strip(c.f, 0, L, K.coronaOut + 0.01, z0, z0 + h * E.drip, shadeHex(P, 0.72), 0.01);
+    } else if (band.part === 'course') {
+      s.strip(c.f, 0, L, 0.035, z0, z1, soffit);
+      const carry = p.carry ?? 'modillions';
+      if (carry === 'consoles') {
+        const xs = pierXs(c), W2 = Math.max(0.12, pieceWidth(L / Math.max(2, xs.length), 'consoles')) / 2;
+        if (p.coffers) for (let i = 0; i + 1 < xs.length; i++) {
+          // A sunk dark panel between consoles, framed by the paint (12's).
+          const a = xs[i] + W2 + 0.08, b = xs[i + 1] - W2 - 0.08;
+          if (b - a > 0.2) { s.strip(c.f, a - 0.05, b + 0.05, 0.04, z0 + 0.05, z1 - 0.05, P); s.strip(c.f, a, b, 0.05, z0 + 0.1, z1 - 0.1, shadeHex(P, E.coffer)); }
+        }
+        for (const x of xs) {
+          const a = Math.max(0, x - W2), b = Math.min(L, x + W2);
+          s.box(c.f, a, b, 0, K.bedOut + 0.04, z1 - h * 0.3, z1, P);
+          s.box(c.f, a + W2 * 0.15, b - W2 * 0.15, 0, K.console.out * 0.6, z0 + h * 0.25, z1 - h * 0.3, P);
+          s.box(c.f, a + W2 * 0.3, b - W2 * 0.3, 0, K.console.out * 0.35, z0, z0 + h * 0.25, P);
+          wallDisc(c, s, x, z1 - h * 0.15, W2 * 0.7, K.console.out + 0.02, shadeHex(P, 0.72));
+          wallDisc(c, s, x, z0 + h * 0.15, W2 * 0.5, K.console.out * 0.35 + 0.02, shadeHex(P, 0.72));
+        }
+      } else {
+        const xs = pieceCentres(L, p), pitch = L / xs.length, w = pieceWidth(pitch, carry), out = K.bedOut + 0.06;
+        for (let i = 0; i < xs.length; i++) {
+          const x = xs[i], a = Math.max(0, x - w / 2), b = Math.min(L, x + w / 2);
+          if (p.coffers && i + 1 < xs.length) {
+            // A sunk coffer between this piece and the next, a rosette in it.
+            const ca = b + pitch * 0.06, cb = xs[i + 1] - w / 2 - pitch * 0.06, cm = (ca + cb) / 2;
+            if (cb - ca > 0.06) { s.strip(c.f, ca, cb, 0.04, z0 + h * 0.12, z1 - h * 0.12, shadeHex(P, E.coffer)); wallDisc(c, s, cm, (z0 + z1) / 2, Math.min((cb - ca) * 0.32, h * 0.18), 0.05, shadeHex(P, 0.8), 8); }
+          }
+          if (carry === 'brackets') {
+            // A tall scrolled bracket: its face, a fluted line down it, a scroll's eye at its foot.
+            s.box(c.f, a, b, 0, out, z0 + h * 0.08, z1, P);
+            s.strip(c.f, x - w * 0.08, x + w * 0.08, out + 0.01, z0 + h * 0.2, z1 - h * 0.08, shadeHex(P, 0.78), 0.01);
+            wallDisc(c, s, x, z0 + h * 0.12, w * 0.55, out + 0.02, shadeHex(P, 0.82), 8);
+          } else {
+            // A modillion: its block, the scroll's shadow under its foot.
+            s.box(c.f, a, b, 0, out, z0 + h * 0.06, z1, P);
+            s.strip(c.f, a, b, out + 0.01, z0 + h * 0.06, z0 + h * 0.24, shadeHex(P, 0.8), 0.01);
+          }
+        }
+      }
+    } else if (band.part === 'bed') {
+      s.box(c.f, 0, L, 0, K.bedOut, z0, z1, shade, true);
+      if (p.dentils) {
+        // Dentils along the bed's lower part, light against their gaps.
+        const D = E.dentil, n = Math.max(4, Math.round(L / D.pitch)), dz = z0 + h * 0.55;
+        s.strip(c.f, 0, L, K.bedOut + 0.005, z0, dz, shadeHex(P, 0.6), 0.005);
+        for (let i = 0; i < n; i++) { const x = (i + 0.5) * L / n; s.strip(c.f, Math.max(0, x - D.w / 2), Math.min(L, x + D.w / 2), K.bedOut + 0.02, z0 + h * 0.08, dz, P, 0.02); }
+      }
+    } else if (band.part === 'frieze') {
+      // The frieze: the cornice's paint, or the wall's own brick left bare (the wall runs to the top).
+      if (p.friezeBody !== 'wall') s.strip(c.f, 0, L, 0.03, z0, z1, P);
+      // The cornice's shadow along the frieze's top.
+      s.strip(c.f, 0, L, 0.035, z1 - Math.min(0.1, h * 0.15), z1, shadeHex(p.friezeBody === 'wall' ? c.wallHex : P, 0.7));
+      if (p.friezeBlocks) for (const x of pierXs(c)) {
+        // A raised block over each pier, its shadow down one side so it reads on a frieze of its own paint.
+        const hw = Math.min(0.22, L * 0.03), a = Math.max(0, x - hw), b = Math.min(L, x + hw), zt = z1 - Math.min(0.1, h * 0.15);
+        s.strip(c.f, b, Math.min(L, b + 0.06), 0.04, z0, zt, shadeHex(p.friezeBody === 'wall' ? c.wallHex : P, 0.72));
+        s.box(c.f, a, b, 0, 0.09, z0, zt, P);
+      }
+      if (p.friezeLights) {
+        const ws = rowWindowsOf(c), topZ1 = ws.length ? Math.max(...ws.map(q => q.z1)) : z0, top = ws.filter(q => q.z1 > topZ1 - 0.3);
+        const axes = p.friezeLights === 'centre' || !top.length ? [{ xm: L / 2, hw: Math.min(K.light.maxW / 2, L * 0.15) }] : top.map(q => ({ xm: (q.x0 + q.x1) / 2, hw: Math.min(K.light.maxW, (q.x1 - q.x0) * 0.95) / 2 }));
+        const lh = Math.min(h * 0.75, 1.8), lz0 = z0 + (h - lh) * 0.4;
+        if (lh >= 0.25) for (const q of axes) {
+          // A round-headed light (60's lunette) under its moulded hood, else a low square light.
+          if (p.lightHead === 'round') {
+            // Its half-width at most half its height, so the head's circle stays inside the frieze; a mullion and a
+            // transom at the springing in white.
+            const hw = Math.min(q.hw, lh * 0.5), spring = lz0 + lh - hw;
+            centreLight(c, s, 'round', q.xm, lz0, lz0 + lh, hw, P); roundHood(c, s, q.xm, lz0, lz0 + lh, hw, P);
+            s.strip(c.f, q.xm - 0.02, q.xm + 0.02, 0.15, lz0, lz0 + lh - 0.03, WHITE);
+            s.strip(c.f, q.xm - hw, q.xm + hw, 0.15, spring - 0.02, spring + 0.02, WHITE);
+          }
+          else atticLight(c, s, q.xm, q.hw, lz0, lh, p.friezeBody === 'wall' ? c.wallHex : P);
+        }
+      }
+    } else {
+      // The architrave: two fasciae over the top storey, a shadow line under it.
+      s.box(c.f, 0, L, 0, K.archOut, z0, z1, P, true);
+      s.strip(c.f, 0, L, K.archOut + 0.005, z0 + h * 0.45, z0 + h * 0.52, shadeHex(P, 0.8), 0.005);
+      s.strip(c.f, 0, L, 0.02, z0 - Math.min(0.06, h * 0.3), z0, shadeHex(c.wallHex, 0.6));
+    }
+  }
+}
+/** A low attic light: a white frame round the glass with two bars, its reveal shadowed. */
+function atticLight(c: ExtraContext, s: ExtraSink, xm: number, hw: number, z0: number, h: number, ground: string): void {
+  const R = 0.05, F = 0.06;
+  s.strip(c.f, xm - hw - R, xm + hw + R, 0.035, z0 - R, z0 + h + R, shadeHex(ground, 0.62));
+  s.strip(c.f, xm - hw, xm + hw, 0.04, z0, z0 + h, ROW_DOORCASE.glass);
+  for (const [a, b, p, q] of [[xm - hw, xm + hw, z0, z0 + F], [xm - hw, xm + hw, z0 + h - F, z0 + h], [xm - hw, xm - hw + F, z0, z0 + h], [xm + hw - F, xm + hw, z0, z0 + h]] as const) s.strip(c.f, a, b, 0.05, p, q, WHITE);
+  s.strip(c.f, xm - 0.015, xm + 0.015, 0.052, z0, z0 + h, WHITE);
+  s.strip(c.f, xm - hw, xm + hw, 0.052, z0 + h * 0.62 - 0.015, z0 + h * 0.62 + 0.015, WHITE);
+}
+/**
+ * A segmental centre as an arched cornice (Herengracht 42, 54, 12): the corona's mouldings bent up in a circular arc, its
+ * foot springing `springM` under the cornice's top, over a tympanum of the wall or the paint.
+ */
+function arcCentre(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>, K: typeof ROW_TIMBER_CORNICE, P: string): void {
+  const t = c.top, L = c.f.len, arc = dr.centreArc!;
+  const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, hw = w / 2, mid = L / 2;
+  const zs = t - (arc.springM ?? 0), rise = Math.min(dr.centreRiseM ?? hw * 0.4, hw);
+  const band = dr.profile ? Math.max(0.2, profileBandM(dr.profile, 'corona') + profileBandM(dr.profile, 'bed')) : K.corona + K.bed;
+  const R = (hw * hw + rise * rise) / (2 * rise), zc = zs + rise - R;
+  const lo = (x: number) => zc + Math.sqrt(Math.max(0, R * R - (x - mid) * (x - mid)));
+  const out = K.coronaOut + 0.02, tymp = arc.tympanum === 'wall' ? c.wallHex : shadeHex(P, 0.9), n = 16;
+  for (let i = 0; i < n; i++) {
+    const x0 = a + w * i / n, x1 = a + w * (i + 1) / n, l0 = lo(x0), l1 = lo(x1);
+    // The tympanum from the spring line up to the band's foot; the band; the shadow under its edge.
+    s.wallQuad(c.f, [[x0, zs], [x1, zs], [x1, l1], [x0, l0]], out - 0.01, tymp);
+    s.wallQuad(c.f, [[x0, l0], [x1, l1], [x1, l1 + band], [x0, l0 + band]], out, P);
+    s.wallQuad(c.f, [[x0, l0 - 0.05], [x1, l1 - 0.05], [x1, l1], [x0, l0]], out - 0.005, shadeHex(arc.tympanum === 'wall' ? c.wallHex : P, 0.6));
+    s.wallQuad(c.f, [[x0, l0 + band * 0.7], [x1, l1 + band * 0.7], [x1, l1 + band * 0.78], [x0, l0 + band * 0.78]], out + 0.005, shadeHex(P, 0.9));
+  }
+  if (dr.centreLight) centreLight(c, s, dr.centreLight, mid, zs + 0.12, zs + rise * 0.8, Math.min(0.5, w * 0.14), P);
+}
+/** Shoulders at an attic centre's foot either side: quarter-round scrolls, or a lower step of the cornice. */
+function atticShoulders(c: ExtraContext, s: ExtraSink, kind: 'scrolls' | 'steps', a: number, b: number, t: number, H: number, body: string, P: string, ledge: number, K: typeof ROW_TIMBER_CORNICE): void {
+  const L = c.f.len;
+  if (kind === 'scrolls') {
+    const r = Math.max(0.2, Math.min(H * 0.55, (b - a) * 0.22)), n = 8;
+    for (const [x, dir] of [[a, -1], [b, 1]] as const) {
+      // A convex quarter round falling outward from the attic's side, a curl at its foot.
+      for (let i = 0; i < n; i++) {
+        const u0 = Math.PI / 2 * i / n, u1 = Math.PI / 2 * (i + 1) / n;
+        s.wallQuad(c.f, [[x, t], [x + dir * r * Math.sin(u0), t + r * Math.cos(u0)], [x + dir * r * Math.sin(u1), t + r * Math.cos(u1)], [x, t]], 0.11, P);
+      }
+      wallDisc(c, s, x + dir * r * 0.78, t + r * 0.2, r * 0.18, 0.13, shadeHex(P, 0.7), 8);
+    }
+    return;
+  }
+  // Steps: a shoulder either side, half the attic's rise, its own moulded cap.
+  const sw = Math.min(0.9, Math.max(0.3, Math.min(a, L - b) * 0.45)), h = H * 0.5;
+  for (const [x0, x1] of [[Math.max(0, a - sw), a], [b, Math.min(L, b + sw)]] as const) {
+    s.box(c.f, x0, x1, 0, 0.1, t, t + h, body);
+    s.box(c.f, x0 - 0.04, x1 + 0.04, 0, K.bedOut * 0.8, t + h, t + h + ledge, P, true);
+  }
+}
+/** A stepped cap: receding moulded steps, then a pointed block. */
+function steppedCap(c: ExtraContext, s: ExtraSink, a: number, b: number, z: number, capH: number, P: string, K: typeof ROW_TIMBER_CORNICE): void {
+  const w = b - a, mid = (a + b) / 2, S = ATTIC_STEPPED;
+  let zz = z;
+  for (const st of S.steps) {
+    const hw = w * st.w / 2, h = capH * st.h;
+    s.box(c.f, mid - hw, mid + hw, 0, K.bedOut * 0.7, zz, zz + h, P, true);
+    s.strip(c.f, mid - hw, mid + hw, K.bedOut * 0.7 + 0.005, zz, zz + h * 0.2, shadeHex(P, 0.75), 0.005);
+    zz += h;
+  }
+  const pw = w * S.point.w / 2, ph = capH * S.point.h;
+  s.wallQuad(c.f, [[mid - pw, zz], [mid + pw, zz], [mid, zz + ph], [mid, zz + ph]], 0.14, P);
+}
+/** A moulded arched hood round a round-headed light's head. */
+function roundHood(c: ExtraContext, s: ExtraSink, x: number, z0: number, z1: number, hw: number, P: string): void {
+  if (z1 - z0 < 0.3 || hw < 0.12) return;
+  const top = z1 - hw, R = hw + 0.07 + 0.12, n = 12;
+  for (let i = 0; i < n; i++) {
+    const u0 = Math.PI * i / n, u1 = Math.PI * (i + 1) / n;
+    const p = (u: number, r: number): [number, number] => [x + r * Math.cos(u), top + r * Math.sin(u)];
+    s.wallQuad(c.f, [p(u0, R - 0.12), p(u1, R - 0.12), p(u1, R), p(u0, R)], 0.145, shadeHex(P, 0.88));
   }
 }
 /** An ellipse on the wall face, as a fan of quads. */

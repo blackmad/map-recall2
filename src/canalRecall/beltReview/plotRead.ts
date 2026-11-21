@@ -12,9 +12,10 @@
 import { ERA_GROUND_M, SOUTERRAIN_M, type PlotDormer, type PlotFacts, type PlotGableForm, type PlotRoof } from '../designUnits/plotPlan.ts';
 import type { CrownForm } from './houseRead.ts';
 import { CORNICE_RATIO } from './pixelProfile.ts';
+import { corniceOnTop, corniceReadParts, type CorniceReadExtras } from '../houseLine/entablature.ts';
 
 /** The photo read's extras as describe.ts stores them per pand (houseRead.ts readExtras). */
-export interface PhotoReadExtras {
+export interface PhotoReadExtras extends CorniceReadExtras {
   wallHex?: string;
   dormerStyle?: string;
   roofMaterial?: string;
@@ -178,7 +179,11 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   const count = dorm && Number.isInteger(dorm.count) ? dorm.count! : undefined;
   const covering = read.roofMaterial && read.roofMaterial !== 'not-visible' ? read.roofMaterial : null;
   let roof: PlotRoof | undefined;
+  // Cornice lane: a lone 'dormer' over a cornice whose crown read stands an attic on the centre is that attic (Herengracht
+  // 90's stucco piece with its scrolls), not a roof window on a slate roof in view.
+  const atticDormer = cf?.kind === 'cornice' && cf.centre === 'attic' && rs === 'dormers' && (count ?? 0) <= 1 && !covering;
   if (isGable) roof = undefined;
+  else if (atticDormer) roof = 'flat';
   else if (rs === 'mansard') roof = 'mansard';
   else if (rs === 'dormers' || (count ?? 0) > 0 || crown === 'pitched-eaves' || crown === 'shouldered' || (covering && !(cf && rs === 'gable-attic'))) roof = 'dormers';
   else if (crown) roof = 'flat';
@@ -258,7 +263,23 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   }
   // The cornice zone's depth as measured, on a cornice front (the share of the measured wall, whose top is the cornice's).
   const cr = Number(read.corniceRatio);
-  if (!isGable && eavesM !== null && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) facts.corniceDepthM = +(cr * eavesM).toFixed(2);
+  if (!isGable && eavesM !== null && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) {
+    facts.corniceDepthM = +(cr * eavesM).toFixed(2);
+    // Cornice lane: the zone stands on the survey eaves where the photo's wall says so (Herengracht 10); then its share is
+    // of the wall plus itself, and the top is the eaves plus the zone.
+    const pw = Number(read.photoWallM);
+    if (corniceOnTop(eavesM, facts.corniceDepthM, pw)) { facts.corniceDepthM = +(cr * eavesM / (1 - cr)).toFixed(2); eavesM = +(eavesM + facts.corniceDepthM).toFixed(2); }
+  }
+  else if (!isGable && eavesM === null && read.corniceProfile && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) facts.corniceShare = cr;
+  // Cornice lane: the parts measured by eye on the crop (a deep cornice's profile, its paint, the centre as seen).
+  if (cf && !isGable && cf.kind === 'cornice') {
+    const lane = corniceReadParts(read, facts.corniceDepthM);
+    if (Object.keys(lane).length) {
+      const form = { ...facts.corniceForm, ...lane } as Record<string, unknown>;
+      for (const k of Object.keys(form)) if (form[k] === undefined) delete form[k];
+      facts.corniceForm = form as NonNullable<PlotFacts['corniceForm']>;
+    }
+  }
   // A raised ground storey over a souterrain (stoop and basement windows), where the measured front has room for it.
   if ((fields.stoop === 'stoop-and-windows' || fields.stoop === 'windows') && eavesM !== null && eavesM - ERA_GROUND_M - SOUTERRAIN_M >= ((facts.storeys ?? 3) - 1) * SOUTERRAIN_UPPER_MIN_M) facts.souterrain = true;
   const year = Number(fields.facadeYear);

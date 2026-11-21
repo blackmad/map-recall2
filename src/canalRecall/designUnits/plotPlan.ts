@@ -110,10 +110,15 @@ export interface PlotFacts {
   /** The main cornice as read (the house rows' row-cornice kinds); absent: the dice cornice. */
   cornice?: 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** Belt review crown read: the cornice's parts as read (houseSpec/row/types.ts RowCorniceDress), over the kind's own. */
-  corniceForm?: Pick<RowCorniceDress, 'supports' | 'supportsAt' | 'frieze' | 'centre' | 'centreShare' | 'centreRiseM' | 'centreCap' | 'centreLight'>;
+  corniceForm?: Pick<RowCorniceDress, 'supports' | 'supportsAt' | 'frieze' | 'centre' | 'centreShare' | 'centreRiseM' | 'centreCap' | 'centreLight'
+    /* cornice lane: a measured deep cornice, its paint, and the centre's body, shoulders and arc */
+    | 'paint' | 'profile' | 'centreBody' | 'centreShoulders' | 'centreArc'>;
   /** Belt review, measured on the crop: the cornice zone's depth (m), its foot over the top storey to the cornice's top
    *  (frieze, attic band, bed moulding and corona). The timber cornice is drawn at this depth; absent: the kind's own. */
   corniceDepthM?: number;
+  /** Cornice lane: the measured cornice zone's share of the front where the survey eaves is not usable (Herengracht 14, 54:
+   *  3DBAG eaves 2.4 m); the zone is that share of the drawn top. Set only with a measured deep cornice. */
+  corniceShare?: number;
   /** The street door: its 0-based place among `of` ground-storey openings, left to right as seen. */
   door?: { index: number; of: number; surround?: boolean; /** Belt review: a fanlight over the door as read. */ fanlight?: boolean };
   /** Street-furniture kit parts the read names (facadeExtras.ts `hoist-beam`, `wall-anchors`), forced as stated. */

@@ -241,8 +241,22 @@ export interface RowCorniceDress {
   centre?: 'pediment' | 'segmental' | 'balustrade' | 'attic';
   /** The centre's measured rise over the cornice (m); absent: the pediment's slope rule, an attic 1.2 m. */
   centreRiseM?: number;
-  /** An attic centre's cap (absent: flat, a moulded cornice). */
-  centreCap?: 'pediment' | 'segmental' | 'flat';
+  /** An attic centre's cap (absent: flat, a moulded cornice). `stepped`: two receding moulded steps under a pointed block
+   *  (Herengracht 8's stone top piece). */
+  centreCap?: 'pediment' | 'segmental' | 'flat' | 'stepped';
+  /** An attic centre's body: the cornice's paint (stucco or stone, Herengracht 60, 90) or the wall (30's brick); absent the
+   *  wall. */
+  centreBody?: 'paint' | 'wall';
+  /** At an attic centre's foot either side: quarter-round `scrolls` (90's), or `steps`, a lower shoulder of the cornice
+   *  standing half the attic's rise (30's shouldered centre). Absent: none. */
+  centreShoulders?: 'scrolls' | 'steps';
+  /** A segmental centre drawn as an arched cornice (Herengracht 42, 54, 12): the corona's mouldings bent up in a circular
+   *  arc over a tympanum of the wall or of the paint, springing `springM` under the cornice's top (0: on it). Absent: the
+   *  stock segmental cap. */
+  centreArc?: { tympanum: 'wall' | 'paint'; springM?: number };
+  /** A deep cornice as measured parts (houseLine/entablature.ts CorniceProfile): drawn in place of the timber cornice's
+   *  frieze, supports, bed and corona. Absent: the timber cornice. */
+  profile?: import('../../houseLine/entablature.js').CorniceProfile;
   /** The centre's light: a square window, a round-headed one, or an oculus (absent: none). */
   centreLight?: 'square' | 'round' | 'oculus';
   /** The centre's width as a share of the front (absent: 0.5 for a cap, the whole front for a balustrade). */

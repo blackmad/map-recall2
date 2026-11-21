@@ -335,7 +335,7 @@
     ],
     "groundWindowRatio": 1.48,
     "doorRatio": 0.75,
-    "corniceRatio": 0.089,
+    "corniceRatio": 0.127,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -364,6 +364,21 @@
      "centreLight": "square",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceProfile": {
+     "corona": 0.3,
+     "frieze": 0.6,
+     "architrave": 0.1
+    },
+    "photoWallM": 13.86,
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "riseM": 1.3,
+     "share": 0.46,
+     "light": "square"
     },
     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445"
    },
@@ -4193,6 +4208,20 @@
      "consoles": "even",
      "frieze": "panels"
     },
+    "corniceProfile": {
+     "attic": 0.36,
+     "corona": 0.1,
+     "frieze": 0.46,
+     "friezeBlocks": true,
+     "architrave": 0.08,
+     "friezeLights": "centre",
+     "lightHead": "round"
+    },
+    "photoWallM": 14.96,
+    "centreDress": {
+     "centre": "none",
+     "light": "none"
+    },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500"
    },
    "specParts": [
@@ -4963,6 +4992,24 @@
      "consoles": "even",
      "frieze": "plain"
     },
+    "corniceProfile": {
+     "corona": 0.15,
+     "course": 0.31,
+     "carry": "modillions",
+     "count": 11,
+     "bed": 0.08,
+     "frieze": 0.31,
+     "architrave": 0.15
+    },
+    "photoWallM": 12.4,
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "paint"
+     },
+     "riseM": 1.55,
+     "share": 0.45
+    },
     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311"
    },
    "specParts": [
@@ -5528,6 +5575,27 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "panels"
+    },
+    "corniceProfile": {
+     "corona": 0.23,
+     "course": 0.43,
+     "carry": "modillions",
+     "count": 8,
+     "coffers": true,
+     "bed": 0.06,
+     "frieze": 0.2,
+     "architrave": 0.08,
+     "friezeBlocks": true
+    },
+    "photoWallM": 17.12,
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "riseM": 1.8,
+     "share": 0.25,
+     "light": "none"
     },
     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036"
    },
@@ -6286,6 +6354,23 @@
      "consoles": "none",
      "frieze": "plain"
     },
+    "corniceProfile": {
+     "corona": 0.25,
+     "bed": 0.1,
+     "frieze": 0.65,
+     "friezeBody": "wall",
+     "friezeLights": "centre"
+    },
+    "photoWallM": 13.42,
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "wall",
+      "springM": 0.67
+     },
+     "riseM": 0.6,
+     "share": 0.37
+    },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304"
    },
    "specParts": [
@@ -6570,6 +6655,18 @@
      "consoles": "dense",
      "frieze": "plain"
     },
+    "corniceProfile": {
+     "corona": 0.3,
+     "course": 0.53,
+     "carry": "brackets",
+     "count": 14,
+     "coffers": true,
+     "bed": 0.15,
+     "dentils": true,
+     "architrave": 0.02
+    },
+    "cornicePaint": "#857f76",
+    "photoWallM": 18.14,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846"
    },
    "specParts": [
@@ -7855,6 +7952,21 @@
      "centreLight": "square",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceProfile": {
+     "corona": 0.55,
+     "bed": 0.25,
+     "architrave": 0.2
+    },
+    "photoWallM": 11.97,
+    "centreDress": {
+     "centre": "attic",
+     "body": "wall",
+     "shoulders": "steps",
+     "cap": "flat",
+     "riseM": 1.9,
+     "share": 0.43,
+     "light": "square"
     },
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583"
    },
@@ -10033,6 +10145,15 @@
      "consoles": "ends",
      "frieze": "plain"
     },
+    "corniceProfile": {
+     "corona": 0.36,
+     "bed": 0.14,
+     "frieze": 0.32,
+     "friezeBlocks": true,
+     "architrave": 0.18
+    },
+    "cornicePaint": "#85817a",
+    "photoWallM": 13.79,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
    },
    "specParts": [
@@ -10323,6 +10444,24 @@
      "consoles": "even",
      "frieze": "panels"
     },
+    "corniceProfile": {
+     "corona": 0.2,
+     "bed": 0.15,
+     "course": 0.5,
+     "carry": "consoles",
+     "coffers": true,
+     "architrave": 0.15
+    },
+    "photoWallM": 13.43,
+    "centreDress": {
+     "centre": "segmental",
+     "arc": {
+      "tympanum": "paint",
+      "springM": 1.55
+     },
+     "riseM": 0.82,
+     "share": 0.22
+    },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285"
    },
    "specParts": [
@@ -10607,6 +10746,17 @@
      "consoles": "dense",
      "frieze": "plain"
     },
+    "corniceProfile": {
+     "corona": 0.25,
+     "course": 0.3,
+     "carry": "modillions",
+     "count": 19,
+     "bed": 0.2,
+     "dentils": true,
+     "frieze": 0.17,
+     "architrave": 0.08
+    },
+    "photoWallM": 14.78,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479"
    },
    "specParts": [
@@ -10810,6 +10960,7 @@
     ],
     "groundWindowRatio": 0.95,
     "doorRatio": 0.75,
+    "corniceRatio": 0.126,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -10838,6 +10989,22 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "corniceProfile": {
+     "corona": 0.3,
+     "course": 0.5,
+     "carry": "modillions",
+     "count": 10,
+     "frieze": 0.2
+    },
+    "photoWallM": 15.85,
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "cap": "stepped",
+     "riseM": 2,
+     "share": 0.47,
+     "light": "none"
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478"
    },

@@ -7,6 +7,7 @@
  * Pure: the prompt, the answer's validation, and the answer -> description candidates. scripts/belt-review/read-house.ts
  * crops, calls and stores; scripts/belt-review/likeness.ts scores render against photo.
  */
+import type { CorniceReadExtras } from '../houseLine/entablature.ts';
 import { BALCONY_STYLES, BASEMENTS, DORMER_STYLES, GABLES, ROOF_MATERIALS, WINDOWS, WINDOW_HEADS, WALL_MATERIALS } from '../buildingRecipe/intent.ts';
 import { STOOP_FLIGHTS } from '../buildingRecipe/stoop.ts';
 import { SPEC_CORNICES, SPEC_WINDOW_SURROUNDS } from '../houseSpec/spec.ts';
@@ -335,7 +336,13 @@ export function readExtras(a: Partial<HouseRead>) {
     ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),
     ...(typeof a.corniceRatio === 'number' ? { corniceRatio: a.corniceRatio } : {}),
     ...(a.crownForm && !crownFormProblems(a.crownForm).length ? { crownForm: a.crownForm } : {}),
+    // Cornice lane: a deep cornice's parts, its paint, the photo's wall and the centre, measured by eye on the crop.
+    ...corniceLaneExtras(a as CorniceReadExtras),
   };
+}
+function corniceLaneExtras(a: CorniceReadExtras): CorniceReadExtras {
+  return { ...(a.corniceProfile && typeof a.corniceProfile === 'object' ? { corniceProfile: a.corniceProfile } : {}), ...(typeof a.cornicePaint === 'string' ? { cornicePaint: a.cornicePaint } : {}),
+    ...(typeof a.photoWallM === 'number' ? { photoWallM: a.photoWallM } : {}), ...(a.centreDress && typeof a.centreDress === 'object' ? { centreDress: a.centreDress } : {}) };
 }
 
 // ------------------------------------------------------------------------------------------------------------ likeness
