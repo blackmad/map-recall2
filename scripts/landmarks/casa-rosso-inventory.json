@@ -1,0 +1,233 @@
+{
+ "schemaVersion": 1,
+ "id": "casa-rosso",
+ "pand": "0363100012178727",
+ "brief": "scripts/landmarks/casa-rosso-brief.md",
+ "signature": [
+  "s-elephant",
+  "s-marquee-letters",
+  "s-pediment-canopy",
+  "s-black-screen",
+  "s-planted-walls",
+  "s-medallion",
+  "s-shutter-elephant",
+  "s-gilt-posts",
+  "s-pigs"
+ ],
+ "walls": [
+  {
+   "tag": "w01-27",
+   "bearing": 27,
+   "lengthM": 18.8,
+   "centre": [
+    4.8978005,
+    52.372686
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track06_Sphere_00050",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [],
+   "note": "N wall along the neighbours: the aimed panorama b_20250114_1026_Track06_Sphere_00050 shows the front of Oudezijds Achterburgwal 100-104 in the street, not this wall; the 18.8 m north side of the hall stands against the neighbours' rear yards and is not seen from any street. Left as the 3DBAG shell."
+  },
+  {
+   "tag": "w02-124",
+   "bearing": 124,
+   "lengthM": 8.8,
+   "centre": [
+    4.897888,
+    52.372615
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track06_Sphere_00114",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-elephant",
+     "kind": "sign",
+     "where": "upper centre, on the pale grey panel: the cut-out cartoon elephant standing with its trunk raised to the right holding a rose, black body with a pink neon outline and lines, the tie with three Amsterdam crosses (XXX), 5.45-9.6 m",
+     "approxSizeM": [
+      2.75,
+      4.15
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "outline traced on the 120 px/m rectified crop: black cut-out 8 cm thick on 12 cm stand-offs, pink tubes along the outline and the inner lines, eye rings, tie outline, three crosses, red rose ring"
+    },
+    {
+     "id": "s-marquee-letters",
+     "kind": "lettering",
+     "where": "the black fascia over the entrance, 2.5-3.45 m: THEATRE CASA ROSSO in gilt serif capitals 6.05 m long, caps 0.37 m",
+     "approxSizeM": [
+      6.05,
+      0.37
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "font outlines (Cinzel, SIL OFL 1.1, approximating the serif) extruded 3 cm on the fascia front, gold"
+    },
+    {
+     "id": "s-pediment-canopy",
+     "kind": "canopy",
+     "where": "the gabled canopy on the fascia, base 3.55 m from 1.5 to 6.9 m, apex 4.9 m, about 1 m deep (oblique views), black with pale raking mouldings",
+     "approxSizeM": [
+      5.4,
+      1.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00056",
+     "how": "triangular prism from the screen to the fascia front, pale tube along the rakes and coping boxes along the roof slopes"
+    },
+    {
+     "id": "s-medallion",
+     "kind": "sign",
+     "where": "the round medallion in the pediment, centre 4.02 m: pale face in a dark red rim with the pink elephant",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "dark red disc, pale disc and the sign elephant outline at 0.15 scale in pink"
+    },
+    {
+     "id": "s-black-screen",
+     "kind": "other",
+     "where": "the whole front: a flat black-painted screen to the coping at 10.6 m, standing above the 6.6 m hall roof behind it (3DBAG)",
+     "approxSizeM": [
+      8.8,
+      10.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "one black slab 0.35 m proud of the BAG line with a grey coping"
+    },
+    {
+     "id": "s-pale-panel",
+     "kind": "other",
+     "where": "the pale grey T-shaped panel behind the elephant: 2.2-6.0 m from 6.1 m up, and the outer panels 0.25-1.0 and 7.4-8.55 m from 8.1 m up, to 10.25 m",
+     "approxSizeM": [
+      3.8,
+      4.15
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "thin concrete-grey slabs on the screen"
+    },
+    {
+     "id": "s-planted-walls",
+     "kind": "other",
+     "where": "two vertical planted walls, 1.0-2.2 and 6.0-7.4 m, from 3.55 to 10.25 m (green in both 2025 captures)",
+     "approxSizeM": [
+      1.3,
+      6.7
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "green bed with a staggered grid of darker and lighter green clumps"
+    },
+    {
+     "id": "s-gilt-posts",
+     "kind": "other",
+     "where": "the posts either side of the entrance under the marquee, each with two gilt inverted triangles 0.7-2.45 m",
+     "approxSizeM": [
+      0.75,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "black piers the marquee depth with gold triangle plates on their fronts"
+    },
+    {
+     "id": "s-shutter-elephant",
+     "kind": "sign",
+     "where": "the light grey roller shutter of the entrance (1.0-7.4 m, to 2.5 m) with a pink elephant painted on its left half (1.85-3.1 m, 0.2-2.1 m)",
+     "approxSizeM": [
+      1.25,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "ribbed light grey shutter slab and the sign elephant outline at 0.46 scale in pink"
+    },
+    {
+     "id": "s-pigs",
+     "kind": "sculpture",
+     "where": "two pink pig figures standing on the ends of the fascia at 0.65 and 7.75 m, 3.55-4.25 m",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "lathed pink body, sphere head, snout and ear cones"
+    },
+    {
+     "id": "n-red-neon-line",
+     "kind": "lamp",
+     "where": "a red neon line under the fascia, 2.45 m",
+     "approxSizeM": [
+      8.5,
+      0.05
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "how": "thin red strip"
+    },
+    {
+     "id": "n-shutter-text",
+     "kind": "lettering",
+     "where": "TAKE CARE OF YOURSELVES AND EACH OTHER painted in dark capitals on the shutter",
+     "approxSizeM": [
+      2.6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "skip": {
+      "reason": "too-small",
+      "note": "three lines of 0.1 m painted letters, unreadable at ride distance"
+     }
+    },
+    {
+     "id": "n-aed-sign",
+     "kind": "sign",
+     "where": "a green round AED sign on a bracket at the right end of the fascia",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-30_05-16-46_01602",
+     "skip": {
+      "reason": "temporary",
+      "note": "a clip-on public defibrillator sign, not part of the front"
+     }
+    },
+    {
+     "id": "n-lanterns",
+     "kind": "lamp",
+     "where": "two small green lanterns at the fascia ends, 3.9 m",
+     "approxSizeM": [
+      0.2,
+      0.35
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00114",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m wall lamps"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

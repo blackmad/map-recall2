@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "id": "moulin-rouge-amsterdam",
+ "pand": "0363100012177983",
+ "brief": "scripts/landmarks/moulin-rouge-amsterdam-brief.md",
+ "signature": [
+  "s-letters",
+  "s-display-cases",
+  "s-hanging-sign",
+  "s-dark-front",
+  "s-windows",
+  "s-cornice",
+  "s-stoop",
+  "s-souterrain-hood"
+ ],
+ "walls": [
+  {
+   "tag": "w01-301",
+   "bearing": 301,
+   "lengthM": 7.9,
+   "centre": [
+    4.9001605,
+    52.3743555
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track06_Sphere_00006",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-letters",
+     "kind": "lettering",
+     "where": "red serif capitals MOULIN ROUGE over the ground floor, t 3.3-6.85 m, 5.0-5.45 m",
+     "approxSizeM": [
+      3.55,
+      0.42
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "font outlines (Cinzel, SIL OFL 1.1) extruded 6 cm, dark red"
+    },
+    {
+     "id": "s-display-cases",
+     "kind": "sign",
+     "where": "three black glazed display cases with red neon frames across the ground floor, t 2.5-3.6, 4.47-5.57, 6.35-7.45 m, 2.05-4.55 m; the middle one with neon MOULIN Rouge",
+     "approxSizeM": [
+      1.1,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "black boxes 16 cm deep, dark glass faces, red tube frames, MOULIN and Rouge in red on the middle case; the figure drawings and the third case's text are left out (tasteful brief)",
+     "note": "the left case shows a poster and the right one neon text and a figure; neither is drawn"
+    },
+    {
+     "id": "s-hanging-sign",
+     "kind": "sign",
+     "where": "black square hanging board 0.8 x 1.0 m on an iron bracket by the stoop door (t 0.25 m), 0.27-1.07 m off the wall: a red line drawing of a figure over MOULIN in red capitals and Rouge in red script, both faces",
+     "approxSizeM": [
+      0.8,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track05_Sphere_00014",
+     "how": "board, bracket and hooks; MOULIN (Cinzel) and Rouge (Pacifico) in red relief on both faces; the figure drawing is left out (tasteful brief)"
+    },
+    {
+     "id": "s-dark-front",
+     "kind": "other",
+     "where": "the whole front painted blue-black over the brick, five storeys",
+     "approxSizeM": [
+      7.9,
+      14.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "the 3DBAG shell walls in the measured blue-black"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "four window axes (t 1.4, 3.2, 5.12, 6.97 m), white timber frames 1.22 m wide: 1st floor 2 x 2 with low upper lights (transom 7.1 m), 2nd floor 2 x 3 (transom 10.2 m), top floor 2 x 2",
+     "approxSizeM": [
+      1.22,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "frame, dark pane and paneGrid bars per storey, white sills"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "cream cornice 14.0-15.0 m across the front with the dark hoist-beam housing breaking through it at t 3.95-4.3 m to 15.2 m",
+     "approxSizeM": [
+      7.9,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "frieze board, cornice and top moulding slabs; dark housing with a cream cap"
+    },
+    {
+     "id": "s-stoop",
+     "kind": "other",
+     "where": "the stoop at the left: the white-framed door with transom light (t 0.75-1.95 m, threshold 1.75 m), the grey landing, steps down to the right (t 2.1-3.3 m) and black railings",
+     "approxSizeM": [
+      3.3,
+      4.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01543",
+     "how": "frame, leaf, transom light and bar; stone landing and five steps; railing tubes and posts"
+    },
+    {
+     "id": "s-souterrain-hood",
+     "kind": "canopy",
+     "where": "the black double doors of the souterrain (t 4.4-7.7 m) under a black hood with a red edge at 1.45 m",
+     "approxSizeM": [
+      3.6,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01543",
+     "how": "dark door slab, black hood and red edge strip"
+    },
+    {
+     "id": "n-area-railing",
+     "kind": "balcony-ironwork",
+     "where": "black iron railing round the basement area between the steps and the souterrain doors",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "how": "rail and posts"
+    },
+    {
+     "id": "n-wall-lamps",
+     "kind": "lamp",
+     "where": "small black wall lamps and cameras between the display cases",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m fittings"
+     }
+    },
+    {
+     "id": "n-qr-notice",
+     "kind": "sign",
+     "where": "a white notice with a QR code on the souterrain door",
+     "approxSizeM": [
+      0.4,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track06_Sphere_00006",
+     "skip": {
+      "reason": "temporary",
+      "note": "a paper notice"
+     }
+    },
+    {
+     "id": "n-windmill",
+     "kind": "sign",
+     "where": "a windmill sign (asked for in the brief; size unknown, nominal 1 x 1 m)",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-30_05-16-46_01543",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not on the front in any 2024-2025 panorama: the front, both oblique directions and both faces of the hanging sign were rectified and show no windmill"
+     }
+    }
+   ],
+   "note": "Canal front, 7.9 m, four bays; read on the 2025-01-14 and 2025-06-30 rectified crops at 100 px/m (datum 0.4 m NAP; the model sits 0.32 m lower on the 3DBAG ground). No windmill sign on this front in any 2024-2025 capture (front, both oblique directions and both faces of the hanging sign rectified)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
