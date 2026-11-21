@@ -73,6 +73,9 @@ export interface HouseRead {
   doorRatio?: number;
   /** A basement band's height over the ground storey's (pavement to first floor), measured by the self-check. */
   basementRatio?: number;
+  /** The cornice zone (its foot over the top storey to the cornice's top) over the pavement-to-cornice-top height, read on
+   *  a pixel grid (beltReview/pixelProfile.ts); absent: the kind's stock depth. */
+  corniceRatio?: number;
   /** The crown's form, read by a second focused call (crownFormPrompt; read-house.ts --part crown). */
   crownForm?: CrownForm;
 }
@@ -330,6 +333,7 @@ export function readExtras(a: Partial<HouseRead>) {
     ...(typeof a.groundWindowRatio === 'number' ? { groundWindowRatio: a.groundWindowRatio } : {}),
     ...(typeof a.doorRatio === 'number' ? { doorRatio: a.doorRatio } : {}),
     ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),
+    ...(typeof a.corniceRatio === 'number' ? { corniceRatio: a.corniceRatio } : {}),
     ...(a.crownForm && !crownFormProblems(a.crownForm).length ? { crownForm: a.crownForm } : {}),
   };
 }

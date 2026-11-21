@@ -73,12 +73,12 @@
      "cornice"
     ],
     "storeyShares": [
-     0.31,
-     0.24,
-     0.23,
-     0.22
+     0.393,
+     0.242,
+     0.185,
+     0.181
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.48,
     "doorRatio": 0.75,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -116,6 +116,16 @@
      "centreLight": "square",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.089,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -198,11 +208,11 @@
      "dormers"
     ],
     "storeyShares": [
-     0.37,
-     0.33,
-     0.3
+     0.423,
+     0.32,
+     0.257
     ],
-    "groundWindowRatio": 1,
+    "groundWindowRatio": 1.36,
     "doorRatio": 0.6,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -253,6 +263,16 @@
      "centreLight": "round",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.127,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -421,7 +441,7 @@
    "costUsd": 0.01873,
    "answer": {
     "readable": true,
-    "storeys": 2,
+    "storeys": 3,
     "bays": 2,
     "crown": "bell",
     "cornice": "simple",
@@ -470,7 +490,7 @@
      "facadeYear",
      "storeys"
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.77,
     "doorRatio": 0.7,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -528,6 +548,21 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "storeyShares": [
+     0.486,
+     0.261,
+     0.254
+    ],
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeys",
+      "storeyShares",
+      "groundWindowRatio"
+     ],
+     "note": "bell gable over a ground storey and two full upper storeys; the read counted two"
     }
    },
    "crownRead": {
@@ -743,10 +778,10 @@
      "cornice"
     ],
     "storeyShares": [
-     0.32,
-     0.25,
-     0.23,
-     0.2
+     0.377,
+     0.235,
+     0.198,
+     0.19
     ],
     "groundWindowRatio": 1.1,
     "doorRatio": 0.75,
@@ -783,6 +818,15 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.072,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -1500,13 +1544,13 @@
      "door"
     ],
     "storeyShares": [
-     0.22,
-     0.2,
-     0.21,
+     0.289,
+     0.204,
      0.19,
-     0.18
+     0.163,
+     0.154
     ],
-    "groundWindowRatio": 1.15,
+    "groundWindowRatio": 1.37,
     "doorRatio": 0.8,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -1555,6 +1599,16 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "windows"
+    },
+    "corniceRatio": 0.119,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -1900,12 +1954,12 @@
     ],
     "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably.",
     "storeyShares": [
-     0.4,
-     0.22,
-     0.19,
+     0.387,
+     0.225,
+     0.198,
      0.19
     ],
-    "groundWindowRatio": 1.27,
+    "groundWindowRatio": 1.23,
     "doorRatio": 0.53,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -1942,6 +1996,15 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio"
+     ],
+     "note": "the crop cuts the cornice off: no cornice zone"
     }
    },
    "crownRead": {
@@ -2027,12 +2090,12 @@
     ],
     "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width.",
     "storeyShares": [
-     0.4,
-     0.24,
-     0.2,
-     0.16
+     0.394,
+     0.241,
+     0.193,
+     0.172
     ],
-    "groundWindowRatio": 1.16,
+    "groundWindowRatio": 1.22,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
      "fields": [
@@ -2068,6 +2131,16 @@
      "centreLight": "round",
      "consoles": "even",
      "frieze": "panels"
+    },
+    "corniceRatio": 0.17,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -2156,12 +2229,12 @@
      "wallColour"
     ],
     "storeyShares": [
-     0.33,
-     0.24,
-     0.22,
-     0.21
+     0.431,
+     0.209,
+     0.183,
+     0.176
     ],
-    "groundWindowRatio": 1.6,
+    "groundWindowRatio": 1.76,
     "doorRatio": 0.72,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -2209,6 +2282,16 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.159,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -2297,12 +2380,12 @@
     ],
     "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts.",
     "storeyShares": [
-     0.38,
-     0.22,
-     0.2,
-     0.2
+     0.41,
+     0.231,
+     0.173,
+     0.185
     ],
-    "groundWindowRatio": 1.5,
+    "groundWindowRatio": 1.58,
     "doorRatio": 0.62,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -2351,6 +2434,16 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "panels"
+    },
+    "corniceRatio": 0.135,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -2441,11 +2534,11 @@
      "roofStorey"
     ],
     "storeyShares": [
-     0.38,
-     0.31,
-     0.31
+     0.492,
+     0.269,
+     0.239
     ],
-    "groundWindowRatio": 0.95,
+    "groundWindowRatio": 1.6,
     "doorRatio": 0.68,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -2485,6 +2578,16 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.163,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -2522,7 +2625,7 @@
    "answer": {
     "readable": true,
     "storeys": 3,
-    "bays": 6,
+    "bays": 5,
     "crown": "cornice",
     "cornice": "attic-frieze",
     "roofStorey": "attic",
@@ -2572,11 +2675,11 @@
     ],
     "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey.",
     "storeyShares": [
-     0.4,
-     0.33,
-     0.27
+     0.378,
+     0.327,
+     0.294
     ],
-    "groundWindowRatio": 1.27,
+    "groundWindowRatio": 1.29,
     "doorRatio": 0.7,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -2611,6 +2714,18 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "windows"
+    },
+    "corniceRatio": 0.171,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "bays",
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ],
+     "note": "five window axes, the door in the middle one (two, door, two); the read said six"
     }
    },
    "crownRead": {
@@ -2700,12 +2815,12 @@
      "heads"
     ],
     "storeyShares": [
-     0.3,
-     0.25,
-     0.23,
-     0.22
+     0.368,
+     0.239,
+     0.199,
+     0.194
     ],
-    "groundWindowRatio": 1.15,
+    "groundWindowRatio": 1.21,
     "doorRatio": 0.6,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -2758,6 +2873,16 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "panels"
+    },
+    "corniceRatio": 0.196,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -2985,11 +3110,11 @@
      "stoop"
     ],
     "storeyShares": [
-     0.4,
-     0.31,
-     0.29
+     0.493,
+     0.258,
+     0.249
     ],
-    "groundWindowRatio": 1.45,
+    "groundWindowRatio": 1.43,
     "doorRatio": 0.9,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3032,6 +3157,15 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio"
+     ],
+     "note": "neck gable: three storeys under the claw pieces"
     }
    },
    "crownRead": {
@@ -3115,12 +3249,12 @@
      "facadeYear"
     ],
     "storeyShares": [
-     0.33,
-     0.22,
-     0.23,
-     0.22
+     0.331,
+     0.226,
+     0.214,
+     0.229
     ],
-    "groundWindowRatio": 1.5,
+    "groundWindowRatio": 1.05,
     "doorRatio": 0.78,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3159,6 +3293,17 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.191,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ],
+     "note": "corniceBottom under the attic light (the attic storey is the frieze zone)"
     }
    },
    "crownRead": {
@@ -3195,7 +3340,7 @@
    "costUsd": 0.02103,
    "answer": {
     "readable": true,
-    "storeys": 5,
+    "storeys": 4,
     "bays": 5,
     "crown": "cornice",
     "cornice": "heavy",
@@ -3247,13 +3392,12 @@
     ],
     "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology.",
     "storeyShares": [
-     0.2,
-     0.24,
-     0.19,
-     0.19,
-     0.18
+     0.401,
+     0.226,
+     0.182,
+     0.19
     ],
-    "groundWindowRatio": 0.55,
+    "groundWindowRatio": 1.33,
     "doorRatio": 0.85,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3288,6 +3432,18 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.194,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeys",
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ],
+     "note": "four window rows over a basement band (860-975 px, doors at pavement level): the ground storey runs from the pavement to the first floor with the band in it; the read counted the band as a fifth storey"
     }
    },
    "crownRead": {
@@ -3377,10 +3533,10 @@
     ],
     "storeyShares": [
      0.46,
-     0.35,
-     0.19
+     0.339,
+     0.202
     ],
-    "groundWindowRatio": 1.24,
+    "groundWindowRatio": 1.33,
     "doorRatio": 0.66,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3423,6 +3579,15 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio"
+     ],
+     "note": "gable: corniceBottom is the gable foot ledge"
     }
    },
    "crownRead": {
@@ -3508,11 +3673,11 @@
      "dormers"
     ],
     "storeyShares": [
-     0.42,
-     0.3,
-     0.28
+     0.47,
+     0.264,
+     0.266
     ],
-    "groundWindowRatio": 1.3,
+    "groundWindowRatio": 1.32,
     "doorRatio": 0.6,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3552,6 +3717,16 @@
      "centreLight": "square",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.115,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -3762,12 +3937,12 @@
      "facadeYear"
     ],
     "storeyShares": [
-     0.28,
-     0.26,
-     0.25,
-     0.21
+     0.361,
+     0.227,
+     0.223,
+     0.189
     ],
-    "groundWindowRatio": 1.2,
+    "groundWindowRatio": 1.23,
     "doorRatio": 0.85,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3815,6 +3990,16 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.134,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -3900,11 +4085,11 @@
      "storeys"
     ],
     "storeyShares": [
-     0.4,
-     0.3,
-     0.3
+     0.42,
+     0.297,
+     0.283
     ],
-    "groundWindowRatio": 1.05,
+    "groundWindowRatio": 1.04,
     "doorRatio": 0.6,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -3944,6 +4129,17 @@
      "centreLight": "square",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.091,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ],
+     "note": "corniceTop at the side wings; the raised centre attic stands over it"
     }
    },
    "crownRead": {
@@ -4029,9 +4225,9 @@
      "wallFinish"
     ],
     "storeyShares": [
-     0.41,
-     0.31,
-     0.28
+     0.463,
+     0.295,
+     0.242
     ],
     "groundWindowRatio": 1.24,
     "doorRatio": 0.83,
@@ -4076,6 +4272,15 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio"
+     ],
+     "note": "neck gable: corniceBottom is the eaves line under the claw pieces"
     }
    },
    "crownRead": {
@@ -4162,12 +4367,12 @@
      "stoopFlight"
     ],
     "storeyShares": [
-     0.33,
-     0.24,
-     0.23,
-     0.2
+     0.403,
+     0.211,
+     0.179,
+     0.207
     ],
-    "groundWindowRatio": 1.3,
+    "groundWindowRatio": 1.39,
     "doorRatio": 0.75,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -4215,6 +4420,16 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "oculi"
+    },
+    "corniceRatio": 0.208,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -4302,11 +4517,11 @@
      "cornice"
     ],
     "storeyShares": [
-     0.4,
-     0.34,
-     0.26
+     0.462,
+     0.31,
+     0.228
     ],
-    "groundWindowRatio": 1.25,
+    "groundWindowRatio": 1.36,
     "doorRatio": 0.72,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -4343,6 +4558,16 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.128,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -4557,13 +4782,13 @@
      "heads"
     ],
     "storeyShares": [
-     0.24,
-     0.18,
-     0.18,
-     0.2,
-     0.2
+     0.351,
+     0.179,
+     0.167,
+     0.151,
+     0.151
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.2,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
      "fields": [
@@ -4611,6 +4836,16 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.106,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -4697,11 +4932,11 @@
      "cornice"
     ],
     "storeyShares": [
-     0.4,
-     0.3,
-     0.3
+     0.488,
+     0.273,
+     0.24
     ],
-    "groundWindowRatio": 1.2,
+    "groundWindowRatio": 1.3,
     "doorRatio": 0.5,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -4738,6 +4973,16 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.138,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -4956,12 +5201,12 @@
      "wallColour"
     ],
     "storeyShares": [
-     0.29,
-     0.25,
-     0.23,
-     0.23
+     0.381,
+     0.221,
+     0.204,
+     0.195
     ],
-    "groundWindowRatio": 1.05,
+    "groundWindowRatio": 1.24,
     "doorRatio": 0.8,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -5014,6 +5259,16 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.163,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -5105,11 +5360,11 @@
      "facadeYear"
     ],
     "storeyShares": [
-     0.43,
-     0.29,
-     0.28
+     0.464,
+     0.268,
+     0.268
     ],
-    "groundWindowRatio": 1.25,
+    "groundWindowRatio": 1.68,
     "doorRatio": 0.47,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -5160,6 +5415,16 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "panels"
+    },
+    "corniceRatio": 0.171,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {
@@ -5247,12 +5512,12 @@
      "roofStorey"
     ],
     "storeyShares": [
-     0.35,
-     0.22,
-     0.22,
-     0.21
+     0.415,
+     0.207,
+     0.179,
+     0.199
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.62,
     "doorRatio": 0.85,
     "measured": {
      "by": "self-check pass2 (claude-opus-5-5, photo profile)",
@@ -5289,6 +5554,16 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "plain"
+    },
+    "corniceRatio": 0.206,
+    "pixelMeasured": {
+     "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+     "at": "2026-11-21",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "corniceRatio"
+     ]
     }
    },
    "crownRead": {

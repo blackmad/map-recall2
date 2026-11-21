@@ -106,7 +106,10 @@ export type FrontageBays = { bays?: number; axesPerCell: number; storeys?: numbe
   /** H11: `nearest` draws the nearest count the clamp allows and lets the ground storey yield first; absent = H9's exact fit. */
   fit?: 'nearest';
   /** Lane WG: a souterrain ground cell may go down to this ground scale (SPEC_SOUTERRAIN_GROUND_MIN), below SPEC_GROUND_SCALE.min. */
-  groundMin?: number };
+  groundMin?: number;
+  /** Belt review (a solo plot's measured storey profile): the ground scale may go up to this, over SPEC_GROUND_SCALE.max
+   *  (Herengracht 12, 56, 60, 62: a 6-7 m ground storey under a 16-17 m eaves held at 5.61 m). Absent = byte-identical. */
+  groundMax?: number };
 /** Storey pitch scale a stated storey count may set (lane H9): 0.75..1.45 of the style's storey (2.2..4.5 m). */
 export const SPEC_STOREY_SCALE = { min: 0.75, max: 1.45 } as const;
 /** A stated ground-storey height (H11) stays within these multiples of the style's nominal ground storey. */
@@ -126,12 +129,13 @@ const clampTo = (v: number, r: { min: number; max: number }) => Math.min(r.max, 
  *    both (3DBAG's eaves under a measured cornice) the ground storey gives way first, down to SPEC_GROUND_SCALE.min,
  *    then the pitch clamps to the nearest count. Null only with no upper storey or no room above the ground.
  */
-export function specStoreyFit(style: MeshBuilding['style'], exposedM: number, storeys: number, groundScale: number, opts: { groundM?: number; fit?: 'nearest'; groundMin?: number } = {}): { storey: number; ground: number } | null {
+export function specStoreyFit(style: MeshBuilding['style'], exposedM: number, storeys: number, groundScale: number, opts: { groundM?: number; fit?: 'nearest'; groundMin?: number; groundMax?: number } = {}): { storey: number; ground: number } | null {
   const dims = STYLE_DIMS[style], upper = Math.floor(storeys) - 1;
   if (!(upper >= 1) || !(exposedM > 0)) return null;
   let ground = groundScale;
   if (opts.fit === 'nearest') {
-    const range = opts.groundMin !== undefined ? { min: opts.groundMin, max: SPEC_GROUND_SCALE.max } : SPEC_GROUND_SCALE;
+    const max = opts.groundMax !== undefined && opts.groundMax > SPEC_GROUND_SCALE.max ? opts.groundMax : SPEC_GROUND_SCALE.max;
+    const range = opts.groundMin !== undefined || max !== SPEC_GROUND_SCALE.max ? { min: opts.groundMin ?? SPEC_GROUND_SCALE.min, max } : SPEC_GROUND_SCALE;
     if (opts.groundM && opts.groundM > 0) ground = clampTo(opts.groundM / dims.ground, range);
     const room = exposedM - upper * dims.storey * SPEC_STOREY_SCALE.min;
     if (dims.ground * ground > room) ground = Math.max(range.min, Math.min(ground, room / dims.ground));
@@ -180,7 +184,7 @@ export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fal
   const scale=recipeLayoutScale(recipe,fallback);
   if (recipe?.openingGroup) return {...scale,bay:lengthM/STYLE_DIMS[style].bay};
   // A HouseSpec's storey count (no street-appearance recipe): the storey pitch that draws that many storeys.
-  const fit = !recipe && spec?.storeys && spec.exposedM ? specStoreyFit(style, spec.exposedM, spec.storeys, scale.ground, { groundM: spec.groundM, fit: spec.fit, ...(spec.groundMin !== undefined ? { groundMin: spec.groundMin } : {}) }) : null;
+  const fit = !recipe && spec?.storeys && spec.exposedM ? specStoreyFit(style, spec.exposedM, spec.storeys, scale.ground, { groundM: spec.groundM, fit: spec.fit, ...(spec.groundMin !== undefined ? { groundMin: spec.groundMin } : {}), ...(spec.groundMax !== undefined ? { groundMax: spec.groundMax } : {}) }) : null;
   const scaled = fit ? {...scale, ...fit} : scale;
   const bays = recipe?.bays ?? spec?.bays;
   if (!(bays && bays > 0 && lengthM > 0)) return scaled;

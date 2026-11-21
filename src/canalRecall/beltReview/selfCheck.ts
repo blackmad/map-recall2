@@ -40,7 +40,28 @@ export interface StoreyProfile {
    *  a share of the ground storey (which runs from the pavement to the first floor); null when there is none. */
   basementRatio?: number | null;
 }
-export interface SelfCheckAnswer { photo: StoreyProfile; drawing: StoreyProfile; differences: SelfCheckDiff[]; good: boolean }
+export interface SelfCheckAnswer { photo: StoreyProfile; drawing: StoreyProfile; differences: SelfCheckDiff[];
+  /** David's bar (2026-11-21): colour and finish, roofline and crown, white detail, window rows, the house count. */
+  good: boolean;
+  /** The strict reviewer's verdict (every miss counts, the pre-2026-11-21 "good"). */
+  strictGood?: boolean }
+
+/**
+ * David's bar (decided 2026-11-21). A house passes when, in priority order, these match the photo: colour and finish;
+ * roofline and gable or crown shape, cornice depth included; white detail (frames, heads, bands); window rows (storeys,
+ * bays, storey heights, ground-floor height and ground windows); the house count. Missing carved ornament, doors, stoops,
+ * lanterns, basements and the like are kit gaps and never fail a house. A major difference in one of these fields fails it.
+ */
+export const BAR_FIELDS: ReadonlySet<SelfCheckField> = new Set<SelfCheckField>([
+  'wallColour', 'wallFinish', 'crown', 'cornice', 'roofStorey', 'whiteFrames', 'whiteHeads', 'speklagen', 'stringCourses',
+  'storeys', 'bays', 'storeyHeights', 'groundHeight', 'ground', 'groundWindows', 'houses', 'width', 'heads',
+]);
+/** The differences that fail David's bar (major, in a BAR_FIELDS field). */
+export function barBlockers<D extends Pick<SelfCheckDiff, 'field' | 'severity'>>(diffs: Iterable<D>): D[] {
+  return [...diffs].filter(d => d.severity === 'major' && BAR_FIELDS.has(fieldOf(d.field)));
+}
+/** True when no difference fails David's bar. */
+export const passesBar = (diffs: Iterable<Pick<SelfCheckDiff, 'field' | 'severity'>>): boolean => barBlockers(diffs).length === 0;
 
 export function selfCheckPrompt(address: string, read: unknown): string {
   return `You check a procedural drawing of ONE Amsterdam canal house front (${address}) against its photo, before a human reviewer sees it.
@@ -73,7 +94,13 @@ shows a different number of houses than the drawing.
 expected: what the photo shows (under 15 words). seen: what the drawing shows instead (under 15 words).
 severity: "major" if it changes recognition (storeys, roof/crown, colour family, white frames, ground height/use, bays), else "minor".
 
-Task 3: "good": would a strict reviewer who knows the street accept this drawing? He rejects it for ANY of: a wrong storey
+Task 3: two verdicts.
+"good" is David's bar: true when ALL of these match the photo: (1) the wall colour family and finish (brick, paint, stucco);
+(2) the roofline and the gable or crown shape, cornice depth included; (3) the white detail: window frames, window heads,
+bands; (4) the window rows: storey count, bays, storey heights, the ground storey's height and its windows; (5) the house
+count (two houses are not drawn as one, one not as two). Missing carved ornament, doors, stoops, lanterns, basement
+detail and the like do NOT fail "good" (list them as kit differences).
+"strictGood": would a strict reviewer who knows the street accept this drawing? He rejects it for ANY of: a wrong storey
 count or storey profile (e.g. equal storeys where the photo has a tall ground storey and a low top storey), a squat ground
 floor or small ground windows/door, the wrong window-frame colour, the wrong window-head shape, a missing basement band or
 attic storey, two houses drawn as one (or one as two), a thin cornice where the photo has a deep one, the wrong roof/crown
@@ -82,7 +109,7 @@ form or the wrong colour family. Be strict: true only if none of these apply.
 Reply with JSON only:
 {"photo":{"fractions":[0.3,0.25,0.24,0.21],"groundWindowRatio":1.2,"doorRatio":0.8,"crownRiseRatio":null,"basementRatio":0.3},
  "drawing":{"fractions":[0.25,0.25,0.25,0.25],"groundWindowRatio":0.6,"doorRatio":0.6,"crownRiseRatio":null,"basementRatio":null},
- "differences":[{"class":"wiring","field":"storeys","expected":"4 storeys","seen":"3 storeys","severity":"major"}],"good":false}`;
+ "differences":[{"class":"wiring","field":"storeys","expected":"4 storeys","seen":"3 storeys","severity":"major"}],"good":false,"strictGood":false}`;
 }
 
 const isIn = (xs: readonly string[], v: unknown) => typeof v === 'string' && xs.includes(v);

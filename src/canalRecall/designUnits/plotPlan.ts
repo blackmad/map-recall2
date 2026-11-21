@@ -56,7 +56,8 @@ export function plotWhite(year: number | null | undefined, facts: PlotFacts | un
 export const PLOT_ROOFS = ['flat', 'dormers', 'mansard', 'pointedGable', 'stepGable', 'bellGable'] as const;
 export type PlotRoof = (typeof PLOT_ROOFS)[number];
 export type PlotDormer = 'pediment' | 'gabled' | 'plain' | 'ornate-pinnacle';
-export const HEAD_SHAPES = ['flat', 'segmental', 'round'] as const;
+/** `relieving` (bar-fixes 2026-11-21): a flat head under a brick relieving arch (headGrammar.ts `relieving-*`). */
+export const HEAD_SHAPES = ['flat', 'segmental', 'round', 'relieving'] as const;
 export type HeadShape = (typeof HEAD_SHAPES)[number];
 /** A plot gable as read (ring-r2 verdicts, 2026-11-21: Admiraal De Ruijterweg "not tall enough and missing the window in
  *  the triangle"; Jan Luijkenstraat 160504/166029 "an offset triangle roof that doesn't go the whole width"). */
@@ -110,6 +111,9 @@ export interface PlotFacts {
   cornice?: 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** Belt review crown read: the cornice's parts as read (houseSpec/row/types.ts RowCorniceDress), over the kind's own. */
   corniceForm?: Pick<RowCorniceDress, 'supports' | 'supportsAt' | 'frieze' | 'centre' | 'centreShare' | 'centreRiseM' | 'centreCap' | 'centreLight'>;
+  /** Belt review, measured on the crop: the cornice zone's depth (m), its foot over the top storey to the cornice's top
+   *  (frieze, attic band, bed moulding and corona). The timber cornice is drawn at this depth; absent: the kind's own. */
+  corniceDepthM?: number;
   /** The street door: its 0-based place among `of` ground-storey openings, left to right as seen. */
   door?: { index: number; of: number; surround?: boolean; /** Belt review: a fanlight over the door as read. */ fanlight?: boolean };
   /** Street-furniture kit parts the read names (facadeExtras.ts `hoist-beam`, `wall-anchors`), forced as stated. */
@@ -209,7 +213,13 @@ export function fillRoofPattern(order: string[], plots: Record<string, PlotFacts
 /** The window head the kit draws for a plot: its white dressing as read, else a brick arch ring over an arched head. */
 export function plotHeads(facts: PlotFacts | undefined): { dressing: string; shape: HeadShape } | null {
   const shape = facts?.headShape, white = facts?.whiteHeads ?? 'none';
-  if (white !== 'none') { const w = WHITE_HEAD_DRESSING[white]; return { dressing: w.dressing, shape: shape ?? w.shape }; }
+  // A relieving arch over a flat head, its white key (and feet) as read; a white lintel band stays the lintel.
+  // A flat head with white blocks is the block surround's keyed flat head, not an arch (Herengracht 88: "flat window heads"
+  // drawn as "arched heads with keystone blocks"); a segmental head with a white band is a white ring of its arch (74).
+  if (shape === 'flat' && white === 'blocks') return { dressing: 'block-surround', shape: 'flat' };
+  if (shape === 'segmental' && white === 'band') return { dressing: 'arched-frame', shape: 'segmental' };
+  if (shape === 'relieving' && white !== 'band') return { dressing: white === 'keystone' ? 'relieving-key' : white === 'blocks' ? 'relieving-blocks' : 'relieving-arch', shape: 'flat' };
+  if (white !== 'none') { const w = WHITE_HEAD_DRESSING[white]; return { dressing: w.dressing, shape: shape === 'relieving' ? w.shape : shape ?? w.shape }; }
   return shape && shape !== 'flat' ? { dressing: 'brick-arch-ring', shape } : null;
 }
 

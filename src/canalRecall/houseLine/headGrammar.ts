@@ -60,6 +60,12 @@ export const HEAD = { block: 0.16, minBlocks: 5, rise: 1 / 6, minRise: 0.22, key
 export function headGrammarOf(dressing: string | undefined, shape: string | undefined): HeadGrammar | null {
   const arch: HeadShape = shape === 'round' ? 'round' : shape === 'segmental' ? 'segmental' : 'flat';
   switch (dressing) {
+    // A relieving-arch head without a tablet (bar-fixes 2026-11-21, Herengracht 14 and 56: "arched relieving heads over
+    // every window" drawn as plain square heads): the brick ring over the flat head; a white key on its crown (`-key`);
+    // a key and white blocks at its feet (`-blocks`).
+    case 'relieving-arch': return { shape: 'flat', relieving: true };
+    case 'relieving-key': return { shape: 'flat', relieving: true, keystone: 'plain' };
+    case 'relieving-blocks': return { shape: 'flat', relieving: true, keystone: 'plain', springers: true };
     // A white key on a brick arch of fanned voussoirs (Kinkerstraat 98/96/92): the arch is the window's own shape.
     case 'keystone': return { shape: arch, voussoirs: { alternate: 'brick', depth: 0.24 }, keystone: 'raised' };
     // Jack blocks (Weteringschans 168096, 168042, 169016; head sheet 2026-11-14): a white lintel slab wider than the
@@ -104,6 +110,7 @@ export function headRise(g: HeadGrammar, span: number): number {
   const arch = g.shape === 'round' ? span / 2 : g.shape === 'segmental' ? segRise(span) : 0;
   const key = g.keystone ? Math.max(HEAD.keyH - HEAD.keyDown - ring, g.keystone === 'plain' ? 0 : HEAD.keyUp) : 0;
   if (g.tablet) return tabletFoot(g, span) + HEAD.tablet.h;
+  if (g.relieving) return HEAD.relieve.lift + relieveRise(span) + HEAD.relieve.depth + (g.keystone ? HEAD.keyUp : 0);
   const crown = g.crown === 'jack-blocks' ? HEAD.jack.mid : 0, base = g.lintel && !g.voussoirs ? HEAD.lintel : arch + ring;
   const corner = g.cornerBlocks ? HEAD.corner.h - HEAD.corner.down : 0;
   const hood = g.hood ? (g.shape === 'flat' ? HEAD.architrave.w : arch + ring) + HEAD.hoodM.gap + HEAD.hoodM.h : 0;
@@ -126,17 +133,29 @@ const tone = (p: VoussoirPattern, i: number, n: number): HeadTone =>
 export function headPieces(g: HeadGrammar, x0: number, x1: number, z: number, sill?: number): HeadPiece[] {
   const out: HeadPiece[] = [], L = x1 - x0, m = (x0 + x1) / 2;
   if (L <= 0.05) return out;
-  if (g.tablet) {
-    if (g.relieving) {
-      // The relieving arch: a shallow segmental ring of brick headers springing just outside the jambs, its segment brick.
-      // It springs over the window's white frame head (blind review: inside the frame it read as a dark glass fanlight).
-      const R0 = HEAD.relieve, l = x0 - R0.over, r = x1 + R0.over, S = r - l, rise = relieveRise(L), zs = z + R0.lift, Rr = (S * S / 4 + rise * rise) / (2 * rise), cz = zs + rise - Rr;
-      const half = Math.asin(Math.min(1, S / 2 / Rr)), n = Math.max(HEAD.minBlocks, Math.round(2 * half * Rr / 0.11)) | 1;
-      const pt = (t: number, d: number): [number, number] => { const a = -half + 2 * half * t; return [m + (Rr + d) * Math.sin(a), cz + (Rr + d) * Math.cos(a)]; };
-      for (let i = 0; i < 8; i++) out.push({ pts: [[pt(i / 8, 0)[0], zs], [pt((i + 1) / 8, 0)[0], zs], pt((i + 1) / 8, 0), pt(i / 8, 0)], tone: 'brick', out: HEAD.out * 0.4 });
-      // The ring's headers in the darker burnt brick, so the arch reads against the wall.
-      for (let i = 0; i < n; i++) out.push({ pts: [pt(i / n, 0), pt((i + 1) / n, 0), pt((i + 1) / n, R0.depth), pt(i / n, R0.depth)], tone: i % 2 ? 'stone' : 'brick', out: HEAD.out * 0.6 + (i % 2) * 0.004 });
+  const relieve = () => {
+    // The relieving arch: a shallow segmental ring of brick headers springing just outside the jambs, its segment brick.
+    // It springs over the window's white frame head (blind review: inside the frame it read as a dark glass fanlight).
+    const R0 = HEAD.relieve, l = x0 - R0.over, r = x1 + R0.over, S = r - l, rise = relieveRise(L), zs = z + R0.lift, Rr = (S * S / 4 + rise * rise) / (2 * rise), cz = zs + rise - Rr;
+    const half = Math.asin(Math.min(1, S / 2 / Rr)), n = Math.max(HEAD.minBlocks, Math.round(2 * half * Rr / 0.11)) | 1;
+    const pt = (t: number, d: number): [number, number] => { const a = -half + 2 * half * t; return [m + (Rr + d) * Math.sin(a), cz + (Rr + d) * Math.cos(a)]; };
+    for (let i = 0; i < 8; i++) out.push({ pts: [[pt(i / 8, 0)[0], zs], [pt((i + 1) / 8, 0)[0], zs], pt((i + 1) / 8, 0), pt(i / 8, 0)], tone: 'brick', out: HEAD.out * 0.4 });
+    // The ring's headers in the darker burnt brick, so the arch reads against the wall.
+    for (let i = 0; i < n; i++) out.push({ pts: [pt(i / n, 0), pt((i + 1) / n, 0), pt((i + 1) / n, R0.depth), pt(i / n, R0.depth)], tone: i % 2 ? 'stone' : 'brick', out: HEAD.out * 0.6 + (i % 2) * 0.004 });
+    return { l, r, zs, crown: zs + rise };
+  };
+  if (g.relieving && !g.tablet) {
+    // A plain relieving arch (no tablet): the ring, a white key on its crown, white blocks at its feet as read.
+    const ring = relieve(), R0 = HEAD.relieve;
+    if (g.keystone) {
+      const k0 = ring.crown - HEAD.keyDown, k1 = ring.crown + R0.depth + HEAD.keyUp;
+      out.push({ pts: [[m - HEAD.keyW / 2, k0], [m + HEAD.keyW / 2, k0], [m + HEAD.keyTopW / 2, k1], [m - HEAD.keyTopW / 2, k1]], tone: 'white', out: HEAD.keyOut });
     }
+    if (g.springers) for (const x of [ring.l, ring.r - HEAD.springerW]) out.push({ pts: [[x, ring.zs - 0.02], [x + HEAD.springerW, ring.zs - 0.02], [x + HEAD.springerW, ring.zs + HEAD.springerH], [x, ring.zs + HEAD.springerH]], tone: 'white', out: HEAD.out });
+    return out;
+  }
+  if (g.tablet) {
+    if (g.relieving) relieve();
     const T = HEAD.tablet, zb = z + tabletFoot(g, L);
     out.push({ pts: [[m - T.w / 2, zb], [m + T.w / 2, zb], [m + T.w / 2, zb + T.h], [m - T.w / 2, zb + T.h]], tone: 'white', out: T.out });
     return out;

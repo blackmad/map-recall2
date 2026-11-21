@@ -712,6 +712,9 @@ function splitAtBreaks(a0: number, a1: number, subs: ReadonlyArray<{ a0: number;
 }
 
 /** Whether a wall's edge runs left to right as seen from the street in front of it (x east, y north, outward normal). */
+/** A solo plot's measured ground storey may draw up to this many times the style's ground (streetFacadeRendering.ts
+ *  FrontageBays.groundMax): the measured share is the photo's, not a guess the clamp should second-guess. */
+export const SOLO_GROUND_SCALE_MAX = 2.4;
 /** The least basement band a measured one draws (m): the belt's souterrains stand 1-1.5 m over the pavement, and the crop
  *  measures under-read a band below the stoop (self-check pass 4: 22 "no basement band" at 0.12-0.2 of the ground). */
 export const SOLO_BASEMENT_MIN_M = 1.0;
@@ -1049,7 +1052,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const soloStoreys = b.designSolo && b.designStoreys && streetRun && !b.recipe && base < 0.5 ? b.designStoreys : null;
       if (soloStoreys && specBays) {
         const exposedM = top - parapetSpec - base, sh = soloStoreys.shares, sum = sh ? sh.reduce((a, x) => a + x, 0) : 0;
-        Object.assign(specBays, { storeys: soloStoreys.storeys, exposedM, fit: 'nearest' as const, groundM: sh && sum > 0 ? +(exposedM * sh[0] / sum).toFixed(3) : soloStoreys.groundM });
+        Object.assign(specBays, { storeys: soloStoreys.storeys, exposedM, fit: 'nearest' as const, groundM: sh && sum > 0 ? +(exposedM * sh[0] / sum).toFixed(3) : soloStoreys.groundM, ...(sh && sum > 0 ? { groundMax: SOLO_GROUND_SCALE_MAX } : {}) });
       }
       // ... and its read bay count as stated, down to the row axis floor (as a house-row series' count).
       if (soloStoreys && specBays?.bays) specBays.exact = true;

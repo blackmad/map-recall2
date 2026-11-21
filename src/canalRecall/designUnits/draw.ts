@@ -287,6 +287,24 @@ export function soloCorniceBandM(dress: RowCorniceDress): number {
   const K = { corona: 0.2, bed: 0.16, architrave: 0.1, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85, oculi: 0.85 } } as const;
   return +((dress.scale ?? 1) * (K.corona + K.bed + (dress.frieze ? K.architrave + K.frieze[dress.frieze] : dress.supports === 'consoles' ? 0.45 : 0))).toFixed(2);
 }
+/** A simple cornice measured at least this deep (m) has a frieze under it (Herengracht 24: "deep cream cornice with a tall
+ *  plain frieze board", drawn as a thin band): the timber cornice with a plain frieze. */
+export const SOLO_DEEP_SIMPLE_M = 0.9;
+export const SOLO_DEEP_SIMPLE_DRESS: RowCorniceDress = { frieze: 'plain', scale: 1 };
+/** The scale a measured cornice depth may set on the timber cornice (its stock depths run 0.36-1.31 m at scale 1). */
+export const SOLO_CORNICE_SCALE = { min: 0.8, max: 3.2 } as const;
+/**
+ * A timber cornice at the measured depth (bar-fixes 2026-11-21: 14 majors "deep cornice drawn as a thin band", the crops'
+ * cornice zones 0.09-0.21 of the front, 1.3-3.6 m, against 1.0-1.8 m drawn): the scale that makes its band the depth,
+ * within SOLO_CORNICE_SCALE. Unmeasured: the dress as it was.
+ */
+export function soloDressAtDepth(dress: RowCorniceDress, depthM: number | undefined): RowCorniceDress {
+  if (!(typeof depthM === 'number' && depthM > 0)) return dress;
+  const unit = soloCorniceBandM({ ...dress, scale: 1 });
+  if (!(unit > 0)) return dress;
+  const scale = +Math.min(SOLO_CORNICE_SCALE.max, Math.max(SOLO_CORNICE_SCALE.min, depthM / unit)).toFixed(2);
+  return { ...dress, scale };
+}
 /** White frames as the belt read paints them (the sash bars and frames, the texture's accent channel); dark otherwise. */
 export const SOLO_FRAME_HEX = { white: '#f1efe8', dark: '#2b302c' } as const;
 
@@ -305,8 +323,10 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
   const kind = f?.attic && f.cornice !== 'attic-frieze' ? 'attic-frieze' : f?.cornice;
   // A crown read's cornice parts over the kind's own (a simple cornice takes the timber cornice when it states any).
   const cform = f?.corniceForm && Object.keys(f.corniceForm).length ? f.corniceForm : undefined;
-  const base = kind ? SOLO_CORNICE_DRESS[kind] ?? (cform ? SOLO_SIMPLE_DRESS : undefined) : undefined;
-  const dress = !gabled && base ? (cform ? { ...base, ...cform } : base) : undefined;
+  // A measured cornice zone deep enough for a frieze draws a simple cornice as the timber cornice with a plain frieze.
+  const deep = (f?.corniceDepthM ?? 0) >= SOLO_DEEP_SIMPLE_M;
+  const base = kind ? SOLO_CORNICE_DRESS[kind] ?? (cform ? SOLO_SIMPLE_DRESS : deep ? SOLO_DEEP_SIMPLE_DRESS : undefined) : undefined;
+  const dress = !gabled && base ? soloDressAtDepth(cform ? { ...base, ...cform } : base, f?.corniceDepthM) : undefined;
   // The ground openings as measured, and the street door in a doorcase (a stone case when read dressed, else the belt's
   // white timber frame; a fanlight when read; the belt's near-black leaf).
   if (f?.groundOpenings && plan.ground !== 'shop') out.designGround = { ...f.groundOpenings };

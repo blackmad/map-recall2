@@ -328,13 +328,14 @@
      "cornice: white plastered top band/attic parapet above the cornice"
     ],
     "storeyShares": [
-     0.31,
-     0.24,
-     0.23,
-     0.22
+     0.393,
+     0.242,
+     0.185,
+     0.181
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.48,
     "doorRatio": 0.75,
+    "corniceRatio": 0.089,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -680,7 +681,7 @@
    "order": 2,
    "fields": {
     "storeys": {
-     "value": 2,
+     "value": 3,
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
@@ -905,8 +906,13 @@
      "ground storey whitewashed/stuccoed with white pilasters under a brick fascia",
      "door is black panelled with glazed fanlight in white frame"
     ],
+    "storeyShares": [
+     0.486,
+     0.261,
+     0.254
+    ],
     "crownRiseM": 6.04,
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.77,
     "doorRatio": 0.7,
     "basementRatio": 0.12,
     "crownForm": {
@@ -1438,13 +1444,14 @@
      "ground-storey shopfront with pilastered stucco frame and fascia"
     ],
     "storeyShares": [
-     0.32,
-     0.25,
-     0.23,
-     0.2
+     0.377,
+     0.235,
+     0.198,
+     0.19
     ],
     "groundWindowRatio": 1.1,
     "doorRatio": 0.75,
+    "corniceRatio": 0.072,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -3017,14 +3024,15 @@
      "cream-painted cornice and frieze against a dark-grey painted wall"
     ],
     "storeyShares": [
-     0.22,
-     0.2,
-     0.21,
+     0.289,
+     0.204,
      0.19,
-     0.18
+     0.163,
+     0.154
     ],
-    "groundWindowRatio": 1.15,
+    "groundWindowRatio": 1.37,
     "doorRatio": 0.8,
+    "corniceRatio": 0.119,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -3833,12 +3841,12 @@
     ],
     "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably.",
     "storeyShares": [
-     0.4,
-     0.22,
-     0.19,
+     0.387,
+     0.225,
+     0.198,
      0.19
     ],
-    "groundWindowRatio": 1.27,
+    "groundWindowRatio": 1.23,
     "doorRatio": 0.53,
     "basementRatio": 0.37,
     "crownForm": {
@@ -4149,12 +4157,13 @@
     ],
     "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width.",
     "storeyShares": [
-     0.4,
-     0.24,
-     0.2,
-     0.16
+     0.394,
+     0.241,
+     0.193,
+     0.172
     ],
-    "groundWindowRatio": 1.16,
+    "groundWindowRatio": 1.22,
+    "corniceRatio": 0.17,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -4434,14 +4443,15 @@
      "rusticated stucco band at basement level"
     ],
     "storeyShares": [
-     0.33,
-     0.24,
-     0.22,
-     0.21
+     0.431,
+     0.209,
+     0.183,
+     0.176
     ],
-    "groundWindowRatio": 1.6,
+    "groundWindowRatio": 1.76,
     "doorRatio": 0.72,
     "basementRatio": 0.2,
+    "corniceRatio": 0.159,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -4708,14 +4718,15 @@
     ],
     "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts.",
     "storeyShares": [
-     0.38,
-     0.22,
-     0.2,
-     0.2
+     0.41,
+     0.231,
+     0.173,
+     0.185
     ],
-    "groundWindowRatio": 1.5,
+    "groundWindowRatio": 1.58,
     "doorRatio": 0.62,
     "basementRatio": 0.12,
+    "corniceRatio": 0.135,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -4915,13 +4926,14 @@
      "door: round-arched stone doorcase with carved archivolt"
     ],
     "storeyShares": [
-     0.38,
-     0.31,
-     0.31
+     0.492,
+     0.269,
+     0.239
     ],
-    "groundWindowRatio": 0.95,
+    "groundWindowRatio": 1.6,
     "doorRatio": 0.68,
     "basementRatio": 0.2,
+    "corniceRatio": 0.163,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -4986,7 +4998,7 @@
      ]
     },
     "bays": {
-     "value": 6,
+     "value": 5,
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
@@ -5203,12 +5215,13 @@
     ],
     "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey.",
     "storeyShares": [
-     0.4,
-     0.33,
-     0.27
+     0.378,
+     0.327,
+     0.294
     ],
-    "groundWindowRatio": 1.27,
+    "groundWindowRatio": 1.29,
     "doorRatio": 0.7,
+    "corniceRatio": 0.171,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -5478,14 +5491,15 @@
      "crest: sculpted ornament atop the cornice"
     ],
     "storeyShares": [
-     0.3,
-     0.25,
-     0.23,
-     0.22
+     0.368,
+     0.239,
+     0.199,
+     0.194
     ],
-    "groundWindowRatio": 1.15,
+    "groundWindowRatio": 1.21,
     "doorRatio": 0.6,
     "basementRatio": 0.15,
+    "corniceRatio": 0.196,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -5985,12 +5999,12 @@
      "dark shutter-like recesses above upper windows"
     ],
     "storeyShares": [
-     0.4,
-     0.31,
-     0.29
+     0.493,
+     0.258,
+     0.249
     ],
     "crownRiseM": 3.95,
-    "groundWindowRatio": 1.45,
+    "groundWindowRatio": 1.43,
     "doorRatio": 0.9,
     "basementRatio": 0.2,
     "crownForm": {
@@ -6234,14 +6248,15 @@
      "window heads: brick segmental arches with rubbed-brick soldier courses, not stone"
     ],
     "storeyShares": [
-     0.33,
-     0.22,
-     0.23,
-     0.22
+     0.331,
+     0.226,
+     0.214,
+     0.229
     ],
-    "groundWindowRatio": 1.5,
+    "groundWindowRatio": 1.05,
     "doorRatio": 0.78,
     "basementRatio": 0.3,
+    "corniceRatio": 0.191,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -6293,16 +6308,12 @@
    "order": 23,
    "fields": {
     "storeys": {
-     "value": 5,
+     "value": 4,
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
-     "others": [
-      {
-       "value": 4,
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179668.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "bays": {
@@ -6525,14 +6536,14 @@
     ],
     "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology.",
     "storeyShares": [
-     0.2,
-     0.24,
-     0.19,
-     0.19,
-     0.18
+     0.401,
+     0.226,
+     0.182,
+     0.19
     ],
-    "groundWindowRatio": 0.55,
+    "groundWindowRatio": 1.33,
     "doorRatio": 0.85,
+    "corniceRatio": 0.194,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -6804,11 +6815,11 @@
     ],
     "storeyShares": [
      0.46,
-     0.35,
-     0.19
+     0.339,
+     0.202
     ],
     "crownRiseM": 3.77,
-    "groundWindowRatio": 1.24,
+    "groundWindowRatio": 1.33,
     "doorRatio": 0.66,
     "basementRatio": 0.36,
     "crownForm": {
@@ -7116,13 +7127,14 @@
      "door: transom light above door"
     ],
     "storeyShares": [
-     0.42,
-     0.3,
-     0.28
+     0.47,
+     0.264,
+     0.266
     ],
-    "groundWindowRatio": 1.3,
+    "groundWindowRatio": 1.32,
     "doorRatio": 0.6,
     "basementRatio": 0.25,
+    "corniceRatio": 0.115,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -7583,14 +7595,15 @@
      "graffiti-covered souterrain base"
     ],
     "storeyShares": [
-     0.28,
-     0.26,
-     0.25,
-     0.21
+     0.361,
+     0.227,
+     0.223,
+     0.189
     ],
-    "groundWindowRatio": 1.2,
+    "groundWindowRatio": 1.23,
     "doorRatio": 0.85,
     "basementRatio": 0.12,
+    "corniceRatio": 0.134,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -7806,13 +7819,14 @@
      "yellow decorative tile panels under ground-floor windows"
     ],
     "storeyShares": [
-     0.4,
-     0.3,
-     0.3
+     0.42,
+     0.297,
+     0.283
     ],
-    "groundWindowRatio": 1.05,
+    "groundWindowRatio": 1.04,
     "doorRatio": 0.6,
     "basementRatio": 0.22,
+    "corniceRatio": 0.091,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -8085,9 +8099,9 @@
      "dark painted brick near black"
     ],
     "storeyShares": [
-     0.41,
-     0.31,
-     0.28
+     0.463,
+     0.295,
+     0.242
     ],
     "crownRiseM": 4.84,
     "groundWindowRatio": 1.24,
@@ -8350,14 +8364,15 @@
      "ground-storey windows tall with transoms, larger than upper windows"
     ],
     "storeyShares": [
-     0.33,
-     0.24,
-     0.23,
-     0.2
+     0.403,
+     0.211,
+     0.179,
+     0.207
     ],
-    "groundWindowRatio": 1.3,
+    "groundWindowRatio": 1.39,
     "doorRatio": 0.75,
     "basementRatio": 0.25,
+    "corniceRatio": 0.208,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -8621,13 +8636,14 @@
      "top-floor windows: casements with horizontal glazing bars, lower than other storeys"
     ],
     "storeyShares": [
-     0.4,
-     0.34,
-     0.26
+     0.462,
+     0.31,
+     0.228
     ],
-    "groundWindowRatio": 1.25,
+    "groundWindowRatio": 1.36,
     "doorRatio": 0.72,
     "basementRatio": 0.15,
+    "corniceRatio": 0.128,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -9167,14 +9183,15 @@
      "wall: dark grey/near-black glazed brick"
     ],
     "storeyShares": [
-     0.24,
-     0.18,
-     0.18,
-     0.2,
-     0.2
+     0.351,
+     0.179,
+     0.167,
+     0.151,
+     0.151
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.2,
     "doorRatio": 0.85,
+    "corniceRatio": 0.106,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -9476,13 +9493,14 @@
      "cream-painted souterrain plinth with dark door"
     ],
     "storeyShares": [
-     0.4,
-     0.3,
-     0.3
+     0.488,
+     0.273,
+     0.24
     ],
-    "groundWindowRatio": 1.2,
+    "groundWindowRatio": 1.3,
     "doorRatio": 0.5,
     "basementRatio": 0.25,
+    "corniceRatio": 0.138,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -9977,14 +9995,15 @@
      "sills: panelled aprons below the upper windows"
     ],
     "storeyShares": [
-     0.29,
-     0.25,
-     0.23,
-     0.23
+     0.381,
+     0.221,
+     0.204,
+     0.195
     ],
-    "groundWindowRatio": 1.05,
+    "groundWindowRatio": 1.24,
     "doorRatio": 0.8,
     "basementRatio": 0.13,
+    "corniceRatio": 0.163,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -10267,13 +10286,14 @@
      "attic frieze cream stucco with consoles and central segmental arch"
     ],
     "storeyShares": [
-     0.43,
-     0.29,
-     0.28
+     0.464,
+     0.268,
+     0.268
     ],
-    "groundWindowRatio": 1.25,
+    "groundWindowRatio": 1.68,
     "doorRatio": 0.47,
     "basementRatio": 0.12,
+    "corniceRatio": 0.171,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -10552,14 +10572,15 @@
      "door: dark green panelled door with oval motif"
     ],
     "storeyShares": [
-     0.35,
-     0.22,
-     0.22,
-     0.21
+     0.415,
+     0.207,
+     0.179,
+     0.199
     ],
-    "groundWindowRatio": 1.4,
+    "groundWindowRatio": 1.62,
     "doorRatio": 0.85,
     "basementRatio": 0.12,
+    "corniceRatio": 0.206,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -11298,12 +11319,13 @@
      "dormer: arched hoist dormer with hoist beam on hipped red pantile roof"
     ],
     "storeyShares": [
-     0.37,
-     0.33,
-     0.3
+     0.423,
+     0.32,
+     0.257
     ],
-    "groundWindowRatio": 1,
+    "groundWindowRatio": 1.36,
     "doorRatio": 0.6,
+    "corniceRatio": 0.127,
     "crownForm": {
      "kind": "cornice",
      "px": {

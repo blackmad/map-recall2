@@ -1,0 +1,509 @@
+{
+ "about": "Pixel landmarks on each picked crop (the self-check photo, longest edge 1000 px; y down from its top), read against a 20 px grid by Claude (bar-fixes lane 2026-11-21): the pavement, the floor lines between storeys (ground storey top first), the cornice zone foot and top, a ground and a first-upper window. beltReview/pixelProfile.ts turns them into the read storey shares, ground window ratio and cornice depth; self-check.ts --apply-pixels writes them onto photo-read.json. Houses that pass David bar (16, 22, 46, 66) are not measured, nor 8 and 80 (their grid ground share came out under the read: left as read): their reads stay as judged.",
+ "by": "claude-opus-5-5 (pixel grid, bar-fixes lane)",
+ "at": "2026-11-21",
+ "houses": {
+  "0363100012179763": {
+   "address": "Herengracht 10",
+   "pavement": 975,
+   "floors": [
+    678,
+    530,
+    402
+   ],
+   "corniceBottom": 260,
+   "corniceTop": 75,
+   "groundWindow": [
+    705,
+    870
+   ],
+   "upperWindow": [
+    548,
+    650
+   ]
+  },
+  "0363100012179765": {
+   "address": "Herengracht 12",
+   "pavement": 965,
+   "floors": [
+    688,
+    528
+   ],
+   "corniceBottom": 368,
+   "corniceTop": 245,
+   "groundWindow": [
+    720,
+    880
+   ],
+   "upperWindow": [
+    560,
+    655
+   ]
+  },
+  "0363100012179764": {
+   "address": "Herengracht 14",
+   "pavement": 965,
+   "floors": [
+    750,
+    625,
+    510
+   ],
+   "corniceBottom": 400,
+   "corniceTop": 290,
+   "groundWindow": [
+    768,
+    880
+   ],
+   "upperWindow": [
+    643,
+    733
+   ]
+  },
+  "0363100012179760": {
+   "address": "Herengracht 18",
+   "pavement": 960,
+   "floors": [
+    665,
+    500
+   ],
+   "corniceBottom": 355,
+   "corniceTop": 258,
+   "groundWindow": [
+    690,
+    840
+   ],
+   "upperWindow": [
+    525,
+    640
+   ]
+  },
+  "0363100012179753": {
+   "address": "Herengracht 20",
+   "pavement": 965,
+   "floors": [
+    698,
+    562,
+    435,
+    320
+   ],
+   "corniceBottom": 205,
+   "corniceTop": 115,
+   "groundWindow": [
+    715,
+    835
+   ],
+   "upperWindow": [
+    580,
+    680
+   ]
+  },
+  "0363100012179838": {
+   "address": "Herengracht 24",
+   "pavement": 965,
+   "floors": [
+    682,
+    492
+   ],
+   "corniceBottom": 352,
+   "corniceTop": 262,
+   "groundWindow": [
+    715,
+    885
+   ],
+   "upperWindow": [
+    525,
+    650
+   ]
+  },
+  "0363100012179836": {
+   "address": "Herengracht 26",
+   "pavement": 960,
+   "floors": [
+    668,
+    515,
+    385
+   ],
+   "corniceBottom": 235,
+   "corniceTop": 45,
+   "groundWindow": [
+    685,
+    845
+   ],
+   "upperWindow": [
+    535,
+    650
+   ]
+  },
+  "0363100012179837": {
+   "address": "Herengracht 28",
+   "pavement": 965,
+   "floors": [
+    678,
+    495
+   ],
+   "corniceBottom": 345,
+   "groundWindow": [
+    705,
+    860
+   ],
+   "upperWindow": [
+    525,
+    650
+   ],
+   "note": "neck gable: corniceBottom is the eaves line under the claw pieces"
+  },
+  "0363100012168138": {
+   "address": "Herengracht 30",
+   "pavement": 960,
+   "floors": [
+    708,
+    530
+   ],
+   "corniceBottom": 360,
+   "corniceTop": 300,
+   "groundWindow": [
+    735,
+    855
+   ],
+   "upperWindow": [
+    565,
+    680
+   ],
+   "note": "corniceTop at the side wings; the raised centre attic stands over it"
+  },
+  "0363100012168069": {
+   "address": "Herengracht 32",
+   "pavement": 960,
+   "floors": [
+    722,
+    572,
+    425
+   ],
+   "corniceBottom": 300,
+   "corniceTop": 198,
+   "groundWindow": [
+    740,
+    875
+   ],
+   "upperWindow": [
+    595,
+    705
+   ]
+  },
+  "0363100012179684": {
+   "address": "Herengracht 36",
+   "pavement": 950,
+   "floors": [
+    680,
+    528
+   ],
+   "corniceBottom": 375,
+   "corniceTop": 300,
+   "groundWindow": [
+    705,
+    850
+   ],
+   "upperWindow": [
+    545,
+    655
+   ]
+  },
+  "0363100012179671": {
+   "address": "Herengracht 38",
+   "pavement": 965,
+   "floors": [
+    680,
+    470
+   ],
+   "corniceBottom": 345,
+   "groundWindow": [
+    710,
+    870
+   ],
+   "upperWindow": [
+    530,
+    650
+   ],
+   "note": "gable: corniceBottom is the gable foot ledge"
+  },
+  "0363100012179668": {
+   "address": "Herengracht 40",
+   "pavement": 975,
+   "floors": [
+    700,
+    545,
+    420
+   ],
+   "corniceBottom": 290,
+   "corniceTop": 125,
+   "groundWindow": [
+    735,
+    855
+   ],
+   "upperWindow": [
+    575,
+    665
+   ],
+   "storeys": 4,
+   "note": "four window rows over a basement band (860-975 px, doors at pavement level): the ground storey runs from the pavement to the first floor with the band in it; the read counted the band as a fifth storey"
+  },
+  "0363100012179670": {
+   "address": "Herengracht 42",
+   "pavement": 975,
+   "floors": [
+    758,
+    610,
+    470
+   ],
+   "corniceBottom": 320,
+   "corniceTop": 165,
+   "groundWindow": [
+    780,
+    885
+   ],
+   "upperWindow": [
+    635,
+    735
+   ],
+   "note": "corniceBottom under the attic light (the attic storey is the frieze zone)"
+  },
+  "0363100012179669": {
+   "address": "Herengracht 44",
+   "pavement": 975,
+   "floors": [
+    642,
+    468
+   ],
+   "corniceBottom": 300,
+   "groundWindow": [
+    675,
+    840
+   ],
+   "upperWindow": [
+    500,
+    615
+   ],
+   "note": "neck gable: three storeys under the claw pieces"
+  },
+  "0363100012169270": {
+   "address": "Herengracht 48",
+   "pavement": 975,
+   "floors": [
+    710,
+    538,
+    395
+   ],
+   "corniceBottom": 255,
+   "corniceTop": 80,
+   "groundWindow": [
+    740,
+    885
+   ],
+   "upperWindow": [
+    565,
+    685
+   ]
+  },
+  "0363100012169218": {
+   "address": "Herengracht 54",
+   "pavement": 975,
+   "floors": [
+    660,
+    488
+   ],
+   "corniceBottom": 335,
+   "corniceTop": 210,
+   "groundWindow": [
+    700,
+    860
+   ],
+   "upperWindow": [
+    525,
+    625
+   ]
+  },
+  "0363100012167494": {
+   "address": "Herengracht 56",
+   "pavement": 975,
+   "floors": [
+    698,
+    542,
+    425
+   ],
+   "corniceBottom": 300,
+   "corniceTop": 195,
+   "groundWindow": [
+    735,
+    885
+   ],
+   "upperWindow": [
+    570,
+    665
+   ]
+  },
+  "0363100012167495": {
+   "address": "Herengracht 58",
+   "pavement": 970,
+   "floors": [
+    640,
+    480,
+    340
+   ],
+   "corniceBottom": 205,
+   "corniceTop": 60,
+   "groundWindow": [
+    695,
+    880
+   ],
+   "upperWindow": [
+    515,
+    620
+   ]
+  },
+  "0363100012167492": {
+   "address": "Herengracht 60",
+   "pavement": 975,
+   "floors": [
+    705,
+    540,
+    408
+   ],
+   "corniceBottom": 290,
+   "corniceTop": 150,
+   "groundWindow": [
+    735,
+    875
+   ],
+   "upperWindow": [
+    565,
+    680
+   ]
+  },
+  "0363100012167493": {
+   "address": "Herengracht 62",
+   "pavement": 975,
+   "floors": [
+    638,
+    442,
+    270
+   ],
+   "corniceBottom": 105,
+   "groundWindow": [
+    675,
+    835
+   ],
+   "upperWindow": [
+    475,
+    605
+   ],
+   "note": "the crop cuts the cornice off: no cornice zone"
+  },
+  "0363100012175698": {
+   "address": "Herengracht 68",
+   "pavement": 960,
+   "floors": [
+    758,
+    615,
+    482,
+    368
+   ],
+   "corniceBottom": 260,
+   "corniceTop": 165,
+   "groundWindow": [
+    785,
+    915
+   ],
+   "upperWindow": [
+    640,
+    735
+   ]
+  },
+  "0363100012175703": {
+   "address": "Herengracht 82",
+   "pavement": 940,
+   "floors": [
+    712,
+    570,
+    450
+   ],
+   "corniceBottom": 335,
+   "corniceTop": 288
+  },
+  "0363100012175692": {
+   "address": "Herengracht 86",
+   "pavement": 950,
+   "floors": [
+    605,
+    420
+   ],
+   "corniceBottom": 240,
+   "groundWindow": [
+    650,
+    845
+   ],
+   "upperWindow": [
+    455,
+    565
+   ],
+   "storeys": 3,
+   "note": "bell gable over a ground storey and two full upper storeys; the read counted two"
+  },
+  "0363100012175701": {
+   "address": "Herengracht 90",
+   "pavement": 965,
+   "floors": [
+    682,
+    508,
+    375
+   ],
+   "corniceBottom": 245,
+   "corniceTop": 175,
+   "groundWindow": [
+    720,
+    890
+   ],
+   "upperWindow": [
+    530,
+    645
+   ]
+  },
+  "0363100100091828": {
+   "address": "Herengracht 2–4",
+   "pavement": 808,
+   "floors": [
+    627,
+    490
+   ],
+   "corniceBottom": 380,
+   "corniceTop": 318,
+   "groundWindow": [
+    645,
+    790
+   ],
+   "upperWindow": [
+    505,
+    612
+   ]
+  },
+  "0363100012169272": {
+   "address": "Herengracht 50–52",
+   "pavement": 915,
+   "floors": [
+    722,
+    555
+   ],
+   "corniceBottom": 405,
+   "corniceTop": 300,
+   "groundWindow": [
+    750,
+    905
+   ],
+   "upperWindow": [
+    580,
+    700
+   ],
+   "bays": 5,
+   "note": "five window axes, the door in the middle one (two, door, two); the read said six"
+  }
+ }
+}

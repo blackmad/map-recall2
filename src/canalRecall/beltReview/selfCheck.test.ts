@@ -5,7 +5,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyMeasures, fieldOf, selfCheckProblems, tally, type SelfCheckDiff } from './selfCheck.ts';
+import { applyMeasures, BAR_FIELDS, barBlockers, fieldOf, passesBar, selfCheckProblems, tally, type SelfCheckDiff } from './selfCheck.ts';
 import { beltDesignUnit, beltPlotFacts } from './plotRead.ts';
 import { frontLineArg } from './frontLine.ts';
 import { withDesignUnitRoof, SOLO_FRAME_HEX } from '../designUnits/draw.ts';
@@ -119,4 +119,19 @@ test('soloBasementM: unmeasured none; a measured band at least 1 m, at most 0.45
   assert.equal(soloBasementM(0.12, 4.5), 1);
   assert.equal(soloBasementM(0.3, 5), 1.5);
   assert.equal(soloBasementM(0.6, 4), 1.8);
+});
+
+test("passesBar: David's bar fails a house on a major difference in a bar field only (2026-11-21)", () => {
+  const d = (field: string, severity: 'major' | 'minor', cls: 'wiring' | 'read' | 'kit' = 'wiring') => ({ class: cls, field, expected: '', seen: '', severity }) as SelfCheckDiff;
+  assert.equal(passesBar([]), true);
+  // Kit gaps the bar forgives: ornament, door, stoop, basement, windows' small parts, however major.
+  assert.equal(passesBar([d('ornaments', 'major', 'kit'), d('door', 'major'), d('stoop', 'major'), d('basement', 'major'), d('other', 'major')]), true);
+  // A minor difference in a bar field does not fail it.
+  assert.equal(passesBar([d('groundHeight', 'minor'), d('cornice', 'minor')]), true);
+  for (const f of ['wallColour', 'wallFinish', 'crown', 'cornice', 'roofStorey', 'whiteFrames', 'whiteHeads', 'speklagen', 'stringCourses', 'storeys', 'bays', 'storeyHeights', 'groundHeight', 'ground', 'groundWindows', 'houses', 'width', 'heads'])
+    assert.equal(passesBar([d(f, 'major', 'read')]), false, f);
+  assert.equal(BAR_FIELDS.size, 18);
+  assert.deepEqual(barBlockers([d('door', 'major'), d('crown', 'major', 'kit'), d('bays', 'minor')]).map(x => x.field), ['crown']);
+  // An unknown field name folds onto `other` and never fails the bar.
+  assert.equal(passesBar([{ field: 'chimney' as never, severity: 'major' }]), true);
 });

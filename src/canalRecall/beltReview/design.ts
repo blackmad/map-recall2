@@ -162,8 +162,23 @@ export function withPhotoRead(design: PandDesign['design'], fields: FieldSet, en
   return design;
 }
 
-export function pandDesign(face: FaceFile, pandId: string, description: DescriptionFile | null, edits: EditsFile, grouping: GroupingFile): PandDesign {
+/**
+ * The links a drawing follows: David's (and links he made from a pair answer). A link Claude proposed (`by: 'claude'`, the
+ * pair suggestions he has not agreed to) is a guess: drawn, it replaced the house's own photo read with its neighbour's
+ * (bar-fixes 2026-11-21: Herengracht 70 drawn with 72's raised neck, 60 without its attic frieze, 44 with 46's four
+ * storeys, 6 with 8's attic for its mansard). No Claude link: the grouping as it is.
+ */
+export function drawnGrouping(grouping: GroupingFile, pandId?: string): { grouping: GroupingFile; notes: string[] } {
+  const guesses = grouping.links.filter(l => l.by === 'claude');
+  if (!guesses.length) return { grouping, notes: [] };
+  return { grouping: { ...grouping, links: grouping.links.filter(l => l.by !== 'claude') },
+    notes: guesses.filter(l => l.pandId === pandId).map(l => `${l.kind} ${l.target}: Claude's guess, drawn from the house's own read until David agrees`) };
+}
+
+export function pandDesign(face: FaceFile, pandId: string, description: DescriptionFile | null, edits: EditsFile, allGrouping: GroupingFile): PandDesign {
+  const { grouping, notes: guessNotes } = drawnGrouping(allGrouping, pandId);
   const display = resolveLinked(pandId, description, edits, grouping);
+  display.notes.push(...guessNotes);
   const partFields = (id: string): FieldSet => {
     if (!grouping.links.some(l => l.pandId === id)) return ownFields(id, description, edits);
     const own = ownFields(id, description, edits), out: FieldSet = {};

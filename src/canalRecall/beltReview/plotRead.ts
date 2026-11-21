@@ -11,6 +11,7 @@
  */
 import { ERA_GROUND_M, SOUTERRAIN_M, type PlotDormer, type PlotFacts, type PlotGableForm, type PlotRoof } from '../designUnits/plotPlan.ts';
 import type { CrownForm } from './houseRead.ts';
+import { CORNICE_RATIO } from './pixelProfile.ts';
 
 /** The photo read's extras as describe.ts stores them per pand (houseRead.ts readExtras). */
 export interface PhotoReadExtras {
@@ -35,6 +36,8 @@ export interface PhotoReadExtras {
   doorRatio?: number;
   /** A basement band's height over the ground storey's, measured on the crop by the self-check. */
   basementRatio?: number;
+  /** The cornice zone's share of the pavement-to-cornice-top height, read on a pixel grid (pixelProfile.ts). */
+  corniceRatio?: number;
   /** The crown read (houseRead.ts CrownForm): the gable's or the cornice's form and its pixel landmarks. */
   crownForm?: CrownForm & { px: CrownForm['px'] & { w?: number; h?: number; ppm?: number } };
 }
@@ -226,7 +229,7 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   if (read.stringCourses === true) facts.stringCourses = true;
   if (read.speklagen === 'ground' || read.speklagen === 'all') facts.bands = read.speklagen;
   const heads = fields.heads;
-  if (heads === 'segmental' || heads === 'round') facts.headShape = heads;
+  if (heads === 'segmental' || heads === 'round' || heads === 'relieving') facts.headShape = heads;
   else if (heads === 'flat') facts.headShape = 'flat';
   if (typeof fields.whiteFrames === 'boolean') facts.whiteFrames = fields.whiteFrames;
   if (TEXT_CUES.stuccoGround.test(text)) facts.stone = 'ground';
@@ -253,6 +256,9 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
     eavesM = cm.footM;
     if (cm.riseM > 0.8 && cm.riseM < 12) facts.gable.riseM = cm.riseM;
   }
+  // The cornice zone's depth as measured, on a cornice front (the share of the measured wall, whose top is the cornice's).
+  const cr = Number(read.corniceRatio);
+  if (!isGable && eavesM !== null && cr >= CORNICE_RATIO.min && cr <= CORNICE_RATIO.max) facts.corniceDepthM = +(cr * eavesM).toFixed(2);
   // A raised ground storey over a souterrain (stoop and basement windows), where the measured front has room for it.
   if ((fields.stoop === 'stoop-and-windows' || fields.stoop === 'windows') && eavesM !== null && eavesM - ERA_GROUND_M - SOUTERRAIN_M >= ((facts.storeys ?? 3) - 1) * SOUTERRAIN_UPPER_MIN_M) facts.souterrain = true;
   const year = Number(fields.facadeYear);
