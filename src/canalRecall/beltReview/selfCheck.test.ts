@@ -92,7 +92,7 @@ test('soloGroundBoxes: one opening per upper axis, the door the read bay, window
   const rtl = soloGroundBoxes(layout, OPEN, { windowRatio: 1.5, doorRatio: 0.8 }, 0, false)!;
   assert.equal(rtl[0].kind, 'door', 'the door is counted as seen');
   const base = soloGroundBoxes(layout, OPEN, { windowRatio: 1.2, doorRatio: 0.8, basementRatio: 0.3, raisedDoor: true }, 2, true)!;
-  assert.deepEqual(base.map(x => x.kind), ['window', 'window', 'window', 'window', 'door'], 'a basement window under each ground window');
+  assert.deepEqual(base.map(x => x.kind), ['basement', 'window', 'basement', 'window', 'door'], 'a basement window (drawn by solo-basement, not cut) under each ground window');
   assert.ok(base[4].sillM > 1, 'the door up the stoop');
   assert.equal(soloGroundBoxes({ ...layout, groundM: 1 }, OPEN, { windowRatio: 1.5, doorRatio: 0.8 }, 0, true), undefined);
 });
@@ -111,4 +111,12 @@ test('scaledTimberCornice: absent or 1 is the kit\'s own object (byte-identical)
   assert.equal(scaledTimberCornice(1), ROW_TIMBER_CORNICE);
   const k = scaledTimberCornice(1.6);
   assert.ok(Math.abs(k.corona - 0.32) < 1e-9 && Math.abs(k.console.h - 0.992) < 1e-9 && k.modillion.pitch === ROW_TIMBER_CORNICE.modillion.pitch);
+});
+
+test('soloBasementM: unmeasured none; a measured band at least 1 m, at most 0.45 of the ground', async () => {
+  const { soloBasementM } = await import('../threeBuildingMesh.ts');
+  assert.equal(soloBasementM(undefined, 4.5), 0);
+  assert.equal(soloBasementM(0.12, 4.5), 1);
+  assert.equal(soloBasementM(0.3, 5), 1.5);
+  assert.equal(soloBasementM(0.6, 4), 1.8);
 });

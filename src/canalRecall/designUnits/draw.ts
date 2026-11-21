@@ -303,7 +303,11 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
   // The ground openings as measured, and the street door in a doorcase (a stone case when read dressed, else the belt's
   // white timber frame; a fanlight when read; the belt's near-black leaf).
   if (f?.groundOpenings && plan.ground !== 'shop') out.designGround = { ...f.groundOpenings };
-  const forced = Array.isArray(props.registerForce) ? [...props.registerForce as string[]] : [];
+  const forcedB = (props.registerForce as string[] | undefined) ?? [];
+  // A measured basement band draws as the solo basement (not the register's stone plinth band over it).
+  const basementForce = out.designGround && (out.designGround as { basementRatio?: number }).basementRatio ? ['solo-basement'] : [];
+  const forced = Array.isArray(props.registerForce) ? [...forcedB.filter(id => !basementForce.length || id !== 'stone-plinth-band'), ...basementForce] : [...basementForce];
+  if (basementForce.length) out.registerForce = forced;
   if (f?.door && plan.ground !== 'shop') {
     out.designDoorcase = { material: f.door.surround ? 'stone' : 'timber', fanlight: !!f.door.fanlight, door: 'black' };
     if (!forced.includes('row-doorcase')) forced.push('row-doorcase');

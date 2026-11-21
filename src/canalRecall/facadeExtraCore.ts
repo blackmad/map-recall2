@@ -69,6 +69,8 @@ export type ExtraContext = {
   groundWindows?: Array<{ x: number; hw: number; z0: number; z1: number }>;
   /** Belt review: the solo plot's measured street door on this wall (as `groundWindows`). */
   groundDoor?: { x: number; hw: number; z0: number; z1: number };
+  /** Belt review: the solo plot's measured basement band (top z, absolute) and its pavement-level windows. */
+  basementBand?: { z1: number; windows: Array<{ x: number; hw: number; z0: number; z1: number }> };
   /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
   plainHeads?: true;
   /** Design units: the plot's read dress (designUnits/plotPlan.ts): grey stone at the foot, bacon courses, white pilasters. */

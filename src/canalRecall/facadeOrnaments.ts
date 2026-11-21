@@ -376,6 +376,8 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
 }
 
 /** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
+/** The belt solo basement band (Herengracht 32, 46, 56: a grey rendered plinth with grilled pavement-level lights). */
+export const SOLO_BASEMENT = { hex: '#7d7f7b', out: 0.03, ledge: 0.1, ledgeOut: 0.06, recess: '#1c1e20', grille: '#2c2e30', bar: 0.035, barPitch: 0.16 } as const;
 const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge: 0.12, ledgeOut: 0.08, doorW: 1.0, doorH: 2.3, ring: 0.2, recess: '#202326' } as const;
 /** The white timber erker (lane R round 24, lane D's `bay-window` gap: Herengracht 163-177, 150-166, 238-256 and the ring
  *  readings): a box or a canted bay on white consoles over one bay, its storeys' lights corner to corner in white posts,
@@ -1017,6 +1019,20 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       // The ledge: a moulded band proud of the facing, a little wider than it; scrolled ends stand under it at both ends.
       s.box(c.f, x0, x1, 0, ROW_GROUND_WALL.ledgeOut, z1 - ROW_GROUND_WALL.ledge, z1, g.hex, true);
       if (g.top === 'scrolled') for (const [a, b] of [[x0, x0 + ROW_GROUND_WALL.scroll], [x1 - ROW_GROUND_WALL.scroll, x1]] as const) s.box(c.f, a, b, 0, ROW_GROUND_WALL.ledgeOut * 0.8, z1 - ROW_GROUND_WALL.ledge - ROW_GROUND_WALL.scrollH, z1 - ROW_GROUND_WALL.ledge, g.hex, true);
+    }
+  } },
+  { id: 'solo-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
+    // Belt review (a solo plot's measured basement band, self-check basementRatio): a rendered grey plinth from the pavement
+    // to the band's top under a ledge, its low windows dark with grille bars, the street door left clear.
+    const bb = c.basementBand, L = c.f.len, K = SOLO_BASEMENT;
+    if (!bb || bb.z1 - c.base < 0.8) return;
+    const d = doorSpan(c), holes = [...bb.windows.map(w => [w.x - w.hw, w.x + w.hw, w.z0, w.z1] as const), ...(d && d.z0 < bb.z1 ? [[d.x - d.hw - 0.05, d.x + d.hw + 0.05, c.base, bb.z1] as const] : [])];
+    for (const [za, zb, xs] of groundWallBands(holes, 0, L, c.base, bb.z1)) for (const [p, q] of xs) s.strip(c.f, p, q, K.out, za, zb, K.hex);
+    s.box(c.f, 0, L, 0, K.ledgeOut, bb.z1 - K.ledge, bb.z1, shadeHex(K.hex, 1.1), true);
+    for (const w of bb.windows) {
+      s.strip(c.f, w.x - w.hw, w.x + w.hw, 0.01, w.z0, w.z1, K.recess);
+      const n = Math.max(3, Math.round(2 * w.hw / K.barPitch));
+      for (let i = 1; i < n; i++) { const x = w.x - w.hw + 2 * w.hw * i / n; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.03, w.z0, w.z1, K.grille); }
     }
   } },
   { id: 'row-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
