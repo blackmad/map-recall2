@@ -135,7 +135,11 @@ export class BeltReviewStore {
     const candidates = await this.candidates(faceId);
     const c = candidates?.pands.find(p => p.pandId === pandId)?.candidates.find(k => k.id === candidateId);
     if (!c) throw new ReviewError('Unknown candidate', 404);
-    if (c.file) return { file: await resolveInside(this.imageRoot ?? this.faceDir(faceId), c.file) };
+    // Lane B names its archive in candidates.json (`imageRoot`); that wins when it exists here, so faces built from
+    // different archives work under one server. Else BELT_REVIEW_IMAGE_ROOT, else the face directory.
+    const own = (candidates as { imageRoot?: unknown } | null)?.imageRoot;
+    const root = typeof own === 'string' && path.isAbsolute(own) && await fs.stat(own).then(st => st.isDirectory(), () => false) ? own : this.imageRoot ?? this.faceDir(faceId);
+    if (c.file) return { file: await resolveInside(root, c.file) };
     if (c.url && /^https?:\/\//.test(c.url)) return { url: c.url };
     throw new ReviewError('Candidate has no image', 404);
   }
