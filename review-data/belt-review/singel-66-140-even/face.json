@@ -1,0 +1,668 @@
+{
+ "faceId": "singel-66-140-even",
+ "street": "Singel",
+ "side": "even",
+ "from": 66,
+ "to": 140,
+ "orderNote": "order runs left to right as seen from the street (scripts/belt-review/faceModel.ts faceOrder)",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-11-20",
+ "pands": [
+  {
+   "pandId": "0363100012167968",
+   "address": "Singel 140",
+   "order": 0,
+   "numbers": [
+    140
+   ],
+   "built": 1605,
+   "units": 5,
+   "groundUses": [],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167969",
+   "address": "Singel 138",
+   "order": 1,
+   "numbers": [
+    138
+   ],
+   "letters": [
+    "138A",
+    "138B",
+    "138C",
+    "138D",
+    "138E",
+    "138F",
+    "138G"
+   ],
+   "built": 1905,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167970",
+   "address": "Singel 136",
+   "order": 2,
+   "numbers": [
+    136
+   ],
+   "letters": [
+    "136A",
+    "136B",
+    "136C",
+    "136D",
+    "136E"
+   ],
+   "built": 1900,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168406",
+   "address": "Singel 134",
+   "order": 3,
+   "numbers": [
+    134
+   ],
+   "built": 1740,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168411",
+   "address": "Singel 132",
+   "order": 4,
+   "numbers": [
+    132
+   ],
+   "built": 1730,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012253804",
+   "address": "Singel 126",
+   "order": 5,
+   "numbers": [
+    126
+   ],
+   "built": 1916,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169012",
+   "address": "Singel 124",
+   "order": 6,
+   "numbers": [
+    124
+   ],
+   "letters": [
+    "124A",
+    "124B"
+   ],
+   "built": 1710,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180428",
+   "address": "Singel 122",
+   "order": 7,
+   "numbers": [
+    122
+   ],
+   "letters": [
+    "122A",
+    "122B",
+    "122C"
+   ],
+   "built": 1756,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012169013",
+   "address": "Singel 118–120",
+   "order": 8,
+   "numbers": [
+    118,
+    120
+   ],
+   "letters": [
+    "118A",
+    "118B",
+    "118C",
+    "118D",
+    "118E",
+    "120A"
+   ],
+   "built": 1905,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180433",
+   "address": "Singel 116",
+   "order": 9,
+   "numbers": [
+    116
+   ],
+   "letters": [
+    "116K"
+   ],
+   "built": 1986,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180435",
+   "address": "Singel 116",
+   "order": 10,
+   "numbers": [
+    116
+   ],
+   "letters": [
+    "116A",
+    "116B",
+    "116C",
+    "116D"
+   ],
+   "built": 1750,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180434",
+   "address": "Singel 114",
+   "order": 11,
+   "numbers": [
+    114
+   ],
+   "letters": [
+    "114A",
+    "114B",
+    "114C"
+   ],
+   "built": 1750,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180429",
+   "address": "Singel 112",
+   "order": 12,
+   "numbers": [
+    112
+   ],
+   "letters": [
+    "112A",
+    "112B"
+   ],
+   "built": 1915,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012180432",
+   "address": "Singel 110",
+   "order": 13,
+   "numbers": [
+    110
+   ],
+   "built": 1916,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "buurt": "AC02",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167497",
+   "address": "Singel 108",
+   "order": 14,
+   "numbers": [
+    108
+   ],
+   "built": 1800,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179596",
+   "address": "Singel 106",
+   "order": 15,
+   "numbers": [
+    106
+   ],
+   "letters": [
+    "106A",
+    "106B",
+    "106C",
+    "106D",
+    "106E",
+    "106F",
+    "106G"
+   ],
+   "built": 1743,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179597",
+   "address": "Singel 104",
+   "order": 16,
+   "numbers": [
+    104
+   ],
+   "letters": [
+    "104A",
+    "104B"
+   ],
+   "built": 1740,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179039",
+   "address": "Singel 102",
+   "order": 17,
+   "numbers": [
+    102
+   ],
+   "built": 1870,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179598",
+   "address": "Singel 100",
+   "order": 18,
+   "numbers": [
+    100
+   ],
+   "letters": [
+    "100A",
+    "100B",
+    "100C",
+    "100D",
+    "100E"
+   ],
+   "built": 1870,
+   "units": 5,
+   "groundUses": [
+    "overige gebruiksfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179599",
+   "address": "Singel 98",
+   "order": 19,
+   "numbers": [
+    98
+   ],
+   "letters": [
+    "98A",
+    "98B",
+    "98C",
+    "98D",
+    "98E",
+    "98F"
+   ],
+   "built": 1716,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179595",
+   "address": "Singel 96",
+   "order": 20,
+   "numbers": [
+    96
+   ],
+   "built": 1755,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179040",
+   "address": "Singel 94",
+   "order": 21,
+   "numbers": [
+    94
+   ],
+   "letters": [
+    "94A",
+    "94B",
+    "94C",
+    "94D",
+    "94E"
+   ],
+   "built": 1738,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012179041",
+   "address": "Singel 92",
+   "order": 22,
+   "numbers": [
+    92
+   ],
+   "letters": [
+    "92A",
+    "92B",
+    "92C",
+    "92D",
+    "92E",
+    "92F"
+   ],
+   "built": 1718,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012253925",
+   "address": "Singel 90",
+   "order": 23,
+   "numbers": [
+    90
+   ],
+   "built": 1867,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167931",
+   "address": "Singel 88",
+   "order": 24,
+   "numbers": [
+    88
+   ],
+   "built": 1910,
+   "units": 3,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167991",
+   "address": "Singel 86",
+   "order": 25,
+   "numbers": [
+    86
+   ],
+   "built": 1766,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167992",
+   "address": "Singel 84",
+   "order": 26,
+   "numbers": [
+    84
+   ],
+   "built": 1769,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175246",
+   "address": "Singel 82",
+   "order": 27,
+   "numbers": [
+    82
+   ],
+   "built": 1940,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167993",
+   "address": "Singel 78–80",
+   "order": 28,
+   "numbers": [
+    78,
+    80
+   ],
+   "letters": [
+    "78A",
+    "78B",
+    "78C",
+    "78D",
+    "78E",
+    "78F",
+    "80A",
+    "80B",
+    "80C",
+    "80D"
+   ],
+   "built": 1940,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167988",
+   "address": "Singel 76",
+   "order": 29,
+   "numbers": [
+    76
+   ],
+   "letters": [
+    "76A",
+    "76B",
+    "76C"
+   ],
+   "built": 1756,
+   "units": 9,
+   "groundUses": [
+    "industriefunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012167989",
+   "address": "Singel 74",
+   "order": 30,
+   "numbers": [
+    74
+   ],
+   "letters": [
+    "74A",
+    "74B",
+    "74C",
+    "74D",
+    "74E"
+   ],
+   "built": 1715,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168062",
+   "address": "Singel 70–72",
+   "order": 31,
+   "numbers": [
+    70,
+    72
+   ],
+   "letters": [
+    "70A",
+    "70B",
+    "70C",
+    "70D",
+    "72A",
+    "72B",
+    "72C",
+    "72D",
+    "72E"
+   ],
+   "built": 1730,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175359",
+   "address": "Singel 68",
+   "order": 32,
+   "numbers": [
+    68
+   ],
+   "letters": [
+    "68A",
+    "68B",
+    "68C",
+    "68D",
+    "68E",
+    "68F",
+    "68G",
+    "68H",
+    "68K"
+   ],
+   "built": 1760,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012175360",
+   "address": "Singel 66",
+   "order": 33,
+   "numbers": [
+    66
+   ],
+   "built": 1905,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC01",
+   "inWorldTiles": true
+  }
+ ]
+}

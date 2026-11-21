@@ -1,0 +1,511 @@
+{
+ "faceId": "prinsengracht-321-385-odd",
+ "street": "Prinsengracht",
+ "side": "odd",
+ "from": 321,
+ "to": 385,
+ "orderNote": "order runs left to right as seen from the street (scripts/belt-review/faceModel.ts faceOrder)",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-11-20",
+ "pands": [
+  {
+   "pandId": "0363100012169022",
+   "address": "Prinsengracht 323",
+   "order": 0,
+   "numbers": [
+    323
+   ],
+   "built": 1625,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,kantoorfunctie,logiesfunctie,overige gebruiksfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173672",
+   "address": "Prinsengracht 333",
+   "order": 1,
+   "numbers": [
+    333
+   ],
+   "built": 1646,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173671",
+   "address": "Prinsengracht 335",
+   "order": 2,
+   "numbers": [
+    335
+   ],
+   "built": 1646,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173670",
+   "address": "Prinsengracht 337",
+   "order": 3,
+   "numbers": [
+    337
+   ],
+   "built": 1646,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173684",
+   "address": "Prinsengracht 339",
+   "order": 4,
+   "numbers": [
+    339
+   ],
+   "built": 1760,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012174129",
+   "address": "Prinsengracht 341",
+   "order": 5,
+   "numbers": [
+    341
+   ],
+   "built": 1783,
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173610",
+   "address": "Prinsengracht 343",
+   "order": 6,
+   "numbers": [
+    343
+   ],
+   "letters": [
+    "343A",
+    "343B",
+    "343C",
+    "343D"
+   ],
+   "built": 1744,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173609",
+   "address": "Prinsengracht 347",
+   "order": 7,
+   "numbers": [
+    347
+   ],
+   "built": 1650,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173667",
+   "address": "Prinsengracht 345",
+   "order": 8,
+   "numbers": [
+    345
+   ],
+   "built": 1758,
+   "units": 1,
+   "groundUses": [
+    "industriefunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173666",
+   "address": "Prinsengracht 349–353",
+   "order": 9,
+   "numbers": [
+    349,
+    351,
+    353
+   ],
+   "letters": [
+    "349A",
+    "349B",
+    "349C",
+    "349D",
+    "349E",
+    "349F",
+    "349G",
+    "349H",
+    "349K",
+    "351A",
+    "351B",
+    "351C",
+    "351D",
+    "351E",
+    "351F",
+    "351G",
+    "353A",
+    "353B",
+    "353C",
+    "353D",
+    "353E",
+    "353F",
+    "353G"
+   ],
+   "built": 1650,
+   "units": 23,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie",
+    "industriefunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173663",
+   "address": "Prinsengracht 351",
+   "order": 10,
+   "numbers": [
+    351
+   ],
+   "letters": [
+    "351H"
+   ],
+   "built": 1740,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012168601",
+   "address": "Prinsengracht 355",
+   "order": 11,
+   "numbers": [
+    355
+   ],
+   "letters": [
+    "355A",
+    "355B",
+    "355C",
+    "355D"
+   ],
+   "built": 1905,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173596",
+   "address": "Prinsengracht 357",
+   "order": 12,
+   "numbers": [
+    357
+   ],
+   "letters": [
+    "357B",
+    "357C",
+    "357D"
+   ],
+   "built": 1730,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173595",
+   "address": "Prinsengracht 357",
+   "order": 13,
+   "numbers": [
+    357
+   ],
+   "letters": [
+    "357A",
+    "357E",
+    "357F",
+    "357G",
+    "357H",
+    "357K"
+   ],
+   "built": 1730,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012174880",
+   "address": "Prinsengracht 359–373",
+   "order": 14,
+   "numbers": [
+    359,
+    361,
+    373
+   ],
+   "letters": [
+    "359A",
+    "359B",
+    "359C",
+    "359D",
+    "359E",
+    "359G",
+    "359H",
+    "361A",
+    "361B",
+    "361C",
+    "373A",
+    "373B",
+    "373C",
+    "373D"
+   ],
+   "built": 1730,
+   "units": 14,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173599",
+   "address": "Prinsengracht 361",
+   "order": 15,
+   "numbers": [
+    361
+   ],
+   "letters": [
+    "361D",
+    "361E"
+   ],
+   "built": 1905,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173598",
+   "address": "Prinsengracht 363",
+   "order": 16,
+   "numbers": [
+    363
+   ],
+   "built": 1710,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173597",
+   "address": "Prinsengracht 365",
+   "order": 17,
+   "numbers": [
+    365
+   ],
+   "built": 1716,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173602",
+   "address": "Prinsengracht 367",
+   "order": 18,
+   "numbers": [
+    367
+   ],
+   "built": 1714,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173601",
+   "address": "Prinsengracht 369",
+   "order": 19,
+   "numbers": [
+    369
+   ],
+   "built": 1699,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173600",
+   "address": "Prinsengracht 375",
+   "order": 20,
+   "numbers": [
+    375
+   ],
+   "letters": [
+    "375A",
+    "375B",
+    "375D",
+    "375E",
+    "375F"
+   ],
+   "built": 1896,
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012173608",
+   "address": "Prinsengracht 371",
+   "order": 21,
+   "numbers": [
+    371
+   ],
+   "letters": [
+    "371A",
+    "371B",
+    "371C",
+    "371D",
+    "371E"
+   ],
+   "built": 1758,
+   "units": 5,
+   "groundUses": [
+    "industriefunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012174884",
+   "address": "Prinsengracht 377",
+   "order": 22,
+   "numbers": [
+    377
+   ],
+   "letters": [
+    "377B",
+    "377C"
+   ],
+   "built": 1910,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012174883",
+   "address": "Prinsengracht 379",
+   "order": 23,
+   "numbers": [
+    379
+   ],
+   "letters": [
+    "379A",
+    "379B",
+    "379C",
+    "379D",
+    "379E"
+   ],
+   "built": 2006,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012174882",
+   "address": "Prinsengracht 381",
+   "order": 24,
+   "numbers": [
+    381
+   ],
+   "built": 1903,
+   "units": 6,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  },
+  {
+   "pandId": "0363100012185768",
+   "address": "Prinsengracht 383–385",
+   "order": 25,
+   "numbers": [
+    383,
+    385
+   ],
+   "built": 1890,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "buurt": "AC03",
+   "inWorldTiles": true
+  }
+ ]
+}
