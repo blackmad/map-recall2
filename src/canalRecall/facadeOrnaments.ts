@@ -744,7 +744,8 @@ function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
   if (dr.centre === 'pediment' || dr.centre === 'segmental') {
     // A measured rise (the crown read) over the slope rule; the segmental arch is drawn 1.3 times its rise.
     const w = L * (dr.centreShare ?? 0.5), a = (L - w) / 2, b = a + w, mid = L / 2, B = K.pediment.band;
-    const rise = dr.centreRiseM ? (dr.centre === 'segmental' ? dr.centreRiseM / 1.3 : dr.centreRiseM) : w / 2 * K.pediment.slope;
+    // A measured rise is held to 0.3 of the cap's width (kg-pass1: a read rise to the attic's top drew a dome on 12, 42).
+    const rise = dr.centreRiseM ? Math.min(dr.centreRiseM, w * 0.3) / (dr.centre === 'segmental' ? 1.3 : 1) : w / 2 * K.pediment.slope;
     if (dr.centre === 'pediment') {
       // A moulded pediment: a recessed tympanum a shade darker, the raking cornices in two steps with a shadow line under
       // them, and a cornice across its foot.

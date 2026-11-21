@@ -76,12 +76,21 @@ const FORM_GABLE: Record<string, [string, NonNullable<PlotGableForm['shape']>]> 
  *  gabled house is the saddle's foot behind the gable, 1.5-2.7 m over the gable's foot on Herengracht 16, 28, 80, 84. */
 export const CROWN_FOOT_SHARE = [0.65, 1.2] as const;
 
+/** The most of a neck's rise its brick shoulders take (the claws stand above them). */
+export const NECK_SHOULDER_MAX = 0.3;
+/** A curved gable's top as a share of the front, unread. */
+export const CURVED_NECK_SHARE = 0.75;
 /** The gable form of a crown read (the RowCrown parts it states). */
 export function gableForm(cf: CrownForm, m: CrownMeasures | null, widthM: number): PlotGableForm {
   const f: PlotGableForm = { shape: FORM_GABLE[cf.kind][1] };
   const necked = f.shape === 'neck' || f.shape === 'bell';
   if (m?.neckShare && m.neckShare > 0.12 && m.neckShare < 0.95 && (necked || f.shape === 'step' || f.shape === 'spout')) f.neckW = +(m.neckShare * widthM).toFixed(2);
-  if (necked && m?.shoulderRise !== undefined) f.shoulderRise = Math.min(0.85, Math.max(0.08, m.shoulderRise));
+  // A neck's read shoulder landmark is the claw pieces' top (0.54-0.64 on Herengracht 16, 28, 38, 44, 64, 80): the brick
+  // shoulder under them is low and the claws stand on it (self-check kg-pass1: "wide bell without a neck" on all six), so
+  // the outline keeps at most NECK_SHOULDER_MAX. A bell's sweep is the outline itself.
+  if (necked && m?.shoulderRise !== undefined) f.shoulderRise = +Math.min(f.shape === 'neck' ? NECK_SHOULDER_MAX : 0.85, Math.max(0.12, m.shoulderRise)).toFixed(3);
+  // A curved (Jugendstil) gable is a bell nearly the front's width when its neck is not read (Herengracht 74).
+  if (cf.kind === 'curved' && !f.neckW) f.neckW = +(CURVED_NECK_SHARE * widthM).toFixed(2);
   if (necked && m?.raiseM && m.raiseM > 0.8) f.raiseM = m.raiseM;
   if (necked && m?.capM && m.capM > 0.2) f.capM = m.capM;
   const cap = ({ pediment: 'pediment', segmental: 'segmental', rounded: 'rounded', flat: 'flat', carved: 'rounded', shell: 'segmental' } as const)[cf.cap as 'pediment'];
