@@ -140,3 +140,59 @@ export const SUNLIT_MIN_L = 40;
 export function isSunlitRaw(lab: readonly number[]): boolean {
   return lab[0] >= SUNLIT_MIN_L && !isShadedRaw(lab);
 }
+
+/**
+ * Round 2 of the kit (lane postwar-kit-r2-20261121, item 1): one capture cannot call grey-brown against red, nor grey
+ * brick at all. A low-chroma warm reading (raw C* < AMBIGUOUS.maxC) is a cast as often as a colour (Mariadistelkade 3-27:
+ * grey-brown drawn red-brown; Lutmastraat 2-8: light buff drawn red-brown), and the #118 brick calibration triples its
+ * chroma. So:
+ *   - an ambiguous warm front is accepted only when every other usable capture of it (fetch-alternates.ts, other days)
+ *     also reads warm brick; its colour is then the median of the captures' raw colours. A capture that reads grey or
+ *     paint makes it unsure. With no other usable capture it stays only when its raw hue is clearly red (< AMBIGUOUS.hue).
+ *   - an 'unsure' front is grey brick when two or more captures from different days each find a dominant low-chroma
+ *     mid-light cluster (GREY) at lightnesses within GREY.agreeL: a shaded render or a one-off cast does not repeat.
+ *     Its colour keeps its own lightness and low chroma (calibrateGrey), not the brick path's tripled chroma.
+ */
+export const AMBIGUOUS = { maxC: 12, hue: 60 } as const;
+export const GREY = { maxC: 6, minL: 30, maxL: 75, share: 0.35, agreeL: 10, outC: 4 } as const;
+export type CaptureClass = 'warm' | 'paint' | 'grey' | 'other';
+type Usable = Pick<WallPatch, 'kind' | 'shaded' | 'clusters' | 'kept' | 'leafShare' | 'L' | 'a' | 'b'>;
+export const usableCapture = (m: Usable | null | undefined): m is Usable => !!m && m.kept >= ACCEPT.pixels && m.leafShare <= ACCEPT.leaf;
+export function captureClass(m: Usable): CaptureClass {
+  if (m.kind === 'paint') return 'paint';
+  if (m.kind === 'brick' && !m.shaded) return 'warm';
+  const [L, a, b, share] = m.clusters[0] ?? [0, 0, 0, 0];
+  if (Math.hypot(a, b) < GREY.maxC && L >= GREY.minL && L <= GREY.maxL && share >= GREY.share) return 'grey';
+  return 'other';
+}
+export const isAmbiguousWarm = (m: Usable) => m.kind === 'brick' && !m.shaded && Math.hypot(m.a, m.b) < AMBIGUOUS.maxC;
+const hueOf = (a: number, b: number) => (Math.atan2(b, a) * 180 / Math.PI + 360) % 360;
+const med = (v: number[]) => { const s = [...v].sort((p, q) => p - q), n = s.length; return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2; };
+export type Consensus = { verdict: 'warm' | 'grey' | 'unsure'; lab?: [number, number, number]; captures: number; classes: CaptureClass[] };
+/** The call over a front's captures (primary first, then other days), for an ambiguous warm or an unsure primary. */
+export function consensusOf(primary: Usable, alternates: ReadonlyArray<Usable | null>): Consensus {
+  const all = [primary, ...alternates].filter(usableCapture);
+  const classes = all.map(captureClass);
+  const medLab = (ms: Usable[]): [number, number, number] => [med(ms.map(m => m.L)), med(ms.map(m => m.a)), med(ms.map(m => m.b))];
+  if (captureClass(primary) === 'warm') {
+    if (all.length < 2) return hueOf(primary.a, primary.b) < AMBIGUOUS.hue ? { verdict: 'warm', lab: [primary.L, primary.a, primary.b], captures: 1, classes } : { verdict: 'unsure', captures: 1, classes };
+    if (classes.some(c => c === 'grey' || c === 'paint')) return { verdict: 'unsure', captures: all.length, classes };
+    const warm = all.filter((_, i) => classes[i] === 'warm');
+    if (warm.length < 2) return { verdict: 'unsure', captures: all.length, classes };
+    return { verdict: 'warm', lab: medLab(warm), captures: all.length, classes };
+  }
+  const grey = all.filter((_, i) => classes[i] === 'grey');
+  if (grey.length >= 2 && grey.length * 2 > all.length) {
+    const Ls = grey.map(m => m.clusters[0][0]);
+    if (Math.max(...Ls) - Math.min(...Ls) <= GREY.agreeL) {
+      const c = grey.map(m => m.clusters[0]);
+      return { verdict: 'grey', lab: [med(c.map(x => x[0])), med(c.map(x => x[1])), med(c.map(x => x[2]))], captures: all.length, classes };
+    }
+  }
+  return { verdict: 'unsure', captures: all.length, classes };
+}
+/** Grey brick in today's frame: its own lightness (lifted like the brick path, L +0), chroma held at GREY.outC or less. */
+export function calibrateGrey(lab: readonly [number, number, number]): string {
+  const [L, a, b] = lab, C = Math.hypot(a, b), k = C > GREY.outC ? GREY.outC / C : 1;
+  return `#${labToRgb([L, a * k, b * k]).map(hex2).join('')}`;
+}

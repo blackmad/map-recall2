@@ -24,10 +24,6 @@
    "balcony": "projecting",
    "balconyTone": "dark"
   },
-  "0363100012064221": {
-   "balcony": "round",
-   "balconyTone": "dark"
-  },
   "0363100012064632": {
    "balcony": "round",
    "balconyTone": "glass"
@@ -42,7 +38,7 @@
   },
   "0363100012067983": {
    "balcony": "projecting",
-   "balconyTone": "dark",
+   "balconyTone": "glass",
    "erker": "white-glass",
    "erkerPlan": "canted",
    "erkerCount": 3
@@ -63,7 +59,7 @@
   },
   "0363100012073607": {
    "erker": "white-glass",
-   "erkerPlan": "canted",
+   "erkerPlan": "round",
    "erkerCount": 2
   },
   "0363100012074725": {
@@ -72,20 +68,16 @@
   },
   "0363100012075138": {
    "balcony": "projecting",
-   "balconyTone": "colour"
+   "balconyTone": "dark"
   },
   "0363100012077174": {
    "stair": "glazed-strip",
    "stairCount": 1
   },
-  "0363100012078958": {
-   "stair": "glazed-strip",
-   "stairCount": 1
-  },
   "0363100012080820": {
    "erker": "white-glass",
-   "erkerPlan": "canted",
-   "erkerCount": 2
+   "erkerPlan": "round",
+   "erkerCount": 1
   },
   "0363100012082596": {
    "stair": "glazed-tower",
@@ -93,7 +85,7 @@
   },
   "0363100012082890": {
    "balcony": "projecting",
-   "balconyTone": "white"
+   "balconyTone": "dark"
   },
   "0363100012084209": {
    "balcony": "projecting",
@@ -110,10 +102,6 @@
   "0363100012087152": {
    "balcony": "projecting",
    "balconyTone": "dark"
-  },
-  "0363100012088698": {
-   "stair": "glazed-strip",
-   "stairCount": 1
   },
   "0363100012091343": {
    "balcony": "band",
@@ -144,28 +132,16 @@
    "stairCount": 1
   },
   "0363100012096427": {
-   "balcony": "round",
-   "balconyTone": "white"
+   "balcony": "projecting",
+   "balconyTone": "dark"
   },
   "0363100012098652": {
    "balcony": "round",
    "balconyTone": "white"
   },
-  "0363100012099615": {
-   "balcony": "band",
-   "balconyTone": "glass"
-  },
   "0363100012101441": {
    "stair": "glazed-strip",
    "stairCount": 2
-  },
-  "0363100012102084": {
-   "balcony": "band",
-   "balconyTone": "dark"
-  },
-  "0363100012104085": {
-   "balcony": "round",
-   "balconyTone": "white"
   },
   "0363100012105031": {
    "stair": "glazed-strip",
@@ -185,7 +161,7 @@
   },
   "0363100012111453": {
    "balcony": "projecting",
-   "balconyTone": "glass"
+   "balconyTone": "white"
   },
   "0363100012112106": {
    "balcony": "band",
@@ -239,15 +215,6 @@
    "balcony": "projecting",
    "balconyTone": "white"
   },
-  "0363100012136981": {
-   "stair": "glazed-tower",
-   "stairCount": 1
-  },
-  "0363100012139269": {
-   "erker": "white-glass",
-   "erkerPlan": "round",
-   "erkerCount": 4
-  },
   "0363100012139300": {
    "balcony": "round",
    "balconyTone": "dark"
@@ -264,13 +231,6 @@
    "balcony": "band",
    "balconyTone": "dark"
   },
-  "0363100012144909": {
-   "balcony": "projecting",
-   "balconyTone": "dark",
-   "erker": "white-glass",
-   "erkerPlan": "box",
-   "erkerCount": 2
-  },
   "0363100012145102": {
    "balcony": "band",
    "balconyTone": "white"
@@ -280,7 +240,7 @@
    "balconyTone": "colour"
   },
   "0363100012146061": {
-   "balcony": "round",
+   "balcony": "projecting",
    "balconyTone": "glass"
   },
   "0363100012146384": {
@@ -308,7 +268,7 @@
   },
   "0363100012165002": {
    "balcony": "round",
-   "balconyTone": "white"
+   "balconyTone": "dark"
   },
   "0363100012168722": {
    "balcony": "projecting",
@@ -322,17 +282,13 @@
    "balcony": "band",
    "balconyTone": "dark"
   },
-  "0363100012170644": {
-   "balcony": "band",
-   "balconyTone": "glass"
-  },
   "0363100012171626": {
    "balcony": "round",
    "balconyTone": "white"
   },
   "0363100012171628": {
    "balcony": "round",
-   "balconyTone": "white"
+   "balconyTone": "dark"
   },
   "0363100012173278": {
    "erker": "dark-glass",
@@ -355,45 +311,24 @@
    "balcony": "round",
    "balconyTone": "colour"
   },
-  "0363100012180754": {
-   "balcony": "round",
-   "balconyTone": "white"
-  },
-  "0363100012180794": {
-   "erker": "dark-glass",
-   "erkerPlan": "box",
-   "erkerCount": 2
-  },
   "0363100012181261": {
    "balcony": "round",
-   "balconyTone": "white"
-  },
-  "0363100012183007": {
-   "balcony": "band",
    "balconyTone": "white"
   },
   "0363100012185423": {
    "stair": "glazed-tower",
    "stairCount": 1
   },
-  "0363100012229139": {
-   "balcony": "projecting",
-   "balconyTone": "white"
-  },
   "0363100012233557": {
    "balcony": "projecting",
    "balconyTone": "white"
-  },
-  "0363100012238837": {
-   "stair": "glazed-strip",
-   "stairCount": 1
   },
   "0363100012240951": {
    "balcony": "projecting",
    "balconyTone": "dark"
   },
   "0363100012241618": {
-   "balcony": "projecting",
+   "balcony": "round",
    "balconyTone": "dark"
   },
   "0363100012242648": {
@@ -439,10 +374,6 @@
   "0363100012252175": {
    "balcony": "projecting",
    "balconyTone": "glass"
-  },
-  "0363100012252854": {
-   "balcony": "projecting",
-   "balconyTone": "dark"
   },
   "0363100012253061": {
    "balcony": "projecting",

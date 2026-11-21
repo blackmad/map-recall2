@@ -14,7 +14,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { calibrateThumb, isSunlitRaw, measureWallPatch } from '../../src/canalRecall/postwarKit/wallPatch.ts';
+import { calibrateGrey, calibrateThumb, consensusOf, isAmbiguousWarm, isSunlitRaw, measureWallPatch } from '../../src/canalRecall/postwarKit/wallPatch.ts';
+import { labToRgb } from '../../src/canalRecall/look/brickTone.ts';
 import { median } from '../../src/canalRecall/buurtProfiles/exposure.ts';
 import { familyOfHex } from '../../src/canalRecall/postwarKit/kit.ts';
 import { MEASURED_FRONTS } from '../../src/canalRecall/postwarKit/facts.ts';
@@ -94,10 +95,27 @@ for (const [id, m] of Object.entries(rows)) {
 }
 console.log(`shaded ${shadedCount}, rescued by another capture ${rescued}`);
 
+// Round 2 (lane postwar-kit-r2-20261121, R2=1): an ambiguous warm front (raw C* < 12) or an unsure one is called over all
+// its captures (wallPatch.ts consensusOf): warm only when every other day agrees, grey brick when two days repeat it.
+const R2 = process.env.R2 === '1';
+const r2Log: Record<string, unknown> = {};
+if (R2) for (const [id, m] of Object.entries(rows)) {
+  if (m.skip || m.rescuedFrom || !(m.kind === 'unsure' || (m.accepted && isAmbiguousWarm(m)))) continue;
+  const alts: any[] = [];
+  for (const alt of alternates[id] ?? []) { const r = await measureOne(id, alt); alts.push(r.skip ? null : r); }
+  const c = consensusOf(m, alts);
+  r2Log[id] = { address: m.address, before: m.kind === 'unsure' ? 'unsure' : m.hex, verdict: c.verdict, captures: c.captures, classes: c.classes };
+  const toHex = (lab: [number, number, number]) => '#' + labToRgb(lab).map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+  if (c.verdict === 'unsure') rows[id] = { ...m, accepted: false, r2: 'unsure' };
+  else if (c.verdict === 'warm') rows[id] = { ...m, hex: toHex(c.lab!), L: Math.round(c.lab![0]), a: Math.round(c.lab![1]), b: Math.round(c.lab![2]), accepted: true, r2: `warm over ${c.captures}` };
+  else rows[id] = { ...m, hex: toHex(c.lab!), L: Math.round(c.lab![0]), a: Math.round(c.lab![1]), b: Math.round(c.lab![2]), kind: 'brick', painted: false, grey: true, accepted: true, r2: `grey over ${c.captures}` };
+}
+if (R2) { fs.writeFileSync(path.join(OUT, 'consensus-r2.json'), JSON.stringify(r2Log, null, 1)); const v = Object.values(r2Log) as any[]; console.log('r2', ['warm', 'grey', 'unsure'].map(k => `${k} ${v.filter(x => x.verdict === k).length}`).join(', '), 'of', v.length); }
+
 // Calibration into today's frame (wallPatch.ts calibrateThumb); the paint cast is this run's painted median a/b.
-const painted = Object.values(rows).filter(m => m.hex && m.painted);
+const painted = Object.values(rows).filter(m => m.hex && m.painted && !m.r2);
 const paintCast: [number, number] = painted.length >= 10 ? [median(painted.map(m => m.a)), median(painted.map(m => m.b))] : [0, 0];
-for (const m of Object.values(rows)) if (m.hex) { m.raw = m.hex; m.hex = calibrateThumb(m.raw, m.painted, paintCast); m.family = familyOfHex(m.hex, m.painted); }
+for (const m of Object.values(rows)) if (m.hex) { m.raw = m.hex; m.hex = m.grey ? calibrateGrey([m.L, m.a, m.b]) : calibrateThumb(m.raw, m.painted, paintCast); m.family = familyOfHex(m.hex, m.painted); }
 console.log('paint cast', paintCast);
 // Validation against the eye reads (facts.ts): exact family and coarse family (warm brick | buff | grey/dark | paint).
 const coarse = (f: string) => f === 'brick-red' || f === 'brick-brown' || f === 'brick-dark' ? 'warm' : f === 'brick-buff' ? 'buff' : f === 'brick-grey' ? 'grey' : 'paint';
@@ -116,7 +134,7 @@ fs.writeFileSync(path.join(OUT, 'measured-walls.json'), JSON.stringify({ summary
 console.log(JSON.stringify(summary, null, 1));
 if (process.argv.includes('--publish')) {
   const walls = Object.fromEntries(accepted.sort(([p], [q]) => p.localeCompare(q)).map(([id, m]) => [id, `${m.painted ? 'p' : 'b'}${m.hex.slice(1)}`]));
-  fs.writeFileSync(path.join(ROOT, 'src/canalRecall/postwarKit/corrected-walls.json'), JSON.stringify({ schemaVersion: 1, revision: 'postwar-walls/v2 2026-11-20',
+  fs.writeFileSync(path.join(ROOT, 'src/canalRecall/postwarKit/corrected-walls.json'), JSON.stringify({ schemaVersion: 1, revision: R2 ? 'postwar-walls/v3 2026-11-21 (round 2: consensus over captures)' : 'postwar-walls/v2 2026-11-20',
     licence: 'measured from Gemeente Amsterdam panoramas, CC BY 4.0', method: 'scripts/postwar-kit/measure-walls.ts (brick-only patches of the projected upper-storey wall, postwarKit/wallPatch.ts)', walls }, null, 1) + '\n');
   console.log(`published ${Object.keys(walls).length} walls`);
 }

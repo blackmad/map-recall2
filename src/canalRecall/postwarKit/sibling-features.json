@@ -35,7 +35,7 @@
   },
   "0363100012086718": {
    "balcony": "projecting",
-   "balconyTone": "dark",
+   "balconyTone": "glass",
    "from": "0363100012067983"
   },
   "0363100012087230": {
@@ -44,7 +44,7 @@
    "from": "0363100012091899"
   },
   "0363100012090151": {
-   "balcony": "round",
+   "balcony": "projecting",
    "balconyTone": "glass",
    "from": "0363100012146061"
   },
@@ -59,7 +59,7 @@
    "from": "0363100012139300"
   },
   "0363100012101170": {
-   "balcony": "round",
+   "balcony": "projecting",
    "balconyTone": "glass",
    "from": "0363100012146061"
   },
@@ -84,7 +84,7 @@
    "from": "0363100012108575"
   },
   "0363100012113143": {
-   "balcony": "round",
+   "balcony": "projecting",
    "balconyTone": "glass",
    "from": "0363100012146061"
   },
@@ -110,7 +110,7 @@
   },
   "0363100012125134": {
    "balcony": "projecting",
-   "balconyTone": "dark",
+   "balconyTone": "glass",
    "from": "0363100012067983"
   },
   "0363100012126736": {
@@ -129,7 +129,7 @@
    "from": "0363100012094781"
   },
   "0363100012138881": {
-   "balcony": "round",
+   "balcony": "projecting",
    "balconyTone": "glass",
    "from": "0363100012146061"
   },
@@ -162,11 +162,6 @@
    "balcony": "band",
    "balconyTone": "white",
    "from": "0363100012164932"
-  },
-  "0363100012183006": {
-   "balcony": "band",
-   "balconyTone": "white",
-   "from": "0363100012183007"
   },
   "0363100012184744": {
    "balcony": "projecting",

@@ -15,7 +15,7 @@ const ctx = (len: number, kit: Partial<NonNullable<ExtraContext['postwarKit']>> 
 const cost = (fn: (c: ExtraContext, s: ExtraSink) => void, c: ExtraContext) => { const s = new ExtraSink(20_000); fn(c, s); return s; };
 
 test('feature and sibling files validate; bad rows throw', () => {
-  assert.ok(FEATURE_READ_COUNT >= 100, `${FEATURE_READ_COUNT}`);
+  assert.ok(FEATURE_READ_COUNT >= 80, `${FEATURE_READ_COUNT}`);
   assert.ok(SIBLING_COUNT >= 20, `${SIBLING_COUNT}`);
   assert.throws(() => validateFeatures({ schemaVersion: 1, features: { '0363100012068068': { stair: 'spiral' as never } } }));
   assert.throws(() => validateFeatures({ schemaVersion: 2, features: {} }));
@@ -115,4 +115,30 @@ test('a band on a curved facet runs through its joints and draws on a short face
   assert.ok(Math.min(...xs(joined)) < 1e-9 && Math.max(...xs(joined)) > 10 - 1e-9);
   assert.equal(cost(balconyBand, ctx(2)).tris.length, 0);
   assert.ok(cost(balconyBand, ctx(2, { curved: true })).tris.length > 0);
+});
+
+test('colour over captures (item 1): one warm cast does not flip a grey-brown front; grey brick needs two days', async () => {
+  const { consensusOf, calibrateGrey, captureClass } = await import('./wallPatch.js');
+  const { familyOfHex } = await import('./kit.js');
+  const cap = (kind: 'brick' | 'paint' | 'unsure', L: number, a: number, b: number, dominant: [number, number, number, number] = [L, a, b, 0.4]) =>
+    ({ kind, shaded: false, clusters: [dominant], kept: 5000, leafShare: 0.05, L, a, b });
+  // Mariadistelkade 3-27 as measured: raw L 36, a 3, b 10 (hue 73): alone it is unsure (the overlap zone), not red.
+  assert.equal(consensusOf(cap('brick', 36, 3, 10), []).verdict, 'unsure');
+  // A clearly red raw hue alone stays.
+  assert.equal(consensusOf(cap('brick', 32, 9, 5), []).verdict, 'warm');
+  // A second day reading grey makes the ambiguous front unsure; two warm days take the median.
+  assert.equal(consensusOf(cap('brick', 36, 3, 10), [cap('unsure', 40, 1, 2, [40, 1, 2, 0.5])]).verdict, 'unsure');
+  const two = consensusOf(cap('brick', 36, 3, 10), [cap('brick', 40, 7, 6)]);
+  assert.equal(two.verdict, 'warm');
+  assert.deepEqual(two.lab, [38, 5, 8]);
+  // An unusable alternate (leaves) does not count.
+  assert.equal(consensusOf(cap('brick', 36, 3, 10), [{ ...cap('unsure', 40, 1, 2), leafShare: 0.6 }]).verdict, 'unsure');
+  // Grey brick: two days agreeing within 10 L*; one day, or days far apart in L*, stay unsure.
+  const g = (L: number) => cap('unsure', L, 0.5, 2, [L, 0.5, 2, 0.45]);
+  assert.equal(captureClass(g(50)), 'grey');
+  assert.equal(consensusOf(g(50), []).verdict, 'unsure');
+  assert.equal(consensusOf(g(50), [g(80)]).verdict, 'unsure');
+  const grey = consensusOf(g(50), [g(56)]);
+  assert.equal(grey.verdict, 'grey');
+  assert.equal(familyOfHex(calibrateGrey(grey.lab!), false), 'brick-grey');
 });

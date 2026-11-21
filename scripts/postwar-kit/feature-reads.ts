@@ -24,7 +24,34 @@ for (const r of rows.sort((a, b) => a.id.localeCompare(b.id))) {
   if (r.erker && r.erker !== 'none') { f.erker = r.erker; f.erkerPlan = r.erkerPlan ?? 'box'; f.erkerCount = Math.max(1, Math.min(4, r.erkerCount || 1)); }
   if (Object.keys(f).length) out[r.id] = f;
 }
-console.log(Object.keys(out).length, 'pands with features;', none.length, 'read with no balcony');
+// 2024-2025 captures only: a read made on an older capture stands only as confirmed on a 2024-2025 one (recent-photos.ts,
+// confirm-sheets.ts; one fresh reader, artifacts/postwar-kit/confirm.json). 'no' and 'unclear' drop the feature, 'partly'
+// takes the confirmed kind or tone (CORRECT) or drops it; a pand with no clear 2024-2025 capture keeps nothing.
+const sample = JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/postwar-kit/sample-all.json'), 'utf8')) as Record<string, any>;
+const confirm = new Map((JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/postwar-kit/confirm.json'), 'utf8')) as any[]).map(r => [r.id, r]));
+const CORRECT: Record<string, Record<string, unknown>> = {
+  '0363100012067983': { balconyTone: 'glass' }, '0363100012075138': { balconyTone: 'dark' }, '0363100012082890': { balconyTone: 'dark' },
+  '0363100012096427': { balcony: 'projecting', balconyTone: 'dark' }, '0363100012111453': { balconyTone: 'white' }, '0363100012146061': { balcony: 'projecting' },
+  '0363100012165002': { balconyTone: 'dark' }, '0363100012171628': { balconyTone: 'dark' }, '0363100012241618': { balcony: 'round' }, '0363100012249108': { balconyTone: 'dark' },
+  '0363100012073607': { erkerPlan: 'round' }, '0363100012080820': { erkerPlan: 'round', erkerCount: 1 },
+};
+const KEEP_PARTLY = new Set(Object.keys(CORRECT));
+let dropped = 0;
+for (const [id, f] of Object.entries(out) as Array<[string, Record<string, unknown>]>) {
+  if ((sample[id]?.panoDate ?? '') >= '2024') continue;
+  const c = confirm.get(id);
+  if (!c) { delete out[id]; dropped++; continue; }
+  for (const [k, keys] of [['balcony', ['balcony', 'balconyTone']], ['stair', ['stair', 'stairCount']], ['erker', ['erker', 'erkerPlan', 'erkerCount']]] as const) {
+    if (!f[k]) continue;
+    const v = c[k];
+    if (v === 'yes') continue;
+    if (v === 'partly' && KEEP_PARTLY.has(id) && keys.some(x => x in CORRECT[id])) { for (const x of keys) if (x in CORRECT[id]) f[x] = CORRECT[id][x]; continue; }
+    for (const x of keys) delete f[x];
+    dropped++;
+  }
+  if (!Object.keys(f).length) delete out[id];
+}
+console.log(Object.keys(out).length, 'pands with features;', none.length, 'read with no balcony;', dropped, 'features dropped by the 2024-2025 check');
 fs.writeFileSync(path.join(ROOT, 'artifacts/postwar-kit/read-none.json'), JSON.stringify(none));
 if (process.argv.includes('--publish')) fs.writeFileSync(path.join(ROOT, 'src/canalRecall/postwarKit/feature-reads.json'), JSON.stringify({ schemaVersion: 1, revision: 'postwar-features/v1 2026-11-21',
   licence: 'read by eye from Gemeente Amsterdam panoramas, CC BY 4.0', method: 'scripts/postwar-kit/feature-sheets.ts + feature-reads.ts (usable, high-confidence reads only)', features: out }, null, 1) + '\n');
