@@ -1,0 +1,3005 @@
+{
+ "version": 1,
+ "faceId": "herengracht-2-90-even",
+ "about": "Belt review lane C: per-house photo reads of David's picked crop (picks.json at read time), every description field in kit values; built by scripts/belt-review/read-house.ts, merged into description.json by describe.ts at source photo-read.",
+ "reads": {
+  "0363100012175701": {
+   "address": "Herengracht 90",
+   "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+   "spanPx": [
+    75,
+    358
+   ],
+   "cropPx": [
+    283,
+    1003
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:26.047Z",
+   "usage": {
+    "input_tokens": 2373,
+    "output_tokens": 421
+   },
+   "costUsd": 0.01791,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "dormers",
+    "dormers": {
+     "count": 1,
+     "style": "arched"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-4-over-4",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#8a8a7e",
+     "family": "grey"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "shop",
+    "door": {
+     "bay": 2,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1880,
+    "ornaments": [
+     "red fabric awnings with shop logos over the three ground-storey openings",
+     "shopfront with pilasters and fascia cornice",
+     "central dormer with rounded hood and scroll trim above the cornice"
+    ],
+    "kitCannotSay": [
+     "dormer: large central stucco dormer with segmental round-arched cap and side scrolls",
+     "cornice: white plastered top band/attic parapet above the cornice"
+    ],
+    "low": [
+     "roofStorey",
+     "dormers",
+     "windows",
+     "wallFinish",
+     "door",
+     "facadeYear",
+     "cornice"
+    ]
+   }
+  },
+  "0363100100091828": {
+   "address": "Herengracht 2–4",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+   "spanPx": [
+    75,
+    482
+   ],
+   "cropPx": [
+    407,
+    913
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:37.064Z",
+   "usage": {
+    "input_tokens": 2474,
+    "output_tokens": 377
+   },
+   "costUsd": 0.01744,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "frieze",
+    "roofStorey": "dormers",
+    "dormers": {
+     "count": 1,
+     "style": "arched"
+    },
+    "roofMaterial": "red-tile",
+    "heads": "flat",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#4e4a4c",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "shop",
+    "door": {
+     "bay": 3,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1790,
+    "ornaments": [
+     "hoist beam projecting from arched hoist dormer",
+     "white pilasters framing ground-storey openings"
+    ],
+    "kitCannotSay": [
+     "ground storey: white stuccoed pilaster-and-lintel frontage with tall small-paned windows",
+     "dormer: arched hoist dormer with hoist beam on hipped red pantile roof"
+    ],
+    "low": [
+     "ground",
+     "door",
+     "windows",
+     "dormers"
+    ]
+   }
+  },
+  "0363100012169010": {
+   "address": "Herengracht 88",
+   "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+   "spanPx": [
+    75,
+    432
+   ],
+   "cropPx": [
+    357,
+    865
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:30.272Z",
+   "usage": {
+    "input_tokens": 2380,
+    "output_tokens": 445
+   },
+   "costUsd": 0.01842,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "raised-neck",
+    "cornice": "simple",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight",
+    "windowSurround": "block-dressings",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#4a2e28",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "all",
+    "ground": "shop",
+    "door": {
+     "bay": 2,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1880,
+    "ornaments": [
+     "restaurant shopfront with awnings and chalkboard signs",
+     "white stucco quoin blocks framing windows",
+     "attic storey with paired windows below gable"
+    ],
+    "kitCannotSay": [
+     "dense alternating white stucco and dark brick banding across whole front (neo-Renaissance striping)",
+     "extra mezzanine/attic floor band with windows above main storeys before gable"
+    ],
+    "low": [
+     "storeys",
+     "crown",
+     "windows",
+     "cornice",
+     "door",
+     "facadeYear"
+    ],
+    "notes": "A tree in the centre obscures the middle bay, and the gable top is cut off by the image."
+   }
+  },
+  "0363100012175692": {
+   "address": "Herengracht 86",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+   "spanPx": [
+    150,
+    648
+   ],
+   "cropPx": [
+    331,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:35.515Z",
+   "usage": {
+    "input_tokens": 2493,
+    "output_tokens": 438
+   },
+   "costUsd": 0.01873,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "bell",
+    "cornice": "simple",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "casement-pair",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#9a5a44",
+     "family": "red-brown"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "sandstone scroll/claw pieces at gable shoulders",
+     "carved crowning top of bell gable",
+     "wall lantern beside door",
+     "hoist hatch shutter in gable"
+    ],
+    "kitCannotSay": [
+     "window frames dark grey/black, not white",
+     "segmental heads are rubbed-brick relieving arches, no stone",
+     "ground storey whitewashed/stuccoed with white pilasters under a brick fascia",
+     "door is black panelled with glazed fanlight in white frame"
+    ],
+    "low": [
+     "crown",
+     "windows",
+     "facadeYear",
+     "storeys"
+    ]
+   }
+  },
+  "0363100012175702": {
+   "address": "Herengracht 84",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+   "spanPx": [
+    150,
+    710
+   ],
+   "cropPx": [
+    366,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:39.274Z",
+   "usage": {
+    "input_tokens": 2579,
+    "output_tokens": 406
+   },
+   "costUsd": 0.01844,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "step",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "relieving",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#3a3634",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1620,
+    "ornaments": [
+     "hoist beam with hood at top of step gable",
+     "small carved relief stone at right of first-floor cornice line",
+     "door fanlight with oval tracery",
+     "lantern beside door"
+    ],
+    "kitCannotSay": [
+     "dark-painted brick pilasters between ground-floor openings",
+     "white block ends of relieving arches over upper windows",
+     "white corner blocks on gable steps"
+    ],
+    "low": [
+     "wallFinish",
+     "storeys",
+     "stoop",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012175703": {
+   "address": "Herengracht 82",
+   "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499",
+   "spanPx": [
+    75,
+    409
+   ],
+   "cropPx": [
+    334,
+    974
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:43.193Z",
+   "usage": {
+    "input_tokens": 2397,
+    "output_tokens": 379
+   },
+   "costUsd": 0.01717,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "red-tile",
+    "heads": "flat",
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "wallFinish": "stucco",
+    "wallColour": {
+     "hex": "#e6e0d2",
+     "family": "white"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "shop",
+    "door": {
+     "bay": 1,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "shop awning sign 'Båton' across ground storey",
+     "street name plate",
+     "wall anchors between windows"
+    ],
+    "kitCannotSay": [
+     "window frames dark grey/black, not white",
+     "grey stone sills projecting as sill bands",
+     "ground-storey shopfront with pilastered stucco frame and fascia"
+    ],
+    "low": [
+     "windows",
+     "roofMaterial",
+     "door",
+     "facadeYear",
+     "cornice"
+    ]
+   }
+  },
+  "0363100012175783": {
+   "address": "Herengracht 80",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+   "spanPx": [
+    150,
+    583
+   ],
+   "cropPx": [
+    277,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:47.842Z",
+   "usage": {
+    "input_tokens": 2407,
+    "output_tokens": 430
+   },
+   "costUsd": 0.01823,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#7a5045",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "hoist beam projecting above gable top",
+     "white sandstone claw-piece scrolls flanking neck",
+     "small arched cap on neck",
+     "painted name lettering on ground-storey fascia",
+     "fanlight transoms with diamond glazing over doors"
+    ],
+    "kitCannotSay": [
+     "ground storey: two adjacent doors with diamond-pattern fanlights",
+     "ground storey: white timber pilastered front with wide window",
+     "third-storey middle window has dark french-door glazing with low railing"
+    ],
+    "low": [
+     "storeys",
+     "facadeYear",
+     "door",
+     "windows"
+    ]
+   }
+  },
+  "0363100012175784": {
+   "address": "Herengracht 76–78",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+   "spanPx": [
+    150,
+    987
+   ],
+   "cropPx": [
+    670,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:53.740Z",
+   "usage": {
+    "input_tokens": 3011,
+    "output_tokens": 493
+   },
+   "costUsd": 0.0219,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4636",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "two neck gables side by side with sandstone scroll claw-pieces and carved crowning tops",
+     "hoist beams projecting from both gable tops",
+     "oval fanlight with ornament over right door",
+     "carved transom panel over left door",
+     "iron wall anchors",
+     "guard rails in gable and upper windows"
+    ],
+    "kitCannotSay": [
+     "double house: two separate neck gables over one front",
+     "second street door at ground opening 2",
+     "right gable crown is a curved bell-like neck, left is straight neck"
+    ],
+    "low": [
+     "storeys",
+     "door",
+     "facadeYear",
+     "stoop"
+    ],
+    "notes": "Front is two houses (76 and 78), each with its own neck gable, door and 2-bay width; the right house has 3 bays at second storey and 2 below."
+   }
+  },
+  "0363100012175616": {
+   "address": "Herengracht 74",
+   "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+   "spanPx": [
+    150,
+    590
+   ],
+   "cropPx": [
+    278,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:11:58.014Z",
+   "usage": {
+    "input_tokens": 2407,
+    "output_tokens": 375
+   },
+   "costUsd": 0.01713,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 2,
+    "crown": "shouldered",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "t-window",
+    "windowSurround": "stone-lintel",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#9a4a38",
+     "family": "red"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "band",
+    "stringCourses": true,
+    "speklagen": "all",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1900,
+    "ornaments": [
+     "house number 74 above door",
+     "window grilles on ground floor"
+    ],
+    "kitCannotSay": [
+     "curved shouldered Jugendstil gable with brick coping and pier",
+     "segmental-arched transom bar inside upper windows",
+     "continuous stone lintel band linking window heads"
+    ],
+    "low": [
+     "crown",
+     "bays",
+     "windows",
+     "speklagen",
+     "storeys"
+    ]
+   }
+  },
+  "0363100012175617": {
+   "address": "Herengracht 72",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+   "spanPx": [
+    75,
+    285
+   ],
+   "cropPx": [
+    210,
+    1112
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:02.689Z",
+   "usage": {
+    "input_tokens": 2297,
+    "output_tokens": 427
+   },
+   "costUsd": 0.01773,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "raised-neck",
+    "cornice": "heavy",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-1-over-1",
+    "windowSurround": "full-frame",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#4a2e2a",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "band",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": true
+    },
+    "stoop": "stoop",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "oval oculus windows with white stucco frames in the top storey",
+     "triangular pediment at the top of the front",
+     "white pilaster strips between the windows",
+     "bracketed door hood with cornice"
+    ],
+    "kitCannotSay": [
+     "dark brown painted wall with white stucco pilaster and cornice grid",
+     "oval windows in white cartouche frames under the pediment",
+     "classical triangular pediment crown"
+    ],
+    "low": [
+     "crown",
+     "storeys",
+     "bays",
+     "roofStorey",
+     "wallFinish",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012175618": {
+   "address": "Herengracht 70",
+   "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+   "spanPx": [
+    120,
+    454
+   ],
+   "cropPx": [
+    209,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:06.778Z",
+   "usage": {
+    "input_tokens": 2321,
+    "output_tokens": 400
+   },
+   "costUsd": 0.01728,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight",
+    "windowSurround": "full-frame",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#4a3a36",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "band",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1880,
+    "ornaments": [
+     "carved stone cartouches in attic frieze above top windows",
+     "bracketed/pilastered piers between bays",
+     "stone plinth ground storey"
+    ],
+    "kitCannotSay": [
+     "attic storey above cornice with carved cartouche panels and second cornice/pediment top",
+     "stone cornices projecting at every floor level",
+     "dark brick piers with light stone window frames"
+    ],
+    "low": [
+     "storeys",
+     "crown",
+     "roofStorey",
+     "windows",
+     "facadeYear",
+     "door"
+    ]
+   }
+  },
+  "0363100012175698": {
+   "address": "Herengracht 68",
+   "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+   "spanPx": [
+    75,
+    544
+   ],
+   "cropPx": [
+    469,
+    1188
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:10.795Z",
+   "usage": {
+    "input_tokens": 2708,
+    "output_tokens": 413
+   },
+   "costUsd": 0.01909,
+   "answer": {
+    "readable": true,
+    "storeys": 5,
+    "bays": 4,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#4a4442",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1790,
+    "ornaments": [
+     "low triangular pediment above the cornice",
+     "carved console brackets in the attic frieze",
+     "oval-patterned fanlight over the door",
+     "small plaque above the door",
+     "wall lantern beside the door"
+    ],
+    "kitCannotSay": [
+     "attic frieze with small windows between large carved consoles",
+     "low triangular pediment set on top of the cornice",
+     "cream-painted cornice and frieze against a dark-grey painted wall"
+    ],
+    "low": [
+     "storeys",
+     "windows",
+     "wallFinish",
+     "stoop",
+     "facadeYear",
+     "door"
+    ]
+   }
+  },
+  "0363100012168544": {
+   "address": "Herengracht 66",
+   "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+   "spanPx": [
+    75,
+    376
+   ],
+   "cropPx": [
+    301,
+    1023
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:15.350Z",
+   "usage": {
+    "input_tokens": 2384,
+    "output_tokens": 391
+   },
+   "costUsd": 0.01736,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight-double",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#4a4645",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1850,
+    "ornaments": [
+     "oval fanlight with ornamental grille over door",
+     "white consoles carrying cornice",
+     "small hoist hood on top of cornice",
+     "name plaque above door"
+    ],
+    "kitCannotSay": [
+     "upper windows are large modern frameless-like casement panes with transom, dark grey frames reading as white-trimmed",
+     "ground windows are tall full-height glazed panels"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "wallFinish",
+     "stoop"
+    ]
+   }
+  },
+  "0363100012168545": {
+   "address": "Herengracht 64",
+   "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+   "spanPx": [
+    75,
+    424
+   ],
+   "cropPx": [
+    349,
+    982
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:20.149Z",
+   "usage": {
+    "input_tokens": 2445,
+    "output_tokens": 438
+   },
+   "costUsd": 0.01854,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "raised-neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#b07a68",
+     "family": "red"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1735,
+    "ornaments": [
+     "carved sandstone claw-pieces flanking neck gable",
+     "carved scrolled crest on gable top",
+     "oval oeil-de-boeuf cartouches with shell ornament at gable shoulders",
+     "carved ornament above top gable window",
+     "leaded fanlight over door",
+     "wall lantern beside door",
+     "iron wall anchors"
+    ],
+    "kitCannotSay": [
+     "raised-neck gable with two windows stacked in the neck",
+     "ornate stone oval cartouches on shoulders",
+     "stone door frame with large leaded transom light"
+    ],
+    "low": [
+     "windows",
+     "storeys",
+     "stoop",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012167493": {
+   "address": "Herengracht 62",
+   "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+   "spanPx": [
+    135,
+    615
+   ],
+   "cropPx": [
+    305,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:24.464Z",
+   "usage": {
+    "input_tokens": 2450,
+    "output_tokens": 424
+   },
+   "costUsd": 0.01828,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight-double",
+    "windowSurround": "sill",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#4a4440",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-left",
+    "balconies": "none",
+    "facadeYear": 1880,
+    "ornaments": [
+     "stained-glass fanlight with radiating wheel pattern above door",
+     "iron railing on stoop",
+     "souterrain door under stoop"
+    ],
+    "kitCannotSay": [
+     "dark brown-grey brick with dark brick flat arches over windows",
+     "fanlight leaded glass wheel motif"
+    ],
+    "low": [
+     "crown",
+     "cornice",
+     "roofStorey",
+     "bays",
+     "windows",
+     "facadeYear",
+     "wallColour"
+    ],
+    "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably."
+   }
+  },
+  "0363100012167492": {
+   "address": "Herengracht 60",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+   "spanPx": [
+    75,
+    318
+   ],
+   "cropPx": [
+    243,
+    1092
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:28.825Z",
+   "usage": {
+    "input_tokens": 2328,
+    "output_tokens": 455
+   },
+   "costUsd": 0.01841,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight-double",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3a3836",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": null,
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1885,
+    "ornaments": [
+     "stucco attic storey with central round-arched window in a scrolled arch surround",
+     "ornate stucco frieze with garlands and consoles",
+     "small metal guard rail at one upper window"
+    ],
+    "kitCannotSay": [
+     "attic: white stucco attic with central round-arched lunette window and scrolled surround",
+     "wall: dark grey/black painted brickwork",
+     "cornice: elaborate neo-renaissance stucco frieze with consoles"
+    ],
+    "low": [
+     "storeys",
+     "windows",
+     "door",
+     "stoop",
+     "ground",
+     "roofStorey",
+     "facadeYear"
+    ],
+    "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width."
+   }
+  },
+  "0363100012167495": {
+   "address": "Herengracht 58",
+   "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+   "spanPx": [
+    135,
+    812
+   ],
+   "cropPx": [
+    433,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:33.617Z",
+   "usage": {
+    "input_tokens": 2665,
+    "output_tokens": 434
+   },
+   "costUsd": 0.01934,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "t-window",
+    "windowSurround": "keystone",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#5e5a58",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "keystone",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1875,
+    "ornaments": [
+     "frieze panel below the top cornice",
+     "carved double front door with cast fanlight grille",
+     "house number plaque 58 beside the door",
+     "shallow pilaster doorcase with entablature"
+    ],
+    "kitCannotSay": [
+     "segmental brick relieving arches over each window with white impost and keystone blocks",
+     "grey-painted dark brick wall rather than red",
+     "white stucco crowning cornice and frieze in an eclectic style",
+     "rusticated stucco band at basement level"
+    ],
+    "low": [
+     "cornice",
+     "windows",
+     "stoop",
+     "balconies",
+     "facadeYear",
+     "wallColour"
+    ]
+   }
+  },
+  "0363100012167494": {
+   "address": "Herengracht 56",
+   "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+   "spanPx": [
+    128,
+    712
+   ],
+   "cropPx": [
+    372,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:38.619Z",
+   "usage": {
+    "input_tokens": 2579,
+    "output_tokens": 498
+   },
+   "costUsd": 0.02028,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "frieze",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash-1-over-1",
+    "windowSurround": "jack-blocks",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#7a4434",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "guard",
+    "facadeYear": 1880,
+    "ornaments": [
+     "frieze with carved rosette panels and small balustraded centre panel under cornice",
+     "house number 56 plaque",
+     "wall lantern beside ground window",
+     "stone pilaster doorcase with entablature"
+    ],
+    "kitCannotSay": [
+     "recessed red-brick relieving arches above each window with light stone impost and key blocks",
+     "tall arched-top ground-storey windows",
+     "rusticated grey stone plinth and doorcase",
+     "low iron guard rails at first-floor windows"
+    ],
+    "low": [
+     "windows",
+     "balconies",
+     "stoop",
+     "facadeYear",
+     "cornice"
+    ],
+    "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts."
+   }
+  },
+  "0363100012169218": {
+   "address": "Herengracht 54",
+   "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+   "spanPx": [
+    140,
+    1452
+   ],
+   "cropPx": [
+    870,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:44.070Z",
+   "usage": {
+    "input_tokens": 3353,
+    "output_tokens": 521
+   },
+   "costUsd": 0.02383,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 5,
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight",
+    "windowSurround": "full-frame",
+    "wallFinish": "stucco",
+    "wallColour": {
+     "hex": "#d8d8c0",
+     "family": "buff"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "band",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "guard",
+    "facadeYear": 1875,
+    "ornaments": [
+     "segmental arched pediment-like attic crowning the centre above the cornice",
+     "paired console brackets under centre cornice",
+     "garland/swag panels under first-floor sills",
+     "stone balcony on carved consoles with cast-iron roundel railing",
+     "round-arched doorway with carved archivolt and fanlight lantern",
+     "grey stone rusticated central risalit with pilasters",
+     "hanging sign beside door",
+     "planters flanking stoop"
+    ],
+    "kitCannotSay": [
+     "crown: central segmental-arched raised attic over the cornice",
+     "central bay: grey stone projecting risalit contrasting with pale stucco wings",
+     "windows: dark-framed modern casements with toplights, not white frames",
+     "door: round-arched stone doorcase with carved archivolt"
+    ],
+    "low": [
+     "windows",
+     "wallColour",
+     "facadeYear",
+     "roofStorey"
+    ]
+   }
+  },
+  "0363100012169272": {
+   "address": "Herengracht 50–52",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+   "spanPx": [
+    75,
+    1049
+   ],
+   "cropPx": [
+    974,
+    1067
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:49.276Z",
+   "usage": {
+    "input_tokens": 3344,
+    "output_tokens": 466
+   },
+   "costUsd": 0.0227,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 6,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 1,
+     "style": "pediment"
+    },
+    "roofMaterial": "black-tile",
+    "heads": "flat",
+    "windows": "sash",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3a3536",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1790,
+    "ornaments": [
+     "stone doorcase with pilasters, entablature and arched fanlight",
+     "framed stone window surround with cornice above door bay on first floor",
+     "dentilled main cornice"
+    ],
+    "kitCannotSay": [
+     "cream stucco attic storey with small windows forming the frieze below cornice",
+     "door bay window dressing only on one window, others undressed",
+     "sash windows with 2-over-2 panes plus transom"
+    ],
+    "low": [
+     "storeys",
+     "dormers",
+     "roofMaterial",
+     "windows",
+     "facadeYear",
+     "stoop"
+    ],
+    "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey."
+   }
+  },
+  "0363100012169270": {
+   "address": "Herengracht 48",
+   "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+   "spanPx": [
+    113,
+    755
+   ],
+   "cropPx": [
+    432,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:54.648Z",
+   "usage": {
+    "input_tokens": 2665,
+    "output_tokens": 497
+   },
+   "costUsd": 0.0206,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "casement-toplight-double",
+    "windowSurround": "full-frame",
+    "wallFinish": "stucco",
+    "wallColour": {
+     "hex": "#c9ccd0",
+     "family": "grey"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "keystone",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-left",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "carved shell/cartouche keystones on every window head",
+     "deep coffered cornice with modillion brackets over a panelled frieze",
+     "ornate carved crest/finial on top of the cornice",
+     "wrought-iron lantern on bracket beside ground windows",
+     "fanlight with iron tracery over door",
+     "house number 48 above door",
+     "iron railing to souterrain area"
+    ],
+    "kitCannotSay": [
+     "cornice: very deep projecting coffered cornice with heavy brackets",
+     "window frames: dark grey/green, not white",
+     "heads: shell-ornamented moulded segmental surrounds",
+     "crest: sculpted ornament atop the cornice"
+    ],
+    "low": [
+     "windows",
+     "stoopFlight",
+     "facadeYear",
+     "heads"
+    ]
+   }
+  },
+  "0363100012179667": {
+   "address": "Herengracht 46",
+   "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+   "spanPx": [
+    143,
+    576
+   ],
+   "cropPx": [
+    274,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:12:58.343Z",
+   "usage": {
+    "input_tokens": 2407,
+    "output_tokens": 371
+   },
+   "costUsd": 0.01705,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#9a6a52",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-left",
+    "balconies": "none",
+    "facadeYear": 1720,
+    "ornaments": [
+     "hoist beam at gable top",
+     "door lantern",
+     "white sandstone claw pieces flanking neck gable"
+    ],
+    "kitCannotSay": [
+     "dark green double basement doors instead of souterrain windows",
+     "fanlight over door with radiating glazing bars"
+    ],
+    "low": [
+     "heads",
+     "facadeYear",
+     "stoopFlight",
+     "storeys"
+    ]
+   }
+  },
+  "0363100012179669": {
+   "address": "Herengracht 44",
+   "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+   "spanPx": [
+    150,
+    596
+   ],
+   "cropPx": [
+    333,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:02.788Z",
+   "usage": {
+    "input_tokens": 2493,
+    "output_tokens": 425
+   },
+   "costUsd": 0.01847,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#45464d",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "guard",
+    "facadeYear": 1740,
+    "ornaments": [
+     "hoist beam projecting from neck gable top",
+     "carved sandstone claw-piece scrolls flanking neck",
+     "curved cornice cap with carved shell/cartouche on top of neck",
+     "wall lantern beside door"
+    ],
+    "kitCannotSay": [
+     "facade brick painted dark slate-grey rather than natural brick",
+     "gable claw-pieces and neck cap in cream sandstone",
+     "dark shutter-like recesses above upper windows"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "storeys",
+     "stoop"
+    ]
+   }
+  },
+  "0363100012179670": {
+   "address": "Herengracht 42",
+   "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+   "spanPx": [
+    135,
+    528
+   ],
+   "cropPx": [
+    256,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:07.786Z",
+   "usage": {
+    "input_tokens": 2407,
+    "output_tokens": 381
+   },
+   "costUsd": 0.01725,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "t-window",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#8a4f3e",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1890,
+    "ornaments": [
+     "hoist beam projecting from crown",
+     "wall anchors",
+     "double panelled street door with fanlight"
+    ],
+    "kitCannotSay": [
+     "crown: curved raised central cornice section with single attic window below, cream painted",
+     "window heads: brick segmental arches with rubbed-brick soldier courses, not stone"
+    ],
+    "low": [
+     "windows",
+     "roofStorey",
+     "crown",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012179668": {
+   "address": "Herengracht 40",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+   "spanPx": [
+    105,
+    1033
+   ],
+   "cropPx": [
+    601,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:13.340Z",
+   "usage": {
+    "input_tokens": 2923,
+    "output_tokens": 467
+   },
+   "costUsd": 0.02103,
+   "answer": {
+    "readable": true,
+    "storeys": 5,
+    "bays": 5,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-transom",
+    "windowSurround": "sill",
+    "wallFinish": "stone",
+    "wallColour": {
+     "hex": "#77726c",
+     "family": "grey"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1915,
+    "ornaments": [
+     "flagpole",
+     "two wall lanterns flanking ground storey",
+     "carved panels under upper sills",
+     "decorative frieze band above ground storey",
+     "barred ground-storey windows"
+    ],
+    "kitCannotSay": [
+     "deep projecting coffered cornice with large modillion brackets",
+     "horizontally rusticated grey stone ashlar over the whole front",
+     "arched fanlight toplights to the first-storey French windows",
+     "three street doors across the ground storey"
+    ],
+    "low": [
+     "storeys",
+     "windows",
+     "facadeYear",
+     "door"
+    ],
+    "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology."
+   }
+  },
+  "0363100012179671": {
+   "address": "Herengracht 38",
+   "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+   "spanPx": [
+    150,
+    714
+   ],
+   "cropPx": [
+    392,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:18.967Z",
+   "usage": {
+    "input_tokens": 2579,
+    "output_tokens": 484
+   },
+   "costUsd": 0.02,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "step",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "relieving",
+    "windows": "cross-transom",
+    "windowSurround": "block-dressings",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#8a4a38",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-right",
+    "balconies": "none",
+    "facadeYear": 1620,
+    "ornaments": [
+     "hoist beam projecting from gable top",
+     "stone ball finials and scroll claw-pieces on gable steps",
+     "iron wall anchors between top-storey windows",
+     "relieving arches with alternating light voussoir blocks over windows",
+     "plain entablature band above ground storey"
+    ],
+    "kitCannotSay": [
+     "gable: single tall step section rising from a straight cornice-like ledge over the third storey",
+     "upper windows: casement shutters/blinds behind glazing, not true cross windows",
+     "ground storey: tall windows with transoms and door with fanlight under a timber entablature"
+    ],
+    "low": [
+     "crown",
+     "windows",
+     "storeys",
+     "facadeYear",
+     "stoopFlight",
+     "windowSurround"
+    ]
+   }
+  },
+  "0363100012179684": {
+   "address": "Herengracht 36",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843",
+   "spanPx": [
+    150,
+    697
+   ],
+   "cropPx": [
+    369,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:22.962Z",
+   "usage": {
+    "input_tokens": 2579,
+    "output_tokens": 413
+   },
+   "costUsd": 0.01858,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "dormers",
+    "dormers": {
+     "count": 1,
+     "style": "pediment"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "t-window",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4234",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-left",
+    "balconies": "guard",
+    "facadeYear": 1880,
+    "ornaments": [
+     "dark cast-iron wall anchors between windows",
+     "central dormer with steep pointed pediment and balcony railing",
+     "plastered frieze band below cornice"
+    ],
+    "kitCannotSay": [
+     "dormer: tall central hoist-dormer with steep triangular pediment and finial",
+     "cornice: white plastered entablature with deep frieze",
+     "ground plinth: grey rendered souterrain base",
+     "door: transom light above door"
+    ],
+    "low": [
+     "windows",
+     "stoopFlight",
+     "facadeYear",
+     "dormers"
+    ]
+   }
+  },
+  "0363100012168139": {
+   "address": "Herengracht 34",
+   "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065",
+   "spanPx": [
+    128,
+    734
+   ],
+   "cropPx": [
+    430,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:28.112Z",
+   "usage": {
+    "input_tokens": 2665,
+    "output_tokens": 514
+   },
+   "costUsd": 0.02094,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 4,
+    "crown": "flat",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-transom",
+    "windowSurround": "none",
+    "wallFinish": "stone",
+    "wallColour": {
+     "hex": "#c9c4bc",
+     "family": "grey"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "shop",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1955,
+    "ornaments": [
+     "projecting flat concrete roof slab on short piers above an open recessed rooftop setback",
+     "horizontal steel guard bars across lower panes of upper windows",
+     "recessed glazed entrance porch with entrance steps"
+    ],
+    "kitCannotSay": [
+     "upper windows: tall single-pane glazing with narrow top transom and horizontal guard rails",
+     "crown: modernist projecting flat roof slab carried on stub piers instead of a cornice",
+     "wall: smooth grey stone/concrete panel grid framing each window",
+     "ground storey: two recessed glazed entrance bays beside two large display windows"
+    ],
+    "low": [
+     "cornice",
+     "windows",
+     "wallFinish",
+     "ground",
+     "facadeYear",
+     "door"
+    ],
+    "notes": "Post-war modernist stone/concrete grid front with a projecting roof slab, unlike traditional canal-house types."
+   }
+  },
+  "0363100012168069": {
+   "address": "Herengracht 32",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+   "spanPx": [
+    135,
+    587
+   ],
+   "cropPx": [
+    304,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:32.234Z",
+   "usage": {
+    "input_tokens": 2450,
+    "output_tokens": 367
+   },
+   "costUsd": 0.01714,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "t-window",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4a3c",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": false
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1880,
+    "ornaments": [
+     "hoist hook rod on cornice",
+     "house number plate by door"
+    ],
+    "kitCannotSay": [
+     "tall grey-white plastered cornice with dentil band and deep fascia, almost a storey high",
+     "door with tall glazed transom matching window height",
+     "graffiti-covered souterrain base"
+    ],
+    "low": [
+     "windows",
+     "heads",
+     "stoop",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012168138": {
+   "address": "Herengracht 30",
+   "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583",
+   "spanPx": [
+    135,
+    569
+   ],
+   "cropPx": [
+    290,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:36.778Z",
+   "usage": {
+    "input_tokens": 2450,
+    "output_tokens": 436
+   },
+   "costUsd": 0.01852,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "shouldered",
+    "cornice": "heavy",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "t-window",
+    "windowSurround": "keystone",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#b06a40",
+     "family": "orange"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "keystone",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "guard",
+    "facadeYear": 1890,
+    "ornaments": [
+     "hoist beam projecting from top of gable",
+     "glazed tile panels below ground-storey windows",
+     "wrought-iron balconies on first and second floor centre bay",
+     "door hood with transom fanlight grille"
+    ],
+    "kitCannotSay": [
+     "central raised gable with heavy stucco cornice flanked by cornice-capped side wings",
+     "segmental brick relieving arches with white stucco keystones and impost blocks",
+     "yellow decorative tile panels under ground-floor windows"
+    ],
+    "low": [
+     "crown",
+     "windows",
+     "stoop",
+     "storeys"
+    ]
+   }
+  },
+  "0363100012179837": {
+   "address": "Herengracht 28",
+   "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+   "spanPx": [
+    143,
+    724
+   ],
+   "cropPx": [
+    396,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:41.618Z",
+   "usage": {
+    "input_tokens": 2622,
+    "output_tokens": 425
+   },
+   "costUsd": 0.01899,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "raised-neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-1-over-1",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3e3634",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-left",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "hoist beam projecting from gable top",
+     "carved sandstone claw-piece scrolls flanking the neck",
+     "arched carved crowning cap on neck gable",
+     "shuttered hoist door in gable"
+    ],
+    "kitCannotSay": [
+     "neck gable with white sandstone Louis-style scroll claw pieces and arched cap",
+     "grey-painted plinth with souterrain grilles",
+     "dark painted brick near black"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "stoopFlight",
+     "wallFinish"
+    ]
+   }
+  },
+  "0363100012179836": {
+   "address": "Herengracht 26",
+   "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+   "spanPx": [
+    120,
+    610
+   ],
+   "cropPx": [
+    358,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:45.947Z",
+   "usage": {
+    "input_tokens": 2536,
+    "output_tokens": 421
+   },
+   "costUsd": 0.01856,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash-1-over-1",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#5e4a44",
+     "family": "brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "side-right",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "frieze of circular openings in attic band",
+     "consoles/brackets under cornice",
+     "wrought-iron stoop railing",
+     "cast-iron fanlight grille over door",
+     "wall anchors"
+    ],
+    "kitCannotSay": [
+     "attic frieze pierced with round oculi in triplets",
+     "door pilaster frame painted cream with arched door head",
+     "ground-storey windows tall with transoms, larger than upper windows"
+    ],
+    "low": [
+     "windows",
+     "cornice",
+     "facadeYear",
+     "stoopFlight"
+    ]
+   }
+  },
+  "0363100012179838": {
+   "address": "Herengracht 24",
+   "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+   "spanPx": [
+    143,
+    594
+   ],
+   "cropPx": [
+    306,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:50.768Z",
+   "usage": {
+    "input_tokens": 2450,
+    "output_tokens": 431
+   },
+   "costUsd": 0.01842,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "t-window",
+    "windowSurround": "none",
+    "wallFinish": "painted-brick",
+    "wallColour": {
+     "hex": "#2e2f30",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "hoist beam projecting above cornice",
+     "small iron wall anchors between storeys",
+     "house number plate beside door",
+     "fanlight over door",
+     "iron railing at stoop",
+     "guard bar on top-floor left window"
+    ],
+    "kitCannotSay": [
+     "cornice: tall plain cream-painted wooden cornice with deep frieze board",
+     "plinth: light grey rendered base below ground storey",
+     "top-floor windows: casements with horizontal glazing bars, lower than other storeys"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "wallFinish",
+     "cornice"
+    ]
+   }
+  },
+  "0363100012179752": {
+   "address": "Herengracht 22",
+   "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+   "spanPx": [
+    143,
+    953
+   ],
+   "cropPx": [
+    568,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:55.838Z",
+   "usage": {
+    "input_tokens": 2880,
+    "output_tokens": 425
+   },
+   "costUsd": 0.02002,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "casement-pair",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#5a4238",
+     "family": "brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "wrought-iron wall anchors between storeys",
+     "wall lantern beside door",
+     "plain transom light over panelled double door",
+     "iron railing at street front"
+    ],
+    "kitCannotSay": [
+     "top-storey windows: casements with fixed horizontal-bar transoms, shorter than lower storeys",
+     "cornice: white stucco with paired console brackets at both ends only",
+     "ground windows: tall pair-casements with transom lights",
+     "brick segmental arches over windows in same brick, not white"
+    ],
+    "low": [
+     "windows",
+     "heads",
+     "facadeYear",
+     "cornice"
+    ]
+   }
+  },
+  "0363100012179753": {
+   "address": "Herengracht 20",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+   "spanPx": [
+    113,
+    621
+   ],
+   "cropPx": [
+    338,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:13:59.957Z",
+   "usage": {
+    "input_tokens": 2536,
+    "output_tokens": 418
+   },
+   "costUsd": 0.0185,
+   "answer": {
+    "readable": true,
+    "storeys": 5,
+    "bays": 3,
+    "crown": "flat",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "casement-toplight",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3e3c40",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "warehouse",
+    "door": {
+     "bay": 1,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1900,
+    "ornaments": [
+     "hoist beam projecting above the roof overhang",
+     "bank of mailboxes beside the ground-floor glazed doors",
+     "stone pilasters framing the ground storey"
+    ],
+    "kitCannotSay": [
+     "crown: deep flat projecting white eaves canopy/overhang instead of a cornice",
+     "ground storey: dark fascia band over glazed double doors with stone piers",
+     "wall: dark grey/near-black glazed brick"
+    ],
+    "low": [
+     "crown",
+     "cornice",
+     "windows",
+     "ground",
+     "door",
+     "facadeYear",
+     "heads"
+    ]
+   }
+  },
+  "0363100012179760": {
+   "address": "Herengracht 18",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+   "spanPx": [
+    150,
+    596
+   ],
+   "cropPx": [
+    306,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:04.270Z",
+   "usage": {
+    "input_tokens": 2450,
+    "output_tokens": 413
+   },
+   "costUsd": 0.01806,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight-double",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3e3a40",
+     "family": "dark"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1870,
+    "ornaments": [
+     "cream doorcase with console brackets and cornice over door and transom",
+     "house number 18 on doorcase",
+     "cream frieze cornice with end consoles",
+     "chimney stacks behind cornice"
+    ],
+    "kitCannotSay": [
+     "window frames grey-green, not white",
+     "dark brown-grey painted brick wall",
+     "large single-pane ground-floor window",
+     "cream-painted souterrain plinth with dark door"
+    ],
+    "low": [
+     "windows",
+     "wallFinish",
+     "facadeYear",
+     "cornice"
+    ]
+   }
+  },
+  "0363100012179761": {
+   "address": "Herengracht 16",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+   "spanPx": [
+    150,
+    603
+   ],
+   "cropPx": [
+    311,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:09.553Z",
+   "usage": {
+    "input_tokens": 2493,
+    "output_tokens": 435
+   },
+   "costUsd": 0.01867,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "raised-neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "relieving",
+    "windows": "sash-1-over-1",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4a3c",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1750,
+    "ornaments": [
+     "hoist beam projecting from gable top",
+     "white carved Louis XIV/XV scroll claw-pieces flanking neck",
+     "wall lantern beside door",
+     "transom light over door",
+     "low stone plinth with basement grille"
+    ],
+    "kitCannotSay": [
+     "neck gable: large white carved stone scroll claw-pieces with rocaille ornament",
+     "gable top: hoist beam projecting through the crowning cap",
+     "second-floor centre window: French door behind iron railing"
+    ],
+    "low": [
+     "crown",
+     "facadeYear",
+     "windows",
+     "heads",
+     "balconies"
+    ]
+   }
+  },
+  "0363100012179764": {
+   "address": "Herengracht 14",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+   "spanPx": [
+    113,
+    867
+   ],
+   "cropPx": [
+    494,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:13.969Z",
+   "usage": {
+    "input_tokens": 2751,
+    "output_tokens": 410
+   },
+   "costUsd": 0.0192,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 4,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash-small-panes",
+    "windowSurround": "sill",
+    "wallFinish": "stucco",
+    "wallColour": {
+     "hex": "#7d786e",
+     "family": "grey"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1860,
+    "ornaments": [
+     "triangular pediment centred on the cornice",
+     "giant pilasters dividing the bays",
+     "recessed panels below the upper windows",
+     "lantern bracket beside the door",
+     "hoist pole leaning against the front"
+    ],
+    "kitCannotSay": [
+     "crown: triangular pediment over a straight cornice",
+     "wall: full-height pilaster strips between the bays",
+     "sills: panelled aprons below the upper windows"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "door",
+     "wallColour"
+    ]
+   }
+  },
+  "0363100012179765": {
+   "address": "Herengracht 12",
+   "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+   "spanPx": [
+    120,
+    813
+   ],
+   "cropPx": [
+    462,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:18.977Z",
+   "usage": {
+    "input_tokens": 2708,
+    "output_tokens": 504
+   },
+   "costUsd": 0.02091,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-toplight",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#7a5548",
+     "family": "brown"
+    },
+    "whiteFrames": false,
+    "whiteHeads": "none",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1885,
+    "ornaments": [
+     "projecting hoist beam through the attic cornice",
+     "segmental arched pediment with cartouche in attic frieze",
+     "carved consoles on attic frieze",
+     "central stucco window aedicule with scroll consoles and carved crest on first floor",
+     "rusticated stucco ground storey with pilasters",
+     "round-patterned fanlight over door",
+     "wall-mounted lantern"
+    ],
+    "kitCannotSay": [
+     "ground storey cream stucco with pilasters on a brick upper front",
+     "upper windows set in recessed brick panels with shallow segmental reveals",
+     "central first-floor window in stucco aedicule frame",
+     "dark/black window frames",
+     "attic frieze cream stucco with consoles and central segmental arch"
+    ],
+    "low": [
+     "windows",
+     "roofStorey",
+     "stoop",
+     "heads",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012179763": {
+   "address": "Herengracht 10",
+   "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+   "spanPx": [
+    135,
+    912
+   ],
+   "cropPx": [
+    501,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:23.379Z",
+   "usage": {
+    "input_tokens": 2751,
+    "output_tokens": 443
+   },
+   "costUsd": 0.01986,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 4,
+    "crown": "cornice",
+    "cornice": "heavy",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "casement-gridded-toplight",
+    "windowSurround": "full-frame",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#4a4a4e",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 1,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1790,
+    "ornaments": [
+     "carved stone doorcase with scrolled crest above fanlight",
+     "fanlight with oval glazing bars",
+     "wrought-iron stoop railings",
+     "cast-iron souterrain grilles",
+     "wall lantern beside door",
+     "flagpole bracket"
+    ],
+    "kitCannotSay": [
+     "cornice: tall plain white stucco attic band with modillion/dentil cornice above",
+     "wall: dark grey glazed or painted brick",
+     "door: dark green panelled door with oval motif"
+    ],
+    "low": [
+     "windows",
+     "facadeYear",
+     "wallFinish",
+     "roofStorey"
+    ]
+   }
+  },
+  "0363100012179833": {
+   "address": "Herengracht 8",
+   "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478",
+   "spanPx": [
+    113,
+    445
+   ],
+   "cropPx": [
+    221,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:28.804Z",
+   "usage": {
+    "input_tokens": 2321,
+    "output_tokens": 490
+   },
+   "costUsd": 0.01908,
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "mixed",
+    "windows": "t-window",
+    "windowSurround": "block-dressings",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#b8664e",
+     "family": "red"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "all",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1885,
+    "ornaments": [
+     "stepped stone top piece with finial above the cornice",
+     "shell-shaped carved tympana over the first-floor windows",
+     "stone console under the first-floor balcony",
+     "carved stone door head",
+     "wrought-iron balcony railings"
+    ],
+    "kitCannotSay": [
+     "first-floor balcony: curved wrought-iron railing on a stone corbelled slab",
+     "second-floor window heads: stone pediment-like hoods",
+     "first-floor window heads: carved shell tympana in round arches",
+     "ground floor: grey stone base with round-arched door and windows",
+     "crown: stepped stone attic panel with a small pointed top above the bracketed cornice"
+    ],
+    "low": [
+     "storeys",
+     "roofStorey",
+     "windows",
+     "heads",
+     "stoop",
+     "facadeYear"
+    ]
+   }
+  },
+  "0363100012179834": {
+   "address": "Herengracht 6",
+   "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373",
+   "spanPx": [
+    75,
+    339
+   ],
+   "cropPx": [
+    262,
+    1200
+   ],
+   "model": "claude-opus-5-5",
+   "at": "2026-11-21T10:14:33.418Z",
+   "usage": {
+    "input_tokens": 2407,
+    "output_tokens": 448
+   },
+   "costUsd": 0.01859,
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 2,
+    "crown": "cornice",
+    "cornice": "bracketed",
+    "roofStorey": "mansard",
+    "dormers": {
+     "count": 1,
+     "style": "pediment"
+    },
+    "roofMaterial": "slate",
+    "heads": "mixed",
+    "windows": "sash-1-over-1",
+    "windowSurround": "block-dressings",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#7a4636",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "blocks",
+    "stringCourses": true,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "windows",
+    "stoopFlight": "none",
+    "balconies": "guard",
+    "facadeYear": 1880,
+    "ornaments": [
+     "ornate stucco dormer with carved scroll top and pilasters",
+     "radiating white voussoir blocks over second-storey windows",
+     "arched first-storey window heads with white keystone surrounds",
+     "pair of arched souterrain/ground openings left of door"
+    ],
+    "kitCannotSay": [
+     "dormer: tall stucco dormer with volutes and crowning ornament",
+     "first-floor windows: round-arched heads with white rusticated surrounds",
+     "second-floor heads: fanned white voussoir blocks"
+    ],
+    "low": [
+     "storeys",
+     "dormers",
+     "roofMaterial",
+     "door",
+     "stoop",
+     "balconies"
+    ]
+   }
+  }
+ }
+}

@@ -14,7 +14,7 @@ export const DESC_FIELDS = [
 export type DescField = typeof DESC_FIELDS[number];
 
 /** Sources counted as "from the library" in the ledger (lane C LIBRARY_SOURCES); anything else is a new read. */
-export const LIBRARY_SOURCES = new Set(['reviewed', 'face-intent', 'own-read', 'register', 'survey', 'based-on']);
+export const LIBRARY_SOURCES = new Set(['reviewed', 'face-intent', 'photo-read', 'own-read', 'register', 'survey', 'based-on']);
 
 export const WALL_FAMILIES = ['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'] as const;
 
