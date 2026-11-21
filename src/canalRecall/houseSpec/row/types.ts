@@ -231,11 +231,20 @@ export interface RowCorniceDress {
   /** Under the corona: `modillions` (small blocks at a close pitch), `consoles` (tall brackets over the piers), `dentils`,
    *  or `none`. Absent: none. */
   supports?: 'modillions' | 'consoles' | 'dentils' | 'none';
+  /** `ends`: the supports only at the cornice's two ends (Herengracht 22). Absent: over every pier. */
+  supportsAt?: 'ends';
   /** The frieze under it: `plain` a painted board, `attic-lights` a low light over each window axis in a painted board,
    *  `panels` sunk panels in a painted board. Absent: the wall's brick. */
-  frieze?: 'plain' | 'attic-lights' | 'panels';
-  /** On the cornice: a `pediment` or a `segmental` cap over the centre, or a `balustrade`. Absent: none. */
-  centre?: 'pediment' | 'segmental' | 'balustrade';
+  frieze?: 'plain' | 'attic-lights' | 'panels' | 'oculi';
+  /** On the cornice: a `pediment` or a `segmental` cap over the centre, a `balustrade`, or a raised `attic` piece over the
+   *  centre (a panel of wall standing on the cornice under its own cap, with a light: Herengracht 30, 54, 60). Absent: none. */
+  centre?: 'pediment' | 'segmental' | 'balustrade' | 'attic';
+  /** The centre's measured rise over the cornice (m); absent: the pediment's slope rule, an attic 1.2 m. */
+  centreRiseM?: number;
+  /** An attic centre's cap (absent: flat, a moulded cornice). */
+  centreCap?: 'pediment' | 'segmental' | 'flat';
+  /** The centre's light: a square window, a round-headed one, or an oculus (absent: none). */
+  centreLight?: 'square' | 'round' | 'oculus';
   /** The centre's width as a share of the front (absent: 0.5 for a cap, the whole front for a balustrade). */
   centreShare?: number;
   /** The whole cornice's size against the 1800s timber one (corona, bed, frieze, supports, projections), for the deep

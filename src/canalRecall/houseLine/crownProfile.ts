@@ -101,7 +101,23 @@ export interface RowCrown {
   stone?: { copingM?: number; claws?: boolean | 'carved'; crest?: 'pediment' | 'segmental' | 'crest'; hood?: 'dark' | string; neck?: 'panel' | 'cartouche' | 'oculus'; cap?: 'shell' | 'carved'; festoon?: boolean; shoulders?: 'oval' };
   /** `belt`: the canal belt's gable dress (BELT_GABLE). Absent: the kit's stock outlines and trim, byte-identical. */
   dress?: 'belt';
+  /** Belt neck and bell, an elevated neck (verhoogde halsgevel, Herengracht 64, 88): the front rises this far (m) full width
+   *  over the foot before the shoulders start. Absent: the shoulders start at the foot. */
+  raiseM?: number;
+  /** Belt neck and bell: the cap's rise (m) as measured (absent: BELT_GABLE.neckCap / bellCap of the rise). */
+  capM?: number;
+  /** A projecting stone ledge across the whole front at the crown's foot (Herengracht 38). */
+  footLedge?: boolean;
+  /** Lights stacked one over another in the neck (or a step gable's top), drawn in place of the counted light. */
+  neckLights?: number;
+  /** Lights side by side in the crown's lower, wide part: an elevated neck's upright part, a step gable's lowest storey
+   *  (Herengracht 84: three, with one in the top). */
+  lowerLights?: number;
+  /** The head of the stated neck and lower lights (absent: square). */
+  lightHead?: 'round' | 'segmental';
 }
+/** The stated crown lights (RowCrown.neckLights / lowerLights): sizes (m). */
+export const CROWN_LIGHTS = { maxH: 1.45, minH: 0.55, gap: 0.32, neckHw: 0.45, lowerMaxW: 1.1, margin: 0.28, base: 0.3 } as const;
 /**
  * The canal belt's gable outlines (lane D, 2026-11-15; David on #391: "Gables still look pretty bad"), from the Herengracht
  * 25-73 cuts beside the sheets. Outline proportions only; the trim (claws, copings, caps, finials) is lane R's.
@@ -132,10 +148,12 @@ export function crownDims(c: RowCrown, W: number) {
   // Neck and bell: the kit's stock cap rise (crownOutline capRiseOf), so the trim and the opening follow its outline.
   const kitCap = (c.shape === 'neck' || c.shape === 'bell') ? capRiseOf({ gable: c.shape, ...(c.cap ? { crownCap: c.cap } : {}) } as unknown as FrontIntent, T, 2 * foot) : 0;
   const B = BELT_GABLE;
-  const cap = belt ? (c.shape === 'bell' ? clamp(T * B.bellCap[0], 0.3, B.bellCap[1]) : clamp(T * B.neckCap[0], 0.3, B.neckCap[1]))
+  // An elevated neck's full-width rise (belt neck and bell only), at most 0.6 of the crown.
+  const raise = belt && c.raiseM && c.raiseM > 0 ? clamp(c.raiseM, 0, T * 0.6) : 0;
+  const cap = belt ? (c.capM && c.capM > 0 ? clamp(c.capM, 0.25, Math.max(0.25, (T - raise) * 0.45)) : c.shape === 'bell' ? clamp(T * B.bellCap[0], 0.3, B.bellCap[1]) : clamp(T * B.neckCap[0], 0.3, B.neckCap[1]))
     : c.shape === 'neck' || c.shape === 'bell' ? kitCap : c.shape === 'raised' ? clamp(c.cap === 'flat' ? 0.25 : neck * 0.55, 0.2, Math.min(0.6, (T - (c.bandM ?? 0.5)) * 0.35)) : 0;
   const steps = c.shape === 'step' ? (c.steps && c.steps >= 1 ? clamp(Math.round(c.steps), 1, 8) : c.dress === 'belt' ? clamp(Math.round(T / B.tread), B.steps[0], B.steps[1]) : clamp(Math.round(T / 0.85), 2, 5)) : 0;
-  return { half, T, foot, neck, cap, steps };
+  return { half, T, foot, neck, cap, steps, raise };
 }
 
 /** The saddle's rise behind the crown: its ridge meets the crown under its top, and its slope stays inside the profile. */
@@ -179,8 +197,11 @@ export function rowCrownProfile(c: RowCrown, W: number, R: number): V2[] {
     if (necked && c.dress === 'belt') {
       // The belt's neck and bell (BELT_GABLE): the kit's own outline maths, at the belt's shoulders, crest and cap.
       const b = y0 + KIT_Z, t = T + KIT_Z, bell = c.shape === 'bell', sr = c.shoulderRise ?? (bell ? 0.55 : BELT_GABLE.neckShoulder);
-      kit = canalhouseCrownProfile(bell ? 'klok' : 'hals', 2 * foot, b, t, 2 * neck, b + (T - y0) * sr, 0,
-        { cap: c.cap ?? (bell ? 'rounded' : 'segmental'), capRiseM: Math.min(d.cap, (T - y0) * (1 - sr)), crestWidthM: bell ? 2 * neck * BELT_GABLE.bellCrest : 2 * neck, shoulder: 'concave' });
+      // An elevated neck: the shoulders spring from the top of the full-width rise (absent: from the foot, as before).
+      const bs = b + d.raise, span = T - y0 - d.raise;
+      kit = canalhouseCrownProfile(bell ? 'klok' : 'hals', 2 * foot, bs, t, 2 * neck, bs + span * sr, 0,
+        { cap: c.cap ?? (bell ? 'rounded' : 'segmental'), capRiseM: Math.min(d.cap, span * (1 - sr)), crestWidthM: bell ? 2 * neck * BELT_GABLE.bellCrest : 2 * neck, shoulder: 'concave' });
+      if (d.raise > 0) kit = [[0, b], ...kit, [2 * foot, b]];
     } else
     kit = crownProfile({ gable: c.shape, ...(c.neckW ? { crownNeckWidth: neck / foot } : {}), crownSteps: d.steps || undefined,
       ...(necked && c.cap ? { crownCap: c.cap } : {}), ...(necked && c.shoulderRise ? { crownShoulderRise: c.shoulderRise } : {}) } as unknown as FrontIntent, 2 * foot, y0 + KIT_Z, T + KIT_Z);
@@ -287,7 +308,7 @@ function finials(s: RoofSink, c: RowCrown, prof: readonly V2[], f: number, e: nu
 export const ROW_STONE = { plate: 0.45, back: 0.2, coping: 0.06, overhang: 0.03, copingW: 0.08, claw: 0.16, bellClaw: 0.12, clawProud: 0.04, piece: 0.06,
   volute: 0.08, voluteK: 0.75, cap: 0.08, capBand: 0.14, capOver: 0.1, ledge: 0.1, ledgeH: 0.12, band: 0.1,
   /** Shoulder ovals: half-height (m), width to height, how proud. */
-  oval: { ry: 0.3, k: 0.78, out: 0.05, under: 0.22 },
+  oval: { ry: 0.3, ryRaised: 0.48, k: 0.78, out: 0.05, under: 0.22 },
   /** A neck festoon: leaf radius, the garland's sag, the side drops' length, the centre pendant's height (m). */
   festoon: { r: 0.1, sag: 0.3, drop: 0.95, pend: 0.24, out: 0.07 } } as const;
 /** The stone a crown draws: its stated stone, else the belt dress's (claws, the crest a bell or step stands under). */
@@ -345,12 +366,14 @@ function volute(s: RoofSink, f: number, e: number, cx: number, cy: number, r: nu
 }
 /** The crown's edges a coping runs along (the edgeBand rule: not the eaves, not the roof cheeks outside the foot), as runs
  *  of consecutive outline points. */
-function copingRuns(prof: readonly V2[], foot: number): V2[][] {
+function copingRuns(prof: readonly V2[], foot: number, sides = false): V2[][] {
   const runs: V2[][] = [];
   let cur: V2[] = [];
   for (let i = 0; i < prof.length - 1; i++) {
     const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
-    const skip = (y0 < 0.02 && y1 < 0.02) || (Math.max(Math.abs(x0), Math.abs(x1)) > foot + 0.01 && Math.min(Math.abs(x0), Math.abs(x1)) >= foot - 0.01) || Math.hypot(x1 - x0, y1 - y0) < 1e-4;
+    // `sides`: an elevated neck's upright sides at the foot are the party walls, not a coped edge.
+    const skip = (y0 < 0.02 && y1 < 0.02) || (Math.max(Math.abs(x0), Math.abs(x1)) > foot + 0.01 && Math.min(Math.abs(x0), Math.abs(x1)) >= foot - 0.01) || Math.hypot(x1 - x0, y1 - y0) < 1e-4
+      || (sides && Math.min(Math.abs(x0), Math.abs(x1)) >= foot - 0.01 && Math.abs(x1 - x0) < 1e-6);
     if (skip) { if (cur.length >= 2) runs.push(cur); cur = []; continue; }
     if (!cur.length) cur.push(prof[i]);
     cur.push(prof[i + 1]);
@@ -405,8 +428,10 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   const base = mixHex(trimHex, ROW_STONE_WEATHER.hex, ROW_STONE_WEATHER.mix);
   let k = 0;
   const tone = () => shade(base, ROW_STONE_WEATHER.values[k++ % ROW_STONE_WEATHER.values.length]);
-  for (const run of copingRuns(prof, foot)) stoneBand(s, run, f, e, S.overhang, bw, S.coping, S.back, tone());
+  for (const run of copingRuns(prof, foot, d.raise > 0)) stoneBand(s, run, f, e, S.overhang, bw, S.coping, S.back, tone());
   const necked = c.shape === 'neck' || c.shape === 'bell';
+  // The shoulders' foot: the foot, or the top of an elevated neck's full-width rise.
+  const yS = y0 + d.raise;
   // The neck's upright sides (x = neck): their foot, and their top where the cap springs (the belt's bell steps in there).
   const upright = prof.filter(([x, y]) => Math.abs(Math.abs(x) - neck) < 0.02 && y > y0 + 0.05).map(([, y]) => y);
   const neckFoot = upright.length ? Math.min(...upright) : NaN;
@@ -414,7 +439,7 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   if (necked && st.claws !== false && Number.isFinite(neckFoot) && neckFoot < tN - 0.4) {
     for (const sg of [-1, 1]) {
       // The claw: a broad band along the shoulder from the foot to the neck.
-      const claw = prof.filter(([x, y]) => sg * x >= neck - 1e-3 && sg * x <= foot + 1e-6 && y <= neckFoot + 1e-3 && y > -1e-3);
+      const claw = prof.filter(([x, y]) => sg * x >= neck - 1e-3 && sg * x <= foot + 1e-6 && y <= neckFoot + 1e-3 && y > (d.raise > 0 ? yS - 1e-3 : -1e-3));
       if (claw.length >= 2) stoneBand(s, claw, f, e, 0, c.shape === 'bell' ? S.bellClaw : S.claw, S.clawProud, S.back * 0.5, tone());
       // The klauwstuk against a neck: a quarter round standing on the shoulder, its foot along the outline (a bell's
       // shoulders curve into its body and carry none).
@@ -442,7 +467,7 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
       }
       // The claw's foot: a large volute where the shoulder meets the eaves.
       const r = (c.shape === 'bell' ? clamp((foot - neck) * 0.16, 0.16, 0.3) : clamp((foot - neck) * 0.2, 0.2, 0.42)) * S.voluteK;
-      volute(s, f, e, sg * (foot - r - 0.02), y0 + r + 0.03, r, tone());
+      volute(s, f, e, sg * (foot - r - 0.02), yS + r + 0.03, r, tone());
     }
     // A stone band across the neck's foot, unless the crown's light or door stands there.
     const o = clear;
@@ -503,8 +528,9 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   if (necked && st.shoulders === 'oval' && Number.isFinite(neckFoot)) for (const sg of [-1, 1]) {
     // The belt's low shoulders leave little brick under the claw: the oval may hang into the wall under the foot (the
     // photo's sit beside the top storey's lights), clear of the top windows' heads.
-    const xc = sg * (neck + foot) / 2, edge = edgeAt(prof, xc), base = y0 - S.oval.under, room = edge - bw - 0.08 - base;
-    const ry = Math.min(S.oval.ry, room / 2), rx = Math.min(ry * S.oval.k, (foot - neck) * 0.3);
+    // An elevated neck: the ovals stand in its full-width rise, beside its light (Herengracht 64).
+    const xc = sg * (neck + foot) / 2, edge = edgeAt(prof, xc), base = d.raise > 0 ? y0 + 0.2 : y0 - S.oval.under, room = d.raise > 0 ? Math.min(edge - bw - 0.08, yS - 0.15) - base : edge - bw - 0.08 - base;
+    const ry = Math.min(d.raise > 0 ? S.oval.ryRaised : S.oval.ry, room / 2), rx = Math.min(ry * S.oval.k, (foot - neck) * 0.3);
     if (ry < 0.14 || rx < 0.1) continue;
     const cy = base + room / 2, ring = (a: number, b: number, n = 20): V2[] => Array.from({ length: n }, (_, i): V2 => [xc + a * Math.cos(2 * Math.PI * i / n), cy + b * Math.sin(2 * Math.PI * i / n)]);
     const lit = tone();
@@ -597,8 +623,72 @@ function stoneCrown(s: RoofSink, c: RowCrown, st: NonNullable<RowCrown['stone']>
   }
 }
 
+type Light = [number, number, number, number];
+/** A crown that states its lights (neckLights / lowerLights) draws those in place of the counted light. */
+const statesLights = (c: RowCrown) => c.neckLights !== undefined || c.lowerLights !== undefined;
+/**
+ * The stated crown lights, [x0, x1, z0, z1] about the crown's centre (z over its foot): a row of `lowerLights` in the
+ * crown's lower wide part (an elevated neck's full-width rise, else the lowest storey inside the outline), and
+ * `neckLights` stacked over it in the neck (over the shoulders on a neck gable) up to the cap. `prof` (the outline) keeps
+ * the row inside it; without it (the stone's clearances) only the neck lights are placed.
+ */
+export function statedCrownLights(c: RowCrown, d: ReturnType<typeof crownDims>, y0: number, prof: readonly V2[] | null): { neck: Light[]; lower: Light[] } {
+  const L = CROWN_LIGHTS, T = d.T, out = { neck: [] as Light[], lower: [] as Light[] };
+  const yS = y0 + d.raise;
+  // The lower row.
+  let lowerTop = -Infinity;
+  const nl = Math.max(0, Math.min(5, Math.round(c.lowerLights ?? 0)));
+  if (nl > 0 && prof) {
+    const z0 = y0 + L.base + (c.footLedge ? 0.12 : 0), top = d.raise > 0 ? yS - 0.3 : z0 + L.maxH, h = Math.min(L.maxH, top - z0);
+    const sp = h >= L.minH ? spanAt(prof, z0 + h + 0.1) : null;
+    if (sp) {
+      const a = sp[0] + L.margin, b = sp[1] - L.margin, pitch = (b - a) / nl, w = Math.min(L.lowerMaxW, pitch * 0.62);
+      if (w >= 0.35) { for (let i = 0; i < nl; i++) { const xm = a + pitch * (i + 0.5); out.lower.push([xm - w / 2, xm + w / 2, z0, z0 + h]); } lowerTop = z0 + h; }
+    }
+  }
+  // The neck's stack, from over the shoulders (or the lower row) to the cap.
+  let k = Math.max(0, Math.min(3, Math.round(c.neckLights ?? 0)));
+  if (k > 0) {
+    const sr = c.shoulderRise ?? (c.shape === 'bell' ? 0.55 : BELT_GABLE.neckShoulder);
+    const shoulderTop = c.shape === 'neck' ? yS + (T - yS) * sr + 0.15 : c.shape === 'bell' ? yS + 0.3 : y0 + L.base;
+    const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - Math.max(0.35, d.cap) : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
+    const n0 = Math.max(shoulderTop, lowerTop + L.gap), n1 = capTop - 0.15;
+    let h = 0;
+    for (; k > 0; k--) { h = Math.min(L.maxH, (n1 - n0 - L.gap * (k - 1)) / k); if (h >= L.minH) break; }
+    const hw = Math.min(L.neckHw, (c.shape === 'neck' || c.shape === 'step' || c.shape === 'raised' || c.shape === 'spout' ? d.neck : d.foot * 0.6) - 0.22);
+    // A stack sits low in the neck, under the cap's carving.
+    if (hw >= 0.2) for (let i = 0; i < k; i++) { const z = n0 + i * (h + L.gap); out.neck.push([-hw, hw, z, z + h]); }
+  }
+  return out;
+}
+/** One stated crown light: a frame, the glass, a sill and a bar; an arched head when stated. */
+function crownLight(s: RoofSink, f: number, e: number, l: Light, prof: readonly V2[], head: RowCrown['lightHead'], trimHex: string): void {
+  const fr = 0.08, [x0, x1, z0] = l;
+  let z1 = l[3];
+  // Kept inside the outline with its frame.
+  let sp = spanAt(prof, z1 + fr);
+  while (z1 - z0 > 0.4 && (!sp || sp[0] > x0 - fr - 0.05 || sp[1] < x1 + fr + 0.05)) { z1 -= 0.05; sp = spanAt(prof, z1 + fr); }
+  if (!sp || sp[0] > x0 - fr || sp[1] < x1 + fr) return;
+  // Viewed from outside the end (normal e along u): the viewer's right is +v when e > 0.
+  const [a, b] = e > 0 ? [x0, x1] : [-x1, -x0], hw = (b - a) / 2, xm = (a + b) / 2;
+  const rise = head === 'round' ? hw : head === 'segmental' ? Math.max(0.1, hw / 3) : 0, zs = z1 - rise;
+  const mv = (sink: RoofSink) => xm ? shiftedSink(sink, xm) : sink, t = mv(s);
+  rect(t, f, e, -hw - fr, hw + fr, z0 - fr, rise ? zs : z1 + fr, trimHex);
+  if (rise) arch(t, f, e, hw + fr, rise + fr * 0.6, zs, trimHex, PROUD);
+  rect(t, f, e, -hw, hw, z0, zs, GLASS, PROUD_HI);
+  if (rise) arch(t, f, e, hw, rise, zs, GLASS, PROUD_HI);
+  rect(t, f, e, -hw - fr - 0.06, hw + fr + 0.06, z0 - fr - 0.07, z0 - fr, trimHex, PROUD_HI);
+  rect(t, f, e, -0.025, 0.025, z0, zs, trimHex, PROUD_HI + 0.004);
+  if (zs - z0 > 0.7) rect(t, f, e, -hw, hw, z0 + (zs - z0) * 0.62 - 0.025, z0 + (zs - z0) * 0.62 + 0.025, trimHex, PROUD_HI + 0.004);
+}
+
 /** The crown's opening's height (a hoist door or an attic light), or null when it has none. */
 function openingZ(c: RowCrown, d: ReturnType<typeof crownDims>, y0: number): [number, number] | null {
+  // Stated lights: the neck stack's extent is what the neck's stone keeps clear of.
+  if (statesLights(c) && !c.hoist) {
+    const n = statedCrownLights(c, d, y0, null).neck;
+    return n.length ? [Math.min(...n.map(l => l[2])), Math.max(...n.map(l => l[3]))] : null;
+  }
   const T = d.T, lights = c.attic ?? 1;
   if (!c.hoist && lights < 1) return null;
   const capTop = c.shape === 'neck' || c.shape === 'raised' ? T - d.cap : c.shape === 'bell' ? T - 0.35 : c.shape === 'point' ? T * 0.72 : c.shape === 'spout' ? T - spoutTop(c) - 0.1 : T - 0.25;
@@ -661,6 +751,18 @@ export function rowCrownAccents(s0: RoofSink, c: RowCrown, prof0: readonly V2[],
   if (c.finials) finials(s, c, prof, f, e, foot, neck, trimHex);
   if (c.chimney && c.chimney.topM > T + 0.2) chimneyStack(s, c.chimney, f, e, T, d.cap);
   if (c.lights?.length) { tracedLights(s, c.lights, prof, f, e, trimHex); return; }
+  // A ledge across the whole front at the crown's foot (Herengracht 38).
+  if (c.footLedge) {
+    const S = ROW_STONE, tone = mixHex(trimHex, ROW_STONE_WEATHER.hex, ROW_STONE_WEATHER.mix);
+    prism(s, [[-d.half, y0 - 0.06], [d.half, y0 - 0.06], [d.half, y0 + S.ledgeH], [-d.half, y0 + S.ledgeH]], f, e, S.ledge + 0.04, S.back, tone);
+    prism(s, [[-d.half, y0 - 0.2], [d.half, y0 - 0.2], [d.half, y0 - 0.06], [-d.half, y0 - 0.06]], f, e, S.ledge - 0.03, 0.02, shade(tone, 0.86));
+  }
+  // Stated lights (an elevated neck's, a step gable's row, two stacked in a neck) in place of the counted light.
+  if (statesLights(c) && !c.hoist) {
+    const L = statedCrownLights(c, d, y0, prof);
+    for (const l of [...L.lower, ...L.neck]) crownLight(s, f, e, l, prof, c.lightHead, trimHex);
+    return;
+  }
   // The crown's opening: a hoist door (white frame, dark leaves) or an attic light, centred, inside the profile.
   const oz = openingZ(c, d, y0);
   if (!oz) return;

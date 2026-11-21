@@ -122,3 +122,31 @@ test('a souterrain raises the ground storey only where the measured front has ro
   assert.equal(beltPlotFacts({ ...H28.fields, eavesM: 13.44 }, H28.read)!.facts.souterrain, true);
   assert.equal(beltPlotFacts({ ...H28.fields, eavesM: 9.9 }, H28.read)!.facts.souterrain, undefined);
 });
+
+// Kit-gables lane (2026-11-21): the crown read (houseRead.ts CrownForm) as the kit's gable and cornice parts.
+import { crownMeasures, gableForm } from './plotRead.ts';
+const CF64 = { kind: 'elevated-neck', px: { ground: 962, foot: 392, raise: 238, shoulder: 90, capBase: 40, apex: 5, left: 0, right: 337, neckLeft: 105, neckRight: 248, w: 349, h: 982, ppm: 50 }, claws: 'carved', cap: 'segmental', crest: false, neckLights: 1, lowerLights: 1, lightHead: 'square', shoulderOvals: false, footLedge: false, hoistBeam: false, centre: 'none', centreLight: 'none', consoles: 'none', frieze: 'none' } as const;
+const CF30 = { kind: 'cornice', px: { ground: 1185, foot: 362, capBase: 300, apex: 245, left: 0, right: 278, neckLeft: 70, neckRight: 190, w: 290, h: 1200, ppm: 60.138 }, claws: 'none', cap: 'flat', crest: false, neckLights: 1, lowerLights: 0, lightHead: 'square', shoulderOvals: false, footLedge: true, hoistBeam: true, centre: 'attic', centreLight: 'square', consoles: 'none', frieze: 'plain' } as const;
+
+test('crown read: Herengracht 64 elevated neck measured from its landmarks, the gable on its photo foot', () => {
+  const m = crownMeasures(CF64 as never)!;
+  assert.equal(m.footM, 11.4); assert.equal(m.riseM, 7.74); assert.equal(m.raiseM, 3.08);
+  assert.ok(Math.abs(m.shoulderRise! - 148 / 233) < 1e-3 && Math.abs(m.neckShare! - 143 / 337) < 1e-3);
+  const f = gableForm(CF64 as never, m, 7);
+  assert.equal(f.shape, 'neck'); assert.equal(f.raiseM, 3.08); assert.deepEqual(f.stone, { claws: 'carved' }); assert.equal(f.neckLights, 1); assert.equal(f.lowerLights, 1);
+  const plot = beltPlotFacts({ ...H28.fields, eavesM: 14.53 }, { ...H28.read, crownForm: CF64 as never }, { widthM: 7 })!;
+  assert.equal(plot.eavesM, 11.4, '3DBAG eaves 14.53 is the saddle behind the elevated part');
+  assert.equal(plot.facts.gable?.riseM, 7.74);
+  assert.equal(plot.gable, 'raisedNeck');
+  // A foot the survey disagrees with (under 0.65 of it) keeps the survey eaves.
+  assert.equal(beltPlotFacts({ ...H28.fields, eavesM: 20 }, { ...H28.read, crownForm: CF64 as never }, { widthM: 7 })!.eavesM, 20);
+});
+
+test('crown read: Herengracht 30 is a cornice front with a raised attic, not a shouldered roof with a dormer', () => {
+  const plot = beltPlotFacts({ ...H2.fields, crown: 'shouldered', cornice: 'heavy', roofStorey: 'gable-attic', dormers: { count: 0 }, eavesM: 14.87 }, { ...H2.read, roofMaterial: 'slate', crownForm: CF30 as never }, { widthM: 4.8 })!;
+  assert.equal(plot.gable, null);
+  assert.equal(plot.facts.roof, 'flat');
+  assert.equal(plot.facts.cornice, 'heavy');
+  assert.deepEqual(plot.facts.corniceForm, { frieze: 'plain', centre: 'attic', centreShare: 0.432, centreRiseM: 1.95, centreCap: 'flat', centreLight: 'square' });
+  assert.ok(plot.facts.parts?.includes('hoist-beam'));
+});

@@ -73,6 +73,137 @@ export interface HouseRead {
   doorRatio?: number;
   /** A basement band's height over the ground storey's (pavement to first floor), measured by the self-check. */
   basementRatio?: number;
+  /** The crown's form, read by a second focused call (crownFormPrompt; read-house.ts --part crown). */
+  crownForm?: CrownForm;
+}
+
+// ------------------------------------------------------------------------------------------------------------ crown form
+
+/**
+ * The crown read (2026-11-21, kit-gables lane): the first read's `crown` enum names a neck, bell or step but cannot say how
+ * the gable is built, and the self-check finds the kit drawing the wrong gable on 12 of 42 Herengracht 2-90 fronts (tall
+ * neck on low claws, two lights stacked in the neck, an elevated neck, Louis XV caps, a pyramid roof where the photo has a
+ * curved gable) and a plain cornice where the photo has a raised centre, an attic frieze with lights or end consoles. One
+ * focused call per crowned house reads the form in parts the kit can draw, and its outline as pixel landmarks on the crop
+ * (the measures are computed from them in plotRead.ts crownMeasures, never asked as ratios).
+ */
+export const CROWN_FORM_ENUMS = {
+  kind: ['neck', 'elevated-neck', 'bell', 'step', 'spout', 'point', 'curved', 'cornice', 'flat'],
+  claws: ['none', 'plain', 'scroll', 'carved'],
+  cap: ['none', 'pediment', 'segmental', 'rounded', 'flat', 'carved', 'shell'],
+  lightHead: ['square', 'round', 'segmental'],
+  centre: ['none', 'pediment', 'segmental', 'attic', 'balustrade'],
+  centreLight: ['none', 'square', 'round', 'oculus'],
+  consoles: ['none', 'even', 'ends', 'dense'],
+  frieze: ['none', 'plain', 'windows', 'oculi', 'panels'],
+} as const satisfies Record<string, readonly string[]>;
+type CE = typeof CROWN_FORM_ENUMS;
+/** Pixel landmarks on the crop as sent (x from the left, y from the top). */
+export interface CrownPx {
+  /** The pavement line at the front's foot. */
+  ground: number;
+  /** Where the crown starts: the top of the last full storey (a gable's foot, or the main cornice's top). */
+  foot: number;
+  /** Elevated neck: the top of the full-width upright part over the foot, where the shoulders begin. */
+  raise?: number;
+  /** Neck and bell: where the shoulders end and the narrow upright neck begins. */
+  shoulder?: number;
+  /** Where the cap (pediment, arch, scrolled top) springs, on the neck or the centre piece. */
+  capBase?: number;
+  /** The highest point of the crown (the centre piece's top on a cornice front), ornaments excluded. */
+  apex: number;
+  /** The front's edges at the foot. */
+  left: number;
+  right: number;
+  /** The neck's (or the step gable's top tread's, the centre piece's) edges. */
+  neckLeft?: number;
+  neckRight?: number;
+}
+export interface CrownForm {
+  kind: CE['kind'][number];
+  px: CrownPx;
+  claws: CE['claws'][number];
+  cap: CE['cap'][number];
+  /** A stone ornament (ball, vase, crest) standing on the apex. */
+  crest: boolean;
+  /** Windows stacked one over another in the neck (or the step gable's narrow top). */
+  neckLights: number;
+  /** Windows side by side in the crown's lower, wide part (an elevated neck's upright part, a step gable's lowest storey). */
+  lowerLights: number;
+  lightHead: CE['lightHead'][number];
+  /** Carved oval cartouches on the shoulders, beside the neck. */
+  shoulderOvals: boolean;
+  /** A projecting stone or timber ledge across the whole front at the crown's foot. */
+  footLedge: boolean;
+  hoistBeam: boolean;
+  /** Step gable: the treads up each side. */
+  steps?: number;
+  /** Cornice fronts: what stands on the cornice over the centre, its light, the cornice's consoles and its frieze. */
+  centre: CE['centre'][number];
+  centreLight: CE['centreLight'][number];
+  consoles: CE['consoles'][number];
+  frieze: CE['frieze'][number];
+}
+
+/** The crown read's prompt: the crop is `w` x `h` px as sent. */
+export function crownFormPrompt(address: string, w: number, h: number, firstRead: { crown?: string; cornice?: string; storeys?: number }): string {
+  const E = CROWN_FORM_ENUMS;
+  return `ONE Amsterdam canal-belt house front (${address}), a rectified street photo cut to its width, ${w} x ${h} px, ground at the
+bottom. A first read said crown "${firstRead.crown ?? '?'}", cornice "${firstRead.cornice ?? '?'}", ${firstRead.storeys ?? '?'} full storeys. A procedural kit
+must rebuild the TOP of this front: the gable or the cornice and what stands on it. Read it in the kit's parts.
+
+- kind: ${list(E.kind)}.
+  "neck" = claws/shoulders rising from the gable foot straight to a narrow upright neck; "elevated-neck" = the same, but
+  the front first rises full width (usually one storey, with its own window(s)) above the foot before the shoulders
+  start; "bell" = S-curved sides sweeping up to an arched top; "step" = stepped sides; "spout" = straight rakes with a
+  narrow upright top; "point" = a plain triangle; "curved" = a broad gable whose top is one wide curve or a shaped
+  outline nearly the front's width (Jugendstil); "cornice" = a straight cornice across the front (anything standing on it
+  goes in "centre"); "flat" = a plain parapet.
+- px: pixel landmarks on THIS image (x from the left edge, y from the top edge), integers:
+  ground = y of the pavement at the front's foot (estimate behind cars); foot = y where the crown starts (the top of the
+  last full storey: a gable's foot, or the main cornice's top); raise = y of the top of an elevated neck's full-width part
+  (omit otherwise); shoulder = y where the shoulders/claws end and the upright neck begins (neck, elevated-neck, bell,
+  spout; omit otherwise); capBase = y where the cap (pediment, arch, scrolled top) springs on the neck or on a centre
+  piece; apex = y of the crown's top (a centre piece's top on a cornice front; finials, vases and hoist beams excluded);
+  left, right = x of the front's edges at the foot; neckLeft, neckRight = x of the neck's sides (the top tread of a step
+  gable, the centre piece's sides on a cornice front; omit when there is none).
+- claws: the pieces on the shoulders: ${list(E.claws)} ("plain" flat stone copings or quarter rounds, "scroll" stone
+  scrolls/volutes, "carved" large carved claw pieces with leaf or rococo work).
+- cap: the neck's or centre piece's cap: ${list(E.cap)} ("carved" = a scrolled Louis XV/rococo cap; "shell" = a carved shell).
+- crest: true if a stone ball, vase or crest stands on the apex.
+- neckLights: windows stacked one over another in the neck or narrow top (0, 1 or 2).
+- lowerLights: windows side by side in the crown's lower wide part (the elevated part, or the lowest storey inside a step
+  or curved gable), 0 to 4.
+- lightHead: the crown windows' heads: ${list(E.lightHead)}.
+- shoulderOvals: true if carved oval cartouches sit on the shoulders beside the neck.
+- footLedge: true if a projecting cornice ledge runs across the whole front at the crown's foot.
+- hoistBeam: true if a hoist beam projects at the top.
+- steps: step gables only, the treads up each side.
+- centre: cornice fronts only (else "none"): what stands on the cornice over the centre: ${list(E.centre)} ("attic" = a
+  raised attic piece, flat or capped, with a window or panel).
+- centreLight: the centre piece's window: ${list(E.centreLight)}.
+- consoles: cornice fronts: brackets under the cornice: ${list(E.consoles)} ("ends" = only at the two ends).
+- frieze: cornice fronts: the band under the cornice: ${list(E.frieze)} ("windows" = low attic windows in it, "oculi" =
+  round or oval windows in it).
+
+Reply with JSON only:
+{"kind":"neck","px":{"ground":980,"foot":300,"shoulder":240,"capBase":120,"apex":80,"left":10,"right":390,"neckLeft":120,"neckRight":280},
+"claws":"scroll","cap":"pediment","crest":false,"neckLights":1,"lowerLights":0,"lightHead":"square","shoulderOvals":false,
+"footLedge":false,"hoistBeam":true,"centre":"none","centreLight":"none","consoles":"none","frieze":"none"}`;
+}
+
+/** What is wrong with a crown read (empty = valid). */
+export function crownFormProblems(a: Partial<CrownForm> | null | undefined): string[] {
+  if (!a || typeof a !== 'object') return ['crownForm'];
+  const p: string[] = [];
+  for (const k of ['kind', 'claws', 'cap', 'lightHead', 'centre', 'centreLight', 'consoles', 'frieze'] as const) if (!isIn(CROWN_FORM_ENUMS[k], a[k])) p.push(k);
+  const px = a.px as Partial<CrownPx> | undefined;
+  if (!px || !(['ground', 'foot', 'apex', 'left', 'right'] as const).every(k => Number.isFinite(px[k]))) p.push('px');
+  else if (!(px.ground! > px.foot! && px.foot! >= px.apex! && px.right! > px.left!)) p.push('px-order');
+  for (const k of ['crest', 'shoulderOvals', 'footLedge', 'hoistBeam'] as const) if (typeof a[k] !== 'boolean') p.push(k);
+  if (!int(a.neckLights, 0, 3)) p.push('neckLights');
+  if (!int(a.lowerLights, 0, 5)) p.push('lowerLights');
+  return p;
 }
 
 const list = (xs: readonly string[]) => xs.map(x => `"${x}"`).join(' | ');
@@ -199,6 +330,7 @@ export function readExtras(a: Partial<HouseRead>) {
     ...(typeof a.groundWindowRatio === 'number' ? { groundWindowRatio: a.groundWindowRatio } : {}),
     ...(typeof a.doorRatio === 'number' ? { doorRatio: a.doorRatio } : {}),
     ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),
+    ...(a.crownForm && !crownFormProblems(a.crownForm).length ? { crownForm: a.crownForm } : {}),
   };
 }
 
