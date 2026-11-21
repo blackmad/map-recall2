@@ -10,7 +10,7 @@ import path from 'node:path';
 import { PreviewSession, parseArgs, renderGeneric } from '../../house-preview/preview.ts';
 
 /** The decorated properties that say what was drawn on top (roof, crown, plot plan, dressing), for the page and probes. */
-const DRAWN_PROPS = ['height', 'roofEavesHeightM', 'roofShape', 'roofPlanned', 'monumentGable', 'rowRoof', 'rowCrown', 'designPlot', 'designStoreys', 'designDress', 'designHeads', 'designWallHex', 'registerForce', 'designSolo', 'designGround', 'designDoorcase', 'designFrameHex', 'designCorniceDress', 'designCorniceBandM', 'designDoor', 'specShop', 'specStoop', 'facadeStyle', 'constructionYear'];
+const DRAWN_PROPS = ['height', 'roofEavesHeightM', 'roofShape', 'roofPlanned', 'monumentGable', 'rowRoof', 'rowCrown', 'designPlot', 'designStoreys', 'designDress', 'designHeads', 'designWallHex', 'registerForce', 'designSolo', 'designGround', 'designDoorcase', 'designFrameHex', 'designCorniceDress', 'designCorniceBandM', 'designFlatCrown', 'designDoor', 'specShop', 'specStoop', 'facadeStyle', 'constructionYear'];
 function drawnProps(p: unknown): Record<string, unknown> {
   const q = (p ?? {}) as Record<string, unknown>, out: Record<string, unknown> = {};
   for (const k of DRAWN_PROPS) if (q[k] !== undefined) out[k] = q[k];

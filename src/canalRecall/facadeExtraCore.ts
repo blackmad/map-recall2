@@ -71,6 +71,13 @@ export type ExtraContext = {
   groundDoor?: { x: number; hw: number; z0: number; z1: number };
   /** Belt review: the solo plot's measured basement band (top z, absolute) and its pavement-level windows. */
   basementBand?: { z1: number; windows: Array<{ x: number; hw: number; z0: number; z1: number }> };
+  /** Belt review, kit-ground lane (designUnits/soloGround.ts): the read ground storey's facing (stucco, pilasters,
+   *  rustication) and its cornice band, from `z0` (the pavement, or the street tier's top) to the ground storey's top. */
+  groundFace?: { face?: import('./designUnits/soloGround.js').GroundFace; band?: string; z0: number };
+  /** Belt review: a street tier under the ground windows: its top (absolute), facing and fascia paint, its openings. */
+  groundTier?: { z1: number; hex: string; fascia?: string; openings: Array<{ x: number; hw: number; z0: number; z1: number; kind: 'door' | 'window'; leaves?: 2 }> };
+  /** Belt review: a flat canopy or slab on piers in place of the cornice, inside the wall top. */
+  flatCrown?: import('./designUnits/soloGround.js').FlatCrown;
   /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
   plainHeads?: true;
   /** Design units: the plot's read dress (designUnits/plotPlan.ts): grey stone at the foot, bacon courses, white pilasters. */

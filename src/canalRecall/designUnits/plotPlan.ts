@@ -19,6 +19,7 @@
  */
 import type { RowCrown } from '../houseLine/crownProfile.js';
 import type { RowCorniceDress } from '../houseSpec/row/types.js';
+import type { FlatCrown, GroundFront } from './soloGround.ts';
 
 /** The ground storey of an 1870-1920 Ring house (m): 3.6-4.0 in the photo rows. */
 export const ERA_GROUND_M = 3.8;
@@ -134,6 +135,11 @@ export interface PlotFacts {
   /** Belt review, measured on the crop: a ground window's height over a first-upper window's, and the street door's
    *  height (fanlight included) over the ground storey's. The ground openings are cut to them (a dwelling ground only). */
   groundOpenings?: { windowRatio: number; doorRatio: number; /** A basement band's share of the ground storey. */ basementRatio?: number; /** The door up a stoop, over the basement. */ raisedDoor?: true };
+  /** Belt review (kit-ground lane): the ground storey's own front as measured: its openings (not one per upper axis), a
+   *  stucco facing with pilasters, a cornice band, a street tier, the door's leaves and light. Absent: as before. */
+  groundFront?: GroundFront;
+  /** Belt review: a flat projecting canopy or slab on piers in place of the cornice. */
+  flatCrown?: FlatCrown;
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';
