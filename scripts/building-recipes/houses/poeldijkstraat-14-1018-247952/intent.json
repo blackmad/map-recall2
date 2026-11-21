@@ -1,0 +1,349 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "poeldijkstraat-14-1018-247952",
+ "pandId": "0363100012247952",
+ "address": "Poeldijkstraat 14-1018 / Rijswijkstraat, Slotervaart: 2021 housing block clad in timber-look panels between grey floor-edge bands, windows staggered half a bay from storey to storey, a recessed glazed attic storey, grey fins on the Rijswijkstraat front, pale grey panel ends and a timber ground with commercial glazing (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2024-10-28-w01-90",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241028_1408_Track03_Sphere_00506/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-28-w02-1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241028_1408_Track03_Sphere_00579/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-06-w07-270",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002394_pano_0003_000040/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-06-w08-270",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002394_pano_0003_000030/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-06-w01-90L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002393_pano_0006_000047/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    22
+   ],
+   "street": "Poeldijkstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "groundFactor": 1.4,
+   "baysPerStorey": 34,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.82,
+    "h": 0.78,
+    "sill": 0.06
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1,
+      3,
+      5
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.82
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2,
+      4
+     ],
+     "pattern": [
+      {
+       "w": 0.82
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "ground": "plinth-shopfronts",
+   "cornice": true,
+   "palette": {
+    "brick": "#57402f",
+    "frame": "#3c3d3e",
+    "stone": "#76756f"
+   },
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#57402f"
+   },
+   "dressings": {
+    "colour": "#76756f",
+    "bands": {
+     "at": [
+      "floor"
+     ],
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "double": true
+    }
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "bayWindows",
+    "ground",
+    "palette",
+    "wallFamily",
+    "dressings",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    97
+   ],
+   "street": "Rijswijkstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "groundFactor": 1.4,
+   "baysPerStorey": 16,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.55,
+    "sill": 0.38
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "window",
+     "door",
+     "window",
+     "door",
+     "door",
+     "window"
+    ],
+    "doors": "#3a3a3a"
+   },
+   "palette": {
+    "brick": "#6a4c38",
+    "frame": "#3c3d3e",
+    "stone": "#9c9b97"
+   },
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#6a4c38"
+   },
+   "dressings": {
+    "colour": "#9c9b97",
+    "piers": {
+     "stone": true,
+     "w": 0.42,
+     "from": 1,
+     "deep": 0.1
+    }
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "residential",
+    "palette",
+    "wallFamily",
+    "dressings"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    6,
+    7
+   ],
+   "street": "Rijswijkstraat",
+   "system": "blank",
+   "palette": {
+    "brick": "#aeada8",
+    "stone": "#aeada8"
+   },
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#aeada8"
+   },
+   "hand": [
+    "system",
+    "palette",
+    "wallFamily"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    2,
+    8,
+    106,
+    30
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 1.4,
+   "baysPerStorey": 7,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.85,
+    "sill": 0.06
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "bays": [
+      3
+     ]
+    }
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "wall",
+     "wall",
+     "wall",
+     "door",
+     "wall",
+     "wall",
+     "wall"
+    ],
+    "doors": "#3a3a3a"
+   },
+   "palette": {
+    "brick": "#8a6a4c",
+    "frame": "#4a4a4a",
+    "stone": "#aeada8"
+   },
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#aeada8",
+    "from": 0.2
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windowShape",
+    "openBays",
+    "ground",
+    "residential",
+    "palette",
+    "wallFamily"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    142,
+    41,
+    138
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 34,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "palette": {
+    "brick": "#7c7b78",
+    "frame": "#3c3d3e",
+    "stone": "#8e8c88"
+   },
+   "wallFamily": {
+    "kind": "paint",
+    "colour": "#7c7b78"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallFamily",
+    "groundFactor",
+    "blankStoreys",
+    "ground"
+   ],
+   "groundFactor": 1.4,
+   "blankStoreys": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "ground": "blank"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#57402f",
+  "frame": "#3c3d3e",
+  "door": "#3a3a3a",
+  "stone": "#8e8c88"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored. Group 0: panel 20 (E, Poeldijkstraat, 59.2 m) from w01-90 2024-10-28 (straight-on, a scissor lift and a bare tree in front): ground plus five storeys of timber-look panels between doubled grey floor-edge bands, 17 windows per storey staggered half a bay between storeys (34 half-bays, odd storeys on odd half-bays), a dark glazed commercial ground with timber piers. Group 1: panel 89 (N, Rijswijkstraat, 55.7 m) from w02-1 2024-10-28: 16 bays of timber spandrels and two-light windows between full-height pale grey fins, a timber ground with glazed doors and windows. Group 2: the short N end panels 5 and 6, pale grey blank as at the right end of w02-1. Group 3: the W ends (panels 1 and 27) from w07-270 and w08-270 2022-01-06: pale grey panel cladding with one central window column on six storeys over a timber ground with one door. Group 4: the recessed attic storey (panels 126, 38 and the S attic surface 138) as seen over the E front on w01-90: a grey storey with paired windows.",
+  "The S front (panels 105, 7, 99) and the courtyard walls (16, 23, 49) have no panorama and take the shader window grid.",
+  "Not modelled: the timber board texture of the cladding (flat paint in the measured timber tint), the glass rail along the attic terrace, the fins' deep returns and the dark slots between the fin heads on the N front."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000
+}
