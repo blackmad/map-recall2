@@ -150,3 +150,56 @@ test('crown read: Herengracht 30 is a cornice front with a raised attic, not a s
   assert.deepEqual(plot.facts.corniceForm, { frieze: 'plain', centre: 'attic', centreShare: 0.432, centreRiseM: 1.95, centreCap: 'flat', centreLight: 'square' });
   assert.ok(plot.facts.parts?.includes('hoist-beam'));
 });
+
+// Belt kit roofs lane (2026-11-21): the measured parts a crown read carries, and the roof seen over a cornice.
+import { ROOF_SEEN_RISE_M } from './plotRead.ts';
+import { plotPlan, ROOF_ON_TOP_RISE_M } from '../designUnits/plotPlan.ts';
+/** Herengracht 80 (0363100012175783): a neck 105 of 262 px on a 4.1 m crop front, scroll claws to y 300. */
+const CF80 = { kind: 'neck', px: { ground: 1110, foot: 405, shoulder: 300, capBase: 262, apex: 232, left: 0, right: 262, neckLeft: 80, neckRight: 185, w: 277, h: 1200, ppm: 63.972 }, claws: 'scroll', cap: 'rounded', crest: false, neckLights: 1, lowerLights: 0, lightHead: 'square', shoulderOvals: false, footLedge: true, hoistBeam: true, centre: 'none', centreLight: 'none', consoles: 'none', frieze: 'none', clawWaist: 0.15, clawBand: 0.2 } as const;
+const H80 = { storeys: 4, bays: 3, crown: 'neck', cornice: 'none', roofStorey: 'gable-attic', dormers: { count: 0 }, eavesM: 11.02, facadeYear: 1650 };
+
+test('Herengracht 80: the neck is its share of the crop\'s own front (1.64 m), not of a 6 m stand-in (2.41 m drawn)', () => {
+  const plot = beltPlotFacts(H80, { ...H28.read, crownForm: CF80 as never })!;
+  assert.equal(plot.facts.gable?.form?.neckW, 1.64);
+  // The face's width wins where it is known.
+  assert.equal(beltPlotFacts(H80, { ...H28.read, crownForm: CF80 as never }, { widthM: 4.31 })!.facts.gable?.form?.neckW, 1.73);
+});
+
+test('measured claws: a scroll at the claws\' top (Herengracht 80: 1.64 m) with the read waist and band; none without the landmark', () => {
+  const f = gableForm(CF80 as never, crownMeasures(CF80 as never), 4.1);
+  assert.deepEqual(f.claw, { heightM: 1.64, waist: 0.15, band: 0.2 });
+  const { shoulder: _s, ...px } = CF80.px;
+  assert.equal(gableForm({ ...CF80, px } as never, crownMeasures({ ...CF80, px } as never), 4.1).claw, undefined);
+  // Plain claws keep the stock piece.
+  assert.equal(gableForm({ ...CF80, claws: 'plain' } as never, crownMeasures(CF80 as never), 4.1).claw, undefined);
+});
+
+test('Herengracht 64: the elevated storey\'s window at its measured size; 76-78 a pair; 74 a sweep', () => {
+  assert.deepEqual(gableForm({ ...CF64, lowerLightPx: [74, 80] } as never, crownMeasures(CF64 as never), 7).lowerLightM, [1.48, 1.6]);
+  assert.equal(gableForm({ ...CF80, pair: true } as never, crownMeasures(CF80 as never), 8.3).pair, true);
+  const sweep = { side: 'left', startShare: 0.2, topShare: 0.43, window: { lights: 3 } } as const;
+  const f74 = gableForm({ ...CF80, kind: 'curved', claws: 'none', sweep } as never, crownMeasures(CF80 as never), 4.4);
+  assert.deepEqual(f74.sweep, sweep); assert.equal(f74.shape, 'bell');
+});
+
+test('Herengracht 82: a tiled roof seen over the cornice, no roof storey, draws at its measured 0.7 m (not a 2.8 m roof storey)', () => {
+  const f82 = { storeys: 4, bays: 3, crown: 'cornice', cornice: 'simple', roofStorey: 'none', dormers: { count: 0 }, eavesM: 14.38, facadeYear: 1862 };
+  const r82 = { ...H2.read, roofMaterial: 'red-tile' };
+  const plot = beltPlotFacts(f82, { ...r82, roofSeenRiseM: 0.7 })!;
+  assert.equal(plot.facts.roof, 'dormers'); assert.equal(plot.facts.roofRiseM, 0.7);
+  assert.equal(plotPlan(14.38, plot.facts, { topIsCornice: true }).riseM, 0.7);
+  // Unmeasured: the low seen-roof rise; a roof storey (dormers read) keeps the storey's rise.
+  assert.equal(beltPlotFacts(f82, r82)!.facts.roofRiseM, ROOF_SEEN_RISE_M);
+  const h2 = beltPlotFacts(H2.fields, H2.read)!;
+  assert.equal(h2.facts.roofRiseM, undefined);
+  assert.equal(plotPlan(12.75, h2.facts, { topIsCornice: true }).riseM, ROOF_ON_TOP_RISE_M);
+});
+
+test('Herengracht 50-52: a measured glimpse sets a roof storey\'s rise too (0.7 m with its one dormer); unmeasured, the storey\'s', () => {
+  const f = { storeys: 3, bays: 5, crown: 'cornice', cornice: 'frieze', roofStorey: 'attic', dormers: { count: 1, kind: 'plain' }, eavesM: 15.84, facadeYear: 1700 };
+  const r = { ...H2.read, roofMaterial: 'black-tile' };
+  assert.equal(beltPlotFacts(f, { ...r, roofSeenRiseM: 0.7 })!.facts.roofRiseM, 0.7);
+  assert.equal(beltPlotFacts(f, r)!.facts.roofRiseM, undefined);
+  // A glimpse under 0.55 m is not a measure the roof planner can draw (its row roof needs over 0.5 m).
+  assert.equal(beltPlotFacts(f, { ...r, roofSeenRiseM: 0.4 })!.facts.roofRiseM, undefined);
+});

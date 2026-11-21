@@ -949,7 +949,9 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     }
     if (plan.rowCrown) {
       // An off-centre crown's offset is as seen from the street: the viewer's right is +v at e > 0, -v at e < 0.
-      const rc = plan.rowCrown.offsetM && e < 0 ? { ...plan.rowCrown, offsetM: -plan.rowCrown.offsetM } : plan.rowCrown;
+      let rc = plan.rowCrown.offsetM && e < 0 ? { ...plan.rowCrown, offsetM: -plan.rowCrown.offsetM } : plan.rowCrown;
+      // A one-sided sweep (crownProfile.ts RowCrown.sweep) is as seen from the street too.
+      if (rc.sweep && rc.sweep.side !== 'both' && e < 0) rc = { ...rc, sweep: { ...rc.sweep, side: rc.sweep.side === 'left' ? 'right' : 'left' } };
       const prof = rowCrownProfile(rc, W, R);
       // A crown in stone (stated, or the belt dress) stands deeper, so its sides read as a wall, not a cut-out.
       // Its top stays brick behind the stone coping (David 2026-11-15: a white top 0.45 m deep read as a thick white edge).
