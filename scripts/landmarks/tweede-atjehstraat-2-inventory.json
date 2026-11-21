@@ -1,0 +1,422 @@
+{
+ "schemaVersion": 1,
+ "id": "tweede-atjehstraat-2",
+ "pand": "0363100012243154",
+ "brief": "scripts/landmarks/tweede-atjehstraat-2-brief.md",
+ "signature": [
+  "n-three-fronts",
+  "s-brick-balcony-stacks",
+  "w-glazed-plinth",
+  "n-hung-balconies",
+  "n-white-frames",
+  "s-white-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-181",
+   "bearing": 181,
+   "lengthM": 78.8,
+   "centre": [
+    4.9330915,
+    52.3614235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_003276",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-brick-balcony-stacks",
+     "kind": "balcony-ironwork",
+     "where": "Atjehstraat south front: stacks of cantilevered balconies with solid buff brick parapets, two to three per bay, on the upper storeys of the five-storey middle and the taller ends",
+     "approxSizeM": [
+      6,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002593_pano_0000_003276",
+     "how": "balcony() with a sandstone brick parapet, 1.6 m deep, on each floor whose roof reaches it"
+    },
+    {
+     "id": "s-white-windows",
+     "kind": "window-shape",
+     "where": "three-light white windows with a top light, a soldier-course sill under each, regular 3.8 m bays on every storey",
+     "approxSizeM": [
+      2.4,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002593_pano_0000_003276",
+     "how": "opening cols 3 with a bar, white frame, concrete sill"
+    },
+    {
+     "id": "s-ground-louvre-doors",
+     "kind": "other",
+     "where": "ground storey of residential front doors in pairs behind grey horizontal louvre panels, alternating with three-light windows; a dark main entrance in the centre",
+     "approxSizeM": [
+      1,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002593_pano_0000_003276",
+     "how": "door openings with grey back and horizontal bars; windows between"
+    },
+    {
+     "id": "s-bus-shelter",
+     "kind": "other",
+     "where": "bus shelters on the pavement",
+     "approxSizeM": [
+      6,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002593_pano_0000_003276",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-340",
+   "bearing": 340,
+   "lengthM": 41.3,
+   "centre": [
+    4.932481,
+    52.361744
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-12-20_09-04-31_07582",
+   "capturedAt": "2024-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-three-fronts",
+     "kind": "other",
+     "where": "Tweede Atjehstraat north front: three fronts in a row: a narrow red brick strip with deep punched windows (east), brown-mix brick with hung balconies and two raised bays, a taller salmon brick block with white-framed windows (west)",
+     "approxSizeM": [
+      41,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "per-front colour segments along the measured wall line, raised bays from the 3DBAG shell"
+    },
+    {
+     "id": "n-hung-balconies",
+     "kind": "balcony-ironwork",
+     "where": "brown front: small hung steel balconies with vertical bar rails on the 2nd and 3rd storeys, five stacks",
+     "approxSizeM": [
+      1.7,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "balcony() 1.7 x 0.8 m, grey bar rail"
+    },
+    {
+     "id": "n-red-deep-windows",
+     "kind": "window-shape",
+     "where": "red brick strip: two columns of tall windows in deep reveals",
+     "approxSizeM": [
+      1.1,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "openings 0.45 m deep"
+    },
+    {
+     "id": "n-white-frames",
+     "kind": "window-shape",
+     "where": "salmon block: a wide five-light window and two narrow windows per storey in proud white frames over a brick dentil course",
+     "approxSizeM": [
+      3.8,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "openings with a 0.12 m white frame and a concrete sill"
+    },
+    {
+     "id": "n-garage-gate",
+     "kind": "other",
+     "where": "salmon block ground: a wide timber-slatted garage gate under a flat canopy",
+     "approxSizeM": [
+      3.8,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "opening with a timber back and slat bars, a canopy slab"
+    },
+    {
+     "id": "n-zinc-mansard",
+     "kind": "other",
+     "where": "set-back glazed zinc roof storeys between the raised bays",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "how": "the 3DBAG shell roof faces drawn dark grey; no rooflights"
+    },
+    {
+     "id": "n-downpipes",
+     "kind": "other",
+     "where": "grey downpipes between the bays",
+     "approxSizeM": [
+      0.12,
+      13
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-12-20_09-04-31_07582",
+     "skip": {
+      "reason": "too-small",
+      "note": "12 cm pipes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-1",
+   "bearing": 1,
+   "lengthM": 38.3,
+   "centre": [
+    4.932731,
+    52.36155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002824_pano_0006_000054",
+   "capturedAt": "2022-10-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-red-buff-houses",
+     "kind": "other",
+     "where": "mews side: narrow houses alternating red and buff brick, grey louvre doors with stone number plaques",
+     "approxSizeM": [
+      5.5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002824_pano_0006_000054",
+     "how": "alternating 5.4 m red and buff fronts with louvre doors; rhythm inferred, the crop shows only the ground storey"
+    },
+    {
+     "id": "m-arched-door",
+     "kind": "window-shape",
+     "where": "a round-arched double door in the red house, brick arch",
+     "approxSizeM": [
+      2,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002824_pano_0006_000054",
+     "how": "a dark door with a brick head; the arch is drawn square"
+    },
+    {
+     "id": "m-number-plaques",
+     "kind": "lettering",
+     "where": "stone number plaques beside the doors",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002824_pano_0006_000054",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm plaques"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-250",
+   "bearing": 250,
+   "lengthM": 29.6,
+   "centre": [
+    4.932259,
+    52.3615315
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_08-26-24_00081",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-glazed-plinth",
+     "kind": "colonnade",
+     "where": "double-height glazed ground storey (6.4 m) in bronze frames between round granite-chip concrete columns; the brick block oversails the corner",
+     "approxSizeM": [
+      29,
+      6.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_08-26-24_00081",
+     "how": "openings 0.6 m deep with dark frames 4 x 3 lights, strut() columns 0.36 m radius"
+    },
+    {
+     "id": "w-wide-windows",
+     "kind": "window-shape",
+     "where": "upper storeys: five-light white windows 4 m wide with dark heads and dentil sills, a narrow two-light window at the north end",
+     "approxSizeM": [
+      4,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_08-26-24_00081",
+     "how": "opening cols 5, white frame, concrete sill"
+    }
+   ]
+  },
+  {
+   "tag": "w05-1",
+   "bearing": 1,
+   "lengthM": 29.4,
+   "centre": [
+    4.9333505,
+    52.3615435
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-160",
+   "bearing": 160,
+   "lengthM": 20.5,
+   "centre": [
+    4.9325955,
+    52.3616675
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-92",
+   "bearing": 92,
+   "lengthM": 18,
+   "centre": [
+    4.933693,
+    52.361511
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_07-29-39_01661",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-windows",
+     "kind": "window-shape",
+     "where": "buff brick, two-light white windows, one cantilevered balcony",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-26_07-29-39_01661",
+     "how": "buff window grid"
+    }
+   ]
+  },
+  {
+   "tag": "w08-160",
+   "bearing": 160,
+   "lengthM": 9.5,
+   "centre": [
+    4.9324475,
+    52.361415
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_09-39-19_01242",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-glazed-corner",
+     "kind": "colonnade",
+     "where": "the glazed plinth and white wide windows continue round the south-west corner",
+     "approxSizeM": [
+      9.5,
+      6.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_09-39-19_01242",
+     "how": "same system as w04-250"
+    }
+   ]
+  },
+  {
+   "tag": "w09-1",
+   "bearing": 1,
+   "lengthM": 8.4,
+   "centre": [
+    4.9330735,
+    52.3615615
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-70",
+   "bearing": 70,
+   "lengthM": 7.4,
+   "centre": [
+    4.932474,
+    52.361604
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002824_pano_0006_000054",
+   "capturedAt": "2022-10-07",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-159",
+   "bearing": 159,
+   "lengthM": 6.1,
+   "centre": [
+    4.932795,
+    52.361682
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-271",
+   "bearing": 271,
+   "lengthM": 4.7,
+   "centre": [
+    4.9335435,
+    52.361592
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

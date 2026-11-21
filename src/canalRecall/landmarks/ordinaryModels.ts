@@ -35,6 +35,13 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Westerdoksdijk 215-421 / Westerdok 536 (2026-10-14 large recipe, one front class per wall): the hand landmark
   // (lane hand-blocks-a-20261121, block-sized triage rank 8) draws the five fronts of the multi-architect Westerdok block.
   'ordinary-0363100012186086': 'westerdoksdijk-215',
+  // Revaleiland 121-286 (large recipe 2026-11-20, one brick-bay grid per wall): the hand model (hand-blocks-b, 2026-11-21)
+  // draws the quay wall's three fronts (banded block, proud bays with recessed balconies over a colonnade, east block)
+  // and the NE gallery block with its concrete fins.
+  'ordinary-0363100012253889': 'revaleiland-121',
+  // Wiborgeiland 76-171 (large recipe 2026-11-20, brick-bay grids per panel): the hand model (hand-blocks-b, 2026-11-21)
+  // draws the row of fronts with their own outlines: spout gables, the neck gable, white bay columns, arched warehouses.
+  'ordinary-0363100012249707': 'wiborgeiland-76',
   // Park Centraal, Stadhouderskade 25 (large recipe re-staged 2026-11-20): the bespoke landmark (landmarks-next,
   // 2026-11-15) draws the same pand with the MOMO corner tower's green dome, which the recipe cannot express. The
   // recipe's 5/5 blind was against the generic box, not the landmark, so the landmark wins.

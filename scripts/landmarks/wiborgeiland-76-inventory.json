@@ -1,0 +1,267 @@
+{
+ "schemaVersion": 1,
+ "id": "wiborgeiland-76",
+ "pand": "0363100012249707",
+ "brief": "scripts/landmarks/wiborgeiland-76-brief.md",
+ "signature": [
+  "nw-row-of-fronts",
+  "nw-spout-gables",
+  "nw-warehouse-arches",
+  "nw-white-bays",
+  "nw-warehouse-loggias",
+  "nw-gateway"
+ ],
+ "walls": [
+  {
+   "tag": "w01-320",
+   "bearing": 320,
+   "lengthM": 151.3,
+   "centre": [
+    4.8784645,
+    52.3942395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002854_pano_0023_000056",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-row-of-fronts",
+     "kind": "other",
+     "where": "the whole 147 m street wall: brown block, four red spout gables, buff shuttered house, dark brick with white bays, two warehouses, three red-brown gables, red with white bays, dark gabled pair, buff pilaster block",
+     "approxSizeM": [
+      147,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "per-front segments with own brick colour, window system and top outline along the measured wall line (SEGS)"
+    },
+    {
+     "id": "nw-spout-gables",
+     "kind": "other",
+     "where": "seven spout-gabled house fronts (four red NE of the buff house, three red-brown SW of the warehouses) and the dark pair, white stone copings, dark roof planes between the gables",
+     "approxSizeM": [
+      40,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002057_pano_0000_000536",
+     "how": "gable() outlines in brick with stone coping; the shell wall above each outline drawn as roof slate"
+    },
+    {
+     "id": "nw-warehouse-arches",
+     "kind": "window-shape",
+     "where": "two warehouse fronts: round-arched windows on five storeys, arched ground-floor windows",
+     "approxSizeM": [
+      27,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "arched(): arch frame, glass, mullion, transom and brick arch header over the brick"
+    },
+    {
+     "id": "nw-warehouse-loggias",
+     "kind": "balcony-ironwork",
+     "where": "three loggia columns in the warehouse fronts with arched heads and black railed balconies",
+     "approxSizeM": [
+      3.6,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "1.2 m deep openings with brown backs, arch bands and black balconies at two storeys"
+    },
+    {
+     "id": "nw-gateway",
+     "kind": "other",
+     "where": "round-arched gateway with a white stone surround in the north-east warehouse, under the right loggia",
+     "approxSizeM": [
+      3.9,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "2.5 m deep opening, stone arch band and dark arch head"
+    },
+    {
+     "id": "nw-name-bands",
+     "kind": "lettering",
+     "where": "'STAD AMSTERDAM' and 'WIBORG' white name bands over the warehouse ground floor; 'ANNO 2018' stone at the top",
+     "approxSizeM": [
+      5.6,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "plain stone bands and a stone panel without letters"
+    },
+    {
+     "id": "nw-white-bays",
+     "kind": "window-shape",
+     "where": "white framed bay columns rising above the parapet on the dark brick houses (three) and the red front SW of the gables (two), each with a glass balcony",
+     "approxSizeM": [
+      2.4,
+      13.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "proud stone jambs, head and storey lintels with glazed top, glass-railed balconies"
+    },
+    {
+     "id": "nw-shutters",
+     "kind": "other",
+     "where": "crimson shutters either side of the buff house's windows (mauve in the washed-out 2021 crop, crimson in the 2022 close view), white Juliet panels",
+     "approxSizeM": [
+      2.8,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002057_pano_0000_000536",
+     "how": "shutter slabs each side of the window, stone panels at the sills"
+    },
+    {
+     "id": "nw-oculus",
+     "kind": "window-shape",
+     "where": "round stone oculus in the buff house's neck gable",
+     "approxSizeM": [
+      0.7,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002057_pano_0000_000536",
+     "how": "stone disc"
+    },
+    {
+     "id": "nw-glass-balconies",
+     "kind": "balcony-ironwork",
+     "where": "glass-railed cantilever balconies on the three red-brown gabled houses",
+     "approxSizeM": [
+      2.8,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "balcony() with glass rails"
+    },
+    {
+     "id": "nw-ne-balcony-column",
+     "kind": "balcony-ironwork",
+     "where": "balcony column on the brown north-east block",
+     "approxSizeM": [
+      3.2,
+      11
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002057_pano_0000_000536",
+     "how": "four concrete balconies with dark rails over 0.9 m deep door openings (crop smeared)"
+    },
+    {
+     "id": "nw-pilasters",
+     "kind": "other",
+     "where": "brick pilasters and cornice on the buff block at the south-west end",
+     "approxSizeM": [
+      22,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "0.12 m proud brick strips every 2.7 m and a brick cornice band"
+    },
+    {
+     "id": "nw-white-plinths",
+     "kind": "other",
+     "where": "white rendered ground storeys of the dark and red white-bay fronts with gridded windows",
+     "approxSizeM": [
+      16,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002854_pano_0023_000056",
+     "how": "stone band to 3.6 m with gridded openings"
+    }
+   ]
+  },
+  {
+   "tag": "w02-140",
+   "bearing": 140,
+   "lengthM": 142.4,
+   "centre": [
+    4.8786045,
+    52.394076
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001129_pano_0001_001078",
+   "capturedAt": "2019-04-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-unknown-front",
+     "kind": "other",
+     "where": "the whole south-east side: the only capture (2019) shows the building site",
+     "approxSizeM": [
+      142,
+      20
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001129_pano_0001_001078",
+     "skip": {
+      "reason": "not-visible",
+      "note": "only a 2019 capture of the building site exists; drawn as the inferred red brick window grid"
+     }
+    }
+   ],
+   "note": "2019 capture: building site; the finished wall is inferred"
+  },
+  {
+   "tag": "w03-74",
+   "bearing": 74,
+   "lengthM": 21.9,
+   "centre": [
+    4.879357,
+    52.3945845
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_06-25-31_02802",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-230",
+   "bearing": 230,
+   "lengthM": 15.3,
+   "centre": [
+    4.8777345,
+    52.3937145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001129_pano_0001_001054",
+   "capturedAt": "2019-04-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-231",
+   "bearing": 231,
+   "lengthM": 4,
+   "centre": [
+    4.877636,
+    52.393786
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_002874",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

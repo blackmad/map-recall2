@@ -1,0 +1,36 @@
+{
+ "id": "pieter-de-hoochstraat-13",
+ "name": "Pieter de Hoochstraat 13-25 housing block",
+ "heightMetres": 26,
+ "bagYear": 2000,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.05
+ },
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012121704 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/pieter-de-hoochstraat-13-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001709_pano_0000_000089 (2020, Pieter de Hoochstraat), b_20241211_0838_Track01_Sphere_00101 (2024, its south end), TMX7316010203-002455_pano_0000_000096 (2022, south corner), TMX7316010203-002411_pano_0007_000071 and _000076 (2022, garden side), CC BY 4.0. Per wall in scripts/landmarks/pieter-de-hoochstraat-13-inventory.json.",
+ "materialOverrides": {
+  "brick": "#593a36",
+  "ochre": "#8a4b3d",
+  "red": "#a8323a",
+  "stone": "#dcdcd6",
+  "concrete": "#a9a79f",
+  "dark": "#2f4038",
+  "frame": "#e6e4de",
+  "glass": "#3f4a4e",
+  "slate": "#4a4a48",
+  "greyBrick": "#34302e",
+  "green": "#4f5f57",
+  "canopyGlass": "#8a9d98"
+ },
+ "attribution": {
+  "title": "Pieter de Hoochstraat 13-25, Amsterdam (housing block, 2000)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001709_pano_0000_000089/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012121704 (CC0): the brick fronts with their punched windows, red and white glazed bay stacks, lobby glazing, garden balcony band and the cantilevered glass roof storey, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": [
+  358
+ ]
+}

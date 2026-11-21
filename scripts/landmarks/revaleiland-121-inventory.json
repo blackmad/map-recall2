@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "id": "revaleiland-121",
+ "pand": "0363100012253889",
+ "brief": "scripts/landmarks/revaleiland-121-brief.md",
+ "signature": [
+  "se-three-fronts",
+  "se-bays",
+  "se-recess-balconies",
+  "se-colonnade",
+  "ne-galleries",
+  "ne-fins",
+  "se-banded-groups"
+ ],
+ "walls": [
+  {
+   "tag": "w01-140",
+   "bearing": 140,
+   "lengthM": 82.7,
+   "centre": [
+    4.880621,
+    52.3934255
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_54_42_00066",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-three-fronts",
+     "kind": "other",
+     "where": "SE quay wall: three fronts in one buff brick family on one wall plane: banded west block, bay front, taller pinkish east block",
+     "approxSizeM": [
+      83,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "per-front colour segments and window systems along the measured wall line"
+    },
+    {
+     "id": "se-banded-groups",
+     "kind": "window-shape",
+     "where": "west block (s 0-19): framed window groups, a dark slatted brick panel beside a two-light window, five per storey between proud brick bands",
+     "approxSizeM": [
+      19,
+      12
+     ],
+     "plan": "simplified",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "shallow dark panel opening beside each window; proud brick ledge strips at the storey lines"
+    },
+    {
+     "id": "se-bays",
+     "kind": "other",
+     "where": "bay front: six proud buff brick bays 4.8 m wide with one window per storey, crowned at about 14 m",
+     "approxSizeM": [
+      44,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "0.35 m proud brick pilasters and crown head on each bay, windows cut in the wall between"
+    },
+    {
+     "id": "se-recess-balconies",
+     "kind": "balcony-ironwork",
+     "where": "recesses between the bays with cantilevered balconies behind solid brick parapets, three storeys",
+     "approxSizeM": [
+      4,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "0.8 m deep recess with a dark back and a solid-parapet balcony per storey"
+    },
+    {
+     "id": "se-colonnade",
+     "kind": "colonnade",
+     "where": "pale stone columns and beam in front of a glazed shop ground floor under the bay front",
+     "approxSizeM": [
+      44,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "stone slabs for the columns, a stone beam strip, shopfront openings between them"
+    },
+    {
+     "id": "se-east-block",
+     "kind": "window-shape",
+     "where": "east block (s 63-80): taller, paler sandy brick, small punched windows, a balcony stack at its west edge, a covered gateway in the ground storey",
+     "approxSizeM": [
+      17,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "how": "paler band colour, measured punched openings, parapet balconies, deep dark gateway opening"
+    },
+    {
+     "id": "se-roof-pergola",
+     "kind": "other",
+     "where": "light metal rail/pergola on the roof terraces over the bay front",
+     "approxSizeM": [
+      40,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_29_07_54_42_00066",
+     "skip": {
+      "reason": "too-small",
+      "note": "a thin rail set back on the roof terrace, barely visible from the quay"
+     }
+    }
+   ],
+   "note": "2021 brief capture shows the building site; read from the 2025-09-29 panoramas (_00060.._00074) rectified by all-walls --date and the houthavens round-3 source-data crops"
+  },
+  {
+   "tag": "w02-254",
+   "bearing": 254,
+   "lengthM": 59.1,
+   "centre": [
+    4.8799925,
+    52.393448
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "only pre-completion captures (2020-05-15) within reach: building site; window grid inferred"
+  },
+  {
+   "tag": "w03-50",
+   "bearing": 50,
+   "lengthM": 59,
+   "centre": [
+    4.8808035,
+    52.393868
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_06-25-31_02868",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-towers",
+     "kind": "window-shape",
+     "where": "two grey brick towers at both ends of the NE wall with small punched windows in pairs",
+     "approxSizeM": [
+      15,
+      16.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-16_06-25-31_02868",
+     "how": "grey band colour and measured punched openings"
+    },
+    {
+     "id": "ne-galleries",
+     "kind": "other",
+     "where": "middle: two open gallery storeys over a three-storey grey brick base, brick parapet bands",
+     "approxSizeM": [
+      35,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-16_06-25-31_02868",
+     "how": "1.8 m deep dark gallery openings in the grey wall between parapet bands"
+    },
+    {
+     "id": "ne-fins",
+     "kind": "other",
+     "where": "pale concrete fins standing in front of the galleries, rising above the parapet with diagonal braces",
+     "approxSizeM": [
+      0.5,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-16_06-25-31_02868",
+     "how": "vertical concrete slabs from the base to above the parapet; the diagonal braces are left out"
+    },
+    {
+     "id": "ne-gateway",
+     "kind": "other",
+     "where": "covered gateway into the courtyard in the middle of the ground floor",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-16_06-25-31_02868",
+     "how": "deep dark opening"
+    }
+   ],
+   "note": "2019 brief capture shows the building site; read from recording_2024-10-16_06-25-31_02863/02868/02872 (houthavens round-3 source-data crops)"
+  },
+  {
+   "tag": "w04-320",
+   "bearing": 320,
+   "lengthM": 57.3,
+   "centre": [
+    4.880202,
+    52.3939035
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "only pre-completion captures (2016-06-15) within reach: building site; window grid inferred"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
