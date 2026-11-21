@@ -1,5 +1,5 @@
 {
-  "toolchain": "a7363ce6d712c08611f469c9c05d3ef296f6860d22ba6603c494f387533e4d7d",
+  "toolchain": "b7134c1c9cfd3b9e8ad48f73005006b23354ae59cb937046e336034cb2e39879",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -535,6 +535,10 @@
     "oostenburgergracht-15": "cd5dba1c724f7ceac97157e9dfd5c322e180c1c99d142b0fba366589dba8c626",
     "valkenburgerstraat-69": "9e862de789e7b520889296551d8d23732b7893f8092e4d9fb2177a2f63896b34",
     "casa-rosso": "e4e5c28a99b56780c7385066de3cd62932af3337477c9112b0603fd8748f1d60",
-    "moulin-rouge-amsterdam": "9c389e48f6fffbf6fd77e3db747209276cc4d4561aeca0d7a559ebef5f8d9faf"
+    "moulin-rouge-amsterdam": "9c389e48f6fffbf6fd77e3db747209276cc4d4561aeca0d7a559ebef5f8d9faf",
+    "rapenburgerstraat-220": "91b25c8623d20b8bb7c7d45698d88dbd37a233e7faca1422d0471ea1212cc892",
+    "rapenburgerstraat-4": "a4de7d11bbc8aace4e9e9d69396e92cada7d6852596e2f4c577b7f2d9fa8f26f",
+    "sumatrakade-1101": "89092687015a433457db189277e518321e3c68ed7dda9f2333503aceff68c675",
+    "westerdoksdijk-215": "e7ae5c44c80d0eefb1771a66edc86ac8c1953549e2fdcd8140dd9262e1d9baf6"
   }
 }

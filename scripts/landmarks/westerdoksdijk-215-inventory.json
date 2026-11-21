@@ -1,0 +1,398 @@
+{
+ "schemaVersion": 1,
+ "id": "westerdoksdijk-215",
+ "pand": "0363100012186086",
+ "brief": "scripts/landmarks/westerdoksdijk-215-brief.md",
+ "signature": [
+  "w01-cantilever-terraces",
+  "w01-loggia-grid",
+  "w02-lattice-plinth",
+  "w02-slit-tower",
+  "w04-red-frames",
+  "w03-buff-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 114,
+   "centre": [
+    4.8916785,
+    52.384956
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track02_Sphere_00063",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-cantilever-terraces",
+     "kind": "other",
+     "where": "Westerdoksdijk, middle: the dark terrace block, two gallery storeys over a glazed plinth then staggered deep cantilevered terrace slabs with dark balustrades stepping out over the low neighbours up to a glass-railed roof terrace",
+     "approxSizeM": [
+      36,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "closed concrete slab boxes 1.8-5 m deep per storey, staggered in plan, each with a solid dark balustrade on its front and ends; a glazed storey behind each terrace"
+    },
+    {
+     "id": "w01-loggia-grid",
+     "kind": "window-shape",
+     "where": "Westerdoksdijk: the grey-brown brick front framed in a two-bay grid, every bay a big window beside a railed loggia, the pair swapping sides storey by storey",
+     "approxSizeM": [
+      17,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "per-storey big two-light windows and 1.3 m deep loggias with a rail bar, in the measured left/right order per storey"
+    },
+    {
+     "id": "w01-balcony-blocks",
+     "kind": "balcony-ironwork",
+     "where": "the two red-brown brick blocks at both ends with stacked full-width balconies and glass balustrades",
+     "approxSizeM": [
+      13,
+      18
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "concrete balcony slabs with solid glass parapets on every storey over ribbon windows; the 2024 crop is blurred at both ends"
+    },
+    {
+     "id": "w01-glazed-plinth",
+     "kind": "other",
+     "where": "glazed plinth and white-framed entrance lobby under the terrace block, with mailboxes",
+     "approxSizeM": [
+      32,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "dark- and white-framed ground-floor glazing; mailboxes too small"
+    },
+    {
+     "id": "w01-low-frame",
+     "kind": "window-shape",
+     "where": "low three-storey brick piece right of the loggia grid with two wide openings per storey",
+     "approxSizeM": [
+      13,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "two 5.6 m four-light openings per storey"
+    },
+    {
+     "id": "w01-low-brick",
+     "kind": "window-shape",
+     "where": "low red-brown brick piece left of the terraces with punched windows over doors",
+     "approxSizeM": [
+      12,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "punched two-light windows on two storeys, doors and windows on the ground"
+    }
+   ]
+  },
+  {
+   "tag": "w02-5",
+   "bearing": 5,
+   "lengthM": 87.7,
+   "centre": [
+    4.892382,
+    52.3854375
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track05_Sphere_00059",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-lattice-plinth",
+     "kind": "other",
+     "where": "north street: three-storey brick plinth, two upper storeys of perforated brick lattice screens alternating with open loggias, staggered between the storeys",
+     "approxSizeM": [
+      58,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "how": "shallow dark fields crossed by a 5x6 brick bar grid alternating with 1.3 m deep light loggias with a rail bar"
+    },
+    {
+     "id": "w02-front-doors",
+     "kind": "other",
+     "where": "row of narrow white front doors between narrow tall windows along the plinth",
+     "approxSizeM": [
+      58,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "how": "alternating white doors and narrow windows every 1.45 m"
+    },
+    {
+     "id": "w02-slit-tower",
+     "kind": "tower",
+     "where": "dark brown brick tower on the right with full-height vertical slit windows",
+     "approxSizeM": [
+      27,
+      34
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "how": "0.5 m slit openings per storey stacked into vertical strips at a 2 m pitch"
+    },
+    {
+     "id": "w02-punched-tower",
+     "kind": "tower",
+     "where": "grey-brown brick tower on the left with staggered pairs of punched windows",
+     "approxSizeM": [
+      23,
+      34
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "how": "two-light punched windows staggered storey by storey"
+    },
+    {
+     "id": "w02-passage",
+     "kind": "other",
+     "where": "passage through the plinth with an eye-shaped artwork on its back wall",
+     "approxSizeM": [
+      3,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "how": "deep dark opening; the artwork is left out"
+    }
+   ]
+  },
+  {
+   "tag": "w03-185",
+   "bearing": 185,
+   "lengthM": 80.3,
+   "centre": [
+    4.892205,
+    52.3844185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_000228",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-buff-tower",
+     "kind": "tower",
+     "where": "south street: pale buff brick 12-storey tower with three-light windows and a column of narrow windows",
+     "approxSizeM": [
+      18,
+      34
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "how": "three-light and narrow windows per storey in the measured columns"
+    },
+    {
+     "id": "w03-low-row",
+     "kind": "window-shape",
+     "where": "low grey brick row: picture windows over a row of slit windows, with a passage",
+     "approxSizeM": [
+      28,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "how": "three-light picture windows, 0.5 m slit windows, a deep dark passage"
+    },
+    {
+     "id": "w03-narrow-grid",
+     "kind": "window-shape",
+     "where": "grey brick block of tall narrow windows under a paler top",
+     "approxSizeM": [
+      18,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "how": "0.5 m narrow windows in a 1.45 m grid, a pale band with small windows on top"
+    },
+    {
+     "id": "w03-french-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small French balconies under some tower windows",
+     "approxSizeM": [
+      1.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin rails under a few windows, invisible at riding distance"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-104",
+   "bearing": 104,
+   "lengthM": 64.6,
+   "centre": [
+    4.8929035,
+    52.3846745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0007_000043",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-red-frames",
+     "kind": "window-shape",
+     "where": "east quay: red-brown brick front whose window pairs have red frames",
+     "approxSizeM": [
+      36,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0007_000043",
+     "how": "pairs of a red-framed narrow window and a big window on four storeys, alternating single windows on two"
+    },
+    {
+     "id": "w04-buff-front",
+     "kind": "other",
+     "where": "buff brick front with big windows either side of a stack of loggias",
+     "approxSizeM": [
+      19,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0007_000043",
+     "how": "three-light big windows and 1 m deep light loggias with a rail bar"
+    },
+    {
+     "id": "w04-entrance",
+     "kind": "other",
+     "where": "full-height glazed entrance",
+     "approxSizeM": [
+      3.4,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0007_000043",
+     "how": "glazed two-by-two opening"
+    },
+    {
+     "id": "w04-shutters",
+     "kind": "other",
+     "where": "white folding shutters in the loggias",
+     "approxSizeM": [
+      1,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002620_pano_0007_000043",
+     "skip": {
+      "reason": "temporary",
+      "note": "shutter positions change daily"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-96",
+   "bearing": 96,
+   "lengthM": 19.5,
+   "centre": [
+    4.893028,
+    52.385044
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_001832",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-scatter",
+     "kind": "window-shape",
+     "where": "red-brown brick wall with a scatter of wide and narrow windows over narrow tall ground-floor windows",
+     "approxSizeM": [
+      19,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_001832",
+     "how": "generated scatter of two-light and single windows per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w06-86",
+   "bearing": 86,
+   "lengthM": 18.9,
+   "centre": [
+    4.893034,
+    52.3853235
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02251",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-scatter",
+     "kind": "window-shape",
+     "where": "grey brick wall with a scatter of wide and narrow windows over narrow tall ground-floor windows",
+     "approxSizeM": [
+      19,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_02251",
+     "how": "generated scatter of two-light and single windows per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w07-91",
+   "bearing": 91,
+   "lengthM": 12,
+   "centre": [
+    4.893043,
+    52.385185
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track10_Sphere_00085",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-scatter",
+     "kind": "window-shape",
+     "where": "dark brown brick wall with a scatter of wide and narrow windows over narrow tall ground-floor windows",
+     "approxSizeM": [
+      12,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00085",
+     "how": "generated scatter of two-light and single windows per storey"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

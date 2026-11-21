@@ -1,0 +1,278 @@
+{
+ "schemaVersion": 1,
+ "id": "rapenburgerstraat-220",
+ "pand": "0363100012165616",
+ "brief": "scripts/landmarks/rapenburgerstraat-220-brief.md",
+ "signature": [
+  "se-proud-panels",
+  "se-white-corner",
+  "nw-row-of-fronts",
+  "nw-brick-panels",
+  "se-eaves"
+ ],
+ "walls": [
+  {
+   "tag": "w01-329",
+   "bearing": 329,
+   "lengthM": 64.9,
+   "centre": [
+    4.9057789,
+    52.3689653
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002625_pano_0016_000047",
+   "capturedAt": "2022-06-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-row-of-fronts",
+     "kind": "other",
+     "where": "Valkenburgerstraat: salmon brick, grey-brown brick, red-brown brick and dark grey brick fronts in a row over a continuous shop ground floor",
+     "approxSizeM": [
+      65,
+      20
+     ],
+     "plan": "modelled",
+     "how": "per-front colour segments along the measured wall line",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-brick-panels",
+     "kind": "other",
+     "where": "grey-brown front: two proud brick panels with three-light windows either side of a tall glazed stair slot",
+     "approxSizeM": [
+      7,
+      10
+     ],
+     "plan": "modelled",
+     "how": "proud return strips round the panels, three-light openings, a tall slot with transoms",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-bay-stack",
+     "kind": "other",
+     "where": "salmon front: a white-framed glazed bay stack three storeys tall beside loggias",
+     "approxSizeM": [
+      4,
+      7.7
+     ],
+     "plan": "modelled",
+     "how": "white box 0.6 m proud with a glass pane per storey",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-balconies",
+     "kind": "balcony-ironwork",
+     "where": "grey balcony stacks at the corner gallery and on the red-brown front",
+     "approxSizeM": [
+      3,
+      8
+     ],
+     "plan": "modelled",
+     "how": "cantilevered balconies with grey rails",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-ribbons",
+     "kind": "window-shape",
+     "where": "dark grey front: two storeys of continuous ribbon windows over the shops",
+     "approxSizeM": [
+      9.4,
+      3.7
+     ],
+     "plan": "modelled",
+     "how": "ribbon openings cut into three-light pieces",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-shopfronts",
+     "kind": "sign",
+     "where": "shopfronts (estate agent, interiors) under dark fascias along the ground",
+     "approxSizeM": [
+      65,
+      3.4
+     ],
+     "plan": "simplified",
+     "how": "dark-framed glazed openings and fascias; tenant lettering left out (changes with tenants)",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    },
+    {
+     "id": "nw-penthouse",
+     "kind": "other",
+     "where": "set-back glazed penthouse over the grey-brown front",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "simplified",
+     "how": "set-back faces get a glazed grid",
+     "seenIn": "TMX7316010203-002625_pano_0016_000047"
+    }
+   ]
+  },
+  {
+   "tag": "w02-57",
+   "bearing": 57,
+   "lengthM": 54.2,
+   "centre": [
+    4.9064023,
+    52.3689152
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-238",
+   "bearing": 238,
+   "lengthM": 44.4,
+   "centre": [
+    4.9055493,
+    52.368644
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-147",
+   "bearing": 147,
+   "lengthM": 42.1,
+   "centre": [
+    4.9063624,
+    52.3686078
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0011_000061",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-proud-panels",
+     "kind": "other",
+     "where": "Rapenburgerstraat: two rendered panels, mauve and grey, standing about 0.4 m proud of the red-brown brick over three storeys, each framing two tall gridded windows with mesh French rails",
+     "approxSizeM": [
+      11,
+      9
+     ],
+     "plan": "modelled",
+     "how": "panel-coloured bands on the wall with proud return strips round each panel; two 2x4-light openings per panel, rails as thin strips",
+     "seenIn": "TMX7316010203-002933_pano_0011_000061"
+    },
+    {
+     "id": "se-white-corner",
+     "kind": "balcony-ironwork",
+     "where": "white rendered NE corner with a stack of grey mesh balconies in front of a glazed loggia wall",
+     "approxSizeM": [
+      11,
+      9
+     ],
+     "plan": "modelled",
+     "how": "render band, glazed openings behind, two cantilevered balconies with grey rails",
+     "seenIn": "TMX7316010203-002933_pano_0011_000061"
+    },
+    {
+     "id": "se-eaves",
+     "kind": "other",
+     "where": "deep flat eaves slab about 0.9 m out over the top storey of small windows",
+     "approxSizeM": [
+      37,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "projecting band at the roof line",
+     "seenIn": "TMX7316010203-002933_pano_0011_000061"
+    },
+    {
+     "id": "se-raised-ground",
+     "kind": "window-shape",
+     "where": "raised ground floor of wide three-light windows under the panels, an entrance with a canopy between them",
+     "approxSizeM": [
+      3.3,
+      2
+     ],
+     "plan": "modelled",
+     "how": "three-light openings and a dark door",
+     "seenIn": "TMX7316010203-002933_pano_0011_000061"
+    }
+   ]
+  },
+  {
+   "tag": "w05-146",
+   "bearing": 146,
+   "lengthM": 22.7,
+   "centre": [
+    4.9059629,
+    52.3684497
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track20_Sphere_00262",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-white-corner",
+     "kind": "balcony-ironwork",
+     "where": "white rendered SW corner with three mesh balconies in front of glazed loggias",
+     "approxSizeM": [
+      11,
+      12
+     ],
+     "plan": "modelled",
+     "how": "render band, loggia glazing, three balconies",
+     "seenIn": "b_20241210_1246_Track20_Sphere_00262"
+    },
+    {
+     "id": "sw-brick-bays",
+     "kind": "window-shape",
+     "where": "four bays of large white-framed brick windows under the eaves slab",
+     "approxSizeM": [
+      11.6,
+      12
+     ],
+     "plan": "modelled",
+     "how": "punched openings and the eaves band",
+     "seenIn": "b_20241210_1246_Track20_Sphere_00262"
+    }
+   ]
+  },
+  {
+   "tag": "w06-237",
+   "bearing": 237,
+   "lengthM": 11.6,
+   "centre": [
+    4.9057788,
+    52.3684354
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_000701",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "swend-render",
+     "kind": "other",
+     "where": "short white rendered end wall of the SW corner, seen at 35 degrees",
+     "approxSizeM": [
+      11.6,
+      12
+     ],
+     "plan": "simplified",
+     "how": "render band with two columns of small windows (spacing inferred from w05-146)",
+     "seenIn": "TMX7316010203-002047_pano_0000_000701"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

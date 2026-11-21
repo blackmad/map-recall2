@@ -32,6 +32,9 @@ export const ordinarySpecFor = (m: Entry): SignatureModelSpec => ({
 /** Catalogue installs whose pand a bespoke landmark model already draws: the landmark wins and the install is not drawn
  * (both drew on the same ground). Keyed by ordinary id, valued by the landmark id; modelOverlap.test.ts pins each pair. */
 export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
+  // Westerdoksdijk 215-421 / Westerdok 536 (2026-10-14 large recipe, one front class per wall): the hand landmark
+  // (lane hand-blocks-a-20261121, block-sized triage rank 8) draws the five fronts of the multi-architect Westerdok block.
+  'ordinary-0363100012186086': 'westerdoksdijk-215',
   // Park Centraal, Stadhouderskade 25 (large recipe re-staged 2026-11-20): the bespoke landmark (landmarks-next,
   // 2026-11-15) draws the same pand with the MOMO corner tower's green dome, which the recipe cannot express. The
   // recipe's 5/5 blind was against the generic box, not the landmark, so the landmark wins.
