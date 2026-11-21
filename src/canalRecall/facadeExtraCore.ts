@@ -12,6 +12,8 @@ export type V3 = [number, number, number];
 export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][]; /** The primitive that drew it (look/thinFade.ts owner classes); absent for wall quads, slopes and profiles. */ prim?: 'box' | 'strip' };
 /** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
+/** Design units: a plot's read stone, bands and pilasters, each drawn by an existing kit part (absent: as before). */
+export interface DesignDress { stone?: 'plinth' | 'ground'; bands?: 'ground' | 'all'; pilasters?: 'corners' | 'centre' }
 export type ExtraContext = {
   recipe?: ArchitecturalRecipe;
   runStart?: boolean; runEnd?: boolean;
@@ -53,6 +55,19 @@ export type ExtraContext = {
   /** Design units (`?designUnits=1`): a segment member's street wall; it takes the row budget so a wide plot dresses every
    *  window as its narrow neighbours do (one design per segment). */
   designMember?: true;
+  /** Design units round 2 (#399): the plot's own series. Window heads, door dressing and balconies roll on it (each house
+   *  its own pick from the family's components); everything else rolls on `seriesId`, the family's. */
+  plotSeriesId?: string;
+  /** Design units round 2: a party-wall break (pier, cornice end block) at this wall's start / end (designUnits/plotBreak.ts). */
+  plotBreak?: { start: boolean; end: boolean };
+  /** Design units plot plan: the plot's stated balcony storeys (1 = first upper); facadeExtras.ts plotBalconies. */
+  plotBalconies?: readonly number[];
+  /** Design units: the plot's white frames (plotPlan.ts plotWhite); white-window-frames draws them at full width. */
+  designFrames?: true;
+  /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
+  plainHeads?: true;
+  /** Design units: the plot's read dress (designUnits/plotPlan.ts): grey stone at the foot, bacon courses, white pilasters. */
+  designDress?: DesignDress;
   /** House rows: the series' stated dressing on this wall (threeBuildingMesh rowDressOnEdge). `windows`: the record's
    *  boxes in this edge's metres with their storey and head; `heads`: spans (edge metres) over the grid's windows. */
   rowDress?: RowDressContext;

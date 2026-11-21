@@ -102,7 +102,7 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
       // A field the game's decorator holds (SPEC_DESIGN_HELD) is not drawn in the game either: list it as not applied.
       const ov = r.measure.overrides as { applied: string[]; notApplied: string[] } | null;
       const overrides = ov ? { applied: ov.applied.filter(a => !a.includes('(held')), notApplied: [...ov.notApplied, ...ov.applied.filter(a => a.includes('(held')).map(a => a.replace(/ -> .*?(\(held.*)$/, ' $1'))] } : null;
-      res.set('Cache-Control', 'no-store').json({ hash: r.hash, ms: r.ms, cached: r.cached, widthPx: r.widthPx, heightPx: r.heightPx, heights: r.measure.heights, layout: r.measure.layout, overrides, url: `/api/belt-review/faces/${req.params.face}/render/${req.params.pand}.png?h=${r.hash}` });
+      res.set('Cache-Control', 'no-store').json({ hash: r.hash, ms: r.ms, cached: r.cached, widthPx: r.widthPx, heightPx: r.heightPx, heights: r.measure.heights, layout: r.measure.layout, props: r.measure.props ?? null, overrides, url: `/api/belt-review/faces/${req.params.face}/render/${req.params.pand}.png?h=${r.hash}` });
     } catch (e) { fail(res, e); }
   });
 

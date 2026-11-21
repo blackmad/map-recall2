@@ -97,6 +97,9 @@ export type RoofPlan = {
   rowDormers?: ReadonlyArray<{ a: number; kind: RowDormerKind; hoist?: boolean }>;
   /** House rows: how far a stated dormer stands back from its stock place (outlineRoof: a stepped front's dormer). */
   rowDormerBackM?: number;
+  /** Design units: a stated hoist beam may project past the wall; only the dormer's body decides whether it stands back
+   *  (a beam's 0.9 m pushed Ceintuurbaan 8823's dormers off the slope onto the roof top: "it's in the roof, not on top of it"). */
+  rowHoistOut?: true;
   /** House rows: the mansard runs on into the neighbour's on the left / right as seen from the street (no hip there). */
   rowJoins?: { left?: boolean; right?: boolean };
   /** House rows: the street front's width (m); rowRoofBox faces the roof on the wall that width matches (a corner). */
@@ -665,6 +668,7 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
   s.tri(P(f + o - 0.02, b0 - 0.1, zt + 0.1), P(f + o - 0.02, b1 + 0.1, zt + 0.1), P(f + o - 0.02, c, apex - 0.02), [0, 0], [0, 0], [0, 0], 'trim', n, trim);
   // The hoist beam (hijsbalk): dark timber out of the pediment under its apex, a hook block hanging off its end.
   if (d.hoist) {
+    const from = s.out.length;
     const beam = (a0: number, a1: number, c0: number, c1: number, z0: number, z1: number) => {
       s.quad(P(a1, c0, z0), P(a1, c1, z0), P(a1, c1, z1), P(a1, c0, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', n, HOIST_HEX);
       s.quad(P(a0, c0, z1), P(a1, c0, z1), P(a1, c1, z1), P(a0, c1, z1), [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], HOIST_HEX);
@@ -672,6 +676,7 @@ function rowDormerDress(s: RoofSink, d: DormerSpec, P: (a: number, b: number, z:
     };
     beam(d.pf - 0.2, f + 0.9, c - 0.11, c + 0.11, apex - 0.5, apex - 0.28);
     beam(f + 0.72, f + 0.86, c - 0.05, c + 0.05, apex - 0.85, apex - 0.5);
+    for (let i = from; i < s.out.length; i++) HOIST_TRIS.add(s.out[i]);
   }
   // The finial on the pediment's apex (Kinkerstraat 98-104 dormers).
   box(d.pf - 0.05, f + o, c - 0.05, c + 0.05, apex + 0.08, apex + 0.38);
@@ -775,6 +780,8 @@ function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: n
  */
 /** Triangles of stated row dormers (rowDormersOnEnds), for the cut at the walls. */
 const ROW_DORMER_TRIS = new WeakSet<RoofTri>();
+/** A dormer's hoist beam and hook (they stand out past the face by design). */
+const HOIST_TRIS = new WeakSet<RoofTri>();
 /** Those stood back inside the walls (outlineRoof): never matched as a wall plate by the cut. */
 const ROW_DORMER_BACK = new WeakSet<RoofTri>();
 function rowDormersOnEnds(s: RoofSink, plan: RoofPlan, L: number, W: number, surf: (a: number) => number, pf: number): void {
@@ -941,12 +948,14 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
       continue;
     }
     if (plan.rowCrown) {
-      const prof = rowCrownProfile(plan.rowCrown, W, R);
+      // An off-centre crown's offset is as seen from the street: the viewer's right is +v at e > 0, -v at e < 0.
+      const rc = plan.rowCrown.offsetM && e < 0 ? { ...plan.rowCrown, offsetM: -plan.rowCrown.offsetM } : plan.rowCrown;
+      const prof = rowCrownProfile(rc, W, R);
       // A crown in stone (stated, or the belt dress) stands deeper, so its sides read as a wall, not a cut-out.
       // Its top stays brick behind the stone coping (David 2026-11-15: a white top 0.45 m deep read as a thick white edge).
       const stoneCrown = accents && !!rowCrownStone(plan.rowCrown);
       gableSlab(s, prof, e, L, accents && !stoneCrown ? 'trim' : 'plate', trim, stoneCrown ? ROW_STONE.plate : 0.32);
-      if (accents) rowCrownAccents(s, plan.rowCrown, prof, f, e, W, R, trim);
+      if (accents) rowCrownAccents(s, rc, prof, f, e, W, R, trim);
       continue;
     }
     const prof = gableProfile(plan.gable, W, R);
@@ -1239,7 +1248,7 @@ function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: num
       let tris = roofTriangles(inside, rp, h0, dims);
       // A stated dormer standing outside the walls (a front stepped back behind a part that stands forward, Herengracht 51:
       // the box's end is the forward part's) would be cut away at the walls: it stands back by its overhang instead.
-      const keep = insetRing(openRing(mesh), -0.05) ?? openRing(mesh), hang = Math.max(0, ...tris.filter(t => ROW_DORMER_TRIS.has(t)).map(t => pointsHangM(t.p, keep)));
+      const keep = insetRing(openRing(mesh), -0.05) ?? openRing(mesh), hang = Math.max(0, ...tris.filter(t => ROW_DORMER_TRIS.has(t) && !(piece.plan.rowHoistOut && HOIST_TRIS.has(t))).map(t => pointsHangM(t.p, keep)));
       if (hang > ROOF_PART_HANG_M) { tris = roofTriangles(inside, { ...rp, rowDormerBackM: +(hang + 0.2).toFixed(2) }, h0, dims); for (const t of tris) if (ROW_DORMER_TRIS.has(t)) ROW_DORMER_BACK.add(t); }
       out.push(...tris); continue;
     }
@@ -1504,7 +1513,7 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
     if (!rect || !(height - rr.riseM >= 2)) return null;
     const box: Rect = { ...rect, coverage: 1, maxDev: 0 };
     const rowPlan: RoofPlan = { kind: rr.shape === 'hipped' ? 'hipped' : 'mansardHip', gable: 'plain', riseM: rr.riseM, dormers: rr.dormers.length > 0, material: rr.material === 'tile' ? 'tile' : 'slate',
-      tone: rr.tone ?? ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}), ...(rr.kit && rr.frontN ? { rowFrontN: rr.frontN } : {}) };
+      tone: rr.tone ?? ROW_SLATE_TONE, seed: rr.series, chimney: false, accents: true, trimHex: TRIM_WHITE, rowDormers: rr.dormers, ...(rr.hoistOut ? { rowHoistOut: true as const } : {}), ...(rr.joins ? { rowJoins: rr.joins } : {}), ...(rr.frontM ? { rowFrontM: rr.frontM } : {}), ...(rr.kit ? { buurtKit: rr.kit } : {}), ...(rr.kit && rr.frontN ? { rowFrontN: rr.frontN } : {}) };
     return { ...rowPlan, pieces: [{ rect: box, plan: rowPlan }], keepLid: true };
   }
   // Lane 1 (houseLine/rowFront.ts sets `rowCrown` and the matching height): the measured crown, its saddle inside it,
@@ -1535,9 +1544,9 @@ export function kitEndOf(rect: Pick<Rect, 'ux' | 'uy'>, n: Vec2): -1 | 1 | null 
 /** House rows: every row mansard is the one dark slate (look/palette.ts MEASURED_SLATE[1], #606b79): one tone per
  *  series and the same across a row (blind review 2026-11-14: Weteringschans 169016 and 171218 differed). */
 export const ROW_SLATE_TONE = 0.5;
-export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; tone?: number; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; frontN?: Vec2; shape?: 'hipped' } | null {
+export function rowRoofOf(v: unknown): { riseM: number; material: string; series: string; tone?: number; dormers: NonNullable<RoofPlan['rowDormers']>; joins?: NonNullable<RoofPlan['rowJoins']>; frontM?: number; kit?: BuurtRoofKit; frontN?: Vec2; shape?: 'hipped'; hoistOut?: true } | null {
   if (!v || typeof v !== 'object') return null;
-  const r = v as { tone?: unknown; riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; frontN?: unknown; shape?: unknown };
+  const r = v as { tone?: unknown; riseM?: unknown; material?: unknown; series?: unknown; dormers?: unknown; joins?: { left?: unknown; right?: unknown }; frontM?: unknown; kit?: unknown; frontN?: unknown; shape?: unknown; hoistOut?: unknown };
   if (!(Number(r.riseM) > 0.5) || typeof r.series !== 'string' || !Array.isArray(r.dormers)) return null;
   const dormers = (r.dormers as Array<{ a?: unknown; kind?: unknown; hoist?: unknown }>).filter(d => Number.isFinite(Number(d.a)) && (ROW_DORMER_DRAW_KINDS as readonly unknown[]).includes(d.kind))
     .map(d => ({ a: Math.max(0.05, Math.min(0.95, Number(d.a))), kind: d.kind as RowDormerKind, ...(d.hoist === true ? { hoist: true } : {}) }));
@@ -1546,7 +1555,7 @@ export function rowRoofOf(v: unknown): { riseM: number; material: string; series
   const fn = Array.isArray(r.frontN) && r.frontN.length === 2 && r.frontN.every(Number.isFinite) && Math.abs(Math.hypot(r.frontN[0], r.frontN[1]) - 1) < 0.01 ? [Number(r.frontN[0]), Number(r.frontN[1])] as Vec2 : null;
   // Design units: a segment roof's tone (designUnits/draw.ts segmentRoof); absent: the row slate, as before.
   const tone = typeof r.tone === 'number' && r.tone >= 0 && r.tone <= 1 ? r.tone : null;
-  return { ...(fn ? { frontN: fn } : {}), ...(tone !== null ? { tone } : {}), riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
+  return { ...(fn ? { frontN: fn } : {}), ...(tone !== null ? { tone } : {}), ...(r.hoistOut === true ? { hoistOut: true as const } : {}), riseM: Number(r.riseM), material: typeof r.material === 'string' ? r.material : 'slate', series: r.series, dormers, ...(joins && (joins.left || joins.right) ? { joins } : {}), ...(Number(r.frontM) > 1 ? { frontM: Number(r.frontM) } : {}), ...(kit ? { kit } : {}), ...(r.shape === 'hipped' ? { shape: 'hipped' as const } : {}) };
 }
 
 /**
@@ -1625,6 +1634,9 @@ export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => 
     const id = String(feature.properties.id ?? '');
     // A kit part is the kit's own, landmark list or not: the Beurs van Berlage is not in the landmark
     // list, so its halls took house windows under the kit roofs (user 2026-10-03: "why does it have windows???").
+    // Belt review (designUnits/draw.ts withSoloPlot): a front a reviewed description states draws as that house, kit part or landmark
+    // (Herengracht 34, De Burght: the public-building hall kit drew a blank slab for a 4-bay front).
+    if ((feature.properties.designUnit as { solo?: unknown } | undefined)?.solo === true) return decorate(feature);
     if (modelled.has(id)) return feature;
     if (!ids.size || !ids.has(id)) return decorate(feature);
     const p = feature.properties, height = Number(p.height), year = Number(p.constructionYear);

@@ -34,7 +34,32 @@ export interface DesignUnitDraw {
   /** The segment's look traits for the bay preset (bayLook spec): the members' read consensus, else the era prior
    *  (1860-1919 Ring fronts: light frames, tall sashes). */
   look?: { dark?: boolean; pale?: boolean; arch?: boolean; tall?: boolean; sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six' };
+  /** Round 2 (#399: "over aggressively collapsing buildings"): the unit is a family and each plot is its own house. The
+   *  plot's seed (segment seed + its one-facade group, else its pand) picks its door place, its wall tone inside the family
+   *  (PLOT_TONE_DL) and its dressing among the family's components. */
+  plotSeed?: string;
+  /** The plot's cornice height (m): its own AHN front p90 clamped to PLOT_EAVES_M of the segment line; else the line. */
+  plotEavesM?: number;
+  /** Party-wall breaks at the plot's two ends as seen from the street: false where the neighbour on that side is the same
+   *  facade (one-facade evidence), so a merged group draws one continuous front. */
+  plotBreak?: { left: boolean; right: boolean };
+  /** The segment's photo evidence of a roof storey (segments.ts `roofEvidence`): drawn inside the measured top. */
+  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; form?: 'mansard' | 'dormers'; source: string; roofSource?: 'photo' | 'reads' | 'default' };
+  /** The plot's facts (segments.ts `plots`), when any source states them. */
+  plot?: import('./plotPlan.js').PlotFacts;
+  /** The segment's style year (median member BAG year): the plot plan draws 1860-1939 segments. */
+  year?: number;
+  /** A one-plot draw stated by a reviewed description (belt review, beltReview/plotRead.ts), not by a segment: the plot plan
+   *  draws it whatever the flag and its year, `eavesM` is its measured cornice, and a stated gable keeps its own shape. */
+  solo?: true;
+  /** A solo plot's described gable (roofMesh.ts GableShape), or null for a cornice or flat front; absent: the pand's own. */
+  gable?: string | null;
 }
+
+/** A plot's cornice stays this close to its segment's eaves line (m). */
+export const PLOT_EAVES_M = 0.3;
+/** A plot's wall tone stays this close to its family's brick (OKLab L). */
+export const PLOT_TONE_DL = 0.03;
 
 /**
  * Window columns of a 1860-1919 Ring front by plot width (the plot is the module): about 2 under 4.8 m, 3 from 4.8 to

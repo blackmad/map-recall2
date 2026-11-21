@@ -2127,848 +2127,4037 @@
     "mean": 0.424,
     "costUsd": 0.3608
    }
+  },
+  "wired-1": {
+   "at": "2026-11-21T10:40:40.738Z",
+   "model": "claude-opus-5-5",
+   "server": "in-process review router",
+   "description": "review-data/belt-review/herengracht-2-90-even/description.json",
+   "pands": {
+    "0363100012175701": {
+     "address": "Herengracht 90",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+     "renderHash": "96006b34e0cbb9f54863009d",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with small white rounded dormer, not grey pitched slate roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wide white-framed square-ish windows with dark grid, not tall red frames"
+      },
+      {
+       "tag": "ground",
+       "what": "needs three red awnings over separate shopfront bays with stone pilasters"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1208,
+      "output_tokens": 135
+     },
+     "costUsd": 0.00753
+    },
+    "0363100012169010": {
+     "address": "Herengracht 88",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+     "renderHash": "9ba7206bbf364b881f7d03a8",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "white",
+       "what": "needs bold white horizontal bands and quoin blocks striping the dark brick facade"
+      },
+      {
+       "tag": "roof",
+       "what": "needs narrow stepped/neck gable with attic window, not wide pitched roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs white-framed shopfront with awnings, chalkboard windows and door at right"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 137
+     },
+     "costUsd": 0.00772
+    },
+    "0363100012175692": {
+     "address": "Herengracht 86",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+     "renderHash": "cbed9474afe9385c5f038a29",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall brick neck/bell gable with white trim, not a brick hipped roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two wide white-framed windows per floor, not three narrow arched ones"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a white-plastered ground floor with two tall windows and a black door at right"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 135
+     },
+     "costUsd": 0.0069
+    },
+    "0363100012175702": {
+     "address": "Herengracht 84",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+     "renderHash": "c5f189d529a512b7dc497ecf",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall narrow step gable with many steps and attic windows"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white-framed sash windows, not red frames; three per floor"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall windows plus door with oval-pattern transom on the ground floor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1144,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00706
+    },
+    "0363100012175703": {
+     "address": "Herengracht 82",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499",
+     "renderHash": "cbc8a6b8ba99a10d2e2b7138",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three window bays per floor, not four, with small-paned sashes"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a flat cornice parapet with small hidden roof, not a huge red hip"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a grey awning and shopfront with door at right, not brown band"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1485,
+      "output_tokens": 254
+     },
+     "costUsd": 0.01102
+    },
+    "0363100012175783": {
+     "address": "Herengracht 80",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "renderHash": "742a14d00d94d529b6079415",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with white scroll claw-pieces and hoist beam, not chimney block"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three windows per floor, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs cream shopfront with two dark doors, transoms and wide windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 123
+     },
+     "costUsd": 0.00653
+    },
+    "0363100012175784": {
+     "address": "Herengracht 76–78",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+     "renderHash": "4b601c5a0ea37bd86ff516df",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs two ornate neck/bell gables with white scrolls, not one flat block"
+      },
+      {
+       "tag": "ground",
+       "what": "needs ground floor with two black doors, stoops and large windows"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two houses' irregular window rhythm, white frames, no shutters"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1578,
+      "output_tokens": 126
+     },
+     "costUsd": 0.00883
+    },
+    "0363100012175616": {
+     "address": "Herengracht 74",
+     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "renderHash": "856a7c7b3bcb646523a52303",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a curved brick neck/bell gable with arched window, not grey slate hipped roof with dormer"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with wide multi-pane window, railings and basement entrance"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wide segmental-arched windows with stone lintels, not tall narrow rectangles with balconettes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 152
+     },
+     "costUsd": 0.00711
+    },
+    "0363100012175617": {
+     "address": "Herengracht 72",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "renderHash": "7c3a5441259f5e81203e2a55",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice top with pediment, not tall brick gable and chimney"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three wide bays per floor with oval attic windows, not four narrow"
+      },
+      {
+       "tag": "white",
+       "what": "needs heavy cream bands and window surrounds framing dark brick piers"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00676
+    },
+    "0363100012175618": {
+     "address": "Herengracht 70",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+     "renderHash": "dd352e91344f251c9474f5e6",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs two large windows per floor across full width, not 2+2 split bays"
+      },
+      {
+       "tag": "roof",
+       "what": "needs heavy grey cornice with ornate attic dormer/crest, not flat top"
+      },
+      {
+       "tag": "white",
+       "what": "needs grey-stone horizontal cornices per floor, not white vertical pilaster frame"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1110,
+      "output_tokens": 136
+     },
+     "costUsd": 0.00716
+    },
+    "0363100012175698": {
+     "address": "Herengracht 68",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "6dcd865d8586a5ac6aa3a988",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a white classical cornice with large carved consoles and low pediment"
+      },
+      {
+       "tag": "windows",
+       "what": "needs plain flat-topped windows without dark arched brick hoods"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows matching upper ones, door centred-right with transom"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1573,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00883
+    },
+    "0363100012168544": {
+     "address": "Herengracht 66",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "f6161ecf22e3ab1afeded90f",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall white cornice frieze band with three short attic windows"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall white-framed ground windows right of door, not one wide"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white window frames with simple panes, not dark green sashes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1164,
+      "output_tokens": 336
+     },
+     "costUsd": 0.01138
+    },
+    "0363100012168545": {
+     "address": "Herengracht 64",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+     "renderHash": "1e49e9b39d635fb6e3a06dc4",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs three upper storeys below gable, plus two gable windows, not two"
+      },
+      {
+       "tag": "roof",
+       "what": "needs tall neck gable with white scrolled claw pieces and crowning"
+      },
+      {
+       "tag": "white",
+       "what": "needs white window frames and white oval ornaments, not dark red frames"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1374,
+      "output_tokens": 431
+     },
+     "costUsd": 0.01412
+    },
+    "0363100012167493": {
+     "address": "Herengracht 62",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+     "renderHash": "800f8fde91c07dad6fdaa80b",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three windows per upper floor, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with stairs, railing and basement door below"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a taller top storey with white cornice, not a plain flat cap"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1008,
+      "output_tokens": 113
+     },
+     "costUsd": 0.00629
+    },
+    "0363100012167492": {
+     "address": "Herengracht 60",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+     "renderHash": "38d040a642c6cfa0b62f9d12",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate white cornice attic with arched window, not plain flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall dark ground-floor windows, no door with stoop"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider casement windows with transoms, not narrow sash grids with hoods"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00664
+    },
+    "0363100012167495": {
+     "address": "Herengracht 58",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+     "renderHash": "066c3e551ccc5c786071b831",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep white overhanging cornice at the top, not a plain flat edge"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with basement windows, tall arched windows, stoop"
+      },
+      {
+       "tag": "door",
+       "what": "needs a dark ornate double door with transom, not a red door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1326,
+      "output_tokens": 125
+     },
+     "costUsd": 0.0078
+    },
+    "0363100012167494": {
+     "address": "Herengracht 56",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+     "renderHash": "cd9b1f82617e83924ef8b7d2",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a prominent white cornice with attic frieze and small windows on top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey stone door surround left and two tall arched windows right"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider two-pane sash windows with white lintels, not narrow gridded ones"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1299,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00774
+    },
+    "0363100012169218": {
+     "address": "Herengracht 54",
+     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+     "renderHash": "011777f9fb8f991ca34073ff",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs central curved segmental pediment over bracketed white cornice, not flat crenellated top"
+      },
+      {
+       "tag": "colour",
+       "what": "needs smooth pale green-cream stucco with grey stone central bay, not brick"
+      },
+      {
+       "tag": "door",
+       "what": "needs grey stone arched portal, wooden double door, balcony above, central stoop"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2049,
+      "output_tokens": 139
+     },
+     "costUsd": 0.01098
+    },
+    "0363100012169272": {
+     "address": "Herengracht 50–52",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+     "renderHash": "1e8593e900e97c989e8062f2",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "white",
+       "what": "needs a cream-painted attic storey with mezzanine windows under a heavy cornice, not a thin trim"
+      },
+      {
+       "tag": "door",
+       "what": "needs an off-centre white stone doorcase with an aedicule framing the window above"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a low, barely visible roof behind the cornice, not a tall prominent slate hip"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2851,
+      "output_tokens": 146
+     },
+     "costUsd": 0.01432
+    },
+    "0363100012169270": {
+     "address": "Herengracht 48",
+     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+     "renderHash": "100349294aba1a9875705f65",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep projecting cornice with brackets and central ornament, not a flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall raised ground floor with stoop door left and two tall windows"
+      },
+      {
+       "tag": "white",
+       "what": "needs white moulded window surrounds with keystone ornaments on smooth grey plaster, not brick"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1466,
+      "output_tokens": 140
+     },
+     "costUsd": 0.00866
+    },
+    "0363100012179667": {
+     "address": "Herengracht 46",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "renderHash": "2c19ad45373aff7a1eda651c",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white ornate neck gable with scrolls and a window, not plain triangle"
+      },
+      {
+       "tag": "white",
+       "what": "window frames should be white, not dark red"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall ground windows over basement doors, raised stoop"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 375
+     },
+     "costUsd": 0.01177
+    },
+    "0363100012179669": {
+     "address": "Herengracht 44",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "renderHash": "0c87c991df136967af3aba68",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall neck gable with white scrolled claw-pieces and hoist beam"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs four storeys plus raised basement, not three"
+      },
+      {
+       "tag": "ground",
+       "what": "needs door left with two tall windows right, basement below"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1006,
+      "output_tokens": 117
+     },
+     "costUsd": 0.00636
+    },
+    "0363100012179670": {
+     "address": "Herengracht 42",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+     "renderHash": "19be3a1335ea49b8c6400da0",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white curved cornice with attic window and hoist beam, not flat top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs taller ground floor with large window and basement door below"
+      },
+      {
+       "tag": "door",
+       "what": "needs dark double door with white frame and transom, up stoop steps"
+      }
+     ],
+     "usage": {
+      "input_tokens": 958,
+      "output_tokens": 292
+     },
+     "costUsd": 0.00967
+    },
+    "0363100012179668": {
+     "address": "Herengracht 40",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+     "renderHash": "8a3565d9efc79a670e383583",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep projecting cornice with large carved brackets, not a thin flat parapet"
+      },
+      {
+       "tag": "windows",
+       "what": "needs arched fanlight windows on first floor, balconettes second floor, square top windows"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a raised stone base with three doors and barred windows, not one central door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1878,
+      "output_tokens": 136
+     },
+     "costUsd": 0.01023
+    },
+    "0363100012179671": {
+     "address": "Herengracht 38",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "renderHash": "534cb19d752684816296aa65",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs tall narrow stepped/neck gable with hoist beam, not wide low step gable"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs a third attic storey with three small windows under gable"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop, basement level, and two tall windows plus door on ground floor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1170,
+      "output_tokens": 131
+     },
+     "costUsd": 0.0073
+    },
+    "0363100012179684": {
+     "address": "Herengracht 36",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843",
+     "renderHash": "ab6d8b248951f1ce36328ec9",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat white cornice with central dormer hoist gable, not grey pitched roof"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three full window storeys above a raised basement, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs stoop steps, left door, two large windows, basement entrance below"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1134,
+      "output_tokens": 126
+     },
+     "costUsd": 0.00706
+    },
+    "0363100012168139": {
+     "address": "Herengracht 34",
+     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065",
+     "renderHash": "751b0addccee6c8cec6ce1db",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs three storeys total (ground plus two upper), not four"
+      },
+      {
+       "tag": "windows",
+       "what": "needs four tall white-framed windows per floor with horizontal bars, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey stone ground floor with recessed doors and windows, not red shopfront"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1270,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00764
+    },
+    "0363100012168069": {
+     "address": "Herengracht 32",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+     "renderHash": "3358f7b60735ef64dfaa0cf4",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs four full storeys plus ground floor, not three plus ground."
+      },
+      {
+       "tag": "roof",
+       "what": "needs a tall flat cornice with heavy grey-white entablature, not thin strip."
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs two tall windows plus tall door, not small window."
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00674
+    },
+    "0363100012168138": {
+     "address": "Herengracht 30",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583",
+     "renderHash": "0e68f629d8e735b9c88004bd",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice top with stepped white parapet blocks, not grey pitched roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised shopfront with large display windows and tiled panel, low basement"
+      },
+      {
+       "tag": "windows",
+       "what": "needs central balcony stack only, rectangular windows with segmental brick arches"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 134
+     },
+     "costUsd": 0.00695
+    },
+    "0363100012179837": {
+     "address": "Herengracht 28",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "383ee0ccb6f68c772af82fa9",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with white scrolled claw-pieces and curved pediment, not stepped block"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three full window storeys plus attic window, not two tall storeys"
+      },
+      {
+       "tag": "ground",
+       "what": "needs three ground-floor openings above a grey basement with stoop, not door plus one window"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 139
+     },
+     "costUsd": 0.00776
+    },
+    "0363100012179836": {
+     "address": "Herengracht 26",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "d11dfe38de5aef34f5ffe992",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep ornate white cornice with round-window frieze, not notched parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows over a basement, with side stoop steps"
+      },
+      {
+       "tag": "white",
+       "what": "drop white corner pilasters; use white door surround and plain window frames"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1153,
+      "output_tokens": 367
+     },
+     "costUsd": 0.01195
+    },
+    "0363100012179838": {
+     "address": "Herengracht 24",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+     "renderHash": "23800493c62c06a3520582a1",
+     "score": 0.65,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs a tall ground-floor window matching the door height, not a small square one"
+      },
+      {
+       "tag": "windows",
+       "what": "top-floor windows should be shorter than middle-floor ones, not equally tall"
+      },
+      {
+       "tag": "door",
+       "what": "needs a tall black door with plain frame and transom, no white portico"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1032,
+      "output_tokens": 385
+     },
+     "costUsd": 0.01183
+    },
+    "0363100012179752": {
+     "address": "Herengracht 22",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+     "renderHash": "27a3bf96a10f22d5b74f0aac",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs three tall ground-floor bays: door left plus two tall windows, raised basement"
+      },
+      {
+       "tag": "windows",
+       "what": "top floor needs short squat windows, not tall ones like middle floor"
+      },
+      {
+       "tag": "door",
+       "what": "door needs tall dark double doors with transom, no wide stone surround"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1450,
+      "output_tokens": 365
+     },
+     "costUsd": 0.0131
+    },
+    "0363100012179753": {
+     "address": "Herengracht 20",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+     "renderHash": "1eca6f1d42cd83b16c2075d6",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a large overhanging flat cornice/canopy roof, not a plain flat top"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs five upper window rows above ground, not four"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a full-width shopfront with wooden doors left, door right, not window"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1289,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00764
+    },
+    "0363100012179760": {
+     "address": "Herengracht 18",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+     "renderHash": "b1cb1be2b1a41629f9b6e3dd",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a prominent white cornice with decorative consoles, not a thin dentil strip"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a large wide ground-floor window and raised stoop over basement door"
+      },
+      {
+       "tag": "door",
+       "what": "needs a tall white pilastered doorcase with transom window, plain dark door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 990,
+      "output_tokens": 131
+     },
+     "costUsd": 0.00658
+    },
+    "0363100012179761": {
+     "address": "Herengracht 16",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "renderHash": "d60215fda19a92dd2d5c9530",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with ornate white scroll claw-pieces and a single attic window"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs door at left plus two tall windows, not one small window"
+      },
+      {
+       "tag": "windows",
+       "what": "needs top-floor windows shorter than first floor, without grey lintel blocks"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1077,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00695
+    },
+    "0363100012179764": {
+     "address": "Herengracht 14",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+     "renderHash": "4fe0ad1c35ab4bc0d040b54b",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a triangular pediment gable with heavy cornice, not a flat top"
+      },
+      {
+       "tag": "colour",
+       "what": "needs grey-brown rendered stone facade with pilasters, not brick with arches"
+      },
+      {
+       "tag": "ground",
+       "what": "needs four tall ground windows, central raised door with stoop and basement"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1626,
+      "output_tokens": 130
+     },
+     "costUsd": 0.0091
+    },
+    "0363100012179765": {
+     "address": "Herengracht 12",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "renderHash": "81897eb8b89c8f8991f75fcb",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs white stucco ground floor with pilasters and large central window"
+      },
+      {
+       "tag": "roof",
+       "what": "needs ornate white cornice attic with central arched pediment and hoist beam"
+      },
+      {
+       "tag": "white",
+       "what": "needs white central bay window surround on first floor, not plain lintels"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1470,
+      "output_tokens": 121
+     },
+     "costUsd": 0.0083
+    },
+    "0363100012179763": {
+     "address": "Herengracht 10",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+     "renderHash": "dc6227f4e17a8d443e536a23",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall white cornice with dentils/brackets, not a thin grey strip"
+      },
+      {
+       "tag": "door",
+       "what": "needs central-left ornate white door surround with stoop and railings"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs tall windows matching upper ones, plus basement grilles"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1458,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00837
+    },
+    "0363100012179833": {
+     "address": "Herengracht 8",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478",
+     "renderHash": "d44268e592bf15ce29dbd1d6",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cream cornice with stepped central crest, not flat white parapet"
+      },
+      {
+       "tag": "white",
+       "what": "needs bold cream banding stripes across brick and decorative arched window hoods"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised cream stone ground floor with arched windows, balcony above, ornate wooden door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 970,
+      "output_tokens": 137
+     },
+     "costUsd": 0.00662
+    },
+    "0363100012179834": {
+     "address": "Herengracht 6",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373",
+     "renderHash": "9df556bbb539919c8658431e",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with ornate central dormer, not grey slate mansard block"
+      },
+      {
+       "tag": "white",
+       "what": "needs white horizontal stone bands and window heads, not broad white pilaster strip"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with arched openings and balcony above, not plain"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 131
+     },
+     "costUsd": 0.00668
+    },
+    "0363100100091828": {
+     "address": "Herengracht 2–4",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+     "renderHash": "61db46cbeb53b8d4c3a59136",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs central dormer with hoist beam on red roof, not chimney at right"
+      },
+      {
+       "tag": "ground",
+       "what": "needs white pilastered ground floor with tall windows and door, not dark shopfront"
+      },
+      {
+       "tag": "white",
+       "what": "needs white window frames with bare glass, not dark green frames and lintels"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1383,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00811
+    }
+   },
+   "summary": {
+    "houses": 42,
+    "mean": 0.46,
+    "costUsd": 0.3601
+   }
+  },
+  "wired-2": {
+   "at": "2026-11-21T10:45:39.331Z",
+   "model": "claude-opus-5-5",
+   "server": "in-process review router",
+   "description": "review-data/belt-review/herengracht-2-90-even/description.json",
+   "pands": {
+    "0363100012175701": {
+     "address": "Herengracht 90",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+     "renderHash": "96006b34e0cbb9f54863009d",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat white cornice with small curved dormer, not tall grey pitched roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider white-framed windows with dark mullion grid, not narrow red frames"
+      },
+      {
+       "tag": "ground",
+       "what": "needs three red awnings over shopfront bays, not one continuous red band"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1208,
+      "output_tokens": 133
+     },
+     "costUsd": 0.00749
+    },
+    "0363100012169010": {
+     "address": "Herengracht 88",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+     "renderHash": "9ba7206bbf364b881f7d03a8",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "white",
+       "what": "needs heavy white stone banding striping the brick, plus white quoins and lintels"
+      },
+      {
+       "tag": "roof",
+       "what": "needs narrow stepped/neck gable with attic window, not broad pitched roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs dark shopfront with white-framed awnings, side door, not red glass frontage"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 137
+     },
+     "costUsd": 0.00772
+    },
+    "0363100012175692": {
+     "address": "Herengracht 86",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+     "renderHash": "886d44587cc82e4ecee7bf2b",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a brick neck/bell gable with white stone trim and attic windows, not a hipped roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two wide windows per floor, not three narrow arched ones"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a white-plastered ground floor with two tall windows and a black door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00684
+    },
+    "0363100012175702": {
+     "address": "Herengracht 84",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+     "renderHash": "c5f189d529a512b7dc497ecf",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall stepped gable with many steps and attic windows, not a short stub"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three window storeys plus gable windows, not two tall floors"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall white-framed ground windows and a door with an oval-pattern transom"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1144,
+      "output_tokens": 130
+     },
+     "costUsd": 0.00718
+    },
+    "0363100012175703": {
+     "address": "Herengracht 82",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499",
+     "renderHash": "cbc8a6b8ba99a10d2e2b7138",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three multi-pane white-framed windows per floor, not four dark ones"
+      },
+      {
+       "tag": "roof",
+       "what": "needs flat cornice parapet with small hidden roof, not large hipped roof"
+      },
+      {
+       "tag": "colour",
+       "what": "needs smooth cream plastered facade, not grey brick"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1485,
+      "output_tokens": 262
+     },
+     "costUsd": 0.01118
+    },
+    "0363100012175783": {
+     "address": "Herengracht 80",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "renderHash": "742a14d00d94d529b6079415",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with white scroll claws and hoist beam, not a chimney block"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three windows per floor, centre one with balcony door top floor"
+      },
+      {
+       "tag": "ground",
+       "what": "needs white-framed shopfront with two dark doors and wide windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00661
+    },
+    "0363100012175784": {
+     "address": "Herengracht 76–78",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+     "renderHash": "4b601c5a0ea37bd86ff516df",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs two ornate white-trimmed neck/bell gables, not one flat block top"
+      },
+      {
+       "tag": "other",
+       "what": "should show two narrow houses side by side, not one wide facade"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground floor with black doors, stoops and white door frames"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1578,
+      "output_tokens": 123
+     },
+     "costUsd": 0.00877
+    },
+    "0363100012175616": {
+     "address": "Herengracht 74",
+     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "renderHash": "0e79ab85fe58cfe9ca89fb1b",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a curved brick gable-like parapet with wide attic window, not grey slate roof with dormer"
+      },
+      {
+       "tag": "windows",
+       "what": "needs segmental-arched windows with stone lintels and keystone bands, not plain rectangles"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop, wide barred window with basement entrance, red-brown panelled door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 149
+     },
+     "costUsd": 0.00705
+    },
+    "0363100012175617": {
+     "address": "Herengracht 72",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "renderHash": "71ba7e695bdc3290abe6d9d1",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a flat cornice top with pediment, not a gable and tall chimney"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two wide windows per floor with oval attic windows, not four narrow"
+      },
+      {
+       "tag": "white",
+       "what": "needs heavy white horizontal cornices and window frames, not white pilasters"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00678
+    },
+    "0363100012175618": {
+     "address": "Herengracht 70",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+     "renderHash": "180694bb6ae31666e39f828f",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cornice with carved top crest, not a plain flat parapet"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two bays per floor, not two-plus-two split facade"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall raised ground floor with large windows and central-left door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1110,
+      "output_tokens": 121
+     },
+     "costUsd": 0.00686
+    },
+    "0363100012175698": {
+     "address": "Herengracht 68",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "3aa81b74142b98e09d4cd552",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep white cornice with consoles, attic windows and a low pediment"
+      },
+      {
+       "tag": "windows",
+       "what": "drop the dark arched hoods; plain white-framed sash windows only"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows matching upper ones, door in third bay"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1573,
+      "output_tokens": 311
+     },
+     "costUsd": 0.01251
+    },
+    "0363100012168544": {
+     "address": "Herengracht 66",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "f6161ecf22e3ab1afeded90f",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white entablature cornice with attic window row above top floor"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall windows beside door, not one squat window"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider white-framed windows without hoods or string courses"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1164,
+      "output_tokens": 334
+     },
+     "costUsd": 0.01134
+    },
+    "0363100012168545": {
+     "address": "Herengracht 64",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+     "renderHash": "e50d57d7b1097cf4edfc1d04",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs four full storeys plus gable attic, not two storeys plus ground"
+      },
+      {
+       "tag": "roof",
+       "what": "needs tall ornate neck gable with white scrolls, cartouches and crown"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider white-framed sash windows; ground floor two tall shopfront-style windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1374,
+      "output_tokens": 136
+     },
+     "costUsd": 0.00822
+    },
+    "0363100012167493": {
+     "address": "Herengracht 62",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+     "renderHash": "b502f5fea9476309cc2f243e",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three windows per upper floor, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with stairs and railing, basement door below"
+      },
+      {
+       "tag": "roof",
+       "what": "needs white cornice/top storey visible, not plain flat cap"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1008,
+      "output_tokens": 111
+     },
+     "costUsd": 0.00625
+    },
+    "0363100012167492": {
+     "address": "Herengracht 60",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+     "renderHash": "38d040a642c6cfa0b62f9d12",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate white cornice with arched dormer window, not flat plain parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs two tall dark windows, no off-centre door portico"
+      },
+      {
+       "tag": "windows",
+       "what": "needs four-pane casement windows without hoods, not multi-pane sashes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 130
+     },
+     "costUsd": 0.00666
+    },
+    "0363100012167495": {
+     "address": "Herengracht 58",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+     "renderHash": "fdec44a393cfff007f5c4b23",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs large two-pane sash windows with segmental arched brick heads, not small-paned"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall raised ground floor with large windows and basement openings below"
+      },
+      {
+       "tag": "door",
+       "what": "needs dark carved double door with pilastered surround, not red door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1326,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00778
+    },
+    "0363100012167494": {
+     "address": "Herengracht 56",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+     "renderHash": "695784ebebaf0da7d849dfde",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep white cornice with attic frieze, not a thin flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey stone door surround left and two tall arched windows right"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider two-pane sash windows, four-ish storeys, not tall narrow grids"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1299,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00784
+    },
+    "0363100012169218": {
+     "address": "Herengracht 54",
+     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+     "renderHash": "06ba706ccc088aaf0d78a74b",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a curved central pediment over a bracketed cornice, not a flat parapet"
+      },
+      {
+       "tag": "colour",
+       "what": "needs smooth pale cream-green stucco with grey stone pilasters, not brick"
+      },
+      {
+       "tag": "door",
+       "what": "needs central arched stone portal with wooden double doors, stoop and balcony above"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2049,
+      "output_tokens": 136
+     },
+     "costUsd": 0.01092
+    },
+    "0363100012169272": {
+     "address": "Herengracht 50–52",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+     "renderHash": "0c2960226dab32bc88f347b3",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs cream plastered attic storey with small windows, cornice; hide roof"
+      },
+      {
+       "tag": "door",
+       "what": "needs tall white stone door surround with fanlight and white window above"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs tall windows matching upper storeys, not squat ones"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2851,
+      "output_tokens": 295
+     },
+     "costUsd": 0.0173
+    },
+    "0363100012169270": {
+     "address": "Herengracht 48",
+     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+     "renderHash": "4ff2deac9b07afa4646484c3",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs four storeys plus raised ground floor, not three above ground"
+      },
+      {
+       "tag": "roof",
+       "what": "needs deep projecting bracketed cornice with ornament, not thin flat ledge"
+      },
+      {
+       "tag": "white",
+       "what": "needs smooth grey stucco with white molded window surrounds, not brick"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1466,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00844
+    },
+    "0363100012179667": {
+     "address": "Herengracht 46",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "renderHash": "7af9b838f34d5eace3a62521",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white scrolled neck gable with top window, not plain triangle with block"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall windows beside door and raised stoop with basement"
+      },
+      {
+       "tag": "white",
+       "what": "needs white window frames, not dark red frames with stone surrounds"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 381
+     },
+     "costUsd": 0.01189
+    },
+    "0363100012179669": {
+     "address": "Herengracht 44",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "renderHash": "0c87c991df136967af3aba68",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with ornate white scroll claws and a hoist beam, not a plain block"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs four storeys plus gable window, not two upper floors"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a raised ground floor over a basement, with door left and two tall windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1006,
+      "output_tokens": 131
+     },
+     "costUsd": 0.00664
+    },
+    "0363100012179670": {
+     "address": "Herengracht 42",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+     "renderHash": "332944f2765ca785f72f3907",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white curved-crest cornice with hoist beam and attic window above"
+      },
+      {
+       "tag": "ground",
+       "what": "needs large wide ground-floor window over basement, not small sash"
+      },
+      {
+       "tag": "door",
+       "what": "needs black double door with white frame and transom"
+      }
+     ],
+     "usage": {
+      "input_tokens": 958,
+      "output_tokens": 375
+     },
+     "costUsd": 0.01133
+    },
+    "0363100012179668": {
+     "address": "Herengracht 40",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+     "renderHash": "45e0670abb12457d76644653",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs deep projecting bracketed cornice with large corbels, not thin flat parapet"
+      },
+      {
+       "tag": "colour",
+       "what": "needs grey-taupe rusticated stone with horizontal banding, not dark brick"
+      },
+      {
+       "tag": "windows",
+       "what": "needs arched fanlight windows on raised first floor and balconettes above"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1878,
+      "output_tokens": 136
+     },
+     "costUsd": 0.01023
+    },
+    "0363100012179671": {
+     "address": "Herengracht 38",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "renderHash": "7a7a27a2b1a6c7b37f889756",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs tall narrow stepped/neck gable with scroll claws and hoist beam, not wide low steps"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs two lower storeys plus attic storey with three small windows under gable"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with steps, basement doors, two tall windows left of door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1170,
+      "output_tokens": 140
+     },
+     "costUsd": 0.00748
+    },
+    "0363100012179684": {
+     "address": "Herengracht 36",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843",
+     "renderHash": "ab6d8b248951f1ce36328ec9",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat white cornice with central dormer hoist gable, not grey pitched roof"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three full window storeys above a raised basement, not two plus ground"
+      },
+      {
+       "tag": "ground",
+       "what": "needs stoop stairs left, basement level, two large windows right of door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1134,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00712
+    },
+    "0363100012168139": {
+     "address": "Herengracht 34",
+     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065",
+     "renderHash": "751b0addccee6c8cec6ce1db",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs four wide white-framed windows per floor, not two"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs only two upper floors above ground, not three"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey recessed entrances and windows, not a red shopfront"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1270,
+      "output_tokens": 291
+     },
+     "costUsd": 0.0109
+    },
+    "0363100012168069": {
+     "address": "Herengracht 32",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+     "renderHash": "c41bcb31e7014606c0bbbe85",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs two tall ground-floor windows beside the door, not one small window"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a tall heavy grey cornice band, not a thin white strip"
+      },
+      {
+       "tag": "windows",
+       "what": "needs plain flat-topped windows, no arched brick lintels"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 332
+     },
+     "costUsd": 0.01084
+    },
+    "0363100012168138": {
+     "address": "Herengracht 30",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583",
+     "renderHash": "1f0175d030202cf73f41342e",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a flat cornice top with stepped white dormer, not grey pyramid roof"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three upper storeys plus raised ground floor and souterrain, top storey smaller"
+      },
+      {
+       "tag": "windows",
+       "what": "needs central balcony doors with single balconies, not three balconettes per floor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 138
+     },
+     "costUsd": 0.00703
+    },
+    "0363100012179837": {
+     "address": "Herengracht 28",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "41b5d2210b5d8cc45df1b660",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with ornate white claw pieces and curved top, not stepped block"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three windows on every floor including ground; render has two below"
+      },
+      {
+       "tag": "door",
+       "what": "door should be at left with plain white frame, ground floor three bays"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 121
+     },
+     "costUsd": 0.0074
+    },
+    "0363100012179836": {
+     "address": "Herengracht 26",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "b2d72e64336d2f6c895cae71",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a heavy white cornice with oval attic windows and brackets on top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with stairs, railing and basement windows below tall ground windows"
+      },
+      {
+       "tag": "windows",
+       "what": "needs large-pane casement windows, not small-pane sashes with brick arches"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1153,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00725
+    },
+    "0363100012179838": {
+     "address": "Herengracht 24",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+     "renderHash": "7253475dcb8ade9006c8f5f5",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep cream cornice band at top, not a thin grey line"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall arched-top window matching door height, plus a basement window"
+      },
+      {
+       "tag": "windows",
+       "what": "needs shorter top-floor windows; drop the striped hoods and horizontal floor bands"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1032,
+      "output_tokens": 376
+     },
+     "costUsd": 0.01165
+    },
+    "0363100012179752": {
+     "address": "Herengracht 22",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+     "renderHash": "d390b5478d01e102f970a61c",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs door plus two tall windows on ground floor, raised stoop with railings"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two-pane sashes, shorter top-floor windows, no multi-pane grids"
+      },
+      {
+       "tag": "roof",
+       "what": "needs heavier white cornice with corner consoles, no white string courses"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1450,
+      "output_tokens": 312
+     },
+     "costUsd": 0.01204
+    },
+    "0363100012179753": {
+     "address": "Herengracht 20",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+     "renderHash": "6addb004ecc579d01b0ef921",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a large projecting flat cornice/overhang roof, not a plain parapet"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs five upper storeys above ground floor, not four"
+      },
+      {
+       "tag": "ground",
+       "what": "needs low ground floor with wooden shopfront left, door right, stone piers"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1289,
+      "output_tokens": 126
+     },
+     "costUsd": 0.00768
+    },
+    "0363100012179760": {
+     "address": "Herengracht 18",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+     "renderHash": "8739da28864b0f1e099ada2a",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs prominent white cornice with consoles and hoist beam above top windows"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with basement door below, large wide ground-floor window"
+      },
+      {
+       "tag": "windows",
+       "what": "windows should be shorter, wider, white-framed without striped lintels"
+      }
+     ],
+     "usage": {
+      "input_tokens": 990,
+      "output_tokens": 125
+     },
+     "costUsd": 0.00646
+    },
+    "0363100012179761": {
+     "address": "Herengracht 16",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "renderHash": "d60215fda19a92dd2d5c9530",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with ornate white scrolled claw pieces, one attic window"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs three windows with door at left, not door plus one"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider sash windows with white frames, no grey lintel blocks"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1077,
+      "output_tokens": 126
+     },
+     "costUsd": 0.00683
+    },
+    "0363100012179764": {
+     "address": "Herengracht 14",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+     "renderHash": "4fe0ad1c35ab4bc0d040b54b",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a triangular pediment gable with heavy cornice, not a flat top"
+      },
+      {
+       "tag": "colour",
+       "what": "needs grey stucco/stone facade with pilasters, not dark brick"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows, central raised stoop with railings, basement doors"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1626,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00914
+    },
+    "0363100012179765": {
+     "address": "Herengracht 12",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "renderHash": "525c0523e63e6a61f866df4d",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cream stone cornice attic storey with hoist beam, not flat brick top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs full cream stucco ground floor with pilasters and tall windows"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs two brick storeys plus cornice attic, not three brick storeys"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1470,
+      "output_tokens": 134
+     },
+     "costUsd": 0.00856
+    },
+    "0363100012179763": {
+     "address": "Herengracht 10",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+     "renderHash": "86bb4a8a92c61a2f71afccce",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a massive white cornice with modillions and tall white frieze band"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider, squarer windows with plain white frames, no quoins or lintels"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows, ornate white door surround, railed stoop"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1458,
+      "output_tokens": 470
+     },
+     "costUsd": 0.01523
+    },
+    "0363100012179833": {
+     "address": "Herengracht 8",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478",
+     "renderHash": "2d73b3b29e2e232278ab51f7",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cream cornice with stepped central pediment, not flat top"
+      },
+      {
+       "tag": "white",
+       "what": "needs bold cream banding stripes across brick and ornate window hoods"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stone ground floor with arched windows and wooden door left"
+      }
+     ],
+     "usage": {
+      "input_tokens": 970,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00636
+    },
+    "0363100012179834": {
+     "address": "Herengracht 6",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373",
+     "renderHash": "abe1376fa67bec9a898bdce4",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs an ornate cream dormer pediment over a heavy cornice, not a plain grey slate roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two arched windows per floor with ornate stone lintels, single tall bay"
+      },
+      {
+       "tag": "ground",
+       "what": "needs arched basement entrance with door at right, not a central stoop door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 138
+     },
+     "costUsd": 0.00682
+    },
+    "0363100100091828": {
+     "address": "Herengracht 2–4",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+     "renderHash": "61db46cbeb53b8d4c3a59136",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a central dormer with hoist beam on the red-tile roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs white-pilastered ground floor with tall windows and door, not dark shopfront"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white-framed sash windows without grey lintel blocks; plain white cornice"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1383,
+      "output_tokens": 133
+     },
+     "costUsd": 0.00819
+    }
+   },
+   "summary": {
+    "houses": 42,
+    "mean": 0.461,
+    "costUsd": 0.3708
+   }
+  },
+  "wired-3": {
+   "at": "2026-11-21T10:48:06.199Z",
+   "model": "claude-opus-5-5",
+   "server": "in-process review router",
+   "description": "review-data/belt-review/herengracht-2-90-even/description.json",
+   "pands": {
+    "0363100012175701": {
+     "address": "Herengracht 90",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+     "renderHash": "96006b34e0cbb9f54863009d",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with small curved central dormer, not grey pitched roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider white-framed cross windows, not tall red-framed sashes"
+      },
+      {
+       "tag": "ground",
+       "what": "needs three red awnings over cafe windows, not one red band"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1208,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00731
+    },
+    "0363100012169010": {
+     "address": "Herengracht 88",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+     "renderHash": "9ba7206bbf364b881f7d03a8",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "white",
+       "what": "needs bold white horizontal bands and quoin-like stripes banding dark brick"
+      },
+      {
+       "tag": "roof",
+       "what": "needs narrow stepped/neck gable with attic window, not wide pitched roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs dark shopfront with door at right, white awnings, not red-framed glass"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 135
+     },
+     "costUsd": 0.00768
+    },
+    "0363100012175692": {
+     "address": "Herengracht 86",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+     "renderHash": "35a9b98f072025a28ff5f471",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall stepped/bell gable with attic windows, not a short hipped peak"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two wide white-framed windows per floor, not three narrow arched ones"
+      },
+      {
+       "tag": "ground",
+       "what": "needs white-plastered ground floor with two tall windows, black door at right"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00684
+    },
+    "0363100012175702": {
+     "address": "Herengracht 84",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+     "renderHash": "87edd6d73dbb1ab3322b3296",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall narrow step gable with window, not a low wide stepped top"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs two tall sash windows plus door with oval-pattern transom"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white-framed sash windows without red frames, middle top window in gable"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1144,
+      "output_tokens": 129
+     },
+     "costUsd": 0.00716
+    },
+    "0363100012175703": {
+     "address": "Herengracht 82",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499",
+     "renderHash": "02a52ab01f14341dae224ea5",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three window bays with white multi-pane sashes, not four dark panes"
+      },
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with small hidden roof, not large red hipped roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey 'Bâton' awning shopfront with side door, not two plain windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1485,
+      "output_tokens": 132
+     },
+     "costUsd": 0.00858
+    },
+    "0363100012175783": {
+     "address": "Herengracht 80",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "renderHash": "2663c77b84b95a2cfbcc407a",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with white scrolled claw pieces and hoist beam, not a chimney block"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three windows per floor, not two; central upper window is a door"
+      },
+      {
+       "tag": "ground",
+       "what": "needs a white wooden shopfront with two doors and large divided windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 130
+     },
+     "costUsd": 0.00667
+    },
+    "0363100012175784": {
+     "address": "Herengracht 76–78",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+     "renderHash": "50b5a6cf3beaddc25e841393",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs two ornate white-trimmed neck/bell gables, not a single flat-topped block"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with black doors, stoops and white-framed large windows"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two narrow houses' irregular sash windows, no shutters or decorative white frames"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1578,
+      "output_tokens": 140
+     },
+     "costUsd": 0.00911
+    },
+    "0363100012175616": {
+     "address": "Herengracht 74",
+     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "renderHash": "0e79ab85fe58cfe9ca89fb1b",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a curved brick neck/bell gable with arched top window, not grey slate dormer roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor over basement with steps and wide multi-pane window with railings"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider segmental-arched windows with stone lintels, no balconettes on upper floor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1018,
+      "output_tokens": 144
+     },
+     "costUsd": 0.00695
+    },
+    "0363100012175617": {
+     "address": "Herengracht 72",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "renderHash": "71ba7e695bdc3290abe6d9d1",
+     "score": 0.3,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a straight cornice with small pediment top, not pitched gable and chimney"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two wide windows per storey with oval attic lights, not four narrow"
+      },
+      {
+       "tag": "white",
+       "what": "needs white horizontal bands and frames, not white vertical pilasters"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00676
+    },
+    "0363100012175618": {
+     "address": "Herengracht 70",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+     "renderHash": "180694bb6ae31666e39f828f",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs heavy cornice with ornate attic band, not flat plain top"
+      },
+      {
+       "tag": "windows",
+       "what": "needs two large plain windows per floor, not narrow multi-pane sashes"
+      },
+      {
+       "tag": "other",
+       "what": "remove the extra right-hand bay; facade is a single two-window bay"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1110,
+      "output_tokens": 126
+     },
+     "costUsd": 0.00696
+    },
+    "0363100012175698": {
+     "address": "Herengracht 68",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "3aa81b74142b98e09d4cd552",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs tall white cornice with consoles, frieze windows and low pediment"
+      },
+      {
+       "tag": "ground",
+       "what": "ground-floor windows should be tall, no awnings, matching upper windows"
+      },
+      {
+       "tag": "windows",
+       "what": "plain rectangular white-framed windows, drop dark arched brick heads and white floor bands"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1573,
+      "output_tokens": 520
+     },
+     "costUsd": 0.01669
+    },
+    "0363100012168544": {
+     "address": "Herengracht 66",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "d87bfe2f4fe6f66b697d2499",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep white cornice with attic frieze windows, not a thin beige strip"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall ground-floor windows beside the door, not one short window"
+      },
+      {
+       "tag": "door",
+       "what": "needs a brown wooden door under a dark fanlight, not green"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1164,
+      "output_tokens": 355
+     },
+     "costUsd": 0.01176
+    },
+    "0363100012168545": {
+     "address": "Herengracht 64",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+     "renderHash": "3f2de80fbc6403ed96a88f31",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs tall narrow neck gable with two stacked windows and white scrolls"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white window frames without grey lintels, not dark red"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall windows right of door, not one small"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1374,
+      "output_tokens": 386
+     },
+     "costUsd": 0.01322
+    },
+    "0363100012167493": {
+     "address": "Herengracht 62",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+     "renderHash": "b502f5fea9476309cc2f243e",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs three windows per upper floor, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with stairs and basement door below entrance"
+      },
+      {
+       "tag": "roof",
+       "what": "needs tall white cornice top storey, not plain flat parapet"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1008,
+      "output_tokens": 111
+     },
+     "costUsd": 0.00625
+    },
+    "0363100012167492": {
+     "address": "Herengracht 60",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+     "renderHash": "38d040a642c6cfa0b62f9d12",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate white cornice with arched dormer window, not a plain flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall dark windows on ground floor, no side door portico"
+      },
+      {
+       "tag": "windows",
+       "what": "needs cross-mullioned casement windows with few panes, not multi-pane sashes with hoods"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 136
+     },
+     "costUsd": 0.00678
+    },
+    "0363100012167495": {
+     "address": "Herengracht 58",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+     "renderHash": "fdec44a393cfff007f5c4b23",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "windows",
+       "what": "needs large two-pane sash windows with arched brick hoods, not small-paned windows"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall raised ground floor with stoop, basement windows and taller windows"
+      },
+      {
+       "tag": "roof",
+       "what": "needs deep white cornice band with attic frieze across the top"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1326,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00786
+    },
+    "0363100012167494": {
+     "address": "Herengracht 56",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+     "renderHash": "695784ebebaf0da7d849dfde",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep white cornice with attic frieze windows above top floor"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey stone door surround left and two tall arched windows right"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs four storeys including attic band, not three plus low ground"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1299,
+      "output_tokens": 118
+     },
+     "costUsd": 0.00756
+    },
+    "0363100012169218": {
+     "address": "Herengracht 54",
+     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+     "renderHash": "06ba706ccc088aaf0d78a74b",
+     "score": 0.35,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a central segmental arched pediment over a bracketed cornice, not flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall raised ground floor with large windows and stone central door bay"
+      },
+      {
+       "tag": "white",
+       "what": "needs smooth pale-green stucco with heavy white window surrounds, not grey brick"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2049,
+      "output_tokens": 135
+     },
+     "costUsd": 0.0109
+    },
+    "0363100012169272": {
+     "address": "Herengracht 50–52",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+     "renderHash": "0c2960226dab32bc88f347b3",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with white attic storey of small windows, not grey hipped roof"
+      },
+      {
+       "tag": "door",
+       "what": "needs off-centre white stone portal with fanlight and white window surround above"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows at street level, not short windows over stoop"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2851,
+      "output_tokens": 129
+     },
+     "costUsd": 0.01398
+    },
+    "0363100012169270": {
+     "address": "Herengracht 48",
+     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+     "renderHash": "4ff2deac9b07afa4646484c3",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep overhanging bracketed cornice with central dormer ornament, not flat strip"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs four full window storeys plus basement; render shows only three upper"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with two tall windows, side stoop, door left"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1466,
+      "output_tokens": 132
+     },
+     "costUsd": 0.0085
+    },
+    "0363100012179667": {
+     "address": "Herengracht 46",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "renderHash": "c2decac5b8999f3c5c552ca9",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a neck gable with white scroll claws, not a triangle with chimney"
+      },
+      {
+       "tag": "white",
+       "what": "window frames should be white, not dark red"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop with railings and basement doors below two tall windows"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 368
+     },
+     "costUsd": 0.01163
+    },
+    "0363100012179669": {
+     "address": "Herengracht 44",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "renderHash": "4176fe74f34064ce07bd62e7",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs neck gable with ornate cream claw pieces, curved crown, hoist beam"
+      },
+      {
+       "tag": "ground",
+       "what": "needs two tall windows beside door and visible basement level below"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider cream-framed sash windows with small upper panes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1006,
+      "output_tokens": 383
+     },
+     "costUsd": 0.01168
+    },
+    "0363100012179670": {
+     "address": "Herengracht 42",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+     "renderHash": "b4864834f73b53baaff328b6",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs white curved cornice with central attic window and hoist beam, not flat top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs wide double door with transom and large window over basement"
+      },
+      {
+       "tag": "windows",
+       "what": "needs arched-top windows with large two-pane glazing, not small-pane sashes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 958,
+      "output_tokens": 329
+     },
+     "costUsd": 0.01041
+    },
+    "0363100012179668": {
+     "address": "Herengracht 40",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+     "renderHash": "45e0670abb12457d76644653",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a deep projecting cornice with large carved brackets, not a thin flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall arched-top windows on first floor and three ground-floor doors with grilles"
+      },
+      {
+       "tag": "colour",
+       "what": "needs a smooth grey-beige stone facade with horizontal banding, not dark brick"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1878,
+      "output_tokens": 142
+     },
+     "costUsd": 0.01035
+    },
+    "0363100012179671": {
+     "address": "Herengracht 38",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "renderHash": "d237c463c43e17333875b47c",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs tall neck gable with scroll claws and pediment, not low stepped gable"
+      },
+      {
+       "tag": "windows",
+       "what": "needs three-window attic storey under gable plus wider many-pane windows"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised stoop, basement level and three tall ground-floor windows with door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1170,
+      "output_tokens": 131
+     },
+     "costUsd": 0.0073
+    },
+    "0363100012179684": {
+     "address": "Herengracht 36",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843",
+     "renderHash": "d5e9ee8ec03ff76b9d9e3b67",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice with white dormer hoist gable, not grey pitched roof"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs three full window storeys above ground plus raised basement level"
+      },
+      {
+       "tag": "ground",
+       "what": "needs door left plus two tall windows, stoop steps and basement"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1134,
+      "output_tokens": 124
+     },
+     "costUsd": 0.00702
+    },
+    "0363100012168139": {
+     "address": "Herengracht 34",
+     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065",
+     "renderHash": "751b0addccee6c8cec6ce1db",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "storeys",
+       "what": "needs two upper storeys above ground floor, not three"
+      },
+      {
+       "tag": "windows",
+       "what": "needs four large tall windows per floor with horizontal bars, not two"
+      },
+      {
+       "tag": "ground",
+       "what": "needs grey stone ground floor with recessed doors and windows, not red shopfront"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1270,
+      "output_tokens": 123
+     },
+     "costUsd": 0.00754
+    },
+    "0363100012168069": {
+     "address": "Herengracht 32",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+     "renderHash": "28d2d149dbe2ecfd45d3fb6d",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall, deep grey cornice with dentils, not a thin strip"
+      },
+      {
+       "tag": "ground",
+       "what": "ground floor needs two tall windows plus door, not one small window"
+      },
+      {
+       "tag": "windows",
+       "what": "remove brick arches; plain rectangular two-pane windows with white frames"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1050,
+      "output_tokens": 279
+     },
+     "costUsd": 0.00978
+    },
+    "0363100012168138": {
+     "address": "Herengracht 30",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583",
+     "renderHash": "1f0175d030202cf73f41342e",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs flat cornice top with central raised attic dormer, not grey pyramid roof"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised shop-style ground floor with large windows over semi-basement"
+      },
+      {
+       "tag": "windows",
+       "what": "needs single central balconies with French doors, not three small balconettes"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1068,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00681
+    },
+    "0363100012179837": {
+     "address": "Herengracht 28",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "8151bc164fac36ce69e1b90e",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs narrow neck gable with white scroll claw-pieces and arched cap, not stepped block"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wider two-pane sash windows, plus a window in the gable"
+      },
+      {
+       "tag": "ground",
+       "what": "needs three-bay ground floor with two large windows and raised basement"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1244,
+      "output_tokens": 131
+     },
+     "costUsd": 0.0076
+    },
+    "0363100012179836": {
+     "address": "Herengracht 26",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "b035d3543f924aeaab193e8d",
+     "score": 0.5,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs an ornate white cornice with frieze of round attic windows, not plain flat top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor with stoop stairs, railings and basement windows"
+      },
+      {
+       "tag": "door",
+       "what": "door should be left with white ornate surround and oval fanlight, tall arched black door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1153,
+      "output_tokens": 133
+     },
+     "costUsd": 0.00727
+    },
+    "0363100012179838": {
+     "address": "Herengracht 24",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+     "renderHash": "4233884ae877ddb801ce81e9",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs tall arched-top ground-floor window matching door height, not small square one"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a deep heavy white cornice/entablature on top, not thin line"
+      },
+      {
+       "tag": "door",
+       "what": "needs a black panelled door with arched fanlight, no green or ornate surround"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1032,
+      "output_tokens": 415
+     },
+     "costUsd": 0.01243
+    },
+    "0363100012179752": {
+     "address": "Herengracht 22",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+     "renderHash": "f2a5c1382ac553c3eeec4072",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs two tall windows right of door, not one wide window"
+      },
+      {
+       "tag": "roof",
+       "what": "needs a deep white cornice with brackets along the top"
+      },
+      {
+       "tag": "windows",
+       "what": "top floor windows should be short and squarish, not tall"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1450,
+      "output_tokens": 273
+     },
+     "costUsd": 0.01126
+    },
+    "0363100012179753": {
+     "address": "Herengracht 20",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+     "renderHash": "87cd4e7e5058f83abd3e489d",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a large overhanging flat cornice canopy roof, not a thin parapet"
+      },
+      {
+       "tag": "storeys",
+       "what": "needs five upper window storeys above the ground floor, not four"
+      },
+      {
+       "tag": "ground",
+       "what": "needs wide shopfront with wooden glazed doors left, door right"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1289,
+      "output_tokens": 125
+     },
+     "costUsd": 0.00766
+    },
+    "0363100012179760": {
+     "address": "Herengracht 18",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+     "renderHash": "8739da28864b0f1e099ada2a",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a prominent white classical cornice with consoles, not a thin flat cap"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised ground floor over white basement with stoop steps and cellar door"
+      },
+      {
+       "tag": "windows",
+       "what": "needs wide white-framed windows without decorative lintels; ground floor a large window"
+      }
+     ],
+     "usage": {
+      "input_tokens": 990,
+      "output_tokens": 132
+     },
+     "costUsd": 0.0066
+    },
+    "0363100012179761": {
+     "address": "Herengracht 16",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "renderHash": "523cb0c1c7594c0dc9849703",
+     "score": 0.6,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "Needs a window in the neck gable and white ornate scroll claws."
+      },
+      {
+       "tag": "ground",
+       "what": "Ground floor needs door plus two tall windows, not one."
+      },
+      {
+       "tag": "windows",
+       "what": "Drop striped lintel caps; use plain brick arches over white-framed sashes."
+      }
+     ],
+     "usage": {
+      "input_tokens": 1077,
+      "output_tokens": 301
+     },
+     "costUsd": 0.01033
+    },
+    "0363100012179764": {
+     "address": "Herengracht 14",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+     "renderHash": "72be9bbba5a258c2fdaca0d3",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a triangular pediment gable with heavy cornice, not a flat top"
+      },
+      {
+       "tag": "colour",
+       "what": "needs grey-brown stucco/stone facade with pilasters, not brick"
+      },
+      {
+       "tag": "door",
+       "what": "needs centred-left black door with fanlight and stoop at upper level"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1626,
+      "output_tokens": 127
+     },
+     "costUsd": 0.00904
+    },
+    "0363100012179765": {
+     "address": "Herengracht 12",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "renderHash": "534d67a0a8d33bc574685067",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cream cornice with curved central hoist-beam pediment, not flat parapet"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall cream stucco ground floor with pilasters and large central window"
+      },
+      {
+       "tag": "white",
+       "what": "needs cream central bay window surround with consoles on first floor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1470,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00844
+    },
+    "0363100012179763": {
+     "address": "Herengracht 10",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+     "renderHash": "86bb4a8a92c61a2f71afccce",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a tall white cornice with dentils and frieze band at top"
+      },
+      {
+       "tag": "ground",
+       "what": "needs tall ground-floor windows and raised stoop with iron railings"
+      },
+      {
+       "tag": "door",
+       "what": "needs ornate white door surround with fanlight, door left of centre"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1458,
+      "output_tokens": 120
+     },
+     "costUsd": 0.00823
+    },
+    "0363100012179833": {
+     "address": "Herengracht 8",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478",
+     "renderHash": "2d73b3b29e2e232278ab51f7",
+     "score": 0.4,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs ornate cream cornice with stepped central pinnacle, not flat top"
+      },
+      {
+       "tag": "white",
+       "what": "needs cream stone banding stripes across brick and ornate window hoods"
+      },
+      {
+       "tag": "ground",
+       "what": "needs raised cream stone ground floor with arched windows, ornate wooden door"
+      }
+     ],
+     "usage": {
+      "input_tokens": 970,
+      "output_tokens": 130
+     },
+     "costUsd": 0.00648
+    },
+    "0363100012179834": {
+     "address": "Herengracht 6",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373",
+     "renderHash": "abe1376fa67bec9a898bdce4",
+     "score": 0.45,
+     "differences": [
+      {
+       "tag": "roof",
+       "what": "needs a cream cornice with central ornate stone dormer, not plain slate mansard"
+      },
+      {
+       "tag": "other",
+       "what": "should be one narrow two-window house, drop the attached right-hand section"
+      },
+      {
+       "tag": "ground",
+       "what": "needs arched ground-floor doors and balcony railing above, not plain door/window"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1014,
+      "output_tokens": 269
+     },
+     "costUsd": 0.00944
+    },
+    "0363100100091828": {
+     "address": "Herengracht 2–4",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+     "renderHash": "61db46cbeb53b8d4c3a59136",
+     "score": 0.55,
+     "differences": [
+      {
+       "tag": "ground",
+       "what": "needs tall white-framed ground-floor windows and side door, not dark shopfront"
+      },
+      {
+       "tag": "roof",
+       "what": "needs central arched hoist dormer with beam on red hipped roof"
+      },
+      {
+       "tag": "windows",
+       "what": "needs white-framed windows without lintel blocks; top floor shorter"
+      }
+     ],
+     "usage": {
+      "input_tokens": 1383,
+      "output_tokens": 128
+     },
+     "costUsd": 0.00809
+    }
+   },
+   "summary": {
+    "houses": 42,
+    "mean": 0.47,
+    "costUsd": 0.3729
+   }
   }
  },
  "pands": {
   "0363100100091828": {
-   "score": 0.4,
+   "score": 0.55,
    "differences": [
     {
-     "tag": "roof",
-     "what": "needs red-tile hipped roof with dormer and hoist beam, not grey brick block"
-    },
-    {
      "tag": "ground",
-     "what": "needs tall white-framed ground floor with large windows, door at right"
+     "what": "needs tall white-framed ground-floor windows and side door, not dark shopfront"
     },
     {
-     "tag": "white",
-     "what": "needs white cornice band and plain white window frames, no lintel caps"
+     "tag": "roof",
+     "what": "needs central arched hoist dormer with beam on red hipped roof"
+    },
+    {
+     "tag": "windows",
+     "what": "needs white-framed windows without lintel blocks; top floor shorter"
     }
    ],
-   "run": "after",
-   "renderHash": "019ab7e1583aaf90ebc288b2",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "61db46cbeb53b8d4c3a59136",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175701": {
    "score": 0.5,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a white cornice with central curved dormer, not grey hipped roof and chimney"
+     "what": "needs flat cornice with small curved central dormer, not grey pitched roof"
     },
     {
      "tag": "windows",
-     "what": "needs wide plain cross-frame windows with white surrounds, not narrow sashes with lintels"
+     "what": "needs wider white-framed cross windows, not tall red-framed sashes"
     },
     {
      "tag": "ground",
-     "what": "needs three separate red awnings over three bays, not one continuous red band"
+     "what": "needs three red awnings over cafe windows, not one red band"
     }
    ],
-   "run": "after",
-   "renderHash": "da183407e991ae54d17167f4",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "96006b34e0cbb9f54863009d",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012169010": {
    "score": 0.4,
    "differences": [
     {
-     "tag": "roof",
-     "what": "needs a stepped/neck gable with attic window, not a flat dark roof block"
-    },
-    {
      "tag": "white",
-     "what": "needs bold white horizontal bands and quoin blocks striping the brown brick"
+     "what": "needs bold white horizontal bands and quoin-like stripes banding dark brick"
     },
     {
-     "tag": "colour",
-     "what": "wall should be dark brown brick, not near-black"
+     "tag": "roof",
+     "what": "needs narrow stepped/neck gable with attic window, not wide pitched roof"
+    },
+    {
+     "tag": "ground",
+     "what": "needs dark shopfront with door at right, white awnings, not red-framed glass"
     }
    ],
-   "run": "after",
-   "renderHash": "f522c79eb54a8a05fda32cf6",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "9ba7206bbf364b881f7d03a8",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175692": {
    "score": 0.4,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a tall narrow bell/neck gable with window, white coping, not low hipped mansard"
+     "what": "needs a tall stepped/bell gable with attic windows, not a short hipped peak"
     },
     {
      "tag": "windows",
-     "what": "needs two windows per upper floor, not three with green central panels"
+     "what": "needs two wide white-framed windows per floor, not three narrow arched ones"
     },
     {
      "tag": "ground",
-     "what": "needs white-painted ground floor with large two-pane windows and door right"
+     "what": "needs white-plastered ground floor with two tall windows, black door at right"
     }
    ],
-   "run": "after",
-   "renderHash": "452b11c946c66c4292bc1d9f",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "35a9b98f072025a28ff5f471",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175702": {
    "score": 0.5,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a tall stepped gable with many small steps and a top window"
-    },
-    {
-     "tag": "storeys",
-     "what": "needs two gable-level window rows; render's gable is too short and squat"
+     "what": "needs a tall narrow step gable with window, not a low wide stepped top"
     },
     {
      "tag": "ground",
-     "what": "needs tall ground-floor windows and door with fanlight, not small windows"
+     "what": "ground floor needs two tall sash windows plus door with oval-pattern transom"
+    },
+    {
+     "tag": "windows",
+     "what": "needs white-framed sash windows without red frames, middle top window in gable"
     }
    ],
-   "run": "after",
-   "renderHash": "f89dba3769af7f595732da2e",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "87edd6d73dbb1ab3322b3296",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175703": {
+   "score": 0.5,
+   "differences": [
+    {
+     "tag": "windows",
+     "what": "needs three window bays with white multi-pane sashes, not four dark panes"
+    },
+    {
+     "tag": "roof",
+     "what": "needs flat cornice with small hidden roof, not large red hipped roof"
+    },
+    {
+     "tag": "ground",
+     "what": "needs grey 'Bâton' awning shopfront with side door, not two plain windows"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "02a52ab01f14341dae224ea5",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012175783": {
    "score": 0.4,
    "differences": [
     {
-     "tag": "windows",
-     "what": "needs three window bays per floor, not four"
+     "tag": "roof",
+     "what": "needs a neck gable with white scrolled claw pieces and hoist beam, not a chimney block"
     },
     {
-     "tag": "roof",
-     "what": "needs flat cornice parapet with small red-tile roof behind, not big grey slate roof"
+     "tag": "windows",
+     "what": "needs three windows per floor, not two; central upper window is a door"
     },
     {
      "tag": "ground",
-     "what": "needs single shopfront with grey awning and side door, not twin windows"
+     "what": "needs a white wooden shopfront with two doors and large divided windows"
     }
    ],
-   "run": "after",
-   "renderHash": "614bda3911bfbb50cd6864eb",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012175783": {
-   "score": 0.45,
-   "differences": [
-    {
-     "tag": "windows",
-     "what": "needs three white-framed windows per floor, not two dark ones"
-    },
-    {
-     "tag": "roof",
-     "what": "needs neck gable with white scroll claws and hoist beam, not plain block"
-    },
-    {
-     "tag": "ground",
-     "what": "needs white shopfront with two black doors and transoms, not single door"
-    }
-   ],
-   "run": "after",
-   "renderHash": "fff71eb828a6aff86aaccd68",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "2663c77b84b95a2cfbcc407a",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175784": {
    "score": 0.3,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs two separate ornate neck gables with white scrolls, not one bell gable"
-    },
-    {
-     "tag": "windows",
-     "what": "needs white-framed sash windows in two narrow bays, not dark framed windows"
+     "what": "needs two ornate white-trimmed neck/bell gables, not a single flat-topped block"
     },
     {
      "tag": "ground",
-     "what": "needs two black doors with white surrounds, transoms, and stoops"
+     "what": "needs raised ground floor with black doors, stoops and white-framed large windows"
+    },
+    {
+     "tag": "windows",
+     "what": "needs two narrow houses' irregular sash windows, no shutters or decorative white frames"
     }
    ],
-   "run": "after",
-   "renderHash": "2ecad785e6f0b27eed82993e",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "50b5a6cf3beaddc25e841393",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175616": {
-   "score": 0.4,
+   "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs flat cornice with curved brick top gable/dormer, not triangular pediment with chimney"
-    },
-    {
-     "tag": "windows",
-     "what": "needs wide segmental-arched windows with white frames and transoms, not narrow sashes"
+     "what": "needs a curved brick neck/bell gable with arched top window, not grey slate dormer roof"
     },
     {
      "tag": "ground",
-     "what": "needs raised ground floor over basement with wide window, red-brown door, light plinth"
+     "what": "needs raised ground floor over basement with steps and wide multi-pane window with railings"
+    },
+    {
+     "tag": "windows",
+     "what": "needs wider segmental-arched windows with stone lintels, no balconettes on upper floor"
     }
    ],
-   "run": "after",
-   "renderHash": "00c0d080593b04ba33af1d2f",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "0e79ab85fe58cfe9ca89fb1b",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175617": {
-   "score": 0.4,
+   "score": 0.3,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a triangular pediment gable with oval attic windows, not a flat cornice"
+     "what": "needs a straight cornice with small pediment top, not pitched gable and chimney"
+    },
+    {
+     "tag": "windows",
+     "what": "needs two wide windows per storey with oval attic lights, not four narrow"
     },
     {
      "tag": "white",
-     "what": "needs heavy white-cream window surrounds, lintels and pilaster bands, not thin trim"
-    },
-    {
-     "tag": "windows",
-     "what": "needs two wide bays per floor separated by dark pilasters, not three narrow windows"
+     "what": "needs white horizontal bands and frames, not white vertical pilasters"
     }
    ],
-   "run": "after",
-   "renderHash": "2026eba8202bf877976f68dd",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "71ba7e695bdc3290abe6d9d1",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175618": {
    "score": 0.35,
    "differences": [
     {
-     "tag": "windows",
-     "what": "needs two wide windows per floor with classical pilasters, not three narrow ones"
-    },
-    {
      "tag": "roof",
-     "what": "needs ornate cornice with decorative attic panels, not flat roof with chimney"
+     "what": "needs heavy cornice with ornate attic band, not flat plain top"
     },
     {
-     "tag": "ground",
-     "what": "needs tall raised ground-floor windows and door on a stone plinth"
+     "tag": "windows",
+     "what": "needs two large plain windows per floor, not narrow multi-pane sashes"
+    },
+    {
+     "tag": "other",
+     "what": "remove the extra right-hand bay; facade is a single two-window bay"
     }
    ],
-   "run": "after",
-   "renderHash": "7ba40873ce83564ec5bebfb9",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "180694bb6ae31666e39f828f",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012175698": {
    "score": 0.55,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a full-width white classical cornice with consoles, not a short offset beam"
-    },
-    {
-     "tag": "door",
-     "what": "centre door in third bay with fanlight; ground floor needs four tall windows"
-    },
-    {
-     "tag": "colour",
-     "what": "wall should be warm grey-brown brick, not near-black; drop white string courses"
-    }
-   ],
-   "run": "after",
-   "renderHash": "815fd3f9b9372dac4149640f",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012168544": {
-   "score": 0.5,
-   "differences": [
-    {
-     "tag": "door",
-     "what": "needs brown wooden door with white surround and transom on left, not green right"
-    },
-    {
-     "tag": "roof",
-     "what": "needs flat white classical cornice with short attic windows, no visible pyramid roof"
-    },
-    {
-     "tag": "windows",
-     "what": "needs white-framed mullioned sash windows, larger, with attic row of short windows"
-    }
-   ],
-   "run": "after",
-   "renderHash": "da6c2e200f80727ba3010441",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012168545": {
-   "score": 0.2,
-   "differences": [
-    {
-     "tag": "roof",
-     "what": "needs a tall ornate neck gable with white scrollwork, not a flat top"
-    },
-    {
-     "tag": "storeys",
-     "what": "needs four storeys plus gable attic windows, not three storeys"
-    },
-    {
-     "tag": "windows",
-     "what": "needs plain wide sash windows with white frames, no quoined surrounds or flowerboxes"
-    }
-   ],
-   "run": "after",
-   "renderHash": "f04859c069ed7d1fdac0c508",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012167493": {
-   "score": 0.4,
-   "differences": [
-    {
-     "tag": "windows",
-     "what": "needs three wide windows per floor, not two narrow ones"
-    },
-    {
-     "tag": "roof",
-     "what": "needs flat cornice top, not a pitched grey gable roof"
+     "what": "needs tall white cornice with consoles, frieze windows and low pediment"
     },
     {
      "tag": "ground",
-     "what": "needs raised stoop with stairs, basement door and right-side entrance"
+     "what": "ground-floor windows should be tall, no awnings, matching upper windows"
+    },
+    {
+     "tag": "windows",
+     "what": "plain rectangular white-framed windows, drop dark arched brick heads and white floor bands"
     }
    ],
-   "run": "after",
-   "renderHash": "6134627ae0d005b2a5469e76",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "3aa81b74142b98e09d4cd552",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012168544": {
+   "score": 0.55,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs a deep white cornice with attic frieze windows, not a thin beige strip"
+    },
+    {
+     "tag": "ground",
+     "what": "needs two tall ground-floor windows beside the door, not one short window"
+    },
+    {
+     "tag": "door",
+     "what": "needs a brown wooden door under a dark fanlight, not green"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "d87bfe2f4fe6f66b697d2499",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012168545": {
+   "score": 0.45,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs tall narrow neck gable with two stacked windows and white scrolls"
+    },
+    {
+     "tag": "windows",
+     "what": "needs white window frames without grey lintels, not dark red"
+    },
+    {
+     "tag": "ground",
+     "what": "needs two tall windows right of door, not one small"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "3f2de80fbc6403ed96a88f31",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012167493": {
+   "score": 0.5,
+   "differences": [
+    {
+     "tag": "windows",
+     "what": "needs three windows per upper floor, not two"
+    },
+    {
+     "tag": "ground",
+     "what": "needs raised stoop with stairs and basement door below entrance"
+    },
+    {
+     "tag": "roof",
+     "what": "needs tall white cornice top storey, not plain flat parapet"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "b502f5fea9476309cc2f243e",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012167492": {
    "score": 0.5,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs ornate white cornice with arched dormer window, not grey hipped roof and chimney"
+     "what": "needs ornate white cornice with arched dormer window, not a plain flat parapet"
     },
     {
      "tag": "ground",
-     "what": "ground floor needs two tall windows, no red door or stoop"
+     "what": "needs two tall dark windows on ground floor, no side door portico"
     },
     {
      "tag": "windows",
-     "what": "windows need multi-pane mullion grids with thin white frames, no heavy lintels"
+     "what": "needs cross-mullioned casement windows with few panes, not multi-pane sashes with hoods"
     }
    ],
-   "run": "after",
-   "renderHash": "b5df870bda2726c5594cfc4d",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "38d040a642c6cfa0b62f9d12",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012167495": {
+   "score": 0.55,
+   "differences": [
+    {
+     "tag": "windows",
+     "what": "needs large two-pane sash windows with arched brick hoods, not small-paned windows"
+    },
+    {
+     "tag": "ground",
+     "what": "needs tall raised ground floor with stoop, basement windows and taller windows"
+    },
+    {
+     "tag": "roof",
+     "what": "needs deep white cornice band with attic frieze across the top"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "fdec44a393cfff007f5c4b23",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012167494": {
    "score": 0.5,
    "differences": [
     {
-     "tag": "windows",
-     "what": "needs three-bay regular windows on every floor, not a centre bay window"
+     "tag": "roof",
+     "what": "needs a deep white cornice with attic frieze windows above top floor"
     },
-    {
-     "tag": "door",
-     "what": "needs door at right bay with ornate surround, not centred"
-    },
-    {
-     "tag": "white",
-     "what": "needs white segmental arch heads and keystones over windows, not plain lintels"
-    }
-   ],
-   "run": "after",
-   "renderHash": "1c64dda436612f9616c26860",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012167494": {
-   "score": 0.45,
-   "differences": [
     {
      "tag": "ground",
-     "what": "needs left stone door surround and tall arched windows right, door not right"
+     "what": "needs grey stone door surround left and two tall arched windows right"
     },
     {
-     "tag": "windows",
-     "what": "needs large two-pane windows with white segmental arches and keystones"
-    },
-    {
-     "tag": "roof",
-     "what": "needs flat white cornice with attic frieze, remove grey pyramid roof"
+     "tag": "storeys",
+     "what": "needs four storeys including attic band, not three plus low ground"
     }
    ],
-   "run": "after",
-   "renderHash": "6d30e9d217e72abaeff307e8",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "695784ebebaf0da7d849dfde",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012169218": {
-   "score": 0.2,
+   "score": 0.35,
    "differences": [
     {
-     "tag": "colour",
-     "what": "needs pale grey-green stucco walls with grey stone centre, not tan brick"
+     "tag": "roof",
+     "what": "needs a central segmental arched pediment over a bracketed cornice, not flat parapet"
     },
     {
-     "tag": "roof",
-     "what": "needs flat cornice with brackets and curved central pediment, no hipped roof/chimney"
+     "tag": "ground",
+     "what": "needs tall raised ground floor with large windows and stone central door bay"
     },
     {
      "tag": "white",
-     "what": "needs heavy white ornate window surrounds and cornice, not thin striped lintels"
+     "what": "needs smooth pale-green stucco with heavy white window surrounds, not grey brick"
     }
    ],
-   "run": "after",
-   "renderHash": "a84d0fa4033428cad31d2e35",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "06ba706ccc088aaf0d78a74b",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012169272": {
-   "score": 0.4,
+   "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs cream attic storey with cornice and small windows, not dark block with pyramid"
+     "what": "needs flat cornice with white attic storey of small windows, not grey hipped roof"
     },
     {
      "tag": "door",
-     "what": "needs central white stone portal with fanlight and black double door"
+     "what": "needs off-centre white stone portal with fanlight and white window surround above"
     },
     {
      "tag": "ground",
-     "what": "ground floor windows should be tall like upper ones, not short"
+     "what": "needs tall ground-floor windows at street level, not short windows over stoop"
     }
    ],
-   "run": "after",
-   "renderHash": "c258253b04488faedc3ded96",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "0c2960226dab32bc88f347b3",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012169270": {
-   "score": 0.4,
+   "score": 0.45,
    "differences": [
     {
-     "tag": "colour",
-     "what": "needs smooth light grey plastered wall, not dark grey brick"
-    },
-    {
      "tag": "roof",
-     "what": "needs flat cornice with deep bracketed overhang, not pitched grey roof"
+     "what": "needs a deep overhanging bracketed cornice with central dormer ornament, not flat strip"
     },
     {
-     "tag": "door",
-     "what": "needs door at left bay with stoop steps, not centred door"
+     "tag": "storeys",
+     "what": "needs four full window storeys plus basement; render shows only three upper"
+    },
+    {
+     "tag": "ground",
+     "what": "needs raised ground floor with two tall windows, side stoop, door left"
     }
    ],
-   "run": "after",
-   "renderHash": "2df413f5a809b1f4e981bdcb",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "4ff2deac9b07afa4646484c3",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179667": {
-   "score": 0.45,
+   "score": 0.5,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs white ornate neck/bell gable with scrolls, not a brick block with grey slopes"
+     "what": "needs a neck gable with white scroll claws, not a triangle with chimney"
+    },
+    {
+     "tag": "white",
+     "what": "window frames should be white, not dark red"
     },
     {
      "tag": "ground",
-     "what": "needs raised stoop with railing, left door, and basement doors below windows"
-    },
-    {
-     "tag": "windows",
-     "what": "needs plain dark-framed windows with brick arches, no white stone surrounds"
+     "what": "needs raised stoop with railings and basement doors below two tall windows"
     }
    ],
-   "run": "after",
-   "renderHash": "5e5ed12141a7b4ea2aa11b62",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "c2decac5b8999f3c5c552ca9",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179669": {
+   "score": 0.6,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs neck gable with ornate cream claw pieces, curved crown, hoist beam"
+    },
+    {
+     "tag": "ground",
+     "what": "needs two tall windows beside door and visible basement level below"
+    },
+    {
+     "tag": "windows",
+     "what": "needs wider cream-framed sash windows with small upper panes"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "4176fe74f34064ce07bd62e7",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179670": {
+   "score": 0.5,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs white curved cornice with central attic window and hoist beam, not flat top"
+    },
+    {
+     "tag": "ground",
+     "what": "needs wide double door with transom and large window over basement"
+    },
+    {
+     "tag": "windows",
+     "what": "needs arched-top windows with large two-pane glazing, not small-pane sashes"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "b4864834f73b53baaff328b6",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179668": {
    "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs tall neck gable with ornate white claw pieces and hoisting beam, not block"
-    },
-    {
-     "tag": "storeys",
-     "what": "needs four floors plus gable window; render shows only three storeys"
+     "what": "needs a deep projecting cornice with large carved brackets, not a thin flat parapet"
     },
     {
      "tag": "ground",
-     "what": "door goes far left with raised stoop, basement below; two windows right"
+     "what": "needs tall arched-top windows on first floor and three ground-floor doors with grilles"
+    },
+    {
+     "tag": "colour",
+     "what": "needs a smooth grey-beige stone facade with horizontal banding, not dark brick"
     }
    ],
-   "run": "after",
-   "renderHash": "e0b220ffce8c942bdcb09e8b",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179670": {
-   "score": 0.35,
-   "differences": [
-    {
-     "tag": "windows",
-     "what": "Needs two segmental-arched windows per floor, not three rectangular ones."
-    },
-    {
-     "tag": "storeys",
-     "what": "Needs four full upper storeys plus a single-window attic under the cornice."
-    },
-    {
-     "tag": "roof",
-     "what": "Needs a white cornice with raised curved centre and hoist beam, no pyramid."
-    }
-   ],
-   "run": "after",
-   "renderHash": "766f05f28e2a11eff3bab5c8",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179668": {
-   "score": 0.35,
-   "differences": [
-    {
-     "tag": "roof",
-     "what": "needs a flat top with deep bracketed overhanging cornice, not a grey mansard roof"
-    },
-    {
-     "tag": "windows",
-     "what": "needs five bays with white frames, arched ground-floor windows and balconettes, not six dark sashes"
-    },
-    {
-     "tag": "ground",
-     "what": "needs a raised stone basement with central double door and side entrances"
-    }
-   ],
-   "run": "after",
-   "renderHash": "e566f3c5188fd136ff004f3b",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "45e0670abb12457d76644653",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179671": {
-   "score": 0.35,
+   "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a narrow stepped/neck gable with scrolls and attic window, not a hipped roof"
+     "what": "needs tall neck gable with scroll claws and pediment, not low stepped gable"
     },
     {
      "tag": "windows",
-     "what": "needs brick relieving arches over windows, top floor smaller windows under gable"
+     "what": "needs three-window attic storey under gable plus wider many-pane windows"
     },
     {
      "tag": "ground",
-     "what": "needs raised stoop with basement level, tall shuttered windows, door at right"
+     "what": "needs raised stoop, basement level and three tall ground-floor windows with door"
     }
    ],
-   "run": "after",
-   "renderHash": "af31383356c65341e3d79df8",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "d237c463c43e17333875b47c",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179684": {
    "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a flat cornice with a central dormer/hoist gable, not a grey pyramid"
+     "what": "needs flat cornice with white dormer hoist gable, not grey pitched roof"
+    },
+    {
+     "tag": "storeys",
+     "what": "needs three full window storeys above ground plus raised basement level"
     },
     {
      "tag": "ground",
-     "what": "needs a raised stoop with a basement level and large ground-floor windows"
-    },
-    {
-     "tag": "windows",
-     "what": "needs plain two-pane sashes with a central balcony, not stone-quoined multi-pane windows"
+     "what": "needs door left plus two tall windows, stoop steps and basement"
     }
    ],
-   "run": "after",
-   "renderHash": "48a540169d1b3f53cbda5d73",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "d5e9ee8ec03ff76b9d9e3b67",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012168139": {
-   "score": 0.12,
+   "score": 0.4,
    "differences": [
     {
+     "tag": "storeys",
+     "what": "needs two upper storeys above ground floor, not three"
+    },
+    {
      "tag": "windows",
-     "what": "needs 4x2 grid of large white-framed windows, render has none"
+     "what": "needs four large tall windows per floor with horizontal bars, not two"
     },
     {
      "tag": "ground",
-     "what": "needs ground floor with two recessed doorways and large shopfront windows"
-    },
-    {
-     "tag": "roof",
-     "what": "needs flat roof with projecting cornice slab and small piers"
+     "what": "needs grey stone ground floor with recessed doors and windows, not red shopfront"
     }
    ],
-   "run": "after",
-   "renderHash": "c52c5ba755afa1fb5c0d5821",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "751b0addccee6c8cec6ce1db",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012168069": {
-   "score": 0.55,
+   "score": 0.6,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs flat roof with deep projecting grey cornice, no hipped peak"
+     "what": "needs a tall, deep grey cornice with dentils, not a thin strip"
+    },
+    {
+     "tag": "ground",
+     "what": "ground floor needs two tall windows plus door, not one small window"
     },
     {
      "tag": "windows",
-     "what": "needs plain large-pane windows, no multi-pane sashes, lintels or shutters"
-    },
-    {
-     "tag": "colour",
-     "what": "needs darker brown-purple brick, not bright red"
+     "what": "remove brick arches; plain rectangular two-pane windows with white frames"
     }
    ],
-   "run": "after",
-   "renderHash": "6fa95eab3322f5c1b1302ad9",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "28d2d149dbe2ecfd45d3fb6d",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012168138": {
    "score": 0.4,
    "differences": [
     {
-     "tag": "storeys",
-     "what": "needs four storeys plus raised basement, not three storeys"
-    },
-    {
      "tag": "roof",
-     "what": "needs flat cornice top with stepped white-capped dormer, not brick neck gable"
-    },
-    {
-     "tag": "white",
-     "what": "needs white horizontal bands, keystones and arched lintels across facade"
-    }
-   ],
-   "run": "after",
-   "renderHash": "151ed023703407d1cd506ad9",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179837": {
-   "score": 0.35,
-   "differences": [
-    {
-     "tag": "roof",
-     "what": "needs a narrow neck/bell gable with scroll ornaments, not flat cornice with hipped roof"
-    },
-    {
-     "tag": "storeys",
-     "what": "needs three storeys plus gable attic window above, not flat top"
+     "what": "needs flat cornice top with central raised attic dormer, not grey pyramid roof"
     },
     {
      "tag": "ground",
-     "what": "needs raised stoop with steps, basement windows and grey plinth; door at left"
+     "what": "needs raised shop-style ground floor with large windows over semi-basement"
+    },
+    {
+     "tag": "windows",
+     "what": "needs single central balconies with French doors, not three small balconettes"
     }
    ],
-   "run": "after",
-   "renderHash": "4cd2e8575061057b97a044e8",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "1f0175d030202cf73f41342e",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179837": {
+   "score": 0.5,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs narrow neck gable with white scroll claw-pieces and arched cap, not stepped block"
+    },
+    {
+     "tag": "windows",
+     "what": "needs wider two-pane sash windows, plus a window in the gable"
+    },
+    {
+     "tag": "ground",
+     "what": "needs three-bay ground floor with two large windows and raised basement"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "8151bc164fac36ce69e1b90e",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179836": {
    "score": 0.5,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs ornate white cornice with oval attic windows, not plain flat parapet"
+     "what": "needs an ornate white cornice with frieze of round attic windows, not plain flat top"
     },
     {
      "tag": "ground",
-     "what": "needs raised stoop with door at left, side stairs, basement level below"
+     "what": "needs raised ground floor with stoop stairs, railings and basement windows"
     },
     {
      "tag": "door",
-     "what": "needs tall white-framed arched door with fanlight, left side, not centred"
+     "what": "door should be left with white ornate surround and oval fanlight, tall arched black door"
     }
    ],
-   "run": "after",
-   "renderHash": "57d2e11f79769e0a7ca8d56a",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "b035d3543f924aeaab193e8d",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179838": {
-   "score": 0.6,
+   "score": 0.55,
    "differences": [
     {
      "tag": "ground",
-     "what": "needs window left, door right with transom; remove shutters, add basement window"
-    },
-    {
-     "tag": "windows",
-     "what": "top-floor windows should be shorter than middle-floor windows"
+     "what": "needs tall arched-top ground-floor window matching door height, not small square one"
     },
     {
      "tag": "roof",
-     "what": "needs flat cornice line without visible roof slope and chimney"
-    }
-   ],
-   "run": "after",
-   "renderHash": "4f3acc5fceff3856b938bae5",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179752": {
-   "score": 0.5,
-   "differences": [
+     "what": "needs a deep heavy white cornice/entablature on top, not thin line"
+    },
     {
      "tag": "door",
-     "what": "needs dark double door at left bay with transom, not central red door"
-    },
+     "what": "needs a black panelled door with arched fanlight, no green or ornate surround"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "4233884ae877ddb801ce81e9",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179752": {
+   "score": 0.55,
+   "differences": [
     {
      "tag": "ground",
-     "what": "needs tall ground windows, no green shutters, basement window and stoop"
+     "what": "needs two tall windows right of door, not one wide window"
     },
     {
      "tag": "roof",
-     "what": "needs flat white bracketed cornice, no visible grey hipped roof or chimney"
+     "what": "needs a deep white cornice with brackets along the top"
+    },
+    {
+     "tag": "windows",
+     "what": "top floor windows should be short and squarish, not tall"
     }
    ],
-   "run": "after",
-   "renderHash": "072d928c2c9f8004ea5eceab",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "f2a5c1382ac553c3eeec4072",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179753": {
-   "score": 0.5,
-   "differences": [
-    {
-     "tag": "roof",
-     "what": "needs a large overhanging flat white cornice canopy, not a thin ledge"
-    },
-    {
-     "tag": "ground",
-     "what": "needs a wide ground floor with shopfront doors left, door right, stone base"
-    },
-    {
-     "tag": "windows",
-     "what": "needs cream/white frames with transom windows and curtains, not dark red frames"
-    }
-   ],
-   "run": "after",
-   "renderHash": "962f0e94274ac7d8fd862f3a",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179760": {
-   "score": 0.6,
-   "differences": [
-    {
-     "tag": "ground",
-     "what": "needs door on right, large window on left, plus basement and stoop"
-    },
-    {
-     "tag": "roof",
-     "what": "needs ornate white cornice with brackets, no tall chimney block"
-    },
-    {
-     "tag": "windows",
-     "what": "needs dark-framed sash windows with transom bars, not plain white-framed panes"
-    }
-   ],
-   "run": "after",
-   "renderHash": "e8c41c5c60d89f371f84c526",
-   "at": "2026-11-21T10:15:32.069Z"
-  },
-  "0363100012179761": {
    "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs ornate white scrolled neck gable with attic window and hoist beam"
-    },
-    {
-     "tag": "door",
-     "what": "door belongs on the left, with two windows to its right"
+     "what": "needs a large overhanging flat cornice canopy roof, not a thin parapet"
     },
     {
      "tag": "storeys",
-     "what": "add gable-level storey with a window; photo shows taller facade"
+     "what": "needs five upper window storeys above the ground floor, not four"
+    },
+    {
+     "tag": "ground",
+     "what": "needs wide shopfront with wooden glazed doors left, door right"
     }
    ],
-   "run": "after",
-   "renderHash": "6b9da50c73bd7e8c0f74f080",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "87cd4e7e5058f83abd3e489d",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179760": {
+   "score": 0.55,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "needs a prominent white classical cornice with consoles, not a thin flat cap"
+    },
+    {
+     "tag": "ground",
+     "what": "needs raised ground floor over white basement with stoop steps and cellar door"
+    },
+    {
+     "tag": "windows",
+     "what": "needs wide white-framed windows without decorative lintels; ground floor a large window"
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "8739da28864b0f1e099ada2a",
+   "at": "2026-11-21T10:48:06.199Z"
+  },
+  "0363100012179761": {
+   "score": 0.6,
+   "differences": [
+    {
+     "tag": "roof",
+     "what": "Needs a window in the neck gable and white ornate scroll claws."
+    },
+    {
+     "tag": "ground",
+     "what": "Ground floor needs door plus two tall windows, not one."
+    },
+    {
+     "tag": "windows",
+     "what": "Drop striped lintel caps; use plain brick arches over white-framed sashes."
+    }
+   ],
+   "run": "wired-3",
+   "renderHash": "523cb0c1c7594c0dc9849703",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179764": {
    "score": 0.4,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs full-width triangular pediment on cornice, not small hipped roof"
+     "what": "needs a triangular pediment gable with heavy cornice, not a flat top"
     },
     {
-     "tag": "windows",
-     "what": "needs regular 4x4 arched sash grid, remove green vertical panels"
+     "tag": "colour",
+     "what": "needs grey-brown stucco/stone facade with pilasters, not brick"
     },
     {
      "tag": "door",
-     "what": "needs black door in second bay with stoop railing"
+     "what": "needs centred-left black door with fanlight and stoop at upper level"
     }
    ],
-   "run": "after",
-   "renderHash": "a3b6d19a0d2b175a15c9f74f",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "72be9bbba5a258c2fdaca0d3",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179765": {
    "score": 0.4,
    "differences": [
     {
-     "tag": "ground",
-     "what": "needs tall white stucco ground floor with pilasters and large windows"
+     "tag": "roof",
+     "what": "needs ornate cream cornice with curved central hoist-beam pediment, not flat parapet"
     },
     {
-     "tag": "roof",
-     "what": "needs flat ornate cream cornice with central crest, no visible pitched roof/chimney"
+     "tag": "ground",
+     "what": "needs tall cream stucco ground floor with pilasters and large central window"
     },
     {
      "tag": "white",
-     "what": "needs central white bay surround and cream window frames, not plain wall"
+     "what": "needs cream central bay window surround with consoles on first floor"
     }
    ],
-   "run": "after",
-   "renderHash": "e924974fd58d39d413958e07",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "534d67a0a8d33bc574685067",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179763": {
-   "score": 0.5,
+   "score": 0.55,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a full-width white cornice with dentils, flat top, no visible roof or chimney"
+     "what": "needs a tall white cornice with dentils and frieze band at top"
+    },
+    {
+     "tag": "ground",
+     "what": "needs tall ground-floor windows and raised stoop with iron railings"
     },
     {
      "tag": "door",
-     "what": "needs a central-left ornate white door surround with fanlight and stoop railings"
-    },
-    {
-     "tag": "windows",
-     "what": "needs white-framed multi-pane sash windows, taller ground floor windows aligned in four bays"
+     "what": "needs ornate white door surround with fanlight, door left of centre"
     }
    ],
-   "run": "after",
-   "renderHash": "b749199bdef65088f4ac959f",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "86bb4a8a92c61a2f71afccce",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179833": {
-   "score": 0.5,
+   "score": 0.4,
    "differences": [
     {
-     "tag": "white",
-     "what": "needs heavy cream stone banding, arched window hoods and ornate cornice"
+     "tag": "roof",
+     "what": "needs ornate cream cornice with stepped central pinnacle, not flat top"
     },
     {
-     "tag": "roof",
-     "what": "needs a tall decorated cornice with stepped pediment, not a grey hip"
+     "tag": "white",
+     "what": "needs cream stone banding stripes across brick and ornate window hoods"
     },
     {
      "tag": "ground",
-     "what": "needs a raised cream stone ground floor with arched door and windows"
+     "what": "needs raised cream stone ground floor with arched windows, ornate wooden door"
     }
    ],
-   "run": "after",
-   "renderHash": "9f4b33ed8a98e99773a2ad1e",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "2d73b3b29e2e232278ab51f7",
+   "at": "2026-11-21T10:48:06.199Z"
   },
   "0363100012179834": {
    "score": 0.45,
    "differences": [
     {
      "tag": "roof",
-     "what": "needs a cream dormer with ornate pediment above cornice, not chimney and grey slopes"
+     "what": "needs a cream cornice with central ornate stone dormer, not plain slate mansard"
     },
     {
-     "tag": "white",
-     "what": "needs bold white cornices, stone banding and decorative window lintels across facade"
+     "tag": "other",
+     "what": "should be one narrow two-window house, drop the attached right-hand section"
     },
     {
      "tag": "ground",
-     "what": "needs raised ground floor with arched basement doors and balcony railing"
+     "what": "needs arched ground-floor doors and balcony railing above, not plain door/window"
     }
    ],
-   "run": "after",
-   "renderHash": "8b102de603890b100d483f60",
-   "at": "2026-11-21T10:15:32.069Z"
+   "run": "wired-3",
+   "renderHash": "abe1376fa67bec9a898bdce4",
+   "at": "2026-11-21T10:48:06.199Z"
   }
  },
  "about": "Belt review lane C: per house, how much the current render looks like David's picked photo (0-1) and the top 3 differences, tagged roof|storeys|windows|colour|ground|door|white|other. `pands` is the latest run (lane A sorts stage 2 worst-first on pands[house].score); `runs` keeps each labelled run. Built by scripts/belt-review/likeness.ts.",

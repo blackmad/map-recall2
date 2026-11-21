@@ -20,6 +20,7 @@ import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
+import { beltDesignUnit, type BeltPlot } from '../../src/canalRecall/beltReview/plotRead.ts';
 import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
@@ -185,7 +186,7 @@ const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 // ---------------------------------------------------------------------------------------------------------------
 type Design = { fronts?: Record<string, unknown>[]; roof?: unknown; palette?: unknown; [k: string]: unknown };
 export type Override = { source: string; pandId?: string; design: Design };
-const GABLE_WORDS: Record<string, string> = { trap: 'step', trapgevel: 'step', hals: 'neck', halsgevel: 'neck', klok: 'bell', klokgevel: 'bell', tuit: 'spout', tuitgevel: 'spout', lijst: 'cornice', lijstgevel: 'cornice' };
+const GABLE_WORDS: Record<string, string> = { 'raised-neck': 'raisedNeck', point: 'plain', trap: 'step', trapgevel: 'step', hals: 'neck', halsgevel: 'neck', klok: 'bell', klokgevel: 'bell', tuit: 'spout', tuitgevel: 'spout', lijst: 'cornice', lijstgevel: 'cornice' };
 
 export function readOverride(file: string, kind: 'spec' | 'intent'): Override {
   const j = readJson(file);
@@ -226,6 +227,14 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
     applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}${held('shop')}`);
   }
   if (Object.keys(designView.src).length) patch.houseSpec = designView;
+  // Belt review (beltReview/plotRead.ts): the house's read plot facts as a one-plot design unit (`solo`), drawn by
+  // designUnits/draw.ts withSoloPlot: roof storey on the measured cornice, dormers, covering, white parts, cornice, door.
+  const plot = o.design.plot as BeltPlot | undefined;
+  if (plot && typeof plot === 'object' && plot.facts) {
+    patch.designUnit = beltDesignUnit(o.pandId ?? '0000000000000000', plot);
+    for (const k of ['cornice', 'roofStorey', 'readDormers', 'doorBay']) if (front[k] !== undefined) used.add(k);
+    applied.push(`plot -> designUnit (solo: ${JSON.stringify({ ...plot.facts, src: undefined })}, eaves ${plot.eavesM ?? 'tile height'})`);
+  }
   // A stoop (K-stoep #360), as the decorator writes it (houseSpec/decorate.ts specStoop): the measured fields, or {}.
   const stooped = front.basement === 'stoop' || front.basement === 'stoop-and-windows';
   if (stooped) { patch.specStoop = (front.stoop ?? {}) as Record<string, unknown>; applied.push(`fronts[0].basement${front.stoop ? '+stoop' : ''} -> specStoop`); used.add('basement').add('stoop'); }
@@ -235,7 +244,7 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
   if (wallKey) { patch.facadeMappedColour = palette[wallKey]; applied.push(`palette.${wallKey} -> facadeMappedColour=${palette[wallKey]}`); }
   for (const k of Object.keys(palette)) if (k !== wallKey && !(k === 'frame' && view.look?.dark !== undefined)) notApplied.push(`palette.${k}`);
-  for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette') notApplied.push(k);
+  for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette' && !(k === 'plot' && patch.designUnit)) notApplied.push(k);
   if ((o.design.fronts?.length ?? 0) > 1) notApplied.push(`fronts[1..${o.design.fronts!.length - 1}]`);
   return { patch, applied, notApplied };
 }
@@ -627,6 +636,21 @@ async function finish(f: Finish): Promise<PreviewResult> {
   return { pandId: bare(f.pandId), out: f.out, files: f.files, timings: tm.t, measure };
 }
 
+/** PREVIEW_ROW_IDS as a set holding each id bare and as its NL.IMBAG.Pand. key; empty when unset. */
+export const previewRowIds = (env: string | undefined): Set<string> => new Set((env ?? '').split(',').filter(Boolean).flatMap(id => [id, `NL.IMBAG.Pand.${id}`]));
+
+/** The chunk's features: the own tile's buildings that `keep` passes (near the pand, or the whole tile), in tile order, plus
+ * every PREVIEW_ROW_IDS pand, from the own tile or (appended, in tile order) a neighbouring one. A row past ROW_M of the
+ * target pand was dropped before (Rustenburgerstraat drew 7 of 9 houses). With no row ids this is exactly `own.filter(keep)`. */
+export function chunkFeatures<F extends { properties: Record<string, unknown> }>(own: F[], others: F[], keep: (f: F) => boolean, rowIds: Set<string>, hide: Set<string> = new Set()): F[] {
+  if (!rowIds.size) return own.filter(keep);
+  const inRow = (f: F) => rowIds.has(String(f.properties.id)) && !hide.has(String(f.properties.id));
+  const seen = new Set<string>(), out: F[] = [];
+  for (const f of own) if (keep(f) || inRow(f)) { out.push(f); seen.add(String(f.properties.id)); }
+  for (const f of others) if (inRow(f) && !seen.has(String(f.properties.id))) { out.push(f); seen.add(String(f.properties.id)); }
+  return out;
+}
+
 /** One render of one pand by the route the game draws it (see resolveRoute): front.png (+ threeq.png, compare.png) and measure.json in `out`. */
 export async function renderPand(session: PreviewSession, pandId: string, args: Args, override?: Override): Promise<PreviewResult> {
   if (args.chunk) return renderInstalled(session, pandId, stagedChunkPlacement(args.chunk), args, `--chunk ${args.chunk}: the compiled, not installed staging/block-face chunk`);
@@ -645,6 +669,10 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   // Neighbours across a tile edge: load the adjacent tiles the pand's box comes within 60 m of.
   const box = boxOf(raw.raw), padLng = 60 / (111_320 * Math.cos(52.37 * Math.PI / 180)), padLat = 60 / 110_540;
   const tiles = new Set<string>([tile]);
+  // PREVIEW_ROW_IDS (design-units row sheets, scripts/design-units/review-sheets.ts): draw these pands too, a whole row on one
+  // line; their tiles load as well, so a row that crosses a tile edge is whole.
+  const rowIds = previewRowIds(process.env.PREVIEW_ROW_IDS);
+  for (const id of rowIds) if (!id.startsWith('NL.IMBAG.Pand.')) tiles.add(session.tileOf(id));
   for (const [lng, lat] of [[box[0] - padLng, box[1] - padLat], [box[2] + padLng, box[1] - padLat], [box[0] - padLng, box[3] + padLat], [box[2] + padLng, box[3] + padLat]]) tiles.add(tileOfLngLat(lng, lat).join('/'));
   const all: Row[] = [];
   for (const tl of tiles) all.push(...await session.rows(tl));
@@ -665,7 +693,7 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   // in tile order, gave the whole tile's vertex counts there (R30 = R100 = R300 = tile); --whole-tile builds the tile.
   const ownBox = boxOf(own), rowLng = ROW_M / (111_320 * Math.cos(52.37 * Math.PI / 180)), rowLat = ROW_M / 110_540;
   const nearOwn = (f: Feature) => { const b = boxOf(f); return b[0] <= ownBox[2] + rowLng && b[2] >= ownBox[0] - rowLng && b[1] <= ownBox[3] + rowLat && b[3] >= ownBox[1] - rowLat; };
-  const features = rows.map(r => r === raw ? own : r.styled).filter(f => !kitHide.has(String(f.properties.id)) && (args.wholeTile || nearOwn(f)));
+  const features = chunkFeatures(rows.map(r => r === raw ? own : r.styled), all.filter(r => !rows.includes(r)).map(r => r.styled), f => !kitHide.has(String(f.properties.id)) && (args.wholeTile || nearOwn(f)), rowIds, kitHide);
   const inChunk = new Set(features);
   const context = ctx.neighbors(features, f => inChunk.has(f) || kitHide.has(String(f.properties.id)));
   const streets = shellStreets(REPO_ROOT, features as never), profiles = shellProfiles(REPO_ROOT);
@@ -673,16 +701,24 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const look = session.look as 'photo';
   // The own pand's street-run grid as the mesher laid it (threeBuildingMesh layoutProbe): drawn storeys and window columns.
   const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }[] = [];
-  layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); };
+  // PREVIEW_ROW_IDS: every row pand's street runs too (row-layout.json beside front.png, for the design-units row tables).
+  const rowRuns = new Map<string, typeof runs>();
+  layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); if (rowIds.size && rowIds.has(String(id))) rowRuns.set(String(id), [...(rowRuns.get(String(id)) ?? []), r]); };
   let walls: ReturnType<typeof buildFeatureChunk>;
   const records = args.shaderFacades || process.env.SHADER_FACADES === '1';
   try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never, [], new Map(), records ? { facadeRecord: true, specFor: previewSpecFor() } : {}); } finally { layoutProbe.sink = undefined; }
   const streetRun = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM)[0];
   const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
+  if (rowIds.size && args.out) {
+    const rowLayout: Record<string, unknown> = {};
+    for (const [id, rs] of rowRuns) { const st = rs.filter(r => r.street && r.base < 0.5).sort((x, y) => y.lengthM - x.lengthM)[0]; if (st) rowLayout[bare(id)] = { storeys: st.storeys + 1, groundM: +st.groundM.toFixed(2), storeyM: +st.storeyM.toFixed(2), columns: st.bays, runM: +st.lengthM.toFixed(2) }; }
+    const rowProps: Record<string, unknown> = {};
+    for (const f of features) { const id = String(f.properties.id); if (!rowIds.has(id)) continue; const q = f.properties; rowProps[bare(id)] = { height: q.height, roofEavesHeightM: q.roofEavesHeightM, roofShape: q.roofShape, monumentGable: q.monumentGable, shop: q.specShop === false ? null : q.shopKind ?? (q.specShop === true ? 'spec' : null), designPlot: q.designPlot, designStoreys: q.designStoreys }; }
+    fs.mkdirSync(path.resolve(args.out), { recursive: true });
+    fs.writeFileSync(path.join(path.resolve(args.out), 'row-layout.json'), JSON.stringify({ layout: rowLayout, props: rowProps }, null, 1));
+  }
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);
   const mesh = concatChunks([walls, extras]);
-  // PREVIEW_ROW_IDS (design-units row sheets, scripts/design-units/row-sheet.ts): draw these pands too, a whole row on one line.
-  const rowIds = new Set((process.env.PREVIEW_ROW_IDS ?? '').split(',').filter(Boolean).flatMap(id => [id, `NL.IMBAG.Pand.${id}`]));
   const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id || rowIds.has(String(r.id)));
   const inOwn = new Uint8Array(mesh.layers.length);
   for (const r of ownRanges) inOwn.fill(1, r.start, r.start + r.count);

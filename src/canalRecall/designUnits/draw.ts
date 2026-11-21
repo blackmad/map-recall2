@@ -25,9 +25,12 @@
 import { citywideBuildingRoofPrior, citywideBuildingWallPrior } from '../look/palette.js';
 import { rowFrontFor, rowFrontOn } from '../houseLine/rowFront.js';
 import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, type SegmentSlice } from './segments.js';
-import { designUnitOf, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
+import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
+import { plotPlan, plotWhite, plotHeads, plotDormers, plotLook, PLOT_GABLE_SHAPE, POINT_GABLE_RISE_PER_M, type PlotPlan } from './plotPlan.js';
+import { rowCrownRoofRise, type RowCrown } from '../houseLine/crownProfile.js';
+import { roofPlanForFeature } from '../roofMesh.js';
 
-export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, type DesignUnitDraw } from './drawProps.js';
+export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
 
 /** The flag, read at call time (never at module load: the structure gate evaluates bundles in Node). */
 export function designUnitsOn(): boolean {
@@ -85,7 +88,7 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const widths = onStreet.map(s => s.toM - s.fromM).sort((a, b) => a - b), moduleM = +widths[Math.floor((widths.length - 1) / 2)].toFixed(2);
   // The era rules (pre-1920 segments): the plot is the bay module, light frames and tall sashes unless the reads say otherwise.
   const era = typeof segment.year === 'number' && segment.year >= ERA_YEARS.from && segment.year <= ERA_YEARS.to;
-  const r = segment.reads, read = r?.bays?.[pandId];
+  const r = segment.reads, read = segment.plots?.[pandId]?.bays ?? r?.bays?.[pandId];
   // Era fronts: tall sashes under a transom light in light frames (the photographed rows; 85 % of the D1 ring reads say
   // white frames). An era front stays light even where the D1 reads say dark: Roemer Visscherstraat 164845's three reads
   // said dark and the photo shows cream frames (gate, 2026-11-19); the reads still set pale and arch.
@@ -98,9 +101,20 @@ export function memberDraw(segment: DrawSegment, pandId: string, exception: bool
   const bays = typeof read === 'number' && read > 0 ? read : era ? (sliceM <= moduleM * 1.5 ? eraWindows(sliceM) : Math.max(1, Math.round(sliceM / segPitch))) : undefined;
   const pitch = bays && sliceM <= moduleM * 1.5 ? sliceM / bays : segPitch;
   const bayPitchM = era && pitch > 0 ? +pitch.toFixed(3) : undefined;
-  return { seed: segment.seed, segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
+  // Round 2 (#399): each plot is its own house in the family. Its one-facade group (photo evidence) is its plot; the
+  // breaks fall where the street neighbour is another plot, and at the segment's two ends.
+  const groupOf = (id: string) => segment.plotGroups?.find(g => g.includes(id))?.slice().sort()[0] ?? id;
+  const plot = groupOf(pandId), at = onStreet.indexOf(main);
+  const plotBreak = { left: at <= 0 || groupOf(onStreet[at - 1].pandId) !== plot, right: at < 0 || at >= onStreet.length - 1 || groupOf(onStreet[at + 1].pandId) !== plot };
+  const own = segment.plotEavesM?.[pandId], line = segment.eavesM;
+  const plotEavesM = line === null ? undefined : +(typeof own === 'number' ? Math.min(line + PLOT_EAVES_M, Math.max(line - PLOT_EAVES_M, own)) : line).toFixed(2);
+  // Round 3 (Ruyschstraat: "they're all basically identical"): a plot read like an earlier one on the street takes its
+  // seed, so its tone, door and dice draw the same; unread plots keep their own.
+  const plotKey = plotLook(segment.plots?.[pandId]), twin = plotKey ? onStreet.find(s => plotLook(segment.plots?.[s.pandId]) === plotKey)?.pandId : undefined;
+  return { seed: segment.seed, plotSeed: `${segment.seed}:plot:${twin ? groupOf(twin) : plot}`, plotBreak, ...(plotEavesM !== undefined ? { plotEavesM } : {}), segment: segment.id, eavesM: segment.eavesM, street: main.street, fromM: main.fromM, toM: main.toM, moduleM,
     k: onStreet.findIndex(s => s === main), n: onStreet.length, ...(isLngLat(segment.at) ? { at: [segment.at[0], segment.at[1]] as const } : {}), ...(exception ? { exception: true as const } : {}),
-    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}) };
+    ...(bays ? { bays } : {}), ...(bayPitchM ? { bayPitchM } : {}), ...(look ? { look } : {}), ...(typeof segment.roofRiseM === 'number' ? { roofRiseM: segment.roofRiseM } : {}), ...(segment.roofEvidence ? { roofEvidence: segment.roofEvidence } : {}),
+    ...(segment.plots?.[pandId] ? { plot: segment.plots[pandId] } : {}), ...(typeof segment.year === 'number' ? { year: segment.year } : {}) };
 }
 
 /** Step 1 (first in the chain): stamp the segment draw, the segment's line and year, and re-key the colour priors. */
@@ -116,7 +130,7 @@ export function withDesignUnits<T extends Feature>(feature: T): T {
   const draw = memberDraw(s, key(p.id), !!hit.exception);
   if (!draw) return feature;
   const out: Record<string, unknown> = { ...p, designUnit: draw };
-  if (line !== null && line > 2) out.height = line;
+  if (line !== null && line > 2) out.height = draw.plotEavesM ?? line;
   if (typeof s.year === 'number' && Number.isFinite(s.year) && s.year !== p.constructionYear) {
     out.constructionYear = s.year;
     if (p.constructionYear !== undefined) out.bagConstructionYear = p.constructionYear;
@@ -149,13 +163,134 @@ export function segmentRoof(seed: string, style: string, roofRiseM: number | nul
     dormerKind: pick(hash01(`${seed}:dkind`), [['plain', 0.5], ['gabled', 0.3], ['pediment', 0.2]] as Array<[SegmentRoof['dormerKind'], number]>) };
 }
 
+/**
+ * A roof storey seen in photos inside the measured top (2026-11-20, David on Rustenburgerstraat: "why do r1 and r2 both
+ * lose the mansards"). AHN's DSM is flat at the eaves line from 0.5 m behind the front to the back on these rows: the
+ * front mansard and its dormers stand inside that top, so no AHN rise can see them. With photo evidence the top storey is
+ * a slate roof storey of this rise, the cornice that far under the measured top, one dormer per plot.
+ */
+export const EVIDENCE_ROOF_RISE_M = 2.6;
+/** A hoist-dormer row (Rustenburgerstraat, Blasiusstraat, Nassaukade): a short slate slope behind the cornice, the dormers
+ *  standing above the flat top (narrow enough that AHN's 0.5 m cells miss them). Photo-row registration, 2026-11-20:
+ *  the cornice stands about 1.2-1.5 m under the DSM top. */
+export const EVIDENCE_HOIST_RISE_M = 1.4;
+/** One dormer per house front: a plot wider than this many metres per dormer draws more (a 9 m pand with two doors). */
+export const DORMER_FRONT_M = 5.5;
+
+/** The segment years the plot plan draws (inclusive): the 1860-1939 Ring rows. */
+export const PLOT_PLAN_YEARS = { from: 1860, to: 1939 } as const;
+
+/**
+ * A plot plan onto the mesher's properties: the storey count and ground height (`designStoreys`, laid out by the design
+ * branch of threeBuildingMesh priorBays; a stated HouseSpec count still wins), the ground use (`specShop`, unless a spec
+ * states it), balconies and a souterrain's stoop (`registerForce`), and the plot's roof element: a slate roof storey with
+ * its dormers on or inside the top, a gable the roof planner draws on the cornice line, or the flat top.
+ */
+function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknown>, d: DesignUnitDraw, plan: PlotPlan, roof: SegmentRoof, gableShape?: string): T {
+  const p = feature.properties;
+  const extra: Record<string, unknown> = { designStoreys: { storeys: plan.storeys, groundM: plan.groundM, src: plan.storeysSrc }, designPlot: { rule: plan.rule, roof: plan.roof, roofSrc: plan.roofSrc, wallM: plan.wallM, riseM: plan.riseM } };
+  if (plan.ground && p.specShop === undefined) extra.specShop = plan.ground === 'shop';
+  const force = Array.isArray(p.registerForce) ? [...p.registerForce as string[]] : [];
+  // Stated balconies, or a read that saw none (an empty list keeps the dice balconettes off the plot).
+  if (plan.balconies.length || d.plot?.balconies) extra.designBalconies = plan.balconies;
+  if (plan.souterrain && !force.includes('stoop')) force.push('stoop');
+  // The white detailing (2026-11-21, Rustenburgerstraat): frames by era, the read heads and string courses, each a kit part.
+  const white = plotWhite(d.year, d.plot);
+  if (white.frames) { extra.designFrames = true; if (!force.includes('white-window-frames')) force.push('white-window-frames'); }
+  const heads = plotHeads(d.plot);
+  if (d.plot?.whiteHeads === 'none' && !heads) extra.designPlainHeads = true;
+  if (heads) { extra.designHeads = heads; if (!force.includes('row-heads')) force.push('row-heads'); }
+  if (white.courses && !force.includes('string-courses')) force.push('string-courses');
+  // Round 3: the read stone, bands and pilasters, each through its kit part.
+  const f = d.plot, dress: Record<string, string> = {};
+  if (f?.stone === 'plinth' || f?.stone === 'ground') { dress.stone = f.stone; const id = f.stone === 'plinth' ? 'stone-plinth-band' : 'rusticated-plinth'; if (!force.includes(id)) force.push(id); }
+  if (f?.bands === 'ground' || f?.bands === 'all') { dress.bands = f.bands; if (!force.includes('speklagen')) force.push('speklagen'); }
+  if (f?.pilasters === 'corners' || f?.pilasters === 'centre') { dress.pilasters = f.pilasters; if (!force.includes('corner-pilasters')) force.push('corner-pilasters'); }
+  if (Object.keys(dress).length) extra.designDress = dress;
+  if (typeof f?.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(f.wallHex)) extra.designWallHex = f.wallHex;
+  // Belt review: the read cornice (the house rows' row-cornice) and the read door place.
+  // A simple or frieze cornice is the house rows' row-cornice; a heavy or attic-frieze one the deep moulded kroonlijst on
+  // consoles, a bracketed one the console cornice (the row-cornice's heavy frieze is squeezed out under a tall top storey).
+  if (f?.cornice) {
+    const id = f.cornice === 'heavy' || f.cornice === 'attic-frieze' ? 'kroonlijst' : f.cornice === 'bracketed' ? 'console-cornice' : 'row-cornice';
+    if (id === 'row-cornice') extra.designCornice = f.cornice;
+    if (!force.includes(id)) force.push(id);
+  }
+  if (f?.door && Number.isInteger(f.door.index) && f.door.of > f.door.index) extra.designDoor = { index: f.door.index, of: f.door.of };
+  if (f?.door?.surround && !force.includes('door-surround')) force.push('door-surround');
+  for (const id of f?.parts ?? []) if (!force.includes(id)) force.push(id);
+  if (force.length) extra.registerForce = force;
+  const wall = plan.wallM;
+  if (plan.roof === 'flat') return { ...feature, properties: { ...rest, ...extra, height: wall, roofEavesHeightM: wall, roofPlanned: false, roofShape: 'flat' } };
+  const shape = gableShape ?? PLOT_GABLE_SHAPE[plan.roof];
+  if (shape) {
+    // The planner's gable on this plot, its foot on the cornice line: plan it on a probe height, then stand it there.
+    const probe = { ...feature, properties: { ...rest, height: wall + 6, roofPlanned: false, monumentGable: shape } };
+    const g = roofPlanForFeature(probe as never);
+    // Round 3: a read gable (its rise, foot width, offset and light) is the kit's row crown on the planner's saddle; a
+    // narrower crown keeps its saddle low (its share of the front), so the cheeks beside it stay low roof, not wall.
+    const gr = d.plot?.gable, W = d.toM - d.fromM;
+    if (g && g.kind === 'gable' && gr) {
+      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = shape === 'plain' ? 'point' : shape;
+      const riseM = +(gr.riseM ?? (crownShape === 'point' ? Math.min(5, POINT_GABLE_RISE_PER_M * (foot ?? W)) : g.riseM)).toFixed(2);
+      const crown: RowCrown = { shape: crownShape as RowCrown['shape'], riseM, ...(foot ? { footW: foot } : {}), ...(foot && gr.offsetM ? { offsetM: gr.offsetM } : {}),
+        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}) };
+      return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind,
+        rowCrown: crown, rowCrownRoofRiseM: foot ? +Math.min(rowCrownRoofRise(crown, W), riseM * foot / W).toFixed(3) : rowCrownRoofRise(crown, W), designPlot: { ...extra.designPlot as object, riseM } } };
+    }
+    if (g && g.kind === 'gable') return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + g.riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind, designPlot: { ...extra.designPlot as object, riseM: g.riseM } } };
+    // A plot the planner cannot gable (too narrow or ragged) keeps the row's dormer roof.
+  }
+  const dormers = plotDormers(d.toM - d.fromM, DORMER_FRONT_M, d.plot, plan.dormer, plan.hoist);
+  // Inside: wall + rise is the measured top; on top: the roof storey stands over it.
+  const rise = plan.riseM > 0.5 ? plan.riseM : EVIDENCE_HOIST_RISE_M, height = +(wall + rise).toFixed(3);
+  return { ...feature, properties: { ...rest, ...extra, height, roofEavesHeightM: wall, roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
+    rowRoof: { riseM: rise, material: f?.roofMaterial ?? roof.material, dormers, series: d.seed, tone: roof.tone, joins: d.solo ? {} : { left: true, right: true }, ...(plan.hoist ? { hoistOut: true } : {}), ...(d.solo && plan.roof === 'dormers' ? { shape: 'hipped' } : {}) } } };
+}
+
+/**
+ * Belt review (2026-11-21): a one-plot draw a reviewed description states (`solo`, beltReview/plotRead.ts). Its plot plan
+ * runs whatever the flag and year: the measured eaves is the cornice (a roof storey stands on it), a stated gable
+ * (monumentGable, other than the cornice front) stands on the cornice line in its own shape, the read roof covering, cornice,
+ * door, white parts and stone go through the same kit parts as a segment plot.
+ */
+function withSoloPlot<T extends Feature>(feature: T, d: DesignUnitDraw): T {
+  const p = feature.properties;
+  if (!p.facade || p.kitRoof) return feature;
+  const top = typeof d.eavesM === 'number' && d.eavesM > 4 ? d.eavesM : Number(p.height);
+  if (!(top > 4)) return feature;
+  // The described crown wins over the register's gable (withMonumentGable ran before this step).
+  const stated = d.gable !== undefined ? d.gable : typeof p.monumentGable === 'string' ? p.monumentGable : null;
+  const gable = stated && stated !== 'cornice' ? stated : undefined;
+  const { roofDormer: _dice, roofShapeTag: _tag, monumentGable: _g, roofPlanned: _planned, ...rest } = p;
+  const plan = plotPlan(top, gable ? { ...d.plot, src: d.plot?.src ?? 'photo', roof: 'pointedGable' } : d.plot, { topIsCornice: true });
+  return withPlotPlan(feature, rest, d, plan, segmentRoof(d.seed, String(p.facadeStyle ?? ''), null), gable);
+}
+
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */
 export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const p = feature.properties, d = designUnitOf(p);
+  if (d?.solo) return withSoloPlot(feature, d);
   if (!d || d.eavesM === null || !(d.eavesM > 4) || !designUnitsOn()) return feature;
   if (!p.facade || p.rowFront || p.roofPlanned || typeof p.monumentGable === 'string' || p.kitRoof) return feature;
-  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.eavesM;
+  const roof = segmentRoof(d.seed, String(p.facadeStyle ?? ''), d.roofRiseM), top = d.plotEavesM ?? d.eavesM;
   const { roofDormer: _dice, roofShapeTag: _tag, ...rest } = p;
+  // Photo evidence of a roof storey inside the measured top (EVIDENCE_ROOF_RISE_M): the cornice drops, the top stays.
+  const ev = d.roofEvidence;
+  // A short slope behind the cornice for a hoist-dormer row or a dormer-form read/default; a full mansard otherwise.
+  const rise = ev?.hoist || ev?.form === 'dormers' ? EVIDENCE_HOIST_RISE_M : EVIDENCE_ROOF_RISE_M;
+  const style = String(p.facadeStyle ?? ''), lateStyle = style === 'postwar' || style === 'modern' || style === 'tower';
+  // 2026-11-21: a 1860-1939 plot draws its plot plan (plotPlan.ts): its storey count, its cornice, its own roof element.
+  if (!lateStyle && typeof d.year === 'number' && d.year >= PLOT_PLAN_YEARS.from && d.year <= PLOT_PLAN_YEARS.to && top > 6) {
+    const plan = plotPlan(top, d.plot, { ...(ev ? { storey: ev.storey, ...(ev.dormer ? { dormer: ev.dormer } : {}), ...(ev.hoist ? { hoist: true } : {}), ...(ev.form ? { form: ev.form } : {}), ...(ev.roofSource ? { roofSource: ev.roofSource } : {}) } : {}), ahnRiseM: d.roofRiseM ?? null });
+    return withPlotPlan(feature, rest, d, plan, roof);
+  }
+  if (roof.kind === 'flat' && ev?.storey && !lateStyle && top - rise >= 6) {
+    const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
+    const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: ev.dormer ?? 'pediment', ...(ev.hoist ? { hoist: true } : {}) }));
+    return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: +(top - rise).toFixed(3), roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,
+      rowRoof: { riseM: rise, material: roof.material, dormers, series: d.seed, tone: roof.tone, joins: { left: true, right: true } } } };
+  }
   // A flat top behind the cornice: the flat lid (no roof box; threeBuildingFeatures applyFlatRoof). The measured eaves keep
   // decorateRoof off it.
   if (roof.kind === 'flat') return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: top, roofPlanned: false, roofShape: 'flat' } };

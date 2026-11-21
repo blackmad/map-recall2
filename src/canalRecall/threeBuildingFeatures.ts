@@ -16,6 +16,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { designUnitOf } from './designUnits/drawProps.js';
+import { plotTone } from './designUnits/plotTone.js';
 import { replanTerraceRoof, roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
@@ -284,7 +285,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     // Design units: every unpainted member draws its segment's mid-range brick from the measured pool (one per segment,
     // never the darkest tones; measuredWallPool.ts segmentPoolDraw), whatever its own profile or period wall said.
-    const segWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
+    const familyWall = design?.at && !specLookOf(p)?.painted ? segmentPoolDraw(design.at[0], design.at[1], bay.archetype, design.seed) : null;
+    // Round 2 (#399): each plot its own tone inside the family brick (designUnits/plotTone.ts).
+    // Round 3: a plot whose wall colour was read (Commelinstraat's middle house) draws that colour.
+    const readWall = design && typeof p.designWallHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designWallHex) ? p.designWallHex : null;
+    const segWall = readWall ?? (familyWall && design?.plotSeed ? plotTone(familyWall, design.plotSeed) : familyWall);
     if (segWall) profileWall = segWall;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: segWall ?? bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     // Lane retail-look round 3c (`?retailGround=1`): bay.groundHex here is the shop grammar's guess (no recipe is passed),
@@ -455,7 +460,18 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
-  if (design) { building.seed = design.seed; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; }
+  if (design) { building.seed = design.seed; if (design.plotSeed) building.plotSeed = design.plotSeed; if (design.plotBreak) building.plotBreak = design.plotBreak; building.designSlice = { fromM: design.fromM, toM: design.toM, moduleM: design.moduleM }; if (design.bays) building.designBays = design.bays; if (design.bayPitchM) building.designPitchM = design.bayPitchM; const ds = p.designStoreys as { storeys?: unknown; groundM?: unknown } | undefined; if (ds && Number(ds.storeys) >= 2 && Number(ds.groundM) > 0) building.designStoreys = { storeys: Number(ds.storeys), groundM: Number(ds.groundM) }; if (Array.isArray(p.designBalconies)) building.plotBalconies = (p.designBalconies as unknown[]).map(Number).filter(n => Number.isInteger(n) && n >= 1);
+    if (p.designFrames === true) building.designFrames = true;
+    if (p.designPlainHeads === true) building.plainHeads = true;
+    const dd = p.designDress as Record<string, unknown> | undefined;
+    if (dd && typeof dd === 'object') building.designDress = { ...(dd.stone === 'plinth' || dd.stone === 'ground' ? { stone: dd.stone } : {}), ...(dd.bands === 'ground' || dd.bands === 'all' ? { bands: dd.bands } : {}), ...(dd.pilasters === 'corners' || dd.pilasters === 'centre' ? { pilasters: dd.pilasters } : {}) };
+    // The plot's read white heads (plotPlan.ts WHITE_HEAD_DRESSING): the house rows' head dressing over every upper window.
+    const dh = p.designHeads as { dressing?: unknown; shape?: unknown } | undefined;
+    if (dh && typeof dh.dressing === 'string' && (dh.shape === 'flat' || dh.shape === 'segmental')) building.rowDress = { ...(building.rowDress ?? {}), heads: [{ a0: 0, a1: 1, shape: dh.shape, dressing: dh.dressing as never }] };
+    // Belt review (designUnits/draw.ts withSoloPlot): the read cornice (row-cornice kinds) and the read door place.
+    if (typeof p.designCornice === 'string') building.rowDress = { ...(building.rowDress ?? {}), cornice: p.designCornice };
+    const dr = p.designDoor as { index?: unknown; of?: unknown } | undefined;
+    if (dr && Number.isInteger(dr.index) && Number.isInteger(dr.of) && Number(dr.of) > Number(dr.index)) building.rowDress = { ...(building.rowDress ?? {}), door: { side: 'left', index: Number(dr.index), bays: Number(dr.of) } }; }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).

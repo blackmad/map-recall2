@@ -15,20 +15,41 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Design units (P0): option A approved on #397 — Ring gate #399 waiting on David
+## Design units (P0): option A approved on #397 — Ring round 3 layers waiting on David (`ring-r3`)
 
 David chose **A** on #397 (2026-11-19): units are the identity everywhere, elevations draw in segments, and Centrum plots stay separate unless something joins them. The Ring layer comes first. The staged belt, Centrum and De Pijp looks stay held, and #392 and #393 stay paused.
 
 - **Ring (tier C): on main behind `?designUnits=1`, default off.**
   - 3,235 segments; AHN-measured eaves and roofs; one design per segment; era windows with light frames; mid-range local brick.
-  - Gate: **#399**, 18 blocks on desktop and phone with Node sheets for the two rows. It asks David block by block: better, the same or worse than today.
-  - His verdict decides whether the flag goes on by default. Do nothing more on the Ring until he answers.
+  - Gate **#399**: David, 2026-11-20: "neutral-to-worse - you're over aggressively collapsing buildings". An ordekaart project of 2–6 plots is still separate houses; round 1 drew one slab per project.
+  - **Round 2 (on the branch, flag only, flag-off hashes unchanged):** the unit is a family and each plot is its own house. Shared: AHN eaves line (each plot's own AHN front within 0.3 m), brick family, window type and frames, roof. Per plot: a party-wall pier, the plot's own cornice ending on an end block, its own door place, a wall tone within ±0.03 L, its own window heads, door dressing and an occasional balcony row. Plots merge only on photo evidence (face-intent `identical`/`sameAs`, same-building "one"): 3 segments citywide, none in the gate blocks.
+  - Round 2 sheets: 18 gate blocks plus Marnixplein and Goudsbloemstraat, Node only (`scripts/design-units/review-sheets.ts`), stacked photo, today, round 1 and round 2. They go to David on the planning session's review page, not as an issue. Nassaukade 14713 reads as one palace-like front in the photo, but round 2 splits it into four houses because there is no evidence to merge them.
+  - **Roof storeys (2026-11-20, David: "why do r1 and r2 both lose the mansards"):**
+    - AHN cannot see the Ring's front mansards and hoist dormers. Behind the front, the DSM is flat at the eaves line, so the rise is about 0 under any AHN measure; only 77 of 3,235 segments reach 1.8 m.
+    - Roof storeys now come from photo evidence: the photo-row review of the 18 gate blocks (`scripts/design-units/roof-evidence.json`), else the members' D1 reads. That covers 247 segments with a roof storey and 12 without; 90% of the Ring's readable D1 roof reads show one.
+    - The storey is drawn inside the measured top. The cornice drops 1.4 m for a hoist-dormer row, 2.6 m for a mansard. There is one dormer per house front.
+    - The remaining ~2,970 segments have no evidence and stay flat. Deciding whether the 90% base rate becomes a prior is David's call.
+  - **Plot plan (2026-11-21, David on 9051 "we're getting the story count wrong", on 14817 "we missed the pointy ones", "the ground floors are very non-representative"; `designUnits/plotPlan.ts`):**
+    - Storeys come from a read (the gate photo rows `scripts/design-units/plot-reads.json`, else D1), else 4. 72 of 78 photo-read gate plots have 4 storeys over measured tops of 12.3 to 19.7 m; the eaves formula matched 7 of 78.
+    - The plot fit decides where the roof storey stands. A top within 0.6 m of the wall the count needs is the cornice, and the roof storey (2.8 m) goes on top: 9051. Otherwise it stands inside the top, 1.2 to 3 m: Rustenburgerstraat 1.2, Admiraal De Ruijterweg 3.
+    - Each plot draws its own roof element (dormer roof, mansard, or a planner gable on the cornice line). Unread plots are mirror-filled: Admiraal De Ruijterweg ABAABA, Ruyschstraat AABAABAABAA.
+    - Ground use comes from `specShop`; a souterrain gives a taller ground storey and a stoop.
+    - Balconies are a new kit part, `plotBalconies`: one per stated storey on the middle axis. A read that saw none switches off the dice balconettes.
+    - On the 18 gate blocks, r2's storeys now match the photo. today drew 3–6 and r1 5–6. Those 18 are the read source, so this is not an independent test.
+    - The preview row fix: Rustenburgerstraat drew 7 of 9 plots and Van Ostadestraat 7 of 11. Bilderdijkstraat drew 2 of 6 because an installed anchor drew only its model; all 6 of its pands are installed chunk faces, so the flag changes nothing there.
+  - **Round 2 verdicts (2026-11-21, `ring-r2`): 13 better, 4 same, 0 worse.** Round 3 (flag only, flag-off hashes unchanged) answers them; layers in `artifacts/design-units/r3/layers/` (today, r2, r3, photo-row at 50 px/m):
+    - White detailing: Ring plots built 1860–1915 draw full white frames (D1: 88–90% white frames per era); read `whiteHeads`/`stringCourses` draw the kit heads and courses; a plot read with plain heads drops the dice lintels.
+    - New per-plot read fields in `plot-reads.json` and the B prompt: `headShape`, `stone`, `bands`, `pilasters` (corners/centre), `wallHex`, `bays`, `dormers` (count), `gable {riseM, widthM, offsetM, window}`.
+    - Kit changes: off-centre crowns (`RowCrown.offsetM`), a centre white column, ground-only speklagen, bluestone plinth on a read, hoist beams no longer push a dormer off the slope (`rowHoistOut`), a narrow crown keeps its saddle low.
+    - Gate blocks split per street face and per bearing (24 blocks); the photo row never stretches a crop more than 15% (true scale plus a hatched "no photo" gap, `coverage` in `photo-row.json`).
+    - Open: Nicolaas Maesstraat 155454 (corner pand) draws its read colour but not its heads and dormer. Johannes Verhulststraat needs a new kit for asymmetric two-bay 1900s fronts (not built). Ruyschstraat's grey middle pair is an installed chunk model, not design units. Short crops remain on Bilderdijkkade 113152, Roemer Visscherstraat, Tweede Jan Steenstraat 160616, Blasiusstraat 155375 and Amsteldijk 157451 (BAG walls shorter than the slice; no panorama gave the whole wall).
+  - David's verdict on round 3 decides whether the flag goes on by default.
 - **What the Ring tier does not draw:** bands, arched portals, stoops, French balconies, wall dormers. Wall colour is seeded where there is no photo read. These are the next kit work once #399 is answered.
 - **Under A, data only so far (staged in `artifacts/design-units/staging/`; `docs/reports/design-units-phase0-20261119.md`):**
   - **Gordel:** with `GORDEL_RULE`, 27% of the units holding liked rows still disagree with them. Next step: let published records split segments.
   - **Centrum joins:** 425 segments; Marnixplein and Goudsbloemstraat each come out as one segment. 18 of the 60 photo-read "separate" runs get joined; tighten the AHN-plus-year join before anything draws.
   - **T8 ledger, Ring fronts with the flag on:** A 3%, B 2%, C 85%, D 10%.
-- **Gordel and Centrum renderer work waits for David's verdict on #399.**
+- **Gordel and Centrum renderer work waits for David's verdict on the Ring (round 2).**
 - Owner: the design-units integrator. Worktree `integrator-design-units-20261119`, port 4720. Hand-off: `docs/handoffs/design-units-inflight-20261119.md`.
 
 ## Paused lanes, 2026-11-16 evening — resumed 2026-11-19 (P0): `docs/handoffs/inflight-20261116.md`
