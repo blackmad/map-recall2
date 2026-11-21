@@ -232,10 +232,12 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
     // narrower crown keeps its saddle low (its share of the front), so the cheeks beside it stay low roof, not wall.
     const gr = d.plot?.gable, W = d.toM - d.fromM;
     if (g && g.kind === 'gable' && gr) {
-      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = shape === 'plain' ? 'point' : shape === 'raisedNeck' ? 'neck' : shape;
+      // Belt review: a crown read's form (its shape and the kit's RowCrown parts) over the shape's stock form.
+      const { shape: formShape, ...formParts } = gr.form ?? {};
+      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = formShape ?? (shape === 'plain' ? 'point' : shape === 'raisedNeck' ? 'neck' : shape);
       const riseM = +(gr.riseM ?? (crownShape === 'point' ? Math.min(5, POINT_GABLE_RISE_PER_M * (foot ?? W)) : g.riseM)).toFixed(2);
       const crown: RowCrown = { shape: crownShape as RowCrown['shape'], riseM, ...(foot ? { footW: foot } : {}), ...(foot && gr.offsetM ? { offsetM: gr.offsetM } : {}),
-        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}), ...(gr.belt ? { dress: 'belt' as const } : {}) };
+        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}), ...(gr.belt ? { dress: 'belt' as const } : {}), ...formParts };
       return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind,
         rowCrown: crown, rowCrownRoofRiseM: foot ? +Math.min(rowCrownRoofRise(crown, W), riseM * foot / W).toFixed(3) : rowCrownRoofRise(crown, W), designPlot: { ...extra.designPlot as object, riseM } } };
     }
@@ -277,10 +279,12 @@ export const SOLO_CORNICE_DRESS: Readonly<Record<string, RowCorniceDress>> = {
   bracketed: { supports: 'consoles', scale: 1.4 },
   frieze: { supports: 'modillions', frieze: 'panels', scale: 1.4 },
 };
+/** A simple cornice drawn as the timber cornice when the crown read states its parts (a centre, consoles, a frieze). */
+export const SOLO_SIMPLE_DRESS: RowCorniceDress = { scale: 1 };
 /** The wall band a timber cornice takes off the top storey (m): corona, bed moulding, architrave and its frieze (the storeys
  *  stop under it, so the top windows keep their heads under the frieze). facadeOrnaments.ts ROW_TIMBER_CORNICE. */
 export function soloCorniceBandM(dress: RowCorniceDress): number {
-  const K = { corona: 0.2, bed: 0.16, architrave: 0.1, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85 } } as const;
+  const K = { corona: 0.2, bed: 0.16, architrave: 0.1, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85, oculi: 0.85 } } as const;
   return +((dress.scale ?? 1) * (K.corona + K.bed + (dress.frieze ? K.architrave + K.frieze[dress.frieze] : dress.supports === 'consoles' ? 0.45 : 0))).toFixed(2);
 }
 /** White frames as the belt read paints them (the sash bars and frames, the texture's accent channel); dark otherwise. */
@@ -299,7 +303,10 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
   if (shares && shares.length === plan.storeys && shares.every(x => Number.isFinite(x) && x > 0)) out.designStoreys = { ...(props.designStoreys as object), shares: [...shares] };
   if (typeof f?.whiteFrames === 'boolean') out.designFrameHex = f.whiteFrames ? SOLO_FRAME_HEX.white : SOLO_FRAME_HEX.dark;
   const kind = f?.attic && f.cornice !== 'attic-frieze' ? 'attic-frieze' : f?.cornice;
-  const dress = !gabled && kind ? SOLO_CORNICE_DRESS[kind] : undefined;
+  // A crown read's cornice parts over the kind's own (a simple cornice takes the timber cornice when it states any).
+  const cform = f?.corniceForm && Object.keys(f.corniceForm).length ? f.corniceForm : undefined;
+  const base = kind ? SOLO_CORNICE_DRESS[kind] ?? (cform ? SOLO_SIMPLE_DRESS : undefined) : undefined;
+  const dress = !gabled && base ? (cform ? { ...base, ...cform } : base) : undefined;
   // The ground openings as measured, and the street door in a doorcase (a stone case when read dressed, else the belt's
   // white timber frame; a fanlight when read; the belt's near-black leaf).
   if (f?.groundOpenings && plan.ground !== 'shop') out.designGround = { ...f.groundOpenings };

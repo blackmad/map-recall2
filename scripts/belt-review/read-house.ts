@@ -22,7 +22,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { costOf, houseReadPrompt, readProblems, type HouseRead } from '../../src/canalRecall/beltReview/houseRead.ts';
+import { costOf, crownFormProblems, crownFormPrompt, houseReadPrompt, readProblems, type HouseRead } from '../../src/canalRecall/beltReview/houseRead.ts';
 
 const REPO = path.resolve(import.meta.dirname, '../..');
 const SERVE = '/Users/blackmad/Code/map-recall2-worktrees/belt-review-serve';
@@ -65,6 +65,9 @@ export async function cropImage(c: Crop, maxEdge = MAX_EDGE_PX): Promise<{ buf: 
   return { buf: await sharp(cut).resize(w, h).jpeg({ quality: 85 }).toBuffer(), w, h };
 }
 
+/** The crop's pixels per metre as sent (the candidate's ppm, scaled with the crop). */
+export const cropPpm = (c: Crop, w: number) => +(c.ppm * w / Math.max(1, c.spanPx[1] - c.spanPx[0])).toFixed(3);
+
 export interface AntUsage { input_tokens: number; output_tokens: number; [k: string]: unknown }
 /** One Messages call through the `ant` CLI: images first, then the text. Returns the text and usage. */
 export function antCall(images: Buffer[], text: string, model: string, maxTokens = 4000): { text: string; usage: AntUsage; stop: string } {
@@ -88,6 +91,35 @@ if (import.meta.main ?? process.argv[1]?.endsWith('read-house.ts')) {
   const cropDir = path.join(REPO, '.cache/belt-review/read-crops', faceId);
   fs.mkdirSync(cropDir, { recursive: true });
   let spent = 0, n = 0;
+  // --part crown: the crown read only (houseRead.ts crownFormPrompt), merged into the house's existing answer as
+  // `crownForm` (its first read, corrections and measures kept); its call is kept beside it as `crownRead`.
+  if (opt('part') === 'crown') {
+    for (const c of faceCrops(faceDir, stateDir)) {
+      if (only.size && !only.has(c.house) && !only.has(c.pandId)) continue;
+      const entry = file.reads[c.house];
+      if (!entry?.answer || entry.answer.readable === false) { console.log(`${c.house}: no first read`); continue; }
+      if (entry.answer.crownForm && !argv.includes('--force')) continue;
+      if (spent >= budget) { console.log(`budget $${budget} reached; stopping`); break; }
+      const img = await cropImage(c);
+      const prompt = crownFormPrompt(c.address, img.w, img.h, entry.answer);
+      let r = antCall([img.buf], prompt, model, 3000), form: any = null, problems: string[] = [];
+      try { form = jsonOf(r.text); problems = crownFormProblems(form); } catch { problems = ['unparsed']; }
+      const usage = { input_tokens: r.usage.input_tokens, output_tokens: r.usage.output_tokens };
+      if (problems.length) {
+        r = antCall([img.buf], prompt, model, 6000);
+        usage.input_tokens += r.usage.input_tokens; usage.output_tokens += r.usage.output_tokens;
+        try { form = jsonOf(r.text); problems = crownFormProblems(form); } catch { form = null; problems = ['unparsed']; }
+      }
+      const costUsd = costOf(usage);
+      spent += costUsd; n++;
+      if (form && !problems.length) entry.answer.crownForm = { ...form, px: { ...form.px, w: img.w, h: img.h, ppm: cropPpm(c, img.w) } };
+      entry.crownRead = { model, at: new Date().toISOString(), usage, costUsd, cropPx: [img.w, img.h], ...(problems.length ? { problems, raw: r.text.slice(0, 400) } : {}) };
+      fs.writeFileSync(outFile, JSON.stringify(file, null, 1) + '\n');
+      console.log(`${c.house} ${c.address}: ${form?.kind} claws ${form?.claws} cap ${form?.cap} neck ${form?.neckLights} lower ${form?.lowerLights} centre ${form?.centre} $${costUsd.toFixed(4)}${problems.length ? ` problems: ${problems.join(',')}` : ''}`);
+    }
+    console.log(`crown read: ${n} calls, $${spent.toFixed(3)}`);
+    process.exit(0);
+  }
   for (const c of faceCrops(faceDir, stateDir)) {
     if (only.size && !only.has(c.house) && !only.has(c.pandId)) continue;
     const prev = file.reads[c.house];

@@ -18335,6 +18335,6373 @@
      "other": 1
     }
    }
+  },
+  "kg-pass1": {
+   "at": "2026-11-21T14:50:20.070Z",
+   "model": "claude-opus-5-5",
+   "houses": {
+    "0363100012175701": {
+     "address": "Herengracht 90",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+     "renderHash": "a4d021dc5f378c9842bbcb50",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.38,
+       0.22,
+       0.2,
+       0.2
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.7,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.29,
+       0.23,
+       0.23,
+       0.25
+      ],
+      "groundWindowRatio": 0.83,
+      "doorRatio": null,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "whiteFrames",
+       "expected": "white window frames",
+       "seen": "dark red window frames",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "dormers",
+       "expected": "one central dormer",
+       "seen": "two dormers, one offset left",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "roofStorey",
+       "expected": "white plastered attic band with central rounded stucco dormer",
+       "seen": "visible slate hipped roof with gabled dormers",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "dormers",
+       "expected": "round-arched dormer cap with side scrolls",
+       "seen": "plain pointed-pediment box dormers",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 38% of wall",
+       "seen": "lower ground storey, about 29%",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall shop windows, taller than upper windows",
+       "seen": "short shop windows, shorter than upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "shop door in middle bay",
+       "seen": "no visible door",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "three separate red awnings over the openings",
+       "seen": "one continuous red band",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain openings without lintels",
+       "seen": "striped stone lintels over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "4-over-4 sashes",
+       "seen": "windows with more, smaller panes",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3013,
+      "output_tokens": 1445
+     },
+     "costUsd": 0.04095
+    },
+    "0363100012169010": {
+     "address": "Herengracht 88",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+     "renderHash": "5212dc0fd34f5cde2e7707fa",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.25,
+       0.24,
+       0.21
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.85,
+      "crownRiseRatio": 0.25,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.23,
+       0.24,
+       0.23
+      ],
+      "groundWindowRatio": 0.9,
+      "doorRatio": null,
+      "crownRiseRatio": 0.55,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "4 storeys: ground, two upper, attic-band floor",
+       "seen": "3 storeys total incl. ground",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "raised neck gable with neck window",
+       "seen": "plain triangular gable, no neck",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "flat white block heads",
+       "seen": "arched heads with keystone blocks",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "speklagen",
+       "expected": "dense alternating white and dark brick banding",
+       "seen": "thin cream string bands only",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casement windows with toplights, cross frames",
+       "seen": "plain single dark panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door in right bay with tall fanlight",
+       "seen": "no door drawn",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "dark shopfront with white awnings, two windows plus door",
+       "seen": "red framed glass shopfront, dark fascia",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "cornice",
+       "expected": "white cornice band with block dressings below attic",
+       "seen": "thin cream band",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "no neighbour roof visible",
+       "seen": "extra grey gable at left",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3100,
+      "output_tokens": 657
+     },
+     "costUsd": 0.02554
+    },
+    "0363100012175692": {
+     "address": "Herengracht 86",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+     "renderHash": "9d4730dd4e90767caac4e3ac",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.3,
+       0.3
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": 0.7,
+      "crownRiseRatio": 0.45,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.34,
+       0.33
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.85,
+      "crownRiseRatio": 0.38,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "3 storeys: ground plus two brick upper storeys below gable",
+       "seen": "3 storeys but READ says 2",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "bays",
+       "expected": "3 bays upstairs incl. hoist/side window; ground 3 openings",
+       "seen": "2 bays upper, one ground window",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "two tall ground windows left of door",
+       "seen": "one ground window",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall whitewashed ground storey, taller than uppers",
+       "seen": "ground storey equal to uppers",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "white stucco ground storey with pilasters, brick fascia above",
+       "seen": "red brick ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "segmental rubbed-brick relieving arches over windows",
+       "seen": "flat heads",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "low basement band with pavement window",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windowSurround",
+       "expected": "white stone frames/sills on upper windows",
+       "seen": "no surrounds, dark frames",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "neck gable with tall upper part, two gable windows",
+       "seen": "low bell with one light",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "scroll claws, lantern, hoist shutter",
+       "seen": "claws and lantern missing",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "stone bands at sill levels, cornice over ground",
+       "seen": "thin bands only",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3054,
+      "output_tokens": 814
+     },
+     "costUsd": 0.0285
+    },
+    "0363100012175702": {
+     "address": "Herengracht 84",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+     "renderHash": "2fd45abddcc85da707afed0b",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.38,
+       0.32,
+       0.3
+      ],
+      "groundWindowRatio": 1.5,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.48,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.35,
+       0.35
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.55,
+      "crownRiseRatio": 0.55,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 0.4 of wall",
+       "seen": "low ground storey, about 0.3 of wall",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows much taller than upper windows",
+       "seen": "ground windows about the same height as upper",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "tall door with oval-tracery fanlight, about 3/4 of storey",
+       "seen": "short door with plain fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "relieving arches with white block ends, blocks inside dark wall",
+       "seen": "block heads sit on window tops, oversized",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "stepped gable with white corner blocks and hoist hood",
+       "seen": "plain coping steps, finial, no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "gable has 3 windows at shoulder, 1 upper attic window",
+       "seen": "one tall neck window above three",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "wallColour",
+       "expected": "dark brick runs to facade edges",
+       "seen": "light grey pilaster strips at both sides",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop with railing before door",
+       "seen": "no stoop drawn",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "lantern beside door, relief stone at right",
+       "seen": "missing",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2982,
+      "output_tokens": 708
+     },
+     "costUsd": 0.02609
+    },
+    "0363100012175703": {
+     "address": "Herengracht 82",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499",
+     "renderHash": "c6afb35521964cee0ac70c1c",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.33,
+       0.25,
+       0.22,
+       0.2
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.27,
+       0.26,
+       0.24,
+       0.23
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": null,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "6-over-6 sash windows with glazing bars",
+       "seen": "plain dark panes, no glazing bars",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "shop door in ground storey",
+       "seen": "no visible door, two display windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about a third of wall",
+       "seen": "shorter ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "awning sign 'Båton' across shopfront",
+       "seen": "plain brown fascia band, no sign",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "roofMaterial",
+       "expected": "small tiled hip barely visible behind cornice",
+       "seen": "large prominent red hipped roof",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "grey sill bands under each window row",
+       "seen": "faint sill strips only",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2990,
+      "output_tokens": 509
+     },
+     "costUsd": 0.02214
+    },
+    "0363100012175783": {
+     "address": "Herengracht 80",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "renderHash": "f924618736e6ba7e9776a1ae",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.23,
+       0.23
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.33,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.28,
+       0.24,
+       0.24,
+       0.24
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.3,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "narrow tall neck gable with claw scrolls, rounded cap",
+       "seen": "wide bell-shaped gable without neck or claws",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting above gable top",
+       "seen": "no hoist beam above gable; small bracket on facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "one window in neck",
+       "seen": "blank gable without window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "white timber pilastered shopfront-style ground storey",
+       "seen": "brick ground storey with two plain windows",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "two adjacent doors with diamond fanlights",
+       "seen": "single door with plain transom",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "wide multi-pane windows nearly as tall as upper windows",
+       "seen": "standard narrow windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windows",
+       "expected": "third-storey middle window dark French doors with railing",
+       "seen": "ordinary sash window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "small-pane sashes with white frames, no lintel blocks",
+       "seen": "windows with grey lintel bands and sills",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "plain brick facade to edges",
+       "seen": "grey pilaster strips at both sides",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2813,
+      "output_tokens": 758
+     },
+     "costUsd": 0.02641
+    },
+    "0363100012175784": {
+     "address": "Herengracht 76–78",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+     "renderHash": "8fafd4449099583637aad99b",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.37,
+       0.33,
+       0.3
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.78,
+      "crownRiseRatio": 0.5,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.32,
+       0.32
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.67,
+      "crownRiseRatio": 0.3,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "kit",
+       "field": "houses",
+       "expected": "two houses, each with own neck gable",
+       "seen": "single house with one central gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "tall neck gables with scroll claw-pieces",
+       "seen": "low wide gable-attic crown, not a neck",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "bays",
+       "expected": "5 bays total (2+3 upper, 2+2 ground)",
+       "seen": "3 bays",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "crown rises about half the wall height",
+       "seen": "short crown, about 0.3 of wall",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with pavement-level windows",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "two street doors, at bays 0 and 2",
+       "seen": "one door at left",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "plain door with carved transom, no surround",
+       "seen": "door with white pilaster surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground windows, taller than upper ones",
+       "seen": "ground windows same size as upper ones",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "plain sashes without shutters",
+       "seen": "windows flanked by open white shutters",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat heads, no visible lintel band",
+       "seen": "grey brick lintel bands over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "two light string courses across front",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beams projecting from both gable tops",
+       "seen": "no hoist beams",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "low front stoops with rails",
+       "seen": "grey blocks, no stoop steps or rails",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3436,
+      "output_tokens": 879
+     },
+     "costUsd": 0.03132
+    },
+    "0363100012175616": {
+     "address": "Herengracht 74",
+     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "renderHash": "49f624f8640ca77fe3c77120",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.34,
+       0.33,
+       0.33
+      ],
+      "groundWindowRatio": 0.85,
+      "doorRatio": 0.72,
+      "crownRiseRatio": 0.2,
+      "basementRatio": 0.22
+     },
+     "drawing": {
+      "fractions": [
+       0.34,
+       0.33,
+       0.33
+      ],
+      "groundWindowRatio": 0.75,
+      "doorRatio": 0.8,
+      "crownRiseRatio": 0.22,
+      "basementRatio": 0.1
+     },
+     "differences": [
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "curved Jugendstil shouldered gable, wide arched window band",
+       "seen": "bell gable with domed cap and two narrow round lights",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat stone lintels with segmental transom bars",
+       "seen": "flat heads, straight transoms",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "wide ground window with grilles, transom, near upper size",
+       "seen": "narrow single ground window, smaller",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "red-brown panelled door with glazing and fanlight",
+       "seen": "black plain door",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with sunken entrance and railing",
+       "seen": "thin plinth with grate only",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "speklagen",
+       "expected": "few stone bands, mainly at sill/lintel levels",
+       "seen": "many light bands across facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "window grilles on ground floor",
+       "seen": "no grilles",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2771,
+      "output_tokens": 574
+     },
+     "costUsd": 0.02256
+    },
+    "0363100012175617": {
+     "address": "Herengracht 72",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "renderHash": "e84ece0833c24c46c88b0814",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.32,
+       0.24,
+       0.23,
+       0.21
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.55,
+      "crownRiseRatio": 0.12,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.27,
+       0.25,
+       0.25,
+       0.23
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.45,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "low triangular pediment over oval oculi",
+       "seen": "tall curved neck gable with single window",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "crown: pediment over cornice, not raised-neck",
+       "seen": "raised neck gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "heavy cornices between storeys and under pediment",
+       "seen": "no heavy main cornice",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "1-over-1 sashes",
+       "seen": "multi-pane small-light sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "wallColour",
+       "expected": "dark brown/near-black painted piers with white grid",
+       "seen": "red-brown brick",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "white pilaster strips between windows",
+       "seen": "plain brick piers with block quoins",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "oval oculi in white cartouche frames",
+       "seen": "one rectangular window",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "basement",
+       "expected": "low basement band with stoop",
+       "seen": "no basement band",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground window, taller than upper windows",
+       "seen": "ground window same size as upper",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railings",
+       "seen": "no stoop",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with bracketed hood and cornice",
+       "seen": "plain framed door",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2769,
+      "output_tokens": 756
+     },
+     "costUsd": 0.0262
+    },
+    "0363100012175618": {
+     "address": "Herengracht 70",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+     "renderHash": "a581696bfeb7ebaeb41c573e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.17,
+       0.33,
+       0.27,
+       0.23
+      ],
+      "groundWindowRatio": 0.32,
+      "doorRatio": 0.78,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.16,
+       0.29,
+       0.27,
+       0.28
+      ],
+      "groundWindowRatio": 0.39,
+      "doorRatio": 0.62,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "Heavy straight cornice with attic frieze of carved cartouches above",
+       "seen": "Curved neck/bell-like top with dormer window, no cornice",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "roofStorey",
+       "expected": "Attic frieze storey with cartouche panels above cornice",
+       "seen": "Single dormer window in curved gable top",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "Deep projecting stone main cornice",
+       "seen": "No main cornice drawn",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "Large-pane casements with toplights",
+       "seen": "Small-pane multi-light sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "Tall first floor, top storey lowest",
+       "seen": "Upper storeys nearly equal, top storey tallest",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "storeyHeights",
+       "expected": "storeyShares about [0.17,0.33,0.27,0.23]",
+       "seen": "READ gives [0.2,0.3,0.23,0.27], top too tall",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "stringCourses",
+       "expected": "Projecting stone cornices at every floor level",
+       "seen": "Thin flat bands between floors",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "Dark brick side piers, stone frames only around windows",
+       "seen": "Full-height white pilaster strips at both edges",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "Door fills most of the ground storey height",
+       "seen": "Door noticeably shorter relative to the ground storey",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2531,
+      "output_tokens": 1507
+     },
+     "costUsd": 0.04026
+    },
+    "0363100012175698": {
+     "address": "Herengracht 68",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "18e22f85b5e89543063e28a9",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.24,
+       0.2,
+       0.21,
+       0.18,
+       0.17
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.82,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.2,
+       0.2,
+       0.21,
+       0.2,
+       0.19
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 1,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 0.24 of wall",
+       "seen": "ground storey equal to uppers, about 0.20",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows same size as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with fanlight, in bay 3 from left",
+       "seen": "door fills ground storey height, no oval fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses between storeys",
+       "seen": "light horizontal bands between every storey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "upper storeys diminish upward, top storey lowest",
+       "seen": "upper storeys nearly equal",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "large-pane sashes, two-over-two style",
+       "seen": "small-pane sashes with many lights",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain heads, no decorated lintels",
+       "seen": "striped/fluted lintel blocks over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "plaque above door and wall lantern",
+       "seen": "no plaque or lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "large carved consoles with deep projecting cornice",
+       "seen": "thin small consoles, shallow cornice",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3481,
+      "output_tokens": 719
+     },
+     "costUsd": 0.0283
+    },
+    "0363100012168544": {
+     "address": "Herengracht 66",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "8f42667bd30b6bea6e2832a3",
+     "good": true,
+     "photo": {
+      "fractions": [
+       0.33,
+       0.24,
+       0.21,
+       0.22
+      ],
+      "groundWindowRatio": 1.45,
+      "doorRatio": 0.72,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.23,
+       0.22,
+       0.22
+      ],
+      "groundWindowRatio": 1.35,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "wooden brown door with oval grilled fanlight",
+       "seen": "black door, rectangular barred fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "no door surround, plain white frame",
+       "seen": "pilastered white surround with cornice",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain flat openings, no hoods",
+       "seen": "striped grey hoods over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windows",
+       "expected": "large casement panes with transom, few divisions",
+       "seen": "multi-pane sash grids",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "white consoles flanking frieze windows, dentil cornice",
+       "seen": "grey consoles, flat plain cornice",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "name plaque above door",
+       "seen": "no plaque",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist hood on cornice top",
+       "seen": "small dark hook stub",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2921,
+      "output_tokens": 628
+     },
+     "costUsd": 0.02424
+    },
+    "0363100012168545": {
+     "address": "Herengracht 64",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+     "renderHash": "1f954b5cba6a289edcf44079",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.51,
+       0.27,
+       0.22
+      ],
+      "groundWindowRatio": 1.43,
+      "doorRatio": 0.53,
+      "crownRiseRatio": 0.64,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.33,
+       0.31
+      ],
+      "groundWindowRatio": 1.17,
+      "doorRatio": 0.88,
+      "crownRiseRatio": 0.68,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "raised-neck gable: wide shoulder storey, then narrow neck with claws",
+       "seen": "bell-shaped gable rising directly from the wall",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "storeyHeights",
+       "expected": "tall ground storey, about 0.51 of wall; upper storeys low",
+       "seen": "near-equal storeys 0.36/0.33/0.31",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "groundWindows",
+       "expected": "tall ground windows, about 1.4x the first-floor windows",
+       "seen": "ground windows only slightly taller than upper windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "two horizontal string courses across the facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain openings with no head detailing",
+       "seen": "grey decorative header blocks above every window",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "ornaments",
+       "expected": "oval stone cartouches on the shoulders flanking a central window",
+       "seen": "no shoulder ovals; plain wall below the gable",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "stone door frame, large leaded transom, door about half the ground storey",
+       "seen": "plain white door with small arched fanlight, nearly full height",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "few-pane windows/casements, 2x2 to 2x3 panes",
+       "seen": "many-pane sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "carved crest and ornament at the gable top",
+       "seen": "plain segmental cap",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3226,
+      "output_tokens": 1721
+     },
+     "costUsd": 0.04732
+    },
+    "0363100012167493": {
+     "address": "Herengracht 62",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+     "renderHash": "c9b4f014ac229148640bfbbe",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.38,
+       0.22,
+       0.2,
+       0.2
+      ],
+      "groundWindowRatio": 1.25,
+      "doorRatio": 0.55,
+      "crownRiseRatio": null,
+      "basementRatio": 0.33
+     },
+     "drawing": {
+      "fractions": [
+       0.25,
+       0.25,
+       0.25,
+       0.25
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey including souterrain, ~38% of wall",
+       "seen": "ground storey same height as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "souterrain band about a third of ground storey",
+       "seen": "thin grey band only",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground window taller than upper windows",
+       "seen": "ground window same size as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casements with toplights, two-light",
+       "seen": "sash windows with many panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop flight rising from left with iron railing",
+       "seen": "no stair flight, two thin posts",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without pilaster surround, stained fanlight",
+       "seen": "white pilastered door surround with plain toplight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat heads, no white heads",
+       "seen": "light decorative head panels over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "houses",
+       "expected": "one house",
+       "seen": "second house drawn at right",
+       "severity": "major"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2898,
+      "output_tokens": 658
+     },
+     "costUsd": 0.02475
+    },
+    "0363100012167492": {
+     "address": "Herengracht 60",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+     "renderHash": "92f4ff44796ad9067efe54b9",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.25,
+       0.24,
+       0.21
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": null,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.31,
+       0.24,
+       0.24,
+       0.21
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.9,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "no street door visible, two tall ground windows",
+       "seen": "door with surround in right bay",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground windows, taller than upper windows",
+       "seen": "ground window same size as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "casement with transom, four-pane upper lights",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "no window head decoration",
+       "seen": "grey striped hood caps over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "deep ornate stucco frieze with garlands and consoles",
+       "seen": "thin plain panel frieze",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "roofStorey",
+       "expected": "white stucco attic with scrolled arch surround",
+       "seen": "dark attic wall with segmental white cap",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "small metal guard rail at one upper window",
+       "seen": "no guard rail",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2872,
+      "output_tokens": 611
+     },
+     "costUsd": 0.02371
+    },
+    "0363100012167495": {
+     "address": "Herengracht 58",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+     "renderHash": "5e553ad290ab7a6793a2931e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.36,
+       0.22,
+       0.22,
+       0.2
+      ],
+      "groundWindowRatio": 1.6,
+      "doorRatio": 0.72,
+      "crownRiseRatio": null,
+      "basementRatio": 0.2
+     },
+     "drawing": {
+      "fractions": [
+       0.27,
+       0.25,
+       0.24,
+       0.24
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.08
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey with basement, about a third of wall",
+       "seen": "ground storey barely taller than uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "segmental relieving arches over windows",
+       "seen": "flat heads with keystone only",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "rusticated basement band with sunken windows and entrance",
+       "seen": "thin grey plinth with small grilles",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground windows 1.6x upper window height",
+       "seen": "ground windows about same as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "tall carved double door with fanlight, pilaster doorcase",
+       "seen": "short plain door with small fanlight",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "heavy white cornice with frieze panel",
+       "seen": "plain flat band without visible cornice projection",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "two-pane sash/T-windows, ground floor large panes",
+       "seen": "many-paned sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "stringCourses",
+       "expected": "white sill bands between storeys",
+       "seen": "thin bands; READ says none",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "no balcony guards visible at windows",
+       "seen": "no guards; READ says guard",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windowSurround",
+       "expected": "white impost blocks at arch springing",
+       "seen": "quoined block surrounds",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "house number plaque 58 beside door",
+       "seen": "no plaque",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3218,
+      "output_tokens": 801
+     },
+     "costUsd": 0.02889
+    },
+    "0363100012167494": {
+     "address": "Herengracht 56",
+     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+     "renderHash": "3323421e42b9934127057fef",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.38,
+       0.22,
+       0.2,
+       0.2
+      ],
+      "groundWindowRatio": 1.5,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.31,
+       0.23,
+       0.23,
+       0.23
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.8,
+      "crownRiseRatio": null,
+      "basementRatio": 0.1
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "1-over-1 sashes with large panes",
+       "seen": "multi-pane small-glazed sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "recessed brick relieving arches with stone imposts and keys",
+       "seen": "flat lintels with fan of white voussoir blocks",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey about 38% of wall",
+       "seen": "ground storey about 31%, too squat",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "groundWindows",
+       "expected": "tall arched-top ground windows",
+       "seen": "square-headed windows under flat hoods",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "rusticated grey stone plinth and pilastered doorcase",
+       "seen": "plain brick ground with simple light door frame",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep stucco cornice with rosette-panel frieze and balustrade panel",
+       "seen": "thin plain frieze panels",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "low iron guard rails at first-floor windows",
+       "seen": "no rails",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall lantern and house number plaque",
+       "seen": "none shown",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "dark double door with arched fanlight in stone doorcase",
+       "seen": "plain dark panel door",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "light block bands at window heads and imposts",
+       "seen": "thin continuous sill bands only",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3263,
+      "output_tokens": 768
+     },
+     "costUsd": 0.02841
+    },
+    "0363100012169218": {
+     "address": "Herengracht 54",
+     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+     "renderHash": "fb449a3918e4a69ae7edbef3",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.3,
+       0.3
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.62,
+      "crownRiseRatio": null,
+      "basementRatio": 0.2
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.34,
+       0.33
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": 0.14
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, ~40% of wall",
+       "seen": "ground storey equal to upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "central front stoop flight up to raised door",
+       "seen": "no stoop; door starts at pavement band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep bracketed cornice with many consoles",
+       "seen": "thin plain band with few small pendants",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "wallColour",
+       "expected": "pale cream/white stucco wings, grey stone centre",
+       "seen": "greenish-grey brick-textured wall",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "smooth stucco",
+       "seen": "brick coursing pattern",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "large casements with toplight, few divisions",
+       "seen": "multi-pane sash grids",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "moulded frames with pediment heads and swag panels",
+       "seen": "small eared surrounds with brick-pattern heads",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "round-arched stone doorcase, wooden double door, fanlight",
+       "seen": "plain flat dark door with transom",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "centre first-floor balcony on consoles with iron railing",
+       "seen": "no balcony",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "segmental attic sits on cornice, narrower centre",
+       "seen": "large dome-like hump behind cornice",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "grey stone central risalit with pilasters",
+       "seen": "flat uniform facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "heavy cornice band above ground storey",
+       "seen": "faint thin bands only",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 4079,
+      "output_tokens": 870
+     },
+     "costUsd": 0.03372
+    },
+    "0363100012169272": {
+     "address": "Herengracht 50–52",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+     "renderHash": "bb50ab67e25f9eac04a1aab1",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.41,
+       0.31,
+       0.28
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.7,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.38,
+       0.32,
+       0.3
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "bays",
+       "expected": "5 bays, door in third bay",
+       "seen": "6 bays with door squeezed between",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "broad stone doorcase with pilasters, entablature, arched fanlight",
+       "seen": "narrow plain door frame with flat transom",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "tall cream stucco attic storey with small windows",
+       "seen": "thin light frieze band with small lights",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "plain flat heads, no hood mouldings",
+       "seen": "ribbed head blocks over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "dressed stone surround on window above door",
+       "seen": "no surround above door",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "dormers",
+       "expected": "no visible pedimented dormer; low roof with chimneys",
+       "seen": "central pedimented dormer on tall roof",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "dark brick wall to edges",
+       "seen": "light pilaster strips at both upper edges",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "2-over-2 sashes with transoms",
+       "seen": "many-paned 6-over-6 sashes",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 4673,
+      "output_tokens": 681
+     },
+     "costUsd": 0.03231
+    },
+    "0363100012169270": {
+     "address": "Herengracht 48",
+     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+     "renderHash": "fabc989ded32140bff0804dd",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.25,
+       0.23,
+       0.22
+      ],
+      "groundWindowRatio": 1.15,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.24,
+       0.22
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.55,
+      "crownRiseRatio": null,
+      "basementRatio": 0.08
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casement windows with transom toplight, few large panes",
+       "seen": "many-paned sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "carved shell keystones over plain moulded heads",
+       "seen": "grey striped lintels with small keystone",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "full white moulded frame around each window",
+       "seen": "no full surround, only lintel and sill",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "horizontal string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than first-floor windows",
+       "seen": "ground windows about same height as upper ones",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop steps rising from the left to the door",
+       "seen": "door at pavement level, no stoop flight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with souterrain window and railing",
+       "seen": "thin grey plinth with grilles only",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "smooth grey stucco",
+       "seen": "brick-coursed wall",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "very deep coffered cornice with heavy brackets",
+       "seen": "shallow cornice with panelled frieze",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "carved crest atop cornice, wall lantern, door fanlight tracery",
+       "seen": "plain domed block, no lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "heads",
+       "expected": "slightly arched shell-ornamented heads",
+       "seen": "flat heads",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3441,
+      "output_tokens": 816
+     },
+     "costUsd": 0.03008
+    },
+    "0363100012179667": {
+     "address": "Herengracht 46",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "renderHash": "551231e8872d33ed41721a0f",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.36,
+       0.23,
+       0.2,
+       0.21
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.6,
+      "crownRiseRatio": 0.24,
+      "basementRatio": 0.25
+     },
+     "drawing": {
+      "fractions": [
+       0.31,
+       0.22,
+       0.23,
+       0.24
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.72,
+      "crownRiseRatio": 0.33,
+      "basementRatio": 0.17
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "bell/neck gable with shoulders starting above fourth-floor windows",
+       "seen": "gable starting above third storey, crown too tall",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey, about 0.36 of wall",
+       "seen": "ground storey shorter, about 0.31",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain windows, no grey head panels",
+       "seen": "grey ribbed lintel panels over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band about quarter of ground storey, double doors",
+       "seen": "low basement band with small dark opening",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "fanlight with radiating glazing bars",
+       "seen": "rectangular transom with straight bars",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "basement",
+       "expected": "dark green double basement doors",
+       "seen": "small dark window opening",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "door lantern beside entrance",
+       "seen": "no lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "top-floor/gable windows wider, four-pane casements",
+       "seen": "uniform narrow sashes",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2965,
+      "output_tokens": 694
+     },
+     "costUsd": 0.02574
+    },
+    "0363100012179669": {
+     "address": "Herengracht 44",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "renderHash": "167dc8777f2a37953d5244f3",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.31,
+       0.29
+      ],
+      "groundWindowRatio": 1.45,
+      "doorRatio": 0.9,
+      "crownRiseRatio": 0.42,
+      "basementRatio": 0.2
+     },
+     "drawing": {
+      "fractions": [
+       0.32,
+       0.24,
+       0.24,
+       0.2
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.18,
+      "basementRatio": 0.12
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "storeys",
+       "expected": "3 storeys below gable, tall ground storey",
+       "seen": "4 storeys of near-equal height below gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "tall narrow neck gable with attic window and claw-pieces",
+       "seen": "wide low bell-like cap without neck or attic window",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting from gable top",
+       "seen": "no hoist beam on gable",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door in left bay without stone surround",
+       "seen": "door with heavy stone surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 40% of wall",
+       "seen": "ground storey about 32%",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railings to raised door",
+       "seen": "no stoop drawn",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "white bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "sash windows, upper ones with small panes",
+       "seen": "many-paned sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall lantern beside door",
+       "seen": "no lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "low guard rail at one first-floor window",
+       "seen": "no guard rail",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2871,
+      "output_tokens": 721
+     },
+     "costUsd": 0.0259
+    },
+    "0363100012179670": {
+     "address": "Herengracht 42",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+     "renderHash": "7f22361dca9dfcd805208c3e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.24,
+       0.19,
+       0.19,
+       0.2,
+       0.18
+      ],
+      "groundWindowRatio": 1.15,
+      "doorRatio": 0.78,
+      "crownRiseRatio": null,
+      "basementRatio": 0.28
+     },
+     "drawing": {
+      "fractions": [
+       0.26,
+       0.25,
+       0.25,
+       0.24
+      ],
+      "groundWindowRatio": 1.08,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": 0.4
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "5 storeys including attic-window top floor below cornice",
+       "seen": "4 storeys",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "curved raised central cornice section with hoist beam",
+       "seen": "flat cornice with dome shape behind",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting from crown",
+       "seen": "no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "two-light sashes with transom, no glazing bars",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without surround, double panelled with fanlight",
+       "seen": "single door in white pilaster surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey, lower upper storeys",
+       "seen": "equal storey heights",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "brick segmental arches, not white",
+       "seen": "dark segmental arches",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2754,
+      "output_tokens": 1386
+     },
+     "costUsd": 0.03874
+    },
+    "0363100012179668": {
+     "address": "Herengracht 40",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+     "renderHash": "d89dc8d263039ede96544338",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.2,
+       0.23,
+       0.21,
+       0.19,
+       0.17
+      ],
+      "groundWindowRatio": 0.6,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.2,
+       0.24,
+       0.2,
+       0.19,
+       0.17
+      ],
+      "groundWindowRatio": 0.6,
+      "doorRatio": 0.9,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "4 storeys: ground, tall first floor, two uppers",
+       "seen": "5 storeys drawn",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casement-transom windows, French windows with arched fanlights on first floor",
+       "seen": "sash windows with small panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses, rusticated ashlar",
+       "seen": "light string courses between every storey",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "deep projecting cornice with large dense modillion brackets",
+       "seen": "thin flat cornice with small dentils",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "iron guard railings at second-storey windows",
+       "seen": "no railings",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "central door with dark surround, flanked by side doors",
+       "seen": "single central door with light surround",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "three street doors and two barred windows on ground storey",
+       "seen": "one door and four plain windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "flagpole, wall lanterns, carved sill panels, frieze above ground",
+       "seen": "no ornaments",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "plain flat heads, no decorative lintels",
+       "seen": "striped decorative lintel blocks above windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "wallFinish",
+       "expected": "horizontally rusticated grey stone ashlar",
+       "seen": "plain brick-like grey wall",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3709,
+      "output_tokens": 768
+     },
+     "costUsd": 0.0302
+    },
+    "0363100012179671": {
+     "address": "Herengracht 38",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "renderHash": "27b7ac2a7bfd7f2df8fa6a3e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.46,
+       0.35,
+       0.19
+      ],
+      "groundWindowRatio": 1.24,
+      "doorRatio": 0.66,
+      "crownRiseRatio": 0.34,
+      "basementRatio": 0.36
+     },
+     "drawing": {
+      "fractions": [
+       0.4,
+       0.35,
+       0.25
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.6,
+      "crownRiseRatio": 0.37,
+      "basementRatio": 0.3
+     },
+     "differences": [
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "tall narrow neck/step gable with pediment cap, scroll claws",
+       "seen": "broad pitched brick roof with small dormer-like neck",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "relieving arches with alternating light blocks",
+       "seen": "small white keystone blocks, no arches; ground heads flat bands",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "sash windows with blinds, multi-pane",
+       "seen": "tall narrow double sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting from gable top",
+       "seen": "no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "low top storey, about 0.19 of wall",
+       "seen": "top storey about 0.25, windows as tall as ground",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "plain entablature band above ground storey",
+       "seen": "thin string course only",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop flight rising right at door",
+       "seen": "vague pale block under door",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "cornice ledge across top of third storey",
+       "seen": "gable rises directly from thin band",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3059,
+      "output_tokens": 645
+     },
+     "costUsd": 0.02514
+    },
+    "0363100012179684": {
+     "address": "Herengracht 36",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843",
+     "renderHash": "9279ea7f9f3a500bad7c611d",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.3,
+       0.27
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.25
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.32,
+       0.32
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.65,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "grey rendered souterrain band with pavement-level door",
+       "seen": "no basement band; steps across base",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "T-windows: two lower casements with transom light",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "plain flat heads, no ornamented lintels",
+       "seen": "striped grey lintel caps over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "side-left stoop flight to door",
+       "seen": "full-width steps across front",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "three ground bays: door plus two windows",
+       "seen": "door plus two windows but door narrow with surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without surround, transom light",
+       "seen": "door with white pilastered surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "balcony guard at centre first-floor window",
+       "seen": "no balcony",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "dormers",
+       "expected": "tall hoist dormer, steep pediment with finial, balcony",
+       "seen": "plain gabled dormer on slate roof",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "roofMaterial",
+       "expected": "not visible; no roof slope seen",
+       "seen": "large grey slate roof drawn",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey 0.43, low top 0.27",
+       "seen": "near-equal storeys",
+       "severity": "major"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2955,
+      "output_tokens": 737
+     },
+     "costUsd": 0.02656
+    },
+    "0363100012168139": {
+     "address": "Herengracht 34",
+     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065",
+     "renderHash": "ccf526da9bab3efe2804ada6",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.34,
+       0.33,
+       0.33
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.35,
+       0.35
+      ],
+      "groundWindowRatio": 0.6,
+      "doorRatio": 0,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "two recessed glazed entrances left, two large windows right",
+       "seen": "dark red shopfront with two bookshop display windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "recessed entrance door in bay 0, nearly ground-storey height",
+       "seen": "no street door drawn",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground windows, taller than upper windows",
+       "seen": "short display windows, smaller than upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "heavy projecting flat slab, no consoles",
+       "seen": "frieze with decorative consoles, traditional cornice",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "smooth stone/concrete panels",
+       "seen": "grey brick wall",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallColour",
+       "expected": "warm light grey #c9c4bc",
+       "seen": "cooler mid grey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "wide windows filling bays, transom near top",
+       "seen": "narrow two-light windows with wall between",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string course",
+       "seen": "horizontal band between upper storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "horizontal guard bars on lower panes",
+       "seen": "plain glazing",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windowSurround",
+       "expected": "concrete panel grid framing each window",
+       "seen": "plain wall around windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "roof slab on stub piers over open setback",
+       "seen": "solid traditional cornice band",
+       "severity": "major"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3139,
+      "output_tokens": 791
+     },
+     "costUsd": 0.02838
+    },
+    "0363100012168069": {
+     "address": "Herengracht 32",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+     "renderHash": "1ad6d655facd0e3ddbaa9277",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.27,
+       0.27,
+       0.25,
+       0.21
+      ],
+      "groundWindowRatio": 1.15,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.27,
+       0.25,
+       0.25,
+       0.23
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.72,
+      "crownRiseRatio": null,
+      "basementRatio": 0.13
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "T-windows: large lower panes with transom lights",
+       "seen": "multi-pane sash windows with many small panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "no window heads, plain brick reveals",
+       "seen": "grey striped lintel blocks over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without surround, plain frame",
+       "seen": "white pilastered door surround with cap",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "very deep plastered cornice, nearly a storey high",
+       "seen": "moderate cornice band, shallower than photo",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "door with tall glazed transom matching window height",
+       "seen": "dark door with small top, shorter than windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows same size as upper windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "no stoop steps",
+       "seen": "steps and railing in front of door",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2875,
+      "output_tokens": 631
+     },
+     "costUsd": 0.02412
+    },
+    "0363100012168138": {
+     "address": "Herengracht 30",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583",
+     "renderHash": "525f4e488d2c9c7fc53544df",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.3,
+       0.3
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.22
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.32,
+       0.32
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "Shouldered raised central attic with heavy cornices on side wings",
+       "seen": "Small square attic box on flat cornice",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "Segmental brick arches with keystones over all windows",
+       "seen": "Round-arched ground windows, arched upper heads",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "T-windows with transom, casements, white lace curtains",
+       "seen": "Tall multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Wrought-iron balconies on first and second floor centre bay",
+       "seen": "No balconies",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Hoist beam projecting from top of gable",
+       "seen": "Small bracket in cornice, no tall beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Yellow tile panels below ground windows",
+       "seen": "No tile panels",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "Basement band about 0.22 of ground storey, two openings",
+       "seen": "Low thin basement band",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "stoop",
+       "expected": "Low stoop steps to door, no railing flight",
+       "seen": "Front stoop flight with black railing",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "Wide large ground windows, taller than upper",
+       "seen": "Narrow arched ground windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "Heavy stucco cornices capping side wings and central gable",
+       "seen": "Single plain frieze band",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2885,
+      "output_tokens": 775
+     },
+     "costUsd": 0.02704
+    },
+    "0363100012179837": {
+     "address": "Herengracht 28",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "f522c0d1a4a8a49a690da42c",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.42,
+       0.31,
+       0.27
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.8,
+      "crownRiseRatio": 0.45,
+      "basementRatio": 0.25
+     },
+     "drawing": {
+      "fractions": [
+       0.4,
+       0.31,
+       0.29
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.65,
+      "crownRiseRatio": 0.4,
+      "basementRatio": 0.17
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "sash 1-over-1 windows",
+       "seen": "multi-pane small-glazed sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "plain flat heads, no head ornaments",
+       "seen": "grey ribbed lintel blocks above each window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "plain white door frame without surround",
+       "seen": "white pilastered door surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows same size as upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "neck with shuttered hoist door window",
+       "seen": "neck gable with no window",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "carved sandstone scroll claws with arched carved cap",
+       "seen": "plain grey shoulder blocks with roundels",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam at gable top",
+       "seen": "no hoist beam on gable",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "basement",
+       "expected": "grey-painted plinth with souterrain grilles",
+       "seen": "low grey band with dark grilles",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop with side steps to left",
+       "seen": "stoop without visible side flight",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3039,
+      "output_tokens": 729
+     },
+     "costUsd": 0.02674
+    },
+    "0363100012179836": {
+     "address": "Herengracht 26",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "8b80569acdd145134377e544",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.36,
+       0.23,
+       0.22,
+       0.19
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": 0.7,
+      "crownRiseRatio": null,
+      "basementRatio": 0.22
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.26,
+       0.24,
+       0.2
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "frieze of round oculi in triplets plus consoles",
+       "seen": "three single plain ovals on plain band",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep projecting bracketed cornice",
+       "seen": "thin flat cornice band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "brick wall up to cornice, no light side bands",
+       "seen": "wide light-grey side pilasters framing brick",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop with side flight and iron railing at door",
+       "seen": "no visible stoop steps, only posts",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 0.36 of wall",
+       "seen": "ground storey about 0.30",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "groundWindows",
+       "expected": "tall ground windows with transoms, much larger than uppers",
+       "seen": "ground windows only slightly taller, no transoms",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "cream pilaster frame, arched head, cast-iron fanlight grille",
+       "seen": "plain frame with square four-pane fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "sash windows with visible white glazing bars",
+       "seen": "single dark undivided panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "small wall anchors",
+       "seen": "long horizontal tie rods across facade",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3032,
+      "output_tokens": 722
+     },
+     "costUsd": 0.02657
+    },
+    "0363100012179838": {
+     "address": "Herengracht 24",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+     "renderHash": "01d5b484ff116e3fdcb9fd7d",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.41,
+       0.34,
+       0.25
+      ],
+      "groundWindowRatio": 1.25,
+      "doorRatio": 0.72,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.33,
+       0.31
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "light grey plinth band with pavement-level basement window",
+       "seen": "no basement band, steps straight to ground",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "low top storey, tall ground storey (0.41/0.34/0.25)",
+       "seen": "near-equal storeys, top storey as tall as others",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground window clearly taller than upper windows",
+       "seen": "ground window same size as upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep cream cornice with tall plain frieze board",
+       "seen": "thin flat grey cornice band",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "T-windows / casements with few bars, curtains",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain openings, no hoods",
+       "seen": "grey ribbed lintel caps above windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "plain door, no surround, fanlight with arched top",
+       "seen": "door with pilastered surround and pediment",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "long hoist beam projecting above cornice",
+       "seen": "tiny stub on cornice",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "ground window and door heads segmental/arched",
+       "seen": "flat heads",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "guard bar on top-floor left window",
+       "seen": "no guard bar",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2836,
+      "output_tokens": 803
+     },
+     "costUsd": 0.0274
+    },
+    "0363100012179752": {
+     "address": "Herengracht 22",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+     "renderHash": "1ca655aff1f22fda76f37fa9",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.31,
+       0.26
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.81,
+      "crownRiseRatio": null,
+      "basementRatio": 0.26
+     },
+     "drawing": {
+      "fractions": [
+       0.41,
+       0.32,
+       0.27
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.74,
+      "crownRiseRatio": null,
+      "basementRatio": 0.21
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses between storeys",
+       "seen": "light horizontal bands at each floor line",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "flat/straight heads, no visible arches",
+       "seen": "dark segmental brick arches over upper windows",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "two-light casements with transom, few large panes",
+       "seen": "many-pane sash grids",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "storeyHeights",
+       "expected": "top-storey windows shorter, squat with transom bars",
+       "seen": "top-storey windows as tall as first floor",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "plain heads over ground windows",
+       "seen": "striped awning-like heads over ground windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without white pilaster surround",
+       "seen": "white pedimented door surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall lantern beside door, iron railing at front",
+       "seen": "no lantern, no railing",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3249,
+      "output_tokens": 1496
+     },
+     "costUsd": 0.04292
+    },
+    "0363100012179753": {
+     "address": "Herengracht 20",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+     "renderHash": "97304a55232e82751adf8290",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.25,
+       0.19,
+       0.18,
+       0.19,
+       0.19
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": 0.8,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.21,
+       0.21,
+       0.21,
+       0.2,
+       0.17
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about a quarter of the wall",
+       "seen": "ground storey same height as upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows about 1.4x the upper windows",
+       "seen": "ground windows same size as upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "dark fascia over glazed double doors, stone piers, mailboxes",
+       "seen": "plain bay windows and a centre door",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "door",
+       "expected": "door in right bay (bay 2) beside the glazed doors",
+       "seen": "door in centre bay",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "deep flat projecting white eaves canopy",
+       "seen": "grey cornice band with pendant brackets and side pilasters",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "no white side pilasters on the upper storeys",
+       "seen": "full-height light pilasters at both edges",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light bands between all storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "two-pane sash windows, white frames, no glazing bars",
+       "seen": "multi-pane sashes with heavy grey lintels",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "plain flat heads, no lintel blocks",
+       "seen": "ribbed stone lintel blocks over every window",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3169,
+      "output_tokens": 724
+     },
+     "costUsd": 0.02716
+    },
+    "0363100012179760": {
+     "address": "Herengracht 18",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+     "renderHash": "298b035d53b7fd522e2bc3a2",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.29,
+       0.28
+      ],
+      "groundWindowRatio": 1.25,
+      "doorRatio": 0.5,
+      "crownRiseRatio": null,
+      "basementRatio": 0.23
+     },
+     "drawing": {
+      "fractions": [
+       0.4,
+       0.31,
+       0.29
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.55,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses between storeys",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain openings without hood mouldings",
+       "seen": "light striped head blocks over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "groundWindows",
+       "expected": "large wide ground window with transom",
+       "seen": "narrow window same as uppers",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "whiteFrames",
+       "expected": "grey-green window frames",
+       "seen": "dark frames",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "sash windows, upper sash smaller",
+       "seen": "multi-pane grid windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep cornice with dentil frieze and end consoles",
+       "seen": "thin flat cornice band, small consoles",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "basement",
+       "expected": "cream plinth with dark double souterrain door",
+       "seen": "grey band with small grille",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stone steps to door at right",
+       "seen": "no visible steps, railings only",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "door with tall glazed transom above",
+       "seen": "door without separate transom",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2777,
+      "output_tokens": 646
+     },
+     "costUsd": 0.02403
+    },
+    "0363100012179761": {
+     "address": "Herengracht 16",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "renderHash": "f78d5b71c9f5700960179502",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.37,
+       0.33,
+       0.3
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.71,
+      "crownRiseRatio": 0.31,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.33,
+       0.31
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.72,
+      "crownRiseRatio": 0.38,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "Narrow tall neck gable with large carved scroll claws, square cap",
+       "seen": "Wide squat neck with plain curved claws, rounded cap",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Hoist beam projecting through gable top",
+       "seen": "No hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "Sash windows with small panes / multi-light sashes",
+       "seen": "Tall multi-pane sashes, matching but READ says 1-over-1",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "Brick relieving arches above windows, no white heads",
+       "seen": "Grey hatched lintel blocks above windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "No light string courses",
+       "seen": "Light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "Plain door, no white surround or cornice",
+       "seen": "Door with white pilastered surround and hood",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "Iron railing at second-floor centre French door",
+       "seen": "Plain sash window, no railing",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Wall lantern beside door, stone plinth with grille",
+       "seen": "No lantern, no plinth",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2883,
+      "output_tokens": 664
+     },
+     "costUsd": 0.02481
+    },
+    "0363100012179764": {
+     "address": "Herengracht 14",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+     "renderHash": "87a5e9685f08f7d8ded6f303",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.25,
+       0.23,
+       0.22
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": 0.13
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.24,
+       0.22
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.9,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "white sash windows with small panes",
+       "seen": "dark single-pane glazing, no glazing bars",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "arched relieving heads over windows",
+       "seen": "plain flat window tops",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railing up to the door",
+       "seen": "no stoop, door at pavement",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with pavement-level hatches and openings",
+       "seen": "thin dark band with vents only",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "stucco/plastered grey wall",
+       "seen": "brick wall with light side strips",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "giant pilasters between all bays",
+       "seen": "plain wall, pilasters only at corners",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "recessed panelled aprons below upper windows",
+       "seen": "no aprons",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep heavy cornice with pediment above",
+       "seen": "flat band, pediment set back and small",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "wallColour",
+       "expected": "warm grey stucco throughout",
+       "seen": "darker grey-brown wall with whiter frame",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "lantern bracket beside the door",
+       "seen": "no lantern",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3466,
+      "output_tokens": 774
+     },
+     "costUsd": 0.02934
+    },
+    "0363100012179765": {
+     "address": "Herengracht 12",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "renderHash": "916ed2c206a749dd42913ab6",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.29,
+       0.28
+      ],
+      "groundWindowRatio": 1.25,
+      "doorRatio": 0.47,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.34,
+       0.33
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.45,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, ~43% of wall",
+       "seen": "ground storey equal to upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "cream stucco ground storey with pilasters",
+       "seen": "plain brick ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "three large ground openings incl. wide central window",
+       "seen": "door plus two normal-size windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with railing and pavement-level lights",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "hoist beam projecting through attic cornice",
+       "seen": "large bell/dome shape above cornice",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep cream attic frieze with consoles and central segmental arch",
+       "seen": "thin flat frieze strip with small brackets",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "whiteFrames",
+       "expected": "dark/black window frames",
+       "seen": "white frames",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "large-pane windows with transom, few divisions",
+       "seen": "multi-pane sash grid",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat recessed heads, no brick lintels",
+       "seen": "striped brick lintel blocks over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windowSurround",
+       "expected": "central first-floor stucco aedicule with consoles and crest",
+       "seen": "plain window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with round-patterned fanlight in bay 0",
+       "seen": "door with straight-bar transom",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall-mounted lantern right of centre",
+       "seen": "no lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "brick upper front framed by stucco ground and attic",
+       "seen": "pale side pilaster strips on brick",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3433,
+      "output_tokens": 902
+     },
+     "costUsd": 0.03177
+    },
+    "0363100012179763": {
+     "address": "Herengracht 10",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+     "renderHash": "0de55d009c060b812f9c2dbc",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.35,
+       0.22,
+       0.22,
+       0.21
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": 0.85,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.28,
+       0.24,
+       0.24,
+       0.24
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": 0.27
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 35% of wall",
+       "seen": "ground storey barely taller than uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows about 1.4x upper window height",
+       "seen": "ground windows same size as upper windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "profile 0.35/0.22/0.22/0.21",
+       "seen": "near-equal storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casements with transom toplight, few large panes",
+       "seen": "sash windows with small-pane grids",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain flat white frames, flat heads",
+       "seen": "quoined surrounds with rusticated head blocks",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "tall white attic band with dense modillion cornice",
+       "seen": "thin cornice with sparse dentils",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door in bay 1, under carved doorcase",
+       "seen": "door placed between bays 1 and 2",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop flight with wrought-iron railings",
+       "seen": "two thin posts, no stoop flight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "low basement band, about 12% of ground storey",
+       "seen": "tall grey band with grilles",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "carved doorcase crest, oval fanlight, lantern, flagpole",
+       "seen": "plain door surround, rectangular fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "casement-toplight with large panes, minimal grid",
+       "seen": "gridded small panes",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3279,
+      "output_tokens": 891
+     },
+     "costUsd": 0.03094
+    },
+    "0363100012179833": {
+     "address": "Herengracht 8",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478",
+     "renderHash": "d020763dd3e5b7d998f8156b",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.26,
+       0.23,
+       0.21
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.24,
+       0.26,
+       0.25,
+       0.25
+      ],
+      "groundWindowRatio": 0.9,
+      "doorRatio": 0.8,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "storeys",
+       "expected": "4 storeys below cornice",
+       "seen": "3 window storeys plus ground, ground squat",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall stone ground storey, about 30% of wall",
+       "seen": "ground storey about 24%, no taller than uppers",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "ground",
+       "expected": "grey stone base with round-arched door and windows",
+       "seen": "brick ground with flat-headed door and window",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "round/shell arches first floor, hooded heads second floor",
+       "seen": "identical segmental keystone heads on all floors",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep bracketed cornice with dense consoles",
+       "seen": "thin plain band with small dentils",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "stepped stone attic panel with pointed top",
+       "seen": "red brick dormer box with small pediment",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "wrought-iron balcony on first floor right bay",
+       "seen": "no balcony",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "casement/T-windows with transoms",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "carved shell tympana and door head",
+       "seen": "none",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "speklagen",
+       "expected": "stone bands and block quoins throughout",
+       "seen": "only thin string courses",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2820,
+      "output_tokens": 732
+     },
+     "costUsd": 0.02592
+    },
+    "0363100012179834": {
+     "address": "Herengracht 6",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373",
+     "renderHash": "4e7f31bfd83183b7a042efbd",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.27,
+       0.23,
+       0.2
+      ],
+      "groundWindowRatio": 0.6,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.4
+     },
+     "drawing": {
+      "fractions": [
+       0.2,
+       0.28,
+       0.26,
+       0.26
+      ],
+      "groundWindowRatio": 0.55,
+      "doorRatio": 0.5,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "houses",
+       "expected": "one two-bay house filling the width",
+       "seen": "main house plus wide second brick house at right",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey with souterrain arches and raised floor",
+       "seen": "short squat ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "souterrain band, pair of arched pavement-level openings",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "white string courses at each floor level",
+       "seen": "plain brick between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep bracketed white cornice",
+       "seen": "plain flat band with small marks",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "dormers",
+       "expected": "ornate stucco dormer centred over facade",
+       "seen": "plain narrow dormer on pitched roof",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "roofStorey",
+       "expected": "mansard roof storey behind cornice",
+       "seen": "pitched slate triangle",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "arched first-floor heads, fanned voussoirs second floor",
+       "seen": "identical small block heads on all floors",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "balcony guard rail at first floor",
+       "seen": "no balcony guard",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "brick wall with white piers framing facade",
+       "seen": "wide flat grey pilaster strips",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "dormer volutes and crowning ornament",
+       "seen": "plain dormer",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2985,
+      "output_tokens": 790
+     },
+     "costUsd": 0.02774
+    },
+    "0363100100091828": {
+     "address": "Herengracht 2–4",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+     "renderHash": "11e317f8021391851c99a5b7",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.37,
+       0.33,
+       0.3
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.34,
+       0.33
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "white stuccoed pilaster-and-lintel ground frontage, tall windows",
+       "seen": "dark brick ground storey with plain windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about 37% of wall",
+       "seen": "ground storey equal to uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "three wide ground windows filling the bays",
+       "seen": "two narrow ground windows plus door",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "plain door within third bay, no surround",
+       "seen": "door with white pedimented surround",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windowSurround",
+       "expected": "plain openings without hood mouldings",
+       "seen": "striped hood mouldings above every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses on upper floors",
+       "seen": "horizontal string course lines between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "plain cream frieze band under cornice",
+       "seen": "dentil/block row in frieze",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "dormers",
+       "expected": "arched hoist dormer with projecting hoist beam",
+       "seen": "small dormer with round clock-like window, no beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "no white corner pilasters on upper storeys",
+       "seen": "wide white side pilasters framing facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "roofStorey",
+       "expected": "hipped red roof centred above facade",
+       "seen": "asymmetric roof with extra chimneys and beam at right",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3249,
+      "output_tokens": 763
+     },
+     "costUsd": 0.02826
+    }
+   },
+   "description": "review-data/belt-review/herengracht-2-90-even/description.json",
+   "summary": {
+    "houses": 42,
+    "good": 1,
+    "costUsd": 1.2171,
+    "byClass": {
+     "wiring": 282,
+     "kit": 68,
+     "read": 54
+    },
+    "byField": {
+     "wiring:whiteFrames": 1,
+     "wiring:dormers": 2,
+     "kit:roofStorey": 2,
+     "kit:dormers": 3,
+     "wiring:groundHeight": 17,
+     "wiring:groundWindows": 22,
+     "wiring:door": 30,
+     "kit:ornaments": 14,
+     "wiring:windowSurround": 10,
+     "wiring:windows": 21,
+     "read:storeys": 4,
+     "wiring:crown": 12,
+     "read:heads": 7,
+     "kit:speklagen": 1,
+     "wiring:ground": 4,
+     "read:cornice": 1,
+     "wiring:other": 13,
+     "read:bays": 3,
+     "kit:ground": 6,
+     "wiring:basement": 14,
+     "read:windowSurround": 2,
+     "read:crown": 4,
+     "wiring:ornaments": 30,
+     "wiring:stringCourses": 28,
+     "wiring:heads": 15,
+     "kit:other": 4,
+     "kit:wallColour": 1,
+     "wiring:stoop": 15,
+     "read:roofMaterial": 2,
+     "kit:door": 7,
+     "kit:windows": 2,
+     "kit:houses": 1,
+     "wiring:storeyHeights": 9,
+     "kit:crown": 7,
+     "read:speklagen": 1,
+     "wiring:cornice": 18,
+     "read:wallColour": 2,
+     "read:basement": 1,
+     "wiring:roofStorey": 3,
+     "read:storeyHeights": 2,
+     "kit:stringCourses": 1,
+     "read:windows": 16,
+     "kit:cornice": 6,
+     "read:groundWindows": 1,
+     "read:ornaments": 1,
+     "wiring:houses": 2,
+     "wiring:whiteHeads": 4,
+     "read:stringCourses": 2,
+     "kit:windowSurround": 3,
+     "kit:groundWindows": 3,
+     "wiring:wallFinish": 7,
+     "read:dormers": 1,
+     "kit:heads": 1,
+     "kit:basement": 3,
+     "wiring:storeys": 2,
+     "kit:wallFinish": 1,
+     "wiring:wallColour": 2,
+     "read:stoop": 1,
+     "kit:storeyHeights": 1,
+     "read:door": 1,
+     "kit:whiteFrames": 1,
+     "read:whiteFrames": 1,
+     "read:ground": 1,
+     "wiring:speklagen": 1
+    },
+    "major": {
+     "wiring": 92,
+     "kit": 15,
+     "read": 17
+    }
+   }
+  },
+  "kg-pass2": {
+   "at": "2026-11-21T15:04:53.098Z",
+   "model": "claude-opus-5-5",
+   "houses": {
+    "0363100012169010": {
+     "address": "Herengracht 88",
+     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444",
+     "renderHash": "ee42712f3617a3fb75261394",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.24,
+       0.2,
+       0.13
+      ],
+      "groundWindowRatio": 0.85,
+      "doorRatio": 0.85,
+      "crownRiseRatio": 0.17,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.35,
+       0.23,
+       0.22,
+       0.2
+      ],
+      "groundWindowRatio": 1.4,
+      "doorRatio": null,
+      "crownRiseRatio": 0.54,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "raised neck gable with pediment cap",
+       "seen": "plain broad triangular gable",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "storeyHeights",
+       "expected": "low top storey with smaller windows under gable",
+       "seen": "three equal upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat window heads",
+       "seen": "arched heads with keystone blocks",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "speklagen",
+       "expected": "dense white stucco banding across whole front",
+       "seen": "few thin cream bands",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "white block dressings and quoins framing windows",
+       "seen": "plain arched surrounds",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "shop with awnings, chalkboards, door at right bay",
+       "seen": "red shopfront, no door, no awnings",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey about 0.43 of wall",
+       "seen": "ground storey about 0.35",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "cross-window casements with toplights, white frames",
+       "seen": "dark single-pane windows",
+       "severity": "major"
+      },
+      {
+       "class": "other",
+       "field": "other",
+       "expected": "single house",
+       "seen": "neighbour gable drawn behind at left",
+       "severity": "minor"
+      }
+     ],
+     "problems": [
+      "differences[8]"
+     ],
+     "usage": {
+      "input_tokens": 3100,
+      "output_tokens": 1265
+     },
+     "costUsd": 0.0377
+    },
+    "0363100012175692": {
+     "address": "Herengracht 86",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
+     "renderHash": "9d4730dd4e90767caac4e3ac",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.52,
+       0.22,
+       0.26
+      ],
+      "groundWindowRatio": 1.7,
+      "doorRatio": 0.68,
+      "crownRiseRatio": 0.37,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.33,
+       0.35,
+       0.32
+      ],
+      "groundWindowRatio": 1.19,
+      "doorRatio": 0.88,
+      "crownRiseRatio": 0.4,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, about half of wall height",
+       "seen": "ground storey equal to upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "two tall ground windows left of door",
+       "seen": "one shorter ground window",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "low basement band with pavement-level window",
+       "seen": "no basement band, only steps",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "heads",
+       "expected": "segmental brick relieving arches over upper windows",
+       "seen": "flat heads",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "3 storeys below gable (READ says 2)",
+       "seen": "3 storeys drawn",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "whitewashed ground storey with white pilasters, brick fascia",
+       "seen": "brick ground storey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "no white pilasters on upper storeys",
+       "seen": "white corner pilasters up to the gable",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "bays",
+       "expected": "second floor has small extra window at left",
+       "seen": "two equal windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "hoist hatch shutter, wall lantern, carved top",
+       "seen": "none shown",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with fanlight about two-thirds of ground storey",
+       "seen": "door nearly full ground storey height",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3054,
+      "output_tokens": 1900
+     },
+     "costUsd": 0.05022
+    },
+    "0363100012175702": {
+     "address": "Herengracht 84",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878",
+     "renderHash": "2fd45abddcc85da707afed0b",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.6,
+       0.21,
+       0.19
+      ],
+      "groundWindowRatio": 1.7,
+      "doorRatio": 0.45,
+      "crownRiseRatio": 0.34,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.32,
+       0.34,
+       0.34
+      ],
+      "groundWindowRatio": 1.04,
+      "doorRatio": 0.92,
+      "crownRiseRatio": 0.53,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "groundHeight",
+       "expected": "very tall ground storey, ~0.6 of wall to eaves",
+       "seen": "squat ground storey, ~0.32 of wall",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "tall ground sash windows, ~1.7x upper windows",
+       "seen": "ground windows same height as upper",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with oval-tracery fanlight, under half ground height",
+       "seen": "door nearly full ground-storey height, plain fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railing at door",
+       "seen": "no stoop",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "storeyHeights",
+       "expected": "upper storeys low, ~0.2 each",
+       "seen": "upper storeys ~0.34 each",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "gable rise ~0.34 of wall, hoist beam with hood",
+       "seen": "taller gable, finial, no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "lantern beside door, relief stone at right",
+       "seen": "absent",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2982,
+      "output_tokens": 1258
+     },
+     "costUsd": 0.03709
+    },
+    "0363100012175783": {
+     "address": "Herengracht 80",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "renderHash": "da645234883df0536d84d130",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.23,
+       0.23,
+       0.24
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.24,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.55,
+       0.15,
+       0.15,
+       0.15
+      ],
+      "groundWindowRatio": 1.37,
+      "doorRatio": 0.96,
+      "crownRiseRatio": 0.17,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "ground storey about 30% of wall height",
+       "seen": "ground storey over half of the wall height",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "upper storeys about 23-24% each",
+       "seen": "upper storeys squashed to about 15% each",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "tall narrow neck gable rising about 0.24 of wall height",
+       "seen": "low, wide gable with a shallow rise",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting above gable top",
+       "seen": "no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "brick runs full width to the party walls",
+       "seen": "wide white side bands flank the facade",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "two adjacent doors with diamond-pattern fanlights",
+       "seen": "single door with plain transom",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "white timber pilastered front with a wide window and name fascia",
+       "seen": "plain brick ground storey with sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windows",
+       "expected": "third-storey middle window has dark french-door glazing",
+       "seen": "ordinary sash window",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2813,
+      "output_tokens": 1458
+     },
+     "costUsd": 0.04041
+    },
+    "0363100012175784": {
+     "address": "Herengracht 76–78",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+     "renderHash": "8fafd4449099583637aad99b",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.32,
+       0.28
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.72,
+      "crownRiseRatio": 0.42,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.33,
+       0.37
+      ],
+      "groundWindowRatio": 0.65,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.33,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "houses",
+       "expected": "two narrow houses, each with own neck gable",
+       "seen": "one wide house with single gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "tall neck gables with scroll claw-pieces and hoist beams",
+       "seen": "low triangular gable with small dormer-like light",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "bays",
+       "expected": "four or five bays across two houses",
+       "seen": "three bays",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey, lower upper storeys",
+       "seen": "ground storey lowest, top storey tallest",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "small ground windows, shorter than upper ones",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with pavement-level windows under raised ground",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "low front stoops with railings to both doors",
+       "seen": "no stoop, grey blocks only",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "door",
+       "expected": "two doors, left edge and centre-right",
+       "seen": "single door at left",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "plain white frames, no shutters or surrounds",
+       "seen": "white shutter-like outlines and head bands",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "no pilastered door surround",
+       "seen": "white columned door surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "two horizontal string courses",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "oval ornamented fanlight and carved transom panel",
+       "seen": "plain rectangular fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "upper attic windows have casements with guard rails",
+       "seen": "all small-pane sashes",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3436,
+      "output_tokens": 888
+     },
+     "costUsd": 0.0315
+    },
+    "0363100012175616": {
+     "address": "Herengracht 74",
+     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "renderHash": "e8635038e4d3485d6ae6869e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.36,
+       0.33,
+       0.31
+      ],
+      "groundWindowRatio": 0.9,
+      "doorRatio": 0.62,
+      "crownRiseRatio": 0.22,
+      "basementRatio": 0.2
+     },
+     "drawing": {
+      "fractions": [
+       0.34,
+       0.33,
+       0.33
+      ],
+      "groundWindowRatio": 0.85,
+      "doorRatio": 0.72,
+      "crownRiseRatio": 0.25,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band with sunken entrance and railing at right",
+       "seen": "no basement band, only a vent grille",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "segmental arched window heads/transoms",
+       "seen": "flat rectangular heads, straight transoms",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "curved Jugendstil shouldered gable with pier",
+       "seen": "classic bell-neck gable with round-arched lights",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "groundWindows",
+       "expected": "wide ground window with grilles, two panes",
+       "seen": "single narrow window",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windowSurround",
+       "expected": "continuous stone lintel band linking heads",
+       "seen": "separate stone sills and bands",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "red-brown panelled door with fanlight",
+       "seen": "dark black door",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "ground-floor window grilles",
+       "seen": "no grilles",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2771,
+      "output_tokens": 555
+     },
+     "costUsd": 0.02218
+    },
+    "0363100012175617": {
+     "address": "Herengracht 72",
+     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "renderHash": "e84ece0833c24c46c88b0814",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.32,
+       0.25,
+       0.23,
+       0.2
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.62,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.24,
+       0.22
+      ],
+      "groundWindowRatio": 1.1,
+      "doorRatio": 0.7,
+      "crownRiseRatio": 0.45,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "heavy cornice topped by triangular pediment with oval oculi",
+       "seen": "curved raised-neck gable shoulder, plain brick",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "roofStorey",
+       "expected": "top storey with two oval oculi windows below pediment",
+       "seen": "single dark rectangular window in tall brick gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep heavy main cornice under pediment",
+       "seen": "no main cornice drawn",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "heavy entablature bands between each storey",
+       "seen": "thin ledge lines only",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "large 1-over-1 sashes",
+       "seen": "small-paned multi-light sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "flat white frames with white pilasters between bays",
+       "seen": "rusticated quoined surrounds with brick between",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "three full storeys plus oculus attic under pediment",
+       "seen": "four storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railing to raised door",
+       "seen": "no stoop",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "basement",
+       "expected": "low basement band under raised ground floor",
+       "seen": "no basement band",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "bracketed door hood with cornice",
+       "seen": "simple door frame",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2769,
+      "output_tokens": 738
+     },
+     "costUsd": 0.02584
+    },
+    "0363100012175698": {
+     "address": "Herengracht 68",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "renderHash": "18e22f85b5e89543063e28a9",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.24,
+       0.2,
+       0.21,
+       0.18,
+       0.17
+      ],
+      "groundWindowRatio": 1.15,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.22,
+       0.2,
+       0.21,
+       0.2,
+       0.17
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses between storeys",
+       "seen": "light string course lines between every storey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "plain flat heads, no head ornament",
+       "seen": "grey fluted lintel blocks over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows same size as upper ones",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door with fanlight about window height, ground top",
+       "seen": "door runs below window sills, tall dark slab",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "large-pane sashes (two-over-two style)",
+       "seen": "small-pane sashes, many panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall lantern, plaque, oval fanlight",
+       "seen": "no lantern, plaque or oval fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "cornice",
+       "expected": "large carved consoles and deep projecting cornice",
+       "seen": "small flat consoles, shallow cornice",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3481,
+      "output_tokens": 595
+     },
+     "costUsd": 0.02582
+    },
+    "0363100012168545": {
+     "address": "Herengracht 64",
+     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393",
+     "renderHash": "d6499886bce35e6c7938b0c6",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.36,
+       0.33,
+       0.31
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.95,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.35,
+       0.33,
+       0.32
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.6,
+      "crownRiseRatio": 0.75,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "read",
+       "field": "storeys",
+       "expected": "4 storeys of 3 bays below gable shoulders",
+       "seen": "3 storeys of 3 bays",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteFrames",
+       "expected": "White window frames with dark green sashes",
+       "seen": "Dark brown frames with grey surrounds",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "Casement-style windows with shutters, few panes",
+       "seen": "Many-paned sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "Plain flat heads, no ornament",
+       "seen": "Grey corbelled/striped heads over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "No string courses",
+       "seen": "Horizontal grey string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "Tall neck with two windows stacked",
+       "seen": "Wide shouldered gable, one window in neck",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "Oval shell cartouches at gable shoulders",
+       "seen": "No shoulder cartouches",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Ornate carved scrolled claw-pieces and crest",
+       "seen": "Plain grey claw-pieces, no crest",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "Dark green double door, large square leaded transom",
+       "seen": "Grey single door with small arched fanlight",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "width",
+       "expected": "Facade full width up to gable",
+       "seen": "Ground storeys stepped, narrow left gap",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3226,
+      "output_tokens": 761
+     },
+     "costUsd": 0.02812
+    },
+    "0363100012169218": {
+     "address": "Herengracht 54",
+     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311",
+     "renderHash": "fb449a3918e4a69ae7edbef3",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.39,
+       0.31,
+       0.3
+      ],
+      "groundWindowRatio": 0.95,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.2
+     },
+     "drawing": {
+      "fractions": [
+       0.32,
+       0.34,
+       0.34
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": 0.15
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey (~0.39), lower uppers",
+       "seen": "near-equal storeys, ground slightly lower",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall raised ground floor over basement band",
+       "seen": "squat ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "round-arched door with fanlight in stone surround, ~0.6 of storey",
+       "seen": "flat-headed door nearly full storey height",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stone stoop with steps and planters",
+       "seen": "no stoop, door at pavement",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "stone balcony with iron railing over door",
+       "seen": "no balcony",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep bracketed cornice with many even consoles",
+       "seen": "thin cornice with few small pendants",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "wallFinish",
+       "expected": "smooth pale stucco",
+       "seen": "brick-coursed wall",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windowSurround",
+       "expected": "white moulded full frames with pediment heads, swag panels",
+       "seen": "grey eared surrounds with brick lintels",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "dark-framed casements with toplight, few large panes",
+       "seen": "many-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "large plate-glass ground windows",
+       "seen": "small sash windows like uppers",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "basement",
+       "expected": "basement band with sunken entrances and grilles; basementRatio ok",
+       "seen": "low dark band with vents only",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "grey stone central risalit with pilasters",
+       "seen": "uniform wall, no risalit",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "segmental raised attic with moulded pediment edge",
+       "seen": "plain flat grey dome shape",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "heavy cornice band above ground floor",
+       "seen": "thin beige string lines",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 4079,
+      "output_tokens": 989
+     },
+     "costUsd": 0.0361
+    },
+    "0363100012179667": {
+     "address": "Herengracht 46",
+     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "renderHash": "d583c44a6b283ded53ea8c28",
+     "good": true,
+     "photo": {
+      "fractions": [
+       0.39,
+       0.24,
+       0.19,
+       0.18
+      ],
+      "groundWindowRatio": 0.96,
+      "doorRatio": 0.57,
+      "crownRiseRatio": 0.28,
+      "basementRatio": 0.38
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.22,
+       0.21,
+       0.21
+      ],
+      "groundWindowRatio": 1.14,
+      "doorRatio": 0.69,
+      "crownRiseRatio": 0.35,
+      "basementRatio": 0.31
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses between floors",
+       "seen": "white horizontal bands between every storey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam at gable top",
+       "seen": "small hoist beam above third-storey middle window",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "basement",
+       "expected": "dark green double basement doors",
+       "seen": "dark basement windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "door",
+       "expected": "fanlight with radiating glazing bars",
+       "seen": "plain rectangular transom with straight bars",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "neck gable topped by hoist-beam hood",
+       "seen": "rounded carved cap with oval",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "gable rises about 0.28 of eaves height",
+       "seen": "gable rises about 0.35, slightly too tall",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2965,
+      "output_tokens": 1353
+     },
+     "costUsd": 0.03892
+    },
+    "0363100012179669": {
+     "address": "Herengracht 44",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "renderHash": "7c04a7e654ba96d9e3fc85ea",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.44,
+       0.3,
+       0.26
+      ],
+      "groundWindowRatio": 1.46,
+      "doorRatio": 0.79,
+      "crownRiseRatio": 0.35,
+      "basementRatio": 0.3
+     },
+     "drawing": {
+      "fractions": [
+       0.53,
+       0.16,
+       0.16,
+       0.15
+      ],
+      "groundWindowRatio": 1.47,
+      "doorRatio": 0.36,
+      "crownRiseRatio": 0.26,
+      "basementRatio": 0.25
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "storeys",
+       "expected": "3 storeys below the neck gable",
+       "seen": "4 storeys of windows below the gable",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "Tall ground storey, upper storeys about 0.30 and 0.26",
+       "seen": "Three equal, very low upper storeys",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "Tall door, about 0.8 of the ground storey",
+       "seen": "Short door, about 0.36 of the ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "Front stoop with railings up to the door",
+       "seen": "No stoop drawn",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Long hoist beam projecting from the neck top",
+       "seen": "Only a tiny stub mid-facade",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "Wall lantern beside the door",
+       "seen": "No lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "Carved claw-piece scrolls beside the neck",
+       "seen": "Plain small quarter-curves",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2871,
+      "output_tokens": 1347
+     },
+     "costUsd": 0.03842
+    },
+    "0363100012179670": {
+     "address": "Herengracht 42",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304",
+     "renderHash": "7f22361dca9dfcd805208c3e",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.23,
+       0.23
+      ],
+      "groundWindowRatio": 1.2,
+      "doorRatio": 0.6,
+      "crownRiseRatio": null,
+      "basementRatio": 0.25
+     },
+     "drawing": {
+      "fractions": [
+       0.3,
+       0.24,
+       0.23,
+       0.23
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.75,
+      "crownRiseRatio": null,
+      "basementRatio": 0.25
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "roofStorey",
+       "expected": "attic storey with single window under raised curved cornice",
+       "seen": "no attic window, plain blank crown",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "curved raised central cornice section with hoist beam",
+       "seen": "flat cornice with low dome shape behind, small beam",
+       "severity": "major"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "T-windows with large lower panes, transom above",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "T-windows, plain large panes",
+       "seen": "six-over-six style small-pane sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "double panelled door with fanlight, no pilaster surround",
+       "seen": "single door with white pilaster surround",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "stoop",
+       "expected": "low stoop of few steps, basement door under ground window",
+       "seen": "tall straight stair to door",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "heads",
+       "expected": "brick segmental arches flush with wall",
+       "seen": "dark brick arches, acceptable",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "wide ground window with multiple lights",
+       "seen": "single narrow sash window",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2754,
+      "output_tokens": 687
+     },
+     "costUsd": 0.02476
+    },
+    "0363100012179671": {
+     "address": "Herengracht 38",
+     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "renderHash": "2731cf5e518b69ad1e1d8916",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.45,
+       0.33,
+       0.22
+      ],
+      "groundWindowRatio": 1.24,
+      "doorRatio": 0.6,
+      "crownRiseRatio": 0.4,
+      "basementRatio": 0.33
+     },
+     "drawing": {
+      "fractions": [
+       0.4,
+       0.35,
+       0.25
+      ],
+      "groundWindowRatio": 0.9,
+      "doorRatio": 0.75,
+      "crownRiseRatio": 0.45,
+      "basementRatio": 0.3
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "crown",
+       "expected": "tall narrow neck gable with pediment cap, carved claws",
+       "seen": "broad spout-like gable with wide sloping shoulders",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting from gable top",
+       "seen": "no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than first-floor windows",
+       "seen": "ground windows shorter than first-floor windows",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop with steps rising at right to door",
+       "seen": "no visible stoop steps, only railing posts",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "relieving arches with alternating light voussoirs",
+       "seen": "stone block keystone fans over windows",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "windows",
+       "expected": "sash/shuttered windows, not cross-transom",
+       "seen": "tall plain sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "plain entablature band above ground storey",
+       "seen": "simple string course",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "no iron anchors visible on ground storey",
+       "seen": "wall anchor drawn on ground storey",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3059,
+      "output_tokens": 641
+     },
+     "costUsd": 0.02506
+    },
+    "0363100012179837": {
+     "address": "Herengracht 28",
+     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "renderHash": "e96c11b8eaabead4345bc286",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.4,
+       0.31,
+       0.29
+      ],
+      "groundWindowRatio": 1.25,
+      "doorRatio": 0.82,
+      "crownRiseRatio": 0.37,
+      "basementRatio": 0.27
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.32,
+       0.32
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.8,
+      "crownRiseRatio": 0.42,
+      "basementRatio": 0.15
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "sash 1-over-1 large panes",
+       "seen": "multi-pane small-light sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "whiteHeads",
+       "expected": "no window heads, plain openings",
+       "seen": "grey ribbed head blocks over every window",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "two light horizontal bands between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than first-floor windows",
+       "seen": "ground windows same size as upper",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "storeyHeights",
+       "expected": "tall ground storey about 0.41 of wall",
+       "seen": "storeys nearly equal",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "grey plinth band about a quarter of ground storey",
+       "seen": "thin basement band",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "crown",
+       "expected": "neck gable with tall narrow neck and wide shoulders",
+       "seen": "broad bell-like neck with small claws",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "large carved sandstone scroll claw pieces",
+       "seen": "small round knob claws",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "projecting hoist beam at gable top",
+       "seen": "no hoist beam on gable",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "shuttered hoist door in gable",
+       "seen": "glazed window in gable",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "stoop steps rising left of door",
+       "seen": "straight stoop in front of door",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3039,
+      "output_tokens": 809
+     },
+     "costUsd": 0.02834
+    },
+    "0363100012179761": {
+     "address": "Herengracht 16",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "renderHash": "aa74f0f514ff3f3e07c9f7ef",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.37,
+       0.33,
+       0.3
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.71,
+      "crownRiseRatio": 0.28,
+      "basementRatio": null
+     },
+     "drawing": {
+      "fractions": [
+       0.34,
+       0.33,
+       0.33
+      ],
+      "groundWindowRatio": 0.9,
+      "doorRatio": 0.6,
+      "crownRiseRatio": 0.35,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "plain sashes, few large panes",
+       "seen": "many-pane small-pane sashes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "brick relieving arches over windows, no white heads",
+       "seen": "grey hood/head blocks above windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses",
+       "seen": "two pale horizontal string courses",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "plain door, no surround",
+       "seen": "white pilastered door surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "hoist beam projecting from gable top",
+       "seen": "no hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "other",
+       "expected": "iron railing on second-floor centre window",
+       "seen": "no railing",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "crown",
+       "expected": "large carved rocaille scroll claw-pieces flanking neck",
+       "seen": "small plain sloped claw pieces",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows shorter than upper windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "tall door, ~0.7 of ground storey",
+       "seen": "door ~0.6 of ground storey",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "wall lantern beside door, stone plinth",
+       "seen": "no lantern, no plinth",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 2883,
+      "output_tokens": 721
+     },
+     "costUsd": 0.02595
+    },
+    "0363100012179764": {
+     "address": "Herengracht 14",
+     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831",
+     "renderHash": "87a5e9685f08f7d8ded6f303",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.29,
+       0.25,
+       0.23,
+       0.23
+      ],
+      "groundWindowRatio": 1.05,
+      "doorRatio": 0.8,
+      "crownRiseRatio": null,
+      "basementRatio": 0.13
+     },
+     "drawing": {
+      "fractions": [
+       0.26,
+       0.24,
+       0.25,
+       0.25
+      ],
+      "groundWindowRatio": 1.13,
+      "doorRatio": 0.95,
+      "crownRiseRatio": null,
+      "basementRatio": 0.08
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "stoop",
+       "expected": "front stoop with railings up to raised door",
+       "seen": "no stoop, door at pavement level",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "basement band ~13% of ground storey with cellar doors",
+       "seen": "thin plinth with vents only",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "arched relieving heads over every window",
+       "seen": "plain square window heads",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "sashes with small panes and glazing bars",
+       "seen": "plain undivided dark panes",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses, sill aprons only",
+       "seen": "continuous string courses between storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "door",
+       "expected": "door without surround, fanlight above",
+       "seen": "door with white pilaster surround",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "ground storey clearly tallest (~0.29)",
+       "seen": "ground storey barely taller than uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "heavy deep cornice with consoles",
+       "seen": "flat plain band cornice",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "giant pilasters between all bays",
+       "seen": "only corner strips",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "recessed panels below upper windows",
+       "seen": "no aprons",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "lantern bracket beside door",
+       "seen": "no lantern",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "wallFinish",
+       "expected": "stone/stucco with pilasters; READ ok, drawing shows brick",
+       "seen": "brick texture",
+       "severity": "minor"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3502,
+      "output_tokens": 829
+     },
+     "costUsd": 0.03059
+    },
+    "0363100012179765": {
+     "address": "Herengracht 12",
+     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "renderHash": "916ed2c206a749dd42913ab6",
+     "good": false,
+     "photo": {
+      "fractions": [
+       0.43,
+       0.29,
+       0.28
+      ],
+      "groundWindowRatio": 1.3,
+      "doorRatio": 0.47,
+      "crownRiseRatio": null,
+      "basementRatio": 0.12
+     },
+     "drawing": {
+      "fractions": [
+       0.36,
+       0.32,
+       0.32
+      ],
+      "groundWindowRatio": 1,
+      "doorRatio": 0.5,
+      "crownRiseRatio": null,
+      "basementRatio": null
+     },
+     "differences": [
+      {
+       "class": "wiring",
+       "field": "groundHeight",
+       "expected": "tall ground storey, ~43% of wall",
+       "seen": "ground storey ~36%, similar to uppers",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "groundWindows",
+       "expected": "ground windows taller than upper windows",
+       "seen": "ground windows same size as upper",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "basement",
+       "expected": "low basement band with railings at pavement",
+       "seen": "no basement band",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ground",
+       "expected": "three ground openings: fanlight-door bay, big centre window, right window",
+       "seen": "door plus two windows, left bay window missing",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "windows",
+       "expected": "casement windows with toplights",
+       "seen": "multi-pane sash windows",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "cornice",
+       "expected": "deep cream attic frieze with consoles and segmental arch",
+       "seen": "thin frieze with small consoles, faint dome",
+       "severity": "major"
+      },
+      {
+       "class": "wiring",
+       "field": "ornaments",
+       "expected": "large hoist beam projecting through attic",
+       "seen": "tiny stub hoist beam",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "stringCourses",
+       "expected": "no string courses on brick upper front",
+       "seen": "string courses under each window row",
+       "severity": "minor"
+      },
+      {
+       "class": "wiring",
+       "field": "heads",
+       "expected": "flat/segmental recessed heads, no hood",
+       "seen": "striped hood blocks above windows",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "ground",
+       "expected": "cream stucco ground storey with pilasters",
+       "seen": "brick ground storey",
+       "severity": "major"
+      },
+      {
+       "class": "kit",
+       "field": "ornaments",
+       "expected": "central first-floor stucco aedicule with consoles and crest",
+       "seen": "plain window",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "windowSurround",
+       "expected": "windows in recessed brick panels",
+       "seen": "flush windows with grey surrounds",
+       "severity": "minor"
+      },
+      {
+       "class": "kit",
+       "field": "other",
+       "expected": "no grey pilaster strips at sides",
+       "seen": "grey corner pilasters on upper storeys",
+       "severity": "minor"
+      },
+      {
+       "class": "read",
+       "field": "whiteFrames",
+       "expected": "whiteFrames false; frames dark/black",
+       "seen": "light grey-white frames",
+       "severity": "major"
+      }
+     ],
+     "usage": {
+      "input_tokens": 3473,
+      "output_tokens": 967
+     },
+     "costUsd": 0.03323
+    }
+   },
+   "description": "review-data/belt-review/herengracht-2-90-even/description.json",
+   "summary": {
+    "houses": 18,
+    "good": 1,
+    "costUsd": 0.5802,
+    "byClass": {
+     "wiring": 114,
+     "read": 27,
+     "kit": 30,
+     "other": 1
+    },
+    "byField": {
+     "wiring:crown": 6,
+     "read:storeyHeights": 2,
+     "wiring:heads": 7,
+     "wiring:speklagen": 1,
+     "kit:ornaments": 11,
+     "wiring:ground": 2,
+     "wiring:groundHeight": 6,
+     "read:windows": 6,
+     "other:other": 1,
+     "wiring:groundWindows": 10,
+     "wiring:basement": 6,
+     "read:heads": 1,
+     "read:storeys": 3,
+     "kit:ground": 3,
+     "wiring:other": 3,
+     "read:bays": 2,
+     "wiring:door": 12,
+     "read:groundHeight": 1,
+     "wiring:stoop": 8,
+     "wiring:storeyHeights": 5,
+     "wiring:ornaments": 15,
+     "wiring:wallFinish": 2,
+     "kit:door": 2,
+     "kit:windows": 1,
+     "read:houses": 1,
+     "read:door": 1,
+     "wiring:windowSurround": 3,
+     "wiring:stringCourses": 11,
+     "kit:crown": 6,
+     "read:groundWindows": 1,
+     "kit:windowSurround": 2,
+     "read:crown": 3,
+     "read:roofStorey": 1,
+     "wiring:cornice": 4,
+     "wiring:windows": 7,
+     "read:basement": 2,
+     "wiring:whiteHeads": 2,
+     "kit:cornice": 1,
+     "wiring:whiteFrames": 1,
+     "wiring:width": 1,
+     "kit:other": 2,
+     "kit:basement": 1,
+     "wiring:storeys": 1,
+     "wiring:roofStorey": 1,
+     "read:stoop": 1,
+     "kit:heads": 1,
+     "read:wallFinish": 1,
+     "read:whiteFrames": 1
+    },
+    "major": {
+     "wiring": 39,
+     "read": 13,
+     "kit": 3
+    }
+   }
   }
  },
  "about": "Belt review self-check: per house, Opus compares David's picked crop with the current drawing and the photo read, and lists differences classed wiring (read says X, drawing lacks X) | read (read wrong) | kit (kit cannot say it), with field, expected, seen, severity; plus the measured storey profile of photo and drawing. Built by scripts/belt-review/self-check.ts."

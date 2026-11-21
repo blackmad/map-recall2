@@ -17,6 +17,8 @@
  *     registration; Admiraal De Ruijterweg 3 m).
  *   - An AHN roof storey (roofRiseM >= 1.8 over the front) always stands on top at its measured rise.
  */
+import type { RowCrown } from '../houseLine/crownProfile.js';
+import type { RowCorniceDress } from '../houseSpec/row/types.js';
 
 /** The ground storey of an 1870-1920 Ring house (m): 3.6-4.0 in the photo rows. */
 export const ERA_GROUND_M = 3.8;
@@ -60,7 +62,12 @@ export type HeadShape = (typeof HEAD_SHAPES)[number];
  *  the triangle"; Jan Luijkenstraat 160504/166029 "an offset triangle roof that doesn't go the whole width"). */
 export interface PlotGable { riseM?: number; widthM?: number; offsetM?: number; window?: 'none' | 'square' | 'round' | 'segmental';
   /** Belt review: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE: claw pieces, tall neck, cap). */
-  belt?: true }
+  belt?: true;
+  /** Belt review crown read (beltReview/plotRead.ts crownMeasures): the gable's built form in the kit's RowCrown parts
+   *  (its shape, neck, shoulders, an elevated neck's rise, cap, stone, lights). Absent: the shape's stock form. */
+  form?: PlotGableForm }
+/** The RowCrown parts a crown read states (houseLine/crownProfile.ts RowCrown). */
+export type PlotGableForm = Partial<Pick<RowCrown, 'shape' | 'neckW' | 'shoulderRise' | 'cap' | 'raiseM' | 'capM' | 'footLedge' | 'neckLights' | 'lowerLights' | 'lightHead' | 'steps' | 'stone' | 'finials'>>;
 /** The default pointed-gable rise over its foot width (Admiraal De Ruijterweg: about 4.2 m on a 3.4 m foot). */
 export const POINT_GABLE_RISE_PER_M = 1.1;
 
@@ -101,6 +108,8 @@ export interface PlotFacts {
   roofMaterial?: 'tile' | 'slate';
   /** The main cornice as read (the house rows' row-cornice kinds); absent: the dice cornice. */
   cornice?: 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
+  /** Belt review crown read: the cornice's parts as read (houseSpec/row/types.ts RowCorniceDress), over the kind's own. */
+  corniceForm?: Pick<RowCorniceDress, 'supports' | 'supportsAt' | 'frieze' | 'centre' | 'centreShare' | 'centreRiseM' | 'centreCap' | 'centreLight'>;
   /** The street door: its 0-based place among `of` ground-storey openings, left to right as seen. */
   door?: { index: number; of: number; surround?: boolean; /** Belt review: a fanlight over the door as read. */ fanlight?: boolean };
   /** Street-furniture kit parts the read names (facadeExtras.ts `hoist-beam`, `wall-anchors`), forced as stated. */

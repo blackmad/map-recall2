@@ -87,7 +87,49 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 975,
+      "foot": 250,
+      "capBase": 185,
+      "apex": 125,
+      "left": 0,
+      "right": 283,
+      "neckLeft": 85,
+      "neckRight": 200,
+      "w": 283,
+      "h": 1003,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "rounded",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "square",
+     "consoles": "none",
+     "frieze": "plain"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:11:55.846Z",
+    "usage": {
+     "input_tokens": 2024,
+     "output_tokens": 175
+    },
+    "costUsd": 0.0116,
+    "cropPx": [
+     283,
+     1003
+    ]
    }
   },
   "0363100100091828": {
@@ -182,6 +224,48 @@
        "ground": "dwelling"
       }
      }
+    ],
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 805,
+      "foot": 322,
+      "capBase": 268,
+      "apex": 250,
+      "left": 28,
+      "right": 362,
+      "neckLeft": 158,
+      "neckRight": 232,
+      "w": 407,
+      "h": 913,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "rounded",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "round",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "attic",
+     "centreLight": "round",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:49.554Z",
+    "usage": {
+     "input_tokens": 2125,
+     "output_tokens": 175
+    },
+    "costUsd": 0.012,
+    "cropPx": [
+     407,
+     913
     ]
    }
   },
@@ -270,7 +354,51 @@
       "crownRiseM"
      ]
     },
-    "crownRiseM": 5.49
+    "crownRiseM": 5.49,
+    "crownForm": {
+     "kind": "elevated-neck",
+     "px": {
+      "ground": 840,
+      "foot": 310,
+      "raise": 135,
+      "shoulder": 60,
+      "capBase": 12,
+      "apex": 0,
+      "left": 0,
+      "right": 357,
+      "neckLeft": 160,
+      "neckRight": 250,
+      "w": 357,
+      "h": 865,
+      "ppm": 50
+     },
+     "claws": "plain",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 3,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:03.705Z",
+    "usage": {
+     "input_tokens": 2032,
+     "output_tokens": 654
+    },
+    "costUsd": 0.02121,
+    "cropPx": [
+     357,
+     865
+    ]
    }
   },
   "0363100012175692": {
@@ -369,7 +497,51 @@
      }
     ],
     "basementRatio": 0.12,
-    "crownRiseM": 6.04
+    "crownRiseM": 6.04,
+    "crownForm": {
+     "kind": "bell",
+     "px": {
+      "ground": 1185,
+      "foot": 320,
+      "shoulder": 250,
+      "capBase": 40,
+      "apex": 5,
+      "left": 0,
+      "right": 318,
+      "neckLeft": 55,
+      "neckRight": 215,
+      "w": 331,
+      "h": 1200,
+      "ppm": 66.466
+     },
+     "claws": "scroll",
+     "cap": "rounded",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "steps": 0,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:11.952Z",
+    "usage": {
+     "input_tokens": 2143,
+     "output_tokens": 624
+    },
+    "costUsd": 0.02105,
+    "cropPx": [
+     331,
+     1200
+    ]
    }
   },
   "0363100012175702": {
@@ -456,7 +628,50 @@
       "crownRiseM"
      ]
     },
-    "crownRiseM": 5.98
+    "crownRiseM": 5.98,
+    "crownForm": {
+     "kind": "step",
+     "px": {
+      "ground": 1150,
+      "foot": 370,
+      "capBase": 30,
+      "apex": 8,
+      "left": 0,
+      "right": 350,
+      "neckLeft": 130,
+      "neckRight": 170,
+      "w": 366,
+      "h": 1200,
+      "ppm": 65.357
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 3,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "steps": 7,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:14.940Z",
+    "usage": {
+     "input_tokens": 2227,
+     "output_tokens": 176
+    },
+    "costUsd": 0.01243,
+    "cropPx": [
+     366,
+     1200
+    ]
    }
   },
   "0363100012175703": {
@@ -542,7 +757,46 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 960,
+      "foot": 287,
+      "apex": 287,
+      "left": 0,
+      "right": 322,
+      "w": 334,
+      "h": 974,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "plain"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:17.596Z",
+    "usage": {
+     "input_tokens": 2047,
+     "output_tokens": 149
+    },
+    "costUsd": 0.01117,
+    "cropPx": [
+     334,
+     974
+    ]
    }
   },
   "0363100012175783": {
@@ -631,7 +885,50 @@
       "crownRiseM"
      ]
     },
-    "crownRiseM": 6.15
+    "crownRiseM": 6.15,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1110,
+      "foot": 405,
+      "shoulder": 300,
+      "capBase": 262,
+      "apex": 232,
+      "left": 0,
+      "right": 262,
+      "neckLeft": 80,
+      "neckRight": 185,
+      "w": 277,
+      "h": 1200,
+      "ppm": 63.972
+     },
+     "claws": "scroll",
+     "cap": "rounded",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:20.109Z",
+    "usage": {
+     "input_tokens": 2056,
+     "output_tokens": 183
+    },
+    "costUsd": 0.01188,
+    "cropPx": [
+     277,
+     1200
+    ]
    }
   },
   "0363100012175784": {
@@ -723,7 +1020,50 @@
      ]
     },
     "basementRatio": 0.15,
-    "crownRiseM": 5.45
+    "crownRiseM": 5.45,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1150,
+      "foot": 425,
+      "shoulder": 355,
+      "capBase": 210,
+      "apex": 165,
+      "left": 0,
+      "right": 645,
+      "neckLeft": 100,
+      "neckRight": 215,
+      "w": 670,
+      "h": 1200,
+      "ppm": 80.048
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:29.295Z",
+    "usage": {
+     "input_tokens": 2660,
+     "output_tokens": 652
+    },
+    "costUsd": 0.02368,
+    "cropPx": [
+     670,
+     1200
+    ]
    }
   },
   "0363100012175616": {
@@ -809,7 +1149,47 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.25
+    "basementRatio": 0.25,
+    "crownForm": {
+     "kind": "curved",
+     "px": {
+      "ground": 1180,
+      "foot": 318,
+      "capBase": 200,
+      "apex": 125,
+      "left": 15,
+      "right": 278,
+      "w": 278,
+      "h": 1200,
+      "ppm": 63.182
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 2,
+     "lightHead": "round",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:35.599Z",
+    "usage": {
+     "input_tokens": 2058,
+     "output_tokens": 420
+    },
+    "costUsd": 0.01663,
+    "cropPx": [
+     278,
+     1200
+    ]
    }
   },
   "0363100012175617": {
@@ -897,7 +1277,51 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "elevated-neck",
+     "px": {
+      "ground": 1095,
+      "foot": 345,
+      "raise": 150,
+      "shoulder": 150,
+      "capBase": 115,
+      "apex": 25,
+      "left": 0,
+      "right": 210,
+      "neckLeft": 10,
+      "neckRight": 200,
+      "w": 210,
+      "h": 1112,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 2,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:45.355Z",
+    "usage": {
+     "input_tokens": 1951,
+     "output_tokens": 722
+    },
+    "costUsd": 0.02224,
+    "cropPx": [
+     210,
+     1112
+    ]
    }
   },
   "0363100012175618": {
@@ -985,6 +1409,23 @@
       "doorRatio"
      ]
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:51.229Z",
+    "usage": {
+     "input_tokens": 3946,
+     "output_tokens": 284
+    },
+    "costUsd": 0.02146,
+    "cropPx": [
+     209,
+     1200
+    ],
+    "problems": [
+     "px"
+    ],
+    "raw": "{\"kind\":\"cornice\",\"px\":{\"ground\":1180,\"foot\":60,\"left\":0,\"right\":209},\"claws\":\"none\",\"cap\":\"none\",\"crest\":false,\"neckLights\":0,\"lowerLights\":0,\"lightHead\":\"square\",\"shoulderOvals\":false,\"footLedge\":true,\"hoistBeam\":false,\"centre\":\"none\",\"centreLight\":\"none\",\"consoles\":\"none\",\"frieze\":\"windows\"}"
    }
   },
   "0363100012175698": {
@@ -1085,6 +1526,48 @@
        "heads": "flat"
       }
      }
+    ],
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1160,
+      "foot": 200,
+      "capBase": 200,
+      "apex": 172,
+      "left": 0,
+      "right": 455,
+      "neckLeft": 60,
+      "neckRight": 372,
+      "w": 469,
+      "h": 1188,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "pediment",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "windows"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:56.638Z",
+    "usage": {
+     "input_tokens": 2363,
+     "output_tokens": 450
+    },
+    "costUsd": 0.01845,
+    "cropPx": [
+     469,
+     1188
     ]
    }
   },
@@ -1170,7 +1653,46 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 190,
+      "apex": 190,
+      "left": 0,
+      "right": 290,
+      "w": 301,
+      "h": 1023,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "windows"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:12:58.907Z",
+    "usage": {
+     "input_tokens": 2039,
+     "output_tokens": 149
+    },
+    "costUsd": 0.01114,
+    "cropPx": [
+     301,
+     1023
+    ]
    }
   },
   "0363100012168545": {
@@ -1260,7 +1782,51 @@
       "crownRiseM"
      ]
     },
-    "crownRiseM": 12.35
+    "crownRiseM": 12.35,
+    "crownForm": {
+     "kind": "elevated-neck",
+     "px": {
+      "ground": 962,
+      "foot": 392,
+      "raise": 238,
+      "shoulder": 90,
+      "capBase": 40,
+      "apex": 5,
+      "left": 0,
+      "right": 337,
+      "neckLeft": 105,
+      "neckRight": 248,
+      "w": 349,
+      "h": 982,
+      "ppm": 50
+     },
+     "claws": "carved",
+     "cap": "segmental",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 1,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:11:22.476Z",
+    "usage": {
+     "input_tokens": 2096,
+     "output_tokens": 684
+    },
+    "costUsd": 0.02206,
+    "cropPx": [
+     349,
+     982
+    ]
    }
   },
   "0363100012167493": {
@@ -1350,7 +1916,46 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.37
+    "basementRatio": 0.37,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1190,
+      "foot": 120,
+      "apex": 120,
+      "left": 0,
+      "right": 305,
+      "w": 305,
+      "h": 1200,
+      "ppm": 57.188
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:04.824Z",
+    "usage": {
+     "input_tokens": 4202,
+     "output_tokens": 290
+    },
+    "costUsd": 0.02261,
+    "cropPx": [
+     305,
+     1200
+    ]
    }
   },
   "0363100012167492": {
@@ -1434,7 +2039,49 @@
       "storeyShares",
       "groundWindowRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1060,
+      "foot": 310,
+      "capBase": 195,
+      "apex": 160,
+      "left": 0,
+      "right": 235,
+      "neckLeft": 5,
+      "neckRight": 230,
+      "w": 243,
+      "h": 1092,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "segmental",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "round",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "round",
+     "consoles": "even",
+     "frieze": "panels"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:07.879Z",
+    "usage": {
+     "input_tokens": 1983,
+     "output_tokens": 176
+    },
+    "costUsd": 0.01145,
+    "cropPx": [
+     243,
+     1092
+    ]
    }
   },
   "0363100012167495": {
@@ -1536,7 +2183,46 @@
       }
      }
     ],
-    "basementRatio": 0.2
+    "basementRatio": 0.2,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 75,
+      "apex": 75,
+      "left": 0,
+      "right": 410,
+      "w": 433,
+      "h": 1200,
+      "ppm": 57.563
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:11.576Z",
+    "usage": {
+     "input_tokens": 2317,
+     "output_tokens": 150
+    },
+    "costUsd": 0.01227,
+    "cropPx": [
+     433,
+     1200
+    ]
    }
   },
   "0363100012167494": {
@@ -1638,7 +2324,47 @@
       }
      }
     ],
-    "basementRatio": 0.12
+    "basementRatio": 0.12,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1165,
+      "foot": 235,
+      "capBase": 235,
+      "apex": 235,
+      "left": 0,
+      "right": 372,
+      "w": 372,
+      "h": 1200,
+      "ppm": 54.144
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "panels"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:13.964Z",
+    "usage": {
+     "input_tokens": 2231,
+     "output_tokens": 157
+    },
+    "costUsd": 0.01206,
+    "cropPx": [
+     372,
+     1200
+    ]
    }
   },
   "0363100012169218": {
@@ -1730,7 +2456,49 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.2
+    "basementRatio": 0.2,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1170,
+      "foot": 255,
+      "capBase": 262,
+      "apex": 145,
+      "left": 0,
+      "right": 848,
+      "neckLeft": 240,
+      "neckRight": 642,
+      "w": 870,
+      "h": 1200,
+      "ppm": 61.934
+     },
+     "claws": "none",
+     "cap": "segmental",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "segmental",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:16.731Z",
+    "usage": {
+     "input_tokens": 3006,
+     "output_tokens": 177
+    },
+    "costUsd": 0.01556,
+    "cropPx": [
+     870,
+     1200
+    ]
    }
   },
   "0363100012169272": {
@@ -1817,7 +2585,46 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 432,
+      "apex": 322,
+      "left": 0,
+      "right": 716,
+      "w": 974,
+      "h": 1067,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "windows"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:19.244Z",
+    "usage": {
+     "input_tokens": 2999,
+     "output_tokens": 148
+    },
+    "costUsd": 0.01496,
+    "cropPx": [
+     974,
+     1067
+    ]
    }
   },
   "0363100012169270": {
@@ -1922,7 +2729,49 @@
       }
      }
     ],
-    "basementRatio": 0.15
+    "basementRatio": 0.15,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1165,
+      "foot": 90,
+      "capBase": 90,
+      "apex": 20,
+      "left": 0,
+      "right": 405,
+      "neckLeft": 115,
+      "neckRight": 225,
+      "w": 432,
+      "h": 1200,
+      "ppm": 50.467
+     },
+     "claws": "none",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "panels"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:22.649Z",
+    "usage": {
+     "input_tokens": 2317,
+     "output_tokens": 176
+    },
+    "costUsd": 0.01279,
+    "cropPx": [
+     432,
+     1200
+    ]
    }
   },
   "0363100012179667": {
@@ -2021,7 +2870,50 @@
      }
     ],
     "basementRatio": 0.3,
-    "crownRiseM": 4.31
+    "crownRiseM": 4.31,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1150,
+      "foot": 262,
+      "shoulder": 245,
+      "capBase": 40,
+      "apex": 0,
+      "left": 0,
+      "right": 268,
+      "neckLeft": 40,
+      "neckRight": 175,
+      "w": 274,
+      "h": 1200,
+      "ppm": 60.115
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:25.893Z",
+    "usage": {
+     "input_tokens": 2056,
+     "output_tokens": 181
+    },
+    "costUsd": 0.01184,
+    "cropPx": [
+     274,
+     1200
+    ]
    }
   },
   "0363100012179669": {
@@ -2110,7 +3002,50 @@
      ]
     },
     "basementRatio": 0.2,
-    "crownRiseM": 3.95
+    "crownRiseM": 3.95,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1165,
+      "foot": 358,
+      "shoulder": 185,
+      "capBase": 150,
+      "apex": 82,
+      "left": 0,
+      "right": 298,
+      "neckLeft": 55,
+      "neckRight": 205,
+      "w": 333,
+      "h": 1200,
+      "ppm": 74.664
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:29.094Z",
+    "usage": {
+     "input_tokens": 2142,
+     "output_tokens": 181
+    },
+    "costUsd": 0.01219,
+    "cropPx": [
+     333,
+     1200
+    ]
    }
   },
   "0363100012179670": {
@@ -2195,7 +3130,49 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.3
+    "basementRatio": 0.3,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1180,
+      "foot": 180,
+      "capBase": 180,
+      "apex": 140,
+      "left": 0,
+      "right": 238,
+      "neckLeft": 45,
+      "neckRight": 185,
+      "w": 256,
+      "h": 1200,
+      "ppm": 58.626
+     },
+     "claws": "none",
+     "cap": "segmental",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "segmental",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:35.672Z",
+    "usage": {
+     "input_tokens": 2058,
+     "output_tokens": 443
+    },
+    "costUsd": 0.01709,
+    "cropPx": [
+     256,
+     1200
+    ]
    }
   },
   "0363100012179668": {
@@ -2285,7 +3262,46 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1145,
+      "foot": 150,
+      "apex": 150,
+      "left": 15,
+      "right": 595,
+      "w": 601,
+      "h": 1200,
+      "ppm": 45.334
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "plain"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:38.361Z",
+    "usage": {
+     "input_tokens": 2575,
+     "output_tokens": 150
+    },
+    "costUsd": 0.0133,
+    "cropPx": [
+     601,
+     1200
+    ]
    }
   },
   "0363100012179671": {
@@ -2377,7 +3393,50 @@
      ]
     },
     "basementRatio": 0.36,
-    "crownRiseM": 3.77
+    "crownRiseM": 3.77,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1195,
+      "foot": 400,
+      "shoulder": 275,
+      "capBase": 210,
+      "apex": 170,
+      "left": 2,
+      "right": 385,
+      "neckLeft": 112,
+      "neckRight": 268,
+      "w": 392,
+      "h": 1200,
+      "ppm": 69.504
+     },
+     "claws": "carved",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:46.541Z",
+    "usage": {
+     "input_tokens": 2227,
+     "output_tokens": 627
+    },
+    "costUsd": 0.02145,
+    "cropPx": [
+     392,
+     1200
+    ]
    }
   },
   "0363100012179684": {
@@ -2464,7 +3523,49 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.25
+    "basementRatio": 0.25,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1140,
+      "foot": 448,
+      "capBase": 300,
+      "apex": 258,
+      "left": 8,
+      "right": 348,
+      "neckLeft": 120,
+      "neckRight": 218,
+      "w": 369,
+      "h": 1200,
+      "ppm": 67.459
+     },
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "square",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:49.383Z",
+    "usage": {
+     "input_tokens": 2231,
+     "output_tokens": 176
+    },
+    "costUsd": 0.01244,
+    "cropPx": [
+     369,
+     1200
+    ]
    }
   },
   "0363100012168139": {
@@ -2552,7 +3653,46 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1110,
+      "foot": 340,
+      "apex": 330,
+      "left": 22,
+      "right": 430,
+      "w": 430,
+      "h": 1200,
+      "ppm": 60.314
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "plain"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:51.895Z",
+    "usage": {
+     "input_tokens": 2316,
+     "output_tokens": 147
+    },
+    "costUsd": 0.0122,
+    "cropPx": [
+     430,
+     1200
+    ]
    }
   },
   "0363100012168069": {
@@ -2649,7 +3789,46 @@
       }
      }
     ],
-    "basementRatio": 0.12
+    "basementRatio": 0.12,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 365,
+      "apex": 238,
+      "left": 5,
+      "right": 295,
+      "w": 304,
+      "h": 1200,
+      "ppm": 60.531
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:13:55.466Z",
+    "usage": {
+     "input_tokens": 2102,
+     "output_tokens": 150
+    },
+    "costUsd": 0.01141,
+    "cropPx": [
+     304,
+     1200
+    ]
    }
   },
   "0363100012168138": {
@@ -2736,7 +3915,49 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.22
+    "basementRatio": 0.22,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1185,
+      "foot": 362,
+      "capBase": 300,
+      "apex": 245,
+      "left": 0,
+      "right": 278,
+      "neckLeft": 70,
+      "neckRight": 190,
+      "w": 290,
+      "h": 1200,
+      "ppm": 60.138
+     },
+     "claws": "none",
+     "cap": "flat",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "attic",
+     "centreLight": "square",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:03.058Z",
+    "usage": {
+     "input_tokens": 2103,
+     "output_tokens": 549
+    },
+    "costUsd": 0.01939,
+    "cropPx": [
+     290,
+     1200
+    ]
    }
   },
   "0363100012179837": {
@@ -2825,7 +4046,50 @@
      ]
     },
     "basementRatio": 0.27,
-    "crownRiseM": 4.84
+    "crownRiseM": 4.84,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1150,
+      "foot": 415,
+      "shoulder": 250,
+      "capBase": 205,
+      "apex": 152,
+      "left": 0,
+      "right": 390,
+      "neckLeft": 100,
+      "neckRight": 278,
+      "w": 396,
+      "h": 1200,
+      "ppm": 64.75
+     },
+     "claws": "carved",
+     "cap": "rounded",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:09.500Z",
+    "usage": {
+     "input_tokens": 2274,
+     "output_tokens": 475
+    },
+    "costUsd": 0.0186,
+    "cropPx": [
+     396,
+     1200
+    ]
    }
   },
   "0363100012179836": {
@@ -2925,7 +4189,46 @@
       }
      }
     ],
-    "basementRatio": 0.25
+    "basementRatio": 0.25,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 290,
+      "apex": 10,
+      "left": 0,
+      "right": 358,
+      "w": 358,
+      "h": 1200,
+      "ppm": 58.449
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "oculi"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:12.027Z",
+    "usage": {
+     "input_tokens": 2191,
+     "output_tokens": 150
+    },
+    "costUsd": 0.01176,
+    "cropPx": [
+     358,
+     1200
+    ]
    }
   },
   "0363100012179838": {
@@ -3014,7 +4317,46 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.15
+    "basementRatio": 0.15,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 312,
+      "apex": 312,
+      "left": 0,
+      "right": 306,
+      "w": 306,
+      "h": 1200,
+      "ppm": 64.457
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:14.162Z",
+    "usage": {
+     "input_tokens": 2101,
+     "output_tokens": 149
+    },
+    "costUsd": 0.01138,
+    "cropPx": [
+     306,
+     1200
+    ]
    }
   },
   "0363100012179752": {
@@ -3102,7 +4444,46 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.12
+    "basementRatio": 0.12,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 265,
+      "apex": 265,
+      "left": 0,
+      "right": 568,
+      "w": 568,
+      "h": 1200,
+      "ppm": 66.617
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:17.127Z",
+    "usage": {
+     "input_tokens": 2533,
+     "output_tokens": 150
+    },
+    "costUsd": 0.01313,
+    "cropPx": [
+     568,
+     1200
+    ]
    }
   },
   "0363100012179753": {
@@ -3204,7 +4585,46 @@
       }
      }
     ],
-    "doorRatio": 0.85
+    "doorRatio": 0.85,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 132,
+      "apex": 132,
+      "left": 4,
+      "right": 322,
+      "w": 338,
+      "h": 1200,
+      "ppm": 49.902
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:23.276Z",
+    "usage": {
+     "input_tokens": 2187,
+     "output_tokens": 516
+    },
+    "costUsd": 0.01907,
+    "cropPx": [
+     338,
+     1200
+    ]
    }
   },
   "0363100012179760": {
@@ -3292,7 +4712,46 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.25
+    "basementRatio": 0.25,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 305,
+      "apex": 305,
+      "left": 0,
+      "right": 300,
+      "w": 306,
+      "h": 1200,
+      "ppm": 68.61
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:25.768Z",
+    "usage": {
+     "input_tokens": 2103,
+     "output_tokens": 150
+    },
+    "costUsd": 0.01141,
+    "cropPx": [
+     306,
+     1200
+    ]
    }
   },
   "0363100012179761": {
@@ -3381,7 +4840,50 @@
       "crownRiseM"
      ]
     },
-    "crownRiseM": 5.2
+    "crownRiseM": 5.2,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1150,
+      "foot": 425,
+      "shoulder": 265,
+      "capBase": 200,
+      "apex": 172,
+      "left": 0,
+      "right": 292,
+      "neckLeft": 90,
+      "neckRight": 205,
+      "w": 311,
+      "h": 1200,
+      "ppm": 68.653
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:28.151Z",
+    "usage": {
+     "input_tokens": 2145,
+     "output_tokens": 181
+    },
+    "costUsd": 0.0122,
+    "cropPx": [
+     311,
+     1200
+    ]
    }
   },
   "0363100012179764": {
@@ -3483,7 +4985,49 @@
       }
      }
     ],
-    "basementRatio": 0.13
+    "basementRatio": 0.13,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1135,
+      "foot": 400,
+      "capBase": 350,
+      "apex": 290,
+      "left": 0,
+      "right": 494,
+      "neckLeft": 95,
+      "neckRight": 390,
+      "w": 494,
+      "h": 1200,
+      "ppm": 49.138
+     },
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "pediment",
+     "centreLight": "none",
+     "consoles": "ends",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:31.264Z",
+    "usage": {
+     "input_tokens": 2403,
+     "output_tokens": 178
+    },
+    "costUsd": 0.01317,
+    "cropPx": [
+     494,
+     1200
+    ]
    }
   },
   "0363100012179765": {
@@ -3587,7 +5131,49 @@
       }
      }
     ],
-    "basementRatio": 0.12
+    "basementRatio": 0.12,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1170,
+      "foot": 440,
+      "capBase": 325,
+      "apex": 242,
+      "left": 0,
+      "right": 462,
+      "neckLeft": 178,
+      "neckRight": 295,
+      "w": 462,
+      "h": 1200,
+      "ppm": 53.333
+     },
+     "claws": "none",
+     "cap": "segmental",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "segmental",
+     "centreLight": "none",
+     "consoles": "even",
+     "frieze": "panels"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:38.561Z",
+    "usage": {
+     "input_tokens": 2363,
+     "output_tokens": 596
+    },
+    "costUsd": 0.02137,
+    "cropPx": [
+     462,
+     1200
+    ]
    }
   },
   "0363100012179763": {
@@ -3677,7 +5263,46 @@
       "basementRatio"
      ]
     },
-    "basementRatio": 0.12
+    "basementRatio": 0.12,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1165,
+      "foot": 340,
+      "apex": 70,
+      "left": 0,
+      "right": 501,
+      "w": 501,
+      "h": 1200,
+      "ppm": 58.031
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:42.293Z",
+    "usage": {
+     "input_tokens": 2403,
+     "output_tokens": 148
+    },
+    "costUsd": 0.01257,
+    "cropPx": [
+     501,
+     1200
+    ]
    }
   },
   "0363100012179833": {
@@ -3768,7 +5393,49 @@
       "groundWindowRatio",
       "doorRatio"
      ]
+    },
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1150,
+      "foot": 300,
+      "capBase": 230,
+      "apex": 145,
+      "left": 0,
+      "right": 221,
+      "neckLeft": 95,
+      "neckRight": 200,
+      "w": 221,
+      "h": 1200,
+      "ppm": 49.925
+     },
+     "claws": "none",
+     "cap": "pediment",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "plain"
     }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:44.881Z",
+    "usage": {
+     "input_tokens": 1974,
+     "output_tokens": 177
+    },
+    "costUsd": 0.01144,
+    "cropPx": [
+     221,
+     1200
+    ]
    }
   },
   "0363100012179834": {
@@ -3869,7 +5536,49 @@
      0.24,
      0.22
     ],
-    "basementRatio": 0.4
+    "basementRatio": 0.4,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1180,
+      "foot": 378,
+      "capBase": 265,
+      "apex": 225,
+      "left": 0,
+      "right": 210,
+      "neckLeft": 8,
+      "neckRight": 100,
+      "w": 262,
+      "h": 1200,
+      "ppm": 49.621
+     },
+     "claws": "none",
+     "cap": "flat",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": false,
+     "centre": "attic",
+     "centreLight": "square",
+     "consoles": "even",
+     "frieze": "plain"
+    }
+   },
+   "crownRead": {
+    "model": "claude-opus-5-5",
+    "at": "2026-11-21T14:14:47.333Z",
+    "usage": {
+     "input_tokens": 2060,
+     "output_tokens": 175
+    },
+    "costUsd": 0.01174,
+    "cropPx": [
+     262,
+     1200
+    ]
    }
   }
  }
