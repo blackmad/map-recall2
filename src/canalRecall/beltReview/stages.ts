@@ -382,7 +382,7 @@ const pairKey = (a: string, z: string) => `${a}|${z}`;
 export function pairQueue(b: FaceBundle): Array<[string, string]> {
   const order = b.face.pands.map(p => p.pandId);
   const unit = (id: string) => b.description?.pands.find(d => d.pandId === id)?.group?.unit?.id;
-  const splitOut = new Set(b.grouping.units.filter(u => u.source === 'david' && u.pandIds.length === 1).map(u => u.pandIds[0]));
+  const splitOut = new Set(b.grouping.units.filter(u => u.id.startsWith('david-') && u.pandIds.length === 1).map(u => u.pandIds[0]));
   const out: Array<[string, string]> = [];
   for (let i = 0; i + 1 < order.length; i++) {
     const a = order[i], z = order[i + 1], ua = unit(a);
@@ -394,11 +394,14 @@ export function pairQueue(b: FaceBundle): Array<[string, string]> {
  *  one (sameAs), everything else stays its own house. */
 export function groupingFromPairs(b: FaceBundle, pairs: NonNullable<GroupingFile['pairs']>): Pick<GroupingFile, 'units' | 'links' | 'pairs'> {
   const order = b.face.pands.map(p => p.pandId), units: GroupingFile['units'] = [], links: GroupingFile['links'] = [];
+  // Houses split out by hand in the row view keep their unit.
+  const hand = new Map(b.grouping.units.filter(u => u.id.startsWith('david-') && u.pandIds.length === 1).map(u => [u.pandIds[0], { ...u, pandIds: [...u.pandIds] }]));
   for (let i = 0; i < order.length; i++) {
     const prev = i ? pairs[pairKey(order[i - 1], order[i])]?.answer : undefined;
     if (prev === 'one') units[units.length - 1].pandIds.push(order[i]);
-    else units.push({ id: `house-${order[i].replace(/[^A-Za-z0-9._-]/g, '_')}`, pandIds: [order[i]], source: 'david' });
-    if (prev === 'twin') links.push({ pandId: order[i], kind: 'sameAs', target: order[i - 1], by: 'david', at: pairs[pairKey(order[i - 1], order[i])].at });
+    else units.push(hand.get(order[i]) ?? { id: `house-${order[i].replace(/[^A-Za-z0-9._-]/g, '_')}`, pandIds: [order[i]], source: 'pairs' });
+    const pa = pairs[pairKey(order[i - 1] ?? '', order[i])];
+    if (prev === 'twin') links.push({ pandId: order[i], kind: 'sameAs', target: order[i - 1], by: pa.by, at: pa.at });
   }
   return { units, links, pairs };
 }
@@ -406,7 +409,8 @@ export function groupingFromPairs(b: FaceBundle, pairs: NonNullable<GroupingFile
 function renderPairs(ctx: FaceCtx, can: boolean) {
   const b = ctx.b, q = pairQueue(b), pairs = b.grouping.pairs ?? {};
   const addr = (id: string) => b.face.pands.find(p => p.pandId === id)?.address ?? id.slice(-6);
-  const done = q.filter(([a, z]) => pairs[pairKey(a, z)]).length;
+  const mine = (k: string) => pairs[k] && pairs[k].by !== 'claude';
+  const done = q.filter(([a, z]) => mine(pairKey(a, z))).length;
   const head = h('div', { class: 'pand-head one' },
     h('h2', {}, 'Built as one building?'),
     h('div', { class: 'progress', title: `${done} of ${q.length} answered` }, h('div', { style: `width:${q.length ? (100 * done / q.length).toFixed(1) : 100}%` })),
@@ -414,7 +418,7 @@ function renderPairs(ctx: FaceCtx, can: boolean) {
     h('button', { class: 'ghost', onclick: () => { view3 = 'row'; ctx.render(); }, title: 'Whole row with join/split tools (R)' }, h('span', { class: 'key' }, 'R'), ' Whole row'));
   if (!q.length) { replace(ctx.main, head, h('p', { class: 'ask' }, 'Nothing to ask: no neighbours here are grouped by the city map. Every house is its own building.')); return; }
   pairAt = Math.max(0, Math.min(q.length - 1, pairAt));
-  const [a, z] = q[pairAt], cur = pairs[pairKey(a, z)]?.answer;
+  const [a, z] = q[pairAt], entry = pairs[pairKey(a, z)], cur = entry?.answer, byClaude = entry?.by === 'claude';
   const imgs: HTMLImageElement[] = [];
   const fig = (id: string) => {
     const url = ctx.photoUrl(id);
@@ -427,14 +431,15 @@ function renderPairs(ctx: FaceCtx, can: boolean) {
   const answer = (v: PairAnswer) => {
     if (!can) { ctx.say('Grouping is open while stage 3 is', 'err'); return; }
     const next = { ...pairs, [pairKey(a, z)]: { answer: v, by: 'david' as const, at: new Date().toISOString() } };
-    const todo = q.findIndex(([x, y], i) => i > pairAt && !next[pairKey(x, y)]);
+    const todo = q.findIndex(([x, y], i) => i > pairAt && !(next[pairKey(x, y)] && next[pairKey(x, y)].by !== 'claude'));
     pairAt = todo >= 0 ? todo : Math.min(q.length - 1, pairAt + 1);
     void ctx.saveGrouping(groupingFromPairs(b, next));
   };
-  const btn = (k: string, label: string, sub: string) => h('button', { class: `big pairbtn${cur === PAIR_KEYS[k] ? ' on' : ''}`, disabled: !can, onclick: () => answer(PAIR_KEYS[k]) },
+  const btn = (k: string, label: string, sub: string) => h('button', { class: `big pairbtn${cur === PAIR_KEYS[k] ? (byClaude ? ' claude' : ' on') : ''}`, disabled: !can, onclick: () => answer(PAIR_KEYS[k]) },
     h('span', {}, label, h('small', {}, sub)), h('span', { class: 'key' }, k.toUpperCase()));
   pairKeys = (k: string) => {
     if (PAIR_KEYS[k]) { answer(PAIR_KEYS[k]); return true; }
+    if (k === 'Enter' && byClaude && cur) { answer(cur); return true; }
     if (k === 'ArrowRight') { pairAt++; ctx.render(); return true; }
     if (k === 'ArrowLeft') { pairAt--; ctx.render(); return true; }
     return false;
@@ -447,7 +452,8 @@ function renderPairs(ctx: FaceCtx, can: boolean) {
       h('span', {}, `Pair ${pairAt + 1} of ${q.length}: `, h('strong', {}, `${addr(a)} and ${addr(z)}`)),
       h('button', { class: 'nav', onclick: () => { pairAt++; ctx.render(); }, disabled: pairAt >= q.length - 1, title: 'Next pair (→)' }, '›')),
     h('div', { class: 'onepair twopair' }, fig(a), fig(z)),
-    h('p', { class: 'ask' }, 'The city map lists these two together. What are they?'),
+    h('p', { class: 'ask' }, byClaude ? 'Claude\'s guess is outlined. Enter agrees, or press another answer.' : 'The city map lists these two together. What are they?'),
+    byClaude && entry?.why ? h('p', { class: 'muted center' }, `Claude: ${entry.why}`) : null,
     h('div', { class: 'marks3' },
       btn('s', 'Two separate houses', 'different fronts'),
       btn('d', 'Same design', 'two houses, built alike'),

@@ -219,6 +219,7 @@ export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, no
     if (!pands.has(a) || !pands.has(z) || a === z) throw bad(`Pair ${key} is not two houses on this face`);
     if (!isObj(v) || !PAIR_ANSWERS.includes(v.answer as never)) throw bad(`Pair ${key}: answer must be ${PAIR_ANSWERS.join(', ')}`);
     pairs[key] = { answer: v.answer as PairAnswer, by: v.by === 'claude' ? 'claude' : actor, at: typeof v.at === 'string' ? v.at : now };
+    if (typeof v.why === 'string' && v.why) pairs[key].why = v.why.slice(0, 300);
   }
   return { units, links, pairs };
 }

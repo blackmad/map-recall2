@@ -20,3 +20,10 @@ test('groupingFromPairs: one joins, twin links right to left, the rest stay sepa
   assert.deepEqual(g.units.map(u => u.pandIds), [['a', 'b'], ['c'], ['d']]);
   assert.deepEqual(g.links.map(l => [l.pandId, l.kind, l.target]), [['c', 'sameAs', 'b']]);
 });
+
+test('pair answers keep hand-split houses out of the queue and in their own unit', () => {
+  const b = bundle({ a: 'u1', b: 'u1', c: 'u1', d: 'u1' }, ['d']);
+  const g = groupingFromPairs(b, { 'a|b': { answer: 'separate', by: 'david', at: 'x' } });
+  assert.equal(g.units.find(u => u.pandIds[0] === 'd')?.id, 'david-d');
+  assert.deepEqual(pairQueue({ ...b, grouping: { ...b.grouping, ...g } } as FaceBundle), [['a', 'b'], ['b', 'c']]);
+});
