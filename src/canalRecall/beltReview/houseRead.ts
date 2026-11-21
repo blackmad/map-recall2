@@ -62,6 +62,17 @@ export interface HouseRead {
   kitCannotSay: string[];
   low: string[];
   notes?: string;
+  /** Each full storey's share of the wall under the cornice, ground first: measured on the crop by the self-check
+   *  (scripts/belt-review/self-check.ts `photo.fractions`), written in with a note; absent from the first read. */
+  storeyShares?: number[];
+  /** A gable's rise over the eaves line (m), measured on the crop by the self-check; absent from the first read. */
+  crownRiseM?: number;
+  /** Ground window height over a first-upper window's, and the street door's height over the ground storey's: measured on
+   *  the crop by the self-check; absent from the first read. */
+  groundWindowRatio?: number;
+  doorRatio?: number;
+  /** A basement band's height over the ground storey's (pavement to first floor), measured by the self-check. */
+  basementRatio?: number;
 }
 
 const list = (xs: readonly string[]) => xs.map(x => `"${x}"`).join(' | ');
@@ -183,6 +194,11 @@ export function readExtras(a: Partial<HouseRead>) {
     wallHex: a.wallColour?.hex, dormerStyle: a.dormers?.style, roofMaterial: a.roofMaterial, whiteHeads: a.whiteHeads, stringCourses: a.stringCourses,
     speklagen: a.speklagen, stoopFlight: a.stoopFlight, balconies: a.balconies, ornaments: a.ornaments ?? [], kitCannotSay: a.kitCannotSay ?? [],
     ...(a.notes ? { notes: a.notes } : {}),
+    ...(Array.isArray(a.storeyShares) && a.storeyShares.length ? { storeyShares: a.storeyShares } : {}),
+    ...(typeof a.crownRiseM === 'number' ? { crownRiseM: a.crownRiseM } : {}),
+    ...(typeof a.groundWindowRatio === 'number' ? { groundWindowRatio: a.groundWindowRatio } : {}),
+    ...(typeof a.doorRatio === 'number' ? { doorRatio: a.doorRatio } : {}),
+    ...(typeof a.basementRatio === 'number' ? { basementRatio: a.basementRatio } : {}),
   };
 }
 

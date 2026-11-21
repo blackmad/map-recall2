@@ -28,6 +28,7 @@ import { segmentLookup, SEGMENTS_SCHEMA, type Segment, type SegmentsExtract, typ
 import { designUnitOf, eraWindows, ERA_YEARS, PLOT_EAVES_M, type DesignUnitDraw } from './drawProps.js';
 import { plotPlan, plotWhite, plotHeads, plotDormers, plotLook, PLOT_GABLE_SHAPE, POINT_GABLE_RISE_PER_M, type PlotPlan } from './plotPlan.js';
 import { rowCrownRoofRise, type RowCrown } from '../houseLine/crownProfile.js';
+import type { RowCorniceDress } from '../houseSpec/row/types.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 
 export { designUnitOf, seedIdOf, segmentBayM, sliceBays, eraWindows, ERA_YEARS, PLOT_EAVES_M, PLOT_TONE_DL, type DesignUnitDraw } from './drawProps.js';
@@ -231,10 +232,10 @@ function withPlotPlan<T extends Feature>(feature: T, rest: Record<string, unknow
     // narrower crown keeps its saddle low (its share of the front), so the cheeks beside it stay low roof, not wall.
     const gr = d.plot?.gable, W = d.toM - d.fromM;
     if (g && g.kind === 'gable' && gr) {
-      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = shape === 'plain' ? 'point' : shape;
+      const foot = gr.widthM && gr.widthM < W - 0.3 ? gr.widthM : undefined, crownShape = shape === 'plain' ? 'point' : shape === 'raisedNeck' ? 'neck' : shape;
       const riseM = +(gr.riseM ?? (crownShape === 'point' ? Math.min(5, POINT_GABLE_RISE_PER_M * (foot ?? W)) : g.riseM)).toFixed(2);
       const crown: RowCrown = { shape: crownShape as RowCrown['shape'], riseM, ...(foot ? { footW: foot } : {}), ...(foot && gr.offsetM ? { offsetM: gr.offsetM } : {}),
-        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}) };
+        attic: gr.window === 'none' ? 0 : 1, ...(gr.window === 'round' || gr.window === 'segmental' ? { atticHead: gr.window } : {}), ...(gr.belt ? { dress: 'belt' as const } : {}) };
       return { ...feature, properties: { ...rest, ...extra, monumentGable: shape, height: +(wall + riseM).toFixed(3), roofEavesHeightM: wall, roofPlanned: true, roofShape: g.kind,
         rowCrown: crown, rowCrownRoofRiseM: foot ? +Math.min(rowCrownRoofRise(crown, W), riseM * foot / W).toFixed(3) : rowCrownRoofRise(crown, W), designPlot: { ...extra.designPlot as object, riseM } } };
     }
@@ -264,7 +265,64 @@ function withSoloPlot<T extends Feature>(feature: T, d: DesignUnitDraw): T {
   const gable = stated && stated !== 'cornice' ? stated : undefined;
   const { roofDormer: _dice, roofShapeTag: _tag, monumentGable: _g, roofPlanned: _planned, ...rest } = p;
   const plan = plotPlan(top, gable ? { ...d.plot, src: d.plot?.src ?? 'photo', roof: 'pointedGable' } : d.plot, { topIsCornice: true });
-  return withPlotPlan(feature, rest, d, plan, segmentRoof(d.seed, String(p.facadeStyle ?? ''), null), gable);
+  const drawn = withPlotPlan(feature, rest, d, plan, segmentRoof(d.seed, String(p.facadeStyle ?? ''), null), gable);
+  return { ...drawn, properties: { ...drawn.properties, ...soloDress(drawn.properties, d.plot, plan, !!gable) } };
+}
+
+/** A timber cornice's parts by the read cornice kind (houseSpec/row/types.ts RowCorniceDress, drawn by `row-cornice`). */
+export const SOLO_CORNICE_DRESS: Readonly<Record<string, RowCorniceDress>> = {
+  // Sizes from self-check pass 2 (2026-11-21): 19 majors "deep cornice drawn as a thin band" at the 1800s timber size.
+  'attic-frieze': { supports: 'consoles', frieze: 'attic-lights', scale: 1.25 },
+  heavy: { supports: 'consoles', frieze: 'plain', scale: 1.6 },
+  bracketed: { supports: 'consoles', scale: 1.4 },
+  frieze: { supports: 'modillions', frieze: 'panels', scale: 1.4 },
+};
+/** The wall band a timber cornice takes off the top storey (m): corona, bed moulding, architrave and its frieze (the storeys
+ *  stop under it, so the top windows keep their heads under the frieze). facadeOrnaments.ts ROW_TIMBER_CORNICE. */
+export function soloCorniceBandM(dress: RowCorniceDress): number {
+  const K = { corona: 0.2, bed: 0.16, architrave: 0.1, frieze: { plain: 0.55, panels: 0.65, 'attic-lights': 0.85 } } as const;
+  return +((dress.scale ?? 1) * (K.corona + K.bed + (dress.frieze ? K.architrave + K.frieze[dress.frieze] : dress.supports === 'consoles' ? 0.45 : 0))).toFixed(2);
+}
+/** White frames as the belt read paints them (the sash bars and frames, the texture's accent channel); dark otherwise. */
+export const SOLO_FRAME_HEX = { white: '#f1efe8', dark: '#2b302c' } as const;
+
+/**
+ * Belt review only (`solo`): the read parts the segment plot plan does not carry. The measured storey profile
+ * (`designStoreys.shares`), the frame paint (`designFrameHex`: the bay texture's painted frames and bars take it, so a
+ * read of white frames is not drawn with the dice's green sashes), and the read cornice as a timber cornice of the kit's
+ * `row-cornice` (consoles, a plain or attic-light frieze) in place of the slim kroonlijst, with its band off the top
+ * storey (`designCorniceDress`, `designCorniceBandM`). A gable front keeps its gable.
+ */
+function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], plan: PlotPlan, gabled: boolean): Record<string, unknown> {
+  const out: Record<string, unknown> = { designSolo: true };
+  const shares = f?.storeyShares;
+  if (shares && shares.length === plan.storeys && shares.every(x => Number.isFinite(x) && x > 0)) out.designStoreys = { ...(props.designStoreys as object), shares: [...shares] };
+  if (typeof f?.whiteFrames === 'boolean') out.designFrameHex = f.whiteFrames ? SOLO_FRAME_HEX.white : SOLO_FRAME_HEX.dark;
+  const kind = f?.attic && f.cornice !== 'attic-frieze' ? 'attic-frieze' : f?.cornice;
+  const dress = !gabled && kind ? SOLO_CORNICE_DRESS[kind] : undefined;
+  // The ground openings as measured, and the street door in a doorcase (a stone case when read dressed, else the belt's
+  // white timber frame; a fanlight when read; the belt's near-black leaf).
+  if (f?.groundOpenings && plan.ground !== 'shop') out.designGround = { ...f.groundOpenings };
+  const forcedB = (props.registerForce as string[] | undefined) ?? [];
+  // A measured basement band draws as the solo basement (not the register's stone plinth band over it).
+  const basementForce = out.designGround && (out.designGround as { basementRatio?: number }).basementRatio ? ['solo-basement'] : [];
+  const forced = Array.isArray(props.registerForce) ? [...forcedB.filter(id => !basementForce.length || id !== 'stone-plinth-band'), ...basementForce] : [...basementForce];
+  if (basementForce.length) out.registerForce = forced;
+  if (f?.door && plan.ground !== 'shop') {
+    out.designDoorcase = { material: f.door.surround ? 'stone' : 'timber', fanlight: !!f.door.fanlight, door: 'black' };
+    if (!forced.includes('row-doorcase')) forced.push('row-doorcase');
+    // The doorcase is the door's frame (the same group): the register's surround would draw first, with a white leaf.
+    const k = forced.indexOf('door-surround'); if (k >= 0) forced.splice(k, 1);
+    out.registerForce = forced;
+  }
+  if (dress) {
+    out.designCorniceDress = dress;
+    out.designCorniceBandM = soloCorniceBandM(dress);
+    out.designCornice = 'heavy';
+    const force = forced.filter(id => id !== 'kroonlijst' && id !== 'console-cornice');
+    out.registerForce = force.includes('row-cornice') ? force : [...force, 'row-cornice'];
+  }
+  return out;
 }
 
 /** Step 2 (after withRowFront, before decorateRoof): the segment's one roof on this member, its front at the line. */

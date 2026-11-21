@@ -238,6 +238,9 @@ export interface RowCorniceDress {
   centre?: 'pediment' | 'segmental' | 'balustrade';
   /** The centre's width as a share of the front (absent: 0.5 for a cap, the whole front for a balustrade). */
   centreShare?: number;
+  /** The whole cornice's size against the 1800s timber one (corona, bed, frieze, supports, projections), for the deep
+   *  stucco and stone cornices of the belt (Herengracht 32, 40, 48: about 1.5 m against 0.9 m). Absent: 1. */
+  scale?: number;
 }
 /** A canal window's joinery (RowDesign.glazing): the white frame's width round the glass, the glazing bars' width, and the
  *  panes per sash for the sash kinds (sash-8-over-8: 8; sash-small-panes: 12; absent: the kind's own). */

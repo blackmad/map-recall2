@@ -13,7 +13,7 @@
   "beltLook": "data/buurt-generators/belt/row-front.json",
   "ahn": "data/buurt-generators/belt/ahn-fronts.json",
   "register": "public/data/extracts/amsterdam/monument-facts.json",
-  "ordekaart": "/Users/blackmad/Code/map-recall2-worktrees/belt-review-library-20261120/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
+  "ordekaart": "/Users/blackmad/Code/map-recall2/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
   "kitGaps": "review-data/belt-review/kit-gaps.json",
   "photoRead": "review-data/belt-review/herengracht-2-90-even/photo-read.json (42 houses)"
  },
@@ -327,6 +327,14 @@
      "dormer: large central stucco dormer with segmental round-arched cap and side scrolls",
      "cornice: white plastered top band/attic parapet above the cornice"
     ],
+    "storeyShares": [
+     0.31,
+     0.24,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.75,
     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445"
    },
    "specParts": [
@@ -584,6 +592,14 @@
      "extra mezzanine/attic floor band with windows above main storeys before gable"
     ],
     "notes": "A tree in the centre obscures the middle bay, and the gable top is cut off by the image.",
+    "storeyShares": [
+     0.36,
+     0.33,
+     0.31
+    ],
+    "crownRiseM": 5.49,
+    "groundWindowRatio": 1,
+    "doorRatio": 0.8,
     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444"
    },
    "specParts": [],
@@ -604,7 +620,7 @@
    "order": 2,
    "fields": {
     "storeys": {
-     "value": 3,
+     "value": 2,
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
@@ -617,7 +633,7 @@
      ]
     },
     "bays": {
-     "value": 3,
+     "value": 2,
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002879",
@@ -679,7 +695,7 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002879"
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002879"
@@ -829,6 +845,10 @@
      "ground storey whitewashed/stuccoed with white pilasters under a brick fascia",
      "door is black panelled with glazed fanlight in white frame"
     ],
+    "crownRiseM": 6.04,
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.7,
+    "basementRatio": 0.12,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879"
    },
    "specParts": [
@@ -1102,6 +1122,14 @@
      "white block ends of relieving arches over upper windows",
      "white corner blocks on gable steps"
     ],
+    "storeyShares": [
+     0.42,
+     0.3,
+     0.28
+    ],
+    "crownRiseM": 5.98,
+    "groundWindowRatio": 1.6,
+    "doorRatio": 0.8,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878"
    },
    "specParts": [
@@ -1288,6 +1316,14 @@
      "grey stone sills projecting as sill bands",
      "ground-storey shopfront with pilastered stucco frame and fascia"
     ],
+    "storeyShares": [
+     0.32,
+     0.25,
+     0.23,
+     0.2
+    ],
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.75,
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499"
    },
    "specParts": [
@@ -1496,6 +1532,15 @@
      "ground storey: white timber pilastered front with wide window",
      "third-storey middle window has dark french-door glazing with low railing"
     ],
+    "storeyShares": [
+     0.3,
+     0.24,
+     0.23,
+     0.23
+    ],
+    "crownRiseM": 6.15,
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.75,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874"
    },
    "specParts": [],
@@ -1690,6 +1735,15 @@
      "right gable crown is a curved bell-like neck, left is straight neck"
     ],
     "notes": "Front is two houses (76 and 78), each with its own neck gable, door and 2-bay width; the right house has 3 bays at second storey and 2 below.",
+    "storeyShares": [
+     0.38,
+     0.32,
+     0.3
+    ],
+    "crownRiseM": 5.45,
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "basementRatio": 0.15,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
    },
    "specParts": [
@@ -1918,6 +1972,14 @@
      "segmental-arched transom bar inside upper windows",
      "continuous stone lintel band linking window heads"
     ],
+    "storeyShares": [
+     0.34,
+     0.33,
+     0.33
+    ],
+    "groundWindowRatio": 0.85,
+    "doorRatio": 0.72,
+    "basementRatio": 0.25,
     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059"
    },
    "specParts": [],
@@ -2179,6 +2241,14 @@
      "oval windows in white cartouche frames under the pediment",
      "classical triangular pediment crown"
     ],
+    "storeyShares": [
+     0.3,
+     0.25,
+     0.24,
+     0.21
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.58,
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496"
    },
    "specParts": [
@@ -2430,6 +2500,14 @@
      "stone cornices projecting at every floor level",
      "dark brick piers with light stone window frames"
     ],
+    "storeyShares": [
+     0.2,
+     0.3,
+     0.23,
+     0.27
+    ],
+    "groundWindowRatio": 0.35,
+    "doorRatio": 0.64,
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527"
    },
    "specParts": [
@@ -2511,16 +2589,12 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
-     "others": [
-      {
-       "value": "flat",
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175698.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "windows": {
@@ -2677,6 +2751,15 @@
      "low triangular pediment set on top of the cornice",
      "cream-painted cornice and frieze against a dark-grey painted wall"
     ],
+    "storeyShares": [
+     0.22,
+     0.2,
+     0.21,
+     0.19,
+     0.18
+    ],
+    "groundWindowRatio": 1.15,
+    "doorRatio": 0.8,
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
    },
    "specParts": [
@@ -2934,6 +3017,14 @@
      "upper windows are large modern frameless-like casement panes with transom, dark grey frames reading as white-trimmed",
      "ground windows are tall full-height glazed panels"
     ],
+    "storeyShares": [
+     0.32,
+     0.24,
+     0.21,
+     0.23
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.73,
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
    },
    "specParts": [
@@ -3152,6 +3243,14 @@
      "ornate stone oval cartouches on shoulders",
      "stone door frame with large leaded transom light"
     ],
+    "storeyShares": [
+     0.36,
+     0.33,
+     0.31
+    ],
+    "crownRiseM": 12.35,
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.75,
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393"
    },
    "specParts": [],
@@ -3382,6 +3481,15 @@
      "fanlight leaded glass wheel motif"
     ],
     "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably.",
+    "storeyShares": [
+     0.4,
+     0.22,
+     0.19,
+     0.19
+    ],
+    "groundWindowRatio": 1.27,
+    "doorRatio": 0.53,
+    "basementRatio": 0.37,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514"
    },
    "specParts": [],
@@ -3663,6 +3771,13 @@
      "cornice: elaborate neo-renaissance stucco frieze with consoles"
     ],
     "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width.",
+    "storeyShares": [
+     0.4,
+     0.24,
+     0.2,
+     0.16
+    ],
+    "groundWindowRatio": 1.16,
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500"
    },
    "specParts": [
@@ -3896,7 +4011,7 @@
     "dormerStyle": "plain",
     "roofMaterial": "not-visible",
     "whiteHeads": "keystone",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "stoopFlight": "none",
     "balconies": "guard",
@@ -3912,6 +4027,15 @@
      "white stucco crowning cornice and frieze in an eclectic style",
      "rusticated stucco band at basement level"
     ],
+    "storeyShares": [
+     0.33,
+     0.24,
+     0.22,
+     0.21
+    ],
+    "groundWindowRatio": 1.6,
+    "doorRatio": 0.72,
+    "basementRatio": 0.2,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512"
    },
    "specParts": [],
@@ -3996,7 +4120,7 @@
      ]
     },
     "heads": {
-     "value": "segmental",
+     "value": "relieving",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
@@ -4151,6 +4275,15 @@
      "low iron guard rails at first-floor windows"
     ],
     "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts.",
+    "storeyShares": [
+     0.38,
+     0.22,
+     0.2,
+     0.2
+    ],
+    "groundWindowRatio": 1.5,
+    "doorRatio": 0.62,
+    "basementRatio": 0.12,
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517"
    },
    "specParts": [
@@ -4322,6 +4455,14 @@
      "windows: dark-framed modern casements with toplights, not white frames",
      "door: round-arched stone doorcase with carved archivolt"
     ],
+    "storeyShares": [
+     0.38,
+     0.31,
+     0.31
+    ],
+    "groundWindowRatio": 0.95,
+    "doorRatio": 0.68,
+    "basementRatio": 0.2,
     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311"
    },
    "specParts": [
@@ -4573,6 +4714,13 @@
      "sash windows with 2-over-2 panes plus transom"
     ],
     "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey.",
+    "storeyShares": [
+     0.4,
+     0.33,
+     0.27
+    ],
+    "groundWindowRatio": 1.27,
+    "doorRatio": 0.7,
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504"
    },
    "specParts": [
@@ -4651,12 +4799,16 @@
      ]
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
-     "agree": [
-      "own-read"
+     "others": [
+      {
+       "value": "segmental",
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012169270.jpg"
+      }
      ]
     },
     "windows": {
@@ -4792,7 +4944,7 @@
     "dormerStyle": "plain",
     "roofMaterial": "not-visible",
     "whiteHeads": "keystone",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "stoopFlight": "side-left",
     "balconies": "none",
@@ -4811,6 +4963,15 @@
      "heads: shell-ornamented moulded segmental surrounds",
      "crest: sculpted ornament atop the cornice"
     ],
+    "storeyShares": [
+     0.3,
+     0.25,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.15,
+    "doorRatio": 0.6,
+    "basementRatio": 0.15,
     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036"
    },
    "specParts": [],
@@ -4885,16 +5046,12 @@
      ]
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
-     "others": [
-      {
-       "value": "flat",
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179667.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "windows": {
@@ -5028,6 +5185,16 @@
      "dark green double basement doors instead of souterrain windows",
      "fanlight over door with radiating glazing bars"
     ],
+    "storeyShares": [
+     0.36,
+     0.23,
+     0.2,
+     0.21
+    ],
+    "crownRiseM": 4.31,
+    "groundWindowRatio": 1,
+    "doorRatio": 0.65,
+    "basementRatio": 0.3,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501"
    },
    "specParts": [
@@ -5244,6 +5411,15 @@
      "gable claw-pieces and neck cap in cream sandstone",
      "dark shutter-like recesses above upper windows"
     ],
+    "storeyShares": [
+     0.4,
+     0.31,
+     0.29
+    ],
+    "crownRiseM": 3.95,
+    "groundWindowRatio": 1.45,
+    "doorRatio": 0.9,
+    "basementRatio": 0.2,
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305"
    },
    "specParts": [
@@ -5454,6 +5630,15 @@
      "crown: curved raised central cornice section with single attic window below, cream painted",
      "window heads: brick segmental arches with rubbed-brick soldier courses, not stone"
     ],
+    "storeyShares": [
+     0.33,
+     0.22,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.5,
+    "doorRatio": 0.78,
+    "basementRatio": 0.3,
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304"
    },
    "specParts": [
@@ -5707,6 +5892,15 @@
      "three street doors across the ground storey"
     ],
     "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology.",
+    "storeyShares": [
+     0.2,
+     0.24,
+     0.19,
+     0.19,
+     0.18
+    ],
+    "groundWindowRatio": 0.55,
+    "doorRatio": 0.85,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846"
    },
    "specParts": [
@@ -5950,6 +6144,15 @@
      "upper windows: casement shutters/blinds behind glazing, not true cross windows",
      "ground storey: tall windows with transoms and door with fanlight under a timber entablature"
     ],
+    "storeyShares": [
+     0.46,
+     0.35,
+     0.19
+    ],
+    "crownRiseM": 3.77,
+    "groundWindowRatio": 1.24,
+    "doorRatio": 0.66,
+    "basementRatio": 0.36,
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588"
    },
    "specParts": [
@@ -6224,6 +6427,14 @@
      "ground plinth: grey rendered souterrain base",
      "door: transom light above door"
     ],
+    "storeyShares": [
+     0.42,
+     0.3,
+     0.28
+    ],
+    "groundWindowRatio": 1.3,
+    "doorRatio": 0.6,
+    "basementRatio": 0.25,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843"
    },
    "specParts": [
@@ -6394,6 +6605,13 @@
      "ground storey: two recessed glazed entrance bays beside two large display windows"
     ],
     "notes": "Post-war modernist stone/concrete grid front with a projecting roof slab, unlike traditional canal-house types.",
+    "storeyShares": [
+     0.33,
+     0.34,
+     0.33
+    ],
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.95,
     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
    },
    "specParts": [
@@ -6477,16 +6695,12 @@
      ]
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
-     "others": [
-      {
-       "value": "flat",
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012168069.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "windows": {
@@ -6625,6 +6839,15 @@
      "door with tall glazed transom matching window height",
      "graffiti-covered souterrain base"
     ],
+    "storeyShares": [
+     0.28,
+     0.26,
+     0.25,
+     0.21
+    ],
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.85,
+    "basementRatio": 0.12,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841"
    },
    "specParts": [
@@ -6813,6 +7036,14 @@
      "segmental brick relieving arches with white stucco keystones and impost blocks",
      "yellow decorative tile panels under ground-floor windows"
     ],
+    "storeyShares": [
+     0.4,
+     0.3,
+     0.3
+    ],
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.6,
+    "basementRatio": 0.22,
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583"
    },
    "specParts": [],
@@ -7055,6 +7286,15 @@
      "grey-painted plinth with souterrain grilles",
      "dark painted brick near black"
     ],
+    "storeyShares": [
+     0.41,
+     0.31,
+     0.28
+    ],
+    "crownRiseM": 4.84,
+    "groundWindowRatio": 1.24,
+    "doorRatio": 0.83,
+    "basementRatio": 0.27,
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
    },
    "specParts": [
@@ -7130,16 +7370,12 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
-     "others": [
-      {
-       "value": "flat",
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179836.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "windows": {
@@ -7285,6 +7521,15 @@
      "door pilaster frame painted cream with arched door head",
      "ground-storey windows tall with transoms, larger than upper windows"
     ],
+    "storeyShares": [
+     0.33,
+     0.24,
+     0.23,
+     0.2
+    ],
+    "groundWindowRatio": 1.3,
+    "doorRatio": 0.75,
+    "basementRatio": 0.25,
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
    },
    "specParts": [],
@@ -7521,6 +7766,14 @@
      "plinth: light grey rendered base below ground storey",
      "top-floor windows: casements with horizontal glazing bars, lower than other storeys"
     ],
+    "storeyShares": [
+     0.4,
+     0.34,
+     0.26
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.72,
+    "basementRatio": 0.15,
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580"
    },
    "specParts": [
@@ -7751,6 +8004,14 @@
      "ground windows: tall pair-casements with transom lights",
      "brick segmental arches over windows in same brick, not white"
     ],
+    "storeyShares": [
+     0.4,
+     0.32,
+     0.28
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.74,
+    "basementRatio": 0.12,
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455"
    },
    "specParts": [
@@ -7838,16 +8099,12 @@
      ]
     },
     "heads": {
-     "value": "segmental",
+     "value": "flat",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
-     "others": [
-      {
-       "value": "flat",
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179753.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "windows": {
@@ -7903,7 +8160,7 @@
      ]
     },
     "ground": {
-     "value": "warehouse",
+     "value": "dwelling",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
@@ -8003,6 +8260,15 @@
      "ground storey: dark fascia band over glazed double doors with stone piers",
      "wall: dark grey/near-black glazed brick"
     ],
+    "storeyShares": [
+     0.24,
+     0.18,
+     0.18,
+     0.2,
+     0.2
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.85,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834"
    },
    "specParts": [
@@ -8277,6 +8543,14 @@
      "large single-pane ground-floor window",
      "cream-painted souterrain plinth with dark door"
     ],
+    "storeyShares": [
+     0.4,
+     0.3,
+     0.3
+    ],
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.5,
+    "basementRatio": 0.25,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833"
    },
    "specParts": [
@@ -8516,6 +8790,14 @@
      "gable top: hoist beam projecting through the crowning cap",
      "second-floor centre window: French door behind iron railing"
     ],
+    "storeyShares": [
+     0.37,
+     0.33,
+     0.3
+    ],
+    "crownRiseM": 5.2,
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.71,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832"
    },
    "specParts": [
@@ -8579,7 +8861,7 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
     },
     "heads": {
-     "value": "segmental",
+     "value": "relieving",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
@@ -8690,7 +8972,7 @@
     "dormerStyle": "plain",
     "roofMaterial": "not-visible",
     "whiteHeads": "none",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "stoopFlight": "front",
     "balconies": "none",
@@ -8706,6 +8988,15 @@
      "wall: full-height pilaster strips between the bays",
      "sills: panelled aprons below the upper windows"
     ],
+    "storeyShares": [
+     0.29,
+     0.25,
+     0.23,
+     0.23
+    ],
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.8,
+    "basementRatio": 0.13,
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
    },
    "specParts": [
@@ -8826,16 +9117,12 @@
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005285"
     },
     "whiteFrames": {
-     "value": false,
+     "value": true,
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
-     "others": [
-      {
-       "value": true,
-       "source": "own-read",
-       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012179765.jpg"
-      }
+     "agree": [
+      "own-read"
      ]
     },
     "ground": {
@@ -8962,6 +9249,14 @@
      "dark/black window frames",
      "attic frieze cream stucco with consoles and central segmental arch"
     ],
+    "storeyShares": [
+     0.43,
+     0.29,
+     0.28
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.47,
+    "basementRatio": 0.12,
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285"
    },
    "specParts": [
@@ -9210,6 +9505,15 @@
      "wall: dark grey glazed or painted brick",
      "door: dark green panelled door with oval motif"
     ],
+    "storeyShares": [
+     0.35,
+     0.22,
+     0.22,
+     0.21
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.85,
+    "basementRatio": 0.12,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479"
    },
    "specParts": [
@@ -9405,6 +9709,14 @@
      "ground floor: grey stone base with round-arched door and windows",
      "crown: stepped stone attic panel with a small pointed top above the bracketed cornice"
     ],
+    "storeyShares": [
+     0.3,
+     0.26,
+     0.23,
+     0.21
+    ],
+    "groundWindowRatio": 0.95,
+    "doorRatio": 0.75,
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478"
    },
    "specParts": [],
@@ -9424,7 +9736,7 @@
    "order": 40,
    "fields": {
     "storeys": {
-     "value": 3,
+     "value": 4,
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000373"
@@ -9603,6 +9915,15 @@
      "first-floor windows: round-arched heads with white rusticated surrounds",
      "second-floor heads: fanned white voussoir blocks"
     ],
+    "storeyShares": [
+     0.27,
+     0.27,
+     0.24,
+     0.22
+    ],
+    "groundWindowRatio": 0.55,
+    "doorRatio": 0.75,
+    "basementRatio": 0.4,
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373"
    },
    "specParts": [],
@@ -9751,7 +10072,7 @@
      ]
     },
     "ground": {
-     "value": "shop",
+     "value": "dwelling",
      "source": "photo-read",
      "confidence": 0.5,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
@@ -9834,7 +10155,7 @@
     "dormerStyle": "arched",
     "roofMaterial": "red-tile",
     "whiteHeads": "none",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "stoopFlight": "none",
     "balconies": "none",
@@ -9846,6 +10167,13 @@
      "ground storey: white stuccoed pilaster-and-lintel frontage with tall small-paned windows",
      "dormer: arched hoist dormer with hoist beam on hipped red pantile roof"
     ],
+    "storeyShares": [
+     0.37,
+     0.33,
+     0.3
+    ],
+    "groundWindowRatio": 1,
+    "doorRatio": 0.6,
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521"
    },
    "specParts": [],

@@ -10,7 +10,7 @@
 // keeps the triangle count bounded (see `EXTRA_BUDGET`).
 
 import type { FacadeStyle } from './genericFacades.js';
-import type { WallLayout } from './facadeLayout.js';
+import { storeyOffsetM, type WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
 import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
@@ -108,7 +108,7 @@ function windowXs(c: ExtraContext): number[] {
 }
 /** The painted door's axis (facadeOpenings.ts), so stoops and lanterns stand on it. */
 const doorX = (c: ExtraContext) => (c.layout.doorBays.length ? (c.layout.doorBays[0] + openingsOf(c).door.axis) * c.layout.bayWidthM : null);
-const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + s * c.layout.storeyM;
+const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + storeyOffsetM(c.layout, s);
 
 
 const ALL: readonly FacadeStyle[] = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'];

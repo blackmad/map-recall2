@@ -71,7 +71,23 @@
      "door",
      "facadeYear",
      "cornice"
-    ]
+    ],
+    "storeyShares": [
+     0.31,
+     0.24,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100100091828": {
@@ -114,9 +130,9 @@
     },
     "whiteFrames": true,
     "whiteHeads": "none",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
-    "ground": "shop",
+    "ground": "dwelling",
     "door": {
      "bay": 3,
      "surround": false
@@ -138,6 +154,34 @@
      "door",
      "windows",
      "dormers"
+    ],
+    "storeyShares": [
+     0.37,
+     0.33,
+     0.3
+    ],
+    "groundWindowRatio": 1,
+    "doorRatio": 0.6,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "stringCourses": true,
+       "ground": "shop"
+      },
+      "now": {
+       "stringCourses": false,
+       "ground": "dwelling"
+      }
+     }
     ]
    }
   },
@@ -209,7 +253,24 @@
      "door",
      "facadeYear"
     ],
-    "notes": "A tree in the centre obscures the middle bay, and the gable top is cut off by the image."
+    "notes": "A tree in the centre obscures the middle bay, and the gable top is cut off by the image.",
+    "storeyShares": [
+     0.36,
+     0.33,
+     0.31
+    ],
+    "groundWindowRatio": 1,
+    "doorRatio": 0.8,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "crownRiseM"
+     ]
+    },
+    "crownRiseM": 5.49
    }
   },
   "0363100012175692": {
@@ -232,8 +293,8 @@
    "costUsd": 0.01873,
    "answer": {
     "readable": true,
-    "storeys": 3,
-    "bays": 3,
+    "storeys": 2,
+    "bays": 2,
     "crown": "bell",
     "cornice": "simple",
     "roofStorey": "gable-attic",
@@ -242,7 +303,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "casement-pair",
     "windowSurround": "none",
     "wallFinish": "brick",
@@ -280,7 +341,35 @@
      "windows",
      "facadeYear",
      "storeys"
-    ]
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.7,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "storeys": 3,
+       "bays": 3,
+       "heads": "segmental"
+      },
+      "now": {
+       "storeys": 2,
+       "bays": 2,
+       "heads": "flat"
+      }
+     }
+    ],
+    "basementRatio": 0.12,
+    "crownRiseM": 6.04
    }
   },
   "0363100012175702": {
@@ -350,7 +439,24 @@
      "storeys",
      "stoop",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.42,
+     0.3,
+     0.28
+    ],
+    "groundWindowRatio": 1.6,
+    "doorRatio": 0.8,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "crownRiseM"
+     ]
+    },
+    "crownRiseM": 5.98
    }
   },
   "0363100012175703": {
@@ -420,7 +526,23 @@
      "door",
      "facadeYear",
      "cornice"
-    ]
+    ],
+    "storeyShares": [
+     0.32,
+     0.25,
+     0.23,
+     0.2
+    ],
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012175783": {
@@ -491,7 +613,25 @@
      "facadeYear",
      "door",
      "windows"
-    ]
+    ],
+    "storeyShares": [
+     0.3,
+     0.24,
+     0.23,
+     0.23
+    ],
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "crownRiseM"
+     ]
+    },
+    "crownRiseM": 6.15
    }
   },
   "0363100012175784": {
@@ -564,7 +704,26 @@
      "facadeYear",
      "stoop"
     ],
-    "notes": "Front is two houses (76 and 78), each with its own neck gable, door and 2-bay width; the right house has 3 bays at second storey and 2 below."
+    "notes": "Front is two houses (76 and 78), each with its own neck gable, door and 2-bay width; the right house has 3 bays at second storey and 2 below.",
+    "storeyShares": [
+     0.38,
+     0.32,
+     0.3
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "basementRatio": 0.15,
+    "crownRiseM": 5.45
    }
   },
   "0363100012175616": {
@@ -633,7 +792,24 @@
      "windows",
      "speklagen",
      "storeys"
-    ]
+    ],
+    "storeyShares": [
+     0.34,
+     0.33,
+     0.33
+    ],
+    "groundWindowRatio": 0.85,
+    "doorRatio": 0.72,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.25
    }
   },
   "0363100012175617": {
@@ -705,7 +881,23 @@
      "roofStorey",
      "wallFinish",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.3,
+     0.25,
+     0.24,
+     0.21
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.58,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012175618": {
@@ -776,7 +968,23 @@
      "windows",
      "facadeYear",
      "door"
-    ]
+    ],
+    "storeyShares": [
+     0.2,
+     0.3,
+     0.23,
+     0.27
+    ],
+    "groundWindowRatio": 0.35,
+    "doorRatio": 0.64,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012175698": {
@@ -809,7 +1017,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "sash-small-panes",
     "windowSurround": "none",
     "wallFinish": "painted-brick",
@@ -849,6 +1057,34 @@
      "stoop",
      "facadeYear",
      "door"
+    ],
+    "storeyShares": [
+     0.22,
+     0.2,
+     0.21,
+     0.19,
+     0.18
+    ],
+    "groundWindowRatio": 1.15,
+    "doorRatio": 0.8,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental"
+      },
+      "now": {
+       "heads": "flat"
+      }
+     }
     ]
    }
   },
@@ -918,7 +1154,23 @@
      "facadeYear",
      "wallFinish",
      "stoop"
-    ]
+    ],
+    "storeyShares": [
+     0.32,
+     0.24,
+     0.21,
+     0.23
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.73,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012168545": {
@@ -991,7 +1243,24 @@
      "storeys",
      "stoop",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.36,
+     0.33,
+     0.31
+    ],
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "crownRiseM"
+     ]
+    },
+    "crownRiseM": 12.35
    }
   },
   "0363100012167493": {
@@ -1063,7 +1332,25 @@
      "facadeYear",
      "wallColour"
     ],
-    "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably."
+    "notes": "Top of the facade is washed out by overexposure so the crown cannot be read reliably.",
+    "storeyShares": [
+     0.4,
+     0.22,
+     0.19,
+     0.19
+    ],
+    "groundWindowRatio": 1.27,
+    "doorRatio": 0.53,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.37
    }
   },
   "0363100012167492": {
@@ -1133,7 +1420,21 @@
      "roofStorey",
      "facadeYear"
     ],
-    "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width."
+    "notes": "Ground storey is partly hidden by a car, and no street door is visible within the cropped width.",
+    "storeyShares": [
+     0.4,
+     0.24,
+     0.2,
+     0.16
+    ],
+    "groundWindowRatio": 1.16,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio"
+     ]
+    }
    }
   },
   "0363100012167495": {
@@ -1176,7 +1477,7 @@
     },
     "whiteFrames": true,
     "whiteHeads": "keystone",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "ground": "dwelling",
     "door": {
@@ -1206,7 +1507,36 @@
      "balconies",
      "facadeYear",
      "wallColour"
-    ]
+    ],
+    "storeyShares": [
+     0.33,
+     0.24,
+     0.22,
+     0.21
+    ],
+    "groundWindowRatio": 1.6,
+    "doorRatio": 0.72,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "stringCourses": true
+      },
+      "now": {
+       "stringCourses": false
+      }
+     }
+    ],
+    "basementRatio": 0.2
    }
   },
   "0363100012167494": {
@@ -1239,7 +1569,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "relieving",
     "windows": "sash-1-over-1",
     "windowSurround": "jack-blocks",
     "wallFinish": "brick",
@@ -1279,7 +1609,36 @@
      "facadeYear",
      "cornice"
     ],
-    "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts."
+    "notes": "Late-19th-century neo-Renaissance refront with light stucco cornice/frieze and alternating light block bands at window heads and imposts.",
+    "storeyShares": [
+     0.38,
+     0.22,
+     0.2,
+     0.2
+    ],
+    "groundWindowRatio": 1.5,
+    "doorRatio": 0.62,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental"
+      },
+      "now": {
+       "heads": "relieving"
+      }
+     }
+    ],
+    "basementRatio": 0.12
    }
   },
   "0363100012169218": {
@@ -1354,7 +1713,24 @@
      "wallColour",
      "facadeYear",
      "roofStorey"
-    ]
+    ],
+    "storeyShares": [
+     0.38,
+     0.31,
+     0.31
+    ],
+    "groundWindowRatio": 0.95,
+    "doorRatio": 0.68,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.2
    }
   },
   "0363100012169272": {
@@ -1426,7 +1802,22 @@
      "facadeYear",
      "stoop"
     ],
-    "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey."
+    "notes": "Wide double house front with the centre-left door bay emphasised by a stone doorcase and dressed window above, crowned by a light attic frieze storey.",
+    "storeyShares": [
+     0.4,
+     0.33,
+     0.27
+    ],
+    "groundWindowRatio": 1.27,
+    "doorRatio": 0.7,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012169270": {
@@ -1459,7 +1850,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "casement-toplight-double",
     "windowSurround": "full-frame",
     "wallFinish": "stucco",
@@ -1469,7 +1860,7 @@
     },
     "whiteFrames": false,
     "whiteHeads": "keystone",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "ground": "dwelling",
     "door": {
@@ -1500,7 +1891,38 @@
      "stoopFlight",
      "facadeYear",
      "heads"
-    ]
+    ],
+    "storeyShares": [
+     0.3,
+     0.25,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.15,
+    "doorRatio": 0.6,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental",
+       "stringCourses": true
+      },
+      "now": {
+       "heads": "flat",
+       "stringCourses": false
+      }
+     }
+    ],
+    "basementRatio": 0.15
    }
   },
   "0363100012179667": {
@@ -1533,7 +1955,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "sash-small-panes",
     "windowSurround": "none",
     "wallFinish": "brick",
@@ -1568,7 +1990,38 @@
      "facadeYear",
      "stoopFlight",
      "storeys"
-    ]
+    ],
+    "storeyShares": [
+     0.36,
+     0.23,
+     0.2,
+     0.21
+    ],
+    "groundWindowRatio": 1,
+    "doorRatio": 0.65,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental"
+      },
+      "now": {
+       "heads": "flat"
+      }
+     }
+    ],
+    "basementRatio": 0.3,
+    "crownRiseM": 4.31
    }
   },
   "0363100012179669": {
@@ -1638,7 +2091,26 @@
      "facadeYear",
      "storeys",
      "stoop"
-    ]
+    ],
+    "storeyShares": [
+     0.4,
+     0.31,
+     0.29
+    ],
+    "groundWindowRatio": 1.45,
+    "doorRatio": 0.9,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "basementRatio": 0.2,
+    "crownRiseM": 3.95
    }
   },
   "0363100012179670": {
@@ -1706,7 +2178,24 @@
      "roofStorey",
      "crown",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.33,
+     0.22,
+     0.23,
+     0.22
+    ],
+    "groundWindowRatio": 1.5,
+    "doorRatio": 0.78,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.3
    }
   },
   "0363100012179668": {
@@ -1779,7 +2268,24 @@
      "facadeYear",
      "door"
     ],
-    "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology."
+    "notes": "An early-20th-century monumental stone office/club front with rusticated ashlar and a massive bracketed cornice; it does not follow a canal-house typology.",
+    "storeyShares": [
+     0.2,
+     0.24,
+     0.19,
+     0.19,
+     0.18
+    ],
+    "groundWindowRatio": 0.55,
+    "doorRatio": 0.85,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012179671": {
@@ -1852,7 +2358,26 @@
      "facadeYear",
      "stoopFlight",
      "windowSurround"
-    ]
+    ],
+    "storeyShares": [
+     0.46,
+     0.35,
+     0.19
+    ],
+    "groundWindowRatio": 1.24,
+    "doorRatio": 0.66,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "basementRatio": 0.36,
+    "crownRiseM": 3.77
    }
   },
   "0363100012179684": {
@@ -1922,7 +2447,24 @@
      "stoopFlight",
      "facadeYear",
      "dormers"
-    ]
+    ],
+    "storeyShares": [
+     0.42,
+     0.3,
+     0.28
+    ],
+    "groundWindowRatio": 1.3,
+    "doorRatio": 0.6,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.25
    }
   },
   "0363100012168139": {
@@ -1995,7 +2537,22 @@
      "facadeYear",
      "door"
     ],
-    "notes": "Post-war modernist stone/concrete grid front with a projecting roof slab, unlike traditional canal-house types."
+    "notes": "Post-war modernist stone/concrete grid front with a projecting roof slab, unlike traditional canal-house types.",
+    "storeyShares": [
+     0.33,
+     0.34,
+     0.33
+    ],
+    "groundWindowRatio": 1.1,
+    "doorRatio": 0.95,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012168069": {
@@ -2028,7 +2585,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "t-window",
     "windowSurround": "none",
     "wallFinish": "brick",
@@ -2063,7 +2620,36 @@
      "heads",
      "stoop",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.28,
+     0.26,
+     0.25,
+     0.21
+    ],
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.85,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental"
+      },
+      "now": {
+       "heads": "flat"
+      }
+     }
+    ],
+    "basementRatio": 0.12
    }
   },
   "0363100012168138": {
@@ -2133,7 +2719,24 @@
      "windows",
      "stoop",
      "storeys"
-    ]
+    ],
+    "storeyShares": [
+     0.4,
+     0.3,
+     0.3
+    ],
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.6,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.22
    }
   },
   "0363100012179837": {
@@ -2203,7 +2806,26 @@
      "facadeYear",
      "stoopFlight",
      "wallFinish"
-    ]
+    ],
+    "storeyShares": [
+     0.41,
+     0.31,
+     0.28
+    ],
+    "groundWindowRatio": 1.24,
+    "doorRatio": 0.83,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio",
+      "crownRiseM"
+     ]
+    },
+    "basementRatio": 0.27,
+    "crownRiseM": 4.84
    }
   },
   "0363100012179836": {
@@ -2236,7 +2858,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "sash-1-over-1",
     "windowSurround": "none",
     "wallFinish": "brick",
@@ -2274,7 +2896,36 @@
      "cornice",
      "facadeYear",
      "stoopFlight"
-    ]
+    ],
+    "storeyShares": [
+     0.33,
+     0.24,
+     0.23,
+     0.2
+    ],
+    "groundWindowRatio": 1.3,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental"
+      },
+      "now": {
+       "heads": "flat"
+      }
+     }
+    ],
+    "basementRatio": 0.25
    }
   },
   "0363100012179838": {
@@ -2346,7 +2997,24 @@
      "facadeYear",
      "wallFinish",
      "cornice"
-    ]
+    ],
+    "storeyShares": [
+     0.4,
+     0.34,
+     0.26
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.72,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.15
    }
   },
   "0363100012179752": {
@@ -2417,7 +3085,24 @@
      "heads",
      "facadeYear",
      "cornice"
-    ]
+    ],
+    "storeyShares": [
+     0.4,
+     0.32,
+     0.28
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.74,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.12
    }
   },
   "0363100012179753": {
@@ -2450,7 +3135,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "flat",
     "windows": "casement-toplight",
     "windowSurround": "none",
     "wallFinish": "brick",
@@ -2462,7 +3147,7 @@
     "whiteHeads": "none",
     "stringCourses": false,
     "speklagen": "none",
-    "ground": "warehouse",
+    "ground": "dwelling",
     "door": {
      "bay": 1,
      "surround": true
@@ -2489,7 +3174,37 @@
      "door",
      "facadeYear",
      "heads"
-    ]
+    ],
+    "storeyShares": [
+     0.24,
+     0.18,
+     0.18,
+     0.2,
+     0.2
+    ],
+    "groundWindowRatio": 1.4,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental",
+       "ground": "warehouse"
+      },
+      "now": {
+       "heads": "flat",
+       "ground": "dwelling"
+      }
+     }
+    ],
+    "doorRatio": 0.85
    }
   },
   "0363100012179760": {
@@ -2560,7 +3275,24 @@
      "wallFinish",
      "facadeYear",
      "cornice"
-    ]
+    ],
+    "storeyShares": [
+     0.4,
+     0.3,
+     0.3
+    ],
+    "groundWindowRatio": 1.2,
+    "doorRatio": 0.5,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.25
    }
   },
   "0363100012179761": {
@@ -2632,7 +3364,24 @@
      "windows",
      "heads",
      "balconies"
-    ]
+    ],
+    "storeyShares": [
+     0.37,
+     0.33,
+     0.3
+    ],
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.71,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "crownRiseM"
+     ]
+    },
+    "crownRiseM": 5.2
    }
   },
   "0363100012179764": {
@@ -2665,7 +3414,7 @@
      "style": "plain"
     },
     "roofMaterial": "not-visible",
-    "heads": "segmental",
+    "heads": "relieving",
     "windows": "sash-small-panes",
     "windowSurround": "sill",
     "wallFinish": "stucco",
@@ -2675,7 +3424,7 @@
     },
     "whiteFrames": true,
     "whiteHeads": "none",
-    "stringCourses": true,
+    "stringCourses": false,
     "speklagen": "none",
     "ground": "dwelling",
     "door": {
@@ -2703,7 +3452,38 @@
      "facadeYear",
      "door",
      "wallColour"
-    ]
+    ],
+    "storeyShares": [
+     0.29,
+     0.25,
+     0.23,
+     0.23
+    ],
+    "groundWindowRatio": 1.05,
+    "doorRatio": 0.8,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "heads": "segmental",
+       "stringCourses": true
+      },
+      "now": {
+       "heads": "relieving",
+       "stringCourses": false
+      }
+     }
+    ],
+    "basementRatio": 0.13
    }
   },
   "0363100012179765": {
@@ -2744,7 +3524,7 @@
      "hex": "#7a5548",
      "family": "brown"
     },
-    "whiteFrames": false,
+    "whiteFrames": true,
     "whiteHeads": "none",
     "stringCourses": true,
     "speklagen": "none",
@@ -2779,7 +3559,35 @@
      "stoop",
      "heads",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.43,
+     0.29,
+     0.28
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.47,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "whiteFrames": false
+      },
+      "now": {
+       "whiteFrames": true
+      }
+     }
+    ],
+    "basementRatio": 0.12
    }
   },
   "0363100012179763": {
@@ -2851,7 +3659,25 @@
      "facadeYear",
      "wallFinish",
      "roofStorey"
-    ]
+    ],
+    "storeyShares": [
+     0.35,
+     0.22,
+     0.22,
+     0.21
+    ],
+    "groundWindowRatio": 1.4,
+    "doorRatio": 0.85,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "basementRatio": 0.12
    }
   },
   "0363100012179833": {
@@ -2926,7 +3752,23 @@
      "heads",
      "stoop",
      "facadeYear"
-    ]
+    ],
+    "storeyShares": [
+     0.3,
+     0.26,
+     0.23,
+     0.21
+    ],
+    "groundWindowRatio": 0.95,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio"
+     ]
+    }
    }
   },
   "0363100012179834": {
@@ -2949,7 +3791,7 @@
    "costUsd": 0.01859,
    "answer": {
     "readable": true,
-    "storeys": 3,
+    "storeys": 4,
     "bays": 2,
     "crown": "cornice",
     "cornice": "bracketed",
@@ -2998,7 +3840,36 @@
      "door",
      "stoop",
      "balconies"
-    ]
+    ],
+    "groundWindowRatio": 0.55,
+    "doorRatio": 0.75,
+    "measured": {
+     "by": "self-check pass2 (claude-opus-5-5, photo profile)",
+     "fields": [
+      "storeyShares",
+      "groundWindowRatio",
+      "doorRatio",
+      "basementRatio"
+     ]
+    },
+    "corrections": [
+     {
+      "by": "self-check pass1 (claude-opus-5-5) read diffs, applied by the render-wiring lane 2026-11-21",
+      "was": {
+       "storeys": 3
+      },
+      "now": {
+       "storeys": 4
+      }
+     }
+    ],
+    "storeyShares": [
+     0.27,
+     0.27,
+     0.24,
+     0.22
+    ],
+    "basementRatio": 0.4
    }
   }
  }

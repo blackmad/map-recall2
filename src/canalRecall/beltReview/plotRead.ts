@@ -24,6 +24,16 @@ export interface PhotoReadExtras {
   ornaments?: string[];
   kitCannotSay?: string[];
   notes?: string;
+  /** Each full storey's share of the wall under the cornice, ground first (measured on the crop by the self-check). */
+  storeyShares?: number[];
+  /** A gable's rise over the cornice / eaves line (m), measured on the crop by the self-check. */
+  crownRiseM?: number;
+  /** Ground window height over a first-upper window's, measured on the crop by the self-check. */
+  groundWindowRatio?: number;
+  /** Street door height (fanlight included) over the ground storey's, measured on the crop by the self-check. */
+  doorRatio?: number;
+  /** A basement band's height over the ground storey's, measured on the crop by the self-check. */
+  basementRatio?: number;
 }
 
 /** What design.ts hands house preview (`design.plot`): the plot facts and the measures the stamp needs. */
@@ -59,6 +69,7 @@ export const TEXT_CUES = {
   plinth: /plinth|stone base|bluestone|hardstone|grey stone (base|ground)/,
   pilasters: /pilaster/,
   anchors: /wall anchor|iron anchor|muurank/,
+  fanlight: /fanlight|transom light|bovenlicht|oval light over (the )?door/,
 } as const;
 
 /**
@@ -71,6 +82,9 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   const storeys = fields.storeys, bays = fields.bays;
   if (Number.isInteger(storeys) && (storeys as number) >= 1) facts.storeys = storeys as number;
   if (Number.isInteger(bays) && (bays as number) >= 1) facts.bays = bays as number;
+  // The measured storey profile, when it counts the stated storeys.
+  const shares = read.storeyShares;
+  if (facts.storeys && Array.isArray(shares) && shares.length === facts.storeys && shares.every(x => typeof x === 'number' && x > 0 && x < 1)) facts.storeyShares = [...shares];
   const ground = fields.ground;
   if (ground === 'shop') facts.ground = 'shop';
   else if (ground === 'dwelling' || ground === 'door-only') facts.ground = 'dwelling';
@@ -87,6 +101,14 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   else if (rs === 'dormers' || (count ?? 0) > 0 || crown === 'pitched-eaves' || crown === 'shouldered' || covering) roof = 'dormers';
   else if (crown) roof = 'flat';
   if (roof) facts.roof = roof;
+  // An attic storey over the top floor on a cornice front: low lights in the frieze under the cornice.
+  if (rs === 'attic' && !GABLE_CROWNS.has(crown)) facts.attic = true;
+  // A gable front: the kit's row crown in the canal belt's dress, its attic light as read, its rise as measured (else the
+  // roof planner's).
+  if (GABLE_CROWNS.has(crown)) {
+    const rise = Number(read.crownRiseM);
+    facts.gable = { window: rs === 'gable-attic' ? 'square' : 'none', belt: true, ...(Number.isFinite(rise) && rise > 0.8 && rise < 12 ? { riseM: +rise.toFixed(2) } : {}) };
+  }
   if (roof === 'dormers' || roof === 'mansard') {
     facts.dormers = crown === 'shouldered' ? Math.max(1, count ?? 1) : count ?? 0;
     const kind = DORMER_KIND[read.dormerStyle ?? ''] ?? (dorm?.kind === 'gabled' ? 'gabled' : undefined);
@@ -118,7 +140,13 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   // The door: its place among the ground-storey openings (the read counts doors and windows from the left).
   const door = fields.door as { bay?: number; surround?: boolean } | number | null | undefined;
   const at = typeof door === 'number' ? door : door && Number.isInteger(door.bay) ? door.bay! : undefined;
-  if (at !== undefined && at >= 0) facts.door = { index: at, of: Math.max(at + 1, facts.bays ?? 1), ...(typeof door === 'object' && door?.surround ? { surround: true } : {}) };
+  if (at !== undefined && at >= 0) facts.door = { index: at, of: Math.max(at + 1, facts.bays ?? 1), ...(typeof door === 'object' && door?.surround ? { surround: true } : {}), ...(TEXT_CUES.fanlight.test(text) ? { fanlight: true } : {}) };
+  // The ground openings as measured (a dwelling ground: the shop keeps its shopfront).
+  const wr = Number(read.groundWindowRatio), dr = Number(read.doorRatio);
+  const br = Number(read.basementRatio), stoopUp = fields.stoop === 'stoop' || fields.stoop === 'stoop-and-windows';
+  if (facts.ground === 'dwelling' && wr > 0.3 && wr < 3 && dr > 0.4 && dr <= 1) facts.groundOpenings = { windowRatio: +wr.toFixed(2), doorRatio: +dr.toFixed(2),
+    // A measured basement band: pavement-level windows under the ground windows, the door up the stoop when one is read.
+    ...(br >= 0.12 && br <= 0.5 ? { basementRatio: +br.toFixed(2), ...(stoopUp ? { raisedDoor: true } : {}) } : {}) };
 
   const eaves = Number(fields.eavesM), widthM = opts.widthM && opts.widthM > 0 ? opts.widthM : 6;
   const eavesM = Number.isFinite(eaves) && eaves > 4 && eaves >= MIN_STOREY_M * (facts.storeys ?? 2) ? +eaves.toFixed(2) : null;

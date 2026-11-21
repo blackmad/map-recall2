@@ -15,6 +15,7 @@
 
 import { hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
 import { presetOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
+import { storeyHeightM, storeyOffsetM } from './facadeLayout.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { pilasterHex } from './look/pilasterTone.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
@@ -42,17 +43,18 @@ export const openingsOf = (c: ExtraContext): Openings => {
   return c.layout.doorMirror ? { ...o, door: { ...o.door, axis: 1 - o.door.axis }, doorWindow: o.doorWindow ? { ...o.doorWindow, axes: o.doorWindow.axes.map(a => 1 - a), ...(o.doorWindow.widths ? { widths: [...o.doorWindow.widths] } : {}) } : null } : o;
 };
 export const isStreetWall = (c: ExtraContext) => c.streetSide ?? c.layout.doorBays.length > 0;
-export const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + s * c.layout.storeyM;
+export const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + storeyOffsetM(c.layout, s);
 
 export type Span = { x: number; hw: number; z0: number; z1: number };
 /** The window openings of one row across the wall: upper storey `s`, or the ground floor (s = -1). */
 export function windowSpans(c: ExtraContext, s: number): Span[] {
+  if (s < 0 && c.groundWindows) return c.groundWindows.map(w => ({ ...w }));
   const o = openingsOf(c), l = c.layout, bw = l.bayWidthM, out: Span[] = [];
   const doors = new Set(l.doorBays);
   for (let i = 0; i < l.bays; i++) {
     const row: OpeningRow | null = s >= 0 ? o.upper : doors.has(i) ? o.doorWindow : c.shopfront ? null : o.ground;
     if (!row) continue;
-    const z = s >= 0 ? storeyZ(c, s) : c.base, h = s >= 0 ? l.storeyM : l.groundM;
+    const z = s >= 0 ? storeyZ(c, s) : c.base, h = s >= 0 ? storeyHeightM(l, s) : l.groundM;
     // House rows: a stated window share (houseLine/rowSeries.ts ROW_TYPE_LOOK) widens the upper windows to that share of
     // their axis pitch, frames included (Kinkerstraat review: the photo's windows take ~75 % of the bay, the preset ~62 %).
     const share = s >= 0 ? c.rowDress?.windowShare : undefined;
@@ -64,6 +66,7 @@ export function windowSpans(c: ExtraContext, s: number): Span[] {
 const ROW_FRAME_M = 0.07;
 /** The front door of this wall, if it has one. */
 export function doorSpan(c: ExtraContext): Span | null {
+  if (c.groundDoor && c.groundLevel) return { ...c.groundDoor };
   if (!c.layout.doorBays.length || !c.groundLevel) return null;
   const d = openingsOf(c).door, bw = c.layout.bayWidthM, g = c.layout.groundM;
   return { x: (c.layout.doorBays[0] + d.axis) * bw, hw: (d.width * bw) / 2, z0: c.base + d.bottom * g, z1: c.base + d.top * g };
@@ -373,6 +376,8 @@ function grammarHead(c: ExtraContext, s: ExtraSink, w: RowWindow, g: HeadGrammar
 }
 
 /** A stated basement front (row-basement): stone courses and their sunk joints, the ledge on top, arched doorways. */
+/** The belt solo basement band (Herengracht 32, 46, 56: a grey rendered plinth with grilled pavement-level lights). */
+export const SOLO_BASEMENT = { hex: '#7d7f7b', out: 0.03, ledge: 0.1, ledgeOut: 0.06, recess: '#1c1e20', grille: '#2c2e30', bar: 0.035, barPitch: 0.16 } as const;
 const ROW_BASEMENT = { under: 0.05, out: 0.03, course: 0.32, joint: 0.025, ledge: 0.12, ledgeOut: 0.08, doorW: 1.0, doorH: 2.3, ring: 0.2, recess: '#202326' } as const;
 /** The white timber erker (lane R round 24, lane D's `bay-window` gap: Herengracht 163-177, 150-166, 238-256 and the ring
  *  readings): a box or a canted bay on white consoles over one bay, its storeys' lights corner to corner in white posts,
@@ -429,7 +434,7 @@ function rowErker(c: ExtraContext, s: ExtraSink): void {
   // Per storey: the lights corner to corner on every face, white posts at the corners, head and sill rails, a transom
   // with the toplights over it, casement bars below.
   for (const k of p.rows) {
-    const zf = storeyZ(c, k - 1), za = zf + E.foot, zh = Math.min(zf + c.layout.storeyM - E.head, zt - 0.12);
+    const zf = storeyZ(c, k - 1), za = zf + E.foot, zh = Math.min(zf + storeyHeightM(c.layout, k - 1) - E.head, zt - 0.12);
     if (zh - za < 0.6) continue;
     const zm = za + (zh - za) * E.transom;
     for (const q of faces) {
@@ -642,8 +647,16 @@ export const ROW_TIMBER_CORNICE = { corona: 0.2, coronaOut: 0.5, bed: 0.16, bedO
   soffit: 0.62,
   light: { maxW: 1.4, h: 0.42, frame: 0.07 }, pediment: { slope: 0.3, band: 0.16 }, balustrade: { h: 0.72, baluster: 0.09, pitch: 0.24 },
   paints: { white: WHITE, cream: CREAM, grey: '#8f918c' } } as const;
+/** ROW_TIMBER_CORNICE at `k` times its size (RowCorniceDress.scale): every height, width and projection; pitches kept. */
+export function scaledTimberCornice(k: number | undefined): typeof ROW_TIMBER_CORNICE {
+  const K = ROW_TIMBER_CORNICE;
+  if (k === undefined || k === 1 || !(k > 0)) return K;
+  return { ...K, corona: K.corona * k, coronaOut: K.coronaOut * k, bed: K.bed * k, bedOut: K.bedOut * k, architrave: K.architrave * k, archOut: K.archOut * k,
+    modillion: { ...K.modillion, w: K.modillion.w * k, h: K.modillion.h * k }, console: { w: K.console.w * k, h: K.console.h * k, out: K.console.out * k },
+    frieze: { plain: K.frieze.plain * k, panels: K.frieze.panels * k, 'attic-lights': K.frieze['attic-lights'] * k, min: K.frieze.min } } as typeof ROW_TIMBER_CORNICE;
+}
 function rowTimberCornice(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNullable<ExtraContext['rowDress']>['corniceDress']>): void {
-  const K = ROW_TIMBER_CORNICE, t = c.top, L = c.f.len;
+  const K = scaledTimberCornice(dr.scale), t = c.top, L = c.f.len;
   const P = dr.paint ? (K.paints as Record<string, string>)[dr.paint] ?? dr.paint : WHITE;
   const zc = t - K.corona, zb = zc - K.bed;
   // The frieze: from over the top windows' heads (their dressing included) up to the bed moulding.
@@ -889,7 +902,7 @@ function rowBands(c: ExtraContext, s: ExtraSink, kind: 'speklagen' | 'string-cou
     return true;
   }
   for (let k = 0; k < Math.min(6, l.storeys); k++) {
-    const z = kind === 'floor-cornices' ? storeyZ(c, k) - 0.06 : storeyZ(c, k) + o.upper.sill * l.storeyM - ROW_BANDS.course - 0.02;
+    const z = kind === 'floor-cornices' ? storeyZ(c, k) - 0.06 : storeyZ(c, k) + o.upper.sill * storeyHeightM(l, k) - ROW_BANDS.course - 0.02;
     if (z + ROW_BANDS.course > top) continue;
     // Floor-line courses: thin dull stone (Weteringschans 168096, blind review 6: two heavy white bands where the photo
     // has faint stone string courses). Sill courses keep their 20 cm.
@@ -1006,6 +1019,20 @@ export const ROW_COMPONENTS: readonly WallComponent[] = [
       // The ledge: a moulded band proud of the facing, a little wider than it; scrolled ends stand under it at both ends.
       s.box(c.f, x0, x1, 0, ROW_GROUND_WALL.ledgeOut, z1 - ROW_GROUND_WALL.ledge, z1, g.hex, true);
       if (g.top === 'scrolled') for (const [a, b] of [[x0, x0 + ROW_GROUND_WALL.scroll], [x1 - ROW_GROUND_WALL.scroll, x1]] as const) s.box(c.f, a, b, 0, ROW_GROUND_WALL.ledgeOut * 0.8, z1 - ROW_GROUND_WALL.ledge - ROW_GROUND_WALL.scrollH, z1 - ROW_GROUND_WALL.ledge, g.hex, true);
+    }
+  } },
+  { id: 'solo-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
+    // Belt review (a solo plot's measured basement band, self-check basementRatio): a rendered grey plinth from the pavement
+    // to the band's top under a ledge, its low windows dark with grille bars, the street door left clear.
+    const bb = c.basementBand, L = c.f.len, K = SOLO_BASEMENT;
+    if (!bb || bb.z1 - c.base < 0.8) return;
+    const d = doorSpan(c), holes = [...bb.windows.map(w => [w.x - w.hw, w.x + w.hw, w.z0, w.z1] as const), ...(d && d.z0 < bb.z1 ? [[d.x - d.hw - 0.05, d.x + d.hw + 0.05, c.base, bb.z1] as const] : [])];
+    for (const [za, zb, xs] of groundWallBands(holes, 0, L, c.base, bb.z1)) for (const [p, q] of xs) s.strip(c.f, p, q, K.out, za, zb, K.hex);
+    s.box(c.f, 0, L, 0, K.ledgeOut, bb.z1 - K.ledge, bb.z1, shadeHex(K.hex, 1.1), true);
+    for (const w of bb.windows) {
+      s.strip(c.f, w.x - w.hw, w.x + w.hw, 0.01, w.z0, w.z1, K.recess);
+      const n = Math.max(3, Math.round(2 * w.hw / K.barPitch));
+      for (let i = 1; i < n; i++) { const x = w.x - w.hw + 2 * w.hw * i / n; s.strip(c.f, x - K.bar / 2, x + K.bar / 2, 0.03, w.z0, w.z1, K.grille); }
     }
   } },
   { id: 'row-basement', styles: ['canal', 'c19', 'school'], p: 0, wide: true, street: true, group: 'row-basement', build: (c, s) => {
@@ -1374,8 +1401,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     if (rowBands(c, s, 'speklagen', CREAM)) return;
     // A plot read with bands on its ground storey only (Nassaukade 14713) keeps them there.
     const o = openingsOf(c), l = c.layout, n = c.designDress?.bands === 'ground' ? 1 : Math.min(6, l.storeys);
-    const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * l.storeyM]];
-    for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * l.storeyM, storeyZ(c, k + 1) + o.upper.sill * l.storeyM]);
+    const zones: Array<[number, number]> = [[c.base + (o.ground?.head ?? o.door.top) * l.groundM, storeyZ(c, 0) + o.upper.sill * storeyHeightM(l, 0)]];
+    for (let k = 0; k < n - 1; k++) zones.push([storeyZ(c, k) + o.upper.head * storeyHeightM(l, k), storeyZ(c, k + 1) + o.upper.sill * storeyHeightM(l, k + 1)]);
     // The ground storey's foot under its sills too, on a plot read with banded ground storey.
     const gs = c.designDress?.bands === 'ground' ? windowSpans(c, -1)[0]?.z0 : undefined;
     if (gs !== undefined && gs - c.base > 0.5) zones.push([c.base + 0.15, gs - 0.08]);
@@ -1391,7 +1418,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // drawing paints the flat band; this only adds its drip edge).
     if (rowBands(c, s, 'string-courses', CREAM)) return;
     const o = openingsOf(c);
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * c.layout.storeyM; s.strip(c.f, 0, c.f.len, 0.06, c.bandM ? z - 0.04 - c.bandM : z - 0.1, z - 0.04, CREAM); }
+    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) { const z = storeyZ(c, k) + o.upper.sill * storeyHeightM(c.layout, k); s.strip(c.f, 0, c.f.len, 0.06, c.bandM ? z - 0.04 - c.bandM : z - 0.1, z - 0.04, CREAM); }
   } },
   { id: 'ribbon-bands', styles: ['school'], p: 0.35, wide: true, build: (c, s, r) => {
     // The School's horizontal emphasis: pale bands above and below every window row.
@@ -1474,7 +1501,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     if (c.layout.storeys < 2 || c.f.len < 4.5) return;
     const x = c.f.len / 2, hex = pickOf(LUIKEN, r), hw = Math.min(0.62, c.layout.bayWidthM * 0.13);
     for (let k = 0; k < Math.min(4, c.layout.storeys); k++) {
-      const z0 = storeyZ(c, k) + 0.25, z1 = storeyZ(c, k) + c.layout.storeyM * 0.82;
+      const z0 = storeyZ(c, k) + 0.25, z1 = storeyZ(c, k) + storeyHeightM(c.layout, k) * 0.82;
       s.strip(c.f, x - hw - 0.08, x + hw + 0.08, 0.03, z0 - 0.08, z1 + 0.08, WHITE);
       s.box(c.f, x - hw, x + hw, 0, 0.08, z0, z1, hex);
     }

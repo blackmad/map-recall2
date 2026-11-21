@@ -24,6 +24,7 @@ import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import { ReviewError } from '../../../src/canalRecall/beltReview/logic.ts';
 import { pandDesign } from '../../../src/canalRecall/beltReview/design.ts';
+import { frontLineArg, type FaceWall } from '../../../src/canalRecall/beltReview/frontLine.ts';
 import { DESC_FIELDS, type DescField } from '../../../src/canalRecall/beltReview/fields.ts';
 import { kitCannotDraw, parseKitGaps, type KitGap } from '../../../src/canalRecall/beltReview/kitGaps.ts';
 import { readJson, type BeltReviewStore } from '../../../src/canalRecall/beltReview/store.ts';
@@ -60,12 +61,19 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
   };
 
   async function derive(faceId: string) {
-    const [raw, rawDesc, edits, grouping, picks] = await Promise.all([store.face(faceId), store.description(faceId), store.doc(faceId, 'edits'), store.doc(faceId, 'grouping'), store.doc(faceId, 'picks')]);
+    const [raw, rawDesc, edits, grouping, picks, cands, walls] = await Promise.all([store.face(faceId), store.description(faceId), store.doc(faceId, 'edits'), store.doc(faceId, 'grouping'), store.doc(faceId, 'picks'), store.candidates(faceId).catch(() => null),
+      // The wall each photo was cut on (scripts/belt-review/walls.ts); absent: house preview frames its own wall.
+      fs.readFile(path.join(store.dataRoot, faceId, 'walls.json'), 'utf8').then(t => JSON.parse(t).walls as Record<string, FaceWall>, () => null)]);
     const face = expandFace(raw, picks), description = expandDescription(rawDesc, face);
     const ppm = face.pxPerM ?? 50, list = await kitGaps();
     const pands: Record<string, DerivedPand & { design: unknown; house: HouseEntry }> = {};
     for (const p of face.pands) {
       const d = pandDesign(face as never, p.pandId, description, edits, grouping);
+      // The render spans the photo's street front (frontLine.ts): the wall it was cut on, at David's edges when moved.
+      const pk = (picks as { picks?: Record<string, { candidateId?: string | null; facadeSpanPx?: [number, number] }> }).picks?.[p.basePandId];
+      const cand = (cands as { pands?: Array<{ pandId: string; candidates: Array<{ id: string; pandSpanPx?: [number, number]; ppm?: number }> }> } | null)?.pands?.find(x => x.pandId === p.basePandId)?.candidates.find(c => c.id === pk?.candidateId);
+      const line = frontLineArg(walls?.[p.basePandId], p.part ? undefined : { facadeSpanPx: pk?.facadeSpanPx, pandSpanPx: cand?.pandSpanPx, ppm: cand?.ppm });
+      if (line) (d.design as Record<string, unknown>).wall = line;
       const asDesc: Partial<Record<DescField, DescFieldValue>> = {};
       for (const f of DESC_FIELDS) if (d.fields[f]) asDesc[f] = { value: d.fields[f]!.value, source: d.fields[f]!.source as never, confidence: 1, ref: d.fields[f]!.ref ?? '' };
       const notes = p.part ? [...d.notes, `Split house ${p.part}: the renderer draws whole pands, so this is pand ${p.basePandId} drawn with this house's fields, cut to ${p.spanM![0]}–${p.spanM![1]} m.`] : d.notes;
