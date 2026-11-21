@@ -266,22 +266,12 @@ export function report(face: FaceFile, file: CandidatesFile, extra: string[]): s
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? s[s.length >> 1] : 0; };
 
-async function main() {
-  const faceId = arg('face');
-  const archive = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
-  if (!faceId || !archive) { console.error('usage: prepare.ts --face <faceId> --archive <source-data checkout> [--judge] [--budget usd] [--prompt v1|v2] [--max 6] [--pand a,b] [--offline] [--rate-ms 500]'); process.exit(2); }
-  const face: FaceFile = JSON.parse(await fs.readFile(path.join(faceDir(faceId), 'face.json'), 'utf8'));
-  const root = path.resolve(archive), maxCands = Number(arg('max') ?? MAX_CANDIDATES);
-  http.minGapMs = Math.max(500, Number(arg('rate-ms') ?? 500)); http.maxAttempts = 6; http.userAgent = USER_AGENT; http.offline = has('offline');
-  if (!http.offline) {
-    await fs.mkdir(CACHE_DIR, { recursive: true });
-    const st = await fs.statfs(CACHE_DIR), gate = diskGate(st.bavail * st.bsize, face.pands.length * 6);
-    console.log(`disk: ${(st.bavail * st.bsize / 1024 ** 3).toFixed(1)} GB free; ~${(gate.estimatedBytes / 1024 ** 3).toFixed(1)} GB of panoramas at most (floor ${DISK_FLOOR_BYTES / 1024 ** 3} GB); cache ${CACHE_DIR}`);
-    if (!gate.ok) { console.error('refusing to start: under 15 GB would remain'); process.exit(4); }
-  }
-  const only = arg('pand') ? new Set(arg('pand')!.split(',')) : null;
-  const pands = face.pands.filter(p => !only || only.has(p.pandId));
-  // Walls of the whole face (no network), so a --pand run sees the same face bearing as a full run.
+/**
+ * The front wall of every pand on the face (no network; the building tiles and pickWall), as main() and walls.ts take it:
+ * pickWall per pand, re-picked toward the face's common bearing when it faces away, and a forced or narrow front (under
+ * NARROW_FRONT_M) widened to the footprint's extent along the face line (`fronts`). The photos are cut on these walls.
+ */
+export async function faceWalls(face: Pick<FaceFile, 'pands'>) {
   const fps = await findPands(face.pands.map(p => p.pandId));
 
   // Walls first: pickWall per pand; a pand whose wall faces away from the face's common bearing (a side or back wall) is re-picked toward it.
@@ -318,6 +308,25 @@ async function main() {
     fronts.set(id, { bagEdgeM: +w.len.toFixed(2), extentM: +wide.len.toFixed(2), why: forced ? 'forced front edge (no exposed wall toward the face)' : `front edge under ${NARROW_FRONT_M} m` });
     if (wide.len > w.len + 0.05) walls.set(id, wide);
   }
+  return { fps, walls, notes, fronts, faceBearing, repicked };
+}
+
+async function main() {
+  const faceId = arg('face');
+  const archive = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
+  if (!faceId || !archive) { console.error('usage: prepare.ts --face <faceId> --archive <source-data checkout> [--judge] [--budget usd] [--prompt v1|v2] [--max 6] [--pand a,b] [--offline] [--rate-ms 500]'); process.exit(2); }
+  const face: FaceFile = JSON.parse(await fs.readFile(path.join(faceDir(faceId), 'face.json'), 'utf8'));
+  const root = path.resolve(archive), maxCands = Number(arg('max') ?? MAX_CANDIDATES);
+  http.minGapMs = Math.max(500, Number(arg('rate-ms') ?? 500)); http.maxAttempts = 6; http.userAgent = USER_AGENT; http.offline = has('offline');
+  if (!http.offline) {
+    await fs.mkdir(CACHE_DIR, { recursive: true });
+    const st = await fs.statfs(CACHE_DIR), gate = diskGate(st.bavail * st.bsize, face.pands.length * 6);
+    console.log(`disk: ${(st.bavail * st.bsize / 1024 ** 3).toFixed(1)} GB free; ~${(gate.estimatedBytes / 1024 ** 3).toFixed(1)} GB of panoramas at most (floor ${DISK_FLOOR_BYTES / 1024 ** 3} GB); cache ${CACHE_DIR}`);
+    if (!gate.ok) { console.error('refusing to start: under 15 GB would remain'); process.exit(4); }
+  }
+  const only = arg('pand') ? new Set(arg('pand')!.split(',')) : null;
+  const pands = face.pands.filter(p => !only || only.has(p.pandId));
+  const { fps, walls, notes, fronts, faceBearing, repicked } = await faceWalls(face);
   const refs: WallRef[] = [...walls].map(([id, w]) => ({ id: `NL.IMBAG.Pand.${id}`, a: w.a, b: w.b, nx: w.nx, ny: w.ny }));
   const faceOf = new Map<string, WallRef[]>();
   for (const g of groupFaces(refs)) for (const w of g) faceOf.set(w.id, g);

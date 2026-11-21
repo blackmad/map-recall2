@@ -192,6 +192,7 @@ function rowDressOf(v: unknown): { omitExtras?: string[]; cornice?: string; corn
     ...(cd.supports === 'modillions' || cd.supports === 'consoles' || cd.supports === 'dentils' || cd.supports === 'none' ? { supports: cd.supports as 'modillions' | 'consoles' | 'dentils' | 'none' } : {}),
     ...(cd.frieze === 'plain' || cd.frieze === 'attic-lights' || cd.frieze === 'panels' ? { frieze: cd.frieze as 'plain' | 'attic-lights' | 'panels' } : {}),
     ...(cd.centre === 'pediment' || cd.centre === 'segmental' || cd.centre === 'balustrade' ? { centre: cd.centre as 'pediment' | 'segmental' | 'balustrade' } : {}),
+    ...(typeof cd.scale === 'number' && cd.scale >= 0.5 && cd.scale <= 2.5 && cd.scale !== 1 ? { scale: cd.scale } : {}),
     ...(typeof cd.centreShare === 'number' && cd.centreShare > 0.1 && cd.centreShare <= 1 ? { centreShare: cd.centreShare } : {}),
   } } : {};
   const out = { ...(omitExtras.length ? { omitExtras } : {}), ...(typeof d.cornice === 'string' ? { cornice: d.cornice } : {}), ...corniceDress, ...(heads.length ? { heads } : {}), ...(extras.length ? { extras } : {}), ...(side ? { stoop: { side, ...steps, ...stoopForm, ...stoopRail, ...doorcase } } : {}), ...(door ? { door } : {}), ...(balcony ? { balcony } : {}), ...(erker ? { erker } : {}), ...windowShare, ...mullionShare, ...glazing, ...floorsM, ...(groundWalls.length ? { groundWalls } : {}), ...(basements.length ? { basements } : {}), ...shopFront };
@@ -204,6 +205,8 @@ const fieldsOf = (p: Record<string, unknown>): RouteAFields | undefined => (spec
  *  template's pale surround; absent fields leave it as before. */
 /** House rows: the series' look (houseLine/rowFront.ts RowSeriesDraw.look), validated. */
 /** House rows: the wall band a row cornice takes over the storeys (m), by cornice kind. */
+/** The plain extras a belt review solo plot keeps beside what its read states (designUnits/draw.ts soloDress). */
+export const SOLO_PLAIN_EXTRAS: readonly string[] = ['window-sills', 'downpipe'];
 const ROW_CORNICE_BAND_M: Record<string, number> = { simple: 0.35, bracketed: 0.7, heavy: 0.75, frieze: 0.45, 'attic-frieze': 0.9 };
 type RowSash = 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
 const ROW_SASHES: readonly RowSash[] = ['plain', 'transom', 'paired-transom', 'six-over-six'];
@@ -471,8 +474,28 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // Belt review (designUnits/draw.ts withSoloPlot): the read cornice (row-cornice kinds) and the read door place.
     if (typeof p.designCornice === 'string') building.rowDress = { ...(building.rowDress ?? {}), cornice: p.designCornice };
     const dr = p.designDoor as { index?: unknown; of?: unknown } | undefined;
-    if (dr && Number.isInteger(dr.index) && Number.isInteger(dr.of) && Number(dr.of) > Number(dr.index)) building.rowDress = { ...(building.rowDress ?? {}), door: { side: 'left', index: Number(dr.index), bays: Number(dr.of) } }; }
+    if (dr && Number.isInteger(dr.index) && Number.isInteger(dr.of) && Number(dr.of) > Number(dr.index)) building.rowDress = { ...(building.rowDress ?? {}), door: { side: 'left', index: Number(dr.index), bays: Number(dr.of) } };
+    // Belt review only (designUnits/draw.ts soloDress): the measured storey profile, the read frame paint on the bay
+    // texture's painted frames and bars, and the read timber cornice with its band off the top storey.
+    if (p.designSolo === true) {
+      building.designSolo = true;
+      const shares = (ds as { shares?: unknown } | undefined)?.shares;
+      if (building.designStoreys && Array.isArray(shares) && shares.length === building.designStoreys.storeys && shares.every(x => typeof x === 'number' && x > 0)) building.designStoreys.shares = shares as number[];
+      if (typeof p.designFrameHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designFrameHex) && !building.shopfront) building.accentHex = p.designFrameHex;
+      const gr = p.designGround as { windowRatio?: unknown; doorRatio?: unknown; basementRatio?: unknown; raisedDoor?: unknown } | undefined;
+      if (gr && Number(gr.windowRatio) > 0 && Number(gr.doorRatio) > 0) building.designGround = { windowRatio: Number(gr.windowRatio), doorRatio: Number(gr.doorRatio), ...(Number(gr.basementRatio) > 0 ? { basementRatio: Number(gr.basementRatio) } : {}), ...(gr.raisedDoor === true ? { raisedDoor: true as const } : {}) };
+      const dc = p.designDoorcase as import('./houseSpec/row/types.js').RowDoorcase | undefined;
+      if (dc && typeof dc === 'object' && building.rowDress?.door) building.rowDress = { ...building.rowDress, door: { ...building.rowDress.door, doorcase: dc } };
+      const cd = p.designCorniceDress as Record<string, unknown> | undefined;
+      if (cd && typeof cd === 'object') {
+        building.rowDress = { ...(building.rowDress ?? {}), corniceDress: cd as import('./houseSpec/row/types.js').RowCorniceDress };
+        if (Number(p.designCorniceBandM) > 0) building.parapetM = Number(p.designCorniceBandM);
+      }
+    } }
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
+  // Belt review (a solo plot, a reviewed description): only what the read states plus the plain sills and downpipe, never
+  // the dice's string courses, floor cornices or lintels the read did not see.
+  if (building.designSolo && building.extras) building.onlyExtras = [...SOLO_PLAIN_EXTRAS, ...(building.registerForce ?? [])];
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).
   if (p.specStoop && typeof p.specStoop === 'object' && building.extras) building.stoop = p.specStoop as StoopIntent;

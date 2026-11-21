@@ -10,7 +10,7 @@ import path from 'node:path';
 import { PreviewSession, parseArgs, renderGeneric } from '../../house-preview/preview.ts';
 
 /** The decorated properties that say what was drawn on top (roof, crown, plot plan, dressing), for the page and probes. */
-const DRAWN_PROPS = ['height', 'roofEavesHeightM', 'roofShape', 'roofPlanned', 'monumentGable', 'rowRoof', 'rowCrown', 'designPlot', 'designStoreys', 'designDress', 'designHeads', 'designWallHex', 'registerForce', 'specShop', 'specStoop', 'facadeStyle', 'constructionYear'];
+const DRAWN_PROPS = ['height', 'roofEavesHeightM', 'roofShape', 'roofPlanned', 'monumentGable', 'rowRoof', 'rowCrown', 'designPlot', 'designStoreys', 'designDress', 'designHeads', 'designWallHex', 'registerForce', 'designSolo', 'designGround', 'designDoorcase', 'designFrameHex', 'designCorniceDress', 'designCorniceBandM', 'designDoor', 'specShop', 'specStoop', 'facadeStyle', 'constructionYear'];
 function drawnProps(p: unknown): Record<string, unknown> {
   const q = (p ?? {}) as Record<string, unknown>, out: Record<string, unknown> = {};
   for (const k of DRAWN_PROPS) if (q[k] !== undefined) out[k] = q[k];
@@ -28,7 +28,9 @@ process.on('message', (job: Job) => {
   chain = chain.then(async () => {
     const t0 = performance.now();
     try {
-      const args = { ...parseArgs([]), ppm: job.ppm, out: job.out, route: 'spec' as const };
+      // The wall the photo was cut on (render-routes.ts, beltReview/frontLine.ts), when the face has one.
+      const wall = typeof job.design?.wall === 'string' ? job.design.wall : undefined;
+      const args = { ...parseArgs([]), ppm: job.ppm, out: job.out, route: 'spec' as const, ...(wall ? { wall } : {}) };
       const r = await renderGeneric(session, job.pandId, args, { source: 'belt-review', pandId: job.pandId, design: job.design }, 'spec', 'belt review: description + edits');
       const m = r.measure as Record<string, any>;
       process.send!({

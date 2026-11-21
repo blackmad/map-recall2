@@ -81,7 +81,8 @@ test('the solo draw: roof storey on the cornice (tile, hoist dormer), white part
     assert.equal(p.rowRoof.shape, 'hipped');
     assert.deepEqual(p.rowRoof.joins, {});
     assert.deepEqual(p.rowRoof.dormers, [{ a: 0.5, kind: 'pediment', hoist: true }]);
-    assert.equal(p.designCornice, 'frieze');
+    // A read frieze cornice is the timber cornice on modillions over a panelled frieze (2026-11-21).
+    assert.deepEqual(p.designCorniceDress, { supports: 'modillions', frieze: 'panels', scale: 1.4 });
     assert.deepEqual(p.designDoor, { index: 3, of: 4 });
     for (const id of ['string-courses', 'rusticated-plinth', 'corner-pilasters', 'row-cornice', 'white-window-frames']) assert.ok(p.registerForce.includes(id), id);
   } finally { delete g.__canalRecallDesignUnits; }
@@ -102,14 +103,18 @@ test('a read of no dormers draws none; unread keeps one per front', () => {
   assert.equal(plotDormers(6, 5.5, { src: 'photo' }, 'plain', false).length, 1);
 });
 
-test('a heavy cornice is the kroonlijst, a bracketed one the console cornice; a dressed door forces its surround', () => {
+// 2026-11-21 (self-check pass 1: 22 major "deep cornice drawn as a thin line"): the solo draw dresses a heavy or bracketed
+// cornice as the row kit's deep timber cornice on consoles (row-cornice), not the kroonlijst / console-cornice line.
+test('a heavy cornice is the deep row cornice on consoles, a bracketed one too; a dressed door is a stone doorcase', () => {
   const g = globalThis as { __canalRecallDesignUnits?: boolean };
   const draw = (fields: Record<string, unknown>) => withDesignUnitRoof(feature({ designUnit: beltDesignUnit('0363100012168544', beltPlotFacts({ ...H2.fields, roofStorey: 'none', dormers: { count: 0 }, ...fields }, { ...H2.read, roofMaterial: 'not-visible' }, { widthM: 6 })!) })).properties as Record<string, any>;
-  const heavy = draw({ cornice: 'heavy', door: { bay: 0, surround: true } });
+  const heavy = draw({ cornice: 'heavy', ground: 'dwelling', door: { bay: 0, surround: true } });
   assert.equal(heavy.roofShape, 'flat');
-  assert.ok(heavy.registerForce.includes('kroonlijst') && heavy.registerForce.includes('door-surround') && !heavy.registerForce.includes('row-cornice'));
-  assert.equal(heavy.designCornice, undefined);
-  assert.ok(draw({ cornice: 'bracketed' }).registerForce.includes('console-cornice'));
+  assert.ok(!heavy.registerForce.includes('kroonlijst') && heavy.registerForce.includes('row-doorcase') && !heavy.registerForce.includes('door-surround') && heavy.registerForce.includes('row-cornice'));
+  assert.equal(heavy.designDoorcase.material, 'stone', 'a dressed door is a stone doorcase');
+  assert.deepEqual(heavy.designCorniceDress, { supports: 'consoles', frieze: 'plain', scale: 1.6 });
+  const bracketed = draw({ cornice: 'bracketed' });
+  assert.ok(bracketed.registerForce.includes('row-cornice') && !bracketed.registerForce.includes('console-cornice'));
   assert.equal(g.__canalRecallDesignUnits, undefined);
 });
 

@@ -58,7 +58,9 @@ export const HEAD_SHAPES = ['flat', 'segmental', 'round'] as const;
 export type HeadShape = (typeof HEAD_SHAPES)[number];
 /** A plot gable as read (ring-r2 verdicts, 2026-11-21: Admiraal De Ruijterweg "not tall enough and missing the window in
  *  the triangle"; Jan Luijkenstraat 160504/166029 "an offset triangle roof that doesn't go the whole width"). */
-export interface PlotGable { riseM?: number; widthM?: number; offsetM?: number; window?: 'none' | 'square' | 'round' | 'segmental' }
+export interface PlotGable { riseM?: number; widthM?: number; offsetM?: number; window?: 'none' | 'square' | 'round' | 'segmental';
+  /** Belt review: the canal belt's gable dress (houseLine/crownProfile.ts BELT_GABLE: claw pieces, tall neck, cap). */
+  belt?: true }
 /** The default pointed-gable rise over its foot width (Admiraal De Ruijterweg: about 4.2 m on a 3.4 m foot). */
 export const POINT_GABLE_RISE_PER_M = 1.1;
 
@@ -100,9 +102,17 @@ export interface PlotFacts {
   /** The main cornice as read (the house rows' row-cornice kinds); absent: the dice cornice. */
   cornice?: 'simple' | 'bracketed' | 'heavy' | 'frieze' | 'attic-frieze';
   /** The street door: its 0-based place among `of` ground-storey openings, left to right as seen. */
-  door?: { index: number; of: number; surround?: boolean };
+  door?: { index: number; of: number; surround?: boolean; /** Belt review: a fanlight over the door as read. */ fanlight?: boolean };
   /** Street-furniture kit parts the read names (facadeExtras.ts `hoist-beam`, `wall-anchors`), forced as stated. */
   parts?: Array<'hoist-beam' | 'wall-anchors'>;
+  /** Belt review (2026-11-21, measured on the picked crop): each full storey's share of the wall under the cornice, the
+   *  ground storey first (canal fronts: the ground storey tallest, the top storey lowest). Absent: an even pitch. */
+  storeyShares?: number[];
+  /** Belt review: an attic storey read above the top floor (low lights in a frieze under the cornice). */
+  attic?: boolean;
+  /** Belt review, measured on the crop: a ground window's height over a first-upper window's, and the street door's
+   *  height (fanlight included) over the ground storey's. The ground openings are cut to them (a dwelling ground only). */
+  groundOpenings?: { windowRatio: number; doorRatio: number; /** A basement band's share of the ground storey. */ basementRatio?: number; /** The door up a stoop, over the basement. */ raisedDoor?: true };
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';

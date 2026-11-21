@@ -25,7 +25,31 @@ export type WallLayout = {
   /** House rows: the door bay drawn mirrored, its door where the read door is (Herengracht 144: a one-bay front's read
    *  door on the right drew on the preset's left). Absent: the preset's door axis, as before. */
   doorMirror?: true;
+  /** Belt review (a measured storey profile, beltReview/plotRead.ts): each upper storey's own height (m), lowest first,
+   *  summing to `storeys * storeyM`. Absent: every upper storey `storeyM` high, as before. */
+  storeyHeightsM?: number[];
 };
+
+/** Upper storey `s`'s floor over the ground storey's top (m): `s * storeyM`, or the sum of the stated heights below it. */
+export function storeyOffsetM(l: Pick<WallLayout, 'storeyM' | 'storeyHeightsM'>, s: number): number {
+  const h = l.storeyHeightsM;
+  if (!h) return s * l.storeyM;
+  let z = 0;
+  for (let k = 0; k < s; k++) z += h[k] ?? l.storeyM;
+  return z;
+}
+/** Upper storey `s`'s height (m): `storeyM`, or its stated height. */
+export const storeyHeightM = (l: Pick<WallLayout, 'storeyM' | 'storeyHeightsM'>, s: number): number => l.storeyHeightsM?.[s] ?? l.storeyM;
+
+/**
+ * Upper storey heights (m, lowest first) sharing `upperM` by measured shares (any positive numbers, one per upper storey).
+ * Null when the shares do not match the storey count or are not all positive.
+ */
+export function profiledStoreys(shares: readonly number[] | undefined, storeys: number, upperM: number): number[] | null {
+  if (!shares || shares.length !== storeys || storeys < 1 || !(upperM > 0) || !shares.every(x => Number.isFinite(x) && x > 0)) return null;
+  const sum = shares.reduce((a, b) => a + b, 0);
+  return shares.map(x => +(upperM * x / sum).toFixed(3));
+}
 
 /** Walls shorter than this get no facade cells (chamfers, notches). */
 export const MIN_FACADE_EDGE_M = 1.1;
@@ -140,5 +164,5 @@ export function edgeGroundPieces(run: RunLayout, edge: number, edgeLenM: number)
 export function edgeLayout(run: RunLayout, edge: number, edgeLenM: number): WallLayout {
   const bays = Math.max(1, Math.round(edgeLenM / run.bayWidthM)), bayWidthM = edgeLenM / bays, s = run.edgeStartM[edge];
   const doorBays = run.doorBays.map(b => (b + 0.5) * run.bayWidthM - s).filter(c => c > 0 && c < edgeLenM).map(c => Math.min(bays - 1, Math.floor(c / bayWidthM)));
-  return { bays, bayWidthM, groundM: run.groundM, storeys: run.storeys, storeyM: run.storeyM, doorBays: [...new Set(doorBays)], ...(run.doorMirror ? { doorMirror: true as const } : {}) };
+  return { bays, bayWidthM, groundM: run.groundM, storeys: run.storeys, storeyM: run.storeyM, doorBays: [...new Set(doorBays)], ...(run.doorMirror ? { doorMirror: true as const } : {}), ...(run.storeyHeightsM ? { storeyHeightsM: run.storeyHeightsM } : {}) };
 }

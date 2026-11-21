@@ -64,6 +64,11 @@ export type ExtraContext = {
   plotBalconies?: readonly number[];
   /** Design units: the plot's white frames (plotPlan.ts plotWhite); white-window-frames draws them at full width. */
   designFrames?: true;
+  /** Belt review: the ground storey's windows are the solo plot's measured boxes (x along this wall, z absolute), not the
+   *  cells': frames, sills and holes follow them. */
+  groundWindows?: Array<{ x: number; hw: number; z0: number; z1: number }>;
+  /** Belt review: the solo plot's measured street door on this wall (as `groundWindows`). */
+  groundDoor?: { x: number; hw: number; z0: number; z1: number };
   /** Design units: the plot was read with plain brick heads; the dice head dressings stay off it. */
   plainHeads?: true;
   /** Design units: the plot's read dress (designUnits/plotPlan.ts): grey stone at the foot, bacon courses, white pilasters. */
