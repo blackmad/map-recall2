@@ -107,23 +107,23 @@ export class BeltReviewStore {
 
   async bundle(faceId: string, token: string): Promise<FaceBundle> {
     this.faceDir(faceId);
-    const [face, candidates, description, picks, edits, grouping, pins, state, ledger] = await Promise.all([
+    const [face, candidates, description, picks, edits, grouping, pins, marks, state, ledger] = await Promise.all([
       this.face(faceId), this.candidates(faceId), this.description(faceId), this.doc(faceId, 'picks'), this.doc(faceId, 'edits'),
-      this.doc(faceId, 'grouping'), this.doc(faceId, 'pins'), this.doc(faceId, 'state'), this.doc(faceId, 'ledger'),
+      this.doc(faceId, 'grouping'), this.doc(faceId, 'pins'), this.doc(faceId, 'marks'), this.doc(faceId, 'state'), this.doc(faceId, 'ledger'),
     ]);
-    return { token, face, candidates, description, picks, edits, grouping, pins, state, ledger };
+    return { token, face, candidates, description, picks, edits, grouping, pins, marks, state, ledger };
   }
 
   /** Rewrite the ledger's derived sections from the current docs (after any write). */
   async refreshLedger(faceId: string, change?: (l: LedgerFile) => void): Promise<LedgerFile> {
     this.faceDir(faceId);
-    const [face, candidates, description, picks, edits, grouping, pins, state] = await Promise.all([
+    const [face, candidates, description, picks, edits, grouping, pins, marks, state] = await Promise.all([
       this.face(faceId), this.candidates(faceId), this.description(faceId), this.doc(faceId, 'picks'), this.doc(faceId, 'edits'),
-      this.doc(faceId, 'grouping'), this.doc(faceId, 'pins'), this.doc(faceId, 'state'),
+      this.doc(faceId, 'grouping'), this.doc(faceId, 'pins'), this.doc(faceId, 'marks'), this.doc(faceId, 'state'),
     ]);
     return lockedJson(this.docPath(faceId, 'ledger'), initialDocs.ledger(faceId), ledger => {
       change?.(ledger);
-      deriveLedger(ledger, { face, candidates, description, picks, edits, grouping, pins, state });
+      deriveLedger(ledger, { face, candidates, description, picks, edits, grouping, pins, marks, state });
       ledger.revision += 1;
       ledger.updatedAt = new Date().toISOString();
       return structuredClone(ledger);

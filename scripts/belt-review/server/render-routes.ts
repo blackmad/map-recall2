@@ -41,6 +41,10 @@ export interface DerivedPand {
   notes: string[];
   cannotDraw: Array<{ field: string; value?: unknown; drawnAs?: unknown; why: string; gapId?: string }>;
   hash: string;
+  /** Fields with a weak source: missing from the description, or an own read under 60 % (stage 2 sorts worst first). */
+  weak: string[];
+  /** Lane C's photo-against-render likeness when it has judged this house (0–1, higher is closer); null before. */
+  likeness: number | null;
 }
 
 export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: (res: Response, e: unknown) => void, opts: { repoRoot: string; cacheDir?: string; service?: RenderService }) {
@@ -65,7 +69,10 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
       const asDesc: Partial<Record<DescField, DescFieldValue>> = {};
       for (const f of DESC_FIELDS) if (d.fields[f]) asDesc[f] = { value: d.fields[f]!.value, source: d.fields[f]!.source as never, confidence: 1, ref: d.fields[f]!.ref ?? '' };
       const notes = p.part ? [...d.notes, `Split house ${p.part}: the renderer draws whole pands, so this is pand ${p.basePandId} drawn with this house's fields, cut to ${p.spanM![0]}–${p.spanM![1]} m.`] : d.notes;
-      pands[p.pandId] = { pandId: p.pandId, fields: d.fields as DerivedPand['fields'], chain: d.chain, notes, cannotDraw: kitCannotDraw(p.basePandId, asDesc, list), hash: designHash(p.pandId, d.design, ppm, p.spanM), design: d.design, house: p };
+      const desc = description?.pands.find(x => x.pandId === p.pandId) as (NonNullable<typeof description>['pands'][number] & { likeness?: unknown }) | undefined;
+      const weak = DESC_FIELDS.filter(f => !['eavesM', 'facadeYear'].includes(f) && !d.fields[f]?.edited && (!desc?.fields?.[f] || (desc.fields[f]!.source === 'own-read' && (desc.fields[f]!.confidence ?? 0) < 0.6)));
+      const likeness = typeof desc?.likeness === 'number' ? desc.likeness : null;
+      pands[p.pandId] = { pandId: p.pandId, weak, likeness, fields: d.fields as DerivedPand['fields'], chain: d.chain, notes, cannotDraw: kitCannotDraw(p.basePandId, asDesc, list), hash: designHash(p.pandId, d.design, ppm, p.spanM), design: d.design, house: p };
     }
     return { face, ppm, pands };
   }
@@ -197,5 +204,7 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
   router.get('/kit-catalogue', async (_req, res) => {
     try { res.set('Cache-Control', 'no-cache').json(await readJson(path.join(store.dataRoot, 'kit-catalogue.json'), { enums: {} })); } catch (e) { fail(res, e); }
   });
-  return service;
+  /** Each house's current render hash (no rendering): a stage 2 mark on another hash is "changed, recheck". */
+  const hashes = async (faceId: string) => Object.fromEntries(Object.entries((await derive(faceId)).pands).map(([k, v]) => [k, v.hash]));
+  return { service, hashes };
 }

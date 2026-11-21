@@ -3,9 +3,9 @@
  * of the ledger. No I/O here (store.ts does the files), so every rule is unit-testable.
  */
 import {
-  ENTRY_ID_PATTERN, GROUPING_LINK_KINDS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
+  ENTRY_ID_PATTERN, GROUPING_LINK_KINDS, MARKS, PAND_PATTERN, PIN_KINDS, PIN_STATUSES, PIN_TAGS, PIN_TARGETS, STAGES, VERDICTS,
   type Actor, type CandidatesFile, type DescriptionFile, type EditsFile, type FaceFile, type FieldEdit, type GroupingFile,
-  type LedgerFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
+  type LedgerFile, type Mark, type MarksFile, type PhotoCandidate, type Pick as PickEntry, type PinsFile, type PicksFile, type Pin, type Stage, type StateAction, type StateFile,
   type Verdict,
 } from './types.ts';
 import { DESC_FIELDS, LIBRARY_SOURCES } from './fields.ts';
@@ -216,13 +216,39 @@ export function validateGrouping(face: FaceFile, body: unknown, actor: Actor, no
 
 // ------------------------------------------------------------------------------------------------------------ state
 
-export interface Readiness { picks: PicksFile; pins: PinsFile; face: FaceFile }
+/** What confirming a stage looks at. `houses` and `hashes` (the houses stages 2–4 review, and each one's current render
+ *  hash) come from the render routes; without them stage 2 only checks that marks exist. */
+export interface Readiness { picks: PicksFile; pins: PinsFile; face: FaceFile; marks?: MarksFile; houses?: string[]; hashes?: Record<string, string> }
+
+/** Stage 2: houses with no mark, and houses whose render changed since their mark ("changed, recheck"). */
+export function markGaps(r: Readiness): { unmarked: string[]; changed: string[] } {
+  const houses = r.houses ?? r.face.pands.map(p => p.pandId), marks = r.marks?.marks ?? {};
+  const unmarked = houses.filter(h => !marks[h]);
+  const changed = houses.filter(h => marks[h] && r.hashes && marks[h].hash !== null && r.hashes[h] && marks[h].hash !== r.hashes[h]);
+  return { unmarked, changed };
+}
+
+/** A mark body: `{mark: good|wrong|unsure, note?, hash?}`; the house must be on the (house-expanded) face. */
+export function validateMark(face: FaceFile, houseId: string, body: unknown, prior: Mark | undefined, pass: number, now: string): Omit<Mark, 'revision' | 'at' | 'by'> {
+  if (!face.pands.some(p => p.pandId === houseId)) throw bad(`House ${houseId} is not on this face`);
+  if (!isObj(body) || !MARKS.includes(body.mark as never)) throw bad('mark must be good, wrong or unsure');
+  const mark = body.mark as Mark['mark'];
+  const out: Omit<Mark, 'revision' | 'at' | 'by'> = { mark, hash: typeof body.hash === 'string' && /^[0-9a-f]{8,64}$/.test(body.hash) ? body.hash : null, pass, history: [...(prior?.history ?? []), { pass, mark, at: now }].slice(-50) };
+  if (body.note !== undefined && body.note !== '') out.note = str(body.note, 500, 'note');
+  return out;
+}
 
 /** What blocks confirming `stage` (empty = ready). */
 export function stageBlockers(stage: Stage, r: Readiness): string[] {
   if (stage === 1) {
     const missing = r.face.pands.filter(p => !r.picks.picks[p.pandId]);
     return missing.length ? [`${missing.length} pand${missing.length === 1 ? '' : 's'} without a photo pick (${missing.map(p => p.address).slice(0, 4).join(', ')}${missing.length > 4 ? '…' : ''})`] : [];
+  }
+  if (stage === 2) {
+    const { unmarked, changed } = markGaps(r), out: string[] = [];
+    if (unmarked.length) out.push(`${unmarked.length} house${unmarked.length === 1 ? '' : 's'} not marked`);
+    if (changed.length) out.push(`${changed.length} changed, recheck`);
+    return out;
   }
   if (stage === 4) {
     const open = Object.values(r.pins.pins).filter(p => p.status !== 'resolved');
@@ -286,7 +312,7 @@ export function applyStateAction(state: StateFile, action: StateAction, stageArg
 // ------------------------------------------------------------------------------------------------------------ ledger
 
 
-export interface LedgerInputs { face: FaceFile; candidates: CandidatesFile | null; description: DescriptionFile | null; picks: PicksFile; edits: EditsFile; grouping: GroupingFile; pins: PinsFile; state: StateFile }
+export interface LedgerInputs { face: FaceFile; candidates: CandidatesFile | null; description: DescriptionFile | null; picks: PicksFile; edits: EditsFile; grouping: GroupingFile; pins: PinsFile; marks?: MarksFile; state: StateFile }
 
 /** Recompute the derived sections of the ledger (photos, fields, pins, stage failures, passes); keeps `david` and `claude`. */
 export function deriveLedger(ledger: LedgerFile, x: LedgerInputs): LedgerFile {
@@ -314,6 +340,14 @@ export function deriveLedger(ledger: LedgerFile, x: LedgerInputs): LedgerFile {
     '3': x.grouping.units.filter(u => u.source !== 'ordekaart').length + x.grouping.links.length,
     '4': pins.length,
   };
+  const zero = () => ({ good: 0, wrong: 0, unsure: 0 });
+  const byPass: Record<string, { good: number; wrong: number; unsure: number }> = {}, nowMarks = zero();
+  for (const m of Object.values(x.marks?.marks ?? {})) {
+    nowMarks[m.mark] += 1;
+    for (const e of m.history ?? []) (byPass[String(e.pass)] ??= zero())[e.mark] += 1;
+  }
+  ledger.marks = { byPass, now: nowMarks };
+  ledger.stageFailures['2'] = nowMarks.wrong;
   const reopens: Record<string, number> = {};
   for (const e of x.state.events) if (e.action === 'reopen-stage') reopens[String(e.stage)] = (reopens[String(e.stage)] ?? 0) + 1;
   ledger.reopens = reopens;
@@ -323,12 +357,22 @@ export function deriveLedger(ledger: LedgerFile, x: LedgerInputs): LedgerFile {
 }
 
 /** Add active seconds (the page's timer) to the ledger; one post adds at most 120 s. */
-export function addActivity(ledger: LedgerFile, seconds: unknown, stage: unknown): LedgerFile {
+export function addActivity(ledger: LedgerFile, seconds: unknown, stage: unknown, byHouse?: unknown): LedgerFile {
   const s = Number(seconds), st = Number(stage);
   if (!(s > 0 && s <= 120)) throw bad('seconds must be 0…120');
   if (!STAGES.includes(st as Stage)) throw bad('Invalid stage');
-  ledger.david.activeSeconds = Math.round((ledger.david.activeSeconds + s) * 10) / 10;
-  ledger.david.byStage[String(st)] = Math.round(((ledger.david.byStage[String(st)] ?? 0) + s) * 10) / 10;
+  const r1 = (n: number) => Math.round(n * 10) / 10;
+  ledger.david.activeSeconds = r1(ledger.david.activeSeconds + s);
+  ledger.david.byStage[String(st)] = r1((ledger.david.byStage[String(st)] ?? 0) + s);
+  // Seconds per house (the house in view), as the page splits them; at most the posted total, house ids only.
+  if (isObj(byHouse)) {
+    let left = s;
+    for (const [h, v] of Object.entries(byHouse)) {
+      const n = Math.min(Number(v), left);
+      if (!HOUSE_PATTERN.test(h) || !(n > 0)) continue;
+      left -= n; (ledger.david.byHouse ??= {})[h] = r1((ledger.david.byHouse[h] ?? 0) + n);
+    }
+  }
   return ledger;
 }
 

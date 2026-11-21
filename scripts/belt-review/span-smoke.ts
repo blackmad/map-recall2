@@ -2,8 +2,8 @@
  * Belt review stage 1 facade span + split smoke (desktop 1440x900): on a temporary copy of the fixture face where one wide
  * pand (Prinsengracht 136) gets lane B style candidates (`pandSpanPx` inside a margin) and two house numbers:
  *   dashed BAG lines on its candidates; the "2 addresses" chip; dragging the left facade edge saves facadeSpanPx/M; ] nudges
- *   the right edge 0.25 m; D splits at the cursor, labelled 136 / 138; the ledger counts both; stage 2 lists the two houses
- *   with a cropped photo; stage 3 shows them as separate cells; the panorama link resolves (no tab is opened).
+ *   the right edge 0.25 m; D splits at the cursor, labelled 136 / 138; the ledger counts both; stage 2's row has the two
+ *   houses as cells and the focus view a cropped photo; stage 3 shows them as separate cells; the panorama link resolves (no tab is opened).
  *
  *   /tmp/canal-pw.sh env PW_PORT=4330 BELT_REVIEW_IMAGE_ROOT=<archive> node --import tsx scripts/belt-review/span-smoke.ts [--shots <dir>]
  */
@@ -115,16 +115,20 @@ try {
   await page.locator('.pand-head h2').click();
   await page.keyboard.press('Enter');
   await page.waitForFunction(() => document.querySelector('.step.done b')?.textContent === '1');
-  await page.waitForSelector('.pand.split');
-  assert.equal(await page.locator('.pand.split').count(), 2);
-  await page.locator('.pand.split').first().click();
-  await page.waitForFunction(() => document.querySelector('.pand-head h2')?.textContent?.includes('Prinsengracht 136'));
-  await page.waitForFunction(() => { const i = document.querySelector<HTMLImageElement>('img.photo'); return !!i && i.complete && i.naturalWidth > 0; }, undefined, { timeout: 60_000 });
-  await page.waitForFunction(() => { const i = document.querySelector<HTMLImageElement>('img.render'); return !!i && i.complete && i.naturalWidth > 0; }, undefined, { timeout: 120_000 });
+  // Stage 2's row shows the split houses as two cells; the focus view of one shows its cropped photo and render.
+  await page.waitForSelector('.cell', { timeout: 120_000 });
+  assert.equal(await page.locator('.cell').count(), order.length + 1);
+  await page.locator('.cell', { hasText: '136' }).first().click();
+  await page.keyboard.press('f');
+  await page.waitForFunction(() => { const i = document.querySelector<HTMLImageElement>('.focus img.photo'); return !!i && i.complete && i.naturalWidth > 0; }, undefined, { timeout: 60_000 });
+  await page.waitForFunction(() => { const i = document.querySelector<HTMLImageElement>('.focus img.render'); return !!i && i.complete && i.naturalWidth > 0; }, undefined, { timeout: 120_000 });
   await page.screenshot({ path: path.join(shots, 'belt-review-split-stage2-desktop.png') });
+  // Mark every house good so stage 2 confirms.
+  await page.keyboard.press('Escape');
+  for (let i = 0; i < order.length + 1; i++) { await page.keyboard.press('g'); await page.waitForTimeout(250); }
+  await page.waitForFunction(n => document.querySelectorAll('.cell .mk').length >= n, order.length + 1, { timeout: 60_000 });
 
   // Stage 3: the split houses are separate cells.
-  await page.locator('.pand-head h2').click();
   await page.keyboard.press('Enter');
   await page.waitForSelector('.cell', { timeout: 120_000 });
   assert.equal(await page.locator('.cell').count(), order.length + 1);

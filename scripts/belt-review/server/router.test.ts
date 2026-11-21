@@ -144,6 +144,53 @@ describe('picks: facade span and split houses', () => {
   });
 });
 
+describe('marks: stage 2 likeness per house', () => {
+  // Its own face, so the stage tests below see test-face untouched.
+  const F = 'marks-face', mdisk = async (doc: string) => JSON.parse(await fs.readFile(path.join(data, F, `${doc}.json`), 'utf8'));
+  const stateRev = async () => (await mdisk('state').catch(() => ({ revision: 0 }))).revision;
+  before(async () => {
+    await fs.mkdir(path.join(data, F));
+    for (const f of ['face.json', 'candidates.json']) {
+      const j = JSON.parse(await fs.readFile(path.join(data, 'test-face', f), 'utf8'));
+      if (f === 'face.json') j.faceId = F;
+      await fs.writeFile(path.join(data, F, f), JSON.stringify(j));
+    }
+  });
+  it('refuses marks before stage 2, and confirming stage 2 until every house is marked', async () => {
+    assert.equal((await post(`/faces/${F}/marks/${P1}`, { expectedRevision: 0, value: { mark: 'good' } })).status, 409);
+    for (const [id, c] of [[P1, 'a'], [P2, 'c']]) assert.equal((await post(`/faces/${F}/picks/${id}`, { expectedRevision: 0, value: { candidateId: c } })).status, 200);
+    assert.equal((await post(`/faces/${F}/state`, { expectedRevision: await stateRev(), action: 'confirm-stage', stage: 1 })).status, 200);
+    const r = await post(`/faces/${F}/state`, { expectedRevision: await stateRev(), action: 'confirm-stage', stage: 2 });
+    assert.equal(r.status, 409); assert.match(r.body.error, /2 houses not marked/);
+    assert.equal((await post(`/faces/${F}/marks/${P1}`, { expectedRevision: 0, value: { mark: 'great' } })).status, 400);
+    assert.equal((await post(`/faces/${F}/marks/0363100099999999`, { expectedRevision: 0, value: { mark: 'good' } })).status, 400);
+  });
+  it('a mark on an older render reads changed and blocks stage 2 until rechecked; the ledger counts G/W/? per pass', async () => {
+    const hashes = Object.fromEntries(Object.entries((await get(`/faces/${F}/derived`)).body.pands).map(([k, v]) => [k, (v as { hash: string }).hash]));
+    assert.equal((await post(`/faces/${F}/marks/${P1}`, { expectedRevision: 0, value: { mark: 'wrong', note: 'roof too low', hash: hashes[P1] } })).status, 200);
+    const g = await post(`/faces/${F}/marks/${P2}`, { expectedRevision: 0, value: { mark: 'good', hash: hashes[P2] } });
+    assert.equal(g.status, 200);
+    assert.deepEqual(g.body.ledger.marks.now, { good: 1, wrong: 1, unsure: 0 });
+    // Claude's fix changes P1's drawing: its mark is on the old render now.
+    assert.equal((await post(`/faces/${F}/edits/${P1}`, { expectedRevision: 0, value: { fields: { crown: { value: 'step' } } } })).status, 200);
+    const r = await post(`/faces/${F}/state`, { expectedRevision: await stateRev(), action: 'confirm-stage', stage: 2 });
+    assert.equal(r.status, 409); assert.match(r.body.error, /1 changed, recheck/);
+    const now = (await get(`/faces/${F}/derived`)).body.pands[P1].hash;
+    assert.notEqual(now, hashes[P1]);
+    const re = await post(`/faces/${F}/marks/${P1}`, { expectedRevision: 1, value: { mark: 'good', hash: now } });
+    assert.equal(re.status, 200);
+    const m = (await mdisk('marks')).marks[P1];
+    assert.deepEqual(m.history.map((x: { mark: string }) => x.mark), ['wrong', 'good']); assert.equal(m.note, undefined);
+    assert.deepEqual(re.body.ledger.marks.byPass['0'], { good: 2, wrong: 1, unsure: 0 });
+    assert.equal((await post(`/faces/${F}/state`, { expectedRevision: await stateRev(), action: 'confirm-stage', stage: 2 })).status, 200);
+  });
+  it('splits active seconds per house in the ledger', async () => {
+    const r = await post(`/faces/${F}/activity`, { seconds: 30, stage: 2, byHouse: { [P1]: 20, [P2]: 25, '../x': 5 } });
+    assert.equal(r.status, 200);
+    assert.deepEqual(r.body.ledger.david.byHouse, { [P1]: 20, [P2]: 10 });
+  });
+});
+
 describe('state: stages in order, send to Claude, ledger', () => {
   it('refuses to confirm stage 1 until every pand has a pick', async () => {
     const r = await post('/faces/test-face/state', { expectedRevision: 0, action: 'confirm-stage', stage: 1 });

@@ -10,7 +10,8 @@
  *   POST /faces/:face/pins/:pin               {expectedRevision, value: Pin fields}         (expectedRevision 0 = new)
  *   POST /faces/:face/grouping                {expectedRevision, value: {units, links}}
  *   POST /faces/:face/state                   {expectedRevision, action, stage?}
- *   POST /faces/:face/activity                {seconds, stage}                              (no revision: additive)
+ *   POST /faces/:face/marks/:house            {expectedRevision, value: {mark: good|wrong|unsure, note?, hash?}}
+ *   POST /faces/:face/activity                {seconds, stage, byHouse?: {house: seconds}}  (no revision: additive)
  *   GET  /faces/:face/image/:pand/:candidate  the candidate crop (path-guarded) or a redirect to its URL
  *   GET  /rounds                              compare rounds
  *   GET  /rounds/:round                       blocks, layers, verdicts, token
@@ -32,7 +33,7 @@ import { mountRenderRoutes } from './render-routes.ts';
 import type { RenderService } from './render-service.ts';
 import { discoverRound } from '../../../src/canalRecall/beltReview/compare.ts';
 import {
-  ReviewError, addActivity, applyStateAction, validateEdits, validateGrouping, validatePick, validatePin, validateVerdict,
+  ReviewError, addActivity, applyStateAction, validateEdits, validateMark, validateGrouping, validatePick, validatePin, validateVerdict,
 } from '../../../src/canalRecall/beltReview/logic.ts';
 import {
   ENTRY_ID_PATTERN, ID_PATTERN, PAND_PATTERN, STATE_ACTIONS, initialDocs, initialVerdicts,
@@ -63,6 +64,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
   const repoRoot = options.repoRoot ?? process.cwd();
   const store = new BeltReviewStore(options.dataRoot ?? path.join(repoRoot, 'review-data', 'belt-review'), options.imageRoot !== undefined ? options.imageRoot : (process.env.BELT_REVIEW_IMAGE_ROOT || null));
   const token = options.token ?? randomUUID();
+  let renderRoutes: ReturnType<typeof mountRenderRoutes> = null as never;
   const router = Router();
   const actorOf = (req: Request): Actor => req.get('x-review-actor') === 'claude' ? 'claude' : 'david';
   const guard = (req: Request) => { if (req.get('x-review-token') !== token) throw new ReviewError('Reload this local review page before saving (the server restarted).', 403); };
@@ -82,13 +84,14 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
       guard(req);
       const faceId = req.params.face, id = req.params.entry, rev = expected(req), actor = actorOf(req), at = now();
       if (doc === 'picks' && !PAND_PATTERN.test(id)) throw new ReviewError('Invalid pand id', 400);
-      if (doc === 'edits' && !HOUSE_PATTERN.test(id)) throw new ReviewError('Invalid house id', 400);
+      if ((doc === 'edits' || doc === 'marks') && !HOUSE_PATTERN.test(id)) throw new ReviewError('Invalid house id', 400);
       if (doc === 'pins' && !ENTRY_ID_PATTERN.test(id)) throw new ReviewError('Invalid pin id', 400);
       // Picks are per BAG pand; edits and pins are per house (a pand David split in stage 1 is several houses).
       const face = doc === 'picks' ? await store.face(faceId) : await store.houseFace(faceId);
       const candidates = doc === 'picks' ? await store.candidates(faceId) : null;
       const state = await store.doc(faceId, 'state');
       if (doc === 'picks' && (state.stage !== 1 || state.status === 'accepted')) throw new ReviewError('Stage 1 is confirmed. Reopen stage 1 to change a pick.', 409);
+      if (doc === 'marks' && (state.stage < 2 || state.status === 'accepted')) throw new ReviewError(state.status === 'accepted' ? 'The block is accepted.' : 'Marks open with stage 2.', 409);
       const result = await lockedJson(store.docPath(faceId, doc), initialDocs[doc](faceId), (file: any) => {
         const map = file[doc] as Record<string, { revision: number }>;
         const prior = map[id];
@@ -96,6 +99,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
         const value = req.body?.value;
         const clean = doc === 'picks' ? validatePick(face, candidates, id, value, prior as never)
           : doc === 'edits' ? validateEdits(face, id, value)
+          : doc === 'marks' ? validateMark(face, id, value, prior as never, state.passes, at)
           : validatePin(face, id, value, prior as never, actor, state.passes, at);
         map[id] = { ...clean, revision: (prior?.revision ?? 0) + 1, at, by: actor } as never;
         file.revision += 1;
@@ -109,6 +113,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
   router.post('/faces/:face/picks/:entry', entryWrite('picks'));
   router.post('/faces/:face/edits/:entry', entryWrite('edits'));
   router.post('/faces/:face/pins/:entry', entryWrite('pins'));
+  router.post('/faces/:face/marks/:entry', entryWrite('marks'));
 
   router.post('/faces/:face/grouping', async (req, res) => {
     try {
@@ -130,10 +135,12 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
       guard(req);
       const faceId = req.params.face, rev = expected(req), at = now(), action = req.body?.action as StateAction;
       if (!STATE_ACTIONS.includes(action)) throw new ReviewError('Invalid action', 400);
-      const [face, picks, pins] = await Promise.all([store.face(faceId), store.doc(faceId, 'picks'), store.doc(faceId, 'pins')]);
+      const [face, picks, pins, marks, houseFace] = await Promise.all([store.face(faceId), store.doc(faceId, 'picks'), store.doc(faceId, 'pins'), store.doc(faceId, 'marks'), store.houseFace(faceId)]);
+      // Stage 2 confirms on marks against the current renders: a house Claude re-rendered must be rechecked.
+      const hashes = action === 'confirm-stage' && (req.body?.stage ?? 0) === 2 ? await renderRoutes.hashes(faceId) : undefined;
       const doc = await lockedJson(store.docPath(faceId, 'state'), initialDocs.state(faceId), file => {
         if (file.revision !== rev) throw conflict('The block state');
-        applyStateAction(file, action, req.body?.stage, actorOf(req), { face, picks, pins }, at);
+        applyStateAction(file, action, req.body?.stage, actorOf(req), { face, picks, pins, marks, houses: houseFace.pands.map(p => p.pandId), hashes }, at);
         file.revision += 1;
         file.updatedAt = at;
         return structuredClone(file);
@@ -146,7 +153,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
     try {
       guard(req);
       await store.face(req.params.face);
-      const ledger = await store.refreshLedger(req.params.face, l => { addActivity(l, req.body?.seconds, req.body?.stage); });
+      const ledger = await store.refreshLedger(req.params.face, l => { addActivity(l, req.body?.seconds, req.body?.stage, req.body?.byHouse); });
       res.json({ ledger });
     } catch (e) { fail(res, e); }
   });
@@ -206,7 +213,7 @@ export function beltReviewRouter(options: BeltReviewOptions = {}): Router {
   });
 
   // ---------------------------------------------------------------------------------------------------------- render
-  mountRenderRoutes(router, store, fail, { repoRoot, cacheDir: options.renderCacheDir, service: options.renderService });
+  renderRoutes = mountRenderRoutes(router, store, fail, { repoRoot, cacheDir: options.renderCacheDir, service: options.renderService });
 
   // ------------------------------------------------------------------------------------------------------------ page
   router.get('/page.js', async (_req, res) => {
