@@ -1,0 +1,815 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "zeeburgerdijk-275-kit2-112106",
+ "pandId": "0363100012112106",
+ "address": "Zeeburgerdijk 275-375, Amsterdam-Oost: 2004 housing block, storey-high glazing between light rendered piers and white slab edges over a dark stone ground with shops and stair-hall entrances, a seven-storey tower over a four-storey wing (kit route 2, lane large-kit-gaps-20261121 blind A/B: not installed)",
+ "sources": [
+  {
+   "id": "pano-2025-06-16-w02-180",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_00908/",
+   "image": "source-data://pand-reference-walls/0363100012112106/w02-180.jpg",
+   "sha256": "1ee6af4dbe1d6cb6ca298eff9f52bbdd8f13762ba10121515247875eb258d3ce",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w05-180",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_13-53-26_00267/",
+   "image": "source-data://pand-reference-walls/0363100012112106/w05-180.jpg",
+   "sha256": "6831860350cc44c338e607cc11fc8c798d19ea1c452c7a92cfb201de9ad1136e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w06-90",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_11-43-26_00718/",
+   "image": "source-data://pand-reference-walls/0363100012112106/w06-90.jpg",
+   "sha256": "12f9df719f5ff795c44ae5984c4c6d4cb002a9df8ebda9613de50ce7df5b84b1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w07-180",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_00915/",
+   "image": "source-data://pand-reference-walls/0363100012112106/w07-180.jpg",
+   "sha256": "050584b9f48534baa98f6a2eaab552138a543134f18bc26cdfd12c7658e7ffd2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#d6d7d4",
+  "frame": "#3a3c3e",
+  "stone": "#6c6a67",
+  "door": "#2e2f30"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "shellRepair": true,
+ "budgetTriangles": 20000,
+ "closedBands": true,
+ "walls": [
+  {
+   "wallSurfaces": [
+    25
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 27,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.85,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#d6d7d4",
+    "frame": "#3a3c3e",
+    "stone": "#e4e4e0"
+   },
+   "stringCourses": true,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "ribbonStoreys",
+    "stringCourses",
+    "ground",
+    "houses"
+   ],
+   "street": "Zeeburgerdijk",
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6c6a67"
+    }
+   ],
+   "houses": [
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "storage",
+       "storage",
+       "storage",
+       "wall"
+      ]
+     }
+    },
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "residential",
+     "blankStoreys": [
+      1,
+      2,
+      3
+     ],
+     "residential": {
+      "pattern": [
+       "wall"
+      ]
+     }
+    },
+    {
+     "w": 3,
+     "bays": 3,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "wall",
+       "wall",
+       "door"
+      ]
+     }
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    },
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "plinth-shopfronts",
+     "blankStoreys": [
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    },
+    {
+     "w": 5,
+     "bays": 5,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "wall",
+       "wall",
+       "wall",
+       "door",
+       "wall"
+      ]
+     }
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    },
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "plinth-shopfronts",
+     "blankStoreys": [
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    6,
+    43
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.85,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#d6d7d4",
+    "frame": "#3a3c3e",
+    "stone": "#e4e4e0"
+   },
+   "stringCourses": true,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "ribbonStoreys",
+    "stringCourses",
+    "ground",
+    "houses"
+   ],
+   "street": "Zeeburgerdijk",
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6c6a67"
+    }
+   ],
+   "houses": [
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "wall",
+       "wall",
+       "wall",
+       "door"
+      ]
+     }
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    },
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "plinth-shopfronts",
+     "blankStoreys": [
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "w": 5,
+     "bays": 5,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3,
+        4
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 9,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.85,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#d6d7d4",
+    "frame": "#3a3c3e",
+    "stone": "#e4e4e0"
+   },
+   "stringCourses": true,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "ribbonStoreys",
+    "stringCourses",
+    "ground",
+    "houses"
+   ],
+   "street": "Zeeburgerdijk",
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6c6a67"
+    }
+   ],
+   "houses": [
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "bays": [
+        0
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "door"
+      ]
+     }
+    },
+    {
+     "w": 3,
+     "bays": 3,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    },
+    {
+     "w": 1,
+     "bays": 1,
+     "ground": "plinth-shopfronts",
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "plinth-shopfronts",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    33
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 9,
+   "ground": "residential",
+   "windows": "plain",
+   "sills": false,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.85,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#d6d7d4",
+    "frame": "#3a3c3e",
+    "stone": "#e4e4e0"
+   },
+   "stringCourses": true,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "wallMaterial",
+    "ribbonStoreys",
+    "stringCourses",
+    "ground",
+    "houses",
+    "accentPanels"
+   ],
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6c6a67"
+    }
+   ],
+   "houses": [
+    {
+     "w": 4,
+     "bays": 4,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "bays": [
+        0,
+        1,
+        2,
+        3
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "window",
+       "window",
+       "wall",
+       "door"
+      ]
+     }
+    },
+    {
+     "w": 2,
+     "bays": 2,
+     "ground": "residential",
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "residential": {
+      "pattern": [
+       "wall",
+       "wall"
+      ]
+     }
+    },
+    {
+     "w": 3,
+     "bays": 3,
+     "ground": "residential",
+     "ribbonStoreys": [
+      {
+       "storeys": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "sill": 0.04,
+       "h": 0.9,
+       "lights": 1,
+       "rows": [
+        0.33
+       ],
+       "frame": "#3a3c3e"
+      }
+     ],
+     "residential": {
+      "pattern": [
+       "wall",
+       "wall",
+       "wall"
+      ]
+     }
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      4,
+      5
+     ],
+     "storeys": [
+      1,
+      7
+     ],
+     "colour": "#a3a6a6",
+     "along": [
+      0.03,
+      0.97
+     ],
+     "up": [
+      0.02,
+      0.98
+     ]
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "Kit route 2 (lane large-kit-gaps-20261121): per-house grounds put the stair-hall entrances and the garage between the two shop runs; accent panels for the tower's closed grey panels."
+ ]
+}

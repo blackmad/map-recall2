@@ -116,3 +116,19 @@ These features recur across the hand-routed blocks, and many also recur on kit-r
 - The route rule is unchanged (fewer than 3 fronts = kit). On Valkenburgerstraat, the A2 kit recipe beat the old kit
   in a blind A/B (4 of 5 walls, 1 tie), but hand model B is still the one installed. The 13 hand blocks are worth a
   second look as kit-plus-houses candidates once a row of them has been compared blind against a hand model.
+
+## Blind A/B, old kit vs new kit (2026-11-21)
+
+Fresh opus judges saw photo | X | Y with the sides randomised, judging likeness only. The renders are from the
+`large.ts` contact sheets at the photo pose. The recipes are in `scripts/building-recipes/houses/*-{oldkit,kit2}-*`
+and `valkenburgerstraat-69-kit2-185504` (old: kit route A, 1005bc1e27). None are installed.
+
+| block | new wins | old wins | tie | notes |
+|---|---|---|---|---|
+| Valkenburgerstraat 69-165 (5 walls) | 4 | 0 | 1 | the white render stack and panel, the brick loggia lining with doors below; the old kit turned Rapenburgerstraat into mauve curtain glazing |
+| Zeeburgerdijk 275-375 (3 walls) | 1 | 1 | 1 | new lost wall 0: per-house solid piers that are not in the photo (authoring); the slab edges are unsayable in both |
+| Th. K. van Lohuizenlaan 202-286 (3 walls) | 2 | 1 | 0 | the green accent panels won both tower walls; new lost the low block, where a door/window residential ground sat on a continuous glazed plinth |
+| all | 7 | 2 | 2 | |
+
+Lesson: `ground: residential` suits brick plinths with punched doors. It hurts where the plinth is full-height glazing,
+because the kit has no full-height glazed residential bay yet.
