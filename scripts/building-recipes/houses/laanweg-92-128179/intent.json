@@ -71,9 +71,9 @@
    },
    "windows": "two-light",
    "windowShape": {
-    "w": 0.45,
-    "h": 0.4,
-    "sill": 0.22
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
    },
    "palette": {
     "brick": "#b8ab98",
@@ -171,9 +171,9 @@
    },
    "windows": "two-light",
    "windowShape": {
-    "w": 0.45,
-    "h": 0.4,
-    "sill": 0.22
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
    },
    "palette": {
     "brick": "#b8ab98",
@@ -262,9 +262,9 @@
    "ground": "system",
    "windows": "two-light",
    "windowShape": {
-    "w": 0.45,
-    "h": 0.4,
-    "sill": 0.22
+    "w": 0.5,
+    "h": 0.46,
+    "sill": 0.2
    },
    "palette": {
     "brick": "#b8ab98",

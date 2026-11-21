@@ -105,7 +105,7 @@
    "storeys": 4,
    "baysPerStorey": 6,
    "groundFactor": 0.9,
-   "ground": "system",
+   "ground": "blank",
    "windows": "two-light",
    "sills": false,
    "windowShape": {
@@ -117,9 +117,6 @@
     "brick": "#cdc8bb",
     "frame": "#ecece6"
    },
-   "blankStoreys": [
-    0
-   ],
    "bayWindows": [
     {
      "storeys": [
@@ -175,12 +172,7 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias",
-    "garageBays"
-   ],
-   "garageBays": [
-    0,
-    1
+    "loggias"
    ],
    "street": "Jesse Owenshof"
   },
@@ -190,7 +182,7 @@
    ],
    "system": "brick-bay-grid",
    "baysPerStorey": 7,
-   "ground": "system",
+   "ground": "blank",
    "windows": "two-light",
    "sills": false,
    "windowShape": {
@@ -202,9 +194,6 @@
     "brick": "#cdc8bb",
     "frame": "#ecece6"
    },
-   "blankStoreys": [
-    0
-   ],
    "bayWindows": [
     {
      "storeys": [
@@ -262,12 +251,7 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias",
-    "garageBays"
-   ],
-   "garageBays": [
-    5,
-    6
+    "loggias"
    ],
    "alignWith": 0
   },
@@ -277,7 +261,7 @@
    ],
    "system": "brick-bay-grid",
    "baysPerStorey": 6,
-   "ground": "system",
+   "ground": "blank",
    "windows": "two-light",
    "sills": false,
    "windowShape": {
@@ -289,9 +273,6 @@
     "brick": "#cdc8bb",
     "frame": "#ecece6"
    },
-   "blankStoreys": [
-    0
-   ],
    "bayWindows": [
     {
      "storeys": [
@@ -347,12 +328,7 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias",
-    "garageBays"
-   ],
-   "garageBays": [
-    4,
-    5
+    "loggias"
    ],
    "alignWith": 0
   },
@@ -362,7 +338,7 @@
    ],
    "system": "brick-bay-grid",
    "baysPerStorey": 7,
-   "ground": "system",
+   "ground": "blank",
    "windows": "two-light",
    "sills": false,
    "windowShape": {
@@ -374,9 +350,6 @@
     "brick": "#cdc8bb",
     "frame": "#ecece6"
    },
-   "blankStoreys": [
-    0
-   ],
    "bayWindows": [
     {
      "storeys": [
@@ -434,12 +407,7 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias",
-    "garageBays"
-   ],
-   "garageBays": [
-    0,
-    1
+    "loggias"
    ],
    "alignWith": 0
   },
@@ -737,7 +705,7 @@
     123
    ],
    "system": "curtain-wall",
-   "storeys": 5,
+   "storeys": 4,
    "palette": {
     "brick": "#e2e2dc",
     "frame": "#ecece6",
@@ -1003,12 +971,12 @@
  },
  "notes": [
   "Kit2 read (lane kit-batch-8504-20261121). Newer captures archived with all-walls.ts --date=2023,2024,2025 --suffix=n --min-len=8 (2024-10-23 and 2025-06-30, straight-on, 2-8 deg obliquity); the north-west faces and two red end walls are seen only in 2016-2018 crops.",
-  "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park with red INRIT / UITRIT garage doors (garageBays), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at).",
-  "walls[2] (218, w08-294 2018-08-02) and walls[3] (288, w05-294 2017-05-26, 50 deg oblique): the north-west wing, read as mirrors of walls[0] and walls[1]; the 2018 crop confirms loggias at the far end and the stair tower beside it, the garage positions are inferred from the mirror.",
+  "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park (its red INRIT / UITRIT garage doors are not drawn: garageBays does not render on a blank ground, see kit gaps), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at).",
+  "walls[2] (218, w08-294 2018-08-02) and walls[3] (288, w05-294 2017-05-26, 50 deg oblique): the north-west wing, read as mirrors of walls[0] and walls[1]; the 2018 crop confirms loggias at the far end and the stair tower beside it, no garage doors drawn.",
   "walls[4] (232, w02-24n 2024-10-23, tree over the left third, mirrored from the visible right half), walls[5] (102, w09-24n 2024-10-23) and walls[6] (121, w10-24n 2025-06-30, the mirror of 102): the five-storey courtyard-street fronts, a raised ground floor over a vent band, loggia stacks on storeys 1-4, the top storey in darker grey-brown brick (brickStoreys).",
   "walls[7] (188, 70, 31, 123): the glazed stair towers at the wing ends, white mullions and blue-grey spandrel panels (curtain wall), from w06-114n / w07-114n.",
   "walls[8] (189, w13-99n 2025-06-30, sunlit), walls[9] (42, w11-309 2018-08-02), walls[10] (59, w12-309 2016-07-11): red-brown brick end walls, a wide low two-light window on the left and two narrow tall windows on the right per storey, under a white top storey with a continuous ribbon of 12 lights (ribbonStoreys).",
-  "Colours white-balanced on the white window frames: pale brick #cdc8bb (w06/w07, overcast), darker top-storey brick #8c8781 (w02-24n, w09-24n), red-brown #8f5f52 (w13-99n sunlit, by eye: the raw crop is sky-exposed). Garage doors red #a8443c via the door colour.",
+  "Colours white-balanced on the white window frames: pale brick #cdc8bb (w06/w07, overcast), darker top-storey brick #8c8781 (w02-24n, w09-24n), red-brown #8f5f52 (w13-99n sunlit, by eye: the raw crop is sky-exposed).",
   "Not drawn (no field): the row of small dark ventilation grilles in the car-park storey, the teal roof-edge fascia over the red ends, the street-name boards. No photo: the courtyard faces (deck at 2.7 m), the east red end (51), the upper set-back walls and the south-west faces: otherWalls window-grid."
  ]
 }

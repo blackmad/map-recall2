@@ -17,7 +17,7 @@
  ],
  "otherWalls": "window-grid",
  "palette": {
-  "brick": "#93725f",
+  "brick": "#86706a",
   "frame": "#d9d6cf",
   "stone": "#6f9c8e",
   "door": "#2c2826"
@@ -47,7 +47,7 @@
     "sill": 0.25
    },
    "palette": {
-    "brick": "#93725f",
+    "brick": "#86706a",
     "frame": "#d9d6cf",
     "stone": "#6f9c8e"
    },
@@ -365,7 +365,7 @@
     "sill": 0.25
    },
    "palette": {
-    "brick": "#93725f",
+    "brick": "#86706a",
     "frame": "#d9d6cf",
     "stone": "#6f9c8e"
    },
@@ -431,7 +431,7 @@
     "sill": 0.25
    },
    "palette": {
-    "brick": "#93725f",
+    "brick": "#86706a",
     "frame": "#d9d6cf",
     "stone": "#6f9c8e"
    },
