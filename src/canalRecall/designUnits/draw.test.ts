@@ -311,3 +311,16 @@ test('roof evidence: a photo-seen roof storey draws inside the measured top, the
   assert.equal((hoist.rowRoof as { dormers: Array<{ kind: string; hoist?: boolean }> }).dormers[0].hoist, true);
   assert.equal((mans.rowRoof as { dormers: Array<{ kind: string }> }).dormers[0].kind, 'gabled');
 });
+
+test('roof evidence: an era default (roofSource default, dormer form) draws the short dormer slope with the era kind', () => {
+  const s = VO(), m = s.members[0];
+  const props = (ev?: DrawSegment['roofEvidence']) => {
+    setDesignSegments(extract([{ ...s, roofRiseM: 0, ...(ev ? { roofEvidence: ev } : {}) }])); flag(true);
+    try { return decorate(fx.pands.filter(p => s.members.includes(p.id)).map(p => tileFeature(p))).find(f => String(f.properties.id).endsWith(m))!.properties; } finally { flag(undefined); setDesignSegments(null); }
+  };
+  const flat = props(), def = props({ storey: true, dormer: 'gabled', form: 'dormers', source: 'era default', roofSource: 'default' });
+  assert.equal(def.roofShape, 'mansardHip');
+  assert.equal(def.height, flat.height, 'the measured top stays the top');
+  assert.equal((def.rowRoof as { riseM: number }).riseM, EVIDENCE_HOIST_RISE_M, 'dormer form: the short slope');
+  assert.equal((def.rowRoof as { dormers: Array<{ kind: string }> }).dormers[0].kind, 'gabled');
+});

@@ -44,7 +44,7 @@ export interface DesignUnitDraw {
    *  facade (one-facade evidence), so a merged group draws one continuous front. */
   plotBreak?: { left: boolean; right: boolean };
   /** The segment's photo evidence of a roof storey (segments.ts `roofEvidence`): drawn inside the measured top. */
-  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; source: string };
+  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; form?: 'mansard' | 'dormers'; source: string; roofSource?: 'photo' | 'reads' | 'default' };
 }
 
 /** A plot's cornice stays this close to its segment's eaves line (m). */

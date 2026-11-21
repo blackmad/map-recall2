@@ -104,13 +104,36 @@ function plotGroupsOf(members: string[]): string[][] {
 const photoRoof = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/design-units/roof-evidence.json'), 'utf8')).segments as Record<string, { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean }>;
 function roofEvidenceOf(id: string, members: string[]): Segment['roofEvidence'] | undefined {
   const ph = photoRoof[id];
-  if (ph) return { storey: ph.storey, ...(ph.dormer ? { dormer: ph.dormer } : {}), ...(ph.hoist ? { hoist: true } : {}), source: 'photo-row review 2026-11-20 (scripts/design-units/roof-evidence.json)' };
+  if (ph) return { storey: ph.storey, ...(ph.dormer ? { dormer: ph.dormer } : {}), ...(ph.hoist ? { hoist: true } : {}), source: 'photo-row review 2026-11-20 (scripts/design-units/roof-evidence.json)', roofSource: 'photo' };
   const rs = members.map(m => answers.get(m)).filter((a): a is Answer => !!a);
   const says = rs.map(a => a.storeyParts?.roof).filter((r): r is string => r === 'dormers' || r === 'mansard' || r === 'roof-storey' || r === 'none');
   const storey = majority(says.map(r => r !== 'none'));
   if (storey === undefined) return undefined;
   const kind = majority(rs.map(a => a.dormers?.kind).filter((k): k is string => k === 'gabled' || k === 'plain')) as 'gabled' | 'plain' | undefined;
-  return { storey, ...(storey ? { dormer: kind ?? 'plain' } : {}), source: `D1 reads (${says.length} of ${members.length} members)` };
+  const form = majority(says.filter(r => r !== 'none').map(r => (r === 'dormers' ? 'dormers' : 'mansard')));
+  return { storey, ...(storey ? { dormer: kind ?? 'plain', ...(form === 'dormers' ? { form } : {}) } : {}), source: `D1 reads (${says.length} of ${members.length} members)`, roofSource: 'reads' };
+}
+
+// David, 2026-11-21 ("A then B"): a Ring segment with neither a photo-row entry nor D1 reads gets the default roof storey of
+// its era: the eras come from the D1 reads themselves (an era whose reads say "none" more than DEFAULT_NONE_MAX of the
+// time is left flat), its dormer kind and form the era's most common read. Marked roofSource 'default': reads override it.
+export const ROOF_ERAS: ReadonlyArray<readonly [number, number]> = [[1860, 1880], [1880, 1900], [1900, 1920], [1920, 1940]];
+export const DEFAULT_NONE_MAX = 0.3;
+const yearOfRead = new Map<string, number>();
+for (const [id] of answers) if (yearOf.has(id)) yearOfRead.set(id, yearOf.get(id)!);
+export const eraDefaults = ROOF_ERAS.map(([from, to]) => {
+  const rs = [...answers].filter(([id]) => { const y = yearOfRead.get(id); return y !== undefined && y >= from && y < to; }).map(([, a]) => a);
+  const roofs = rs.map(a => a.storeyParts?.roof).filter((r): r is string => r === 'dormers' || r === 'mansard' || r === 'roof-storey' || r === 'none');
+  const none = roofs.filter(r => r === 'none').length, noneShare = roofs.length ? none / roofs.length : 1;
+  const kinds = new Map<string, number>(); for (const a of rs) if ((a.dormers?.count ?? 0) > 0 && (a.dormers?.kind === 'gabled' || a.dormers?.kind === 'plain' || a.dormers?.kind === 'pediment')) kinds.set(a.dormers.kind, (kinds.get(a.dormers.kind) ?? 0) + 1);
+  const kind = ([...kinds].sort((x, y) => y[1] - x[1])[0]?.[0] ?? 'plain') as 'gabled' | 'plain' | 'pediment';
+  const dormersN = roofs.filter(r => r === 'dormers').length, form: 'dormers' | 'mansard' = dormersN >= (roofs.length - none - dormersN) ? 'dormers' : 'mansard';
+  return { from, to, reads: roofs.length, noneShare: +noneShare.toFixed(3), included: roofs.length >= 10 && noneShare <= DEFAULT_NONE_MAX, kind, form, kinds: Object.fromEntries(kinds) };
+});
+function defaultRoofOf(year: number | null | undefined): Segment['roofEvidence'] | undefined {
+  if (typeof year !== 'number') return undefined;
+  const e = eraDefaults.find(x => year >= x.from && year < x.to);
+  return e?.included ? { storey: true, dormer: e.kind, form: e.form, source: `era default ${e.from}-${e.to - 1} (D1 reads: ${Math.round((1 - e.noneShare) * 100)} % roof storey, most common dormer ${e.kind})`, roofSource: 'default' } : undefined;
 }
 
 const segments: Segment[] = [];
@@ -128,7 +151,7 @@ for (const u of units) {
     g.roofRiseM = rises.length ? +rises[Math.floor((rises.length - 1) / 2)].toFixed(2) : null;
     const eaves = Object.fromEntries(g.members.filter(m => typeof ahn[m]?.p90 === 'number').map(m => [m, +ahn[m]!.p90.toFixed(2)]));
     if (Object.keys(eaves).length) g.plotEavesM = eaves;
-    const ev = roofEvidenceOf(g.id, g.members);
+    const ev = roofEvidenceOf(g.id, g.members) ?? (layers.includes('ring') && g.id.startsWith('du:ring:') ? defaultRoofOf(g.year) : undefined);
     if (ev) g.roofEvidence = ev;
     const groups = plotGroupsOf(g.members);
     if (groups.length) g.plotGroups = groups;
@@ -146,7 +169,8 @@ const stat = {
   unitsSplit: splitUnits, singlesFromSplits: segments.filter(s => s.members.length === 1).length,
   exceptions: multi.reduce((t, s) => t + s.exceptions.length, 0),
   roofMeasured: multi.filter(s => typeof s.roofRiseM === 'number').length, roofStoreys: multi.filter(s => (s.roofRiseM ?? 0) >= 1.8).length,
-  roofEvidence: { photoRow: multi.filter(s => s.roofEvidence?.source.startsWith('photo')).length, reads: multi.filter(s => s.roofEvidence?.source.startsWith('D1')).length,
+  roofEras: eraDefaults,
+  roofEvidence: { photoRow: multi.filter(s => s.roofEvidence?.roofSource === 'photo').length, reads: multi.filter(s => s.roofEvidence?.roofSource === 'reads').length, default: multi.filter(s => s.roofEvidence?.roofSource === 'default').length,
     storey: multi.filter(s => s.roofEvidence?.storey).length, noStorey: multi.filter(s => s.roofEvidence && !s.roofEvidence.storey).length },
   oneFacadeEvidence: oneFacade.length, segmentsWithOneFacadeGroups: multi.filter(s => s.plotGroups?.length).length,
   pandsInOneFacadeGroups: multi.reduce((t, s) => t + (s.plotGroups ?? []).reduce((u, g) => u + g.length, 0), 0),

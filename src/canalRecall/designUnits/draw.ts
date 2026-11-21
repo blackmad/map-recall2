@@ -179,8 +179,10 @@ export function withDesignUnitRoof<T extends Feature>(feature: T): T {
   const { roofDormer: _dice, roofShapeTag: _tag, ...rest } = p;
   // Photo evidence of a roof storey inside the measured top (EVIDENCE_ROOF_RISE_M): the cornice drops, the top stays.
   const ev = d.roofEvidence;
-  const rise = ev?.hoist ? EVIDENCE_HOIST_RISE_M : EVIDENCE_ROOF_RISE_M;
-  if (roof.kind === 'flat' && ev?.storey && top - rise >= 6) {
+  // A short slope behind the cornice for a hoist-dormer row or a dormer-form read/default; a full mansard otherwise.
+  const rise = ev?.hoist || ev?.form === 'dormers' ? EVIDENCE_HOIST_RISE_M : EVIDENCE_ROOF_RISE_M;
+  const style = String(p.facadeStyle ?? ''), lateStyle = style === 'postwar' || style === 'modern' || style === 'tower';
+  if (roof.kind === 'flat' && ev?.storey && !lateStyle && top - rise >= 6) {
     const n = Math.max(1, Math.round((d.toM - d.fromM) / DORMER_FRONT_M));
     const dormers = Array.from({ length: n }, (_, i) => ({ a: +((i + 0.5) / n).toFixed(3), kind: ev.dormer ?? 'pediment', ...(ev.hoist ? { hoist: true } : {}) }));
     return { ...feature, properties: { ...rest, height: top, roofEavesHeightM: +(top - rise).toFixed(3), roofPlanned: true, roofShape: 'mansardHip', roofDormer: true,

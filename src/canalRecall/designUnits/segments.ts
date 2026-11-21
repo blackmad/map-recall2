@@ -73,7 +73,7 @@ export interface Segment {
   /** A roof storey seen in photos where AHN cannot see it (2026-11-20: the Ring's front mansards and hoist dormers stand
    *  inside the DSM's flat top, so AHN reads them as no rise). `storey`: the top storey is a slate roof storey inside the
    *  measured top, one dormer per plot. Source: a photo-row review (staging/roof-evidence.json) or the members' D1 reads. */
-  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; source: string };
+  roofEvidence?: { storey: boolean; dormer?: 'pediment' | 'gabled' | 'plain'; hoist?: boolean; form?: 'mansard' | 'dormers'; source: string; roofSource?: 'photo' | 'reads' | 'default' };
 }
 
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; };
