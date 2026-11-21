@@ -11,6 +11,7 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const DIR = path.join(ROOT, 'artifacts/postwar-kit/feature-reads');
 const rows = [1, 2, 3, 4].flatMap(i => JSON.parse(fs.readFileSync(path.join(DIR, `part-${i}.json`), 'utf8')) as any[]);
 const BAL = new Set(['projecting', 'round', 'band']);
+const sample = JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/postwar-kit/sample-all.json'), 'utf8')) as Record<string, any>;
 const out: Record<string, unknown> = {};
 const none: string[] = [];
 for (const r of rows.sort((a, b) => a.id.localeCompare(b.id))) {
@@ -22,12 +23,12 @@ for (const r of rows.sort((a, b) => a.id.localeCompare(b.id))) {
   if (BAL.has(r.balcony) && r.balconyTone !== 'wall') { f.balcony = r.balcony; f.balconyTone = r.balconyTone ?? 'white'; }
   if (r.stair && r.stair !== 'none') { f.stair = r.stair; f.stairCount = Math.max(1, Math.min(4, r.stairCount || 1)); }
   if (r.erker && r.erker !== 'none') { f.erker = r.erker; f.erkerPlan = r.erkerPlan ?? 'box'; f.erkerCount = Math.max(1, Math.min(4, r.erkerCount || 1)); }
-  if (Object.keys(f).length) out[r.id] = f;
+  // Round 2b: the bearing (deg from north) of the wall the read was made on; the kit draws the read's features there only.
+  if (Object.keys(f).length) out[r.id] = { ...f, bearing: sample[r.id]?.bearingDeg };
 }
 // 2024-2025 captures only: a read made on an older capture stands only as confirmed on a 2024-2025 one (recent-photos.ts,
 // confirm-sheets.ts; one fresh reader, artifacts/postwar-kit/confirm.json). 'no' and 'unclear' drop the feature, 'partly'
 // takes the confirmed kind or tone (CORRECT) or drops it; a pand with no clear 2024-2025 capture keeps nothing.
-const sample = JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/postwar-kit/sample-all.json'), 'utf8')) as Record<string, any>;
 const confirm = new Map((JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/postwar-kit/confirm.json'), 'utf8')) as any[]).map(r => [r.id, r]));
 const CORRECT: Record<string, Record<string, unknown>> = {
   '0363100012067983': { balconyTone: 'glass' }, '0363100012075138': { balconyTone: 'dark' }, '0363100012082890': { balconyTone: 'dark' },
@@ -49,7 +50,7 @@ for (const [id, f] of Object.entries(out) as Array<[string, Record<string, unkno
     for (const x of keys) delete f[x];
     dropped++;
   }
-  if (!Object.keys(f).length) delete out[id];
+  if (Object.keys(f).every(k => k === 'bearing')) delete out[id];
 }
 console.log(Object.keys(out).length, 'pands with features;', none.length, 'read with no balcony;', dropped, 'features dropped by the 2024-2025 check');
 fs.writeFileSync(path.join(ROOT, 'artifacts/postwar-kit/read-none.json'), JSON.stringify(none));

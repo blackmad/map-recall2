@@ -63,7 +63,9 @@ export type ExtraContext = {
     erkerCount?: number; erkerPlan?: 'box' | 'canted' | 'round'; stair?: 'glazed-strip' | 'glazed-tower'; stairCount?: number;
     /** Round 2, curved fronts: this facet continues the previous (start) / next (end) facet of a curved run, so a band
      *  runs on through the joint instead of stopping short of it. */
-    joinStart?: boolean; joinEnd?: boolean; curved?: boolean };
+    joinStart?: boolean; joinEnd?: boolean; curved?: boolean;
+    /** Round 2b: the bearing of the wall the features were read on (components.ts onReadFace). */
+    faceBearing?: number };
 };
 export type RowHeadKind = { shape?: string; dressing?: string };
 export type RowDressContext = {

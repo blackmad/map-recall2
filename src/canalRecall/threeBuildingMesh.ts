@@ -100,7 +100,9 @@ export type MeshBuilding = {
     erkerCount?: number; erkerPlan?: 'box' | 'canted' | 'round'; stair?: 'glazed-strip' | 'glazed-tower'; stairCount?: number;
     /** Round 2, curved fronts: this facet continues the previous (start) / next (end) facet of a curved run, so a band
      *  runs on through the joint instead of stopping short of it. */
-    joinStart?: boolean; joinEnd?: boolean; curved?: boolean };
+    joinStart?: boolean; joinEnd?: boolean; curved?: boolean;
+    /** Round 2b: the bearing of the wall the features were read on (components.ts onReadFace). */
+    faceBearing?: number };
   /** Lane WG step 2: a stated band's height (houseSpec/routeAFields.ts), for the band-line components. */
   specBandM?: number;
   /** Route A's field-forced wall parts (houseSpec/routeAFields.ts): every wall dresses them before its dice trim. */

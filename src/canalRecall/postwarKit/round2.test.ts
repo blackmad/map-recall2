@@ -52,14 +52,31 @@ test('a read pand keeps its own erker; the feature read adds its stairs (Marnixs
   assert.equal(hh.stair, 'glazed-tower');
 });
 
-test('a sibling inherits its read neighbour\'s balconies, not on a low block', () => {
+test('siblings are held (off by default); on, a sibling inherits its read neighbour\'s balconies, not on a low block', () => {
   const [id, sib] = Object.entries(SIBLINGS.siblings)[0];
+  const off = postwarKitFor({ id, year: 1990, heightM: 15, use: 'housing' });
+  assert.ok(!off || off.balcony === 'none');
+  (globalThis as { __canalRecallPostwarSiblings?: boolean }).__canalRecallPostwarSiblings = true;
   const k = postwarKitFor({ id, year: 1990, heightM: 15, use: 'housing' })!;
   assert.equal(k.balcony, sib.balcony);
   assert.equal(k.balconyFrom, sib.from);
   const low = postwarKitFor({ id, year: 1990, heightM: 6, use: 'housing' });
   assert.ok(!low || low.balcony === 'none');
   assert.equal(postwarKitFor({ id, year: 1990, heightM: 15, use: 'office' }), null);
+  delete (globalThis as { __canalRecallPostwarSiblings?: boolean }).__canalRecallPostwarSiblings;
+});
+
+test('a feature read draws on the side it was read on only (round 2b: Entrepotdok 146-163)', async () => {
+  const { onReadFace } = await import('./components.js');
+  const k = postwarKitFor({ id: '0363100012068068', year: 1988, heightM: 15, use: 'housing' })!;
+  assert.equal(typeof k.faceBearing, 'number');
+  // ctx's wall faces south (normal 0, -1: bearing 180).
+  assert.equal(onReadFace(ctx(20, { faceBearing: 180 })), true);
+  assert.equal(onReadFace(ctx(20, { faceBearing: 140 })), true);
+  assert.equal(onReadFace(ctx(20, { faceBearing: 0 })), false);
+  assert.equal(cost(balconyBand, ctx(20, { faceBearing: 0 })).tris.length, 0);
+  assert.ok(cost(balconyBand, ctx(20, { faceBearing: 200 })).tris.length > 0);
+  assert.equal(onReadFace(ctx(20)), true);
 });
 
 test('erker axes: round 1 placement without a count; a count spreads them, never touching', () => {

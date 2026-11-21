@@ -36,11 +36,20 @@ export const BAY = { halfW: 1.3, depth: 0.7, cant: 0.55, sill: 0.85, head: 0.35,
 /** Round 2 glazed stairs: a strip over the entrance, its frame and storey transoms; a tower stands proud. */
 export const STAIR = { halfW: 0.85, frame: 0.1, out: 0.06, towerOut: 1.1, glass: '#5e7079', frameHex: '#d9d7d0', darkFrame: '#2a2d30', maxPerWall: 3 } as const;
 
+/** Round 2b: whether this wall faces the side a feature read was made on (postwarKit.faceBearing), within FACE_TOL_DEG. */
+export const FACE_TOL_DEG = 50;
+export function onReadFace(c: ExtraContext): boolean {
+  const want = c.postwarKit?.faceBearing;
+  if (want === undefined) return true;
+  const bearing = (Math.atan2(c.f.nx, c.f.ny) * 180 / Math.PI + 360) % 360, d = Math.abs(((bearing - want) % 360 + 540) % 360 - 180);
+  return d <= FACE_TOL_DEG;
+}
 const upperStoreys = (c: ExtraContext, cap: number) => Math.max(0, Math.min(cap, c.layout.storeys));
 /** Window axes of the first upper storey, nearest the wall's centre first. */
 const axes = (c: ExtraContext) => windowSpans(c, 0).map(w => w.x).sort((a, b) => Math.abs(a - c.f.len / 2) - Math.abs(b - c.f.len / 2) || a - b);
 
 export function balconyBand(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   const hex = c.postwarKit?.balconyHex;
   if (!hex || (c.f.len < 3 && !c.postwarKit?.curved)) return;
   const a0 = c.postwarKit?.joinStart ? 0 : BAND.inset, a1 = c.f.len - (c.postwarKit?.joinEnd ? 0 : BAND.inset);
@@ -53,6 +62,7 @@ export function balconyBand(c: ExtraContext, s: ExtraSink): void {
 }
 
 export function roundBalconies(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   const hex = c.postwarKit?.balconyHex;
   if (!hex || c.f.len < 4) return;
   const xs = axes(c).filter(x => x - ROUND.steps[0][0] > 0.1 && x + ROUND.steps[0][0] < c.f.len - 0.1);
@@ -67,6 +77,7 @@ export function roundBalconies(c: ExtraContext, s: ExtraSink): void {
 }
 
 export function projectingBalconies(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   const hex = c.postwarKit?.balconyHex;
   if (!hex) return;
   const xs = axes(c).filter(x => x - PROJECT.halfW > 0.05 && x + PROJECT.halfW < c.f.len - 0.05).sort((a, b) => a - b);
@@ -121,6 +132,7 @@ export function erkerAxes(c: ExtraContext, halfW: number): number[] {
 }
 
 export function darkErkers(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   const picks = erkerAxes(c, ERKER.halfW);
   if (!picks.length || c.layout.storeys < 2) return;
   const n = upperStoreys(c, ERKER.maxStoreys), z0 = storeyZ(c, 0) - 0.1, z1 = Math.min(c.top - 0.3, storeyZ(c, n));
@@ -168,10 +180,12 @@ function bayStack(c: ExtraContext, s: ExtraSink, x: number, body: string, frame:
   s.commit();
 }
 export function whiteErkers(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   if (c.layout.storeys < 2) return;
   for (const x of erkerAxes(c, BAY.halfW)) bayStack(c, s, x, BAY.panel, BAY.white, BAY.glass);
 }
 export function brickErkers(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   if (c.layout.storeys < 2) return;
   for (const x of erkerAxes(c, BAY.halfW)) bayStack(c, s, x, shadeHex(c.wallHex, 0.94), BAY.dark, BAY.glass);
 }
@@ -188,6 +202,7 @@ export function stairAxes(c: ExtraContext): number[] {
   return out.slice(0, Math.min(STAIR.maxPerWall, c.postwarKit?.stairCount ?? 1));
 }
 export function stairGlazing(c: ExtraContext, s: ExtraSink): void {
+  if (!onReadFace(c)) return;
   const kind = c.postwarKit?.stair;
   if (!kind || c.layout.storeys < 2) return;
   const z0 = storeyZ(c, 0) - 0.3, z1 = Math.min(c.top - 0.4, storeyZ(c, upperStoreys(c, 8)));

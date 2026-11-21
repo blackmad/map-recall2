@@ -26,6 +26,7 @@ import {
 } from './facts.js';
 
 export { postwarKitEnabled } from './flag.js';
+import { postwarSiblingsEnabled } from './flag.js';
 
 /** Photo-look swatches per family for a read whose measurement is missing or disagrees; brick kept to L* <= 72. */
 export const FAMILY_SWATCHES: Readonly<Record<WallFamily, readonly string[]>> = {
@@ -67,10 +68,13 @@ export type PostwarKit = {
   erkerPlan?: ErkerPlan; erkerCount?: number;
   /** Round 2: where the balconies came from when not the pand's own read: a read sibling of the same complex. */
   balconyFrom?: string;
+  /** Round 2b: the outward bearing (deg from north) of the wall a feature read was made on: its features draw only on
+   *  street walls facing within FACE_TOL_DEG of it (a block read on its street side has none on its canal side). */
+  faceBearing?: number;
 };
 
 /** Round 2 feature reads (scripts/postwar-kit/feature-reads.ts): usable, high-confidence reads of sampled members. */
-export type FeatureRead = { balcony?: 'projecting' | 'round' | 'band'; balconyTone?: string; stair?: StairKind; stairCount?: number; erker?: Exclude<ErkerKind, 'none'>; erkerPlan?: ErkerPlan; erkerCount?: number };
+export type FeatureRead = { bearing?: number; balcony?: 'projecting' | 'round' | 'band'; balconyTone?: string; stair?: StairKind; stairCount?: number; erker?: Exclude<ErkerKind, 'none'>; erkerPlan?: ErkerPlan; erkerCount?: number };
 export type SiblingRead = { balcony: 'projecting' | 'round' | 'band'; balconyTone: string; from: string };
 const ID16 = /^\d{16}$/;
 export function validateFeatures(set: { schemaVersion: number; features: Record<string, FeatureRead> }): Record<string, FeatureRead> {
@@ -149,13 +153,14 @@ export function postwarKitFor(f: PostwarFacts): PostwarKit | null {
   if (!read) {
     // Balconies: the pand's own feature read, else a read sibling in the same complex (siblings.ts).
     const own = feat?.balcony ? { balcony: feat.balcony, tone: feat.balconyTone } : sib ? { balcony: sib.balcony, tone: sib.balconyTone, from: sib.from } : null;
-    const bal: Partial<PostwarKit> = own && tall ? { balcony: own.balcony, balconyHex: toneHex(own.tone), ...('from' in own && own.from ? { balconyFrom: own.from } : {}) } : {};
+    const bal: Partial<PostwarKit> = own && tall && ('from' in own ? postwarSiblingsEnabled() : true) ? { balcony: own.balcony, balconyHex: toneHex(own.tone), ...('from' in own && own.from ? { balconyFrom: own.from } : {}) } : {};
     const more = extras('none');
     const hasFeatures = !!bal.balcony || !!more.stair || !!more.erker;
     if (!measured && !hasFeatures) return null;
     const wall = measured ? { family: familyOfHex(measured.hex, measured.painted), wall: measured.hex, painted: measured.painted, wallSource: 'measured' as const }
       : { family: null, wall: null, painted: null, wallSource: 'features' as const };
-    return { cluster, ...wall, style: null, balcony: 'none', balconyHex: BALCONY_HEX.white, arcade: false, erker: 'none', ground: 'plain', ...bal, ...more };
+    const face = feat?.bearing !== undefined && (bal.balcony && !bal.balconyFrom || more.stair || more.erker) ? { faceBearing: feat.bearing } : {};
+    return { cluster, ...wall, style: null, balcony: 'none', balconyHex: BALCONY_HEX.white, arcade: false, erker: 'none', ground: 'plain', ...bal, ...more, ...face };
   }
   const agrees = measured && coarseFamily(familyOfHex(measured.hex, measured.painted)) === coarseFamily(read.wall);
   const sw = FAMILY_SWATCHES[read.wall];
@@ -165,7 +170,8 @@ export function postwarKitFor(f: PostwarFacts): PostwarKit | null {
   const balconyHex = toneHex(read.balconyTone ?? 'white');
   return { cluster, wallSource: 'read', family: read.wall, wall, painted, window: read.window, frames: read.frames,
     style: styleFor(painted, balcony === 'french' && !painted ? 'tall' : read.window, read.frames),
-    balcony, balconyHex, arcade: tall && read.ground === 'arcade', erker: tall ? read.erker : 'none', ground: read.ground, ...extras(tall ? read.erker : 'none') };
+    balcony, balconyHex, arcade: tall && read.ground === 'arcade', erker: tall ? read.erker : 'none', ground: read.ground, ...extras(tall ? read.erker : 'none'),
+    ...(feat?.bearing !== undefined && (feat.stair || (feat.erker && read.erker === 'none')) && tall ? { faceBearing: feat.bearing } : {}) };
 }
 
 /** The extras ids the kit forces for a read (components.ts). */
