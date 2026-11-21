@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-jan-van-galenstraat",
+  "panoId": "TMX7316010203-002083_pano_0000_000045",
+  "timestamp": "2021-04-09T07:24:37.466790Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/04/09/TMX7316010203-002083/pano_0000_000045/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117689.11560128728,
+   487326.8795900906
+  ],
+  "headingDeg": 13.469107722550007,
+  "fovDeg": 96.91734280669402,
+  "pitchDeg": 20.640580110170585,
+  "distanceM": 31.224468743427757,
+  "image": "artifacts/building-recipes/rinus-michelslaan-2-26-240382/photo-wall-jan-van-galenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-laan-van-spartaan",
+  "panoId": "TMX7316010203-001106_pano_0001_000091",
+  "timestamp": "2019-02-18T08:21:45.255820Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/02/18/TMX7316010203-001106/pano_0001_000091/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117733.88667738243,
+   487462.00913207163
+  ],
+  "headingDeg": 185.0929007404915,
+  "fovDeg": 61.39848871904634,
+  "pitchDeg": 10.275266397621522,
+  "distanceM": 34.37208056220224,
+  "image": "artifacts/building-recipes/rinus-michelslaan-2-26-240382/photo-wall-laan-van-spartaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-rinus-michelslaan",
+  "panoId": "TMX7316010203-002064_pano_0000_003617",
+  "timestamp": "2021-03-26T12:44:39.261750Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/26/TMX7316010203-002064/pano_0000_003617/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117658.04051802476,
+   487403.9986737446
+  ],
+  "headingDeg": 109.35820681736118,
+  "fovDeg": 110,
+  "pitchDeg": 37.4043501970654,
+  "distanceM": 15.353960306565533,
+  "image": "artifacts/building-recipes/rinus-michelslaan-2-26-240382/photo-wall-rinus-michelslaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

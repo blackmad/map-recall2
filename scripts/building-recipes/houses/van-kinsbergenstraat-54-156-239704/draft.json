@@ -1,0 +1,231 @@
+{
+ "date": "2026-11-21",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 59,
+   "bearing": 169,
+   "widthM": 54.5,
+   "heightM": 16,
+   "street": "Van Kinsbergenstraat"
+  },
+  {
+   "group": 1,
+   "panel": 82,
+   "bearing": 79,
+   "widthM": 38.5,
+   "heightM": 16,
+   "street": "Witte de Withplein"
+  },
+  {
+   "group": 2,
+   "panel": 7,
+   "bearing": 260,
+   "widthM": 10.8,
+   "heightM": 16,
+   "street": "Admiralengracht"
+  },
+  {
+   "group": 3,
+   "panel": 14,
+   "bearing": 260,
+   "widthM": 10.8,
+   "heightM": 16,
+   "street": "Admiralengracht"
+  },
+  {
+   "group": 4,
+   "panel": 8,
+   "bearing": 260,
+   "widthM": 10.8,
+   "heightM": 16,
+   "street": "Admiralengracht"
+  },
+  {
+   "group": 5,
+   "panel": 18,
+   "bearing": 260,
+   "widthM": 10.8,
+   "heightM": 16,
+   "street": "Admiralengracht"
+  },
+  {
+   "group": 6,
+   "panel": 31,
+   "bearing": 352,
+   "widthM": 73.7,
+   "heightM": 16.1,
+   "street": null
+  },
+  {
+   "group": 7,
+   "panel": 44,
+   "bearing": 172,
+   "widthM": 35.6,
+   "heightM": 19.2,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 15,
+   "widthM": 2.2,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 13,
+   "widthM": 2.2,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 2.1,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 10,
+   "widthM": 2.1,
+   "reason": "street panel under 5 m"
+  },
+  {
+   "panel": 11,
+   "widthM": 39.6,
+   "reason": "party wall"
+  },
+  {
+   "panel": 84,
+   "widthM": 35.6,
+   "reason": "party wall"
+  },
+  {
+   "panel": 30,
+   "widthM": 25.5,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 3,
+   "widthM": 28.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 0,
+   "widthM": 27.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 28,
+   "widthM": 18.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 85,
+   "widthM": 42.6,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 32,
+   "widthM": 41.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 34,
+   "widthM": 5.4,
+   "reason": "party wall"
+  },
+  {
+   "panel": 36,
+   "widthM": 25.2,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 33,
+   "widthM": 19.6,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 62,
+   "widthM": 17.8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 72,
+   "widthM": 14.4,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 26,
+   "widthM": 11.9,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 53,
+   "widthM": 11.1,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 81,
+   "widthM": 8,
+   "reason": "over 8 groups"
+  },
+  {
+   "panel": 74,
+   "widthM": 4.8,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 24,
+   "widthM": 4.7,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 46,
+   "widthM": 3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 23,
+   "widthM": 3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 79,
+   "widthM": 2.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 12,
+   "widthM": 2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 40,
+   "widthM": 3.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 56,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 35,
+   "widthM": 2.9,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 51,
+   "widthM": 2.7,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 41,
+   "widthM": 2.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 77,
+   "widthM": 2.1,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

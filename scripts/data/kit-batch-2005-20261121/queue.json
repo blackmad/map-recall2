@@ -1,0 +1,489 @@
+{
+ "version": 1,
+ "generatedAt": "2026-11-21",
+ "method": "kit-batch-2005-20261121: 2005+ block-sized housing routed kit in docs/reports/block-sized-triage-20261121.json",
+ "items": [
+  {
+   "id": "kb-0363100012247342",
+   "pand": "0363100012247342",
+   "name": "Nida Senffstraat 5-201",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "measured",
+   "use": "housing",
+   "house": "nida-senffstraat-5-201-247342",
+   "notes": [
+    "triage rank 5 payoff 6.69",
+    "2026-11-21T14:03 facts: fronts on Mary van der Sluisstraat, Nida Senffstraat, Eef Kamerbeekstraat",
+    "2026-11-21T14:03 draft: 8 groups (4 on a street), 33 panels blank",
+    "2026-11-21T14:04 measured groups 0,1,2,3,6 in 57 s"
+   ],
+   "claimedAt": "2026-11-21T14:03:18.185Z",
+   "owner": "kit-batch-2005",
+   "ms": {
+    "facts": 21025,
+    "draft": 13,
+    "measure": 56819
+   },
+   "updatedAt": "2026-11-21T14:04:36.044Z"
+  },
+  {
+   "id": "kb-0363100012080943",
+   "pand": "0363100012080943",
+   "name": "Bos en Lommerplein 73-175",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "drafted",
+   "use": "housing",
+   "house": "bos-en-lommerplein-73-175-080943",
+   "notes": [
+    "triage rank 6 payoff 6.29",
+    "2026-11-21T14:13 facts: fronts on Bos en Lommerplantsoen, Hoofdweg, Bos en Lommerplein",
+    "2026-11-21T14:13 draft: 8 groups (7 on a street), 137 panels blank"
+   ],
+   "claimedAt": "2026-11-21T14:13:01.921Z",
+   "owner": "kit-batch-2005",
+   "ms": {
+    "facts": 38009,
+    "draft": 51
+   },
+   "updatedAt": "2026-11-21T14:13:39.985Z"
+  },
+  {
+   "id": "kb-0363100012243817",
+   "pand": "0363100012243817",
+   "name": "Cornelis Vermuydenstraat 1-103",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "cornelis-vermuydenstraat-1-1-243817",
+   "notes": [
+    "triage rank 7 payoff 5.35"
+   ]
+  },
+  {
+   "id": "kb-0363100012111255",
+   "pand": "0363100012111255",
+   "name": "Hoofdweg 578-720",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "hoofdweg-578-720-111255",
+   "notes": [
+    "triage rank 10 payoff 4.34"
+   ]
+  },
+  {
+   "id": "kb-0363100012145730",
+   "pand": "0363100012145730",
+   "name": "Veemkade 366-556",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "veemkade-366-556-145730",
+   "notes": [
+    "triage rank 15 payoff 1.88"
+   ]
+  },
+  {
+   "id": "kb-0363100012105724",
+   "pand": "0363100012105724",
+   "name": "Hoofdweg 458-576",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "hoofdweg-458-576-105724",
+   "notes": [
+    "triage rank 16 payoff 1.57"
+   ]
+  },
+  {
+   "id": "kb-0363100012239387",
+   "pand": "0363100012239387",
+   "name": "Oostelijke Handelskade 527-749",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "oostelijke-handelskade-527-7-239387",
+   "notes": [
+    "triage rank 19 payoff 1.44"
+   ]
+  },
+  {
+   "id": "kb-0363100012242963",
+   "pand": "0363100012242963",
+   "name": "Polderweg 502-646",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "polderweg-502-646-242963",
+   "notes": [
+    "triage rank 21 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012239386",
+   "pand": "0363100012239386",
+   "name": "Oostelijke Handelskade 751-977",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "oostelijke-handelskade-751-9-239386",
+   "notes": [
+    "triage rank 22 payoff 0.71"
+   ]
+  },
+  {
+   "id": "kb-0363100012080532",
+   "pand": "0363100012080532",
+   "name": "Leeuwendalersweg 400-732",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "leeuwendalersweg-400-732-080532",
+   "notes": [
+    "triage rank 25 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012250187",
+   "pand": "0363100012250187",
+   "name": "Revaleiland 3-170",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "revaleiland-3-170-250187",
+   "notes": [
+    "triage rank 27 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012250615",
+   "pand": "0363100012250615",
+   "name": "Gustav Mahlerlaan 7-27",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "gustav-mahlerlaan-7-27-250615",
+   "notes": [
+    "triage rank 28 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012251336",
+   "pand": "0363100012251336",
+   "name": "Rode Kruisstraat 2",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "rode-kruisstraat-2-251336",
+   "notes": [
+    "triage rank 29 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012247952",
+   "pand": "0363100012247952",
+   "name": "Poeldijkstraat 14-1018",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "poeldijkstraat-14-1018-247952",
+   "notes": [
+    "triage rank 31 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012253645",
+   "pand": "0363100012253645",
+   "name": "Vlaardingenlaan 158-440",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "vlaardingenlaan-158-440-253645",
+   "notes": [
+    "triage rank 34 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012254400",
+   "pand": "0363100012254400",
+   "name": "Ottho Heldringstraat 3-5",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "ottho-heldringstraat-3-5-254400",
+   "notes": [
+    "triage rank 37 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012240382",
+   "pand": "0363100012240382",
+   "name": "Rinus Michelslaan 2-26",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "rinus-michelslaan-2-26-240382",
+   "notes": [
+    "triage rank 38 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012251618",
+   "pand": "0363100012251618",
+   "name": "Ringslangpad 1-364",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "ringslangpad-1-364-251618",
+   "notes": [
+    "triage rank 40 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012249646",
+   "pand": "0363100012249646",
+   "name": "Soendastraat 1-127",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "soendastraat-1-127-249646",
+   "notes": [
+    "triage rank 41 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012240261",
+   "pand": "0363100012240261",
+   "name": "Carolina MacGillavrylaan 2082-3198",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "carolina-macgillavrylaan-208-240261",
+   "notes": [
+    "triage rank 44 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012253686",
+   "pand": "0363100012253686",
+   "name": "Akbarstraat 165-217",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "akbarstraat-165-217-253686",
+   "notes": [
+    "triage rank 45 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012238726",
+   "pand": "0363100012238726",
+   "name": "Javaplein 2-14",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "javaplein-2-14-238726",
+   "notes": [
+    "triage rank 46 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012253816",
+   "pand": "0363100012253816",
+   "name": "Borneostraat 42-70",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "borneostraat-42-70-253816",
+   "notes": [
+    "triage rank 47 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012137990",
+   "pand": "0363100012137990",
+   "name": "Van Oldenbarneveldtstraat 48-56",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "van-oldenbarneveldtstraat-48-137990",
+   "notes": [
+    "triage rank 49 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012239704",
+   "pand": "0363100012239704",
+   "name": "Van Kinsbergenstraat 54-156",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "van-kinsbergenstraat-54-156-239704",
+   "notes": [
+    "triage rank 50 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012253708",
+   "pand": "0363100012253708",
+   "name": "Klaprozenweg 35-37",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "klaprozenweg-35-37-253708",
+   "notes": [
+    "triage rank 51 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012238346",
+   "pand": "0363100012238346",
+   "name": "Piri Reisplein 1-81",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "piri-reisplein-1-81-238346",
+   "notes": [
+    "triage rank 52 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012252988",
+   "pand": "0363100012252988",
+   "name": "Spadinalaan 483-699",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "spadinalaan-483-699-252988",
+   "notes": [
+    "triage rank 54 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012241221",
+   "pand": "0363100012241221",
+   "name": "Laing's Nekstraat 1-17",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "laing-s-nekstraat-1-17-241221",
+   "notes": [
+    "triage rank 55 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012251650",
+   "pand": "0363100012251650",
+   "name": "Krommeniestraat 1-135",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "krommeniestraat-1-135-251650",
+   "notes": [
+    "triage rank 56 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012147097",
+   "pand": "0363100012147097",
+   "name": "Balboaplein 2-86",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "balboaplein-2-86-147097",
+   "notes": [
+    "triage rank 58 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012250186",
+   "pand": "0363100012250186",
+   "name": "Revaleiland 345-492",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "revaleiland-345-492-250186",
+   "notes": [
+    "triage rank 59 payoff 0.00"
+   ]
+  },
+  {
+   "id": "kb-0363100012252986",
+   "pand": "0363100012252986",
+   "name": "Spadinalaan 351-471",
+   "source": "dominant",
+   "rideVisibility": null,
+   "center": null,
+   "status": "queued",
+   "use": "housing",
+   "house": "spadinalaan-351-471-252986",
+   "notes": [
+    "triage rank 62 payoff 0.00"
+   ]
+  }
+ ]
+}

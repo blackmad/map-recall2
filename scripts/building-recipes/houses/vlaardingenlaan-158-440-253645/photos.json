@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-rodenrijsstraat",
+  "panoId": "TMX7316010203-002392_pano_0002_000052",
+  "timestamp": "2022-01-06T09:04:07.244750Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/06/TMX7316010203-002392/pano_0002_000052/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117584.1494434407,
+   484504.3521354982
+  ],
+  "headingDeg": 27.754895087722673,
+  "fovDeg": 62.002125222972786,
+  "pitchDeg": 30.741480913630895,
+  "distanceM": 25.580167681663664,
+  "image": "artifacts/building-recipes/vlaardingenlaan-158-440-253645/photo-wall-rodenrijsstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-overschiestraat",
+  "panoId": "b_20241128_0827_Track33_Sphere_00023",
+  "timestamp": "2024-11-28T09:16:43Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241128_0827_Track33_Sphere_00023/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117686.9069866154,
+   484549.72627765354
+  ],
+  "headingDeg": 264.37999336397786,
+  "fovDeg": 110,
+  "pitchDeg": 31.89954695033736,
+  "distanceM": 19.657098073771046,
+  "image": "artifacts/building-recipes/vlaardingenlaan-158-440-253645/photo-wall-overschiestraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-vlaardingenlaan",
+  "panoId": "TMX7316010203-002392_pano_0002_000016",
+  "timestamp": "2022-01-06T09:03:34.550010Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/06/TMX7316010203-002392/pano_0002_000016/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117643.86216320362,
+   484481.7053094422
+  ],
+  "headingDeg": 0.07546106104848604,
+  "fovDeg": 74.19533869177377,
+  "pitchDeg": 20.050116962063942,
+  "distanceM": 33.568969672274676,
+  "image": "artifacts/building-recipes/vlaardingenlaan-158-440-253645/photo-wall-vlaardingenlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

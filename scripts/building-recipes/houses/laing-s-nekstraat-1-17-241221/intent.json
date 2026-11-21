@@ -1,0 +1,991 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "laing-s-nekstraat-1-17-241221",
+ "pandId": "0363100012241221",
+ "address": "Laing's Nekstraat 1-17 / Retiefstraat / Tugelaweg / Hertzogstraat, Transvaalbuurt: 2015 four-storey housing block in red-brown mixed brick under a thin pale canopy eave, recessed loggias and projecting brick-parapet balconies by house, zinc dormers on the roof, residential doors with louvred storage doors on the ground (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2022-01-12-w02-158L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002417_pano_0005_000036/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-01-29-w01-338",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001604_pano_0000_000411/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-19-w04-245",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001527_pano_0000_002584/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-12-11-w03-65L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001007_pano_0004_000119/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "windows": "two-light",
+   "sills": false,
+   "cornice": true,
+   "palette": {
+    "brick": "#5e4a42",
+    "frame": "#e6e2d6",
+    "stone": "#c9cac6"
+   },
+   "wallSurfaces": [
+    16,
+    17,
+    19,
+    44,
+    67,
+    80,
+    81,
+    140,
+    142,
+    177,
+    178,
+    188
+   ],
+   "street": "Retiefstraat",
+   "baysPerStorey": 19,
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.55,
+    "sill": 0.22
+   },
+   "ground": "residential",
+   "houses": [
+    {
+     "w": 7.3,
+     "bays": 3,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "window",
+       "door",
+       "storage"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 7.1,
+     "bays": 2,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "window",
+       "storage"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 8.7,
+     "bays": 3,
+     "loggias": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "w": 0.94,
+      "h": 0.72,
+      "sill": 0.06,
+      "deep": 0.45,
+      "rail": "bars",
+      "colour": "#2e2e2e",
+      "lights": 2,
+      "lining": "#4a3a34"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        1
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        3
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        }
+       ]
+      }
+     ],
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "storage",
+       "door",
+       "window"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 9.2,
+     "bays": 3,
+     "loggias": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "w": 0.94,
+      "h": 0.72,
+      "sill": 0.06,
+      "deep": 0.45,
+      "rail": "bars",
+      "colour": "#2e2e2e",
+      "lights": 2,
+      "lining": "#4a3a34"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        1
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        3
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        }
+       ]
+      }
+     ],
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "storage",
+       "door",
+       "window"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 9.3,
+     "bays": 3,
+     "loggias": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "w": 0.94,
+      "h": 0.72,
+      "sill": 0.06,
+      "deep": 0.45,
+      "rail": "bars",
+      "colour": "#2e2e2e",
+      "lights": 2,
+      "lining": "#4a3a34"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        1
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        3
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        }
+       ]
+      }
+     ],
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "storage",
+       "door",
+       "window"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 9.4,
+     "bays": 3,
+     "loggias": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "w": 0.94,
+      "h": 0.72,
+      "sill": 0.06,
+      "deep": 0.45,
+      "rail": "bars",
+      "colour": "#2e2e2e",
+      "lights": 2,
+      "lining": "#4a3a34"
+     },
+     "bayWindows": [
+      {
+       "storeys": [
+        1
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        },
+        {
+         "w": 0.92,
+         "h": 0.6,
+         "sill": 0.22
+        }
+       ]
+      },
+      {
+       "storeys": [
+        2,
+        3
+       ],
+       "pattern": [
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        },
+        {
+         "w": 0
+        }
+       ]
+      }
+     ],
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "storage",
+       "door",
+       "window"
+      ],
+      "doors": "#e6e2d6"
+     }
+    },
+    {
+     "w": 4.9,
+     "bays": 2,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "window",
+       "door"
+      ],
+      "doors": "#e6e2d6"
+     }
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "houses",
+    "cornice",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    56,
+    60,
+    144,
+    151
+   ],
+   "street": "Tugelaweg",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 16,
+   "windows": "three-light",
+   "sills": false,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.5,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#5e4a42",
+    "frame": "#e6e2d6",
+    "stone": "#c9cac6"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window",
+     "door",
+     "storage",
+     "window",
+     "wall"
+    ],
+    "doors": "#e6e2d6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.8,
+       "at": -0.06,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0.53,
+       "at": 0.45,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.51,
+       "at": -0.22,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.62,
+       "at": -0.2,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.55,
+       "at": -0.11,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.41,
+       "at": -0.1,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.4,
+       "at": 0.32,
+       "h": 0.5,
+       "sill": 0.25
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.45,
+       "at": -0.1,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.48,
+       "at": 0.3,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.58,
+       "at": 0.43,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.55,
+       "at": 0.46,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.41,
+       "at": 0.44,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.46,
+       "at": 0.21,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.74,
+       "at": 0.15,
+       "h": 0.5,
+       "sill": 0.25
+      }
+     ]
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "pattern": [
+      {
+       "w": 0.8,
+       "at": -0.06,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.51,
+       "at": -0.22,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.62,
+       "at": -0.2,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.55,
+       "at": -0.11,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.41,
+       "at": -0.1,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.4,
+       "at": 0.32,
+       "h": 0.5,
+       "sill": 0.25
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "bayWindows",
+    "cornice",
+    "ground"
+   ]
+  },
+  {
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "windows": "two-light",
+   "sills": false,
+   "cornice": true,
+   "palette": {
+    "brick": "#5e4a42",
+    "frame": "#e6e2d6",
+    "stone": "#c9cac6"
+   },
+   "wallSurfaces": [
+    18,
+    29,
+    72,
+    97,
+    98,
+    108,
+    147,
+    149,
+    187,
+    204,
+    205,
+    206,
+    210,
+    212,
+    213
+   ],
+   "street": "Hertzogstraat",
+   "baysPerStorey": 16,
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.55,
+    "sill": 0.22
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window"
+    ],
+    "doors": "#e6e2d6"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.5,
+    "rail": 0.32,
+    "colour": "#5a3e39",
+    "railColour": "#2e2e2e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        10,
+        11
+       ],
+       [
+        14,
+        15
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        11
+       ],
+       [
+        14,
+        15
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        11
+       ],
+       [
+        14,
+        15
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "cornice",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "street": "south-west front",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "windows": "two-light",
+   "sills": false,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.55,
+    "sill": 0.22
+   },
+   "palette": {
+    "brick": "#5e4a42",
+    "frame": "#e6e2d6",
+    "stone": "#c9cac6"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window"
+    ],
+    "doors": "#e6e2d6"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.5,
+    "rail": 0.32,
+    "colour": "#5a3e39",
+    "railColour": "#2e2e2e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        0,
+        1
+       ],
+       [
+        6,
+        7
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        0,
+        1
+       ],
+       [
+        6,
+        7
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        0,
+        1
+       ],
+       [
+        6,
+        7
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "cornice",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    5,
+    129
+   ],
+   "street": "south-west front, south end",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "cornice": true,
+   "windowShape": {
+    "w": 0.38,
+    "h": 0.55,
+    "sill": 0.22
+   },
+   "palette": {
+    "brick": "#5e4a42",
+    "frame": "#e6e2d6",
+    "stone": "#c9cac6"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "storage",
+     "window"
+    ],
+    "doors": "#e6e2d6"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "kind": "solid",
+    "deep": 0.5,
+    "rail": 0.32,
+    "colour": "#5a3e39",
+    "railColour": "#2e2e2e",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "cornice",
+    "ground"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#5e4a42",
+  "frame": "#e6e2d6",
+  "door": "#e6e2d6",
+  "stone": "#c9cac6"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops (no 2023-2025 straight-on crop was in the archive): panel 14 (S, Retiefstraat, 54.5 m) from w02-158L 2022-01-12, six house units by downpipe joints, four with two-bay loggias on storeys 2-3 over a wide storey-1 window; panel 7 (N, Tugelaweg, 52.2 m) from w01-338 2020-01-29 (42 deg oblique), white-framed window groups per storey via bayWindows and two portals; panel 15 (NE, Hertzogstraat, 50 m) from w03-65L 2018-12-11, brick-parapet balconies by house; panel 3 (SW, 12.6 m, left in the crop) and panel 0 (SW, 35.4 m) from w04-245 2019-12-19, projecting brick-parapet balcony stacks on storeys 1-3 (panel 3 bay 1, panel 0 bays 0-1 and 6-7). Courtyard walls over the deck have no crop and take otherWalls.",
+  "The canopy eave (a thin pale soffit projecting about 1 m) is the kit cornice in the stone colour; the zinc dormers are 3DBAG roof volumes drawn in the wall brick with the shader window grid, not zinc.",
+  "Roof: red-tile slopes from w03-65L 2018-12-11 (orange pantiles between the dormers on Hertzogstraat); the flat class stays bitumen."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 24000,
+ "shellClose": true,
+ "roof": {
+  "material": "red-tile",
+  "flat": "bitumen"
+ }
+}

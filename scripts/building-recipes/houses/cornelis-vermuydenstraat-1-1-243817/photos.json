@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-eerste-coehoornstraat",
+  "panoId": "TMX7316010203-002546_pano_0002_003914",
+  "timestamp": "2022-04-26T10:04:34.754110Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/04/26/TMX7316010203-002546/pano_0002_003914/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123630.81915468704,
+   486787.9271063457
+  ],
+  "headingDeg": 227.96422568217844,
+  "fovDeg": 110,
+  "pitchDeg": 58.91433506975916,
+  "distanceM": 4.060078786957549,
+  "image": "artifacts/building-recipes/cornelis-vermuydenstraat-1-1-243817/photo-wall-eerste-coehoornstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-czaar-peterstraat",
+  "panoId": "TMX7316010203-001536_pano_0000_001111",
+  "timestamp": "2020-01-07T08:49:47.810980Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/13/07/TMX7316010203-001536/pano_0000_001111/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123589.48133664909,
+   486781.16039182973
+  ],
+  "headingDeg": 135.8264044119228,
+  "fovDeg": 110,
+  "pitchDeg": 30.55610544926054,
+  "distanceM": 12.090082506856362,
+  "image": "artifacts/building-recipes/cornelis-vermuydenstraat-1-1-243817/photo-wall-czaar-peterstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-cornelis-vermuydenstraat",
+  "panoId": "b_20250130_0915_Track08_Sphere_00333",
+  "timestamp": "2025-01-30T09:17:01Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250130_0915_Track08_Sphere_00333/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   123639.66973152527,
+   486722.3213154652
+  ],
+  "headingDeg": 314.7046657172314,
+  "fovDeg": 82.76184689415366,
+  "pitchDeg": 9.94101108362295,
+  "distanceM": 40.86939938018635,
+  "image": "artifacts/building-recipes/cornelis-vermuydenstraat-1-1-243817/photo-wall-cornelis-vermuydenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

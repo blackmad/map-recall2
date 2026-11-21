@@ -1,0 +1,1364 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "cornelis-vermuydenstraat-1-1-243817",
+ "pandId": "0363100012243817",
+ "address": "Cornelis Vermuydenstraat 1-103 / Czaar Peterstraat / Eerste Coehoornstraat, Oostelijke Eilanden: 2016 neo-traditional housing block in red-brown brick with grey stone string courses, a white cornice under a tiled mansard with dormers, three-storey pavilions of recessed loggias with iron railings under white pedimented top loggias, a grey-stone colonnade with shops along Czaar Peterstraat and shopfronts and stone entrance portals on Cornelis Vermuydenstraat (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-10-01-w02-135",
+   "kind": "street-panorama",
+   "capturedAt": "2025-10-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-10-01_08-17-37_00048/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-10-01-w04-135",
+   "kind": "street-panorama",
+   "capturedAt": "2025-10-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-10-01_08-17-37_00006/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-19-w01-315",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_09-55-15_00115/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-19-w03-288",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_09-55-15_00124/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-04-w02-135L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241204_1003_Track29_Sphere_00008/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    104,
+    103
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      1,
+      3
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "arcade",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    29,
+    20,
+    39
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels",
+    "renderPanels"
+   ],
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    152,
+    85
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      4,
+      5
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      5
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "arcade",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    35
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 1,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 2.2
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.85,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "arcade",
+    "renderPanels",
+    "stringCourses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    117,
+    33
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels",
+    "renderPanels"
+   ],
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    95
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      0,
+      2,
+      3,
+      5
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      5
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "arcade",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    69,
+    40,
+    164
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels",
+    "renderPanels"
+   ],
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.22,
+    "walk": 0.55,
+    "head": 0.76,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 1.9
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    51,
+    3,
+    92
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels",
+    "brickStoreys"
+   ],
+   "ground": "system",
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 1,
+    "sill": 0.08,
+    "h": 0.62,
+    "pier": 0.3,
+    "factor": 1.8
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#7d878c"
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    106,
+    122,
+    42
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      0,
+      2
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "plinth",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ],
+   "ground": "system",
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 1,
+    "sill": 0.08,
+    "h": 0.62,
+    "pier": 0.3,
+    "factor": 1.8
+   },
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#7d878c"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    130,
+    131,
+    18
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      0,
+      2
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "plinth",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ],
+   "ground": "system",
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 1,
+    "sill": 0.08,
+    "h": 0.62,
+    "pier": 0.3,
+    "factor": 1.8
+   }
+  },
+  {
+   "wallSurfaces": [
+    7,
+    9
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e",
+    "bays": [
+     0,
+     3
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "storage",
+     "wall",
+     "wall",
+     "storage"
+    ],
+    "doors": "#7a4a2a"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "bays": [
+      0,
+      3
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      0
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    },
+    {
+     "bays": [
+      3,
+      3
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    76
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "wall",
+     "wall"
+    ],
+    "doors": "#7a4a2a"
+   },
+   "entrance": {
+    "portal": true
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      1
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    12
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      0,
+      2,
+      3,
+      5
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      5
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "plinth",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ],
+   "ground": "system",
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 1,
+    "sill": 0.08,
+    "h": 0.62,
+    "pier": 0.3,
+    "factor": 1.8
+   }
+  },
+  {
+   "wallSurfaces": [
+    11,
+    127,
+    126,
+    17
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "w": 0.74,
+    "h": 0.72,
+    "sill": 0.03,
+    "deep": 0.5,
+    "rail": "bars",
+    "colour": "#1e1e1e"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "palette",
+    "ground",
+    "loggias",
+    "stringCourses",
+    "renderPanels"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "storage",
+     "wall",
+     "wall",
+     "storage"
+    ],
+    "doors": "#7a4a2a"
+   },
+   "entrance": {
+    "portal": true
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      4,
+      4
+     ],
+     "colour": "#e9e8e3"
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    143,
+    99,
+    19
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#5e686e",
+    "glass": "#2f3438"
+   },
+   "mansard": {
+    "storeys": [
+     4
+    ],
+    "colour": "#7a4436"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      0,
+      2
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      3,
+      3
+     ],
+     "colour": "#e9e8e3",
+     "up": [
+      0.9,
+      1.0
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "plinth",
+    "mansard",
+    "openBays",
+    "renderPanels",
+    "stringCourses"
+   ],
+   "ground": "system",
+   "plinth": {
+    "storeys": [
+     0
+    ],
+    "lights": 1,
+    "sill": 0.08,
+    "h": 0.62,
+    "pier": 0.3,
+    "factor": 1.8
+   }
+  },
+  {
+   "wallSurfaces": [
+    162,
+    140,
+    52,
+    160
+   ],
+   "street": "Czaar Peterstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.62,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "cornice": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#6c757a",
+    "glass": "#2f3438"
+   },
+   "ground": "plinth-shopfronts",
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#6c757a"
+    }
+   ],
+   "groundFactor": 1.45,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "brickStoreys",
+    "groundFactor",
+    "stringCourses",
+    "cornice"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    128,
+    159,
+    91,
+    61
+   ],
+   "street": "Cornelis Vermuydenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.33,
+    "h": 0.62,
+    "sill": 0.04
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#5e3c34",
+    "frame": "#f2f0ea",
+    "stone": "#8a9396",
+    "glass": "#2f3438"
+   },
+   "ground": "plinth-shopfronts",
+   "brickStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "brick": "#8a9396"
+    }
+   ],
+   "storeyFactors": [
+    1.45,
+    1,
+    1,
+    1
+   ],
+   "cornice": true,
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "ground",
+    "brickStoreys",
+    "storeyFactors",
+    "cornice",
+    "stringCourses"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#5e3c34",
+  "frame": "#f2f0ea",
+  "door": "#5e686e",
+  "stone": "#5e686e"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored from the archived crops. NW front (Czaar Peterstraat) from w01-315 2025-06-19, straight on: one wall plane split by 3DBAG into window runs and loggia pavilions that match the photo exactly; groups 0 (surfaces 103-104, 0-8 m from the NE end), 1 (pavilion 20/29/39, 8-16 m), 2 (152/85, 16-26 m and 28-31 m), 3 (35, 26-28 m, the 14.5 m eaves step), 4 (pavilion 33/117, 31-38 m), 5 (95, 38-53 m), 6 (pavilion 40/69/164, 53-57 m). Colonnade = arcade ground, square heads, walk 0.55 of the ground storey.",
+  "SE front (Cornelis Vermuydenstraat) from w02-135L 2024-12-04 (sharper ground) and w02-135 2025-10-01 (46 deg oblique, top washed out): groups 7 (corner loggias 3/51/92, 0-4 m from the SW end, grey stone ground), 8 (106/122/42, 4-11 m, stone ground shops), 9 (130/131/18, 11-18 m, brick ground shops), 10+11 (pavilion: 3DBAG panel 6 with surfaces 7/9 at its ends and panel 62 surface 76 in its middle, so the outer loggias sit on panel 6 bays 0 and 3 and the inner two plus the stone portal on panel 62), 12 (12, 26-41 m), 13 (pavilion 11/126/127/17 with portal, 41-49 m), 14 (143/99/19, 49-57 m). Mansard dormers on the SE window runs copy the NW rhythm (the SE crop top is washed out).",
+  "W corner (group 15) from w03-288 2025-06-19: 4 bays, grey granite ground with two restaurant fronts, 3 brick storeys, 3DBAG eaves 14.4 m (the mansard and its 4 dormers are roof planes the large tier cannot dormer). SW end (group 16) from w04-135 2025-10-01: 3 bays, pale stone ground, eaves 14.6 m. NE end (Eerste Coehoornstraat) has no usable crop (w05-45 shows the neighbour) and takes otherWalls.",
+  "Not modelled (kit gaps): the triangular pediments over the four loggia pavilions, roof dormers on 3DBAG roof planes (W/SW ends), round colonnade columns on their own 3.6 m pitch (the arcade cuts one square pier per window bay: 6 per 14.6 m run against 4 in the photo), red clay tile colour on the mansard storeys (renders slate grey), ornate iron loggia railings (bars), fabric awnings on the SW end."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

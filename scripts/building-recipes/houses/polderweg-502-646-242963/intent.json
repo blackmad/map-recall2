@@ -1,0 +1,408 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "polderweg-502-646-242963",
+ "pandId": "0363100012242963",
+ "address": "Polderweg 502-646 (Hof van Eden), Oost: 2015 housing block in a red brick frame (end piers, piers at the stair joints, a red parapet band) round buff brick infill with two-light windows, stacked angled cantilever balconies in pairs and a glazed central stair in a stepped red frame (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-06-20-w01-215",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_08-09-45_01997/",
+   "image": "source-data://pand-reference-walls/0363100012242963/w01-215.jpg",
+   "sha256": "7e7a0f95c98d764769e31ccdf43fc57bdc8dcc4d920f8bd0112a7b7fe1e19fb0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-20-w01-215s2s",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_08-09-45_01965/",
+   "image": "source-data://pand-reference-walls/0363100012242963/w01-215s2s.jpg",
+   "sha256": "89d07ae25bc35e21b30d3a4cc0009a85ef50211e9ff284c938259da2b0942e90",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-17-w01-215s3s",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-17_08-20-13_02024/",
+   "image": "source-data://pand-reference-walls/0363100012242963/w01-215s3s.jpg",
+   "sha256": "439795694b5406550fb40511b2a3a9b4117e1d9ceae52eb6bc5da7f1c589bc00",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-17-w01-215s4s",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-17_08-20-13_02009/",
+   "image": "source-data://pand-reference-walls/0363100012242963/w01-215s4s.jpg",
+   "sha256": "cd0c5c8f2c5525cfb9c4e63a7c0926fc4dcbee32d8b97517ccbb0296bff38dcb",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-23-w01-215s1s",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001205_pano_0000_000680/",
+   "image": "source-data://pand-reference-walls/0363100012242963/w01-215s1s.jpg",
+   "sha256": "460ea60798785c4f14c6b991dad6ccb5c88203ed9ba85bd9f67c3a8ee530af95",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    19
+   ],
+   "street": "Polderweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "storeyFactors": [
+    1.1,
+    1,
+    1,
+    1,
+    1,
+    1.35
+   ],
+   "storeyShapes": [
+    {
+     "storeys": [
+      5
+     ],
+     "w": 0.55,
+     "h": 0.34,
+     "sill": 0.2
+    }
+   ],
+   "baysPerStorey": 14,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.46,
+    "sill": 0.28
+   },
+   "ground": "system",
+   "palette": {
+    "brick": "#a65a44",
+    "frame": "#b8b2a2",
+    "stone": "#a29d92"
+   },
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      0,
+      5
+     ],
+     "colour": "#c4ae86",
+     "finish": "brick",
+     "relief": "flush",
+     "along": [
+      0.1,
+      0.88
+     ],
+     "up": [
+      0,
+      0.62
+     ]
+    },
+    {
+     "bays": [
+      4,
+      9
+     ],
+     "storeys": [
+      0,
+      5
+     ],
+     "colour": "#c4ae86",
+     "finish": "brick",
+     "relief": "flush",
+     "along": [
+      0.12,
+      0.88
+     ],
+     "up": [
+      0,
+      0.62
+     ]
+    },
+    {
+     "bays": [
+      10,
+      13
+     ],
+     "storeys": [
+      0,
+      5
+     ],
+     "colour": "#c4ae86",
+     "finish": "brick",
+     "relief": "flush",
+     "along": [
+      0.12,
+      0.9
+     ],
+     "up": [
+      0,
+      0.62
+     ]
+    }
+   ],
+   "balconyBands": {
+    "kind": "bars",
+    "deep": 0.7,
+    "rail": 0.3,
+    "colour": "#a29d92",
+    "railColour": "#3c3f40",
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     },
+     {
+      "storey": 5,
+      "bays": [
+       [
+        1,
+        2
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        11,
+        12
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "storeyFactors",
+    "storeyShapes",
+    "windowShape",
+    "palette",
+    "renderPanels",
+    "balconyBands",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    45
+   ],
+   "street": "Polderweg",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "storeyFactors": [
+    1.1,
+    1,
+    1,
+    1,
+    1,
+    1.35
+   ],
+   "storeyShapes": [
+    {
+     "storeys": [
+      5
+     ],
+     "w": 0.55,
+     "h": 0.34,
+     "sill": 0.2
+    }
+   ],
+   "baysPerStorey": 5,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.46,
+    "sill": 0.28
+   },
+   "ground": "system",
+   "palette": {
+    "brick": "#a65a44",
+    "frame": "#b8b2a2",
+    "stone": "#a29d92"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "bays": [
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      0,
+      5
+     ],
+     "colour": "#c4ae86",
+     "finish": "brick",
+     "relief": "flush",
+     "along": [
+      0.1,
+      0.95
+     ]
+    }
+   ],
+   "accentPanels": [
+    {
+     "bays": [
+      0,
+      2
+     ],
+     "storeys": [
+      5,
+      5
+     ],
+     "colour": "#a65a44",
+     "finish": "brick",
+     "each": false,
+     "up": [
+      0.62,
+      1
+     ]
+    },
+    {
+     "bays": [
+      3,
+      4
+     ],
+     "storeys": [
+      0,
+      5
+     ],
+     "colour": "#3d4c55",
+     "finish": "panel",
+     "each": false,
+     "along": [
+      0.45,
+      0.62
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "storeyFactors",
+    "storeyShapes",
+    "windowShape",
+    "palette",
+    "openBays",
+    "renderPanels",
+    "accentPanels",
+    "ground"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#c4ae86",
+  "frame": "#b8b2a2",
+  "door": "#3a3c3e",
+  "stone": "#a29d92"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored. The archived crop w01-215 (2025-06-20) is 47 deg oblique over the 90 m SW wall (panel 2), so the wall was re-cropped in four 22.6 m segments (all-walls --segment=30 --walls=1 --suffix=s, 2019-2025): s3s and s4s (2024-09-17, 1 deg oblique) show the block; s1s (2019-05-23) and s2s (2025-06-20) show only the low brick buildings that stand in front of the NW half, so panel 2's surfaces 37/59/4/3 have no usable photo and take otherWalls.",
+  "Group 0: panel 2 surface 19 (51.9-90.5 m from the NW corner) from s3s and s4s: 14 bays in three units W B B W | W B B B B W | W B B W between red piers (wall-plane windows and piers measured; the balconies project and shift in a rectified crop, so their bays come from the window gaps), six storeys under a red parapet band (the group is red brick with buff brick render panels over the three units up to 0.62 of storey 5, so the piers, ends and parapet stay red). Group 1: surface 45 (37.3-51.9 m), the glazed central stair in its red frame from s3s 2024-09-17, the buff window bays west of it assumed from the module (that part is behind scaffolding in s2s).",
+  "Unphotographed: the NE sawtooth front (panels 4-34, alternating 31/39 deg) and the end walls take otherWalls."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

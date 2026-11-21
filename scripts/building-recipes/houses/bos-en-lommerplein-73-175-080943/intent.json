@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "bos-en-lommerplein-73-175-080943",
+ "pandId": "0363100012080943",
+ "address": "Bos en Lommerplein 73-175 / Hoofdweg, Bos en Lommer: 2009 housing block in brown brick, a punched grid of white-framed windows under a crenellated parapet, taller brick towers with one window column, a pale stone shop plinth on Hoofdweg and a pilotis ground on the north (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2020-02-07-w01-72",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001632_pano_0001_000021/",
+   "image": "source-data://pand-reference-walls/0363100012080943/w01-72.jpg",
+   "sha256": "a89e0b21a23ea79b644d9c21fdec6bdfe440e421a97d8d21139c687b4aa81614",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-17-w04-342",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_01516/",
+   "image": "source-data://pand-reference-walls/0363100012080943/w04-342.jpg",
+   "sha256": "8b7becdf4e471d56be7df9b74d72606f839403796844a2674aa58f33829e8e46",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-29-w04-342L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002066_pano_0000_003169/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    15,
+    43,
+    44,
+    50,
+    139,
+    140,
+    319,
+    337
+   ],
+   "street": "Hoofdweg",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "groundFactor": 1.6,
+   "baysPerStorey": 32,
+   "windows": "cross",
+   "windowShape": {
+    "w": 0.62,
+    "h": 0.55,
+    "sill": 0.25
+   },
+   "ground": "plinth-shopfronts",
+   "stoneStoreys": [
+    0
+   ],
+   "blankStoreys": [
+    7
+   ],
+   "palette": {
+    "brick": "#6a594f",
+    "frame": "#ecebe6",
+    "stone": "#cfc8ba"
+   },
+   "houses": [
+    {
+     "w": 12.8,
+     "bays": 5,
+     "ownEaves": true
+    },
+    {
+     "w": 6,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true,
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    {
+     "w": 2,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true
+    },
+    {
+     "w": 12.8,
+     "bays": 5,
+     "ownEaves": true
+    },
+    {
+     "w": 7.1,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true,
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    {
+     "w": 2,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true
+    },
+    {
+     "w": 13.1,
+     "bays": 5,
+     "ownEaves": true
+    },
+    {
+     "w": 5.9,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true,
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    },
+    {
+     "w": 2,
+     "bays": 1,
+     "storeys": 11,
+     "ownEaves": true
+    },
+    {
+     "w": 14.2,
+     "bays": 6,
+     "ownEaves": true
+    },
+    {
+     "w": 3.5,
+     "bays": 1,
+     "storeys": 12,
+     "ownEaves": true,
+     "blankStoreys": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    },
+    {
+     "w": 2,
+     "bays": 1,
+     "storeys": 12,
+     "ownEaves": true
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "stoneStoreys",
+    "blankStoreys",
+    "palette",
+    "houses"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "street": "Bos en Lommerplein",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "groundFactor": 1.7,
+   "baysPerStorey": 14,
+   "windows": "two-light",
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.5,
+    "sill": 0.28
+   },
+   "ground": "blank",
+   "storeyShapes": [
+    {
+     "storeys": [
+      7
+     ],
+     "w": 0.25,
+     "h": 0.45,
+     "sill": 0.2
+    }
+   ],
+   "palette": {
+    "brick": "#5e5249",
+    "frame": "#ecebe6",
+    "stone": "#e6e4de"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "storeyShapes",
+    "ground",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#6a594f",
+  "frame": "#ecebe6",
+  "door": "#3a3a3a",
+  "stone": "#cfc8ba"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-read: panel 14 (Hoofdweg, E, 83 m) from w01-72 2020-02-07: four brick towers at 12.8-20.8, 33.6-42.7, 55.8-63.7 and 77.9-83.4 m along the panel, each blank but for one window column at its right edge, between low parts of five window columns; six window storeys over a ground storey about 1.6 upper storeys tall with shop windows in a pale stone plinth; the top storey is the crenellated parapet zone, drawn blank (the crenellations are not modelled). Panel 34 (N, 43.5 m) from w04-342 2025-06-17: six storeys of paired windows over a pilotis ground, small attic slot windows between the merlons.",
+  "Not modelled: the crenellated parapet (merlons and gaps), the north pilotis columns and open undercroft (drawn as a blank ground storey), the shop fascias."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "footprintParts": true
+}

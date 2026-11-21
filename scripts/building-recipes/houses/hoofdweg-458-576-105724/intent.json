@@ -1,0 +1,1057 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "hoofdweg-458-576-105724",
+ "pandId": "0363100012105724",
+ "address": "Hoofdweg 458-576 / Elckerlijcstraat / Erasmusgracht, Bos en Lommer: 2008 courtyard block in dark red-brown brick with narrow French windows on dark vertical strips, staggered projecting glass-box loggias on alternate storeys, a crown frieze of white fins and a ground storey of shops on the Hoofdweg (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2022-04-29-w01-252",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002550_pano_0000_004442/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012105724/w01-252.jpg",
+   "sha256": "5c1ea845fb839f4a3a3c502545f492e50b513f1a1a6fb1ca7e4498acc5bd80a2"
+  },
+  {
+   "id": "pano-2021-03-29-w01-252L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002066_pano_0000_000389/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012105724/w01-252L.jpg",
+   "sha256": "6b8fb7390fe60bf2bd933c1c3fcb319b4e8388499037feaaf983775cf1a69c3e"
+  },
+  {
+   "id": "pano-2021-03-26-w02-72",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002065_pano_0000_000217/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012105724/w02-72.jpg",
+   "sha256": "17268cb28273ffcee992757bd445f73a25f61a49125a6bbe4de531c465d6480e"
+  },
+  {
+   "id": "pano-2020-05-11-w04-162",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001701_pano_0000_008533/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012105724/w04-162.jpg",
+   "sha256": "d08f4e7769befa23936437ce95ed9e2f507f7c0792325fe621d700ea4d3ca538"
+  },
+  {
+   "id": "pano-2019-12-10-w05-162L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001503_pano_0001_000481/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0",
+   "image": "source-data://pand-reference-walls/0363100012105724/w05-162L.jpg",
+   "sha256": "31fb84b330d170cd863daf79ede50f01ee0a2529a366a04be2ab1f0d91d8bafd"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "street": "Hoofdweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "storeyFactors": [
+    4.3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3.3
+   ],
+   "baysPerStorey": 46,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.8,
+    "sill": 0.08
+   },
+   "ground": "plinth-shopfronts",
+   "palette": {
+    "brick": "#45322f",
+    "frame": "#3c3e3f",
+    "stone": "#dedcd4",
+    "glass": "#3b4245"
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+     ],
+     "sill": 0.03,
+     "h": 0.9,
+     "lights": 2,
+     "rows": [
+      0.38
+     ],
+     "frame": "#5b5e5f"
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+     ],
+     "sill": 0.03,
+     "h": 0.9,
+     "lights": 2,
+     "rows": [
+      0.38
+     ],
+     "frame": "#5b5e5f"
+    },
+    {
+     "storeys": [
+      5
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+     ],
+     "sill": 0.03,
+     "h": 0.9,
+     "lights": 2,
+     "rows": [
+      0.38
+     ],
+     "frame": "#5b5e5f"
+    },
+    {
+     "storeys": [
+      6
+     ],
+     "sill": 0.05,
+     "h": 0.8,
+     "lights": 3,
+     "frame": "#e6e3da",
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+     ]
+    }
+   ],
+   "balconyBands": {
+    "storeys": [],
+    "kind": "glass",
+    "deep": 0.5,
+    "rail": 0.33,
+    "colour": "#dedcd4",
+    "railColour": "#8a8f8c",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        5,
+        14
+       ],
+       [
+        18,
+        28
+       ],
+       [
+        30,
+        38
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        5,
+        14
+       ],
+       [
+        18,
+        28
+       ],
+       [
+        30,
+        38
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        0,
+        9
+       ],
+       [
+        12,
+        21
+       ],
+       [
+        24,
+        34
+       ],
+       [
+        36,
+        45
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        0,
+        9
+       ],
+       [
+        12,
+        21
+       ],
+       [
+        24,
+        34
+       ],
+       [
+        36,
+        45
+       ]
+      ]
+     },
+     {
+      "storey": 5,
+      "bays": [
+       [
+        0,
+        4
+       ],
+       [
+        6,
+        16
+       ],
+       [
+        19,
+        28
+       ],
+       [
+        33,
+        41
+       ]
+      ]
+     },
+     {
+      "storey": 6,
+      "bays": [
+       [
+        0,
+        4
+       ],
+       [
+        6,
+        16
+       ],
+       [
+        19,
+        28
+       ],
+       [
+        33,
+        41
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "palette",
+    "ribbonStoreys",
+    "balconyBands",
+    "openBays"
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      6
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    31
+   ],
+   "street": "Elckerlijcstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.6,
+    3,
+    3,
+    3,
+    3.6
+   ],
+   "baysPerStorey": 46,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.8,
+    "sill": 0.08
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "window",
+     "window",
+     "door",
+     "window",
+     "window",
+     "window",
+     "storage"
+    ],
+    "doors": "#2e2d2d"
+   },
+   "palette": {
+    "brick": "#45322f",
+    "frame": "#3c3e3f",
+    "stone": "#dedcd4",
+    "glass": "#3b4245"
+   },
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      1
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+     ],
+     "sill": 0.03,
+     "h": 0.9,
+     "lights": 2,
+     "rows": [
+      0.38
+     ],
+     "frame": "#5b5e5f"
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "bays": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+     ],
+     "sill": 0.03,
+     "h": 0.9,
+     "lights": 2,
+     "rows": [
+      0.38
+     ],
+     "frame": "#5b5e5f"
+    },
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "sill": 0.1,
+     "h": 0.6,
+     "lights": 3,
+     "frame": "#e6e3da"
+    }
+   ],
+   "openBays": [
+    {
+     "storeys": [
+      4
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+     ]
+    }
+   ],
+   "balconyBands": {
+    "storeys": [],
+    "kind": "glass",
+    "deep": 0.5,
+    "rail": 0.33,
+    "colour": "#dedcd4",
+    "railColour": "#8a8f8c",
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        9
+       ],
+       [
+        17,
+        25
+       ],
+       [
+        33,
+        40
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        9
+       ],
+       [
+        17,
+        25
+       ],
+       [
+        33,
+        40
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        5,
+        12
+       ],
+       [
+        21,
+        28
+       ],
+       [
+        36,
+        43
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        5,
+        12
+       ],
+       [
+        21,
+        28
+       ],
+       [
+        36,
+        43
+       ]
+      ]
+     }
+    ]
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "residential",
+    "palette",
+    "ribbonStoreys",
+    "openBays",
+    "balconyBands"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "street": "Erasmusgracht",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "storeyFactors": [
+    5,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3.3
+   ],
+   "baysPerStorey": 5,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.88,
+    "h": 0.85,
+    "sill": 0.06
+   },
+   "ground": "system",
+   "palette": {
+    "brick": "#45322f",
+    "frame": "#3c3e3f",
+    "stone": "#dedcd4"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "storeys": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "bays": [
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "storeys": [
+      6
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3
+     ]
+    }
+   ],
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      2,
+      3,
+      4
+     ],
+     "sill": 0.25,
+     "h": 0.45,
+     "lights": 3,
+     "frame": "#3c3e3f"
+    },
+    {
+     "storeys": [
+      6
+     ],
+     "bays": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "sill": 0.05,
+     "h": 0.8,
+     "lights": 4,
+     "frame": "#e6e3da"
+    }
+   ],
+   "renderPanels": [
+    {
+     "bays": [
+      1,
+      4
+     ],
+     "storeys": [
+      1,
+      5
+     ],
+     "colour": "#a9aaa3"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "palette",
+    "openBays",
+    "ribbonStoreys",
+    "renderPanels"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    25
+   ],
+   "street": "Erasmusgracht",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "openBays": [
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "bays": [
+      0,
+      1,
+      2
+     ],
+     "sill": 0.3,
+     "h": 0.45,
+     "lights": 3,
+     "frame": "#3c3e3f"
+    }
+   ],
+   "palette": {
+    "brick": "#45322f",
+    "frame": "#3c3e3f",
+    "stone": "#dedcd4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "ground",
+    "openBays",
+    "ribbonStoreys",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    30
+   ],
+   "street": "Erasmusgracht",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "transom",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.8,
+    "sill": 0.08
+   },
+   "ground": "system",
+   "renderPanels": [
+    {
+     "bays": [
+      0,
+      3
+     ],
+     "storeys": [
+      0,
+      4
+     ],
+     "colour": "#c2bdb0"
+    }
+   ],
+   "palette": {
+    "brick": "#45322f",
+    "frame": "#3c3e3f",
+    "stone": "#dedcd4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windows",
+    "windowShape",
+    "ground",
+    "renderPanels",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#45322f",
+  "frame": "#3c3e3f",
+  "door": "#2e2d2d",
+  "stone": "#dedcd4"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored. Group 0: panel 6 (Hoofdweg W, 87.8 m) from w01-252L 2021-03-29 (leafless) checked against w01-252 2022-04-29: 46 window axes, shops at the ground, glass boxes on storeys 1, 3 and 5 staggered (three, four and four runs), white fin crown on storey 6. Group 1: panel 29 (Elckerlijcstraat E, 87.2 m) from w02-72 2021-03-26: 46 axes, brick residential ground, glass boxes on storeys 1 and 3, fin crown on storey 4.",
+  "Group 2: panel 0 surface 1 (Erasmusgracht S end of the W wing, 11.5 m) from w04-162 2020-05-11: brick frame round a pale-panelled glazed grid of four axes, fins at the top left, a ribbon window at the ground. Group 3: surface 25 (the 4.4 m link) from w04-162: brick with a ribbon window and the car-park entrance. Group 4: panel 28 (S end of the E wing, 11.7 m) from w05-162L 2019-12-10: a pale-panelled glazed grid of four axes. The N end (panel 30) has no crop and the courtyard (pale panel fronts seen obliquely in w04-162) takes otherWalls window-grid.",
+  "Glass boxes are ribbonStoreys behind balconyBands spans (the floor slab with its glass rail, and the next storey's span as the box roof); the photo's boxes are closed glazed volumes about 1.5 m proud with returns, which the kit cannot draw as one component on several spans per storey."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "footprintParts": true
+}

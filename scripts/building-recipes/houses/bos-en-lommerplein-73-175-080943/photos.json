@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-bos-en-lommerplantsoen",
+  "panoId": "TMX7316010203-001632_pano_0001_000311",
+  "timestamp": "2020-02-07T12:34:21.753290Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/02/07/TMX7316010203-001632/pano_0001_000311/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118074.57100652967,
+   487796.5247973457
+  ],
+  "headingDeg": 347.9160258353674,
+  "fovDeg": 43.67976373899882,
+  "pitchDeg": 20.18999069158402,
+  "distanceM": 30.020144124020113,
+  "image": "artifacts/building-recipes/bos-en-lommerplein-73-175-080943/photo-wall-bos-en-lommerplantsoen.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-hoofdweg",
+  "panoId": "TMX7316060226-000474_pano_0000_000525",
+  "timestamp": "2019-11-08T12:04:18.252680Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/08/TMX7316060226-000474/pano_0000_000525/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118182.62411994927,
+   487860.72991812316
+  ],
+  "headingDeg": 253.43804909386137,
+  "fovDeg": 104.75347925792485,
+  "pitchDeg": 27.86976843539474,
+  "distanceM": 28.35507544807942,
+  "image": "artifacts/building-recipes/bos-en-lommerplein-73-175-080943/photo-wall-hoofdweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-bos-en-lommerplein",
+  "panoId": "TMX7316010203-002066_pano_0000_000149",
+  "timestamp": "2021-03-29T07:48:07.728830Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/29/TMX7316010203-002066/pano_0000_000149/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118094.20162624691,
+   487919.0766642362
+  ],
+  "headingDeg": 162.30365478749286,
+  "fovDeg": 75.39536439024828,
+  "pitchDeg": 21.874062935309716,
+  "distanceM": 34.87097849632205,
+  "image": "artifacts/building-recipes/bos-en-lommerplein-73-175-080943/photo-wall-bos-en-lommerplein.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

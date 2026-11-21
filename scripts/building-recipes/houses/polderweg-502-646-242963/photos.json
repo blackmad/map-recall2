@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-hof-van-eden",
+  "panoId": "TMX7316010203-001679_pano_0000_000653",
+  "timestamp": "2020-04-29T08:50:29.990620Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/29/TMX7316010203-001679/pano_0000_000653/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124231.33749145974,
+   485602.83606315847
+  ],
+  "headingDeg": 337.3351638068645,
+  "fovDeg": 32.679996620968566,
+  "pitchDeg": 13.92291414069149,
+  "distanceM": 33.73432861407901,
+  "image": "artifacts/building-recipes/polderweg-502-646-242963/photo-wall-hof-van-eden.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-waldenlaan",
+  "panoId": "TMX7316010203-001679_pano_0000_000591",
+  "timestamp": "2020-04-29T08:49:32.801050Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/29/TMX7316010203-001679/pano_0000_000591/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124141.40519661967,
+   485692.07955428166
+  ],
+  "headingDeg": 96.37517896307207,
+  "fovDeg": 110,
+  "pitchDeg": 57.81482518281589,
+  "distanceM": 5.266684450073698,
+  "image": "artifacts/building-recipes/polderweg-502-646-242963/photo-wall-waldenlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-polderweg",
+  "panoId": "TMX7316010203-001679_pano_0000_000627",
+  "timestamp": "2020-04-29T08:50:09.380740Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/29/TMX7316010203-001679/pano_0000_000627/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124209.5046706644,
+   485670.96407245466
+  ],
+  "headingDeg": 230.0203113475864,
+  "fovDeg": 110,
+  "pitchDeg": 37.99986980076247,
+  "distanceM": 10.686616961820896,
+  "image": "artifacts/building-recipes/polderweg-502-646-242963/photo-wall-polderweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

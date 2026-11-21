@@ -1,0 +1,565 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "vlaardingenlaan-158-440-253645",
+ "pandId": "0363100012253645",
+ "address": "Vlaardingenlaan 158-440 / Overschiestraat / Rodenrijsstraat, Nieuw-Sloten: 2022 L-shaped housing pand of three parts, a nine-storey east wing in orange-brown brick with a grid frame of piers and floor bands round dark glazed infill (a two-storey plinth frame, a two-storey crown frame) and a plain brick end bay, a five-storey cream brick middle block on Vlaardingenlaan, a ten-storey pale ochre tower with loggias in every frame cell at the west end, and a white-brick slab-balcony block over a pilotis passage at the north end of Overschiestraat (kit batch 2005+, lane kit-batch-2005-20261121)",
+ "sources": [
+  {
+   "id": "pano-2025-08-01-w09-89",
+   "kind": "street-panorama",
+   "capturedAt": "2025-08-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-08-01_09-00-55_01311/",
+   "image": "source-data://pand-reference-walls/0363100012253645/w09-89.jpg",
+   "sha256": "bdb1094d4fb185f86f768282c13c0b4451b997b9211b32ffb0de0e1c6fedf56d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-17-w02-180d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-17_11-47-20_01182/",
+   "image": "source-data://pand-reference-walls/0363100012253645/w02-180d25.jpg",
+   "sha256": "c430a9102b1efd53c916828af3c9bee098afcbbb9060f2315e3fcdcc4f78fc15",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-28-w04-89",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241128_0827_Track33_Sphere_00027/",
+   "image": "source-data://pand-reference-walls/0363100012253645/w04-89.jpg",
+   "sha256": "aba04a76c8dc567e114b0786df144ef1f054f9ecc98f05ff746d9ef01cc07b40",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-28-w08-89",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241128_0827_Track33_Sphere_00022/",
+   "image": "source-data://pand-reference-walls/0363100012253645/w08-89.jpg",
+   "sha256": "6df43bfc6830e31663e367f6ab8a4e1d78022835259a776e466c35c3a917c391",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-07-w07-180",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002833_pano_0009_000014/",
+   "image": "source-data://pand-reference-walls/0363100012253645/w07-180.jpg",
+   "sha256": "932a3d51842c59f22d878e7f6287b3de4771a685661eec583648ba77677f08b2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    74,
+    89,
+    125
+   ],
+   "street": "Overschiestraat",
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 2,
+   "windows": "transom",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.84,
+    "sill": 0.08
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.8,
+     "h": 0.97,
+     "sill": 0.0
+    },
+    {
+     "storeys": [
+      7
+     ],
+     "w": 0.8,
+     "h": 0.95,
+     "sill": 0.03
+    },
+    {
+     "storeys": [
+      8
+     ],
+     "w": 0.8,
+     "h": 0.85,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#8c6e52",
+    "frame": "#2e3033",
+    "stone": "#a58a6c",
+    "glass": "#394046"
+   },
+   "openBays": [
+    {
+     "storeys": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "bays": [
+      1
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "openBays",
+    "piers",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    80,
+    87,
+    82,
+    21,
+    9,
+    13
+   ],
+   "street": "Overschiestraat",
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 2,
+   "windows": "transom",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.84,
+    "sill": 0.08
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.8,
+     "h": 0.97,
+     "sill": 0.0
+    },
+    {
+     "storeys": [
+      7
+     ],
+     "w": 0.8,
+     "h": 0.95,
+     "sill": 0.03
+    },
+    {
+     "storeys": [
+      8
+     ],
+     "w": 0.8,
+     "h": 0.85,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#8c6e52",
+    "frame": "#2e3033",
+    "stone": "#a58a6c",
+    "glass": "#394046"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "piers",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    149
+   ],
+   "street": "Vlaardingenlaan",
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 5,
+   "windows": "transom",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.84,
+    "sill": 0.08
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.8,
+     "h": 0.97,
+     "sill": 0.0
+    },
+    {
+     "storeys": [
+      7
+     ],
+     "w": 0.8,
+     "h": 0.95,
+     "sill": 0.03
+    },
+    {
+     "storeys": [
+      8
+     ],
+     "w": 0.8,
+     "h": 0.85,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#8c6e52",
+    "frame": "#2e3033",
+    "stone": "#a58a6c",
+    "glass": "#394046"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "piers",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    135
+   ],
+   "street": "Vlaardingenlaan",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 12,
+   "windows": "transom",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.82,
+    "sill": 0.1
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.78,
+     "h": 0.9,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#cbbd9e",
+    "frame": "#2e3033",
+    "stone": "#d2c6aa",
+    "glass": "#394046"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "piers",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    17,
+    19
+   ],
+   "street": "Overschiestraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.6,
+    "sill": 0.25
+   },
+   "ground": "arcade",
+   "arcade": {
+    "pier": 0.12,
+    "walk": 0.6,
+    "head": 0.95,
+    "rise": 0,
+    "chamfer": 0,
+    "storeyFactor": 2.2,
+    "facing": false
+   },
+   "palette": {
+    "brick": "#dcdcd8",
+    "frame": "#3a3c3e",
+    "stone": "#dcdcd8",
+    "glass": "#3d4448"
+   },
+   "balconyBands": {
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 1,
+      "bays": [
+       [
+        1,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        3
+       ]
+      ]
+     },
+     {
+      "storey": 4,
+      "bays": [
+       [
+        1,
+        3
+       ]
+      ]
+     }
+    ],
+    "deep": 0.5,
+    "rail": 0.3,
+    "kind": "solid",
+    "colour": "#d8d8d4"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "palette",
+    "balconyBands",
+    "ground",
+    "arcade"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    147
+   ],
+   "street": "Vlaardingenlaan",
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 6,
+   "windows": "two-light",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.1
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.78,
+     "h": 0.9,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#b9a27c",
+    "frame": "#3a3a38",
+    "stone": "#cfc4a8",
+    "glass": "#3d4448"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "w": 0.86,
+    "h": 0.86,
+    "sill": 0.06,
+    "deep": 0.4,
+    "rail": "glass",
+    "lights": 3,
+    "colour": "#cfd3d0",
+    "lining": "#7a5238"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "storeyShapes",
+    "palette",
+    "loggias",
+    "piers",
+    "ground"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    48,
+    151,
+    156,
+    194
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.1
+   },
+   "storeyShapes": [
+    {
+     "storeys": [
+      1
+     ],
+     "w": 0.78,
+     "h": 0.9,
+     "sill": 0.0
+    }
+   ],
+   "ground": "glazed",
+   "palette": {
+    "brick": "#b9a27c",
+    "frame": "#3a3a38",
+    "stone": "#cfc4a8",
+    "glass": "#3d4448"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "w": 0.86,
+    "h": 0.86,
+    "sill": 0.06,
+    "deep": 0.4,
+    "rail": "glass",
+    "lights": 3,
+    "colour": "#cfd3d0",
+    "lining": "#7a5238"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette",
+    "loggias"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    123,
+    207
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "windows": "transom",
+   "sills": false,
+   "piers": true,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.82,
+    "sill": 0.1
+   },
+   "ground": "glazed",
+   "palette": {
+    "brick": "#cbbd9e",
+    "frame": "#2e3033",
+    "stone": "#d2c6aa",
+    "glass": "#394046"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8c6e52",
+  "frame": "#2e3033",
+  "door": "#2a2a2a",
+  "stone": "#a58a6c"
+ },
+ "notes": [
+  "Kit batch 2005+ (lane kit-batch-2005-20261121), hand-authored. East wing E front (panels 71, 77, 84, 79, 19, 8, 12; the S end panel 71 its own group with openBays) from w04-89 2024-11-28 (S part, 28.4 m: the 4.75 m plain end bay then seven 3.4 m frame bays) and w08-89 2024-11-28 (20.8 m, six bays): orange-brown brick piers and floor bands, dark transom glazing filling each cell, the ground and first floor in one tall plinth frame and the top two storeys in one crown frame (storeyShapes run those windows together), the plain end bay as bay 0 of panel 71 left blank above the first floor (openBays; houses cannot take piers).",
+  "East wing S front (panel 139, surface 149) and middle block S front (panel 125, surface 135) from w02-180d25 2025-07-17 (re-cropped with --date; the default crop was the 2018 building site): five frame bays on the wing; twelve bays of cream brick on the middle block with a two-storey plinth frame.",
+  "North block on Overschiestraat (panel 16, surfaces 17, 19) from w09-89 2025-08-01: white-glazed brick, a column of punched windows with French balconies at the south end, solid brick-fronted slab balconies with timber soffits over the other bays on storeys 1-4, the double-height pilotis passage under it (ground arcade, storeyFactor 2.2).",
+  "Tower S front (panel 137, surface 147) from w07-180 2022-12-07 (excavator in front of the ground): pale ochre brick frame, a loggia behind a glass rail in every cell above a two-storey plinth frame. The tower W, E and N walls, and the middle block courtyard side have no usable crop (w06-270 is 2018 and 43 deg oblique; no 2023-2025 panorama found) and take the skin of the read fronts. The wing W side (panel 22, 22 m and 28 m eaves in one plane) takes otherWalls in the wing brick.",
+  "Not drawn: the double-height storeys inside the plinth and crown frames are two kit storeys with their windows run together; the loggias of the east wing (a few cells only) are not placed; the round pilotis columns of the north passage are square arcade piers; the 170 lettering."
+ ],
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}
