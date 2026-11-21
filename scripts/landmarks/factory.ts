@@ -121,7 +121,7 @@ async function stageDraft(item: QueueItem, force: boolean): Promise<boolean> {
   if (has('--dry')) { console.log('    dry: draftLargeIntent'); return true; }
   try {
     const facts = read(path.join(dir, 'facts.json')), crops = wallsJson(item.pand)?.walls ?? [];
-    const {intent, groups, skipped} = draftLargeIntent(facts, {id: house, pandId: item.pand, address: item.name ? `${item.name} (BAG pand ${item.pand})` : undefined, crops});
+    const {intent, groups, skipped} = draftLargeIntent(facts, {id: house, pandId: item.pand, address: item.name ? `${item.name} (BAG pand ${item.pand})` : undefined, crops, ...(item.use ? {use: item.use} : {})});
     fs.writeFileSync(intentFile, JSON.stringify(intent, null, 1) + '\n');
     fs.writeFileSync(path.join(dir, 'draft.json'), JSON.stringify({date: new Date().toISOString().slice(0, 10), groups, skipped}, null, 1) + '\n');
     note(item, `draft: ${groups.length} groups (${groups.filter(g => g.street).length} on a street), ${skipped.length} panels blank`);

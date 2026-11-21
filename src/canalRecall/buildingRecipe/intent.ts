@@ -15,6 +15,9 @@ import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
 import type {RoofTidyIntent} from './roofTidy.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
+import type {FacePanelIntent} from '../blockBuilding/facePanels.ts';
+import type {LoggiaBack} from '../blockBuilding/loggia.ts';
+import type {ResidentialBay} from '../blockBuilding/residentialGround.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
@@ -1220,7 +1223,26 @@ export interface LargeHouseIntent {
     /** the house's balcony slab edge and rail pane colours (as the group's `balconies.edge` / `pane`; absent: the group's) */ edge?: string; /** a colour, `"glass"` (the group's glazing) or `"clearGlass"` */ pane?: string};
   /** The house's own loggias, `bays` within the house (default every bay), the group loggia's proportions unless given;
    *  they replace the group's loggias in this house only. Absent: the group's, byte-identical. */
-  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number};
+  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number;
+    /** the house's loggia rails, lining and back (blockBuilding/loggia.ts); absent: the group's loggia look */ colour?: string; lining?: string; back?: LoggiaBack};
+  /**
+   * Per-house components (lane large-kit-gaps-20261121, the kit-vs-hand gap "five fronts on one wall plane": a dark
+   * ribbon-brick front beside punched mauve fronts on Valkenburgerstraat 69-165). Each replaces the group's own field in
+   * this house only, bays and storeys counted within the house; absent: the group's, byte-identical.
+   * `windows` the window preset; `sills` false = no stone sills; `blankStoreys`; `ribbonStoreys` (as the group's, `bays`
+   * within the house); `bayWindows` (the pattern cycles over the house's bays); `brickStoreys` (facings clipped to the
+   * house); `ground` the house's ground system (`system`, `residential`, `plinth-shopfronts` with its fascia, `blank`);
+   * `residential` its pattern; `wallMaterial` the house's wall material (a rendered front beside brick ones).
+   */
+  windows?: LargeWindow;
+  sills?: boolean;
+  blankStoreys?: number[];
+  ribbonStoreys?: RibbonStoreyIntent[];
+  bayWindows?: LargeWallIntent['bayWindows'];
+  brickStoreys?: {storeys: number[]; brick: string}[];
+  ground?: 'system' | 'residential' | 'plinth-shopfronts' | 'blank';
+  residential?: {pattern: ResidentialBay[]; doors?: string};
+  wallMaterial?: typeof GROUP_WALL_MATERIALS[number];
   /**
    * Dressings of this house only, clipped to its span (lane narva-pilot-20261116; Narva-eiland's rows of 2018-2019
    * fronts on one BAG pand: pale bands at the storey lines of one front, speklagen on the next, brick pilasters between
@@ -1487,7 +1509,18 @@ export interface LargeWallIntent {
    * the ground) in `colour` (default the frame colour). Defaults in systems.ts `LOGGIA` (OBA IJburg, 2019 crops).
    * brick-bay-grid, ribbon-windows or blank groups. Absent: byte-identical.
    */
-  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number; colour?: string};
+  loggias?: {storeys: number[]; bays?: number[]; w?: number; h?: number; sill?: number; deep?: number; rail?: 'glass' | 'bars' | 'solid' | 'none'; lights?: number; colour?: string;
+    /** returns, soffit, floor and back wall in this colour; `back: "door-window"` a wall back with a balcony door and a window (blockBuilding/loggia.ts); absent: byte-identical */ lining?: string; back?: LoggiaBack};
+  /** Ground `residential` (blockBuilding/residentialGround.ts): the per-bay pattern of `door`, `storage`, `window` and `wall` from the viewer's left (default an entrance every fourth bay). */
+  residential?: {pattern: ResidentialBay[]; /** the door leaves' painted colour */ doors?: string};
+  /**
+   * Render panels (blockBuilding/facePanels.ts, lane large-kit-gaps-20261121): a panel in its own colour over a span of
+   * bays and storeys of the main panel, round the windows it frames, proud of the wall by default (Rapenburgerstraat's
+   * white render panel 0.2 m proud of the brick). Absent: byte-identical.
+   */
+  renderPanels?: FacePanelIntent[];
+  /** Accent panels (facePanels.ts): a flush coloured panel per bay and storey cell (spandrel panels, glass-block or enamel infill, a coloured pier). Absent: byte-identical. */
+  accentPanels?: FacePanelIntent[];
   /**
    * A side light in its own frame colour in each punched window (GitHub #86, Nieuwpoortkade 2's south wing, 2025-09-26
    * crop w05-89: white-framed transom windows each holding a blue-framed opening sash in their left third over a vent
@@ -1530,7 +1563,9 @@ export interface LargeWallIntent {
      * head up, standing `out` of that storey (0.05..0.6) proud of the wall, in the wall colour, its soffit seen from the
      * street. Absent: byte-identical.
      */
-    lip?: {h: number; out: number}}[];
+    lip?: {h: number; out: number};
+    /** the band's returns, soffit, floor and back wall in this colour (blockBuilding/loggia.ts; Koerierstersplein's brown brick loggia backs in a white render front). Absent: byte-identical. */
+    lining?: string}[];
   /**
    * Dark columns in front of the ground storey (GitHub #86, the Da Vinci south wing's steel posts between brick infill
    * panels): on every `every`-th bay edge from edge `first` (0 = the panel's left end), `w` of the bay pitch wide, from the

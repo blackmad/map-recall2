@@ -9,6 +9,7 @@ import { type PanelCtx, type Cell, stripBox, intervals, barQuad, solid, SHEET_PI
 import { fitsPanel, rectPoly } from './panels.ts';
 import { MeshBuilder, type V3, add, scale, sub } from './mesh.ts';
 import { letteringGeometry } from '../buildingRecipe/signage.ts';
+import { rectMinusRects } from './loggia.ts';
 import type { Slot } from './spec.ts';
 
 const UP: V3 = [0, 1, 0], DOWN: V3 = [0, -1, 0];
@@ -315,15 +316,25 @@ export function drawNameBand(c: PanelCtx, text: string, top: number, slot: Slot,
  * Stone-faced storeys (a granite base, an ashlar attic) over a brick group: the storey's wall clad on the facing layer
  * (9 cm) in the group's stone, as bands below the openings, above them, and piers between them (closed with `closedBands`).
  */
-export function drawStoneStorey(c: PanelCtx, v0: number, v1: number, slot: Slot): number {
-  const p = c.p, holes = [...c.holes.values()].flat().filter(h => h[3] > v0 + 0.05 && h[2] < v1 - 0.05);
+export function drawStoneStorey(c: PanelCtx, v0: number, v1: number, slot: Slot, skip: [number, number][] = [], exact = false): number {
+  // `skip` (opt-in, a row split house's brick storeys): u spans left bare, as drawBand's; the holes outside them are ignored
+  const outside = (h: { 0: number; 1: number }) => skip.some(([a, b]) => h[0] >= a && h[1] <= b);
+  const p = c.p, holes = [...c.holes.values()].flat().filter(h => h[3] > v0 + 0.05 && h[2] < v1 - 0.05 && !outside(h));
   let n = 0;
-  if (!holes.length) return drawBand(c, slot, v0, v1, FACING_OUT);
+  // `exact` (opt-in, a residential ground's doors beside windows): openings of different sills and heads, so the facing
+  // is the storey minus each opening (5 cm clear at the sides, 10 cm under the sill boxes), not three bands
+  if (exact && holes.length) {
+    const cut = [...holes.map(h => [h[0] - 0.05, h[1] + 0.05, h[2] - 0.1, h[3]] as [number, number, number, number]), ...skip.map(([a, b]) => [a, b, v0 - 1, v1 + 1] as [number, number, number, number])];
+    for (const [a, b, lo, hi] of rectMinusRects(p.uMin, p.uMax, v0, v1, cut, 0.15))
+      for (const [s0, s1] of intervals(p, lo, hi, 0.25)) { const x = Math.max(a, s0), y = Math.min(b, s1); if (y - x > 0.2) { stripBox(c, slot, x, y, lo, hi, FACING_OUT); n++; } }
+    return n;
+  }
+  if (!holes.length) return drawBand(c, slot, v0, v1, FACING_OUT, skip);
   // the lower band stops 10 cm under the openings, clear of the sill boxes' top faces (they would share that plane)
   const hb = Math.max(v0, Math.min(...holes.map(h => h[2])) - 0.1), ht = Math.min(v1, Math.max(...holes.map(h => h[3])));
-  if (hb - v0 > 0.15) n += drawBand(c, slot, v0, hb, FACING_OUT);
-  if (v1 - ht > 0.15) n += drawBand(c, slot, ht, v1, FACING_OUT);
-  if (ht - hb > 0.15) n += drawBand(c, slot, hb, ht, FACING_OUT);
+  if (hb - v0 > 0.15) n += drawBand(c, slot, v0, hb, FACING_OUT, skip);
+  if (v1 - ht > 0.15) n += drawBand(c, slot, ht, v1, FACING_OUT, skip);
+  if (ht - hb > 0.15) n += drawBand(c, slot, hb, ht, FACING_OUT, skip);
   void p;
   return n;
 }

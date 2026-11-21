@@ -10,6 +10,7 @@ import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, drawSpandrels, drawFloorBands, drawMeshScreen, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {drawDressings} from '../blockBuilding/dressings.ts';
+import {drawFacePanels} from '../blockBuilding/facePanels.ts';
 import {drawArcadePiers} from '../blockBuilding/arcadePiers.ts';
 import {drawWindowBox} from '../blockBuilding/windowBox.ts';
 import {drawGallery} from '../blockBuilding/gallery.ts';
@@ -28,7 +29,7 @@ import {isPartyPanel} from './otherWalls.ts';
 import {WINDOW_GRID_WALL_SLOT, fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
-export interface LargeComponentCounts { claddingLines?: number; wallLights?: number; terraces?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { facePanels?: number; claddingLines?: number; wallLights?: number; terraces?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -62,6 +63,8 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     // a painted or metal-clad wall family (wallFamily.ts, #146): the city look's flat `paint` slot in the measured colour
     case 'paintwall': case 'paintline': case 'metalwall': case 'metalrib': return {materialSlot: 'paint', surface: 'wall'};
     case 'plinth': return {materialSlot: 'stucco', surface: 'wall'};
+    // a render panel over the wall (blockBuilding/facePanels.ts `renderPanels`): stucco in its own colour
+    case 'render': return {materialSlot: 'stucco', surface: 'wall'};
     // a mansard's steep face in a wall plane (`mansard`): the slate texture, lit as a wall
     case 'mansard': return {materialSlot: 'slate', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
@@ -111,13 +114,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   for (const st of g.stoneStoreys ?? []) {
     if (st >= levels.length - 1 && st > 0) continue;
     const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
-    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone)) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
+    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone, [], st === 0 && g.ground === 'residential')) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
   }
   // Two-tone brick by storey: the same facing in another brick colour.
   for (const bs of g.brickStoreys ?? []) for (const st of bs.storeys) {
     if (st >= levels.length - 1 && st > 0) continue;
     const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
-    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, bs.slot)) counts.brickStoreys = (counts.brickStoreys ?? 0) + 1;
+    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, bs.slot, [], st === 0 && g.ground === 'residential')) counts.brickStoreys = (counts.brickStoreys ?? 0) + 1;
   }
   // Mansard storeys (a steep slate face the shell stands in the wall plane): faced in slate round their dormer openings.
   if (g.mansard) for (const st of g.mansard.storeys) {
@@ -205,9 +208,17 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
       const k = drawDressings(c, {levels: h.lines, cells: own}, h.dress, {stone: h.dress.slot, wall: h.slot, frame: s.frame, glass: s.glass, iron: s.door}, true, topK, [h.u0, h.u1]);
       if (k) counts.dressings = (counts.dressings ?? 0) + k;
     }
+    // the house's own brick storeys (intent `houses[].brickStoreys`), clipped to its span, under its own eaves
+    for (const bs of h.brickStoreys ?? []) for (const st of bs.storeys) {
+      if (st >= h.lines.length - 1 && st > 0) continue;
+      const v0 = Math.max(p.vMin, h.lines[st]), v1 = Math.min(underCornice, h.eavesM - 0.05, h.lines[st + 1] ?? underCornice);
+      if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, bs.slot, outside, st === 0 && (h.ground ?? g.ground) === 'residential')) counts.brickStoreys = (counts.brickStoreys ?? 0) + 1;
+    }
     const gt = h.lines[1] ?? p.vMax;
-    if (g.ground === 'plinth-shopfronts' && gt - p.vMin > 3 && drawBand(c, s.stone, gt - 0.62, gt - 0.12, 0.1, [...outside, ...(entrance && g.entrance!.storeys > 1 ? skip : [])])) counts.fascias++;
+    if ((h.ground ?? g.ground) === 'plinth-shopfronts' && gt - p.vMin > 3 && drawBand(c, s.stone, gt - 0.62, gt - 0.12, 0.1, [...outside, ...(entrance && g.entrance!.storeys > 1 ? skip : [])])) counts.fascias++;
   }
+  // Render and accent panels (facePanels.ts) on the main panel, round the openings, under the cornice.
+  if (g.facePanels && g.mainPanel === p.index) { const k = drawFacePanels(c, info.cells, g.facePanels, underCornice); if (k) counts.facePanels = (counts.facePanels ?? 0) + k; }
   if (g.cornice && !noBands && !houses) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && !houses && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;

@@ -26,6 +26,11 @@ export interface DraftOptions {
   minStreetWidthM?: number;
   /** an exposed panel on no named street narrower than this is left blank (default 8 m) */
   minOtherWidthM?: number;
+  /**
+   * The pand's main BAG use. `housing`: every group gets `ground: "residential"` (entrance and storage doors and the
+   * flats' windows, no shop fascia; blockBuilding/residentialGround.ts, lane large-kit-gaps-20261121). Absent: unchanged.
+   */
+  use?: string;
 }
 export interface DraftGroup { group: number; panel: number; bearing: number; widthM: number; heightM: number; street: string | null }
 export interface DraftSkip { panel: number; widthM: number; reason: string }
@@ -174,6 +179,7 @@ export function draftLargeIntent(facts: BuildingFacts, opts: DraftOptions): Draf
     ...(g.shell !== undefined ? {shell: g.shell} : {}),
     ...(g.r.street ? {street: g.r.street} : {}),
     system: 'brick-bay-grid',
+    ...(opts.use === 'housing' ? {ground: 'residential' as const} : {}),
     ...(i === 0 ? {entrance: true} : {}),
   }));
   const seen = new Set<string>();

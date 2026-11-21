@@ -67,7 +67,15 @@ export interface WinParams {
      * block): no frame or glazing, the back one dark sheet in `slot`, and `posts` columns (centres as fractions of the
      * opening width, `w` m wide, in the wall slot) standing in the recess 5 cm behind the wall face. Absent: byte-identical.
      */
-    open?: { slot: Slot; posts?: { at: number[]; w: number } } };
+    open?: { slot: Slot; posts?: { at: number[]; w: number } };
+    /** the returns, soffit, floor and back wall in this slot instead of the cut wall's (loggia.ts `lining`; opt-in) */
+    lining?: Slot;
+    /**
+     * the back is wall (the lining, else the cut wall's slot) with these glazed openings, fractions of the opening's
+     * width and height (loggia.ts `LOGGIA_DOOR_WINDOW`: a balcony door and a window; `door` in the door slot's frame
+     * colour); opt-in, not with `back` or `open`
+     */
+    items?: { u: [number, number]; v: [number, number]; door?: boolean }[] };
   /**
    * recess mode, a side light in its own frame colour (opt-in, GitHub #86: the Da Vinci building's white-framed transom
    * windows each hold a blue-framed opening sash in their left third): a glazing bar (the window's frame slot) at `w` of

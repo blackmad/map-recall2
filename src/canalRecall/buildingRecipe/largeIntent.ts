@@ -20,9 +20,13 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
 import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
+import {loggiaLookProblems} from '../blockBuilding/loggia.ts';
+import {facePanelsProblems} from '../blockBuilding/facePanels.ts';
+import {residentialGroundProblems} from '../blockBuilding/residentialGround.ts';
+import {HOUSE_COMPONENT_KEYS, HOUSE_GROUNDS, hasHouseComponents, houseAsWall} from './houseComponents.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces', 'residential', 'renderPanels', 'accentPanels'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'shellClose', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -390,7 +394,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const lg = w.loggias, at2 = `${at}.loggias`;
       if (!lg || typeof lg !== 'object') problems.push(`${at2}: object {storeys, bays, w, h, sill, deep, rail, lights, colour}`);
       else {
-        for (const k of Object.keys(lg)) if (!['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights', 'colour'].includes(k)) problems.push(`${at2}.${k}: unknown field (storeys, bays, w, h, sill, deep, rail, lights, colour)`);
+        for (const k of Object.keys(lg)) if (!['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights', 'colour', 'lining', 'back'].includes(k)) problems.push(`${at2}.${k}: unknown field (storeys, bays, w, h, sill, deep, rail, lights, colour, lining, back)`);
+        problems.push(...loggiaLookProblems(lg, at2, true));
         if (!Array.isArray(lg.storeys) || !lg.storeys.length) problems.push(`${at2}.storeys: list of storeys (0 = ground)`); else lg.storeys.forEach(s => { count(s, `${at2}.storeys`, 0, 39); if (w.blankStoreys?.includes(s) || w.glazedStoreys?.includes(s)) problems.push(`${at2}.storeys: storey ${s} is also blank or glazed`); });
         if (lg.bays !== undefined) { if (!Array.isArray(lg.bays) || !lg.bays.length) problems.push(`${at2}.bays: list of bay indices`); else lg.bays.forEach(b => count(b, `${at2}.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at2}.bays needs baysPerStorey`); }
         const fr = (v: unknown, k: string, lo: number, hi: number) => { if (v !== undefined && !(typeof v === 'number' && v >= lo && v <= hi)) problems.push(`${at2}.${k}: fraction ${lo}..${hi}`); };
@@ -453,7 +458,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       else list.forEach((b, k) => {
         const at2 = `${at}.loggiaBands[${k}]`, pair = (v: unknown, key: string, max: number) => {
           if (!Array.isArray(v) || v.length !== 2 || !v.every(x => Number.isInteger(x) && x >= 0 && x <= max) || v[1] < v[0]) problems.push(`${at2}.${key}: [first, last] integers 0..${max}, first <= last`); };
-        for (const key of Object.keys(b ?? {})) if (!['storeys', 'bays', 'sill', 'head', 'deep', 'lights', 'rail', 'colour', 'back', 'open', 'lip'].includes(key)) problems.push(`${at2}.${key}: unknown field (storeys, bays, sill, head, deep, lights, rail, colour, back, open, lip)`);
+        for (const key of Object.keys(b ?? {})) if (!['storeys', 'bays', 'sill', 'head', 'deep', 'lights', 'rail', 'colour', 'back', 'open', 'lip', 'lining'].includes(key)) problems.push(`${at2}.${key}: unknown field (storeys, bays, sill, head, deep, lights, rail, colour, back, open, lip, lining)`);
+        problems.push(...loggiaLookProblems({lining: b?.lining}, at2, false));
         if (b?.open !== undefined) {
           const o = b.open as Record<string, unknown>;
           if (!o || typeof o !== 'object' || Array.isArray(o)) problems.push(`${at2}.open: object {posts, postW, every}`);
@@ -682,12 +688,20 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         const total = hs.reduce((a, h) => a + (typeof h?.w === 'number' ? h.w : 0), 0);
         hs.forEach((h, k) => {
           const hat = `${at}.houses[${k}]`;
-          for (const key of Object.keys(h ?? {})) if (!['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress', 'balconies', 'loggias'].includes(key)) problems.push(`${hat}.${key}: unknown field (w, bays, storeys, crown, brick, windowShape, ownEaves, frame, dress, balconies, loggias)`);
+          const houseKeys = ['w', 'bays', 'storeys', 'crown', 'brick', 'windowShape', 'ownEaves', 'frame', 'dress', 'balconies', 'loggias', ...HOUSE_COMPONENT_KEYS];
+          for (const key of Object.keys(h ?? {})) if (!houseKeys.includes(key)) problems.push(`${hat}.${key}: unknown field (${houseKeys.join(', ')})`);
+          // per-house components: the group's rules for the field of the same name, on a stand-in wall of the house's bays and storeys
+          if (h && hasHouseComponents(h)) {
+            if (h.ground !== undefined) oneOf(h.ground, HOUSE_GROUNDS, `${hat}.ground`);
+            try { validateLargeIntent({...intent, measured: undefined, walls: [houseAsWall(w, h)]}); }
+            catch (e) { for (const line of (e as Error).message.split('\n').slice(1)) problems.push(line.replace(/^ - walls\[0\]/, hat).replace(/^ - /, `${hat}: `)); }
+          }
           // the house's own balconies / loggias: storeys from 1, bays within the house (needs the house's `bays`)
           for (const kind of ['balconies', 'loggias'] as const) {
             const b = h?.[kind] as {storeys?: unknown; bays?: unknown; rail?: unknown} | undefined;
             if (b === undefined) continue;
-            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail', 'edge', 'pane'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights'];
+            const allowed = kind === 'balconies' ? ['storeys', 'bays', 'rail', 'edge', 'pane'] : ['storeys', 'bays', 'w', 'h', 'sill', 'deep', 'rail', 'lights', 'colour', 'lining', 'back'];
+            if (kind === 'loggias') { problems.push(...loggiaLookProblems(b as {lining?: unknown; back?: unknown}, `${hat}.loggias`, true)); const lc = (b as {colour?: unknown}).colour; if (lc !== undefined) colour(lc, `${hat}.loggias.colour`); }
             for (const ck of ['edge', 'pane'] as const) { const v = (b as Record<string, unknown>)?.[ck]; if (kind === 'balconies' && v !== undefined && !(ck === 'pane' && (v === 'glass' || v === 'clearGlass'))) colour(v, `${hat}.balconies.${ck}`); }
             for (const key of Object.keys(b ?? {})) if (!allowed.includes(key)) problems.push(`${hat}.${kind}.${key}: unknown field (${allowed.join(', ')})`);
             if (!Array.isArray(b?.storeys) || !b.storeys.length || b.storeys.some(q => !Number.isInteger(q) || q < 1 || q > 39)) problems.push(`${hat}.${kind}.storeys: list of storeys (1 = first floor)`);
@@ -721,6 +735,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const clash = (['wallSplit', 'curve', 'columns', 'hall', 'screen', 'meshScreen', 'spandrels', 'alignWith', 'windowPattern', 'tiltedBays', 'openBays', 'hoist', 'gateways', 'hallDoors', 'garageBays', 'garageDoors', 'piers'] as const).filter(k => w[k] !== undefined && w[k] !== false);
       if (clash.length) problems.push(`${at}.houses: not with ${clash.join(', ')} (they lay one bay rhythm across the panel)`);
       if (w.balconies?.bays || w.balconies?.every !== undefined || w.plinth?.bays || w.loggias?.bays) problems.push(`${at}.houses: balconies, plinth and loggias run every bay of a row (no bay lists)`);
+    }
+    problems.push(...residentialGroundProblems(w.residential, `${at}.residential`));
+    if (w.residential !== undefined && w.ground !== 'residential' && !w.houses?.some(h => h?.ground === 'residential')) problems.push(`${at}.residential: needs ground "residential" (on the group or a house)`);
+    {
+      const rowBays = w.houses?.every(h => Number.isInteger(h?.bays)) ? w.houses.reduce((a, h) => a + h.bays!, 0) : w.houses ? undefined : w.baysPerStorey;
+      for (const key of ['renderPanels', 'accentPanels'] as const) if (w[key] !== undefined) {
+        problems.push(...facePanelsProblems(w[key], `${at}.${key}`, rowBays));
+        if (rowBays === undefined) problems.push(`${at}.${key} needs baysPerStorey (or every house's bays)`);
+      }
     }
     if (w.hand !== undefined) { if (!Array.isArray(w.hand)) problems.push(`${at}.hand: list of field paths`); else for (const k of w.hand) if (typeof k !== 'string' || !WALL_KEYS.includes(k.split('.')[0])) problems.push(`${at}.hand: ${JSON.stringify(k)} is not a wall-group field`); }
   });

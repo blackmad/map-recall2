@@ -9,6 +9,8 @@
 import type { GroundPiers, Item, RecessBand, Row, System, WinParams } from './spec.ts';
 import type { ArchKind, ArchParams } from './arch.ts';
 import { ribbonStoreyRow, type RibbonStoreyFit } from './ribbonStoreys.ts';
+import { residentialGroundRow, type ResidentialGroundFit } from './residentialGround.ts';
+import type { LoggiaBackItem } from './loggia.ts';
 
 /**
  * - `glazed-hall`: a brick base, then one glass skin up to the eaves with a mullion grid (largeCompile `drawGlazedHall`);
@@ -23,7 +25,8 @@ export type LargeSystemName = typeof LARGE_SYSTEMS[number];
  * cut `arcade.depth` deep with the shopfronts (four transom lights) at the back, a rendered lintel band over the openings
  * and pier facings below it (largeCompile `drawArcadeFacing`).
  */
-export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth', 'arcade'] as const;
+/** `residential`: stair-hall entrance doors, storage doors and the flats' windows per bay, no fascia (residentialGround.ts). */
+export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth', 'arcade', 'residential'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
 export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide', 'stacked', 'three-light'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
@@ -130,6 +133,8 @@ export interface SystemFit {
   loggiaBands?: LoggiaBandFit[];
   /** dark ground-storey columns on every n-th bay edge and a grille strip along the ground (intent `groundPiers`; opt-in) */
   groundPiers?: GroundPiers;
+  /** ground `residential`: the per-bay pattern of entrance doors, storage doors, windows and wall (default RESIDENTIAL_GROUND.pattern) */
+  residential?: ResidentialGroundFit;
 }
 
 /** Side light (compose `WinParams.sash`): on `storeys` (0 = ground; default every storey) each punched window's light. */
@@ -147,7 +152,8 @@ export interface BayWindowsFit { storeys: number[]; pattern: { w: number; at?: n
 export interface LoggiaBandFit { storeys: [number, number]; bays: [number, number]; sillM: number; headM: number; deepM: number; lights: number; rail: 'glass' | 'bars' | 'solid' | 'none'; railSlot: string;
   /** the back a wall with rows of windows: per row from `sill` to `sill + h` of the band, one window `w` of `every` bays wide in each run of `every` bays */ back?: { sill: number; h: number; every: number; w: number }[];
   /** an open unglazed void: the back a dark sheet in `railSlot`, `posts` columns per bay (`postW` m wide) in the recess; absent: glazed */ open?: { posts: number; postW: number; every?: number };
-  /** the cantilevered upper block's slab over the band: `h` m deep from the band's head, `out` m proud, in the wall slot */ lip?: { h: number; out: number } }
+  /** the cantilevered upper block's slab over the band: `h` m deep from the band's head, `out` m proud, in the wall slot */ lip?: { h: number; out: number };
+  /** the band's returns, soffit, floor and back wall in this slot (loggia.ts `lining`; opt-in) */ lining?: string }
 /**
  * Post centres for an open loggia band (`LoggiaBandFit.open`) across `bays` bays with `perBay` posts each, as fractions
  * of the band width: one post on every `every`-th bay joint (`perBay` 1), or `perBay` evenly inside each bay; never on the band's ends.
@@ -166,7 +172,9 @@ export const LOGGIA_BAND = { sill: 0.03, head: 0.85, deep: 0.5, lightM: 1.2, ins
  * bays) `w` of the bay wide and `h` of the storey tall from `sill` (fractions), cut `deep` x the storey height into the
  * wall, `lights` glazed leaves at the back and a `rail` balustrade across the front in `railSlot` (none on the ground).
  */
-export interface LoggiaFit { storeys: number[]; bays?: number[]; w: number; h: number; sill: number; deep: number; rail: 'glass' | 'bars' | 'solid' | 'none'; lights: number; railSlot: string }
+export interface LoggiaFit { storeys: number[]; bays?: number[]; w: number; h: number; sill: number; deep: number; rail: 'glass' | 'bars' | 'solid' | 'none'; lights: number; railSlot: string;
+  /** returns, soffit, floor and back wall in this slot (loggia.ts `lining`; opt-in) */ lining?: string;
+  /** a wall back with these glazed openings instead of the glazed leaves (loggia.ts `loggiaBackItems`; opt-in) */ items?: LoggiaBackItem[] }
 /**
  * OBA IJburg (2019 crops w03-221L, w04-41L): 4.4 m loggias on a 5.6 m bay (0.78), 0.72-0.8 of a 3 m storey from the slab,
  * about 1.5 m deep (0.5 of the storey), two-leaf glazing at the back, pale glass balustrades about 1 m tall.
@@ -276,6 +284,8 @@ function groundRow(f: SystemFit, upper: Row): Row {
     case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
     // Shop windows down to a low stall riser, a transom light under the fascia (the fascia band is a component).
     case 'plinth-shopfronts': return { kind: 'glazed', win: { w: 0.86, h: 0.74, sill: 0.35, mull: 1, transom: 0.8, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
+    // Housing ground: entrance doors, storage doors and the flats' windows per bay (residentialGround.ts), no fascia.
+    case 'residential': return residentialGroundRow(upper, s, { pattern: f.residential?.pattern, doorSlot: f.residential?.doorSlot, frames: f.frames, deepBars: f.deepBars });
     // A windowed ground with arched heads (`arches.ground` without portals): the upper storeys' window, arched.
     default: return f.arches?.ground && upper.kind === 'punched' && upper.win ? { ...upper, win: { ...upper.win, ...archFor(f.arches.ground, f) } } : upper;
   }
@@ -521,7 +531,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     if (sh <= 0) continue;
     const rail = L.rail !== 'none' && st > 0 ? { rail: { kind: L.rail, h: LOGGIA.railM, slot: L.railSlot } } : {};
     const win: WinParams = { w: L.w, h: L.h, sill: +(L.sill * sh).toFixed(3), mull: Math.max(1, L.lights) - 1, frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.06,
-      ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: +(L.deep * sh).toFixed(3), ...rail } };
+      ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: +(L.deep * sh).toFixed(3), ...rail, ...(L.lining ? { lining: L.lining } : {}), ...(L.items ? { items: L.items.map(i => ({ ...i })) } : {}) } };
     put(st, under => inBays(under, { kind: 'punched', win }, L.bays));
   }
   // Loggia bands: one recessed opening per band (compose `RecessBand`), its glazing in `lights` leaves at the back.
@@ -532,7 +542,8 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       win: { w: width, h: 0.9, sill: 0, ...(n > 1 ? { mullAt: Array.from({ length: n - 1 }, (_, k) => +((k + 1) / n).toFixed(4)) } : {}), frame: s.frame, glass: s.glass, sillSlot: null,
         frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}), loggia: { depth: L.deepM, ...rail,
           ...(L.back ? { back: { rows: L.back.map(r => ({ lo: r.sill, hi: +(r.sill + r.h).toFixed(3), pitch: +(r.every * f.pitchM).toFixed(3), winW: +(r.w * r.every * f.pitchM).toFixed(3) })) } } : {}),
-          ...(L.open ? { open: { slot: L.railSlot, ...(L.open.posts ? { posts: { at: openPostsAt(L.bays[1] - L.bays[0] + 1, L.open.posts, L.open.every ?? 1), w: L.open.postW } } : {}) } } : {}) } },
+          ...(L.open ? { open: { slot: L.railSlot, ...(L.open.posts ? { posts: { at: openPostsAt(L.bays[1] - L.bays[0] + 1, L.open.posts, L.open.every ?? 1), w: L.open.postW } } : {}) } } : {}),
+          ...(L.lining ? { lining: L.lining } : {}) } },
       ...(L.lip ? { lip: { h: L.lip.h, out: L.lip.out } } : {}) };
   });
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}), ...(recessBands.length ? { recessBands } : {}), ...(f.groundPiers ? { groundPiers: f.groundPiers } : {}) };
