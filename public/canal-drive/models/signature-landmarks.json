@@ -28231,7 +28231,8 @@
         "buildVersion": 6,
         "bytes": 8248,
         "triangles": 322
-      }
+      },
+      "held": true
     },
     "thomaskerk": {
       "id": "thomaskerk",
@@ -120323,20 +120324,20 @@
         "depthMetres": 77.58955383300781,
         "depthCoverage": 0.9281047109211461
       },
-      "triangles": 19697,
-      "bytes": 267624,
+      "triangles": 19709,
+      "bytes": 267724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1868e147da6eab40",
+        "sourceHash": "4aad9865c1855a73",
         "buildVersion": 2,
-        "bytes": 138808,
-        "triangles": 8794
+        "bytes": 138840,
+        "triangles": 8797
       },
       "lod2": {
-        "sourceHash": "1868e147da6eab40",
+        "sourceHash": "4aad9865c1855a73",
         "buildVersion": 6,
-        "bytes": 30932,
-        "triangles": 1497
+        "bytes": 31168,
+        "triangles": 1498
       }
     },
     "casa-rosso": {
