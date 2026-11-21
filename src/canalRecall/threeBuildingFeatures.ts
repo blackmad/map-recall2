@@ -57,6 +57,7 @@ import { paintOverGuess } from './retailPuiPaint.js';
 import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
 import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
 import { bikeFromCode } from './retailBikes.js';
+import { withFrontSteps } from './steppedStreetFront.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -660,7 +661,10 @@ export type FeatureChunkOptions = { /** Coarse/touch shells get their planned ro
 
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' | 'shell' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map(), chunkOptions: FeatureChunkOptions = {}): Chunk {
+export function buildFeatureChunk(inputFeatures: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' | 'shell' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], inputContext: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map(), chunkOptions: FeatureChunkOptions = {}): Chunk {
+  // A street front BAG draws as near-collinear pieces with small jogs is one front on its main line (steppedStreetFront.ts;
+  // Herengracht 62 drew 3.43 m of 5.2 m). A footprint bound to a surveyed envelope keeps its fingerprint.
+  const { features, context: contextFeatures } = withFrontSteps(inputFeatures, inputContext, streets, ORIGIN, f => surveyedEnvelopes.has(String(f.properties.id)));
   const garden = features.filter(isAllotmentHouse);
   // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
   // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
