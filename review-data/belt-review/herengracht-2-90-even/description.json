@@ -13,7 +13,7 @@
   "beltLook": "data/buurt-generators/belt/row-front.json",
   "ahn": "data/buurt-generators/belt/ahn-fronts.json",
   "register": "public/data/extracts/amsterdam/monument-facts.json",
-  "ordekaart": "/Users/blackmad/Code/map-recall2/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
+  "ordekaart": "/Users/blackmad/Code/map-recall2-worktrees/belt-review-serve/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
   "kitGaps": "review-data/belt-review/kit-gaps.json",
   "photoRead": "review-data/belt-review/herengracht-2-90-even/photo-read.json (42 houses)"
  },
