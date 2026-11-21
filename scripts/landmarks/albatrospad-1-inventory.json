@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "id": "albatrospad-1",
+ "pand": "0363100012150906",
+ "brief": "scripts/landmarks/albatrospad-1-brief.md",
+ "signature": [
+  "ne-towers-over-wing",
+  "ne-glazed-stacks",
+  "ne-entrance-portal",
+  "ne-ground-glazing",
+  "ne-french-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-33",
+   "bearing": 33,
+   "lengthM": 104.6,
+   "centre": [
+    4.9225789,
+    52.3878962
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002825_pano_0002_000219",
+   "capturedAt": "2022-10-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-towers-over-wing",
+     "kind": "other",
+     "where": "NE street: two 11-storey dark brick towers rising over a continuous 4-storey brick street wing, the right tower box cantilevered over a set-back base",
+     "approxSizeM": [
+      104,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0002_000219",
+     "how": "3DBAG LoD2.2 shell massing, every rectangular wall rebuilt as a holed dark brick face (systemWall)"
+    },
+    {
+     "id": "ne-french-windows",
+     "kind": "window-shape",
+     "where": "all upper storeys: punched French windows in red-brown frames with a low metal rail, singles and pairs in an irregular rhythm",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002825_pano_0002_000219",
+     "how": "0.95 m singles with a rail strip and up to 1.7 m pairs at a 2.5 m bay pitch, a deterministic per-wall pattern with gaps (triangle budget)"
+    },
+    {
+     "id": "ne-glazed-stacks",
+     "kind": "window-shape",
+     "where": "top three storeys at the right corner of each tower: a large white-framed glazed stack; a long glazed stack on the inner tower faces",
+     "approxSizeM": [
+      4.6,
+      8.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002825_pano_0002_000219",
+     "how": "one 2x3 white-framed opening per tower face at its right end over the top three storeys, a five-storey stack on faces >= 20 m"
+    },
+    {
+     "id": "ne-ground-glazing",
+     "kind": "other",
+     "where": "ground storey along the street: timber-framed glazing with lime-green panels carrying large stair numbers 2, 3, 4, and red residential doors",
+     "approxSizeM": [
+      104,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002825_pano_0002_000219",
+     "how": "3.4 m bays of two-light timber-framed glazing, about one in seven with a green panel back, some red doors; numbers skipped as lettering under 1.5 m"
+    },
+    {
+     "id": "ne-entrance-portal",
+     "kind": "canopy",
+     "where": "under the left tower, about 41 m from the SE corner: a two-storey orange-framed entrance portal",
+     "approxSizeM": [
+      4.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0002_000219",
+     "how": "0.9 m deep opening with a 25 cm copper-orange frame and a transom bar"
+    },
+    {
+     "id": "ne-stair-numbers",
+     "kind": "lettering",
+     "where": "large white stair numbers 2, 3, 4 on the green ground panels",
+     "approxSizeM": [
+      0.8,
+      1.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "numerals under 1.5 m, read as the green panel at riding distance"
+     },
+     "seenIn": "TMX7316010203-002825_pano_0002_000219"
+    }
+   ]
+  },
+  {
+   "tag": "w02-213",
+   "bearing": 213,
+   "lengthM": 104.5,
+   "centre": [
+    4.9222293,
+    52.3875562
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_08-41-28_00403",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-courtyard-side",
+     "kind": "other",
+     "where": "SW side seen over the 1920s houses in front: the same dark brick towers with punched windows and a glazed stack",
+     "approxSizeM": [
+      104,
+      33
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-22_08-41-28_00403",
+     "how": "same systemWall as the NE street"
+    }
+   ]
+  },
+  {
+   "tag": "w03-303",
+   "bearing": 303,
+   "lengthM": 44.9,
+   "centre": [
+    4.9217547,
+    52.387977
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001733_pano_0000_002289",
+   "capturedAt": "2020-06-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-end",
+     "kind": "other",
+     "where": "NW end: dark brick tower end with punched windows and white-framed glazing over a glazed ground storey, mostly behind trees",
+     "approxSizeM": [
+      45,
+      33
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001733_pano_0000_002289",
+     "how": "same systemWall"
+    }
+   ]
+  },
+  {
+   "tag": "w04-123",
+   "bearing": 123,
+   "lengthM": 44.5,
+   "centre": [
+    4.9230534,
+    52.3874754
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-04_07-46-10_01087",
+   "capturedAt": "2025-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-cantilever-box",
+     "kind": "other",
+     "where": "SE end: the top four storeys of the tower are a box cantilevered about 1 m over the lower storeys with a dark soffit",
+     "approxSizeM": [
+      44,
+      11
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-04_07-46-10_01087",
+     "how": "as the 3DBAG shell gives the overhang; the soffit is the shell roof face"
+    },
+    {
+     "id": "se-ground-panels",
+     "kind": "other",
+     "where": "SE ground storey: timber-framed glazing and lime-green glass panels with stair number 1",
+     "approxSizeM": [
+      44,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-04_07-46-10_01087",
+     "how": "same ground bays as NE"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

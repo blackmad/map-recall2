@@ -97682,5 +97682,192 @@
     ]
    ]
   }
+ },
+ {
+  "id": "albatrospad-1",
+  "name": "Albatrospad 1-144 housing block",
+  "modelUrl": "./models/albatrospad-1.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012150906"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.922875,
+    52.38764614
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 94.1,
+   "widthMetres": 112.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.922875,
+    52.38764614
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012150906 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/albatrospad-1-footprints.json, bag-shell-prepare.ts); the one dark-brick facade system read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002825_pano_0002_000219 (2022, NE street), recording_2025-06-30_11-38-09_01616 (2025), recording_2025-09-04_07-46-10_01087 (2025, SE end), TMX7316010203-001733_pano_0000_002289 (2020, NW end) and recording_2024-10-22_08-41-28_00403 (2024, SW), CC BY 4.0. Per wall in scripts/landmarks/albatrospad-1-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 33,
+  "galleryView": {
+   "theta": 2.6,
+   "phi": 1.05
+  },
+  "bagYear": 2006,
+  "materialOverrides": {
+   "brick": "#424043",
+   "frame": "#7e3a33",
+   "stone": "#e3e3df",
+   "green": "#7fae55",
+   "ochre": "#9a7048",
+   "copper": "#b8692b",
+   "bronze": "#3f3f42",
+   "dark": "#2f2d31",
+   "concrete": "#5f5b62",
+   "glass": "#46525b",
+   "red": "#8a3530",
+   "slate": "#3e3e3e"
+  },
+  "attribution": {
+   "title": "Albatrospad 1-144, Amsterdam (housing block, 2006)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002825_pano_0002_000219/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012150906 (CC0): the dark brick towers and street wing with their French windows, glazed stacks, ground glazing with green panels and the orange entrance portal, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9229197,
+      52.3877631
+     ],
+     [
+      4.9229212,
+      52.3877646
+     ],
+     [
+      4.9228098,
+      52.3878076
+     ],
+     [
+      4.9228107,
+      52.3878086
+     ],
+     [
+      4.9227558,
+      52.3878296
+     ],
+     [
+      4.9226993,
+      52.3878515
+     ],
+     [
+      4.9225422,
+      52.387912
+     ],
+     [
+      4.92193,
+      52.3881476
+     ],
+     [
+      4.9216722,
+      52.3878966
+     ],
+     [
+      4.9215794,
+      52.3878063
+     ],
+     [
+      4.9228791,
+      52.3873061
+     ],
+     [
+      4.9229714,
+      52.3873957
+     ],
+     [
+      4.9229718,
+      52.3873956
+     ],
+     [
+      4.9230382,
+      52.3874597
+     ],
+     [
+      4.9230407,
+      52.3874587
+     ],
+     [
+      4.9230513,
+      52.3874689
+     ],
+     [
+      4.9230487,
+      52.38747
+     ],
+     [
+      4.9230567,
+      52.387478
+     ],
+     [
+      4.9230592,
+      52.3874771
+     ],
+     [
+      4.9231479,
+      52.3875634
+     ],
+     [
+      4.9231456,
+      52.3875643
+     ],
+     [
+      4.9231539,
+      52.3875722
+     ],
+     [
+      4.9231563,
+      52.3875713
+     ],
+     [
+      4.9231668,
+      52.3875815
+     ],
+     [
+      4.9231642,
+      52.3875826
+     ],
+     [
+      4.9232276,
+      52.3876447
+     ],
+     [
+      4.9230904,
+      52.3876977
+     ],
+     [
+      4.9230916,
+      52.3876992
+     ],
+     [
+      4.9230748,
+      52.3877056
+     ],
+     [
+      4.9230736,
+      52.3877043
+     ],
+     [
+      4.9229197,
+      52.3877631
+     ]
+    ]
+   ]
+  }
  }
 ]
