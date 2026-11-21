@@ -46,6 +46,7 @@ import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN, lookHex } from './look/palette.js'
 import { litFacadeWallGain } from './look/sunny.js';
 import { decorateShopfront, setShopfronts, setShopTemplates } from './shopfronts.js';
 import { retailGroundOn } from './retailTemplates.js';
+import { setShopAnchors, shopRunOn } from './shopRun.js';
 import { setGroundFloors, groundFloorOn } from './groundFloor/extract.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
@@ -245,7 +246,7 @@ const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
 
 /** Landmarks keep their own form; kit-modelled parts and bodies pass through, the rest get a period fallback (roofMesh.ts). */
 const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 'Feature'; geometry: unknown }>(decorate: (f: T) => T, ids: ReadonlySet<string>, listed?: ReadonlySet<string>) => exceptLandmarksOf(decorate, ids, KIT_MODELLED_IDS, listed);
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, setShopTemplates, retailGroundOn, setGroundFloors, groundFloorOn, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher, withRowFront, rowFrontOn, loadRowFrontRecords, withDesignUnits, withDesignUnitRoof, designUnitsOn, loadDesignSegments };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, setShopTemplates, retailGroundOn, setShopAnchors, shopRunOn, setGroundFloors, groundFloorOn, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract, withHouseSpec, withHouseSpecCrown, houseSpecsEnabled, houseSpecEnricher, withRowFront, rowFrontOn, loadRowFrontRecords, withDesignUnits, withDesignUnitRoof, designUnitsOn, loadDesignSegments };
 
 const KIT_KEY = '__kit';
 /** `?kitFade` under `?popFade` (lanes P2 #325, P3 #328): the kit chunk's rebuilds cross-fade like any other chunk's. Default on. */

@@ -90,6 +90,7 @@ export function shopKindForTags(tags: Record<string, string>): ShopKind | null {
 }
 
 import { groundFloorFor } from './groundFloor/extract.js';
+import { shopAnchorsFor, shopRunOn } from './shopRun.js';
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 let extract: ShopfrontExtract | null = null;
@@ -144,6 +145,19 @@ export function setShopfronts(data: ShopfrontExtract | null): void {
  * holds a café or food shop, the shop window in its fascia colour.
  */
 export function decorateShopfront<T extends GeoFeature>(feature: T): T {
+  return withShopAnchors(decorateShopfrontOnly(feature));
+}
+/**
+ * Lane shop-band-ground (`?shopRun=1`, shopRun.ts): a pand's ground-floor business points as `shopAnchors`, so the
+ * mesher (in a worker) can keep the shop ground on the runs that hold a shop. Only with the flag on and the anchor
+ * extract installed; otherwise the same feature.
+ */
+function withShopAnchors<T extends GeoFeature>(feature: T): T {
+  if (!shopRunOn() || feature.properties.shopAnchors !== undefined) return feature;
+  const at = shopAnchorsFor(String(feature.properties.id ?? ''));
+  return at ? { ...feature, properties: { ...feature.properties, shopAnchors: at } } : feature;
+}
+function decorateShopfrontOnly<T extends GeoFeature>(feature: T): T {
   if (!extract) return decorateShopTemplate(feature);
   feature = decorateShopTemplate(feature);
   const p = feature.properties;

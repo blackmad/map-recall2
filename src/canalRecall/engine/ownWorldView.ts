@@ -742,6 +742,8 @@ export class OwnWorldView implements WorldViewOracles {
       // Shopfront templates (lane retail-ground, `?retailGround=1`): fetched only with the flag on.
       // Ground floors (lane ground-floor, `?groundFloor=1`): installed before the templates stamp them, fetched only with the flag on.
       ...(api?.retailGroundOn?.() && api.setShopTemplates ? [Promise.all([json('shop-templates.json'), api.groundFloorOn?.() && api.setGroundFloors ? json('ground-floors.json') : null]).then(([data, gf]) => { if (gf) api.setGroundFloors(gf); if (data) { api.setShopTemplates(data); this.decorateCity(); } })] : []),
+      // Shop anchors (lane shop-band-ground, `?shopRun=1`, shopRun.ts): fetched only with the flag on.
+      ...(api?.shopRunOn?.() && api.setShopAnchors ? [json('shop-anchors.json').then(data => { if (data) { api.setShopAnchors(data); this.decorateCity(); } })] : []),
       json('monument-gables.json').then(data => {
         if (!data) return;
         this.decoration.gables = new Map(Object.entries(data.buildings || {}));

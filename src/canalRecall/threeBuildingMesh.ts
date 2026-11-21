@@ -52,6 +52,7 @@ import type { GroundFloorDraw } from './groundFloor/types.js';
 import type { RedLightFront } from './groundParts/redLightFront.js';
 import type { BikeClass } from './retailBikes.js';
 import { steppedRun } from './retailHosting.js';
+import { shopRunsFor } from './shopRun.js';
 import { puiInteriorUv } from './retailTemplates.js';
 import { SHOP_KINDS } from './bayTextures.js';
 import { wordRuns } from './blockLetters.js';
@@ -127,6 +128,11 @@ export type MeshBuilding = {
   /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
   chain?: { at: [number, number]; look: ChainLook };
   /** A shopfront template (lane retail-ground, `?retailGround=1`, retailFront.ts) at its OSM point; replaces the chain fascia. */
+  /**
+   * Lane shop-band-ground (`?shopRun=1`, shopRun.ts): a shop pand's anchor points [lng, lat] and the quiet ground a run
+   * that holds no shop draws instead (its ground layer, ground paint and accent). Absent: every run draws the shop.
+   */
+  shopRun?: { anchors: Array<[number, number]>; quiet: { ground?: number; groundHex?: string; accentHex?: string } };
   retailFront?: { template: RetailTemplate; at: [number, number]; word?: string; /** The node's nearest open wall carries the front (no street wall near it: retailHosting.ts). */ nearest?: boolean; /** The chain's logo on the logo layer (retailLogos.ts). */ logo?: { layer: number; rect: readonly [number, number, number, number]; aspect: number }; /** The logo layer, for the lettering cell (round 3c). */ letters?: number; /** The measured pui paint (round 4). */ paint?: string; /** A bike shop's class (round 6, retailBikes.ts). */ bike?: { cls: BikeClass; fleetHex?: string }; /** Round 7: measured awning colour (measure-awning.ts). */ awning?: string; /** Lane retail-real: the first goods and face layers (retailPages.ts). */ goods?: number; faces?: number; /** Lane shop-variety (default on; `?shopVariety=0` off): the first pane-filler layer (retailPages.ts VARIETY_BASE). */ variety?: number; chain?: { fascia: string; letters: string; word: string }; /** Lane retail-real: lane R's audited window front (span [lng0, lat0, lng1, lat1] on the front line). */ redLight?: { span: [number, number, number, number] } & RedLightFront; /** Round 4: a per-pand frame colour read on a photo. */ frameHex?: string; /** Round 7: the chain's key in BRAND_STYLES (`?retailBrand=1`). */ brand?: string; /** Lane ground-floor (`?groundFloor=1`): the building's ground floor; the shop fills its openings. */ groundFloor?: GroundFloorDraw; /** Lane ground-floor: a held template drawn only for its record, with a neutral fill. */ neutral?: boolean };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
@@ -320,6 +326,8 @@ export type LayoutProbeRun = { storeys: number; groundM: number; storeyM: number
   /** Lane PR1 (structure priors): the layout style, window axes per cell, whether a street-appearance recipe or a
    *  HouseSpec / structure prior fitted the run, and the exposed height the grid was laid on. */
   style?: FacadeStyle; axes?: number; recipe?: boolean; fit?: 'spec' | 'prior' | null; exposedM?: number };
+/** Lane shop-band-ground census (scripts/retail-ground/shop-run-census.ts): each shop pand's run decision, walls mode only. */
+export const shopRunProbe: { sink?: (id: string, keep: readonly boolean[], runs: ReadonlyArray<{ lenM: number; street: boolean; /** The run's longest wall: its middle [lng, lat] and outward bearing (deg). */ mid: [number, number]; bearing: number }>, anchors: number) => void } = {};
 export const layoutProbe: { sink?: (id: string, run: LayoutProbeRun) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
@@ -416,6 +424,12 @@ function boxTris(e: { x0: number; y0: number; ux: number; uy: number; nx: number
   face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0));
   face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1]);
   if (bottom) face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1]);
+}
+
+/** Lane shop-band-ground (shopRun.ts): a shop pand's run that holds no shop, drawn as the pand would with no shop. */
+function quietShopRun(b: MeshBuilding): MeshBuilding {
+  const q = b.shopRun!.quiet;
+  return { ...b, shop: false, shopfront: false, retailFront: undefined, groundHex: q.groundHex, ...(q.accentHex ? { accentHex: q.accentHex } : {}), layers: b.layers && q.ground !== undefined ? { ...b.layers, ground: q.ground } : b.layers, shopRun: undefined };
 }
 
 /**
@@ -935,6 +949,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).
     const runLen = (r: Array<{ e: Edge }>) => r.reduce((s, { e }) => s + e.len, 0);
     const rowStoopRun = b.rowDress?.stoop ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
+    // Lane shop-band-ground (`?shopRun=1`, shopRun.ts): the runs that hold a shop; the rest draw the quiet ground.
+    const shopKeep = b.shopRun ? shopRunsFor(runList.map(run => ({ segs: run.map(({ e }) => [e.x0, e.y0, e.x1, e.y1] as const), street: run.some(({ e }) => doorAllowed.has(e)) })),
+      b.shopRun.anchors.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as const)) : null;
+    if (shopKeep && shopRunProbe.sink && mode === 'walls') shopRunProbe.sink(b.id, shopKeep, runList.map(run => { const e = run.reduce((l, r) => r.e.len > l.len ? r.e : l, run[0].e); return { lenM: run.reduce((sum, { e }) => sum + e.len, 0), street: run.some(({ e }) => doorAllowed.has(e)), mid: [origin.lng + (e.x0 + e.x1) / 2 / kxLocal, origin.lat + (e.y0 + e.y1) / 2 / M_PER_DEG_LAT] as [number, number], bearing: (Math.atan2(e.nx, e.ny) * 180 / Math.PI + 360) % 360 }; }), b.shopRun!.anchors.length);
     for (const run of runList) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
@@ -950,6 +968,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const candidate=streetWallBuilding(fallbackBuilding,full,origin,!streetGrid||streetDistance(full,streetGrid,wallGrid,bi)<Infinity);
         if(candidate.recipe?.shopCanopy)b=candidate;
       }
+      if (shopKeep && !shopKeep[runList.indexOf(run)] && !b.recipe) b = quietShopRun(b);
       // A HouseSpec's bay count fits the street run's grid (houseSpec/decorate.ts); a street-appearance recipe keeps its own.
       const parapetSpec = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0;
       // The storey count fits street runs (H9); with H11's fit released (`storeysFit`) every ground-level run, to the nearest
