@@ -34,7 +34,11 @@ const anchor = anchorArg ?? spec?.surveyed?.anchor ?? spec?.footprint?.centre;
 if (!anchor) throw new Error(`${id}: no anchor in manualCatalogue.json`);
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const out = path.resolve(ROOT, arg('out') ?? `artifacts/review/${id}`);
-const query = arg('query') ?? '';
+// The own engine, unless the caller names one: under the default engine (MapLibre) the held camera's neighbours never
+// stream, and the frames show the landmark on an empty block (2026-11-22, the What's New Raamplein pair).
+const rawQuery = (arg('query') ?? '').replace(/^\?/, '');
+const query = /(^|&)engine=/.test(rawQuery) ? rawQuery : [rawQuery, 'engine=own'].filter(Boolean).join('&');
+const allowUnsettled = process.argv.includes('--allow-unsettled');
 const underlay = process.argv.includes('--underlay');
 fs.mkdirSync(out, {recursive: true});
 
@@ -66,7 +70,8 @@ try {
         if (!s.shown.has(i)) s._onMove?.();
         return s.shown.has(i);
       }, id, {timeout: 60000, polling: 1000});
-      await settleHeldWorld(page);
+      const world = await settleHeldWorld(page);
+      if (!world.settled && !allowUnsettled) throw new Error(`${id} ${v.name} ${size}: the world did not settle (${world.pending.join(', ') || 'tiers'}); not writing a half-loaded frame (--allow-unsettled to keep it)`);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
       await page.screenshot({path: file, timeout: 180000}); // a loaded machine (load 70-100) took over 30 s per frame
       console.log(file);
@@ -82,7 +87,8 @@ try {
           const m = (window as any).canalRecallGame.vectorMap; (m.map ?? m.cameraMap)?.triggerRepaint?.();
         }, id);
         await page.waitForTimeout(1500);
-        await settleHeldWorld(page);
+        const underWorld = await settleHeldWorld(page);
+        if (!underWorld.settled && !allowUnsettled) throw new Error(`${id} ${v.name} ${size} underlay: the world did not settle`);
         const under = path.join(out, `ingame-${v.name}-${size}-underlay.png`);
         await page.screenshot({path: under, timeout: 180000});
         const share = await changedShareOfFiles(file, under);

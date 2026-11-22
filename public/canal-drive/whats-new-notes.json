@@ -22,26 +22,16 @@
     {
       "date": "2026-11-22",
       "title": "Five landmarks and Van Baerlestraat",
-      "text": "The Openbare Handelsschool now stands on the Raamplein, where the game drew an empty lot. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which was also an empty lot. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
+      "text": "The Openbare Handelsschool now stands on the Raamplein, where the game drew a plain generic block. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which was also an empty lot. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
       "where": [
         4.8804,
         52.3665
       ],
       "images": [
         {
-          "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg",
-          "alt": "The Raamplein from above in the game: an empty lot before, the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
+          "src": "whats-new/2026-11-22-handelsschool-raamplein-v2.jpg",
+          "alt": "The Raamplein from above in the game: a plain generic block before, the Openbare Handelsschool after, red brick with stone bands, slate roofs and two aedicule towers",
           "caption": "Openbare Handelsschool, Raamplein: before, after"
-        },
-        {
-          "src": "whats-new/2026-11-22-nieuwe-doelenstraat-12.jpg",
-          "alt": "Nieuwe Doelenstraat 12 in the game: orange-red brick before, a deeper purple-red brick with arched window heads after",
-          "caption": "Nieuwe Doelenstraat 12: before, after"
-        },
-        {
-          "src": "whats-new/2026-11-22-van-baerlestraat.jpg",
-          "alt": "Van Baerlestraat: the panorama, then generic brick fronts before, and the row with its stepped and bell gables, arched windows and the Oogappel shop sign after",
-          "caption": "Van Baerlestraat: photo, before, after"
         }
       ]
     },
@@ -69,13 +59,13 @@
           "caption": "Saint Laurent, PC Hooftstraat: photo, before, after"
         },
         {
-          "src": "whats-new/2026-11-22-jungle-amsterdam.jpg",
-          "alt": "Jungle Amsterdam on the Swindenstraat in the game: an empty lot before, the community centre with its roof frame, coloured posts and blue and red window frames after",
+          "src": "whats-new/2026-11-22-jungle-amsterdam-v2.jpg",
+          "alt": "Jungle Amsterdam on the Tweede van Swindenstraat in the game: a blank grey block before, the community centre with its roof frame, round windows and blue window frames after",
           "caption": "Jungle Amsterdam: before, after"
         },
         {
-          "src": "whats-new/2026-11-22-hans-en-grietje.jpg",
-          "alt": "The Spiegelgracht corner in the game: an empty corner before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
+          "src": "whats-new/2026-11-22-hans-en-grietje-v2.jpg",
+          "alt": "The Spiegelgracht corner from above in the game: a generic corner house before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
           "caption": "Café Hans en Grietje, Spiegelgracht: before, after"
         }
       ]
@@ -136,11 +126,6 @@
       ],
       "images": [
         {
-          "src": "whats-new/2026-11-22-pc-hooftstraat-brick.jpg",
-          "alt": "PC Hooftstraat 80-112: the photo strip, the row in one orange-red brick before, and each house in its own measured brick or stucco after",
-          "caption": "Photo, before, after"
-        },
-        {
           "src": "whats-new/2026-11-22-pompstation.jpg",
           "alt": "The former pumping station on the Zeeburgerdijk: street photo beside the new model with its tall windows and Pompstation sign",
           "caption": "Photo, model"
@@ -162,8 +147,8 @@
           "caption": "Hermès: before, after"
         },
         {
-          "src": "whats-new/2026-11-22-kweekschool.jpg",
-          "alt": "Plantage Muidergracht from above: an empty plot before, the former Kweekschool voor Machinisten after",
+          "src": "whats-new/2026-11-22-kweekschool-v2.jpg",
+          "alt": "Plantage Muidergracht across the water in the game: a generic six-storey block before, the former Kweekschool voor Machinisten with its stone bands and tall windows after",
           "caption": "Kweekschool: before, after"
         }
       ]

@@ -3,9 +3,9 @@
  * Not part of check:canal. Run: PW_PORT=4425 DEMO_OUT=artifacts/demo-20261013 npx playwright test demo-shots --project=desktop
  * Spots come from DEMO_SPOTS (comma-separated names) or default to all.
  */
-import { test, type Page } from '@playwright/test';
-import { mkdirSync } from 'node:fs';
-import { openRoute } from './helpers';
+import { test } from '@playwright/test';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { openRoute, settleForShot, standpoint, teleportRider } from './helpers';
 
 type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit'; camZoom?: number };
 
@@ -185,24 +185,7 @@ if (process.env.DEMO_DPR) test.use({ deviceScaleFactor: Number(process.env.DEMO_
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
 const only = process.env.DEMO_SPOTS?.split(',').filter(Boolean);
 
-function standpoint(s: Spot): { lng: number; lat: number; bearing: number } {
-  const b = s.standDeg * Math.PI / 180;
-  const dLat = s.standM * Math.cos(b) / 111320;
-  const dLng = s.standM * Math.sin(b) / (111320 * Math.cos(s.centre[1] * Math.PI / 180));
-  return { lng: s.centre[0] + dLng, lat: s.centre[1] + dLat, bearing: s.faceDeg ?? (s.standDeg + 180) % 360 };
-}
-
-async function teleport(page: Page, p: { lng: number; lat: number; bearing: number }): Promise<void> {
-  await page.evaluate(({ lng, lat, bearing }) => {
-    const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number;
-    const b = bearing * Math.PI / 180;
-    g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
-    g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
-    g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b));
-    Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
-    g.player.handleInput = () => {};
-  }, p);
-}
+const teleport = teleportRider;
 
 for (const spot of SPOTS) {
   // A trailing * matches a prefix (DEMO_SPOTS='easy-houses-*').
@@ -232,8 +215,13 @@ for (const spot of SPOTS) {
     await page.waitForTimeout(2500);
     await teleport(page, p); // the game re-routes after the first jump; pin the spot again
     if (spot.camZoom) await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, spot.camZoom);
-    await page.waitForTimeout(Number(process.env.DEMO_WAIT ?? 6000));
+    // Settle, not a fixed timer (2026-11-22: a What's New "before" taken on the old 6 s wait showed empty lots).
+    // DEMO_WAIT adds a fixed wait on top, for effects that settle after the world (fades, shadows).
+    const world = await settleForShot(page, spot.name);
+    if (process.env.DEMO_WAIT) await page.waitForTimeout(Number(process.env.DEMO_WAIT));
     mkdirSync(OUT, { recursive: true });
     await page.screenshot({ path: `${OUT}/${spot.name}.png` });
+    writeFileSync(`${OUT}/${spot.name}.json`, JSON.stringify({ spot, world }, null, 1));
+    if (!world.settled) console.warn(`${spot.name}: shot taken unsettled (${world.pending.join(', ')}); do not publish it`);
   });
 }
