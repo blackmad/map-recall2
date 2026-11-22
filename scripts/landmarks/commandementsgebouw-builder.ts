@@ -7,8 +7,11 @@ import {face, flushFaces, opening, resetFaces, strut, type FR} from './modern-fr
 import source from './commandementsgebouw-footprints.json';
 
 /**
- * COMMANDEMENTSGEBOUW, Kattenburgerstraat 5, Marineterrein (BAG pand 0363100012164987; gemeentelijk monument 230003, no
- * register text). A two-storey post-war office slab: exposed-aggregate concrete panels with two ribbons of white-framed
+ * COMMANDEMENTSGEBOUW, Kattenburgerstraat 5, Marineterrein (BAG pand 0363100012164987). Identity confirmed from the
+ * Gemeente Amsterdam monument register (api.data.amsterdam.nl monumenten, gemeentelijk monument 230003, designated
+ * 2025-07-08): "Gebouw 002 - Commandementsgebouw (Marineterrein)", architect F.C. de Weger, built 1962-1966, original
+ * function defence; NH Nieuws (2025) names it among the three post-war Marineterrein monuments with the Officiersgebouw
+ * and the Commandantswoning. The register's description text is still empty. A two-storey post-war office slab: exposed-aggregate concrete panels with two ribbons of white-framed
  * windows between dark grey posts, brick end walls and corner piers, a glazed stair tower and a covered walkway on the
  * north-west side, a flat roof with a light metal coping.
  *

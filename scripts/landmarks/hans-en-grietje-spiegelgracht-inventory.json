@@ -1,0 +1,358 @@
+{
+ "schemaVersion": 1,
+ "id": "hans-en-grietje-spiegelgracht",
+ "pand": "0363100012169479",
+ "brief": "scripts/landmarks/hans-en-grietje-spiegelgracht-brief.md",
+ "signature": [
+  "s-awnings-upper",
+  "s-awnings-ground",
+  "s-lettering",
+  "s-restaurant",
+  "n-shopfront",
+  "s-dormer",
+  "n-door-27",
+  "s-chef"
+ ],
+ "walls": [
+  {
+   "tag": "w01-191",
+   "bearing": 191,
+   "lengthM": 7.8,
+   "centre": [
+    4.887289,
+    52.3617085
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002952_pano_0003_000196",
+   "capturedAt": "2023-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-lettering",
+     "kind": "lettering",
+     "where": "CAFE HANS en GRIETJE across the brick between the storeys, t 0.7-6.0 m, 4.8-5.1 m",
+     "approxSizeM": [
+      5.3,
+      0.34
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00548",
+     "how": "cream capitals (lower-case en) as kit 5x7 glyph runs 4 cm proud (approximate font; the photo is a serif roman)"
+    },
+    {
+     "id": "s-restaurant",
+     "kind": "lettering",
+     "where": "RESTAURANT on a rail standing on the cornice by the corner, t 0.2-3.5 m, 8.8-9.2 m",
+     "approxSizeM": [
+      3.3,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003002_pano_0007_000280",
+     "how": "cream capitals on a thin dark rail with two stays, set just in front of the eaves"
+    },
+    {
+     "id": "s-awnings-ground",
+     "kind": "canopy",
+     "where": "over the three ground-storey windows: a short striped valance with tied-back striped drapes down both sides",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00550",
+     "how": "stripedAwning (straight, 0.18 m out) plus three-stripe drape panels beside each window"
+    },
+    {
+     "id": "s-awnings-upper",
+     "kind": "canopy",
+     "where": "over both first-storey windows: red-and-white quarter-round markies with radiating side fans",
+     "approxSizeM": [
+      1.5,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003002_pano_0007_000280",
+     "how": "stripedAwning dome profile (kit part added this lane)"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "three ground windows of 3x5 small panes in black bars, white frames, flower boxes; two first-storey 2x3 sashes",
+     "approxSizeM": [
+      1.45,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00550",
+     "how": "white frame, glass, dark glazing-bar grid, sill and flower box"
+    },
+    {
+     "id": "s-chef",
+     "kind": "sign",
+     "where": "painted cut-out chef holding a black menu board at the corner end of the S front, menu case below",
+     "approxSizeM": [
+      1.0,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_05-25-22_00550",
+     "how": "flat white/red-brown cut-out silhouette in slabs with the black board and pale lettered lines as bars; menu case as a white framed box"
+    },
+    {
+     "id": "s-dormer",
+     "kind": "window-shape",
+     "where": "white dormer over the right half of the S slope with a small pediment and a two-light window, a thin hoist frame above",
+     "approxSizeM": [
+      1.8,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003002_pano_0007_000280",
+     "how": "white box dormer with pediment cap, two-light window, dark hoist rods"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "white timber cornice along the eaves, continuous round the corner",
+     "approxSizeM": [
+      7.7,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-003002_pano_0007_000280",
+     "how": "two white slabs (fascia and corona)"
+    }
+   ],
+   "note": "Lijnbaansgracht / Tweede Weteringdwarsstraat side, sunlit 2023 crop at 50 px/m; the white double door with a transom right of it belongs to the neighbour (no. 3H), not to this pand (recording_2025-07-14_05-25-22_00548)"
+  },
+  {
+   "tag": "w02-300",
+   "bearing": 300,
+   "lengthM": 7.1,
+   "centre": [
+    4.8872585,
+    52.361743
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000220",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-shopfront",
+     "kind": "window-shape",
+     "where": "the cafe shopfront: two big windows of 4x5 small panes between white fluted pilasters under a white entablature, flower boxes",
+     "approxSizeM": [
+      3.7,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "white pilasters with flute ribs, entablature, glass with dark bar grid, sill boxes"
+    },
+    {
+     "id": "n-door-27",
+     "kind": "other",
+     "where": "dark green door no. 27 at the corner with 3x4 glazed upper half and a grilled transom, white fluted surround, two steps",
+     "approxSizeM": [
+      0.9,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "inset dark door leaf with glass grid, dark transom with bars, white pilaster surround, two stone steps"
+    },
+    {
+     "id": "n-stoop",
+     "kind": "other",
+     "where": "stone stoop with railings up to the dark green front door at the north end, flat striped awning over the door",
+     "approxSizeM": [
+      2.2,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "stone landing and steps descending towards the corner, dark railings; stripedAwning straight with scalloped valance"
+    },
+    {
+     "id": "n-shop-valance",
+     "kind": "canopy",
+     "where": "striped valance over the shopfront with drapes down the sides",
+     "approxSizeM": [
+      3.9,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "stripedAwning straight valance plus drape panels"
+    },
+    {
+     "id": "n-awnings-upper",
+     "kind": "canopy",
+     "where": "quarter-round markies over the narrow and the wide first-storey windows",
+     "approxSizeM": [
+      1.4,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00428",
+     "how": "stripedAwning dome profile"
+    },
+    {
+     "id": "n-heineken",
+     "kind": "sign",
+     "where": "round green Heineken sign on a bracket at the corner, about 3.4 m up",
+     "approxSizeM": [
+      0.65,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "green disc with white ring and dark bracket bar"
+    },
+    {
+     "id": "n-menu",
+     "kind": "sign",
+     "where": "glazed menu case beside the stoop door",
+     "approxSizeM": [
+      0.6,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "how": "dark framed box with pale face"
+    },
+    {
+     "id": "n-dormer",
+     "kind": "window-shape",
+     "where": "white dormer with pediment over the middle of the Spiegelgracht slope",
+     "approxSizeM": [
+      1.8,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00428",
+     "how": "as the S dormer, no hoist"
+    },
+    {
+     "id": "n-lamp",
+     "kind": "lamp",
+     "where": "small wall lamp between the stoop door and the shopfront",
+     "approxSizeM": [
+      0.25,
+      0.35
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_00429",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.25 m fitting"
+     }
+    }
+   ],
+   "note": "Spiegelgracht front, south part (ring edge 3, set back 1.1 m behind the north part); levels from the 2017 rectified crop scaled to the 3DBAG eaves (8.45 m) and the 2025 close views"
+  },
+  {
+   "tag": "w03-300",
+   "bearing": 300,
+   "lengthM": 5.9,
+   "centre": [
+    4.887291,
+    52.361799
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001974_pano_0000_001138",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n2-basement",
+     "kind": "window-shape",
+     "where": "basement print shop (Old Prints & Maps): white fascia panel, green-and-white striped awning, a big window, a door and two small windows at street level",
+     "approxSizeM": [
+      5.6,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00431",
+     "how": "white fascia, green/white stripedAwning, glazed openings with bar grids"
+    },
+    {
+     "id": "n2-awnings-ground",
+     "kind": "canopy",
+     "where": "striped valances and drapes over the two raised ground-storey windows",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00431",
+     "how": "stripedAwning straight plus drapes"
+    },
+    {
+     "id": "n2-awnings-upper",
+     "kind": "canopy",
+     "where": "quarter-round markies over the two first-storey windows",
+     "approxSizeM": [
+      1.6,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00431",
+     "how": "stripedAwning dome profile"
+    },
+    {
+     "id": "n2-dormer",
+     "kind": "window-shape",
+     "where": "white dormer with pediment over this part",
+     "approxSizeM": [
+      1.7,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00431",
+     "how": "as the others"
+    },
+    {
+     "id": "n2-lettering",
+     "kind": "lettering",
+     "where": "Old Prints & Maps / Antiquariaat Hoogkamp on the white fascia",
+     "approxSizeM": [
+      3.0,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_00431",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin script lettering under 0.15 m on the basement fascia"
+     }
+    }
+   ],
+   "note": "Spiegelgracht front, north part (ring edge 1) with the raised ground storey over a basement shop; 3DBAG puts its eaves at 6.9 m, the photos show the cornice level with the rest (8.6 m): the builder lifts it"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012169479 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012169479",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012169479",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169479",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 5504 (municipal register entry, no text)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/2e7e7b25-f267-46a9-97f2-586f3b1cec72?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

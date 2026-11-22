@@ -1787,8 +1787,8 @@
       "dateSource": "asset-update"
     },
     "de-kandelaar-vening-meineszlaan": {
-      "updatedAt": "2026-11-22T15:11:01.960Z",
-      "version": "40308349db889b0c",
+      "updatedAt": "2026-11-22T16:27:09.471Z",
+      "version": "bf0c3c31f4c6c6da",
       "dateSource": "asset-update"
     },
     "de-kandelaar-vening-meineszlaan.lod1": {
@@ -3112,8 +3112,8 @@
       "dateSource": "asset-update"
     },
     "henrick-de-keijser-buurtgebouw": {
-      "updatedAt": "2026-11-22T15:11:01.980Z",
-      "version": "b232d65641a9ba62",
+      "updatedAt": "2026-11-22T16:27:12.210Z",
+      "version": "3f8804eb4207e05c",
       "dateSource": "asset-update"
     },
     "henrick-de-keijser-buurtgebouw.lod1": {
@@ -8274,6 +8274,36 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
+      "dateSource": "asset-update"
+    },
+    "depot-scheepvaartmuseum": {
+      "updatedAt": "2026-11-22T17:58:23.865Z",
+      "version": "824aaeb143ac6e58",
+      "dateSource": "asset-update"
+    },
+    "jungle-swindenstraat": {
+      "updatedAt": "2026-11-22T18:00:23.981Z",
+      "version": "62d7255785b2f01f",
+      "dateSource": "asset-update"
+    },
+    "olympus-hygieaplein": {
+      "updatedAt": "2026-11-22T17:58:08.416Z",
+      "version": "d7da25a6b4b87f0e",
+      "dateSource": "asset-update"
+    },
+    "krakeling-passeerdersstraat": {
+      "updatedAt": "2026-11-22T18:20:01.111Z",
+      "version": "a85751aa8775c218",
+      "dateSource": "asset-update"
+    },
+    "hans-en-grietje-spiegelgracht": {
+      "updatedAt": "2026-11-22T18:19:39.977Z",
+      "version": "c4b57eec0f173698",
+      "dateSource": "asset-update"
+    },
+    "nieuwe-doelenstraat-12": {
+      "updatedAt": "2026-11-22T18:29:47.558Z",
+      "version": "e6384dd894335e2c",
       "dateSource": "asset-update"
     }
   }

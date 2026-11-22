@@ -1,0 +1,1238 @@
+{
+ "schemaVersion": 1,
+ "id": "jungle-swindenstraat",
+ "pand": "0363100012112062",
+ "brief": "scripts/landmarks/jungle-swindenstraat-brief.md",
+ "signature": [
+  "f-panel-storey",
+  "f-tube-frames",
+  "f-fin-piers",
+  "e-hall-box",
+  "e-cantilever",
+  "w07-341-red-groups",
+  "w06-161-blue-groups",
+  "w12-100-portholes",
+  "f-shop-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-340",
+   "bearing": 340,
+   "lengthM": 21.1,
+   "centre": [
+    4.9264815,
+    52.3618225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0000_000184",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-panel-storey",
+     "kind": "other",
+     "where": "the whole upper storey: pale vertical panel cladding 6.3-10.5 m on a grey concrete beam over the street",
+     "approxSizeM": [
+      21.1,
+      4.7
+     ],
+     "plan": "modelled",
+     "how": "streetFront(): shell wall in the panel tint, beam slab, panel joints every 1.2 m and a mid joint",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-fin-piers",
+     "kind": "other",
+     "where": "five projecting concrete fin piers at t 0.95, 5.95, 10.75, 15.5, 20.2 m flaring at the top",
+     "approxSizeM": [
+      0.6,
+      5.7
+     ],
+     "plan": "modelled",
+     "how": "fin(): extruded side profile, corbel under the beam, flared top at 11.45 m",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-tube-frames",
+     "kind": "balcony-ironwork",
+     "where": "steel tube rails at 10.6 and 11.1 m joining the fin tops, and the X-braced bay at t 1.2-5.7 m in front of the panels",
+     "approxSizeM": [
+      21.1,
+      4.1
+     ],
+     "plan": "modelled",
+     "how": "tube(): two rails 0.55 m out, the X diagonals with a centre node disc",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-tower",
+     "kind": "tower",
+     "where": "taller panel-clad box rising behind the front at 570-665 px",
+     "approxSizeM": [
+      1.9,
+      3.3
+     ],
+     "plan": "simplified",
+     "how": "one panel-tint box 1.9 x 2.6 m set 0.8 m back, 10.4-13.7 m",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-undercroft",
+     "kind": "colonnade",
+     "where": "the open corner at the east end: the upper storey on a round column over a set-back ground floor",
+     "approxSizeM": [
+      3.5,
+      5.8
+     ],
+     "plan": "modelled",
+     "how": "shell wall 59 rebuilt: cladding on the beam, soffit, set-back wall 2.4 m in, return wall, column()",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-jungle-panel",
+     "kind": "sign",
+     "where": "green JUNGLE panel with the yellow circle logo over the entrance, t 9.2-10.5 m, 2.7-3.8 m",
+     "approxSizeM": [
+      1.3,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "green panel slab with a yellow disc; the letters are too small at ride distance and left out",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-entrance",
+     "kind": "window-shape",
+     "where": "recessed glazed entrance t 9.1-11.5 m: glazed door and the two-storey glazing over it in dark frames",
+     "approxSizeM": [
+      2.4,
+      5.3
+     ],
+     "plan": "modelled",
+     "how": "glazing() with dark frames over the door",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-knit-post",
+     "kind": "other",
+     "where": "the multicoloured knitted cover on the post at t 10.5-10.8 m",
+     "approxSizeM": [
+      0.3,
+      5.8
+     ],
+     "plan": "simplified",
+     "how": "nine colour bands (red, yellow, green, blue, pink) up the post",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-shop-windows",
+     "kind": "window-shape",
+     "where": "two-level shop/ribbon windows t 11.6-21.1 m in dark frames, green planter shelves at 1.2, 1.85 and 3.05 m with yellow planters, yellow posts at t 15.1 and 19.55",
+     "approxSizeM": [
+      9.5,
+      4.4
+     ],
+     "plan": "modelled",
+     "how": "glazing() ribbons with dark mullions; green shelf slabs; yellow post and planter slabs",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-strips",
+     "kind": "other",
+     "where": "yellow strip t 3.6-3.9 m and green strip t 8.2-8.6 m on the white render",
+     "approxSizeM": [
+      0.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "coloured slabs",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-brick-render",
+     "kind": "other",
+     "where": "buff brick over white render on the corner block t 3.6-8.3 m with two small windows and the street-name sign",
+     "approxSizeM": [
+      4.7,
+      5.8
+     ],
+     "plan": "modelled",
+     "how": "brick and render slabs, glazing() for the two windows, a dark sign slab",
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    },
+    {
+     "id": "f-lamp",
+     "kind": "lamp",
+     "where": "the ornate street lamp in front of the entrance",
+     "approxSizeM": [
+      0.4,
+      4.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "public street furniture on the pavement, not part of the building; the city draws its own lamps"
+     },
+     "seenIn": "TMX7316010203-001475_pano_0000_000184"
+    }
+   ]
+  },
+  {
+   "tag": "w02-70",
+   "bearing": 70,
+   "lengthM": 18.7,
+   "centre": [
+    4.926674,
+    52.361776
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_000838",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-hall-box",
+     "kind": "other",
+     "where": "the big silver panel-clad hall box 6.0-13.2 m with five vertical tube fins",
+     "approxSizeM": [
+      18.7,
+      7.2
+     ],
+     "plan": "modelled",
+     "how": "hallBox(): rebuilt wall slab in the hall tint, panel joints every 0.95 m, five fin bars",
+     "seenIn": "TMX7316010203-002593_pano_0000_000838"
+    },
+    {
+     "id": "e-cantilever",
+     "kind": "colonnade",
+     "where": "the box cantilevered about 2.4 m over a brick ground floor on a column near the north corner",
+     "approxSizeM": [
+      16.5,
+      6
+     ],
+     "plan": "modelled",
+     "how": "shell walls 46 and 58 rebuilt: soffit, set-back brick base, return wall, column()",
+     "seenIn": "TMX7316010203-002593_pano_0000_000838"
+    },
+    {
+     "id": "e-strip-windows",
+     "kind": "window-shape",
+     "where": "two rows of white-framed strip windows in the brick base with a white band between",
+     "approxSizeM": [
+      12,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "glazing() in white frames on the set-back base, four runs per row",
+     "seenIn": "TMX7316010203-002593_pano_0000_000838"
+    },
+    {
+     "id": "e-chamfer",
+     "kind": "other",
+     "where": "the box reads with chamfered top corners from the street",
+     "approxSizeM": [
+      2,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG roof edge as scanned; the box corners are square in the model",
+     "seenIn": "TMX7316010203-002593_pano_0000_000838"
+    },
+    {
+     "id": "e-book-cabinet",
+     "kind": "other",
+     "where": "small book cabinet and shelves against the base by the entrance",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "loose furniture that changes between panoramas"
+     },
+     "seenIn": "TMX7316010203-002593_pano_0000_000838"
+    }
+   ]
+  },
+  {
+   "tag": "w03-338",
+   "bearing": 338,
+   "lengthM": 15.7,
+   "centre": [
+    4.9262215,
+    52.361761
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_08-20-13_00870",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-glazed-link",
+     "kind": "window-shape",
+     "where": "the low two-storey glazed link: silver-framed glazing 1.5-2.9 and 3.3-5.7 m over a brick plinth, grey band and fascia, pale blinds",
+     "approxSizeM": [
+      11.7,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "glazedLink(): glazing() with the measured mullion positions, band and fascia slabs, blind slabs, downpipes",
+     "seenIn": "recording_2024-09-17_08-20-13_00870"
+    },
+    {
+     "id": "n-west-end",
+     "kind": "balcony-ironwork",
+     "where": "the front's west end: X-braced bay in front of the panels, a fin, the glazed stair column with a yellow post",
+     "approxSizeM": [
+      4.1,
+      11.5
+     ],
+     "plan": "modelled",
+     "how": "frontWestEnd(): tube X and rails, fin(), dark-framed stair glazing, yellow post slab",
+     "seenIn": "recording_2024-09-17_08-20-13_00870"
+    },
+    {
+     "id": "n-canopy",
+     "kind": "canopy",
+     "where": "green canopy over the side door and the green JUNGLE flag",
+     "approxSizeM": [
+      1.7,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "green canopy slab 0.85 m deep and a green flag slab",
+     "seenIn": "recording_2024-09-17_08-20-13_00870"
+    }
+   ]
+  },
+  {
+   "tag": "w04-159",
+   "bearing": 159,
+   "lengthM": 5,
+   "centre": [
+    4.92668,
+    52.36161
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_10-39-18_00241",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-159-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blue window groups",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 1) with the wing pattern of its neighbours (blue window groups); the trees hide the actual openings",
+     "seenIn": "recording_2025-09-26_10-39-18_00241"
+    }
+   ]
+  },
+  {
+   "tag": "w05-220",
+   "bearing": 220,
+   "lengthM": 4.9,
+   "centre": [
+    4.9262,
+    52.361433
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000749_pano_0000_001633",
+   "capturedAt": "2018-05-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-220-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 29) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "TMX7316010203-000749_pano_0000_001633"
+    },
+    {
+     "id": "w05-220-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 29): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-000749_pano_0000_001633"
+    },
+    {
+     "id": "w05-220-chimneys",
+     "kind": "other",
+     "where": "row of small vent pipes on the roof parapet",
+     "approxSizeM": [
+      2,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "pipes about 0.2 m across"
+     },
+     "seenIn": "TMX7316010203-000749_pano_0000_001633"
+    }
+   ]
+  },
+  {
+   "tag": "w06-161",
+   "bearing": 161,
+   "lengthM": 4.9,
+   "centre": [
+    4.926418,
+    52.3614095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_003832",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-161-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left; a four-light blue band on the ground storey",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 33) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "TMX7316010203-002138_pano_0000_003832"
+    },
+    {
+     "id": "w06-161-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 33): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-002138_pano_0000_003832"
+    }
+   ]
+  },
+  {
+   "tag": "w07-341",
+   "bearing": 341,
+   "lengthM": 4.9,
+   "centre": [
+    4.926019,
+    52.3617135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0000_000191",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-341-red-groups",
+     "kind": "window-shape",
+     "where": "three storeys, one stepped window group per storey in red frames with two red porthole panels",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 16) -> redGroup(): red frame, glass, mullions and transoms, the step cell and the grid's first top cell as red panels with grey-ringed portholes",
+     "seenIn": "TMX7316010203-001475_pano_0000_000191"
+    },
+    {
+     "id": "w07-341-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 16): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-001475_pano_0000_000191"
+    }
+   ]
+  },
+  {
+   "tag": "w08-281",
+   "bearing": 281,
+   "lengthM": 4.9,
+   "centre": [
+    4.9258755,
+    52.3616085
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_08-20-13_00879",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-281-red-groups",
+     "kind": "window-shape",
+     "where": "three storeys, one stepped window group per storey in red frames with two red porthole panels",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 20) -> redGroup(): red frame, glass, mullions and transoms, the step cell and the grid's first top cell as red panels with grey-ringed portholes",
+     "seenIn": "recording_2024-09-17_08-20-13_00879"
+    },
+    {
+     "id": "w08-281-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 20): band, coping and edge-strip slabs",
+     "seenIn": "recording_2024-09-17_08-20-13_00879"
+    }
+   ]
+  },
+  {
+   "tag": "w09-101",
+   "bearing": 101,
+   "lengthM": 4.9,
+   "centre": [
+    4.9267205,
+    52.3616395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_000842",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-101-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blank face with a porthole per storey",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 2) with the wing pattern of its neighbours (blank face with a porthole per storey); the trees hide the actual openings",
+     "seenIn": "TMX7316010203-002593_pano_0000_000842"
+    }
+   ]
+  },
+  {
+   "tag": "w10-281",
+   "bearing": 281,
+   "lengthM": 4.9,
+   "centre": [
+    4.9259785,
+    52.3616845
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_10-39-18_00214",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-281-red-groups",
+     "kind": "window-shape",
+     "where": "three storeys, one stepped window group per storey in red frames with two red porthole panels, the step on the right",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 17) -> redGroup(): red frame, glass, mullions and transoms, the step cell and the grid's first top cell as red panels with grey-ringed portholes",
+     "seenIn": "recording_2025-09-26_10-39-18_00214"
+    },
+    {
+     "id": "w10-281-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 17): band, coping and edge-strip slabs",
+     "seenIn": "recording_2025-09-26_10-39-18_00214"
+    }
+   ]
+  },
+  {
+   "tag": "w11-160",
+   "bearing": 160,
+   "lengthM": 4.9,
+   "centre": [
+    4.9259975,
+    52.3614975
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0000_000469",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-160-red-groups",
+     "kind": "window-shape",
+     "where": "three storeys, one stepped window group per storey in red frames with two red porthole panels, blue canvas awnings over the upper two",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 24) -> redGroup(): red frame, glass, mullions and transoms, the step cell and the grid's first top cell as red panels with grey-ringed portholes",
+     "seenIn": "TMX7316010203-001475_pano_0000_000469"
+    },
+    {
+     "id": "w11-160-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 24): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-001475_pano_0000_000469"
+    },
+    {
+     "id": "w11-160-awnings",
+     "kind": "canopy",
+     "where": "blue canvas awnings over the upper window groups",
+     "approxSizeM": [
+      4.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "awning(): sloped canvas with valance, 0.9 m out",
+     "seenIn": "TMX7316010203-001475_pano_0000_000469"
+    }
+   ]
+  },
+  {
+   "tag": "w12-100",
+   "bearing": 100,
+   "lengthM": 4.9,
+   "centre": [
+    4.926535,
+    52.3614945
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0000_000458",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w12-100-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left; a four-light blue band on the ground storey",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 36) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "TMX7316010203-001475_pano_0000_000458"
+    },
+    {
+     "id": "w12-100-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 36): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-001475_pano_0000_000458"
+    },
+    {
+     "id": "w12-100-portholes",
+     "kind": "window-shape",
+     "where": "the adjacent blank faces carry one round porthole per storey",
+     "approxSizeM": [
+      0.75,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "wingFace(kind porthole) on the neighbouring faces: grey ring and glass disc",
+     "seenIn": "TMX7316010203-001475_pano_0000_000458"
+    }
+   ]
+  },
+  {
+   "tag": "w13-221",
+   "bearing": 221,
+   "lengthM": 4.8,
+   "centre": [
+    4.925937,
+    52.361504
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_10-39-18_00255",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-221-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blank face with a porthole per storey",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 23) with the wing pattern of its neighbours (blank face with a porthole per storey); the trees hide the actual openings",
+     "seenIn": "recording_2025-09-26_10-39-18_00255"
+    }
+   ]
+  },
+  {
+   "tag": "w14-221",
+   "bearing": 221,
+   "lengthM": 4.8,
+   "centre": [
+    4.9260955,
+    52.361487
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_000728",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-221-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blank face with a porthole per storey",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 26) with the wing pattern of its neighbours (blank face with a porthole per storey); the trees hide the actual openings",
+     "seenIn": "TMX7316010203-002593_pano_0000_000728"
+    }
+   ]
+  },
+  {
+   "tag": "w15-41",
+   "bearing": 41,
+   "lengthM": 4.8,
+   "centre": [
+    4.9265145,
+    52.36153
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_000839",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w15-41-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blank face with a porthole per storey",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 37) with the wing pattern of its neighbours (blank face with a porthole per storey); the trees hide the actual openings",
+     "seenIn": "TMX7316010203-002593_pano_0000_000839"
+    }
+   ]
+  },
+  {
+   "tag": "w16-101",
+   "bearing": 101,
+   "lengthM": 4.8,
+   "centre": [
+    4.9264815,
+    52.361587
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_08-20-13_01334",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w16-101-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blue window groups over a blue ground band, seen through the trees",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 39) with the wing pattern of its neighbours (blue window groups over a blue ground band, seen through the trees); the trees hide the actual openings",
+     "seenIn": "recording_2024-09-17_08-20-13_01334"
+    }
+   ]
+  },
+  {
+   "tag": "w17-280",
+   "bearing": 280,
+   "lengthM": 4.7,
+   "centre": [
+    4.925916,
+    52.361539
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000749_pano_0000_001671",
+   "capturedAt": "2018-05-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-280-red-groups",
+     "kind": "window-shape",
+     "where": "three storeys, one stepped window group per storey in red frames with two red porthole panels, blue awnings over the upper two",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 22) -> redGroup(): red frame, glass, mullions and transoms, the step cell and the grid's first top cell as red panels with grey-ringed portholes",
+     "seenIn": "TMX7316010203-000749_pano_0000_001671"
+    },
+    {
+     "id": "w17-280-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 22): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-000749_pano_0000_001671"
+    },
+    {
+     "id": "w17-280-awnings",
+     "kind": "canopy",
+     "where": "blue canvas awnings over the upper window groups",
+     "approxSizeM": [
+      4.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "awning()",
+     "seenIn": "TMX7316010203-000749_pano_0000_001671"
+    }
+   ]
+  },
+  {
+   "tag": "w18-160",
+   "bearing": 160,
+   "lengthM": 4.7,
+   "centre": [
+    4.9264965,
+    52.3614655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000248_pano_0000_001338",
+   "capturedAt": "2017-04-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w18-160-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left; a four-light blue band on the ground storey",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 35) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "TMX7316010203-000248_pano_0000_001338"
+    },
+    {
+     "id": "w18-160-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 35): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-000248_pano_0000_001338"
+    }
+   ]
+  },
+  {
+   "tag": "w19-340",
+   "bearing": 340,
+   "lengthM": 4.7,
+   "centre": [
+    4.9259145,
+    52.3616375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001678_pano_0000_002585",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w19-340-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 19): band, coping and edge-strip slabs",
+     "seenIn": "TMX7316010203-001678_pano_0000_002585"
+    },
+    {
+     "id": "w19-340-hook",
+     "kind": "other",
+     "where": "a small curved rail on the middle storey of the blank face",
+     "approxSizeM": [
+      1.5,
+      0.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 3 cm rail"
+     },
+     "seenIn": "TMX7316010203-001678_pano_0000_002585"
+    }
+   ]
+  },
+  {
+   "tag": "w20-220",
+   "bearing": 220,
+   "lengthM": 4.7,
+   "centre": [
+    4.9263575,
+    52.3614155
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_10-39-18_00250",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w20-220-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 32) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "recording_2025-09-26_10-39-18_00250"
+    },
+    {
+     "id": "w20-220-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 32): band, coping and edge-strip slabs",
+     "seenIn": "recording_2025-09-26_10-39-18_00250"
+    }
+   ]
+  },
+  {
+   "tag": "w21-220",
+   "bearing": 220,
+   "lengthM": 4.7,
+   "centre": [
+    4.9258955,
+    52.3615735
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w21-220-inferred",
+     "kind": "window-shape",
+     "where": "no panorama; drawn as the blank porthole face its pair suggests",
+     "approxSizeM": [
+      4.7,
+      12
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 21, porthole) inferred",
+     "seenIn": "inferred"
+    }
+   ]
+  },
+  {
+   "tag": "w22-101",
+   "bearing": 101,
+   "lengthM": 4.6,
+   "centre": [
+    4.926458,
+    52.3614375
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_08-20-13_01334",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w22-101-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left, behind a tree",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 34) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "recording_2024-09-17_08-20-13_01334"
+    },
+    {
+     "id": "w22-101-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 34): band, coping and edge-strip slabs",
+     "seenIn": "recording_2024-09-17_08-20-13_01334"
+    }
+   ]
+  },
+  {
+   "tag": "w23-39",
+   "bearing": 39,
+   "lengthM": 4.6,
+   "centre": [
+    4.9267005,
+    52.361674
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_002900",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "w23-39-strips",
+     "kind": "window-shape",
+     "where": "brick with white-framed strip windows like the hall base, partly behind the hall box overhang",
+     "approxSizeM": [
+      3.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 3, strips): two white strip windows, bands",
+     "seenIn": "TMX7316010203-002138_pano_0000_002900"
+    }
+   ]
+  },
+  {
+   "tag": "w24-159",
+   "bearing": 159,
+   "lengthM": 4.5,
+   "centre": [
+    4.926259,
+    52.3614265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000048_pano_0000_003092",
+   "capturedAt": "2016-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "w24-159-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left, blue awnings, a dark mesh gate at the ground",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 30) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "TMX7315120208-000048_pano_0000_003092"
+    },
+    {
+     "id": "w24-159-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 30): band, coping and edge-strip slabs",
+     "seenIn": "TMX7315120208-000048_pano_0000_003092"
+    },
+    {
+     "id": "w24-159-gate",
+     "kind": "sign",
+     "where": "dark mesh gate across the ground storey with a round yellow sign",
+     "approxSizeM": [
+      3.6,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "dark slab with bars and an ochre disc",
+     "seenIn": "TMX7315120208-000048_pano_0000_003092"
+    }
+   ]
+  },
+  {
+   "tag": "w25-281",
+   "bearing": 281,
+   "lengthM": 4.5,
+   "centre": [
+    4.926178,
+    52.361467
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w25-281-inferred",
+     "kind": "window-shape",
+     "where": "no panorama; drawn as the blank porthole face",
+     "approxSizeM": [
+      4.5,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 28, porthole) inferred",
+     "seenIn": "inferred"
+    }
+   ]
+  },
+  {
+   "tag": "w26-40",
+   "bearing": 40,
+   "lengthM": 4.5,
+   "centre": [
+    4.9264625,
+    52.361621
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_08-20-13_00840",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w26-40-strips",
+     "kind": "window-shape",
+     "where": "brick wall with white-framed strip windows at two levels under the hall box",
+     "approxSizeM": [
+      3.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 40, strips)",
+     "seenIn": "recording_2024-09-17_08-20-13_00840"
+    }
+   ]
+  },
+  {
+   "tag": "w27-160",
+   "bearing": 160,
+   "lengthM": 4.5,
+   "centre": [
+    4.926153,
+    52.36148
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_10-39-18_00249",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w27-160-blue-groups",
+     "kind": "window-shape",
+     "where": "one window group per upper storey in blue frames with a blue porthole panel top left",
+     "approxSizeM": [
+      4.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 27) -> blueGroup() per upper storey; ground storey a four-light blue band where the photo shows one",
+     "seenIn": "recording_2025-09-26_10-39-18_00249"
+    },
+    {
+     "id": "w27-160-bands",
+     "kind": "other",
+     "where": "light-grey concrete bands at the floor lines, the coping and grey edge strips at both corners",
+     "approxSizeM": [
+      4.9,
+      0.25
+     ],
+     "plan": "modelled",
+     "how": "wingFace(edge 27): band, coping and edge-strip slabs",
+     "seenIn": "recording_2025-09-26_10-39-18_00249"
+    },
+    {
+     "id": "w27-160-dapper",
+     "kind": "lettering",
+     "where": "red \"de Dapper\" letters with the clown emblem over the school entrance, red-framed window beside it",
+     "approxSizeM": [
+      1.6,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "dapperEntrance(): red disc emblem and a red name bar over the dark entrance, red-framed window",
+     "seenIn": "recording_2025-09-26_10-39-18_00249"
+    }
+   ]
+  },
+  {
+   "tag": "w28-222",
+   "bearing": 222,
+   "lengthM": 4.5,
+   "centre": [
+    4.9266215,
+    52.3616155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002593_pano_0000_000719",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w28-222-wing-pattern",
+     "kind": "window-shape",
+     "where": "the face behind street trees; blank face with a porthole per storey",
+     "approxSizeM": [
+      4.7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "wingFace(edge 0) with the wing pattern of its neighbours (blank face with a porthole per storey); the trees hide the actual openings",
+     "seenIn": "TMX7316010203-002593_pano_0000_000719"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

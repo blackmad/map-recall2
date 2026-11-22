@@ -1,0 +1,542 @@
+{
+ "schemaVersion": 1,
+ "id": "depot-scheepvaartmuseum",
+ "pand": "0363100012169346",
+ "brief": "scripts/landmarks/depot-scheepvaartmuseum-brief.md",
+ "signature": [
+  "k-cladding",
+  "k-yard-wall",
+  "k-arch"
+ ],
+ "walls": [
+  {
+   "tag": "w01-310",
+   "bearing": 310,
+   "lengthM": 17.3,
+   "centre": [
+    4.9181945,
+    52.373026
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w01",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      17.3,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w02-319",
+   "bearing": 319,
+   "lengthM": 17.3,
+   "centre": [
+    4.9189185,
+    52.373482
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w02",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      17.3,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w03-138",
+   "bearing": 138,
+   "lengthM": 17.2,
+   "centre": [
+    4.918382,
+    52.3729135
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03287",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-cladding",
+     "kind": "other",
+     "where": "pale champagne metal cladding above the wall, courses about 0.5 m high",
+     "approxSizeM": [
+      17,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03287",
+     "how": "shell walls in measured cladding colour, courses() joint lines every 0.5 m"
+    },
+    {
+     "id": "k-yard-wall",
+     "kind": "other",
+     "where": "dark brick yard wall 4.7 m high with a stone coping along the whole street side",
+     "approxSizeM": [
+      17,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03287",
+     "how": "yardWall(): brick slab, coping, plinth"
+    },
+    {
+     "id": "k-arch",
+     "kind": "other",
+     "where": "bricked-up round arch at the left end, rowlock ring, stone springers and a date stone at the crown",
+     "approxSizeM": [
+      3,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03287",
+     "how": "arch(): archBand ring, springer and key slabs"
+    },
+    {
+     "id": "k-piers",
+     "kind": "other",
+     "where": "two brick piers standing proud of the wall",
+     "approxSizeM": [
+      1.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03287",
+     "how": "slab piers at t 5.85 and 15.1"
+    },
+    {
+     "id": "k-louvre-1",
+     "kind": "other",
+     "where": "louvre grille in the cladding right of centre",
+     "approxSizeM": [
+      1.7,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03287",
+     "how": "louvre()"
+    }
+   ]
+  },
+  {
+   "tag": "w04-225",
+   "bearing": 225,
+   "lengthM": 16.7,
+   "centre": [
+    4.9182015,
+    52.3729135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_003836",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-gate-end",
+     "kind": "other",
+     "where": "big boarded timber gate under a timber canopy at the right of the south-west end",
+     "approxSizeM": [
+      4.2,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003836",
+     "how": "gate() with canopy"
+    }
+   ]
+  },
+  {
+   "tag": "w05-44",
+   "bearing": 44,
+   "lengthM": 16.7,
+   "centre": [
+    4.919102,
+    52.373481
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w05",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      16.7,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w06-139",
+   "bearing": 139,
+   "lengthM": 13.5,
+   "centre": [
+    4.9189485,
+    52.373272
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_07-14-50_01897",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-louvre-3",
+     "kind": "other",
+     "where": "louvre grille in the cladding",
+     "approxSizeM": [
+      1.0,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_07-14-50_01897",
+     "how": "louvre()"
+    }
+   ]
+  },
+  {
+   "tag": "w07-130",
+   "bearing": 130,
+   "lengthM": 13.5,
+   "centre": [
+    4.9185375,
+    52.373013
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1041_Track01_Sphere_00031",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-tree-7",
+     "kind": "other",
+     "where": "wall and cladding largely behind a plane tree",
+     "approxSizeM": [
+      13,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track01_Sphere_00031",
+     "how": "same wall and cladding system as w03"
+    }
+   ]
+  },
+  {
+   "tag": "w08-310",
+   "bearing": 310,
+   "lengthM": 13.4,
+   "centre": [
+    4.918487,
+    52.3732115
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w08",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      13.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w09-310",
+   "bearing": 310,
+   "lengthM": 13.4,
+   "centre": [
+    4.91876,
+    52.3733845
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w09",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      13.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w10-139",
+   "bearing": 139,
+   "lengthM": 13.4,
+   "centre": [
+    4.9186745,
+    52.3730995
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1041_Track01_Sphere_00029",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-gate-street",
+     "kind": "other",
+     "where": "boarded timber gate in the wall, left of centre",
+     "approxSizeM": [
+      2.7,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track01_Sphere_00029",
+     "how": "gate()"
+    },
+    {
+     "id": "k-louvre-2",
+     "kind": "other",
+     "where": "louvre grille in the cladding over the gate",
+     "approxSizeM": [
+      1.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track01_Sphere_00029",
+     "how": "louvre()"
+    },
+    {
+     "id": "k-sign",
+     "kind": "sign",
+     "where": "traffic signs in front of the gate",
+     "approxSizeM": [
+      0.6,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1041_Track01_Sphere_00029",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not on the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-319",
+   "bearing": 319,
+   "lengthM": 13.4,
+   "centre": [
+    4.9183495,
+    52.3731255
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w11",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      13.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w12-130",
+   "bearing": 130,
+   "lengthM": 13.4,
+   "centre": [
+    4.9188115,
+    52.3731855
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001536_pano_0000_001551",
+   "capturedAt": "2020-01-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-plinth",
+     "kind": "other",
+     "where": "grey-green plinth 0.8 m at the foot of the wall",
+     "approxSizeM": [
+      13,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001536_pano_0000_001551",
+     "how": "yardWall() plinth"
+    },
+    {
+     "id": "k-roof-curve",
+     "kind": "other",
+     "where": "the cladding rising in a sloped and curved roof plane at the left",
+     "approxSizeM": [
+      6,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001536_pano_0000_001551",
+     "how": "3DBAG sloped roof planes in the cladding colour (no curvature beyond the scanned planes)"
+    },
+    {
+     "id": "k-vents",
+     "kind": "other",
+     "where": "two small dark vent holes low in the brick",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001536_pano_0000_001551",
+     "skip": {
+      "reason": "too-small",
+      "note": "20 cm openings"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-319",
+   "bearing": 319,
+   "lengthM": 13.4,
+   "centre": [
+    4.9186235,
+    52.373298
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "k-inferred-w13",
+     "kind": "other",
+     "where": "no panorama: the closed Marineterrein side; cladding to the ground inferred",
+     "approxSizeM": [
+      13.4,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred",
+     "how": "shell walls in the cladding colour"
+    }
+   ]
+  },
+  {
+   "tag": "w14-130",
+   "bearing": 130,
+   "lengthM": 13,
+   "centre": [
+    4.9191295,
+    52.373384
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03272",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-wall-w14",
+     "kind": "other",
+     "where": "brick wall and cladding as on w03",
+     "approxSizeM": [
+      13,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03272",
+     "how": "yardWall() and courses()"
+    }
+   ]
+  },
+  {
+   "tag": "w15-129",
+   "bearing": 129,
+   "lengthM": 4.3,
+   "centre": [
+    4.9190425,
+    52.373327
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002313_pano_0003_000084",
+   "capturedAt": "2021-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-wall-w15",
+     "kind": "other",
+     "where": "brick wall and cladding as on w03",
+     "approxSizeM": [
+      4.3,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000084",
+     "how": "yardWall() and courses()"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012169346",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169346",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169346",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap way 269078495 (name Depot Scheepvaartmuseum)",
+   "url": "https://www.openstreetmap.org/way/269078495",
+   "licence": "ODbL"
+  }
+ ]
+}

@@ -1,0 +1,348 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwe-doelenstraat-12",
+ "pand": "0363100012180414",
+ "brief": "scripts/landmarks/nieuwe-doelenstraat-12-brief.md",
+ "signature": [
+  "r-aedicule",
+  "r-balustrade",
+  "r-arches",
+  "b-balcony",
+  "r-speklagen",
+  "r-cornice",
+  "s-dormer",
+  "r-pinnacles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-329",
+   "bearing": 329,
+   "lengthM": 14.2,
+   "centre": [
+    4.8948172,
+    52.367893
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000693",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-dormer",
+     "kind": "tower",
+     "where": "ornate stone dormer in the middle of the mansard: two round-arched lights between volutes, an upper stage and a crowning pediment with finial (1905 front by Gebr. van Gendt)",
+     "approxSizeM": [
+      3.0,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000476",
+     "how": "stone stages, paired arched lights, scroll blocks, pediment and finial"
+    },
+    {
+     "id": "s-frieze",
+     "kind": "relief",
+     "where": "stone frieze with garlands under the main cornice",
+     "approxSizeM": [
+      14.0,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000717_pano_0000_000476",
+     "how": "stone frieze band with festoon swags as shallow arcs"
+    },
+    {
+     "id": "s-rustication",
+     "kind": "other",
+     "where": "rusticated sandstone ground storey with a moulded band",
+     "approxSizeM": [
+      14.0,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000476",
+     "how": "stone storey with rustication grooves"
+    },
+    {
+     "id": "s-surrounds",
+     "kind": "window-shape",
+     "where": "stone window surrounds with pilaster strips and cornice hoods on the first storey, brick piers with stone blocks",
+     "approxSizeM": [
+      1.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000476",
+     "how": "stone frames, hoods, blocks"
+    },
+    {
+     "id": "s-small-dormers",
+     "kind": "window-shape",
+     "where": "small dormers at both ends of the mansard",
+     "approxSizeM": [
+      1.0,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000717_pano_0000_000476",
+     "how": "slate-cheeked dormers with a white light"
+    },
+    {
+     "id": "s-entrance",
+     "kind": "other",
+     "where": "decorated entrance (register) in the ground storey",
+     "approxSizeM": [
+      1.6,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000073_pano_0003_000693",
+     "how": "a dark door in a stone surround in the left bay (hidden by trees and vans in every capture)"
+    }
+   ],
+   "note": "Nieuwe Doelenstraat front (ring edge 0), rebuilt 1905 by Gebr. van Gendt (register); 2018 crop TMX7316010203-000717_pano_0000_000476"
+  },
+  {
+   "tag": "w02-147",
+   "bearing": 147,
+   "lengthM": 8.8,
+   "centre": [
+    4.8951217,
+    52.3676478
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001510",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-aedicule",
+     "kind": "tower",
+     "where": "stone aedicule dormer over the middle bay of the risalit, pedimented, with corner pinnacles and a finial, above the balustrade",
+     "approxSizeM": [
+      2.3,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "stone box with paired arched lights, pilasters, pediment, pinnacles and finial"
+    },
+    {
+     "id": "r-balustrade",
+     "kind": "other",
+     "where": "open stone balustrade (attic) over the cornice across the risalit",
+     "approxSizeM": [
+      8.8,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "balustrade kit: plinth, posts, balusters, rail"
+    },
+    {
+     "id": "r-pinnacles",
+     "kind": "other",
+     "where": "stone obelisk pinnacles on the risalit corners above the cornice",
+     "approxSizeM": [
+      0.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "tapered stone pyramids on pedestals"
+    },
+    {
+     "id": "r-cornice",
+     "kind": "other",
+     "where": "deep stone cornice with modillions and dentils under the balustrade",
+     "approxSizeM": [
+      8.8,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "stepped stone slabs and a modillion row"
+    },
+    {
+     "id": "r-arches",
+     "kind": "relief",
+     "where": "segmental brick relieving arches with stone voussoir blocks and carved tympana over the second and third storey windows",
+     "approxSizeM": [
+      1.6,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "archBand brick + stone blocks, stone tympanum panel with a relief boss"
+    },
+    {
+     "id": "r-rosettes",
+     "kind": "relief",
+     "where": "stone spandrel panels with paired rosettes under the first-floor window band",
+     "approxSizeM": [
+      1.4,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "stone panel with two discs"
+    },
+    {
+     "id": "r-consoles",
+     "kind": "relief",
+     "where": "carved stone corbels/masks on the piers at each band",
+     "approxSizeM": [
+      0.25,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "small stone blocks proud of the piers"
+    },
+    {
+     "id": "r-speklagen",
+     "kind": "other",
+     "where": "stone blocks (speklagen) through the brick piers and quoins at every storey",
+     "approxSizeM": [
+      8.8,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "speklagen kit split at the openings"
+    },
+    {
+     "id": "r-base",
+     "kind": "window-shape",
+     "where": "sandstone base storey on the water with three pairs of small grilled windows",
+     "approxSizeM": [
+      8.8,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "stone storey, dark grilles over glass"
+    },
+    {
+     "id": "r-windows",
+     "kind": "window-shape",
+     "where": "tall two-light windows with transoms (T-casement) in white frames, three per storey",
+     "approxSizeM": [
+      1.3,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001510",
+     "how": "white frame, mullion, transom, glass"
+    }
+   ],
+   "note": "Binnen-Amstel front, the three-bay risalit (register 518440, paraphrased: five bays with a three-bay risalit and an open attic); heights from the 2017 rectified crop with the canal level (-0.4 m NAP) as datum"
+  },
+  {
+   "tag": "w03-238",
+   "bearing": 238,
+   "lengthM": 5.9,
+   "centre": [
+    4.8948878,
+    52.3677491
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002567",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [],
+   "note": "side wall in a narrow gap; the 2019 view 35 m away at 40 degrees shows the neighbour, not this pand: plain brick, no items"
+  },
+  {
+   "tag": "w04-149",
+   "bearing": 149,
+   "lengthM": 5.3,
+   "centre": [
+    4.8950102,
+    52.3676362
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001284",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-balcony",
+     "kind": "balcony-ironwork",
+     "where": "cast-iron balcony on brackets across the two side bays at the second storey",
+     "approxSizeM": [
+      5.3,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001284",
+     "how": "dark iron floor plate, bracket struts, railing bars and rail"
+    },
+    {
+     "id": "b-terrace",
+     "kind": "colonnade",
+     "where": "stone terrace over an arcaded ground storey with a stone balustrade at the first-floor sill",
+     "approxSizeM": [
+      5.3,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001284",
+     "how": "stone base with two arched openings, balustrade kit on top"
+    },
+    {
+     "id": "b-dormer",
+     "kind": "window-shape",
+     "where": "pointed stone-framed dormer in the slate mansard",
+     "approxSizeM": [
+      1.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001284",
+     "how": "stone dormer box with a pointed gable and two lights"
+    },
+    {
+     "id": "b-windows",
+     "kind": "window-shape",
+     "where": "two-light windows with transoms, two per storey, segmental relieving arches over the upper ones",
+     "approxSizeM": [
+      1.3,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001284",
+     "how": "as the risalit"
+    }
+   ],
+   "note": "Binnen-Amstel front, the two recessed bays beside the risalit (ring edge 6)"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 518440 (RCE monumentenregister: kantoorgebouw 1889-1890, F.W.M. Poggenbeek for Labouchere Oyens; street front 1905 Gebr. van Gendt)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518440",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikidata Q17291545",
+   "url": "https://www.wikidata.org/wiki/Q17291545",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012180414 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012180414",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012180414",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180414",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

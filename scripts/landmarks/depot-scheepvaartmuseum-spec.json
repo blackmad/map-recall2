@@ -1,0 +1,31 @@
+{
+ "id": "depot-scheepvaartmuseum",
+ "name": "Depot Scheepvaartmuseum, Kattenburgerstraat",
+ "heightMetres": 15,
+ "bagYear": 1005,
+ "galleryView": {
+  "theta": 2.3,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012169346 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/depot-scheepvaartmuseum-footprints.json, bag-shell-prepare.ts); the Kattenburgerstraat front and the south-west end read from the rectified Gemeente Amsterdam panoramas recording_2025-06-17_08-04-10_03287, b_20250108_1041_Track01_Sphere_00031 and _00029, TMX7316010203-001536_pano_0000_001551 (2020), recording_2025-06-19_07-14-50_01897 and TMX7316010203-001195_pano_0000_003836 (2019), CC BY 4.0. Per wall in scripts/landmarks/depot-scheepvaartmuseum-inventory.json.",
+ "materialOverrides": {
+  "concrete": "#dcd3c0",
+  "brick": "#5e5246",
+  "stone": "#7d7a70",
+  "frame": "#b9b09c",
+  "slate": "#cfd2d2",
+  "gold": "#6b5a48",
+  "greyBrick": "#4f4a40",
+  "bronze": "#3a3a38"
+ },
+ "attribution": {
+  "title": "Depot Scheepvaartmuseum, Kattenburgerstraat, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169346",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169346 (CC0): the pale metal-clad depot with its cladding courses and louvres over the dark brick yard wall with its coping, piers, bricked-up arch and timber gates, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}
