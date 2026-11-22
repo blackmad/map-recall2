@@ -22,7 +22,7 @@
     {
       "date": "2026-11-22",
       "title": "Five landmarks and Van Baerlestraat",
-      "text": "The Openbare Handelsschool now stands on the Raamplein, where the game drew an empty lot. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which was also an empty lot. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
+      "text": "The Openbare Handelsschool now stands on the Raamplein, where it replaces a plain generic block. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which also replaces a plain generic block. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
       "where": [
         4.8804,
         52.3665
@@ -30,7 +30,7 @@
       "images": [
         {
           "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg",
-          "alt": "The Raamplein from above in the game: an empty lot before, the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
+          "alt": "The Raamplein from above in the game: before, a capture that left out the plain generic block the game draws there; the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
           "caption": "Openbare Handelsschool, Raamplein: before, after"
         },
         {
@@ -70,12 +70,12 @@
         },
         {
           "src": "whats-new/2026-11-22-jungle-amsterdam.jpg",
-          "alt": "Jungle Amsterdam on the Swindenstraat in the game: an empty lot before, the community centre with its roof frame, coloured posts and blue and red window frames after",
+          "alt": "Jungle Amsterdam on the Swindenstraat in the game: before, a capture that left out the plain generic block the game draws there; the community centre with its roof frame, coloured posts and blue and red window frames after",
           "caption": "Jungle Amsterdam: before, after"
         },
         {
           "src": "whats-new/2026-11-22-hans-en-grietje.jpg",
-          "alt": "The Spiegelgracht corner in the game: an empty corner before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
+          "alt": "The Spiegelgracht corner in the game: before, a capture that left out the plain generic block the game draws there; Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
           "caption": "Café Hans en Grietje, Spiegelgracht: before, after"
         }
       ]
