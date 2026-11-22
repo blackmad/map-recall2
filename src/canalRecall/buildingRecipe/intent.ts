@@ -1366,7 +1366,7 @@ export interface LargeWallIntent {
    * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
    * brick arch rings over arched openings, default a shade darker than the wall).
    */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string; /** the mesh plinth panel under a layered curtain wall (`ground: "mesh-plinth"`), a matte panel in this colour instead of the door slot (the Rietveld building's white rendered plinth) */ plinth?: string};
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string; /** the garage doors' colour (`garageBays` / `garageDoors`; absent: the house's door colour) */ garage?: string; /** the mesh plinth panel under a layered curtain wall (`ground: "mesh-plinth"`), a matte panel in this colour instead of the door slot (the Rietveld building's white rendered plinth) */ plinth?: string};
   /**
    * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
    * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.

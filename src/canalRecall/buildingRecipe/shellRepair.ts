@@ -393,8 +393,11 @@ export function repairHost(host: HostTri[], passes = 3, close = false): RepairRe
  * position (else above every roof boundary there) drops onto it: 3DBAG draws a 7-8 m spike over Singel 457's
  * Kalvertoren corner and a 3.6 m slanted fin on Hirschpassage 2. A top vertex of a sound shell lies on a roof edge in
  * its own plane; and only a vertex of a triangle with an open edge in the bare host moves (`onlyNear`), so sound shells never change.
+ * 0.2 m since lane kit-fixes-20261122 (was 0.3): Gustav Mahlerlaan 7-27 (pand 0363100012250615) keeps a 0.23 m parapet
+ * spike under 0.3. Over the 61 installed shellRepair houses no open-edge vertex stands 0.05-0.3 m over its cap (the
+ * next is WG-plein 600 at 0.40 m), so parapets and plant rooms, which sit on sound edges, are never touched.
  */
-export const SPIKE_M = 0.3;
+export const SPIKE_M = 0.2;
 export function clampSpikes(walls: V3[][][], roofs: V3[][][], onlyNear?: V3[]): {walls: V3[][][]; clamped: number} {
   const edges: [V3, V3][] = roofs.flatMap(rings => rings.flatMap(r => r.map((p, i) => [p, r[(i + 1) % r.length]] as [V3, V3])));
   let clamped = 0;

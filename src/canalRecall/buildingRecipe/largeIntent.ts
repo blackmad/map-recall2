@@ -601,7 +601,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       else w.nameBoards.forEach((n, k) => { if (typeof n !== 'string' || (n !== '' && !SIGN_TEXT.test(n)) || n.length > 24) problems.push(`${at}.nameBoards[${k}]: up to 24 of A-Z a-z 0-9 & ' - . space`); });
       if (!w.hoist) problems.push(`${at}.nameBoards: boards hang over the hoist-bay portals; add hoist`);
     }
-    for (const [k, v] of Object.entries(w.palette ?? {})) { if (!['brick', 'frame', 'stone', 'glass', 'arch', 'plinth'].includes(k)) problems.push(`${at}.palette.${k}: only brick, frame, stone, glass, arch, plinth per group`); else colour(v, `${at}.palette.${k}`); }
+    for (const [k, v] of Object.entries(w.palette ?? {})) { if (!['brick', 'frame', 'stone', 'glass', 'arch', 'plinth', 'garage'].includes(k)) problems.push(`${at}.palette.${k}: only brick, frame, stone, glass, arch, plinth, garage per group`); else colour(v, `${at}.palette.${k}`); }
+    if (w.palette?.garage !== undefined && !w.garageBays && !w.garageDoors) problems.push(`${at}.palette.garage: the garage door colour needs garageBays or garageDoors`);
     if (w.palette?.plinth !== undefined && w.ground !== 'mesh-plinth') problems.push(`${at}.palette.plinth: the plinth panel colour needs ground "mesh-plinth"`);
     if (w.palette?.arch !== undefined && !w.arches && !w.hoist) problems.push(`${at}.palette.arch: the arch ring colour needs arches or hoist`);
     if (w.windowShape !== undefined) {

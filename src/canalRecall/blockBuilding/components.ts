@@ -88,14 +88,23 @@ export function drawCanopy(c: PanelCtx, u0: number, u1: number, at: number, slot
 export const GARAGE_FRAME_W = 0.08;
 
 /**
+ * The fallback for a garage bay too small for the plain door (2.8 m wide, 2.6 m high): a car-park entrance under a low
+ * ground storey on narrow bays (Jesse Owenshof's INRIT doors, 2.4 m storey on 2.6 m bays; Veemkade's two 1.4 m colonnade
+ * bays). The door then spans a run of adjacent garage bays (`bays`, up to 3.6 m each), 0.15 m in from each side and
+ * 0.15 m under the storey line, and needs 2.0 m each way.
+ */
+export interface GarageFit { bays: number }
+export const GARAGE_FIT = { sideM: 0.3, headM: 0.15, minM: 2.0 };
+
+/**
  * Sectional garage door: recessed 0.25 m, panel with horizontal ribs. Layered kit (`c.layered`): the door leaf closes
  * the recess at the back, the ribs are closed boxes on the first sheet layer (4.5 cm) and a frame ring of closed boxes
  * stands on the second (9 cm) inside the reveals, so leaf, ribs, frame and reveals never share a plane.
  */
-export function drawGarageDoor(c: PanelCtx, cell: Cell, slots: { door: Slot; frame: Slot }): boolean {
-  const cw = cell.u1 - cell.u0, w = Math.min(cw - 0.6, 3.6), uc = (cell.u0 + cell.u1) / 2, v0 = Math.max(cell.v0, c.p.vMin) + 0.05;
-  const h = Math.min(3.2, cell.v1 - v0 - 0.4);
-  if (w < 2.2 || h < 2.2) return false;
+export function drawGarageDoor(c: PanelCtx, cell: Cell, slots: { door: Slot; frame: Slot }, fit?: GarageFit): boolean {
+  const cw = cell.u1 - cell.u0, uc = (cell.u0 + cell.u1) / 2, v0 = Math.max(cell.v0, c.p.vMin) + 0.05;
+  const w = fit ? Math.min(cw - GARAGE_FIT.sideM, 3.6 * fit.bays) : Math.min(cw - 0.6, 3.6), h = Math.min(3.2, cell.v1 - v0 - (fit ? GARAGE_FIT.headM : 0.4));
+  if (fit ? w < GARAGE_FIT.minM || h < GARAGE_FIT.minM : w < 2.2 || h < 2.2) return false;
   const r = recess(c, uc - w / 2, uc + w / 2, v0, v0 + h, 0.25, slots.door);
   if (!r) return false;
   const part = c.part();

@@ -48,9 +48,10 @@ export interface ComposeOptions {
   /**
    * Row split (opt-in): spans of the panel drawn with their own system instead of the panel's (each system's `lines`,
    * `bays` layout and bands; cells numbered from `bayOffset`, `bays` in the whole row). The panel's own system still
-   * sets the levels the panel hook sees. Absent or null for a panel: unchanged.
+   * sets the levels the panel hook sees. `local`: the span's per-bay cycles count from its own first bay (cell
+   * `cycleBay`), not from `bayOffset`. Absent or null for a panel: unchanged.
    */
-  segmentsFor?: (p: Panel) => { system: string; u0: number; u1: number; top: number; bayOffset: number; bays: number }[] | null;
+  segmentsFor?: (p: Panel) => { system: string; u0: number; u1: number; top: number; bayOffset: number; bays: number; local?: boolean }[] | null;
   /** Leave this cell empty so a component (entrance, garage door) can take it. */
   skipCell?: (p: Panel, floor: number, bay: number, bays: number) => boolean;
   /** Leave this panel's bands (string courses) out: a wall no one sees, a court face (opt-in). */
@@ -269,7 +270,11 @@ class Ctx {
   }
 }
 
-export interface Cell { u0: number; u1: number; v0: number; v1: number; bay: number; floor: number; bays: number }
+export interface Cell {
+  u0: number; u1: number; v0: number; v1: number; bay: number; floor: number; bays: number;
+  /** the bay a row's per-bay `cycle` is read at, when not `bay` (a row split's house that counts its bays from its own left bay) */
+  cycleBay?: number;
+}
 /**
  * A glazing bar, door leaf or stile in front of the glass. Within the default 1.5 cm standoff it is one quad (its edges lie
  * within the 2 cm the open-edge gate treats as touching the glass). Deeper (`ComposeOptions.barOffsetM`, or a window's
@@ -585,7 +590,7 @@ function winRect(cell: Cell, w: WinParams): [number, number, number, number] {
 
 function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
   c.mesh.label = `panel${c.p.index}:f${cell.floor}:b${cell.bay}:${row.kind}`;
-  if (row.cycle?.length) { row = row.cycle[((cell.bay + (row.shift ?? 0) * cell.floor) % row.cycle.length + row.cycle.length) % row.cycle.length]; }
+  if (row.cycle?.length) { row = row.cycle[(((cell.cycleBay ?? cell.bay) + (row.shift ?? 0) * cell.floor) % row.cycle.length + row.cycle.length) % row.cycle.length]; }
   const { u0, u1, v0, v1 } = cell;
   switch (row.kind) {
     case 'wall': return;
@@ -983,7 +988,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
           const topRow = hs.top && f >= fl - (hs.topCount ?? 1) && f > 0;
           const row = hs.rowOverrides?.[String(f)] ?? (f === 0 ? hs.ground : topRow ? hs.top! : hs.typical);
           for (let b = 0; b < lay.count; b++) {
-            const cell: Cell = { u0: p.uMin + lay.first + lay.pitch * (b - 0.5), u1: p.uMin + lay.first + lay.pitch * (b + 0.5), v0: Math.max(v0, p.vMin), v1, bay: seg.bayOffset + b, floor: f, bays: seg.bays };
+            const cell: Cell = { u0: p.uMin + lay.first + lay.pitch * (b - 0.5), u1: p.uMin + lay.first + lay.pitch * (b + 0.5), v0: Math.max(v0, p.vMin), v1, bay: seg.bayOffset + b, floor: f, bays: seg.bays, ...(seg.local ? { cycleBay: b } : {}) };
             cells.push(cell);
             if (opts.skipCell?.(p, f, cell.bay, seg.bays)) continue;
             drawRow(c, row, cell, p.index * 31 + 7);
