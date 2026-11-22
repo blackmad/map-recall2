@@ -1,0 +1,424 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "seed": "0363100012152413",
+ "members": [
+  "0363100012236916",
+  "0363100012236256",
+  "0363100012152413"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012158770 22.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012237096 20.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012105226",
+   "reason": "frontage 56.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012130040",
+   "reason": "frontage 57.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012156542",
+   "reason": "frontage 32.5 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012156564",
+   "reason": "frontage 56.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012156581",
+   "reason": "frontage 56.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012156906",
+   "reason": "frontage 57.2 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012158597",
+   "reason": "frontage 53.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012158894",
+   "reason": "frontage 56.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012159189",
+   "reason": "frontage 56.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012159651",
+   "reason": "frontage 53.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012160580",
+   "reason": "frontage 57.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012160586",
+   "reason": "frontage 57.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012071488",
+   "reason": "frontage 98.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012143529",
+   "reason": "frontage 75.2 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012152618",
+   "reason": "frontage 75.7 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012152941",
+   "reason": "sightline to Pieter Cornelisz. Hooftstraat crosses 0363100012162374"
+  },
+  {
+   "pandId": "0363100012154101",
+   "reason": "frontage 75.4 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012155575",
+   "reason": "frontage 37.5 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012155720",
+   "reason": "frontage 40.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012156033",
+   "reason": "frontage 38.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012157072",
+   "reason": "frontage 118.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012157975",
+   "reason": "frontage 36.7 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012157982",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012158202",
+   "reason": "sightline to Pieter Cornelisz. Hooftstraat crosses 0363100012153582"
+  },
+  {
+   "pandId": "0363100012159341",
+   "reason": "frontage 116.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012160735",
+   "reason": "frontage 30.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012160783",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012161317",
+   "reason": "frontage 57.9 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012162359",
+   "reason": "frontage 57.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012163549",
+   "reason": "frontage 50.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012164350",
+   "reason": "frontage 50.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012165964",
+   "reason": "frontage 57.7 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012166190",
+   "reason": "frontage 34.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012166565",
+   "reason": "frontage 57.7 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012183408",
+   "reason": "frontage 32.2 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012207165",
+   "reason": "frontage 43.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012215676",
+   "reason": "sightline to Pieter Cornelisz. Hooftstraat crosses 0363100012157077"
+  },
+  {
+   "pandId": "0363100012220023",
+   "reason": "frontage 55.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012220024",
+   "reason": "frontage 31.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012233898",
+   "reason": "frontage 34.5 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012161292",
+   "reason": "frontage 38.5 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012162377",
+   "reason": "frontage 123.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012162894",
+   "reason": "frontage 31.1 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012163189",
+   "reason": "frontage 38.7 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012163226",
+   "reason": "frontage 119.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012164116",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012164296",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012164813",
+   "reason": "frontage 38.5 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012166580",
+   "reason": "frontage 38.6 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012205160",
+   "reason": "frontage 90.9 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012228574",
+   "reason": "frontage 31.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012235925",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012235977",
+   "reason": "frontage 39.9 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012235990",
+   "reason": "frontage 108.2 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236074",
+   "reason": "frontage 75.4 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236093",
+   "reason": "frontage 38.8 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236096",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236130",
+   "reason": "frontage 75.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236181",
+   "reason": "frontage 75.4 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236413",
+   "reason": "frontage 75.4 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236429",
+   "reason": "frontage 38.0 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012236772",
+   "reason": "frontage 101.3 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012237346",
+   "reason": "frontage 75.4 m from Pieter Cornelisz. Hooftstraat"
+  },
+  {
+   "pandId": "0363100012080749",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156099",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157275",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158276",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158320",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159031",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158516",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159571",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161527",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162637",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165352",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166884",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236029",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236038",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236042",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236075",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236097",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165739",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236492",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012245314",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012236916",
+   "alongM": -13.72,
+   "widthM": 7.25,
+   "eavesM": 15.37,
+   "roofMaxM": 19.7,
+   "storeys3dbag": 0,
+   "builtYear": 1891,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236256",
+   "alongM": -6.75,
+   "widthM": 6.68,
+   "eavesM": 15.08,
+   "roofMaxM": 19.32,
+   "storeys3dbag": 0,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152413",
+   "alongM": 0,
+   "widthM": 6.82,
+   "eavesM": 12.88,
+   "roofMaxM": 24.14,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  }
+ ]
+}

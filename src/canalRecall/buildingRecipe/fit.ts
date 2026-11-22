@@ -133,8 +133,8 @@ export const DE_BAARSJES = {glassBlockM: 0.2, copingM: 0.1, copingDepthM: 0.04, 
  * elevation frame (frontLeftM); `depthM` is its face's distance in front of the wall plane.
  */
 export interface FasciaRect { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; sign?: ShopSign | null }
-/** Where the sign's lettering goes (signage.ts): the fascia board, the wall band above the glass, or the head of the largest pane. */
-export interface SignBand extends FasciaRect { mount: NonNullable<ShopSign['mount']>; sign: ShopSign }
+/** Where the sign's lettering goes (signage.ts): the fascia board, the wall band above the glass, the head of the largest pane, or a fabric awning (`slope`: lying on its top). */
+export interface SignBand extends FasciaRect { mount: NonNullable<ShopSign['mount']>; sign: ShopSign; slope?: number }
 
 export interface FitReport {
   fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number; frontageOutsetM: number; polygonIndex: number; fascia?: FasciaRect; signBand?: SignBand;
@@ -1235,8 +1235,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.windowSurround && front.windowSurround !== 'none') {
       const wanted = front.surroundStoreys ?? Array.from({length: front.storeys}, (_, k) => k).filter(k => k > 0 || !front.shopfront);
       for (const o of elevation.openings.value) {
-        const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(o.id);
+        const m = /(?:^|-)s(\d+)-b(\d+)[ab]?(?:-m\d+)?$/.exec(o.id);
         if (!m || o.kind !== 'window' || !wanted.includes(Number(m[1]))) continue;
+        if (front.surroundBays && !front.surroundBays.includes(Number(m[2]))) continue;
         const top = o.bottomM + o.heightM, ox = 0.07, oy = o.id;
         if (front.windowSurround === 'eared-keystone') { dressings.push(...earedHead(o, oy, width)); continue; }
         if (front.windowSurround === 'sill') {
@@ -1324,7 +1325,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const top = layout.shopGlass[1] + 0.05, drop = awning.style === 'fabric-dutch' ? 0.6 : 0.5, valance = awning.style === 'fabric-dutch' ? 0.22 : 0.2;
       // Never lower than 2.1 m at the valance: lift the attachment line instead.
       const attach = Math.max(top, 2.1 + drop + valance);
-      dressings.push({id: 'awning', kind: 'awning', style: awning.style === 'fabric-dutch' ? 'dutch' : 'straight', leftM: round(left), widthM: round(right - left), topM: round(attach), dropM: drop, projectM: awning.style === 'fabric-dutch' ? 0.9 : 1.0, valanceM: valance, surface: 'awning'});
+      const project = awning.style === 'fabric-dutch' ? 0.9 : 1.0;
+      dressings.push({id: 'awning', kind: 'awning', style: awning.style === 'fabric-dutch' ? 'dutch' : 'straight', leftM: round(left), widthM: round(right - left), topM: round(attach), dropM: drop, projectM: project, valanceM: valance, surface: 'awning'});
+      // `sign.mount: awning`: the lettering 3 mm off the straight awning's sloped top (centred on it), or on the dutch valance.
+      const asign = front.shopfront?.sign;
+      if (asign?.mount === 'awning') {
+        const l = round(left), w = round(right - left), band = {mount: 'awning' as const, sign: asign, leftM: mirrored ? round(width - l - w) : l, widthM: w, frontLeftM: l, mirrored};
+        if (awning.style === 'fabric-dutch') signBand = {...band, bottomM: round(attach - drop - valance), heightM: valance, depthM: round(project + 0.003 - 0.03)};
+        else {
+          const len = Math.hypot(project, drop), ny = project / len, nz = drop / len, a = Math.asin(ny);
+          signBand = {...band, bottomM: round(attach - drop / 2 + 0.003 * ny - len / 2), heightM: round(len), depthM: round(project / 2 + 0.003 * nz - 0.03), slope: -a};
+        }
+      }
     }
     // Rigid canopy (`awning.style: rigid`): reported for the post-library pass (amsterdamSchool.ts addCanopies).
     const canopy = awning?.style === 'rigid' && layout.shopGlass ? rigidCanopy(front, layout, width, mirrored, fasciaRect, facts.canopyM?.[front.id], warnings, front.palette?.glassBlock ?? intent.palette.glassBlock) : undefined;

@@ -1,0 +1,734 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (face cache), fetched 2026-11-22T16:22:28.590Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158272",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001977217"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 308,
+     "bagId": "0363010012076511"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816413035,
+     "lngLat": [
+      4.8827822,
+      52.360697
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1071BM",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Canada Goose",
+      "brand:wikidata": "Q2988422",
+      "check_date": "2026-07-13",
+      "clothes": "outdoor",
+      "name": "Canada Goose",
+      "phone": "+31 20 809 3033",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155334",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemastraat 10B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000667938"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 207,
+     "bagId": "0363010001002761"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816413059,
+     "lngLat": [
+      4.8826921,
+      52.3606912
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31-2",
+      "addr:postcode": "1071BM",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "check_date": "2026-07-13",
+      "name": "Cavallaro Napoli",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4713359497,
+     "lngLat": [
+      4.8826781,
+      52.3607893
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165827",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000769901"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 636855925,
+     "lngLat": [
+      4.8825795,
+      52.3606495
+     ],
+     "tags": {
+      "name": "The A'dam Giftshop",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160305",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010000769906"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816413083,
+     "lngLat": [
+      4.882496,
+      52.3606398
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-2",
+      "addr:postcode": "1071BM",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "name": "Digicoins-Europe",
+      "office": "company",
+      "phone": "+31 6 25091677",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.digicoins-europe.com/"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11273948930,
+     "lngLat": [
+      4.8825009,
+      52.360656
+     ],
+     "tags": {
+      "brand": "Ba&sh",
+      "brand:wikidata": "Q104214363",
+      "check_date": "2026-07-13",
+      "clothes": "women",
+      "name": "Ba&sh",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012089719",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000980084"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11273948929,
+     "lngLat": [
+      4.8824135,
+      52.3606265
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37",
+      "addr:postcode": "1071BM",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "clothes": "men",
+      "name": "Stone Island",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157173",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 39",
+    "Pieter Cornelisz. Hooftstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 529,
+     "bagId": "0363010000769918"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 39-1",
+     "use": "industriefunctie",
+     "areaM2": 63,
+     "bagId": "0363010000769919"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 470,
+     "bagId": "0363010012075916"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786721,
+     "lngLat": [
+      4.8822976,
+      52.360584
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39",
+      "addr:postcode": "1071BM",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Emporio Armani",
+      "brand:wikidata": "Q3497483",
+      "name": "Emporio Armani",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159279",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 43",
+    "Pieter Cornelisz. Hooftstraat 43B",
+    "Pieter Cornelisz. Hooftstraat 43A",
+    "Pieter Cornelisz. Hooftstraat 43C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 608,
+     "bagId": "0363010000769928"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012568690"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012568689"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010012568691"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158410",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 45",
+     "use": "winkelfunctie",
+     "areaM2": 685,
+     "bagId": "0363010012568688"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 45-H",
+     "use": "winkelfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000769933"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161622",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 47",
+     "use": "winkelfunctie",
+     "areaM2": 390,
+     "bagId": "0363010000769938"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816413883,
+     "lngLat": [
+      4.8819797,
+      52.3605152
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Rimowa",
+      "brand:wikidata": "Q1287437",
+      "name": "Rimowa",
+      "shop": "bag",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164893",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 385,
+     "bagId": "0363010011122476"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786717,
+     "lngLat": [
+      4.8819127,
+      52.3604923
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "IWC",
+      "brand:wikidata": "Q662902",
+      "name": "IWC",
+      "shop": "watches"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13081530991,
+     "lngLat": [
+      4.8818549,
+      52.3604959
+     ],
+     "tags": {
+      "artist_name": "Streetart Frankey",
+      "artwork_type": "sculpture",
+      "name": "With a little help by Frankey",
+      "start_date": "2024",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "frontage",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012068180",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 51",
+    "Pieter Cornelisz. Hooftstraat 51A",
+    "Pieter Cornelisz. Hooftstraat 51B",
+    "Pieter Cornelisz. Hooftstraat 51C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 51A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012120476"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 51B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012120477"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 51C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012120478"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786716,
+     "lngLat": [
+      4.8818067,
+      52.3604718
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "name": "Schaap-Citroen",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159316",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 53-H",
+     "use": "winkelfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000769950"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11273948928,
+     "lngLat": [
+      4.8817282,
+      52.3604476
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "53",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "check_date": "2026-07-13",
+      "name": "Chopard Boutique",
+      "shop": "jewelry"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152454",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000769954"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786715,
+     "lngLat": [
+      4.8816659,
+      52.3604177
+     ],
+     "tags": {
+      "name": "La Perla",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159597",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000769962"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012076902"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786714,
+     "lngLat": [
+      4.8815653,
+      52.360403
+     ],
+     "tags": {
+      "brand": "Montblanc",
+      "brand:wikidata": "Q142691",
+      "check_date": "2026-07-13",
+      "name": "Montblanc",
+      "shop": "fashion_accessories"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163614",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 59",
+    "Pieter Cornelisz. Hooftstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 59-H",
+     "use": "winkelfunctie",
+     "areaM2": 422,
+     "bagId": "0363010000769969"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11273948927,
+     "lngLat": [
+      4.8814305,
+      52.3603612
+     ],
+     "tags": {
+      "name": "Salvatore Ferragamo",
+      "shop": "boutique"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160242",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 241,
+     "bagId": "0363010000670405"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 63-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000979456"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 63-2",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000769982"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 315,
+     "bagId": "0363010012078509"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816414760,
+     "lngLat": [
+      4.8813227,
+      52.3603102
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63-2",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "name": "AmsterHome",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://amsterhomehotel.com/"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2816414761,
+     "lngLat": [
+      4.8813254,
+      52.3602398
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "63-H",
+      "addr:postcode": "1071BN",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Prada",
+      "brand:wikidata": "Q193136",
+      "check_date": "2026-07-13",
+      "name": "Prada",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T16:22:28.590Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

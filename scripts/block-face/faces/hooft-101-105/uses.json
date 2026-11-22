@@ -1,0 +1,163 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (live), fetched 2026-11-22T16:26:16.503Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236916",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 101",
+     "use": "winkelfunctie",
+     "areaM2": 414,
+     "bagId": "0363010001020620"
+    },
+    {
+     "address": "Van de Veldestraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001020621"
+    },
+    {
+     "address": "Van de Veldestraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001020622"
+    },
+    {
+     "address": "Van de Veldestraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001020623"
+    },
+    {
+     "address": "Van de Veldestraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001020624"
+    },
+    {
+     "address": "Van de Veldestraat 6",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001020625"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 101",
+     "use": "winkelfunctie",
+     "areaM2": 236,
+     "bagId": "0363010012072722"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776721,
+     "lngLat": [
+      4.8792834,
+      52.3597812
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101",
+      "addr:postcode": "1071BR",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "name": "Saint Laurent",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:26:16.503Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236256",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 103-H",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000770063"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152413",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 296,
+     "bagId": "0363010012568307"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000991848"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776719,
+     "lngLat": [
+      4.8789876,
+      52.3597012
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "107",
+      "addr:postcode": "1071BR",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Douglas",
+      "brand:wikidata": "Q2052213",
+      "brand:wikipedia": "de:Parfümerie Douglas",
+      "name": "Douglas",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 20 679 5822",
+      "shop": "perfumery",
+      "website": "https://www.douglas.nl/douglas/perfumery/info.html?code=0022&division=0023"
+     },
+     "fetchedAt": "2026-11-22T16:26:16.503Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    },
+    {
+     "type": "node",
+     "id": 4706776720,
+     "lngLat": [
+      4.8791247,
+      52.3597369
+     ],
+     "tags": {
+      "brand": "Calvin Klein",
+      "brand:wikidata": "Q1068628",
+      "brand:wikipedia": "en:Calvin Klein (fashion house)",
+      "name": "Calvin Klein",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T16:26:16.503Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

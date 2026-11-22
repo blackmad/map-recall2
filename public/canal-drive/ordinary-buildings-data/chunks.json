@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T15:13:50.431Z",
+ "generatedAt": "2026-11-22T17:45:58.930Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -117408,6 +117408,908 @@
        "primitive": 47,
        "firstTriangle": 269,
        "triangleCount": 102
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-baerle-32-50",
+   "category": "street-survey",
+   "name": "face-baerle-32-50",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-32-50.glb?asset=5d77f5d87450e7f9",
+   "sha256": "5d77f5d87450e7f96953d948ed1882bbd49894f131e71a785ed0af9ad0c24a7d",
+   "bytes": 359916,
+   "triangles": 15084,
+   "primitives": 30,
+   "instance": {
+    "anchor": [
+     4.878043647561291,
+     52.358516012543014
+    ],
+    "northOffsetDegrees": 246.5793,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -42.207,
+     0,
+     -29.397
+    ],
+    "max": [
+     24.975,
+     20.23,
+     1.276
+    ]
+   },
+   "height": 20.23,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012237282",
+    "NL.IMBAG.Pand.0363100012164814",
+    "NL.IMBAG.Pand.0363100012156740",
+    "NL.IMBAG.Pand.0363100012158360",
+    "NL.IMBAG.Pand.0363100012153208",
+    "NL.IMBAG.Pand.0363100012156304",
+    "NL.IMBAG.Pand.0363100012157788",
+    "NL.IMBAG.Pand.0363100012162838"
+   ],
+   "replaces": [
+    "ordinary-0363100012237282",
+    "ordinary-0363100012164814",
+    "ordinary-0363100012156740",
+    "ordinary-0363100012158360",
+    "ordinary-0363100012153208",
+    "ordinary-0363100012156304",
+    "ordinary-0363100012157788",
+    "ordinary-0363100012162838"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8778923,
+        52.3580676
+       ],
+       [
+        4.8782726,
+        52.3581692
+       ],
+       [
+        4.8782835,
+        52.3581861
+       ],
+       [
+        4.8781458,
+        52.3583752
+       ],
+       [
+        4.8779715,
+        52.3583273
+       ],
+       [
+        4.8778768,
+        52.3583022
+       ],
+       [
+        4.8779015,
+        52.3582677
+       ],
+       [
+        4.8778684,
+        52.3582588
+       ],
+       [
+        4.8778793,
+        52.358243
+       ],
+       [
+        4.8778468,
+        52.3582339
+       ],
+       [
+        4.8778687,
+        52.3582044
+       ],
+       [
+        4.877815,
+        52.3581905
+       ],
+       [
+        4.8778249,
+        52.3581769
+       ],
+       [
+        4.8778154,
+        52.3581746
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8781458,
+        52.3583752
+       ],
+       [
+        4.8781075,
+        52.3584289
+       ],
+       [
+        4.8779404,
+        52.3583823
+       ],
+       [
+        4.8778879,
+        52.358368
+       ],
+       [
+        4.8779266,
+        52.3583154
+       ],
+       [
+        4.8779715,
+        52.3583273
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8781075,
+        52.3584289
+       ],
+       [
+        4.8780733,
+        52.3584768
+       ],
+       [
+        4.877906,
+        52.3584295
+       ],
+       [
+        4.8778541,
+        52.3584153
+       ],
+       [
+        4.8778879,
+        52.358368
+       ],
+       [
+        4.8779404,
+        52.3583823
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8780368,
+        52.3585278
+       ],
+       [
+        4.8778365,
+        52.3584696
+       ],
+       [
+        4.8778725,
+        52.3584203
+       ],
+       [
+        4.877906,
+        52.3584295
+       ],
+       [
+        4.8780733,
+        52.3584768
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8780368,
+        52.3585278
+       ],
+       [
+        4.8780029,
+        52.3585752
+       ],
+       [
+        4.8777256,
+        52.3584914
+       ],
+       [
+        4.8777583,
+        52.3584468
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8779677,
+        52.3586245
+       ],
+       [
+        4.8777978,
+        52.3585775
+       ],
+       [
+        4.8776546,
+        52.3585384
+       ],
+       [
+        4.8776965,
+        52.3584826
+       ],
+       [
+        4.8780029,
+        52.3585752
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8779677,
+        52.3586245
+       ],
+       [
+        4.8779356,
+        52.3586694
+       ],
+       [
+        4.877746,
+        52.3586185
+       ],
+       [
+        4.8777008,
+        52.3586061
+       ],
+       [
+        4.8777337,
+        52.35856
+       ],
+       [
+        4.8777978,
+        52.3585775
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.877898,
+        52.358722
+       ],
+       [
+        4.8776753,
+        52.3586622
+       ],
+       [
+        4.8777124,
+        52.3586093
+       ],
+       [
+        4.877746,
+        52.3586185
+       ],
+       [
+        4.8779356,
+        52.3586694
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-237282",
+     "pandId": "0363100012237282",
+     "buildingId": "NL.IMBAG.Pand.0363100012237282",
+     "address": "Van Baerlestraat 46-50",
+     "frontage": {
+      "x0": -40.284,
+      "x1": -17.139,
+      "widthM": 23.144
+     },
+     "bounds": {
+      "min": [
+       -42.207,
+       0,
+       -29.397
+      ],
+      "max": [
+       -17.137,
+       20.23,
+       1.276
+      ]
+     },
+     "triangles": 2917,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 330
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 1200
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 77
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 34
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-164814",
+     "pandId": "0363100012164814",
+     "buildingId": "NL.IMBAG.Pand.0363100012164814",
+     "address": "Van Baerlestraat 44",
+     "frontage": {
+      "x0": -17.139,
+      "x1": -10.624,
+      "widthM": 6.515
+     },
+     "bounds": {
+      "min": [
+       -17.3,
+       0,
+       -16.325
+      ],
+      "max": [
+       -10.623,
+       15.07,
+       0.547
+      ]
+     },
+     "triangles": 1786,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 192,
+       "triangleCount": 684
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 180,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1200,
+       "triangleCount": 540
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 264,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 34,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-156740",
+     "pandId": "0363100012156740",
+     "buildingId": "NL.IMBAG.Pand.0363100012156740",
+     "address": "Van Baerlestraat 42",
+     "frontage": {
+      "x0": -10.624,
+      "x1": -4.809,
+      "widthM": 5.815
+     },
+     "bounds": {
+      "min": [
+       -10.881,
+       0,
+       -16.345
+      ],
+      "max": [
+       -4.808,
+       15.23,
+       0.529
+      ]
+     },
+     "triangles": 1714,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 41
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 876,
+       "triangleCount": 460
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 364,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1740,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 160,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 360,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 390,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 77,
+       "triangleCount": 29
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 43,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-158360",
+     "pandId": "0363100012158360",
+     "buildingId": "NL.IMBAG.Pand.0363100012158360",
+     "address": "Van Baerlestraat 40",
+     "frontage": {
+      "x0": -4.809,
+      "x1": 1.389,
+      "widthM": 6.198
+     },
+     "bounds": {
+      "min": [
+       -5.12,
+       0,
+       -15.038
+      ],
+      "max": [
+       1.39,
+       15.23,
+       0.513
+      ]
+     },
+     "triangles": 1803,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1336,
+       "triangleCount": 412
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 620,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2172,
+       "triangleCount": 480
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 600,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 492,
+       "triangleCount": 114
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 106,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 49,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-153208",
+     "pandId": "0363100012153208",
+     "buildingId": "NL.IMBAG.Pand.0363100012153208",
+     "address": "Van Baerlestraat 38",
+     "frontage": {
+      "x0": 1.389,
+      "x1": 7.146,
+      "widthM": 5.757
+     },
+     "bounds": {
+      "min": [
+       0.677,
+       0,
+       -20.996
+      ],
+      "max": [
+       7.147,
+       15.23,
+       0.495
+      ]
+     },
+     "triangles": 1676,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 65
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1748,
+       "triangleCount": 412
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 876,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2652,
+       "triangleCount": 424
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 948,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 184,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 606,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 122,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 54,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-156304",
+     "pandId": "0363100012156304",
+     "buildingId": "NL.IMBAG.Pand.0363100012156304",
+     "address": "Van Baerlestraat 36",
+     "frontage": {
+      "x0": 7.102,
+      "x1": 13.12,
+      "widthM": 6.018
+     },
+     "bounds": {
+      "min": [
+       6.012,
+       0,
+       -23.348
+      ],
+      "max": [
+       13.12,
+       15.3,
+       -0.287
+      ]
+     },
+     "triangles": 1743,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2160,
+       "triangleCount": 460
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1132,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3076,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1188,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 706,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 143,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 64,
+       "triangleCount": 25
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-157788",
+     "pandId": "0363100012157788",
+     "buildingId": "NL.IMBAG.Pand.0363100012157788",
+     "address": "Van Baerlestraat 34",
+     "frontage": {
+      "x0": 13.131,
+      "x1": 18.589,
+      "widthM": 5.459
+     },
+     "bounds": {
+      "min": [
+       12.899,
+       0,
+       -17.47
+      ],
+      "max": [
+       18.591,
+       13.937,
+       0.464
+      ]
+     },
+     "triangles": 1630,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 61
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2620,
+       "triangleCount": 460
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1388,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3516,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1512,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 810,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 174,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 89,
+       "triangleCount": 23
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-162838",
+     "pandId": "0363100012162838",
+     "buildingId": "NL.IMBAG.Pand.0363100012162838",
+     "address": "Van Baerlestraat 32",
+     "frontage": {
+      "x0": 18.589,
+      "x1": 24.974,
+      "widthM": 6.384
+     },
+     "bounds": {
+      "min": [
+       18.509,
+       0,
+       -16.599
+      ],
+      "max": [
+       24.975,
+       14.483,
+       0.449
+      ]
+     },
+     "triangles": 1815,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3080,
+       "triangleCount": 468
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1644,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3948,
+       "triangleCount": 540
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 912,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 202,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 112,
+       "triangleCount": 9
       }
      ]
     }

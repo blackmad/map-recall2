@@ -1,0 +1,1087 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "baerle-32-50",
+ "street": "Van Baerlestraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/baerle-32-50/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-4 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "Van Baerlestraat 32-50 (even), the shop stretch between Hobbemastraat and PC Hooftstraat. The tram shelter hides 34-38 and a van 48-50 on 2024-12-11."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012237282",
+    "stripRow": 255,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 255"
+   },
+   {
+    "pand": "0363100012164814",
+    "stripRow": 335,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 335"
+   },
+   {
+    "pand": "0363100012156740",
+    "stripRow": 455,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 455"
+   },
+   {
+    "pand": "0363100012158360",
+    "stripRow": 455,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 455"
+   },
+   {
+    "pand": "0363100012153208",
+    "stripRow": 455,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 455"
+   },
+   {
+    "pand": "0363100012156304",
+    "stripRow": 452,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 452"
+   },
+   {
+    "pand": "0363100012157788",
+    "stripRow": 455,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 455"
+   },
+   {
+    "pand": "0363100012162838",
+    "stripRow": 352,
+    "evidence": "strip 2024-12-11: top of the white entablature (mansard houses: under the mansard) at row 352"
+   }
+  ],
+  "notes": [
+   "Cornice tops per pand read on the strip at 40 px/m; 34-42 under the mansard, 237282 at the bracketed cornice."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012237282",
+   "slug": "hface-237282",
+   "address": "Van Baerlestraat 46-50",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 6,
+      "storeys": 4,
+      "storeyHeights": [
+       4.9,
+       3.85,
+       3.85,
+       4.4
+      ],
+      "bayWidths": [
+       4.4,
+       3.4,
+       4.4,
+       3.4,
+       3.4,
+       4.14
+      ],
+      "bayFill": [
+       0.62,
+       0.42,
+       0.62,
+       0.42,
+       0.42,
+       0.64
+      ],
+      "roofFront": "mansard",
+      "dormers": 3,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.66,
+       0.62
+      ],
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        0,
+        2,
+        5
+       ],
+       "style": "guard"
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#e8e4da",
+       "fascia": true,
+       "fasciaColour": "#e8e4da",
+       "name": "Ace & Dik",
+       "display": "#d8b070",
+       "sign": {
+        "text": "ACE & DIK",
+        "textColour": "#f0ece4",
+        "span": 0.8,
+        "mount": "awning"
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 4,
+       "stallriser": "low",
+       "stallriserColour": "#e8e4da",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#6e665e",
+        "extent": {
+         "from": 0.8,
+         "to": 0.97
+        }
+       },
+       "evidence": "strip 2024-12-11 x 0-926: white pilasters and a white beam over several shop windows; at the right end a grey-brown awning lettered \"Ace & Dik\" in white; the left two thirds hidden by a parked van"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#705c43",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b2ad91",
+     "band": "#c8b896"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM on 46-50: Ace & Dik (jewelry), Pauw (clothes, twice), Pompa Pasta Bar, Nespresso; on 2024-12-11 only the Ace & Dik awning is readable, a van hides 48-50.",
+    "bag": [
+     "bijeenkomstfunctie,woonfunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "Ace & Dik",
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 2816385048,
+     "name": "Ace & Dik",
+     "tags": "shop=jewelry"
+    }
+   },
+   "rhythm": {
+    "bays": "6 axes, wide triple windows on 1, 3 and 6",
+    "windowsPerStorey": "ground: shops behind white pilasters | first: 6, iron balconies on 1, 3, 6 | second: 6, white balconettes | third: 6 under segmental heads | roof: 3 white dormers",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white pilasters, Ace & Dik awning right",
+    "signage": "Ace & Dik lettered on the awning",
+    "roofline": "thin bracketed cornice; slate mansard with three white pediment dormers",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 0-926 px",
+    "photoRows": [
+     3,
+     6,
+     6,
+     6,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the shop row behind the van is drawn as one white shopfront",
+     "the cream speklagen every fourteen courses, the cornice hoods over the first- and second-floor windows and the segmental third-floor heads are left out: with them this 23 m, 24-window front compiles to 5,017 triangles against the 3,000 per-front budget (speklagen alone cost 1,450)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164814",
+   "slug": "hface-164814",
+   "address": "Van Baerlestraat 44",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       4.0,
+       3.9,
+       3.7,
+       3.4
+      ],
+      "windowSurround": "jack-blocks",
+      "surroundStoreys": [
+       1,
+       2,
+       3
+      ],
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.62,
+       0.56
+      ],
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Miele",
+       "display": "#e8b8a0",
+       "sign": {
+        "text": "MIELE",
+        "textColour": "#c8202a",
+        "span": 0.3
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 926-1187: black pui, a red Miele box sign on the black fascia, two lit windows, a black door right"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#695a43",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cdcdb6"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "industriefunctie",
+     "winkelfunctie"
+    ],
+    "name": "Miele",
+    "category": "shop=electronics",
+    "osm": {
+     "type": "node",
+     "id": 12672918227,
+     "name": "Miele",
+     "tags": "brand=Miele; shop=electronics"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | third: 3",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "Miele red on black",
+    "roofline": "white entablature with blocks",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 926-1187 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     0
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156740",
+   "slug": "hface-156740",
+   "address": "Van Baerlestraat 42",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       4.0
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "shape": "round",
+        "widthCourses": 4
+       }
+      },
+      "surroundStoreys": [
+       2
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "arched",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "partyClip": true,
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "display": "#e8b0a0",
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 1186-1419: black pui, one wide lit window, a black door right; no sign on the fascia"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#61513d",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#beb79a"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "No OSM shop node on 42; a shop on 2024-12-11 with no readable sign.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=yes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white tympana, balconette centre | second: 3, balcony centre | roof: 1 arched dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "none readable",
+    "roofline": "white entablature; slate mansard with one white dormer",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 1186-1419 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158360",
+   "slug": "hface-158360",
+   "address": "Van Baerlestraat 40",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       4.0
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "shape": "round",
+        "widthCourses": 4
+       }
+      },
+      "surroundStoreys": [
+       2
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "partyClip": true,
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#d8d0bc",
+       "fascia": false,
+       "name": "Joe & The Juice",
+       "display": "#d8a860",
+       "sign": {
+        "text": "JOE & THE JUICE",
+        "textColour": "#2a2a28",
+        "span": 0.5,
+        "mount": "wall"
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#d8d0bc",
+       "evidence": "strip 2024-12-11 x 1419-1667: cream stone pui, JOE & THE JUICE in black letters on the stone over the glass, a dark door right"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b553c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cbc3a2"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Joe & The Juice",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 12672940714,
+     "name": "Joe & The Juice",
+     "tags": "brand=Joe & The Juice; amenity=cafe"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: cafe | first: 3 under white tympana, balcony centre | second: 3, balcony centre | roof: a wide triple dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "cream stone pui",
+    "signage": "JOE & THE JUICE black on cream",
+    "roofline": "white entablature; slate mansard with a wide white dormer",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 1419-1667 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum",
+     "the wide three-light dormer is drawn as one pediment dormer"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012153208",
+   "slug": "hface-153208",
+   "address": "Van Baerlestraat 38",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       4.0
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "shape": "round",
+        "widthCourses": 4
+       }
+      },
+      "surroundStoreys": [
+       2
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "partyClip": true,
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#e8e4da",
+       "fascia": true,
+       "fasciaColour": "#ece9df",
+       "display": "#e0dcd4",
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e8e4da",
+       "evidence": "strip 2024-12-11 x 1667-1897: white pui and a white fascia behind the tram shelter; no sign readable"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#65513a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b5a880"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "The tram shelter hides the shop on 2024-12-11; name from OSM.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Maroc Maroc",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 4136039738,
+     "name": "Maroc Maroc",
+     "tags": "shop=beauty"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white tympana, balconette centre | second: 3, balcony centre | roof: a tall pediment dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white pui",
+    "signage": "not readable (tram shelter)",
+    "roofline": "white entablature; slate mansard with a tall dormer between two roof lights",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 1667-1897 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156304",
+   "slug": "hface-156304",
+   "address": "Van Baerlestraat 36",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       4.0
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "shape": "round",
+        "widthCourses": 4
+       }
+      },
+      "surroundStoreys": [
+       2
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "arched",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "partyClip": true,
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2a28",
+       "fascia": true,
+       "fasciaColour": "#2a2a28",
+       "display": "#d8b070",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#2a2a28",
+       "evidence": "strip 2024-12-11 x 1895-2136: dark fascia and lit windows behind the tram shelter; no sign readable"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6c553e",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#baad8a"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "The tram shelter hides the shop on 2024-12-11; name from OSM.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Le Creuset",
+    "category": "shop=houseware",
+    "osm": {
+     "type": "node",
+     "id": 2816384837,
+     "name": "Le Creuset",
+     "tags": "brand=Le Creuset; shop=houseware"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white tympana, balconette centre | second: 3, balcony centre | roof: a white dormer and a roof light",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "dark pui",
+    "signage": "not readable (tram shelter)",
+    "roofline": "white entablature; slate mansard with one white dormer",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 1895-2136 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157788",
+   "slug": "hface-157788",
+   "address": "Van Baerlestraat 34",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       4.0
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "shape": "round",
+        "widthCourses": 4
+       }
+      },
+      "surroundStoreys": [
+       2
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "arched",
+      "dormerBody": "stone",
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "partyClip": true,
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2a28",
+       "fascia": true,
+       "fasciaColour": "#2a2a28",
+       "display": "#d8b070",
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#2a2a28",
+       "evidence": "strip 2024-12-11 x 2137-2355: dark fascia with small unreadable lettering, lit window behind the tram shelter"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#755a44",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#c9c09c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "Lettering on the fascia too small to read on 2024-12-11; name from OSM.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Marie-Stella-Maris",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 2816384698,
+     "name": "Marie-Stella-Maris",
+     "tags": "shop=beauty"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white tympana, balconette centre | second: 3, balcony centre | roof: a white dormer and a roof light",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "dark pui",
+    "signage": "too small to read",
+    "roofline": "white entablature; slate mansard with one white dormer",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 2137-2355 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162838",
+   "slug": "hface-162838",
+   "address": "Van Baerlestraat 32",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       4.0,
+       4.0,
+       3.6,
+       3.0
+      ],
+      "windowSurround": "jack-blocks",
+      "surroundStoreys": [
+       2,
+       3
+      ],
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "paintedStoreys": {
+       "storeys": [
+        2,
+        3
+       ],
+       "colour": "#262828"
+      },
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.62,
+       0.6
+      ],
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#7a4c3c",
+       "fascia": false,
+       "display": "#d0d8b0",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 3,
+       "stallriser": "low",
+       "stallriserColour": "#7a4c3c",
+       "evidence": "strip 2024-12-11 x 2355-2610: brick pui with white bands, three tall lit windows; no sign readable"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b5a43",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cfc9a9"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "No sign readable on 2024-12-11; name from OSM.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Labfresh",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4136039741,
+     "name": "Labfresh",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 tall lit display windows | second: 3, balconette centre | third: 3",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "brick pui",
+    "signage": "none readable",
+    "roofline": "white entablature over the black-painted top storeys",
+    "citation": "baerle-32-50 strip.jpg (2024-12-11) x 2355-2610 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the first-floor display windows are drawn as tall windows"
+    ]
+   }
+  }
+ ]
+}

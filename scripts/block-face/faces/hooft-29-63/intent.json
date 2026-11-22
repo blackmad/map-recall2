@@ -1,0 +1,2039 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hooft-29-63",
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/hooft-29-63/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2025-07-30",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-30",
+   "image": "staging/block-face/hooft-29-63/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-4 lane), from strip-labelled.png and per-pand crops",
+  "passes": 1,
+  "note": "PC Hooftstraat 29-63 (odd): Canada Goose, Cavallaro Napoli, ba&sh, Stone Island, Emporio Armani (39-41, a pointed gable over the left house), two fronts under works (43, 45), Rimowa, Vacheron Constantin, Schaap en Citroen, Chopard (53, pointed gable), Montblanc, 59-61 (scaffolded in 2024; read from 2025-07-30, a PRADA hoarding), Prada (63). 59-61 is cut from the 2025-07-30 panoramas."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012158272",
+    "stripRow": 151,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 151"
+   },
+   {
+    "pand": "0363100012155334",
+    "stripRow": 157,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 157"
+   },
+   {
+    "pand": "0363100012165827",
+    "stripRow": 160,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 160"
+   },
+   {
+    "pand": "0363100012160305",
+    "stripRow": 166,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 166"
+   },
+   {
+    "pand": "0363100012089719",
+    "stripRow": 190,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 190"
+   },
+   {
+    "pand": "0363100012157173",
+    "stripRow": 190,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 190"
+   },
+   {
+    "pand": "0363100012159279",
+    "stripRow": 164,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 164"
+   },
+   {
+    "pand": "0363100012158410",
+    "stripRow": 165,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 165"
+   },
+   {
+    "pand": "0363100012161622",
+    "stripRow": 161,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 161"
+   },
+   {
+    "pand": "0363100012164893",
+    "stripRow": 172,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 172"
+   },
+   {
+    "pand": "0363100012068180",
+    "stripRow": 204,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 204"
+   },
+   {
+    "pand": "0363100012159316",
+    "stripRow": 235,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 235"
+   },
+   {
+    "pand": "0363100012152454",
+    "stripRow": 177,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 177"
+   },
+   {
+    "pand": "0363100012159597",
+    "stripRow": 145,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 145"
+   },
+   {
+    "pand": "0363100012163614",
+    "stripRow": 173,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 173"
+   },
+   {
+    "pand": "0363100012160242",
+    "stripRow": 155,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 155"
+   }
+  ],
+  "notes": [
+   "Cornice tops per pand: first strip row where 70 % of the span is not sky; 157173 read at the right half's entablature, 159316 at the gable foot."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012158272",
+   "slug": "hface-158272",
+   "address": "Pieter Cornelisz. Hooftstraat 29",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Canada Goose",
+       "display": "#d8b880",
+       "sign": {
+        "text": "CANADA GOOSE",
+        "textColour": "#f0ece4",
+        "span": 0.6
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 0-205: black pui, CANADA GOOSE lit white on the black fascia, three lit bays"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5b5346",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d0d8c5"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Canada Goose",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816413035,
+     "name": "Canada Goose",
+     "tags": "brand=Canada Goose; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes (the left window cut at the strip edge)",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3 under brick relieving arches | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "CANADA GOOSE white on black",
+    "roofline": "white entablature with consoles; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 0-205 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012155334",
+   "slug": "hface-155334",
+   "address": "Pieter Cornelisz. Hooftstraat 31",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "paintedStoreys": {
+       "storeys": [
+        1
+       ],
+       "colour": "#25292a"
+      },
+      "shopfront": {
+       "colour": "#1c1f20",
+       "fascia": true,
+       "fasciaColour": "#1c1f20",
+       "name": "Cavallaro Napoli",
+       "display": "#d8b070",
+       "sign": {
+        "text": "CAVALLARO NAPOLI",
+        "textColour": "#c8a868",
+        "span": 0.55
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1f20",
+       "evidence": "strip 2024-12-11 x 205-469: black pui and black-painted first floor, CAVALLARO NAPOLI gold on the fascia, garlanded lit windows"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#625a4c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#c6cdbd"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "BAG also lists a bijeenkomstfunctie unit.",
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Cavallaro Napoli",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816413059,
+     "name": "Cavallaro Napoli",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 hooded windows x 3, the first floor painted black",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui, black first floor",
+    "signage": "CAVALLARO NAPOLI gold",
+    "roofline": "white entablature with acanthus consoles; a V-shaped sculpture on the roof",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 205-469 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white hoods are moulded segmental hoods with a keystone; drawn as stone ledges",
+     "the V sculpture on the roof is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165827",
+   "slug": "hface-165827",
+   "address": "Pieter Cornelisz. Hooftstraat 33",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "display": "#c89850",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 469-732: black pui, a small gold monogram (two figures) on the fascia, gold-lit display cabinets"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#686050",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d6ddcb"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM: The A'dam Giftshop; the 2024-12-11 strip shows only a gold monogram, no readable name.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=gift",
+    "osm": {
+     "type": "node",
+     "id": 636855925,
+     "name": "The A'dam Giftshop",
+     "tags": "shop=gift"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 hooded windows x 3",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "gold monogram, no text",
+    "roofline": "white entablature; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 469-732 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white hoods are moulded segmental hoods with a keystone; drawn as stone ledges"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160305",
+   "slug": "hface-160305",
+   "address": "Pieter Cornelisz. Hooftstraat 35",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.2,
+       "setback": 0.8
+      },
+      "shopfront": {
+       "colour": "#e4e0d6",
+       "fascia": true,
+       "fasciaColour": "#e8e4dc",
+       "name": "ba&sh",
+       "display": "#e8c8a0",
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e4e0d6",
+       "evidence": "strip 2024-12-11 x 731-1001: cream pui with a white door left, one wide lit window, a small gold name on the fascia (unreadable) and ba&sh plaques by the window"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#607270",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#dae0cf"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM also places Digicoins-Europe (company) here; not on the strip.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "ba&sh",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816413083,
+     "name": "Digicoins-Europe",
+     "tags": ""
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "cream pui",
+    "signage": "small, unreadable on the fascia",
+    "roofline": "plain white entablature; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 731-1001 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012089719",
+   "slug": "hface-089719",
+   "address": "Pieter Cornelisz. Hooftstraat 37",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.6,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Stone Island",
+       "display": "#e0a070",
+       "sign": {
+        "text": "STONE ISLAND",
+        "textColour": "#e8e4dc",
+        "span": 0.35
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 1001-1238: black pui, STONE ISLAND small white on the fascia over a red-lit LED band, lit window"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4b4838",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d3dac5"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Stone Island",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11273948929,
+     "name": "Stone Island",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3 under brick relieving arches | roof: tall stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "STONE ISLAND white",
+    "roofline": "plain white entablature; tall crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 1001-1238 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the red LED band under the fascia is drawn as display light"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157173",
+   "slug": "hface-157173",
+   "address": "Pieter Cornelisz. Hooftstraat 39-41",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 4,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "crownBays": {
+       "from": 0,
+       "to": 1
+      },
+      "crownRise": 0.9,
+      "atticWindows": 1,
+      "dormerAt": [
+       {
+        "from": 0.67,
+        "to": 0.83
+       }
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "style": "guard"
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Emporio Armani",
+       "display": "#e0603a",
+       "sign": {
+        "text": "EMPORIO ARMANI",
+        "textColour": "#f0ece4",
+        "span": 0.4
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 1238-1750: one black pui over both houses, EMPORIO ARMANI white on the black fascia, two red-lit windows either side of a centre door"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a4535",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#ccd2c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "BAG also lists an industriefunctie unit.",
+    "bag": [
+     "industriefunctie",
+     "winkelfunctie"
+    ],
+    "name": "Emporio Armani",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4706786721,
+     "name": "Emporio Armani",
+     "tags": "brand=Emporio Armani; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "4 axes: 2 under a pointed gable (left house), 2 under a white entablature (right house)",
+    "windowsPerStorey": "ground: shop | uppers: 4 windows x 3, iron balconettes on the second floor left | gable: 1 attic window",
+    "symmetry": "asymmetric",
+    "groundFloor": "black pui",
+    "signage": "EMPORIO ARMANI white",
+    "roofline": "left: pointed brick gable with a corbelled foot; right: white entablature and a stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 1238-1750 px",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream brick band courses across the front are not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159279",
+   "slug": "hface-159279",
+   "address": "Pieter Cornelisz. Hooftstraat 43-43C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.8,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#c8a070",
+       "fascia": true,
+       "fasciaColour": "#b89060",
+       "display": "#3a3a36",
+       "entrance": "none",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#c8a070",
+       "evidence": "strip 2024-12-11 x 1751-2003: plywood hoarding over the ground floor, posters and a blue-white builder board"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#745c4a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#daddcb"
+    }
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "Under works on 2024-12-11 (plywood hoarding); BAG winkelfunctie; no OSM node.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "category": "shop=vacant"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: hoarded | uppers: 2 windows x 3 under brick relieving arches | roof: crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "plywood hoarding",
+    "signage": "none",
+    "roofline": "white entablature; crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 1751-2003 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012158410",
+   "slug": "hface-158410",
+   "address": "Pieter Cornelisz. Hooftstraat 45",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "paintedStoreys": {
+       "storeys": [
+        1
+       ],
+       "colour": "#d8ccae"
+      },
+      "balconies": {
+       "storeys": [
+        3
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "display": "#2a2c2c",
+       "entrance": "none",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 2003-2264: a black hoarding with a stepped top over the ground floor (builder Wessels Zeist), the first floor cream with wrought-iron vine ornament"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a4333",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cfd4c8"
+    }
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "Under works on 2024-12-11 (black hoarding of Wessels Zeist); BAG winkelfunctie; no OSM node.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=vacant"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: hoarded | uppers: 2 hooded windows x 3, iron balconettes at the top",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black hoarding",
+    "signage": "builder board",
+    "roofline": "white entablature with dentils; a small crest",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 2003-2264 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the stepped top of the hoarding and the iron vines on the cream first floor are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161622",
+   "slug": "hface-161622",
+   "address": "Pieter Cornelisz. Hooftstraat 47",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 1,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        0
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Rimowa",
+       "display": "#c89860",
+       "entrance": "centre",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 2263-2434: a black glass canopy over a dark shop front; the sign is hidden under the canopy"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5a4f3f",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#ccd6cb"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM: Rimowa; the sign is not visible under the glass canopy.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Rimowa",
+    "category": "shop=bag",
+    "osm": {
+     "type": "node",
+     "id": 2816413883,
+     "name": "Rimowa",
+     "tags": "brand=Rimowa; shop=bag"
+    }
+   },
+   "rhythm": {
+    "bays": "1 axis",
+    "windowsPerStorey": "ground: shop under a glass canopy | uppers: 1 hooded window x 3 with white balconettes",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui, glass canopy",
+    "signage": "hidden",
+    "roofline": "white entablature",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 2263-2434 px",
+    "photoRows": [
+     1,
+     1,
+     1,
+     1,
+     0
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the black glass canopy over the shop is left out (its rigid canopy z-fought the shop frames)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164893",
+   "slug": "hface-164893",
+   "address": "Pieter Cornelisz. Hooftstraat 49",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#d8d4ca",
+       "fascia": true,
+       "fasciaColour": "#c4c0b6",
+       "name": "Vacheron Constantin",
+       "display": "#e8b070",
+       "sign": {
+        "text": "VACHERON CONSTANTIN",
+        "textColour": "#f4f2ec",
+        "span": 0.75
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#d8d4ca",
+       "evidence": "strip 2024-12-11 x 2521-2774: pale stone pui, VACHERON CONSTANTIN white on the grey band, a garland, lit window"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#745c4b",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cccdbc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: IWC (and \"With a little help by Frankey\"); the 2024-12-11 strip reads VACHERON CONSTANTIN.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Vacheron Constantin",
+    "category": "shop=watches",
+    "osm": {
+     "type": "node",
+     "id": 4706786717,
+     "name": "IWC",
+     "tags": "brand=IWC; shop=watches"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3 under brick relieving arches | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "pale stone pui",
+    "signage": "VACHERON CONSTANTIN white on grey",
+    "roofline": "white entablature with acanthus consoles; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 2521-2774 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012068180",
+   "slug": "hface-068180",
+   "address": "Pieter Cornelisz. Hooftstraat 51-51C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.6,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#2a2c2a",
+       "fascia": true,
+       "fasciaColour": "#e4e0d6",
+       "name": "Schaap en Citroen",
+       "display": "#e8b878",
+       "sign": {
+        "text": "SCHAAP EN CITROEN",
+        "textColour": "#8ad070",
+        "span": 0.7
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#2a2c2a",
+       "evidence": "strip 2024-12-11 x 2774-3032: pale band with SCHAAP EN CITROEN lit green over a garland, lit windows with a door left"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      },
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 30,
+       "courses": 2
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6d6051",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d6d9c9",
+     "band": "#b8a87c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "BAG lists only woonfunctie units on this pand.",
+    "bag": [
+     "woonfunctie"
+    ],
+    "name": "Schaap en Citroen",
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 4706786716,
+     "name": "Schaap-Citroen",
+     "tags": "shop=jewelry"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3, cream brick band courses at sill and impost",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "pale band",
+    "signage": "SCHAAP EN CITROEN green",
+    "roofline": "plain white entablature; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 2774-3032 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream band courses are drawn as evenly spaced speklagen (1.65 m), not tied to the sill and impost lines"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159316",
+   "slug": "hface-159316",
+   "address": "Pieter Cornelisz. Hooftstraat 53",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": [
+       2,
+       2,
+       2,
+       2
+      ],
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.6,
+       3.6,
+       3.6
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "atticWindows": 1,
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "style": "guard"
+      },
+      "windowCanopies": {
+       "storey": 1,
+       "colour": "#1c1e22",
+       "sign": {
+        "text": "CHOPARD",
+        "textColour": "#f0ece4"
+       },
+       "evidence": "strip 2024-12-11 x 3032-3291: a black canopy with Chopard in white script over each first-floor window"
+      },
+      "shopfront": {
+       "colour": "#e2ded4",
+       "fascia": true,
+       "fasciaColour": "#e2ded4",
+       "name": "Chopard",
+       "display": "#f0c070",
+       "sign": {
+        "text": "CHOPARD",
+        "textColour": "#faf8f2",
+        "span": 0.45
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e2ded4",
+       "evidence": "strip 2024-12-11 x 3032-3291: cream stone pui, Chopard in white script on the band, gold-lit window, door right"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#676252",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#c6cbbd"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Chopard",
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 11273948928,
+     "name": "Chopard Boutique",
+     "tags": "shop=jewelry"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3; black canopies lettered Chopard over the first-floor windows, a C monogram on the glass; iron balconettes on the second floor | gable: 1 attic window",
+    "symmetry": "symmetric",
+    "groundFloor": "cream stone pui",
+    "signage": "Chopard white script (drawn in capitals)",
+    "roofline": "pointed brick gable with a corbelled foot and a chimney",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 3032-3291 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the canopies carry Chopard in script; drawn in capitals",
+     "the C monogram on the first-floor glass is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012152454",
+   "slug": "hface-152454",
+   "address": "Pieter Cornelisz. Hooftstraat 55",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.6,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "display": "#e0a860",
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 3292-3541: black pui, gold lettering left and right on the black fascia (unreadable), gold-lit jewellery window"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      },
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 30,
+       "courses": 2
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6e624f",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d7e0d0",
+     "band": "#b8a87c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: La Perla (clothes); the 2024-12-11 front is a gold-lit jewellery shop with an unreadable gold name.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 4706786715,
+     "name": "La Perla",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3 with cream band arches | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "gold, unreadable",
+    "roofline": "white entablature with consoles; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 3292-3541 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream band courses are drawn as evenly spaced speklagen (1.65 m), not tied to the sill and impost lines"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159597",
+   "slug": "hface-159597",
+   "address": "Pieter Cornelisz. Hooftstraat 57",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.7,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowSurround": "keystone",
+      "surroundStoreys": [
+       1,
+       2,
+       3
+      ],
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Montblanc",
+       "display": "#e8c890",
+       "sign": {
+        "text": "MONTBLANC",
+        "textColour": "#f4f2ec",
+        "span": 0.55
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 3541-3799: black pui, MONTBLANC white with the star emblem on the black fascia, lit window, door right"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6f6553",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#e3e7cb"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Montblanc",
+    "category": "shop=fashion_accessories",
+    "osm": {
+     "type": "node",
+     "id": 4706786714,
+     "name": "Montblanc",
+     "tags": "brand=Montblanc; shop=fashion_accessories"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3, a pair of white stone tablets over each head | roof: crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "MONTBLANC white",
+    "roofline": "plain white entablature; crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 3541-3799 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the paired white tablets over each window are drawn as one keystone"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012163614",
+   "slug": "hface-163614",
+   "address": "Pieter Cornelisz. Hooftstraat 59-61",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 4,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 8,
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "dormers": 2,
+      "dormerStyle": "arched",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#e8e6e0",
+       "fascia": true,
+       "fasciaColour": "#e8e6e0",
+       "name": "Prada",
+       "display": "#d8d6d0",
+       "sign": {
+        "text": "PRADA",
+        "textColour": "#8a8a84",
+        "span": 0.3
+       },
+       "entrance": "none",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e8e6e0",
+       "evidence": "strip 2025-07-30 x 3799-4323: a white hoarding lettered PRADA over the whole ground floor"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#808185",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cfeded"
+    }
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2025-07-30",
+    "agreement": "conflict",
+    "note": "OSM: Salvatore Ferragamo. Scaffolded on 2024-12-11 (foundation repair); the 2025-07-30 panoramas show the uppers and a white hoarding lettered PRADA over the ground floor (Prada extending from 63).",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Prada",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11273948927,
+     "name": "Salvatore Ferragamo",
+     "tags": "shop=boutique"
+    }
+   },
+   "rhythm": {
+    "bays": "4 equal axes",
+    "windowsPerStorey": "ground: hoarded | uppers: 4 hooded windows x 3 | roof: 2 arched dormers",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white PRADA hoarding",
+    "signage": "PRADA grey on white",
+    "roofline": "white entablature with acanthus consoles; two arched dormers",
+    "citation": "hooft-29-63 strip.jpg (2025-07-30) x 3799-4323 px",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white hoods are moulded segmental hoods with a keystone; drawn as stone ledges"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160242",
+   "slug": "hface-160242",
+   "address": "Pieter Cornelisz. Hooftstraat 63",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.9,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.12
+      },
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.66,
+       0.64
+      ],
+      "windowCanopies": {
+       "storey": 1,
+       "colour": "#ece8e0",
+       "sign": {
+        "text": "PRADA",
+        "textColour": "#3a3a36"
+       },
+       "evidence": "strip 2024-12-11 x 4323-4686: a white canopy lettered PRADA in dark capitals over each first-floor window"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Prada",
+       "display": "#e8b878",
+       "sign": {
+        "text": "PRADA",
+        "textColour": "#f4f2ec",
+        "span": 0.3
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 4323-4686: black pui, PRADA white on the black fascia, two lit windows; white canopies lettered PRADA over the first-floor windows"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#745d49",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d5d9c8"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM also has AmsterHome here.",
+    "bag": [
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie,woonfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Prada",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816414760,
+     "name": "AmsterHome",
+     "tags": ""
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes on the street, the corner chamfered",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows x 3; white canopies lettered PRADA over the first-floor windows | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "PRADA white on black",
+    "roofline": "heavy white cornice returning round the corner; stone crest dormer",
+    "citation": "hooft-29-63 strip.jpg (2024-12-11) x 4323-4686 px",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the crest dormer is left out: on the straightened corner front it cut through the corner roof"
+    ]
+   }
+  }
+ ]
+}

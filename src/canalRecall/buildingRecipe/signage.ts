@@ -95,7 +95,9 @@ export function letteringGeometry(o: LetteringOptions, mirrorX = false): Letteri
 }
 
 /** Where the lettering goes: a band in viewer metres (`leftM` from the viewer's left) at `frontLeftM` in the elevation frame, its face `depthM` proud of the wall. */
-export interface SignPlacement { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; mount?: 'fascia' | 'wall' | 'glazing'; sign?: ShopSign | null }
+export interface SignPlacement { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; mount?: 'fascia' | 'wall' | 'glazing' | 'awning'; sign?: ShopSign | null;
+  /** Radians about the front's x axis: the lettering lies on a sloped face (a straight fabric awning's top); absent = upright. */
+  slope?: number }
 
 /** Add the sign's lettering mesh to the elevation group; returns the triangle count added. */
 export function addLettering(elevation: T.Object3D, f: SignPlacement, colour: string, pandId: string): number {
@@ -108,6 +110,7 @@ export function addLettering(elevation: T.Object3D, f: SignPlacement, colour: st
   const localX = f.mirrored ? f.frontLeftM + f.widthM - cx : f.frontLeftM + cx;
   const g = new T.BufferGeometry();
   g.setAttribute('position', new T.Float32BufferAttribute(lettering.positions, 3));
+  if (f.slope) g.rotateX(f.slope);
   g.computeVertexNormals();
   g.translate(localX, f.bottomM + f.heightM / 2, f.depthM + 0.03);
   const mesh = new T.Mesh(g, new T.MeshStandardMaterial({color: colour, roughness: 0.6}));
