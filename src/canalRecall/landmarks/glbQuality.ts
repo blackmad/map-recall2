@@ -97,6 +97,12 @@ export interface StandoffDeck {
   bearing: number;
   span: [[number, number], [number, number]];
   reach: number;
+  /**
+   * A cantilevered deck, open beneath (Westerdok 4's staggered balconies, 6.4 m out): also exempt a ray from any other bearing
+   * whose target lies in the strip under an overhang at least 3 m above the ray, when the wall stands within `reach` + 1 m of
+   * the target along `bearing` (the rays in under a deck's lateral ends). Absent: only rays within 15 deg of `bearing`.
+   */
+  lateral?: boolean;
   evidence?: string;
 }
 
@@ -112,6 +118,11 @@ export interface ThroughPassage {
 }
 
 /** A standoff deck's strip: the wall line, 0.5 m inside it, to `reach` metres out against the inward ray (`bearing`). */
+/** The inward ray direction of a standoff deck's bearing (degrees clockwise from -z): (sin, 0, -cos). */
+export function standoffInward(sd: StandoffDeck): [number, number, number] {
+  const r = (sd.bearing * Math.PI) / 180;
+  return [Math.sin(r), 0, -Math.cos(r)];
+}
 export function standoffStrip(sd: StandoffDeck): [number, number][] {
   const r = (sd.bearing * Math.PI) / 180, ox = -Math.sin(r), oz = Math.cos(r); // outward = against the ray (dx, dz) = (sin, -cos)
   const [[ax, az], [bx, bz]] = sd.span, at = (x: number, z: number, d: number): [number, number] => [x + ox * d, z + oz * d];
@@ -1058,6 +1069,10 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
             const rayBearing = (Math.atan2(dx, -dz) * 180) / Math.PI;
             if (th.standoffDecks.some(sd => bearingDelta(sd.bearing, rayBearing) <= 15 && inPolygon(target[0], target[2], standoffStrip(sd))
               && firstHit(target, [dx, 0, dz], sd.reach + 1) > 0)) hit = 1;
+            // `lateral` decks (cantilevers, open beneath): a ray in under the deck from its side, under an overhang at least 3 m
+            // over it, is closed when the wall behind the deck stands within `reach` + 1 m of its target along the deck's bearing.
+            else if (low[iz * cw + ix] >= h + 3 && th.standoffDecks.some(sd => sd.lateral === true && inPolygon(target[0], target[2], standoffStrip(sd))
+              && firstHit(target, standoffInward(sd), sd.reach + 1) > 0)) hit = 1;
           }
           if (hit < 0) {
             seeThrough.rays++;

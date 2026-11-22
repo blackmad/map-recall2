@@ -1,0 +1,499 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "akbarstraat-165-217-253686",
+ "pandId": "0363100012253686",
+ "address": "Akbarstraat 165-217, Overtoomse Veld (De Aker): 2017 four-storey housing in orange-red brick, tall narrow white-framed windows, paired dark front doors in brick portals, stacked brick-clad cantilever balconies with glass tops on storeys 2 and 3, and a five-storey head at the south end with a garage door (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2025-09-25-w01-88d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-25_10-24-49_00603/",
+   "image": "source-data://pand-reference-walls/0363100012253686/w01-88d25.jpg",
+   "sha256": "787972337cdb8da9477bb08d5bdebed9d5aeb98a60aea85f0e65dbca667e8a2a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-26-w03-196L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/MS_26112024_845_Track21_Sphere_00006/",
+   "image": "source-data://pand-reference-walls/0363100012253686/w03-196L.jpg",
+   "sha256": "5f65d47207b018f1e2cb429e8d62a38548810d532bd23ad88d9bf1d35cdecd0c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-26-w02-269",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/MS_26112024_845_Track25_Sphere_00005/",
+   "image": "source-data://pand-reference-walls/0363100012253686/w02-269.jpg",
+   "sha256": "61fb0a7fd01aa7a0f13d5d2b0277b56f03c961aeb8dcd79c14852f08552bf4e7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    133,
+    138
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette",
+    "houses"
+   ],
+   "houses": [
+    {
+     "w": 13.8,
+     "bays": 6,
+     "storeys": 5,
+     "ownEaves": true,
+     "ground": "residential",
+     "residential": {
+      "pattern": [
+       "window",
+       "storage",
+       "storage",
+       "window",
+       "door",
+       "window"
+      ],
+      "doors": "#2e3133"
+     }
+    },
+    {
+     "w": 5.6,
+     "bays": 2
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    3,
+    6
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 2,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    175
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 1,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    171
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette",
+    "balconyBands"
+   ],
+   "balconyBands": {
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     }
+    ],
+    "kind": "solid",
+    "deep": 0.45,
+    "rail": 0.36,
+    "colour": "#6e3a28"
+   }
+  },
+  {
+   "wallSurfaces": [
+    37
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette",
+    "balconyBands"
+   ],
+   "balconyBands": {
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     }
+    ],
+    "kind": "solid",
+    "deep": 0.45,
+    "rail": 0.36,
+    "colour": "#6e3a28"
+   }
+  },
+  {
+   "wallSurfaces": [
+    20
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette",
+    "balconyBands"
+   ],
+   "balconyBands": {
+    "storeys": [],
+    "spans": [
+     {
+      "storey": 2,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     },
+     {
+      "storey": 3,
+      "bays": [
+       [
+        1,
+        1
+       ]
+      ]
+     }
+    ],
+    "kind": "solid",
+    "deep": 0.45,
+    "rail": 0.36,
+    "colour": "#6e3a28"
+   }
+  },
+  {
+   "wallSurfaces": [
+    59
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 1,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    94
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 2,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    69
+   ],
+   "street": "Akbarstraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#8a4c36",
+    "frame": "#e6e4de",
+    "stone": "#8a4c36"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#2e3133"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8a4c36",
+  "frame": "#e6e4de",
+  "door": "#2e3133",
+  "stone": "#8a4c36"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from w01-88d25 2025-09-25 (re-cropped with a date filter: the archived w01-88 2021-03-29 is the building site). The Akbarstraat E front is nine 3DBAG panels split by the brick door portals: from the south (left in the crop) 117 (the five-storey head over 13.8 m with the garage door, then four storeys), 2, 152, 148, 35, 18, 57, 92 and 67 (five storeys at the north end). Four storeys of tall narrow white-framed windows over a residential ground of paired dark doors; the three middle units carry stacked brick-clad cantilever balconies on storeys 2 and 3. Other fronts were photographed 40+ degrees oblique (w02-269, w04-195, w05-268) and take otherWalls.",
+  "The balconies are solid brick-coloured slabs; their glass upper rail and the brick-bond relief round the doors are not modelled."
+ ],
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#5f5d5a"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

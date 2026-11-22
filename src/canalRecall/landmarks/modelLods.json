@@ -681,14 +681,14 @@
   }
  },
  "pontsteiger": {
-  "sourceHash": "d28fd4f170683e25",
+  "sourceHash": "ad8286e25a8713e9",
   "buildVersion": 2,
-  "bytes": 78904,
-  "triangles": 4212,
+  "bytes": 80524,
+  "triangles": 4266,
   "lod2": {
-   "sourceHash": "d28fd4f170683e25",
+   "sourceHash": "ad8286e25a8713e9",
    "buildVersion": 6,
-   "bytes": 13544,
+   "bytes": 13572,
    "triangles": 550
   }
  },
@@ -6493,14 +6493,14 @@
   }
  },
  "pentagon": {
-  "sourceHash": "5f982c7292f3b9bb",
+  "sourceHash": "5e96b1fe8862140b",
   "buildVersion": 2,
-  "bytes": 86448,
+  "bytes": 86672,
   "triangles": 4919,
   "lod2": {
-   "sourceHash": "5f982c7292f3b9bb",
+   "sourceHash": "5e96b1fe8862140b",
    "buildVersion": 6,
-   "bytes": 20956,
+   "bytes": 21068,
    "triangles": 877
   }
  },
@@ -7112,6 +7112,18 @@
    "buildVersion": 6,
    "bytes": 9656,
    "triangles": 255
+  }
+ },
+ "westerdok-4": {
+  "sourceHash": "41369f59c0a3c4dd",
+  "buildVersion": 2,
+  "bytes": 337004,
+  "triangles": 25817,
+  "lod2": {
+   "sourceHash": "41369f59c0a3c4dd",
+   "buildVersion": 6,
+   "bytes": 23992,
+   "triangles": 1495
   }
  }
 }

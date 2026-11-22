@@ -71,9 +71,22 @@ function wallInfo(src: Src, s: Surface, i: number): WallInfo | null {
   if (!rect && r.every(p => Math.abs(p[0] * n[0] + p[2] * n[1] - off) < 0.08)) {
     const foot = r.map((p, k) => (p[1] < yb + 0.05 ? ts[k] : null)).filter((t): t is number => t !== null);
     const tops = r.filter(p => p[1] >= yb + 0.05).map(p => p[1]);
-    if (foot.length >= 2 && Math.min(...foot) < t0 + 0.05 && Math.max(...foot) > t1 - 0.05 && tops.length && Math.min(...tops) - yb > 2.5) stepTop = Math.min(...tops);
+    if (foot.length >= 2 && Math.min(...foot) < t0 + 0.05 && Math.max(...foot) > t1 - 0.05 && tops.length && Math.min(...tops) - yb > 2.5
+      && risesAtBothEnds(r.map((p, k): P2 => [ts[k], p[1]]), t0, t1, yb)) stepTop = Math.min(...tops);
   }
   return {i, f, len, yb, yt, cx, cz, rect, stepTop};
+}
+
+/**
+ * A stepped wall's rectangle (foot to lowest top vertex) lies inside its ring only when the ring rises at both ends: a
+ * top vertex within 5 cm of each end of the foot. A wall that rises from one end only (a 3DBAG triangle under a roof
+ * sloping down to its foot: Westerdok 4's court tower, wall 163, 9.93 m foot, 20.78 m apex at one end) is no step: the
+ * rectangle drawn to its apex stood clear of the sloped roof edge and left a 42 m open loop. Such a wall stays shell.
+ * `pts` are (t along the wall, y) per ring vertex. Every stepped wall of the other hand-block models rises at both ends.
+ */
+export function risesAtBothEnds(pts: P2[], t0: number, t1: number, yb: number): boolean {
+  const up = pts.filter(([, y]) => y >= yb + 0.05).map(([t]) => t);
+  return up.some(t => t < t0 + 0.05) && up.some(t => t > t1 - 0.05);
 }
 
 /** The front a wall belongs to: facing the same way (within ~14 deg), its plane within 1.2 m of the crop's wall line. */

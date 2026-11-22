@@ -1,5 +1,5 @@
 {
-  "toolchain": "9a81d46d8b665643d70c9768e334c162b8718e7d0bbb7337a8b8973eb3843520",
+  "toolchain": "193d1168a8379c43cd58a9493c534db2093568307279d87552007d33bf425255",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -398,7 +398,7 @@
     "park-centraal-stadhouderskade": "152d10e7f87190fd0e3af2af25579cf50ccb96beb5951a793ad9fe063cf302bf",
     "pathe-city": "bd941ab137713ab148e2c687d5b8708d6ebc54126fc08e5cc3954a4fd5749086",
     "pathe-de-munt": "cbd47153c01beed970a8c47c4719f08c27ce675d636aa6b8cdea286fe1bea839",
-    "pentagon": "b921e2b5137c7fc00fb7793d93e5fe1638d33350c1e2d67b5f892f598f407468",
+    "pentagon": "1816f84d24cf592ea7034ddf2d20e2c092b5f36ed279ce9a273adc7431414216",
     "perdu": "edd8eddf80f0f5d11a9522d446e71faa61f62344b186a1239ff646519eec7e9c",
     "petrus-en-paulus-kerk": "d9f6bb27ed99b39d79076e388eed5fee5015620029cda64ec6d0a8d502e2623d",
     "petruskerk": "4285bda63cd0f099fae9278a669f27c4834a6039359c361c32fe929a6bb7d80a",
@@ -413,7 +413,7 @@
     "politiebureau-postjesweg": "c9839d84bbe8114f49b69147d2046861d43b2b5f1dd4065682bf520b7e3ebd2d",
     "politiebureau-raampoort": "37a2d3c8d3a5a77301006402c22f77bcecc498401422faa45fec117f3ee3b447",
     "pont-13": "dd1d35fa1dc8cbd46037d4788f6911e0e7225697da2033ba20a9470a2d88d3ce",
-    "pontsteiger": "f8bdeaf00137ff2ab747c3f2115e2dc39389f0b07233096a44200df8ba1c66b6",
+    "pontsteiger": "fb8f0285ea9056819b795a00a6cb40468b9dbf468d378dbd37176f71f8db3dd9",
     "port-van-cleve": "05b7bc3211c763b965679679965d93aa31f9f1d9dba8982eeb2f7d60cc9ede0f",
     "portuguese-synagogue": "bc887fee119a92d463292172896abbfe9f75c4100ff3b36d66a07d84cc4e24ed",
     "posthoornkerk": "5d14d1a9634ccf44d21b1a207a15ad4a4d86a1d919a07d788dc757fed5b97632",
@@ -548,6 +548,7 @@
     "werf-kromhout": "99d113d6735e0ade45f197953c24599b088777fac2b5135f039594a296bcbf99",
     "west-india-house": "f1d36e1bec1b372799ff32aecef81eb81f6c26d700f5bf8fcb4a59e55d4a633e",
     "west-indisch-pakhuis": "d95a1b98a776beea2e36604edc282175d0ab8e82e693c3a7d6b7191fca9d8c44",
+    "westerdok-4": "f672ada5b99c3a9bc89e9c89e9f310cf41636c1be14cd1b2d332eebfd99264c6",
     "westerdok-748": "a44dceda5892b60d94cf6df332781d7073ba9d2d7ce48e3626f098ba94cd3122",
     "westerdoksdijk-215": "e7ae5c44c80d0eefb1771a66edc86ac8c1953549e2fdcd8140dd9262e1d9baf6",
     "westergas-bazenwoning-west": "efa9c33214722f39ef790981834f2e7abf50f843f51a15c2d72e63580e7cd2e0",

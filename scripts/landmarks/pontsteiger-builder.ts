@@ -125,7 +125,10 @@ export function buildPontsteiger(w: number, d: number, b: BuildingTools) {
   }
 
   // Open ground floor: white round columns on the low U's outer lines, recessed glazed pavilions, timber soffit.
-  const column = (x: number, z: number) => add(new T.CylinderGeometry(.42, .42, g, 10), 'white', x, g / 2, z);
+  // Columns are painted in `stone` overridden to the palette white (catalogue materialOverrides, tagged stucco as `white` is):
+  // a `white` part is window trim to the openings gate, which read the eight lobby columns under the legs as frames past
+  // their wall (outside 8, poke 4; lane landmark-gates-20261122).
+  const column = (x: number, z: number) => add(new T.CylinderGeometry(.42, .42, g, 10), 'stone', x, g / 2, z);
   for (let k = 0; k <= 10; k++) column(-X + 1.4 + k * (2 * X - 2.8) / 10, zf1 - 1.4);
   for (const s of [-1, 1]) for (let k = 0; k < 6; k++) column(s * (X - 1.4), zr1 + 2 + k * (zf1 - 1.4 - zr1 - 2) / 6);
   box(0, 0, (zf0 + zf1) / 2 - 1, 2 * X - 8, 4.4, zf1 - zf0 - 6, 'glass');

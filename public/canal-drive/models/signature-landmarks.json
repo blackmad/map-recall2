@@ -2603,6 +2603,9 @@
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 90,
+      "materialOverrides": {
+        "stone": "#efe9db"
+      },
       "attribution": {
         "title": "Pontsteiger",
         "author": "Map Recall",
@@ -2641,18 +2644,18 @@
         "depthCoverage": 0.9241195434235748
       },
       "triangles": 27592,
-      "bytes": 333196,
+      "bytes": 334472,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d28fd4f170683e25",
+        "sourceHash": "ad8286e25a8713e9",
         "buildVersion": 2,
-        "bytes": 78904,
-        "triangles": 4212
+        "bytes": 80524,
+        "triangles": 4266
       },
       "lod2": {
-        "sourceHash": "d28fd4f170683e25",
+        "sourceHash": "ad8286e25a8713e9",
         "buildVersion": 6,
-        "bytes": 13544,
+        "bytes": 13572,
         "triangles": 550
       }
     },
@@ -117811,18 +117814,18 @@
         "depthCoverage": 1.0257370805970711
       },
       "triangles": 26371,
-      "bytes": 347640,
+      "bytes": 347864,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5f982c7292f3b9bb",
+        "sourceHash": "5e96b1fe8862140b",
         "buildVersion": 2,
-        "bytes": 86448,
+        "bytes": 86672,
         "triangles": 4919
       },
       "lod2": {
-        "sourceHash": "5f982c7292f3b9bb",
+        "sourceHash": "5e96b1fe8862140b",
         "buildVersion": 6,
-        "bytes": 20956,
+        "bytes": 21068,
         "triangles": 877
       }
     },
@@ -133371,6 +133374,317 @@
         "buildVersion": 6,
         "bytes": 9656,
         "triangles": 255
+      }
+    },
+    "westerdok-4": {
+      "id": "westerdok-4",
+      "name": "Westerdok 4-318 housing block",
+      "modelUrl": "./models/westerdok-4.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012184746"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89223879,
+          52.38382393
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 112,
+        "widthMetres": 90.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.89223879,
+          52.38382393
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012184746 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/westerdok-4-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2025-06-17_10-16-05_00155 (2025, Westerdok), recording_2025-06-17_10-16-05_00135 (2025, the north side) and the south-side panoramas listed in scripts/landmarks/westerdok-4-inventory.json, CC BY 4.0."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 39,
+      "galleryView": {
+        "theta": 4.6,
+        "phi": 1
+      },
+      "bagYear": 2007,
+      "materialOverrides": {
+        "greyBrick": "#3f4248",
+        "stone": "#dcdad4",
+        "dark": "#26282b",
+        "ochre": "#9a6c44",
+        "slate": "#34363a",
+        "concrete": "#b8bab6",
+        "frame": "#4a4640",
+        "glass": "#47525a"
+      },
+      "attribution": {
+        "title": "Westerdok 4-318, Amsterdam (housing, 2007)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_10-16-05_00155/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012184746 (CC0): the towers and wings with their window systems, the staggered cantilevered balconies, the balcony stacks, the café awning, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8927869,
+              52.3836013
+            ],
+            [
+              4.8927719,
+              52.3836507
+            ],
+            [
+              4.8927565,
+              52.3837085
+            ],
+            [
+              4.8927425,
+              52.3837715
+            ],
+            [
+              4.8927246,
+              52.3837723
+            ],
+            [
+              4.8926821,
+              52.3837741
+            ],
+            [
+              4.8926827,
+              52.383779
+            ],
+            [
+              4.8917505,
+              52.383821
+            ],
+            [
+              4.891714,
+              52.3838227
+            ],
+            [
+              4.8916956,
+              52.3838236
+            ],
+            [
+              4.8916866,
+              52.383824
+            ],
+            [
+              4.8917019,
+              52.3839483
+            ],
+            [
+              4.8917656,
+              52.3839459
+            ],
+            [
+              4.8920831,
+              52.3839313
+            ],
+            [
+              4.8920752,
+              52.3838668
+            ],
+            [
+              4.8927869,
+              52.3838344
+            ],
+            [
+              4.8928037,
+              52.3839695
+            ],
+            [
+              4.8927231,
+              52.383973
+            ],
+            [
+              4.8927233,
+              52.3840279
+            ],
+            [
+              4.8927236,
+              52.3840322
+            ],
+            [
+              4.8927262,
+              52.3840758
+            ],
+            [
+              4.892727,
+              52.3840877
+            ],
+            [
+              4.8927371,
+              52.3841707
+            ],
+            [
+              4.8927476,
+              52.3842289
+            ],
+            [
+              4.8927634,
+              52.3842972
+            ],
+            [
+              4.8925538,
+              52.3843066
+            ],
+            [
+              4.8925153,
+              52.3843084
+            ],
+            [
+              4.8925012,
+              52.3843091
+            ],
+            [
+              4.8924627,
+              52.3843109
+            ],
+            [
+              4.8916025,
+              52.3843499
+            ],
+            [
+              4.8915861,
+              52.3842148
+            ],
+            [
+              4.8915712,
+              52.3840905
+            ],
+            [
+              4.8915546,
+              52.3839537
+            ],
+            [
+              4.8915399,
+              52.3838332
+            ],
+            [
+              4.8915308,
+              52.3837602
+            ],
+            [
+              4.8915081,
+              52.3835733
+            ],
+            [
+              4.8915001,
+              52.383507
+            ],
+            [
+              4.8914938,
+              52.3835072
+            ],
+            [
+              4.8914935,
+              52.3835046
+            ],
+            [
+              4.8914998,
+              52.3835043
+            ],
+            [
+              4.8914804,
+              52.383343
+            ],
+            [
+              4.8920228,
+              52.3834299
+            ],
+            [
+              4.8920188,
+              52.3833971
+            ],
+            [
+              4.8922405,
+              52.3833872
+            ],
+            [
+              4.89225,
+              52.3834663
+            ],
+            [
+              4.8924555,
+              52.3834992
+            ],
+            [
+              4.8926833,
+              52.3835356
+            ],
+            [
+              4.8926973,
+              52.3835378
+            ],
+            [
+              4.8927583,
+              52.3835476
+            ],
+            [
+              4.8927723,
+              52.3835498
+            ],
+            [
+              4.8928038,
+              52.3835548
+            ],
+            [
+              4.8927869,
+              52.3836013
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -56.85311508178711,
+          -4.7683716530855236e-8,
+          -58.88673782348633
+        ],
+        "max": [
+          38.62972640991211,
+          39.03900146484375,
+          54.834510803222656
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89223879,
+          52.38382393
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 113.72124862670898,
+        "heightMetres": 39.03900151252746,
+        "depthMetres": 95.48284149169922,
+        "depthCoverage": 1.0538944977008744
+      },
+      "triangles": 37408,
+      "bytes": 481832,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "41369f59c0a3c4dd",
+        "buildVersion": 2,
+        "bytes": 337004,
+        "triangles": 25817
+      },
+      "lod2": {
+        "sourceHash": "41369f59c0a3c4dd",
+        "buildVersion": 6,
+        "bytes": 23992,
+        "triangles": 1495
       }
     }
   }
