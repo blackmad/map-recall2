@@ -6991,5 +6991,17 @@
    "bytes": 5948,
    "triangles": 108
   }
+ },
+ "klapmutsenveem-30": {
+  "sourceHash": "384c92398054b74e",
+  "buildVersion": 2,
+  "bytes": 144868,
+  "triangles": 10949,
+  "lod2": {
+   "sourceHash": "384c92398054b74e",
+   "buildVersion": 6,
+   "bytes": 25736,
+   "triangles": 1500
+  }
  }
 }

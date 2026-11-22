@@ -130424,6 +130424,258 @@
         "bytes": 5948,
         "triangles": 108
       }
+    },
+    "klapmutsenveem-30": {
+      "id": "klapmutsenveem-30",
+      "name": "Klapmutsenveem 30-62 housing block",
+      "modelUrl": "./models/klapmutsenveem-30.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012239388"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.93053851,
+          52.3753577
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 70,
+        "widthMetres": 191.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.93053851,
+          52.3753577
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012239388, all three BuildingParts (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/klapmutsenveem-30-footprints.json, bag-shell-prepare.ts); the front read from the rectified Gemeente Amsterdam panorama TMX7315120208-000052_pano_0000_000864 (2016, CC BY 4.0). Per wall in scripts/landmarks/klapmutsenveem-30-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24,
+      "galleryView": {
+        "theta": 3.4,
+        "phi": 1.05
+      },
+      "bagYear": 2012,
+      "materialOverrides": {
+        "brick": "#7a4439",
+        "stone": "#e4e0d6",
+        "dark": "#2a2c2e",
+        "bronze": "#5f6461",
+        "blue": "#6c6f6c",
+        "concrete": "#b8b4aa",
+        "frame": "#2c3431",
+        "glass": "#47525a",
+        "slate": "#4a4a48"
+      },
+      "attribution": {
+        "title": "Klapmutsenveem 30-62, Amsterdam (housing, 2012)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000052_pano_0000_000864/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012239388 (CC0): the arcade warehouses with their giant round arches, the pilaster blocks with glazed oriel stacks, white cornices and imposts, read from a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9291824,
+              52.3755096
+            ],
+            [
+              4.9292171,
+              52.3755036
+            ],
+            [
+              4.9292096,
+              52.3754876
+            ],
+            [
+              4.9295662,
+              52.3754258
+            ],
+            [
+              4.9296333,
+              52.3754141
+            ],
+            [
+              4.9299015,
+              52.3753676
+            ],
+            [
+              4.9300352,
+              52.3753445
+            ],
+            [
+              4.930329,
+              52.3752935
+            ],
+            [
+              4.9303963,
+              52.3752818
+            ],
+            [
+              4.9309127,
+              52.3751923
+            ],
+            [
+              4.9309792,
+              52.3751808
+            ],
+            [
+              4.9312489,
+              52.375134
+            ],
+            [
+              4.9313803,
+              52.3751112
+            ],
+            [
+              4.9316756,
+              52.37506
+            ],
+            [
+              4.931742,
+              52.3750485
+            ],
+            [
+              4.9319298,
+              52.3750159
+            ],
+            [
+              4.9319971,
+              52.3751609
+            ],
+            [
+              4.9318115,
+              52.375193
+            ],
+            [
+              4.9317405,
+              52.3752053
+            ],
+            [
+              4.9317497,
+              52.3752253
+            ],
+            [
+              4.9317738,
+              52.3752775
+            ],
+            [
+              4.9313646,
+              52.3753484
+            ],
+            [
+              4.9313562,
+              52.3753302
+            ],
+            [
+              4.9308208,
+              52.3754228
+            ],
+            [
+              4.9307958,
+              52.3753687
+            ],
+            [
+              4.930465,
+              52.375426
+            ],
+            [
+              4.9304038,
+              52.3754366
+            ],
+            [
+              4.9304132,
+              52.3754571
+            ],
+            [
+              4.9304371,
+              52.3755088
+            ],
+            [
+              4.9300192,
+              52.3755811
+            ],
+            [
+              4.9300108,
+              52.3755629
+            ],
+            [
+              4.9295865,
+              52.3756363
+            ],
+            [
+              4.9295615,
+              52.3755822
+            ],
+            [
+              4.9292764,
+              52.3756316
+            ],
+            [
+              4.9292491,
+              52.3755728
+            ],
+            [
+              4.9292145,
+              52.3755788
+            ],
+            [
+              4.9291824,
+              52.3755096
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -92.31182098388672,
+          0.0010000000474974513,
+          -31.482847213745117
+        ],
+        "max": [
+          99.2618179321289,
+          25.72100067138672,
+          39.04780960083008
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.93053851,
+          52.3753577
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 191.57363891601562,
+        "heightMetres": 25.72000067133922,
+        "depthMetres": 70.5306568145752,
+        "depthCoverage": 0.36849872943874185
+      },
+      "triangles": 24382,
+      "bytes": 309564,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "384c92398054b74e",
+        "buildVersion": 2,
+        "bytes": 144868,
+        "triangles": 10949
+      },
+      "lod2": {
+        "sourceHash": "384c92398054b74e",
+        "buildVersion": 6,
+        "bytes": 25736,
+        "triangles": 1500
+      }
     }
   }
 }

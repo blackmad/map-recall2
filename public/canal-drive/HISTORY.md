@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Round 20261122u: Klapmutsenveem 30 from every 3DBAG part; setback crops (2026-11-22)
+
+- **bag-shell-prepare read only BuildingPart -0.** Klapmutsenveem 30 has three parts (197 surfaces), so its shell covered 87 of 192 m and the block was held. New `scripts/landmarks/bag-shell-parts.ts` reads every part and drops the shared walls between them; single-part shells are byte-identical (sumatrakade-1101, westerdoksdijk-215, rapenburgerstraat-4).
+- **Klapmutsenveem 30 installed** as a hand block (24.4k tris, 310 KB; lod2 1.5k tris), shadowing ordinary-0363100012239388. Blind: new better (opus judge, high confidence); integrator read agrees (today's model is mostly blank walls). Misses: brick too orange, flat oriels, short arcades, no curved corner (board).
+- **Setback crops:** `scripts/pand-reference/setback-walls.ts` finds upper fronts behind a podium; `landmark-brief.ts` and `hand-block-walls.ts` take `--setback[=m]` (the Tweede Hugo de Grootstraat 43 blocker).
+- **Tools:** `hand-block-kit.ts` `gridDefaults` and `plain()` (byte-identical when absent); `house-preview --pose`; `hand-block-ab.ts` for seeded blind sheets.
+- **Held:** Westerdok 4 on audit:glb holes and see-through (board).
+- **Disk:** Hunyuan3D weights and duplicated ComfyUI outputs deleted (user approved); sculpture round 2 candidates kept in ~/Code/image-to-3d-20261121/keep/.
+
 ## Round 20261122t: the landmark builder keeps lod2 records; six stale landmarks rebuilt (2026-11-22)
 
 - **build-manual-landmarks dropped lod2:** re-saving a model kept its manifest lod1 record but not lod2 (lod2 came later), so a full run erased 537 lod2 entries from `signature-landmarks.json` and failed check:landmark-lods. It now keeps both.
