@@ -1344,7 +1344,7 @@
         ],
         "max": [
           1.723803162574768,
-          2.7699999809265137,
+          2.770033121109009,
           2.819666624069214
         ]
       },
@@ -1360,24 +1360,24 @@
       },
       "extent": {
         "widthMetres": 6.0489561557769775,
-        "heightMetres": 2.7699999809265137,
+        "heightMetres": 2.770033121109009,
         "depthMetres": 3.246485710144043,
         "depthCoverage": 0.9548487382776597
       },
-      "triangles": 5852,
-      "bytes": 60344,
+      "triangles": 8044,
+      "bytes": 69180,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "705002e5ff4d04dd",
+        "sourceHash": "9cd3c499ca8e180d",
         "buildVersion": 2,
-        "bytes": 25040,
-        "triangles": 1154
+        "bytes": 28164,
+        "triangles": 1268
       },
       "lod2": {
-        "sourceHash": "705002e5ff4d04dd",
+        "sourceHash": "9cd3c499ca8e180d",
         "buildVersion": 6,
-        "bytes": 5284,
-        "triangles": 116
+        "bytes": 6180,
+        "triangles": 160
       }
     },
     "stadhuis": {
@@ -26640,20 +26640,20 @@
         "depthMetres": 37.44434118270874,
         "depthCoverage": 1.246482729118134
       },
-      "triangles": 13668,
-      "bytes": 225060,
+      "triangles": 16336,
+      "bytes": 287392,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a1394688636adc52",
+        "sourceHash": "a68b6deca807933c",
         "buildVersion": 2,
-        "bytes": 60700,
-        "triangles": 2611
+        "bytes": 66628,
+        "triangles": 3010
       },
       "lod2": {
-        "sourceHash": "a1394688636adc52",
+        "sourceHash": "a68b6deca807933c",
         "buildVersion": 6,
-        "bytes": 11412,
-        "triangles": 362
+        "bytes": 11664,
+        "triangles": 374
       }
     },
     "haparandaweg-902-950": {
@@ -53114,11 +53114,11 @@
         "min": [
           -4.733333110809326,
           -2.3841858265427618e-8,
-          -4.898322582244873
+          -4.767553806304932
         ],
         "max": [
           5.705677032470703,
-          2.222099542617798,
+          2.22188401222229,
           5.550080299377441
         ]
       },
@@ -53133,25 +53133,25 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 10.448402881622314,
-        "heightMetres": 2.222099566459656,
-        "depthMetres": 10.43901014328003,
-        "depthCoverage": 0.9490009221163663
+        "widthMetres": 10.43901014328003,
+        "heightMetres": 2.2218840360641483,
+        "depthMetres": 10.317634105682373,
+        "depthCoverage": 0.9379667368802157
       },
-      "triangles": 4092,
-      "bytes": 58492,
+      "triangles": 8958,
+      "bytes": 84084,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f8c7dbce34f4cc8e",
+        "sourceHash": "5df211166d811b52",
         "buildVersion": 2,
-        "bytes": 26600,
-        "triangles": 1232
+        "bytes": 36000,
+        "triangles": 1762
       },
       "lod2": {
-        "sourceHash": "f8c7dbce34f4cc8e",
+        "sourceHash": "5df211166d811b52",
         "buildVersion": 6,
-        "bytes": 6392,
-        "triangles": 218
+        "bytes": 6552,
+        "triangles": 174
       }
     },
     "auschwitz-monument": {
@@ -56322,7 +56322,7 @@
         ],
         "max": [
           1.177123785018921,
-          2.0299999713897705,
+          2.029900074005127,
           1.2080191373825073
         ]
       },
@@ -56338,24 +56338,24 @@
       },
       "extent": {
         "widthMetres": 2.512826085090637,
-        "heightMetres": 2.0499999709427357,
+        "heightMetres": 2.049900073558092,
         "depthMetres": 2.354247570037842,
         "depthCoverage": 0.8408027035849436
       },
-      "triangles": 3386,
-      "bytes": 29216,
+      "triangles": 7656,
+      "bytes": 56196,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e2f64d7ee6cbffa6",
+        "sourceHash": "e040441cfcdcebeb",
         "buildVersion": 2,
-        "bytes": 19792,
-        "triangles": 892
+        "bytes": 25724,
+        "triangles": 1144
       },
       "lod2": {
-        "sourceHash": "e2f64d7ee6cbffa6",
+        "sourceHash": "e040441cfcdcebeb",
         "buildVersion": 6,
-        "bytes": 3452,
-        "triangles": 66
+        "bytes": 5364,
+        "triangles": 152
       }
     },
     "spanjemonument": {
@@ -59306,20 +59306,20 @@
         "depthMetres": 24.42636203765869,
         "depthCoverage": 1.4368112615723736
       },
-      "triangles": 14144,
-      "bytes": 158896,
+      "triangles": 21955,
+      "bytes": 396840,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6d7d0c5dbdfda371",
+        "sourceHash": "84a0c0386c7a23e3",
         "buildVersion": 2,
-        "bytes": 54304,
-        "triangles": 2502
+        "bytes": 68244,
+        "triangles": 3651
       },
       "lod2": {
-        "sourceHash": "6d7d0c5dbdfda371",
+        "sourceHash": "84a0c0386c7a23e3",
         "buildVersion": 6,
-        "bytes": 8804,
-        "triangles": 282
+        "bytes": 11524,
+        "triangles": 438
       }
     },
     "lensbomen": {
@@ -89976,20 +89976,20 @@
         "depthMetres": 46.68479919433594,
         "depthCoverage": 1.0305695186387624
       },
-      "triangles": 11743,
-      "bytes": 165408,
+      "triangles": 17214,
+      "bytes": 291544,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d7d51ae641ae54b1",
+        "sourceHash": "c2ee619f278b0f3c",
         "buildVersion": 2,
-        "bytes": 55708,
-        "triangles": 3017
+        "bytes": 69652,
+        "triangles": 3837
       },
       "lod2": {
-        "sourceHash": "d7d51ae641ae54b1",
+        "sourceHash": "c2ee619f278b0f3c",
         "buildVersion": 6,
-        "bytes": 24064,
-        "triangles": 1038
+        "bytes": 26728,
+        "triangles": 1210
       }
     },
     "brand-bij-ca": {

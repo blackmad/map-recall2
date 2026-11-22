@@ -1,0 +1,32 @@
+{
+ "id": "mama-baranka",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/mama-baranka.json",
+ "figures": [
+  {
+   "name": "woman",
+   "glb": "scripts/sculptures/installed/mama-baranka/woman.glb",
+   "at": [
+    -0.021,
+    0.08,
+    0.085
+   ],
+   "cut": {
+    "min": [
+     -1.5,
+     0.12,
+     -1.5
+    ],
+    "max": [
+     1.5,
+     2.3,
+     1.5
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TripoSR, one photo (base levelled), tsrL-cac10d4136, round 2 2026-11-22"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": "spinoza-standbeeld",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/spinoza-standbeeld.json",
+ "figures": [
+  {
+   "name": "philosopher",
+   "glb": "scripts/sculptures/installed/spinoza-standbeeld/philosopher.glb",
+   "at": [
+    0.25,
+    0.6,
+    -1.679
+   ],
+   "cut": {
+    "min": [
+     -0.5,
+     0.6,
+     -2.3
+    ],
+    "max": [
+     1,
+     3,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, trellis-s42, round 2 2026-11-22"
+  }
+ ]
+}

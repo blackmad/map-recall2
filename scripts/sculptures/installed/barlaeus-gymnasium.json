@@ -1,0 +1,53 @@
+{
+ "id": "barlaeus-gymnasium",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/reliefs.json#barlaeus-group",
+ "figures": [
+  {
+   "name": "barlaeus-group",
+   "glb": "scripts/sculptures/installed/barlaeus-gymnasium/barlaeus-group.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TripoSR, one photo, tsr, wall relief round 2 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -5.18,
+     20.35,
+     5.577
+    ],
+    "normal": [
+     -0.625,
+     0.78
+    ],
+    "min": [
+     -1.8,
+     0,
+     0
+    ],
+    "max": [
+     1.8,
+     3,
+     1
+    ]
+   }
+  }
+ ]
+}

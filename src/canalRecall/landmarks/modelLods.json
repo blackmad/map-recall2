@@ -517,15 +517,15 @@
   }
  },
  "spinoza-standbeeld": {
-  "sourceHash": "705002e5ff4d04dd",
+  "sourceHash": "9cd3c499ca8e180d",
   "buildVersion": 2,
-  "bytes": 25040,
-  "triangles": 1154,
+  "bytes": 28164,
+  "triangles": 1268,
   "lod2": {
-   "sourceHash": "705002e5ff4d04dd",
+   "sourceHash": "9cd3c499ca8e180d",
    "buildVersion": 6,
-   "bytes": 5284,
-   "triangles": 116
+   "bytes": 6180,
+   "triangles": 160
   }
  },
  "stadhuis": {
@@ -3179,15 +3179,15 @@
   }
  },
  "west-india-house": {
-  "sourceHash": "a1394688636adc52",
+  "sourceHash": "a68b6deca807933c",
   "buildVersion": 2,
-  "bytes": 60700,
-  "triangles": 2611,
+  "bytes": 66628,
+  "triangles": 3010,
   "lod2": {
-   "sourceHash": "a1394688636adc52",
+   "sourceHash": "a68b6deca807933c",
    "buildVersion": 6,
-   "bytes": 11412,
-   "triangles": 362
+   "bytes": 11664,
+   "triangles": 374
   }
  },
  "haparandaweg-902-950": {
@@ -4227,15 +4227,15 @@
   }
  },
  "walraven-van-hall": {
-  "sourceHash": "f8c7dbce34f4cc8e",
+  "sourceHash": "5df211166d811b52",
   "buildVersion": 2,
-  "bytes": 26600,
-  "triangles": 1232,
+  "bytes": 36000,
+  "triangles": 1762,
   "lod2": {
-   "sourceHash": "f8c7dbce34f4cc8e",
+   "sourceHash": "5df211166d811b52",
    "buildVersion": 6,
-   "bytes": 6392,
-   "triangles": 218
+   "bytes": 6552,
+   "triangles": 174
   }
  },
  "auschwitz-monument": {
@@ -4375,15 +4375,15 @@
   }
  },
  "mama-baranka": {
-  "sourceHash": "e2f64d7ee6cbffa6",
+  "sourceHash": "e040441cfcdcebeb",
   "buildVersion": 2,
-  "bytes": 19792,
-  "triangles": 892,
+  "bytes": 25724,
+  "triangles": 1144,
   "lod2": {
-   "sourceHash": "e2f64d7ee6cbffa6",
+   "sourceHash": "e040441cfcdcebeb",
    "buildVersion": 6,
-   "bytes": 3452,
-   "triangles": 66
+   "bytes": 5364,
+   "triangles": 152
   }
  },
  "spanjemonument": {
@@ -4515,15 +4515,15 @@
   }
  },
  "huis-met-de-hoofden": {
-  "sourceHash": "6d7d0c5dbdfda371",
+  "sourceHash": "84a0c0386c7a23e3",
   "buildVersion": 2,
-  "bytes": 54304,
-  "triangles": 2502,
+  "bytes": 68244,
+  "triangles": 3651,
   "lod2": {
-   "sourceHash": "6d7d0c5dbdfda371",
+   "sourceHash": "84a0c0386c7a23e3",
    "buildVersion": 6,
-   "bytes": 8804,
-   "triangles": 282
+   "bytes": 11524,
+   "triangles": 438
   }
  },
  "lensbomen": {
@@ -5567,15 +5567,15 @@
   }
  },
  "barlaeus-gymnasium": {
-  "sourceHash": "d7d51ae641ae54b1",
+  "sourceHash": "c2ee619f278b0f3c",
   "buildVersion": 2,
-  "bytes": 55708,
-  "triangles": 3017,
+  "bytes": 69652,
+  "triangles": 3837,
   "lod2": {
-   "sourceHash": "d7d51ae641ae54b1",
+   "sourceHash": "c2ee619f278b0f3c",
    "buildVersion": 6,
-   "bytes": 24064,
-   "triangles": 1038
+   "bytes": 26728,
+   "triangles": 1210
   }
  },
  "brand-bij-ca": {
