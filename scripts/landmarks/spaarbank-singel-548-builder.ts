@@ -170,7 +170,8 @@ function reguliersdwarsstraat(b: BuildingTools) {
   // the staff entrance 33.8-40.9 m (to 2.8 m) under a thin canopy; the vent grille 40.3-43.6 m at 3.1-3.8 m
   slab(b, f, 37.35, 0, 7.1, 2.8, 0.1, 'dark', FRONT);
   slab(b, f, 37.35, 2.8, 7.4, 0.15, 0.4, 'stone', FRONT);
-  slab(b, f, 41.95, 3.1, 3.3, 0.7, 0.1, 'dark', FRONT);
+  // the grille is a steel louvre, not an opening (round 11: drawn in glazing 'dark' it read as a 3.3 m window)
+  slab(b, f, 41.95, 3.1, 3.3, 0.7, 0.1, 'bronze', FRONT);
   // colonnade: piers at the measured centres (2019 crop: 397, 650, 891, 1132 px) and the two ends, 0.7 m wide
   const gp = [9.23, 15.12, 20.72, 26.33];
   for (const t of gp) slab(b, f, t, 0, 0.7, FASCIA[0], FRONT + RECESS, 'stone', -RECESS);
@@ -203,7 +204,7 @@ function reguliersdwarsstraat(b: BuildingTools) {
     const s = new T.BoxGeometry(0.16, 0.22, len).rotateX(Math.atan2(dy, dz)).translate(0, dy / 2, FRONT - 0.05 - 0.12 - dz / 2);
     put(b, f, s, t, RASTER_TOP, 0, 'bronze');
   }
-  setbackGlazing(b, [-25.0, 22.8], [15.2, 32.8], [0, 1]);
+  setbackGlazing(b, [-25.0, 22.8], [15.2, 32.8], [0, 1], piers.map(t => world(f, t)));
 }
 
 /**
@@ -247,14 +248,20 @@ function singelFront(b: BuildingTools) {
     }
     slab(b, f, len / 2, SLAB[0], len, SLAB[1] - SLAB[0], 0.9 + FRONT, 'stone', -0.9);
   }
-  setbackGlazing(b, [-9.4, -11.5], [26.6, -10.4], [0, -1]);
+  setbackGlazing(b, [-9.4, -11.5], [26.6, -10.4], [0, -1], [...[4.25, 6.98, 9.69].map(t => world(e1.f, t)), ...p2.concat([24.62]).map(t => world(e2.f, t))]);
 }
 
+/** World (x, z) of the point t metres along frame f. */
+const world = (f: Frame, t: number): [number, number] => [f.origin[0] + f.tangent[0] * t, f.origin[1] + f.tangent[1] * t];
+
 /**
- * The set-back storey: dark glass with mullions every 1.35 m and a railing bar, on the 3DBAG wall from a to b (16.5-20.3 m),
- * `out` the outward direction (the street side).
+ * The set-back storey: dark glass with a railing bar, on the 3DBAG wall from a to b (16.5-20.3 m), `out` the outward
+ * direction (the street side). Mullions stand behind every steel post of the front (`posts`, world x/z) and halfway between
+ * two posts, so every pane is the same (about 1.3 m; w02-1 2021 shows a pane each side of a post); past the outer posts
+ * they continue at the same half pitch. Round 11: the 1.35 m mullions of round 10 fell off the post rhythm and, 8 cm wide,
+ * merged panes under the posts' feet into 5-17 m strips in the window-rhythm audit.
  */
-function setbackGlazing(b: BuildingTools, a: [number, number], c: [number, number], out: [number, number]) {
+function setbackGlazing(b: BuildingTools, a: [number, number], c: [number, number], out: [number, number], posts: [number, number][]) {
   const L = Math.hypot(c[0] - a[0], c[1] - a[1]);
   let tangent: [number, number] = [(c[0] - a[0]) / L, (c[1] - a[1]) / L];
   let n: [number, number] = [-tangent[1], tangent[0]];
@@ -265,8 +272,14 @@ function setbackGlazing(b: BuildingTools, a: [number, number], c: [number, numbe
   setSink(0);
   // glass 10 cm proud of the 3DBAG wall, its box run back into the wall (sunk) so it stands on it
   slab(b, f, L / 2, 16.7, L - 0.4, 3.5, 0.2, 'glass', -0.1);
-  const m = Math.round(L / 1.35);
-  for (let k = 1; k < m; k++) slab(b, f, L * k / m, 16.7, 0.08, 3.5, 0.2, 'frame', 0);
+  const st = posts.map(p => (p[0] - origin[0]) * tangent[0] + (p[1] - origin[1]) * tangent[1]).filter(t => t > 0.3 && t < L - 0.3).sort((p, q) => p - q);
+  const half = st.length > 1 ? (st[st.length - 1] - st[0]) / (st.length - 1) / 2 : 1.35;
+  const mullions: number[] = [];
+  for (let t = st[0] - half; t > 0.3; t -= half) mullions.push(t);
+  st.forEach((t, k) => { mullions.push(t); if (k + 1 < st.length) mullions.push((t + st[k + 1]) / 2); });
+  for (let t = st[st.length - 1] + half; t < L - 0.3; t += half) mullions.push(t);
+  for (const t of mullions) slab(b, f, t, 16.7, 0.14, 3.5, 0.2, 'frame', 0);
+  const m = mullions.length + 1;
   // the terrace railing: a top rail on posts
   slab(b, f, L / 2, 17.65, L - 0.4, 0.06, 0.06, 'frame', 0.6);
   for (let k = 0; k <= m; k++) slab(b, f, 0.2 + (L - 0.4) * k / m, 16.4, 0.05, 1.25, 0.05, 'frame', 0.6);

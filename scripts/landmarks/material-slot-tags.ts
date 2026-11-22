@@ -355,8 +355,8 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'spaarbank-singel-548': {
     blue: {slot: 'glass', why: 'palette name only: the lighter glazed spandrels (register: borstweringen verglaasd; w01-194, w02-1)'},
     slate: {slot: 'bitumen', why: 'flat roofs and roof terraces (3DBAG flat pieces at 16.4, 20.4 m), not slate'},
-    bronze: {slot: 'paint', why: 'palette name only: painted steel rooftop posts, beams and knee braces (w01-194 2019, w02-1 2017)'},
-    dark: {slot: 'door', why: 'the dark doors, staff entrance and grille (w01-194 2019)'},
+    bronze: {slot: 'paint', why: 'palette name only: painted steel rooftop posts, beams and knee braces, and the steel vent louvre over the staff entrance (w01-194 2019, w02-1 2017)'},
+    dark: {slot: 'door', why: 'the dark doors and the staff entrance (w01-194 2019)'},
   },
   'pakhuis-afrika': {
     stone: {slot: 'stone', why: 'the light grey precast concrete skin of the tower and the cantilevered block (w02-106, w05-196)'},

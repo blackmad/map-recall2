@@ -127557,7 +127557,7 @@
         "depthCoverage": 1.0191540597242688
       },
       "triangles": 13637,
-      "bytes": 205576,
+      "bytes": 205716,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "pakhuis-afrika": {
@@ -127692,7 +127692,7 @@
         "max": [
           28.407081604003906,
           36.185001373291016,
-          32.799217224121094
+          32.83408737182617
         ]
       },
       "placement": {
@@ -127706,13 +127706,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 62.87388229370117,
+        "widthMetres": 62.90875244140625,
         "heightMetres": 36.18500146865845,
         "depthMetres": 55.95208168029785,
         "depthCoverage": 1.0045257034164785
       },
-      "triangles": 31759,
-      "bytes": 476412,
+      "triangles": 36295,
+      "bytes": 465756,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

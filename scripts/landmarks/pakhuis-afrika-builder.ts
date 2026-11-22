@@ -3,6 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, planarPolygon, type Surface} from './worship-shell';
 import {getSink, letters, put, ringFrame, setSink, slab, type Frame} from './nearbar-kit';
 import {irregularOpenings, rasterFront, type IrregularRowSpec, type RasterRow} from '../../src/canalRecall/landmarks/rasterFront';
+import {mottleSpots} from '../../src/canalRecall/landmarks/mottleSpots';
 import source from './pakhuis-afrika-footprints.json';
 
 /**
@@ -121,15 +122,27 @@ function skin(b: BuildingTools, f: Frame, wall: number, levels: number[], top: n
       : {length, seed: seed * 31 + k, margin: 0.25, wide: [1.3, 2.6], narrow: [0.4, 0.7], pier: [0.45, 0.9], narrowShare: 0.4};
     return ground ? {y0: y, y1: y + 4.3, openings: irregularOpenings(spec), kind: 'ground'} : {y0: y + 0.3, y1: y + 2.35, openings: irregularOpenings(spec), kind: 'window'};
   });
-  const pieces = rasterFront({length, rows, bottom: levels[0], top, pierDepth: SKIN, ledgeDepth: SKIN,
-    mottle: {seed, fraction: 0.25, minRun: 0.5, maxRun: 1.4}});
+  const pieces = rasterFront({length, rows, bottom: levels[0], top, pierDepth: SKIN, ledgeDepth: SKIN});
   const s0 = getSink();
   setSink(0);
-  for (const p of pieces) {
-    const colour = p.part === 'glass' ? 'glass' : p.tone ? 'pink' : 'stone';
-    slab(b, f, E + (p.t0 + p.t1) / 2, p.y0, p.t1 - p.t0, p.y1 - p.y0, p.depth, colour, OFF + p.out);
-  }
+  for (const p of pieces) slab(b, f, E + (p.t0 + p.t1) / 2, p.y0, p.t1 - p.t0, p.y1 - p.y0, p.depth, p.part === 'glass' ? 'glass' : 'stone', OFF + p.out);
   setSink(s0, true);
+  // the red-brown blotches (w05-196 2019 overcast, w02-106 2020 sunlit): patches 0.15-0.55 m inside the piers and ledges,
+  // about a fifth of the solid face, 5 cm in front of it (round 11: the run mottle of round 10 read as salmon blocks)
+  const hosts = pieces.filter(p => p.part !== 'glass').map(p => ({t0: E + p.t0, t1: E + p.t1, y0: p.y0, y1: p.y1}));
+  const spots = mottleSpots({hosts, seed: seed * 977 + 13, coverage: 0.2, size: [0.15, 0.42]});
+  const z = OFF + SKIN + 0.05, pos: number[] = [], idx: number[] = [];
+  for (const s of spots) for (const r of s.rects) {
+    const k = pos.length / 3;
+    pos.push(r.t0, r.y0, z, r.t1, r.y0, z, r.t1, r.y1, z, r.t0, r.y1, z);
+    idx.push(k, k + 1, k + 2, k, k + 2, k + 3);
+  }
+  if (!idx.length) return;
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  put(b, f, g, 0, 0, 0, 'pink');
 }
 
 /** The tower (edges 3, 4, 5): a 4.8 m ground storey and ten storeys at 2.82 m (w05: 140 px a storey at 49.9 px/m), parapet to 34.5 m. */
@@ -200,13 +213,24 @@ function ijFront(b: BuildingTools) {
       if (kind === 'd') dropBalcony(b, f, t, y0);
       else slattedBalcony(b, f, t, y0);
     });
-    // platform storey: the entrance on the middle axis to the ground, windows elsewhere
+    // platform storey: the entrance on the middle axis to the ground
     if (k === 4) slab(b, f, t, 0, 4.4, 4.9, 0.12, 'dark', OFF);
-    else window(b, f, t, 2.55, 1.8, 2.3, 'bronze');
   });
-  for (const t of [1.4, 48.8]) slab(b, f, t, 2.55, 0.95, 2.2, 0.1, 'dark', OFF);
-  // base under the platform: a glazed door and a few small windows (w01, 2021)
+  // the platform storey's other openings as the 2021 crop shows them (round 11 recount, 33.4 px/m from the left end):
+  // two-light windows of 2.55-2.7 m on axes 2, 4 and 8, single windows of 1.8-1.9 m on axes 3, 6 and 7, and at each end
+  // two narrow doors with a small high window between them
+  for (const [t, w] of [[9.2, 2.55], [14.7, 1.86], [20.15, 2.7], [31.0, 1.9], [36.4, 1.8], [41.8, 2.6]] as const) {
+    window(b, f, t, 2.55, w, 2.3, 'bronze');
+    if (w > 2.2) slab(b, f, t, 2.63, 0.08, 2.14, 0.06, 'bronze', OFF);
+  }
+  for (const t of [1.43, 5.47, 45.39, 48.46]) slab(b, f, t, 2.55, 0.7, 1.95, 0.1, 'dark', OFF);
+  for (const t of [3.56, 46.89]) window(b, f, t, 3.75, 0.66, 0.8, 'bronze');
+  // base under the platform (w01, 2021): two dark openings and a glazed door west of the entrance, four small windows
+  // east of it, and a steel roller grille (not an opening)
+  for (const [t, w] of [[5.99, 2.7], [12.65, 2.85]] as const) slab(b, f, t, 0, w, 2.1, 0.1, 'dark', OFF - 0.06);
+  window(b, f, 19.16, 0, 3.0, 2.1, 'bronze');
   for (const t of [30.8, 32.6, 37.4, 39.2]) window(b, f, t, 1.0, 0.8, 0.6, 'bronze');
+  slab(b, f, 45.0, 0, 2.1, 2.1, 0.1, 'bronze', OFF - 0.06);
   // the loading platform across the full width, its railing and the two flights at the entrance
   const s0 = getSink();
   setSink(0);
