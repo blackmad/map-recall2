@@ -51,8 +51,14 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
   const strip = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8')), file = stripFile(face, strip);
   // A face whose strip is in neither staging nor the archive keeps the entry it was published with (2026-10-24: some
   // older faces' strips were never archived, which used to stop every later face from being re-measured).
+  // A face whose palette is its exposure reference (continuity.wallExposure) needs no strip for stripOverDrawn: keep the
+  // published white and write 1 even when the strip is missing or stale (2026-11-23: baerle-22-30 kept its cast 1.735).
+  const paletteRef = (kept: {white: RGB | null; stripOverDrawn: number | null} | undefined) => {
+    const intent = JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8'));
+    return intent?.continuity?.wallExposure?.reference === 'palette' ? {white: kept?.white ?? null, stripOverDrawn: 1} : kept;
+  };
   if (!file) {
-    const kept = (CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name];
+    const kept = paletteRef((CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name]);
     if (kept) entries[chunk.name] = kept;
     rows.push(`${chunk.name}: strip image missing (staging or ${ARCHIVE}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
     continue;
@@ -62,7 +68,7 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
   // strip is its 1101 px crop from before the 2203 px re-run, and crashed the whole regen): keep the published entry.
   const mismatch = stripImageMismatch(strip, info);
   if (mismatch) {
-    const kept = (CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name];
+    const kept = paletteRef((CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name]);
     if (kept) entries[chunk.name] = kept;
     rows.push(`${chunk.name}: ${mismatch} (${path.relative(process.cwd(), file)}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
     continue;
