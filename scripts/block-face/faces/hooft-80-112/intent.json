@@ -193,7 +193,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7d5443",
+     "brick": "#836a53",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -298,7 +298,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#80594a",
+     "brick": "#856653",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -397,7 +397,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#1c1d1c",
+     "brick": "#1a2216",
      "frame": "white",
      "door": "#1a1a19",
      "stone": "#ece9df",
@@ -517,7 +517,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#76513f",
+     "brick": "#735b48",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -642,7 +642,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7e5644",
+     "brick": "#7c5f4a",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -758,7 +758,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#82594a",
+     "brick": "#8a6350",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -877,7 +877,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7b5444",
+     "brick": "#886753",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -1010,13 +1010,13 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7f5847",
+     "brick": "#ada29f",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
      "cornice": "#ece9df",
      "wallTint": "measured",
-     "whitePoint": "#c4c4bc",
+     "whitePoint": "#eceae6",
      "band": "#6c5747"
     }
    },
@@ -1134,7 +1134,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#86604e",
+     "brick": "#8b6956",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -1312,7 +1312,11 @@
         1,
         2
        ],
-       "colour": "#e6e5de"
+       "colour": "#e6e5de",
+       "axes": [
+        0,
+        2
+       ]
       },
       "shopfront": {
        "colour": "#14231c",
@@ -1341,7 +1345,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#74503f",
+     "brick": "#684c3c",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -1384,8 +1388,8 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the pand is two fronts (white stucco 3 axes left, brick 3 axes right): drawn as one painted front of 6 axes",
-     "the sign is drawn once, not twice"
+     "the sign is drawn once, not twice",
+     "the pand is two houses: the white stucco left half (axes 0-2, paintedStoreys.axes) has a mansard with a dormer, the brick right half a flat roof behind its cornice; one roof (mansard) is drawn over both"
     ]
    }
   },
@@ -1449,7 +1453,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#775242",
+     "brick": "#786151",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -1566,7 +1570,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#2e2f31",
+     "brick": "#434643",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
@@ -1678,7 +1682,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6f4c3c",
+     "brick": "#6c5543",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#ece9df",
