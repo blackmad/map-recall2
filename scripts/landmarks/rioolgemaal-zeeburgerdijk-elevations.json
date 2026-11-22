@@ -1,0 +1,90 @@
+{
+ "id": "rioolgemaal-zeeburgerdijk",
+ "countedBy": "lane landmarks-r11 from w01-359.alt.jpg (recording_2024-10-16_12-04-41_00547, 2024, 50 px/m), 2026-11-22. Hall (the left 23.4 m): seven bays, each a lower window of three tall lights between 0.3 m brick piers (counted per light: 21) and an upper geometric window (7). House (the right 8.7 m): four windows on each storey in two pairs (1580-1705 and 1815-1925 px), with brick between the pairs where no window stands. The link between them (doors, the sign) is not counted.",
+ "facades": [
+  {
+   "name": "Zeeburgerdijk, pump hall",
+   "bearing": 359,
+   "alongM": [
+    0,
+    23.4
+   ],
+   "photo": "artifacts/landmark-briefs/rioolgemaal-zeeburgerdijk/w01-359.alt.jpg",
+   "rows": [
+    21,
+    7
+   ],
+   "columns": 7,
+   "symmetric": true,
+   "gables": 0
+  },
+  {
+   "name": "Zeeburgerdijk, house",
+   "bearing": 359,
+   "alongM": [
+    31.4,
+    40.1
+   ],
+   "heightM": [
+    0,
+    7.0
+   ],
+   "photo": "artifacts/landmark-briefs/rioolgemaal-zeeburgerdijk/w01-359.alt.jpg",
+   "rows": [
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": true,
+   "gables": 0,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-359.alt.jpg (recording_2024-10-16_12-04-41_00547, 2024): two pairs of windows, 1580-1630 and 1655-1705 px, 1815-1860 and 1885-1925 px; the 2.2 m of brick between the pairs has no window on either storey",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w01-359.alt.jpg (recording_2024-10-16_12-04-41_00547, 2024): two pairs of windows, 1580-1630 and 1655-1705 px, 1815-1860 and 1885-1925 px; the 2.2 m of brick between the pairs has no window on either storey",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      },
+      {
+       "kind": "window",
+       "w": 0.95
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

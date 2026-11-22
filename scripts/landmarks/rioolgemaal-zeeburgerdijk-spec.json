@@ -1,0 +1,33 @@
+{
+ "id": "rioolgemaal-zeeburgerdijk",
+ "name": "Former Hoofdrioleringsgemaal (Pompstation), Zeeburgerdijk 50-52",
+ "heightMetres": 14,
+ "bagYear": 1911,
+ "galleryView": {
+  "theta": 0.2,
+  "phi": 1.1
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012108874 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/rioolgemaal-zeeburgerdijk-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002535_pano_0000_000075 (2022) and recording_2024-10-16_12-04-41_00547 (2024, Zeeburgerdijk), recording_2025-09-26_13-53-26_00582 (2025, the east gable), TMX7316010203-002909_pano_0002_000195 (2023, the house's west front), recording_2025-09-26_08-46-58_00135 and recording_2025-09-26_07-29-39_01882 (2025, the south side over the hedge), CC BY 4.0. Gemeentelijk monument 200647. Per wall in scripts/landmarks/rioolgemaal-zeeburgerdijk-inventory.json.",
+ "materialOverrides": {
+  "brick": "#6a4438",
+  "red": "#58382f",
+  "greyBrick": "#3a3634",
+  "stone": "#9a978c",
+  "frame": "#e8e6df",
+  "concrete": "#e4e1d8",
+  "glass": "#3e4a50",
+  "slate": "#4a4644",
+  "dark": "#2d2c2b",
+  "green": "#2f4a3a"
+ },
+ "attribution": {
+  "title": "Former Hoofdrioleringsgemaal, Zeeburgerdijk 50-52, Amsterdam (Dienst der Publieke Werken, 1912)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b3751347-df72-4521-a4d5-4b27c7cefdda",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012108874 (CC0): the pump hall's seven bays of tall three-light windows under geometric glazing between brick pilasters with stone caps, lintels and sills, the dark plinth, the east gable window, the one-storey link with the Pompstation entrance and sign, and the house with its white window pairs, eaves cornice and dormer, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}
