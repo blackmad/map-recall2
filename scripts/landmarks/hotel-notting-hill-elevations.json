@@ -19,7 +19,7 @@
       "openings": [
         "glass"
       ],
-      "depthBand": 1.0,
+      "depthBand": 1,
       "heightM": [
         0,
         17.5
@@ -27,6 +27,39 @@
       "alongM": [
         0.62,
         17.25
+      ],
+      "mixedRows": [
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w03-165.jpg (TMX7316010203-002545_pano_0000_000344, 2022): the two end bays carry French windows behind balconettes on the first storey, dropping to the balconette slab (5.95 m) below the other four sills (6.56 m)",
+          "openings": [
+            {
+              "kind": "French window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "French window",
+              "w": 1.32
+            }
+          ]
+        }
       ]
     },
     {
@@ -45,7 +78,7 @@
       "openings": [
         "glass"
       ],
-      "depthBand": 1.0,
+      "depthBand": 1,
       "alongM": [
         3.7,
         20.2
@@ -53,6 +86,70 @@
       "heightM": [
         0,
         17.5
+      ],
+      "mixedRows": [
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w01-75.jpg (recording_2025-07-14_07-34-51_01035, 2025): the fifth axis carries a French window behind a balconette on the first storey and a larger dormer (about 1.8 m) in the mansard",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "French window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w01-75.jpg (recording_2025-07-14_07-34-51_01035, 2025): the fifth axis carries a French window behind a balconette on the first storey and a larger dormer (about 1.8 m) in the mansard",
+          "openings": [
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "larger dormer",
+              "w": 1.44
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            }
+          ]
+        }
       ]
     }
   ]

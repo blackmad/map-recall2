@@ -274,7 +274,7 @@ function westeindeFront(b: BuildingTools) {
     if (k === 4) balconyWindow(b, f, t);
     else win(b, f, t, F1, {transom: TRANSOM.F1});
     if (k === 4) dormer(b, f, t, 1.8, 1.8);
-    else dormer(b, f, t);
+    else dormer(b, f, k === 0 ? t + 0.25 : t);
   });
   for (const t of [5.55, 10.96, 13.54, 19.0]) { sconce(b, f, t, 7.75); sconce(b, f, t, 11.5); }
   for (const t of [5.55, 10.96, 13.54]) lantern(b, f, t, 3.1);
