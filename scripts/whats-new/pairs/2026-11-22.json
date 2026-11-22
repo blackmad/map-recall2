@@ -1,5 +1,5 @@
 {
-  "about": "What's New 2026-11-22 re-shoots (tests/e2e/whats-new-pair.spec.ts). before.ref is the last main commit (first-parent) whose signature-landmarks.json lacks the landmark, so the before frame shows the generic building it replaced. target/frame are fractions of the 1440x900 frame. Poses are street level (view cockpit) on the landmark's front, the HUD off, so the building fills the target box: the first run (chase camera, 95 m) drew the Handelsschool at 2 % of the frame and every pair measured too similar.",
+  "about": "What's New 2026-11-22 re-shoots (tests/e2e/whats-new-pair.spec.ts). before.ref is the last main commit (first-parent) whose signature-landmarks.json lacks the landmark, so the before frame shows the generic building it replaced. target/frame are fractions of the 1440x900 frame. Poses are street level (view cockpit) on the landmark's front, the HUD off, so the building fills the target box: the first run (chase camera, 95 m) drew the Handelsschool at 2 % of the frame and every pair measured too similar. Second run (2026-11-22 night): the spec now snaps the camera behind the rider (camera.resetForRide) so both frames share a heading; kept poses are Handelsschool 199 deg/55 m (first run, before the snap), Jungle from the east (90 deg, 55 m, zoom 1.1), Hans en Grietje 230 deg/53 m at zoom 1.5, Kweekschool from across the Plantage Muidergracht (270 deg, 55 m, zoom 0.9).",
   "pairs": [
     {
       "name": "handelsschool-raamplein",
@@ -32,8 +32,8 @@
         4.92631943,
         52.3616314
       ],
-      "standDeg": 37,
-      "standM": 70,
+      "standDeg": 90,
+      "standM": 55,
       "before": {
         "ref": "29651e4f26"
       },
@@ -49,7 +49,8 @@
         "w": 1,
         "h": 1
       },
-      "view": "cockpit"
+      "view": "cockpit",
+      "camZoom": 1.1
     },
     {
       "name": "hans-en-grietje",
@@ -58,7 +59,7 @@
         52.36176264
       ],
       "standDeg": 230,
-      "standM": 35,
+      "standM": 53,
       "before": {
         "ref": "29651e4f26"
       },
@@ -74,7 +75,8 @@
         "w": 1,
         "h": 1
       },
-      "view": "cockpit"
+      "view": "cockpit",
+      "camZoom": 1.5
     },
     {
       "name": "kweekschool",
@@ -82,8 +84,8 @@
         4.91295993,
         52.36467568
       ],
-      "standDeg": 190,
-      "standM": 60,
+      "standDeg": 270,
+      "standM": 55,
       "before": {
         "ref": "9e04ebecfd"
       },
@@ -99,7 +101,8 @@
         "w": 1,
         "h": 1
       },
-      "view": "cockpit"
+      "view": "cockpit",
+      "camZoom": 0.9
     }
   ]
 }

@@ -91,7 +91,13 @@ async function shoot(page: Page, pair: Pair, side: Side, label: string): Promise
   await teleportRider(page, p);
   await page.waitForTimeout(2500);
   await teleportRider(page, p); // the game re-routes after the first jump; pin the spot again
-  if (pair.camZoom) await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, pair.camZoom);
+  // Snap the camera behind the rider: it eases and holds its heading (absolute steering), so without this the two
+  // frames of a pair could settle at different headings and offsets (Jungle's surroundings differed by 47 %).
+  await page.evaluate(z => {
+    const g = (window as any).canalRecallGame;
+    if (z) { g.camera.zoom = z; g._zoomTouchedByPlayer = true; }
+    g.camera.resetForRide(g.player);
+  }, pair.camZoom ?? 0);
   // HUD off, as house-frames.spec.ts does: only the 3D view is drawn.
   if (!pair.hud) await page.addStyleTag({ content: 'body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }' });
   const world = await settleForShot(page, `${pair.name} ${label}`);
