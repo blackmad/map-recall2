@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-22",
+      "title": "The Koetshuis, a UvA building and the Schuytstraat shop corner",
+      "text": "The Koetshuis at Keizersgracht 607 stands with its carriage arch, white pilasters, oculi and three peaked dormers, where before there was a generic box. The UvA building at Binnengasthuisstraat 9 gets its cream-framed windows, stone crosses and attic figure. The citizenM at Sarphatistraat 47 has a taller granite base, doors of the right size and its mezzanine row, and the Handelsschool on the Raamplein is now a darker brick. The Cornelis Schuytstraat shop corner by the Willemspark is in: Marlies Dekkers, Boekhandel Mulder and their neighbours, each with its own shopfront and the white window hoods of 1897.",
+      "where": [
+        4.8931,
+        52.364
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-koetshuis-keizersgracht-607.jpg",
+          "alt": "Keizersgracht from above in the game: a generic grey box before, the white-trimmed Koetshuis with its carriage arch and dormers after",
+          "caption": "Koetshuis, Keizersgracht 607: before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-sarphatistraat-47.jpg",
+          "alt": "Sarphatistraat 47: the panorama, then the model before with a short ground zone, then after with a taller granite base, larger doors and the mezzanine row",
+          "caption": "Sarphatistraat 47: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
       "title": "Westerdok 4",
       "text": "The big block at Westerdok 4 now has its dark brick, tall glazed ground floor and long cantilevered timber balconies, instead of a generic brown block.",
       "where": [
@@ -29,8 +50,8 @@
       ],
       "images": [
         {
-          "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg",
-          "alt": "The Raamplein from above in the game: before, a capture that left out the plain generic block the game draws there; the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
+          "src": "whats-new/2026-11-22-handelsschool-raamplein-v2.jpg",
+          "alt": "The Raamplein from above in the game: a plain generic block before, the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
           "caption": "Openbare Handelsschool, Raamplein: before, after"
         },
         {
@@ -69,13 +90,13 @@
           "caption": "Saint Laurent, PC Hooftstraat: photo, before, after"
         },
         {
-          "src": "whats-new/2026-11-22-jungle-amsterdam.jpg",
-          "alt": "Jungle Amsterdam on the Swindenstraat in the game: before, a capture that left out the plain generic block the game draws there; the community centre with its roof frame, coloured posts and blue and red window frames after",
+          "src": "whats-new/2026-11-22-jungle-amsterdam-v2.jpg",
+          "alt": "Jungle Amsterdam on the Swindenstraat in the game: a plain generic block before, the community centre with its roof frame, coloured posts and blue and red window frames after",
           "caption": "Jungle Amsterdam: before, after"
         },
         {
-          "src": "whats-new/2026-11-22-hans-en-grietje.jpg",
-          "alt": "The Spiegelgracht corner in the game: before, a capture that left out the plain generic block the game draws there; Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
+          "src": "whats-new/2026-11-22-hans-en-grietje-v2.jpg",
+          "alt": "The Spiegelgracht corner in the game: a plain generic block before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
           "caption": "Café Hans en Grietje, Spiegelgracht: before, after"
         }
       ]
@@ -162,8 +183,8 @@
           "caption": "Hermès: before, after"
         },
         {
-          "src": "whats-new/2026-11-22-kweekschool.jpg",
-          "alt": "Plantage Muidergracht from above: an empty plot before, the former Kweekschool voor Machinisten after",
+          "src": "whats-new/2026-11-22-kweekschool-v2.jpg",
+          "alt": "Plantage Muidergracht from above: a plain generic block before, the former Kweekschool voor Machinisten after",
           "caption": "Kweekschool: before, after"
         }
       ]
