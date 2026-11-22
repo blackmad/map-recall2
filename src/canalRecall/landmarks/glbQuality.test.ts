@@ -405,3 +405,24 @@ test('a standoff deck does not exempt a missing wall behind it, rays on another 
   const elsewhere = analyseSoup(soup(...standoffDeck()), {standoffDecks: [{...deck, span: [[0, 0], [20, 0]], bearing: 180}]});
   assert.ok(elsewhere.seeThrough.rays > 0, JSON.stringify(elsewhere.seeThrough));
 });
+
+// A closed 20 x 12 x 10 m block with a deep cantilevered balcony on its south side: deck 6 m out at 8 m, open beneath, no posts
+// (Westerdok 4's staggered balconies, lane landmark-gates-20261122). Rays in under the deck's ends run along the wall.
+function cantileverDeck(wall = true) {
+  return [boxQuads(0, 0, 0, 20, 12, 10, wall ? [] : ['south']), boxQuads(4, 8, 10, 16, 8.35, 16)];
+}
+const cantilever = {bearing: 0, span: [[4, 10], [16, 10]] as [[number, number], [number, number]], reach: 6.5};
+
+test('a lateral standoff deck also exempts the rays in under its ends; without `lateral` they still fail', () => {
+  const undeclared = analyseSoup(soup(...cantileverDeck()));
+  assert.ok(undeclared.seeThrough.rays > 0, JSON.stringify(undeclared.seeThrough));
+  const frontal = analyseSoup(soup(...cantileverDeck()), {standoffDecks: [cantilever]});
+  assert.ok(frontal.seeThrough.rays > 0 && frontal.seeThrough.rays < undeclared.seeThrough.rays, JSON.stringify({frontal: frontal.seeThrough, undeclared: undeclared.seeThrough.rays}));
+  const lateral = analyseSoup(soup(...cantileverDeck()), {standoffDecks: [{...cantilever, lateral: true}]});
+  assert.equal(lateral.seeThrough.rays, 0, JSON.stringify(lateral.seeThrough));
+});
+
+test('a lateral standoff deck does not exempt a missing wall behind it', () => {
+  const noWall = analyseSoup(soup(...cantileverDeck(false)), {standoffDecks: [{...cantilever, lateral: true}]});
+  assert.ok(noWall.seeThrough.rays > 0, JSON.stringify(noWall.seeThrough));
+});
