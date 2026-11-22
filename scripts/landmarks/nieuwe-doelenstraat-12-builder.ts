@@ -4,6 +4,7 @@ import {addShell, type Surface} from './worship-shell';
 import {archSlab, disc, getSink, ledgeStrip, poly, put, ringFrame, segBand, setSink, slab, type Frame} from './nearbar-kit';
 import {speklagen, type BandOpening} from '../../src/canalRecall/landmarks/speklagen';
 import {balustrade} from '../../src/canalRecall/landmarks/balustrade';
+import {tympanumArchAt} from './tympanum-arch-kit';
 import source from './nieuwe-doelenstraat-12-footprints.json';
 
 /**
@@ -77,7 +78,7 @@ function win(b: BuildingTools, f: Frame, c: number, y0: number, y1: number, w: n
 /** Stone speklagen through the brick between `t0` and `t1`, cut at the window openings (kit speklagen). */
 function bands(b: BuildingTools, f: Frame, t0: number, t1: number, cols: number[], ys: number[], from = BASE + 0.3, to = 15.3) {
   const openings: BandOpening[] = [];
-  for (const c of cols) for (const [y0, y1] of ST) openings.push({t0: c - WIN / 2 - 0.08, t1: c + WIN / 2 + 0.08, y0: y0 - 0.2, y1: y1 + 0.9});
+  for (const c of cols) for (const [y0, y1] of ST) openings.push({t0: c - WIN / 2 - 0.08, t1: c + WIN / 2 + 0.08, y0: y0 - 0.2, y1: y1 + 1.05});
   const rows = [];
   for (let y = from; y < to; y += 0.72) if (!ys.some(v => Math.abs(v - y) < 0.3)) rows.push({y, h: 0.14});
   for (const r of speklagen({t0: t0 + 0.1, t1: t1 - 0.1, bands: rows, openings, gap: 0.02})) slab(b, f, (r.t0 + r.t1) / 2, r.y, r.t1 - r.t0, r.h, 0.04, 'stone');
@@ -94,12 +95,13 @@ function bayColumn(b: BuildingTools, f: Frame, c: number, rosette: boolean) {
         for (const s of [-0.35, 0.35]) disc(b, f, c + s, 6.73, 0.24, 0.08, 'sandstone', 0.08);
       }
     } else {
-      // segmental relieving arch in brick with stone springers and keystone, a stone tympanum with a boss
-      slab(b, f, c, y1 + 0.04, WIN + 0.1, 0.5, 0.06, 'stone');
-      disc(b, f, c, y1 + 0.32, 0.16, 0.06, 'sandstone', 0.06);
-      segBand(b, f, c, y1 + 0.04, WIN + 0.7, 0.55, 0.24, 0.1, 'brick', 0.0);
-      slab(b, f, c, y1 + 0.42, 0.26, 0.36, 0.16, 'stone');
-      for (const s of [-1, 1]) slab(b, f, c + s * (WIN / 2 + 0.2), y1 - 0.05, 0.3, 0.18, 0.16, 'stone');
+      // round-headed relieving arch (kit tympanumArch): a brick rowlock ring on stone imposts with a stone keystone over a
+      // filled brick tympanum carrying a carved boss (w02-147, 2017: span 1.7 m, rise 0.7 m over the head on the middle row;
+      // the top row's arches stop under the cornice frieze)
+      const top = k === ST.length - 1;
+      tympanumArchAt(b, f, c, {width: WIN + 0.4, head: y1 + 0.1, shape: 'segmental', rise: top ? 0.55 : 0.66, ring: top ? 0.16 : 0.18, voussoirs: 15,
+        keystone: {scale: 1.6, proud: top ? 0 : 0.1}, impost: {width: 0.08, height: 0.2}, boss: {radius: 0.13}},
+      {field: 'brick', voussoirColours: 'brick', keyColour: 'stone', impostColour: 'stone', bossColour: 'sandstone', fieldD: 0.04, ringD: 0.1});
     }
   }
 }

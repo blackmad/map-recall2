@@ -1,0 +1,156 @@
+{
+  "id": "hotel-notting-hill",
+  "countedBy": "lane landmarks-r14-a-20261122 from the rectified panoramas (landmark-brief.ts, 50 px/m) TMX7316010203-002545_pano_0000_000344 (2022, south front) and recording_2025-07-14_07-34-51_01035 (2025, Westeinde front); not yet blind-counted. Glazing only, bottom row first; the mansard dormers are the top row. South front: a basement light under each of the six axes, then three storeys of six windows (the end bays' first-storey windows are French windows behind balconettes), six dormers; mirror symmetric about the middle. Westeinde main front (to the north pilaster, 16.5 m): six segment-headed lounge openings (the fifth the glazed door), six windows on each upper storey (the fifth a French window behind a balconette), six dormers, the fifth larger; not mirror symmetric because of the fifth axis. The north bays (two axes) and the entrance bay, set 3 m back, are left out by alongM and depthBand (the Westeinde silhouette starts at the entrance bay's sign block, 3.7 m south of the front's quoin; the south silhouette at the cornice return, 0.62 m west of its quoin).",
+  "facades": [
+    {
+      "name": "South front (basement, three storeys, dormers)",
+      "bearing": 165,
+      "photo": "artifacts/landmark-briefs/hotel-notting-hill/w03-165.jpg",
+      "rows": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "columns": 6,
+      "symmetric": true,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "depthBand": 1,
+      "heightM": [
+        0,
+        17.5
+      ],
+      "alongM": [
+        0.62,
+        17.25
+      ],
+      "mixedRows": [
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w03-165.jpg (TMX7316010203-002545_pano_0000_000344, 2022): the two end bays carry French windows behind balconettes on the first storey, dropping to the balconette slab (5.95 m) below the other four sills (6.56 m)",
+          "openings": [
+            {
+              "kind": "French window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "French window",
+              "w": 1.32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Westeinde front (lounge storey, two storeys, dormers)",
+      "bearing": 75,
+      "photo": "artifacts/landmark-briefs/hotel-notting-hill/w01-75.jpg",
+      "rows": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "depthBand": 1,
+      "alongM": [
+        3.7,
+        20.2
+      ],
+      "heightM": [
+        0,
+        17.5
+      ],
+      "mixedRows": [
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w01-75.jpg (recording_2025-07-14_07-34-51_01035, 2025): the fifth axis carries a French window behind a balconette on the first storey and a larger dormer (about 1.8 m) in the mansard",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            },
+            {
+              "kind": "French window",
+              "w": 1.32
+            },
+            {
+              "kind": "window",
+              "w": 1.32
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w01-75.jpg (recording_2025-07-14_07-34-51_01035, 2025): the fifth axis carries a French window behind a balconette on the first storey and a larger dormer (about 1.8 m) in the mansard",
+          "openings": [
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            },
+            {
+              "kind": "larger dormer",
+              "w": 1.44
+            },
+            {
+              "kind": "dormer",
+              "w": 1.04
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+ "schemaVersion": 1,
+ "id": "sarphatistraat-47",
+ "pand": "0363100012170759",
+ "brief": "scripts/landmarks/sarphatistraat-47-brief.md",
+ "signature": [
+  "s-penanten",
+  "s-art-windows",
+  "s-granite",
+  "s-grid-windows",
+  "s-roof",
+  "s-brick-panels"
+ ],
+ "walls": [
+  {
+   "tag": "w01-162",
+   "bearing": 162,
+   "lengthM": 37,
+   "centre": [
+    4.906377,
+    52.3609785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0004_000379",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-penanten",
+     "kind": "other",
+     "where": "projecting, profiled brick piers (penanten) between all bays, from the granite to the attic, clustered ribs at the end bays",
+     "approxSizeM": [
+      0.5,
+      13.0
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "two-step brick piers with stone caps, thin ribs in the end bays"
+    },
+    {
+     "id": "s-granite",
+     "kind": "other",
+     "where": "granite ground zone: to 2.75 m under a band, rising to 5.3 m over the middle eight bays as piers and a lintel band",
+     "approxSizeM": [
+      37,
+      2.75
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "granite cladding slabs, band, piers"
+    },
+    {
+     "id": "s-art-windows",
+     "kind": "window-shape",
+     "where": "eight tall windows in the granite middle zone, their upper lights filled with colourful painted art panels",
+     "approxSizeM": [
+      1.25,
+      4.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002541_pano_0004_000379",
+     "how": "glazed lower lights, white transom, pale panel with coloured shapes"
+    },
+    {
+     "id": "s-grid-windows",
+     "kind": "window-shape",
+     "where": "white grid-paned windows, three lights across, on three storeys in eight middle and six wing bays; low mezzanine windows over the middle zone",
+     "approxSizeM": [
+      1.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "frame, glass, glazing bars, stone sills"
+    },
+    {
+     "id": "s-brick-panels",
+     "kind": "relief",
+     "where": "patterned brick panels (raised key pattern) between the storey windows",
+     "approxSizeM": [
+      1.2,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001675_pano_0000_006016",
+     "how": "patternPanel of raised courses in a key pattern"
+    },
+    {
+     "id": "s-slits",
+     "kind": "window-shape",
+     "where": "narrow slit windows between the ribs of the two end bays, three per storey",
+     "approxSizeM": [
+      0.35,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "frame and glass between ribs"
+    },
+    {
+     "id": "s-cornice-attic",
+     "kind": "other",
+     "where": "stone cornice along the whole front and a brick attic with small lights between the pier heads, stone coping",
+     "approxSizeM": [
+      37,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "cornice slabs, attic lights, coping"
+    },
+    {
+     "id": "s-roof",
+     "kind": "other",
+     "where": "high hipped roof of grey-brown tiles over the front",
+     "approxSizeM": [
+      37,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002541_pano_0004_000379",
+     "how": "3DBAG roof planes"
+    },
+    {
+     "id": "s-dormers",
+     "kind": "window-shape",
+     "where": "three small flat-topped dormers in the roof over the middle bays",
+     "approxSizeM": [
+      1.5,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "stone body, cap, two lights"
+    },
+    {
+     "id": "s-chimney",
+     "kind": "other",
+     "where": "brick chimney over the west end bay",
+     "approxSizeM": [
+      0.9,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "brick box with a stone cap"
+    },
+    {
+     "id": "s-doors",
+     "kind": "other",
+     "where": "red-brown timber door in the west end bay and a dark door in the west wing on the granite",
+     "approxSizeM": [
+      1.5,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "door leaves in granite surrounds"
+    },
+    {
+     "id": "s-citizenm",
+     "kind": "lettering",
+     "where": "red citizenM sign over the east entrance",
+     "approxSizeM": [
+      2.3,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002541_pano_0004_000379",
+     "how": "red capitals CITIZEN and the M in a red box"
+    },
+    {
+     "id": "s-plaque",
+     "kind": "sign",
+     "where": "bronze plaque by the east end of the middle zone",
+     "approxSizeM": [
+      0.8,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "how": "dark slab"
+    },
+    {
+     "id": "s-flags",
+     "kind": "other",
+     "where": "two flags on short poles from the second storey",
+     "approxSizeM": [
+      1.5,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags and poles change; not part of the building"
+     }
+    },
+    {
+     "id": "s-clock",
+     "kind": "other",
+     "where": "round street clock on a pole in front of the middle zone",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "20241203_0939_Track10-1_Sphere_00298",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the pavement, not on this pand"
+     }
+    }
+   ],
+   "note": "Sarphatistraat front, 37 m on one straight line. The 2024 rectification of 20241203_0939_Track10-1_Sphere_00298 (big-rectify.ts on 3DBAG wall 61, camera 21 m, the whole front in one frame) is the clearest; 2022 overcast gives the colours, 2020 is sunlit and leafy."
+  },
+  {
+   "tag": "w02-341",
+   "bearing": 341,
+   "lengthM": 22,
+   "centre": [
+    4.9061805,
+    52.361124
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Courtyard/rear wall to the north: no panorama within 35 m. Drawn as the 3DBAG brick shell."
+  },
+  {
+   "tag": "w03-342",
+   "bearing": 342,
+   "lengthM": 14.9,
+   "centre": [
+    4.906435,
+    52.361182
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Courtyard/rear wall to the north: no panorama within 35 m. Drawn as the 3DBAG brick shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (20241203_0939_Track10-1_Sphere_00298, TMX7316010203-002541_pano_0004_000379, TMX7316010203-001675_pano_0000_006016)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 210049 register text",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/26a8f9a4-35b2-4cc6-9cbe-d9cd9ec307cd?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012170759",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170759",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012170759",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  }
+ ]
+}

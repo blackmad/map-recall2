@@ -1,0 +1,346 @@
+{
+  "id": "sarphatistraat-47",
+  "countedBy": "lane landmarks-r14-b-20261122 from the big-rectify.ts rectification of 20241203_0939_Track10-1_Sphere_00298 (2024, the whole front in one frame) with TMX7316010203-002541_pano_0004_000379 (2022) for the ground storey of the east wing behind the bus; not yet blind-counted. Glazing only, bottom row first, rows clustered by centre height as the audit does. Row 1 (13): two low windows in the west wing (its middle bay is a dark door), the eight tall windows of the granite middle zone (counted by their lower glazed lights; the upper lights carry the art panels) and three low windows in the east wing; the end-bay doors are not glazed. Row 2 (20): the first-storey windows of the six wing bays, the six slit windows of the end bays and the eight low mezzanine windows over the granite (centres 4.7 and 5.85 m, one band). Rows 3 and 4 (20 each): six wing windows, six slits and eight middle windows. Row 5 (3): the dormers. Axes (21): the six wing axes, the six slit axes, the eight middle axes, and the middle dormer, which stands over the pier between the fourth and fifth middle bays (the outer dormers are within 0.3 m of the second and seventh bay axes). Symmetric above the ground storey about the middle (the end bays differ by 0.8 m in width, west 4.2 m, east 3.4 m).",
+  "facades": [
+    {
+      "name": "Sarphatistraat front",
+      "bearing": 162,
+      "photo": "artifacts/landmark-briefs/sarphatistraat-47/front-q0.jpg",
+      "rows": [
+        13,
+        20,
+        20,
+        20,
+        3
+      ],
+      "columns": 21,
+      "symmetric": true,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "20241203_0939_Track10-1_Sphere_00298 (2024 rectification, 40 px/m): low windows 0.95 m in the wings (two west, three east from TMX7316010203-002541_pano_0004_000379, 2022) and the eight 1.25 m tall windows of the granite middle zone",
+          "openings": [
+            {
+              "kind": "low-window",
+              "w": 0.95
+            },
+            {
+              "kind": "low-window",
+              "w": 0.95
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "tall-window",
+              "w": 1.25
+            },
+            {
+              "kind": "low-window",
+              "w": 0.95
+            },
+            {
+              "kind": "low-window",
+              "w": 0.95
+            },
+            {
+              "kind": "low-window",
+              "w": 0.95
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "20241203_0939_Track10-1_Sphere_00298 (2024 rectification, 40 px/m): first storey of the wings (1.2 x 3.05 m) and the end-bay slits (0.3 m) with the low mezzanine windows over the granite (1.2 x 0.8 m) in one band",
+          "openings": [
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "mezzanine",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "20241203_0939_Track10-1_Sphere_00298 (2024 rectification, 40 px/m): 0.3 m slits in the end bays, 1.2 m windows in the wings and the middle",
+          "openings": [
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "20241203_0939_Track10-1_Sphere_00298 (2024 rectification, 40 px/m): 0.3 m slits in the end bays, 1.2 m windows in the wings and the middle",
+          "openings": [
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "window",
+              "w": 1.2
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            },
+            {
+              "kind": "slit",
+              "w": 0.3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

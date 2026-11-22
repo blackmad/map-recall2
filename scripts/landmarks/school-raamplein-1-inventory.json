@@ -1,0 +1,729 @@
+{
+ "schemaVersion": 1,
+ "id": "school-raamplein-1",
+ "pand": "0363100012165430",
+ "brief": "scripts/landmarks/school-raamplein-1-brief.md",
+ "signature": [
+  "m-aedicule",
+  "nw-aedicule",
+  "se-aedicule",
+  "s-arched",
+  "m-balcony",
+  "nw-pilasters",
+  "s-rustication",
+  "s-letters",
+  "m-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-155",
+   "bearing": 155,
+   "lengthM": 19.5,
+   "centre": [
+    4.8805915,
+    52.366227
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_002874",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [],
+   "note": "SE side, ring edge 35: the 2019 and 2021 views show only bamboo behind a fence and the corner pavilion top; drawn as the Raamplein brick wing pattern (inferred)"
+  },
+  {
+   "tag": "w02-337",
+   "bearing": 337,
+   "lengthM": 18.5,
+   "centre": [
+    4.880266,
+    52.3666545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003045_pano_0016_000067",
+   "capturedAt": "2023-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-arched",
+     "kind": "window-shape",
+     "where": "second floor: four round-headed windows with glazed fans under yellow-brick archivolts, stone imposts and keystone consoles",
+     "approxSizeM": [
+      2.1,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "archWin + archBand (ochre) + impost and keystone slabs (brickWing)"
+    },
+    {
+     "id": "p-panels",
+     "kind": "other",
+     "where": "first floor: yellow-brick panels under and over each window, the lintel panel framed by stone ears under a moulded stone hood",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "ochre panels, stone ears and hood slabs (brickWing)"
+    },
+    {
+     "id": "p-rustication",
+     "kind": "other",
+     "where": "rusticated hardstone ground storey over a darker plinth with souterrain vents, its stone cornice band at 6 m",
+     "approxSizeM": [
+      13.2,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "groundStorey: plinth, hardstone face, joint courses, band"
+    },
+    {
+     "id": "p-cornice",
+     "kind": "other",
+     "where": "modillion cornice in sandstone",
+     "approxSizeM": [
+      13.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "frieze(): bed mouldings, modillions every 0.5 m, corona"
+    },
+    {
+     "id": "p-dormers",
+     "kind": "window-shape",
+     "where": "two small round-headed dormers in the slate mansard with white arched hoods",
+     "approxSizeM": [
+      1.3,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "dormer()"
+    },
+    {
+     "id": "p-aedicule",
+     "kind": "tower",
+     "where": "the corner risalit carries an aedicule with an arched light on this face too",
+     "approxSizeM": [
+      4.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "how": "aedicule(lights 1) on edge 17"
+    },
+    {
+     "id": "p-chimneys",
+     "kind": "other",
+     "where": "two brick chimneys on the mansard",
+     "approxSizeM": [
+      0.6,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002306_pano_0002_000944",
+     "skip": {
+      "reason": "too-small",
+      "note": "set back on the mansard, hidden from the street at 1.7 m"
+     }
+    }
+   ],
+   "note": "Passeerdersgracht, ring edges 15 (red-brick wing, three bays) and 17 (the shared NW corner risalit); sunlit 2021 alt view"
+  },
+  {
+   "tag": "w03-247",
+   "bearing": 247,
+   "lengthM": 13.6,
+   "centre": [
+    4.8803865,
+    52.366315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002970_pano_0003_000157",
+   "capturedAt": "2023-02-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-arched",
+     "kind": "window-shape",
+     "where": "second floor: four round-headed windows with glazed fans under yellow-brick archivolts, stone imposts and keystone consoles",
+     "approxSizeM": [
+      2.1,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "archWin + archBand (ochre) + impost and keystone slabs (brickWing)"
+    },
+    {
+     "id": "s-panels",
+     "kind": "other",
+     "where": "first floor: yellow-brick panels under and over each window, the lintel panel framed by stone ears under a moulded stone hood",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "ochre panels, stone ears and hood slabs (brickWing)"
+    },
+    {
+     "id": "s-rustication",
+     "kind": "other",
+     "where": "rusticated hardstone ground storey over a darker plinth with souterrain vents, its stone cornice band at 6 m",
+     "approxSizeM": [
+      13.2,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "groundStorey: plinth, hardstone face, joint courses, band"
+    },
+    {
+     "id": "s-letters",
+     "kind": "lettering",
+     "where": "gilded WORLDWIDE letters across the yellow frieze under the cornice",
+     "approxSizeM": [
+      6.5,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "letters() in gold, stretched glyphs (frieze)"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "modillion cornice in sandstone",
+     "approxSizeM": [
+      13.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "frieze(): bed mouldings, modillions every 0.5 m, corona"
+    },
+    {
+     "id": "s-dormers",
+     "kind": "window-shape",
+     "where": "two small round-headed dormers in the slate mansard with white arched hoods",
+     "approxSizeM": [
+      1.3,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002970_pano_0003_000157",
+     "how": "dormer()"
+    }
+   ],
+   "note": "Raamplein, south red-brick wing, ring edge 30 (WORLDWIDE)"
+  },
+  {
+   "tag": "w04-246",
+   "bearing": 246,
+   "lengthM": 13.2,
+   "centre": [
+    4.880249,
+    52.366503
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001048_pano_0000_003411",
+   "capturedAt": "2019-01-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-arched",
+     "kind": "window-shape",
+     "where": "second floor: four round-headed windows with glazed fans under yellow-brick archivolts, stone imposts and keystone consoles",
+     "approxSizeM": [
+      2.1,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "archWin + archBand (ochre) + impost and keystone slabs (brickWing)"
+    },
+    {
+     "id": "n-panels",
+     "kind": "other",
+     "where": "first floor: yellow-brick panels under and over each window, the lintel panel framed by stone ears under a moulded stone hood",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "ochre panels, stone ears and hood slabs (brickWing)"
+    },
+    {
+     "id": "n-rustication",
+     "kind": "other",
+     "where": "rusticated hardstone ground storey over a darker plinth with souterrain vents, its stone cornice band at 6 m",
+     "approxSizeM": [
+      13.2,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "groundStorey: plinth, hardstone face, joint courses, band"
+    },
+    {
+     "id": "n-letters",
+     "kind": "lettering",
+     "where": "gilded INSPIRING letters across the yellow frieze under the cornice",
+     "approxSizeM": [
+      6.5,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "letters() in gold, stretched glyphs (frieze)"
+    },
+    {
+     "id": "n-cornice",
+     "kind": "other",
+     "where": "modillion cornice in sandstone",
+     "approxSizeM": [
+      13.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "frieze(): bed mouldings, modillions every 0.5 m, corona"
+    },
+    {
+     "id": "n-dormers",
+     "kind": "window-shape",
+     "where": "two small round-headed dormers in the slate mansard with white arched hoods",
+     "approxSizeM": [
+      1.3,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001048_pano_0000_003411",
+     "how": "dormer()"
+    }
+   ],
+   "note": "Raamplein, north red-brick wing, ring edge 22 (INSPIRING)"
+  },
+  {
+   "tag": "w05-154",
+   "bearing": 154,
+   "lengthM": 11.4,
+   "centre": [
+    4.88052,
+    52.3666505
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-64",
+   "bearing": 64,
+   "lengthM": 11.3,
+   "centre": [
+    4.8806845,
+    52.3663095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_002867",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-arched",
+     "kind": "window-shape",
+     "where": "tall round-arched windows of the gymnasium in white frames",
+     "approxSizeM": [
+      1.6,
+      3.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001178_pano_0001_002867",
+     "skip": {
+      "reason": "not-visible",
+      "note": "courtyard wall behind the neighbours; seen only obliquely across the Raamstraat yard, not from a ride street"
+     }
+    }
+   ],
+   "note": "courtyard / gymnasium side (ring edges 36-38), 32 m away at 38 degrees: brick with tall round-arched windows; left as the 3DBAG brick shell"
+  },
+  {
+   "tag": "w07-246",
+   "bearing": 246,
+   "lengthM": 8.9,
+   "centre": [
+    4.8802945,
+    52.3664035
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_002898",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-aedicule",
+     "kind": "tower",
+     "where": "aedicule with two round-arched lights, pilasters and a pediment with a gilded eagle (register)",
+     "approxSizeM": [
+      5.5,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "aedicule(lights 2) with a gold disc-and-wings eagle"
+    },
+    {
+     "id": "m-balcony",
+     "kind": "balcony-ironwork",
+     "where": "small stone balcony with an open balustrade and a carved centre panel at the first floor",
+     "approxSizeM": [
+      4.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "kit balustrade on a stone slab, solid centre panel with a disc boss"
+    },
+    {
+     "id": "m-entrance",
+     "kind": "other",
+     "where": "round-arched entrance with two half-columns under the balcony (register; hidden by the lorry)",
+     "approxSizeM": [
+      2.5,
+      4.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002970_pano_0000_000007",
+     "how": "dark arched door, hardstone archivolt, half-cylinder columns on a stone porch block"
+    },
+    {
+     "id": "m-groups",
+     "kind": "window-shape",
+     "where": "four-light window groups (narrow, wide, wide, narrow) with stone colonnettes on both upper storeys",
+     "approxSizeM": [
+      6.4,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "pairGroup() with four lights"
+    },
+    {
+     "id": "m-pilasters",
+     "kind": "colonnade",
+     "where": "colossal sandstone half-pilasters through the second and third storeys",
+     "approxSizeM": [
+      0.95,
+      9.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "pilaster()"
+    },
+    {
+     "id": "m-letters",
+     "kind": "lettering",
+     "where": "gilded AUDIENCES letters in the frieze",
+     "approxSizeM": [
+      6.5,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "letters() in gold"
+    },
+    {
+     "id": "m-urns",
+     "kind": "sculpture",
+     "where": "urn finials on the cornice corners",
+     "approxSizeM": [
+      0.55,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001178_pano_0001_002898",
+     "how": "urn()"
+    }
+   ],
+   "note": "Raamplein, middle risalit, ring edge 26 (1.5 m proud); a lorry hides the ground storey in 2019, the 2022 view is oblique"
+  },
+  {
+   "tag": "w08-332",
+   "bearing": 332,
+   "lengthM": 8.6,
+   "centre": [
+    4.8804725,
+    52.366729
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track14_Sphere_00084",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-house",
+     "kind": "window-shape",
+     "where": "two-storey brick house: sash windows under segmental brick arches, black door with a fanlight, attic window in the taller right bay",
+     "approxSizeM": [
+      8.6,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track14_Sphere_00084",
+     "how": "conciergeHouse(): win() pairs, segBand arches, dark door, fanlight"
+    }
+   ],
+   "note": "Passeerdersgracht 27, ring edge 11: the concierge house in the same pand (the register names it a separate monument within the complex); a bare tree in front in 2024"
+  },
+  {
+   "tag": "w09-246",
+   "bearing": 246,
+   "lengthM": 8.1,
+   "centre": [
+    4.8804375,
+    52.366223
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0001_000921",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-pilasters",
+     "kind": "colonnade",
+     "where": "colossal sandstone half-pilasters at both corners through the two upper storeys",
+     "approxSizeM": [
+      0.95,
+      9.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0001_000921",
+     "how": "pilaster(): base, shaft, capital"
+    },
+    {
+     "id": "se-pairs",
+     "kind": "window-shape",
+     "where": "paired windows per storey with a stone colonnette between, stone frames, yellow-brick spandrel with stone strips",
+     "approxSizeM": [
+      4.5,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0001_000921",
+     "how": "pairGroup()"
+    },
+    {
+     "id": "se-aedicule",
+     "kind": "tower",
+     "where": "aedicule dormer on the cornice: yellow brick between stone pilasters, one round-arched light, pediment, stone scrolls either side",
+     "approxSizeM": [
+      4.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0001_000921",
+     "how": "aedicule(lights 1)"
+    },
+    {
+     "id": "se-urns",
+     "kind": "sculpture",
+     "where": "stone urn finials on the cornice at the corners of the risalit",
+     "approxSizeM": [
+      0.55,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002306_pano_0001_000921",
+     "how": "block, sphere and cone (urn())"
+    },
+    {
+     "id": "se-paterae",
+     "kind": "relief",
+     "where": "round stone paterae in the frieze over the pilasters",
+     "approxSizeM": [
+      0.5,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002306_pano_0001_000921",
+     "how": "disc"
+    }
+   ],
+   "note": "Raamplein, SE corner risalit, ring edge 34"
+  },
+  {
+   "tag": "w10-246",
+   "bearing": 246,
+   "lengthM": 8.1,
+   "centre": [
+    4.8801665,
+    52.366588
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002550_pano_0000_000918",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-pilasters",
+     "kind": "colonnade",
+     "where": "colossal sandstone half-pilasters at both corners through the two upper storeys",
+     "approxSizeM": [
+      0.95,
+      9.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002550_pano_0000_000918",
+     "how": "pilaster(): base, shaft, capital"
+    },
+    {
+     "id": "nw-pairs",
+     "kind": "window-shape",
+     "where": "paired windows per storey with a stone colonnette between, stone frames, yellow-brick spandrel with stone strips",
+     "approxSizeM": [
+      4.5,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002550_pano_0000_000918",
+     "how": "pairGroup()"
+    },
+    {
+     "id": "nw-aedicule",
+     "kind": "tower",
+     "where": "aedicule dormer on the cornice: yellow brick between stone pilasters, one round-arched light, pediment, stone scrolls either side",
+     "approxSizeM": [
+      4.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002550_pano_0000_000918",
+     "how": "aedicule(lights 1)"
+    },
+    {
+     "id": "nw-urns",
+     "kind": "sculpture",
+     "where": "stone urn finials on the cornice at the corners of the risalit",
+     "approxSizeM": [
+      0.55,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002550_pano_0000_000918",
+     "how": "block, sphere and cone (urn())"
+    },
+    {
+     "id": "nw-paterae",
+     "kind": "relief",
+     "where": "round stone paterae in the frieze over the pilasters",
+     "approxSizeM": [
+      0.5,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002550_pano_0000_000918",
+     "how": "disc"
+    }
+   ],
+   "note": "Raamplein, NW corner risalit, ring edge 18 (shared with the Passeerdersgracht)"
+  },
+  {
+   "tag": "w11-65",
+   "bearing": 65,
+   "lengthM": 7.7,
+   "centre": [
+    4.880603,
+    52.3664895
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-66",
+   "bearing": 66,
+   "lengthM": 7.7,
+   "centre": [
+    4.8805145,
+    52.3665415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_002179",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-portal",
+     "kind": "other",
+     "where": "stone door portal with a small pediment",
+     "approxSizeM": [
+      1.4,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001674_pano_0000_002179",
+     "skip": {
+      "reason": "not-visible",
+      "note": "courtyard-side wall reached only through a gate, off every ride street"
+     }
+    }
+   ],
+   "note": "rear (NE) wall, ring edges 46/0, 35 m away at 39 degrees: brick with tall windows under yellow arches and a stone door portal; left as the 3DBAG brick shell"
+  },
+  {
+   "tag": "w13-66",
+   "bearing": 66,
+   "lengthM": 7.7,
+   "centre": [
+    4.880609,
+    52.3664145
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 518264 (Openbare Handelsschool, Raamplein 1)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518264",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Raamplein 1 (history, the 1899 description and the 2017 register text)",
+   "url": "https://nl.wikipedia.org/wiki/Raamplein_1",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikidata Q17302591",
+   "url": "https://www.wikidata.org/wiki/Q17302591",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012165430 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012165430",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012165430",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165430",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

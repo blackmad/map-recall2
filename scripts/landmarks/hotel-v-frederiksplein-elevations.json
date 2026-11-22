@@ -1,0 +1,132 @@
+{
+  "id": "hotel-v-frederiksplein",
+  "countedBy": "lane landmarks-r14-b-20261122 from the rectified panoramas w01-346 (TMX7316010203-002545_pano_0000_000625, 2022, and TMX7316010203-001048_pano_0000_000788, 2018 leaf-off) and the Huidekoperstraat rectification of b_20241204_1003_Track09_Sphere_00104 (2024) with TMX7316060226-000020_pano_0000_000428 (2016) for no. 19; not yet blind-counted. Glazing only, bottom row first. Weteringschans: the ground storey is three shopfronts between stone piers (each one ribbon), the wooden side door is not glazed; storeys two and three have nine windows (the middle bay of each house a French door or window in a stone surround); the three stone dormers are the top row. The three houses are not mirror symmetric about the front's centre (house axes 4.4, 11.1 and 18.1 m along a 21.7 m front, and the side door at the east end). Huidekoperstraat: the corner house's return (shop window and the glazed triple door on the ground storey; a small window and a segmental-headed window on each upper storey, the blind niche between them is not an opening) and no. 19 (three windows on each storey and its dormer) are counted as two faces; the gate's fanlight between them is left out of both. Axes: on the Weteringschans the nine window axes plus the first shopfront, whose centre (5.6 m) is on none of them (10). The Weteringschans crop (alongM) leaves out the pand's 2 m brick bay at the east end, which the w01-346 crop does not show; the Huidekoperstraat spans are the two faces' extents in the model frame (corner house -9.9..0.9, no. 19 4.75..11.3). The corner-house return's glazed triple door has its three-light fanlight over a solid rail (2024 crop: the panes stop at 2.4 m, the fanlight is 2.85-3.2 m), a separate opening above the ground-storey band, so its rows are 2 (shop window, door), 1 (fanlight), 2, 2; its axes are the two upper window axes plus the shop window's and the door's centres (4). Gables: on the Weteringschans the three stone dormers, each with a chimney stack behind it, stand as three separate peaks on the skyline over the level cornice (2018 leaf-off crop); the roof slopes between them are out of sight from the pavement. No. 19 is not counted as symmetric: the 2016 crop is cut at its third window, so its right-hand end is not in the photo.",
+  "facades": [
+    {
+      "name": "Weteringschans (three houses)",
+      "bearing": 346,
+      "photo": "artifacts/landmark-briefs/hotel-v-frederiksplein/w01-346.alt.jpg",
+      "rows": [
+        3,
+        9,
+        9,
+        3
+      ],
+      "columns": 10,
+      "symmetric": false,
+      "gables": 3,
+      "openings": [
+        "glass"
+      ],
+      "alongM": [
+        2.2,
+        24.6
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002545_pano_0000_000625 (2022, w01-346): three shopfronts between the stone piers, the east one narrower (about 3.4 m) than the middle (6.4 m) and west (6.0 m) ones, viewer left (east) to right",
+          "openings": [
+            {
+              "kind": "shopfront",
+              "w": 3.36
+            },
+            {
+              "kind": "shopfront",
+              "w": 6.35
+            },
+            {
+              "kind": "shopfront",
+              "w": 5.99
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-001048_pano_0000_000788 (2018 leaf-off, w01-346.alt): in each house the middle bay of storey two is a French door down to its balcony floor (about 0.7 m below the sills of the windows beside it) in a stone aedicule",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.24
+            },
+            {
+              "kind": "french-door",
+              "w": 1.3
+            },
+            {
+              "kind": "window",
+              "w": 1.24
+            },
+            {
+              "kind": "window",
+              "w": 1.24
+            },
+            {
+              "kind": "french-door",
+              "w": 1.3
+            },
+            {
+              "kind": "window",
+              "w": 1.24
+            },
+            {
+              "kind": "window",
+              "w": 1.24
+            },
+            {
+              "kind": "french-door",
+              "w": 1.3
+            },
+            {
+              "kind": "window",
+              "w": 1.24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Huidekoperstraat, corner house return",
+      "bearing": 255,
+      "photo": "artifacts/landmark-briefs/hotel-v-frederiksplein/west-q0.jpg",
+      "rows": [
+        2,
+        1,
+        2,
+        2
+      ],
+      "columns": 4,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "span": [
+        -9.9,
+        0.9
+      ]
+    },
+    {
+      "name": "Huidekoperstraat 19",
+      "bearing": 255,
+      "photo": "artifacts/landmark-briefs/hotel-v-frederiksplein/w02-255.alt.jpg",
+      "rows": [
+        3,
+        3,
+        1
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "span": [
+        4.75,
+        11.3
+      ]
+    }
+  ]
+}
