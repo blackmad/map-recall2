@@ -367,7 +367,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     concrete: {slot: 'paint', why: 'palette name only: the white-painted timber eaves cornices and the dormer of the house (w01-359, w03-270), not concrete'},
   },
   'aurora-overtoom': {
-    stone: {slot: 'stone', why: 'the natural-stone cladding over the full height of the front (w01-40, register)'},
+    stone: {slot: 'stone', measured: '#d8d3c8', why: 'the pale grey-white natural-stone cladding over the full height of the front (w01-40 2021 crop: shaded stone near white under warm light, the 2025 overcast crop a neutral grey with a blue cast, the 2021 overcast Overtoom crop warm grey #84786c; register). Measured so the city look does not mix it 45 % into its beige sandstone (r11 drew #c2baab as taupe)'},
     concrete: {slot: 'stucco', why: 'the white rendered round pilotis and the soffit under the lifted volume (w01-40, w02-334)'},
     bronze: {slot: 'frame', why: 'palette name only: the dark metal mullions of the recessed ground-storey glazing (w01-40)'},
     dark: {slot: 'frame', why: 'the dark metal fascia and frames of the shop boxes and the doors (w01-40, w02-334)'},
