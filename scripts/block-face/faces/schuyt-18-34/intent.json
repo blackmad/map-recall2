@@ -1,0 +1,958 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "schuyt-18-34",
+ "street": "Cornelis Schuytstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/schuyt-18-34/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-5 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "Cornelis Schuytstraat 18-34 (even), the shop end towards the Willemsparkweg: a Jugendstil block at 30-34 with a tower axis and a curved gable, then the 1890s jack-block row with two stepped gables (28, 22) and mansards with pediment dormers (26, 24, 20, 18); Organic over 26-28, Gall & Gall at 20."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012237370",
+    "front": "a",
+    "stripRow": 227,
+    "evidence": "strip 2022-03-21: the tower axis's deep eaves at row 227"
+   },
+   {
+    "pand": "0363100012237370",
+    "front": "b",
+    "stripRow": 313,
+    "evidence": "strip 2022-03-21: top of the parapet cornice at row 313"
+   },
+   {
+    "pand": "0363100012157345",
+    "stripRow": 318,
+    "evidence": "strip 2022-03-21: foot of the stepped gable at row 318"
+   },
+   {
+    "pand": "0363100012160258",
+    "stripRow": 313,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 313"
+   },
+   {
+    "pand": "0363100012235947",
+    "stripRow": 313,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 313"
+   },
+   {
+    "pand": "0363100012166878",
+    "stripRow": 318,
+    "evidence": "strip 2022-03-21: foot of the stepped gable at row 318"
+   },
+   {
+    "pand": "0363100012158893",
+    "stripRow": 313,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 313"
+   },
+   {
+    "pand": "0363100012236596",
+    "stripRow": 313,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 313"
+   }
+  ],
+  "notes": [
+   "Rows read on the strip at 40 px/m, ground row 755."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012237370",
+   "slug": "hface-237370",
+   "address": "Cornelis Schuytstraat 30-34",
+   "design": {
+    "fronts": [
+     {
+      "id": "a",
+      "street": "Cornelis Schuytstraat",
+      "share": 0.22,
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 1,
+      "storeys": 4,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.3,
+       2.6
+      ],
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.68,
+       0.5
+      ],
+      "windowShare": 0.78,
+      "bayWindows": {
+       "bay": 0,
+       "storeys": [
+        1,
+        2
+       ],
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "#3a3a36",
+       "fascia": true,
+       "display": "#c8b890",
+       "entrance": "right",
+       "glazing": "single",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#55554e"
+       },
+       "evidence": "strip 2022-03-21 x 0-147: a grey fabric awning with a white leaf logo over a café window; terrace furniture in front",
+       "stallriser": "low",
+       "stallriserColour": "#3a3a36"
+      },
+      "partyClip": true
+     },
+     {
+      "id": "b",
+      "street": "Cornelis Schuytstraat",
+      "share": 0.78,
+      "basement": "none",
+      "hoist": false,
+      "gable": "bell",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 5,
+      "bayWidths": [
+       2.0,
+       2.1,
+       3.25,
+       3.15,
+       2.65
+      ],
+      "bayFill": [
+       0.5,
+       0.5,
+       0.78,
+       0.78,
+       0.4
+      ],
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.68,
+       0.68
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "crownAt": {
+       "from": 0.32,
+       "to": 0.56
+      },
+      "crownRise": 0.6,
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        2,
+        3
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2c2c2a",
+       "fascia": true,
+       "display": "#b8a888",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 3,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#7d8558",
+        "extent": {
+         "from": 0.55,
+         "to": 1
+        }
+       },
+       "evidence": "strip 2022-03-21 x 147-673: brick piers with a dark glazed shop at the centre and an olive fabric awning lettered in white script at the right (half legible)",
+       "stallriser": "low",
+       "stallriserColour": "#2c2c2a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "bitumen"
+    },
+    "palette": {
+     "brick": "#8a6c58",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e6e0d0",
+     "cornice": "#e6e0d0",
+     "wallTint": "measured",
+     "whitePoint": "#d0ccb8"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie and woonfunctie at 30-34; no OSM business inside; the awning lettering is half legible on 2022-03-21.",
+    "bag": [
+     "winkelfunctie,woonfunctie",
+     "woonfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "a narrow tower axis with an oriel, then five axes (two wide balcony axes)",
+    "windowsPerStorey": "ground: café, shop, shop | first: oriel, 5 | second: oriel, 5 | third (tower): 1 | gable: 1",
+    "symmetry": "asymmetric",
+    "groundFloor": "café under a grey awning, shops with an olive awning",
+    "signage": "white script on the olive awning, half legible",
+    "roofline": "Jugendstil: a tower axis with a deep bracketed eaves, a flat roof with terraces behind a parapet, a curved gable dormer over the two balcony axes",
+    "photoRows": [
+     3,
+     6,
+     6,
+     1,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the tower eaves are drawn as a bracketed cornice; its hipped overhang roof is left out",
+     "the roof terrace railings and planters are left out",
+     "the brick relieving arches over the windows are drawn as segmental heads",
+     "brick set by judgement to #8a6c58: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 0-673 px"
+   }
+  },
+  {
+   "pandId": "0363100012157345",
+   "slug": "hface-157345",
+   "address": "Cornelis Schuytstraat 28",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownSteps": 3,
+      "crownFinial": true,
+      "crownRise": 0.75,
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1e1e1c",
+       "fascia": true,
+       "name": "Organic",
+       "display": "#a89060",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#4c7046"
+       },
+       "evidence": "strip 2022-03-21 x 673-890: a black fascia over a green fabric awning that runs on over 26; the Organic shop",
+       "stallriser": "low",
+       "stallriserColour": "#1e1e1c"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a6a50",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "photo-only",
+    "note": "BAG lists no unit at 28; the Organic shop (OSM node 2297199268, addr 26-28) runs on under one awning from 26.",
+    "bag": [
+     "none"
+    ],
+    "name": "Organic",
+    "category": "shop=convenience"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "black fascia, green awning",
+    "signage": "none on this pand",
+    "roofline": "brick stepped gable with white shoulder plaques and a finial",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the white shoulder plaques and the gable ornament are left out",
+     "brick set by judgement to #9a6a50: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 673-890 px"
+   }
+  },
+  {
+   "pandId": "0363100012160258",
+   "slug": "hface-160258",
+   "address": "Cornelis Schuytstraat 26",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.6,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1e1e1c",
+       "fascia": true,
+       "name": "Organic",
+       "display": "#a89060",
+       "sign": {
+        "text": "Organic",
+        "textColour": "#f0f0e8",
+        "span": 0.3,
+        "align": "left"
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#4c7046"
+       },
+       "evidence": "strip 2022-03-21 x 891-1124: a black fascia, a green fabric awning, the Organic logo box on the pier at the left; produce crates in front",
+       "stallriser": "low",
+       "stallriserColour": "#1e1e1c"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a8704f",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 2297199268 Organic (convenience, addr 26-28, organicfoodforyou.nl); the Organic logo box reads on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Organic",
+    "category": "shop=convenience",
+    "osm": {
+     "type": "node",
+     "id": 2297199268,
+     "name": "Organic",
+     "tags": "shop=convenience"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: 1 pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black fascia, green awning",
+    "signage": "the Organic logo box",
+    "roofline": "white bracketed cornice on consoles, slate mansard with a tall white pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white stone balustrade balconies are drawn as guard balconies",
+     "the logo box is drawn as fascia lettering",
+     "brick set by judgement to #a8704f: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 891-1124 px"
+   }
+  },
+  {
+   "pandId": "0363100012235947",
+   "slug": "hface-235947",
+   "address": "Cornelis Schuytstraat 24",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.6,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#ecebe4",
+       "fascia": true,
+       "display": "#d8d0c0",
+       "entrance": "left",
+       "glazing": "single",
+       "evidence": "strip 2022-03-21 x 1124-1337: a white pui with one large window and a glazed door; no sign",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a2725a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 24; no OSM business; no sign on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: 1 pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white pui",
+    "signage": "none",
+    "roofline": "white bracketed cornice on consoles, slate mansard with a white pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the ornate iron balcony cages are drawn as guard balconies",
+     "brick set by judgement to #a2725a: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 1124-1337 px"
+   }
+  },
+  {
+   "pandId": "0363100012166878",
+   "slug": "hface-166878",
+   "address": "Cornelis Schuytstraat 22",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownSteps": 3,
+      "crownFinial": true,
+      "crownRise": 0.75,
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#f0efe8",
+       "fascia": true,
+       "display": "#e0c8c8",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2022-03-21 x 1338-1560: a white pui with a white fascia lettered in grey capitals (not legible), a lit window of red dresses and a white door at the right",
+       "stallriser": "low",
+       "stallriserColour": "#f0efe8"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a87458",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 22; no OSM business; the fascia word is not legible on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "white pui",
+    "signage": "grey capitals, not legible",
+    "roofline": "brick stepped gable with a finial, the twin of 28",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the white shoulder plaques are left out",
+     "the fascia lettering is left out",
+     "brick set by judgement to #a87458: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 1338-1560 px"
+   }
+  },
+  {
+   "pandId": "0363100012158893",
+   "slug": "hface-158893",
+   "address": "Cornelis Schuytstraat 20",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.6,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2422",
+       "fascia": true,
+       "name": "Gall & Gall",
+       "display": "#a07850",
+       "sign": {
+        "text": "Gall & Gall",
+        "textColour": "#d8202a",
+        "span": 0.5
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2022-03-21 x 1560-1791: brick piers, a dark fascia box lettered in red and white over a dark glazed door and window",
+       "stallriser": "low",
+       "stallriserColour": "#2a2422"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a684e",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 483553126 Gall & Gall (alcohol, brand Gall & Gall); the red lettering reads on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Gall & Gall",
+    "category": "shop=alcohol",
+    "osm": {
+     "type": "node",
+     "id": 483553126,
+     "name": "Gall & Gall",
+     "tags": "brand=Gall & Gall; shop=alcohol"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: 1 pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "brick piers, dark shop",
+    "signage": "Gall & Gall red on dark",
+    "roofline": "white bracketed cornice on consoles, slate mansard with a white pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the stone balustrade balconies are drawn as guard balconies",
+     "the projecting sign is left out",
+     "brick set by judgement to #9a684e: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 1560-1791 px"
+   }
+  },
+  {
+   "pandId": "0363100012236596",
+   "slug": "hface-236596",
+   "address": "Cornelis Schuytstraat 18",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       3.7,
+       3.45,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.6,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#6a6c68",
+       "fascia": true,
+       "display": "#c8c8c0",
+       "entrance": "left",
+       "glazing": "single",
+       "evidence": "strip 2022-03-21 x 1791-1971: a grey pui under a white cornice band, mannequins behind a window lettered in white (not legible)",
+       "stallriser": "low",
+       "stallriserColour": "#6a6c68"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a87a5a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d6d0c0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 18; no OSM business; the window lettering is not legible on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | first: 2 | second: 2 | roof: 1 pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "grey pui",
+    "signage": "window lettering, not legible",
+    "roofline": "white bracketed cornice on consoles, slate mansard with a white pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the paired lights of the left axis are drawn as one window",
+     "brick set by judgement to #a87a5a: the strip (low March sun) measures a pale tan that drew beige in the game; the 2016-2022 panoramas read orange-red brick"
+    ],
+    "citation": "schuyt-18-34 strip.jpg (2022-03-21) x 1791-1971 px"
+   }
+  }
+ ]
+}

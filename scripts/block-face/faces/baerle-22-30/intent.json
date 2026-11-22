@@ -1,0 +1,496 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "baerle-22-30",
+ "street": "Van Baerlestraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/baerle-22-30/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-5 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "Van Baerlestraat 22-30 (even), between the Alexander Boersstraat and the Jan Luijkenstraat: the 1930 corner block 28-30 (tiled hip roof, a steep centre gable, a stone shop portal), 26 (1909, a tall bell gable, Essentiel Antwerp) and 22-24 (1909, a mansard pair over Oogappel and Reflections)."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "streetLevelPands": {
+   "pands": [
+    "0363100012122051"
+   ],
+   "evidence": "strip 2024-12-11: one pavement line under all three fronts; 3DBAG puts 28-30's ground at +0.19 m NAP against -0.84/-0.79 m for 26 and 22-24"
+  },
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012122051",
+    "stripRow": 300,
+    "frontRoof": {
+     "topRow": 182,
+     "pitchDeg": 55
+    },
+    "evidence": "strip 2024-12-11: the white eaves boards of the side parts at row 300, the tiled hip to row 182"
+   },
+   {
+    "pand": "0363100012162963",
+    "stripRow": 345,
+    "evidence": "strip 2024-12-11: the foot of the bell gable (top of the side wall) at row 345"
+   },
+   {
+    "pand": "0363100012236146",
+    "stripRow": 340,
+    "evidence": "strip 2024-12-11: top of the white bracketed cornice under the mansard at row 340"
+   }
+  ],
+  "notes": [
+   "Floor lines read on the strip at 40 px/m: 28-30 stone ground storey to 5.15 m, sills 6.5 / 10.1 m; 26 and 22-24 shop heads 5.0 m, sills 5.8 / 9.2 m."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012122051",
+   "slug": "hface-122051",
+   "address": "Van Baerlestraat 28-30",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "crownAt": {
+       "from": 0.3,
+       "to": 0.7
+      },
+      "crownRise": 1.3,
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 5,
+      "storeys": 3,
+      "storeyHeights": [
+       5.2,
+       3.8,
+       4.4
+      ],
+      "bayWidths": [
+       3.6,
+       2.2,
+       2.0,
+       2.2,
+       3.6
+      ],
+      "bayFill": [
+       0.33,
+       0.55,
+       0.6,
+       0.55,
+       0.33
+      ],
+      "windowHeights": [
+       0.6,
+       0.61,
+       0.51
+      ],
+      "dormers": 2,
+      "dormerStyle": "plain",
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#b8ae98",
+       "fascia": false,
+       "display": "#e0b070",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 4,
+       "stallriser": "medium",
+       "stallriserColour": "#b8ae98",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#2a2a28"
+       },
+       "shopShare": 0.9,
+       "evidence": "strip 2024-12-11 x 0-546: a beige stone ground storey; a corner display window left, a stone portal with four lit glazed doors in timber frames and a row of small lights over them, a display window right and a dark house door at the right end; the portal lettering is not readable"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#62483a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#c8bea8",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#b3bba8"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "BAG winkelfunctie at 30; OSM node 13458209787 says shop=vacant, but the 2024-12-11 photo shows lit, stocked windows (a clothes shop); the portal lettering is not readable. Photo kept: an occupied shop, unnamed.",
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "5 axes: two wide outer bays, three close middle axes under the gable",
+    "windowsPerStorey": "ground: corner window, portal, window, house door | first: 5 | second: 5 | gable: 1 | roof: 2 dormers",
+    "symmetry": "symmetric about the centre gable above the ground floor",
+    "groundFloor": "beige stone storey with a portal",
+    "signage": "unreadable portal lettering",
+    "roofline": "tiled hip roof with white eaves boards on the outer parts, a steep brick centre gable to 19 m, two small dormers",
+    "citation": "baerle-22-30 strip.jpg (2024-12-11) x 0-546 px",
+    "photoRows": [
+     4,
+     5,
+     5,
+     1,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the two stone flower-box consoles under the outer first-floor windows are left out",
+     "the outer bays' deep white eaves boards are drawn as the simple cornice",
+     "the portal's lettering and the row of small lights over its doors are left out",
+     "brick set by judgement to #62483a (the strip measure #796043 drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162963",
+   "slug": "hface-162963",
+   "address": "Van Baerlestraat 26",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "bell",
+      "crownAt": {
+       "from": 0.1,
+       "to": 0.9
+      },
+      "crownRise": 1.3,
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.0,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "round",
+       "storeys": [
+        1
+       ]
+      },
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.66
+      ],
+      "windowShare": 0.56,
+      "atticShape": "rectangular",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#d8d2c4",
+       "fascia": true,
+       "fasciaColour": "#d8d2c4",
+       "name": "Essentiel Antwerp",
+       "display": "#d8c8a0",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 3,
+       "stallriser": "low",
+       "stallriserColour": "#d8d2c4",
+       "evidence": "strip 2024-12-11 x 546-813: a pale stone pui, a tall gridded window printed with a figure, a yellow door panel at the right; no sign readable"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7c5242",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e4e0d2",
+     "cornice": "#e4e0d2",
+     "wallTint": "measured",
+     "whitePoint": "#c0bfad"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM node 13458217153 names Essentiel Antwerp (clothes); no sign readable on 2024-12-11.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Essentiel Antwerp",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 13458217153,
+     "name": "Essentiel Antwerp",
+     "tags": "brand=Essentiel Antwerp; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 round-arched | second: 3 | gable: 1 round-arched",
+    "symmetry": "symmetric",
+    "groundFloor": "pale stone pui",
+    "signage": "none readable",
+    "roofline": "tall brick bell gable with stone side scrolls and a round top to 17.5 m",
+    "citation": "baerle-22-30 strip.jpg (2024-12-11) x 546-813 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the gable's round-arched window is drawn rectangular",
+     "the stone consoles under the second-floor balcony and the gable's side scrolls are left out",
+     "brick set by judgement to #7c5242 (the strip measure #937354 drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236146",
+   "slug": "hface-236146",
+   "address": "Van Baerlestraat 22-24",
+   "design": {
+    "fronts": [
+     {
+      "id": "a",
+      "street": "Van Baerlestraat",
+      "share": 0.5,
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.9,
+       3.5,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "round",
+       "storeys": [
+        1
+       ]
+      },
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.66
+      ],
+      "windowShare": 0.5,
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "plain",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#262a26",
+       "fascia": true,
+       "fasciaColour": "#262a26",
+       "name": "Oogappel",
+       "display": "#e0b878",
+       "sign": {
+        "text": "OOGAPPEL",
+        "textColour": "#e8e4dc",
+        "span": 0.4
+       },
+       "entrance": "right",
+       "glazing": "transom",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#262a26",
+       "evidence": "strip 2024-12-11 x 813-1080: a black pui, OOGAPPEL in white capitals on the black fascia, a louvred transom band over one wide lit window, the door at the right"
+      }
+     },
+     {
+      "id": "b",
+      "street": "Van Baerlestraat",
+      "share": 0.5,
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.9,
+       3.5,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "round",
+       "storeys": [
+        1
+       ]
+      },
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.66
+      ],
+      "windowShare": 0.5,
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 2,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#1e201e",
+       "fascia": true,
+       "fasciaColour": "#1e201e",
+       "name": "Reflections",
+       "display": "#c8a878",
+       "sign": {
+        "text": "REFLECTIONS",
+        "textColour": "#e0dcd4",
+        "span": 0.35
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1e201e",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#e8e6de"
+       },
+       "shopShare": 0.75,
+       "evidence": "strip 2024-12-11 x 1080-1349: a grey stone pui with a white panelled house door at the left; a black shop with REFLECTIONS in white capitals on the fascia and a white-framed glazed door"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a5040",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e2e0d2",
+     "cornice": "#e2e0d2",
+     "wallTint": "measured",
+     "whitePoint": "#b4b0a0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM nodes 13458194812 Oogappel (optician) and 13458215290 Reflections (clothes) inside the pand; both signs read on 2024-12-11. BAG: 22-H kantoorfunctie, 24-H winkelfunctie.",
+    "bag": [
+     "kantoorfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Oogappel",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 13458194812,
+     "name": "Oogappel",
+     "tags": "shop=optician"
+    }
+   },
+   "rhythm": {
+    "bays": "6 axes in two mirrored houses of 3",
+    "windowsPerStorey": "ground: two shops and a house door | first: 6 round-arched | second: 6 | roof: a wide three-light dormer, a small dormer and a tall pedimented dormer",
+    "symmetry": "two mirrored halves above the ground floor",
+    "groundFloor": "black Oogappel pui left, grey stone with a white house door and black Reflections right",
+    "signage": "OOGAPPEL and REFLECTIONS white on black",
+    "roofline": "white bracketed cornice under a slate mansard",
+    "citation": "baerle-22-30 strip.jpg (2024-12-11) x 813-1349 px",
+    "photoRows": [
+     3,
+     6,
+     6,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the wide three-light dormer over 24 is drawn as one plain dormer",
+     "Oogappel's louvred transom band is drawn as a transom row",
+     "the iron balconies' stone consoles are left out",
+     "brick set by judgement to #7a5040 (the strip measure #78603f drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+    ]
+   }
+  }
+ ]
+}

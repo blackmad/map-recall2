@@ -1521,9 +1521,13 @@ function paintedBands(front: FrontIntent, layout: Layout, openings: CanalhouseOp
     const sill = mine.length ? Math.min(...mine.map(o => o.bottomM)) : b0 + h * 0.22, head = mine.length ? Math.max(...mine.map(o => o.bottomM + o.heightM)) : b0 + h * 0.8;
     const transom = sill + (head - sill) * (front.bandTransomAt ?? PAINTED.transomK);
     const runs: [number, number][] = gap && erker!.storeys.includes(s) ? ([[0, gap[0]], [gap[1], full]] as [number, number][]).filter(([a, c]) => c - a > 0.1) : [[0, full]];
-    const push = (id: string, y: number, bh: number) => runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `${id}-${k}` : id, leftM: round(Math.max(0, a)), bottomM: round(y), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(bh), depthM: PAINTED.bandDepthM, surface: 'stone'}));
+    // On a painted storey (`paintedStoreys`, itself a facing PAINTED_STOREY_DEPTH_M proud) the bands stand proud of the paint, not coplanar with it.
+    const depth = front.paintedStoreys?.storeys.includes(s) ? PAINTED.bandDepthM + PAINTED_STOREY_DEPTH_M : PAINTED.bandDepthM;
+    const push = (id: string, y: number, bh: number) => runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `${id}-${k}` : id, leftM: round(Math.max(0, a)), bottomM: round(y), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(bh), depthM: depth, surface: 'stone'}));
     if (lines.includes('sill')) push(`painted-sill-s${s}`, Math.max(b0 + 0.02, sill - hs), Math.min(hs, sill - b0 - 0.02));
     if (lines.includes('transom')) push(`painted-transom-s${s}`, transom - ht / 2, ht);
+    // Extra impost bands on this storey (`bandImposts`).
+    (front.bandImposts ?? []).forEach((b, k) => { if (b.storey === s) { const bh = b.height ?? ht; push(`painted-impost-s${s}-${k}`, sill + (head - sill) * b.at - bh / 2, bh); } });
     // The head band stays under the next storey's sill band.
     const lift = front.bandHeights?.headLift ?? 0;
     if (lines.includes('head')) push(`painted-head-s${s}`, head + lift, Math.min(hh, b0 + h - head - lift - 0.02));

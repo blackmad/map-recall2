@@ -1,0 +1,1102 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "schuyt-17-33",
+ "street": "Cornelis Schuytstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/schuyt-17-33/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-5 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "Cornelis Schuytstraat 17-33 (odd), the shop end towards the Willemsparkweg: the 1890s jack-block row with stepped gables at 21 and 27 and ornate mansard dormers between, the ochre Jugendstil 29 with its oriel and raised crown, black-painted 31 with a timber dormer, and 33 (read on 2024-11-12; scaffolded in 2022)."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012164601",
+    "stripRow": 283,
+    "evidence": "strip 2022-03-21: top of the cornice (behind the tree) at row 283"
+   },
+   {
+    "pand": "0363100012155519",
+    "stripRow": 283,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 283"
+   },
+   {
+    "pand": "0363100012166710",
+    "stripRow": 287,
+    "evidence": "strip 2022-03-21: foot of the stepped gable at row 287"
+   },
+   {
+    "pand": "0363100012162193",
+    "stripRow": 283,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 283"
+   },
+   {
+    "pand": "0363100012165584",
+    "stripRow": 280,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 280"
+   },
+   {
+    "pand": "0363100012152291",
+    "stripRow": 287,
+    "evidence": "strip 2022-03-21: foot of the stepped gable at row 287"
+   },
+   {
+    "pand": "0363100012160599",
+    "stripRow": 280,
+    "evidence": "strip 2022-03-21: the white cornice of the lower left part at row 280"
+   },
+   {
+    "pand": "0363100012157482",
+    "stripRow": 253,
+    "evidence": "strip 2022-03-21: the white bracketed eaves board at row 253"
+   },
+   {
+    "pand": "0363100012157483",
+    "stripRow": 133,
+    "evidence": "strip 2022-03-21: top of the brick parapet (2024-11-12, through leaves) at row 133"
+   }
+  ],
+  "notes": [
+   "Rows read on the strip at 40 px/m, ground row 757. 33 comes from the 2024-11-12 capture (span date)."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012164601",
+   "slug": "hface-164601",
+   "address": "Cornelis Schuytstraat 17",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#ecebe4",
+       "fascia": true,
+       "name": "Ristorante Sardegna",
+       "display": "#b09070",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 1,
+       "evidence": "strip 2022-03-21 x 0-181: a white fascia band over dark windows, half hidden by ivy and a tree; the restaurant",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a3f36",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "OSM node 4791462175 Ristorante Sardegna; BAG bijeenkomstfunctie; ivy and a tree hide the front on 2022-03-21.",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "name": "Ristorante Sardegna",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 4791462175,
+     "name": "Ristorante Sardegna",
+     "tags": "amenity=restaurant"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: restaurant | first: 2 | second: 2 | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white fascia",
+    "signage": "none readable",
+    "roofline": "white cornice and a slate mansard, mostly behind a tree",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the front is half hidden by ivy; read from the neighbours"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 0-181 px"
+   }
+  },
+  {
+   "pandId": "0363100012155519",
+   "slug": "hface-155519",
+   "address": "Cornelis Schuytstraat 19",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#3a2422",
+       "fascia": true,
+       "name": "1 Amsterdam",
+       "display": "#a08060",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2022-03-21 x 181-401: a dark-red timber pui, display windows and a centre door; no sign readable",
+       "stallriser": "low",
+       "stallriserColour": "#3a2422"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#54463a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "OSM node 2816317784 1 Amsterdam (clothes, addr 19-H); no sign readable on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "1 Amsterdam",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816317784,
+     "name": "1 Amsterdam",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: 1 ornate pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "dark-red pui",
+    "signage": "none readable",
+    "roofline": "white bracketed cornice with a console frieze, slate mansard with a tall ornate white dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dormer's scrolls and finial are left out"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 181-401 px"
+   }
+  },
+  {
+   "pandId": "0363100012166710",
+   "slug": "hface-166710",
+   "address": "Cornelis Schuytstraat 21",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownSteps": 3,
+      "crownFinial": true,
+      "crownRise": 1.0,
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#f0efe8",
+       "fascia": true,
+       "display": "#d8d0c0",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#f0efe8"
+       },
+       "shopShare": 0.8,
+       "evidence": "strip 2022-03-21 x 399-612: a white timber pui with small-paned upper lights, a white house door at the left, framed pictures in the window (a gallery)",
+       "stallriser": "low",
+       "stallriserColour": "#f0efe8"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#52443d",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG woonfunctie and winkelfunctie at 21; no OSM business; framed pictures in the window on 2022-03-21, no sign.",
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: house door, shop | first: 3 | second: 3 | gable: 1 double window",
+    "symmetry": "symmetric",
+    "groundFloor": "white timber pui",
+    "signage": "none",
+    "roofline": "brick stepped gable with white date plaques at the shoulders and a scrolled finial",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the shoulder plaques and the scrolled finial are left out"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 399-612 px"
+   }
+  },
+  {
+   "pandId": "0363100012162193",
+   "slug": "hface-162193",
+   "address": "Cornelis Schuytstraat 23",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2826",
+       "fascia": true,
+       "name": "Bril Amsterdam",
+       "display": "#a89878",
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2022-03-21 x 614-831: a dark pui with a white pilaster at the left; ZEISS cards in the first-floor windows; no fascia sign",
+       "stallriser": "low",
+       "stallriserColour": "#2a2826"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#524741",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-only",
+    "note": "OSM node 2816318411 Bril Amsterdam (optician); ZEISS cards in the windows on 2022-03-21 agree with an optician; no fascia sign.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Bril Amsterdam",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 2816318411,
+     "name": "Bril Amsterdam",
+     "tags": "shop=optician"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: 1 ornate pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "dark pui",
+    "signage": "ZEISS cards in the windows",
+    "roofline": "white bracketed cornice with a console frieze, slate mansard with an ornate white dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the ZEISS window cards are left out"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 614-831 px"
+   }
+  },
+  {
+   "pandId": "0363100012165584",
+   "slug": "hface-165584",
+   "address": "Cornelis Schuytstraat 25",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#3a2226",
+       "fascia": true,
+       "name": "Paris XL",
+       "display": "#c8b090",
+       "sign": {
+        "text": "PARIS XL",
+        "textColour": "#e8a8c0",
+        "span": 0.5
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#5a2a22"
+       },
+       "shopShare": 0.82,
+       "evidence": "strip 2022-03-21 x 830-1061: a maroon fascia lettered PARIS XL twice in pink capitals, a dark-red timber house door at the left, a lit display",
+       "stallriser": "low",
+       "stallriserColour": "#3a2226"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5c4b44",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "conflict",
+    "note": "The fascia reads PARIS XL on 2022-03-21 (a perfumery chain); OSM node 2816318430 has Parfumerie Louise (perfumery, addr 25-H). Same trade; the photo name is drawn.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Paris XL",
+    "category": "shop=perfumery",
+    "osm": {
+     "type": "node",
+     "id": 2816318430,
+     "name": "Parfumerie Louise",
+     "tags": "shop=perfumery"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: house door, shop | first: 3 | second: 3 | roof: 1 ornate pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "maroon fascia",
+    "signage": "PARIS XL pink on maroon",
+    "roofline": "a heavy console frieze under the white cornice, slate mansard with an ornate white dormer",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the frieze consoles are drawn as five plain consoles"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 830-1061 px"
+   }
+  },
+  {
+   "pandId": "0363100012152291",
+   "slug": "hface-152291",
+   "address": "Cornelis Schuytstraat 27",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownSteps": 3,
+      "crownFinial": true,
+      "crownRise": 1.0,
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "shopfront": {
+       "colour": "#2c2420",
+       "fascia": true,
+       "name": "Bakkerij",
+       "display": "#c8a070",
+       "sign": {
+        "text": "BAKKERIJ",
+        "textColour": "#f0ece0",
+        "mount": "awning",
+        "span": 0.4
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-dutch",
+        "colour": "#6a4a3a"
+       },
+       "evidence": "strip 2022-03-21 x 1061-1290: a brown fabric awning whose valance is lettered BAKKERIJ ... in white (the second word half legible), a bakery display",
+       "stallriser": "low",
+       "stallriserColour": "#2c2420"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5d5351",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "photo-only",
+    "note": "BAG winkelfunctie at 27; no OSM business; the awning valance reads BAKKERIJ and a second word (VESSEM?) half legible on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Bakkerij",
+    "category": "shop=bakery"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "brown awning",
+    "signage": "BAKKERIJ on the valance",
+    "roofline": "brick stepped gable with white shoulder plaques and a finial, the twin of 21",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the shoulder plaques are left out",
+     "the second word of the bakery name is not drawn"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 1061-1290 px"
+   }
+  },
+  {
+   "pandId": "0363100012160599",
+   "slug": "hface-160599",
+   "address": "Cornelis Schuytstraat 29",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "raised-neck",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45,
+       2.7
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.55
+      ],
+      "windowShare": 0.55,
+      "crownAt": {
+       "from": 0.5,
+       "to": 1.0
+      },
+      "crownRise": 1.3,
+      "bayWindows": {
+       "bay": 0,
+       "storeys": [
+        1,
+        2
+       ],
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "#8a8a86",
+       "fascia": true,
+       "display": "#8a8a86",
+       "entrance": "left",
+       "glazing": "single",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#9a5a30"
+       },
+       "shopShare": 0.6,
+       "evidence": "strip 2022-03-21 x 1290-1490: a closed grey roller shutter at the left and a varnished timber house door at the right",
+       "stallriser": "low",
+       "stallriserColour": "#8a8a86"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "bitumen"
+    },
+    "palette": {
+     "brick": "#84634a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ecebe4",
+     "cornice": "#ecebe4",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 29; no OSM business; the shop is shuttered on 2022-03-21.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shutter, house door | first: white oriel, 1 | second: white oriel, round-arched window | third: 2 | crown: 1",
+    "symmetry": "asymmetric",
+    "groundFloor": "grey shutter",
+    "signage": "none",
+    "roofline": "ochre-brick Jugendstil front: a white two-storey timber oriel at the left, a raised square brick crown over the right axis",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the round-arched second-floor window is drawn square-headed",
+     "the crown's brick panels and corbel table are left out"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 1290-1490 px"
+   }
+  },
+  {
+   "pandId": "0363100012157482",
+   "slug": "hface-157482",
+   "address": "Cornelis Schuytstraat 31",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.45,
+       3.45
+      ],
+      "windowHeights": [
+       0.6,
+       0.64,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "entablature": {
+       "rise": 1.2,
+       "cap": 0.2,
+       "frieze": "wall",
+       "consoles": 6,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pointed",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "display": "#d8c8a8",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2022-03-21 x 1490-1721: a black fascia with one pale serif word (not legible), a lit clothes display with mannequins",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#2e2c2a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 31; no OSM business; the fascia word is not legible on 2022-03-21 (clothes in the window).",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | roof: a pointed timber dormer and a small one",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "one pale word, not legible",
+    "roofline": "black-painted front with white jack blocks, a white bracketed eaves board, red-tile roof with a white pointed timber dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dormer's carved bargeboards are drawn as a plain pointed dormer"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 1490-1721 px"
+   }
+  },
+  {
+   "pandId": "0363100012157483",
+   "slug": "hface-157483",
+   "address": "Cornelis Schuytstraat 33",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 4,
+      "storeyHeights": [
+       3.9,
+       3.4,
+       3.3,
+       3.2
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.6
+      ],
+      "windowShare": 0.5,
+      "bayWindows": {
+       "bay": 1,
+       "storeys": [
+        1,
+        2
+       ],
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "#ecebe4",
+       "fascia": true,
+       "name": "Bellerose",
+       "display": "#c8b8a0",
+       "entrance": "right",
+       "glazing": "single",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#5a3020"
+       },
+       "shopShare": 0.75,
+       "evidence": "strip 2024-11-12 x 1721-1956: a white pui, a brown timber house door at the left and one wide shop window; no sign readable through the leaves",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "bitumen"
+    },
+    "palette": {
+     "brick": "#6a5a48",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#d4d2c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-12",
+    "agreement": "osm-only",
+    "note": "OSM node 2816318497 Bellarose (clothes, addr 33-H, website bellerose.be: the brand is Bellerose); no sign readable on 2024-11-12; the 2022-03-21 capture has the front under scaffold sheeting.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Bellerose",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816318497,
+     "name": "Bellarose",
+     "tags": "shop=clothes; website=https://www.bellerose.be"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: house door, shop | first: 1, white oriel | second: 1, white oriel | third: 2",
+    "symmetry": "asymmetric",
+    "groundFloor": "white pui",
+    "signage": "none readable",
+    "roofline": "flat brick parapet over four storeys",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the parapet top is read through leaves (2024-11-12)"
+    ],
+    "citation": "schuyt-17-33 strip.jpg (2022-03-21) x 1721-1956 px"
+   }
+  }
+ ]
+}

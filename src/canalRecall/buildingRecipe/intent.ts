@@ -638,6 +638,14 @@ export interface FrontIntent {
   bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
   /**
+   * `bands: painted`: extra continuous impost bands on single band storeys, beside the front's `bandLines`, each centred
+   * at `at` (0.1..0.95) of that storey's window height from the sill, `height` metres high (0.04..0.4, default the
+   * transom height), cut around the openings like the other bands (Van Baerlestraat 34-42, 1891: the first floor under
+   * round white tympana carries a band at the springing line and a second one at half the window, the floor above only
+   * the springing band). Absent = byte-identical.
+   */
+  bandImposts?: {storey: number; at: number; height?: number}[];
+  /**
    * `bands: painted`: a painted ledge `courses` brick courses high (0.055 m each) on the floor line of each listed storey (0-based), the stone colour,
    * the bands' depth (Jan Evertsenstraat 139-160: the white ledge at 9.7 m under the white window band, brick between it
    * and the band's sill). Absent = none.
@@ -2326,6 +2334,19 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
     // A house may drop the transom line from its type's lines; the share is then unused.
     if (f.bands !== 'painted') p.push(`${at}.bandTransomAt: only with bands "painted"`);
     if (!frac(f.bandTransomAt, 0.3, 0.95)) p.push(`${at}.bandTransomAt: share of the window height, 0.3..0.95`);
+  }
+  if (f.bandImposts !== undefined) {
+    const l = f.bandImposts as unknown;
+    if (f.bands !== 'painted') p.push(`${at}.bandImposts: only with bands "painted"`);
+    if (!Array.isArray(l) || !l.length) p.push(`${at}.bandImposts: a non-empty list of {storey, at, height?}`);
+    else l.forEach((b: any, k) => {
+      const w = `${at}.bandImposts[${k}]`;
+      if (!b || typeof b !== 'object' || Object.keys(b).some(x => !['storey', 'at', 'height'].includes(x))) { p.push(`${w}: {storey, at, height?}`); return; }
+      if (!Number.isInteger(b.storey) || b.storey < 0 || b.storey >= f.storeys) p.push(`${w}.storey: a storey index within 0..${f.storeys - 1}`);
+      else if (f.bandStoreys ? !f.bandStoreys.includes(b.storey) : b.storey === 0 && !!(f.shopfront || f.groundFront)) p.push(`${w}.storey: not a band storey`);
+      if (!frac(b.at, 0.1, 0.95)) p.push(`${w}.at: share of the window height, 0.1..0.95`);
+      if (b.height !== undefined && !frac(b.height, 0.04, 0.4)) p.push(`${w}.height: 0.04..0.4 m`);
+    });
   }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
   if (f.paintedStoreys !== undefined) p.push(...paintedStoreyProblems(f, at));

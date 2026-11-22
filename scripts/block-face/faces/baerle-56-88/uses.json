@@ -1,0 +1,681 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (face cache), fetched 2026-11-01T16:26:15.716Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152420",
+   "addresses": [
+    "Van Baerlestraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 88",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000834895"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385850,
+     "lngLat": [
+      4.8791213,
+      52.3569956
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "branch": "Amsterdam, Van Baerlestraat 88-90",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "clothes": "men",
+      "email": "vanbaerlestraat88@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 6710967",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pauw.com/pages/amsterdam-van-baerlestraat-88-90"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9036429964,
+     "lngLat": [
+      4.879167,
+      52.356934
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92A",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "cafe",
+      "check_date": "2025-03-16",
+      "contact:instagram": "chimneycakenl",
+      "cuisine": "breakfast;coffee_shop;sandwich",
+      "email": "info@chimneyamsterdam.nl",
+      "indoor_seating": "yes",
+      "internet_access:fee": "no",
+      "name": "Chimney Cake Bakery & Café",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 6 84506018",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://chimneyamsterdam.nl/",
+      "website:menu": "https://chimneyamsterdam.nl/menu/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152419",
+   "addresses": [
+    "Van Baerlestraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 86-H",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000834889"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385848,
+     "lngLat": [
+      4.8790725,
+      52.3570599
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "86-H",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "brand": "GANT",
+      "brand:wikidata": "Q1493667",
+      "brand:wikipedia": "en:Gant (retailer)",
+      "check_date": "2024-10-23",
+      "name": "GANT",
+      "opening_hours": "Tu-Sa 10:00-17:00",
+      "phone": "+31 20 673 6291",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158337",
+   "addresses": [
+    "Van Baerlestraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000834884"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12670429695,
+     "lngLat": [
+      4.8790248,
+      52.3571003
+     ],
+     "tags": {
+      "brand": "Pearle",
+      "brand:wikidata": "Q2231148",
+      "opening_hours": "We-Fr 09:30-18:00; Sa 09:30-17:00",
+      "shop": "optician"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158336",
+   "addresses": [
+    "Van Baerlestraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 82",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000834880"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158647",
+   "addresses": [
+    "Van Baerlestraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000834876"
+    },
+    {
+     "address": "Van Baerlestraat 80-1",
+     "use": "winkelfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000834877"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12670439946,
+     "lngLat": [
+      4.8789594,
+      52.3571907
+     ],
+     "tags": {
+      "brand": "Tempur",
+      "name": "Tempur",
+      "shop": "bed"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155817",
+   "addresses": [
+    "Van Baerlestraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000834872"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11392507780,
+     "lngLat": [
+      4.8789174,
+      52.3572376
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2025-03-16",
+      "name": "Premsela",
+      "shop": "books",
+      "website": "https://www.boekhandel-in.nl/amsterdam/premsela-boekhandel"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166099",
+   "addresses": [
+    "Van Baerlestraat 76",
+    "Van Baerlestraat 76A",
+    "Van Baerlestraat 76C",
+    "Van Baerlestraat 76D",
+    "Van Baerlestraat 76E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 76",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 411,
+     "bagId": "0363010000834869"
+    },
+    {
+     "address": "Van Baerlestraat 76A",
+     "use": "winkelfunctie",
+     "areaM2": 182,
+     "bagId": "0363010012099259"
+    },
+    {
+     "address": "Van Baerlestraat 76C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012099260"
+    },
+    {
+     "address": "Van Baerlestraat 76D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012099261"
+    },
+    {
+     "address": "Van Baerlestraat 76E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012099262"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158807",
+   "addresses": [
+    "Van Baerlestraat 74",
+    "Van Baerlestraat 74E",
+    "Van Baerlestraat 74D",
+    "Van Baerlestraat 74A",
+    "Van Baerlestraat 74C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 74",
+     "use": "winkelfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000995689"
+    },
+    {
+     "address": "Van Baerlestraat 74D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012166930"
+    },
+    {
+     "address": "Van Baerlestraat 74A",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010012166928"
+    },
+    {
+     "address": "Van Baerlestraat 74C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012166929"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12670417968,
+     "lngLat": [
+      4.8788464,
+      52.3573475
+     ],
+     "tags": {
+      "brand": "Leica",
+      "brand:wikidata": "Q161833",
+      "name": "Leica",
+      "shop": "camera"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165890",
+   "addresses": [
+    "Van Baerlestraat 72A",
+    "Van Baerlestraat 72D",
+    "Van Baerlestraat 72B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 72A",
+     "use": "winkelfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000834863"
+    },
+    {
+     "address": "Van Baerlestraat 72D",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010001025504"
+    },
+    {
+     "address": "Van Baerlestraat 72B",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010001040443"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4136049430,
+     "lngLat": [
+      4.87881,
+      52.3574242
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "72",
+      "addr:postcode": "1071BA",
+      "addr:street": "Van Baerlestraat",
+      "branch": "Amsterdam, Van Baerlestraat 72",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "check_date": "2024-06-20",
+      "clothes": "women",
+      "email": "vanbaerlestraat72@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 6717322",
+      "shop": "clothes",
+      "website": "https://pauw.com/pages/amsterdam-van-baerlestraat-72"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012143018",
+   "addresses": [
+    "Van Baerlestraat 70",
+    "Van Baerlestraat 70B",
+    "Van Baerlestraat 70A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 70",
+     "use": "winkelfunctie",
+     "areaM2": 420,
+     "bagId": "0363010000834858"
+    },
+    {
+     "address": "Van Baerlestraat 70",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012101469"
+    },
+    {
+     "address": "Van Baerlestraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012101470"
+    },
+    {
+     "address": "Van Baerlestraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012101471"
+    },
+    {
+     "address": "Van Baerlestraat 70",
+     "use": "winkelfunctie",
+     "areaM2": 243,
+     "bagId": "0363010012588124"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167167",
+   "addresses": [
+    "Van Baerlestraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000834852"
+    },
+    {
+     "address": "Van Baerlestraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012110420"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385552,
+     "lngLat": [
+      4.8787273,
+      52.3575299
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1071BA",
+      "addr:street": "Van Baerlestraat",
+      "branch": "Amsterdam, Van Baerlestraat 66",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "clothes": "men",
+      "email": "vanbaerlestraat66@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 6626253",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pauw.com/pages/amsterdam-van-baerlestraat-66"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236923",
+   "addresses": [
+    "Van Baerlestraat 58",
+    "Van Baerlestraat 60",
+    "Van Baerlestraat 62",
+    "Van Baerlestraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001169644"
+    },
+    {
+     "address": "Van Baerlestraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010011291335"
+    },
+    {
+     "address": "Van Baerlestraat 60",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 398,
+     "bagId": "0363010011291336"
+    },
+    {
+     "address": "Van Baerlestraat 60",
+     "use": "winkelfunctie",
+     "areaM2": 962,
+     "bagId": "0363010012130248"
+    }
+   ],
+   "units": 17,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4136049427,
+     "lngLat": [
+      4.8786417,
+      52.3577971
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:postcode": "1071BA",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "name": "Van Baerle Bloemen",
+      "shop": "florist"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "frontage",
+     "distanceM": 4.8
+    },
+    {
+     "type": "node",
+     "id": 4136049429,
+     "lngLat": [
+      4.8785894,
+      52.3577106
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60",
+      "addr:postcode": "1071BA",
+      "addr:street": "Van Baerlestraat",
+      "brand": "Omoda",
+      "brand:wikidata": "Q64139027",
+      "brand:wikipedia": "nl:Omoda",
+      "check_date": "2024-06-20",
+      "name": "Omoda",
+      "opening_hours": "Mo 12:00-17:00; Tu-Fr 10:00-17:00",
+      "phone": "+31 20 722 0205",
+      "shop": "shoes",
+      "website": "https://www.omoda.nl"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11993668958,
+     "lngLat": [
+      4.8786681,
+      52.3575703
+     ],
+     "tags": {
+      "check_date": "2024-06-20",
+      "name": "Paul Noyen",
+      "shop": "shoes",
+      "website": "https://www.paulnoyen.nl/"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11993668959,
+     "lngLat": [
+      4.8785691,
+      52.3577557
+     ],
+     "tags": {
+      "amenity": "atm",
+      "check_date": "2024-06-20",
+      "operator": "Geldmaat"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236083",
+   "addresses": [
+    "Van Baerlestraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 56-H",
+     "use": "winkelfunctie",
+     "areaM2": 211,
+     "bagId": "0363010000834831"
+    },
+    {
+     "address": "Van Baerlestraat 56-H",
+     "use": "winkelfunctie",
+     "areaM2": 222,
+     "bagId": "0363010012086381"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385357,
+     "lngLat": [
+      4.8785391,
+      52.3578009
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56-H",
+      "addr:postcode": "1071BA",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "contact:instagram": "https://www.instagram.com/cigaraguacigars",
+      "email": "info@cigaragua.nl",
+      "name": "Cigaragua",
+      "opening_hours": "Mo-Su 10:00-21:00",
+      "phone": "+31 20 773 5302",
+      "shop": "tobacco",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.cigaragua.com"
+     },
+     "fetchedAt": "2026-11-01T16:26:15.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

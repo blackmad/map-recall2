@@ -274,7 +274,17 @@
        "stallriserColour": "#1c1c1a",
        "evidence": "strip 2024-12-11 x 926-1187: black pui, a red Miele box sign on the black fascia, two lit windows, a black door right"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      }
      }
     ],
     "roof": {
@@ -324,7 +334,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window"
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips"
     ]
    }
   },
@@ -351,15 +361,11 @@
        4.0
       ],
       "windowHead": {
-       "kind": "relieving",
+       "kind": "round",
        "storeys": [
         1
        ],
-       "archRing": {
-        "colour": "stone",
-        "shape": "round",
-        "widthCourses": 4
-       }
+       "tympanum": "stone"
       },
       "surroundStoreys": [
        2
@@ -402,7 +408,23 @@
        "stallriserColour": "#1c1c1a",
        "evidence": "strip 2024-12-11 x 1186-1419: black pui, one wide lit window, a black door right; no sign on the fascia"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.74,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.5
+       }
+      ]
      }
     ],
     "roof": {
@@ -444,7 +466,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips",
      "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
     ]
    }
@@ -472,15 +494,11 @@
        4.0
       ],
       "windowHead": {
-       "kind": "relieving",
+       "kind": "round",
        "storeys": [
         1
        ],
-       "archRing": {
-        "colour": "stone",
-        "shape": "round",
-        "widthCourses": 4
-       }
+       "tympanum": "stone"
       },
       "surroundStoreys": [
        2
@@ -530,7 +548,23 @@
        "stallriserColour": "#d8d0bc",
        "evidence": "strip 2024-12-11 x 1419-1667: cream stone pui, JOE & THE JUICE in black letters on the stone over the glass, a dark door right"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.74,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.5
+       }
+      ]
      }
     ],
     "roof": {
@@ -578,7 +612,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips",
      "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum",
      "the wide three-light dormer is drawn as one pediment dormer"
     ]
@@ -607,15 +641,11 @@
        4.0
       ],
       "windowHead": {
-       "kind": "relieving",
+       "kind": "round",
        "storeys": [
         1
        ],
-       "archRing": {
-        "colour": "stone",
-        "shape": "round",
-        "widthCourses": 4
-       }
+       "tympanum": "stone"
       },
       "surroundStoreys": [
        2
@@ -659,7 +689,23 @@
        "stallriserColour": "#e8e4da",
        "evidence": "strip 2024-12-11 x 1667-1897: white pui and a white fascia behind the tram shelter; no sign readable"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.74,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.5
+       }
+      ]
      }
     ],
     "roof": {
@@ -708,7 +754,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips",
      "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
     ]
    }
@@ -736,15 +782,11 @@
        4.0
       ],
       "windowHead": {
-       "kind": "relieving",
+       "kind": "round",
        "storeys": [
         1
        ],
-       "archRing": {
-        "colour": "stone",
-        "shape": "round",
-        "widthCourses": 4
-       }
+       "tympanum": "stone"
       },
       "surroundStoreys": [
        2
@@ -788,7 +830,23 @@
        "stallriserColour": "#2a2a28",
        "evidence": "strip 2024-12-11 x 1895-2136: dark fascia and lit windows behind the tram shelter; no sign readable"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.74,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.5
+       }
+      ]
      }
     ],
     "roof": {
@@ -837,7 +895,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips",
      "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
     ]
    }
@@ -865,15 +923,11 @@
        4.0
       ],
       "windowHead": {
-       "kind": "relieving",
+       "kind": "round",
        "storeys": [
         1
        ],
-       "archRing": {
-        "colour": "stone",
-        "shape": "round",
-        "widthCourses": 4
-       }
+       "tympanum": "stone"
       },
       "surroundStoreys": [
        2
@@ -916,7 +970,23 @@
        "stallriserColour": "#2a2a28",
        "evidence": "strip 2024-12-11 x 2137-2355: dark fascia with small unreadable lettering, lit window behind the tram shelter"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.74,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.5
+       }
+      ]
      }
     ],
     "roof": {
@@ -965,7 +1035,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white sill and impost bands that run the full width at every storey are drawn as stone sills per window",
+     "the white bands are drawn continuous (painted sill, springing and impost bands); their moulded profiles are flat strips",
      "the white tympana over the first-floor windows are drawn as stone relieving rings over a brick tympanum"
     ]
    }
@@ -1030,7 +1100,23 @@
        "stallriserColour": "#7a4c3c",
        "evidence": "strip 2024-12-11 x 2355-2610: brick pui with white bands, three tall lit windows; no sign readable"
       },
-      "windowShare": 0.58
+      "windowShare": 0.58,
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.82,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "bandImposts": [
+       {
+        "storey": 1,
+        "at": 0.3
+       }
+      ]
      }
     ],
     "roof": {
