@@ -1,0 +1,745 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "schuyt-7-15",
+ "street": "Cornelis Schuytstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-10",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-10",
+   "image": "staging/block-face/schuyt-7-15/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/schuyt-7-15-2022/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2025-07-30",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-30",
+   "image": "staging/block-face/schuyt-7-15-2025/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-6 lane), from strip-labelled.png (face strip 2023-01-10, overcast: wall colour and exposure; 2022-03-21, bare trees: uppers and eaves rows; 2025-07-30: ground floors)",
+  "passes": 1,
+  "note": "Cornelis Schuytstraat 7-15 (odd), between the Willemsparkweg and the Van Breestraat: the 1897 row of four (9-15) under one deep white entablature and slate mansards with tall stone dormers, white segmental hoods over the first-floor windows, jack-block heads and painted bands; 7 (1894) a storey-line lower. Shops: Bodes & Bode (7), a refitted shop (9), the florist Menno Kroon (11), Marlies Dekkers (13)."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012156820",
+    "stripRow": 285,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 285"
+   },
+   {
+    "pand": "0363100012158436",
+    "stripRow": 255,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 255"
+   },
+   {
+    "pand": "0363100012152757",
+    "stripRow": 255,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 255"
+   },
+   {
+    "pand": "0363100012236236",
+    "stripRow": 255,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 255"
+   },
+   {
+    "pand": "0363100012159412",
+    "stripRow": 255,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 255"
+   }
+  ],
+  "notes": [
+   "Rows read on the strip at 40 px/m, ground row 766. Eaves rows are read on the 2022-03-21 strip (same rectification and scale as the face strip). Brick is the overcast 2023-01-10 face-strip measure, shifted 2 steps bluer for the game light; white point the 2023 frames, so the chunk exposure is measured on the strip the colour came from."
+  ],
+  "streetLevelPands": {
+   "pands": [
+    "0363100012236236"
+   ],
+   "evidence": "strip 2022-03-21: 13 stands on the same pavement as 11 and 15 (one plinth line, rows 760-766); its 3DBAG ground is 1.05 m over the face median"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012156820",
+   "slug": "hface-156820",
+   "address": "Cornelis Schuytstraat 7",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.4,
+       3.2
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.8,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "towers": [
+       {
+        "bays": {
+         "from": 1,
+         "to": 1
+        },
+        "rise": 1.0,
+        "cap": "flat",
+        "finish": "stone",
+        "lightRise": 0.5,
+        "lightSill": 0.2
+       }
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1e1e1c",
+       "fascia": true,
+       "name": "Bodes & Bode",
+       "display": "#a89878",
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#262624",
+        "extent": {
+         "from": 0.4,
+         "to": 1
+        }
+       },
+       "evidence": "strip 2025-07-30 x 0-273: a black timber pui with small-paned doors and display cases, a black fabric awning over the right half; 2023-01-10 the same dark front",
+       "stallriser": "low",
+       "stallriserColour": "#1e1e1c"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#453f3d",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2025-07-30",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 7-H; no OSM business; no sign readable on 2022-2025 captures; the business listing https://www.openingstijden.nl/Noord-Holland/Amsterdam/Cornelis-Schuytstraat/ names Bodes & Bode Juweliers at 7 (a jeweller, which the dark small-paned display front agrees with).",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Bodes & Bode",
+    "category": "shop=jewelry"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3, balcony | roof: 1 tall stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui, black awning",
+    "signage": "none readable",
+    "roofline": "a lower white cornice than 9-15 (1894), slate mansard with a tall white stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the corner front on the Willemsparkweg side is not part of this face",
+     "the dormer scrolls are left out"
+    ],
+    "citation": "schuyt-7-15 strip.jpg (2022-03-21) x 0-273 px"
+   }
+  },
+  {
+   "pandId": "0363100012158436",
+   "slug": "hface-158436",
+   "address": "Cornelis Schuytstraat 9",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "segmentalHoods": {
+       "storeys": [
+        1
+       ]
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 3,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#ecebe4",
+       "fascia": true,
+       "display": "#d0c0a0",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2025-07-30 x 273-499: a white fascia over a pale timber panel at the left and a wide display window; 2023-01-10 an orange fascia with dark lettering (not legible)",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4c4341",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2025-07-30",
+    "agreement": "bag-only",
+    "note": "BAG two winkelfunctie units at 9-H; no OSM business; the shop was refitted between 2023-01-10 (orange fascia) and 2025-07-30 (white fascia, timber panel); no name readable. A 2023 permit (gmb-2023-309801) legalised its facade sign.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white hoods | second: 3, balcony | roof: 1 tall stone dormer, 2 small windows",
+    "symmetry": "symmetric",
+    "groundFloor": "white fascia",
+    "signage": "none readable",
+    "roofline": "a deep white entablature with paired consoles, slate mansard with a tall white stone dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood mouldings and their carved tympana are drawn as plain white segmental hoods (new kit part segmentalHoods)",
+     "the two small mansard windows beside the tall stone dormer are left out"
+    ],
+    "citation": "schuyt-7-15 strip.jpg (2022-03-21) x 273-499 px"
+   }
+  },
+  {
+   "pandId": "0363100012152757",
+   "slug": "hface-152757",
+   "address": "Cornelis Schuytstraat 11",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "segmentalHoods": {
+       "storeys": [
+        1
+       ]
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 3,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2826",
+       "fascia": true,
+       "name": "Menno Kroon",
+       "display": "#9a7868",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#7a8694"
+       },
+       "evidence": "strip 2022-03-21 x 500-719: a grey-blue fabric awning lettered in magenta script (not legible), buckets of flowers in front; 2025-07-30 a glazed canopy and yellow parasols over the flowers",
+       "stallriser": "low",
+       "stallriserColour": "#2a2826"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#504747",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "photo-only",
+    "note": "BAG winkelfunctie at 11-H; no OSM business; a florist on every capture (flowers on the pavement); the name is from the listing https://www.iamsterdam.com/nl/zien-en-doen/shoppen/alle-winkels/cornelis-schuytstraat (Menno Kroon, Cornelis Schuytstraat 11); the awning script is not legible.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Menno Kroon",
+    "category": "shop=florist"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: florist | first: 3 under white hoods | second: 3, balcony | roof: 1 tall stone dormer, 2 small windows",
+    "symmetry": "symmetric",
+    "groundFloor": "grey-blue awning, flowers",
+    "signage": "magenta script on the awning, not legible",
+    "roofline": "a deep white entablature with paired consoles, slate mansard with a tall white stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood mouldings and their carved tympana are drawn as plain white segmental hoods (new kit part segmentalHoods)",
+     "the two small mansard windows beside the tall stone dormer are left out",
+     "the awning script is not drawn",
+     "the 2025 glazed canopy is drawn as the 2022 fabric awning"
+    ],
+    "citation": "schuyt-7-15 strip.jpg (2022-03-21) x 500-719 px"
+   }
+  },
+  {
+   "pandId": "0363100012236236",
+   "slug": "hface-236236",
+   "address": "Cornelis Schuytstraat 13",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "segmentalHoods": {
+       "storeys": [
+        1
+       ]
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 3,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "name": "Marlies Dekkers",
+       "display": "#e0d0b8",
+       "entrance": "left",
+       "glazing": "single",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#1c1c1a"
+       },
+       "shopShare": 0.82,
+       "evidence": "strip 2023-01-10 x 718-946: a black fascia box over a lit lingerie display and a black house door at the right; the same in 2022-03-21",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4c413d",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2023-01-10",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 13-H; no OSM business; a lingerie display behind black, no fascia lettering readable; the listing https://www.openingstijden.nl/Noord-Holland/Amsterdam/Cornelis-Schuytstraat/ names Marlies Dekkers at 13.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Marlies Dekkers",
+    "category": "shop=clothes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop, house door | first: 3 under white hoods, balcony | second: 3, balcony | roof: 1 tall stone dormer, 2 small windows",
+    "symmetry": "symmetric",
+    "groundFloor": "black fascia",
+    "signage": "none readable",
+    "roofline": "a deep white entablature with paired consoles, slate mansard with a tall white stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood mouldings and their carved tympana are drawn as plain white segmental hoods (new kit part segmentalHoods)",
+     "the two small mansard windows beside the tall stone dormer are left out"
+    ],
+    "citation": "schuyt-7-15 strip.jpg (2022-03-21) x 718-946 px"
+   }
+  },
+  {
+   "pandId": "0363100012159412",
+   "slug": "hface-159412",
+   "address": "Cornelis Schuytstraat 15",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "segmentalHoods": {
+       "storeys": [
+        1
+       ]
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 3,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2c2c2a",
+       "fascia": true,
+       "display": "#5a5a56",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2022-03-21 x 946-1194: a dark grey pui with white slatted panels either side of a recessed door and a dark display; 2023-01-10 the same behind roadworks signs",
+       "stallriser": "low",
+       "stallriserColour": "#2c2c2a"
+      },
+      "partyClip": true
+     },
+     {
+      "id": "vb-a",
+      "street": "Van Breestraat",
+      "share": 1.0,
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a413c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 15-H and woonfunctie on the Van Breestraat (150A); no OSM business; no sign readable on 2022-2025.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 under white hoods, balconet | second: 3, balconet | roof: 1 tall stone dormer, 2 small windows",
+    "symmetry": "symmetric",
+    "groundFloor": "dark pui, white slats",
+    "signage": "none",
+    "roofline": "a deep white entablature with paired consoles, slate mansard with a tall white stone dormer; the corner with the Van Breestraat",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the hood mouldings and their carved tympana are drawn as plain white segmental hoods (new kit part segmentalHoods)",
+     "the two small mansard windows beside the tall stone dormer are left out",
+     "the white slatted panels are drawn as dark pui",
+     "the Van Breestraat side is drawn as one plain brick wall with two window axes over the tall part and the one-storey wing (3DBAG chain as one front); the photo shows the corner shop window turning the corner and fewer windows"
+    ],
+    "citation": "schuyt-7-15 strip.jpg (2022-03-21) x 946-1194 px"
+   }
+  }
+ ]
+}

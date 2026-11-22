@@ -22,7 +22,7 @@
  },
  "x0M": -14.64,
  "x1M": 14.94,
- "date": "2024-11-12",
+ "date": "2023-01-10",
  "coverage": 1,
  "spans": [
   {
@@ -33,28 +33,28 @@
     0,
     251
    ],
-   "date": "2024-11-12",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00015",
-     "timestamp": "2024-11-12T09:48:04Z",
-     "distanceM": 9.1,
-     "obliquityDeg": 13.1,
+     "panoId": "TMX7316010203-002921_pano_0002_000089",
+     "timestamp": "2023-01-10T09:22:09.160500Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 5.9,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00016",
-     "timestamp": "2024-11-12T09:48:06Z",
-     "distanceM": 9.4,
-     "obliquityDeg": 18.6,
+     "panoId": "TMX7316010203-002921_pano_0002_000228",
+     "timestamp": "2023-01-10T09:24:23.744300Z",
+     "distanceM": 11.9,
+     "obliquityDeg": 15.7,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track14_Sphere_00056",
-     "timestamp": "2024-11-12T09:45:34Z",
-     "distanceM": 26.3,
-     "obliquityDeg": 23,
+     "panoId": "TMX7316010203-002921_pano_0002_000223",
+     "timestamp": "2023-01-10T09:24:13.084380Z",
+     "distanceM": 28.9,
+     "obliquityDeg": 24.2,
      "missingFraction": 0
     }
    ]
@@ -67,28 +67,28 @@
     251,
     466
    ],
-   "date": "2024-11-12",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00014",
-     "timestamp": "2024-11-12T09:48:03Z",
-     "distanceM": 8.7,
-     "obliquityDeg": 10.4,
+     "panoId": "TMX7316010203-002921_pano_0002_000090",
+     "timestamp": "2023-01-10T09:22:10.170520Z",
+     "distanceM": 11.4,
+     "obliquityDeg": 10.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00015",
-     "timestamp": "2024-11-12T09:48:04Z",
-     "distanceM": 9.3,
-     "obliquityDeg": 23.7,
+     "panoId": "TMX7316010203-002921_pano_0002_000229",
+     "timestamp": "2023-01-10T09:24:24.779300Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 12.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track14_Sphere_00056",
-     "timestamp": "2024-11-12T09:45:34Z",
-     "distanceM": 28.8,
-     "obliquityDeg": 33.9,
+     "panoId": "TMX7316010203-002921_pano_0002_000089",
+     "timestamp": "2023-01-10T09:22:09.160500Z",
+     "distanceM": 12.9,
+     "obliquityDeg": 32.8,
      "missingFraction": 0
     }
    ]
@@ -101,28 +101,28 @@
     466,
     697
    ],
-   "date": "2024-11-12",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00013",
-     "timestamp": "2024-11-12T09:48:02Z",
-     "distanceM": 8.6,
-     "obliquityDeg": 5.7,
+     "panoId": "TMX7316010203-002921_pano_0002_000230",
+     "timestamp": "2023-01-10T09:24:26.124250Z",
+     "distanceM": 11,
+     "obliquityDeg": 9.7,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00014",
-     "timestamp": "2024-11-12T09:48:03Z",
-     "distanceM": 9.4,
-     "obliquityDeg": 25.3,
+     "panoId": "TMX7316010203-002921_pano_0002_000091",
+     "timestamp": "2023-01-10T09:22:11.105520Z",
+     "distanceM": 11.6,
+     "obliquityDeg": 13.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00012",
-     "timestamp": "2024-11-12T09:48:00Z",
-     "distanceM": 10.2,
-     "obliquityDeg": 31.2,
+     "panoId": "TMX7316010203-002921_pano_0002_000231",
+     "timestamp": "2023-01-10T09:24:27.534220Z",
+     "distanceM": 12.7,
+     "obliquityDeg": 32.3,
      "missingFraction": 0
     }
    ]
@@ -135,28 +135,28 @@
     698,
     921
    ],
-   "date": "2024-11-12",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00012",
-     "timestamp": "2024-11-12T09:48:00Z",
-     "distanceM": 8.8,
-     "obliquityDeg": 2.6,
+     "panoId": "TMX7316010203-002921_pano_0002_000231",
+     "timestamp": "2023-01-10T09:24:27.534220Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00013",
-     "timestamp": "2024-11-12T09:48:02Z",
-     "distanceM": 9.8,
-     "obliquityDeg": 29.3,
+     "panoId": "TMX7316010203-002921_pano_0002_000092",
+     "timestamp": "2023-01-10T09:22:12.120490Z",
+     "distanceM": 11.7,
+     "obliquityDeg": 17.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00011",
-     "timestamp": "2024-11-12T09:47:58Z",
-     "distanceM": 10.1,
-     "obliquityDeg": 30.9,
+     "panoId": "TMX7316010203-002921_pano_0002_000232",
+     "timestamp": "2023-01-10T09:24:29.019450Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 29.5,
      "missingFraction": 0
     }
    ]
@@ -169,28 +169,28 @@
     921,
     1183
    ],
-   "date": "2024-11-12",
+   "date": "2023-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00011",
-     "timestamp": "2024-11-12T09:47:58Z",
-     "distanceM": 8.7,
-     "obliquityDeg": 5.7,
+     "panoId": "TMX7316010203-002921_pano_0002_000232",
+     "timestamp": "2023-01-10T09:24:29.019450Z",
+     "distanceM": 10.7,
+     "obliquityDeg": 0,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00010",
-     "timestamp": "2024-11-12T09:47:57Z",
-     "distanceM": 9.7,
-     "obliquityDeg": 26.3,
+     "panoId": "TMX7316010203-002921_pano_0002_000093",
+     "timestamp": "2023-01-10T09:22:13.140470Z",
+     "distanceM": 12.1,
+     "obliquityDeg": 22.7,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241112_0936_Track15_Sphere_00012",
-     "timestamp": "2024-11-12T09:48:00Z",
-     "distanceM": 10.9,
-     "obliquityDeg": 36.4,
+     "panoId": "TMX7316010203-002921_pano_0002_000233",
+     "timestamp": "2023-01-10T09:24:30.459250Z",
+     "distanceM": 11.8,
+     "obliquityDeg": 24.4,
      "missingFraction": 0
     }
    ]
