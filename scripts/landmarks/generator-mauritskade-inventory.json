@@ -1,0 +1,383 @@
+{
+ "schemaVersion": 1,
+ "id": "generator-mauritskade",
+ "pand": "0363100012235952",
+ "brief": "scripts/landmarks/generator-mauritskade-brief.md",
+ "signature": [
+  "g-glass-storey",
+  "g-window-groups",
+  "g-tower-logo",
+  "g-tower-grid"
+ ],
+ "walls": [
+  {
+   "tag": "w01-252",
+   "bearing": 252,
+   "lengthM": 41,
+   "centre": [
+    4.918606,
+    52.3609535
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02748",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-park-front",
+     "kind": "window-shape",
+     "where": "the park front: the same window groups in two rows behind the trees, the glass storey above",
+     "approxSizeM": [
+      41,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_10-43-25_02748",
+     "how": "groups of three at the Mauritskade rhythm; the photo groups are irregular behind the trees (inferred)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-162",
+   "bearing": 162,
+   "lengthM": 21.6,
+   "centre": [
+    4.9193525,
+    52.360796
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_004751",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-342",
+   "bearing": 342,
+   "lengthM": 13.9,
+   "centre": [
+    4.9193405,
+    52.360927
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02794",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-glass-storey",
+     "kind": "other",
+     "where": "the new glass storey on the brick top, two rows of dark reflective panes, mullions about 2.3 m apart",
+     "approxSizeM": [
+      14,
+      5.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02794",
+     "how": "shell walls on the brick top drawn as glass, mullions and a transom from each wall plane"
+    },
+    {
+     "id": "g-window-groups",
+     "kind": "window-shape",
+     "where": "two groups of three tall cream-framed small-pane windows per storey, lower 2.86-5.16 m, upper 6.76-9.66 m",
+     "approxSizeM": [
+      10.9,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02794",
+     "how": "win(): frame, glass, 2 x 4 / 2 x 5 bar grid; groups of three at 1.5 m, 1.9 m apart"
+    },
+    {
+     "id": "g-coping",
+     "kind": "other",
+     "where": "stone coping on the brick top and a stone string course at 9.9 m",
+     "approxSizeM": [
+      14,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02794",
+     "how": "stone slabs"
+    }
+   ]
+  },
+  {
+   "tag": "w04-26",
+   "bearing": 26,
+   "lengthM": 10.6,
+   "centre": [
+    4.919001,
+    52.360969
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02797",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-tower-logo",
+     "kind": "sign",
+     "where": "the Generator lightning logo on the stone gable face of the tower",
+     "approxSizeM": [
+      1.7,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02797",
+     "how": "extruded outline traced from the crop, 12 cm proud"
+    },
+    {
+     "id": "g-tower-grid",
+     "kind": "window-shape",
+     "where": "a stone-framed grid of five by three windows and a group of five tall windows between brick piers above it",
+     "approxSizeM": [
+      5.9,
+      9.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02797",
+     "how": "win() grid with stone frame, transoms, sill bands and brick piers"
+    },
+    {
+     "id": "g-tower-door",
+     "kind": "other",
+     "where": "the tower door with two narrow side lights",
+     "approxSizeM": [
+      2.5,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02797",
+     "how": "stone surround, dark door, two small windows"
+    },
+    {
+     "id": "g-lamps",
+     "kind": "lamp",
+     "where": "two wall lamps on the tower front",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-20_10-43-25_02797",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.4 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-117",
+   "bearing": 117,
+   "lengthM": 10.4,
+   "centre": [
+    4.919037,
+    52.360906
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-297",
+   "bearing": 297,
+   "lengthM": 10.4,
+   "centre": [
+    4.918897,
+    52.360948
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002468_pano_0001_001169",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-342",
+   "bearing": 342,
+   "lengthM": 6.6,
+   "centre": [
+    4.918594,
+    52.3612205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000234_pano_0001_000665",
+   "capturedAt": "2017-03-31",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-28",
+   "bearing": 28,
+   "lengthM": 6.5,
+   "centre": [
+    4.9186845,
+    52.3612135
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02785",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-71",
+   "bearing": 71,
+   "lengthM": 5.9,
+   "centre": [
+    4.918818,
+    52.361006
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002468_pano_0001_001197",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-72",
+   "bearing": 72,
+   "lengthM": 5.9,
+   "centre": [
+    4.9187115,
+    52.361141
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_09-25-01_02890",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-balcony",
+     "kind": "balcony-ironwork",
+     "where": "a small concrete balcony with a railing on the courtyard wing",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-02_09-25-01_02890",
+     "how": "a stone slab with a solid parapet instead of the railing"
+    }
+   ]
+  },
+  {
+   "tag": "w11-252",
+   "bearing": 252,
+   "lengthM": 5.4,
+   "centre": [
+    4.9185605,
+    52.361188
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_004786",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-161",
+   "bearing": 161,
+   "lengthM": 5,
+   "centre": [
+    4.9191035,
+    52.3607125
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_001951",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-27",
+   "bearing": 27,
+   "lengthM": 4.7,
+   "centre": [
+    4.919034,
+    52.3608545
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02796",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-entrance-sign",
+     "kind": "lettering",
+     "where": "GENERATOR letters on the dark steel canopy over the hostel entrance in the courtyard",
+     "approxSizeM": [
+      3.5,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_10-43-25_02796",
+     "how": "canopy slab on two posts, letters() 6.5 cm pixels"
+    }
+   ]
+  },
+  {
+   "tag": "w14-27",
+   "bearing": 27,
+   "lengthM": 4.7,
+   "centre": [
+    4.9188325,
+    52.3609155
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_10-43-25_02799",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w15-118",
+   "bearing": 118,
+   "lengthM": 4.3,
+   "centre": [
+    4.9187125,
+    52.361183
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_09-25-01_02888",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-343",
+   "bearing": 343,
+   "lengthM": 4,
+   "centre": [
+    4.918538,
+    52.3611335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002468_pano_0001_001208",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://3dbag.nl",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Monument register 200965",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/4b6ead38-76fb-4415-a343-42e18c4d44d0",
+   "licence": "CC0"
+  }
+ ]
+}

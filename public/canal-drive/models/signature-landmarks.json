@@ -128312,6 +128312,721 @@
       "triangles": 3533,
       "bytes": 58836,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "generator-mauritskade": {
+      "id": "generator-mauritskade",
+      "name": "Generator hostel, former Laboratorium voor Gezondheidsleer (Mauritskade 57)",
+      "modelUrl": "./models/generator-mauritskade.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012235952"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91898252,
+          52.36092438
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 58.6,
+        "widthMetres": 67.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.91898252,
+          52.36092438
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012235952 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/generator-mauritskade-footprints.json, bag-shell-prepare.ts), walls coloured brick or glass by height; windows, the tower front and the entrance read from rectified Gemeente Amsterdam panoramas recording_2025-06-20_10-43-25_02794 (Mauritskade), recording_2025-06-20_10-43-25_02797 (tower), recording_2025-06-20_10-43-25_02748 (park front) and recording_2025-06-20_10-43-25_02796 (entrance), CC BY 4.0. Gemeentelijk monument 200965. Per wall in scripts/landmarks/generator-mauritskade-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19,
+      "galleryView": {
+        "theta": 2.6,
+        "phi": 1.15
+      },
+      "bagYear": 1916,
+      "materialOverrides": {
+        "brick": "#4e4038",
+        "stone": "#c9c3b5",
+        "frame": "#e6e1d4",
+        "glass": "#2f4054",
+        "bronze": "#2b2f33",
+        "dark": "#2e2d2b",
+        "concrete": "#6f716f",
+        "gold": "#dfe5e8"
+      },
+      "attribution": {
+        "title": "Generator hostel, former Laboratorium voor Gezondheidsleer, Mauritskade 57, Amsterdam (1916)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/4b6ead38-76fb-4415-a343-42e18c4d44d0",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012235952 (CC0): dark brick walls with groups of cream-framed small-pane windows, stone coping and string course, the glass rooftop storey with its mullions, the tower front with its stone-framed window grid and the hostel's lightning logo, the GENERATOR entrance canopy, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9185077,
+              52.3611255
+            ],
+            [
+              4.9186622,
+              52.3608445
+            ],
+            [
+              4.9186624,
+              52.3608441
+            ],
+            [
+              4.9186694,
+              52.3608313
+            ],
+            [
+              4.9186947,
+              52.3607853
+            ],
+            [
+              4.9186991,
+              52.3607772
+            ],
+            [
+              4.9187461,
+              52.3607629
+            ],
+            [
+              4.9187339,
+              52.3607481
+            ],
+            [
+              4.9187401,
+              52.3607462
+            ],
+            [
+              4.9187493,
+              52.3607434
+            ],
+            [
+              4.9187718,
+              52.3607365
+            ],
+            [
+              4.9187713,
+              52.360736
+            ],
+            [
+              4.9187729,
+              52.3607355
+            ],
+            [
+              4.9187762,
+              52.3607297
+            ],
+            [
+              4.9187864,
+              52.3607313
+            ],
+            [
+              4.9188155,
+              52.3607224
+            ],
+            [
+              4.9188186,
+              52.3607167
+            ],
+            [
+              4.9188291,
+              52.3607184
+            ],
+            [
+              4.9188302,
+              52.360718
+            ],
+            [
+              4.9188306,
+              52.3607186
+            ],
+            [
+              4.9188553,
+              52.3607111
+            ],
+            [
+              4.9188645,
+              52.3607083
+            ],
+            [
+              4.9188706,
+              52.3607064
+            ],
+            [
+              4.9188828,
+              52.3607213
+            ],
+            [
+              4.9189296,
+              52.3607069
+            ],
+            [
+              4.9189708,
+              52.3607154
+            ],
+            [
+              4.9190011,
+              52.3607061
+            ],
+            [
+              4.919037,
+              52.3607136
+            ],
+            [
+              4.9190377,
+              52.3607123
+            ],
+            [
+              4.9190664,
+              52.3607032
+            ],
+            [
+              4.9191356,
+              52.3607176
+            ],
+            [
+              4.9191494,
+              52.3607354
+            ],
+            [
+              4.9191486,
+              52.3607368
+            ],
+            [
+              4.919185,
+              52.3607442
+            ],
+            [
+              4.9191997,
+              52.3607629
+            ],
+            [
+              4.9194999,
+              52.3608244
+            ],
+            [
+              4.919499,
+              52.3608274
+            ],
+            [
+              4.9195001,
+              52.3608322
+            ],
+            [
+              4.9195009,
+              52.3608371
+            ],
+            [
+              4.9195014,
+              52.3608419
+            ],
+            [
+              4.9195017,
+              52.3608468
+            ],
+            [
+              4.9195016,
+              52.3608517
+            ],
+            [
+              4.9195012,
+              52.3608567
+            ],
+            [
+              4.9195005,
+              52.3608617
+            ],
+            [
+              4.9194995,
+              52.3608667
+            ],
+            [
+              4.9194981,
+              52.3608717
+            ],
+            [
+              4.9194965,
+              52.3608766
+            ],
+            [
+              4.9194947,
+              52.3608764
+            ],
+            [
+              4.9194895,
+              52.3608881
+            ],
+            [
+              4.9194814,
+              52.3609008
+            ],
+            [
+              4.9194831,
+              52.3609013
+            ],
+            [
+              4.9194797,
+              52.3609057
+            ],
+            [
+              4.9194761,
+              52.3609101
+            ],
+            [
+              4.9194722,
+              52.3609143
+            ],
+            [
+              4.919468,
+              52.3609185
+            ],
+            [
+              4.9194636,
+              52.3609225
+            ],
+            [
+              4.9194587,
+              52.3609267
+            ],
+            [
+              4.9194535,
+              52.3609307
+            ],
+            [
+              4.9194481,
+              52.3609347
+            ],
+            [
+              4.9194424,
+              52.3609384
+            ],
+            [
+              4.9194364,
+              52.3609421
+            ],
+            [
+              4.9194346,
+              52.3609448
+            ],
+            [
+              4.9194328,
+              52.3609444
+            ],
+            [
+              4.919247,
+              52.360906
+            ],
+            [
+              4.9192419,
+              52.3609049
+            ],
+            [
+              4.9192452,
+              52.360899
+            ],
+            [
+              4.9191012,
+              52.3608692
+            ],
+            [
+              4.9190804,
+              52.3608649
+            ],
+            [
+              4.9190626,
+              52.360843
+            ],
+            [
+              4.919,
+              52.360862
+            ],
+            [
+              4.9190679,
+              52.3609459
+            ],
+            [
+              4.919009,
+              52.3609638
+            ],
+            [
+              4.9189854,
+              52.360971
+            ],
+            [
+              4.918928,
+              52.3609884
+            ],
+            [
+              4.9188601,
+              52.3609044
+            ],
+            [
+              4.9187996,
+              52.3609227
+            ],
+            [
+              4.9188165,
+              52.3609436
+            ],
+            [
+              4.918814,
+              52.3609482
+            ],
+            [
+              4.9188004,
+              52.360973
+            ],
+            [
+              4.918829,
+              52.3609789
+            ],
+            [
+              4.9188012,
+              52.3610294
+            ],
+            [
+              4.9187782,
+              52.3610247
+            ],
+            [
+              4.9187808,
+              52.3610377
+            ],
+            [
+              4.9187785,
+              52.3610422
+            ],
+            [
+              4.9187723,
+              52.3610538
+            ],
+            [
+              4.91877,
+              52.3610581
+            ],
+            [
+              4.9187536,
+              52.3610694
+            ],
+            [
+              4.9187766,
+              52.3610741
+            ],
+            [
+              4.9187737,
+              52.3610794
+            ],
+            [
+              4.9187835,
+              52.3610815
+            ],
+            [
+              4.9187879,
+              52.3610824
+            ],
+            [
+              4.9187692,
+              52.3611162
+            ],
+            [
+              4.9187652,
+              52.3611154
+            ],
+            [
+              4.9187551,
+              52.3611132
+            ],
+            [
+              4.9187513,
+              52.3611202
+            ],
+            [
+              4.9187227,
+              52.3611143
+            ],
+            [
+              4.9186953,
+              52.3611641
+            ],
+            [
+              4.9187083,
+              52.3611793
+            ],
+            [
+              4.9187207,
+              52.3611937
+            ],
+            [
+              4.9187244,
+              52.361198
+            ],
+            [
+              4.9187245,
+              52.3611981
+            ],
+            [
+              4.9187008,
+              52.3612056
+            ],
+            [
+              4.9186403,
+              52.3612247
+            ],
+            [
+              4.918639,
+              52.3612251
+            ],
+            [
+              4.9186373,
+              52.3612277
+            ],
+            [
+              4.9185502,
+              52.36121
+            ],
+            [
+              4.9185453,
+              52.361209
+            ],
+            [
+              4.9185585,
+              52.361185
+            ],
+            [
+              4.9185706,
+              52.361163
+            ],
+            [
+              4.9185699,
+              52.3611622
+            ],
+            [
+              4.918565,
+              52.3611561
+            ],
+            [
+              4.9185578,
+              52.3611472
+            ],
+            [
+              4.9185635,
+              52.361137
+            ],
+            [
+              4.9185105,
+              52.361126
+            ],
+            [
+              4.9185077,
+              52.3611255
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -32.25498962402344,
+          0,
+          -33.95905685424805
+        ],
+        "max": [
+          35.30400085449219,
+          18.937999725341797,
+          24.649999618530273
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91898252,
+          52.36092438
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 67.55899047851562,
+        "heightMetres": 18.937999725341797,
+        "depthMetres": 58.60905647277832,
+        "depthCoverage": 0.8682823181152344
+      },
+      "triangles": 15614,
+      "bytes": 234508,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "wonderkamer-kanaalstraat": {
+      "id": "wonderkamer-kanaalstraat",
+      "name": "Wonderkamer, former Cornelisschool (Kanaalstraat 149)",
+      "modelUrl": "./models/wonderkamer-kanaalstraat.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165328"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86000512,
+          52.36121017
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 25.2,
+        "widthMetres": 27.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.86000512,
+          52.36121017
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012165328 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/wonderkamer-kanaalstraat-footprints.json, bag-shell-prepare.ts), its street front replaced by the builder's front read from the rectified Gemeente Amsterdam panorama b_20241129_0829_Track22_Sphere_00096 (2024), CC BY 4.0. Gemeentelijk monument 224053. Per wall in scripts/landmarks/wonderkamer-kanaalstraat-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 15.5,
+      "galleryView": {
+        "theta": 2.8,
+        "phi": 1.2
+      },
+      "bagYear": 1906,
+      "materialOverrides": {
+        "brick": "#5d3f31",
+        "red": "#9a5233",
+        "stone": "#c8c0ad",
+        "frame": "#ece8dc",
+        "glass": "#3a4046",
+        "bronze": "#4a2a1e",
+        "dark": "#2e2d2b",
+        "slate": "#5a5a5c",
+        "greyBrick": "#3f3a36"
+      },
+      "attribution": {
+        "title": "Wonderkamer, former Cornelisschool, Kanaalstraat 149, Amsterdam (1906)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/4913ea85-ff94-413a-b39b-a74f4d63d89e",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012165328 (CC0): the brick school front with orange bands and relieving arches over its white-framed classroom windows, the two end bays with arched doors, the statue niche and the stone cornice, read from a Gemeente Amsterdam panorama (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8601049,
+              52.3613114
+            ],
+            [
+              4.8601037,
+              52.3613132
+            ],
+            [
+              4.8600472,
+              52.3612988
+            ],
+            [
+              4.8600484,
+              52.361297
+            ],
+            [
+              4.859857,
+              52.3612483
+            ],
+            [
+              4.8598558,
+              52.3612501
+            ],
+            [
+              4.8597992,
+              52.3612357
+            ],
+            [
+              4.8598004,
+              52.3612338
+            ],
+            [
+              4.8598902,
+              52.3611016
+            ],
+            [
+              4.8599011,
+              52.3610856
+            ],
+            [
+              4.8599677,
+              52.3611026
+            ],
+            [
+              4.8599513,
+              52.3611268
+            ],
+            [
+              4.8601225,
+              52.3611704
+            ],
+            [
+              4.8601389,
+              52.3611463
+            ],
+            [
+              4.8602033,
+              52.3611627
+            ],
+            [
+              4.8601929,
+              52.3611779
+            ],
+            [
+              4.8601026,
+              52.3613108
+            ],
+            [
+              4.8601049,
+              52.3613114
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -14.072805404663086,
+          0,
+          -11.534673690795898
+        ],
+        "max": [
+          13.456999778747559,
+          15.26099967956543,
+          13.812999725341797
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86000512,
+          52.36121017
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.529805183410645,
+        "heightMetres": 15.26099967956543,
+        "depthMetres": 25.347673416137695,
+        "depthCoverage": 0.9217335787686435
+      },
+      "triangles": 2412,
+      "bytes": 42272,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

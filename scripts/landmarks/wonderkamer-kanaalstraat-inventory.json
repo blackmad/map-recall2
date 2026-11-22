@@ -1,0 +1,187 @@
+{
+ "schemaVersion": 1,
+ "id": "wonderkamer-kanaalstraat",
+ "pand": "0363100012165328",
+ "brief": "scripts/landmarks/wonderkamer-kanaalstraat-brief.md",
+ "signature": [
+  "k-classroom-windows",
+  "k-arches",
+  "k-statue",
+  "k-end-doors"
+ ],
+ "walls": [
+  {
+   "tag": "w01-338",
+   "bearing": 338,
+   "lengthM": 22.4,
+   "centre": [
+    4.859954,
+    52.3612765
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241129_0829_Track22_Sphere_00096",
+   "capturedAt": "2024-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-classroom-windows",
+     "kind": "window-shape",
+     "where": "three storeys of large white-framed classroom windows, four bays (ground 3 lights, upper 2 lights, transoms)",
+     "approxSizeM": [
+      14,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "opening() per window with cols/rows, stone sills"
+    },
+    {
+     "id": "k-arches",
+     "kind": "other",
+     "where": "orange brick segmental relieving arches over every classroom window and round arches over the end-bay doors and top windows",
+     "approxSizeM": [
+      2.8,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "RingGeometry arch bands 4 cm proud"
+    },
+    {
+     "id": "k-bands",
+     "kind": "other",
+     "where": "orange brick bands across the piers at six levels, a stone cornice at 14 m, a dark plinth",
+     "approxSizeM": [
+      22,
+      0.14
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "thin slabs"
+    },
+    {
+     "id": "k-statue",
+     "kind": "sculpture",
+     "where": "a stone statue of a saint (St Cornelius) in a niche between the second and third classroom bays",
+     "approxSizeM": [
+      0.7,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "niche slab, a tapered cylinder figure with a head, a console and a canopy stone"
+    },
+    {
+     "id": "k-end-doors",
+     "kind": "other",
+     "where": "brown double doors under round orange arches in the two end bays, a three-light window over each",
+     "approxSizeM": [
+      1.9,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "opening() 0.3 m deep with a brown back, arch over"
+    },
+    {
+     "id": "k-vents",
+     "kind": "other",
+     "where": "rows of small square vents under the upper storeys",
+     "approxSizeM": [
+      0.24,
+      0.24
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "dark squares"
+    },
+    {
+     "id": "k-pier",
+     "kind": "other",
+     "where": "the tall pier between the classrooms and the right end bay rising past the cornice with carved stone",
+     "approxSizeM": [
+      0.9,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "how": "brick pier slab to 14.9 m with a stone block at 12-13.6 m"
+    },
+    {
+     "id": "k-lamp",
+     "kind": "lamp",
+     "where": "a street lamp in front of the school",
+     "approxSizeM": [
+      0.4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241129_0829_Track22_Sphere_00096",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not on the pand"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-158",
+   "bearing": 158,
+   "lengthM": 12.6,
+   "centre": [
+    4.8600395,
+    52.3611505
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-158",
+   "bearing": 158,
+   "lengthM": 4.9,
+   "centre": [
+    4.859937,
+    52.3610965
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_07-49-05_01376",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-157",
+   "bearing": 157,
+   "lengthM": 4.8,
+   "centre": [
+    4.860174,
+    52.3611565
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241129_0829_Track69_Sphere_00014",
+   "capturedAt": "2024-11-29",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://3dbag.nl",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Monument register 224053",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/4913ea85-ff94-413a-b39b-a74f4d63d89e",
+   "licence": "CC0"
+  }
+ ]
+}

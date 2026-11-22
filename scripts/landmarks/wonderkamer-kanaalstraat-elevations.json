@@ -1,0 +1,15 @@
+{
+ "id": "wonderkamer-kanaalstraat",
+ "countedBy": "lane landmarks-r12, 2026-11-22, from w01-338.jpg (b_20241129_0829_Track22_Sphere_00096, 2024, 50 px/m). The two timber doors are not glazed and are not counted. Ground band: the transom window over the left door, four classroom windows, the window over the right door. First floor: two narrow (left bay), four classroom, three narrow (right bay). Top floor: two round-headed (left), four classroom set in two pairs off the lower axes, three round-headed (right). Columns: 2 + 4 + 3 lower axes plus the paired top windows' own axes, 10 as distinct verticals.",
+ "facades": [
+  {"name": "Kanaalstraat", "bearing": 338, "photo": "artifacts/landmark-briefs/wonderkamer-kanaalstraat/w01-338.jpg", "rows": [6, 9, 9], "columns": 10, "symmetric": false, "gables": 0,
+   "mixedRows": [
+    {"row": 0, "rowSizes": "mixed", "evidence": "w01-338: a low three-light window over each end door (1.7 and 2.0 m wide, 2.8-4.0 m) and four classroom windows 2.5 m wide (1.1-3.96 m)",
+     "openings": [{"kind": "transom", "w": 1.7}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "transom", "w": 2.0}]},
+    {"row": 1, "rowSizes": "mixed", "evidence": "w01-338: two 0.8 m windows in the left end bay, four 2.5 m classroom windows, three 0.55 m windows in the right end bay, all 5.7-8.5 m",
+     "openings": [{"kind": "narrow", "w": 0.8}, {"kind": "narrow", "w": 0.8}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "window", "w": 2.5}, {"kind": "narrow", "w": 0.55}, {"kind": "narrow", "w": 0.55}, {"kind": "narrow", "w": 0.55}]},
+    {"row": 2, "rowSizes": "mixed", "evidence": "w01-338: two 0.75 m round-headed windows (left), four 2.4 m classroom windows (10.3-13.1 m), three 0.5 m round-headed windows under one arch (right)",
+     "openings": [{"kind": "round", "w": 0.75}, {"kind": "round", "w": 0.75}, {"kind": "window", "w": 2.4}, {"kind": "window", "w": 2.4}, {"kind": "window", "w": 2.4}, {"kind": "window", "w": 2.4}, {"kind": "round", "w": 0.5}, {"kind": "round", "w": 0.5}, {"kind": "round", "w": 0.5}]}
+   ]}
+ ]
+}

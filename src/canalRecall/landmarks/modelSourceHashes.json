@@ -1,5 +1,5 @@
 {
-  "toolchain": "4b93cd949a4fa84b8761eb3aa435de1f83008f2a729f653a44a91e01b5195022",
+  "toolchain": "97a3dbafbe1515f428b263cbdbe68cbcd459c35872f0b3c5c7a3710e13c9d758",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -94,7 +94,7 @@
     "club-panama": "f5dfb44399cfb55e24eb24488eecf4f6e17cd0c27ebcae77814d1b44caa9d79f",
     "club-raum": "e028a6d6ac01a32a15f3430a90636dd3f151d51a868cd67d6719e043f5bb86dc",
     "collectie-six": "3ad5b7f59ff690e9f18ec129959415038a976066ad40c67d43dc369e59be4a78",
-    "commandementsgebouw": "a9cf01d20e1a774bc44d7af6f0c19b07b4e1cf1789eabbac82faca2854186e98",
+    "commandementsgebouw": "4a6996f3a803b42273a5d3ef4499f7494c09307e162c98d1c3b2bbf96cb12ec0",
     "compagnietheater": "c674e9405392cdf9c130d2092f9b466aec92b61d344af10a7eb8d2b949cd47fa",
     "concertgebouw": "394b39c8ddee06b007b796729a70edc5e20b5249860705981e628a41557ae809",
     "condomerie": "14ca9d66e461854ee71114305531387a970e41bc8fad194cb172d30f8b951d0d",
@@ -182,6 +182,7 @@
     "garage-noord": "9650120bccdffaff6bc95e70a1f5b10f9af89b118d504f53a84bc4774cbc6092",
     "gashouder": "709bb60bdca06f1c4b1a37b3f1a974e66f89c6a22b74d6f20539cbdf70854f1d",
     "gebouw-parnas": "6656db3f130e3e5d4972dd23065ce5b86a552dc4695c3ecfe8f39df944ec82cf",
+    "generator-mauritskade": "36b9291707f4ffc55214b148e8e73da2cf0e83518aac73ed2808d3053d59b9b9",
     "gerard-dou-synagogue": "da99fdaa97767e22f7f268cbdcf48f2de67ac441c2f130e3223992ced3d0ca09",
     "gerrit-rietveld-academie": "337b3e4d48f22001d89e067985ea81c440cbd5812a856b049081511a98f8d128",
     "graansilo-korthals-altes": "2a613e2bed37ac8cce99236ba5ce31473c854f15c19228908ef38f0a2c4e2adf",
@@ -548,6 +549,7 @@
     "winkelcentrum-plein-40-45": "ef34cbc2114803c57de49eeb6877734dc0999e254e81cf817d6d317e5cb21d34",
     "winkler-prins-monument": "5aee38011d9a82b8975ca34c119ee60f01dc5d05e399d38ef8d10d73a6bfed46",
     "wolkenkrabber": "5daf55e69e270aa03497c66fce7a2047bcef21204b418a995cf8ec0df69e8e57",
+    "wonderkamer-kanaalstraat": "9a5928d85000e05da0f5ebf4f5b0f7c924a1d539bbd0daccfc0dfe72a936718f",
     "woongebouw-wladiwostok": "dfc5515e852ea7f48a74b8bdc1b5efd2cfd45a4a41a2eda61df936ce25832b47",
     "wtc-amsterdam": "85afc987f45c0d118d7bacd9547e2f1b0aab4c7f03d9d5586ca145233c1faeaa",
     "xavier-zuidas": "132e736572b07da08e5bceea026ad6f9b7d230c6ff95e4dd8778ebcd70104228",
