@@ -1,0 +1,8 @@
+{
+ "id": "spaarbank-singel-548",
+ "countedBy": "blind counter (haiku) from w01-194.alt.jpg and w02-1.alt.jpg, 2026-11-22, counts as returned; trailing null added by lane r10-B for the set-back top storey, which the street crop of the Reguliersdwarsstraat does not reach. Disputed by the lane (see the r10-B report): the ground floor of the Reguliersdwarsstraat has three bands (two rows of small windows in the stone grid and the recessed entresol glazing above them), the counter returned two.",
+ "facades": [
+  {"name": "Reguliersdwarsstraat (south)", "bearing": 194, "photo": "artifacts/landmark-briefs/spaarbank-singel-548/w01-194.alt.jpg", "rows": [5, 5, 14, 14, 14, null], "columns": 14, "symmetric": true, "gables": 0},
+  {"name": "Singel (north, west part)", "bearing": 12, "alongM": [11.6, 36.2], "photo": "artifacts/landmark-briefs/spaarbank-singel-548/w02-1.alt.jpg", "rows": [null, 9, 9, 9, 1], "columns": 9, "symmetric": true, "gables": 0}
+ ]
+}

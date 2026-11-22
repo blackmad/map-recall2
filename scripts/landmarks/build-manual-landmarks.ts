@@ -539,6 +539,7 @@ import {buildBloemenmarktStalls} from './bloemenmarkt-stalls-builder';
 import {buildKioskParkBea} from './kiosk-park-bea-builder';
 import {buildKioskRamonsCoffee} from './kiosk-ramons-coffee-builder';
 import {buildPontsteiger} from './pontsteiger-builder';
+import {buildSpaarbankSingel548} from './spaarbank-singel-548-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
  // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
@@ -1269,6 +1270,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-kroon-rembrandtplein')buildDeKroonRembrandtplein(w,d,helpers);
     else if(id==='spiegelhof')buildSpiegelhof(w,d,helpers);
     else if(id==='technische-school-meeuwenlaan')buildTechnischeSchoolMeeuwenlaan(w,d,helpers);
+    else if(id==='spaarbank-singel-548')buildSpaarbankSingel548(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

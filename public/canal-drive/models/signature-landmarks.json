@@ -127424,6 +127424,141 @@
         "bytes": 6664,
         "triangles": 175
       }
+    },
+    "spaarbank-singel-548": {
+      "id": "spaarbank-singel-548",
+      "name": "Former Spaarbank voor de Stad Amsterdam, Singel 542-548",
+      "modelUrl": "./models/spaarbank-singel-548.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012175216"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89248372,
+          52.36653553
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 53.4,
+        "widthMetres": 51.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.89248372,
+          52.36653553
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012175216 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/spaarbank-singel-548-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001646_pano_0001_000089 (2019) and b_20250120_0926_Track28_Sphere_00012 (2025) on the Reguliersdwarsstraat, TMX7316010203-000354_pano_0001_000224 and _000226 (2017) and TMX7316010203-001975_pano_0000_001348 (2021) on the Singel, CC BY 4.0. Gemeentelijk monument 200738. Per wall in scripts/landmarks/spaarbank-singel-548-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24,
+      "galleryView": {
+        "theta": 3.4,
+        "phi": 1.1
+      },
+      "bagYear": 1965,
+      "measuredOverrides": true,
+      "materialOverrides": {
+        "stone": "#bcb9b1",
+        "glass": "#5f7078",
+        "blue": "#7c8585",
+        "frame": "#3f403e",
+        "dark": "#2f3234",
+        "bronze": "#4a4c4c",
+        "slate": "#8a8780"
+      },
+      "attribution": {
+        "title": "Former Spaarbank voor de Stad Amsterdam, Singel 542-548, Amsterdam (K.L. Sijmons Dzn, 1956-61)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001646_pano_0001_000089/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012175216 (CC0): the travertine raster of piers and proud ledges with its window and glazed-spandrel rows, the timber window frames, the ground-floor colonnade and the stone grid of small windows, the staff entrance, the steel rooftop frames on the Reguliersdwarsstraat, the floating travertine cornice on steel posts on the Singel and the glazed set-back storey, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8928774,
+              52.3666287
+            ],
+            [
+              4.8928882,
+              52.3666645
+            ],
+            [
+              4.8927172,
+              52.3666616
+            ],
+            [
+              4.8923514,
+              52.3666658
+            ],
+            [
+              4.8923388,
+              52.3666161
+            ],
+            [
+              4.8923316,
+              52.3666163
+            ],
+            [
+              4.8922931,
+              52.366491
+            ],
+            [
+              4.8921877,
+              52.3665012
+            ],
+            [
+              4.8921088,
+              52.3663033
+            ],
+            [
+              4.8927432,
+              52.3662068
+            ],
+            [
+              4.8928774,
+              52.3666287
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -25.8438720703125,
+          -4.7683716530855236e-8,
+          -15.079825401306152
+        ],
+        "max": [
+          27.669265747070312,
+          32.2599983215332,
+          37.20277786254883
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89248372,
+          52.36653553
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 53.51313781738281,
+        "heightMetres": 32.259998369216916,
+        "depthMetres": 52.28260326385498,
+        "depthCoverage": 1.0191540597242688
+      },
+      "triangles": 13637,
+      "bytes": 205576,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
