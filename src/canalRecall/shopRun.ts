@@ -1,4 +1,4 @@
-// Shop runs (lane shop-band-ground-20261121, `?shopRun=1`, SHOP_RUN=1 in Node; default off).
+// Shop runs (lane shop-band-ground-20261121; default on since round 20261122r, `?shopRun=0` / SHOP_RUN=0 off).
 //
 // The ordinary mesher painted a shop pand's shop ground storey on every exposed wall run, so one shop (Roche Bobois in
 // Valkenburgerstraat 69-165, pand 0363100012185504) wrapped a red-fascia shop band right round a housing block,
@@ -26,7 +26,13 @@ export const CORNER_REACH_M = 6;
 /** A street run about as near a point as the nearest street run keeps the shop up to this distance (m). */
 export const TIE_REACH_M = 10;
 
-export const SHOP_RUN_DEFAULT = false;
+export const SHOP_RUN_DEFAULT = true;
+/**
+ * Shop pands that keep the shop ground on every run, as with the flag off. The rule cannot see a glazed shop-style
+ * ground floor with only residential units behind it: the Zakslootje corner of pand 0363100012182300 (the one loss in
+ * round 2's blind, 6-1-3; round 3's looser BAG rule did not fix it either).
+ */
+export const SHOP_RUN_EXEMPT: ReadonlySet<string> = new Set(['NL.IMBAG.Pand.0363100012182300']);
 export function shopRunEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]shopRun=([01])\b/.exec(search)?.[1] : undefined;
   const v = q ?? (env === '0' || env === '1' ? env : undefined);

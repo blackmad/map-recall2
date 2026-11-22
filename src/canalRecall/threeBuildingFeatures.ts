@@ -52,7 +52,7 @@ import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
-import { shopRunOn } from './shopRun.js';
+import { SHOP_RUN_EXEMPT, shopRunOn } from './shopRun.js';
 import { paintOverGuess } from './retailPuiPaint.js';
 import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
 import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
@@ -466,7 +466,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
   // Lane shop-band-ground (`?shopRun=1`, shopRun.ts): the shop's anchor points (its businesses, template, chain and
   // signature); the mesher keeps the shop ground on the runs they pick and draws `quiet` on the rest.
-  if (quietRun && (building.shopfront || building.shop) && !building.bare && !p.frontCarrier && !p.kitWall && !p.gardenShed) {
+  if (quietRun && (building.shopfront || building.shop) && !SHOP_RUN_EXEMPT.has(id) && !building.bare && !p.frontCarrier && !p.kitWall && !p.gardenShed) {
     const pt = (v: unknown): v is [number, number] => Array.isArray(v) && v.length >= 2 && Number.isFinite(v[0]) && Number.isFinite(v[1]);
     const anchors = [...(Array.isArray(p.shopAnchors) ? p.shopAnchors : []), building.retailFront?.at, building.chain?.at, building.signature?.at].filter(pt).map(v => [Number(v[0]), Number(v[1])] as [number, number]);
     building.shopRun = { anchors, quiet: quietRun };

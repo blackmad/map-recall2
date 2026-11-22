@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { CORNER_REACH_M, TIE_REACH_M, setShopAnchors, shopRunEnabled, shopRunsFor, type ShopRunGeom } from './shopRun.ts';
+import { CORNER_REACH_M, SHOP_RUN_EXEMPT, TIE_REACH_M, setShopAnchors, shopRunEnabled, shopRunsFor, type ShopRunGeom } from './shopRun.ts';
 import { buildFeatureChunk, meshBuildingFor } from './threeBuildingFeatures.ts';
 import { decorateShopfront, setShopfronts } from './shopfronts.ts';
 
@@ -13,8 +13,8 @@ const withFlag = <T>(on: boolean | undefined, f: () => T): T => { const was = g.
 const run = (x0: number, y0: number, x1: number, y1: number, street = true): ShopRunGeom => ({ segs: [[x0, y0, x1, y1]], street });
 const block = [run(0, 0, 40, 0), run(40, 0, 40, 12), run(40, 12, 0, 12), run(0, 12, 0, 0)];
 
-test('flag parsing: default off, query beats env', () => {
-  assert.equal(shopRunEnabled(null, null), false);
+test('flag parsing: default on, query beats env', () => {
+  assert.equal(shopRunEnabled(null, null), true);
   assert.equal(shopRunEnabled('?shopRun=1', '0'), true);
   assert.equal(shopRunEnabled('?a=1&shopRun=0', '1'), false);
   assert.equal(shopRunEnabled(null, '1'), true);
@@ -98,4 +98,19 @@ test('flag on: only the anchored run draws the shop ground; the rest draw the qu
     const share = layerCount(on, shop) / layerCount(off, shop);
     assert.ok(share > 0.25 && share < 0.55, `shop share ${share.toFixed(2)}`);
   });
+});
+
+test('flag on: an exempt pand (the Zakslootje corner) keeps the shop on every run, as with the flag off', () => {
+  withFlag(true, () => {
+    const exempt = { ...feature, properties: { ...feature.properties, id: 'NL.IMBAG.Pand.0363100012182300', shopAnchors: [anchor] } };
+    assert.equal(meshBuildingFor(exempt, 'photo')?.shopRun, undefined);
+    const off = withFlag(false, () => buildFeatureChunk([{ ...feature, properties: { ...feature.properties, id: 'NL.IMBAG.Pand.0363100012182300' } }], 'photo'));
+    assert.equal(digest(buildFeatureChunk([exempt], 'photo') as never), digest(off as never));
+  });
+});
+
+test('the exempt pands are real shop pands in the published extracts', async () => {
+  const { readFileSync } = await import('node:fs');
+  const shops = JSON.parse(readFileSync(new URL('../../public/data/extracts/amsterdam/shopfronts.json', import.meta.url), 'utf8')).buildings;
+  for (const id of SHOP_RUN_EXEMPT) assert.ok(shops[id] !== undefined, `${id} is not a shop pand`);
 });
