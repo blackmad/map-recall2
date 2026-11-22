@@ -105424,6 +105424,8 @@
   "name": "Klapmutsenveem 30-62 housing block",
   "modelUrl": "./models/klapmutsenveem-30.glb",
   "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012239386",
+   "NL.IMBAG.Pand.0363100012239387",
    "NL.IMBAG.Pand.0363100012239388"
   ],
   "spatialSuppression": false,
