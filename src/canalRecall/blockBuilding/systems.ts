@@ -11,6 +11,7 @@ import type { ArchKind, ArchParams } from './arch.ts';
 import { ribbonStoreyRow, type RibbonStoreyFit } from './ribbonStoreys.ts';
 import { residentialGroundRow, type ResidentialGroundFit } from './residentialGround.ts';
 import type { LoggiaBackItem } from './loggia.ts';
+import { headed, mapRowWindows, railed, type JulietRailsFit, type WindowHeadsFit } from './windowTrim.ts';
 
 /**
  * - `glazed-hall`: a brick base, then one glass skin up to the eaves with a mullion grid (largeCompile `drawGlazedHall`);
@@ -129,6 +130,10 @@ export interface SystemFit {
   sideLight?: SideLightFit;
   /** per-storey, per-bay windows: width, centre, height, sill and side light per bay, cycling (intent `bayWindows`; opt-in) */
   bayWindows?: BayWindowsFit[];
+  /** a hood over each punched window, with legs (intent `windowHeads`, windowTrim.ts; opt-in) */
+  windowHeads?: WindowHeadsFit;
+  /** Juliet rails across the foot of punched windows (intent `julietRails`, windowTrim.ts; opt-in) */
+  julietRails?: JulietRailsFit;
   /** recessed loggia bands across a run of bays and storeys (intent `loggiaBands`; opt-in) */
   loggiaBands?: LoggiaBandFit[];
   /** dark ground-storey columns on every n-th bay edge and a grille strip along the ground (intent `groundPiers`; opt-in) */
@@ -147,7 +152,7 @@ export interface SideLightFit { side: 'left' | 'right'; w: number; low: number; 
  * `light`: the side light's width for this window (0 = none, 1 = the whole light ringed), `door`: a door leaf (the door
  * slot behind the frame, no sill, no side light). Everything else (frame, glass, sill, bars) is the storey row's window.
  */
-export interface BayWindowsFit { storeys: number[]; pattern: { w: number; at?: number; h?: number; sillM?: number; light?: number; door?: boolean }[] }
+export interface BayWindowsFit { storeys: number[]; pattern: { w: number; at?: number; h?: number; sillM?: number; light?: number; door?: boolean; rail?: boolean }[] }
 /** A loggia band (compose `RecessBand`): bays and storeys inclusive, sill / head in m over their floor lines, depth in m. */
 export interface LoggiaBandFit { storeys: [number, number]; bays: [number, number]; sillM: number; headM: number; deepM: number; lights: number; rail: 'glass' | 'bars' | 'solid' | 'none'; railSlot: string;
   /** the back a wall with rows of windows: per row from `sill` to `sill + h` of the band, one window `w` of `every` bays wide in each run of `every` bays */ back?: { sill: number; h: number; every: number; w: number }[];
@@ -232,7 +237,9 @@ export interface HallDoors { bays: number[]; arch?: ArchKind; lights?: number; r
 /** `archedSill`: arch.ts cuts an arched opening only clear of the wall's foot (a square one may trim its sill instead), so arched doors start 12 cm up. */
 export const HALL_DOOR = { w: 0.94, h: 0.78, sill: 0.02, archedSill: 0.12, lights: 2, rows: 4 };
 
-export interface TiltedBays { every?: number; first?: number; bays?: number[]; storeys?: number[] }
+export interface TiltedBays { every?: number; first?: number; bays?: number[]; storeys?: number[];
+  /** straight box (lane kit-batch-2005b-20261122, Klaprozenweg 35-37): the frame stands `out` m proud top and bottom with glass across its front (opt-in) */
+  out?: number; /** the box frame's own slot (default the stone slot) */ slot?: string }
 
 /** Tilted bay frame: 14 cm ring, 42 cm off the wall at the sill leaning back to 12 cm at the head (Engelsesteeg hotel wing). */
 export const TILT_FRAME = { t: 0.14, outBottom: 0.42, outTop: 0.12 };
@@ -419,7 +426,9 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     for (const st of storeys) {
       const under = rowOverrides[String(st)] ?? (st === 0 ? ground : typical);
       if (!under.win || under.cycle) continue; // blank or balcony storeys, loading-door cycles: no box frame
-      const box: Row = { ...under, win: { ...under.win, sillSlot: null, tilt: { slot: s.stone, ...TILT_FRAME } } };
+      const tilt = tb.out === undefined && tb.slot === undefined ? { slot: s.stone, ...TILT_FRAME }
+        : { slot: tb.slot ?? s.stone, ...TILT_FRAME, ...(tb.out !== undefined ? { outTop: tb.out, outBottom: tb.out, front: { slot: s.glass, d: +(tb.out - 0.03).toFixed(3) } } : {}) };
+      const box: Row = { ...under, win: { ...under.win, sillSlot: null, tilt } };
       rowOverrides[String(st)] = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => ((list ? list.includes(k) : k === at) ? box : under)) };
     }
   }
@@ -496,12 +505,28 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       if (e.w <= 0) return { kind: 'wall' };
       const ww = e.w * P, c = P / 2 + (e.at ?? 0) * P, lo = e.sillM ?? base.sill ?? 0.9, hi = Math.min(lo + hOf(e.h), sh - 0.1);
       const sash = e.door ? undefined : e.light === undefined ? baseSash : e.light > 0 && baseSash ? { ...baseSash, w: e.light } : undefined;
-      const win: WinParams = { ...plain, ...(sash ? { sash } : {}), ...(e.door ? { glass: s.door, sillSlot: null } : {}) };
+      const win0: WinParams = { ...plain, ...(sash ? { sash } : {}), ...(e.door ? { glass: s.door, sillSlot: null } : {}) };
+      const win = e.rail && f.julietRails ? railed(win0, f.julietRails) : win0;
       const item: Item = { kind: 'win', u: [+(c - ww / 2).toFixed(3), +(c + ww / 2).toFixed(3)], v: [+lo.toFixed(3), +hi.toFixed(3)], win };
       return { kind: 'items', items: [[item]] };
     };
     const cyc: Row = { kind: 'wall', cycle: bw.pattern.map(row) };
     if (st === 0) ground = cyc; else rowOverrides[String(st)] = cyc;
+  }
+  // Window trim (windowTrim.ts): hoods over and Juliet rails across the punched windows of the listed storeys (default
+  // every storey for hoods; rails only where listed), after the per-bay windows so their cycles take the trim too.
+  if ((f.windowHeads || f.julietRails?.storeys) && name !== 'blank') {
+    const all = Array.from({ length: Math.max(1, f.lines.length - 1) }, (_, k) => k);
+    const trim = (st: number) => (w: WinParams) => {
+      let out = w;
+      if (f.windowHeads && (f.windowHeads.storeys ?? all).includes(st)) out = headed(out, f.windowHeads);
+      if (f.julietRails?.storeys?.includes(st) && !out.juliet) out = railed(out, f.julietRails);
+      return out;
+    };
+    for (const st of all) {
+      if (st === 0) ground = mapRowWindows(ground, trim(0));
+      else if (rowOverrides[String(st)] || st + 1 < f.lines.length) rowOverrides[String(st)] = mapRowWindows(rowOverrides[String(st)] ?? typical, trim(st));
+    }
   }
   // Glazed plinth and loggias: the last step, so no later pass (windowPattern, paneSplit) reshapes them. In listed bays only,
   // the other bays keep the storey's row (one bay of a per-bay cycle each).

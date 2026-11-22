@@ -12,6 +12,7 @@
  * - entrance on the widest panel's middle bay (or `entrance.bay`), garage doors from its right end;
  * - roof plant: a lift overrun and a plant box at the most interior points of the largest flat roof.
  */
+import {fitJulietRails, fitWindowHeads} from '../blockBuilding/windowTrim.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import type {BuildingFacts} from './facts.ts';
 import {resolveOtherWalls} from './otherWalls.ts';
@@ -497,6 +498,16 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     // A side light's own frame colour (sideLight.colour, GitHub #86) and loggia-band rails in their own colour: joinery slots of their own.
     const sashSlot = w.sideLight ? `frame@sl${gi}` : undefined;
     if (sashSlot) palette[sashSlot] = swatch(w.sideLight!.colour);
+    const tiltSlot = (Array.isArray(w.tiltedBays) ? w.tiltedBays : w.tiltedBays ? [w.tiltedBays] : []).some(t => t.colour) ? `stone@tb${gi}` : undefined;
+    if (tiltSlot) palette[tiltSlot] = swatch((Array.isArray(w.tiltedBays) ? w.tiltedBays : [w.tiltedBays!]).find(t => t.colour)!.colour!);
+    const tiltOne = (t: NonNullable<LargeWallIntent['tiltedBays']> extends infer U ? U extends unknown[] ? U[number] : U : never) => {
+      const {colour, ...rest} = t;
+      return colour && tiltSlot ? {...rest, slot: tiltSlot} : rest;
+    };
+    const tiltFit = (t: NonNullable<LargeWallIntent['tiltedBays']>) => (Array.isArray(t) ? t.map(tiltOne) : tiltOne(t));
+    const headSlot = w.windowHeads ? `stone@wh${gi}` : undefined, julietSlot = w.julietRails ? `frame@jr${gi}` : undefined;
+    if (headSlot) palette[headSlot] = swatch(w.windowHeads!.colour);
+    if (julietSlot) palette[julietSlot] = swatch(w.julietRails!.colour);
     const gpSlot = w.groundPiers ? `frame@gp${gi}` : undefined, gpPlinth = w.groundPiers?.plinth ? `frame@gpp${gi}` : undefined;
     if (gpSlot) palette[gpSlot] = swatch(w.groundPiers!.colour);
     if (gpPlinth) palette[gpPlinth] = swatch(w.groundPiers!.plinth!.colour);
@@ -583,11 +594,12 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowGroup ? {windowGroup: {count: w.windowGroup.count, gapM: r3((w.windowGroup.gap ?? 0.06) * pitchM), ...(w.windowGroup.storeys ? {storeys: [...w.windowGroup.storeys]} : {})}} : {}),
       ...(balconyRail ? {balconyRailSlot: balconyRail} : {}), ...(w.balconies?.deep !== undefined ? {balconyDeepM: r3(w.balconies.deep * (uppers[0] ?? st.heights[0]))} : {}), ...(w.balconies?.windows ? {balconyOnWindows: true} : {}), ...(w.balconies?.run ? {balconyRun: true} : {}), ...(w.balconies?.brick ? {balconyBrick: true} : {}),
       ...(balconyEdge ? {balconySlabSlot: balconyEdge} : {}), ...(balconyPane ? {balconyPaneSlot: balconyPane} : {}), ...(balconyPost ? {balconyPosts: {slot: balconyPost, w: r3((w.balconies!.posts!.w ?? 0.2 / pitchM) * pitchM)}} : {}),
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: tiltFit(w.tiltedBays), bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
       ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {}), ...(w.openBays ? {openBays: w.openBays, bays} : {}),
       ...(w.plinth ? {plinth: {storeys: [...plinthStoreys], ...(w.plinth.bays ? {bays: [...w.plinth.bays]} : {}), lights: w.plinth.lights, sill: w.plinth.sill ?? PLINTH.sill, h: w.plinth.h ?? PLINTH.h, pier: w.plinth.pier ?? PLINTH.pier, transom: w.plinth.transom ?? PLINTH.transom}, bays} : {}),
+      ...(w.windowHeads ? {windowHeads: fitWindowHeads(w.windowHeads, headSlot!)} : {}), ...(w.julietRails ? {julietRails: fitJulietRails(w.julietRails, julietSlot!)} : {}),
       ...(w.sideLight ? {sideLight: {side: w.sideLight.side ?? 'left', w: w.sideLight.w, low: w.sideLight.low ?? 0, high: w.sideLight.high ?? 1, slot: sashSlot!, ...(w.sideLight.storeys ? {storeys: [...w.sideLight.storeys]} : {})}} : {}),
-      ...(w.bayWindows ? {bayWindows: w.bayWindows.map(e => ({storeys: e.storeys.filter(q => q < st.heights.length), pattern: e.pattern.map(b => ({w: b.w, ...(b.at !== undefined ? {at: b.at} : {}), ...(b.h !== undefined ? {h: b.h} : {}), ...(b.light !== undefined ? {light: b.light} : {}), ...(b.door ? {door: true} : {}),
+      ...(w.bayWindows ? {bayWindows: w.bayWindows.map(e => ({storeys: e.storeys.filter(q => q < st.heights.length), pattern: e.pattern.map(b => ({w: b.w, ...(b.at !== undefined ? {at: b.at} : {}), ...(b.h !== undefined ? {h: b.h} : {}), ...(b.light !== undefined ? {light: b.light} : {}), ...(b.door ? {door: true} : {}), ...(b.rail ? {rail: true} : {}),
         ...(b.sill !== undefined ? {sillM: r3(b.sill * (st.heights[e.storeys.find(q => q < st.heights.length) ?? 0] ?? st.heights[0]))} : {})}))}))} : {}),
       ...(w.loggiaBands ? {loggiaBands: w.loggiaBands.filter(b => b.storeys[1] < st.heights.length).map((b, k) => {
         const n = (b.bays[1] - b.bays[0] + 1) * pitchM, h0 = st.heights[b.storeys[0]], h1 = st.heights[b.storeys[1]];

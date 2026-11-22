@@ -1,0 +1,314 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "ringslangpad-1-364-251618",
+ "pandId": "0363100012251618",
+ "address": "Ringslangpad 1-364, Science Park: four-storey modular student housing in pale grey panel cladding, a white-framed window pair (a wide light beside a narrow one) in every 3 m module on every storey including the ground, spiral escape stairs on the gable ends (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2022-05-18-w08-46",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002585_pano_0002_000438/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w08-46.jpg",
+   "sha256": "ec4d43a00379dcee72d05b0f84234c949906c52c60ab127ab0011c94b68b0a26",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-02-11-w02-136",
+   "kind": "street-panorama",
+   "capturedAt": "2019-02-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001082_pano_0000_000079/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w02-136.jpg",
+   "sha256": "2eeeeafec047f2049435342571099250d3f94d91fd3074c9905153ef965273bc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-02-11-w08-46L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-02-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001082_pano_0000_000005/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w08-46L.jpg",
+   "sha256": "c3797301964aa406d24532c032e9e64608ad85ea8800b537db018cfeabb60b2c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-02-11-w09-136",
+   "kind": "street-panorama",
+   "capturedAt": "2019-02-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001082_pano_0000_000069/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w09-136.jpg",
+   "sha256": "88c29307164746b914aeefc45e586cf07f029ace465c209c9a48858c7de309ad",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-02-11-w10-226L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-02-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001082_pano_0001_000005/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w10-226L.jpg",
+   "sha256": "597a08f73dbc8361682a82384af4c5d9f7e15e3c20de432027a6becbca69a8d9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-12-11-w04-226",
+   "kind": "street-panorama",
+   "capturedAt": "2018-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001008_pano_0003_000148/",
+   "image": "source-data://pand-reference-walls/0363100012251618/w04-226.jpg",
+   "sha256": "bedced9d7c134ad7ef48407752539c15bbd51a60e0ca3b2649fd13da19c6ac0e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    21
+   ],
+   "street": "Ringslangpad",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 14,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#b4b7b1",
+    "frame": "#eceeea",
+    "stone": "#a9aca6"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    5
+   ],
+   "street": "Ringslangpad",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#b4b7b1",
+    "frame": "#eceeea",
+    "stone": "#a9aca6"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    25
+   ],
+   "street": "Ringslangpad",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "wallMaterial": "render",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#b4b7b1",
+    "frame": "#eceeea",
+    "stone": "#a9aca6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.4,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "bayWindows",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "street": "Ringslangpad",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "wallMaterial": "render",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#b4b7b1",
+    "frame": "#eceeea",
+    "stone": "#a9aca6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.4,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "bayWindows",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "street": "Ringslangpad",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "wallMaterial": "render",
+   "windows": "plain",
+   "sills": false,
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#b4b7b1",
+    "frame": "#eceeea",
+    "stone": "#a9aca6"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.4,
+       "h": 0.5,
+       "sill": 0.25
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "bayWindows",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#b4b7b1",
+  "frame": "#eceeea",
+  "door": "#5a5e60",
+  "stone": "#a9aca6"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from the archived crops. Group 0 = panel 19 (SE, 43.1 m) from w02-136 2019-02-11 (sunlit and partly washed out): 14 modules of 3.1 m, a white-framed wide-plus-narrow window pair in each on all four storeys. Group 1 = panel 4 (SW, 24.9 m) from w04-226 2018-12-11 (shade, bare trees in front): the same, 8 modules. Groups 2-4 = the gable panels 23 (NE, from w08-46 2022-05-18), 6 (SE, from w09-136 2019-02-11) and 5 (SW, from w10-226L 2019-02-11): blank pale panels with one small window column beside the spiral stair. The long NW and courtyard walls take otherWalls.",
+  "Not modelled: the galvanised spiral escape stairs on every gable and the braced steel posts between the module blocks (kit gap), the orange awnings."
+ ],
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#5f5f5c"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

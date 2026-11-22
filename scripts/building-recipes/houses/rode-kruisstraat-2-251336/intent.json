@@ -1,0 +1,667 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "rode-kruisstraat-2-251336",
+ "pandId": "0363100012251336",
+ "address": "Rode Kruisstraat 2, Amsterdam-Noord: 2019 care home (Philarood) in red-brown brick, two storeys of grey-framed French windows and casements under black pantile pitched roofs, gabled ends, a glazed entrance bay, all on a one-storey brick podium whose roof is a railed terrace (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2025-09-22-w01-77",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-22_11-45-45_01844/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-10-w05-348",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-10_05-38-58_01818/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-08-29-w03-262",
+   "kind": "street-panorama",
+   "capturedAt": "2024-08-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-08-29_08-32-17_02063/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-18-w04-262L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002015_pano_0000_000030/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-06-02-w02-169",
+   "kind": "street-panorama",
+   "capturedAt": "2020-06-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001733_pano_0000_000360/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-11-w01-77L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001508_pano_0005_000094/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    28
+   ],
+   "street": "Rode Kruisstraat (west)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    2.35,
+    3,
+    3
+   ],
+   "windowHeads": {
+    "colour": "#9fa3a0",
+    "drop": 0.3
+   },
+   "julietRails": {
+    "colour": "#c4c8c4",
+    "h": 0.85
+   },
+   "baysPerStorey": 18,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#4f3a33",
+    "frame": "#b9bdb9",
+    "stone": "#a9aca8"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": -0.315,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.352,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.452,
+       "at": 0.441,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.437,
+       "at": 0.115,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.389,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.011,
+       "h": 0.4,
+       "sill": 0.35
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": -0.315,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.352,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.452,
+       "at": 0.441,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.437,
+       "at": 0.115,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.389,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.011,
+       "h": 0.73,
+       "sill": 0.1,
+       "rail": true
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 0.696,
+       "at": -0.196,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 1.422,
+       "at": 0.389,
+       "h": 0.7,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.711,
+       "at": -0.256,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.667,
+       "at": 0.093,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.407,
+       "at": 0.389,
+       "h": 0.7,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.667,
+       "at": -0.056,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.696,
+       "at": -0.485,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 1.378,
+       "at": 0.07,
+       "h": 0.7,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.696,
+       "at": -0.033,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "bayWindows",
+    "palette",
+    "windowHeads",
+    "julietRails"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    18
+   ],
+   "street": "Rode Kruisstraat (west)",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.8,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#4f3a33",
+    "frame": "#b9bdb9",
+    "stone": "#a9aca8"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0,
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0
+      },
+      {
+       "w": 1.0,
+       "at": 0.42,
+       "h": 0.85,
+       "sill": 0.04
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 1.05,
+       "at": 0.21,
+       "h": 0.85,
+       "sill": 0.04
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "bayWindows",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    38,
+    59,
+    66
+   ],
+   "street": "Rode Kruisstraat (west)",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 10,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.45,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#4f3a33",
+    "frame": "#b9bdb9",
+    "stone": "#a9aca8"
+   },
+   "houses": [
+    {
+     "w": 5.5,
+     "bays": 2,
+     "storeys": 3,
+     "ownEaves": true,
+     "windowShape": {
+      "w": 0.5,
+      "h": 0.62,
+      "sill": 0.12
+     }
+    },
+    {
+     "w": 18.4,
+     "bays": 8
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "houses",
+    "windowShape",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    85
+   ],
+   "street": "Rode Kruisstraat (east)",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 20,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.5,
+    "sill": 0.28
+   },
+   "palette": {
+    "brick": "#4f3a33",
+    "frame": "#b9bdb9",
+    "stone": "#a9aca8"
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      0
+     ],
+     "pattern": [
+      {
+       "w": 0.36,
+       "h": 0.55,
+       "sill": 0.25
+      },
+      {
+       "w": 0.36,
+       "h": 0.55,
+       "sill": 0.25
+      },
+      {
+       "w": 0.72,
+       "h": 0.55,
+       "sill": 0.25
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "bayWindows",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    42,
+    87
+   ],
+   "street": "Rode Kruisstraat (east)",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.1,
+    2.9,
+    2.9
+   ],
+   "blankStoreys": [
+    0
+   ],
+   "baysPerStorey": 13,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.75,
+    "sill": 0.05
+   },
+   "palette": {
+    "brick": "#4f3a33",
+    "frame": "#b9bdb9",
+    "stone": "#a9aca8"
+   },
+   "windowHeads": {
+    "colour": "#9fa3a0",
+    "drop": 0.3
+   },
+   "julietRails": {
+    "colour": "#c4c8c4",
+    "h": 0.85
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.55,
+       "h": 0.76,
+       "sill": 0.04
+      }
+     ]
+    },
+    {
+     "storeys": [
+      2
+     ],
+     "pattern": [
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.58,
+       "h": 0.75,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0.58,
+       "h": 0.75,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.58,
+       "h": 0.75,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.58,
+       "h": 0.75,
+       "sill": 0.07,
+       "rail": true
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.3,
+       "h": 0.52,
+       "sill": 0.29
+      },
+      {
+       "w": 0.58,
+       "h": 0.75,
+       "sill": 0.07,
+       "rail": true
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "bayWindows",
+    "palette",
+    "windowHeads",
+    "julietRails"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#4f3a33",
+  "frame": "#b9bdb9",
+  "door": "#5b5f5c",
+  "stone": "#a9aca8"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from the archived crops. Group 0 = panel 25 (W, 24.3 m) from w03-262 2024-08-29: half-sunk ground of low windows, six French windows on storey 1, nine casements and French windows on storey 2, each placed by bayWindows at its measured centre. Group 1 = panel 17 (W, 7.9 m) from the right of w03-262: the glazed entrance bay. Group 2 = panel 30 (W, 23.9 m) from w04-262L 2021-02-18: the Philarood gable (5.5 m) over the podium. Group 3 = panel 64 (E podium, 49.8 m) from w01-77 2025-09-22. Group 4 = panel 34 (E upper wall over the terrace, 43.1 m) from w01-77L 2019-12-11 (25 deg oblique), French doors onto the terrace and the storey-2 sequence read in order. North and south walls and the courtyards take otherWalls."
+ ],
+ "roof": {
+  "material": "black-tile",
+  "flatHex": "#8f8d86"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}
