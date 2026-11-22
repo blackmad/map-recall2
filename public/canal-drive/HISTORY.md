@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Round 20261122w: the landmark openings gate passes on a full rebuild; Westerdok 4 (2026-11-22)
+
+- **Pentagon (poke 4):** rebuilt geometry was identical; the installed GLB predated Pentagon's `material-slot-tags.ts` entry, which tagged `bronze` (balcony railings) `frame`, so railings counted as solid wall and buried the window frames behind them. Railings retagged `paint`, as Condomerie and Moulin Rouge tag theirs.
+- **Pontsteiger (outside 8, allowlist poke 4):** byte-identical rebuild; it had failed since its 11-14 install because the gate classes any material named `white` as window trim. The lobby columns now draw in `stone` with `materialOverrides.stone = #efe9db` and slot tag stucco (same colour and slot); allowlist entry removed. Still fails audit:glb see-through and its geometry baseline (board).
+- **Westerdok 4 installed** (lane/landmark-gates-20261122 f4cc461287; 37.4k tris, 482 KB, lod2 1.5k). Holes: 3DBAG wall 163 is a triangle; the kit's stepped-wall rule rebuilt it as a rectangle clear of the sloped roof, leaving a 42.4 m loop. A wall is a step only if its ring rises at both ends (`risesAtBothEnds`, scripts/landmarks/hand-block-kit.test.ts); the five other hand blocks rebuild byte-identical. See-through: rays under the 6.4 m cantilevered balconies are closed by an opt-in `StandoffDeck.lateral` (glbQuality.ts) when a wall stands within reach + 1 m along the deck's bearing; 17/397 → 2/397. Blind (opus, three walls): new better on all three, high confidence; integrator read of w02 agrees (dark brick and glazed ground vs today's generic brown with a stray blade).
+- A full `build-manual-landmarks` run no longer stops on the openings gate (the P1 from round t).
+
 ## Round 20261122v: the six 2005+ pands the kit batch skipped (2026-11-22)
 
 - **lane/kit-batch-2005b-20261122 4b92c33df2:** Rode Kruisstraat 2 (hipped two-storey block, French-balcony rails, glazed entrance), Krommeniestraat 1-135 (yellow-brown brick, window bands, arched passage), Carolina MacGillavrylaan 2082-3198 (khaki cladding, paired window bands; 26k tris), Akbarstraat 165-217 (orange-red brick, box balconies), Ringslangpad 1-364 (pale near-blank gable, one window column), Klaprozenweg 35-37 (light grey, staggered bronze box windows, glazed ground) installed as large recipes on the 2026-11-22 kit. Blind (one opus judge, seeded sides): new 6/6; integrator read of Carolina, Akbarstraat and Ringslangpad agrees. Oostelijke Handelskade 751-977 skipped (under Klapmutsenveem 30).
