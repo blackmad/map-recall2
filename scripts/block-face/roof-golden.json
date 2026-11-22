@@ -6157,6 +6157,252 @@
     "hash": "eda567636bde7a38",
     "class": "front"
    }
+  },
+  "hendrik-134-154-r1": {
+   "157111": {
+    "hash": "d8db7da4d3479052",
+    "class": "front"
+   },
+   "158151": {
+    "hash": "5b19808d29e4e9ed",
+    "class": "front"
+   },
+   "164721": {
+    "hash": "a1ce23ffb406f82a",
+    "class": "front"
+   },
+   "167163": {
+    "hash": "66b3d2c2700247ff",
+    "class": "front"
+   }
+  },
+  "hendrik-134-154-r2": {
+   "152966": {
+    "hash": "2175418efc0d54de",
+    "class": "front"
+   },
+   "160880": {
+    "hash": "76ae10d6e546dbe7",
+    "class": "front"
+   },
+   "164007": {
+    "hash": "d05d859b5d34e9eb",
+    "class": "front"
+   },
+   "165508": {
+    "hash": "e170fa64fe97e238",
+    "class": "front"
+   }
+  },
+  "herengracht-84-148-r1": {
+   "167714": {
+    "hash": "cc0d852bb011878d",
+    "class": "front"
+   },
+   "175699": {
+    "hash": "f96515ceff566759",
+    "class": "recipe"
+   },
+   "175700": {
+    "hash": "073d31f7c3464306",
+    "class": "recipe"
+   }
+  },
+  "houweningen-1-31-r1": {
+   "156794": {
+    "hash": "2d50022ef2ae20f1",
+    "class": "front"
+   },
+   "159954": {
+    "hash": "bb5bbca39819de16",
+    "class": "front"
+   },
+   "162863": {
+    "hash": "c6647a266866750c",
+    "class": "front"
+   },
+   "165332": {
+    "hash": "f6a70ff3f1dd93cb",
+    "class": "front"
+   },
+   "165776": {
+    "hash": "498bb6160a9c1380",
+    "class": "front"
+   }
+  },
+  "houweningen-2-38-r1": {
+   "153807": {
+    "hash": "00c909fefdcf40a4",
+    "class": "front"
+   },
+   "156096": {
+    "hash": "574fe706e4fe7035",
+    "class": "front"
+   },
+   "156521": {
+    "hash": "7fad9cf5ff47e4f9",
+    "class": "front"
+   },
+   "158366": {
+    "hash": "f4593cead091fcb2",
+    "class": "front"
+   },
+   "159135": {
+    "hash": "43e28eb9f6c9a440",
+    "class": "front"
+   },
+   "159242": {
+    "hash": "09c90c15607fb77b",
+    "class": "front"
+   },
+   "159933": {
+    "hash": "ae048bec9e1ed80e",
+    "class": "front"
+   },
+   "161605": {
+    "hash": "533d99da24a0e60c",
+    "class": "front"
+   },
+   "162380": {
+    "hash": "ab7cd4e5466a4451",
+    "class": "front"
+   },
+   "162506": {
+    "hash": "fa82a7606be71e0a",
+    "class": "front"
+   },
+   "163222": {
+    "hash": "a25c41d313c2a9f3",
+    "class": "front"
+   },
+   "163315": {
+    "hash": "7d2043741e46f802",
+    "class": "front"
+   },
+   "163814": {
+    "hash": "f78f4b7b3c416aa6",
+    "class": "front"
+   },
+   "165393": {
+    "hash": "b42cf6e239b8302c",
+    "class": "front"
+   },
+   "167020": {
+    "hash": "99e731536fba3b21",
+    "class": "front"
+   },
+   "167267": {
+    "hash": "56318c1013938156",
+    "class": "front"
+   }
+  },
+  "huygens-102-118-r1": {
+   "160719": {
+    "hash": "cf18f7c168137491",
+    "class": "front"
+   },
+   "163854": {
+    "hash": "dda0190be98f2160",
+    "class": "front"
+   }
+  },
+  "keizersgracht-240-312-r1": {
+   "169386": {
+    "hash": "3881e7327e065b29",
+    "class": "front"
+   },
+   "169390": {
+    "hash": "b528f8e5e2c15f62",
+    "class": "front"
+   },
+   "169444": {
+    "hash": "819a9244a0a4fa2b",
+    "class": "front"
+   }
+  },
+  "keizersgracht-240-312-r2": {
+   "169108": {
+    "hash": "b5ea640beac8ce6e",
+    "class": "front"
+   },
+   "169118": {
+    "hash": "34513b24586e251b",
+    "class": "front"
+   },
+   "169380": {
+    "hash": "469001218733ef5e",
+    "class": "recipe"
+   }
+  },
+  "keizersgracht-596-648-r1": {
+   "175654": {
+    "hash": "6d874c7fd9890936",
+    "class": "front"
+   },
+   "175655": {
+    "hash": "31fe861564268295",
+    "class": "front"
+   }
+  },
+  "keizersgracht-596-648-r2": {
+   "167896": {
+    "hash": "e86655424c7423bf",
+    "class": "front"
+   },
+   "176066": {
+    "hash": "d7e304452932e920",
+    "class": "front"
+   }
+  },
+  "reigersbergen-1-37-r1": {
+   "152999": {
+    "hash": "b569fa76e8e3f570",
+    "class": "front"
+   },
+   "153678": {
+    "hash": "759d60303591ec1c",
+    "class": "front"
+   },
+   "155831": {
+    "hash": "a15e275c32bc20b9",
+    "class": "front"
+   },
+   "156059": {
+    "hash": "d578224dcba7662e",
+    "class": "front"
+   },
+   "156678": {
+    "hash": "36b4f668219fe3f8",
+    "class": "front"
+   },
+   "161489": {
+    "hash": "9ab78fc57780a1cb",
+    "class": "front"
+   },
+   "163303": {
+    "hash": "624180f07bb51bd2",
+    "class": "front"
+   }
+  },
+  "reigersbergen-1-37-r2": {
+   "153212": {
+    "hash": "28a94b0c780e9843",
+    "class": "front"
+   },
+   "155474": {
+    "hash": "39d9eed42a6e6cdd",
+    "class": "front"
+   }
+  },
+  "reigersbergen-1-37-r3": {
+   "153758": {
+    "hash": "08c35a6857322670",
+    "class": "front"
+   },
+   "164833": {
+    "hash": "6ac32bbd880f4f8c",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -6456,6 +6702,19 @@
   "haarlemmerdijk-117-143-r1": "05f10bc604b16f1f",
   "haarlemmerdijk-2-58-r1": "3f1a0d9c51643866",
   "haarlemmerdijk-2-58-r2": "8af168b42b64bdf9",
-  "hooft-80-112": "e41a14cdca41f758"
+  "hooft-80-112": "0ecb1e7514260702",
+  "hendrik-134-154-r1": "ddcc6473fc65549b",
+  "hendrik-134-154-r2": "654bab174c46d9ce",
+  "herengracht-84-148-r1": "b5f5739f0ad0aaf1",
+  "houweningen-1-31-r1": "25e3c2b96ab3f050",
+  "houweningen-2-38-r1": "3d94ddd2a504129b",
+  "huygens-102-118-r1": "35886037c362a086",
+  "keizersgracht-240-312-r1": "0e85b687126b3302",
+  "keizersgracht-240-312-r2": "6506bec0639d572d",
+  "keizersgracht-596-648-r1": "e6ab739481ede0a4",
+  "keizersgracht-596-648-r2": "978624e757f7dce0",
+  "reigersbergen-1-37-r1": "d0ffe8a7ce8acce8",
+  "reigersbergen-1-37-r2": "89c5b844d05173db",
+  "reigersbergen-1-37-r3": "97d20861df653496"
  }
 }

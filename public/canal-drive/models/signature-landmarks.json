@@ -127558,7 +127558,19 @@
       },
       "triangles": 13637,
       "bytes": 205716,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ef04d80cf2535b48",
+        "buildVersion": 2,
+        "bytes": 46476,
+        "triangles": 2227
+      },
+      "lod2": {
+        "sourceHash": "ef04d80cf2535b48",
+        "buildVersion": 6,
+        "bytes": 8704,
+        "triangles": 271
+      }
     },
     "pakhuis-afrika": {
       "id": "pakhuis-afrika",
@@ -127713,7 +127725,19 @@
       },
       "triangles": 36295,
       "bytes": 465756,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "53f6261cc7bc149f",
+        "buildVersion": 2,
+        "bytes": 100340,
+        "triangles": 5260
+      },
+      "lod2": {
+        "sourceHash": "53f6261cc7bc149f",
+        "buildVersion": 6,
+        "bytes": 18416,
+        "triangles": 724
+      }
     },
     "rioolgemaal-zeeburgerdijk": {
       "id": "rioolgemaal-zeeburgerdijk",
@@ -127881,7 +127905,19 @@
       },
       "triangles": 9858,
       "bytes": 140372,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "0be537ca5eb03f4b",
+        "buildVersion": 2,
+        "bytes": 38640,
+        "triangles": 1651
+      },
+      "lod2": {
+        "sourceHash": "0be537ca5eb03f4b",
+        "buildVersion": 6,
+        "bytes": 8476,
+        "triangles": 197
+      }
     },
     "aurora-overtoom": {
       "id": "aurora-overtoom",
@@ -128107,7 +128143,19 @@
       },
       "triangles": 12173,
       "bytes": 172400,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "4ed6641171ef09e6",
+        "buildVersion": 2,
+        "bytes": 73972,
+        "triangles": 4087
+      },
+      "lod2": {
+        "sourceHash": "4ed6641171ef09e6",
+        "buildVersion": 6,
+        "bytes": 11768,
+        "triangles": 409
+      }
     }
   }
 }

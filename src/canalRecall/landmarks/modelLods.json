@@ -6839,5 +6839,53 @@
    "bytes": 6664,
    "triangles": 175
   }
+ },
+ "spaarbank-singel-548": {
+  "sourceHash": "ef04d80cf2535b48",
+  "buildVersion": 2,
+  "bytes": 46476,
+  "triangles": 2227,
+  "lod2": {
+   "sourceHash": "ef04d80cf2535b48",
+   "buildVersion": 6,
+   "bytes": 8704,
+   "triangles": 271
+  }
+ },
+ "pakhuis-afrika": {
+  "sourceHash": "53f6261cc7bc149f",
+  "buildVersion": 2,
+  "bytes": 100340,
+  "triangles": 5260,
+  "lod2": {
+   "sourceHash": "53f6261cc7bc149f",
+   "buildVersion": 6,
+   "bytes": 18416,
+   "triangles": 724
+  }
+ },
+ "rioolgemaal-zeeburgerdijk": {
+  "sourceHash": "0be537ca5eb03f4b",
+  "buildVersion": 2,
+  "bytes": 38640,
+  "triangles": 1651,
+  "lod2": {
+   "sourceHash": "0be537ca5eb03f4b",
+   "buildVersion": 6,
+   "bytes": 8476,
+   "triangles": 197
+  }
+ },
+ "aurora-overtoom": {
+  "sourceHash": "4ed6641171ef09e6",
+  "buildVersion": 2,
+  "bytes": 73972,
+  "triangles": 4087,
+  "lod2": {
+   "sourceHash": "4ed6641171ef09e6",
+   "buildVersion": 6,
+   "bytes": 11768,
+   "triangles": 409
+  }
  }
 }
