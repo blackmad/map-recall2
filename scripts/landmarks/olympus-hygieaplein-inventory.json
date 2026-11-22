@@ -1,0 +1,142 @@
+{
+ "schemaVersion": 1,
+ "id": "olympus-hygieaplein",
+ "pand": "0363100012109215",
+ "brief": "scripts/landmarks/olympus-hygieaplein-brief.md",
+ "signature": [
+  "m-towers",
+  "m-spire-piers",
+  "m-teeth",
+  "f-school-windows",
+  "m-projection",
+  "f-parapet-band",
+  "e-canopies"
+ ],
+ "walls": [
+  {
+   "tag": "w01-303",
+   "bearing": 303,
+   "lengthM": 27.5,
+   "centre": [4.8625185, 52.347027],
+   "evidence": "inferred",
+   "panoId": "b_20241105_1332_Track08_Sphere_00127",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "note": "The rear to the inner court. The panorama stands 35 m away on the street behind and its crop (and the 2021 second view) shows the dark red-brown brick housing block in front of the school, with white two-light windows: that is the neighbour, not this pand. No photo of the school's rear; drawn as the plain 3DBAG shell in the front's buff brick.",
+   "items": []
+  },
+  {
+   "tag": "w02-124",
+   "bearing": 124,
+   "lengthM": 16,
+   "centre": [4.8625825, 52.3468055],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002459_pano_0003_000360",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "note": "The SW side bay (3DBAG facade edge 29), second view b_20241105_1332_Track14_Sphere_00032 (2024). Buff brick, three storeys, two window columns either side of a 1.9 m centre pier, the SW tower at the right.",
+   "items": [
+    {"id": "f-school-windows", "kind": "window-shape", "where": "two columns of three-light white school windows on each of the three storeys (4.8-4.9 m wide); each light three narrow panes over two large ones", "approxSizeM": [4.9, 2.6], "plan": "modelled", "how": "schoolWindow(): frame, glass, mullions, paneGrid 1x5 per light with a heavy transom, brick jambs/head 0.2 m proud and a brick sill", "seenIn": "b_20241105_1332_Track14_Sphere_00032"},
+    {"id": "f-piers", "kind": "other", "where": "flat brick piers between and beside the window columns, from the ground to 10.6 m, each ending in a dark brick corbel block", "approxSizeM": [1.9, 10.6], "plan": "modelled", "how": "pier(): 12 cm proud slab plus a dark corbel block", "seenIn": "TMX7316010203-002459_pano_0003_000360"},
+    {"id": "f-parapet-band", "kind": "other", "where": "the parapet over the top windows (12.85-14.2 m) laid with a lattice of darker headers, under a dark brick coping", "approxSizeM": [15, 1.4], "plan": "simplified", "how": "diaperBand(): staggered rows of small darker header strips on a 0.22 m grid; coping() dark rowlock", "seenIn": "TMX7316010203-002459_pano_0003_000360"},
+    {"id": "f-plinth", "kind": "other", "where": "dark purple-brown brick plinth under the ground-floor windows", "approxSizeM": [15, 1.45], "plan": "modelled", "how": "red slab 5 cm proud", "seenIn": "b_20241105_1332_Track14_Sphere_00032"},
+    {"id": "f-planters", "kind": "other", "where": "low dark brick planter wall about 1.3 m in front of the bay with a hedge behind it, bicycle racks along it", "approxSizeM": [14, 0.9], "plan": "simplified", "how": "red wall 0.85 m high with a dark coping and a green hedge box; the round planter at the tower foot and the bicycle racks left out", "seenIn": "TMX7316010203-002459_pano_0003_000360"},
+    {"id": "f-sunscreens", "kind": "other", "where": "grey roller sun screens let down over most windows in the 2022 crop, rolled up in 2024", "approxSizeM": [4.9, 2.2], "plan": "skipped", "skip": {"reason": "temporary", "note": "fabric screens are up or down by the hour; the windows are drawn with the screens up as in the 2024 view"}, "seenIn": "TMX7316010203-002459_pano_0003_000360"}
+   ]
+  },
+  {
+   "tag": "w03-122",
+   "bearing": 122,
+   "lengthM": 16,
+   "centre": [4.8628755, 52.347082],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_000401",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "note": "The NE side bay (edge 17), the mirror of w02: tower at the left, the projecting dark-brick housing block of the neighbour at the right (not this pand; it hides the last ~1.7 m of the bay in the rectified crop).",
+   "items": [
+    {"id": "f3-school-windows", "kind": "window-shape", "where": "two columns of three-light school windows per storey, three narrow panes over two large per light (the clearest crop, screens up)", "approxSizeM": [4.85, 2.6], "plan": "modelled", "how": "schoolWindow() as w02", "seenIn": "TMX7316010203-002120_pano_0000_000401"},
+    {"id": "f3-piers", "kind": "other", "where": "tower pier, 1.9 m centre pier and end pier with corbel blocks at 10.6 m", "approxSizeM": [1.9, 10.6], "plan": "modelled", "how": "pier()", "seenIn": "TMX7316010203-002120_pano_0000_000401"},
+    {"id": "f3-parapet-band", "kind": "other", "where": "lattice header band and dark coping on the parapet", "approxSizeM": [15, 1.4], "plan": "simplified", "how": "diaperBand(), coping()", "seenIn": "TMX7316010203-002120_pano_0000_000401"},
+    {"id": "f3-planters", "kind": "other", "where": "dark brick planter wall with shrubs and a bicycle rack in front; a round brick planter by the tower", "approxSizeM": [14, 0.9], "plan": "simplified", "how": "straight red wall with a hedge box; the round planter and racks left out", "seenIn": "TMX7316010203-002120_pano_0000_000401"},
+    {"id": "f3-downpipes", "kind": "other", "where": "thin dark rain pipes down the piers", "approxSizeM": [0.1, 12], "plan": "skipped", "skip": {"reason": "too-small", "note": "10 cm pipes, invisible at riding distance"}, "seenIn": "TMX7316010203-002120_pano_0000_000401"}
+   ]
+  },
+  {
+   "tag": "w04-213",
+   "bearing": 213,
+   "lengthM": 15.2,
+   "centre": [4.8624235, 52.346783],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "note": "The SW end, no panorama within 35 m (school yard side). Plain 3DBAG shell.",
+   "items": []
+  },
+  {
+   "tag": "w05-124",
+   "bearing": 124,
+   "lengthM": 14.9,
+   "centre": [4.862744, 52.346937],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000777_pano_0000_002949",
+   "capturedAt": "2018-06-06",
+   "checked": true,
+   "note": "The middle bay between the stair towers (edge 7 is its ground-floor projection), second view recording_2025-07-29_12-06-07_02614 (2025, screens up, the clearest); Commons 'Europaschool, voorheen Vincent van Gogh MAVO, Hygieaplein 8 pic1-3' (Alf van Beem 2016, CC0) for the towers, canopies and sign.",
+   "items": [
+    {"id": "m-towers", "kind": "tower", "where": "two round stair towers (R 1.25 m) either side of the middle bay, banded with projecting brick courses, rising ~0.9 m over the parapet in a corbelled crown with brick teeth", "approxSizeM": [2.5, 15.5], "plan": "modelled", "how": "tower(): 3DBAG arc walls in the darker tower brick, rib courses every 0.36 m (arcBand outer + top faces), a full drum over the roof with a corbel ring and eleven teeth", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-tower-windows", "kind": "window-shape", "where": "two curved three-light stair windows per tower (about 5.9-7.4 and 10.2-11.7 m) on projecting white ring sills", "approxSizeM": [2.1, 1.5], "plan": "modelled", "how": "three flat lights at 32 deg steps round the drum with a transom bar, white sill and head per light on a 5 cm brick facet patch (the 3DBAG drum is faceted)", "seenIn": "Commons Europaschool pic3"},
+    {"id": "m-spire-piers", "kind": "other", "where": "a tall brick pier at each tower's middle-bay side rising ~1.2 m over the parapet, each topped by two thin iron spires with ball finials", "approxSizeM": [0.9, 10.5], "plan": "modelled", "how": "brick slab to 15.6 m, dark cap, two 4-sided cones 0.95 m and balls", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-teeth", "kind": "other", "where": "a row of small brick teeth standing on the middle bay's parapet coping (14 across)", "approxSizeM": [14, 0.3], "plan": "modelled", "how": "0.26 x 0.3 m dark brick blocks on a 1.06 m pitch", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-windows", "kind": "window-shape", "where": "two three-light school windows per upper storey either side of a 2 m centre pier with corbel block", "approxSizeM": [4.9, 2.5], "plan": "modelled", "how": "schoolWindow(), pier()", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-projection", "kind": "other", "where": "the one-storey ground-floor block projecting ~0.8 m in front of the bay, buff brick on a dark purple plinth with a grey base, two wide three-light windows under grey screen hoods, dark brick top band and coping at 5.3-5.5 m", "approxSizeM": [15.4, 5.5], "plan": "modelled", "how": "projection(): brick box to the BAG front (edge 7), plinth, base, windows, concrete hoods, coping", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-parapet-band", "kind": "other", "where": "lattice header band over the top windows and dark coping", "approxSizeM": [16, 1.4], "plan": "simplified", "how": "diaperBand(), coping()", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-vents", "kind": "other", "where": "two small louvred vent grilles high on the projection near its ends", "approxSizeM": [0.55, 0.35], "plan": "simplified", "how": "grey slabs", "seenIn": "recording_2025-07-29_12-06-07_02614"},
+    {"id": "m-boards", "kind": "sign", "where": "a small white house-number plaque over a white 'Poort Zuid' name board at the projection's SW end", "approxSizeM": [0.9, 0.55], "plan": "simplified", "how": "two white boards, no lettering (the text is a few cm high)", "seenIn": "Commons Europaschool pic3"},
+    {"id": "e-canopies", "kind": "canopy", "where": "flat white concrete canopies at about 3 m over the entrances at the foot of each tower, reaching to the projection's front, dark doors in the recess under them", "approxSizeM": [3.0, 0.25], "plan": "modelled", "how": "white slabs 1.6 m deep, dark door panels with a white head on the tower base", "seenIn": "Commons Europaschool pic3"},
+    {"id": "e-sign", "kind": "sign", "where": "the red HUIS VAN DE WIJK box sign standing on the SW canopy (Buurtcentrum Olympus)", "approxSizeM": [2.3, 0.5], "plan": "simplified", "how": "red box with white 5x7 letters HUIS and WIJK; the small 'van de' text and the white logo between the words left out (6 cm detail)", "seenIn": "Commons Europaschool pic3"},
+    {"id": "e-school-letters", "kind": "lettering", "where": "loose multicoloured cut-out letters standing on the NE canopy (the school's)", "approxSizeM": [2.5, 0.4], "plan": "skipped", "skip": {"reason": "temporary", "note": "children's decoration that changes between the 2016 photo and the panoramas"}, "seenIn": "Commons Europaschool pic3"},
+    {"id": "m-bike-hoops", "kind": "other", "where": "a row of bicycle hoops along the projection's base", "approxSizeM": [14, 0.4], "plan": "skipped", "skip": {"reason": "too-small", "note": "thin street furniture in front of the pand, not the building"}, "seenIn": "recording_2025-07-29_12-06-07_02614"}
+   ]
+  },
+  {"tag": "w06-303", "bearing": 303, "lengthM": 7.9, "centre": [4.8624275, 52.346874], "evidence": "inferred", "panoId": null, "capturedAt": null, "checked": false, "note": "Rear step to the inner court, no photo; plain shell.", "items": []},
+  {"tag": "w07-304", "bearing": 304, "lengthM": 7.8, "centre": [4.8627095, 52.3471405], "evidence": "inferred", "panoId": null, "capturedAt": null, "checked": false, "note": "Rear step to the inner court, no photo; plain shell.", "items": []},
+  {"tag": "w08-303", "bearing": 303, "lengthM": 4.7, "centre": [4.8627995, 52.347172], "evidence": "inferred", "panoId": null, "capturedAt": null, "checked": false, "note": "Rear, no photo; plain shell.", "items": []},
+  {"tag": "w09-303", "bearing": 303, "lengthM": 4.6, "centre": [4.8623485, 52.3468375], "evidence": "inferred", "panoId": null, "capturedAt": null, "checked": false, "note": "Rear, no photo; plain shell.", "items": []},
+  {
+   "tag": "w10-34",
+   "bearing": 34,
+   "lengthM": 4.1,
+   "centre": [4.862653, 52.347121],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002120_pano_0000_000397",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "note": "A short rear step. The panorama is 34 m away at 45 deg and its crop shows the dark brick housing with white windows and green doors in front of the school: the neighbour, not this pand. Plain shell.",
+   "items": []
+  },
+  {
+   "tag": "w11-212",
+   "bearing": 212,
+   "lengthM": 4,
+   "centre": [4.862434, 52.3469135],
+   "evidence": "inferred",
+   "panoId": "b_20241105_1332_Track14_Sphere_00035",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "note": "A short rear step. The panorama is 33 m away at 50 deg and shows the neighbouring dark brick housing block (green double door, white windows), not this pand. Plain shell.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {"name": "BAG pand 0363100012109215", "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012109215/", "licence": "CC0"},
+  {"name": "3DBAG NL.IMBAG.Pand.0363100012109215", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012109215", "licence": "CC BY 4.0"},
+  {"name": "Gemeentelijk monument 222125 (Montessorischool, Hygiëaplein 8-10)", "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?monumentnummer=222125", "licence": "CC0"},
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"},
+  {"name": "Commons: Europaschool, voorheen Vincent van Gogh MAVO, Hygieaplein 8 pic1-3 (Alf van Beem, 2016)", "url": "https://commons.wikimedia.org/wiki/File:Europaschool,_voorheen_Vincent_van_Gogh_MAVO,_Hygieaplein_8_pic3.JPG", "licence": "CC0"},
+  {"name": "Commons: De Vincent van Goghschool werd in 1924 gebouwd (postcard c. 1925)", "url": "https://commons.wikimedia.org/wiki/File:De_Vincent_van_Goghschool_werd_in_1924_gebouwd_en_staat_aan_het_plein_op_nr_8-10.jpg", "licence": "Public domain"},
+  {"name": "OSM way 119458809 (Olympus) and nodes 904020194, 1342312772", "url": "https://www.openstreetmap.org/way/119458809", "licence": "ODbL"},
+  {"name": "nl.wikipedia Lijst van gemeentelijke monumenten in Amsterdam-Zuid", "url": "https://nl.wikipedia.org/wiki/Lijst_van_gemeentelijke_monumenten_in_Amsterdam-Zuid", "licence": "CC BY-SA 4.0"}
+ ]
+}
