@@ -24,6 +24,7 @@ import {MeshoptDecoder} from 'meshoptimizer';
 import type {V3} from '../../src/canalRecall/sculptures/kitParts.js';
 import {inWallCut, placeRelief, type WallCut} from '../../src/canalRecall/sculptures/wallRelief.js';
 import {composeDoc, kitTriangles, plainTriangles} from './kit-compose.js';
+import {clampToGable} from './gable-clip.js';
 
 const arg = (k: string, d = '') => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
 const key = arg('item'), label = arg('label'), raw = path.resolve(arg('raw'));
@@ -59,9 +60,12 @@ for (const inst of it.instances) {
   const src = inst.mirror ? gen.map(t => [t[0], t[2], t[1]].map(p => [-p[0], p[1], p[2]] as V3)) : gen;
   const r = placeRelief(src, '-z', '+y', {origin: inst.origin, normal: inst.normal}, {width: inst.width ?? it.width, height: inst.height ?? it.height,
     depth: it.depth, embed: it.embed, uniform: it.uniform, alignToPlane: it.alignToPlane, maxTiltDeg: it.maxTiltDeg, dropBackFacing: it.dropBackFacing});
-  placed.push(...r.triangles);
+  // round 3: `gable: {halfBase, rise, flattenAt?}` holds a pediment group inside its tympanum triangle (gable-clip.ts)
+  const g = it.gable ? clampToGable(r.triangles, {origin: inst.origin, normal: inst.normal, embed: it.embed, ...it.gable}) : null;
+  placed.push(...(g ? g.triangles : r.triangles));
   droppedBack += r.droppedBack;
-  cuts.push({origin: inst.origin, normal: inst.normal, min: (inst.cut ?? it.cut).min, max: (inst.cut ?? it.cut).max});
+  // round 3: `cuts: [{min, max}]` replaces kit parts box by box (palace: one per kit figure, clear of the raking cornice)
+  for (const c of (it.cuts ?? [inst.cut ?? it.cut])) cuts.push({origin: inst.origin, normal: inst.normal, min: c.min, max: c.max});
 }
 // relief.glb: one mesh, one material named after the palette key (installed-figures.ts reads positions only)
 const doc = new Document();
