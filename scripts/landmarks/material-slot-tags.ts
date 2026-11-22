@@ -617,6 +617,16 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     red: {slot: 'paint', why: 'the red citizenM sign (2022) and red shapes on the art panels'},
     copper: {slot: 'door', why: 'palette name only: the red-brown timber doors of the end bays (2024), not metal'},
   },
+  'koetshuis-keizersgracht-607': {
+    brick: {slot: 'brick', measured: '#8e7b69', why: 'the grey-brown brick of the front (w02-193 2023 sunlit #a38e77, 2019 overcast #635952), authored cooler than the sunlit crop for the game lighting'},
+    white: {slot: 'stone', measured: '#ecebe4', why: 'palette name only: the white painted stone of the pilasters, entablature, window surrounds, slabs, hoods, cornice and the middle dormer (2023 sunlit #f6f6e9)'},
+    stone: {slot: 'stone', measured: '#a9a69c', why: 'the grey stone plinth course and pilaster feet (2019 and 2023 crops)'},
+    slate: {slot: 'slate', measured: '#62676a', why: 'the grey roof and the side dormer cheeks (2023 crop #6d7273)'},
+    dark: {slot: 'door', why: 'palette name only: the dark green-grey timber carriage door and side doors (2023 #464745)'},
+    frame: {slot: 'frame', why: 'the dark window frames, mullions and transoms'},
+    bronze: {slot: 'paint', why: 'palette name only: black painted iron railings and lanterns'},
+    concrete: {slot: 'stone', measured: '#e8e7df', why: 'palette name only: the white painted stone of the three dormers (2019, 2023), not concrete'},
+  },
 };
 
 /**

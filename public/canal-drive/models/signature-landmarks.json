@@ -133372,6 +133372,166 @@
         "bytes": 9656,
         "triangles": 255
       }
+    },
+    "koetshuis-keizersgracht-607": {
+      "id": "koetshuis-keizersgracht-607",
+      "name": "Koetshuis, Keizersgracht 607",
+      "modelUrl": "./models/koetshuis-keizersgracht-607.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012167905"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89311255,
+          52.36400508
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 21.4,
+        "widthMetres": 18.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.89311255,
+          52.36400508
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012167905 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/koetshuis-keizersgracht-607-footprints.json, bag-shell-prepare.ts); the Keizersgracht front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001543_pano_0000_002272 (2019, frontal) and TMX7316010203-002970_pano_0008_000009 (2023, sunlit), CC BY 4.0, heights fitted to the 3DBAG wall tops. Rijksmonument 2389 (RCE kennisregistratie 193098, BAG relation Keizersgracht 607). Per wall in scripts/landmarks/koetshuis-keizersgracht-607-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 13.5,
+      "galleryView": {
+        "theta": 3.35,
+        "phi": 1.15
+      },
+      "bagYear": 1672,
+      "materialOverrides": {
+        "brick": "#8e7b69",
+        "white": "#ecebe4",
+        "stone": "#a9a69c",
+        "glass": "#3f4a4f",
+        "frame": "#33393a",
+        "dark": "#30373a",
+        "bronze": "#24282a",
+        "slate": "#62676a",
+        "concrete": "#e8e7df"
+      },
+      "attribution": {
+        "title": "Koetshuis, Keizersgracht 607, Amsterdam (coach house, before 1767; rijksmonument 2389)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002970_pano_0008_000009/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012167905 (CC0): the arched carriage door between paired white pilasters, the two side doors with their transoms and lanterns, the white entablature, three window axes with white surrounds, French railings, slabs and hoods, two oculi, the rusticated corner lesenes, the straight white cornice and the three dormers, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8932689,
+              52.3641333
+            ],
+            [
+              4.8930537,
+              52.3641613
+            ],
+            [
+              4.8929974,
+              52.3639987
+            ],
+            [
+              4.8930148,
+              52.3639965
+            ],
+            [
+              4.8930155,
+              52.3639986
+            ],
+            [
+              4.8930651,
+              52.3639918
+            ],
+            [
+              4.8930642,
+              52.3639897
+            ],
+            [
+              4.8930807,
+              52.3639874
+            ],
+            [
+              4.893081,
+              52.3639884
+            ],
+            [
+              4.8931305,
+              52.3639815
+            ],
+            [
+              4.8931303,
+              52.3639806
+            ],
+            [
+              4.8931464,
+              52.3639784
+            ],
+            [
+              4.8931471,
+              52.3639804
+            ],
+            [
+              4.893197,
+              52.3639737
+            ],
+            [
+              4.8931961,
+              52.3639716
+            ],
+            [
+              4.8932121,
+              52.3639694
+            ],
+            [
+              4.8932689,
+              52.3641333
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -8.01201343536377,
+          -2.288818308215923e-7,
+          -17.417999267578125
+        ],
+        "max": [
+          10.74899959564209,
+          13.46500015258789,
+          4.5272345542907715
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89311255,
+          52.36400508
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 21.945233821868896,
+        "heightMetres": 13.465000381469721,
+        "depthMetres": 18.76101303100586,
+        "depthCoverage": 1.0086566145702074
+      },
+      "triangles": 4344,
+      "bytes": 69500,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
