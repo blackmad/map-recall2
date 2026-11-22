@@ -102272,5 +102272,287 @@
     ]
    ]
   }
+ },
+ {
+  "id": "kweekschool-machinisten",
+  "name": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14",
+  "modelUrl": "./models/kweekschool-machinisten.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012164973"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.91295993,
+    52.36467568
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 70.8,
+   "widthMetres": 104.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.91295993,
+    52.36467568
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012164973 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kweekschool-machinisten-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002910_pano_0013_000177 (2023) and TMX7316010203-002541_pano_0003_000192 (2022, the Salm street front), b_20241210_1246_Track28_Sphere_00023 (2024, the director's wing), TMX7316010203-002933_pano_0009_000208 (2023, the 1934 wing and the Ouendag block), TMX7316010203-002047_pano_0000_001142, _001164 and _001165 (2021, the 1934 front and the wing returns), TMX7316010203-001975_pano_0000_001007, _001012 and _001013 (2021) and TMX7316010203-000354_pano_0002_000101, _000095 and _000096 (2017, the canal side), CC BY 4.0. Gemeentelijk monument 204058. Per wall in scripts/landmarks/kweekschool-machinisten-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 18,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.05
+  },
+  "bagYear": 1880,
+  "measuredOverrides": true,
+  "materialOverrides": {
+   "brick": "#6e4a42",
+   "greyBrick": "#5f4d46",
+   "red": "#54352f",
+   "bronze": "#7a5546",
+   "ochre": "#c2b393",
+   "stone": "#8f8d84",
+   "concrete": "#a9a598",
+   "frame": "#e6e0cf",
+   "glass": "#46525a",
+   "slate": "#33363a",
+   "dark": "#2f3134",
+   "pink": "#a1323a",
+   "green": "#3e4a46",
+   "copper": "#7f9a90"
+  },
+  "attribution": {
+   "title": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14, Amsterdam (A. Salm 1886-87; B.J. Ouendag 1926; W.B. Ouendag 1934)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/bbd19c50-eb2a-4ab5-8cc6-b43b176baf47",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164973 (CC0): Salm's red-brown street front with its sandstone speklagen, segmental window arches over brick-mosaic tympana, the two raised risalits with the 1878 and 1887 gable stones, the director's wing with its stone balcony on consoles and the two heads, the 1934 portico wing, B.J. Ouendag's 1926 block, the 1934 block, and the canal side with its stair towers, lab wing and red sun blinds, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9131271,
+      52.3647155
+     ],
+     [
+      4.9131111,
+      52.364698
+     ],
+     [
+      4.9130984,
+      52.3646841
+     ],
+     [
+      4.9129043,
+      52.3647508
+     ],
+     [
+      4.9129051,
+      52.3647517
+     ],
+     [
+      4.9128489,
+      52.364771
+     ],
+     [
+      4.9128458,
+      52.3647721
+     ],
+     [
+      4.912845,
+      52.3647712
+     ],
+     [
+      4.9128419,
+      52.3647723
+     ],
+     [
+      4.9127106,
+      52.3648174
+     ],
+     [
+      4.9127114,
+      52.3648183
+     ],
+     [
+      4.912652,
+      52.3648387
+     ],
+     [
+      4.9126512,
+      52.3648378
+     ],
+     [
+      4.9124575,
+      52.3649044
+     ],
+     [
+      4.9124862,
+      52.3649357
+     ],
+     [
+      4.9123903,
+      52.3649689
+     ],
+     [
+      4.9123883,
+      52.3649667
+     ],
+     [
+      4.9123155,
+      52.3648877
+     ],
+     [
+      4.9123141,
+      52.3648882
+     ],
+     [
+      4.9122895,
+      52.3648616
+     ],
+     [
+      4.9122909,
+      52.3648611
+     ],
+     [
+      4.9122531,
+      52.3648201
+     ],
+     [
+      4.9123492,
+      52.3647871
+     ],
+     [
+      4.91235,
+      52.364788
+     ],
+     [
+      4.9124442,
+      52.3647556
+     ],
+     [
+      4.9124434,
+      52.3647547
+     ],
+     [
+      4.9124978,
+      52.364736
+     ],
+     [
+      4.9124986,
+      52.3647369
+     ],
+     [
+      4.9126329,
+      52.3646907
+     ],
+     [
+      4.912843,
+      52.3646184
+     ],
+     [
+      4.9128422,
+      52.3646176
+     ],
+     [
+      4.9128966,
+      52.3645988
+     ],
+     [
+      4.9128974,
+      52.3645997
+     ],
+     [
+      4.9129913,
+      52.3645675
+     ],
+     [
+      4.9129905,
+      52.3645666
+     ],
+     [
+      4.9130867,
+      52.3645335
+     ],
+     [
+      4.913352,
+      52.3644425
+     ],
+     [
+      4.9133429,
+      52.3644326
+     ],
+     [
+      4.9134445,
+      52.3643978
+     ],
+     [
+      4.9134536,
+      52.3644077
+     ],
+     [
+      4.9136568,
+      52.3643378
+     ],
+     [
+      4.9136604,
+      52.3643418
+     ],
+     [
+      4.913792,
+      52.3644852
+     ],
+     [
+      4.9137765,
+      52.3644905
+     ],
+     [
+      4.9137779,
+      52.3644921
+     ],
+     [
+      4.9136552,
+      52.3645343
+     ],
+     [
+      4.9136537,
+      52.3645327
+     ],
+     [
+      4.9136383,
+      52.3645379
+     ],
+     [
+      4.9136357,
+      52.3645343
+     ],
+     [
+      4.9135993,
+      52.3645468
+     ],
+     [
+      4.9136039,
+      52.3645519
+     ],
+     [
+      4.9134089,
+      52.3646188
+     ],
+     [
+      4.9132233,
+      52.3646825
+     ],
+     [
+      4.9131271,
+      52.3647155
+     ]
+    ]
+   ]
+  }
  }
 ]

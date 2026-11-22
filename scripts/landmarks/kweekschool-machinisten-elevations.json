@@ -1,0 +1,247 @@
+{
+ "id": "kweekschool-machinisten",
+ "countedBy": "lane r10-C from the rectified panoramas w04-30 + w03-30 (street) and the 2017 canal view TMX7316010203-000354_pano_0002_000101 (w01-210), 2026-11-22; not a blind count",
+ "facades": [
+  {
+   "name": "street front of Salm's block (NE, edge 1 between the wings)",
+   "bearing": 30,
+   "photo": "artifacts/landmark-briefs/kweekschool-machinisten/w04-30.jpg",
+   "alongM": [
+    51.8,
+    102.1
+   ],
+   "rows": [
+    13,
+    13,
+    26
+   ],
+   "columns": 13,
+   "symmetric": false,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-002910_pano_0013_000177 and TMX7316010203-002541_pano_0003_000192 (w04-30, w03-30); register 204058: the ground-floor windows left of the old entrance are three-light, right of it two-light, under equally wide arches",
+     "openings": [
+      {
+       "kind": "three-light window",
+       "w": 2.5
+      },
+      {
+       "kind": "three-light window",
+       "w": 2.5
+      },
+      {
+       "kind": "three-light window",
+       "w": 2.5
+      },
+      {
+       "kind": "three-light window",
+       "w": 2.5
+      },
+      {
+       "kind": "risalit window",
+       "w": 1.7
+      },
+      {
+       "kind": "three-light window",
+       "w": 2.5
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      },
+      {
+       "kind": "risalit window",
+       "w": 1.7
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      },
+      {
+       "kind": "two-light window",
+       "w": 1.85
+      }
+     ]
+    },
+    {
+     "row": 2,
+     "rowSizes": "mixed",
+     "evidence": "w04-30 / w03-30: the attic windows stand in pairs, one pair per axis (1.2 m apart within a pair, an axis pitch of 3.7 m between pairs)",
+     "openings": [
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      },
+      {
+       "kind": "attic light",
+       "w": 0.68
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "canal wing on the former playground (SW, edge 5 t 18.8-45.6)",
+   "bearing": 210,
+   "photo": "artifacts/landmark-briefs/kweekschool-machinisten/w01-210.alt.jpg",
+   "alongM": [
+    19,
+    45.5
+   ],
+   "rows": [
+    7,
+    7,
+    7
+   ],
+   "columns": 7,
+   "symmetric": true,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "TMX7316010203-000354_pano_0002_000101 (2017) and w01-210 (2021): the canal wing has a quay door at each end of its ground floor (the NW one under a segmental arch) and five windows between",
+     "openings": [
+      {
+       "kind": "door",
+       "w": 1.44
+      },
+      {
+       "kind": "window",
+       "w": 1.8
+      },
+      {
+       "kind": "window",
+       "w": 1.8
+      },
+      {
+       "kind": "window",
+       "w": 1.8
+      },
+      {
+       "kind": "window",
+       "w": 1.8
+      },
+      {
+       "kind": "window",
+       "w": 1.8
+      },
+      {
+       "kind": "door",
+       "w": 1.44
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

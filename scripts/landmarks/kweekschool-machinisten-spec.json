@@ -1,0 +1,37 @@
+{
+ "id": "kweekschool-machinisten",
+ "name": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14",
+ "heightMetres": 18,
+ "bagYear": 1880,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.05
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012164973 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kweekschool-machinisten-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002910_pano_0013_000177 (2023) and TMX7316010203-002541_pano_0003_000192 (2022, the Salm street front), b_20241210_1246_Track28_Sphere_00023 (2024, the director's wing), TMX7316010203-002933_pano_0009_000208 (2023, the 1934 wing and the Ouendag block), TMX7316010203-002047_pano_0000_001142, _001164 and _001165 (2021, the 1934 front and the wing returns), TMX7316010203-001975_pano_0000_001007, _001012 and _001013 (2021) and TMX7316010203-000354_pano_0002_000101, _000095 and _000096 (2017, the canal side), CC BY 4.0. Gemeentelijk monument 204058. Per wall in scripts/landmarks/kweekschool-machinisten-inventory.json.",
+ "materialOverrides": {
+  "brick": "#6e4a42",
+  "greyBrick": "#5f4d46",
+  "red": "#54352f",
+  "bronze": "#7a5546",
+  "ochre": "#c2b393",
+  "stone": "#8f8d84",
+  "concrete": "#a9a598",
+  "frame": "#e6e0cf",
+  "glass": "#46525a",
+  "slate": "#33363a",
+  "dark": "#2f3134",
+  "pink": "#a1323a",
+  "green": "#3e4a46",
+  "copper": "#7f9a90"
+ },
+ "attribution": {
+  "title": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14, Amsterdam (A. Salm 1886-87; B.J. Ouendag 1926; W.B. Ouendag 1934)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/bbd19c50-eb2a-4ab5-8cc6-b43b176baf47",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164973 (CC0): Salm's red-brown street front with its sandstone speklagen, segmental window arches over brick-mosaic tympana, the two raised risalits with the 1878 and 1887 gable stones, the director's wing with its stone balcony on consoles and the two heads, the 1934 portico wing, B.J. Ouendag's 1926 block, the 1934 block, and the canal side with its stair towers, lab wing and red sun blinds, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}
