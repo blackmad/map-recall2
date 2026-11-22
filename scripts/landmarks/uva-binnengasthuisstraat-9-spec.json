@@ -1,0 +1,32 @@
+{
+ "id": "uva-binnengasthuisstraat-9",
+ "name": "UvA, Binnengasthuisstraat 9",
+ "heightMetres": 20.1,
+ "bagYear": 1914,
+ "galleryView": {
+  "theta": 0.05,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012180195 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/uva-binnengasthuisstraat-9-footprints.json, bag-shell-prepare.ts); the canal front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002629_pano_0001_000602 (2022, frontal), the angled corners from b_20250108_1349_Track14_Sphere_00146 and Track16_Sphere_00094 (2025), CC BY 4.0, heights fitted to the 3DBAG eave. Register 518310. Per wall in scripts/landmarks/uva-binnengasthuisstraat-9-inventory.json.",
+ "materialOverrides": {
+  "brick": "#827260",
+  "white": "#dcd8c6",
+  "frame": "#2f3d35",
+  "stone": "#8c8a82",
+  "sandstone": "#9a8f7e",
+  "glass": "#3f4a4f",
+  "slate": "#5e5853",
+  "concrete": "#5e5853",
+  "copper": "#8a5a32",
+  "dark": "#2b2520"
+ },
+ "attribution": {
+  "title": "Binnengasthuisstraat 9, Amsterdam (UvA, 1914; register 518310)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002629_pano_0001_000602/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012180195 (CC0): seven axes of cream-framed windows in three storeys, pilaster strips, stacked stone blocks, lintel blocks and brackets, the string course and eave moulding, stone crosses in the attic, the stone figure on its corbel in the raised attic, two dormers, and windows on the angled corners, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

@@ -1,0 +1,256 @@
+{
+ "generated": "2026-11-22",
+ "generatedBy": "lane landmarks-r15-20261122: scripts/landmarks/landmark-targets-next.ts (raw list of 120, ride-visibility v1, 1500 seeded routes, seed 7) excluding docs/reports/landmark-targets-20261115.json, -20261120.json, -20261122.json and -20261122b.json and everything catalogued or in covers.json; recognisable rows read by hand; exposure for single pands recomputed with ride-visibility.ts scorer",
+ "method": "Recognisable buildings riders pass (centre, inner ring, main approach roads) still drawn generic or as empty lots. Empty lots first: each reported one was checked in game with ?engine=own. Then named pands (register, OSM or Wikipedia identity) by exposure, briefed where a panorama was cached or could be fetched (fetching resumed once the Data volume was back above 15 GB).",
+ "ride": "ride-visibility/v1",
+ "emptyLots": {
+  "finding": "The empty lots reported in rounds r13 and r14 were mostly an artefact of the capture harness: ingame-capture.ts under the default (MapLibre) engine does not stream the generic neighbours, so an un-modelled pand shows as a gap. With ?engine=own the world streams and settles, and every r13/r14 \"empty lot\" pand checked (Raamplein 1 pand 0363100012165430, Sarphatistraat 47 pand 0363100012170759, the Koetshuis at Keizersgracht 607) is drawn: generic box or kit. Use --query=engine=own for today frames.",
+  "checkedInGame": [
+   {
+    "where": "Keizersgracht 607 (Koetshuis)",
+    "frame": "artifacts/review/today-koetshuis-own/ingame-koets-desktop.png",
+    "drawnAs": "generic dark-brown box between the Vijzelstraat 79 office and Foam"
+   },
+   {
+    "where": "Groot Lab area",
+    "frame": "artifacts/review/today-lots/lab",
+    "drawnAs": "drawn (generic)"
+   },
+   {
+    "where": "&moshik / Oosterdok",
+    "frame": "artifacts/review/today-lots/moshik",
+    "drawnAs": "drawn (generic)"
+   },
+   {
+    "where": "Movenpick Hotel, Piet Heinkade (part of pand 0363100012118833)",
+    "frame": "artifacts/review/today-lots/moven/ingame-veem-desktop.png",
+    "drawnAs": "generic tower on a podium beside the Muziekgebouw; recognisable, a candidate"
+   }
+  ],
+  "registerHoles": "True holes in the building register (bag-gaps notFilledForReview, not in the building tiles): Eggertstraat 6-8 (0363100012169014, half drawn), Veemkade 10-12 (0363100012571026, built 2025), Bercylaan 300-317 Overhoeks (0363100012247366, 2026), Piet Heinkade 8 (0363100012240882, AHN flat), Singel 165 (0363100012185687). These are data gaps for the tile pipeline, not landmark targets."
+ },
+ "targets": [
+  {
+   "name": "UvA, Binnengasthuisstraat 9 (1914, register 518310)",
+   "exposure": 56538,
+   "routeMetres": 2785,
+   "drawnAs": "generic",
+   "damKm": 0.47,
+   "year": 1913,
+   "monument": "518310",
+   "pand": "0363100012180195",
+   "id": "uva-binnengasthuisstraat-9",
+   "evidence": "landmark-brief.ts crops w01-0 (2022, frontal), w06-341 / w07-19 (2025), w02-270 (2016, 43 deg oblique); drawn generic in game",
+   "verdict": "modelled r15",
+   "rank": 1
+  },
+  {
+   "name": "Huis Fuld, Keizersgracht 452 (1685, rijksmonument 2609)",
+   "exposure": 70605,
+   "routeMetres": 3245,
+   "drawnAs": "generic",
+   "damKm": 0.9,
+   "year": 1685,
+   "monument": "2609",
+   "pand": "0363100012174769",
+   "id": "huis-fuld",
+   "evidence": "briefed r15 (landmark-brief.ts --pand=0363100012174769 --id=huis-fuld, not committed; crops w01-152 2024, w02-77 2018): a white stuccoed palace front with a stoop, balustrade and segmental entrance; drawn generic",
+   "verdict": "next: brief fetched, not modelled this round",
+   "rank": 2
+  },
+  {
+   "name": "Sphinx Hotel, Weteringschans (1880s pair)",
+   "exposure": 78069,
+   "routeMetres": 5755,
+   "drawnAs": "generic",
+   "damKm": 1.53,
+   "pand": "0363100012179513",
+   "id": "sphinx-hotel",
+   "evidence": "briefed r15 (crops w01-96 2024, w03-6 2019): red brick with white bands, a stepped/pointed gable on the right house; drawn generic",
+   "verdict": "next",
+   "rank": 3
+  },
+  {
+   "name": "Fotoacademie, Sarphatistraat 33",
+   "exposure": 78108,
+   "routeMetres": 5550,
+   "drawnAs": "generic",
+   "damKm": 1.59,
+   "pand": "0363100012181993",
+   "id": "fotoacademie-sarphatistraat-33",
+   "evidence": "briefed r15 (crop w01-162 2022): a plain dark-brick office front with a balcony rail over the ground storey; recognisable by its sign more than its form",
+   "verdict": "low: a kit/tier could carry it",
+   "rank": 4
+  },
+  {
+   "pand": "0363100012186196",
+   "id": "sofitel-the-grand",
+   "name": "Sofitel The Grand, Oudezijds Voorburgwal 197 (main pand)",
+   "exposure": 0,
+   "routeMetres": 0,
+   "evidence": "not covered by any model; ride-visibility v1 gives it 0 (its fronts face the courtyard and the OZ Voorburgwal is off the seeded routes); its 1926 wing (pand 0363100012250983, Bridges, exposure 38297) is the ride-visible part. not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 5
+  },
+  {
+   "name": "Bridges",
+   "exposure": 38297,
+   "routeMetres": 1125,
+   "drawnAs": "generic",
+   "damKm": 0.28,
+   "monument": "6085",
+   "pand": "0363100012250983",
+   "id": "sofitel-the-grand-1926",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 6
+  },
+  {
+   "name": "Oorlogsmonument Marnixstraat",
+   "exposure": 98467,
+   "routeMetres": 4705,
+   "drawnAs": "generic",
+   "damKm": 1.28,
+   "pand": "0363100012169858",
+   "id": "oorlogsmonument-marnixstraat",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 7
+  },
+  {
+   "name": "Gabriël Metsustraat 16",
+   "exposure": 62343,
+   "routeMetres": 2180,
+   "drawnAs": "generic",
+   "damKm": 2.08,
+   "pand": "0363100012142717",
+   "id": "metsustraat-16",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 8
+  },
+  {
+   "name": "Sweederijck",
+   "exposure": 68888,
+   "routeMetres": 4600,
+   "drawnAs": "generic",
+   "damKm": 0.89,
+   "year": 1671,
+   "monument": "1859",
+   "pand": "0363100012176171",
+   "id": "sweederijck",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 9
+  },
+  {
+   "name": "Castrum Peregrini",
+   "exposure": 44289,
+   "routeMetres": 2990,
+   "drawnAs": "generic",
+   "damKm": 0.71,
+   "pand": "0363100012176539",
+   "id": "castrum-peregrini",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 10
+  },
+  {
+   "name": "Backstage Hotel",
+   "exposure": 68651,
+   "routeMetres": 4370,
+   "drawnAs": "generic",
+   "damKm": 1.22,
+   "pand": "0363100012169868",
+   "id": "backstage-hotel",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 11
+  },
+  {
+   "name": "Welgelegen",
+   "exposure": 90870,
+   "routeMetres": 5615,
+   "drawnAs": "generic",
+   "damKm": 1.76,
+   "monument": "4107",
+   "pand": "0363100012181157",
+   "id": "welgelegen",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 12
+  },
+  {
+   "name": "Weltevreden",
+   "exposure": 70911,
+   "routeMetres": 5620,
+   "drawnAs": "generic",
+   "damKm": 1.75,
+   "year": 1800,
+   "monument": "4106",
+   "pand": "0363100012181160",
+   "id": "weltevreden",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches)",
+   "verdict": "blocked: no panorama",
+   "rank": 13
+  },
+  {
+   "name": "Pakhuis (rijksmonument 1068,1070)",
+   "exposure": 99036,
+   "routeMetres": 1460,
+   "drawnAs": "generic",
+   "damKm": 1.61,
+   "year": 1700,
+   "monument": [
+    "1068",
+    "1070"
+   ],
+   "pand": "0363100012186193",
+   "id": "pakhuis-1068-1070",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches); warehouse pair, may suit the warehouse kit",
+   "verdict": "blocked: no panorama",
+   "rank": 14
+  },
+  {
+   "name": "(unnamed)",
+   "exposure": 97333,
+   "routeMetres": 1775,
+   "drawnAs": "generic",
+   "damKm": 0.91,
+   "pand": "0363100012249652",
+   "id": "stationsplein-1",
+   "evidence": "not briefed: no cached panorama, and the lane paused panorama fetches while the Data volume was at 11-14 GB free (below its 15 GB floor) for most of the round; brief it next (landmark-brief.ts fetches and caches); unnamed in the raw list, 60 m wall on the Stationsplein",
+   "verdict": "blocked: no panorama",
+   "rank": 15
+  },
+  {
+   "pand": "0363100012170849",
+   "id": "weesperplein-front",
+   "evidence": "only a 2016 w01-343 crop cached; the curved front needs a second capture",
+   "verdict": "blocked: one stale panorama",
+   "rank": 16
+  }
+ ],
+ "ruledOut": [
+  {
+   "name": "Houseboat-Amsterdam (w267107837)",
+   "reason": "an OSM houseboat, not a building pand"
+  },
+  {
+   "name": "&moshik (w1487606274), Groot Lab (w1207503213)",
+   "reason": "OSM-only ids; drawn in game (engine=own); restaurant and lab names, not recognisable buildings"
+  },
+  {
+   "name": "Bimhuis (w755464131)",
+   "reason": "part of the catalogued muziekgebouw-bimhuis model"
+  },
+  {
+   "name": "Entrepotdok warehouses (0363100012164981 kit, 0363100012170282)",
+   "reason": "the long warehouse row is a kit job (warehouse family), not a single landmark"
+  },
+  {
+   "name": "Muller-Lulofshuis (0363100012240319), FABRIEK (0363100012135676)",
+   "reason": "drawn by a kit install already"
+  }
+ ]
+}

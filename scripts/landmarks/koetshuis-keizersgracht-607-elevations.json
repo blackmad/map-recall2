@@ -1,0 +1,16 @@
+{
+  "id": "koetshuis-keizersgracht-607",
+  "countedBy": "lane landmarks-r15-20261122 from the rectified panorama TMX7316010203-001543_pano_0000_002272 (2019, frontal, w02-193.alt.jpg at 50 px/m), checked against the 2023 crop; not yet blind-counted. Glazed openings only: the two side doors and the carriage door carry glass, the oculi (centres 6.69 m) stand above the first-storey window heads (6.47 m) and below the upper sills (7.17 m), so they are their own band (recounted from the same photo: the first count put them with the first storey); the dormers are the top band. Gables: the three dormers stand against the sky in both photos.",
+  "facades": [
+    {
+      "name": "south (Keizersgracht)",
+      "bearing": 193,
+      "photo": "artifacts/landmark-briefs/koetshuis-keizersgracht-607/w02-193.alt.jpg",
+      "rows": [3, 3, 2, 3, 3],
+      "columns": 5,
+      "symmetric": true,
+      "gables": 3,
+      "openings": ["glass"]
+    }
+  ]
+}

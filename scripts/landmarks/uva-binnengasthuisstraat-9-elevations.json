@@ -1,0 +1,17 @@
+{
+  "id": "uva-binnengasthuisstraat-9",
+  "countedBy": "lane landmarks-r15-20261122 from the rectified panorama TMX7316010203-002629_pano_0001_000602 (2022, frontal, w01-0.jpg at 50 px/m); not yet blind-counted. Glazed openings only: seven windows in each of the three storeys; the two roof dormers stand behind the eave and above it, between the first and second axes from each end (photo x 3.0-4.3 m), so they are axes of their own: 7 window axes + 2 dormer axes = 9. One silhouette peak: the hipped roof over the front block (the definition counts hipped-roof tops). depthBand 1.2 m keeps the angled corners and wings, 1-2 m behind the front block, out of the count; they are checked by eye on the sheet.",
+  "facades": [
+    {
+      "name": "north (canal)",
+      "bearing": 0,
+      "photo": "artifacts/landmark-briefs/uva-binnengasthuisstraat-9/w01-0.jpg",
+      "rows": [7, 7, 7, 2],
+      "columns": 9,
+      "symmetric": true,
+      "gables": 1,
+      "depthBand": 1.2,
+      "openings": ["glass"]
+    }
+  ]
+}

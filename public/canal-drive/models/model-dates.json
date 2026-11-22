@@ -6537,17 +6537,17 @@
       "dateSource": "asset-update"
     },
     "sarphatistraat-47": {
-      "updatedAt": "2026-11-22T20:55:11.186Z",
-      "version": "b8e229affa2356be",
+      "updatedAt": "2026-11-22T22:22:24.761Z",
+      "version": "0dad137957f93fea",
       "dateSource": "asset-update"
     },
     "sarphatistraat-47.lod1": {
-      "updatedAt": "2026-11-22T21:28:44.061Z",
+      "updatedAt": "2026-11-22T21:26:31.372Z",
       "version": "34547b0d65e741dc",
       "dateSource": "asset-update"
     },
     "sarphatistraat-47.lod2": {
-      "updatedAt": "2026-11-22T21:28:44.062Z",
+      "updatedAt": "2026-11-22T21:26:31.372Z",
       "version": "8ca7c37e4616e210",
       "dateSource": "asset-update"
     },
@@ -6627,17 +6627,17 @@
       "dateSource": "asset-update"
     },
     "school-raamplein-1": {
-      "updatedAt": "2026-11-22T20:04:03.028Z",
-      "version": "e3943d3cacdef018",
+      "updatedAt": "2026-11-22T22:13:46.268Z",
+      "version": "46e5f842ac1eb589",
       "dateSource": "asset-update"
     },
     "school-raamplein-1.lod1": {
-      "updatedAt": "2026-11-22T21:28:44.067Z",
+      "updatedAt": "2026-11-22T21:26:31.373Z",
       "version": "5cfcab20f55f3862",
       "dateSource": "asset-update"
     },
     "school-raamplein-1.lod2": {
-      "updatedAt": "2026-11-22T21:28:44.067Z",
+      "updatedAt": "2026-11-22T21:26:31.373Z",
       "version": "9b4f2bfe53235948",
       "dateSource": "asset-update"
     },
@@ -8439,6 +8439,16 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
+      "dateSource": "asset-update"
+    },
+    "koetshuis-keizersgracht-607": {
+      "updatedAt": "2026-11-22T22:02:23.072Z",
+      "version": "0784970aa356d418",
+      "dateSource": "asset-update"
+    },
+    "uva-binnengasthuisstraat-9": {
+      "updatedAt": "2026-11-22T22:35:11.726Z",
+      "version": "1d1333ddd967b7f5",
       "dateSource": "asset-update"
     }
   }

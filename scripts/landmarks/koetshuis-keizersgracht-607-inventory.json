@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "id": "koetshuis-keizersgracht-607",
+ "pand": "0363100012167905",
+ "brief": "scripts/landmarks/koetshuis-keizersgracht-607-brief.md",
+ "signature": [
+  "s-carriage-arch",
+  "s-dormers",
+  "s-cornice",
+  "s-lesenes",
+  "s-oculi",
+  "s-pilasters"
+ ],
+ "walls": [
+  {
+   "tag": "w01-12",
+   "bearing": 12,
+   "lengthM": 15,
+   "centre": [4.893164, 52.3641495],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "faces the gardens behind the Herengracht houses; no panorama, no public view. Drawn as the 3DBAG shell in the front brick.",
+   "items": []
+  },
+  {
+   "tag": "w02-193",
+   "bearing": 193,
+   "lengthM": 15,
+   "centre": [4.8931075, 52.3639865],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002970_pano_0008_000009",
+   "capturedAt": "2023-02-13",
+   "checked": true,
+   "note": "Keizersgracht front, read from the frontal 2019 rectification (TMX7316010203-001543_pano_0000_002272, w02-193.alt.jpg) with tints from the sunlit 2023 crop. Symmetric about the carriage door.",
+   "items": [
+    {"id": "s-carriage-arch", "kind": "window-shape", "where": "middle of the ground storey, t 5.4-9.1 m, to 3.44 m", "approxSizeM": [3.6, 3.44], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "segmental-headed dark timber carriage door with glazed upper panels and vertical ribs, in a brick voussoir ring"},
+    {"id": "s-pilasters", "kind": "colonnade", "where": "two pairs of white pilasters either side of the carriage door (t 4.0-5.25 and 9.3-10.55 m) and one at each corner, on grey stone feet, under the white entablature (3.58-4.0 m)", "approxSizeM": [0.6, 3.6], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272"},
+    {"id": "s-side-doors", "kind": "window-shape", "where": "outer bays of the ground storey, t 1.35-3.1 and 11.45-13.2 m", "approxSizeM": [1.75, 3.22], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "dark panelled double doors with glazed upper panels under a transom light in a white surround"},
+    {"id": "s-lanterns", "kind": "lamp", "where": "beside each side door on the carriage-door side, about 2.3-2.9 m", "approxSizeM": [0.3, 0.6], "plan": "simplified", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "a black bracket and a small glazed lantern box; the scrollwork of the bracket is left out"},
+    {"id": "s-hooks", "kind": "balcony-ironwork", "where": "four white U-shaped iron hooks hanging under each side axis on the entablature", "approxSizeM": [0.15, 0.3], "plan": "simplified", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "each hook as a white L of two thin bars"},
+    {"id": "s-windows", "kind": "window-shape", "where": "three axes over two storeys (4.07-6.47 and 7.17-8.61 m), side axes 1.7 m and the middle 1.9 m wide", "approxSizeM": [1.7, 2.4], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "white stone surrounds, dark-framed casements with a mullion and (first storey) a transom"},
+    {"id": "s-railings", "kind": "balcony-ironwork", "where": "French railings across the lower part of every window", "approxSizeM": [1.6, 0.9], "plan": "simplified", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "black top and bottom rails with seven bars"},
+    {"id": "s-slabs", "kind": "other", "where": "a white projecting slab on two brackets over each first-storey window (6.52-7.17 m) and a flat capped hood over each upper window (8.61-9.21 m)", "approxSizeM": [2.0, 0.65], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272"},
+    {"id": "s-oculi", "kind": "window-shape", "where": "two bull's-eye windows between the axes at 6.69 m, t 4.56 and 9.98 m", "approxSizeM": [0.75, 0.75], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "round light in a white ring inside a brick ring"},
+    {"id": "s-lesenes", "kind": "other", "where": "rusticated (banded) brick corner lesenes, t 0-0.94 and 14.0-15 m, from the entablature to the cornice", "approxSizeM": [0.94, 5.5], "plan": "modelled", "seenIn": "TMX7316010203-002970_pano_0008_000009", "how": "rustication kit: one brick block per 0.29 m course with V joints"},
+    {"id": "s-cornice", "kind": "other", "where": "the straight white cornice across the front, 9.52-10.7 m: architrave, plain frieze, projecting crown", "approxSizeM": [15, 1.2], "plan": "modelled", "seenIn": "TMX7316010203-001543_pano_0000_002272"},
+    {"id": "s-dormers", "kind": "other", "where": "three dormers on the cornice: the tall white stone middle one with a railing over the carriage axis (to 13.46 m, the 3DBAG dormer), two smaller white-framed ones with slate cheeks over the side axes", "approxSizeM": [2.5, 2.8], "plan": "simplified", "seenIn": "TMX7316010203-001543_pano_0000_002272", "how": "boxes with framed lights and projecting caps; the tops of all three are above the photos' frames, so the caps are inferred flat"},
+    {"id": "s-plaques", "kind": "sign", "where": "small house-number and name plaques beside the doors", "approxSizeM": [0.2, 0.15], "plan": "skipped", "seenIn": "TMX7316010203-001543_pano_0000_002272", "skip": {"reason": "too-small", "note": "plaques of about 20 cm do not read at riding distance"}}
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"},
+  {"name": "BAG pand 0363100012167905 (PDOK)", "url": "https://service.pdok.nl/lv/bag/wfs/v2_0", "licence": "CC0"},
+  {"name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012167905", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167905", "licence": "CC BY 4.0"},
+  {"name": "Rijksmonument 2389 (RCE, kennisregistratie 193098 and BAG relation 75416: Keizersgracht 607)", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2389", "licence": "CC0"}
+ ]
+}
