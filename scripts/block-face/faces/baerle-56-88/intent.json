@@ -1,0 +1,1677 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "baerle-56-88",
+ "street": "Van Baerlestraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/baerle-56-88/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-5 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "Van Baerlestraat 56-88 (even), from the PC Hooftstraat towards the Willemsparkweg corner: the 1890s shop houses (two black-painted stepped gables at 84 and 88, GANT, Pearle, Tempur, Premsela, Pauw three times), the 1920s fronts at 70 and 74-76, the 58-64 pand of a yellow Jugendstil house and a brick block, and the 1889 jack-block house at 56 with its white bands. The corner 52-54 (Small Talk) is held: its Van Baerlestraat footprint edge is a 2.4 m conservatory in front of the house the photo shows."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012152420",
+    "stripRow": 398,
+    "evidence": "strip 2024-12-11: foot of the stepped gable over the second-floor windows at row 398"
+   },
+   {
+    "pand": "0363100012152419",
+    "stripRow": 441,
+    "evidence": "strip 2024-12-11: top of the white cornice under the mansard at row 441"
+   },
+   {
+    "pand": "0363100012158337",
+    "stripRow": 393,
+    "evidence": "strip 2024-12-11: foot of the stepped gable at row 393"
+   },
+   {
+    "pand": "0363100012158336",
+    "stripRow": 448,
+    "evidence": "strip 2024-12-11: top of the white cornice under the mansard at row 448"
+   },
+   {
+    "pand": "0363100012158647",
+    "stripRow": 371,
+    "evidence": "strip 2024-12-11: foot of the stepped gable at row 371"
+   },
+   {
+    "pand": "0363100012155817",
+    "stripRow": 311,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 311"
+   },
+   {
+    "pand": "0363100012166099",
+    "stripRow": 235,
+    "evidence": "strip 2024-12-11: top of the coping at row 235"
+   },
+   {
+    "pand": "0363100012158807",
+    "stripRow": 383,
+    "evidence": "strip 2024-12-11: top of the coping at row 383"
+   },
+   {
+    "pand": "0363100012165890",
+    "stripRow": 243,
+    "evidence": "strip 2024-12-11: top of the cornice under the dormer at row 243"
+   },
+   {
+    "pand": "0363100012143018",
+    "stripRow": 368,
+    "evidence": "strip 2024-12-11: the white eaves board under the tiles at row 368"
+   },
+   {
+    "pand": "0363100012167167",
+    "stripRow": 433,
+    "evidence": "strip 2024-12-11: top of the white cornice under the mansard at row 433"
+   },
+   {
+    "pand": "0363100012236083",
+    "stripRow": 261,
+    "evidence": "strip 2024-12-11: top of the white cornice under the mansard at row 261"
+   },
+   {
+    "pand": "0363100012236923",
+    "front": "b",
+    "stripRow": 225,
+    "evidence": "strip 2024-12-11: top of the brick block's parapet at row 225"
+   },
+   {
+    "pand": "0363100012236923",
+    "front": "a",
+    "stripRow": 323,
+    "evidence": "strip 2024-12-11: foot of the yellow house's curved gable at row 323"
+   }
+  ],
+  "notes": [
+   "Rows read on the strip at 40 px/m, ground row 902. A van hides the ground floor of 58-64."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012152420",
+   "slug": "hface-152420",
+   "address": "Van Baerlestraat 88",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownRise": 0.8,
+      "crownSteps": 2,
+      "crownFinial": true,
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.75,
+       3.3,
+       3.1,
+       2.4
+      ],
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.62,
+       0.45
+      ],
+      "windowShare": 0.5,
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "name": "Pauw",
+       "display": "#d8b880",
+       "sign": {
+        "text": "PAUW MANNEN",
+        "textColour": "#c8a860",
+        "span": 0.6
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 0-212: a black pui, PAUW MANNEN in gold capitals on the black fascia; the first floor is a lit display of mannequins in three tall windows",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#3a3d30",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#2a2c26",
+     "cornice": "#2a2c26",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#bebcae"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 2816385850 Pauw (clothes) at 88; the fascia reads PAUW MANNEN on 2024-12-11. BAG lists only woonfunctie at 88.",
+    "bag": [
+     "woonfunctie"
+    ],
+    "name": "Pauw",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816385850,
+     "name": "Pauw",
+     "tags": "brand=Pauw; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 lit display windows | second: 3 | third: 3 small | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "PAUW MANNEN gold on black",
+    "roofline": "black-painted stepped neo-Renaissance gable with corner finials and a scrolled centre light",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the gable's corner finials, scrolls and the gilded lamps over the first-floor windows are left out"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 0-212 px"
+   }
+  },
+  {
+   "pandId": "0363100012152419",
+   "slug": "hface-152419",
+   "address": "Van Baerlestraat 86",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.4,
+       3.5,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66
+      ],
+      "windowShare": 0.56,
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "bayWindows": {
+       "bay": 1,
+       "storeys": [
+        1
+       ],
+       "cap": "flat"
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#e0ded6",
+       "fascia": true,
+       "name": "GANT",
+       "display": "#d8b078",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2024-12-11 x 212-452: a pale pui with one wide lit window left and a white wall right; no sign readable",
+       "stallriser": "low",
+       "stallriserColour": "#e0ded6"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#cfccbe",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#eceae2",
+     "cornice": "#eceae2",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#cac8b0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM node 2816385848 GANT (clothes, check_date 2024-10-23); no sign readable on 2024-12-11.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "GANT",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816385848,
+     "name": "GANT",
+     "tags": "brand=GANT; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 2 and a white oriel | second: 3 | roof: 1 pediment dormer and a small one",
+    "symmetry": "symmetric",
+    "groundFloor": "pale pui",
+    "signage": "none readable",
+    "roofline": "white bracketed cornice, slate mansard with a white pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the small second dormer is left out",
+     "the oriel is drawn as a flat-capped canted bay"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 212-452 px"
+   }
+  },
+  {
+   "pandId": "0363100012158337",
+   "slug": "hface-158337",
+   "address": "Van Baerlestraat 84",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownRise": 0.8,
+      "crownSteps": 2,
+      "crownFinial": true,
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.6,
+       3.4,
+       3.2,
+       2.4
+      ],
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.66,
+       0.45
+      ],
+      "windowShare": 0.52,
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1e2420",
+       "fascia": true,
+       "name": "Pearle",
+       "display": "#c8c0a0",
+       "fasciaColour": "#20b868",
+       "sign": {
+        "text": "Pearle",
+        "textColour": "#f4f4ee",
+        "span": 0.4
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#7a5a38"
+       },
+       "shopShare": 0.8,
+       "evidence": "strip 2024-12-11 x 452-672: a bright green Pearle sign box with white lettering over a dark pui; a timber house door at the left",
+       "stallriser": "low",
+       "stallriserColour": "#1e2420"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#3a3c30",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#2a2c26",
+     "cornice": "#2a2c26",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#b6b79e"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 12670429695 brand Pearle (optician); the green Pearle box sign reads on 2024-12-11.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Pearle",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 12670429695,
+     "name": "Pearle",
+     "tags": "brand=Pearle; shop=optician"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: house door, shop | first: 3 | second: 3 | third: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "dark pui, green sign",
+    "signage": "Pearle white on green",
+    "roofline": "black-painted stepped gable, the twin of 88",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the gable's finials and scrolls are left out",
+     "the Pearle logo roundel is left out"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 452-672 px"
+   }
+  },
+  {
+   "pandId": "0363100012158336",
+   "slug": "hface-158336",
+   "address": "Van Baerlestraat 82",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       3.35,
+       3.45,
+       3.4
+      ],
+      "windowHeights": [
+       0.6,
+       0.8,
+       0.62
+      ],
+      "windowShare": 0.5,
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        0,
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#ecebe4",
+       "fascia": true,
+       "display": "#d0c8b8",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 672-866: a white pui, a small dark logo on the white fascia (not readable), a glazed centre door between two windows",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6e5c44",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e6e2d6",
+     "cornice": "#e6e2d6",
+     "wallTint": "measured",
+     "whitePoint": "#c1c0af"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie and woonfunctie at 82; no OSM business; the fascia logo is not readable on 2024-12-11.",
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | first: 2 French windows with balconettes | second: 2 | roof: 1 neck-gable dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white pui",
+    "signage": "unreadable logo",
+    "roofline": "white bracketed cornice, slate mansard with a white scrolled neck-gable dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dormer's scrolled neck gable is drawn as a pediment",
+     "the black discs behind the window glass are left out"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 672-866 px"
+   }
+  },
+  {
+   "pandId": "0363100012158647",
+   "slug": "hface-158647",
+   "address": "Van Baerlestraat 80",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownRise": 1.0,
+      "crownSteps": 2,
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.6,
+       3.7,
+       3.6
+      ],
+      "windowHeights": [
+       0.75,
+       0.55,
+       0.6
+      ],
+      "windowShare": 0.62,
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#26282a",
+       "fascia": true,
+       "name": "Tempur",
+       "display": "#e8dcc0",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2024-12-11 x 866-1109: a dark grey pui, a small white lettering line on the black fascia, one double-height lit window and a black side panel with a round logo",
+       "stallriser": "low",
+       "stallriserColour": "#26282a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#8a6449",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e2e0d4",
+     "cornice": "#e2e0d4",
+     "wallTint": "measured",
+     "whitePoint": "#b8b6a3"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM node 12670439946 Tempur (bed); the fascia lettering is too small to read on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Tempur",
+    "category": "shop=bed",
+    "osm": {
+     "type": "node",
+     "id": 12670439946,
+     "name": "Tempur",
+     "tags": "brand=Tempur; shop=bed"
+    }
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: tall shop | first: one wide five-light window over a balcony | second: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "dark tall pui",
+    "signage": "unreadable",
+    "roofline": "red-brick stepped gable with corner pinnacles and a chimney stack to 17.4 m",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the first floor's single wide five-light window is drawn as three windows",
+     "the gable pinnacles, the iron wall anchors and the chimney stack are left out"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 866-1109 px"
+   }
+  },
+  {
+   "pandId": "0363100012155817",
+   "slug": "hface-155817",
+   "address": "Van Baerlestraat 78",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       6.0,
+       4.4,
+       3.65
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.6
+      ],
+      "windowShare": 0.48,
+      "windowHead": {
+       "kind": "segmental",
+       "archRing": {
+        "colour": "band",
+        "widthCourses": 3
+       }
+      },
+      "entablature": {
+       "rise": 0.5,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "bayWindows": {
+       "bay": 0,
+       "storeys": [
+        1
+       ],
+       "cap": "flat"
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#5c605a",
+       "fascia": true,
+       "name": "Premsela",
+       "display": "#e0c070",
+       "sign": {
+        "text": "boekhandel robert premsela",
+        "textColour": "#e8e8e0",
+        "span": 0.9
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 3,
+       "evidence": "strip 2024-12-11 x 1109-1385: a grey pui, \"boekhandel robert premsela\" in white lowercase on the grey fascia over three lit display windows and a green door; ART BOOKS lettered in the mezzanine panes above",
+       "stallriser": "low",
+       "stallriserColour": "#5c605a"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a08458",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e2cc",
+     "cornice": "#e8e2cc",
+     "wallTint": "measured",
+     "whitePoint": "#bbbaa0",
+     "band": "#9a4a30"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 11392507780 Premsela (books); the fascia reads boekhandel robert premsela on 2024-12-11; the name follows the fascia.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Boekhandel Robert Premsela",
+    "category": "shop=books",
+    "osm": {
+     "type": "node",
+     "id": 11392507780,
+     "name": "Premsela",
+     "tags": "shop=books"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop with an ART BOOKS mezzanine | first: a white oriel and a round-arched window | second: 2 | roof: 1 pediment dormer",
+    "symmetry": "asymmetric",
+    "groundFloor": "grey pui",
+    "signage": "boekhandel robert premsela white on grey",
+    "roofline": "red-and-cream patterned frieze under a white bracketed cornice; a white pediment dormer with a finial",
+    "photoRows": [
+     3,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the red-and-cream patterned frieze and the red brick arches are drawn as the band-brick arch rings and a plain frieze",
+     "the ART BOOKS mezzanine lights are part of the tall shop storey",
+     "the sign's lowercase lettering is drawn in capitals"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 1109-1385 px"
+   }
+  },
+  {
+   "pandId": "0363100012166099",
+   "slug": "hface-166099",
+   "address": "Van Baerlestraat 76",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "plain",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       5.5,
+       3.4,
+       3.1,
+       3.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.62,
+       0.6
+      ],
+      "windowShare": 0.7,
+      "shopfront": {
+       "colour": "#2c2a28",
+       "fascia": true,
+       "name": "iittala",
+       "display": "#d8c0a0",
+       "fasciaColour": "#3a2c28",
+       "sign": {
+        "text": "iittala",
+        "textColour": "#f0ece4",
+        "span": 0.35,
+        "background": "#b02a2a"
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "left",
+        "colour": "#c05a28"
+       },
+       "shopShare": 0.85,
+       "evidence": "strip 2024-12-11 x 1386-1656: a dark pui, iittala in white on a red box sign, an orange house door at the left",
+       "stallriser": "low",
+       "stallriserColour": "#2c2a28"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#55534a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#8a8880",
+     "cornice": "#6a6860",
+     "wallTint": "measured",
+     "whitePoint": "#aca697"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "BAG kantoor/winkelfunctie at 76 and 76A; no OSM business inside the pand; the 2024-12-11 sign reads iittala.",
+    "bag": [
+     "kantoorfunctie,winkelfunctie",
+     "winkelfunctie"
+    ],
+    "name": "iittala",
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: house door and shop | first: 3 | second: 3 | third: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "dark pui",
+    "signage": "iittala white on red",
+    "roofline": "flat modern front of dark grey brick with a thin coping",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dark window frames are drawn white (the kit frame)"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 1386-1656 px"
+   }
+  },
+  {
+   "pandId": "0363100012158807",
+   "slug": "hface-158807",
+   "address": "Van Baerlestraat 74",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "plain",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.2,
+       3.6,
+       3.0
+      ],
+      "windowHeights": [
+       0.6,
+       0.65,
+       0.5
+      ],
+      "windowShare": 0.55,
+      "shopfront": {
+       "colour": "#2e3032",
+       "fascia": true,
+       "name": "Leica",
+       "display": "#c09070",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 1656-1913: a dark grey pui with one wide window, two small red lamps (the Leica red dot) and no lettering readable",
+       "stallriser": "low",
+       "stallriserColour": "#2e3032"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4e4636",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#6a6458",
+     "cornice": "#5d553f",
+     "wallTint": "measured",
+     "whitePoint": "#9fa69f"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM node 12670417968 Leica (camera); no lettering readable on 2024-12-11. The Flaneur node at 16 also carries a Leica Store website.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "Leica",
+    "category": "shop=camera",
+    "osm": {
+     "type": "node",
+     "id": 12670417968,
+     "name": "Leica",
+     "tags": "brand=Leica; shop=camera"
+    }
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 2",
+    "symmetry": "asymmetric",
+    "groundFloor": "dark pui",
+    "signage": "none readable (red lamps)",
+    "roofline": "low flat brick front with a coping at 12.8 m",
+    "photoRows": [
+     2,
+     3,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the second storey has two windows over the right axes, drawn as three"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 1656-1913 px"
+   }
+  },
+  {
+   "pandId": "0363100012165890",
+   "slug": "hface-165890",
+   "address": "Van Baerlestraat 72A",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "bayWidths": [
+       1.7,
+       1.0
+      ],
+      "bayFill": [
+       0.7,
+       0.55
+      ],
+      "storeys": 4,
+      "storeyHeights": [
+       4.2,
+       3.5,
+       3.2,
+       3.2
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66,
+       0.62
+      ],
+      "windowHead": {
+       "kind": "segmental",
+       "archRing": {
+        "colour": "stone",
+        "widthCourses": 3
+       }
+      },
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.8,
+      "bandHeights": {
+       "sill": 0.14,
+       "transom": 0.12
+      },
+      "entablature": {
+       "rise": 0.7,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.1
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "shopfront": {
+       "colour": "#ecebe6",
+       "fascia": true,
+       "name": "Pauw",
+       "display": "#d8c080",
+       "sign": {
+        "text": "PAUW",
+        "textColour": "#8a8a84",
+        "span": 0.3,
+        "align": "right"
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2024-12-11 x 1913-2193: a white pui, PAUW in grey capitals on the white wall at the right, one tall lit window and a black door",
+       "stallriser": "low",
+       "stallriserColour": "#ecebe6"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a6c4e",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#d8cca8",
+     "cornice": "#d8cca8",
+     "wallTint": "measured",
+     "whitePoint": "#bbbaad"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 4136049430 Pauw (clothes) at 72; PAUW lettered on the pui on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie",
+     "woonfunctie"
+    ],
+    "name": "Pauw",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4136049430,
+     "name": "Pauw",
+     "tags": "brand=Pauw; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes: a wide triple-light axis and a single",
+    "windowsPerStorey": "ground: shop | first: 2 | second: 2 | third: 2 | roof: a neck-gable dormer with a chimney",
+    "symmetry": "asymmetric",
+    "groundFloor": "white pui",
+    "signage": "PAUW grey on white",
+    "roofline": "cream brick bands and arch rings; a brick neck-gable dormer over the cornice",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the triple-light windows of the left axis are drawn as one wide window",
+     "the neck-gable dormer is drawn as a pediment dormer"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 1913-2193 px"
+   }
+  },
+  {
+   "pandId": "0363100012143018",
+   "slug": "hface-143018",
+   "address": "Van Baerlestraat 70",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "casement-toplight",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.4,
+       3.6
+      ],
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.7
+      ],
+      "windowShare": 0.72,
+      "windowSurround": "sill",
+      "dormers": 1,
+      "dormerStyle": "box",
+      "shopfront": {
+       "colour": "#1e1e1c",
+       "fascia": true,
+       "display": "#806a58",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 2195-2486: a black pui, a stone lintel band over two dark windows; no sign readable",
+       "stallriser": "low",
+       "stallriserColour": "#1e1e1c"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#5a4a36",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e0dccc",
+     "cornice": "#e0dccc",
+     "wallTint": "measured",
+     "whitePoint": "#beb695"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie (three units) at 70; no OSM business; no sign readable on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: shop | first: 3 wide | second: 3 wide | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "none readable",
+    "roofline": "tiled hip roof over a white eaves board; one dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white lintel and sill bands spanning each storey's three windows are drawn as stone sills",
+     "the steel windows' small panes are left out"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 2195-2486 px"
+   }
+  },
+  {
+   "pandId": "0363100012167167",
+   "slug": "hface-167167",
+   "address": "Van Baerlestraat 66",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.8,
+       3.75,
+       3.15
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.66
+      ],
+      "windowShare": 0.55,
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1,
+       2
+      ],
+      "entablature": {
+       "rise": 0.85,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "bayWindows": {
+       "bay": 1,
+       "storeys": [
+        1
+       ],
+       "cap": "flat"
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#e8e6de",
+       "fascia": true,
+       "name": "Pauw",
+       "display": "#c8a070",
+       "fasciaColour": "#e8e6de",
+       "sign": {
+        "text": "PAUW MANNEN",
+        "textColour": "#3a3a38",
+        "span": 0.4,
+        "align": "left"
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 2484-2765: a white fascia lettered PAUW MANNEN left and LUXURY DENIM right over a dark shop with a recessed door",
+       "stallriser": "low",
+       "stallriserColour": "#e8e6de"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#8a5c40",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e6e2d6",
+     "cornice": "#e6e2d6",
+     "wallTint": "measured",
+     "whitePoint": "#bbbda7"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 2816385552 Pauw (clothes) at 66-H; the fascia reads PAUW MANNEN and LUXURY DENIM on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Pauw",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2816385552,
+     "name": "Pauw",
+     "tags": "brand=Pauw; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: shop | first: 2 and a white oriel | second: 3 | roof: 1 tall pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white fascia over a dark shop",
+    "signage": "PAUW MANNEN and LUXURY DENIM dark on white",
+    "roofline": "red-and-white dentil frieze under a white cornice; slate mansard with a tall white pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "LUXURY DENIM, the second lettering on the fascia, is left out (one sign per front)",
+     "the red-and-white dentil frieze is drawn as the plain entablature frieze"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 2484-2765 px"
+   }
+  },
+  {
+   "pandId": "0363100012236923",
+   "slug": "hface-236923",
+   "address": "Van Baerlestraat 58-64",
+   "design": {
+    "fronts": [
+     {
+      "id": "a",
+      "street": "Van Baerlestraat",
+      "share": 0.252,
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "cornice": "none",
+      "doorBay": null,
+      "windows": "sash",
+      "crownRise": 1.2,
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.9,
+       3.6,
+       3.4,
+       3.4
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.62,
+       0.6
+      ],
+      "windowShare": 0.56,
+      "windowHead": {
+       "kind": "round",
+       "storeys": [
+        1,
+        2
+       ],
+       "tympanum": "stone"
+      },
+      "bayWindows": {
+       "bay": 1,
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "#d8d8d0",
+       "fascia": true,
+       "display": "#e09090",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 2766-3035: a pale grey pui with a lettered fascia (not readable) over lit red-pink displays; a van hides the lower half",
+       "stallriser": "low",
+       "stallriserColour": "#d8d8d0"
+      },
+      "partyClip": true
+     },
+     {
+      "id": "b",
+      "street": "Van Baerlestraat",
+      "share": 0.748,
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "casement-toplight",
+      "bays": 8,
+      "storeys": 4,
+      "palette": {
+       "brick": "#8a6a4c"
+      },
+      "storeyHeights": [
+       5.5,
+       3.4,
+       3.3,
+       3.2
+      ],
+      "windowHeights": [
+       0.75,
+       0.48,
+       0.55,
+       0.5
+      ],
+      "windowShare": 0.45,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        7
+       ],
+       "style": "slab-hood"
+      },
+      "shopfront": {
+       "colour": "#4a3e34",
+       "fascia": true,
+       "name": "Omoda",
+       "display": "#e8c890",
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 8,
+       "evidence": "strip 2024-12-11 x 3035-3835: a tall brick shop storey with brick piers and narrow lit windows between them under a rail band; the right end a glazed shop",
+       "stallriser": "low",
+       "stallriserColour": "#4a3e34"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#a88a52",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e4d4",
+     "cornice": "#e8e4d4",
+     "wallTint": "measured",
+     "whitePoint": "#b8b59b",
+     "band": "#8a6a50"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM inside the pand: Omoda (shoes, 60), Paul Noyen (shoes), an ATM; Van Baerle Bloemen (florist) on the frontage. A parked van hides the ground floor on 2024-12-11 and no fascia is readable.",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie",
+     "overige gebruiksfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Omoda",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 4136049429,
+     "name": "Omoda",
+     "tags": "brand=Omoda; shop=shoes"
+    }
+   },
+   "rhythm": {
+    "bays": "a: 3 axes round a stacked oriel; b: 8 axes and a balcony stack",
+    "windowsPerStorey": "a: ground shop | 3 | 3 | 3 | gable: oriel top; b: ground: piers and slit windows | 8 + loggia | 8 + loggia | 8 + loggia",
+    "symmetry": "a symmetric; b regular",
+    "groundFloor": "pale pui (a); brick piers under a rail band (b)",
+    "signage": "none readable",
+    "roofline": "a: a yellow-brick Jugendstil curved gable to 18.3 m; b: a flat brick parapet at 16.7 m",
+    "photoRows": [
+     10,
+     11,
+     11,
+     11,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the yellow house's stacked white timber oriel and its curved gable ornament are drawn as a flat-capped bay and a plain pointed gable",
+     "the block's rail band over the shop storey and its vertical slit lights between brick piers are drawn as display windows",
+     "the cantilevered concrete balcony stack at the right end is drawn as slab-hood balconies"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 2766-3835 px"
+   }
+  },
+  {
+   "pandId": "0363100012236083",
+   "slug": "hface-236083",
+   "address": "Van Baerlestraat 56",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Van Baerlestraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       5.3,
+       3.5,
+       3.25,
+       3.0
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.6
+      ],
+      "windowShare": 0.55,
+      "surroundStoreys": [
+       1,
+       2,
+       3
+      ],
+      "entablature": {
+       "rise": 0.8,
+       "cap": 0.2,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.1
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#a87a40",
+       "fascia": true,
+       "name": "Cigaragua",
+       "display": "#806040",
+       "fasciaColour": "#e8e6de",
+       "sign": {
+        "text": "CIGARAGUA CIGARS",
+        "textColour": "#c8a050",
+        "span": 0.85
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "evidence": "strip 2024-12-11 x 3834-4106: a white stucco ground storey, gilt capitals (CIGARAGUA CIGARS) over a varnished timber shopfront with a roller grille",
+       "stallriser": "low",
+       "stallriserColour": "#a87a40"
+      },
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "sill",
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "sill": 0.18,
+       "transom": 0.16
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7c6648",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#eceae2",
+     "cornice": "#eceae2",
+     "wallTint": "measured",
+     "whitePoint": "#c0bfac"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 2816385357 Cigaragua (tobacco); the gilt fascia lettering reads as Cigaragua on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "name": "Cigaragua",
+    "category": "shop=tobacco",
+    "osm": {
+     "type": "node",
+     "id": 2816385357,
+     "name": "Cigaragua",
+     "tags": "shop=tobacco"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3 | third: 3 | roof: 1 pediment dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white stucco, varnished timber shopfront",
+    "signage": "CIGARAGUA CIGARS gilt",
+    "roofline": "white bracketed cornice; slate mansard with a white pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the fascia's exact wording is half legible; drawn as CIGARAGUA CIGARS"
+    ],
+    "citation": "baerle-56-88 strip.jpg (2024-12-11) x 3834-4106 px"
+   }
+  }
+ ]
+}
