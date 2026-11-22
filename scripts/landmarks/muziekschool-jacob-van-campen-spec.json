@@ -1,0 +1,33 @@
+{
+ "id": "muziekschool-jacob-van-campen",
+ "name": "Former Openbare Muziekschool, Eerste Jacob van Campenstraat 59",
+ "heightMetres": 15.6,
+ "bagYear": 1900,
+ "galleryView": {
+  "theta": 0.45,
+  "phi": 1.1
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012228680 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/muziekschool-jacob-van-campen-footprints.json, bag-shell-prepare.ts); the two street fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002455_pano_0001_000826 (2022) and TMX7316010203-002115_pano_0000_002717 (2021, the Eerste Jacob van Campenstraat front) and recording_2024-09-04_05-35-54_04499 (2024) with TMX7316010203-002470_pano_0001_000371 (2022, the Ferdinand Bolstraat side), CC BY 4.0. Gemeentelijk monument (register: Publieke Werken, 1882). Per wall in scripts/landmarks/muziekschool-jacob-van-campen-inventory.json.",
+ "materialOverrides": {
+  "brick": "#8a5c4d",
+  "ochre": "#b8a573",
+  "stone": "#cdc8b8",
+  "concrete": "#cbbc9d",
+  "greyBrick": "#4a5356",
+  "frame": "#ebe8df",
+  "glass": "#46525a",
+  "slate": "#4a4f55",
+  "dark": "#3e3c39",
+  "bronze": "#6f4f3e"
+ },
+ "attribution": {
+  "title": "Former Openbare Muziekschool (Jacob van Campenschool), Eerste Jacob van Campenstraat 59, Amsterdam (Publieke Werken, 1882)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/c3b66d2e-e5d2-4224-943b-f0d8aa4bc1f2",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012228680 (CC0): the red brick fronts with their yellow-brick colossal lisenen and frieze, the bluestone string courses, the round-arched blind tympana with keystones over the first-floor windows, the dentil cornice and middle pediment, the round-arched entrance with its stone balustrade above, and the side dormer with its pediment and volutes, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}

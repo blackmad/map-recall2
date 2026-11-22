@@ -1,0 +1,71 @@
+{
+ "id": "muziekschool-jacob-van-campen",
+ "countedBy": "lane r10-C from the rectified panoramas w02-185.alt (TMX7316010203-002455_pano_0001_000826, 2022) and w01-96 (recording_2024-09-04_05-35-54_04499, 2024), 2026-11-22; not a blind count",
+ "facades": [
+  {
+   "name": "front on the Eerste Jacob van Campenstraat (S, edge 10)",
+   "bearing": 185,
+   "photo": "artifacts/landmark-briefs/muziekschool-jacob-van-campen/w02-185.alt.jpg",
+   "alongM": [
+    0,
+    20.3
+   ],
+   "note": "alongM drops the cornice return over the SE corner (0.62 m past the corner lisene), which shifted the silhouette centre off the door axis",
+   "rows": [
+    7,
+    7
+   ],
+   "columns": 7,
+   "symmetric": true
+  },
+  {
+   "name": "side on the Ferdinand Bolstraat (E, edge 11)",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/muziekschool-jacob-van-campen/w01-96.jpg",
+   "rows": [
+    7,
+    7,
+    1
+   ],
+   "columns": 7,
+   "symmetric": false,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "recording_2024-09-04_05-35-54_04499 (w01-96) and TMX7316010203-002470_pano_0001_000371 (2022): six ground-floor windows, then the glazed side door with its fanlight in the seventh (north) axis, from the plinth to the frieze",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "door",
+       "w": 1.4
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
