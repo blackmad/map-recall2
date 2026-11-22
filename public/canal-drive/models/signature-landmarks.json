@@ -131992,7 +131992,7 @@
       },
       "bagYear": 1890,
       "materialOverrides": {
-        "brick": "#8a5646",
+        "brick": "#7b4b49",
         "stone": "#dccaa2",
         "sandstone": "#c2b08a",
         "white": "#ece8de",
@@ -132122,8 +132122,8 @@
         "depthMetres": 31.09421443939209,
         "depthCoverage": 1.026211697669706
       },
-      "triangles": 13230,
-      "bytes": 178564,
+      "triangles": 14330,
+      "bytes": 196356,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "e6384dd894335e2c",
@@ -132137,6 +132137,320 @@
         "bytes": 9736,
         "triangles": 258
       }
+    },
+    "school-raamplein-1": {
+      "id": "school-raamplein-1",
+      "name": "Openbare Handelsschool, Raamplein 1",
+      "modelUrl": "./models/school-raamplein-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165430"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88042582,
+          52.36650968
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 62,
+        "widthMetres": 39.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.88042582,
+          52.36650968
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012165430 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/school-raamplein-1-footprints.json, bag-shell-prepare.ts), the Raamplein and Passeerdersgracht eaves lifted to the 19.2 m cornice the rectified fronts show; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002970_pano_0003_000157 (2023), TMX7316010203-001048_pano_0000_003411 (2019), TMX7316010203-001178_pano_0001_002898 (2019), TMX7316010203-002550_pano_0000_000918 (2022), TMX7316010203-002306_pano_0001_000921 (2021) and TMX7316010203-002306_pano_0002_000944 (2021), CC BY 4.0. Rijksmonument 518264 (Openbare Handelsschool, H. Leguyt and B. Springer, Publieke Werken, 1899-1901). Per wall in scripts/landmarks/school-raamplein-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "measuredOverrides": true,
+      "heightMetres": 23.6,
+      "galleryView": {
+        "theta": 4,
+        "phi": 1.15
+      },
+      "bagYear": 1905,
+      "materialOverrides": {
+        "brick": "#8a5c58",
+        "ochre": "#9c8a76",
+        "stone": "#a3a29c",
+        "greyBrick": "#8e8d88",
+        "concrete": "#7f817e",
+        "white": "#e6e2d8",
+        "glass": "#5d7480",
+        "slate": "#545a62",
+        "gold": "#b59a5e",
+        "dark": "#3a3530"
+      },
+      "attribution": {
+        "title": "Openbare Handelsschool, Raamplein 1, Amsterdam (H. Leguyt and B. Springer, Publieke Werken, 1899-1901)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002970_pano_0003_000157/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012165430 (CC0): the rusticated hardstone ground storey, the red-brick wings with yellow-brick panels and archivolts over round-headed windows, the yellow-brick corner and middle risalits between colossal sandstone pilasters, the balcony and entrance porch, the lettered frieze, the modillion cornice, urns and aedicule dormers on the slate mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8804989,
+              52.3665568
+            ],
+            [
+              4.8804885,
+              52.3665709
+            ],
+            [
+              4.8804844,
+              52.3665697
+            ],
+            [
+              4.8804801,
+              52.3665754
+            ],
+            [
+              4.8804653,
+              52.3665713
+            ],
+            [
+              4.8804695,
+              52.3665656
+            ],
+            [
+              4.880445,
+              52.3665588
+            ],
+            [
+              4.8804251,
+              52.3665857
+            ],
+            [
+              4.8804641,
+              52.3665965
+            ],
+            [
+              4.8804421,
+              52.3666263
+            ],
+            [
+              4.8805103,
+              52.3666452
+            ],
+            [
+              4.8805089,
+              52.3666468
+            ],
+            [
+              4.8805923,
+              52.3666706
+            ],
+            [
+              4.8805254,
+              52.366745
+            ],
+            [
+              4.8804144,
+              52.3667084
+            ],
+            [
+              4.8804151,
+              52.3667076
+            ],
+            [
+              4.8804078,
+              52.3666918
+            ],
+            [
+              4.8804035,
+              52.3666906
+            ],
+            [
+              4.8804027,
+              52.3666917
+            ],
+            [
+              4.8803863,
+              52.3666874
+            ],
+            [
+              4.8803877,
+              52.3666855
+            ],
+            [
+              4.8802522,
+              52.3666474
+            ],
+            [
+              4.8802505,
+              52.3666492
+            ],
+            [
+              4.8802467,
+              52.3666479
+            ],
+            [
+              4.880246,
+              52.3666488
+            ],
+            [
+              4.8801394,
+              52.3666188
+            ],
+            [
+              4.8801884,
+              52.3665528
+            ],
+            [
+              4.8802015,
+              52.3665564
+            ],
+            [
+              4.8802033,
+              52.366554
+            ],
+            [
+              4.8802064,
+              52.3665548
+            ],
+            [
+              4.8802859,
+              52.3664468
+            ],
+            [
+              4.8802828,
+              52.366446
+            ],
+            [
+              4.8802846,
+              52.3664435
+            ],
+            [
+              4.8802643,
+              52.3664379
+            ],
+            [
+              4.880319,
+              52.3663645
+            ],
+            [
+              4.8803393,
+              52.3663701
+            ],
+            [
+              4.8803411,
+              52.3663677
+            ],
+            [
+              4.8803442,
+              52.3663685
+            ],
+            [
+              4.8804246,
+              52.3662607
+            ],
+            [
+              4.8804215,
+              52.3662598
+            ],
+            [
+              4.8804233,
+              52.3662573
+            ],
+            [
+              4.8804102,
+              52.3662537
+            ],
+            [
+              4.8804591,
+              52.3661878
+            ],
+            [
+              4.8807181,
+              52.3662621
+            ],
+            [
+              4.8806715,
+              52.3663243
+            ],
+            [
+              4.8806671,
+              52.366323
+            ],
+            [
+              4.8806456,
+              52.3663529
+            ],
+            [
+              4.8806054,
+              52.366342
+            ],
+            [
+              4.8805861,
+              52.3663688
+            ],
+            [
+              4.8806298,
+              52.3663809
+            ],
+            [
+              4.8805829,
+              52.3664441
+            ],
+            [
+              4.8806242,
+              52.3664557
+            ],
+            [
+              4.8805765,
+              52.3665193
+            ],
+            [
+              4.8805352,
+              52.3665078
+            ],
+            [
+              4.8804989,
+              52.3665568
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -20.391521453857422,
+          -9.536743306171047e-8,
+          -26.135000228881836
+        ],
+        "max": [
+          20.337215423583984,
+          23.648000717163086,
+          36.79852294921875
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88042582,
+          52.36650968
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.933523178100586,
+        "heightMetres": 23.64800081253052,
+        "depthMetres": 40.728736877441406,
+        "depthCoverage": 1.0416556746148697
+      },
+      "triangles": 31694,
+      "bytes": 399240,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "toolchain": "0067b987075e199097f13b44f3205f5a3d25c31321f995afd6105b9207e8291d",
+  "toolchain": "69bc8efa7567da9077de7433a0631e766336f0351f6cd06117d214be879df205",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -353,7 +353,7 @@
     "nieuw-dakota": "91ec5ba430a5cc98c136d48476972afe038c1ec1aede5d38a74495f94b6d562c",
     "nieuw-engeland": "5cfb4f857cb140ec642fca780f42e0b309ebb1fb33e3c404e196b3d6dabe9e9f",
     "nieuwe-achtergracht-129": "ef6a69bd881bcb3c50fc3b9861a06b6e39bd3f65557992b5ede2c5c880918757",
-    "nieuwe-doelenstraat-12": "18e210acff36e88323b93f1dc5214ff4f3d34ea11a295d431d581255b01ad279",
+    "nieuwe-doelenstraat-12": "e5eaa038d47605cb29d02938113df40762fb4b8a600c6bdc3f2a5912ed9a8693",
     "nieuwe-kerk": "82428088c9f1f0587f3ed37a6174ff209887915217e6d950393a56831d4365ff",
     "nieuwendammerkerk": "6c1646a0ac00128be28e3fe2ec8369b14df11b6f380837d7caab86e459f52182",
     "nikolaas-myrakerk": "737295defbaf47e5dbd2371d0a1eb008589fca4ee03e96e2abccfce76724316a",
@@ -450,6 +450,7 @@
     "scheltema": "52b770af2304e59684e5b1e686604987c683508aa7c31946d9d5005127b6af0b",
     "schiller-rembrandtplein": "09426a73805893adc989b9ff5b0dc0ced8d7e4faa637a46895386b51fc7ec1b5",
     "school-marnixstraat-2": "50fd46ebbc2e8921255b4b40a6a0c158a5ac4ce3e2a68ba5f85686c85fc6e609",
+    "school-raamplein-1": "abc4b1514a17d69f721e701eed3d03cf61ac099de3df79db6f91fed01f5fd597",
     "schreierstoren": "7ff1b8d35f70c8348915d6912adf6ea13f652582f11100b8426c2d7c9cfb1b21",
     "schutterstoren": "fe15151733d03c884968067c75f737eb4f007d11cbfa91965a37bbee0c1bae14",
     "sea-palace": "87a20060cd4b2a667c8e314d7af23ad59f291251569f8751a3ce7ea47bf6bcd9",

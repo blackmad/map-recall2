@@ -5112,8 +5112,8 @@
       "dateSource": "asset-update"
     },
     "nieuwe-doelenstraat-12": {
-      "updatedAt": "2026-11-22T18:29:47.558Z",
-      "version": "e6384dd894335e2c",
+      "updatedAt": "2026-11-22T20:01:37.649Z",
+      "version": "b6a7a27b02f56a1c",
       "dateSource": "asset-update"
     },
     "nieuwe-kerk": {
@@ -8304,6 +8304,11 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
+      "dateSource": "asset-update"
+    },
+    "school-raamplein-1": {
+      "updatedAt": "2026-11-22T20:04:03.028Z",
+      "version": "e3943d3cacdef018",
       "dateSource": "asset-update"
     }
   }
