@@ -131,6 +131,16 @@ export interface BlockFaceIntent {
      */
     crownFromPhoto?: {pand: string; front?: string; evidence: string}[];
     /**
+     * What the chunk's walls are drawn at in the game (scripts/look/build-chunk-wall-exposure.ts). Absent: the strip is
+     * the exposure reference: the walls are lifted by the strip wall over the drawn wall (`stripOverDrawn`), so the
+     * game draws the strip's own brightness whatever the palette says. `palette`: the strip's walls are not a reference
+     * (a cast or over-bright capture) and the palette was measured on other captures, so `stripOverDrawn` is 1 and
+     * the game draws the palette under the strip white's gain. Van Baerlestraat 2026-11-22: the 2024-12-11 strips read
+     * every wall about 0.19 L lighter and 2.9x as chromatic as the 2023-01-10 and 2025-07-30 captures, and lifted the
+     * darkened 22-30 bricks 1.74x straight back. Absent = byte-identical.
+     */
+    wallExposure?: {reference: 'palette'; evidence: string};
+    /**
      * Roof mass source (blockFace/recipeRoof.ts). `recipe`: generated from the design (front eaves, attic storey, plot
      * depth) with 3DBAG as footprint and upper bound only; `keepSurvey` lists pands that keep their 3DBAG roof (with a
      * reason in `evidence`). Absent = `survey` (3DBAG LoD2.2 after roofCleanup), byte-identical to before.
@@ -231,6 +241,11 @@ export function resolveFaceTypes(face: BlockFaceIntent, load: TypeLoader = defau
 }
 
 /** Validate a parsed face intent: houses, uses vs shopfronts, continuity references. Throws one error listing every problem. */
+/** The `stripOverDrawn` exposure entry of a face (look/chunkWallExposureData.ts): the strip reading, or 1 when the face says its palette is the reference. */
+export function faceStripOverDrawn(face: Pick<BlockFaceIntent, 'continuity'>, stripRatio: number | null): number | null {
+  return face.continuity.wallExposure?.reference === 'palette' ? 1 : stripRatio;
+}
+
 export function validateBlockFace(input: unknown, order?: string[], load: TypeLoader = defaultTypeLoader): BlockFaceIntent {
   const face = input as BlockFaceIntent, problems: string[] = [];
   if (face?.kind !== 'block-face' || face.schemaVersion !== 1) problems.push('kind must be "block-face", schemaVersion 1');
@@ -321,6 +336,8 @@ export function validateBlockFace(input: unknown, order?: string[], load: TypeLo
     if (!Array.isArray(sl?.pands) || !sl.pands.length || sl.pands.some(p => !pands.has(p))) problems.push('continuity.streetLevelPands.pands: pands of this face');
     if (!sl?.evidence) problems.push('continuity.streetLevelPands needs evidence (what on the strip shows the shared street level)');
   }
+  const we = face?.continuity?.wallExposure;
+  if (we !== undefined && !(we && typeof we === 'object' && we.reference === 'palette' && typeof we.evidence === 'string' && we.evidence.length > 0 && Object.keys(we).every(k => k === 'reference' || k === 'evidence'))) problems.push('continuity.wallExposure: {reference: "palette", evidence} (the captures the palette was measured on)');
   const rc = face?.continuity?.rowCoherence;
   if (rc !== undefined && rc !== false && !(rc && typeof rc === 'object' && typeof rc.thresholdM === 'number' && rc.thresholdM >= 0.2 && rc.thresholdM <= 3)) problems.push('continuity.rowCoherence: false, or {thresholdM} between 0.2 and 3 m');
   problems.push(...canopyProblems(face, intents));

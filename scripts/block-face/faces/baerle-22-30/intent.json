@@ -49,7 +49,11 @@
   ],
   "notes": [
    "Floor lines read on the strip at 40 px/m: 28-30 stone ground storey to 5.15 m, sills 6.5 / 10.1 m; 26 and 22-24 shop heads 5.0 m, sills 5.8 / 9.2 m."
-  ]
+  ],
+  "wallExposure": {
+   "reference": "palette",
+   "evidence": "the 2024-12-11 strip reads 26 and 22-24 at C 0.068-0.082 and 28-30 at 0.053 against C 0.012-0.024 on the 2022-01-11, 2023-01-10 and 2025-07-30 captures, and lifted the walls 1.74x over the palette; the palette is fitted to those captures"
+  }
  },
  "houses": [
   {
