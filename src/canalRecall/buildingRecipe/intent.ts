@@ -346,6 +346,12 @@ export interface FrontIntent {
    */
   crownCapWidth?: number;
   /**
+   * The crown's raking-edge trim: `none` draws the gable's outline in its own brick, without the 0.08 m white edge
+   * (Van Baerlestraat 28-30, 1900s: a brick point gable whose edges meet the tiled roof cheeks; the white edge drew it as
+   * a pale-outlined spike). Absent = the white edge, byte-identical.
+   */
+  crownEdge?: 'none';
+  /**
    * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
    * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
    * between them are equal. A storey with fewer windows names the axes it uses (`storeyAxes: {"4": [0,1,3]}`,
@@ -2102,6 +2108,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.crownRise !== undefined && !(f.crownRise >= 0.3 && f.crownRise <= 3)) problems.push(`${at}.crownRise: 0.3..3 upper-storey heights`);
     if (f.crownSteps !== undefined) { count(f.crownSteps, `${at}.crownSteps`, 1, 6); if (f.gable !== 'step') problems.push(`${at}.crownSteps: only a step gable has steps`); }
+    if (f.crownEdge !== undefined && (f.crownEdge !== 'none' || !f.gable || f.gable === 'flat' || f.gable === 'cornice')) problems.push(`${at}.crownEdge: "none" on a gabled crown only (gable ${f.gable}, ${f.crownEdge})`);
     if (f.crownFinial !== undefined && typeof f.crownFinial !== 'boolean') problems.push(`${at}.crownFinial must be boolean`);
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
