@@ -32,15 +32,14 @@
     "pand": "0363100012122051",
     "stripRow": 300,
     "frontRoof": {
-     "topRow": 182,
      "pitchDeg": 55
     },
-    "evidence": "strip 2024-12-11: the white eaves boards of the side parts at row 300, the tiled hip to row 182"
+    "evidence": "strip 2024-12-11: the white eaves boards of the side parts at row 300; the tiled hip pitched 55 deg up to the 3DBAG roof (the strip's row 182 is the set-back hip projected on the facade plane, not its height)"
    },
    {
     "pand": "0363100012162963",
     "stripRow": 345,
-    "evidence": "strip 2024-12-11: the foot of the bell gable (top of the side wall) at row 345"
+    "evidence": "strip 2024-12-11: the foot of the neck gable's shoulders (top of the side wall) at row 345"
    },
    {
     "pand": "0363100012236146",
@@ -69,7 +68,7 @@
        "from": 0.3,
        "to": 0.7
       },
-      "crownRise": 1.3,
+      "crownRise": 1.19,
       "cornice": "simple",
       "doorBay": null,
       "windows": "sash",
@@ -121,10 +120,13 @@
      }
     ],
     "roof": {
-     "material": "black-tile"
+     "material": "black-tile",
+     "rise": 1.24,
+     "crossGables": true,
+     "evidence": "3DBAG roof planes of 28-30 reach 19.3 m over the street (p95 19.28 m); the photo's brick gable has tiled cheeks running back into the hip"
     },
     "palette": {
-     "brick": "#62483a",
+     "brick": "#584139",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#c8bea8",
@@ -164,7 +166,9 @@
      "the two stone flower-box consoles under the outer first-floor windows are left out",
      "the outer bays' deep white eaves boards are drawn as the simple cornice",
      "the portal's lettering and the row of small lights over its doors are left out",
-     "brick set by judgement to #62483a (the strip measure #796043 drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+     "brick #584139, fitted (scripts/block-face/fit-wall-palette.ts) to render L 0.415 C 0.026 h 42: the 2022-01-11, 2023-01-10 and 2025-07-30 captures read this wall dull brown at C 0.01-0.02, about 0.04 L darker than 26 and 22-24 beside it; the 2024-12-11 strip's orange cast (C 0.05-0.08 on every wall) is not used",
+     "gable apex 19.07 m over the street (strip row 88; crownRise 1.19, was 1.3 = 19.6 m); the roof is no longer capped at strip row 182, which read the set-back tiled hip on the facade plane 3.5 m too low (3DBAG roof planes reach 19.3 m over the pand ground), so the gable stands in its roof as on the photo instead of 3 m clear of it",
+     "the outer bays' deep white eaves boards stay the simple cornice: eavesOverhang is drawn on cornice/flat fronts only"
     ]
    }
   },
@@ -179,11 +183,13 @@
       "street": "Van Baerlestraat",
       "basement": "none",
       "hoist": false,
-      "gable": "bell",
-      "crownAt": {
-       "from": 0.1,
-       "to": 0.9
-      },
+      "gable": "neck",
+      "crownCap": "rounded",
+      "crownNeckWidth": 0.67,
+      "crownCapWidth": 0.76,
+      "crownCapRatio": 0.41,
+      "crownShoulderRise": 0.35,
+      "crownShoulder": "concave",
       "crownRise": 1.3,
       "cornice": "none",
       "doorBay": null,
@@ -207,7 +213,13 @@
        0.66
       ],
       "windowShare": 0.56,
-      "atticShape": "rectangular",
+      "atticWindows": 1,
+      "atticShape": "arched",
+      "atticSize": {
+       "span": 1.25,
+       "rise": 2.2,
+       "sill": 0
+      },
       "balconies": {
        "storeys": [
         1,
@@ -220,17 +232,22 @@
       },
       "partyClip": true,
       "shopfront": {
-       "colour": "#d8d2c4",
+       "colour": "#e2e0da",
        "fascia": true,
-       "fasciaColour": "#d8d2c4",
+       "fasciaColour": "#e2e0da",
        "name": "Essentiel Antwerp",
-       "display": "#d8c8a0",
-       "entrance": "right",
-       "glazing": "split",
-       "displayWindows": 3,
+       "display": "#38342f",
+       "entrance": "none",
+       "glazing": "transom",
+       "displayWindows": 2,
        "stallriser": "low",
-       "stallriserColour": "#d8d2c4",
-       "evidence": "strip 2024-12-11 x 546-813: a pale stone pui, a tall gridded window printed with a figure, a yellow door panel at the right; no sign readable"
+       "stallriserColour": "#e2e0da",
+       "evidence": "strip 2024-12-11 x 546-813 and the 2023-01-10 and 2025-07-30 captures: a white rendered pui, one wide dark-glazed window under a transom row, a dark glazed door at the right; 2025-07-30 reads ESSENTIEL ANTWERP in black capitals on the white fascia (two lines). The 2022-01-11 panorama shows the previous tenant's dark timber pui. The glazed door at the right is drawn as the last dark pane (a kit door leaves the wall above it unpainted).",
+       "sign": {
+        "text": "ESSENTIEL ANTWERP",
+        "textColour": "#1c1c1c",
+        "span": 0.5
+       }
       }
      }
     ],
@@ -238,7 +255,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7c5242",
+     "brick": "#65473d",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#e4e0d2",
@@ -250,8 +267,8 @@
    "groundFloor": {
     "use": "shop",
     "photoDate": "2024-12-11",
-    "agreement": "osm-only",
-    "note": "OSM node 13458217153 names Essentiel Antwerp (clothes); no sign readable on 2024-12-11.",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 13458217153 names Essentiel Antwerp (clothes); the sign reads ESSENTIEL ANTWERP on 2025-07-30 (not readable 2024-12-11).",
     "bag": [
      "winkelfunctie"
     ],
@@ -270,7 +287,7 @@
     "symmetry": "symmetric",
     "groundFloor": "pale stone pui",
     "signage": "none readable",
-    "roofline": "tall brick bell gable with stone side scrolls and a round top to 17.5 m",
+    "roofline": "a neck gable between stone pilasters, concave stone shoulders at its foot, a stone ledge and a round brick cap with a stone rim to 17.35 m; one round-arched light in the neck",
     "citation": "baerle-22-30 strip.jpg (2024-12-11) x 546-813 px",
     "photoRows": [
      3,
@@ -280,9 +297,10 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "the gable's round-arched window is drawn rectangular",
-     "the stone consoles under the second-floor balcony and the gable's side scrolls are left out",
-     "brick set by judgement to #7c5242 (the strip measure #937354 drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+     "the neck's stone pilasters, the shoulder scrolls and the cap's stone rim are drawn as the crown's trim edge; the stone ledge is the level step either side of the cap foot",
+     "the stone consoles under the second-floor balcony are left out",
+     "the fascia's two-line lettering is drawn on one line",
+     "brick #65473d, fitted (scripts/block-face/fit-wall-palette.ts) to render L 0.45 C 0.03 h 38: the 2022-01-11, 2023-01-10 and 2025-07-30 captures read C 0.016-0.022; the 2024-12-11 strip's orange cast (C 0.068) is not used"
     ]
    }
   },
@@ -442,7 +460,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#7a5040",
+     "brick": "#5b463f",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#e2e0d2",
@@ -488,7 +506,7 @@
      "the wide three-light dormer over 24 is drawn as one plain dormer",
      "Oogappel's louvred transom band is drawn as a transom row",
      "the iron balconies' stone consoles are left out",
-     "brick set by judgement to #7a5040 (the strip measure #78603f drew orange-tan in the game against the red-brown brick of the 2022 panorama)"
+     "brick #5b463f, fitted (scripts/block-face/fit-wall-palette.ts) to render L 0.45 C 0.03 h 38 like 26 (the captures read the two fronts as one brick); the 2024-12-11 strip's orange cast (C 0.082) is not used"
     ]
    }
   }

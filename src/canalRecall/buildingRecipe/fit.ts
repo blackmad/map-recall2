@@ -1125,7 +1125,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
           const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (size ? sill : front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
-          for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
+          // `atticShape: arched`: each light ends in a semicircular head (rise half its width), as the round-headed storeys do.
+          const arch = (w: number) => front.atticShape === 'arched' ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : {};
+          for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], ...arch(l.width), frameSurface: 'trim', barSurface: 'trim'}));
         }
       }
     }
