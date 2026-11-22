@@ -6877,15 +6877,119 @@
   }
  },
  "aurora-overtoom": {
-  "sourceHash": "4ed6641171ef09e6",
+  "sourceHash": "28c92aa532c0ee3e",
   "buildVersion": 2,
-  "bytes": 73972,
+  "bytes": 73988,
   "triangles": 4087,
   "lod2": {
-   "sourceHash": "4ed6641171ef09e6",
+   "sourceHash": "28c92aa532c0ee3e",
    "buildVersion": 6,
-   "bytes": 11768,
+   "bytes": 11704,
    "triangles": 409
+  }
+ },
+ "commandementsgebouw": {
+  "sourceHash": "048458cd2f2ba4b0",
+  "buildVersion": 2,
+  "bytes": 27512,
+  "triangles": 1221,
+  "lod2": {
+   "sourceHash": "048458cd2f2ba4b0",
+   "buildVersion": 6,
+   "bytes": 6356,
+   "triangles": 107
+  }
+ },
+ "generator-mauritskade": {
+  "sourceHash": "0830a3bd758c1723",
+  "buildVersion": 2,
+  "bytes": 52308,
+  "triangles": 2533,
+  "lod2": {
+   "sourceHash": "0830a3bd758c1723",
+   "buildVersion": 6,
+   "bytes": 10672,
+   "triangles": 312
+  }
+ },
+ "wonderkamer-kanaalstraat": {
+  "lod2": {
+   "sourceHash": "cf41d5e3fe936edd",
+   "buildVersion": 6,
+   "bytes": 4956,
+   "triangles": 85
+  }
+ },
+ "tugelahuis-tugelaweg": {
+  "sourceHash": "b7a9c0a69f6df679",
+  "buildVersion": 2,
+  "bytes": 27348,
+  "triangles": 778,
+  "lod2": {
+   "sourceHash": "b7a9c0a69f6df679",
+   "buildVersion": 6,
+   "bytes": 5744,
+   "triangles": 88
+  }
+ },
+ "de-coenen-coenenstraat": {
+  "sourceHash": "a3f9fdaca245fdb0",
+  "buildVersion": 2,
+  "bytes": 53192,
+  "triangles": 2089,
+  "lod2": {
+   "sourceHash": "a3f9fdaca245fdb0",
+   "buildVersion": 6,
+   "bytes": 9316,
+   "triangles": 231
+  }
+ },
+ "de-kandelaar-vening-meineszlaan": {
+  "sourceHash": "40308349db889b0c",
+  "buildVersion": 2,
+  "bytes": 31780,
+  "triangles": 1066,
+  "lod2": {
+   "sourceHash": "40308349db889b0c",
+   "buildVersion": 6,
+   "bytes": 5900,
+   "triangles": 116
+  }
+ },
+ "witte-boei-wittenburg": {
+  "sourceHash": "67dc0ecff586319a",
+  "buildVersion": 2,
+  "bytes": 33316,
+  "triangles": 1283,
+  "lod2": {
+   "sourceHash": "67dc0ecff586319a",
+   "buildVersion": 6,
+   "bytes": 8244,
+   "triangles": 247
+  }
+ },
+ "henrick-de-keijser-buurtgebouw": {
+  "sourceHash": "b232d65641a9ba62",
+  "buildVersion": 2,
+  "bytes": 40140,
+  "triangles": 1368,
+  "lod2": {
+   "sourceHash": "b232d65641a9ba62",
+   "buildVersion": 6,
+   "bytes": 8368,
+   "triangles": 137
+  }
+ },
+ "archipel-makassarplein": {
+  "sourceHash": "4bcf4339bdae9033",
+  "buildVersion": 2,
+  "bytes": 32196,
+  "triangles": 1488,
+  "lod2": {
+   "sourceHash": "4bcf4339bdae9033",
+   "buildVersion": 6,
+   "bytes": 5948,
+   "triangles": 108
   }
  }
 }

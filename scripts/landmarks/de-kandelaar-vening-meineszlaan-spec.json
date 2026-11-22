@@ -1,0 +1,35 @@
+{
+ "id": "de-kandelaar-vening-meineszlaan",
+ "name": "De Kandelaar (Salvation Army corps building), Burgemeester Vening Meineszlaan 64",
+ "heightMetres": 8.5,
+ "bagYear": 1963,
+ "galleryView": {
+  "theta": 2.6,
+  "phi": 1.1
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012149095 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-kandelaar-vening-meineszlaan-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001326_pano_0000_005074 (2019) and recording_2025-10-02_10-04-24_00414 (2025, the house's south front), TMX7316010203-002509_pano_0004_002196 (2022, the house's west side), TMX7316010203-000831_pano_0000_002250 (2018) and b_20240918_0854_Track07_Sphere_01244 (2024, the entrance pavilion), recording_2025-10-02_08-33-49_01079 (2025) and TMX7316010203-001326_pano_0000_004058 (2019, the hall's studded east end), TMX7316010203-001326_pano_0000_005066 (2019, the folded south wall), TMX7316010203-002067_pano_0000_002697 (2021, the west wing), CC BY 4.0. Per wall in scripts/landmarks/de-kandelaar-vening-meineszlaan-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7a5a50",
+  "greyBrick": "#c4b8a2",
+  "slate": "#5c5b58",
+  "white": "#e9e7e1",
+  "glass": "#363d42",
+  "red": "#b8382c",
+  "pink": "#a9b5ae",
+  "dark": "#45423e",
+  "frame": "#8c979a",
+  "sandstone": "#8c979a",
+  "concrete": "#e5e3dc",
+  "blue": "#2c3f7a"
+ },
+ "attribution": {
+  "title": "De Kandelaar, Burgemeester Vening Meineszlaan 64, Amsterdam (Salvation Army corps building, 1963)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012149095/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012149095 (CC0): the hall's folded south wall with its tall slit windows, the faceted east end studded with a grid of dark bosses and the red shield, the two-storey house with its window ribbon and red casements, the glazed entrance pavilion with DE KANDELAAR on its white fascia, and the low west wing with the red garage door, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}

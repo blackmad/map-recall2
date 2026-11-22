@@ -1,0 +1,86 @@
+{
+ "id": "de-coenen-coenenstraat",
+ "countedBy": "blind counter subagent (photo only, recipe section 7 rules), lane landmarks-r12-b, 2026-11-22, from w01-146.jpg (rectified at 50 px/m; the counter estimated ~60): first floor four windows (x 97-1117 px), top floor seven between 0.4 m brick piers (x 100-1115 px). Ground floor: the counter listed three wide windows (x 108-938 px) and set the glazed openings aside as doors/small: the side door's fanlight (x 25-68), the recessed entrance porch with its glazed door (x 1066-1170) and the three-light transom window over it (checked by the lane on a crop of the same photo), and the small window right of the entrance (x 1228-1255); recipe section 7 counts glazed doors and small windows, so band 1 is 7. alongM stops at the end of the street front (26.4 m): the recessed north-east bay to its right is not in the photo; heightM drops the roof lights above the eaves.",
+ "facades": [
+  {
+   "name": "Johannes M. Coenenstraat front",
+   "bearing": 146,
+   "heightM": [
+    0,
+    13.7
+   ],
+   "photo": "artifacts/landmark-briefs/de-coenen-coenenstraat/w01-146.jpg",
+   "rows": [
+    7,
+    4,
+    7
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    26.4
+   ],
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-146.jpg (TMX7316010203-002800_pano_0012_000005, 2022, rectified at 50 px/m), blind counter pixel ranges: the side door fanlight x 25-68, three wide windows x 108-308, 420-622, 733-938, the entrance porch x 1066-1170 with its three-light transom over it, the small window x 1228-1255 (listed left to right by left edge: the transom over the porch starts a little left of the porch opening)",
+     "openings": [
+      {
+       "kind": "fanlight",
+       "w": 0.9
+      },
+      {
+       "kind": "window",
+       "w": 4.0
+      },
+      {
+       "kind": "window",
+       "w": 4.0
+      },
+      {
+       "kind": "window",
+       "w": 4.1
+      },
+      {
+       "kind": "transom",
+       "w": 2.1
+      },
+      {
+       "kind": "door",
+       "w": 2.1
+      },
+      {
+       "kind": "small-window",
+       "w": 0.5
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w01-146.jpg (TMX7316010203-002800_pano_0012_000005, 2022, rectified at 50 px/m), blind counter pixel ranges: two wide windows x 97-315 and 412-630, two narrower ones x 727-895 and 950-1117",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 4.4
+      },
+      {
+       "kind": "window",
+       "w": 4.4
+      },
+      {
+       "kind": "window",
+       "w": 3.4
+      },
+      {
+       "kind": "window",
+       "w": 3.3
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

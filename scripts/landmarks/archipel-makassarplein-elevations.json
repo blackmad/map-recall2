@@ -1,0 +1,88 @@
+{
+ "id": "archipel-makassarplein",
+ "countedBy": "lane landmarks-r12-a from the rectified crops w01-359.jpg (TMX7316010203-001693_pano_0000_001763, 2020) and w02-284.jpg (TMX7316010203-002140_pano_0001_001104, 2021), 50 px/m, 2026-11-22, under the ribbon convention. N: ground band, the E wing's window and porthole, the entrance's two glazed runs (split by the 0.55 m dark panel right of the door), the W wing's porthole and window (6); the fan lunette above (1); 7 axes; the hall's roof behind is the one silhouette peak. W wing end: three windows and the glazed door unit (4), 4 axes, flat.",
+ "facades": [
+  {
+   "name": "N range on the square",
+   "bearing": 359,
+   "photo": "artifacts/landmark-briefs/archipel-makassarplein/w01-359.jpg",
+   "rows": [
+    6,
+    1
+   ],
+   "columns": 7,
+   "symmetric": false,
+   "gables": 1,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-359.jpg (TMX7316010203-001693_pano_0000_001763, 2020): E wing window t 2.7-3.95, porthole 1.1 m at t 6.3, entrance runs t 8.95-11.95 and 12.5-14.1, porthole at t 16.76, W wing window t 19.1-20.7",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 1.25
+      },
+      {
+       "kind": "porthole",
+       "w": 1.1
+      },
+      {
+       "kind": "entrance run",
+       "w": 3
+      },
+      {
+       "kind": "entrance run",
+       "w": 1.4
+      },
+      {
+       "kind": "porthole",
+       "w": 1.1
+      },
+      {
+       "kind": "window",
+       "w": 1.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "W wing end",
+   "bearing": 284,
+   "photo": "artifacts/landmark-briefs/archipel-makassarplein/w02-284.jpg",
+   "rows": [
+    4
+   ],
+   "columns": 4,
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 2,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w02-284.jpg (TMX7316010203-002140_pano_0001_001104, 2021): windows t 0.72-1.56, 1.96-2.82, 3.2-4.0; the glazed door unit t 4.72-7.56",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 0.84
+      },
+      {
+       "kind": "window",
+       "w": 0.86
+      },
+      {
+       "kind": "window",
+       "w": 0.8
+      },
+      {
+       "kind": "door unit",
+       "w": 2.84
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

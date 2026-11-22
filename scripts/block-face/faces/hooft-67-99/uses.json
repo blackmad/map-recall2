@@ -1,0 +1,592 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (face cache), fetched 2026-11-22T14:05:59.665Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012254583",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 67",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 813,
+     "bagId": "0363010000769985"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 67",
+     "use": "winkelfunctie",
+     "areaM2": 651,
+     "bagId": "0363010012165472"
+    },
+    {
+     "address": "Honthorststraat 2-2B",
+     "use": "kantoorfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012165474"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786712,
+     "lngLat": [
+      4.8809632,
+      52.3602368
+     ],
+     "tags": {
+      "check_date": "2026-07-13",
+      "name": "Louis Vuitton",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156055",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 238,
+     "bagId": "0363010000769989"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786711,
+     "lngLat": [
+      4.8808291,
+      52.3602024
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "69",
+      "addr:postcode": "1071BP",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Longchamp",
+      "brand:wikidata": "Q1869471",
+      "brand:wikipedia": "en:Longchamp (company)",
+      "name": "Longchamp",
+      "phone": "+31 20 686 1374",
+      "shop": "fashion_accessories",
+      "website": "https://www.longchamp.com"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159753",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000769996"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786710,
+     "lngLat": [
+      4.8807405,
+      52.3601819
+     ],
+     "tags": {
+      "name": "Karen Millen",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161000",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 73-H",
+     "use": "winkelfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000770002"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 73",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 346,
+     "bagId": "0363010012062200"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786708,
+     "lngLat": [
+      4.8806601,
+      52.3601606
+     ],
+     "tags": {
+      "name": "Bulgari",
+      "shop": "cosmetics"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156592",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000770007"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153236",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 900,
+     "bagId": "0363010012569032"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000770013"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166585",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 79-H",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000770017"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 79-H",
+     "use": "winkelfunctie",
+     "areaM2": 621,
+     "bagId": "0363010012572468"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776727,
+     "lngLat": [
+      4.8803825,
+      52.3600729
+     ],
+     "tags": {
+      "name": "Oger",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160724",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 81-H",
+     "use": "winkelfunctie",
+     "areaM2": 208,
+     "bagId": "0363010000770022"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160820",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 83",
+    "Pieter Cornelisz. Hooftstraat 85B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 83",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000770027"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 85B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012144417"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 83",
+     "use": "winkelfunctie",
+     "areaM2": 286,
+     "bagId": "0363010012144418"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776726,
+     "lngLat": [
+      4.8802175,
+      52.3600361
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17",
+      "addr:postcode": "1071BL",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Wolford",
+      "brand:wikidata": "Q431607",
+      "brand:wikipedia": "en:Wolford",
+      "name": "Wolford",
+      "opening_hours": "Mo-Sa 10:00-17:00",
+      "phone": "+31 20 470 1737",
+      "shop": "clothes",
+      "website": "https://www.wolfordshop.nl"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160740",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 85A",
+    "Pieter Cornelisz. Hooftstraat 85B",
+    "Pieter Cornelisz. Hooftstraat 85C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 85A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000995084"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 85B",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000995085"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 85C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012144416"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706786709,
+     "lngLat": [
+      4.8801531,
+      52.3600263
+     ],
+     "tags": {
+      "currency:BCH": "yes",
+      "fixme": "resurvey currency:BCH=yes",
+      "name": "Philipp Plein",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160907",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 87A",
+    "Pieter Cornelisz. Hooftstraat 87B",
+    "Pieter Cornelisz. Hooftstraat 87C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 87A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000770034"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 87B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000770035"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 87C",
+     "use": "woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000770036"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236082",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 91",
+    "Pieter Cornelisz. Hooftstraat 91B",
+    "Pieter Cornelisz. Hooftstraat 91A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 91",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 628,
+     "bagId": "0363010001017354"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 91",
+     "use": "winkelfunctie",
+     "areaM2": 720,
+     "bagId": "0363010012099742"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 91B",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012146378"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 91A",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010012146377"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236117",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 93",
+    "Pieter Cornelisz. Hooftstraat 93A",
+    "Pieter Cornelisz. Hooftstraat 93B",
+    "Pieter Cornelisz. Hooftstraat 93C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 93",
+     "use": "winkelfunctie",
+     "areaM2": 281,
+     "bagId": "0363010000770047"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 93A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012099743"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 93B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012099744"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 93C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012099745"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 93",
+     "use": "winkelfunctie",
+     "areaM2": 720,
+     "bagId": "0363010012146376"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776725,
+     "lngLat": [
+      4.8798916,
+      52.3599435
+     ],
+     "tags": {
+      "name": "Oger",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236660",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 286,
+     "bagId": "0363010001171273"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 242,
+     "bagId": "0363010012080842"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776724,
+     "lngLat": [
+      4.879791,
+      52.3599214
+     ],
+     "tags": {
+      "brand": "Liu Jo",
+      "brand:wikidata": "Q3835099",
+      "brand:wikipedia": "en:Liu·Jo",
+      "name": "Liu Jo",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235895",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 97",
+     "use": "winkelfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000998535"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776723,
+     "lngLat": [
+      4.879707,
+      52.3599063
+     ],
+     "tags": {
+      "brand": "Hermès",
+      "brand:wikidata": "Q843887",
+      "name": "Hermès",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158770",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 229,
+     "bagId": "0363010000768623"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776722,
+     "lngLat": [
+      4.8796238,
+      52.3598621
+     ],
+     "tags": {
+      "name": "Cucinelli",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T14:05:59.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

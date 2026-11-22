@@ -1,0 +1,367 @@
+{
+ "schemaVersion": 1,
+ "id": "archipel-makassarplein",
+ "pand": "0363100012161696",
+ "brief": "scripts/landmarks/archipel-makassarplein-brief.md",
+ "signature": [
+  "n-portholes",
+  "h-lettering",
+  "n-lunette",
+  "h-black-boards",
+  "n-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-359",
+   "bearing": 359,
+   "lengthM": 22.6,
+   "centre": [
+    4.941522,
+    52.364826
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001693_pano_0000_001763",
+   "capturedAt": "2020-05-07",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-portholes",
+     "kind": "window-shape",
+     "where": "a round porthole window in each brick wing of the north range, about 1.1 m across, centre 1.7 m up",
+     "approxSizeM": [
+      1.1,
+      1.1
+     ],
+     "plan": "modelled",
+     "how": "dark extruded ring with a glass disc and a horizontal bar, on the wall face (not cut through)"
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-entrance",
+     "kind": "other",
+     "where": "the dark-framed glazed entrance between the wings: six glazed bays and a double door under a dark fascia",
+     "approxSizeM": [
+      5.8,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "five holed openings in a dark face with the double door; the transom lights over them not drawn"
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-lunette",
+     "kind": "window-shape",
+     "where": "a half-round fan lunette with radiating glazing bars over the entrance, at the low edge of the hall's grey roof",
+     "approxSizeM": [
+      3.6,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "half-round dormer body in the roof colour, glass half disc, wood arc, hub and seven rays"
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-wing-windows",
+     "kind": "window-shape",
+     "where": "one tall dark-framed window in each wing beside the porthole",
+     "approxSizeM": [
+      1.3,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "opening() with a transom bar"
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-fascia",
+     "kind": "other",
+     "where": "dark grey fascia under the flat roofs of the brick wings",
+     "approxSizeM": [
+      22,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "slab along every rebuilt brick wall top"
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-light-headers",
+     "kind": "other",
+     "where": "scattered pale header bricks in the red brick",
+     "approxSizeM": [
+      0.2,
+      0.05
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "single bricks"
+     }
+    },
+    {
+     "seenIn": "TMX7316010203-001693_pano_0000_001763",
+     "id": "n-ac-unit",
+     "kind": "other",
+     "where": "an air-conditioning unit on the roof",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "plant"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-284",
+   "bearing": 284,
+   "lengthM": 8.9,
+   "centre": [
+    4.94134,
+    52.364785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001104",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001104",
+     "id": "w-windows",
+     "kind": "window-shape",
+     "where": "three dark-framed windows and a glazed door unit (side light, door, door, panel) in the west wing end",
+     "approxSizeM": [
+      2.9,
+      2.7
+     ],
+     "plan": "modelled",
+     "how": "opening() holes; the door unit as one cols-3 door opening"
+    }
+   ]
+  },
+  {
+   "tag": "w03-74",
+   "bearing": 74,
+   "lengthM": 8.9,
+   "centre": [
+    4.9417065,
+    52.3647895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002778_pano_0002_000522",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002778_pano_0002_000522",
+     "id": "e-door",
+     "kind": "other",
+     "where": "a grey-framed glazed double door in the east wing end; the left part of the wall hidden by a green substation kiosk in front",
+     "approxSizeM": [
+      1.5,
+      2.45
+     ],
+     "plan": "modelled",
+     "how": "cols-2 door opening"
+    },
+    {
+     "seenIn": "TMX7316010203-002778_pano_0002_000522",
+     "id": "e-substation",
+     "kind": "other",
+     "where": "the green substation kiosk with posters standing in front of the wall",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate structure, not this pand; it hides the wall behind"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-254",
+   "bearing": 254,
+   "lengthM": 8.6,
+   "centre": [
+    4.9414485,
+    52.36471
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001107",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001107",
+     "id": "h-lettering",
+     "kind": "lettering",
+     "where": "ARCHIPEL in lime green letters high on the hall's black west side",
+     "approxSizeM": [
+      1.9,
+      0.42
+     ],
+     "plan": "modelled",
+     "how": "letters() in the kit's block capitals (the original is a rounded mixed-case display face)"
+    },
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001107",
+     "id": "h-black-boards",
+     "kind": "other",
+     "where": "the hall walls in black vertical boarding",
+     "approxSizeM": [
+      8.6,
+      6
+     ],
+     "plan": "modelled",
+     "how": "black face with a batten every 0.45 m"
+    },
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001107",
+     "id": "h-porch",
+     "kind": "other",
+     "where": "the recessed porch: a yellow wall and a glazed front in wood frames with a red-framed door",
+     "approxSizeM": [
+      5.5,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "a door-height opening with a yellow back and a 0.6 m deep cols-4 glazed opening in wood frames; the red door frame not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w05-104",
+   "bearing": 104,
+   "lengthM": 8.5,
+   "centre": [
+    4.941603,
+    52.364712
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-26_07-29-39_00374",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "recording_2025-09-26_07-29-39_00374",
+     "id": "h-east-glazing",
+     "kind": "window-shape",
+     "where": "a three-light glazed door unit in wood frames in the hall's east side",
+     "approxSizeM": [
+      3,
+      2.45
+     ],
+     "plan": "modelled",
+     "how": "cols-3 door opening with wood frames"
+    },
+    {
+     "seenIn": "recording_2025-09-26_07-29-39_00374",
+     "id": "h-grey-roof",
+     "kind": "other",
+     "where": "the hall's pale grey roof rising to the south",
+     "approxSizeM": [
+      12,
+      9
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG roof plane in the measured grey"
+    }
+   ]
+  },
+  {
+   "tag": "w06-179",
+   "bearing": 179,
+   "lengthM": 8.3,
+   "centre": [
+    4.941527,
+    52.364674
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001112",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001112",
+     "id": "s-hall-end",
+     "kind": "other",
+     "where": "the hall's south end, almost entirely behind a tree",
+     "approxSizeM": [
+      8.3,
+      7
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "tree in full leaf in the only panorama; drawn as plain black boarding"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-179",
+   "bearing": 179,
+   "lengthM": 7.3,
+   "centre": [
+    4.9416715,
+    52.36475
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-179",
+   "bearing": 179,
+   "lengthM": 7.3,
+   "centre": [
+    4.9413775,
+    52.3647465
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002140_pano_0001_001110",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002140_pano_0001_001110",
+     "id": "s-wing-door",
+     "kind": "other",
+     "where": "a grey door with a dark light in the east wing's south end",
+     "approxSizeM": [
+      1.7,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "cols-2 door opening"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012161696",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012161696",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012161696",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

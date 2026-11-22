@@ -1,0 +1,114 @@
+{
+ "id": "commandementsgebouw",
+ "countedBy": "lane landmarks-r12, 2026-11-22, from w02-145.jpg (TMX7316010203-000248_pano_0000_000101, 2017, 48 px/m): lower band 16 windows left of the entrance, the glazed door pair (one opening, its own axis; the clerestory over it sits in the band above the door and merges with it), 4 wider windows right of it, 21 in all; upper band 22 windows; the grey posts between windows are 0.34 m, so each window is its own opening. Openings are the glass only: the dark slots are the 0.03 m panel joints and the louvres, not openings.",
+ "facades": [
+  {
+   "name": "south-east",
+   "bearing": 145,
+   "photo": "artifacts/landmark-briefs/commandementsgebouw/w02-145.jpg",
+   "rows": [
+    21,
+    22
+   ],
+   "columns": 23,
+   "symmetric": false,
+   "gables": 0,
+   "openings": [
+    "glass"
+   ],
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w02-145: sixteen ribbon windows left of the entrance, the glazed double door (2.6 m, to the ground), four windows in wider bays right of it",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "window",
+       "w": 1.57
+      },
+      {
+       "kind": "door",
+       "w": 2.6
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
