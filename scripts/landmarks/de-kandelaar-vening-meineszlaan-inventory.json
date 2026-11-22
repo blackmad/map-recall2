@@ -1,0 +1,476 @@
+{
+ "schemaVersion": 1,
+ "id": "de-kandelaar-vening-meineszlaan",
+ "pand": "0363100012149095",
+ "brief": "scripts/landmarks/de-kandelaar-vening-meineszlaan-brief.md",
+ "signature": [
+  "h-studs",
+  "h-slits",
+  "p-name",
+  "h-shield",
+  "u-ribbon"
+ ],
+ "walls": [
+  {
+   "tag": "w01-285",
+   "bearing": 285,
+   "lengthM": 23.4,
+   "centre": [
+    4.8328225,
+    52.383308
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240924_1052_Track05_Sphere_00211",
+   "capturedAt": "2024-09-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-garage",
+     "kind": "other",
+     "where": "red garage door at the north end of the west wing under a white panel",
+     "approxSizeM": [
+      2.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "red and white slabs",
+     "seenIn": "TMX7316010203-002067_pano_0000_002697"
+    },
+    {
+     "id": "g-windows",
+     "kind": "window-shape",
+     "where": "five white windows with a red split casement in their left third",
+     "approxSizeM": [
+      1.7,
+      1.75
+     ],
+     "plan": "modelled",
+     "how": "win() with a red casement and a red transom bar",
+     "seenIn": "TMX7316010203-002067_pano_0000_002697"
+    },
+    {
+     "id": "g-downpipes",
+     "kind": "other",
+     "where": "two grey downpipes",
+     "approxSizeM": [
+      0.1,
+      3.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipes"
+     },
+     "seenIn": "TMX7316010203-002067_pano_0000_002697"
+    }
+   ]
+  },
+  {
+   "tag": "w02-15",
+   "bearing": 15,
+   "lengthM": 10.9,
+   "centre": [
+    4.8330405,
+    52.383342
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-10-02_10-04-24_00692",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-195",
+   "bearing": 195,
+   "lengthM": 10.8,
+   "centre": [
+    4.8329705,
+    52.383176
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000831_pano_0000_002250",
+   "capturedAt": "2018-07-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-name",
+     "kind": "lettering",
+     "where": "'DE KANDELAAR' in red capitals on the white fascia of the glazed entrance pavilion",
+     "approxSizeM": [
+      3.4,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "letters() in red on the white fascia",
+     "seenIn": "TMX7316010203-000831_pano_0000_002250"
+    },
+    {
+     "id": "p-glazing",
+     "kind": "window-shape",
+     "where": "floor-to-fascia glazing between white mullions with pale curtains",
+     "approxSizeM": [
+      11,
+      3.2
+     ],
+     "plan": "modelled",
+     "how": "glass, white mullions, curtain panels",
+     "seenIn": "TMX7316010203-000831_pano_0000_002250"
+    },
+    {
+     "id": "p-door-shield",
+     "kind": "sign",
+     "where": "red door and a small red shield sign at the west end of the pavilion",
+     "approxSizeM": [
+      1.0,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "red door slab, shield()",
+     "seenIn": "TMX7316010203-000831_pano_0000_002250"
+    },
+    {
+     "id": "p-flag",
+     "kind": "other",
+     "where": "Salvation Army flag on a pole in the forecourt",
+     "approxSizeM": [
+      0.5,
+      7
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "free-standing pole in the forecourt, not on the pand"
+     },
+     "seenIn": "TMX7316010203-000831_pano_0000_002250"
+    },
+    {
+     "id": "p-campanile",
+     "kind": "tower",
+     "where": "three-post white concrete campanile at the forecourt corner of the hall",
+     "approxSizeM": [
+      1.5,
+      12
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate structure outside BAG pand 0363100012149095; it belongs to its own model"
+     },
+     "seenIn": "TMX7316010203-000831_pano_0000_002250"
+    }
+   ]
+  },
+  {
+   "tag": "w04-195",
+   "bearing": 195,
+   "lengthM": 10,
+   "centre": [
+    4.8327825,
+    52.383104
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001326_pano_0000_005074",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "u-ribbon",
+     "kind": "window-shape",
+     "where": "the house's upper-floor ribbon of glazing with white panels and red opening casements",
+     "approxSizeM": [
+      9.2,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "win() with red casement frames and white panels at the measured positions",
+     "seenIn": "TMX7316010203-001326_pano_0000_005074"
+    },
+    {
+     "id": "u-lower",
+     "kind": "window-shape",
+     "where": "two wide ground-floor windows with a red casement each",
+     "approxSizeM": [
+      3.8,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "win()",
+     "seenIn": "TMX7316010203-001326_pano_0000_005074"
+    },
+    {
+     "id": "u-street-plate",
+     "kind": "sign",
+     "where": "blue street-name plate on the house front",
+     "approxSizeM": [
+      1.1,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "blue slab",
+     "seenIn": "TMX7316010203-001326_pano_0000_005074"
+    },
+    {
+     "id": "u-fascia",
+     "kind": "other",
+     "where": "white fascia board at the roof edge",
+     "approxSizeM": [
+      10,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "white slab 0.3 m proud",
+     "seenIn": "TMX7316010203-001326_pano_0000_005074"
+    }
+   ]
+  },
+  {
+   "tag": "w05-285",
+   "bearing": 285,
+   "lengthM": 8.1,
+   "centre": [
+    4.832726,
+    52.38315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002509_pano_0004_002196",
+   "capturedAt": "2022-04-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "v-slit",
+     "kind": "window-shape",
+     "where": "tall slit window with a red middle casement on the house's west side",
+     "approxSizeM": [
+      1.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "how": "white frame, glass, red casement win()",
+     "seenIn": "TMX7316010203-002509_pano_0004_002196"
+    },
+    {
+     "id": "v-shield",
+     "kind": "sign",
+     "where": "red shield 'Leger des Heils' over the side door and the blue plaque under it",
+     "approxSizeM": [
+      0.75,
+      0.75
+     ],
+     "plan": "simplified",
+     "how": "shield(), blue slab",
+     "seenIn": "TMX7316010203-002509_pano_0004_002196"
+    },
+    {
+     "id": "v-door",
+     "kind": "other",
+     "where": "red side door in a white frame",
+     "approxSizeM": [
+      1.0,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "white frame, red door slab",
+     "seenIn": "TMX7316010203-002509_pano_0004_002196"
+    }
+   ]
+  },
+  {
+   "tag": "w06-15",
+   "bearing": 15,
+   "lengthM": 8,
+   "centre": [
+    4.832922,
+    52.383401
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000079_pano_0004_000442",
+   "capturedAt": "2016-08-18",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-105",
+   "bearing": 105,
+   "lengthM": 7.9,
+   "centre": [
+    4.8328685,
+    52.3831275
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240918_0854_Track07_Sphere_01242",
+   "capturedAt": "2024-09-18",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-104",
+   "bearing": 104,
+   "lengthM": 7.9,
+   "centre": [
+    4.833414,
+    52.3831875
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-10-02_08-33-49_01079",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-studs",
+     "kind": "relief",
+     "where": "the faceted east end of the hall: a square grid of dark round bosses in the buff brick, 1.0 m apart in each row and 1.05 m between rows, the rows aligned",
+     "approxSizeM": [
+      31,
+      7
+     ],
+     "plan": "simplified",
+     "how": "studs(): 20 cm square dark bosses on the grid measured on w08-104.alt (TMX7316010203-001326_pano_0000_004058, 50 px/m), on every facet of the east end (round in the photo, square for budget)",
+     "seenIn": "recording_2025-10-02_08-33-49_01079"
+    },
+    {
+     "id": "h-shield",
+     "kind": "sign",
+     "where": "red Salvation Army shield 'Leger des Heils' high on the south-east facet",
+     "approxSizeM": [
+      0.8,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "shield(): red shield polygon with three white bands for the lettering",
+     "seenIn": "recording_2025-10-02_08-33-49_01079"
+    },
+    {
+     "id": "h-cap",
+     "kind": "other",
+     "where": "thin grey metal roof edge along the hall",
+     "approxSizeM": [
+      40,
+      0.2
+     ],
+     "plan": "modelled",
+     "how": "grey cap slab on every hall edge",
+     "seenIn": "recording_2025-10-02_08-33-49_01079"
+    }
+   ]
+  },
+  {
+   "tag": "w09-105",
+   "bearing": 105,
+   "lengthM": 6.3,
+   "centre": [
+    4.833106,
+    52.3833025
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-105",
+   "bearing": 105,
+   "lengthM": 4.8,
+   "centre": [
+    4.833056,
+    52.383185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001326_pano_0000_005066",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-slits",
+     "kind": "window-shape",
+     "where": "tall slit windows on each south-east fold of the hall's folded south wall, a red panel band across them",
+     "approxSizeM": [
+      0.4,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "slitWindow() on each of the seven fold faces",
+     "seenIn": "TMX7316010203-001326_pano_0000_005066"
+    }
+   ]
+  },
+  {
+   "tag": "w11-105",
+   "bearing": 105,
+   "lengthM": 4.4,
+   "centre": [
+    4.832971,
+    52.383373
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-315",
+   "bearing": 315,
+   "lengthM": 4.2,
+   "centre": [
+    4.8331365,
+    52.3832845
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002509_pano_0004_002370",
+   "capturedAt": "2022-04-12",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-75",
+   "bearing": 75,
+   "lengthM": 4.2,
+   "centre": [
+    4.83342,
+    52.38324
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002653_pano_0006_000144",
+   "capturedAt": "2022-06-30",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-256",
+   "bearing": 256,
+   "lengthM": 4,
+   "centre": [
+    4.8330955,
+    52.3831855
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001326_pano_0000_005074",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012149095 and addresses (Burgemeester Vening Meineszlaan 64, Johan Herman Doornstraat 1)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012149095/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012149095",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (orthophoto, roof)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
