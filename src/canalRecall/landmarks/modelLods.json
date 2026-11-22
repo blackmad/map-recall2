@@ -7067,12 +7067,12 @@
   }
  },
  "school-raamplein-1": {
-  "sourceHash": "e3943d3cacdef018",
+  "sourceHash": "46e5f842ac1eb589",
   "buildVersion": 2,
-  "bytes": 97740,
+  "bytes": 97744,
   "triangles": 4884,
   "lod2": {
-   "sourceHash": "e3943d3cacdef018",
+   "sourceHash": "46e5f842ac1eb589",
    "buildVersion": 6,
    "bytes": 17916,
    "triangles": 632
@@ -7103,15 +7103,15 @@
   }
  },
  "sarphatistraat-47": {
-  "sourceHash": "b8e229affa2356be",
+  "sourceHash": "0dad137957f93fea",
   "buildVersion": 2,
-  "bytes": 61880,
-  "triangles": 2428,
+  "bytes": 62684,
+  "triangles": 2478,
   "lod2": {
-   "sourceHash": "b8e229affa2356be",
+   "sourceHash": "0dad137957f93fea",
    "buildVersion": 6,
-   "bytes": 9656,
-   "triangles": 255
+   "bytes": 9772,
+   "triangles": 261
   }
  },
  "westerdok-4": {
@@ -7124,6 +7124,30 @@
    "buildVersion": 6,
    "bytes": 23992,
    "triangles": 1495
+  }
+ },
+ "koetshuis-keizersgracht-607": {
+  "sourceHash": "0784970aa356d418",
+  "buildVersion": 2,
+  "bytes": 26080,
+  "triangles": 842,
+  "lod2": {
+   "sourceHash": "0784970aa356d418",
+   "buildVersion": 6,
+   "bytes": 4704,
+   "triangles": 86
+  }
+ },
+ "uva-binnengasthuisstraat-9": {
+  "sourceHash": "1d1333ddd967b7f5",
+  "buildVersion": 2,
+  "bytes": 32748,
+  "triangles": 1161,
+  "lod2": {
+   "sourceHash": "1d1333ddd967b7f5",
+   "buildVersion": 6,
+   "bytes": 5740,
+   "triangles": 130
   }
  }
 }
