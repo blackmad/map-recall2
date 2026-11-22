@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "id": "hotel-notting-hill",
+  "pand": "0363100012178268",
+  "brief": "scripts/landmarks/hotel-notting-hill-brief.md",
+  "signature": [
+    "e-quoins",
+    "e-cornice",
+    "e-shopfronts",
+    "e-dormers",
+    "e-windows",
+    "s-grey-storey",
+    "n-canopy",
+    "s-balconettes"
+  ],
+  "walls": [
+    {
+      "tag": "w01-75",
+      "bearing": 75,
+      "lengthM": 16.1,
+      "centre": [
+        4.8988635,
+        52.3584225
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-07-14_07-34-51_01035",
+      "capturedAt": "2025-07-14",
+      "checked": true,
+      "items": [
+        {
+          "id": "e-quoins",
+          "kind": "other",
+          "where": "stone quoin pilasters at both ends and on the middle axis, from the plinth to the cornice, the cornice breaking forward over each",
+          "approxSizeM": [
+            0.5,
+            13.5
+          ],
+          "plan": "modelled",
+          "how": "stone pilaster slabs with a capital block under the cornice",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-cornice",
+          "kind": "other",
+          "where": "deep light stone cornice with frieze and corona over the second storey, continuous round both fronts",
+          "approxSizeM": [
+            16.1,
+            1.6
+          ],
+          "plan": "modelled",
+          "how": "frieze, bed moulding and projecting corona slabs",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-shopfronts",
+          "kind": "window-shape",
+          "where": "grey stone-clad ground storey with six tall segment-headed glazed openings (hotel lounge): clear glass, a dark transom band at 1.4-1.9 m, frosted green glass below; the fifth is the glazed door",
+          "approxSizeM": [
+            16.1,
+            5.6
+          ],
+          "plan": "modelled",
+          "how": "stone cladding slab, dark frames, glass, dark band and frosted panel per opening, segmental heads",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-windows",
+          "kind": "window-shape",
+          "where": "two-light white-framed windows with a fanlight transom on the first storey, two-light on the second, each under a brick segmental arch with a stone keystone, on a stone sill with a scalloped console",
+          "approxSizeM": [
+            1.3,
+            2.6
+          ],
+          "plan": "modelled",
+          "how": "frame, glass, mullion/transom bars, segmental brick arch, keystone block, sill and console slabs",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-balconette",
+          "kind": "balcony-ironwork",
+          "where": "first-storey French window on the fifth axis with a moulded stone surround and a curved wrought-iron balconette",
+          "approxSizeM": [
+            1.5,
+            3.8
+          ],
+          "plan": "simplified",
+          "how": "stone architrave strips and a box-plan rail of bars and a top rail",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-dormers",
+          "kind": "window-shape",
+          "where": "white dormers, one per window axis, with segmental hoods; the dormer over the balcony axis is larger",
+          "approxSizeM": [
+            1.4,
+            1.6
+          ],
+          "plan": "modelled",
+          "how": "white dormer boxes with glazing and a segmental hood, set into the mansard",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-lamps",
+          "kind": "lamp",
+          "where": "black wall sconces between the upper windows and square lanterns between the ground-floor openings",
+          "approxSizeM": [
+            0.15,
+            0.3
+          ],
+          "plan": "simplified",
+          "how": "small dark boxes on the piers",
+          "seenIn": "recording_2025-07-14_07-34-51_01035"
+        },
+        {
+          "id": "e-lettering",
+          "kind": "lettering",
+          "where": "faint engraved name in the cladding over the door and HOTEL NOTTING HILL on the lounge glass",
+          "approxSizeM": [
+            2.5,
+            0.3
+          ],
+          "plan": "skipped",
+          "seenIn": "recording_2025-07-14_07-34-51_01035",
+          "skip": {
+            "reason": "too-small",
+            "note": "engraved letters flush with the cladding and a glass manifestation, unreadable at rider distance"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "w02-255",
+      "bearing": 255,
+      "lengthM": 15,
+      "centre": [
+        4.8985335,
+        52.358345
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002994_pano_0000_000007",
+      "capturedAt": "2023-03-13",
+      "checked": true,
+      "items": [],
+      "note": "the crop shows the neighbouring Westeinde houses: the hotel west wall is not in view (shell brick only)"
+    },
+    {
+      "tag": "w03-165",
+      "bearing": 165,
+      "lengthM": 13.6,
+      "centre": [
+        4.898726,
+        52.358288
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002545_pano_0000_000344",
+      "capturedAt": "2022-04-26",
+      "checked": true,
+      "items": [
+        {
+          "id": "s-quoins",
+          "kind": "other",
+          "where": "stone corner quoins and two pilasters dividing two narrow end bays from four middle bays",
+          "approxSizeM": [
+            0.55,
+            13.5
+          ],
+          "plan": "modelled",
+          "how": "stone pilaster slabs with capital blocks",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-grey-storey",
+          "kind": "other",
+          "where": "ground storey in grey-mauve brick over a light stone plinth with low segmental basement lights, a stone string course over it",
+          "approxSizeM": [
+            16.6,
+            5.7
+          ],
+          "plan": "modelled",
+          "how": "grey brick slab, stone plinth, basement windows, stone band",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-windows",
+          "kind": "window-shape",
+          "where": "three storeys of two-light windows (transoms on the lower two), segmental brick arches with stone keystones, stone sills on scalloped consoles",
+          "approxSizeM": [
+            1.35,
+            2.6
+          ],
+          "plan": "modelled",
+          "how": "as the east front",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-balconettes",
+          "kind": "balcony-ironwork",
+          "where": "the two end-bay first-storey windows in moulded stone surrounds with wrought-iron balconettes",
+          "approxSizeM": [
+            1.6,
+            3.8
+          ],
+          "plan": "simplified",
+          "how": "stone surround strips and a rail of bars",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-cornice",
+          "kind": "other",
+          "where": "the cornice and mansard dormers, one per axis",
+          "approxSizeM": [
+            16.6,
+            3
+          ],
+          "plan": "modelled",
+          "how": "cornice slabs and white dormers",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-lamps",
+          "kind": "lamp",
+          "where": "black sconces between the upper windows, two lanterns on the ground storey",
+          "approxSizeM": [
+            0.15,
+            0.3
+          ],
+          "plan": "simplified",
+          "how": "small dark boxes",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344"
+        },
+        {
+          "id": "s-street-lamp",
+          "kind": "lamp",
+          "where": "cast-iron street lamp on the pavement in front",
+          "approxSizeM": [
+            0.5,
+            4.5
+          ],
+          "plan": "skipped",
+          "seenIn": "TMX7316010203-002545_pano_0000_000344",
+          "skip": {
+            "reason": "not-visible",
+            "note": "street furniture on the public pavement, not part of the pand"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "w04-302",
+      "bearing": 302,
+      "lengthM": 13,
+      "centre": [
+        4.8985545,
+        52.35846
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": []
+    },
+    {
+      "tag": "w05-76",
+      "bearing": 76,
+      "lengthM": 5.5,
+      "centre": [
+        4.898821,
+        52.35852
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316060226-000020_pano_0000_000365",
+      "capturedAt": "2016-08-15",
+      "checked": true,
+      "items": [
+        {
+          "id": "n5-bays",
+          "kind": "window-shape",
+          "where": "two more window axes north of the middle pilaster, two glazed openings in the stone-clad ground storey, corner quoin",
+          "approxSizeM": [
+            5.5,
+            15
+          ],
+          "plan": "modelled",
+          "how": "as the east front",
+          "seenIn": "TMX7316060226-000020_pano_0000_000365"
+        }
+      ]
+    },
+    {
+      "tag": "w06-164",
+      "bearing": 164,
+      "lengthM": 4.3,
+      "centre": [
+        4.898593,
+        52.3582845
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002975_pano_0007_000115",
+      "capturedAt": "2023-02-20",
+      "checked": true,
+      "items": [
+        {
+          "id": "a-annexe",
+          "kind": "other",
+          "where": "low brick annexe set back from the south front: blind segmental-arched door recess, stone cornice at about 6-7 m and a green zinc mansard",
+          "approxSizeM": [
+            4.3,
+            9
+          ],
+          "plan": "simplified",
+          "how": "blind arch recess and cornice slab; the 3DBAG shell gives the mansard",
+          "seenIn": "TMX7316010203-002975_pano_0007_000115"
+        }
+      ]
+    },
+    {
+      "tag": "w07-75",
+      "bearing": 75,
+      "lengthM": 4.2,
+      "centre": [
+        4.898858,
+        52.358329
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-07-14_07-34-51_01037",
+      "capturedAt": "2025-07-14",
+      "checked": true,
+      "items": [
+        {
+          "id": "n-canopy",
+          "kind": "canopy",
+          "where": "curved glass canopy on steel brackets over the hotel entrance at about 4.6-5.3 m",
+          "approxSizeM": [
+            4,
+            0.5
+          ],
+          "plan": "modelled",
+          "how": "thin glazed slab on a dark frame and brackets",
+          "seenIn": "recording_2025-07-14_07-34-51_01037"
+        },
+        {
+          "id": "n-steps",
+          "kind": "other",
+          "where": "four granite steps up to the glazed entrance doors, spreading onto the pavement",
+          "approxSizeM": [
+            4,
+            0.7
+          ],
+          "plan": "modelled",
+          "how": "stacked stone slabs",
+          "seenIn": "recording_2025-07-14_07-34-51_01037"
+        },
+        {
+          "id": "n-sign-block",
+          "kind": "sign",
+          "where": "low dark stone block at the foot of the steps lettered HOTEL NOTTING HILL",
+          "approxSizeM": [
+            1.6,
+            0.9
+          ],
+          "plan": "simplified",
+          "how": "dark block with a light lettering band",
+          "seenIn": "recording_2025-07-14_07-34-51_01037"
+        },
+        {
+          "id": "n-windows",
+          "kind": "window-shape",
+          "where": "one window per upper storey over the entrance, keystones and sill consoles as the fronts",
+          "approxSizeM": [
+            1.3,
+            2.6
+          ],
+          "plan": "modelled",
+          "how": "as the east front",
+          "seenIn": "recording_2025-07-14_07-34-51_01037"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Gemeente Amsterdam panoramas",
+      "url": "https://api.data.amsterdam.nl/panorama/",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "name": "Gemeentelijk monument 200110 (Westeinde 2-26), api.data.amsterdam.nl",
+      "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/a565102d-10d1-4466-93f8-e60802bda6cc?_format=json",
+      "licence": "CC0"
+    },
+    {
+      "name": "3DBAG LoD2.2",
+      "url": "https://3dbag.nl",
+      "licence": "CC BY 4.0"
+    }
+  ]
+}
