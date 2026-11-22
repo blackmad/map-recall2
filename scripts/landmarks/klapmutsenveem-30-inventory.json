@@ -1,0 +1,192 @@
+{
+ "schemaVersion": 1,
+ "id": "klapmutsenveem-30",
+ "pand": "0363100012239388",
+ "brief": "scripts/landmarks/klapmutsenveem-30-brief.md",
+ "signature": [
+  "s-giant-arches",
+  "s-glazed-oriels",
+  "s-white-cornices",
+  "s-pilaster-blocks"
+ ],
+ "walls": [
+  {
+   "tag": "w01-196",
+   "bearing": 196,
+   "lengthM": 192.6,
+   "centre": [
+    4.9305725,
+    52.375254
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000052_pano_0000_000864",
+   "capturedAt": "2016-05-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-giant-arches",
+     "kind": "window-shape",
+     "where": "the two arcade warehouses (s 12-48, 58-97): three tiers of giant round arches over steel-framed glazing, four storeys, two and two, with floor transoms",
+     "approxSizeM": [
+      39,
+      23
+     ],
+     "plan": "modelled",
+     "how": "a tall framed opening per bay and tier with transom bars, a glass half-disc head, white impost blocks and keystone",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-white-cornices",
+     "kind": "other",
+     "where": "two white stone cornices across the arcade warehouses at the tier lines (12.6 m and 18.6 m)",
+     "approxSizeM": [
+      39,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "projecting boxed bands",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-glazed-oriels",
+     "kind": "other",
+     "where": "four dark grey glazed oriel stacks on the pilaster blocks, third storey to the roof, 7-8 m wide",
+     "approxSizeM": [
+      8,
+      14
+     ],
+     "plan": "modelled",
+     "how": "a box 0.9 m proud in the oriel grey with glass panes per storey",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-pilaster-blocks",
+     "kind": "window-shape",
+     "where": "the pilaster blocks (s 107-144, 154-192): two-storey ground arcade of small round-headed windows, white band, white-blocked windows, cornice, recessed window strips with grey spandrel panels and Juliet rails, attic of small arches",
+     "approxSizeM": [
+      37,
+      23
+     ],
+     "plan": "simplified",
+     "how": "one column per 1.85 m: ground and arched windows, recessed strip with grey back and glass slabs, white blocks and bands; the attic arches as glass half-discs",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-passage",
+     "kind": "other",
+     "where": "a two-storey passage under the first oriel of the west pilaster block",
+     "approxSizeM": [
+      5,
+      6
+     ],
+     "plan": "modelled",
+     "how": "a 3 m deep dark recess",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-links",
+     "kind": "other",
+     "where": "two low two-storey links with a garage door each between the blocks",
+     "approxSizeM": [
+      9,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "small windows over a garage opening, white bands",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "s-sbs-sign",
+     "kind": "sign",
+     "where": "a blue sign on the east pilaster block over the ground arcade (blurred in both panoramas)",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "illegible at the crop resolution; a small fascia"
+     },
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    }
+   ]
+  },
+  {
+   "tag": "w02-16",
+   "bearing": 16,
+   "lengthM": 20.2,
+   "centre": [
+    4.9294215,
+    52.375609
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01579",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-west-corner",
+     "kind": "window-shape",
+     "where": "the north end of the west arcade warehouse: the same arched tiers turning the corner, a shop with lettering at the ground",
+     "approxSizeM": [
+      20,
+      23
+     ],
+     "plan": "simplified",
+     "how": "inferred window grid on the shell wall (no measured front)",
+     "seenIn": "recording_2025-06-16_08-26-12_01579"
+    }
+   ]
+  },
+  {
+   "tag": "w03-106",
+   "bearing": 106,
+   "lengthM": 16.8,
+   "centre": [
+    4.9319665,
+    52.3750905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_13-17-24_01856",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-oriel-corner",
+     "kind": "other",
+     "where": "the east end: a grey oriel at the corner, recessed window strips with grey panels and Juliet rails, white blocks",
+     "approxSizeM": [
+      16.8,
+      23
+     ],
+     "plan": "simplified",
+     "how": "inferred grid on the shell wall; the south oriel stack reaches the corner",
+     "seenIn": "recording_2024-10-16_13-17-24_01856"
+    }
+   ]
+  },
+  {
+   "tag": "w04-286",
+   "bearing": 286,
+   "lengthM": 6.2,
+   "centre": [
+    4.930811,
+    52.375398
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001667_pano_0000_001114",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [],
+   "note": "side of the slot to the water: plain brick and windows, nothing notable"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

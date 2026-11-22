@@ -3,13 +3,16 @@
  *
  *   node --import tsx scripts/landmarks/landmark-brief.ts --pand=<BAG pand id> [--id=<slug>] [--min-len=4] [--max=30]
  *        [--height=<m>] [--wiki=nl:Elandsgracht_117,en:...] [--address="Elandsgracht 117"] [--force-skeleton] [--offline]
- *        [--ignore=<neighbour id>,...]
+ *        [--ignore=<neighbour id>,...] [--setback[=<min m>]]
  *
  * Writes
  *  - artifacts/landmark-briefs/<id>/w<NN>-<bearing>.jpg (+ .alt.jpg from another year, .thumb.jpg aimed view) and
  *    contact.jpg: one rectified crop per exposed (non-party) wall >= min-len, every wall, not just the long ones.
  *    The stock `all-walls.ts` defaults (--min-len=14 --max=8) drop the 13.9 m Marnixstraat end wall of the Hoofdbureau,
  *    the one with the Amsterdam-arms relief; review-sheet's --walls=6 drops it too. Default here: 4 m, 30 walls.
+ *  - --setback (lane hand-blocks-c-20261122): also crop the upper fronts that stand behind the footprint (default >= 2 m
+ *    back, foot >= 2.5 m: a podium's housing block), tagged s<NN>-<bearing>, rectified on their own plane from the 3DBAG
+ *    shell (scripts/pand-reference/setback-walls.ts). The footprint's w-walls and their tags are unchanged.
  *  - scripts/landmarks/<id>-brief.md: facts (BAG, 3DBAG, local building facts), monument register text verbatim
  *    (scripts/data/amsterdam-monument-register, data.amsterdam.nl monumenten CC0 + RCE), Wikipedia extracts with URL,
  *    one section per wall with its crops and the ornament checklist, and the signature question.
@@ -28,6 +31,7 @@ import {cachedJson, findPands, neighbourhood, normId, rdToLngLat} from '../pand-
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {aimedThumbnail, loadPano, rectifyWall} from '../pand-reference/rectify.ts';
 import {factsFor} from '../pand-reference/facts.ts';
+import {setbackWallsForPand} from '../pand-reference/setback-walls.ts';
 import {ORNAMENT_KINDS, type LandmarkInventory} from '../../src/canalRecall/landmarks/ornamentInventory.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
@@ -72,13 +76,20 @@ const ignore = new Set(arg('ignore').split(',').filter(Boolean));
 const allWalls = exposedWalls(fp, (await neighbourhood(centre)).filter(o => !ignore.has(o.id))).sort((a, b) => b.len - a.len);
 const walls = allWalls.filter(w => w.len >= minLen).slice(0, maxWalls);
 const dropped = allWalls.length - walls.length;
+// --setback[=m]: the upper fronts behind the footprint, after the footprint walls (their tags do not move)
+const setbackArg = process.argv.find(a => a === '--setback' || a.startsWith('--setback='));
+const setbackWalls: Wall[] = setbackArg
+  ? (await net('3DBAG set-back walls', () => setbackWallsForPand(bag, fp!.ring, {minLen, minSetbackM: setbackArg.includes('=') ? Number(setbackArg.split('=')[1]) : 2}))) ?? []
+  : [];
+if (setbackArg) console.log(`  ${setbackWalls.length} set-back walls (3DBAG shell)`);
 console.log(`${id}: ${allWalls.length} exposed walls, ${walls.length} in the brief (>= ${minLen} m, max ${maxWalls})`);
 
 interface WallRow {tag: string; bearing: number; lengthM: number; centre: [number, number]; pick?: PanoPick; alt?: PanoPick; crop?: string; altCrop?: string; thumb?: string; candidates: number}
 const rows: WallRow[] = [];
-let i = 0;
-for (const w of walls) {
-  const bearing = bearingOf(w), tag = `w${String(++i).padStart(2, '0')}-${bearing}`;
+let i = 0, si = 0;
+for (const w of [...walls, ...setbackWalls]) {
+  const setback = setbackWalls.includes(w);
+  const bearing = bearingOf(w), tag = setback ? `s${String(++si).padStart(2, '0')}-${bearing}` : `w${String(++i).padStart(2, '0')}-${bearing}`;
   const [lng, lat] = rdToLngLat(w.mid);
   const row: WallRow = {tag, bearing, lengthM: Math.round(w.len * 10) / 10, centre: [+lng.toFixed(7), +lat.toFixed(7)], candidates: 0};
   const ranked = (await net(`panoramas ${tag}`, async () => rankPanos(w, await listPanos(w.mid)))) ?? [];

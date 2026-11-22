@@ -41,6 +41,9 @@ export type BlockOpts = {
   setbackColour?: Col;
   /** inferred grid: storey pitch, first upper sill, window width */ storey?: number; firstSill?: number; gridWin?: number;
   /** opening defaults for measured fronts */ defaults?: OpenOpts;
+  /** opening defaults for the inferred grid (absent: the opening's own defaults, a 6 cm frame) */ gridDefaults?: OpenOpts;
+  /** walls left plain (no inferred grid): party walls against a neighbour, blank ends. `n` the outward normal (x, z). */
+  plain?: (w: {n: P2; cx: number; cz: number; len: number; yb: number; yt: number}) => boolean;
 };
 
 type WallInfo = {i: number; f: Frame; len: number; yb: number; yt: number; cx: number; cz: number; rect: boolean; stepTop?: number; stepped?: boolean};
@@ -153,12 +156,13 @@ function gridWall(b: BuildingTools, w: WallInfo, o: BlockOpts) {
   const setback = w.yb > o.setbackAbove, storey = o.storey ?? 2.9, first = o.firstSill ?? 3.9;
   const faceAt = bandFaces(w, 0, w.len, [[99, setback ? (o.setbackColour ?? o.wall) : o.wall]]);
   if (w.len < 2.2) return;
+  if (o.plain?.({n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt})) { coping(b, w, o.ledge); return; }
   const n = Math.max(1, Math.floor(w.len / 2.7)), pitch = w.len / n;
   const floors = setback ? [w.yb + 0.1] : [0.6, ...Array.from({length: 12}, (_, k) => first + storey * k)];
   for (const f of floors) {
     const y0 = setback ? f + 1.0 : f < 1 ? 0.6 : f, y1 = setback ? Math.min(w.yt - 0.3, f + 2.5) : f < 1 ? 2.8 : f + 1.5;
     if (y1 - y0 < 0.8 || y1 > w.yt - 0.4 || y0 < w.yb + 0.1) continue;
-    for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * pitch, {s: 0, w: Math.min(setback ? 2.0 : (o.gridWin ?? 1.5), pitch - 0.6), y: [y0, y1], o: {cols: setback ? 2 : 1}}, {});
+    for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * pitch, {s: 0, w: Math.min(setback ? 2.0 : (o.gridWin ?? 1.5), pitch - 0.6), y: [y0, y1], o: {cols: setback ? 2 : 1}}, o.gridDefaults ?? {});
   }
   coping(b, w, o.ledge);
 }
