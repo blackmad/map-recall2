@@ -1,0 +1,366 @@
+{
+ "schemaVersion": 1,
+ "id": "pakhuis-afrika",
+ "pand": "0363100012087187",
+ "brief": "scripts/landmarks/pakhuis-afrika-brief.md",
+ "signature": [
+  "s-mottled-skin",
+  "s-cantilever-gap",
+  "s-drop-balconies",
+  "s-ij-frame",
+  "s-loading-platform",
+  "s-afrika-letters"
+ ],
+ "walls": [
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 50.3,
+   "centre": [
+    4.921522,
+    52.377072
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002313_pano_0003_000555",
+   "capturedAt": "2021-09-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-ij-frame",
+     "kind": "other",
+     "where": "IJ front, 50 m by 18 m: concrete columns between nine window axes and concrete floor bands on yellow-brown brick (register: concrete skeleton in brick, cross bond)",
+     "approxSizeM": [
+      50.2,
+      18.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "concrete column and band slabs on the brick shell"
+    },
+    {
+     "id": "s-drop-balconies",
+     "kind": "balcony-ironwork",
+     "where": "tilted steel drop balconies hung under about two in three windows, falling away from the wall, two hangers each",
+     "approxSizeM": [
+      2.3,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "tilted deck and two diagonal hangers per balcony, pattern per window read from the 2021 crop"
+    },
+    {
+     "id": "n-slatted-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small grey slatted box balconies in front of the lower half of the other windows",
+     "approxSizeM": [
+      1.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "three-sided grey box per balcony, same pattern"
+    },
+    {
+     "id": "n-red-frames",
+     "kind": "window-shape",
+     "where": "four storeys of nine windows with red-brown frames, 1.7 m wide",
+     "approxSizeM": [
+      1.7,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "glass plus four frame bars in red"
+    },
+    {
+     "id": "s-loading-platform",
+     "kind": "other",
+     "where": "the loading platform (losperron, register) across the full width at 2.4 m with a steel railing; the entrance on the middle axis with a flight down",
+     "approxSizeM": [
+      50,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "deck slab split at the entrance, railing posts and rail, six steps"
+    },
+    {
+     "id": "n-glass-block-north",
+     "kind": "window-shape",
+     "where": "the 2009 block behind and above the warehouse roof: a dark glass grid on its set-back north face",
+     "approxSizeM": [
+      48,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "its 3DBAG north walls drawn in dark glass, no mullion grid"
+    },
+    {
+     "id": "n-platform-base",
+     "kind": "window-shape",
+     "where": "the brick base under the platform with a few small windows and a glazed door",
+     "approxSizeM": [
+      50,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002313_pano_0003_000555",
+     "how": "round 11 recount: two dark openings and a glazed door west of the entrance, four small windows east of it, the steel roller grille"
+    }
+   ]
+  },
+  {
+   "tag": "w02-106",
+   "bearing": 106,
+   "lengthM": 24.6,
+   "centre": [
+    4.9215985,
+    52.3766925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001667_pano_0000_001352",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-mottled-skin",
+     "kind": "other",
+     "where": "tower east face: light grey concrete frame mottled with salmon-red patches, irregular grid of wide windows and narrow slots, different in every storey",
+     "approxSizeM": [
+      24.6,
+      34.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001667_pano_0000_001352",
+     "how": "rasterFront with irregularOpenings per storey; the red-brown blotches as mottleSpots patches (new kit part, round 11) on the pier and ledge fronts, about a fifth of the face"
+    }
+   ]
+  },
+  {
+   "tag": "w03-286",
+   "bearing": 286,
+   "lengthM": 24.6,
+   "centre": [
+    4.9213575,
+    52.3767345
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_003234",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-tower-west",
+     "kind": "other",
+     "where": "tower west face, the same mottled skin and irregular windows; the warehouse and the dark cantilever gap at the left",
+     "approxSizeM": [
+      24.6,
+      34.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003234",
+     "how": "same skin, its own seed"
+    }
+   ]
+  },
+  {
+   "tag": "w04-196",
+   "bearing": 196,
+   "lengthM": 24.6,
+   "centre": [
+    4.9212335,
+    52.376871
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_003234",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-cantilever-gap",
+     "kind": "other",
+     "where": "the dark gap between the warehouse roof (18.2 m) and the cantilevered block (soffit about 21 m) with four raking concrete struts",
+     "approxSizeM": [
+      24.5,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003234",
+     "how": "3DBAG walls cut at the soffit; recess with back wall, floor, soffit, end caps and struts"
+    },
+    {
+     "id": "n-upper-skin",
+     "kind": "other",
+     "where": "the cantilevered block over the city-side front: five storeys of the mottled skin",
+     "approxSizeM": [
+      24.5,
+      13.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003234",
+     "how": "rasterFront skin on the cut 3DBAG wall"
+    },
+    {
+     "id": "n-city-arcade",
+     "kind": "colonnade",
+     "where": "ground-floor arcade of concrete columns with recessed shopfronts under a light concrete beam",
+     "approxSizeM": [
+      17,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003234",
+     "how": "glass bays, three columns and the beam"
+    },
+    {
+     "id": "n-city-windows",
+     "kind": "window-shape",
+     "where": "city-side windows: pairs of small windows, one red-framed window and wide steel-framed windows, four storeys, two concrete pilasters",
+     "approxSizeM": [
+      24.5,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003234",
+     "how": "per-storey windows at the measured positions"
+    },
+    {
+     "id": "n-kiosk",
+     "kind": "other",
+     "where": "a grey steel kiosk in front of the left bay",
+     "approxSizeM": [
+      7,
+      6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "separate structure, not in this pand"
+     },
+     "seenIn": "TMX7316010203-001195_pano_0000_003234"
+    }
+   ]
+  },
+  {
+   "tag": "w05-196",
+   "bearing": 196,
+   "lengthM": 17.1,
+   "centre": [
+    4.9214285,
+    52.376607
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_003229",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-tower-south",
+     "kind": "other",
+     "where": "tower south face: 4.8 m ground storey of tall glazing and narrow slots between mottled piers, ten storeys at 2.82 m above, parapet to 34.5 m",
+     "approxSizeM": [
+      17.1,
+      34.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_003229",
+     "how": "rasterFront skin, ground row taller"
+    },
+    {
+     "id": "n-house-number",
+     "kind": "sign",
+     "where": "house number 177 on a pier at the right of the ground floor",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "too small at ride distance"
+     },
+     "seenIn": "TMX7316010203-001195_pano_0000_003229"
+    }
+   ]
+  },
+  {
+   "tag": "w06-196",
+   "bearing": 196,
+   "lengthM": 8.6,
+   "centre": [
+    4.921709,
+    52.3767885
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_12-42-53_00390",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-afrika-letters",
+     "kind": "lettering",
+     "where": "metal letters AFRIKA on the brick of the east part of the city-side front, over the ground floor (register: metal letters Afrika front and back)",
+     "approxSizeM": [
+      3.2,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_12-42-53_00390",
+     "how": "pixel letters (nearbar-kit letters) in dark steel"
+    },
+    {
+     "id": "n-afrika-end-windows",
+     "kind": "window-shape",
+     "where": "three axes of small windows in four storeys over the letters, a canopy over the ground floor",
+     "approxSizeM": [
+      8.6,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_12-42-53_00390",
+     "how": "small windows, glazing and a canopy slab"
+    },
+    {
+     "id": "n-north-letters",
+     "kind": "lettering",
+     "where": "the letters at the upper corners of the IJ front named in the register",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "not visible in the 2021 or 2022 IJ crops"
+     },
+     "seenIn": "TMX7316010203-002313_pano_0003_000555"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 523314 (Pakhuis Afrika)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/523314",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012087187 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012087187",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://3dbag.nl/",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "note": "Filled by lane r10-B, 2026-11-22. The tower and the cantilevered block (2009) are in this pand with the 1915 warehouse; Pakhuis De Zwijger is a separate pand and untouched."
+}

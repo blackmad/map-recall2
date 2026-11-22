@@ -1,0 +1,69 @@
+{
+ "schemaVersion": 1,
+ "id": "spaarbank-singel-548",
+ "pand": "0363100012175216",
+ "brief": "scripts/landmarks/spaarbank-singel-548-brief.md",
+ "note": "Former Spaarbank voor de Stad Amsterdam, Singel 542-548 / Reguliersdwarsstraat (K.L. Sijmons Dzn, designed 1956-61, BAG 1965; gemeentelijk monument 200738). Register: four office storeys over the ground floor with its entresol, the top one set back; travertine (Waldinger) cladding; original timber frames with pivot sashes; glazed spandrels make the front an outspoken modernist raster; the set-back top storey is an abstract cornice on the Singel; the Reguliersdwarsstraat front differs little but its ground floor is more closed and it lacks the cornice. The 'curved' look of the Reguliersdwarsstraat front in the aimed panorama views is lens distortion: the BAG edge and the rectified crop are straight.",
+ "signature": ["s-stone-raster", "s-spandrel-glazing", "s-rooftop-frames", "n-floating-cornice", "s-ground-colonnade", "n-stair-tower"],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"},
+  {"name": "Gemeentelijk monument 200738 (vm. Spaarbank voor de Stad Amsterdam)", "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/8480ed4f-45fb-49d2-a334-a79d39490f60?_format=json", "licence": "CC0"},
+  {"name": "BAG pand 0363100012175216 (PDOK)", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012175216", "licence": "CC0"},
+  {"name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012175216", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175216", "licence": "CC BY 4.0"}
+ ],
+ "walls": [
+  {
+   "tag": "w01-194",
+   "bearing": 194,
+   "lengthM": 44.5,
+   "centre": [4.8924285, 52.366257],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track28_Sphere_00012",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {"id": "s-stone-raster", "kind": "window-shape", "where": "Reguliersdwarsstraat front, 6.6-17.5 m over 40 m: fifteen travertine piers at a 2.81 m pitch and proud horizontal ledges, three storeys of tall windows each over a low glazed spandrel, the deep top band", "approxSizeM": [39.6, 11], "plan": "modelled", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "rasterFront (new kit part src/canalRecall/landmarks/rasterFront.ts): window and spandrel rows per storey, piers 0.30 m and ledges 0.42 m in front of the glass"},
+    {"id": "s-spandrel-glazing", "kind": "window-shape", "where": "the low row under every window: glazed borstweringen (register), lighter ribbed glass between two ledges", "approxSizeM": [39.6, 0.7], "plan": "modelled", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "rasterFront spandrel rows in a lighter glass tone"},
+    {"id": "s-window-frames", "kind": "window-shape", "where": "every window: original timber frame with a fanlight band over a centre pivot sash (tuimelraam) between two side lights", "approxSizeM": [2.2, 2.2], "plan": "simplified", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "dark frame bars 10 cm proud of the glass: one transom and two mullions per window"},
+    {"id": "s-rooftop-frames", "kind": "other", "where": "on the parapet over every pier: a steel post rising about 3.7 m with a beam running back over the roof terrace to the set-back storey (the diagonals in the rectified crop are those beams in perspective)", "approxSizeM": [39.6, 3.7], "plan": "modelled", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "dark steel posts 0.25 m square and beams back to the set-back wall"},
+    {"id": "s-setback-storey", "kind": "window-shape", "where": "the glazed fourth office storey set back about 3 m behind the parapet", "approxSizeM": [40, 4], "plan": "simplified", "seenIn": "b_20250120_0926_Track28_Sphere_00012", "how": "dark glass with mullions on the 3DBAG set-back wall"},
+    {"id": "s-ground-colonnade", "kind": "colonnade", "where": "ground floor 3.1-31.7 m: five travertine piers under the 1 m deep fascia, the dark entresol glazing recessed behind them, a stone grid of small windows in two rows over the plinth", "approxSizeM": [28.6, 6.6], "plan": "modelled", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "piers, fascia and recessed glass slabs; the lower grid as a second rasterFront"},
+    {"id": "s-staff-entrance", "kind": "canopy", "where": "right of the colonnade, 33.8-40.9 m: the recessed staff entrance (register: personeelsingang aan de Reguliersdwarsstraat) under a thin canopy, a vent grille over its right end", "approxSizeM": [7.1, 2.8], "plan": "simplified", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "dark recessed panel, canopy slab and grille"},
+    {"id": "s-end-bays", "kind": "other", "where": "the closed travertine ends: the left end with a door, the right end bay 40.2-44.5 m solid to the top band", "approxSizeM": [4.3, 17.5], "plan": "modelled", "seenIn": "TMX7316010203-001646_pano_0001_000089", "how": "stone slabs flush with the ledges"},
+    {"id": "s-parking-sign", "kind": "sign", "where": "street signs on poles in front of the colonnade", "approxSizeM": [0.5, 2.5], "plan": "skipped", "skip": {"reason": "temporary", "note": "street furniture, not part of the building"}, "seenIn": "TMX7316010203-001646_pano_0001_000089"}
+   ]
+  },
+  {
+   "tag": "w02-1",
+   "bearing": 1,
+   "lengthM": 24.9,
+   "centre": [4.892537, 52.366666],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001348",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {"id": "n-stone-raster", "kind": "window-shape", "where": "Singel front over the Bloemenmarkt: the same raster at a 2.72 m pier pitch, three storeys of windows over glazed spandrels", "approxSizeM": [24.9, 11], "plan": "modelled", "seenIn": "TMX7316010203-000354_pano_0001_000224", "how": "rasterFront, as the Reguliersdwarsstraat front"},
+    {"id": "n-floating-cornice", "kind": "other", "where": "the top: a travertine slab carried on steel posts with knee braces over the open set-back storey (register: de terugliggende bovenste bouwlaag dient als een zeer abstract gedachte kroonlijst)", "approxSizeM": [36.6, 2.5], "plan": "modelled", "seenIn": "TMX7316010203-000354_pano_0001_000224", "how": "stone slab 0.9 m deep on dark steel posts with knee braces; the 3DBAG front wall up to the slab is replaced so the set-back storey shows behind the posts"},
+    {"id": "n-setback-storey", "kind": "window-shape", "where": "the set-back glazed storey with its terrace railing behind the posts", "approxSizeM": [36, 3.5], "plan": "simplified", "seenIn": "TMX7316010203-000354_pano_0001_000224", "how": "dark glass with mullions and a railing bar on the 3DBAG set-back wall"},
+    {"id": "n-ground-shopfront", "kind": "window-shape", "where": "the replaced ground-floor puien of the public hall with the hall entrance at the left (east) party wall and the office entrance at the right (register)", "approxSizeM": [24.9, 5.6], "plan": "simplified", "seenIn": "TMX7316010203-001975_pano_0000_001348", "how": "recessed glazing under the fascia with stone piers; inferred where the Bloemenmarkt stalls hide it"},
+    {"id": "n-flags", "kind": "other", "where": "two flagpoles with flags on the parapet (2017)", "approxSizeM": [0.6, 2.5], "plan": "skipped", "skip": {"reason": "temporary", "note": "flags seen in 2017 only"}, "seenIn": "TMX7316010203-000354_pano_0001_000224"}
+   ]
+  },
+  {
+   "tag": "w03-359",
+   "bearing": 359,
+   "lengthM": 11.7,
+   "centre": [4.8928055, 52.3666655],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000226",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {"id": "n-stair-tower", "kind": "tower", "where": "the east end of the Singel front: a closed travertine bay about 4.5 m wide rising to the cornice slab", "approxSizeM": [4.5, 19.5], "plan": "modelled", "seenIn": "TMX7316010203-000354_pano_0001_000226", "how": "stone slab on the front plane from the ground to the slab"},
+    {"id": "n-raster-east", "kind": "window-shape", "where": "the raster continues west of the stair bay", "approxSizeM": [7.2, 11], "plan": "modelled", "seenIn": "TMX7316010203-000354_pano_0001_000226", "how": "rasterFront"},
+    {"id": "n-stall-glasshouse", "kind": "other", "where": "the Bloemenmarkt glasshouse stalls in front (a separate landmark, bloemenmarkt-stalls)", "approxSizeM": [11, 6], "plan": "skipped", "skip": {"reason": "not-visible", "note": "not part of this pand; drawn by the bloemenmarkt-stalls model"}, "seenIn": "TMX7316010203-000354_pano_0001_000226"}
+   ]
+  }
+ ]
+}

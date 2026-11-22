@@ -1,5 +1,5 @@
 {
-  "toolchain": "b7c0641e1ef6a31c966e2d6820ce4087a9a895fcf7ec7c0cc147ccc16567a15b",
+  "toolchain": "c31d700c8ceb310e78b95286a5bf804d3c96fa4e4e7254070a15f70008c8cd70",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -40,6 +40,7 @@
     "athenaeum": "a5a99a723ed69b446e76c06129f63f9698c55dd236ab515686d11c9c020f21e2",
     "atlanta-stadhouderskade": "1b89c11a5a70b11bb7b57eacc3757b8c20936ee54c167093f9ea1152f0bb57e5",
     "atrium-zuidas": "3132ff359d3882066b5a5ddc3489f7a09d4ec77584e966637e63e62106e29cd0",
+    "aurora-overtoom": "6b37b622c481053125652982c06a4d54871038828c23212767b15f609f7805ac",
     "auschwitz-monument": "2773edfd0f5ae8e26ace02a71739ee2051efad2d669c7a7ee7fd5d93f186f063",
     "autopon": "81d97bc5e6064fad1c7179f49d777102bf4b299376240666b1b4e75114ddea30",
     "badhuistheater": "483b88d5d47f72316bedcd9d7127836bcd4c0d4e92e5a84701819cf4d72568c1",
@@ -374,6 +375,7 @@
     "oude-turfmarkt-139": "bd7387a6a451974af64163adb87b5cc19f5ad3d56c6ec2964f22eb882139e488",
     "oudemanhuispoort": "1be667a584807f2285d4c145c8f17b9575b3ca20c2fd2732cec61226c01a6bbc",
     "overtoom-197": "3602a06844b5534037a45deb327b174e30e4fe2be5a2920704b02930516ddd29",
+    "pakhuis-afrika": "8e696cec40d4f0794bd26a6ae37e7e0c20d201625171babb909d3045be444026",
     "pakhuis-australie": "582f2f892db3767f20a378e2163533ed4e582717fbe52818fa48a19df76a4fc5",
     "pakhuis-de-zwijger": "577533ffc94bfd6c562323cb84a2741c10c5d638b9b400202f2eb1e593fd3e09",
     "palace-on-the-dam": "2e749f154478e45bb96cdfbe749ad19cea6cd1cd9cde5c18c33d15e52c0cd189",
@@ -420,6 +422,7 @@
     "rijksakademie": "d2136e8259d242fe3004d7b88b4d69d278abdccb37ae45ec85e778df930d628e",
     "rijksmuseum": "2241b4d7236f0b19823fb5cad37b3aac05bdcd88dabed460314b79ebae95636a",
     "rinus-michelslaan-1": "cb2a25d2c4b6e7488165ba0e7f21898698d352a191e7a5d2b78be4e171e1fe4f",
+    "rioolgemaal-zeeburgerdijk": "08ac8a729fa3429eedc70b318a8bec959fb28cb9124604c917c4286aecd049e7",
     "rode-hoed": "2988f15124b3dfd1ef04dd8742e5fcde90b781580e234264a54d6304c8ce98ec",
     "roeterseiland-rec-a": "01bb910f56910df157de5ebe506d6258ab51c241b31725ab40fc443acabe9cff",
     "ronde-lutherse-kerk": "24e664b23d0f4261f82a215873fd0f3cb9e73f4c48a335a2218a3707272b0d1d",
@@ -452,6 +455,7 @@
     "sloterdijk-station": "9bc82ef221f997c21743f3554483099fa7649da4767de8f4f236644343ef3547",
     "sloterparkbad": "c0b1ccbdb8a1265a936983ad91a73e3f70e551780ef33827a3d71e5668357e49",
     "social-history": "17864020947311f211363753cd9b177d88c469d12f727f15b7a78aa91952d9db",
+    "spaarbank-singel-548": "e0282b9a69ecf8bf44a95bec35067248627d0e62355eb3bc59235c71493a4702",
     "spanjemonument": "a1bca13aa1166c98529d7bc9bc8b43d9681f045044da862b0df5139a7f10728b",
     "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1",
     "spinoza-standbeeld": "10a0739a6eda22a2f829497856d5015e507aec00e04623cbd2fd8fa22cd36db3",

@@ -1,0 +1,231 @@
+{
+ "schemaVersion": 1,
+ "id": "aurora-overtoom",
+ "pand": "0363100012233556",
+ "brief": "scripts/landmarks/aurora-overtoom-brief.md",
+ "signature": [
+  "f-window-grid",
+  "f-pilotis",
+  "f-curve",
+  "f-roof-storey"
+ ],
+ "walls": [
+  {
+   "tag": "w01-40",
+   "bearing": 40,
+   "lengthM": 28.6,
+   "centre": [
+    4.878994,
+    52.363457
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_10-58-37_00099",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-window-grid",
+     "kind": "window-shape",
+     "where": "the lifted stone volume: six rows of 18 windows with a head light, each between thin stone ribs",
+     "approxSizeM": [
+      27.5,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "modern-front-kit opening() cut into a stone face, ledgeStrip ribs and sill ledges"
+    },
+    {
+     "id": "f-curve",
+     "kind": "other",
+     "where": "the gently curved corner joining the Stadhouderskade and the Overtoom",
+     "approxSizeM": [
+      14,
+      27
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "the five 3DBAG facets, two windows per facet"
+    },
+    {
+     "id": "f-pilotis",
+     "kind": "colonnade",
+     "where": "the round pilotis under the lifted volume, one every 4.25 m along the front",
+     "approxSizeM": [
+      0.8,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "strut() cylinders 0.45 m inside the front line"
+    },
+    {
+     "id": "f-soffit",
+     "kind": "other",
+     "where": "the soffit and the stone band at the underside of the lifted volume, 6.55 m up",
+     "approxSizeM": [
+      59,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "downward quads to the recess line and a stone slab"
+    },
+    {
+     "id": "f-ground-glazing",
+     "kind": "window-shape",
+     "where": "the ground storey glazed 2 m back with a clerestory under the soffit",
+     "approxSizeM": [
+      55,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "glass with mullions every 0.76 m and two transoms on the offset polyline"
+    },
+    {
+     "id": "f-shop-box",
+     "kind": "other",
+     "where": "the outdoor shop's glass box with its dark fascia, standing forward under the soffit",
+     "approxSizeM": [
+      23,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "glass and dark slabs 0.6 m behind the front"
+    },
+    {
+     "id": "f-cornice",
+     "kind": "other",
+     "where": "the cornice band at the top of the stone volume",
+     "approxSizeM": [
+      59,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "stone slab 14 cm proud"
+    },
+    {
+     "id": "f-shop-letters",
+     "kind": "lettering",
+     "where": "the BEVER / OUTDOOR / TRAVEL shop letters on the fascia",
+     "approxSizeM": [
+      3,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a tenant's signs"
+     },
+     "seenIn": "recording_2025-07-03_10-58-37_00099"
+    },
+    {
+     "id": "f-roof-storey",
+     "kind": "other",
+     "where": "the set-back roof storey and the chimney blocks on the roof",
+     "approxSizeM": [
+      25,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_10-58-37_00099",
+     "how": "the 3DBAG shell's roof storey as scanned"
+    }
+   ]
+  },
+  {
+   "tag": "w02-334",
+   "bearing": 334,
+   "lengthM": 16.5,
+   "centre": [
+    4.8785265,
+    52.3635155
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01744",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "o-window-grid",
+     "kind": "window-shape",
+     "where": "the Overtoom front: six rows of 11 windows at the same pitch",
+     "approxSizeM": [
+      17.6,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01744",
+     "how": "as on the Stadhouderskade"
+    },
+    {
+     "id": "o-glass-box",
+     "kind": "other",
+     "where": "the glazed ground-floor box to 4 m and the dark stone end bay with its door",
+     "approxSizeM": [
+      14,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01744",
+     "how": "shop box and a stone end slab with a dark door"
+    },
+    {
+     "id": "o-scaffold",
+     "kind": "other",
+     "where": "the renovation scaffolding and hoardings of 2025",
+     "approxSizeM": [
+      17,
+      27
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "renovation works, 2025"
+     },
+     "seenIn": "recording_2025-07-31_06-59-14_01744"
+    }
+   ]
+  },
+  {
+   "tag": "w03-158",
+   "bearing": 158,
+   "lengthM": 14.5,
+   "centre": [
+    4.878513,
+    52.363131
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "r-rear",
+     "kind": "other",
+     "where": "the courtyard side behind the block",
+     "approxSizeM": [
+      14.5,
+      30
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "inside the block, no panorama sees it"
+     },
+     "seenIn": "none"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
