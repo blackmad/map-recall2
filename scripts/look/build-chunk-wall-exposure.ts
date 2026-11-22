@@ -16,14 +16,16 @@
 //   stripOverDrawn lin(strip wall) / lin(the wall the chunk draws head-on: cityTint(palette.brick) x brick cell mean),
 //                  median over the brick pands whose strip body is at least 30 % wall: how far the authored colour sits
 //                  from its photo (1 = matched; Bilderdijkstraat 135-153 was lifted 1.44x in sRGB over its strip); only
-//                  with a white (a strip without one has an unknown exposure).
+//                  with a white (a strip without one has an unknown exposure). A face whose intent says
+//                  `continuity.wallExposure: {reference: "palette"}` (a cast strip; the palette measured on other captures)
+//                  takes 1.
 // Writes src/canalRecall/look/chunkWallExposure.ts. Chunks without a strip (the post-hoc house chunks) are not listed and
 // take FALLBACK_WALL_GAIN, like a measured wall with no recorded white.
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
-import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
+import {measureStripPalette, stripImageMismatch} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {faceStripOverDrawn, houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {drawnWallLuma} from '../../src/canalRecall/look/drawnWall.ts';
@@ -56,8 +58,18 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
     continue;
   }
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
+  // A strip file of another size than strip.json describes is a stale copy (2026-11-22: Bellamyplein 18-38 r1's archive
+  // strip is its 1101 px crop from before the 2203 px re-run, and crashed the whole regen): keep the published entry.
+  const mismatch = stripImageMismatch(strip, info);
+  if (mismatch) {
+    const kept = (CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name];
+    if (kept) entries[chunk.name] = kept;
+    rows.push(`${chunk.name}: ${mismatch} (${path.relative(process.cwd(), file)}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
+    continue;
+  }
   const rgb = new Uint8Array(data.buffer, data.byteOffset, data.length);
-  const intents = houseIntents(validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members));
+  const faceIntent = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members);
+  const intents = houseIntents(faceIntent);
   const pands = strip.spans.map((s: any) => {
     const facts = path.join(dir, 'pands', s.pandId, 'facts.json'), h = fs.existsSync(facts) ? JSON.parse(fs.readFileSync(facts, 'utf8')).heights : null;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
@@ -70,7 +82,7 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
   const white = frames.length ? [0, 1, 2].map(i => Math.round(med(frames.map(f => f[i])))) as RGB : null;
   // Without a light trim the strip's exposure is unknown (a dark capture reads its trims as wall), so its wall reading is
   // not a reference either: such a chunk takes the fallback gain alone.
-  const ratio = med(pands.map((p: any) => p.ratio)), entry = {white, stripOverDrawn: white && Number.isFinite(ratio) ? +ratio.toFixed(3) : null};
+  const ratio = med(pands.map((p: any) => p.ratio)), entry = {white, stripOverDrawn: faceStripOverDrawn(faceIntent, white && Number.isFinite(ratio) ? +ratio.toFixed(3) : null)};
   entries[chunk.name] = entry;
   rows.push(`${chunk.name}: white ${white ? `${white.join(',')} (luma ${Math.round(luma(white))}, ${frames.length}/${pands.length} pands)` : 'none'} | strip/drawn ${entry.stripOverDrawn ?? '-'} (linear) | gain ${chunkWallGain(entry).toFixed(3)} | ${path.relative(process.cwd(), file)}`);
 }

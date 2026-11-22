@@ -1090,7 +1090,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Museumkwartier #159: 3.5980496799642876 vs 3.598049679964287 put the head before the foot and cut a V into a
       // step gable's top), so x within 1e-9 counts as equal, the stable sort keeps the outline's own order and the riser takes one x.
       const plumb = front.gable === 'shouldered' || !!front.crownHalf;
-      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable || front.crownEdge === 'none' ? 0 : 0.08, surface: 'wall'});
       // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
       // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
@@ -1125,7 +1125,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
           const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (size ? sill : front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
-          for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
+          // `atticShape: arched`: each light ends in a semicircular head (rise half its width), as the round-headed storeys do.
+          const arch = (w: number) => front.atticShape === 'arched' ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : {};
+          for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], ...arch(l.width), frameSurface: 'trim', barSurface: 'trim'}));
         }
       }
     }

@@ -119,7 +119,12 @@ export const ARCH_RING_COLOURS = ['stone', 'band', 'frame', 'wall'] as const;
 /** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
 export const DIMINISHING_WINDOW_HEIGHTS = [0.73, 0.76, 0.72, 0.72, 0.7, 0.68] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
-export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
+/**
+ * `arched`: a rectangular light with a semicircular head (rise = half its width), the round-arched gable window of a
+ * 1900s neck front (Van Baerlestraat 26, 1909: one 1.25 x 2.2 m arched light between the neck's pilasters). Sized by
+ * `atticSize` like a rectangular light.
+ */
+export const ATTIC_SHAPES = ['rectangular', 'round', 'arched'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
 /**
  * `sill`: a projecting stone sill alone (no lintel), the commonest 18th/19th-c. canal-belt dressing.
@@ -334,6 +339,18 @@ export interface FrontIntent {
   crownCapCornice?: {ledge: number; projection: number; frieze?: number};
   /** Neck/bell: cap rise as a share of the neck width, measured (absent: the stock share of the crown rise). */
   crownCapRatio?: number;
+  /**
+   * Neck/bell: the cap's width as a share of the neck (0.3..1), measured on the photo. Van Baerlestraat 26 (1909): a
+   * 3.4 m round-arched cap on a 4.5 m neck, a level ledge either side of its foot. Absent = the cap spans the neck,
+   * byte-identical.
+   */
+  crownCapWidth?: number;
+  /**
+   * The crown's raking-edge trim: `none` draws the gable's outline in its own brick, without the 0.08 m white edge
+   * (Van Baerlestraat 28-30, 1900s: a brick point gable whose edges meet the tiled roof cheeks; the white edge drew it as
+   * a pale-outlined spike). Absent = the white edge, byte-identical.
+   */
+  crownEdge?: 'none';
   /**
    * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
    * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
@@ -2047,6 +2064,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownShoulderRise !== undefined && (!neckOrBell || !(f.crownShoulderRise >= 0.2 && f.crownShoulderRise <= 0.95))) problems.push(`${at}.crownShoulderRise: a neck/bell flank height share in [0.2, 0.95] (gable ${f.gable}, ${f.crownShoulderRise})`);
     if (f.crownNeckWidth !== undefined && (!neckOrBell || !(f.crownNeckWidth >= 0.2 && f.crownNeckWidth <= 0.8))) problems.push(`${at}.crownNeckWidth: a neck/bell neck share in [0.2, 0.8] (gable ${f.gable}, ${f.crownNeckWidth})`);
     if (f.crownCapRatio !== undefined && (!neckOrBell || !(f.crownCapRatio >= 0.03 && f.crownCapRatio <= 0.6))) problems.push(`${at}.crownCapRatio: a neck/bell cap rise share of the neck in [0.03, 0.6]`);
+    if (f.crownCapWidth !== undefined && (!neckOrBell || f.crownCap === 'flat' || !(f.crownCapWidth >= 0.3 && f.crownCapWidth <= 1))) problems.push(`${at}.crownCapWidth: a neck/bell cap width share of the neck in [0.3, 1] (gable ${f.gable}, cap ${f.crownCap ?? 'stock'}, ${f.crownCapWidth})`);
     if (f.crownCapCornice !== undefined) {
       const k = f.crownCapCornice;
       if (!neckOrBell) problems.push(`${at}.crownCapCornice: only a neck or bell head carries a cap cornice (gable ${f.gable})`);
@@ -2090,10 +2108,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.crownRise !== undefined && !(f.crownRise >= 0.3 && f.crownRise <= 3)) problems.push(`${at}.crownRise: 0.3..3 upper-storey heights`);
     if (f.crownSteps !== undefined) { count(f.crownSteps, `${at}.crownSteps`, 1, 6); if (f.gable !== 'step') problems.push(`${at}.crownSteps: only a step gable has steps`); }
+    if (f.crownEdge !== undefined && (f.crownEdge !== 'none' || !f.gable || f.gable === 'flat' || f.gable === 'cornice')) problems.push(`${at}.crownEdge: "none" on a gabled crown only (gable ${f.gable}, ${f.crownEdge})`);
     if (f.crownFinial !== undefined && typeof f.crownFinial !== 'boolean') problems.push(`${at}.crownFinial must be boolean`);
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
-    if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
+    if ((f.atticShape === 'round' || f.atticShape === 'arched') && !f.atticWindows) problems.push(`${at}.atticShape: ${f.atticShape} needs atticWindows >= 1`);
     if (f.atticLight !== undefined) {
       const l = f.atticLight as {light?: unknown; sill?: unknown};
       if (!l || typeof l !== 'object' || Object.keys(l).some(k => k !== 'light' && k !== 'sill') || !(typeof l.light === 'number' && l.light >= 0.4 && l.light <= 1.6) || !(typeof l.sill === 'number' && l.sill >= -0.5 && l.sill <= 2)) problems.push(`${at}.atticLight: {light 0.4..1.6 m, sill -0.5..2 m over the crown foot}`);

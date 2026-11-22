@@ -118,6 +118,9 @@ export const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'b
 // installed recipe carries one and every other crown is byte-identical.
 export const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCap === 'flat' ? 0 : f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
 
+/** Cap width of a neck/bell crown whose neck is `neck` wide: measured (`crownCapWidth` of the neck) or the whole neck. */
+export const capWidthOf = (f: FrontIntent, neck: number) => f.crownCapWidth === undefined ? neck : neck * f.crownCapWidth;
+
 /**
  * A `shouldered` gable `width` wide (FrontIntent.shouldered): plumb sides `shoulder` over the eaves, then straight rakes
  * to the top (a point, or a flat top `flatTop` wide). Its top is eaves + shoulder + rise.
@@ -162,8 +165,8 @@ export function crownProfile(f: FrontIntent, width: number, eaves: number, top: 
     // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
     // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
     // `crownNeckWidth` / `crownCapRiseM`: measured on the photo; absent, the stock shares (byte-identical).
-    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? (f.gable === 'neck' ? 0.45 : 0.25)), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
-    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? 0.55), 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? (f.gable === 'neck' ? 0.45 : 0.25)), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: capWidthOf(f, n), shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? 0.55), 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: capWidthOf(f, n), shoulder: f.crownShoulder ?? 'concave'}); }
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
