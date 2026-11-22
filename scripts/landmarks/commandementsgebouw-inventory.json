@@ -1,0 +1,228 @@
+{
+ "schemaVersion": 1,
+ "id": "commandementsgebouw",
+ "pand": "0363100012164987",
+ "brief": "scripts/landmarks/commandementsgebouw-brief.md",
+ "signature": [
+  "c-ribbons",
+  "c-panels",
+  "c-stair-tower",
+  "c-brick-ends"
+ ],
+ "walls": [
+  {
+   "tag": "w01-325",
+   "bearing": 325,
+   "lengthM": 42.8,
+   "centre": [
+    4.915663,
+    52.3722985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000334",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-stair-tower",
+     "kind": "other",
+     "where": "the glazed stair tower t 8.6-12.0 m from the left end, glass from the ground to 6.9 m in two columns with transoms",
+     "approxSizeM": [
+      3.4,
+      6.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000054_pano_0002_000334",
+     "how": "glass slab with grey mullions and transoms every 1.15 m"
+    },
+    {
+     "id": "c-closed-panel",
+     "kind": "other",
+     "where": "the closed concrete panel t 12.0-15.8 m with a strip window at the head of each ribbon",
+     "approxSizeM": [
+      3.8,
+      8.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000054_pano_0002_000334",
+     "how": "concrete face, two glass strips with three frame posts"
+    },
+    {
+     "id": "c-walkway",
+     "kind": "canopy",
+     "where": "the covered walkway beam along the lower ribbon from t 32 m to the end, on two posts, leading off to the neighbour",
+     "approxSizeM": [
+      10.7,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000054_pano_0002_000334",
+     "how": "a 2.4 m deep grey beam slab at 3.2 m on two round posts, stopped at the pand end"
+    },
+    {
+     "id": "c-louvres-nw",
+     "kind": "other",
+     "where": "a louvre panel in the 7th bay of the upper ribbon and two at the right end of the lower ribbon",
+     "approxSizeM": [
+      1.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000054_pano_0002_000334",
+     "how": "grey panel with dark slats"
+    }
+   ]
+  },
+  {
+   "tag": "w02-145",
+   "bearing": 145,
+   "lengthM": 42.7,
+   "centre": [
+    4.9157765,
+    52.372198
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000248_pano_0000_000101",
+   "capturedAt": "2017-04-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-ribbons",
+     "kind": "window-shape",
+     "where": "two ribbons of white-framed windows (22 per storey, 2 lights with a transom) between dark grey posts",
+     "approxSizeM": [
+      42,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000248_pano_0000_000101",
+     "how": "opening() per bay in a grey ribbon face, cols 2, bar at 0.74"
+    },
+    {
+     "id": "c-panels",
+     "kind": "other",
+     "where": "exposed-aggregate concrete plinth, spandrel and fascia panels with vertical joints every 3.96 m",
+     "approxSizeM": [
+      42,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000248_pano_0000_000101",
+     "how": "concrete faces with 3 cm dark joints"
+    },
+    {
+     "id": "c-entrance",
+     "kind": "other",
+     "where": "the entrance t 31.2-35.2 m: brick cheeks, a glazed door pair, a flat canopy at 2.5 m and a clerestory over it",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000248_pano_0000_000101",
+     "how": "brick face with two openings and a 1.4 m canopy slab"
+    },
+    {
+     "id": "c-house-number",
+     "kind": "lettering",
+     "where": "house number plate beside the entrance",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000248_pano_0000_000101",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.3 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-56",
+   "bearing": 56,
+   "lengthM": 13.6,
+   "centre": [
+    4.9159765,
+    52.3723585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000325",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-brick-ends",
+     "kind": "other",
+     "where": "plain dark brick end wall with a metal coping and two downpipes; a glazed door at the right",
+     "approxSizeM": [
+      13.6,
+      8.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000248_pano_0000_000071",
+     "how": "brick face, opening for the door, downpipe strips, coping slab"
+    }
+   ]
+  },
+  {
+   "tag": "w04-235",
+   "bearing": 235,
+   "lengthM": 5.4,
+   "centre": [
+    4.915429,
+    52.372168
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000343",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-sw-window",
+     "kind": "window-shape",
+     "where": "one small high window in the brick south-west end",
+     "approxSizeM": [
+      0.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000054_pano_0002_000343",
+     "how": "opening() at 5.4 m"
+    }
+   ]
+  },
+  {
+   "tag": "w05-236",
+   "bearing": 236,
+   "lengthM": 4.6,
+   "centre": [
+    4.915501,
+    52.372105
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000342",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://3dbag.nl",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG",
+   "url": "https://api.data.amsterdam.nl/v1/bag/",
+   "licence": "CC0"
+  }
+ ]
+}

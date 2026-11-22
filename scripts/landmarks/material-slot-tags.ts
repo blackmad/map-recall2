@@ -374,6 +374,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     slate: {slot: 'bitumen', why: 'palette name only: the flat roofs (3DBAG), not slate'},
     blue: {slot: 'paint', why: 'palette name only: the dark interior seen through the recessed ground-storey glazing (w01-40)'},
   },
+  commandementsgebouw: {
+    concrete: {slot: 'stone', measured: '#978e7f', why: 'the warm grey exposed-aggregate concrete panels (w02-145 2017 overcast #90846e, lifted for the hazy capture), not the city sandstone'},
+    brick: {slot: 'brick', measured: '#5f5247', why: 'the dark grey-brown brick of the end walls and corner piers (w03-56 2017 #675b4d)'},
+    greyBrick: {slot: 'paint', why: 'palette name only: the dark grey painted window posts, louvres, stair-tower mullions and the walkway beam (w01-325, w02-145)'},
+    pink: {slot: 'frame', why: 'palette name only: the light aluminium roof coping (w03-56)'},
+    dark: {slot: 'bitumen', why: 'the flat roof (3DBAG), the panel joints, downpipes and door frames'},
+  },
   'pakhuis-afrika': {
     stone: {slot: 'stone', why: 'the light grey precast concrete skin of the tower and the cantilevered block (w02-106, w05-196)'},
     pink: {slot: 'paint', why: 'palette name only: the salmon-red patches mottling the grey concrete skin (w02-106, w05-196)'},

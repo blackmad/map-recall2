@@ -103540,5 +103540,135 @@
     ]
    ]
   }
+ },
+ {
+  "id": "commandementsgebouw",
+  "name": "Commandementsgebouw, Marineterrein (Kattenburgerstraat 5)",
+  "modelUrl": "./models/commandementsgebouw.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012164987"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.9156641,
+    52.37221942
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 35.5,
+   "widthMetres": 42.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.9156641,
+    52.37221942
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012164987 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/commandementsgebouw-footprints.json, bag-shell-prepare.ts) for the flat roof; every wall drawn by the builder on the facade ring from the rectified Gemeente Amsterdam panoramas TMX7316010203-000248_pano_0000_000101 (2017, south-east), TMX7315120208-000054_pano_0002_000334 (2016, north-west), TMX7315120208-000054_pano_0002_000325 and TMX7316010203-000248_pano_0000_000071 (north-east), CC BY 4.0. Gemeentelijk monument 230003. Per wall in scripts/landmarks/commandementsgebouw-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 8.5,
+  "galleryView": {
+   "theta": 2.4,
+   "phi": 1.15
+  },
+  "bagYear": 1966,
+  "materialOverrides": {
+   "concrete": "#978e7f",
+   "brick": "#5f5247",
+   "greyBrick": "#4d4f4b",
+   "frame": "#eeede8",
+   "glass": "#3a4046",
+   "dark": "#2e2d2b",
+   "pink": "#c3c3bd"
+  },
+  "attribution": {
+   "title": "Commandementsgebouw, Marineterrein, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/77ad5cc5-96e4-4ee0-bb8c-988448f8c31f",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164987 (CC0): the exposed-aggregate concrete panel bands, two ribbons of white-framed windows between grey posts, brick end walls and corner piers, the glazed stair tower, the entrance with its canopy and the covered walkway, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9158991,
+      52.3722499
+     ],
+     [
+      4.9159225,
+      52.3722599
+     ],
+     [
+      4.915929,
+      52.3722627
+     ],
+     [
+      4.9160303,
+      52.3723061
+     ],
+     [
+      4.9159799,
+      52.3723512
+     ],
+     [
+      4.9159285,
+      52.3723971
+     ],
+     [
+      4.9159176,
+      52.3724068
+     ],
+     [
+      4.9155296,
+      52.3722401
+     ],
+     [
+      4.915493,
+      52.3722244
+     ],
+     [
+      4.9154037,
+      52.372186
+     ],
+     [
+      4.9154309,
+      52.3721622
+     ],
+     [
+      4.9154494,
+      52.3721459
+     ],
+     [
+      4.9154191,
+      52.3721329
+     ],
+     [
+      4.9154495,
+      52.3721066
+     ],
+     [
+      4.9154796,
+      52.3721195
+     ],
+     [
+      4.9155105,
+      52.3720924
+     ],
+     [
+      4.9155175,
+      52.3720863
+     ],
+     [
+      4.9158991,
+      52.3722499
+     ]
+    ]
+   ]
+  }
  }
 ]
