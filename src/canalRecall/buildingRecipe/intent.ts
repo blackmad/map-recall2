@@ -1003,8 +1003,21 @@ export interface ShopfrontIntent {
   bays?: [number, number];
   /** Shop height in storeys: 1 (default) or 2, a double-height display with a mezzanine transom, the fascia at the top; the storey-1 windows in the shop span are dropped. */
   storeys?: 1 | 2;
+  /**
+   * Lit display (PC Hooftstraat 80-112, 2026-11-22): the shop glass's measured colour where the photo shows a lit,
+   * furnished display through it (warm amber, white-lit, red-lit) instead of the stock dark pane. The display panes (not
+   * the door) export as a measured glass tint (look `cityMeasuredGlassTint`: the measured hue at the stock lightness or
+   * lighter). Absent = the stock glass, byte-identical.
+   */
+  display?: string;
+  /**
+   * Arched display openings (PC Hooftstraat 100-102, Dior): every shop-glass span gets a `round` head (a semicircle over
+   * the pane) or a `segmental` one (rise 0.18 x the span), the wall cut round it. Absent = square heads, byte-identical.
+   */
+  head?: typeof SHOP_HEADS[number];
   evidence?: string;
 }
+export const SHOP_HEADS = ['round', 'segmental'] as const;
 
 /**
  * Shop sign: `text` (letters, digits, & ' - . and spaces; drawn as capitals), its letter colour, and where it is
@@ -1023,7 +1036,7 @@ export interface ShopSign {
 export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing'] as const;
 /** Characters the sign lettering can draw (signage.ts GLYPHS, case-folded). */
 export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,40}$/;
-const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'bays', 'storeys', 'evidence'];
+const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'bays', 'storeys', 'display', 'head', 'evidence'];
 const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
@@ -2109,6 +2122,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (sf.stallriser !== undefined) oneOf(sf.stallriser, STALLRISERS, `${at}.shopfront.stallriser`);
       if (sf.fasciaColour) colour(sf.fasciaColour, `${at}.shopfront.fasciaColour`);
       if (sf.stallriserColour) colour(sf.stallriserColour, `${at}.shopfront.stallriserColour`);
+      if (sf.display !== undefined) colour(sf.display, `${at}.shopfront.display`);
+      if (sf.head !== undefined) oneOf(sf.head, SHOP_HEADS, `${at}.shopfront.head`);
       if (sf.residentialDoor) { oneOf(sf.residentialDoor.side, ['left', 'right'], `${at}.shopfront.residentialDoor.side`); if (sf.residentialDoor.colour) colour(sf.residentialDoor.colour, `${at}.shopfront.residentialDoor.colour`); }
       if (sf.storeys !== undefined && sf.storeys !== 1 && sf.storeys !== 2) problems.push(`${at}.shopfront.storeys: 1 or 2`);
       if (sf.storeys === 2 && f.storeys < 3) problems.push(`${at}.shopfront.storeys: a two-storey shop needs at least 3 storeys on the front`);

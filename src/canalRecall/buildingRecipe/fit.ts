@@ -580,7 +580,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       const w = b - a, panes = sf.displayWindows ? Math.max(1, Math.round(sf.displayWindows * w / totalGlass)) : glazing === 'split' ? Math.round(w / 1.6) : 1;
       const mullions = Math.max(0, panes - 1), glassH = top - bottom;
       openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: bottom, widthM: w, heightM: glassH, trimWidthM: 0.08,
-        verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: twoStorey ? mezzanineBars(glassH) : glazing === 'single' ? [] : glazing === 'transom' ? [0.8] : glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
+        verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: twoStorey ? mezzanineBars(glassH) : glazing === 'single' ? [] : glazing === 'transom' ? [0.8] : glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop',
+        ...shopDisplay(sf, w, glassH)} as CanalhouseOpening);
     });
   }
   // Basement lights below the ground-storey windows, away from the stoop.
@@ -1626,3 +1627,19 @@ export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
 
 /** `kind: large` fit (3DBAG walls → facade systems per wall group); lives in fitLarge.ts. */
 export {fitLarge, type LargeBuildingRecipe, type LargeFitReport} from './fitLarge.ts';
+
+/**
+ * Shop-glass extras of a measured luxury front (`shopfront.display`, `shopfront.head`; PC Hooftstraat 2026-11-22): the lit
+ * display's measured pane colour and an arched head over the span. Empty when neither is set (byte-identical). Pure.
+ */
+export function shopDisplay(sf: {display?: string; head?: 'round' | 'segmental'}, widthM: number, heightM: number): Partial<CanalhouseOpening> {
+  const out: Partial<CanalhouseOpening> = {};
+  if (sf.display) out.paneTint = sf.display.toLowerCase();
+  if (sf.head) {
+    // pane width = span - 2 x 0.08 trim; a round head is the half pane, never more than 0.45 of the glass height
+    const pane = widthM - 0.16, rise = sf.head === 'round' ? pane / 2 : 0.18 * widthM;
+    out.head = 'segmental';
+    out.headRiseM = round(Math.min(rise, 0.45 * heightM), 3);
+  }
+  return out;
+}
