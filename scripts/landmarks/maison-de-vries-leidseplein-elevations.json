@@ -1,0 +1,41 @@
+{
+  "id": "maison-de-vries-leidseplein",
+  "countedBy": "lane landmarks-r10-a-20261122 from the rectified panoramas (all-walls.ts, 50 px/m): TMX7316010203-002306_pano_0001_001396 (2021, Leidseplein) and TMX7316010203-001053_pano_0000_002080 (2019, Leidsestraat); not yet blind-counted. Glazing only: the dark plinths and the grey cash-machine panels are not openings.",
+  "facades": [
+    {
+      "name": "Leidseplein (south-west)",
+      "bearing": 229,
+      "photo": "staging/pand-ref/0363100012174479/w02-229d2021.jpg",
+      "rows": [4, 5, 5, 5, 15],
+      "columns": 15,
+      "symmetric": true,
+      "gables": 0,
+      "openings": ["glass"],
+      "heightM": [0, 19.6],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002306_pano_0001_001396 (2021) and TMX7316010203-001660_pano_0000_000662 (2020): the fourth ground-storey bay is a grey cash-machine panel with louvres, no glazing; bays 1-3 are shop windows and the H&M doors, bay 5 a recessed dark entrance",
+          "openings": [
+            {"kind": "shop", "w": 2.94},
+            {"kind": "shop", "w": 2.94},
+            {"kind": "shop", "w": 2.94},
+            {"kind": "entrance", "w": 2.6}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leidsestraat (north-west)",
+      "bearing": 323,
+      "photo": "staging/pand-ref/0363100012174479/w01-323d2019.jpg",
+      "rows": [5, 6, 6, 6, 18],
+      "columns": 18,
+      "symmetric": true,
+      "gables": 0,
+      "openings": ["glass"],
+      "heightM": [0, 19.6]
+    }
+  ]
+}

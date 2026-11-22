@@ -126536,6 +126536,141 @@
         "bytes": 5220,
         "triangles": 115
       }
+    },
+    "maison-de-vries-leidseplein": {
+      "id": "maison-de-vries-leidseplein",
+      "name": "Former Maison De Vries, Leidseplein 1-3",
+      "modelUrl": "./models/maison-de-vries-leidseplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012174479"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88353595,
+          52.36434749
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29.9,
+        "widthMetres": 30.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.88353595,
+          52.36434749
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012174479 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/maison-de-vries-leidseplein-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002306_pano_0001_001396 (2021, Leidseplein, heights and tints), TMX7316010203-001053_pano_0000_002013 (2019, the oriels and awnings close up), TMX7316010203-001660_pano_0000_000662 (2020), TMX7316010203-002619_pano_0024_000043 (2022, roof), TMX7316010203-001053_pano_0000_002080 (2019, Leidsestraat) and TMX7316010203-001674_pano_0000_002377 (2020), CC BY 4.0. Gemeentelijk monument 209014. Per wall in scripts/landmarks/maison-de-vries-leidseplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.3,
+      "galleryView": {
+        "theta": 3.6,
+        "phi": 1.1
+      },
+      "bagYear": 1917,
+      "materialOverrides": {
+        "stone": "#dad4c2",
+        "white": "#e6e2d5",
+        "glass": "#56616a",
+        "slate": "#76777c",
+        "dark": "#3a393b",
+        "copper": "#7a828c",
+        "blue": "#2f4468",
+        "greyBrick": "#7e8082"
+      },
+      "attribution": {
+        "title": "Former Maison De Vries, Leidseplein 1-3 / Leidsestraat 103-109, Amsterdam (A. Jacot, 1917)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0001_001396/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012174479 (CC0): the colossal pilasters with their Ionic capitals, the canted timber oriels with their pierced plinths, fluted spandrels and the striped awnings on the Leidseplein, the entablature, the attic with its windows and ornamented lisenen, the zinc corner pinnacles, the skylights and the shop fronts, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8836667,
+              52.3643621
+            ],
+            [
+              4.88361,
+              52.3643996
+            ],
+            [
+              4.8836215,
+              52.3644052
+            ],
+            [
+              4.8834961,
+              52.3644948
+            ],
+            [
+              4.8832157,
+              52.3643625
+            ],
+            [
+              4.8834124,
+              52.3642255
+            ],
+            [
+              4.8835485,
+              52.3642879
+            ],
+            [
+              4.8835521,
+              52.3642857
+            ],
+            [
+              4.8836255,
+              52.364321
+            ],
+            [
+              4.883611,
+              52.3643306
+            ],
+            [
+              4.8836667,
+              52.3643621
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -22.758241653442383,
+          -4.7683716530855236e-8,
+          -16.954345703125
+        ],
+        "max": [
+          8.913999557495117,
+          25.979698181152344,
+          13.956501007080078
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88353595,
+          52.36434749
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.6722412109375,
+        "heightMetres": 25.97969822883606,
+        "depthMetres": 30.910846710205078,
+        "depthCoverage": 1.006867971016452
+      },
+      "triangles": 20956,
+      "bytes": 307568,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
