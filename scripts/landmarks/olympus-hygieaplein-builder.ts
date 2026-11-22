@@ -93,8 +93,8 @@ function schoolWindow(f: Frame, c: number, width: number, y0: number, y1: number
   const lw = (width - 0.1) / lights, t0 = c - width / 2;
   for (let k = 0; k < lights; k++) {
     const lt = t0 + 0.05 + lw * (k + 0.5);
-    if (k > 0) bar(f, t0 + 0.05 + lw * k, y0 + 0.05, 0.1, h - 0.1, 0.13);
-    const grid = paneGrid({width: lw - 0.1, height: h - 0.1, cols: 1, rows: 5, bar: 0.05, frame: 0, transomRows: [2], transom: 0.1, rowWeights: [0.34, 0.34, 0.107, 0.107, 0.107]});
+    if (k > 0) bar(f, t0 + 0.05 + lw * k, y0 + 0.05, 0.13, h - 0.1, 0.13);
+    const grid = paneGrid({width: lw - 0.1, height: h - 0.1, cols: 1, rows: 5, bar: 0.07, frame: 0, transomRows: [2], transom: 0.12, rowWeights: [0.34, 0.34, 0.107, 0.107, 0.107]});
     for (const m of grid) bar(f, lt + m.x, y0 + 0.05 + m.y, m.w, m.h, 0.13);
   }
   for (const s of [-1, 1]) slab(B, f, c + s * (width / 2 + 0.1), y0 - 0.05, 0.1, h + 0.15, 0.2, rv);
