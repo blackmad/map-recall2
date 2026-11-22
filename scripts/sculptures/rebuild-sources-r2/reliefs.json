@@ -1,0 +1,137 @@
+{
+ "hoofdbureau-arms": {
+  "model": "hoofdbureau-elandsgracht",
+  "what": "Amsterdam arms with lions, crown and banner (Krop), Hoofdbureau van Politie, Marnixstraat end wall",
+  "photo": {
+   "panoId": "b_20241216_0911_Track04_Sphere_00318",
+   "timestamp": "2024-12-16T09:31:23Z",
+   "distM": 25.82,
+   "bearingDeg": 168.5,
+   "pitchDeg": 20.32,
+   "fovDeg": 36,
+   "source": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241216_0911_Track04_Sphere_00318/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "bake-off cut-out (lane tripo-ornaments-20261121), same panorama"
+ },
+ "palace-pediment": {
+  "model": "palace-on-the-dam",
+  "what": "Artus Quellinus east pediment (Amsterdam with the four continents / sea gods), Paleis op de Dam",
+  "photo": {
+   "panoId": "TMX7316010203-002628_pano_0000_000356",
+   "timestamp": "2022-06-27T06:20:35.471270Z",
+   "distM": 27.25,
+   "bearingDeg": 276.2,
+   "pitchDeg": 42.71,
+   "fovDeg": 46,
+   "source": "https://t1.data.amsterdam.nl/panorama/2022/06/27/TMX7316010203-002628/pano_0000_000356/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "hand polygon cut-out (scripts/image-to-3d/polygon_cutout.py)"
+ },
+ "west-india-pediment": {
+  "model": "west-india-house",
+  "what": "pediment relief (garlands, cartouche, eagle), West-Indisch Huis, Herenmarkt 99",
+  "photo": {
+   "panoId": "TMX7316010203-001672_pano_0000_001583",
+   "timestamp": "2020-04-24T06:58:08.603440Z",
+   "distM": 9.92,
+   "bearingDeg": 199.2,
+   "pitchDeg": 46.78,
+   "fovDeg": 40,
+   "source": "https://t1.data.amsterdam.nl/panorama/2020/04/24/TMX7316010203-001672/pano_0000_001583/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "hand polygon cut-out (scripts/image-to-3d/polygon_cutout.py)"
+ },
+ "barlaeus-group": {
+  "model": "barlaeus-gymnasium",
+  "what": "attic sculpture group over the entrance (three figures and wings), Barlaeus Gymnasium, Weteringschans 29",
+  "photo": {
+   "panoId": "recording_2025-07-14_05-25-22_02122",
+   "timestamp": "2025-07-14T06:38:45Z",
+   "distM": 14.6,
+   "bearingDeg": 38.7,
+   "pitchDeg": 52.11,
+   "fovDeg": 16,
+   "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-14_05-25-22_02122/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "BiRefNet (scripts/image-to-3d/birefnet_local.py)"
+ },
+ "hmdh-busts": {
+  "model": "huis-met-de-hoofden",
+  "what": "six bel-etage busts (one generated bust, from the bust in pano recording_2025-06-16_03-46-32_01696, repeated), Huis met de Hoofden, Keizersgracht 123",
+  "photo": {
+   "panoId": "TMX7316010203-002972_pano_0000_000126",
+   "timestamp": "2023-02-13T12:11:54.054240Z",
+   "distM": 5.67,
+   "bearingDeg": 125.2,
+   "pitchDeg": 22.16,
+   "fovDeg": 60,
+   "source": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002972/pano_0000_000126/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "bust cut-out from the bake-off panorama recording_2025-06-16_03-46-32_01696 (lane tripo-ornaments-20261121); placement view below"
+ },
+ "hofkerk-pelican": {
+  "model": "hofkerk",
+  "what": "pelican medallion on the tower front, Hofkerk, Linnaeushof",
+  "photo": {
+   "panoId": "recording_2024-09-17_09-46-52_01528",
+   "timestamp": "2024-09-17T10:17:11Z",
+   "distM": 21.48,
+   "bearingDeg": 70.5,
+   "pitchDeg": 15.26,
+   "fovDeg": 14,
+   "source": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-09-17_09-46-52_01528/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "BiRefNet (scripts/image-to-3d/birefnet_local.py)"
+ },
+ "oudemanhuispoort-cartouche": {
+  "model": "oudemanhuispoort",
+  "what": "segmental pediment with the cartouche (the \"spectacles\" relief), Oudemanhuispoort gate on the Oudezijds Achterburgwal",
+  "photo": {
+   "panoId": "recording_2025-06-30_05-16-46_01406",
+   "timestamp": "2025-06-30T05:54:28Z",
+   "distM": 20.26,
+   "bearingDeg": 103.3,
+   "pitchDeg": 6.92,
+   "fovDeg": 12,
+   "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01406/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "BiRefNet (scripts/image-to-3d/birefnet_local.py)"
+ },
+ "sieraad-pier-left": {
+  "model": "het-sieraad",
+  "what": "Hildo Krop sculpted door piers either side of the entrance, Het Sieraad, Postjesweg 1 (left pier)",
+  "photo": {
+   "panoId": "2025_09_26_10_36_44_00893",
+   "timestamp": "2025-09-26T11:46:54Z",
+   "distM": 17.81,
+   "bearingDeg": 236.4,
+   "pitchDeg": 1.8,
+   "fovDeg": 22,
+   "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_10_36_44_00893/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "BiRefNet (scripts/image-to-3d/birefnet_local.py)"
+ },
+ "sieraad-pier-right": {
+  "model": "het-sieraad",
+  "what": "Hildo Krop sculpted door piers either side of the entrance, Het Sieraad, Postjesweg 1 (right pier)",
+  "photo": {
+   "panoId": "2025_09_26_10_36_44_00893",
+   "timestamp": "2025-09-26T11:46:54Z",
+   "distM": 17.81,
+   "bearingDeg": 236.4,
+   "pitchDeg": 1.8,
+   "fovDeg": 22,
+   "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_10_36_44_00893/equirectangular/panorama_8000.jpg",
+   "licence": "CC BY 4.0, Gemeente Amsterdam"
+  },
+  "cutout": "BiRefNet (scripts/image-to-3d/birefnet_local.py)"
+ }
+}

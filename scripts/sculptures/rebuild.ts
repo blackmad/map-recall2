@@ -33,7 +33,7 @@ const argv = process.argv.slice(2);
 const arg = (k: string, d = '') => argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
 const id = arg('id');
 if (!id) throw new Error('--id required');
-const cfgAll = JSON.parse(fs.readFileSync('scripts/sculptures/rebuild-20261017.json', 'utf8'));
+const cfgAll = JSON.parse(fs.readFileSync(arg('config', 'scripts/sculptures/rebuild-20261017.json'), 'utf8'));
 const cfg = cfgAll.statues[id];
 if (!cfg?.figures?.length) throw new Error(`no figures for ${id}`);
 const steps = new Set(arg('steps', 'fetch,prep,recon,mesh,compose,strip').split(','));
@@ -46,7 +46,8 @@ fs.mkdirSync(out, {recursive: true});
 const sourcePath = path.join(out, 'source.json');
 const source: any = fs.existsSync(sourcePath) ? JSON.parse(fs.readFileSync(sourcePath, 'utf8')) : {id, figures: {}};
 // artifacts/ is gitignored: the provenance record (photos, authors, licences, sculptor, routes, timings) is mirrored into the repo
-const trackedSource = path.join('scripts/sculptures/rebuild-sources', `${id}.json`);
+// --sources-dir: where the tracked provenance goes (round 2 keeps the October records untouched)
+const trackedSource = path.join(arg('sources-dir', 'scripts/sculptures/rebuild-sources'), `${id}.json`);
 const save = () => {
   fs.writeFileSync(sourcePath, JSON.stringify(source, null, 1));
   fs.mkdirSync(path.dirname(trackedSource), {recursive: true});
@@ -59,7 +60,7 @@ const run = (bin: string, a: string[], opts: {cwd?: string; env?: NodeJS.Process
 };
 const lastJson = (s: string) => JSON.parse(s.trim().split('\n').filter(l => l.startsWith('{')).pop()!);
 const py = (venv: string) => path.join(tools, venv, 'bin/python');
-const UA = {'User-Agent': 'map-recall-sculpture-research/1.0 (open-data prototype)'};
+const UA = {'User-Agent': 'map-recall-sculpture-research/1.0 (+https://github.com/blackmad/map-recall2)'};
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 async function get(url: string): Promise<Response> {
   for (let i = 0; ; i++) {

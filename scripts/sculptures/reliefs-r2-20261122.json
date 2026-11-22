@@ -1,0 +1,415 @@
+{
+ "note": "Round 2 wall reliefs (lane sculpture-r2-20261122) for scripts/sculptures/r2-relief.ts. Frames: landmark model frame (x east, y up, z south, m); origin = bottom centre on the wall plane; normal = outward [x, z]; cut = wall-frame box (along to the viewer's right, up, out) of kit triangles replaced. Geometry read from the builders and the installed GLBs (2026-11-22).",
+ "items": {
+  "barlaeus-group": {
+   "model": "barlaeus-gymnasium",
+   "material": "stone",
+   "width": 3.2,
+   "height": 2.9,
+   "depth": 0.8,
+   "embed": 0.0,
+   "instances": [
+    {
+     "origin": [
+      -5.18,
+      20.35,
+      5.577
+     ],
+     "normal": [
+      -0.625,
+      0.78
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -1.8,
+     0,
+     0
+    ],
+    "max": [
+     1.8,
+     3.0,
+     1.0
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "attic sculpture group over the entrance (three figures and wings), Barlaeus Gymnasium, Weteringschans 29"
+  },
+  "hmdh-busts": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "instances": [
+    {
+     "name": "Apollo",
+     "origin": [
+      -0.28,
+      4.2,
+      -9.93
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    },
+    {
+     "name": "Ceres",
+     "origin": [
+      -1.63,
+      4.2,
+      -7.59
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    },
+    {
+     "name": "Mercury",
+     "origin": [
+      -2.92,
+      4.2,
+      -5.36
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    },
+    {
+     "name": "Minerva",
+     "origin": [
+      -4.33,
+      4.2,
+      -2.9
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    },
+    {
+     "name": "Bacchus",
+     "origin": [
+      -5.62,
+      4.2,
+      -0.66
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    },
+    {
+     "name": "Diana",
+     "origin": [
+      -6.97,
+      4.2,
+      1.67
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "six bel-etage busts (one generated bust, from the bust in pano recording_2025-06-16_03-46-32_01696, repeated), Huis met de Hoofden, Keizersgracht 123",
+   "tris": 1800
+  },
+  "hoofdbureau-arms": {
+   "model": "hoofdbureau-elandsgracht",
+   "material": "white",
+   "width": 10.0,
+   "height": 4.6,
+   "depth": 0.8,
+   "embed": 0.05,
+   "instances": [
+    {
+     "origin": [
+      4.86,
+      11.0,
+      -95.32
+     ],
+     "normal": [
+      -0.39,
+      -0.92
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -5.2,
+     0,
+     -0.1
+    ],
+    "max": [
+     5.2,
+     4.7,
+     1.5
+    ]
+   },
+   "cutMaterials": [
+    "white"
+   ],
+   "what": "Amsterdam arms with lions, crown and banner (Krop), Hoofdbureau van Politie, Marnixstraat end wall",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "oudemanhuispoort-cartouche": {
+   "model": "oudemanhuispoort",
+   "material": "stone",
+   "width": 3.1,
+   "height": 1.05,
+   "depth": 0.4,
+   "embed": 0.05,
+   "instances": [
+    {
+     "origin": [
+      -2.0,
+      4.55,
+      -5.59
+     ],
+     "normal": [
+      -0.887,
+      -0.4615
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -1.6,
+     0,
+     -0.05
+    ],
+    "max": [
+     1.6,
+     1.1,
+     0.5
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "segmental pediment with the cartouche (the \"spectacles\" relief), Oudemanhuispoort gate on the Oudezijds Achterburgwal",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "hofkerk-pelican": {
+   "model": "hofkerk",
+   "material": "stone",
+   "width": 2.0,
+   "height": 2.0,
+   "depth": 0.35,
+   "embed": 0.03,
+   "instances": [
+    {
+     "origin": [
+      -34.5,
+      7.3,
+      -13.67
+     ],
+     "normal": [
+      -1,
+      0
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -1.05,
+     0,
+     -0.02
+    ],
+    "max": [
+     1.05,
+     2.05,
+     0.4
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "pelican medallion on the tower front, Hofkerk, Linnaeushof",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "west-india-pediment": {
+   "model": "west-india-house",
+   "material": "white",
+   "width": 10.2,
+   "height": 2.15,
+   "depth": 0.45,
+   "embed": 0.03,
+   "instances": [
+    {
+     "origin": [
+      -7.95,
+      9.3,
+      -20.9
+     ],
+     "normal": [
+      0.399,
+      -0.917
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -4.8,
+     0.3,
+     -0.2
+    ],
+    "max": [
+     4.8,
+     0.95,
+     0.6
+    ]
+   },
+   "cutMaterials": [
+    "white"
+   ],
+   "what": "pediment relief (garlands, cartouche, eagle), West-Indisch Huis, Herenmarkt 99",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "palace-pediment": {
+   "model": "palace-on-the-dam",
+   "material": "stone",
+   "width": 24.4,
+   "height": 4.7,
+   "depth": 0.8,
+   "embed": 0.05,
+   "tris": 10000,
+   "instances": [
+    {
+     "origin": [
+      33.2,
+      26.0,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -11.6,
+     0.1,
+     0.05
+    ],
+    "max": [
+     11.6,
+     2.9,
+     0.5
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "Artus Quellinus east pediment (Amsterdam with the four continents / sea gods), Paleis op de Dam",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "sieraad-pier-left": {
+   "model": "het-sieraad",
+   "material": "stone",
+   "width": 1.0,
+   "height": 3.25,
+   "depth": 0.5,
+   "embed": 0.03,
+   "instances": [
+    {
+     "origin": [
+      37.53,
+      1.0,
+      -21.66
+     ],
+     "normal": [
+      0.8,
+      -0.61
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.55,
+     0,
+     -0.05
+    ],
+    "max": [
+     0.55,
+     3.3,
+     0.6
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "Hildo Krop sculpted door piers either side of the entrance, Het Sieraad, Postjesweg 1 (left pier)",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  },
+  "sieraad-pier-right": {
+   "model": "het-sieraad",
+   "material": "stone",
+   "width": 1.0,
+   "height": 3.25,
+   "depth": 0.5,
+   "embed": 0.03,
+   "instances": [
+    {
+     "origin": [
+      35.1,
+      1.0,
+      -24.84
+     ],
+     "normal": [
+      0.8,
+      -0.61
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.55,
+     0,
+     -0.05
+    ],
+    "max": [
+     0.55,
+     3.3,
+     0.6
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "Hildo Krop sculpted door piers either side of the entrance, Het Sieraad, Postjesweg 1 (right pier)",
+   "alignToPlane": true,
+   "dropBackFacing": true
+  }
+ }
+}

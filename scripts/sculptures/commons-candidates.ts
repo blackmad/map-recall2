@@ -17,7 +17,7 @@ import {admitLicence} from '../../src/canalRecall/sculptures/licences.js';
 
 const argv = process.argv.slice(2);
 const arg = (k: string, d = '') => argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
-const UA = {'User-Agent': 'map-recall-sculpture-research/1.0 (open-data prototype)'};
+const UA = {'User-Agent': 'map-recall-sculpture-research/1.0 (+https://github.com/blackmad/map-recall2)'};
 const API = 'https://commons.wikimedia.org/w/api.php';
 const gap = Number(arg('gap', '1200'));
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -45,7 +45,7 @@ if (arg('search')) {
 
 const id = arg('id');
 if (!id) throw new Error('--id or --search required');
-const cfg = JSON.parse(fs.readFileSync('scripts/sculptures/rebuild-20261017.json', 'utf8')).statues[id];
+const cfg = JSON.parse(fs.readFileSync(arg('config', 'scripts/sculptures/rebuild-20261017.json'), 'utf8')).statues[id];
 if (!cfg?.categories?.length) throw new Error(`no categories for ${id} in rebuild-20261017.json`);
 const max = Number(arg('max', '56')), thumbW = Number(arg('thumb', '360'));
 const out = `artifacts/sculpture-reconstruction/${id}/candidates`;

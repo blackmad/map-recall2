@@ -5,7 +5,7 @@
 """Route B post-process: decimate a TripoSR mesh, stand it up, scale it to the real height, face it, export GLB.
 
     python -I scripts/sculptures/decimate_scale_glb.py <raw.ply> <out.glb> --height=<m> --facing=<compass deg> \
-        [--tris=6000] [--front=+x] [--up=z] [--min-component=0.02] [--lift=<m>] [--no-colors]
+        [--tris=6000] [--front=+x] [--up=z] [--min-component=0.02] [--lift=<m>] [--no-colors] [--level=<frac>]
 
     --lift raises the mesh so its base sits at y = lift (a figure placed on a kit plinth); --no-colors writes a colourless mesh
     (reconstruct.ts then assigns a tagged city-look material instead of baking the photo colours).
@@ -88,6 +88,20 @@ F = np.zeros(3); F[fax] = fsign
 U = np.zeros(3); U[up] = 1.0
 S = np.cross(U, F)
 local = np.c_[v @ F, v @ U, v @ S]  # (front, up, side)
+if args.get("level"):
+    # --level=<frac>: TripoSR tilts a statue photographed from above (round 2, 2026-11-22: Mama Baranka, Waterdraagster).
+    # Fit a plane to the lowest <frac> of the vertices (the base disc, plinth slab or hem) and rotate it level, up to 30 deg.
+    lo = local[local[:, 1] <= np.quantile(local[:, 1], float(args["level"]))]
+    c0 = lo.mean(0)
+    n = np.linalg.svd(lo - c0)[2][2]
+    n = n if n[1] > 0 else -n
+    ang = math.degrees(math.acos(min(1.0, n[1])))
+    if 0.5 < ang < 30:
+        ax = np.cross(n, [0, 1, 0]); ax /= np.linalg.norm(ax)
+        a = math.radians(ang); K = np.array([[0, -ax[2], ax[1]], [ax[2], 0, -ax[0]], [-ax[1], ax[0], 0]])
+        Rm = np.eye(3) + math.sin(a) * K + (1 - math.cos(a)) * K @ K
+        local = (local - c0) @ Rm.T + c0
+    print(json.dumps({"levelDeg": round(ang, 1)}), file=sys.stderr)
 local[:, 1] -= local[:, 1].min()
 # --plinth=w,d,h: the input is the figure only; scale it to height - h and stand it on a w x d x h box.
 plinth = [float(x) for x in args["plinth"].split(",")] if args.get("plinth") else None

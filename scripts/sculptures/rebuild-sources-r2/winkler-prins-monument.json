@@ -1,0 +1,72 @@
+{
+ "id": "winkler-prins-monument",
+ "figures": {
+  "column": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:Detail Monument Anthony Winkler Prins André Volten Frederiksplein.JPG",
+     "box": null,
+     "keepTop": null
+    },
+    {
+     "title": "File:Volten, Het ding, deel met plastic tussenschijf.jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "timingsS": {},
+   "placement": {
+    "cutKitTriangles": 4742,
+    "heightM": 11,
+    "baseM": [
+     0,
+     0,
+     0
+    ],
+    "facingDeg": 0
+   },
+   "cutMask": 4742
+  }
+ },
+ "sculptor": {
+  "name": "André Volten",
+  "born": 1925,
+  "died": 2002,
+  "year": 1986,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/winkler-prins-monument.glb",
+ "photos": {
+  "File:Detail Monument Anthony Winkler Prins André Volten Frederiksplein.JPG": {
+   "title": "File:Detail Monument Anthony Winkler Prins André Volten Frederiksplein.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Detail_Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG",
+   "author": "Brbbl",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2008-08-15 10:07:24",
+   "originalSize": [
+    2016,
+    2794
+   ],
+   "sha1": "2cdb8fe0a0c3139787f7995bd002df5541c68142",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Detail_Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG/1920px-Detail_Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/winkler-prins-monument/download/2cdb8fe0a0.jpg"
+  },
+  "File:Volten, Het ding, deel met plastic tussenschijf.jpg": {
+   "title": "File:Volten, Het ding, deel met plastic tussenschijf.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Volten,_Het_ding,_deel_met_plastic_tussenschijf.jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-08-21 14:15:15",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "66af71482f012fdd00b625a7aeb6c077d9da199c",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Volten%2C_Het_ding%2C_deel_met_plastic_tussenschijf.jpg/1920px-Volten%2C_Het_ding%2C_deel_met_plastic_tussenschijf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/winkler-prins-monument/download/66af71482f.jpg"
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "id": "walraven-van-hall",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/walraven-van-hall.json",
+ "figures": [
+  {
+   "name": "tree",
+   "glb": "scripts/sculptures/installed/walraven-van-hall/tree.glb",
+   "at": [
+    0.751,
+    0,
+    -0.033
+   ],
+   "cut": {
+    "min": [
+     -5,
+     0,
+     -5
+    ],
+    "max": [
+     5,
+     2.5,
+     5
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TripoSR, one photo, tsr-82071fd7cb, round 2 2026-11-22"
+  }
+ ]
+}
