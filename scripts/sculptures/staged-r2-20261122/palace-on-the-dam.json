@@ -1,0 +1,53 @@
+{
+ "id": "palace-on-the-dam",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/reliefs.json#palace-pediment",
+ "figures": [
+  {
+   "name": "palace-pediment",
+   "glb": "scripts/sculptures/installed/palace-on-the-dam/palace-pediment.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TripoSR, one photo, tsr-cut2, wall relief round 2 2026-11-22",
+   "wallCut": {
+    "origin": [
+     33.2,
+     26,
+     0.45
+    ],
+    "normal": [
+     1,
+     0
+    ],
+    "min": [
+     -11.6,
+     0.1,
+     0.05
+    ],
+    "max": [
+     11.6,
+     2.9,
+     0.5
+    ]
+   }
+  }
+ ]
+}
