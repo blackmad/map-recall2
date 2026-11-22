@@ -1,0 +1,30 @@
+{
+ "id": "witte-boei-wittenburg",
+ "countedBy": "lane landmarks-r12-a from the rectified crops w01-45.jpg (b_20250130_0915_Track20_Sphere_00005, 2025, 50 px/m) and w02-225.jpg (TMX7316010203-001195_pano_0001_001228, 2019), 2026-11-22, counted before the openings were placed. NE: ground 10 glazed openings (the cream blind panel at t 18.45-19.25 is not glazing), first floor 9 two-light windows. SW: the wing's two narrow lights, two three-light windows and three French-door pairs (7); the set-back first floor shows the tower's tall window and lantern and five windows (7). Recount 2026-11-22 after the first compare: NE axes 11 (the measured centres 2.9, 5.9, 7.3, 10.1, 11.5, 12.9, 14.6, 16.0, 17.3, 19.2, 20.5 m; the first count of 14 was an estimate), and the hall's clerestory rising over the two-storey ends is one silhouette peak in the photo. SW first floor 8: the SE tower's tall glazing at the right edge of the crop (t 16.3+) was missed; SW axes 13 are approximate (parallax between the wing and the set-back floor).",
+ "facades": [
+  {
+   "name": "NE front (Kleine Wittenburgerstraat)",
+   "bearing": 45,
+   "photo": "artifacts/landmark-briefs/witte-boei-wittenburg/w01-45.jpg",
+   "rows": [
+    10,
+    9
+   ],
+   "columns": 11,
+   "symmetric": false,
+   "gables": 1
+  },
+  {
+   "name": "SW wing and set-back first floor",
+   "bearing": 225,
+   "photo": "artifacts/landmark-briefs/witte-boei-wittenburg/w02-225.jpg",
+   "rows": [
+    7,
+    8
+   ],
+   "columns": 13,
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

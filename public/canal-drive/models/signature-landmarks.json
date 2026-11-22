@@ -128156,6 +128156,176 @@
         "bytes": 11768,
         "triangles": 409
       }
+    },
+    "witte-boei-wittenburg": {
+      "id": "witte-boei-wittenburg",
+      "name": "De Witte Boei, Kleine Wittenburgerstraat 201",
+      "modelUrl": "./models/witte-boei-wittenburg.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180557"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.92168975,
+          52.37145846
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 26.3,
+        "widthMetres": 30.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.92168975,
+          52.37145846
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012180557 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/witte-boei-wittenburg-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas b_20250130_0915_Track20_Sphere_00005 (2025, the NE front), b_20250130_0915_Track21_Sphere_00017 and _00015 (2025, NW), TMX7316010203-002546_pano_0002_003482 (2022, NW annex), TMX7316010203-001195_pano_0001_001228 (2019) and TMX7315120208-000054_pano_0001_000588 (2016, the SW wing), TMX7315120208-000054_pano_0001_000100 and _000098 (2016, SE), CC BY 4.0. Per wall in scripts/landmarks/witte-boei-wittenburg-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 0.8,
+        "phi": 1.1
+      },
+      "measuredOverrides": true,
+      "bagYear": 1989,
+      "materialOverrides": {
+        "brick": "#dfe3d5",
+        "ochre": "#b29a5c",
+        "greyBrick": "#8c8f84",
+        "frame": "#d2cdb3",
+        "stone": "#d2cdb3",
+        "concrete": "#d6d2bc",
+        "green": "#638470",
+        "bronze": "#79857b",
+        "glass": "#5a6a64",
+        "slate": "#4a4a48"
+      },
+      "attribution": {
+        "title": "De Witte Boei, Kleine Wittenburgerstraat 201, Amsterdam (1989)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012180557",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012180557 (CC0): the white glazed-brick walls with their ochre bands and grey courses, cream-framed two-light windows in reveals, the two glazed corner lanterns, the green-clad hall clerestory under its dark fascia, the SW wing's French doors and grey-brick half, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.921819,
+              52.3715144
+            ],
+            [
+              4.9216714,
+              52.3716031
+            ],
+            [
+              4.9216251,
+              52.3715744
+            ],
+            [
+              4.9216126,
+              52.371582
+            ],
+            [
+              4.9215594,
+              52.3715489
+            ],
+            [
+              4.921572,
+              52.3715414
+            ],
+            [
+              4.9214635,
+              52.371474
+            ],
+            [
+              4.9214638,
+              52.3714739
+            ],
+            [
+              4.9216386,
+              52.3713689
+            ],
+            [
+              4.921668,
+              52.3713869
+            ],
+            [
+              4.9216802,
+              52.3713794
+            ],
+            [
+              4.9217207,
+              52.3713798
+            ],
+            [
+              4.9217329,
+              52.3713874
+            ],
+            [
+              4.921767,
+              52.3713669
+            ],
+            [
+              4.9218191,
+              52.3713992
+            ],
+            [
+              4.9218443,
+              52.3713993
+            ],
+            [
+              4.9218442,
+              52.3714148
+            ],
+            [
+              4.9219134,
+              52.3714577
+            ],
+            [
+              4.921819,
+              52.3715144
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.329587936401367,
+          0.0010000000474974513,
+          -16.171615600585938
+        ],
+        "max": [
+          15.290574073791504,
+          9.140000343322754,
+          10.270617485046387
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.92168975,
+          52.37145846
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 30.62016201019287,
+        "heightMetres": 9.139000343275256,
+        "depthMetres": 26.442233085632324,
+        "depthCoverage": 0.8641252642363504
+      },
+      "triangles": 4043,
+      "bytes": 71348,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
