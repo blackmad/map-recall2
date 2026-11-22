@@ -1,0 +1,412 @@
+{
+ "schemaVersion": 1,
+ "id": "henrick-de-keijser-buurtgebouw",
+ "pand": "0363100012068612",
+ "brief": "scripts/landmarks/henrick-de-keijser-buurtgebouw-brief.md",
+ "signature": [
+  "w-pantile-roof",
+  "w-weatherboards",
+  "s-white-gable",
+  "w-name-board",
+  "w-red-door"
+ ],
+ "walls": [
+  {
+   "tag": "w01-258",
+   "bearing": 258,
+   "lengthM": 15.1,
+   "centre": [
+    4.8980155,
+    52.351108
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001793_pano_0000_005619",
+   "capturedAt": "2020-07-07",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-pantile-roof",
+     "kind": "other",
+     "where": "the long orange-red pantiled roof over the whole W front, eaves at about 3.7 m, ridge 9.3 m",
+     "approxSizeM": [
+      15.1,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "3DBAG roof planes in the measured tile colour with a 7 cm course strip every 0.33 m down the slope"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-weatherboards",
+     "kind": "other",
+     "where": "dark green overlapping weatherboards over the ground storey to 2.75 m",
+     "approxSizeM": [
+      15.1,
+      2.75
+     ],
+     "plan": "modelled",
+     "how": "green face with a lap strip every 0.2 m, broken at the openings"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-frieze",
+     "kind": "other",
+     "where": "white boarded frieze 2.75-3.45 m under the white eaves board, with two small vents",
+     "approxSizeM": [
+      15.1,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "white face above the boards, eaves board slab, two cream vent slabs"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-name-board",
+     "kind": "lettering",
+     "where": "white name board over the entrance (t 4.97-8.6, 2.45-2.95 m) with HENRICK DE KEIJSER in black capitals (and a tiny yellow line above, not modelled)",
+     "approxSizeM": [
+      3.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "white slab and letters() in the kit's 5x7 block capitals (approximate font match: the original is a decorative sans)"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-red-door",
+     "kind": "other",
+     "where": "the red double door with two tall lights, between a two-light window and a single light in white frames",
+     "approxSizeM": [
+      1.37,
+      2.25
+     ],
+     "plan": "modelled",
+     "how": "door opening 20 cm deep with a red back and two glass panes; windows in 12 cm reveals"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-downpipes",
+     "kind": "other",
+     "where": "two grey downpipes",
+     "approxSizeM": [
+      0.09,
+      3.6
+     ],
+     "plan": "modelled",
+     "how": "thin grey slabs"
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-house-number",
+     "kind": "sign",
+     "where": "house number 45 beside the window",
+     "approxSizeM": [
+      0.15,
+      0.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.15 m digits"
+     }
+    },
+    {
+     "seenIn": "TMX7316010203-001793_pano_0000_005619",
+     "id": "w-cabinet",
+     "kind": "other",
+     "where": "a utility cabinet with a poster in front of the wall",
+     "approxSizeM": [
+      1.9,
+      1.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-57",
+   "bearing": 57,
+   "lengthM": 11.7,
+   "centre": [
+    4.8982995,
+    52.351162
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-326",
+   "bearing": 326,
+   "lengthM": 9.7,
+   "centre": [
+    4.8981945,
+    52.3511815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002115_pano_0000_006968",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_006968",
+     "id": "a-blue-panels",
+     "kind": "other",
+     "where": "the annex's NW side in blue panels with a yellow-green panel (slanted left edge) round a grey door",
+     "approxSizeM": [
+      8.6,
+      3.5
+     ],
+     "plan": "modelled",
+     "how": "blue face, yellow polygons round the door opening"
+    },
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_006968",
+     "id": "a-glazed-band",
+     "kind": "window-shape",
+     "where": "a band of glazing under the sloping roof edge",
+     "approxSizeM": [
+      8.6,
+      0.55
+     ],
+     "plan": "simplified",
+     "how": "a sloped glass strip between two white frame strips following the shell's roof line; mullions not drawn"
+    },
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_006968",
+     "id": "a-slant-window",
+     "kind": "window-shape",
+     "where": "a window at the left of the annex side, its outline slanted (parallelogram)",
+     "approxSizeM": [
+      1.5,
+      1
+     ],
+     "plan": "simplified",
+     "how": "rectangular two-light opening"
+    }
+   ]
+  },
+  {
+   "tag": "w04-147",
+   "bearing": 147,
+   "lengthM": 9.2,
+   "centre": [
+    4.8982965,
+    52.3510945
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001168_pano_0000_004022",
+   "capturedAt": "2019-05-08",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004022",
+     "id": "a-brick-slits",
+     "kind": "window-shape",
+     "where": "the annex's red brick SE wall with four narrow vertical windows",
+     "approxSizeM": [
+      0.32,
+      1
+     ],
+     "plan": "modelled",
+     "how": "four narrow openings in brick"
+    }
+   ]
+  },
+  {
+   "tag": "w05-168",
+   "bearing": 168,
+   "lengthM": 7,
+   "centre": [
+    4.89809,
+    52.351049
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001168_pano_0000_004018",
+   "capturedAt": "2019-05-08",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004018",
+     "id": "s-white-gable",
+     "kind": "other",
+     "where": "the S gable: white vertical boarding over the green weatherboards, horizontal boarding at the apex, wide white bargeboards",
+     "approxSizeM": [
+      7,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "white shell polygon above the eaves, apex lap strips, bargeboard quads"
+    },
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004018",
+     "id": "s-small-windows",
+     "kind": "window-shape",
+     "where": "two small four-pane windows high in the gable",
+     "approxSizeM": [
+      1.1,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "white frame slab with four glass panes"
+    },
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004018",
+     "id": "s-ornaments",
+     "kind": "other",
+     "where": "white hanging ornaments under the two small windows (a bar with a drop)",
+     "approxSizeM": [
+      0.9,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "a white bar and a pendant slab under each window"
+    },
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004018",
+     "id": "s-three-lights",
+     "kind": "window-shape",
+     "where": "two three-light windows in white frames in the boarded ground storey",
+     "approxSizeM": [
+      1.85,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 3"
+    },
+    {
+     "seenIn": "TMX7316010203-001168_pano_0000_004018",
+     "id": "s-lamp",
+     "kind": "lamp",
+     "where": "a small wall lamp between the gable windows",
+     "approxSizeM": [
+      0.15,
+      0.25
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.15 m fitting"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-348",
+   "bearing": 348,
+   "lengthM": 7,
+   "centre": [
+    4.898041,
+    52.351181
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_06-46-33_00846",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "recording_2025-09-29_06-46-33_00846",
+     "id": "n-shutters",
+     "kind": "other",
+     "where": "a window behind closed red shutters and a red door in the N gable's boarded ground storey; the gable top is behind a tree",
+     "approxSizeM": [
+      1.8,
+      1.35
+     ],
+     "plan": "modelled",
+     "how": "openings with a red back; the gable top as the S gable (inferred)"
+    }
+   ]
+  },
+  {
+   "tag": "w07-167",
+   "bearing": 167,
+   "lengthM": 5.7,
+   "centre": [
+    4.8981685,
+    52.351095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002115_pano_0000_007722",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_007722",
+     "id": "e-entrance",
+     "kind": "other",
+     "where": "the light-blue framed glazed entrance with double doors and notice windows on the S link",
+     "approxSizeM": [
+      3.5,
+      2.45
+     ],
+     "plan": "modelled",
+     "how": "light-blue face with three openings in light-blue frames"
+    },
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_007722",
+     "id": "e-name-board",
+     "kind": "lettering",
+     "where": "a second HENRICK DE KEIJSER board over the entrance",
+     "approxSizeM": [
+      3.6,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "white slab and letters()"
+    },
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_007722",
+     "id": "e-small-window",
+     "kind": "window-shape",
+     "where": "a small cream-framed window in the boards left of the entrance",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "opening()"
+    },
+    {
+     "seenIn": "TMX7316010203-002115_pano_0000_007722",
+     "id": "e-terrace",
+     "kind": "other",
+     "where": "picnic tables and planters in front",
+     "approxSizeM": [
+      4,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "furniture"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012068612",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012068612",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012068612",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

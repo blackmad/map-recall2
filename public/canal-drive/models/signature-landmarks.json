@@ -128326,6 +128326,191 @@
       "triangles": 4043,
       "bytes": 71348,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "henrick-de-keijser-buurtgebouw": {
+      "id": "henrick-de-keijser-buurtgebouw",
+      "name": "Buurtgebouw Henrick de Keijser, Henrick de Keijserplein 45",
+      "modelUrl": "./models/henrick-de-keijser-buurtgebouw.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012068612"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89816322,
+          52.35112583
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 18.2,
+        "widthMetres": 24.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.89816322,
+          52.35112583
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012068612 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/henrick-de-keijser-buurtgebouw-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001793_pano_0000_005619 (2020, the W front on the square), TMX7316010203-001168_pano_0000_004018 and _004022 (2019, the S gable and the annex's brick side), recording_2025-09-29_06-46-33_00846 (2025, the N gable), TMX7316010203-002115_pano_0000_007722 (2021, the entrance) and TMX7316010203-001169_pano_0000_000996 / -002115_pano_0000_006968 (2019/2021, the annex's NW side), CC BY 4.0. Per wall in scripts/landmarks/henrick-de-keijser-buurtgebouw-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 10,
+      "galleryView": {
+        "theta": 4.4,
+        "phi": 1.1
+      },
+      "measuredOverrides": true,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "green": "#36423a",
+        "concrete": "#e6e3d8",
+        "red": "#b0644a",
+        "brick": "#9a5a45",
+        "blue": "#4f7fa3",
+        "ochre": "#c8c98c",
+        "stone": "#b9c8cf",
+        "frame": "#e6e4dc",
+        "pink": "#a33134",
+        "bronze": "#1e1e1c",
+        "greyBrick": "#6e706c",
+        "glass": "#3e4a50",
+        "slate": "#4a4a48"
+      },
+      "attribution": {
+        "title": "Buurtgebouw Henrick de Keijser, Henrick de Keijserplein 45, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012068612",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012068612 (CC0): the dark green weatherboarded ground storey, the white-boarded frieze and gables with bargeboards, apex boarding, small gable windows and their ornaments, the orange pantile roof courses, the red doors, the name boards, the light-blue glazed entrance, and the blue-panelled and red-brick annex, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8982507,
+              52.3512038
+            ],
+            [
+              4.8981449,
+              52.3511617
+            ],
+            [
+              4.8981467,
+              52.3511599
+            ],
+            [
+              4.8981331,
+              52.3511547
+            ],
+            [
+              4.8981323,
+              52.3511569
+            ],
+            [
+              4.8981005,
+              52.3511524
+            ],
+            [
+              4.8980881,
+              52.3511855
+            ],
+            [
+              4.8979896,
+              52.3511718
+            ],
+            [
+              4.897988,
+              52.3511716
+            ],
+            [
+              4.8980035,
+              52.3511297
+            ],
+            [
+              4.898037,
+              52.3510394
+            ],
+            [
+              4.8981375,
+              52.3510535
+            ],
+            [
+              4.8981253,
+              52.3510867
+            ],
+            [
+              4.8981575,
+              52.351091
+            ],
+            [
+              4.8981569,
+              52.3510925
+            ],
+            [
+              4.8982067,
+              52.3510989
+            ],
+            [
+              4.8982377,
+              52.35107
+            ],
+            [
+              4.8983498,
+              52.3511145
+            ],
+            [
+              4.8983507,
+              52.3511148
+            ],
+            [
+              4.8983479,
+              52.3511176
+            ],
+            [
+              4.8983434,
+              52.3511156
+            ],
+            [
+              4.8982507,
+              52.3512038
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -11.923747062683105,
+          -7.450580707946131e-10,
+          -8.515000343322754
+        ],
+        "max": [
+          12.368000030517578,
+          9.315999984741211,
+          9.629085540771484
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89816322,
+          52.35112583
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.291747093200684,
+        "heightMetres": 9.315999985486268,
+        "depthMetres": 18.14408588409424,
+        "depthCoverage": 0.7345783758742607
+      },
+      "triangles": 6834,
+      "bytes": 111696,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
