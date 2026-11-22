@@ -1,0 +1,324 @@
+{
+ "schemaVersion": 1,
+ "id": "muziekschool-jacob-van-campen",
+ "pand": "0363100012228680",
+ "brief": "scripts/landmarks/muziekschool-jacob-van-campen-brief.md",
+ "signature": [
+  "s-entrance",
+  "s-balustrade",
+  "s-pediment",
+  "s-lisenen",
+  "s-blind-arches",
+  "e-dormer",
+  "s-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-96",
+   "bearing": 96,
+   "lengthM": 22.6,
+   "centre": [
+    4.890661,
+    52.357548
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_04499",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-lisenen",
+     "kind": "other",
+     "where": "two colossal yellow-brick lisenen marking the classrooms, and the corner lisenen, rusticated with red joints",
+     "approxSizeM": [
+      0.75,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "lisene(): stacked yellow blocks and a capital"
+    },
+    {
+     "id": "e-blind-arches",
+     "kind": "window-shape",
+     "where": "round arches with stuccoed blind tympana, a relief and a keystone over each first-floor window",
+     "approxSizeM": [
+      1.75,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "blindArch(): archBand, stucco archSlab, rosette disc, keystone"
+    },
+    {
+     "id": "e-reliefs",
+     "kind": "relief",
+     "where": "plant-motif reliefs in the tympana (register)",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "a stone rosette disc per tympanum"
+    },
+    {
+     "id": "e-dormer",
+     "kind": "other",
+     "where": "the white dormer in the middle with a pediment and two volutes",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "dormer(): front, window, cornice, pediment, quarter-round volutes"
+    },
+    {
+     "id": "e-side-door",
+     "kind": "other",
+     "where": "glazed white side door with a fanlight in the seventh axis",
+     "approxSizeM": [
+      1.4,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "win() 2 x 6 panes from the base"
+    },
+    {
+     "id": "e-cornice",
+     "kind": "other",
+     "where": "dentil cornice on a consoled frieze under the projecting eaves",
+     "approxSizeM": [
+      22.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "cornice()"
+    },
+    {
+     "id": "e-sill-panels",
+     "kind": "other",
+     "where": "framed yellow-brick panels under the first-floor windows",
+     "approxSizeM": [
+      1.35,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "how": "sillPanel()"
+    },
+    {
+     "id": "e-signs",
+     "kind": "sign",
+     "where": "street-name plate and small shop signs in the ground-floor windows",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-04_05-35-54_04499",
+     "skip": {
+      "reason": "too-small",
+      "note": "street plate and posters under 0.6 m"
+     }
+    }
+   ],
+   "note": "The Ferdinand Bolstraat side (E), seven axes symmetric about the dormer: two, three, two, the classrooms marked by the yellow lisenen; the seventh ground-floor axis is the glazed side door. Read on the overcast 2024 view at 48 px/m."
+  },
+  {
+   "tag": "w02-185",
+   "bearing": 185,
+   "lengthM": 20,
+   "centre": [
+    4.8904985,
+    52.357455
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002115_pano_0000_002717",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-entrance",
+     "kind": "other",
+     "where": "round-arched entrance: heavy yellow-brick arch on yellow jamb piers with stone caps, keystone, fanlight and varnished double door",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "entrance(): archBand, piers, fanlight archSlab, door"
+    },
+    {
+     "id": "s-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "natural-stone balustrade over the entrance under the middle first-floor window: five balusters between two posts",
+     "approxSizeM": [
+      1.64,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "balustrade kit (src/canalRecall/landmarks/balustrade.ts)"
+    },
+    {
+     "id": "s-pediment",
+     "kind": "other",
+     "where": "pediment (fronton) in the eaves line over the middle axis",
+     "approxSizeM": [
+      5.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "triangular poly with a recessed field"
+    },
+    {
+     "id": "s-lisenen",
+     "kind": "other",
+     "where": "four colossal yellow-brick lisenen: the corners and either side of the entrance",
+     "approxSizeM": [
+      0.75,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "lisene()"
+    },
+    {
+     "id": "s-blind-arches",
+     "kind": "window-shape",
+     "where": "round-arched stuccoed blind tympana with keystones over the seven first-floor windows",
+     "approxSizeM": [
+      1.75,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "blindArch()"
+    },
+    {
+     "id": "s-reliefs",
+     "kind": "relief",
+     "where": "plant-motif reliefs in the tympana; the arms of Amsterdam over the entrance axis (register)",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "stone rosette discs; the arms are not drawn"
+    },
+    {
+     "id": "s-string-courses",
+     "kind": "other",
+     "where": "bluestone string course at the first floor, the yellow frieze over the ground floor, the sill band and impost band",
+     "approxSizeM": [
+      20,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "bands()"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "classical dentil cornice on a consoled frieze",
+     "approxSizeM": [
+      20,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "cornice()"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "white windows with glazing bars: a 2 x 3 hopper over the transom, 3 x 3 below",
+     "approxSizeM": [
+      1.25,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002455_pano_0001_000826",
+     "how": "win(): paneGrid 3 x 5 with a transom"
+    },
+    {
+     "id": "s-sign",
+     "kind": "sign",
+     "where": "the yellow school sign on a pole and the house-number plate",
+     "approxSizeM": [
+      0.4,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002115_pano_0000_002717",
+     "skip": {
+      "reason": "temporary",
+      "note": "a free-standing pole sign in the pavement"
+     }
+    }
+   ],
+   "note": "The Eerste Jacob van Campenstraat front (S), seven axes symmetric about the entrance: three, the middle axis between two yellow lisenen, three. Measured on the 2022 view at 50 px/m across, 51.5 px/m up."
+  },
+  {
+   "tag": "w03-6",
+   "bearing": 6,
+   "lengthM": 7.3,
+   "centre": [
+    4.8904195,
+    52.3575485
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001153_pano_0000_001411",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-scaffold",
+     "kind": "other",
+     "where": "scaffolding over the north end",
+     "approxSizeM": [
+      7.3,
+      12
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001153_pano_0000_001411",
+     "skip": {
+      "reason": "temporary",
+      "note": "scaffolding in 2019 and 2020"
+     }
+    }
+   ],
+   "note": "The short north end (7.3 m) seen obliquely from 33 m across the courtyard; under scaffolding in 2019-20. Left as plain shell brick."
+  },
+  {
+   "tag": "w04-276",
+   "bearing": 276,
+   "lengthM": 4.7,
+   "centre": [
+    4.8904765,
+    52.357566
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001075_pano_0001_000553",
+   "capturedAt": "2019-01-30",
+   "checked": true,
+   "items": [],
+   "note": "The 4.7 m west return stands against the neighbours; only its top shows over them. Plain shell brick."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

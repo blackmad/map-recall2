@@ -1,0 +1,31 @@
+{
+ "id": "maison-de-vries-leidseplein",
+ "name": "Former Maison De Vries, Leidseplein 1-3",
+ "heightMetres": 25.3,
+ "bagYear": 1917,
+ "galleryView": {
+  "theta": 3.6,
+  "phi": 1.1
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012174479 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/maison-de-vries-leidseplein-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002306_pano_0001_001396 (2021, Leidseplein, heights and tints), TMX7316010203-001053_pano_0000_002013 (2019, the oriels and awnings close up), TMX7316010203-001660_pano_0000_000662 (2020), TMX7316010203-002619_pano_0024_000043 (2022, roof), TMX7316010203-001053_pano_0000_002080 (2019, Leidsestraat) and TMX7316010203-001674_pano_0000_002377 (2020), CC BY 4.0. Gemeentelijk monument 209014. Per wall in scripts/landmarks/maison-de-vries-leidseplein-inventory.json.",
+ "materialOverrides": {
+  "stone": "#dad4c2",
+  "white": "#e6e2d5",
+  "glass": "#56616a",
+  "slate": "#76777c",
+  "dark": "#3a393b",
+  "copper": "#7a828c",
+  "blue": "#2f4468",
+  "greyBrick": "#7e8082"
+ },
+ "attribution": {
+  "title": "Former Maison De Vries, Leidseplein 1-3 / Leidsestraat 103-109, Amsterdam (A. Jacot, 1917)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0001_001396/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012174479 (CC0): the colossal pilasters with their Ionic capitals, the canted timber oriels with their pierced plinths, fluted spandrels and the striped awnings on the Leidseplein, the entablature, the attic with its windows and ornamented lisenen, the zinc corner pinnacles, the skylights and the shop fronts, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": [48, 50, 138, 142, 144]
+}

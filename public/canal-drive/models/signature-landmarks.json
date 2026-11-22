@@ -105651,8 +105651,10 @@
         "dark": "#26292c",
         "slate": "#4b5058",
         "copper": "#5f8f7e",
-        "gold": "#c9a24a"
+        "gold": "#c9a24a",
+        "concrete": "#5f6670"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Politiebureau Raampoort, Marnixstraat 148: police station of 1888 by Willem Springer",
         "author": "Map Recall",
@@ -105854,18 +105856,18 @@
         "depthCoverage": 1.0255247064538904
       },
       "triangles": 29363,
-      "bytes": 360964,
+      "bytes": 361016,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a214b6ca04899764",
+        "sourceHash": "af6147c42f580e88",
         "buildVersion": 2,
-        "bytes": 96076,
+        "bytes": 96128,
         "triangles": 4584
       },
       "lod2": {
-        "sourceHash": "a214b6ca04899764",
+        "sourceHash": "af6147c42f580e88",
         "buildVersion": 6,
-        "bytes": 17184,
+        "bytes": 17232,
         "triangles": 582
       }
     },
@@ -105911,7 +105913,8 @@
         "dark": "#232527",
         "slate": "#69707a",
         "gold": "#e8d9a8",
-        "bronze": "#2a2c2e"
+        "bronze": "#2a2c2e",
+        "ochre": "#4e3828"
       },
       "attribution": {
         "title": "Banks Mansion, Herengracht 519-525: former bank of 1923 on the Vijzelstraat corner",
@@ -105997,20 +106000,20 @@
         "depthMetres": 27.437297821044922,
         "depthCoverage": 1.0237797694419746
       },
-      "triangles": 16366,
-      "bytes": 244948,
+      "triangles": 16498,
+      "bytes": 248204,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7bece2342c73897d",
+        "sourceHash": "4a77146c9b6b368d",
         "buildVersion": 2,
-        "bytes": 64360,
-        "triangles": 2908
+        "bytes": 67500,
+        "triangles": 3044
       },
       "lod2": {
-        "sourceHash": "7bece2342c73897d",
+        "sourceHash": "4a77146c9b6b368d",
         "buildVersion": 6,
         "bytes": 8932,
-        "triangles": 326
+        "triangles": 329
       }
     },
     "schiller-rembrandtplein": {
@@ -126536,6 +126539,843 @@
         "bytes": 5220,
         "triangles": 115
       }
+    },
+    "kweekschool-machinisten": {
+      "id": "kweekschool-machinisten",
+      "name": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14",
+      "modelUrl": "./models/kweekschool-machinisten.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012164973"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91295993,
+          52.36467568
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 70.8,
+        "widthMetres": 104.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.91295993,
+          52.36467568
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012164973 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/kweekschool-machinisten-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002910_pano_0013_000177 (2023) and TMX7316010203-002541_pano_0003_000192 (2022, the Salm street front), b_20241210_1246_Track28_Sphere_00023 (2024, the director's wing), TMX7316010203-002933_pano_0009_000208 (2023, the 1934 wing and the Ouendag block), TMX7316010203-002047_pano_0000_001142, _001164 and _001165 (2021, the 1934 front and the wing returns), TMX7316010203-001975_pano_0000_001007, _001012 and _001013 (2021) and TMX7316010203-000354_pano_0002_000101, _000095 and _000096 (2017, the canal side), CC BY 4.0. Gemeentelijk monument 204058. Per wall in scripts/landmarks/kweekschool-machinisten-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 18,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.05
+      },
+      "bagYear": 1880,
+      "measuredOverrides": true,
+      "materialOverrides": {
+        "brick": "#6e4a42",
+        "greyBrick": "#5f4d46",
+        "red": "#54352f",
+        "bronze": "#7a5546",
+        "ochre": "#c2b393",
+        "stone": "#8f8d84",
+        "concrete": "#a9a598",
+        "frame": "#e6e0cf",
+        "glass": "#46525a",
+        "slate": "#33363a",
+        "dark": "#2f3134",
+        "pink": "#a1323a",
+        "green": "#3e4a46",
+        "copper": "#7f9a90"
+      },
+      "attribution": {
+        "title": "Former Kweekschool voor Machinisten, Plantage Muidergracht 14, Amsterdam (A. Salm 1886-87; B.J. Ouendag 1926; W.B. Ouendag 1934)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/bbd19c50-eb2a-4ab5-8cc6-b43b176baf47",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164973 (CC0): Salm's red-brown street front with its sandstone speklagen, segmental window arches over brick-mosaic tympana, the two raised risalits with the 1878 and 1887 gable stones, the director's wing with its stone balcony on consoles and the two heads, the 1934 portico wing, B.J. Ouendag's 1926 block, the 1934 block, and the canal side with its stair towers, lab wing and red sun blinds, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9131271,
+              52.3647155
+            ],
+            [
+              4.9131111,
+              52.364698
+            ],
+            [
+              4.9130984,
+              52.3646841
+            ],
+            [
+              4.9129043,
+              52.3647508
+            ],
+            [
+              4.9129051,
+              52.3647517
+            ],
+            [
+              4.9128489,
+              52.364771
+            ],
+            [
+              4.9128458,
+              52.3647721
+            ],
+            [
+              4.912845,
+              52.3647712
+            ],
+            [
+              4.9128419,
+              52.3647723
+            ],
+            [
+              4.9127106,
+              52.3648174
+            ],
+            [
+              4.9127114,
+              52.3648183
+            ],
+            [
+              4.912652,
+              52.3648387
+            ],
+            [
+              4.9126512,
+              52.3648378
+            ],
+            [
+              4.9124575,
+              52.3649044
+            ],
+            [
+              4.9124862,
+              52.3649357
+            ],
+            [
+              4.9123903,
+              52.3649689
+            ],
+            [
+              4.9123883,
+              52.3649667
+            ],
+            [
+              4.9123155,
+              52.3648877
+            ],
+            [
+              4.9123141,
+              52.3648882
+            ],
+            [
+              4.9122895,
+              52.3648616
+            ],
+            [
+              4.9122909,
+              52.3648611
+            ],
+            [
+              4.9122531,
+              52.3648201
+            ],
+            [
+              4.9123492,
+              52.3647871
+            ],
+            [
+              4.91235,
+              52.364788
+            ],
+            [
+              4.9124442,
+              52.3647556
+            ],
+            [
+              4.9124434,
+              52.3647547
+            ],
+            [
+              4.9124978,
+              52.364736
+            ],
+            [
+              4.9124986,
+              52.3647369
+            ],
+            [
+              4.9126329,
+              52.3646907
+            ],
+            [
+              4.912843,
+              52.3646184
+            ],
+            [
+              4.9128422,
+              52.3646176
+            ],
+            [
+              4.9128966,
+              52.3645988
+            ],
+            [
+              4.9128974,
+              52.3645997
+            ],
+            [
+              4.9129913,
+              52.3645675
+            ],
+            [
+              4.9129905,
+              52.3645666
+            ],
+            [
+              4.9130867,
+              52.3645335
+            ],
+            [
+              4.913352,
+              52.3644425
+            ],
+            [
+              4.9133429,
+              52.3644326
+            ],
+            [
+              4.9134445,
+              52.3643978
+            ],
+            [
+              4.9134536,
+              52.3644077
+            ],
+            [
+              4.9136568,
+              52.3643378
+            ],
+            [
+              4.9136604,
+              52.3643418
+            ],
+            [
+              4.913792,
+              52.3644852
+            ],
+            [
+              4.9137765,
+              52.3644905
+            ],
+            [
+              4.9137779,
+              52.3644921
+            ],
+            [
+              4.9136552,
+              52.3645343
+            ],
+            [
+              4.9136537,
+              52.3645327
+            ],
+            [
+              4.9136383,
+              52.3645379
+            ],
+            [
+              4.9136357,
+              52.3645343
+            ],
+            [
+              4.9135993,
+              52.3645468
+            ],
+            [
+              4.9136039,
+              52.3645519
+            ],
+            [
+              4.9134089,
+              52.3646188
+            ],
+            [
+              4.9132233,
+              52.3646825
+            ],
+            [
+              4.9131271,
+              52.3647155
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -48.55424880981445,
+          -9.822845647988743e-9,
+          -33.28713607788086
+        ],
+        "max": [
+          56.596099853515625,
+          18.197999954223633,
+          37.961116790771484
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91295993,
+          52.36467568
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 105.15034866333008,
+        "heightMetres": 18.197999964046478,
+        "depthMetres": 71.24825286865234,
+        "depthCoverage": 0.6811496450157968
+      },
+      "triangles": 22393,
+      "bytes": 311508,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "muziekschool-jacob-van-campen": {
+      "id": "muziekschool-jacob-van-campen",
+      "name": "Former Openbare Muziekschool, Eerste Jacob van Campenstraat 59",
+      "modelUrl": "./models/muziekschool-jacob-van-campen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012228680"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89051175,
+          52.35757581
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 23.3,
+        "widthMetres": 22.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.89051175,
+          52.35757581
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012228680 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/muziekschool-jacob-van-campen-footprints.json, bag-shell-prepare.ts); the two street fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002455_pano_0001_000826 (2022) and TMX7316010203-002115_pano_0000_002717 (2021, the Eerste Jacob van Campenstraat front) and recording_2024-09-04_05-35-54_04499 (2024) with TMX7316010203-002470_pano_0001_000371 (2022, the Ferdinand Bolstraat side), CC BY 4.0. Gemeentelijk monument (register: Publieke Werken, 1882). Per wall in scripts/landmarks/muziekschool-jacob-van-campen-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 15.6,
+      "galleryView": {
+        "theta": 0.45,
+        "phi": 1.1
+      },
+      "bagYear": 1900,
+      "measuredOverrides": true,
+      "materialOverrides": {
+        "brick": "#8a5c4d",
+        "ochre": "#b8a573",
+        "stone": "#cdc8b8",
+        "concrete": "#cbbc9d",
+        "greyBrick": "#4a5356",
+        "frame": "#ebe8df",
+        "glass": "#46525a",
+        "slate": "#4a4f55",
+        "dark": "#3e3c39",
+        "bronze": "#6f4f3e"
+      },
+      "attribution": {
+        "title": "Former Openbare Muziekschool (Jacob van Campenschool), Eerste Jacob van Campenstraat 59, Amsterdam (Publieke Werken, 1882)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/c3b66d2e-e5d2-4224-943b-f0d8aa4bc1f2",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012228680 (CC0): the red brick fronts with their yellow-brick colossal lisenen and frieze, the bluestone string courses, the round-arched blind tympana with keystones over the first-floor windows, the dentil cornice and middle pediment, the round-arched entrance with its stone balustrade above, and the side dormer with its pediment and volutes, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8906738,
+              52.3576469
+            ],
+            [
+              4.8905514,
+              52.357654
+            ],
+            [
+              4.890546,
+              52.3576192
+            ],
+            [
+              4.8905094,
+              52.3576213
+            ],
+            [
+              4.8905064,
+              52.3576016
+            ],
+            [
+              4.8905268,
+              52.3576004
+            ],
+            [
+              4.8905241,
+              52.3575825
+            ],
+            [
+              4.8904773,
+              52.3575852
+            ],
+            [
+              4.8904708,
+              52.3575432
+            ],
+            [
+              4.890363,
+              52.3575494
+            ],
+            [
+              4.8903495,
+              52.3574614
+            ],
+            [
+              4.8906425,
+              52.3574447
+            ],
+            [
+              4.8906738,
+              52.3576469
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -11.365809440612793,
+          -1.1920929132713809e-8,
+          -8.689000129699707
+        ],
+        "max": [
+          11.721935272216797,
+          15.050000190734863,
+          15.325461387634277
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89051175,
+          52.35757581
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.014461517333984,
+        "heightMetres": 15.050000202655792,
+        "depthMetres": 23.08774471282959,
+        "depthCoverage": 1.0399885005779095
+      },
+      "triangles": 13185,
+      "bytes": 179472,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "maison-de-vries-leidseplein": {
+      "id": "maison-de-vries-leidseplein",
+      "name": "Former Maison De Vries, Leidseplein 1-3",
+      "modelUrl": "./models/maison-de-vries-leidseplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012174479"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88353595,
+          52.36434749
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29.9,
+        "widthMetres": 30.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.88353595,
+          52.36434749
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012174479 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/maison-de-vries-leidseplein-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002306_pano_0001_001396 (2021, Leidseplein, heights and tints), TMX7316010203-001053_pano_0000_002013 (2019, the oriels and awnings close up), TMX7316010203-001660_pano_0000_000662 (2020), TMX7316010203-002619_pano_0024_000043 (2022, roof), TMX7316010203-001053_pano_0000_002080 (2019, Leidsestraat) and TMX7316010203-001674_pano_0000_002377 (2020), CC BY 4.0. Gemeentelijk monument 209014. Per wall in scripts/landmarks/maison-de-vries-leidseplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.3,
+      "galleryView": {
+        "theta": 3.6,
+        "phi": 1.1
+      },
+      "bagYear": 1917,
+      "materialOverrides": {
+        "stone": "#dad4c2",
+        "white": "#e6e2d5",
+        "glass": "#56616a",
+        "slate": "#76777c",
+        "dark": "#3a393b",
+        "copper": "#7a828c",
+        "blue": "#2f4468",
+        "greyBrick": "#7e8082"
+      },
+      "attribution": {
+        "title": "Former Maison De Vries, Leidseplein 1-3 / Leidsestraat 103-109, Amsterdam (A. Jacot, 1917)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0001_001396/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012174479 (CC0): the colossal pilasters with their Ionic capitals, the canted timber oriels with their pierced plinths, fluted spandrels and the striped awnings on the Leidseplein, the entablature, the attic with its windows and ornamented lisenen, the zinc corner pinnacles, the skylights and the shop fronts, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8836667,
+              52.3643621
+            ],
+            [
+              4.88361,
+              52.3643996
+            ],
+            [
+              4.8836215,
+              52.3644052
+            ],
+            [
+              4.8834961,
+              52.3644948
+            ],
+            [
+              4.8832157,
+              52.3643625
+            ],
+            [
+              4.8834124,
+              52.3642255
+            ],
+            [
+              4.8835485,
+              52.3642879
+            ],
+            [
+              4.8835521,
+              52.3642857
+            ],
+            [
+              4.8836255,
+              52.364321
+            ],
+            [
+              4.883611,
+              52.3643306
+            ],
+            [
+              4.8836667,
+              52.3643621
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -22.758241653442383,
+          -4.7683716530855236e-8,
+          -16.954345703125
+        ],
+        "max": [
+          8.913999557495117,
+          25.979698181152344,
+          13.956501007080078
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88353595,
+          52.36434749
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.6722412109375,
+        "heightMetres": 25.97969822883606,
+        "depthMetres": 30.910846710205078,
+        "depthCoverage": 1.006867971016452
+      },
+      "triangles": 20956,
+      "bytes": 307568,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "broekmans-koningsplein": {
+      "id": "broekmans-koningsplein",
+      "name": "Winkelhuis Broekmans, Koningsplein 16-20",
+      "modelUrl": "./models/broekmans-koningsplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253807"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8884533,
+          52.36698739
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 25.7,
+        "widthMetres": 26.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.8884533,
+          52.36698739
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012253807 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/broekmans-koningsplein-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002361_pano_0007_000213 (2021, Koningsplein, heights), TMX7316010203-002542_pano_0004_000298 (2022, Koningsplein), TMX7316010203-002860_pano_0000_000020 (2022, the rounded corner), TMX7316010203-002860_pano_0000_000025 (2022, Herengracht) and b_20250109_1300_Track05_Sphere_00289 (2025), CC BY 4.0. Rijksmonument 202025. Per wall in scripts/landmarks/broekmans-koningsplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19.1,
+      "galleryView": {
+        "theta": 3.4,
+        "phi": 1.1
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#cbc2aa",
+        "frame": "#cdc7b5",
+        "white": "#ecebe5",
+        "glass": "#59636a",
+        "dark": "#36393b",
+        "slate": "#6b6e72",
+        "ochre": "#7d5f40"
+      },
+      "attribution": {
+        "title": "Winkelhuis Broekmans, Koningsplein 16-20 / Herengracht 439, Amsterdam (A. Jacot with W. Oldewelt, 1904)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002860_pano_0000_000020/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012253807 (CC0): the sandstone piers and bands round the rounded corner, the large tripartite storey windows, the wrought-iron balcony railing, the mezzanine lights, the waterlijst, the attic balustrade with postamenten and the merlon cresting of the second part, the shop fronts and their white awnings, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8883544,
+              52.3670056
+            ],
+            [
+              4.8883553,
+              52.3670051
+            ],
+            [
+              4.8883548,
+              52.3670048
+            ],
+            [
+              4.8883595,
+              52.3670019
+            ],
+            [
+              4.8883617,
+              52.3670032
+            ],
+            [
+              4.8883738,
+              52.366996
+            ],
+            [
+              4.8883717,
+              52.3669946
+            ],
+            [
+              4.8883751,
+              52.3669926
+            ],
+            [
+              4.8883772,
+              52.3669938
+            ],
+            [
+              4.8884027,
+              52.3669787
+            ],
+            [
+              4.8884022,
+              52.3669782
+            ],
+            [
+              4.888406,
+              52.3669759
+            ],
+            [
+              4.8884067,
+              52.3669763
+            ],
+            [
+              4.8884187,
+              52.3669692
+            ],
+            [
+              4.8884322,
+              52.3669611
+            ],
+            [
+              4.8884303,
+              52.3669598
+            ],
+            [
+              4.8884374,
+              52.3669556
+            ],
+            [
+              4.8884379,
+              52.3669559
+            ],
+            [
+              4.8884393,
+              52.3669551
+            ],
+            [
+              4.8884407,
+              52.366956
+            ],
+            [
+              4.8884463,
+              52.3669535
+            ],
+            [
+              4.8884527,
+              52.366952
+            ],
+            [
+              4.8884595,
+              52.3669514
+            ],
+            [
+              4.8884663,
+              52.3669519
+            ],
+            [
+              4.8884728,
+              52.3669533
+            ],
+            [
+              4.8884738,
+              52.3669523
+            ],
+            [
+              4.8884754,
+              52.3669528
+            ],
+            [
+              4.8884757,
+              52.3669524
+            ],
+            [
+              4.8884845,
+              52.3669553
+            ],
+            [
+              4.888483,
+              52.3669568
+            ],
+            [
+              4.8885244,
+              52.3669704
+            ],
+            [
+              4.8885257,
+              52.3669688
+            ],
+            [
+              4.8885335,
+              52.3669714
+            ],
+            [
+              4.8887435,
+              52.3670388
+            ],
+            [
+              4.8885939,
+              52.3671025
+            ],
+            [
+              4.8886527,
+              52.3671479
+            ],
+            [
+              4.8885708,
+              52.3671828
+            ],
+            [
+              4.8883544,
+              52.3670056
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.194189548492432,
+          -2.4125541804787725e-16,
+          -21.66699981689453
+        ],
+        "max": [
+          20.030261993408203,
+          20.26300048828125,
+          4.542337417602539
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8884533,
+          52.36698739
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.224451541900635,
+        "heightMetres": 20.26300048828125,
+        "depthMetres": 26.20933723449707,
+        "depthCoverage": 0.9890315937546065
+      },
+      "triangles": 9060,
+      "bytes": 128344,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

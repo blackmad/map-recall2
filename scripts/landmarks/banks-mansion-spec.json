@@ -9,7 +9,7 @@
  "bagYear": 1923,
  "surveyedSource": "Vertex average of the BAG 0363100012165078 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground (scripts/landmarks/banks-mansion-footprints.json, written by bag-shell-prepare.ts). The massing and the mansard are the 3DBAG LoD2.2 shell (CC BY 4.0); the colonnade, balconies, windows, cornice, dormers and the corner entrance are drawn from rectified Gemeente Amsterdam panoramas (CC BY 4.0: TMX7316010203-002619_pano_0015_000187, TMX7316010203-000355_pano_0000_000753, recording_2025-06-16_06-42-40_01641). Per wall in scripts/landmarks/banks-mansion-inventory.json.",
  "materialOverrides": {
-  "sandstone": "#9e9584",
+  "sandstone": "#bdb4a2",
   "stone": "#d8d0bd",
   "white": "#e6e2d8",
   "frame": "#efece4",
@@ -17,7 +17,8 @@
   "dark": "#232527",
   "slate": "#69707a",
   "gold": "#e8d9a8",
-  "bronze": "#2a2c2e"
+  "bronze": "#2a2c2e",
+  "ochre": "#4e3828"
  },
  "attribution": {
   "title": "Banks Mansion, Herengracht 519-525: former bank of 1923 on the Vijzelstraat corner",

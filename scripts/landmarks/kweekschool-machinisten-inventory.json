@@ -1,0 +1,757 @@
+{
+ "schemaVersion": 1,
+ "id": "kweekschool-machinisten",
+ "pand": "0363100012164973",
+ "brief": "scripts/landmarks/kweekschool-machinisten-brief.md",
+ "signature": [
+  "s-speklagen",
+  "s-arched-windows",
+  "s-risalits",
+  "d-balcony",
+  "s-cornice",
+  "c-red-blinds",
+  "o-classroom-windows",
+  "s-gable-stone-1878",
+  "s-gable-stone-1887"
+ ],
+ "walls": [
+  {
+   "tag": "w01-210",
+   "bearing": 210,
+   "lengthM": 85.8,
+   "centre": [
+    4.9128055,
+    52.3646335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001007",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-speklagen-canal",
+     "kind": "other",
+     "where": "sandstone courses at the sills and over the ground floor of the canal wing and the Salm rears, stopping at every window",
+     "approxSizeM": [
+      85,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "speklagen kit (src/canalRecall/landmarks/speklagen.ts)"
+    },
+    {
+     "id": "c-red-blinds",
+     "kind": "canopy",
+     "where": "red roll-down sun blinds over 14 windows of the canal wing (2021), the stair column and the garden doors",
+     "approxSizeM": [
+      1.9,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001007",
+     "how": "blind(): red roll slab and its box"
+    },
+    {
+     "id": "c-stair-canopies",
+     "kind": "canopy",
+     "where": "two concrete canopies over the quay at the foot of the stair towers",
+     "approxSizeM": [
+      6,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "concrete boxes 1 m deep"
+    },
+    {
+     "id": "c-salm-rear-cornices",
+     "kind": "other",
+     "where": "carved sandstone cornices with consoles on the rears of both Salm wings",
+     "approxSizeM": [
+      8,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "cornice() with consoles"
+    },
+    {
+     "id": "c-quoins",
+     "kind": "other",
+     "where": "heavy sandstone quoins on the wing rears",
+     "approxSizeM": [
+      0.6,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "quoins()"
+    },
+    {
+     "id": "c-quay-plinth",
+     "kind": "other",
+     "where": "grey stone plinth/quay along the water",
+     "approxSizeM": [
+      85,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "stone slab"
+    },
+    {
+     "id": "c-lisenen",
+     "kind": "other",
+     "where": "brick pilaster strips on the Ouendag rear",
+     "approxSizeM": [
+      1,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "greyBrick slabs 0.14 m proud"
+    },
+    {
+     "id": "c-garden-doors",
+     "kind": "other",
+     "where": "dark green-grey double doors at both ends of the canal wing and in the two-axis bay",
+     "approxSizeM": [
+      1.5,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0002_000101",
+     "how": "door(): frame, leaf and middle bar; the arched head on the NW door"
+    }
+   ],
+   "note": "The canal (back) side, 85.8 m from the NW: the rear of the director's wing with heavy quoins and a carved cornice, the rear of the Salm body, the first stair tower with its concrete canopy, the three-storey wing on the former playground (seven axes), the second stair tower, a two-axis bay with garden doors, the rear of the Salm SE wing with its cornice, and the four-storey rear of the Ouendag block. Read on the overcast-free 2017 view (the 2021 sun makes the brick look yellow; it is the same brown-red brick)."
+  },
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 37.3,
+   "centre": [
+    4.9133685,
+    52.364636
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0009_000208",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "o-classroom-windows",
+     "kind": "window-shape",
+     "where": "three-light sash windows (driedelig, valraam fanlights) on ground and first floor",
+     "approxSizeM": [
+      2.7,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002933_pano_0009_000208",
+     "how": "win() 9 x 5 panes, two heavy mullions"
+    },
+    {
+     "id": "o-top-strip",
+     "kind": "window-shape",
+     "where": "the strip of small sashes on the top floor (eleven visible)",
+     "approxSizeM": [
+      14.5,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002933_pano_0009_000208",
+     "how": "win() per light, concrete sill"
+    },
+    {
+     "id": "o-arched-door",
+     "kind": "other",
+     "where": "the tall arched double door on the stair axis with the vertical stair strips and lisenen (register)",
+     "approxSizeM": [
+      2.2,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002933_pano_0009_000208",
+     "how": "dark leaf, segmental brick arch, two lisenen and three pairs of narrow stair lights; the door itself is hidden by a truck in the photo"
+    },
+    {
+     "id": "o-cornice-band",
+     "kind": "other",
+     "where": "dark brick cornice band under the coping",
+     "approxSizeM": [
+      29,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002933_pano_0009_000208",
+     "how": "slab in the dark brick"
+    },
+    {
+     "id": "p-portico",
+     "kind": "canopy",
+     "where": "deep portico in the SE wing with two pairs of doors and a strip of transoms over it (register: diep portiek met hardstenen stoep)",
+     "approxSizeM": [
+      5,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001164",
+     "how": "dark recess slab, door leaves, stone step, concrete lintel, four transoms"
+    },
+    {
+     "id": "p-coupled-windows",
+     "kind": "window-shape",
+     "where": "three axes of coupled windows on the two floors of the SE wing",
+     "approxSizeM": [
+      1.3,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002933_pano_0009_000208",
+     "how": "win() under salmArch"
+    }
+   ],
+   "note": "Edge 19: the Salm SE wing (rebuilt 1934: three axes of coupled windows, deep portico with two pairs of varnished doors and a transom strip), the two-axis link, and B.J. Ouendag's 1926 block. The left 10.8 m is hidden by the building across the street; the register gives the block five axes round the door, so the hidden half mirrors the visible one about the stair axis."
+  },
+  {
+   "tag": "w03-30",
+   "bearing": 30,
+   "lengthM": 30.3,
+   "centre": [
+    4.912654,
+    52.3648395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0003_000192",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-speklagen",
+     "kind": "other",
+     "where": "sandstone speklagen across the front at seven levels, broken at every window, so they read as neggeblokken beside the jambs",
+     "approxSizeM": [
+      50,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002541_pano_0003_000192",
+     "how": "new kit part speklagen.ts: band runs cut at every registered opening"
+    },
+    {
+     "id": "s-arched-windows",
+     "kind": "window-shape",
+     "where": "segmental brick arches with brick-mosaic tympana and keystones over every window; ground floor three-light (SE half) or two-light (NW half) under equal arches; first-floor two-light windows with fanlights; attic pairs",
+     "approxSizeM": [
+      2.6,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "how": "win() with paneGrid and salmArch(): dark-brick segment, mosaic segment, sandstone keystone"
+    },
+    {
+     "id": "s-risalits",
+     "kind": "other",
+     "where": "the two slightly projecting risalits flanking the three middle axes, rising over the eaves to their own cornice on consoles (tent roofs removed, now flat)",
+     "approxSizeM": [
+      5.8,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "how": "risalit(): 0.3 m proud face and a brick block back into the roof, consoled cornice, quoins"
+    },
+    {
+     "id": "s-gable-stone-1887",
+     "kind": "gable-stone",
+     "where": "gable stone \"1887\" under the first-floor window of the right risalit",
+     "approxSizeM": [
+      1.2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002541_pano_0003_000192",
+     "how": "dark tablet with raised sandstone digits (letters())"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "the carved sandstone cornice along the eaves",
+     "approxSizeM": [
+      50,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002541_pano_0003_000192",
+     "how": "cornice(): frieze and crown"
+    },
+    {
+     "id": "s-attic-ledges",
+     "kind": "other",
+     "where": "corbelled brick sill ledge with a band of diagonal brick mosaic under each attic pair",
+     "approxSizeM": [
+      2.1,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "how": "red ledge slab and mosaic panel"
+    },
+    {
+     "id": "s-muntin-figures",
+     "kind": "window-shape",
+     "where": "circle and diamond figures in the glazing bars of some ground and first-floor windows",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "skip": {
+      "reason": "too-small",
+      "note": "drawn as the plain pane grid; the figures are 0.3-0.4 m at the window"
+     }
+    },
+    {
+     "id": "s-vent-grilles",
+     "kind": "other",
+     "where": "small white ventilation grilles in a row over the ground-floor arches",
+     "approxSizeM": [
+      0.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m grilles"
+     }
+    }
+   ],
+   "note": "NW half of the Salm street front: the 1887 risalit, the middle axes, the four two-light axes to the director's wing."
+  },
+  {
+   "tag": "w04-30",
+   "bearing": 30,
+   "lengthM": 19.5,
+   "centre": [
+    4.9129765,
+    52.3647295
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002910_pano_0013_000177",
+   "capturedAt": "2023-01-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-gable-stone-1878",
+     "kind": "gable-stone",
+     "where": "gable stone \"1878\" under the first-floor window of the left risalit",
+     "approxSizeM": [
+      1.2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "how": "dark tablet with raised sandstone digits (letters())"
+    },
+    {
+     "id": "s-plinth",
+     "kind": "other",
+     "where": "low natural-stone plinth",
+     "approxSizeM": [
+      50,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002910_pano_0013_000177",
+     "how": "stone slab"
+    }
+   ],
+   "note": "SE half of the Salm street front: four three-light axes and the 1878 risalit. Measured at 50 px/m (the layout reference)."
+  },
+  {
+   "tag": "w05-300",
+   "bearing": 300,
+   "lengthM": 19,
+   "centre": [
+    4.9123245,
+    52.3648965
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_001295",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "d-side-wall",
+     "kind": "other",
+     "where": "speklagen, quoins and the consoled cornice turning the corner",
+     "approxSizeM": [
+      19,
+      13
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track25_Sphere_00165",
+     "how": "bands, quoins and cornice as on the front; four inferred window axes"
+    },
+    {
+     "id": "d-stair-gable",
+     "kind": "other",
+     "where": "register: the cornice of the side wall is broken by a small point gable at the stair",
+     "approxSizeM": [
+      2.5,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241210_1246_Track25_Sphere_00165",
+     "skip": {
+      "reason": "not-visible",
+      "note": "hidden behind the neighbouring university block in every panorama"
+     }
+    }
+   ],
+   "note": "The NW side of the director's wing stands behind a 2010s university block a few metres away; only the corner is visible (quoins, speklagen, cornice). Windows on this side are inferred."
+  },
+  {
+   "tag": "w06-120",
+   "bearing": 120,
+   "lengthM": 18.8,
+   "centre": [
+    4.913727,
+    52.3644135
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_01649",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-strips",
+     "kind": "window-shape",
+     "where": "strips of coupled sashes and transoms on the SE end of the 1934 block (register: also on the side facade)",
+     "approxSizeM": [
+      13,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_04-38-42_01649",
+     "how": "five sashes and six transoms under concrete ledges, inferred spacing"
+    }
+   ],
+   "note": "The 2025 view is aimed past the neighbour (the orange brick front in the foreground is not this pand); the SE end of the 1934 block shows behind the fence as brown brick with a concrete corner pier and strip windows. Modelled as inferred strips."
+  },
+  {
+   "tag": "w07-210",
+   "bearing": 210,
+   "lengthM": 15.9,
+   "centre": [
+    4.9135575,
+    52.364375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001013",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-concrete-frame",
+     "kind": "window-shape",
+     "where": "concrete frame round the band of three windows on the upper floor",
+     "approxSizeM": [
+      8.7,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000095",
+     "how": "four piers and two rails in concrete"
+    },
+    {
+     "id": "f-strips",
+     "kind": "window-shape",
+     "where": "strip of three windows under it and six small transoms at the ground floor",
+     "approxSizeM": [
+      8,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000095",
+     "how": "win()"
+    },
+    {
+     "id": "f-stair-glazing",
+     "kind": "window-shape",
+     "where": "glazed stair column with a red blind on top",
+     "approxSizeM": [
+      2.9,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000095",
+     "how": "win() 3 x 5 and blind()"
+    },
+    {
+     "id": "f-plinth",
+     "kind": "other",
+     "where": "grey plinth on the water",
+     "approxSizeM": [
+      16,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000095",
+     "how": "stone slab"
+    }
+   ],
+   "note": "The canal side of the 1934 block, read on the 2017 view."
+  },
+  {
+   "tag": "w08-28",
+   "bearing": 28,
+   "lengthM": 14.8,
+   "centre": [
+    4.9136985,
+    52.364518
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001142",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-window-strip",
+     "kind": "window-shape",
+     "where": "strip of five coupled windows with white frames and a concrete hood",
+     "approxSizeM": [
+      9.6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001142",
+     "how": "win() x 5, hood slab, end posts"
+    },
+    {
+     "id": "g-transom-strip",
+     "kind": "window-shape",
+     "where": "strip of five ground-floor transoms under a concrete ledge",
+     "approxSizeM": [
+      12.5,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001142",
+     "how": "win() x 5, ledge slab"
+    },
+    {
+     "id": "g-door",
+     "kind": "canopy",
+     "where": "the entrance door under a concrete hood",
+     "approxSizeM": [
+      1.8,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001142",
+     "how": "door slab, step, hood"
+    },
+    {
+     "id": "g-coping",
+     "kind": "other",
+     "where": "green-patinated coping",
+     "approxSizeM": [
+      13.9,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001142",
+     "how": "copper slab"
+    },
+    {
+     "id": "g-grilles",
+     "kind": "other",
+     "where": "two small wall grilles",
+     "approxSizeM": [
+      0.6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002047_pano_0000_001142",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 m grilles"
+     }
+    }
+   ],
+   "note": "The 1934 front: flat brown-brick block with a strip of five coupled windows under a concrete hood, five transoms between brick piers under a concrete ledge, and the door under its hood. The panorama rectification bows the top; the 3DBAG front is straight."
+  },
+  {
+   "tag": "w09-210",
+   "bearing": 210,
+   "lengthM": 7.9,
+   "centre": [
+    4.9133965,
+    52.3644175
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001012",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-lab-window",
+     "kind": "window-shape",
+     "where": "the wide lab window (six lights, two rows) under the concrete ledge",
+     "approxSizeM": [
+      6,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000096",
+     "how": "win() 6 x 3"
+    },
+    {
+     "id": "h-upper-rows",
+     "kind": "window-shape",
+     "where": "two and three large sashes on the two floors above, red blinds",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000096",
+     "how": "win() and blind()"
+    }
+   ],
+   "note": "The low lab bay of the Ouendag block on the water."
+  },
+  {
+   "tag": "w10-30",
+   "bearing": 30,
+   "lengthM": 7.5,
+   "centre": [
+    4.912441,
+    52.3649545
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track28_Sphere_00023",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "d-balcony",
+     "kind": "balcony-ironwork",
+     "where": "richly decorated natural-stone balcony on the first floor, closed stone balustrade",
+     "approxSizeM": [
+      3.7,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track28_Sphere_00023",
+     "how": "slab, balustrade panel, end posts and rail"
+    },
+    {
+     "id": "d-consoles",
+     "kind": "sculpture",
+     "where": "the big consoles carrying the balcony, decorated with men's heads (register)",
+     "approxSizeM": [
+      0.45,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track28_Sphere_00023",
+     "how": "tapered stone brackets with a stone head at the foot"
+    },
+    {
+     "id": "d-heads",
+     "kind": "sculpture",
+     "where": "two sandstone men's heads either side of the balcony doors",
+     "approxSizeM": [
+      0.7,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track28_Sphere_00023",
+     "how": "roundel disc with a stone head"
+    },
+    {
+     "id": "d-dentil-cornice",
+     "kind": "other",
+     "where": "cornice on a consoled frieze",
+     "approxSizeM": [
+      7.5,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track28_Sphere_00023",
+     "how": "cornice() with consoles"
+    },
+    {
+     "id": "d-souterrain",
+     "kind": "window-shape",
+     "where": "the blocked souterrain window",
+     "approxSizeM": [
+      1.9,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track28_Sphere_00023",
+     "how": "dark-glazed win()"
+    }
+   ],
+   "note": "The director's wing front (register: \"opvallend rijker gedecoreerd\")."
+  },
+  {
+   "tag": "w11-299",
+   "bearing": 299,
+   "lengthM": 4.1,
+   "centre": [
+    4.9131155,
+    52.364702
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001164",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-blind-arch",
+     "kind": "window-shape",
+     "where": "bricked-up attic opening under its arch",
+     "approxSizeM": [
+      1.1,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001164",
+     "how": "dark brick panel under salmArch"
+    }
+   ],
+   "note": "The inner return of the SE wing: one first-floor window, a bricked-up arched opening on the attic floor, speklagen, the consoled cornice turning the corner."
+  },
+  {
+   "tag": "w12-119",
+   "bearing": 119,
+   "lengthM": 4.1,
+   "centre": [
+    4.9124745,
+    52.364922
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001165",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [],
+   "note": "The inner return of the director's wing, the mirror of w11."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

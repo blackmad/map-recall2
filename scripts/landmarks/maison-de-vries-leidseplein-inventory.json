@@ -1,0 +1,318 @@
+{
+ "schemaVersion": 1,
+ "id": "maison-de-vries-leidseplein",
+ "pand": "0363100012174479",
+ "brief": "scripts/landmarks/maison-de-vries-leidseplein-brief.md",
+ "signature": [
+  "s-awnings",
+  "s-oriels",
+  "s-pilasters",
+  "s-attic",
+  "s-entablature",
+  "s-balustrade",
+  "s-capitals",
+  "s-pinnacles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-323",
+   "bearing": 323,
+   "lengthM": 24.2,
+   "centre": [
+    4.8833585,
+    52.3644305
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_002377",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-oriels",
+     "kind": "window-shape",
+     "where": "six bays on the Leidsestraat, storeys 1-3",
+     "approxSizeM": [
+      2.7,
+      9.5
+     ],
+     "plan": "modelled",
+     "how": "as on the Leidseplein; no awnings on this side in any capture 2019-2025",
+     "seenIn": "TMX7316010203-001053_pano_0000_002080"
+    },
+    {
+     "id": "n-pilasters",
+     "kind": "colonnade",
+     "where": "seven colossal pilasters with Ionic capitals",
+     "approxSizeM": [
+      1.05,
+      10.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001053_pano_0000_002080"
+    },
+    {
+     "id": "n-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "balustrade under the first-storey oriels",
+     "approxSizeM": [
+      2.7,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001674_pano_0000_002377"
+    },
+    {
+     "id": "n-entablature-attic",
+     "kind": "other",
+     "where": "entablature, attic with three windows per bay and ornamented lisenen, as on the Leidseplein",
+     "approxSizeM": [
+      24.2,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001053_pano_0000_002080"
+    },
+    {
+     "id": "n-pui",
+     "kind": "other",
+     "where": "shop fronts with plain piers, the corner shop window and the ATM bay at the north-east end",
+     "approxSizeM": [
+      24.2,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001053_pano_0000_002080"
+    },
+    {
+     "id": "n-shop-signs",
+     "kind": "lettering",
+     "where": "worldwide money, H&M, Normal lettering",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     },
+     "seenIn": "recording_2025-07-14_05-25-22_01784"
+    }
+   ],
+   "note": "Leidsestraat front; the brief crop (2020, 9 m away) shows only the ground and first storeys, the 2019 view TMX7316010203-001053_pano_0000_002080 the whole front"
+  },
+  {
+   "tag": "w02-229",
+   "bearing": 229,
+   "lengthM": 20.2,
+   "centre": [
+    4.8833165,
+    52.364296
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001660_pano_0000_000662",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-oriels",
+     "kind": "window-shape",
+     "where": "all five bays between the pilasters, storeys 1-3 (5.5-15.0 m)",
+     "approxSizeM": [
+      2.7,
+      9.5
+     ],
+     "plan": "modelled",
+     "how": "canted three-storey timber bays (front 1.6 m, 45-degree cants 0.55 m), a front light with a transom and narrow cant lights per storey, fluted spandrel panels between storeys (orielStack in the builder)",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-awnings",
+     "kind": "canopy",
+     "where": "over every oriel window on the Leidseplein, 15 in all",
+     "approxSizeM": [
+      2.4,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "stripedAwning kit (src/canalRecall/landmarks/stripedAwning.ts): a sloping striped navy/white cloth over the front and both cants with a scalloped valance",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-pilasters",
+     "kind": "colonnade",
+     "where": "six colossal pilasters, 5.0-14.7 m, incl. the wide corner pier",
+     "approxSizeM": [
+      1.05,
+      10.5
+     ],
+     "plan": "modelled",
+     "how": "proud slabs with a pedestal block at the balustrade",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-capitals",
+     "kind": "relief",
+     "where": "Ionic capitals on every pilaster, 14.7-15.5 m",
+     "approxSizeM": [
+      1.3,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "abacus block over an echinus band and two volute discs either side",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "stone balustrade under the first-storey oriels, between the pilaster pedestals (register: balustrades op de tweede bouwlaag)",
+     "approxSizeM": [
+      2.7,
+      0.55
+     ],
+     "plan": "modelled",
+     "how": "the pierced stone plinth of each canted bay: seven small round-headed openings on the front and two on each cant, under a cap ledge (2019 close view: the balustrade follows the bay plan)",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-entablature",
+     "kind": "other",
+     "where": "architrave, plain frieze and projecting cornice across the whole front, 15.5-17.5 m",
+     "approxSizeM": [
+      20.2,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-attic",
+     "kind": "window-shape",
+     "where": "attic storey 17.5-19.6 m: three small windows per bay between lisenen",
+     "approxSizeM": [
+      2.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-lisene-ornament",
+     "kind": "relief",
+     "where": "Secession ornament on each attic lisene: vertical grooves ending in small squares (register: decoratieve elementen in de lisenen)",
+     "approxSizeM": [
+      0.7,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "four thin vertical ribs and a row of small squares standing proud of each lisene face",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-pinnacles",
+     "kind": "tower",
+     "where": "zinc-clad corner pinnacles on the mansard (register: zinkgedekte hoekpinakels), at the hips",
+     "approxSizeM": [
+      1.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG pinnacle boxes coloured zinc with a moulded cap and a low pyramid",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-mansard",
+     "kind": "other",
+     "where": "flattened hipped slate roof behind the attic (register: afgeplat schilddak met mastiekleien), with three large skylights on this side",
+     "approxSizeM": [
+      20,
+      5
+     ],
+     "plan": "simplified",
+     "how": "3DBAG roof planes in slate grey; the skylights as glazed panels 12 cm over the slope",
+     "seenIn": "TMX7316010203-002619_pano_0024_000043"
+    },
+    {
+     "id": "s-pui",
+     "kind": "other",
+     "where": "modern shop front between plain piers under the pilasters, dark plinth, cream fascia and cornice at 4.6-5.0 m",
+     "approxSizeM": [
+      20.2,
+      5
+     ],
+     "plan": "modelled",
+     "how": "piers, glazed openings with transoms, recessed entrance doors in bays 2 and 5, the grey ATM panel in bay 4",
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-klm-sign",
+     "kind": "sign",
+     "where": "KLM crown and letters on the roof (2020 panorama only)",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "the 2021-09 and 2022-06 panoramas (TMX7316010203-002306_pano_0001_001396, TMX7316010203-002619_pano_0024_000043) show the roof without the sign"
+     },
+     "seenIn": "TMX7316010203-001660_pano_0000_000662"
+    },
+    {
+     "id": "s-shop-signs",
+     "kind": "lettering",
+     "where": "GWK Travelex and H&M lettering on the fascia and glass",
+     "approxSizeM": [
+      3,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage that changes between captures (2019-2025)"
+     },
+     "seenIn": "TMX7316010203-002306_pano_0001_001396"
+    },
+    {
+     "id": "s-wall-lamp",
+     "kind": "lamp",
+     "where": "bracket lantern at the south end, 4.3 m",
+     "approxSizeM": [
+      0.4,
+      0.7
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.4 m lantern"
+     },
+     "seenIn": "TMX7316010203-001660_pano_0000_000662"
+    }
+   ],
+   "note": "Leidseplein front; storey heights from TMX7316010203-002306_pano_0001_001396 (2021-09-09) rectified at 50 px/m"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeentelijk monument 209014 (Voormalig Maison De Vries)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/360e0e82-cdec-40b9-9a4d-5a2d3cb6ec07?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012174479 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012174479",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012174479",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174479",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

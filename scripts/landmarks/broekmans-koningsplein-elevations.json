@@ -1,0 +1,148 @@
+{
+  "id": "broekmans-koningsplein",
+  "countedBy": "lane landmarks-r10-a-20261122 from the rectified panoramas (all-walls.ts, 50 px/m): TMX7316010203-002361_pano_0007_000213 (2021, Koningsplein, ring edge 9 only: alongM crops the render to it) and TMX7316010203-002860_pano_0000_000025 (2022, Herengracht, ring edges 0 and 2); not yet blind-counted. Glazing only. The ground storey counts twice: the shop windows and their transom lights. The fourth layer has three lights per axis in both parts (the stone posts split them).",
+  "facades": [
+    {
+      "name": "Koningsplein (south-south-east)",
+      "bearing": 153,
+      "photo": "staging/pand-ref/0363100012253807/w01-153d2021.jpg",
+      "rows": [
+        4,
+        4,
+        4,
+        4,
+        12
+      ],
+      "columns": 12,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "heightM": [
+        0,
+        18.25
+      ],
+      "alongM": [
+        9.05,
+        25.8
+      ],
+      "mixedRows": [
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002361_pano_0007_000213 (2021, w01-153 rectified at 50 px/m) and register 202025 (vensters van de vierde bouwlaag in drie delen, de middelste het breedst): per axis a 0.6 m light, a 1.5 m light and a 0.6 m light between stone posts",
+          "openings": [
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "wide",
+              "w": 1.57
+            },
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "wide",
+              "w": 1.57
+            },
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "wide",
+              "w": 1.57
+            },
+            {
+              "kind": "narrow",
+              "w": 0.61
+            },
+            {
+              "kind": "narrow",
+              "w": 0.59
+            },
+            {
+              "kind": "wide",
+              "w": 1.52
+            },
+            {
+              "kind": "narrow",
+              "w": 0.59
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Herengracht (south-west)",
+      "bearing": 224,
+      "photo": "staging/pand-ref/0363100012253807/w02-224d2022.jpg",
+      "rows": [
+        2,
+        2,
+        2,
+        2,
+        6
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "heightM": [
+        0,
+        18.25
+      ],
+      "alongM": [
+        1,
+        8.9
+      ],
+      "mixedRows": [
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "TMX7316010203-002860_pano_0000_000025 (2022, w02-224 rectified at 50 px/m): the fourth layer as on the Koningsplein, narrow-wide-narrow per axis",
+          "openings": [
+            {
+              "kind": "narrow",
+              "w": 0.6
+            },
+            {
+              "kind": "wide",
+              "w": 1.55
+            },
+            {
+              "kind": "narrow",
+              "w": 0.6
+            },
+            {
+              "kind": "narrow",
+              "w": 0.6
+            },
+            {
+              "kind": "wide",
+              "w": 1.55
+            },
+            {
+              "kind": "narrow",
+              "w": 0.6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
