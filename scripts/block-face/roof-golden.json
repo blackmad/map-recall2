@@ -6671,6 +6671,154 @@
     "hash": "c0747e4bfa3d3f78",
     "class": "front"
    }
+  },
+  "baerle-32-50": {
+   "153208": {
+    "hash": "fd0aa6f54d89320e",
+    "class": "front"
+   },
+   "156304": {
+    "hash": "2dc80a80ef0c9813",
+    "class": "front"
+   },
+   "156740": {
+    "hash": "b52d88b429ec8202",
+    "class": "front"
+   },
+   "157788": {
+    "hash": "c88050b953527339",
+    "class": "front"
+   },
+   "158360": {
+    "hash": "79ad0d688885e380",
+    "class": "front"
+   },
+   "162838": {
+    "hash": "6cceea2816338797",
+    "class": "front"
+   },
+   "164814": {
+    "hash": "74a2faea06a6990a",
+    "class": "front"
+   },
+   "237282": {
+    "hash": "3db78db1d092058e",
+    "class": "front"
+   }
+  },
+  "hooft-101-105": {
+   "152413": {
+    "hash": "f085946889d2c2db",
+    "class": "front"
+   },
+   "236256": {
+    "hash": "5c1ab325fb0f4bbb",
+    "class": "front"
+   },
+   "236916": {
+    "hash": "a15cb178c3dd91c2",
+    "class": "front"
+   }
+  },
+  "hooft-13-27": {
+   "152826": {
+    "hash": "69c167b2ca3568ba",
+    "class": "front"
+   },
+   "153801": {
+    "hash": "e160279b6d8683ef",
+    "class": "front"
+   },
+   "157150": {
+    "hash": "06cac75ffd6fc931",
+    "class": "front"
+   },
+   "160173": {
+    "hash": "a0a17854ca4e3739",
+    "class": "front"
+   },
+   "161508": {
+    "hash": "50045955a7d91f62",
+    "class": "front"
+   },
+   "164620": {
+    "hash": "fdae522379a060ce",
+    "class": "front"
+   },
+   "165945": {
+    "hash": "41836c2d542d1916",
+    "class": "front"
+   },
+   "165990": {
+    "hash": "8e828aef5c98e771",
+    "class": "front"
+   }
+  },
+  "hooft-29-63": {
+   "152454": {
+    "hash": "324799595722e54c",
+    "class": "front"
+   },
+   "155334": {
+    "hash": "e53b4982193efad6",
+    "class": "front"
+   },
+   "157173": {
+    "hash": "272a5cf46c50e984",
+    "class": "front"
+   },
+   "158272": {
+    "hash": "89ebb7ed21288c05",
+    "class": "front"
+   },
+   "158410": {
+    "hash": "658761652367b05a",
+    "class": "front"
+   },
+   "159279": {
+    "hash": "5a79dadad8fc6ff5",
+    "class": "front"
+   },
+   "159316": {
+    "hash": "474a90cad8d89e62",
+    "class": "front"
+   },
+   "159597": {
+    "hash": "fc6496f65f636caf",
+    "class": "front"
+   },
+   "160242": {
+    "hash": "f0287d4d41d1a906",
+    "class": "front"
+   },
+   "160305": {
+    "hash": "e32c18239b4ca1a6",
+    "class": "front"
+   },
+   "161622": {
+    "hash": "dfb2eda050be6e88",
+    "class": "front"
+   },
+   "163614": {
+    "hash": "930dc2079a372257",
+    "class": "front"
+   },
+   "164893": {
+    "hash": "906476484698a307",
+    "class": "front"
+   },
+   "165827": {
+    "hash": "29b9401c963a37e2",
+    "class": "front"
+   },
+   "089719": {
+    "hash": "121985b69ee0637b",
+    "class": "front"
+   },
+   "068180": {
+    "hash": "5d676511250ae02c",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -6987,6 +7135,10 @@
   "hooft-111-133": "66d8c918791cbe27",
   "hooft-114-142": "bda680eb677aa708",
   "hooft-30-78": "8ba44c1a4c67dfcd",
-  "hooft-67-99": "0b9a52342f1d62c6"
+  "hooft-67-99": "0b9a52342f1d62c6",
+  "baerle-32-50": "91f697fec344383d",
+  "hooft-101-105": "94a67072b4bb2fa5",
+  "hooft-13-27": "47d7b1d16f22007c",
+  "hooft-29-63": "7c7813679f0e171d"
  }
 }

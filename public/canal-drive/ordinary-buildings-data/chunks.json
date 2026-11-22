@@ -118314,6 +118314,3482 @@
      ]
     }
    ]
+  },
+  {
+   "id": "chunk-face-hooft-13-27",
+   "category": "street-survey",
+   "name": "face-hooft-13-27",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-13-27.glb?asset=364ad53bbc27d3c3",
+   "sha256": "364ad53bbc27d3c32b88ba23127a618489f2e274bea7d76d258a8446f27c2a42",
+   "bytes": 322080,
+   "triangles": 13738,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.883390284969026,
+     52.36090620689576
+    ],
+    "northOffsetDegrees": 156.2609,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -26.724,
+     0,
+     -21.853
+    ],
+    "max": [
+     29.184,
+     18.22,
+     1.002
+    ]
+   },
+   "height": 18.22,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012153801",
+    "NL.IMBAG.Pand.0363100012161508",
+    "NL.IMBAG.Pand.0363100012160173",
+    "NL.IMBAG.Pand.0363100012152826",
+    "NL.IMBAG.Pand.0363100012164620",
+    "NL.IMBAG.Pand.0363100012165945",
+    "NL.IMBAG.Pand.0363100012157150",
+    "NL.IMBAG.Pand.0363100012165990"
+   ],
+   "replaces": [
+    "ordinary-0363100012153801",
+    "ordinary-0363100012161508",
+    "ordinary-0363100012160173",
+    "ordinary-0363100012152826",
+    "ordinary-0363100012164620",
+    "ordinary-0363100012165945",
+    "ordinary-0363100012157150",
+    "ordinary-0363100012165990"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8837495,
+        52.3610027
+       ],
+       [
+        4.8836652,
+        52.3609801
+       ],
+       [
+        4.8837419,
+        52.3608679
+       ],
+       [
+        4.8838267,
+        52.3608895
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8836652,
+        52.3609801
+       ],
+       [
+        4.8835802,
+        52.3609572
+       ],
+       [
+        4.883661,
+        52.3608418
+       ],
+       [
+        4.883706,
+        52.3608536
+       ],
+       [
+        4.8837161,
+        52.3608389
+       ],
+       [
+        4.8837546,
+        52.3608493
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8835802,
+        52.3609572
+       ],
+       [
+        4.8834952,
+        52.3609343
+       ],
+       [
+        4.8835766,
+        52.3608213
+       ],
+       [
+        4.8836158,
+        52.3608313
+       ],
+       [
+        4.8836133,
+        52.360835
+       ],
+       [
+        4.8836578,
+        52.3608464
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8834952,
+        52.3609343
+       ],
+       [
+        4.8833937,
+        52.360907
+       ],
+       [
+        4.8834702,
+        52.3608007
+       ],
+       [
+        4.8835717,
+        52.3608281
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8833937,
+        52.360907
+       ],
+       [
+        4.8832922,
+        52.3608796
+       ],
+       [
+        4.8833687,
+        52.3607733
+       ],
+       [
+        4.8834702,
+        52.3608007
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8832922,
+        52.3608796
+       ],
+       [
+        4.8832012,
+        52.360855
+       ],
+       [
+        4.8832865,
+        52.3607364
+       ],
+       [
+        4.8833776,
+        52.360761
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8832007,
+        52.3608557
+       ],
+       [
+        4.8831061,
+        52.3608303
+       ],
+       [
+        4.8831788,
+        52.3607319
+       ],
+       [
+        4.8832717,
+        52.360757
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8831061,
+        52.3608303
+       ],
+       [
+        4.882998,
+        52.3608008
+       ],
+       [
+        4.8831283,
+        52.3606218
+       ],
+       [
+        4.883238,
+        52.3606517
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-153801",
+     "pandId": "0363100012153801",
+     "buildingId": "NL.IMBAG.Pand.0363100012153801",
+     "address": "Pieter Cornelisz. Hooftstraat 13",
+     "frontage": {
+      "x0": -26.724,
+      "x1": -20.45,
+      "widthM": 6.274
+     },
+     "bounds": {
+      "min": [
+       -26.724,
+       0,
+       -13.637
+      ],
+      "max": [
+       -20.222,
+       16.67,
+       0.406
+      ]
+     },
+     "triangles": 1858,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 812
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 224
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-161508",
+     "pandId": "0363100012161508",
+     "buildingId": "NL.IMBAG.Pand.0363100012161508",
+     "address": "Pieter Cornelisz. Hooftstraat 15-15D",
+     "frontage": {
+      "x0": -20.45,
+      "x1": -14.129,
+      "widthM": 6.32
+     },
+     "bounds": {
+      "min": [
+       -20.45,
+       0,
+       -15.813
+      ],
+      "max": [
+       -14.008,
+       16.66,
+       0.404
+      ]
+     },
+     "triangles": 1687,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 90
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 812,
+       "triangleCount": 632
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 132,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 224,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 19,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 21,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-160173",
+     "pandId": "0363100012160173",
+     "buildingId": "NL.IMBAG.Pand.0363100012160173",
+     "address": "Pieter Cornelisz. Hooftstraat 17-17D",
+     "frontage": {
+      "x0": -14.129,
+      "x1": -10.032,
+      "widthM": 4.098
+     },
+     "bounds": {
+      "min": [
+       -14.129,
+       0,
+       -13.826
+      ],
+      "max": [
+       -7.8,
+       16.64,
+       0.4
+      ]
+     },
+     "triangles": 1566,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 127
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 216,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 76,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 256,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1444,
+       "triangleCount": 516
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 252,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 426,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 37,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 38,
+       "triangleCount": 27
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-152826",
+     "pandId": "0363100012152826",
+     "buildingId": "NL.IMBAG.Pand.0363100012152826",
+     "address": "Pieter Cornelisz. Hooftstraat 19",
+     "frontage": {
+      "x0": -7.8,
+      "x1": -0.246,
+      "widthM": 7.554
+     },
+     "bounds": {
+      "min": [
+       -7.824,
+       0,
+       -12.976
+      ],
+      "max": [
+       -0.245,
+       16.892,
+       0.17
+      ]
+     },
+     "triangles": 2038,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 176,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 512,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1960,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 384,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 576,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 47,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 65,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-164620",
+     "pandId": "0363100012164620",
+     "buildingId": "NL.IMBAG.Pand.0363100012164620",
+     "address": "Pieter Cornelisz. Hooftstraat 21",
+     "frontage": {
+      "x0": -0.246,
+      "x1": 7.308,
+      "widthM": 7.554
+     },
+     "bounds": {
+      "min": [
+       -0.271,
+       0,
+       -12.988
+      ],
+      "max": [
+       7.309,
+       17.46,
+       0.383
+      ]
+     },
+     "triangles": 1758,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 53
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 248,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 524,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 3080,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 516,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 904,
+       "triangleCount": 174
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 55,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 67,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-165945",
+     "pandId": "0363100012165945",
+     "buildingId": "NL.IMBAG.Pand.0363100012165945",
+     "address": "Pieter Cornelisz. Hooftstraat 23-23C",
+     "frontage": {
+      "x0": 7.308,
+      "x1": 14.084,
+      "widthM": 6.775
+     },
+     "bounds": {
+      "min": [
+       7.282,
+       0,
+       -14.501
+      ],
+      "max": [
+       14.084,
+       17.833,
+       1.002
+      ]
+     },
+     "triangles": 1389,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 384,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 780,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 3680,
+       "triangleCount": 620
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 124,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 876,
+       "triangleCount": 312
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1078,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 71,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 82,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-157150",
+     "pandId": "0363100012157150",
+     "buildingId": "NL.IMBAG.Pand.0363100012157150",
+     "address": "Pieter Cornelisz. Hooftstraat 25A-25C",
+     "frontage": {
+      "x0": 14.084,
+      "x1": 21.119,
+      "widthM": 7.035
+     },
+     "bounds": {
+      "min": [
+       14.065,
+       0,
+       -12.008
+      ],
+      "max": [
+       21.119,
+       18.04,
+       0.318
+      ]
+     },
+     "triangles": 1462,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 468,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 840,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 4300,
+       "triangleCount": 728
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1188,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1280,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 75,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 93,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-165990",
+     "pandId": "0363100012165990",
+     "buildingId": "NL.IMBAG.Pand.0363100012165990",
+     "address": "Pieter Cornelisz. Hooftstraat 27",
+     "frontage": {
+      "x0": 21.119,
+      "x1": 29.182,
+      "widthM": 8.063
+     },
+     "bounds": {
+      "min": [
+       20.875,
+       0,
+       -21.853
+      ],
+      "max": [
+       29.184,
+       18.22,
+       0.319
+      ]
+     },
+     "triangles": 1980,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 540,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 900,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 5028,
+       "triangleCount": 920
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1560,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1466,
+       "triangleCount": 298
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 79,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 103,
+       "triangleCount": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hooft-101-105",
+   "category": "street-survey",
+   "name": "face-hooft-101-105",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-101-105.glb?asset=4c46105265e56786",
+   "sha256": "4c46105265e567864e7724dae7b4106480de0b3928b19bd8783027f0d32cbc1d",
+   "bytes": 162388,
+   "triangles": 6423,
+   "primitives": 16,
+   "instance": {
+    "anchor": [
+     4.8792083250073155,
+     52.359783197202844
+    ],
+    "northOffsetDegrees": 156.9472,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -10.523,
+     0,
+     -22.666
+    ],
+    "max": [
+     10.234,
+     19.331,
+     0.696
+    ]
+   },
+   "height": 19.331,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012236916",
+    "NL.IMBAG.Pand.0363100012236256",
+    "NL.IMBAG.Pand.0363100012152413"
+   ],
+   "replaces": [
+    "ordinary-0363100012236916",
+    "ordinary-0363100012236256",
+    "ordinary-0363100012152413"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8793498,
+        52.3598212
+       ],
+       [
+        4.8792521,
+        52.3597952
+       ],
+       [
+        4.8793172,
+        52.3597034
+       ],
+       [
+        4.8793327,
+        52.3596807
+       ],
+       [
+        4.879242,
+        52.3596576
+       ],
+       [
+        4.8792634,
+        52.3596276
+       ],
+       [
+        4.8792862,
+        52.3595963
+       ],
+       [
+        4.8792938,
+        52.3595851
+       ],
+       [
+        4.8794765,
+        52.3596318
+       ],
+       [
+        4.8794695,
+        52.3596461
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8792521,
+        52.3597952
+       ],
+       [
+        4.8791622,
+        52.3597713
+       ],
+       [
+        4.8792264,
+        52.3596794
+       ],
+       [
+        4.879242,
+        52.3596576
+       ],
+       [
+        4.8793327,
+        52.3596807
+       ],
+       [
+        4.8793172,
+        52.3597034
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8790704,
+        52.3597467
+       ],
+       [
+        4.8791424,
+        52.359645
+       ],
+       [
+        4.8791955,
+        52.3595716
+       ],
+       [
+        4.8792862,
+        52.3595963
+       ],
+       [
+        4.8792334,
+        52.3596696
+       ],
+       [
+        4.8791622,
+        52.3597713
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-236916",
+     "pandId": "0363100012236916",
+     "buildingId": "NL.IMBAG.Pand.0363100012236916",
+     "address": "Pieter Cornelisz. Hooftstraat 101",
+     "frontage": {
+      "x0": -10.519,
+      "x1": -3.269,
+      "widthM": 7.249
+     },
+     "bounds": {
+      "min": [
+       -10.523,
+       0,
+       -22.666
+      ],
+      "max": [
+       3.351,
+       19.331,
+       0.696
+      ]
+     },
+     "triangles": 2963,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 173
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1024
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 276
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 368
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 43
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-236256",
+     "pandId": "0363100012236256",
+     "buildingId": "NL.IMBAG.Pand.0363100012236256",
+     "address": "Pieter Cornelisz. Hooftstraat 103",
+     "frontage": {
+      "x0": -3.269,
+      "x1": 3.412,
+      "widthM": 6.682
+     },
+     "bounds": {
+      "min": [
+       -3.356,
+       0,
+       -13.813
+      ],
+      "max": [
+       3.413,
+       19.135,
+       0.463
+      ]
+     },
+     "triangles": 1997,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 88,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 256,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1024,
+       "triangleCount": 836
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 276,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 360,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 368,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 324,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 27,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 43,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-152413",
+     "pandId": "0363100012152413",
+     "buildingId": "NL.IMBAG.Pand.0363100012152413",
+     "address": "Pieter Cornelisz. Hooftstraat 105",
+     "frontage": {
+      "x0": 3.412,
+      "x1": 10.233,
+      "widthM": 6.82
+     },
+     "bounds": {
+      "min": [
+       3.243,
+       0,
+       -21.367
+      ],
+      "max": [
+       10.234,
+       18.109,
+       0.184
+      ]
+     },
+     "triangles": 1463,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 145
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 124,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 440,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1860,
+       "triangleCount": 704
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 720,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 604,
+       "triangleCount": 222
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 35,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 48,
+       "triangleCount": 29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hooft-29-63",
+   "category": "street-survey",
+   "name": "face-hooft-29-63",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-29-63.glb?asset=122b1d2c3b9f2f5e",
+   "sha256": "122b1d2c3b9f2f5ef054c791c9a8f3b9caf26329327294e3a35005c87315839c",
+   "bytes": 659112,
+   "triangles": 28503,
+   "primitives": 61,
+   "instance": {
+    "anchor": [
+     4.882039349772847,
+     52.36054478322357
+    ],
+    "northOffsetDegrees": 156.1922,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -56.42,
+     0,
+     -22.487
+    ],
+    "max": [
+     62.242,
+     20.252,
+     0.685
+    ]
+   },
+   "height": 20.252,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012158272",
+    "NL.IMBAG.Pand.0363100012155334",
+    "NL.IMBAG.Pand.0363100012165827",
+    "NL.IMBAG.Pand.0363100012160305",
+    "NL.IMBAG.Pand.0363100012089719",
+    "NL.IMBAG.Pand.0363100012157173",
+    "NL.IMBAG.Pand.0363100012159279",
+    "NL.IMBAG.Pand.0363100012158410",
+    "NL.IMBAG.Pand.0363100012161622",
+    "NL.IMBAG.Pand.0363100012164893",
+    "NL.IMBAG.Pand.0363100012068180",
+    "NL.IMBAG.Pand.0363100012159316",
+    "NL.IMBAG.Pand.0363100012152454",
+    "NL.IMBAG.Pand.0363100012159597",
+    "NL.IMBAG.Pand.0363100012163614",
+    "NL.IMBAG.Pand.0363100012160242"
+   ],
+   "replaces": [
+    "ordinary-0363100012158272",
+    "ordinary-0363100012155334",
+    "ordinary-0363100012165827",
+    "ordinary-0363100012160305",
+    "ordinary-0363100012089719",
+    "ordinary-0363100012157173",
+    "ordinary-0363100012159279",
+    "ordinary-0363100012158410",
+    "ordinary-0363100012161622",
+    "ordinary-0363100012164893",
+    "ordinary-0363100012068180",
+    "ordinary-0363100012159316",
+    "ordinary-0363100012152454",
+    "ordinary-0363100012159597",
+    "ordinary-0363100012163614",
+    "ordinary-0363100012160242"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8828,
+        52.3607436
+       ],
+       [
+        4.8827974,
+        52.3607446
+       ],
+       [
+        4.8827944,
+        52.3607452
+       ],
+       [
+        4.8827913,
+        52.3607453
+       ],
+       [
+        4.8827882,
+        52.3607449
+       ],
+       [
+        4.8827862,
+        52.3607444
+       ],
+       [
+        4.8827837,
+        52.3607432
+       ],
+       [
+        4.8827823,
+        52.3607423
+       ],
+       [
+        4.8827807,
+        52.3607406
+       ],
+       [
+        4.8827795,
+        52.3607423
+       ],
+       [
+        4.8827728,
+        52.3607405
+       ],
+       [
+        4.8827744,
+        52.3607382
+       ],
+       [
+        4.8827178,
+        52.3607231
+       ],
+       [
+        4.8827161,
+        52.3607254
+       ],
+       [
+        4.8827105,
+        52.3607239
+       ],
+       [
+        4.8827646,
+        52.3606487
+       ],
+       [
+        4.8827807,
+        52.360653
+       ],
+       [
+        4.8827926,
+        52.3606365
+       ],
+       [
+        4.8828592,
+        52.3606545
+       ],
+       [
+        4.8828048,
+        52.3607301
+       ],
+       [
+        4.8828084,
+        52.3607311
+       ],
+       [
+        4.8828055,
+        52.3607352
+       ],
+       [
+        4.8828033,
+        52.3607346
+       ],
+       [
+        4.882804,
+        52.3607359
+       ],
+       [
+        4.8828044,
+        52.3607373
+       ],
+       [
+        4.8828041,
+        52.3607394
+       ],
+       [
+        4.8828035,
+        52.3607406
+       ],
+       [
+        4.8828026,
+        52.3607417
+       ],
+       [
+        4.8828014,
+        52.3607427
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8827096,
+        52.3607251
+       ],
+       [
+        4.8827039,
+        52.3607236
+       ],
+       [
+        4.8827062,
+        52.3607203
+       ],
+       [
+        4.8826289,
+        52.3606998
+       ],
+       [
+        4.8826266,
+        52.3607032
+       ],
+       [
+        4.8826208,
+        52.3607016
+       ],
+       [
+        4.8827515,
+        52.3605167
+       ],
+       [
+        4.8829094,
+        52.3605588
+       ],
+       [
+        4.8829082,
+        52.3605604
+       ],
+       [
+        4.8829105,
+        52.3605602
+       ],
+       [
+        4.8829127,
+        52.3605602
+       ],
+       [
+        4.8829149,
+        52.3605604
+       ],
+       [
+        4.8829171,
+        52.3605608
+       ],
+       [
+        4.8829199,
+        52.3605619
+       ],
+       [
+        4.8829215,
+        52.3605629
+       ],
+       [
+        4.8829228,
+        52.360564
+       ],
+       [
+        4.8829238,
+        52.3605653
+       ],
+       [
+        4.8829244,
+        52.3605666
+       ],
+       [
+        4.8829246,
+        52.3605679
+       ],
+       [
+        4.8829244,
+        52.3605692
+       ],
+       [
+        4.8829235,
+        52.3605712
+       ],
+       [
+        4.8829224,
+        52.3605724
+       ],
+       [
+        4.8829202,
+        52.3605739
+       ],
+       [
+        4.8829175,
+        52.360575
+       ],
+       [
+        4.8829201,
+        52.3605757
+       ],
+       [
+        4.8829172,
+        52.3605798
+       ],
+       [
+        4.8829136,
+        52.3605789
+       ],
+       [
+        4.8828592,
+        52.3606545
+       ],
+       [
+        4.8827926,
+        52.3606365
+       ],
+       [
+        4.8827807,
+        52.360653
+       ],
+       [
+        4.8827646,
+        52.3606487
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8826208,
+        52.3607016
+       ],
+       [
+        4.8826108,
+        52.3606989
+       ],
+       [
+        4.8826118,
+        52.3606975
+       ],
+       [
+        4.8825948,
+        52.360693
+       ],
+       [
+        4.8825922,
+        52.3606936
+       ],
+       [
+        4.8825547,
+        52.3606836
+       ],
+       [
+        4.8825537,
+        52.360682
+       ],
+       [
+        4.8825375,
+        52.3606777
+       ],
+       [
+        4.8825365,
+        52.3606791
+       ],
+       [
+        4.8825324,
+        52.3606779
+       ],
+       [
+        4.8826221,
+        52.3605546
+       ],
+       [
+        4.8826697,
+        52.3605675
+       ],
+       [
+        4.882654,
+        52.3605894
+       ],
+       [
+        4.8826928,
+        52.3605998
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8825324,
+        52.3606779
+       ],
+       [
+        4.8825234,
+        52.3606755
+       ],
+       [
+        4.8825251,
+        52.3606732
+       ],
+       [
+        4.8825092,
+        52.3606689
+       ],
+       [
+        4.882506,
+        52.3606697
+       ],
+       [
+        4.8824698,
+        52.3606599
+       ],
+       [
+        4.8824685,
+        52.360658
+       ],
+       [
+        4.8824489,
+        52.3606527
+       ],
+       [
+        4.8824472,
+        52.3606551
+       ],
+       [
+        4.8824416,
+        52.3606536
+       ],
+       [
+        4.882532,
+        52.3605303
+       ],
+       [
+        4.8825354,
+        52.3605313
+       ],
+       [
+        4.8825714,
+        52.3604808
+       ],
+       [
+        4.882659,
+        52.3605044
+       ],
+       [
+        4.8826221,
+        52.3605546
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8824416,
+        52.3606536
+       ],
+       [
+        4.882436,
+        52.3606521
+       ],
+       [
+        4.882438,
+        52.3606493
+       ],
+       [
+        4.882424,
+        52.3606454
+       ],
+       [
+        4.8824209,
+        52.3606461
+       ],
+       [
+        4.8823889,
+        52.3606374
+       ],
+       [
+        4.8823877,
+        52.3606354
+       ],
+       [
+        4.8823713,
+        52.360631
+       ],
+       [
+        4.8823699,
+        52.3606328
+       ],
+       [
+        4.8823629,
+        52.360631
+       ],
+       [
+        4.8824723,
+        52.3604827
+       ],
+       [
+        4.8825542,
+        52.3605048
+       ],
+       [
+        4.8825354,
+        52.3605313
+       ],
+       [
+        4.882532,
+        52.3605303
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8823629,
+        52.360631
+       ],
+       [
+        4.8823566,
+        52.3606294
+       ],
+       [
+        4.8823579,
+        52.3606275
+       ],
+       [
+        4.8823409,
+        52.3606229
+       ],
+       [
+        4.8823378,
+        52.3606236
+       ],
+       [
+        4.8822182,
+        52.3605911
+       ],
+       [
+        4.882217,
+        52.3605892
+       ],
+       [
+        4.8821989,
+        52.3605843
+       ],
+       [
+        4.8821974,
+        52.3605865
+       ],
+       [
+        4.8821907,
+        52.3605847
+       ],
+       [
+        4.8823172,
+        52.3604116
+       ],
+       [
+        4.8824902,
+        52.3604569
+       ],
+       [
+        4.8824723,
+        52.3604827
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8821903,
+        52.3605853
+       ],
+       [
+        4.8821056,
+        52.3605625
+       ],
+       [
+        4.8822345,
+        52.36039
+       ],
+       [
+        4.8823172,
+        52.3604116
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.882105,
+        52.3605632
+       ],
+       [
+        4.8820175,
+        52.3605396
+       ],
+       [
+        4.8821462,
+        52.3603671
+       ],
+       [
+        4.8822345,
+        52.36039
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8820174,
+        52.3605397
+       ],
+       [
+        4.882011,
+        52.360538
+       ],
+       [
+        4.8820123,
+        52.3605362
+       ],
+       [
+        4.8819954,
+        52.3605316
+       ],
+       [
+        4.8819932,
+        52.3605321
+       ],
+       [
+        4.8819567,
+        52.3605223
+       ],
+       [
+        4.8819559,
+        52.360521
+       ],
+       [
+        4.8819388,
+        52.3605163
+       ],
+       [
+        4.8819375,
+        52.3605181
+       ],
+       [
+        4.8819308,
+        52.3605163
+       ],
+       [
+        4.8820571,
+        52.3603431
+       ],
+       [
+        4.8821462,
+        52.3603672
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8819308,
+        52.3605163
+       ],
+       [
+        4.8818458,
+        52.3604934
+       ],
+       [
+        4.8819666,
+        52.3603277
+       ],
+       [
+        4.8820329,
+        52.3603455
+       ],
+       [
+        4.8820386,
+        52.3603382
+       ],
+       [
+        4.8820571,
+        52.3603431
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8818458,
+        52.3604934
+       ],
+       [
+        4.8817591,
+        52.3604701
+       ],
+       [
+        4.8818797,
+        52.3603043
+       ],
+       [
+        4.8819666,
+        52.3603277
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8817595,
+        52.3604696
+       ],
+       [
+        4.8817526,
+        52.3604677
+       ],
+       [
+        4.8817539,
+        52.3604659
+       ],
+       [
+        4.8817371,
+        52.3604613
+       ],
+       [
+        4.8817349,
+        52.3604618
+       ],
+       [
+        4.8816992,
+        52.360452
+       ],
+       [
+        4.8816984,
+        52.3604506
+       ],
+       [
+        4.8816818,
+        52.3604461
+       ],
+       [
+        4.8816805,
+        52.3604479
+       ],
+       [
+        4.8816726,
+        52.3604457
+       ],
+       [
+        4.8817643,
+        52.3603231
+       ],
+       [
+        4.8818111,
+        52.3603362
+       ],
+       [
+        4.8817852,
+        52.3603708
+       ],
+       [
+        4.8818234,
+        52.3603817
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8816726,
+        52.3604457
+       ],
+       [
+        4.8815893,
+        52.3604227
+       ],
+       [
+        4.8817061,
+        52.3602627
+       ],
+       [
+        4.8817918,
+        52.3602864
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8815885,
+        52.3604237
+       ],
+       [
+        4.881525,
+        52.3604067
+       ],
+       [
+        4.8815255,
+        52.360406
+       ],
+       [
+        4.8815023,
+        52.3603998
+       ],
+       [
+        4.8816275,
+        52.3602301
+       ],
+       [
+        4.8817136,
+        52.3602526
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8815011,
+        52.3604014
+       ],
+       [
+        4.8814957,
+        52.3603999
+       ],
+       [
+        4.8814969,
+        52.3603983
+       ],
+       [
+        4.8814478,
+        52.360385
+       ],
+       [
+        4.881447,
+        52.360386
+       ],
+       [
+        4.88142,
+        52.3603789
+       ],
+       [
+        4.8814195,
+        52.3603794
+       ],
+       [
+        4.8814069,
+        52.360376
+       ],
+       [
+        4.8814081,
+        52.3603743
+       ],
+       [
+        4.8813323,
+        52.3603541
+       ],
+       [
+        4.8813311,
+        52.3603558
+       ],
+       [
+        4.8813247,
+        52.3603542
+       ],
+       [
+        4.8814505,
+        52.3601841
+       ],
+       [
+        4.8816275,
+        52.3602301
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8813253,
+        52.3603534
+       ],
+       [
+        4.8813191,
+        52.3603517
+       ],
+       [
+        4.8813202,
+        52.3603499
+       ],
+       [
+        4.8813037,
+        52.3603456
+       ],
+       [
+        4.8813009,
+        52.3603459
+       ],
+       [
+        4.8812658,
+        52.3603366
+       ],
+       [
+        4.8812644,
+        52.3603351
+       ],
+       [
+        4.8812478,
+        52.3603307
+       ],
+       [
+        4.8812465,
+        52.3603324
+       ],
+       [
+        4.8812366,
+        52.3603297
+       ],
+       [
+        4.8812409,
+        52.3603242
+       ],
+       [
+        4.8812074,
+        52.3603154
+       ],
+       [
+        4.8812633,
+        52.3602356
+       ],
+       [
+        4.8812975,
+        52.3602446
+       ],
+       [
+        4.8813011,
+        52.3602396
+       ],
+       [
+        4.8813039,
+        52.3602403
+       ],
+       [
+        4.8813053,
+        52.3602383
+       ],
+       [
+        4.8813046,
+        52.3602366
+       ],
+       [
+        4.8813195,
+        52.3602157
+       ],
+       [
+        4.881322,
+        52.3602149
+       ],
+       [
+        4.8813292,
+        52.3602047
+       ],
+       [
+        4.8813265,
+        52.3602039
+       ],
+       [
+        4.8813332,
+        52.3601943
+       ],
+       [
+        4.881336,
+        52.360195
+       ],
+       [
+        4.8813375,
+        52.3601929
+       ],
+       [
+        4.8813367,
+        52.3601913
+       ],
+       [
+        4.8813527,
+        52.3601684
+       ],
+       [
+        4.8813552,
+        52.3601676
+       ],
+       [
+        4.8813567,
+        52.3601655
+       ],
+       [
+        4.8813533,
+        52.3601647
+       ],
+       [
+        4.8813568,
+        52.3601597
+       ],
+       [
+        4.8814505,
+        52.3601841
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-158272",
+     "pandId": "0363100012158272",
+     "buildingId": "NL.IMBAG.Pand.0363100012158272",
+     "address": "Pieter Cornelisz. Hooftstraat 29",
+     "frontage": {
+      "x0": -54.999,
+      "x1": -49.873,
+      "widthM": 5.126
+     },
+     "bounds": {
+      "min": [
+       -56.42,
+       0,
+       -11.324
+      ],
+      "max": [
+       -49.873,
+       20.102,
+       0.349
+      ]
+     },
+     "triangles": 1798,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 648
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 40,
+       "firstTriangle": 0,
+       "triangleCount": 130
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 49,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-155334",
+     "pandId": "0363100012155334",
+     "buildingId": "NL.IMBAG.Pand.0363100012155334",
+     "address": "Pieter Cornelisz. Hooftstraat 31",
+     "frontage": {
+      "x0": -49.873,
+      "x1": -43.28,
+      "widthM": 6.593
+     },
+     "bounds": {
+      "min": [
+       -56.307,
+       0,
+       -22.487
+      ],
+      "max": [
+       -43.142,
+       19.952,
+       0.485
+      ]
+     },
+     "triangles": 2315,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 88,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 184,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 648,
+       "triangleCount": 720
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 33,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 216,
+       "triangleCount": 234
+      },
+      {
+       "primitive": 48,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 24,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 36,
+       "triangleCount": 98
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-165827",
+     "pandId": "0363100012165827",
+     "buildingId": "NL.IMBAG.Pand.0363100012165827",
+     "address": "Pieter Cornelisz. Hooftstraat 33",
+     "frontage": {
+      "x0": -43.28,
+      "x1": -36.707,
+      "widthM": 6.573
+     },
+     "bounds": {
+      "min": [
+       -43.28,
+       0,
+       -15.027
+      ],
+      "max": [
+       -36.705,
+       19.892,
+       0.468
+      ]
+     },
+     "triangles": 1737,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 188
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 248,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 368,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1368,
+       "triangleCount": 712
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 450,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 46,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 47,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 134,
+       "triangleCount": 25
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-160305",
+     "pandId": "0363100012160305",
+     "buildingId": "NL.IMBAG.Pand.0363100012160305",
+     "address": "Pieter Cornelisz. Hooftstraat 35",
+     "frontage": {
+      "x0": -36.708,
+      "x1": -29.957,
+      "widthM": 6.751
+     },
+     "bounds": {
+      "min": [
+       -36.826,
+       0,
+       -21.157
+      ],
+      "max": [
+       -29.957,
+       19.442,
+       0.451
+      ]
+     },
+     "triangles": 1043,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 408,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 552,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 2080,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 682,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 57,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 55,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 159,
+       "triangleCount": 27
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-089719",
+     "pandId": "0363100012089719",
+     "buildingId": "NL.IMBAG.Pand.0363100012089719",
+     "address": "Pieter Cornelisz. Hooftstraat 37",
+     "frontage": {
+      "x0": -29.957,
+      "x1": -24.038,
+      "widthM": 5.918
+     },
+     "bounds": {
+      "min": [
+       -30.321,
+       0,
+       -18.243
+      ],
+      "max": [
+       -24.027,
+       19.132,
+       0.453
+      ]
+     },
+     "triangles": 1526,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 197
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 496,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 592,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 2512,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 408,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 37,
+       "firstTriangle": 12,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 784,
+       "triangleCount": 222
+      },
+      {
+       "primitive": 52,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 63,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 186,
+       "triangleCount": 26
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-157173",
+     "pandId": "0363100012157173",
+     "buildingId": "NL.IMBAG.Pand.0363100012157173",
+     "address": "Pieter Cornelisz. Hooftstraat 39-41",
+     "frontage": {
+      "x0": -24.038,
+      "x1": -11.228,
+      "widthM": 12.811
+     },
+     "bounds": {
+      "min": [
+       -24.212,
+       0,
+       -21.357
+      ],
+      "max": [
+       -11.228,
+       20.095,
+       0.408
+      ]
+     },
+     "triangles": 2892,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 305
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 584,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 632,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 3184,
+       "triangleCount": 1264
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 544,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 40,
+       "firstTriangle": 130,
+       "triangleCount": 118
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 1006,
+       "triangleCount": 390
+      },
+      {
+       "primitive": 51,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 88,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 212,
+       "triangleCount": 43
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-159279",
+     "pandId": "0363100012159279",
+     "buildingId": "NL.IMBAG.Pand.0363100012159279",
+     "address": "Pieter Cornelisz. Hooftstraat 43-43C",
+     "frontage": {
+      "x0": -11.228,
+      "x1": -4.923,
+      "widthM": 6.304
+     },
+     "bounds": {
+      "min": [
+       -11.359,
+       0,
+       -21.221
+      ],
+      "max": [
+       -4.923,
+       19.782,
+       0.433
+      ]
+     },
+     "triangles": 1239,
+     "ranges": [
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 105
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 672,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 816,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 4448,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 30,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 32,
+       "firstTriangle": 0,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 1396,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 45,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 120,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 255,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-158410",
+     "pandId": "0363100012158410",
+     "buildingId": "NL.IMBAG.Pand.0363100012158410",
+     "address": "Pieter Cornelisz. Hooftstraat 45",
+     "frontage": {
+      "x0": -4.923,
+      "x1": 1.597,
+      "widthM": 6.52
+     },
+     "bounds": {
+      "min": [
+       -5.225,
+       0,
+       -21.155
+      ],
+      "max": [
+       1.597,
+       19.762,
+       0.507
+      ]
+     },
+     "triangles": 1762,
+     "ranges": [
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 736,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 856,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 5120,
+       "triangleCount": 592
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 748,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 240,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 43,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 1606,
+       "triangleCount": 170
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 145,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 274,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-161622",
+     "pandId": "0363100012161622",
+     "buildingId": "NL.IMBAG.Pand.0363100012161622",
+     "address": "Pieter Cornelisz. Hooftstraat 47",
+     "frontage": {
+      "x0": 1.597,
+      "x1": 5.878,
+      "widthM": 4.282
+     },
+     "bounds": {
+      "min": [
+       1.294,
+       0,
+       -21.06
+      ],
+      "max": [
+       8.045,
+       19.236,
+       0.512
+      ]
+     },
+     "triangles": 1239,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 169
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 872,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1040,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 5712,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 840,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 480,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 1776,
+       "triangleCount": 74
+      },
+      {
+       "primitive": 47,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 163,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 289,
+       "triangleCount": 21
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-164893",
+     "pandId": "0363100012164893",
+     "buildingId": "NL.IMBAG.Pand.0363100012164893",
+     "address": "Pieter Cornelisz. Hooftstraat 49",
+     "frontage": {
+      "x0": 8.045,
+      "x1": 14.372,
+      "widthM": 6.327
+     },
+     "bounds": {
+      "min": [
+       7.932,
+       0,
+       -21.021
+      ],
+      "max": [
+       14.372,
+       19.582,
+       0.483
+      ]
+     },
+     "triangles": 1660,
+     "ranges": [
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 89
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 944,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1224,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 5956,
+       "triangleCount": 664
+      },
+      {
+       "primitive": 31,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 34,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 1850,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 54,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 194,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 310,
+       "triangleCount": 27
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-068180",
+     "pandId": "0363100012068180",
+     "buildingId": "NL.IMBAG.Pand.0363100012068180",
+     "address": "Pieter Cornelisz. Hooftstraat 51-51C",
+     "frontage": {
+      "x0": 14.372,
+      "x1": 20.818,
+      "widthM": 6.446
+     },
+     "bounds": {
+      "min": [
+       14.265,
+       0,
+       -20.153
+      ],
+      "max": [
+       20.819,
+       19.165,
+       0.502
+      ]
+     },
+     "triangles": 1743,
+     "ranges": [
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 288
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1032,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1480,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 6620,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 36,
+       "firstTriangle": 124,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 2070,
+       "triangleCount": 222
+      },
+      {
+       "primitive": 55,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 202,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 337,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-159316",
+     "pandId": "0363100012159316",
+     "buildingId": "NL.IMBAG.Pand.0363100012159316",
+     "address": "Pieter Cornelisz. Hooftstraat 53",
+     "frontage": {
+      "x0": 20.818,
+      "x1": 27.303,
+      "widthM": 6.485
+     },
+     "bounds": {
+      "min": [
+       20.774,
+       0,
+       -15.067
+      ],
+      "max": [
+       27.305,
+       19.474,
+       0.494
+      ]
+     },
+     "triangles": 1802,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1120,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1520,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 7292,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 720,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 35,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 40,
+       "firstTriangle": 248,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 42,
+       "firstTriangle": 0,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 2292,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 58,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 219,
+       "triangleCount": 24
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-152454",
+     "pandId": "0363100012152454",
+     "buildingId": "NL.IMBAG.Pand.0363100012152454",
+     "address": "Pieter Cornelisz. Hooftstraat 55",
+     "frontage": {
+      "x0": 27.303,
+      "x1": 33.533,
+      "widthM": 6.231
+     },
+     "bounds": {
+      "min": [
+       27.017,
+       0,
+       -19.615
+      ],
+      "max": [
+       33.533,
+       19.462,
+       0.431
+      ]
+     },
+     "triangles": 1797,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 288,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1156,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1532,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 7964,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1020,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 2492,
+       "triangleCount": 222
+      },
+      {
+       "primitive": 53,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 243,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 353,
+       "triangleCount": 21
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-159597",
+     "pandId": "0363100012159597",
+     "buildingId": "NL.IMBAG.Pand.0363100012159597",
+     "address": "Pieter Cornelisz. Hooftstraat 57",
+     "frontage": {
+      "x0": 33.533,
+      "x1": 39.983,
+      "widthM": 6.45
+     },
+     "bounds": {
+      "min": [
+       33.401,
+       0,
+       -20.84
+      ],
+      "max": [
+       39.983,
+       20.252,
+       0.478
+      ]
+     },
+     "triangles": 1549,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 166
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1244,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1788,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 8636,
+       "triangleCount": 672
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1156,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 160,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 2714,
+       "triangleCount": 222
+      },
+      {
+       "primitive": 56,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 273,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 374,
+       "triangleCount": 49
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-163614",
+     "pandId": "0363100012163614",
+     "buildingId": "NL.IMBAG.Pand.0363100012163614",
+     "address": "Pieter Cornelisz. Hooftstraat 59-61",
+     "frontage": {
+      "x0": 39.982,
+      "x1": 53.096,
+      "widthM": 13.114
+     },
+     "bounds": {
+      "min": [
+       39.78,
+       0,
+       -20.779
+      ],
+      "max": [
+       53.096,
+       19.85,
+       0.685
+      ]
+     },
+     "triangles": 2966,
+     "ranges": [
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 246
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1404,
+       "triangleCount": 356
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1828,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 9308,
+       "triangleCount": 1380
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 38,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 2936,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 50,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 281,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 423,
+       "triangleCount": 32
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-160242",
+     "pandId": "0363100012160242",
+     "buildingId": "NL.IMBAG.Pand.0363100012160242",
+     "address": "Pieter Cornelisz. Hooftstraat 63",
+     "frontage": {
+      "x0": 53.096,
+      "x1": 59.687,
+      "widthM": 6.591
+     },
+     "bounds": {
+      "min": [
+       52.883,
+       0,
+       -20.612
+      ],
+      "max": [
+       62.242,
+       19.24,
+       0.598
+      ]
+     },
+     "triangles": 1435,
+     "ranges": [
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 309
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1760,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 2156,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 10688,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1292,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 39,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 41,
+       "firstTriangle": 244,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 44,
+       "firstTriangle": 3368,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 55,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 59,
+       "firstTriangle": 319,
+       "triangleCount": 43
+      },
+      {
+       "primitive": 60,
+       "firstTriangle": 455,
+       "triangleCount": 29
+      }
+     ]
+    }
+   ]
   }
  ]
 }
