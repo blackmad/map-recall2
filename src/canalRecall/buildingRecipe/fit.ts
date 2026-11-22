@@ -1235,8 +1235,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.windowSurround && front.windowSurround !== 'none') {
       const wanted = front.surroundStoreys ?? Array.from({length: front.storeys}, (_, k) => k).filter(k => k > 0 || !front.shopfront);
       for (const o of elevation.openings.value) {
-        const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(o.id);
+        const m = /(?:^|-)s(\d+)-b(\d+)[ab]?(?:-m\d+)?$/.exec(o.id);
         if (!m || o.kind !== 'window' || !wanted.includes(Number(m[1]))) continue;
+        if (front.surroundBays && !front.surroundBays.includes(Number(m[2]))) continue;
         const top = o.bottomM + o.heightM, ox = 0.07, oy = o.id;
         if (front.windowSurround === 'eared-keystone') { dressings.push(...earedHead(o, oy, width)); continue; }
         if (front.windowSurround === 'sill') {

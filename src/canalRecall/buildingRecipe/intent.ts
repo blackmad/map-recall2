@@ -27,6 +27,7 @@ import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
+import {windowCanopyProblems, type WindowCanopiesIntent} from './windowCanopies.ts';
 import {pierBlockProblems} from './pierBlocks.ts';
 import {beltFrontProblems, type DoorSurroundIntent, type WindowFramesIntent} from './beltFront.ts';
 import {entablatureProblems} from './entablature.ts';
@@ -557,6 +558,12 @@ export interface FrontIntent {
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
   surroundStoreys?: number[];
+  /**
+   * Bay axes (0-based, as in the opening ids `s<storey>-b<bay>`) carrying the surround: an aedicule round only the centre
+   * window (PC Hooftstraat 13-27, 1880s: a white pedimented frame on the first-floor centre axis, plain brick heads beside
+   * it). Absent = every bay, byte-identical.
+   */
+  surroundBays?: number[];
   /** Thick painted window frames, with an eared surround on the top storeys (Keizersgracht 616A; buildingRecipe/beltFront.ts). Absent = byte-identical. */
   windowFrames?: WindowFramesIntent;
   /** A street-level door in the souterrain's base on this ground bay, under an all-window bel-etage (Keizersgracht 616A, 614; beltFront.ts). Absent = byte-identical. */
@@ -703,6 +710,12 @@ export interface FrontIntent {
    * 1887: red doors, black anchors); default the door colour. Absent = byte-identical.
    */
   wallAnchors?: {storeys?: number[]; size?: number; over?: number; colour?: string};
+  /**
+   * Lettered canopies over every window of one upper storey (buildingRecipe/windowCanopies.ts; PC Hooftstraat 2024-12-11:
+   * Saint Laurent 101, Prada 63, Chopard 53): a short rigid canopy per window in `colour`, the house name across each
+   * valance when `sign` is given. Absent = byte-identical.
+   */
+  windowCanopies?: WindowCanopiesIntent;
   /**
    * White head-line pier blocks (Den Texstraat 7-27; buildingRecipe/pierBlocks.ts): at the window-head line of each listed
    * storey (0 = ground; default every storey with windows) one white block on every pier, alternating `long` (default 0.55 m)
@@ -1963,6 +1976,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
+    if (f.windowCanopies !== undefined) problems.push(...windowCanopyProblems(f, at));
     if (f.pierBlocks !== undefined) problems.push(...pierBlockProblems(f, at));
     if (f.windowFrames !== undefined || f.basementDoor !== undefined || f.doorSurround !== undefined || f.stoopRails !== undefined || f.atticWindowWidth !== undefined) problems.push(...beltFrontProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
@@ -2149,6 +2163,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
     if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
+    if (f.surroundBays !== undefined) {
+      if (!Array.isArray(f.surroundBays) || !f.surroundBays.length || f.surroundBays.some(v => !Number.isInteger(v) || v < 0 || v > 24)) problems.push(`${at}.surroundBays: a non-empty list of bay indices 0..24`);
+      if (!f.windowSurround || f.windowSurround === 'none') problems.push(`${at}.surroundBays: only with a windowSurround`);
+    }
     if (f.quoins !== undefined) oneOf(f.quoins, QUOINS, `${at}.quoins`);
     const aw = f.shopfront?.awning;
     if (aw) {
