@@ -57,7 +57,12 @@ const placed: V3[][] = [];
 const cuts: WallCut[] = [];
 let droppedBack = 0;
 for (const inst of it.instances) {
-  const src = inst.mirror ? gen.map(t => [t[0], t[2], t[1]].map(p => [-p[0], p[1], p[2]] as V3)) : gen;
+  let src = inst.mirror ? gen.map(t => [t[0], t[2], t[1]].map(p => [-p[0], p[1], p[2]] as V3)) : gen;
+  // round 3: `yawDeg` (per instance or item) turns the mesh clockwise seen from above before placing it. A bust photographed
+  // from a camera yawDeg clockwise of the wall normal faces that camera; turning it back by the same angle restores the
+  // real head turn (Huis met de Hoofden, Mercury and Minerva look along the wall).
+  const yaw = (inst.yawDeg ?? it.yawDeg ?? 0) * Math.PI / 180;
+  if (yaw) { const c = Math.cos(yaw), s = Math.sin(yaw); src = src.map(t => t.map(p => [p[0] * c - p[2] * s, p[1], p[0] * s + p[2] * c] as V3)); }
   const r = placeRelief(src, '-z', '+y', {origin: inst.origin, normal: inst.normal}, {width: inst.width ?? it.width, height: inst.height ?? it.height,
     depth: it.depth, embed: it.embed, uniform: it.uniform, alignToPlane: it.alignToPlane, maxTiltDeg: it.maxTiltDeg, dropBackFacing: it.dropBackFacing});
   // round 3: `gable: {halfBase, rise, flattenAt?}` holds a pediment group inside its tympanum triangle (gable-clip.ts)

@@ -1,0 +1,119 @@
+{
+ "note": "Round 3 (lane sculpture-r3-20261122): one Gemeente Amsterdam street panorama view per Huis met de Hoofden bust (scripts/image-to-3d/ornament-view.ts --up=4.65 --fov=16 --upscale=2), cut out with BiRefNet (scripts/image-to-3d/birefnet_local.py, crop boxes below) and generated locally with TRELLIS.2 (ComfyUI native, seed 42). Busts 1622, workshop of Pieter de Keyser (attribution); the names follow the builder's order left to right as seen from the canal.",
+ "busts": {
+  "Apollo": {
+   "target": "4.8873904,52.3764883",
+   "view": {
+    "panoId": "TMX7316010203-003006_pano_0000_000589",
+    "timestamp": "2023-03-20T10:52:42.998450Z",
+    "distM": 4.71,
+    "bearingDeg": 130.2,
+    "pitchDeg": 25.13,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.0018,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2023/03/20/TMX7316010203-003006/pano_0000_000589/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.16,0.04,0.62,0.6"
+  },
+  "Ceres": {
+   "target": "4.8873705,52.3764673",
+   "view": {
+    "panoId": "recording_2025-06-16_03-46-32_01697",
+    "timestamp": "2025-06-16T04:15:16Z",
+    "distM": 4.6,
+    "bearingDeg": 120.1,
+    "pitchDeg": 25.67,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.0018,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_01697/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.33,0.06,0.72,0.73"
+  },
+  "Mercury": {
+   "target": "4.8873515,52.3764472",
+   "view": {
+    "panoId": "recording_2025-06-16_03-46-32_01697",
+    "timestamp": "2025-06-16T04:15:16Z",
+    "distM": 5.26,
+    "bearingDeg": 149.5,
+    "pitchDeg": 22.78,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.0021,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_01697/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.27,0.2,0.585,0.76"
+  },
+  "Minerva": {
+   "target": "4.8873308,52.3764251",
+   "view": {
+    "panoId": "recording_2025-06-16_03-46-32_01695",
+    "timestamp": "2025-06-16T04:15:14Z",
+    "distM": 6.76,
+    "bearingDeg": 74.2,
+    "pitchDeg": 18.1,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.0027,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_01695/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.45,0.17,0.74,0.72 (bottom 20% of the cut-out cleared: the bracket)"
+  },
+  "Bacchus": {
+   "target": "4.8873118,52.3764050",
+   "view": {
+    "panoId": "TMX7316010203-002950_pano_0001_000064",
+    "timestamp": "2023-01-30T09:37:51.597000Z",
+    "distM": 5.13,
+    "bearingDeg": 132.3,
+    "pitchDeg": 23.32,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.002,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0001_000064/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.28,0.04,0.77,0.6"
+  },
+  "Diana": {
+   "target": "4.8872919,52.3763841",
+   "view": {
+    "panoId": "recording_2025-06-16_03-46-32_01695",
+    "timestamp": "2025-06-16T04:15:14Z",
+    "distM": 4.68,
+    "bearingDeg": 125.2,
+    "pitchDeg": 25.26,
+    "fovDeg": 16,
+    "size": [
+     716,
+     716
+    ],
+    "mPerPx": 0.0018,
+    "licence": "CC BY 4.0, Gemeente Amsterdam",
+    "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_01695/equirectangular/panorama_8000.jpg"
+   },
+   "crop": "0.36,0.21,0.8,0.74"
+  }
+ }
+}
