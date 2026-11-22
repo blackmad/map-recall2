@@ -12,7 +12,99 @@
    ],
    "columns": 11,
    "symmetric": false,
-   "gables": 1
+   "gables": 1,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-45.jpg (b_20250130_0915_Track20_Sphere_00005, 2025): from the SE end three two-light windows (0.85 m in frame, 0.7 m glazed), a 0.5 m narrow light, the four-light hall window t 10.6-12.45, a second narrow light, four two-light windows",
+     "openings": [
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "four-light",
+       "w": 1.7
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w01-45.jpg: nine two-light windows on the first floor, grouped 2 + 3 + 2 + 2 round the hall and stair (the gaps are wall, not missing windows)",
+     "openings": [
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.8
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      }
+     ]
+    }
+   ]
   },
   {
    "name": "SW wing and set-back first floor",
@@ -24,7 +116,83 @@
    ],
    "columns": 13,
    "symmetric": false,
-   "gables": 0
+   "gables": 0,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w02-225.jpg (TMX7316010203-001195_pano_0001_001228, 2019): the wing two narrow lights, two three-light windows, three pairs of French doors",
+     "openings": [
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "three-light",
+       "w": 1.3
+      },
+      {
+       "kind": "three-light",
+       "w": 1.3
+      },
+      {
+       "kind": "French doors",
+       "w": 1.1
+      },
+      {
+       "kind": "French doors",
+       "w": 1.1
+      },
+      {
+       "kind": "French doors",
+       "w": 1
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w02-225.jpg: the NW tower tall window and lantern, two windows, the three-light window, two windows, the SE tower lantern",
+     "openings": [
+      {
+       "kind": "tall window",
+       "w": 0.8
+      },
+      {
+       "kind": "lantern",
+       "w": 0.5
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "three-light",
+       "w": 1
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "lantern",
+       "w": 1.2
+      }
+     ]
+    }
+   ]
   }
  ]
 }
