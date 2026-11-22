@@ -1,0 +1,7 @@
+{
+ "id": "pakhuis-afrika",
+ "countedBy": "blind counter (haiku) from w01-16.jpg (TMX7316010203-002313_pano_0003_000555, 2021), 2026-11-22, counts as returned. The counter flagged the base band (7) as approximate. The tower and the city side have no square-on photo of the whole face, so they are not counted.",
+ "facades": [
+  {"name": "IJ front (north)", "bearing": 16, "photo": "artifacts/landmark-briefs/pakhuis-afrika/w01-16.jpg", "rows": [7, 11, 9, 9, 9, 9], "columns": 9, "symmetric": true, "gables": 0, "heightM": [0, 18.2]}
+ ]
+}

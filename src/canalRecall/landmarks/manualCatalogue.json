@@ -103087,5 +103087,128 @@
     ]
    ]
   }
+ },
+ {
+  "id": "pakhuis-afrika",
+  "name": "Pakhuis Afrika",
+  "modelUrl": "./models/pakhuis-afrika.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012087187"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.92146389,
+    52.3768758
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 61.1,
+   "widthMetres": 55.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.92146389,
+    52.3768758
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012087187 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/pakhuis-afrika-footprints.json, bag-shell-prepare.ts). The fronts are read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002313_pano_0003_000555 (2021, IJ front), TMX7316010203-001195_pano_0000_003234 and _003229 (2019, city side and tower), TMX7316010203-001667_pano_0000_001352 (2020, tower east) and recording_2024-10-23_12-42-53_00390 (2024, the AFRIKA end), CC BY 4.0. Rijksmonument 523314. Per wall in scripts/landmarks/pakhuis-afrika-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34.5,
+  "galleryView": {
+   "theta": 3.4,
+   "phi": 1.1
+  },
+  "bagYear": 2009,
+  "measuredOverrides": true,
+  "materialOverrides": {
+   "brick": "#8a7966",
+   "concrete": "#a8a49d",
+   "stone": "#c4c3bf",
+   "pink": "#b48a7c",
+   "glass": "#56676b",
+   "red": "#8c3a2e",
+   "bronze": "#3d3e3f",
+   "blue": "#1d1d20",
+   "dark": "#2b2c2e",
+   "greyBrick": "#9c9d9b",
+   "slate": "#5f5c59"
+  },
+  "attribution": {
+   "title": "Pakhuis Afrika, Jollemanhof 19, Amsterdam (A.J. Joling 1915, remodelled 1935; extended 2009)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002313_pano_0003_000555/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012087187 (CC0). It shows the warehouse's concrete frame on brick with red-framed windows, the tilted steel and grey slatted balconies, and the loading platform on the IJ. On the city side it shows the arcade and the AFRIKA letters, the dark gap with raking struts under the cantilevered block, and the mottled grey and salmon skin with its irregular windows on the block and the tower. All of it is read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9218745,
+      52.3770083
+     ],
+     [
+      4.9218737,
+      52.3770084
+     ],
+     [
+      4.9218655,
+      52.3770098
+     ],
+     [
+      4.9211647,
+      52.3771314
+     ],
+     [
+      4.9210739,
+      52.3769351
+     ],
+     [
+      4.921066,
+      52.3769181
+     ],
+     [
+      4.9210665,
+      52.376918
+     ],
+     [
+      4.9210576,
+      52.3768988
+     ],
+     [
+      4.9214042,
+      52.3768388
+     ],
+     [
+      4.9213051,
+      52.3766257
+     ],
+     [
+      4.9215463,
+      52.3765839
+     ],
+     [
+      4.9216457,
+      52.3767969
+     ],
+     [
+      4.921767,
+      52.3767759
+     ],
+     [
+      4.9217837,
+      52.3768121
+     ],
+     [
+      4.9218745,
+      52.3770083
+     ]
+    ]
+   ]
+  }
  }
 ]

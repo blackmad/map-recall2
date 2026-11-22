@@ -141,3 +141,35 @@ export function rasterFront(spec: RasterSpec): RasterPiece[] {
 export function openingsAt(centres: number[], w: number): [number, number][] {
   return centres.map(c => [c - w / 2, c + w / 2]);
 }
+
+/** An irregular row: wide windows and narrow slots in a seeded order, split by piers of seeded width (Pakhuis Afrika's tower). */
+export type IrregularRowSpec = {
+  length: number;
+  seed: number;
+  /** Solid wall kept at each end (m). */
+  margin: number;
+  /** Width ranges (m) of a wide window and of a narrow slot, and of the pier between two openings. */
+  wide: [number, number];
+  narrow: [number, number];
+  pier: [number, number];
+  /** Share of openings that are narrow slots, 0-1. */
+  narrowShare: number;
+};
+
+/**
+ * Openings of one irregular row, left to right, within [margin, length - margin]. Deterministic per seed; every opening and pier
+ * width lies in its range, and the last opening is dropped rather than squeezed when it does not fit, so the right end keeps at
+ * least `margin` of wall. Rows with different seeds give the staggered, never-repeating grid of the photo.
+ */
+export function irregularOpenings(o: IrregularRowSpec): [number, number][] {
+  const rnd = seeded(o.seed), pick = ([a, b]: [number, number]) => a + (b - a) * rnd();
+  const out: [number, number][] = [];
+  let x = o.margin;
+  for (;;) {
+    const w = pick(rnd() < o.narrowShare ? o.narrow : o.wide);
+    if (x + w > o.length - o.margin + EPS) break;
+    out.push([x, x + w]);
+    x += w + pick(o.pier);
+  }
+  return out;
+}

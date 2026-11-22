@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {complement, openingsAt, rasterFront, rasterLedges, seeded, type RasterSpec} from './rasterFront';
+import {complement, irregularOpenings, openingsAt, rasterFront, rasterLedges, seeded, type RasterSpec} from './rasterFront';
 
 /** Two storeys of a Spaarbank-like raster: window row over a glazed spandrel row, piers at a 2.8 m pitch. */
 const centres = [1.4, 4.2, 7.0];
@@ -75,4 +75,22 @@ test('complement clips, merges and drops slivers', () => {
   assert.deepEqual(complement([[1, 2], [1.5, 3], [5, 7]], 0, 6), [[0, 1], [3, 5]]);
   assert.deepEqual(complement([[0, 6]], 0, 6), []);
   assert.deepEqual(complement([[0.001, 6]], 0, 6, 0.01), []);
+});
+
+test('irregular rows: deterministic, within ranges and margins, and different per seed', () => {
+  const o = {length: 24.6, seed: 7, margin: 0.4, wide: [1.8, 3.2] as [number, number], narrow: [0.45, 0.7] as [number, number], pier: [0.5, 1.2] as [number, number], narrowShare: 0.4};
+  const a = irregularOpenings(o);
+  assert.deepEqual(a, irregularOpenings(o));
+  assert.ok(a.length >= 6, `${a.length} openings`);
+  assert.ok(a[0][0] >= o.margin - 1e-9 && a.at(-1)![1] <= o.length - o.margin + 1e-9);
+  for (const [p, q] of a) {
+    const w = q - p;
+    assert.ok((w >= 1.8 - 1e-9 && w <= 3.2 + 1e-9) || (w >= 0.45 - 1e-9 && w <= 0.7 + 1e-9), `width ${w}`);
+  }
+  for (let i = 1; i < a.length; i++) { const g = a[i][0] - a[i - 1][1]; assert.ok(g >= 0.5 - 1e-9 && g <= 1.2 + 1e-9, `pier ${g}`); }
+  assert.ok(a.some(([p, q]) => q - p < 1) && a.some(([p, q]) => q - p > 1.5), 'both kinds occur');
+  assert.notDeepEqual(irregularOpenings({...o, seed: 8}), a);
+  // feeds rasterFront as one row
+  const pieces = rasterFront({length: o.length, bottom: 0, top: 2.82, pierDepth: 0.25, ledgeDepth: 0.25, rows: [{y0: 0.5, y1: 2.4, openings: a}]});
+  assert.equal(pieces.filter(p => p.part === 'glass').length, a.length);
 });
