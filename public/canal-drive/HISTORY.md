@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Round 20261122t: the landmark builder keeps lod2 records; six stale landmarks rebuilt (2026-11-22)
+
+- **build-manual-landmarks dropped lod2:** re-saving a model kept its manifest lod1 record but not lod2 (lod2 came later), so a full run erased 537 lod2 entries from `signature-landmarks.json` and failed check:landmark-lods. It now keeps both.
+- **Stale landmarks:** Maagdenhuis, both Mercatorplein towers, Rapenburgerstraat 220, Room Mate Aitana and the Tropenmuseum had source changes on main that were never rebuilt (found by round s's full rebuild); rebuilt with LODs, all checks pass.
+- **Held:** Pentagon and Pontsteiger, rebuilt from today's code, fail the openings gate (Pentagon: 4 window frames a third behind the wall; Pontsteiger: 8 faces past the wall silhouette, allowlist poke 4); main's earlier GLBs are kept, so a full rebuild will stop on them until fixed (board).
+
 ## Round 20261122s: generated statues and carved reliefs (2026-11-22)
 
 - **Sculpture round 2 (lane/sculpture-r2-20261122 6c375bdb85, report `docs/reports/sculpture-r2-20261122.md`).** Follows the image-to-3D bake-off (lane/tripo-ornaments-20261121): TripoSR with a BiRefNet cut-out and TRELLIS.2 (int8, ComfyUI native) with a seed sweep; Hunyuan3D not used (its licence bars display in the EU). New typed `src/canalRecall/sculptures/wallRelief.ts` (9 tests) places a generated relief on a wall at a measured size, levels a tilted mesh, drops the back lump and cuts against an oriented box; `installed-figures.ts` takes an optional `wallCut` (absent: byte-identical). The module sits under the landmark toolchain hash, so every manual landmark was re-exported.
