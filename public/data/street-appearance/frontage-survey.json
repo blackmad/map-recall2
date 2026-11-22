@@ -70,11 +70,11 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "b731aaa85ce566fbc3dc6b736aea88e40b9d4b2fc9cea18a783fa90634371858"
+      "sha256": "8e541cb733dc38bbef405a16de5717ff03824da358125a3835ad560909183bd6"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "831420140308b639f121908e9bd30615db1a4d7f62f8d82f66020fa754d7dc53"
+      "sha256": "93ba36ff328f80f15c6e5533be6e2114690e32f53303e318a4208315c926c793"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -86,7 +86,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingsBrowser.ts",
-      "sha256": "a6e7545d99fe2132d1a3013465c9886bc390377706e5f5e67350c71d6adfe2ab"
+      "sha256": "b58f39e1402f29395a20626239a8687abc0d5c0f8f8d26003cebbf634344e47b"
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
