@@ -1258,6 +1258,11 @@ class VectorBasemap {
         const templates = await fetch(this._extractFile('shop-templates.json'));
         if (templates.ok) api.setShopTemplates(await templates.json());
       }
+      // Shop anchors (lane shop-band-ground, `?shopRun=1`, src/canalRecall/shopRun.ts): only with the flag.
+      if (api.shopRunOn && api.shopRunOn() && api.setShopAnchors) {
+        const anchors = await fetch(this._extractFile('shop-anchors.json'));
+        if (anchors.ok) api.setShopAnchors(await anchors.json());
+      }
       this._applyFeatureDecorator();
     } catch (error) {
       console.warn('Shopfronts unavailable; ground floors keep random shops.', error);

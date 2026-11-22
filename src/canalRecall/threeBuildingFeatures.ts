@@ -52,6 +52,7 @@ import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
 import { REAL_ONLY_TEMPLATES, RETAIL_HELD, RETAIL_TEMPLATES, realAccepted, retailGroundOn, type RetailTemplate } from './retailTemplates.js';
+import { shopRunOn } from './shopRun.js';
 import { paintOverGuess } from './retailPuiPaint.js';
 import { terraceSeedOf, withTerraceSeeds } from './terraceRows.js';
 import { kitRoofEdge, lipMinAreaM2 } from './roofs/roofEdge.js';
@@ -127,7 +128,8 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
  * The large-building tier (largeBuildingTier.ts): a civic facade system from the shared cells,
  * civic storey heights, one entrance per street run, a parapet band, no shopfront guesses.
  */
-function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string): void {
+function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string): NonNullable<MeshBuilding['shopRun']>['quiet'] | undefined {
+  let quiet: NonNullable<MeshBuilding['shopRun']>['quiet'] | undefined;
   const wall = typeof p.largeTierWall === 'string' ? p.largeTierWall : building.wallHex;
   const archetype = (['c19', 'school', 'modern'] as const).find(a => a === p.largeTier) ?? 'modern';
   const system = largeTierSystem(id, archetype, wall, Number(p.height) || building.heightM);
@@ -147,10 +149,13 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
     building.wallHex = lookHex(wall, bayLook);
     // A darker plinth under the window grid (the shop paint keeps its own colour).
     building.groundHex = shopCell ? undefined : lookHex(plinthHex(wall), bayLook);
+    // Lane shop-band-ground (`?shopRun=1`): a real shop's runs that hold no shop draw the ground of windows.
+    if (shopCell && shopCell !== system.groundShop) quiet = { ground: bayLayer(system.archetype, system.style, 'ground'), groundHex: lookHex(plinthHex(wall), bayLook), accentHex: building.accentHex };
   } else building.wallHex = wall;
   building.shop = false;
   building.layoutScale = { bay: system.bayM / nominal.bay, storey: system.storeyM / nominal.storey, ground: system.groundM / nominal.ground, doorEvery: 1000 };
   building.parapetM = system.parapetM;
+  return quiet;
 }
 
 /** House rows: a feature's `rowDress` (houseLine/rowFront.ts rowDressOf), validated. */
@@ -339,6 +344,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // A named business's own colour goes on its sign and awning (the cells' accent), and a
   // labelled business gets its signature storefront.
   // Not on a modern ribbon or curtain front: the accent paints its spandrel bands, which a brand red striped (#117).
+  // Lane shop-band-ground (`?shopRun=1`): the ground a run that holds no shop draws, as the pand would with no shop.
+  let quietRun: NonNullable<MeshBuilding['shopRun']>['quiet'] | undefined = shopRunOn() ? { ...(quietGround !== undefined ? { ground: quietGround } : {}), ...(building.accentHex ? { accentHex: building.accentHex } : {}) } : undefined;
   if (building.shopfront && typeof p.shopColour === 'string' && !spandrelAccent) building.accentHex = p.shopColour;
   // A hand-modelled front (frontCarrier) replaces the generated signature.
   if (building.shopfront && Array.isArray(p.shopSignature) && !p.frontCarrier) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : DEFAULT_SHOP_SIGN_HEX };
@@ -379,7 +386,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       delete building.signature;
     }
   }
-  if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
+  if (p.largeTier && typeof p.facade === 'string') { const q = applyLargeTier(building, p, look, id); if (quietRun) quietRun = q; }
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
     building.bare = true;
@@ -457,6 +464,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
+  // Lane shop-band-ground (`?shopRun=1`, shopRun.ts): the shop's anchor points (its businesses, template, chain and
+  // signature); the mesher keeps the shop ground on the runs they pick and draws `quiet` on the rest.
+  if (quietRun && (building.shopfront || building.shop) && !building.bare && !p.frontCarrier && !p.kitWall && !p.gardenShed) {
+    const pt = (v: unknown): v is [number, number] => Array.isArray(v) && v.length >= 2 && Number.isFinite(v[0]) && Number.isFinite(v[1]);
+    const anchors = [...(Array.isArray(p.shopAnchors) ? p.shopAnchors : []), building.retailFront?.at, building.chain?.at, building.signature?.at].filter(pt).map(v => [Number(v[0]), Number(v[1])] as [number, number]);
+    building.shopRun = { anchors, quiet: quietRun };
+  }
   // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): the read's balconies, arcade and erkers on the street
   // walls, forced like register parts. Never on a spec'd, row, design-unit, kit or glazed pand. Off: postwar is undefined.
   if (postwar && building.extras && !specRecipe && !design && typeof p.rowFront !== 'string' && !p.frontCarrier && !industrial) {
