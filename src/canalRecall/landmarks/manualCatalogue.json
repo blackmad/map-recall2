@@ -105583,5 +105583,295 @@
     ]
    ]
   }
+ },
+ {
+  "id": "jungle-swindenstraat",
+  "name": "Jungle Amsterdam (former Muiderpoorttheater and De Dapper school), Tweede van Swindenstraat 26",
+  "modelUrl": "./models/jungle-swindenstraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012112062"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.92631943,
+    52.3616314
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 58.4,
+   "widthMetres": 50.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.92631943,
+    52.3616314
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012112062 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/jungle-swindenstraat-footprints.json, bag-shell-prepare.ts), with the north-east undercroft rebuilt; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001475_pano_0000_000184 (2019, the street front), TMX7316010203-002593_pano_0000_000838 (2022, the hall box), recording_2024-09-17_08-20-13_00870 (2024, the west end and the glazed link) and the classroom-wing panoramas listed per wall in scripts/landmarks/jungle-swindenstraat-inventory.json (2016-2025), CC BY 4.0; the roof frames and roof tone from the PDOK orthophoto Actueel_orthoHR."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 14.1,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.05
+  },
+  "bagYear": 1985,
+  "materialOverrides": {
+   "brick": "#c4bba8",
+   "sandstone": "#b8ad98",
+   "stone": "#c8c8c2",
+   "concrete": "#c6c1b3",
+   "greyBrick": "#b2b8bd",
+   "white": "#eeeee8",
+   "red": "#c45c6c",
+   "blue": "#4a8abd",
+   "copper": "#2f6db0",
+   "gold": "#dccb62",
+   "green": "#3d7a3a",
+   "bronze": "#403834",
+   "frame": "#b9bfc0",
+   "glass": "#56656d",
+   "dark": "#2e2c2a",
+   "slate": "#949996",
+   "pink": "#dcd9d0",
+   "ochre": "#d8a23a"
+  },
+  "attribution": {
+   "title": "Jungle Amsterdam (former Muiderpoorttheater and De Dapper school), Tweede van Swindenstraat 26, Amsterdam (1985)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012112062/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012112062 (CC0): the street front's panel-clad upper storey on its beam with fin piers, tube rails and X bracing, the hall box cantilevered over its brick base, the glazed entrance with the JUNGLE panel and the shop windows with yellow posts and green shelves, the low glazed link, the classroom wings' red and blue stepped window groups and portholes with their concrete bands, and the tube space frames on the roof, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9265951,
+      52.3616258
+     ],
+     [
+      4.926644,
+      52.361599
+     ],
+     [
+      4.926712,
+      52.3616139
+     ],
+     [
+      4.9267251,
+      52.3616573
+     ],
+     [
+      4.9266721,
+      52.3616837
+     ],
+     [
+      4.9267199,
+      52.3616929
+     ],
+     [
+      4.9266276,
+      52.3618511
+     ],
+     [
+      4.9265808,
+      52.3618409
+     ],
+     [
+      4.9265117,
+      52.3618262
+     ],
+     [
+      4.9264289,
+      52.3618075
+     ],
+     [
+      4.926348,
+      52.3617901
+     ],
+     [
+      4.9263351,
+      52.3617873
+     ],
+     [
+      4.9263395,
+      52.3617797
+     ],
+     [
+      4.9263317,
+      52.361778
+     ],
+     [
+      4.9263274,
+      52.3617857
+     ],
+     [
+      4.9263161,
+      52.3617833
+     ],
+     [
+      4.9262806,
+      52.3617756
+     ],
+     [
+      4.92628,
+      52.361775
+     ],
+     [
+      4.9262712,
+      52.3617732
+     ],
+     [
+      4.9262746,
+      52.3617675
+     ],
+     [
+      4.9261126,
+      52.3617328
+     ],
+     [
+      4.9261074,
+      52.3617138
+     ],
+     [
+      4.9260741,
+      52.3617066
+     ],
+     [
+      4.9260506,
+      52.3617195
+     ],
+     [
+      4.9259821,
+      52.3617048
+     ],
+     [
+      4.9259687,
+      52.3616623
+     ],
+     [
+      4.9259439,
+      52.3616445
+     ],
+     [
+      4.925878,
+      52.36163
+     ],
+     [
+      4.9258653,
+      52.3615863
+     ],
+     [
+      4.9259179,
+      52.3615591
+     ],
+     [
+      4.9259053,
+      52.3615176
+     ],
+     [
+      4.9259596,
+      52.3614892
+     ],
+     [
+      4.926026,
+      52.3615036
+     ],
+     [
+      4.9260639,
+      52.3614994
+     ],
+     [
+      4.9261172,
+      52.3614717
+     ],
+     [
+      4.9261792,
+      52.3614852
+     ],
+     [
+      4.9261673,
+      52.3614456
+     ],
+     [
+      4.9262224,
+      52.3614169
+     ],
+     [
+      4.9262854,
+      52.3614318
+     ],
+     [
+      4.9263263,
+      52.3614271
+     ],
+     [
+      4.9263794,
+      52.3613993
+     ],
+     [
+      4.9264473,
+      52.3614141
+     ],
+     [
+      4.92646,
+      52.3614556
+     ],
+     [
+      4.9265252,
+      52.3614698
+     ],
+     [
+      4.9265378,
+      52.3615131
+     ],
+     [
+      4.9264848,
+      52.3615409
+     ],
+     [
+      4.9264719,
+      52.3615631
+     ],
+     [
+      4.9264849,
+      52.3616051
+     ],
+     [
+      4.9264341,
+      52.3616312
+     ],
+     [
+      4.9264747,
+      52.36164
+     ],
+     [
+      4.9264758,
+      52.3616381
+     ],
+     [
+      4.9264972,
+      52.3616275
+     ],
+     [
+      4.926536,
+      52.3616358
+     ],
+     [
+      4.9265656,
+      52.3616207
+     ],
+     [
+      4.9265951,
+      52.3616258
+     ]
+    ]
+   ]
+  }
  }
 ]
