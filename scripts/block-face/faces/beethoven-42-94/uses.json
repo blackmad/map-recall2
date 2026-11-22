@@ -1,0 +1,718 @@
+{
+ "street": "Beethovenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (live), fetched 2026-11-22T21:57:20.787Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108330",
+   "addresses": [
+    "Beethovenstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010011957720"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816835252,
+     "lngLat": [
+      4.8767136,
+      52.3476232
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1077JM",
+      "addr:street": "Beethovenstraat",
+      "branch": "Amsterdam, Beethovenstraat 82",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "check_date": "2026-05-29",
+      "clothes": "women",
+      "email": "beethovenstraat82@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 6713299",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pauw.com/pages/amsterdam-beethovenstraat-82"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099398",
+   "addresses": [
+    "Beethovenstraat 78",
+    "Beethovenstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 78",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000579235"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816834788,
+     "lngLat": [
+      4.876757,
+      52.3477494
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78",
+      "addr:postcode": "1077JM",
+      "addr:street": "Beethovenstraat",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "check_date": "2024-09-23",
+      "name": "Gall & Gall",
+      "opening_hours": "Mo,Sa 10:00-19:00; Tu-We 09:00-19:00; Th 09:00-20:00; Fr 08:00-19:00",
+      "phone": "+31 20 679 9082",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.gall.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012068658",
+   "addresses": [
+    "Beethovenstraat 74",
+    "Beethovenstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 76",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000579233"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816834780,
+     "lngLat": [
+      4.8767711,
+      52.3477944
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1077JM",
+      "addr:street": "Beethovenstraat",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012087751",
+   "addresses": [
+    "Beethovenstraat 70",
+    "Beethovenstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000944329"
+    },
+    {
+     "address": "Beethovenstraat 70",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000944330"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816834761,
+     "lngLat": [
+      4.8767837,
+      52.3479116
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "72-H",
+      "addr:postcode": "1077JM",
+      "addr:street": "Beethovenstraat",
+      "check_date": "2026-05-29",
+      "name": "Huize van Wely",
+      "shop": "chocolate",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.huizevanwely.nl/"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105112",
+   "addresses": [
+    "Beethovenstraat 66",
+    "Beethovenstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 68",
+     "use": "winkelfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000579215"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833895,
+     "lngLat": [
+      4.876798,
+      52.3480103
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68",
+      "addr:postcode": "1077JL",
+      "addr:street": "Beethovenstraat",
+      "branch": "Amsterdam, Beethovenstraat 68",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "check_date": "2024-09-23",
+      "clothes": "women",
+      "email": "beethovenstraat68@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Mo 13:00-18:00; Tu-Sa 10:00-18:00",
+      "phone": "+31 20 679 0331",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pauw.com/pages/amsterdam-beethovenstraat-68"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012067032",
+   "addresses": [
+    "Beethovenstraat 62",
+    "Beethovenstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000579202"
+    },
+    {
+     "address": "Beethovenstraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012159697"
+    },
+    {
+     "address": "Beethovenstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012159698"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833875,
+     "lngLat": [
+      4.8768109,
+      52.3481185
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1077JL",
+      "addr:street": "Beethovenstraat",
+      "name": "Van Vessem",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9040187055,
+     "lngLat": [
+      4.8768187,
+      52.3481709
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62-H",
+      "addr:postcode": "1077JL",
+      "addr:street": "Beethovenstraat",
+      "name": "Villanova",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2021-08-08"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072795",
+   "addresses": [
+    "Beethovenstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000579196"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833835,
+     "lngLat": [
+      4.8768096,
+      52.3482261
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1077JL",
+      "addr:street": "Beethovenstraat",
+      "check_date": "2025-09-11",
+      "email": "info@jesse.nl",
+      "name": "Jesse",
+      "phone": "+31 20 670 89 89;+31 6 11 24 40 60",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.jesse.nl/"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111717",
+   "addresses": [
+    "Beethovenstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000579188"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833474,
+     "lngLat": [
+      4.876853,
+      52.3482981
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58-H",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "amenity": "restaurant",
+      "name": "QV winebar&osteria",
+      "panoramax": "64283fb0-60d3-4446-97d3-e66901331099",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://qvwinebar.com"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012108548",
+   "addresses": [
+    "Beethovenstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 56-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000947429"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4623664037,
+     "lngLat": [
+      4.8767987,
+      52.3483739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "amenity": "cafe",
+      "brand": "Le Pain Quotidien",
+      "brand:wikidata": "Q2046903",
+      "brand:wikipedia": "en:Le Pain Quotidien",
+      "cuisine": "coffee_shop",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "internet_access": "wlan",
+      "name": "Le Pain Quotidien",
+      "opening_hours": "Mo-Su 08:00-17:00",
+      "panoramax": "64283fb0-60d3-4446-97d3-e66901331099",
+      "phone": "+31 20 664 4144",
+      "takeaway": "yes",
+      "website": "https://www.lepainquotidien.com/nl/en/stores/beethovenstraat"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012115388",
+   "addresses": [
+    "Beethovenstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 54-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000579180"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833425,
+     "lngLat": [
+      4.8768514,
+      52.3484329
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54-H",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "name": "Riders Hub",
+      "opening_hours": "Th-Fr 10:00-19:00; Sa 10:00-18:00; Su 10:00-17:00",
+      "phone": "+31 20 3086927",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ridershub.co"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012114905",
+   "addresses": [
+    "Beethovenstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Beethovenstraat 52-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000952827"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816833401,
+     "lngLat": [
+      4.8768462,
+      52.3484975
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52-H",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "branch": "Amsterdam Beethoven",
+      "brand": "Suitable",
+      "brand:website": "https://www.suitableshop.nl",
+      "brand:wikidata": "Q137484870",
+      "check_date": "2025-12-15",
+      "clothes": "men",
+      "email": "amsterdambeethoven@suitable.nl",
+      "name": "Suitable",
+      "phone": "+31 20 675 1244",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.suitableshop.nl/suitable-amsterdam-beethoven/"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012109960",
+   "addresses": [
+    "Beethovenstraat 42",
+    "Beethovenstraat 44",
+    "Beethovenstraat 46",
+    "Beethovenstraat 48",
+    "Beethovenstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerrit van der Veenstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000644970"
+    },
+    {
+     "address": "Beethovenstraat 42",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000579159"
+    },
+    {
+     "address": "Beethovenstraat 46-H",
+     "use": "winkelfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000579165"
+    },
+    {
+     "address": "Beethovenstraat 48-H",
+     "use": "winkelfunctie",
+     "areaM2": 244,
+     "bagId": "0363010000579169"
+    },
+    {
+     "address": "Beethovenstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000579173"
+    },
+    {
+     "address": "Beethovenstraat 50-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012572174"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816832314,
+     "lngLat": [
+      4.8768865,
+      52.3488863
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42",
+      "addr:postcode": "1077JJ",
+      "addr:street": "Beethovenstraat",
+      "brand": "Bruna",
+      "brand:wikidata": "Q3317555",
+      "check_date": "2024-06-02",
+      "name": "Bruna",
+      "note": "books, newspapers, stationery etc.",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-17:00",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bruna.nl/winkels/amsterdam/2064"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2816832388,
+     "lngLat": [
+      4.8769064,
+      52.3487387
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-H",
+      "addr:postcode": "1077JJ",
+      "addr:street": "Beethovenstraat",
+      "branch": "Amsterdam",
+      "brand": "BeOne",
+      "brand:website": "https://www.be-one.nl",
+      "check_date": "2024-04-24",
+      "clothes": "women",
+      "female": "only",
+      "name": "BeOne",
+      "phone": "+31 20 662 09 20",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.be-one.nl/over-ons/winkels/18/beone-amsterdam.html"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2816832778,
+     "lngLat": [
+      4.8768844,
+      52.3485791
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50-H",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "check_date": "2024-06-02",
+      "name": "Kamman Fruit Primeurs",
+      "shop": "greengrocer",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://www.beethovenstraat.nl/winkel/kamman-fruit-primeurs"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4591241710,
+     "lngLat": [
+      4.8769562,
+      52.3489756
+     ],
+     "tags": {
+      "check_date": "2024-04-24",
+      "description": "flower stall",
+      "name": "Bogaers",
+      "shop": "florist",
+      "website": "http://www.beethovenstraat.nl/winkel/bogaers/"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    },
+    {
+     "type": "node",
+     "id": 4623664049,
+     "lngLat": [
+      4.8768926,
+      52.348644
+     ],
+     "tags": {
+      "addr:housenumber": "48H",
+      "addr:postcode": "1077JK",
+      "addr:street": "Beethovenstraat",
+      "brand": "Rituals",
+      "brand:wikidata": "Q62874140",
+      "check_date": "2024-06-02",
+      "name": "Rituals",
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:30-17:30",
+      "phone": "+31 20 664 4033",
+      "shop": "cosmetics",
+      "website": "https://www.rituals.com/nl-nl/store-detail?store=Amsterdam-Beethovenstraat"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4995015492,
+     "lngLat": [
+      4.8770493,
+      52.3488719
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo 17:00",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL"
+     },
+     "fetchedAt": "2026-11-22T21:57:20.787Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  }
+ ]
+}
