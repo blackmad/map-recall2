@@ -579,6 +579,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'andreas-ensemble': {
     sandstone: {slot: 'brick', why: 'the WestCord Fashion Hotel tower: buff brick that reads ochre-yellow in sun (w12-90 sunlit brick #e4c9a0, Lab h 82; w06-90 upper storeys), drawn apart from the warm red-brown Lelylaan bar and west wing brick'},
   },
+  'hotel-v-frederiksplein': {
+    stone: {slot: 'stone', measured: '#e2d8c2', why: 'the cream painted stone of the pilasters, aedicules, cornice and dormers (w01-346 2022 and 2018 crops, w02-255 2016 sunlit lifted to overcast)'},
+    sandstone: {slot: 'stone', measured: '#aca28d', why: 'palette name only: the grey-beige stone cladding of the ground storey, rusticated piers and fascia (w01-346 2022, 2024 Huidekoperstraat rectification), not buff brick'},
+    ochre: {slot: 'door', why: 'palette name only: the varnished timber side door on the Weteringschans (w01-346), not render'},
+    bronze: {slot: 'paint', why: 'black painted iron balconies, gate and lamps (w01-346, w02-255)'},
+    slate: {slot: 'slate', measured: '#5d5b58', why: 'the grey slate roofs and dormer cheeks (w01-346 2018 leaf-off, w02-255 2016): the city slate cell read blue-grey in game'},
+  },
 };
 
 /**
