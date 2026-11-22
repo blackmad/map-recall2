@@ -1,0 +1,133 @@
+{
+ "id": "jungle-swindenstraat",
+ "countedBy": "blind counter subagents (haiku, photo only, recipe section 7 rules), lane landmarks-r13-jungle, 2026-11-22, from the rectified crops w01-340.jpg (TMX7316010203-001475_pano_0000_000184, 2019) and w02-70.jpg (TMX7316010203-002593_pano_0000_000838, 2022) at 50 px/m. Street front: ground 4 = the glazed entrance x 458-580 (y 405-650), the shop ribbons x 590-745 and 765-1040 (split by the 0.4 m yellow post; the 0.3 m post at x 975-990 is a mullion) and the small window in the brick x 372-410 y 517-557 (missed by the first count, found by a second blind counter asked to list every window in x 340-460, y 360-600 without being told what to expect; it is partly hidden by a climber); first 3 (the small window x 373-410 y 374-413, the ribbons x 590-745 and 765-1040 y 380-470); the clad storey 2 (small square windows x 562-586 and 708-736). Columns: the first counter wrote about 7 (x 390, 520, 574, 615, 700, 870, 1015), but the centres of its own listed openings give six distinct axes (391 for both small brick windows, 519 entrance, 574 and 722 the two small clad-storey windows, 667 and 902 the ribbons; 615, 700 and 1015 match no listed opening), so columns is 6 from its pixel ranges. Flat: the first counter noted the clad box behind as a silhouette peak but reported gables 0. Hall side: ground 4 (x 150-215, 233-383, 460-645, 660-728 at y 520-557), first 4 (a ribbon x 113-385, a small square x 408-432 that may be a vent, x 460-642, x 660-728); the clad box has no openings, so it is no band in rows (the comparison counts bands from openings). The classroom wing face w07-341 was also counted (one red-framed group per storey, three portholes) but is not a principal facade: every north face of the complex shares its bearing, so it is left out of the comparison.",
+ "facades": [
+  {
+   "name": "Tweede van Swindenstraat front",
+   "bearing": 340,
+   "photo": "artifacts/landmark-briefs/jungle-swindenstraat/w01-340.jpg",
+   "rows": [
+    4,
+    3,
+    2
+   ],
+   "columns": 6,
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    21.1
+   ],
+   "depthBand": 3,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-340.jpg (TMX7316010203-001475_pano_0000_000184, 2019, 50 px/m), blind counter pixel ranges: the small window in the brick x 372-410, the glazed entrance x 458-580 (y 405-650), the shop ribbons x 590-745 and 765-1040",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 0.76
+      },
+      {
+       "kind": "entrance",
+       "w": 2.44
+      },
+      {
+       "kind": "shop",
+       "w": 3.1
+      },
+      {
+       "kind": "shop",
+       "w": 5.5
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w01-340.jpg (TMX7316010203-001475_pano_0000_000184, 2019, 50 px/m), blind counter pixel ranges: the small window x 373-410, the ribbons x 590-745 and 765-1040 (y 380-470)",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 0.74
+      },
+      {
+       "kind": "ribbon",
+       "w": 3.1
+      },
+      {
+       "kind": "ribbon",
+       "w": 5.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Hall box over the brick base (east)",
+   "bearing": 70,
+   "photo": "artifacts/landmark-briefs/jungle-swindenstraat/w02-70.jpg",
+   "rows": [
+    4,
+    4
+   ],
+   "columns": 6,
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    13.8,
+    32.5
+   ],
+   "depthBand": 3,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w02-70.jpg (TMX7316010203-002593_pano_0000_000838, 2022, 50 px/m), blind counter pixel ranges: strip windows x 150-215, 233-383, 460-645, 660-728 at y 520-557",
+     "openings": [
+      {
+       "kind": "strip",
+       "w": 1.3
+      },
+      {
+       "kind": "strip",
+       "w": 3
+      },
+      {
+       "kind": "strip",
+       "w": 3.7
+      },
+      {
+       "kind": "strip",
+       "w": 1.36
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w02-70.jpg (TMX7316010203-002593_pano_0000_000838, 2022, 50 px/m), blind counter pixel ranges: the ribbon x 113-385, the small square x 408-432 (y 430-455), x 460-642, x 660-728 at y 402-446",
+     "openings": [
+      {
+       "kind": "strip",
+       "w": 5.44
+      },
+      {
+       "kind": "square",
+       "w": 0.48
+      },
+      {
+       "kind": "strip",
+       "w": 3.64
+      },
+      {
+       "kind": "strip",
+       "w": 1.36
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
