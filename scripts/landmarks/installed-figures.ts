@@ -9,8 +9,14 @@ import fs from 'node:fs';
 import {NodeIO} from '@gltf-transform/core';
 import * as T from 'three';
 import {keptTriangles, type Box, type V3} from '../../src/canalRecall/sculptures/kitParts.js';
+import {inWallCut, type WallCut} from '../../src/canalRecall/sculptures/wallRelief.js';
 
-export interface InstalledFigure { name: string; glb: string; at: V3; cut: Box; cutMaterials: string[]; material: string; route?: string }
+/**
+ * `wallCut` (round 2, 2026-11-22): a wall relief's cut is an oriented box on its wall (wallRelief.ts), since landmark walls are
+ * rarely axis-aligned; kit triangles of `cutMaterials` whose centroid is inside it are dropped as well. Records without it
+ * build exactly as before. A relief's GLB is already in the landmark frame (`at` [0, 0, 0]).
+ */
+export interface InstalledFigure { name: string; glb: string; at: V3; cut: Box; cutMaterials: string[]; material: string; route?: string; wallCut?: WallCut | WallCut[] }
 export interface InstalledRecord { id: string; provenance: string; figures: InstalledFigure[] }
 
 const recordPath = (id: string) => `scripts/sculptures/installed/${id}.json`;
@@ -32,7 +38,12 @@ export async function applyInstalledFigures(id: string, parts: BuilderPart[]): P
     if (part.hex) continue; // decals and lettering are never a figure
     const g = part.g.index ? part.g.toNonIndexed() : part.g;
     const pos = g.getAttribute('position').array;
-    const keep = keptTriangles(pos, part.c, cuts);
+    let keep = keptTriangles(pos, part.c, cuts);
+    for (const f of rec.figures) {
+      if (!f.wallCut || !(f.cutMaterials.length === 0 || f.cutMaterials.some(m => part.c.includes(m)))) continue;
+      const wcs = Array.isArray(f.wallCut) ? f.wallCut : [f.wallCut];
+      keep = keep.filter(t => { const c = [0, 1, 2].map(k => (pos[t * 9 + k] + pos[t * 9 + 3 + k] + pos[t * 9 + 6 + k]) / 3) as V3; return !wcs.some(wc => inWallCut(c, wc)); });
+    }
     const total = pos.length / 9;
     if (keep.length === total) continue;
     dropped += total - keep.length;

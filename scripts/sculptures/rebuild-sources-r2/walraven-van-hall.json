@@ -1,0 +1,92 @@
+{
+ "id": "walraven-van-hall",
+ "figures": {
+  "tree": {
+   "route": "TripoSR, one photo",
+   "views": [
+    {
+     "title": "File:Walraven van Hall, vooraanzicht.jpg",
+     "box": null,
+     "keepTop": null
+    },
+    {
+     "title": "File:Walraven van Hall, zijaanzicht1.jpg",
+     "box": null,
+     "keepTop": null
+    },
+    {
+     "title": "File:Monumento a Walraven van Hall.jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "timingsS": {},
+   "placement": {
+    "cutKitTriangles": 1144,
+    "heightM": 2.222,
+    "baseM": [
+     0.751,
+     0,
+     -0.033
+    ],
+    "facingDeg": 280
+   },
+   "cutMask": 1144
+  }
+ },
+ "sculptor": {
+  "name": "Fernando Sánchez Castillo",
+  "born": 1970,
+  "died": null,
+  "year": 2010,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/walraven-van-hall.glb",
+ "photos": {
+  "File:Walraven van Hall, vooraanzicht.jpg": {
+   "title": "File:Walraven van Hall, vooraanzicht.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Walraven_van_Hall,_vooraanzicht.jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-08-21 14:10:00",
+   "originalSize": [
+    5312,
+    2988
+   ],
+   "sha1": "82071fd7cb21c119d6b4747c63a5bcad1f07120d",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Walraven_van_Hall%2C_vooraanzicht.jpg/1920px-Walraven_van_Hall%2C_vooraanzicht.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/walraven-van-hall/download/82071fd7cb.jpg"
+  },
+  "File:Walraven van Hall, zijaanzicht1.jpg": {
+   "title": "File:Walraven van Hall, zijaanzicht1.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Walraven_van_Hall,_zijaanzicht1.jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-08-21 14:10:15",
+   "originalSize": [
+    5312,
+    2988
+   ],
+   "sha1": "7b550177e4fc6051752d53007066c0bc524452ce",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Walraven_van_Hall%2C_zijaanzicht1.jpg/1920px-Walraven_van_Hall%2C_zijaanzicht1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/walraven-van-hall/download/7b550177e4.jpg"
+  },
+  "File:Monumento a Walraven van Hall.jpg": {
+   "title": "File:Monumento a Walraven van Hall.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Monumento_a_Walraven_van_Hall.jpg",
+   "author": "Bettylella",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-11-01 12:06:48",
+   "originalSize": [
+    1836,
+    3264
+   ],
+   "sha1": "ec3c4e07cedf7a34b08ef2f0aa912f17f0bd3b3e",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Monumento_a_Walraven_van_Hall.jpg/1280px-Monumento_a_Walraven_van_Hall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/walraven-van-hall/download/ec3c4e07ce.jpg"
+  }
+ }
+}

@@ -61,7 +61,7 @@ if (arg('landmark')) {
   const [tx, tz] = local(tl, tb);
   const b = view.bearingDeg * Math.PI / 180, d = view.distM;
   const ex = tx - d * Math.sin(b), ez = tz + d * Math.cos(b), ey = up - d * Math.tan(view.pitchDeg * Math.PI / 180);
-  const doc = await io.read(`public/canal-drive/models/${id}.glb`);
+  const doc = await io.read(arg('model-glb') || `public/canal-drive/models/${id}.glb`); // --model-glb: a candidate in the landmark frame
   const tmp = arg('out').replace(/\.png$/, '.plain.glb');
   await plain(doc, tmp);
   // The view json's pitch is the angle to the target; aim the camera exactly as ornament-view.ts did.
