@@ -1,0 +1,15 @@
+{
+ "id": "tugelahuis-tugelaweg",
+ "countedBy": "blind counter subagent (photo only, recipe section 7 rules), lane landmarks-r12-b, 2026-11-22, from w02-153.jpg (50 px/m): three round portholes in one band on the white south-east side; flat roof, no gables.",
+ "facades": [
+  {
+   "name": "south-east side",
+   "bearing": 153,
+   "photo": "artifacts/landmark-briefs/tugelahuis-tugelaweg/w02-153.jpg",
+   "rows": [3],
+   "columns": 3,
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

@@ -103540,5 +103540,112 @@
     ]
    ]
   }
+ },
+ {
+  "id": "tugelahuis-tugelaweg",
+  "name": "Tugelahuis, Tugelaweg 59A",
+  "modelUrl": "./models/tugelahuis-tugelaweg.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012240693"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.92065216,
+    52.35583883
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 17.1,
+   "widthMetres": 16.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.92065216,
+    52.35583883
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012240693 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/tugelahuis-tugelaweg-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2024-10-02_13-17-06_00528 (2024) and TMX7316010203-001604_pano_0000_000379 (2019, the glazed north-east gable), TMX7315120208-000071_pano_0006_000749 (2016, the south-east side with its portholes), recording_2025-06-20_09-22-37_01794 (2025) and TMX7316010203-002142_pano_0000_003131 (2021, the south-west gable), CC BY 4.0; roof colour and roof lights from the PDOK orthophoto (open data). Per wall in scripts/landmarks/tugelahuis-tugelaweg-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 6.5,
+  "galleryView": {
+   "theta": 0.9,
+   "phi": 1.15
+  },
+  "bagYear": 2015,
+  "materialOverrides": {
+   "white": "#ebe9e2",
+   "red": "#9c5a40",
+   "slate": "#6f716c",
+   "ochre": "#8c6a4c",
+   "glass": "#5a6668",
+   "dark": "#3f3830",
+   "bronze": "#433931",
+   "frame": "#6e706a",
+   "concrete": "#b9b4a8",
+   "pink": "#c98d86",
+   "gold": "#d2b15a"
+  },
+  "attribution": {
+   "title": "Tugelahuis, Tugelaweg 59A, Amsterdam (community centre, 2015)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012240693/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012240693 (CC0): the glazed north-east gable between timber posts with the name on its beam, the rust-red rake boards, the south-east side's three round portholes under the dark fascia, the south-west gable's timber frame, round gable window and mural (as flat colour panels), and the red tile roof with three roof lights, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9207263,
+      52.3558718
+     ],
+     [
+      4.9207151,
+      52.3558849
+     ],
+     [
+      4.9206715,
+      52.355871
+     ],
+     [
+      4.9206544,
+      52.3558913
+     ],
+     [
+      4.9205762,
+      52.3558665
+     ],
+     [
+      4.9205936,
+      52.3558459
+     ],
+     [
+      4.9205573,
+      52.3558343
+     ],
+     [
+      4.9205893,
+      52.3557968
+     ],
+     [
+      4.9206401,
+      52.3557376
+     ],
+     [
+      4.9207978,
+      52.3557882
+     ],
+     [
+      4.9207263,
+      52.3558718
+     ]
+    ]
+   ]
+  }
  }
 ]
