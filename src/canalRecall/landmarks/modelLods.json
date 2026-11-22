@@ -6791,5 +6791,53 @@
    "bytes": 5220,
    "triangles": 115
   }
+ },
+ "kweekschool-machinisten": {
+  "sourceHash": "05aa5d4cd93f84f0",
+  "buildVersion": 2,
+  "bytes": 76344,
+  "triangles": 3473,
+  "lod2": {
+   "sourceHash": "05aa5d4cd93f84f0",
+   "buildVersion": 6,
+   "bytes": 13288,
+   "triangles": 444
+  }
+ },
+ "muziekschool-jacob-van-campen": {
+  "sourceHash": "cd8eafdecb61f4e2",
+  "buildVersion": 2,
+  "bytes": 54784,
+  "triangles": 2402,
+  "lod2": {
+   "sourceHash": "cd8eafdecb61f4e2",
+   "buildVersion": 6,
+   "bytes": 9304,
+   "triangles": 259
+  }
+ },
+ "maison-de-vries-leidseplein": {
+  "sourceHash": "23f9cef3adf24240",
+  "buildVersion": 2,
+  "bytes": 77484,
+  "triangles": 3725,
+  "lod2": {
+   "sourceHash": "23f9cef3adf24240",
+   "buildVersion": 6,
+   "bytes": 13396,
+   "triangles": 419
+  }
+ },
+ "broekmans-koningsplein": {
+  "sourceHash": "8c5c87bde28c73bb",
+  "buildVersion": 2,
+  "bytes": 35420,
+  "triangles": 1439,
+  "lod2": {
+   "sourceHash": "8c5c87bde28c73bb",
+   "buildVersion": 6,
+   "bytes": 6664,
+   "triangles": 175
+  }
  }
 }

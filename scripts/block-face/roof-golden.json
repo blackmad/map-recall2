@@ -6099,6 +6099,64 @@
     "hash": "a4614316352cdd98",
     "class": "front"
    }
+  },
+  "hooft-80-112": {
+   "156099": {
+    "hash": "94d26e02404e35be",
+    "class": "front"
+   },
+   "157077": {
+    "hash": "638efffeabfdc4bc",
+    "class": "front"
+   },
+   "157954": {
+    "hash": "080effdb03b84be8",
+    "class": "front"
+   },
+   "158276": {
+    "hash": "aa3df7cf6ce28ecd",
+    "class": "front"
+   },
+   "158320": {
+    "hash": "93912cceeb7fb8a5",
+    "class": "front"
+   },
+   "159031": {
+    "hash": "634f71115f49ec69",
+    "class": "front"
+   },
+   "161527": {
+    "hash": "3b2d81c60b691922",
+    "class": "front"
+   },
+   "162637": {
+    "hash": "a079bb4ca83811f4",
+    "class": "front"
+   },
+   "164089": {
+    "hash": "80568744b951e8f0",
+    "class": "front"
+   },
+   "166884": {
+    "hash": "67e322a167f237d2",
+    "class": "front"
+   },
+   "236075": {
+    "hash": "e32f999909c64ee6",
+    "class": "front"
+   },
+   "236097": {
+    "hash": "7b09c49c40ac01b5",
+    "class": "front"
+   },
+   "236492": {
+    "hash": "4b8fc185498cba21",
+    "class": "front"
+   },
+   "245314": {
+    "hash": "eda567636bde7a38",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -6397,6 +6455,7 @@
   "haarlemmer-46-96-r1": "e24e366819444863",
   "haarlemmerdijk-117-143-r1": "05f10bc604b16f1f",
   "haarlemmerdijk-2-58-r1": "3f1a0d9c51643866",
-  "haarlemmerdijk-2-58-r2": "8af168b42b64bdf9"
+  "haarlemmerdijk-2-58-r2": "8af168b42b64bdf9",
+  "hooft-80-112": "e41a14cdca41f758"
  }
 }
