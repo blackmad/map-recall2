@@ -215,8 +215,8 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-hooft-13-27': {white: [183, 189, 173], stripOverDrawn: 1.478},
   'face-hooft-101-105': {white: [194, 198, 184], stripOverDrawn: 1.202},
   'face-hooft-29-63': {white: [187, 192, 175], stripOverDrawn: 1.446},
-  'face-baerle-14-18': {white: [193, 195, 179], stripOverDrawn: 1.798},
-  'face-baerle-22-30': {white: [180, 187, 168], stripOverDrawn: 1.003},
   'face-baerle-32-50': {white: [184, 181, 156], stripOverDrawn: 1.463},
+  'face-baerle-22-30': {white: [180, 187, 168], stripOverDrawn: 1.735},
+  'face-baerle-14-18': {white: [193, 195, 179], stripOverDrawn: 2.09},
   'face-baerle-56-88': {white: [187, 186, 163], stripOverDrawn: 1.365},
 };

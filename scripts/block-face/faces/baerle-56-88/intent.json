@@ -573,8 +573,9 @@
       "cornice": "none",
       "doorBay": null,
       "windows": "sash",
-      "crownRise": 1.0,
-      "crownSteps": 2,
+      "crownRise": 0.9,
+      "crownSteps": 3,
+      "crownFinial": true,
       "bays": 3,
       "storeys": 3,
       "storeyHeights": [

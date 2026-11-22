@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T19:54:52.494Z",
+ "generatedAt": "2026-11-22T20:07:41.183Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -120890,757 +120890,6 @@
    ]
   },
   {
-   "id": "chunk-face-baerle-14-18",
-   "category": "street-survey",
-   "name": "face-baerle-14-18",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-14-18.glb?asset=2483e2161faca681",
-   "sha256": "2483e2161faca6817317aad93f5e230a3c0dd2e3b135c5745102b74a977d4318",
-   "bytes": 158120,
-   "triangles": 5968,
-   "primitives": 21,
-   "instance": {
-    "anchor": [
-     4.877376101429412,
-     52.35955569461415
-    ],
-    "northOffsetDegrees": 246.606,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -11.77,
-     0,
-     -13.973
-    ],
-    "max": [
-     11.397,
-     20.822,
-     0.688
-    ]
-   },
-   "height": 20.822,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012155878",
-    "NL.IMBAG.Pand.0363100012076244",
-    "NL.IMBAG.Pand.0363100012158964"
-   ],
-   "replaces": [
-    "ordinary-0363100012155878",
-    "ordinary-0363100012076244",
-    "ordinary-0363100012158964"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8774474,
-        52.3594594
-       ],
-       [
-        4.8773992,
-        52.3595252
-       ],
-       [
-        4.877211,
-        52.3594744
-       ],
-       [
-        4.8772574,
-        52.3594098
-       ],
-       [
-        4.8773795,
-        52.3594423
-       ],
-       [
-        4.8773801,
-        52.3594415
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.877353,
-        52.3595881
-       ],
-       [
-        4.8771887,
-        52.3595439
-       ],
-       [
-        4.8772109,
-        52.3595123
-       ],
-       [
-        4.8771881,
-        52.3595063
-       ],
-       [
-        4.877211,
-        52.3594744
-       ],
-       [
-        4.8773983,
-        52.3595249
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8773089,
-        52.3596495
-       ],
-       [
-        4.8771453,
-        52.3596055
-       ],
-       [
-        4.8771887,
-        52.3595439
-       ],
-       [
-        4.877353,
-        52.3595881
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "hface-155878",
-     "pandId": "0363100012155878",
-     "buildingId": "NL.IMBAG.Pand.0363100012155878",
-     "address": "Van Baerlestraat 18",
-     "frontage": {
-      "x0": -11.767,
-      "x1": -3.744,
-      "widthM": 8.023
-     },
-     "bounds": {
-      "min": [
-       -11.77,
-       0,
-       -13.955
-      ],
-      "max": [
-       -3.744,
-       20.822,
-       0.688
-      ]
-     },
-     "triangles": 2074,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 125
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 100
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 1108
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 208
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 0,
-       "triangleCount": 336
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 18,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 19,
-       "firstTriangle": 0,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 0,
-       "triangleCount": 16
-      }
-     ]
-    },
-    {
-     "recipeId": "hface-076244",
-     "pandId": "0363100012076244",
-     "buildingId": "NL.IMBAG.Pand.0363100012076244",
-     "address": "Van Baerlestraat 16",
-     "frontage": {
-      "x0": -3.744,
-      "x1": 3.929,
-      "widthM": 7.673
-     },
-     "bounds": {
-      "min": [
-       -3.819,
-       0,
-       -13.973
-      ],
-      "max": [
-       3.932,
-       20.762,
-       0.458
-      ]
-     },
-     "triangles": 1985,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 76
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 100,
-       "triangleCount": 88
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 148,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 1108,
-       "triangleCount": 1032
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 54
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 204
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 336,
-       "triangleCount": 336
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 19,
-       "firstTriangle": 9,
-       "triangleCount": 13
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 16,
-       "triangleCount": 10
-      }
-     ]
-    },
-    {
-     "recipeId": "hface-158964",
-     "pandId": "0363100012158964",
-     "buildingId": "NL.IMBAG.Pand.0363100012158964",
-     "address": "Van Baerlestraat 14",
-     "frontage": {
-      "x0": 3.929,
-      "x1": 11.395,
-      "widthM": 7.466
-     },
-     "bounds": {
-      "min": [
-       3.874,
-       0,
-       -12.275
-      ],
-      "max": [
-       11.397,
-       20.592,
-       0.389
-      ]
-     },
-     "triangles": 1909,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 55
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 88
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2140,
-       "triangleCount": 1032
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 124
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 84
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 672,
-       "triangleCount": 336
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 19,
-       "firstTriangle": 22,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 26,
-       "triangleCount": 8
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-baerle-22-30",
-   "category": "street-survey",
-   "name": "face-baerle-22-30",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-22-30.glb?asset=363728ac4f44e117",
-   "sha256": "363728ac4f44e117b14e36a8da125bb24069c83e685f2a3c8dcb96a029081e20",
-   "bytes": 191984,
-   "triangles": 6894,
-   "primitives": 28,
-   "instance": {
-    "anchor": [
-     4.8777105776114515,
-     52.35898401476008
-    ],
-    "northOffsetDegrees": 246.9804,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -17.313,
-     0,
-     -29.613
-    ],
-    "max": [
-     16.775,
-     19.594,
-     0.558
-    ]
-   },
-   "height": 19.594,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012122051",
-    "NL.IMBAG.Pand.0363100012162963",
-    "NL.IMBAG.Pand.0363100012236146"
-   ],
-   "replaces": [
-    "ordinary-0363100012122051",
-    "ordinary-0363100012162963",
-    "ordinary-0363100012236146"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8777305,
-        52.3589571
-       ],
-       [
-        4.8775476,
-        52.3589083
-       ],
-       [
-        4.8775637,
-        52.3588854
-       ],
-       [
-        4.8774138,
-        52.3588453
-       ],
-       [
-        4.8774462,
-        52.3587997
-       ],
-       [
-        4.8774298,
-        52.3587953
-       ],
-       [
-        4.8774356,
-        52.3587872
-       ],
-       [
-        4.877385,
-        52.3587737
-       ],
-       [
-        4.8774112,
-        52.3587368
-       ],
-       [
-        4.8778105,
-        52.3588446
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8777305,
-        52.3589571
-       ],
-       [
-        4.8776915,
-        52.359012
-       ],
-       [
-        4.8775089,
-        52.3589632
-       ],
-       [
-        4.877455,
-        52.3589489
-       ],
-       [
-        4.8774938,
-        52.3588938
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8776131,
-        52.3591224
-       ],
-       [
-        4.8774307,
-        52.3590743
-       ],
-       [
-        4.8775089,
-        52.3589632
-       ],
-       [
-        4.8776915,
-        52.359012
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "hface-122051",
-     "pandId": "0363100012122051",
-     "buildingId": "NL.IMBAG.Pand.0363100012122051",
-     "address": "Van Baerlestraat 28-30",
-     "frontage": {
-      "x0": -16.945,
-      "x1": -3.29,
-      "widthM": 13.654
-     },
-     "bounds": {
-      "min": [
-       -17.313,
-       0,
-       -29.613
-      ],
-      "max": [
-       -3.29,
-       19.594,
-       0.558
-      ]
-     },
-     "triangles": 1847,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 238
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 1012
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 216
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 18,
-       "firstTriangle": 0,
-       "triangleCount": 182
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 24,
-       "firstTriangle": 0,
-       "triangleCount": 16
-      },
-      {
-       "primitive": 25,
-       "firstTriangle": 0,
-       "triangleCount": 75
-      }
-     ]
-    },
-    {
-     "recipeId": "hface-162963",
-     "pandId": "0363100012162963",
-     "buildingId": "NL.IMBAG.Pand.0363100012162963",
-     "address": "Van Baerlestraat 26",
-     "frontage": {
-      "x0": -3.29,
-      "x1": 3.376,
-      "widthM": 6.666
-     },
-     "bounds": {
-      "min": [
-       -3.443,
-       0,
-       -17.586
-      ],
-      "max": [
-       3.376,
-       17.371,
-       0.211
-      ]
-     },
-     "triangles": 1672,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 225
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 36
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1012,
-       "triangleCount": 824
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 12,
-       "triangleCount": 240
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 18,
-       "firstTriangle": 182,
-       "triangleCount": 130
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 26,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 27,
-       "firstTriangle": 0,
-       "triangleCount": 21
-      }
-     ]
-    },
-    {
-     "recipeId": "hface-236146",
-     "pandId": "0363100012236146",
-     "buildingId": "NL.IMBAG.Pand.0363100012236146",
-     "address": "Van Baerlestraat 22-24",
-     "frontage": {
-      "x0": 3.376,
-      "x1": 16.773,
-      "widthM": 13.397
-     },
-     "bounds": {
-      "min": [
-       3.248,
-       0,
-       -13.644
-      ],
-      "max": [
-       16.775,
-       15.98,
-       0.427
-      ]
-     },
-     "triangles": 3375,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 39
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 240
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 440
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1836,
-       "triangleCount": 1256
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 272
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 252,
-       "triangleCount": 480
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 92
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 18,
-       "firstTriangle": 312,
-       "triangleCount": 320
-      },
-      {
-       "primitive": 19,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 23,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 26,
-       "firstTriangle": 12,
-       "triangleCount": 32
-      },
-      {
-       "primitive": 27,
-       "firstTriangle": 21,
-       "triangleCount": 4
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-baerle-32-50",
    "category": "street-survey",
    "name": "face-baerle-32-50",
@@ -122543,13 +121792,764 @@
    ]
   },
   {
+   "id": "chunk-face-baerle-22-30",
+   "category": "street-survey",
+   "name": "face-baerle-22-30",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-22-30.glb?asset=251565ee3038fa8e",
+   "sha256": "251565ee3038fa8ec9124d7c0b25d0130f4c5514c8157bcf2032a3e8ff822c0a",
+   "bytes": 191984,
+   "triangles": 6894,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.8777105776114515,
+     52.35898401476008
+    ],
+    "northOffsetDegrees": 246.9804,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -17.313,
+     0,
+     -29.613
+    ],
+    "max": [
+     16.775,
+     19.594,
+     0.558
+    ]
+   },
+   "height": 19.594,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012122051",
+    "NL.IMBAG.Pand.0363100012162963",
+    "NL.IMBAG.Pand.0363100012236146"
+   ],
+   "replaces": [
+    "ordinary-0363100012122051",
+    "ordinary-0363100012162963",
+    "ordinary-0363100012236146"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8777305,
+        52.3589571
+       ],
+       [
+        4.8775476,
+        52.3589083
+       ],
+       [
+        4.8775637,
+        52.3588854
+       ],
+       [
+        4.8774138,
+        52.3588453
+       ],
+       [
+        4.8774462,
+        52.3587997
+       ],
+       [
+        4.8774298,
+        52.3587953
+       ],
+       [
+        4.8774356,
+        52.3587872
+       ],
+       [
+        4.877385,
+        52.3587737
+       ],
+       [
+        4.8774112,
+        52.3587368
+       ],
+       [
+        4.8778105,
+        52.3588446
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8777305,
+        52.3589571
+       ],
+       [
+        4.8776915,
+        52.359012
+       ],
+       [
+        4.8775089,
+        52.3589632
+       ],
+       [
+        4.877455,
+        52.3589489
+       ],
+       [
+        4.8774938,
+        52.3588938
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8776131,
+        52.3591224
+       ],
+       [
+        4.8774307,
+        52.3590743
+       ],
+       [
+        4.8775089,
+        52.3589632
+       ],
+       [
+        4.8776915,
+        52.359012
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-122051",
+     "pandId": "0363100012122051",
+     "buildingId": "NL.IMBAG.Pand.0363100012122051",
+     "address": "Van Baerlestraat 28-30",
+     "frontage": {
+      "x0": -16.945,
+      "x1": -3.29,
+      "widthM": 13.654
+     },
+     "bounds": {
+      "min": [
+       -17.313,
+       0,
+       -29.613
+      ],
+      "max": [
+       -3.29,
+       19.594,
+       0.558
+      ]
+     },
+     "triangles": 1847,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 238
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1012
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 75
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-162963",
+     "pandId": "0363100012162963",
+     "buildingId": "NL.IMBAG.Pand.0363100012162963",
+     "address": "Van Baerlestraat 26",
+     "frontage": {
+      "x0": -3.29,
+      "x1": 3.376,
+      "widthM": 6.666
+     },
+     "bounds": {
+      "min": [
+       -3.443,
+       0,
+       -17.586
+      ],
+      "max": [
+       3.376,
+       17.371,
+       0.211
+      ]
+     },
+     "triangles": 1672,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 225
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1012,
+       "triangleCount": 824
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 12,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 182,
+       "triangleCount": 130
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-236146",
+     "pandId": "0363100012236146",
+     "buildingId": "NL.IMBAG.Pand.0363100012236146",
+     "address": "Van Baerlestraat 22-24",
+     "frontage": {
+      "x0": 3.376,
+      "x1": 16.773,
+      "widthM": 13.397
+     },
+     "bounds": {
+      "min": [
+       3.248,
+       0,
+       -13.644
+      ],
+      "max": [
+       16.775,
+       15.98,
+       0.427
+      ]
+     },
+     "triangles": 3375,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1836,
+       "triangleCount": 1256
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 272
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 252,
+       "triangleCount": 480
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 312,
+       "triangleCount": 320
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 12,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 21,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-baerle-14-18",
+   "category": "street-survey",
+   "name": "face-baerle-14-18",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-14-18.glb?asset=416773d0b18792e1",
+   "sha256": "416773d0b18792e17d15b9a00baf2ed73695ca9d16215f8a47dd750ada42eee4",
+   "bytes": 158136,
+   "triangles": 5968,
+   "primitives": 21,
+   "instance": {
+    "anchor": [
+     4.877376101429412,
+     52.35955569461415
+    ],
+    "northOffsetDegrees": 246.606,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.77,
+     0,
+     -13.973
+    ],
+    "max": [
+     11.397,
+     20.822,
+     0.688
+    ]
+   },
+   "height": 20.822,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012155878",
+    "NL.IMBAG.Pand.0363100012076244",
+    "NL.IMBAG.Pand.0363100012158964"
+   ],
+   "replaces": [
+    "ordinary-0363100012155878",
+    "ordinary-0363100012076244",
+    "ordinary-0363100012158964"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8774474,
+        52.3594594
+       ],
+       [
+        4.8773992,
+        52.3595252
+       ],
+       [
+        4.877211,
+        52.3594744
+       ],
+       [
+        4.8772574,
+        52.3594098
+       ],
+       [
+        4.8773795,
+        52.3594423
+       ],
+       [
+        4.8773801,
+        52.3594415
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.877353,
+        52.3595881
+       ],
+       [
+        4.8771887,
+        52.3595439
+       ],
+       [
+        4.8772109,
+        52.3595123
+       ],
+       [
+        4.8771881,
+        52.3595063
+       ],
+       [
+        4.877211,
+        52.3594744
+       ],
+       [
+        4.8773983,
+        52.3595249
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8773089,
+        52.3596495
+       ],
+       [
+        4.8771453,
+        52.3596055
+       ],
+       [
+        4.8771887,
+        52.3595439
+       ],
+       [
+        4.877353,
+        52.3595881
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-155878",
+     "pandId": "0363100012155878",
+     "buildingId": "NL.IMBAG.Pand.0363100012155878",
+     "address": "Van Baerlestraat 18",
+     "frontage": {
+      "x0": -11.767,
+      "x1": -3.744,
+      "widthM": 8.023
+     },
+     "bounds": {
+      "min": [
+       -11.77,
+       0,
+       -13.955
+      ],
+      "max": [
+       -3.744,
+       20.822,
+       0.688
+      ]
+     },
+     "triangles": 2074,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1108
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-076244",
+     "pandId": "0363100012076244",
+     "buildingId": "NL.IMBAG.Pand.0363100012076244",
+     "address": "Van Baerlestraat 16",
+     "frontage": {
+      "x0": -3.744,
+      "x1": 3.929,
+      "widthM": 7.673
+     },
+     "bounds": {
+      "min": [
+       -3.819,
+       0,
+       -13.973
+      ],
+      "max": [
+       3.932,
+       20.762,
+       0.458
+      ]
+     },
+     "triangles": 1985,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 100,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 148,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1108,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 54
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 336,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 9,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 16,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-158964",
+     "pandId": "0363100012158964",
+     "buildingId": "NL.IMBAG.Pand.0363100012158964",
+     "address": "Van Baerlestraat 14",
+     "frontage": {
+      "x0": 3.929,
+      "x1": 11.395,
+      "widthM": 7.466
+     },
+     "bounds": {
+      "min": [
+       3.874,
+       0,
+       -12.275
+      ],
+      "max": [
+       11.397,
+       20.592,
+       0.389
+      ]
+     },
+     "triangles": 1909,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 55
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2140,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 672,
+       "triangleCount": 336
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 22,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 26,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "chunk-face-baerle-56-88",
    "category": "street-survey",
    "name": "face-baerle-56-88",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-56-88.glb?asset=9c49ea1e01df2046",
-   "sha256": "9c49ea1e01df2046bf62e98e8b27bf3e3b4aa730c6d61f4a8c9688d1d29e3027",
-   "bytes": 596440,
-   "triangles": 23703,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-baerle-56-88.glb?asset=7e26c5e19de3bdc4",
+   "sha256": "7e26c5e19de3bdc4bc6671daf0092cf1486aba9a8328b10cf16649c1eb1037af",
+   "bytes": 599208,
+   "triangles": 23847,
    "primitives": 82,
    "instance": {
     "anchor": [
@@ -123328,16 +123328,16 @@
       ],
       "max": [
        -13.805,
-       16.74,
+       16.78,
        0.262
       ]
      },
-     "triangles": 1248,
+     "triangles": 1392,
      "ranges": [
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 100
+       "triangleCount": 148
       },
       {
        "primitive": 21,
@@ -123347,7 +123347,7 @@
       {
        "primitive": 33,
        "firstTriangle": 3036,
-       "triangleCount": 492
+       "triangleCount": 588
       },
       {
        "primitive": 39,
@@ -123427,7 +123427,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 3528,
+       "firstTriangle": 3624,
        "triangleCount": 584
       },
       {
@@ -123508,7 +123508,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 4112,
+       "firstTriangle": 4208,
        "triangleCount": 400
       },
       {
@@ -123599,7 +123599,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 4512,
+       "firstTriangle": 4608,
        "triangleCount": 228
       },
       {
@@ -123665,7 +123665,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 4740,
+       "firstTriangle": 4836,
        "triangleCount": 796
       },
       {
@@ -123741,7 +123741,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 5536,
+       "firstTriangle": 5632,
        "triangleCount": 432
       },
       {
@@ -123812,7 +123812,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 5968,
+       "firstTriangle": 6064,
        "triangleCount": 664
       },
       {
@@ -123903,7 +123903,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 6632,
+       "firstTriangle": 6728,
        "triangleCount": 2508
       },
       {
@@ -123984,7 +123984,7 @@
       },
       {
        "primitive": 33,
-       "firstTriangle": 9140,
+       "firstTriangle": 9236,
        "triangleCount": 600
       },
       {

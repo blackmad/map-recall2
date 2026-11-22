@@ -19,13 +19,30 @@
  },
  "continuity": {
   "streetLevel": "shared",
-  "streetLevelPands": {"pands": ["0363100012158964"], "evidence": "strip 2024-12-11: one pavement and one shop-head line under all three shops; 3DBAG puts 14's ground at -1.08 m NAP against 0.20-0.24 m for 16 and 18"},
+  "streetLevelPands": {
+   "pands": [
+    "0363100012158964"
+   ],
+   "evidence": "strip 2024-12-11: one pavement and one shop-head line under all three shops; 3DBAG puts 14's ground at -1.08 m NAP against 0.20-0.24 m for 16 and 18"
+  },
   "corniceGroups": [],
   "identical": [],
   "measuredEaves": [
-   {"pand": "0363100012155878", "stripRow": 245, "evidence": "strip 2024-12-11: top of the white entablature cap at row 245"},
-   {"pand": "0363100012076244", "stripRow": 247, "evidence": "strip 2024-12-11: top of the white entablature cap at row 247"},
-   {"pand": "0363100012158964", "stripRow": 254, "evidence": "strip 2024-12-11: top of the white entablature cap at row 254"}
+   {
+    "pand": "0363100012155878",
+    "stripRow": 245,
+    "evidence": "strip 2024-12-11: top of the white entablature cap at row 245"
+   },
+   {
+    "pand": "0363100012076244",
+    "stripRow": 247,
+    "evidence": "strip 2024-12-11: top of the white entablature cap at row 247"
+   },
+   {
+    "pand": "0363100012158964",
+    "stripRow": 254,
+    "evidence": "strip 2024-12-11: top of the white entablature cap at row 254"
+   }
   ],
   "notes": [
    "Floor lines read on the strip at 40 px/m: shop head 4.4 m, sills 5.2 / 9.0 / 12.9 m, the entablature 15.4-17.8 m (2.4 m deep with consoles and a dentil cap)."
@@ -49,15 +66,37 @@
       "windows": "sash",
       "bays": 3,
       "storeys": 4,
-      "storeyHeights": [4.4, 3.8, 3.85, 3.4],
-      "windowHead": {"kind": "segmental"},
-      "windowHeights": [0.6, 0.72, 0.71, 0.57],
+      "storeyHeights": [
+       4.4,
+       3.8,
+       3.85,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.71,
+       0.57
+      ],
       "windowShare": 0.52,
-      "entablature": {"rise": 2.4, "cap": 0.3, "frieze": "trim", "consoles": 3, "architrave": 0.15},
+      "entablature": {
+       "rise": 2.4,
+       "cap": 0.3,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.15
+      },
       "dormers": 1,
       "dormerStyle": "pediment",
       "dormerBody": "stone",
-      "dormerSize": {"sill": 0.3, "rise": 2.2, "setback": 0.4},
+      "dormerSize": {
+       "sill": 0.3,
+       "rise": 2.2,
+       "setback": 0.4
+      },
       "partyClip": true,
       "shopfront": {
        "colour": "#e6e4dc",
@@ -69,15 +108,20 @@
        "displayWindows": 3,
        "stallriser": "low",
        "stallriserColour": "#e6e4dc",
-       "residentialDoor": {"side": "right", "colour": "#e6e4dc"},
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#e6e4dc"
+       },
        "shopShare": 0.86,
        "evidence": "strip 2024-12-11 x 0-321: a white pui of three lit display windows and a glazed door, a white panelled house door at the right end; no sign readable"
       }
      }
     ],
-    "roof": {"material": "slate"},
+    "roof": {
+     "material": "slate"
+    },
     "palette": {
-     "brick": "#434a3d",
+     "brick": "#3c3f3f",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#e6e5de",
@@ -91,7 +135,9 @@
     "photoDate": "2024-12-11",
     "agreement": "bag-only",
     "note": "BAG winkelfunctie at 18-H; no OSM business and no sign readable on 2024-12-11.",
-    "bag": ["winkelfunctie"],
+    "bag": [
+     "winkelfunctie"
+    ],
     "category": "shop"
    },
    "rhythm": {
@@ -102,10 +148,17 @@
     "signage": "none readable",
     "roofline": "deep white entablature with consoles; a white openwork roof ornament over the middle axis",
     "citation": "baerle-14-18 strip.jpg (2024-12-11) x 0-321 px",
-    "photoRows": [3, 3, 3, 3, 1],
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
     "photoGables": 0,
     "schemaLimits": [
-     "the white openwork roof ornament (a pedimented aedicule with crossed finials on the parapet) is drawn as a stone pediment dormer"
+     "the white openwork roof ornament (a pedimented aedicule with crossed finials on the parapet) is drawn as a stone pediment dormer",
+     "paint set by judgement to the neutral charcoal #3c3f3f (the strip measure #434a3d carries the strip's green cast and drew olive in the game; the 2020 panoramas read charcoal)"
     ]
    }
   },
@@ -126,15 +179,37 @@
       "windows": "sash",
       "bays": 3,
       "storeys": 4,
-      "storeyHeights": [4.4, 3.8, 3.85, 3.4],
-      "windowHead": {"kind": "segmental"},
-      "windowHeights": [0.6, 0.72, 0.71, 0.57],
+      "storeyHeights": [
+       4.4,
+       3.8,
+       3.85,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.71,
+       0.57
+      ],
       "windowShare": 0.52,
-      "entablature": {"rise": 2.4, "cap": 0.3, "frieze": "trim", "consoles": 3, "architrave": 0.15},
+      "entablature": {
+       "rise": 2.4,
+       "cap": 0.3,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.15
+      },
       "dormers": 1,
       "dormerStyle": "pediment",
       "dormerBody": "stone",
-      "dormerSize": {"sill": 0.3, "rise": 2.2, "setback": 0.4},
+      "dormerSize": {
+       "sill": 0.3,
+       "rise": 2.2,
+       "setback": 0.4
+      },
       "partyClip": true,
       "shopfront": {
        "colour": "#e8e8e2",
@@ -142,7 +217,11 @@
        "fasciaColour": "#e8e8e2",
        "name": "Flaneur",
        "display": "#e0c890",
-       "sign": {"text": "FLANEUR", "textColour": "#b8bcbc", "span": 0.3},
+       "sign": {
+        "text": "FLANEUR",
+        "textColour": "#b8bcbc",
+        "span": 0.3
+       },
        "entrance": "centre",
        "glazing": "split",
        "displayWindows": 2,
@@ -152,9 +231,11 @@
       }
      }
     ],
-    "roof": {"material": "slate"},
+    "roof": {
+     "material": "slate"
+    },
     "palette": {
-     "brick": "#3d4136",
+     "brick": "#393b3c",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#e6e5de",
@@ -168,10 +249,17 @@
     "photoDate": "2024-12-11",
     "agreement": "osm-and-photo",
     "note": "OSM node 7552843757 names Flaneur (shop=clothes) and the photo's fascia reads FLANEUR; the node's website and brand:wikipedia tags point at the Leica Store, a conflict left to OSM (Leica's own node is at 74).",
-    "bag": ["winkelfunctie"],
+    "bag": [
+     "winkelfunctie"
+    ],
     "name": "Flaneur",
     "category": "shop=clothes",
-    "osm": {"type": "node", "id": 7552843757, "name": "Flâneur", "tags": "shop=clothes; clothes=men"}
+    "osm": {
+     "type": "node",
+     "id": 7552843757,
+     "name": "Flâneur",
+     "tags": "shop=clothes; clothes=men"
+    }
    },
    "rhythm": {
     "bays": "3 equal axes",
@@ -181,11 +269,18 @@
     "signage": "FLANEUR silver on white",
     "roofline": "deep white entablature with consoles; a white openwork roof ornament over the middle axis",
     "citation": "baerle-14-18 strip.jpg (2024-12-11) x 321-628 px",
-    "photoRows": [3, 3, 3, 3, 1],
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
     "photoGables": 0,
     "schemaLimits": [
      "the white openwork roof ornament is drawn as a stone pediment dormer",
-     "the circumflex of FLÂNEUR: the sign lettering has no accents"
+     "the circumflex of FLÂNEUR: the sign lettering has no accents",
+     "paint set by judgement to the neutral charcoal #393b3c (the strip measure #3d4136 carries the strip's green cast and drew olive in the game; the 2020 panoramas read charcoal)"
     ]
    }
   },
@@ -206,15 +301,37 @@
       "windows": "sash",
       "bays": 3,
       "storeys": 4,
-      "storeyHeights": [4.4, 3.8, 3.85, 3.4],
-      "windowHead": {"kind": "segmental"},
-      "windowHeights": [0.6, 0.72, 0.71, 0.57],
+      "storeyHeights": [
+       4.4,
+       3.8,
+       3.85,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.71,
+       0.57
+      ],
       "windowShare": 0.5,
-      "entablature": {"rise": 2.2, "cap": 0.3, "frieze": "trim", "consoles": 3, "architrave": 0.15},
+      "entablature": {
+       "rise": 2.2,
+       "cap": 0.3,
+       "frieze": "trim",
+       "consoles": 3,
+       "architrave": 0.15
+      },
       "dormers": 1,
       "dormerStyle": "pediment",
       "dormerBody": "stone",
-      "dormerSize": {"sill": 0.3, "rise": 2.2, "setback": 0.4},
+      "dormerSize": {
+       "sill": 0.3,
+       "rise": 2.2,
+       "setback": 0.4
+      },
       "partyClip": true,
       "shopfront": {
        "colour": "#28323a",
@@ -222,7 +339,12 @@
        "fasciaColour": "#3a4a54",
        "name": "Piastrelle",
        "display": "#c89858",
-       "sign": {"text": "piastrelle", "textColour": "#b8c8d0", "span": 0.35, "align": "centre"},
+       "sign": {
+        "text": "piastrelle",
+        "textColour": "#b8c8d0",
+        "span": 0.35,
+        "align": "centre"
+       },
        "entrance": "right",
        "glazing": "single",
        "stallriser": "low",
@@ -231,9 +353,11 @@
       }
      }
     ],
-    "roof": {"material": "slate"},
+    "roof": {
+     "material": "slate"
+    },
     "palette": {
-     "brick": "#33352a",
+     "brick": "#323435",
      "frame": "white",
      "door": "#2a2a28",
      "stone": "#e2e3da",
@@ -247,7 +371,9 @@
     "photoDate": "2024-12-11",
     "agreement": "photo-only",
     "note": "BAG winkelfunctie at 14-H; no OSM business; the 2024-12-11 sign reads piastrelle (tiles and interiors).",
-    "bag": ["winkelfunctie"],
+    "bag": [
+     "winkelfunctie"
+    ],
     "name": "Piastrelle",
     "category": "shop"
    },
@@ -259,11 +385,18 @@
     "signage": "piastrelle pale blue on slate",
     "roofline": "the entablature a little lower than 16-18; a white openwork roof ornament over the middle axis",
     "citation": "baerle-14-18 strip.jpg (2024-12-11) x 628-926 px",
-    "photoRows": [3, 3, 3, 3, 1],
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
     "photoGables": 0,
     "schemaLimits": [
      "the white openwork roof ornament is drawn as a stone pediment dormer",
-     "the sign's lowercase lettering is drawn in the kit's capitals"
+     "the sign's lowercase lettering is drawn in the kit's capitals",
+     "paint set by judgement to the neutral charcoal #323435 (the strip measure #33352a carries the strip's green cast and drew olive in the game; the 2020 panoramas read charcoal)"
     ]
    }
   }
