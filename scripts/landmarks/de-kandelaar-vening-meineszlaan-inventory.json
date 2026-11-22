@@ -148,14 +148,11 @@
      "kind": "tower",
      "where": "three-post white concrete campanile at the forecourt corner of the hall",
      "approxSizeM": [
-      1.5,
-      12
+      2.4,
+      11
      ],
-     "plan": "skipped",
-     "skip": {
-      "reason": "not-visible",
-      "note": "a separate structure outside BAG pand 0363100012149095; it belongs to its own model"
-     },
+     "plan": "simplified",
+     "how": "three 0.42 x 0.67 m white posts on a 1.2 m radius triangle, 11 m tall, tied by a Y of beams to a centre hub at the top; placed from the PDOK 2025 orthophoto (builder campanile())",
      "seenIn": "TMX7316010203-000831_pano_0000_002250"
     }
    ]

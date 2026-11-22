@@ -105169,7 +105169,7 @@
   "materialOverrides": {
    "green": "#36423a",
    "concrete": "#e6e3d8",
-   "red": "#b0644a",
+   "red": "#8f5445",
    "brick": "#9a5a45",
    "blue": "#4f7fa3",
    "ochre": "#c8c98c",
@@ -105179,7 +105179,8 @@
    "bronze": "#1e1e1c",
    "greyBrick": "#6e706c",
    "glass": "#3e4a50",
-   "slate": "#4a4a48"
+   "slate": "#4a4a48",
+   "dark": "#4e3a33"
   },
   "attribution": {
    "title": "Buurtgebouw Henrick de Keijser, Henrick de Keijserplein 45, Amsterdam",

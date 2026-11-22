@@ -531,6 +531,10 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
   'tugelahuis-tugelaweg': {
     red: {slot: 'roofTile', measured: '#9c5a40', why: 'the dark rust-red tiled roof and rake boards (PDOK 2025 orthophoto; w01-63 rakes): the city pantile range lifted it to bright orange (r12 sheet)'},
   },
+  'henrick-de-keijser-buurtgebouw': {
+    red: {slot: 'roofTile', measured: '#8f5445', why: 'the red-brown pantiles (w01-258 2020, w05-168 2019 sunlit plane, PDOK 2025 orthophoto): the city pantile range drew them bright orange (board, r12 follow-up)'},
+    dark: {slot: 'brick', measured: '#4e3a33', why: 'the dark brown brick chimney stack on the ridge by the south gable (w01-258, w05-168)'},
+  },
   'de-coenen-coenenstraat': {
     sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
   },
