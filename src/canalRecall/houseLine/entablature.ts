@@ -135,6 +135,9 @@ export interface CorniceReadExtras {
     centre?: 'pediment' | 'segmental' | 'balustrade' | 'attic' | 'none';
     body?: 'paint' | 'wall'; shoulders?: 'scrolls' | 'steps'; arc?: { tympanum: 'wall' | 'paint'; springM?: number };
     cap?: 'pediment' | 'segmental' | 'flat' | 'stepped'; riseM?: number; share?: number; light?: 'square' | 'round' | 'oculus' | 'none';
+    /** Belt windows lane: an attic body running down through the cornice (m under its top), and its light's foot and top
+     *  over the cornice's top (m). */
+    dropM?: number; lightM?: [number, number];
   };
 }
 /** What the cornice lane's read fields set on the plot's cornice form (RowCorniceDress parts); the profile at `depthM`. */
@@ -156,6 +159,8 @@ export function corniceReadParts(r: CorniceReadExtras, depthM: number | undefine
     if (typeof c.share === 'number' && c.share > 0.1 && c.share <= 1) out.centreShare = c.share;
     if (c.light === 'none') out.centreLight = undefined;
     else if (c.light === 'square' || c.light === 'round' || c.light === 'oculus') out.centreLight = c.light;
+    if (typeof c.dropM === 'number' && c.dropM > 0.1 && c.dropM < 4) out.centreDropM = c.dropM;
+    if (Array.isArray(c.lightM) && c.lightM.length === 2 && c.lightM.every(v => typeof v === 'number' && Math.abs(v) < 5) && c.lightM[1] > c.lightM[0] + 0.2) out.centreLightM = [c.lightM[0], c.lightM[1]];
   }
   return out;
 }

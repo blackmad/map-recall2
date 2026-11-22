@@ -14,6 +14,7 @@
  * (`facts/facadeYear`). Values below that level (a front's `windowHead` object, a `bays` list) are atomic: two
  * sources never splice one window head together.
  */
+import { openingGridProblems } from '../houseLine/openingGrid.ts';
 import {
   CORNICES, GABLES, ROOF_MATERIALS, SWATCHES, WALL_MATERIALS, WINDOW_HEADS, WINDOW_SURROUNDS,
   type FrontIntent, type GableIntent, type IntentSource,
@@ -178,6 +179,10 @@ export interface SpecFacts {
   /** Lane d1-colour-judged (docs/house-line.md §16): the receipt of a judged wall colour (houseSpec/judgedColour.ts): the
    *  family, the staged tone (`palette/brick`), the signal that decided it and the hints. Never drawn. */
   wallJudged?: import('./judgedColour.ts').WallJudgedFact;
+  /** The street front's windows as measured on a rectified photo, storey by storey (houseLine/openingGrid.ts): bay centres,
+   *  width, height, sill, head, panes (columns x rows, transom), frame paint and surround, each row with its method. The kit's
+   *  window kind names a joinery; this says its size and place. Drawn by the belt review's solo plots (absent: the cells). */
+  openings?: import('../houseLine/openingGrid.ts').OpeningGrid;
 }
 
 export interface HouseSpec {
@@ -326,6 +331,7 @@ export function specProblems(input: unknown): string[] {
       if (key === 'wallMaterial' ? !SPEC_WALL_MATERIALS.includes(value as SpecWallMaterial) : ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'sash', 'glass'].includes(key!) && !colourOk(value)) p.push(`${path}: ${JSON.stringify(value)} is not a ${key === 'wallMaterial' ? SPEC_WALL_MATERIALS.join('|') : 'colour (#rrggbb or a swatch)'}`);
     } else if (path === 'roof/material' && !ROOF_MATERIALS.includes(value as typeof ROOF_MATERIALS[number])) p.push(`${path}: ${JSON.stringify(value)} not in ${ROOF_MATERIALS.join('|')}`);
     else if (path === 'facts/facadeYear' && !countOk(value, 1200, 2100)) p.push(`${path}: a year 1200..2100`);
+    else if (path === 'facts/openings') p.push(...openingGridProblems(value).map(m => `${path}: ${m}`));
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/wallExposure' && !isWallExposureFact(value)) p.push(`${path}: {off, floor, gain, norm} colours and a gain g`);

@@ -254,6 +254,12 @@ export interface RowCorniceDress {
    *  arc over a tympanum of the wall or of the paint, springing `springM` under the cornice's top (0: on it). Absent: the
    *  stock segmental cap. */
   centreArc?: { tympanum: 'wall' | 'paint'; springM?: number };
+  /** An attic centre whose body runs down through the cornice into the frieze (Herengracht 90's aedicule): its foot this far
+   *  under the cornice's top (m), drawn proud of the corona. Absent: the attic stands on the cornice. */
+  centreDropM?: number;
+  /** The centre's light as measured: its foot and top over the cornice's top (m; negative under it). Absent: the stock
+   *  light in the attic's body. */
+  centreLightM?: [number, number];
   /** A deep cornice as measured parts (houseLine/entablature.ts CorniceProfile): drawn in place of the timber cornice's
    *  frieze, supports, bed and corona. Absent: the timber cornice. */
   profile?: import('../../houseLine/entablature.js').CorniceProfile;

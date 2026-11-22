@@ -1,0 +1,5313 @@
+{
+ "about": "Belt windows lane: each house's windows on its picked crop (full-resolution px), storey by storey; built by scripts/belt-review/measure-openings.ts --detect (pixel pass, beltReview/openingProfile.ts), checked and corrected by eye (by: eye), applied to photo-read.json as `openings` by --apply.",
+ "houses": {
+  "0363100012175701": {
+   "address": "Herengracht 90",
+   "ppm": 50,
+   "width": 283,
+   "height": 1003,
+   "landmarks": {
+    "pavement": 966,
+    "floors": [
+     684,
+     510,
+     376
+    ],
+    "top": 250,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 20,
+       "y0": 684,
+       "y1": 964
+      },
+      {
+       "x0": 72,
+       "x1": 110,
+       "y0": 808,
+       "y1": 967
+      },
+      {
+       "x0": 164,
+       "x1": 200,
+       "y0": 801,
+       "y1": 968
+      },
+      {
+       "x0": 225,
+       "x1": 283,
+       "y0": 844,
+       "y1": 968
+      }
+     ],
+     "bars": [
+      {
+       "mullions": [
+        0.667
+       ],
+       "rails": [
+        0.134,
+        0.801,
+        0.816
+       ]
+      },
+      {
+       "mullions": [],
+       "rails": [
+        0.619
+       ]
+      },
+      {
+       "mullions": [],
+       "rails": [
+        0.142,
+        0.651
+       ]
+      },
+      {
+       "mullions": [
+        0.62
+       ],
+       "rails": [
+        0.741,
+        0.961
+       ]
+      }
+     ],
+     "by": "pixel"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 2,
+      "transom": 0.26
+     },
+     "frame": "#efece4",
+     "sash": "#3b2c22",
+     "boxes": [
+      {
+       "x0": 15,
+       "x1": 82,
+       "y0": 527,
+       "y1": 651
+      },
+      {
+       "x0": 106,
+       "x1": 173,
+       "y0": 527,
+       "y1": 651
+      },
+      {
+       "x0": 198,
+       "x1": 265,
+       "y0": 527,
+       "y1": 651
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.32
+     },
+     "frame": "#efece4",
+     "sash": "#3b2c22",
+     "boxes": [
+      {
+       "x0": 15,
+       "x1": 82,
+       "y0": 405,
+       "y1": 500
+      },
+      {
+       "x0": 106,
+       "x1": 173,
+       "y0": 405,
+       "y1": 500
+      },
+      {
+       "x0": 198,
+       "x1": 265,
+       "y0": 405,
+       "y1": 500
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#efece4",
+     "sash": "#3b2c22",
+     "boxes": [
+      {
+       "x0": 15,
+       "x1": 82,
+       "y0": 288,
+       "y1": 361
+      },
+      {
+       "x0": 107,
+       "x1": 174,
+       "y0": 288,
+       "y1": 361
+      },
+      {
+       "x0": 199,
+       "x1": 266,
+       "y0": 288,
+       "y1": 361
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "white casings, dark brown sashes; first floor two lights under a two-light transom over two rows, second floor two lights under a transom, top floor 2x2; ground is the shop (not measured)"
+  },
+  "0363100012169010": {
+   "address": "Herengracht 88",
+   "ppm": 50,
+   "width": 357,
+   "height": 865,
+   "landmarks": {
+    "pavement": 855,
+    "floors": [
+     545,
+     335
+    ],
+    "top": 200,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 2,
+      "transom": 0.3
+     },
+     "frame": "#3a3d3a",
+     "boxes": [
+      {
+       "x0": 35,
+       "x1": 105,
+       "y0": 368,
+       "y1": 514
+      },
+      {
+       "x0": 140,
+       "x1": 210,
+       "y0": 368,
+       "y1": 514
+      },
+      {
+       "x0": 248,
+       "x1": 318,
+       "y0": 368,
+       "y1": 514
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#3a3d3a",
+     "boxes": [
+      {
+       "x0": 40,
+       "x1": 105,
+       "y0": 215,
+       "y1": 305
+      },
+      {
+       "x0": 143,
+       "x1": 210,
+       "y0": 215,
+       "y1": 305
+      },
+      {
+       "x0": 250,
+       "x1": 318,
+       "y0": 215,
+       "y1": 305
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "neo-renaissance brick and white stone bands; dark grey frames; ground is the restaurant (awnings), not measured; the gable's attic light is the crown's"
+  },
+  "0363100012175692": {
+   "address": "Herengracht 86",
+   "ppm": 100,
+   "width": 498,
+   "height": 1803,
+   "landmarks": {
+    "pavement": 1713,
+    "floors": [
+     1091,
+     757
+    ],
+    "top": 433,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 2,
+      "transom": 0.35
+     },
+     "frame": "#2a2c2b",
+     "boxes": [
+      {
+       "x0": 5,
+       "x1": 100,
+       "y0": 1150,
+       "y1": 1522
+      },
+      {
+       "x0": 130,
+       "x1": 245,
+       "y0": 1150,
+       "y1": 1522
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.33,
+      "topCols": 1
+     },
+     "frame": "#e6e2d8",
+     "sash": "#2b2b2b",
+     "boxes": [
+      {
+       "x0": 28,
+       "x1": 170,
+       "y0": 815,
+       "y1": 1015
+      },
+      {
+       "x0": 250,
+       "x1": 395,
+       "y0": 815,
+       "y1": 1015
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       }
+      },
+      "2": {
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.25,
+        "topCols": 2
+       }
+      }
+     },
+     "frame": "#e6e2d8",
+     "sash": "#2b2b2b",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 80,
+       "y0": 505,
+       "y1": 680
+      },
+      {
+       "x0": 125,
+       "x1": 285,
+       "y0": 520,
+       "y1": 710
+      },
+      {
+       "x0": 322,
+       "x1": 410,
+       "y0": 527,
+       "y1": 690
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "bell gable; cream casings with dark sashes; storey 2 has three windows (a narrow open casement left, a wide centre, a narrower right); the ground's windows are the ground front's (panes only)"
+  },
+  "0363100012175702": {
+   "address": "Herengracht 84",
+   "ppm": 100,
+   "width": 560,
+   "height": 1838,
+   "landmarks": {
+    "pavement": 1785,
+    "floors": [
+     1156,
+     780
+    ],
+    "top": 520,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 3,
+      "rows": 7
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 125,
+       "y0": 1215,
+       "y1": 1592
+      },
+      {
+       "x0": 185,
+       "x1": 300,
+       "y0": 1215,
+       "y1": 1592
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 3,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 125,
+       "y0": 880,
+       "y1": 1097
+      },
+      {
+       "x0": 185,
+       "x1": 300,
+       "y0": 880,
+       "y1": 1097
+      },
+      {
+       "x0": 360,
+       "x1": 485,
+       "y0": 880,
+       "y1": 1097
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 3,
+        "rows": 3
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 35,
+       "x1": 120,
+       "y0": 590,
+       "y1": 750
+      },
+      {
+       "x0": 178,
+       "x1": 305,
+       "y0": 620,
+       "y1": 765
+      },
+      {
+       "x0": 355,
+       "x1": 445,
+       "y0": 590,
+       "y1": 750
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "step gable on dark-painted brick; white frames, small-paned sashes; ground windows tall sashes under a transom"
+  },
+  "0363100012175703": {
+   "address": "Herengracht 82",
+   "ppm": 50,
+   "width": 334,
+   "height": 974,
+   "landmarks": {
+    "pavement": 940,
+    "floors": [
+     712,
+     570,
+     450
+    ],
+    "top": 335,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "boxes": [
+      {
+       "x0": 26,
+       "x1": 86,
+       "y0": 788,
+       "y1": 940
+      },
+      {
+       "x0": 114,
+       "x1": 200,
+       "y0": 787,
+       "y1": 940
+      },
+      {
+       "x0": 231,
+       "x1": 281,
+       "y0": 788,
+       "y1": 940
+      }
+     ],
+     "bars": [
+      {
+       "mullions": [
+        0.365,
+        0.481,
+        0.721
+       ],
+       "rails": []
+      },
+      {
+       "mullions": [
+        0.782,
+        0.84
+       ],
+       "rails": []
+      },
+      {
+       "mullions": [
+        0.262,
+        0.524
+       ],
+       "rails": []
+      }
+     ],
+     "by": "pixel"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 3,
+      "rows": 4
+     },
+     "frame": "#2f3a33",
+     "surround": "sill",
+     "boxes": [
+      {
+       "x0": 22,
+       "x1": 83,
+       "y0": 590,
+       "y1": 689
+      },
+      {
+       "x0": 113,
+       "x1": 175,
+       "y0": 590,
+       "y1": 689
+      },
+      {
+       "x0": 203,
+       "x1": 266,
+       "y0": 590,
+       "y1": 689
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 3,
+      "rows": 3
+     },
+     "frame": "#2f3a33",
+     "surround": "sill",
+     "boxes": [
+      {
+       "x0": 25,
+       "x1": 85,
+       "y0": 462,
+       "y1": 548
+      },
+      {
+       "x0": 115,
+       "x1": 178,
+       "y0": 462,
+       "y1": 548
+      },
+      {
+       "x0": 205,
+       "x1": 268,
+       "y0": 462,
+       "y1": 548
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 3,
+      "rows": 3
+     },
+     "frame": "#2f3a33",
+     "surround": "sill",
+     "boxes": [
+      {
+       "x0": 25,
+       "x1": 87,
+       "y0": 352,
+       "y1": 432
+      },
+      {
+       "x0": 115,
+       "x1": 178,
+       "y0": 352,
+       "y1": 432
+      },
+      {
+       "x0": 205,
+       "x1": 270,
+       "y0": 352,
+       "y1": 432
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "stucco front; dark green frames with grey sill boards; ground is the cafe (not measured)"
+  },
+  "0363100012175783": {
+   "address": "Herengracht 80",
+   "ppm": 100,
+   "width": 433,
+   "height": 1876,
+   "landmarks": {
+    "pavement": 1730,
+    "floors": [
+     1410,
+     1135,
+     910
+    ],
+    "top": 615,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 5
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 182,
+       "x1": 268,
+       "y0": 1455,
+       "y1": 1712
+      },
+      {
+       "x0": 288,
+       "x1": 372,
+       "y0": 1455,
+       "y1": 1712
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 100,
+       "y0": 1198,
+       "y1": 1385
+      },
+      {
+       "x0": 132,
+       "x1": 245,
+       "y0": 1198,
+       "y1": 1385
+      },
+      {
+       "x0": 276,
+       "x1": 368,
+       "y0": 1198,
+       "y1": 1385
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 100,
+       "y0": 935,
+       "y1": 1120
+      },
+      {
+       "x0": 132,
+       "x1": 245,
+       "y0": 935,
+       "y1": 1120
+      },
+      {
+       "x0": 276,
+       "x1": 368,
+       "y0": 935,
+       "y1": 1120
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 98,
+       "y0": 720,
+       "y1": 885
+      },
+      {
+       "x0": 129,
+       "x1": 239,
+       "y0": 720,
+       "y1": 885
+      },
+      {
+       "x0": 271,
+       "x1": 361,
+       "y0": 720,
+       "y1": 885
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "neck gable over three upper storeys; white frames; side windows two lights wide, the centre three; ground a white timber front with two doors and a wide two-part window"
+  },
+  "0363100012175784": {
+   "address": "Herengracht 76–78",
+   "ppm": 100,
+   "width": 837,
+   "height": 1500,
+   "landmarks": {
+    "pavement": 1480,
+    "floors": [
+     1035,
+     775
+    ],
+    "top": 520,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 3,
+      "transom": 0.34
+     },
+     "except": {
+      "2": {
+       "panes": {
+        "cols": 4,
+        "rows": 6
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 136,
+       "x1": 248,
+       "y0": 1076,
+       "y1": 1340
+      },
+      {
+       "x0": 264,
+       "x1": 376,
+       "y0": 1076,
+       "y1": 1340
+      },
+      {
+       "x0": 583,
+       "x1": 764,
+       "y0": 1059,
+       "y1": 1315
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 3,
+      "rows": 3
+     },
+     "except": {
+      "2": {
+       "panes": {
+        "cols": 4,
+        "rows": 4
+       }
+      },
+      "3": {
+       "panes": {
+        "cols": 4,
+        "rows": 4
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 161,
+       "y0": 815,
+       "y1": 1010
+      },
+      {
+       "x0": 213,
+       "x1": 372,
+       "y0": 815,
+       "y1": 1010
+      },
+      {
+       "x0": 442,
+       "x1": 579,
+       "y0": 782,
+       "y1": 997
+      },
+      {
+       "x0": 636,
+       "x1": 769,
+       "y0": 778,
+       "y1": 993
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 4,
+       "x1": 93,
+       "y0": 624,
+       "y1": 744
+      },
+      {
+       "x0": 124,
+       "x1": 241,
+       "y0": 620,
+       "y1": 773
+      },
+      {
+       "x0": 273,
+       "x1": 368,
+       "y0": 624,
+       "y1": 744
+      },
+      {
+       "x0": 438,
+       "x1": 525,
+       "y0": 570,
+       "y1": 715
+      },
+      {
+       "x0": 550,
+       "x1": 661,
+       "y0": 570,
+       "y1": 715
+      },
+      {
+       "x0": 688,
+       "x1": 773,
+       "y0": 570,
+       "y1": 715
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "a pair of fronts on one pand: 76 (left) two wide windows on the first floor and three on the second, 78 (right) two and three, its floors ~40 px higher (one floor line between them); white frames; the necks' lights are the crowns'"
+  },
+  "0363100012175616": {
+   "address": "Herengracht 74",
+   "ppm": 100,
+   "width": 440,
+   "height": 1898,
+   "landmarks": {
+    "pavement": 1877,
+    "floors": [
+     1330,
+     915
+    ],
+    "top": 501,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.36
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 219,
+       "x1": 438,
+       "y0": 1412,
+       "y1": 1689
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#ece9e0",
+     "surround": "stone-lintel",
+     "boxes": [
+      {
+       "x0": 99,
+       "x1": 256,
+       "y0": 1011,
+       "y1": 1266
+      },
+      {
+       "x0": 313,
+       "x1": 438,
+       "y0": 1011,
+       "y1": 1266
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#ece9e0",
+     "surround": "stone-lintel",
+     "boxes": [
+      {
+       "x0": 90,
+       "x1": 240,
+       "y0": 642,
+       "y1": 866
+      },
+      {
+       "x0": 303,
+       "x1": 438,
+       "y0": 642,
+       "y1": 866
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "Jugendstil; white T-windows whose transom bar is arched (the kit draws it straight); stone lintels; the right bay is cut by the crop's edge (measured to it)"
+  },
+  "0363100012175617": {
+   "address": "Herengracht 72",
+   "ppm": 50,
+   "width": 210,
+   "height": 1112,
+   "landmarks": {
+    "pavement": 1086,
+    "floors": [
+     740,
+     530,
+     355
+    ],
+    "top": 240,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 5
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 78,
+       "y0": 780,
+       "y1": 966
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.37,
+      "topCols": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 62,
+       "y0": 561,
+       "y1": 701
+      },
+      {
+       "x0": 90,
+       "x1": 168,
+       "y0": 561,
+       "y1": 701
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 58,
+       "y0": 384,
+       "y1": 500
+      },
+      {
+       "x0": 95,
+       "x1": 165,
+       "y0": 384,
+       "y1": 500
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 58,
+       "y0": 250,
+       "y1": 322
+      },
+      {
+       "x0": 92,
+       "x1": 165,
+       "y0": 250,
+       "y1": 322
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark brown walls in a white stucco grid; white frames; the left bay's windows narrow; ground: one tall window, the door with a light over it (the door's)"
+  },
+  "0363100012175618": {
+   "address": "Herengracht 70",
+   "ppm": 80,
+   "width": 334,
+   "height": 1914,
+   "landmarks": {
+    "pavement": 1903,
+    "floors": [
+     1220,
+     880,
+     560
+    ],
+    "top": 270,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.33
+     },
+     "frame": "#2f3230",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 32,
+       "x1": 146,
+       "y0": 1324,
+       "y1": 1641
+      },
+      {
+       "x0": 177,
+       "x1": 297,
+       "y0": 1324,
+       "y1": 1641
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#ece9e0",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 9,
+       "x1": 141,
+       "y0": 965,
+       "y1": 1177
+      },
+      {
+       "x0": 188,
+       "x1": 276,
+       "y0": 965,
+       "y1": 1177
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.45
+     },
+     "frame": "#ece9e0",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 136,
+       "y0": 664,
+       "y1": 823
+      },
+      {
+       "x0": 186,
+       "x1": 273,
+       "y0": 664,
+       "y1": 823
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 1,
+       "x1": 136,
+       "y0": 415,
+       "y1": 482
+      },
+      {
+       "x0": 177,
+       "x1": 273,
+       "y0": 415,
+       "y1": 482
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "Neo-renaissance stucco grid; dark sashes in white stucco frames; ground: the ground front's two tall windows over the street tier (panes only); top storey's openings low under the cartouches"
+  },
+  "0363100012175698": {
+   "address": "Herengracht 68",
+   "ppm": 50,
+   "width": 469,
+   "height": 1188,
+   "landmarks": {
+    "pavement": 1140,
+    "floors": [
+     901,
+     731,
+     573,
+     437
+    ],
+    "top": 309,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 16,
+       "x1": 85,
+       "y0": 925,
+       "y1": 1090
+      },
+      {
+       "x0": 127,
+       "x1": 199,
+       "y0": 925,
+       "y1": 1090
+      },
+      {
+       "x0": 346,
+       "x1": 421,
+       "y0": 925,
+       "y1": 1090
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 78,
+       "y0": 757,
+       "y1": 873
+      },
+      {
+       "x0": 118,
+       "x1": 193,
+       "y0": 757,
+       "y1": 873
+      },
+      {
+       "x0": 229,
+       "x1": 304,
+       "y0": 757,
+       "y1": 873
+      },
+      {
+       "x0": 343,
+       "x1": 417,
+       "y0": 757,
+       "y1": 873
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 78,
+       "y0": 593,
+       "y1": 710
+      },
+      {
+       "x0": 118,
+       "x1": 193,
+       "y0": 593,
+       "y1": 710
+      },
+      {
+       "x0": 229,
+       "x1": 304,
+       "y0": 593,
+       "y1": 710
+      },
+      {
+       "x0": 343,
+       "x1": 417,
+       "y0": 593,
+       "y1": 710
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 78,
+       "y0": 456,
+       "y1": 555
+      },
+      {
+       "x0": 118,
+       "x1": 193,
+       "y0": 456,
+       "y1": 555
+      },
+      {
+       "x0": 229,
+       "x1": 304,
+       "y0": 456,
+       "y1": 555
+      },
+      {
+       "x0": 343,
+       "x1": 417,
+       "y0": 456,
+       "y1": 555
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 4,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 10,
+       "x1": 78,
+       "y0": 332,
+       "y1": 415
+      },
+      {
+       "x0": 118,
+       "x1": 193,
+       "y0": 332,
+       "y1": 415
+      },
+      {
+       "x0": 229,
+       "x1": 304,
+       "y0": 332,
+       "y1": 415
+      },
+      {
+       "x0": 343,
+       "x1": 417,
+       "y0": 332,
+       "y1": 415
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey plastered brick; white frames, two-by-two sashes in four bays; the ground's door in the third bay"
+  },
+  "0363100012168544": {
+   "address": "Herengracht 66",
+   "ppm": 50,
+   "width": 301,
+   "height": 1023,
+   "landmarks": {
+    "pavement": 999,
+    "floors": [
+     735,
+     580,
+     452
+    ],
+    "top": 305,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 166,
+       "y0": 763,
+       "y1": 915
+      },
+      {
+       "x0": 192,
+       "x1": 258,
+       "y0": 763,
+       "y1": 915
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 73,
+       "y0": 600,
+       "y1": 710
+      },
+      {
+       "x0": 98,
+       "x1": 166,
+       "y0": 600,
+       "y1": 710
+      },
+      {
+       "x0": 191,
+       "x1": 258,
+       "y0": 600,
+       "y1": 710
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 73,
+       "y0": 466,
+       "y1": 561
+      },
+      {
+       "x0": 98,
+       "x1": 166,
+       "y0": 466,
+       "y1": 561
+      },
+      {
+       "x0": 191,
+       "x1": 258,
+       "y0": 466,
+       "y1": 561
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 73,
+       "y0": 337,
+       "y1": 438
+      },
+      {
+       "x0": 98,
+       "x1": 166,
+       "y0": 337,
+       "y1": 438
+      },
+      {
+       "x0": 191,
+       "x1": 258,
+       "y0": 337,
+       "y1": 438
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey plaster; white frames, 2x2 casements; the third storey's centre a single blind-looking light; the frieze's attic lights are the cornice's"
+  },
+  "0363100012168545": {
+   "address": "Herengracht 64",
+   "ppm": 50,
+   "width": 349,
+   "height": 982,
+   "landmarks": {
+    "pavement": 945,
+    "floors": [
+     670,
+     518
+    ],
+    "top": 380,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#ece9e0",
+     "sash": "#2e4a3c",
+     "boxes": [
+      {
+       "x0": 130,
+       "x1": 205,
+       "y0": 693,
+       "y1": 855
+      },
+      {
+       "x0": 242,
+       "x1": 316,
+       "y0": 693,
+       "y1": 855
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.36
+     },
+     "frame": "#ece9e0",
+     "sash": "#2e4a3c",
+     "boxes": [
+      {
+       "x0": 18,
+       "x1": 95,
+       "y0": 531,
+       "y1": 650
+      },
+      {
+       "x0": 128,
+       "x1": 205,
+       "y0": 531,
+       "y1": 650
+      },
+      {
+       "x0": 240,
+       "x1": 318,
+       "y0": 531,
+       "y1": 650
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "sash": "#2e4a3c",
+     "boxes": [
+      {
+       "x0": 15,
+       "x1": 92,
+       "y0": 400,
+       "y1": 484
+      },
+      {
+       "x0": 127,
+       "x1": 203,
+       "y0": 397,
+       "y1": 508
+      },
+      {
+       "x0": 240,
+       "x1": 316,
+       "y0": 400,
+       "y1": 484
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "orange-pink plaster under an elevated neck (its storey window is the crown's lower light); dark green sashes in white frames"
+  },
+  "0363100012167493": {
+   "address": "Herengracht 62",
+   "ppm": 90,
+   "width": 480,
+   "height": 1886,
+   "landmarks": {
+    "pavement": 1839,
+    "floors": [
+     1203,
+     834,
+     509
+    ],
+    "top": 198,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 2
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 212,
+       "y0": 1295,
+       "y1": 1555
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.4
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 212,
+       "y0": 960,
+       "y1": 1140
+      },
+      {
+       "x0": 255,
+       "x1": 372,
+       "y0": 960,
+       "y1": 1140
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 212,
+       "y0": 565,
+       "y1": 755
+      },
+      {
+       "x0": 255,
+       "x1": 372,
+       "y0": 565,
+       "y1": 755
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 212,
+       "y0": 250,
+       "y1": 445
+      },
+      {
+       "x0": 255,
+       "x1": 372,
+       "y0": 250,
+       "y1": 445
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "grey stucco between pilaster strips; cream frames, two casements under a toplight; ground window single sash beside the door"
+  },
+  "0363100012167492": {
+   "address": "Herengracht 60",
+   "ppm": 50,
+   "width": 243,
+   "height": 1092,
+   "landmarks": {
+    "pavement": 1065,
+    "floors": [
+     770,
+     590,
+     446
+    ],
+    "top": 317,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.31
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 21,
+       "x1": 96,
+       "y0": 802,
+       "y1": 958
+      },
+      {
+       "x0": 131,
+       "x1": 204,
+       "y0": 802,
+       "y1": 958
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.39
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 21,
+       "x1": 96,
+       "y0": 612,
+       "y1": 745
+      },
+      {
+       "x0": 131,
+       "x1": 204,
+       "y0": 612,
+       "y1": 745
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.46
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 21,
+       "x1": 96,
+       "y0": 465,
+       "y1": 572
+      },
+      {
+       "x0": 131,
+       "x1": 204,
+       "y0": 465,
+       "y1": 572
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e8e4d8",
+     "boxes": [
+      {
+       "x0": 21,
+       "x1": 96,
+       "y0": 335,
+       "y1": 425
+      },
+      {
+       "x0": 131,
+       "x1": 204,
+       "y0": 335,
+       "y1": 425
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey plaster; cream frames; two casements under a toplight, the third storey 2x2; the arched attic light is the cornice's"
+  },
+  "0363100012167495": {
+   "address": "Herengracht 58",
+   "ppm": 90,
+   "width": 677,
+   "height": 1878,
+   "landmarks": {
+    "pavement": 1822,
+    "floors": [
+     1202,
+     901,
+     639
+    ],
+    "top": 385,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#3a3c3a",
+     "boxes": [
+      {
+       "x0": 3,
+       "x1": 125,
+       "y0": 1307,
+       "y1": 1656
+      },
+      {
+       "x0": 213,
+       "x1": 345,
+       "y0": 1307,
+       "y1": 1656
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 1,
+       "x1": 122,
+       "y0": 953,
+       "y1": 1177
+      },
+      {
+       "x0": 211,
+       "x1": 342,
+       "y0": 953,
+       "y1": 1177
+      },
+      {
+       "x0": 431,
+       "x1": 565,
+       "y0": 953,
+       "y1": 1177
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 3,
+       "x1": 132,
+       "y0": 708,
+       "y1": 884
+      },
+      {
+       "x0": 204,
+       "x1": 350,
+       "y0": 708,
+       "y1": 884
+      },
+      {
+       "x0": 422,
+       "x1": 566,
+       "y0": 708,
+       "y1": 884
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 3,
+       "x1": 132,
+       "y0": 480,
+       "y1": 612
+      },
+      {
+       "x0": 204,
+       "x1": 350,
+       "y0": 480,
+       "y1": 612
+      },
+      {
+       "x0": 422,
+       "x1": 566,
+       "y0": 480,
+       "y1": 612
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "grey brick with white block dressings and relieving arches; white frames; ground front's windows lend panes only"
+  },
+  "0363100012167494": {
+   "address": "Herengracht 56",
+   "ppm": 85,
+   "width": 584,
+   "height": 1884,
+   "landmarks": {
+    "pavement": 1837,
+    "floors": [
+     1315,
+     1021,
+     801
+    ],
+    "top": 565,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#e6e2d6",
+     "boxes": [
+      {
+       "x0": 245,
+       "x1": 364,
+       "y0": 1371,
+       "y1": 1670
+      },
+      {
+       "x0": 441,
+       "x1": 560,
+       "y0": 1371,
+       "y1": 1670
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#e6e2d6",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 52,
+       "x1": 176,
+       "y0": 1060,
+       "y1": 1256
+      },
+      {
+       "x0": 245,
+       "x1": 369,
+       "y0": 1060,
+       "y1": 1256
+      },
+      {
+       "x0": 444,
+       "x1": 565,
+       "y0": 1060,
+       "y1": 1256
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e6e2d6",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 47,
+       "x1": 180,
+       "y0": 843,
+       "y1": 988
+      },
+      {
+       "x0": 243,
+       "x1": 377,
+       "y0": 843,
+       "y1": 988
+      },
+      {
+       "x0": 441,
+       "x1": 565,
+       "y0": 843,
+       "y1": 988
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e6e2d6",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 47,
+       "x1": 180,
+       "y0": 650,
+       "y1": 757
+      },
+      {
+       "x0": 243,
+       "x1": 377,
+       "y0": 650,
+       "y1": 757
+      },
+      {
+       "x0": 441,
+       "x1": 565,
+       "y0": 650,
+       "y1": 757
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "red brick, stone block dressings and relieving arches; cream frames; first-storey casements under a toplight"
+  },
+  "0363100012169218": {
+   "address": "Herengracht 54",
+   "ppm": 93.4,
+   "width": 1312,
+   "height": 1809,
+   "landmarks": {
+    "pavement": 1764,
+    "floors": [
+     1194,
+     883
+    ],
+    "top": 606,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.28
+     },
+     "frame": "#2e302f",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 39,
+       "x1": 160,
+       "y0": 1261,
+       "y1": 1560
+      },
+      {
+       "x0": 244,
+       "x1": 371,
+       "y0": 1261,
+       "y1": 1560
+      },
+      {
+       "x0": 873,
+       "x1": 988,
+       "y0": 1261,
+       "y1": 1560
+      },
+      {
+       "x0": 1085,
+       "x1": 1185,
+       "y0": 1261,
+       "y1": 1560
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#2e302f",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 45,
+       "x1": 167,
+       "y0": 952,
+       "y1": 1136
+      },
+      {
+       "x0": 247,
+       "x1": 371,
+       "y0": 952,
+       "y1": 1136
+      },
+      {
+       "x0": 555,
+       "x1": 680,
+       "y0": 952,
+       "y1": 1136
+      },
+      {
+       "x0": 870,
+       "x1": 988,
+       "y0": 952,
+       "y1": 1136
+      },
+      {
+       "x0": 1077,
+       "x1": 1178,
+       "y0": 952,
+       "y1": 1136
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#2e302f",
+     "surround": "full-frame",
+     "boxes": [
+      {
+       "x0": 45,
+       "x1": 167,
+       "y0": 709,
+       "y1": 828
+      },
+      {
+       "x0": 247,
+       "x1": 371,
+       "y0": 709,
+       "y1": 828
+      },
+      {
+       "x0": 555,
+       "x1": 680,
+       "y0": 709,
+       "y1": 828
+      },
+      {
+       "x0": 870,
+       "x1": 988,
+       "y0": 709,
+       "y1": 828
+      },
+      {
+       "x0": 1077,
+       "x1": 1178,
+       "y0": 709,
+       "y1": 828
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "cream stucco palazzo, five bays round a stone centre risalit; dark frames in white moulded surrounds"
+  },
+  "0363100012169272": {
+   "address": "Herengracht 50–52",
+   "ppm": 50,
+   "width": 974,
+   "height": 1067,
+   "landmarks": {
+    "pavement": 976,
+    "floors": [
+     770,
+     592
+    ],
+    "top": 432,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ddd8c8",
+     "boxes": [
+      {
+       "x0": 26,
+       "x1": 96,
+       "y0": 799,
+       "y1": 972
+      },
+      {
+       "x0": 138,
+       "x1": 211,
+       "y0": 799,
+       "y1": 972
+      },
+      {
+       "x0": 472,
+       "x1": 549,
+       "y0": 799,
+       "y1": 972
+      },
+      {
+       "x0": 591,
+       "x1": 667,
+       "y0": 799,
+       "y1": 972
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ddd8c8",
+     "boxes": [
+      {
+       "x0": 24,
+       "x1": 96,
+       "y0": 615,
+       "y1": 750
+      },
+      {
+       "x0": 136,
+       "x1": 211,
+       "y0": 615,
+       "y1": 750
+      },
+      {
+       "x0": 302,
+       "x1": 379,
+       "y0": 615,
+       "y1": 750
+      },
+      {
+       "x0": 472,
+       "x1": 549,
+       "y0": 615,
+       "y1": 750
+      },
+      {
+       "x0": 591,
+       "x1": 667,
+       "y0": 615,
+       "y1": 750
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ddd8c8",
+     "boxes": [
+      {
+       "x0": 24,
+       "x1": 96,
+       "y0": 478,
+       "y1": 573
+      },
+      {
+       "x0": 136,
+       "x1": 211,
+       "y0": 478,
+       "y1": 573
+      },
+      {
+       "x0": 302,
+       "x1": 379,
+       "y0": 478,
+       "y1": 573
+      },
+      {
+       "x0": 472,
+       "x1": 549,
+       "y0": 478,
+       "y1": 573
+      },
+      {
+       "x0": 591,
+       "x1": 667,
+       "y0": 478,
+       "y1": 573
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark plastered five-bay front under a cream frieze; cream frames; the 3-bay house at crop x>720 is the neighbour; a tree crosses the left bays"
+  },
+  "0363100012169270": {
+   "address": "Herengracht 48",
+   "ppm": 75,
+   "width": 642,
+   "height": 1782,
+   "landmarks": {
+    "pavement": 1737,
+    "floors": [
+     1265,
+     959,
+     704
+    ],
+    "top": 454,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#4a4c4c",
+     "surround": "full-frame",
+     "head": "segmental",
+     "boxes": [
+      {
+       "x0": 208,
+       "x1": 310,
+       "y0": 1320,
+       "y1": 1575
+      },
+      {
+       "x0": 405,
+       "x1": 510,
+       "y0": 1320,
+       "y1": 1575
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.32
+     },
+     "frame": "#4a4c4c",
+     "surround": "full-frame",
+     "head": "segmental",
+     "boxes": [
+      {
+       "x0": 4,
+       "x1": 103,
+       "y0": 1002,
+       "y1": 1222
+      },
+      {
+       "x0": 203,
+       "x1": 310,
+       "y0": 1002,
+       "y1": 1222
+      },
+      {
+       "x0": 408,
+       "x1": 515,
+       "y0": 1002,
+       "y1": 1222
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#4a4c4c",
+     "surround": "full-frame",
+     "head": "segmental",
+     "boxes": [
+      {
+       "x0": 2,
+       "x1": 101,
+       "y0": 755,
+       "y1": 922
+      },
+      {
+       "x0": 189,
+       "x1": 313,
+       "y0": 755,
+       "y1": 922
+      },
+      {
+       "x0": 408,
+       "x1": 520,
+       "y0": 755,
+       "y1": 922
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#4a4c4c",
+     "surround": "full-frame",
+     "head": "segmental",
+     "boxes": [
+      {
+       "x0": 2,
+       "x1": 101,
+       "y0": 520,
+       "y1": 667
+      },
+      {
+       "x0": 189,
+       "x1": 313,
+       "y0": 520,
+       "y1": 667
+      },
+      {
+       "x0": 408,
+       "x1": 520,
+       "y0": 520,
+       "y1": 667
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "pale grey stucco; dark grey frames in white moulded surrounds with shell keystones; segmental heads"
+  },
+  "0363100012179667": {
+   "address": "Herengracht 46",
+   "ppm": 95,
+   "width": 433,
+   "height": 1897,
+   "landmarks": {
+    "pavement": 1870,
+    "floors": [
+     1300,
+     960,
+     690
+    ],
+    "top": 420,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 97,
+       "x1": 205,
+       "y0": 1382,
+       "y1": 1657
+      },
+      {
+       "x0": 238,
+       "x1": 346,
+       "y0": 1382,
+       "y1": 1657
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 2,
+       "x1": 58,
+       "y0": 1001,
+       "y1": 1272
+      },
+      {
+       "x0": 97,
+       "x1": 205,
+       "y0": 1001,
+       "y1": 1272
+      },
+      {
+       "x0": 241,
+       "x1": 349,
+       "y0": 1001,
+       "y1": 1272
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 2,
+       "x1": 48,
+       "y0": 738,
+       "y1": 927
+      },
+      {
+       "x0": 89,
+       "x1": 212,
+       "y0": 738,
+       "y1": 927
+      },
+      {
+       "x0": 251,
+       "x1": 349,
+       "y0": 738,
+       "y1": 927
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 2,
+       "x1": 48,
+       "y0": 476,
+       "y1": 612
+      },
+      {
+       "x0": 92,
+       "x1": 215,
+       "y0": 476,
+       "y1": 654
+      },
+      {
+       "x0": 255,
+       "x1": 355,
+       "y0": 476,
+       "y1": 612
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brick neck gable; white frames, small-paned sashes under relieving arches; the left bay is cut by the crop edge"
+  },
+  "0363100012179669": {
+   "address": "Herengracht 44",
+   "ppm": 100,
+   "width": 446,
+   "height": 1606,
+   "landmarks": {
+    "pavement": 1566,
+    "floors": [
+     1031,
+     752
+    ],
+    "top": 482,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.28
+     },
+     "frame": "#e6dfc6",
+     "boxes": [
+      {
+       "x0": 100,
+       "x1": 201,
+       "y0": 1078,
+       "y1": 1354
+      },
+      {
+       "x0": 239,
+       "x1": 335,
+       "y0": 1078,
+       "y1": 1354
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.38
+     },
+     "frame": "#e6dfc6",
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 65,
+       "y0": 793,
+       "y1": 990
+      },
+      {
+       "x0": 102,
+       "x1": 210,
+       "y0": 793,
+       "y1": 990
+      },
+      {
+       "x0": 243,
+       "x1": 346,
+       "y0": 793,
+       "y1": 990
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e6dfc6",
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 65,
+       "y0": 578,
+       "y1": 706
+      },
+      {
+       "x0": 105,
+       "x1": 210,
+       "y0": 578,
+       "y1": 706
+      },
+      {
+       "x0": 247,
+       "x1": 346,
+       "y0": 578,
+       "y1": 706
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark painted brick neck gable; cream frames; the gable light at y 402-510 is the crown's; ground and first storey big panes under a toplight"
+  },
+  "0363100012179670": {
+   "address": "Herengracht 42",
+   "ppm": 90,
+   "width": 393,
+   "height": 1839,
+   "landmarks": {
+    "pavement": 1793,
+    "floors": [
+     1394,
+     1122,
+     864
+    ],
+    "top": 588,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.22
+     },
+     "frame": "#ece6d4",
+     "boxes": [
+      {
+       "x0": 142,
+       "x1": 313,
+       "y0": 1444,
+       "y1": 1626
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.36
+     },
+     "frame": "#ece6d4",
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 107,
+       "y0": 1166,
+       "y1": 1348
+      },
+      {
+       "x0": 174,
+       "x1": 292,
+       "y0": 1166,
+       "y1": 1348
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.4
+     },
+     "frame": "#ece6d4",
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 107,
+       "y0": 908,
+       "y1": 1075
+      },
+      {
+       "x0": 174,
+       "x1": 292,
+       "y0": 908,
+       "y1": 1075
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.4
+     },
+     "frame": "#ece6d4",
+     "boxes": [
+      {
+       "x0": 0,
+       "x1": 107,
+       "y0": 650,
+       "y1": 817
+      },
+      {
+       "x0": 174,
+       "x1": 292,
+       "y0": 650,
+       "y1": 817
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "red brick under relieving arches; cream frames, two casements under a toplight. The photo shows five window levels (a fifth light at y 426-548 under the arched cornice, x 76-199) but the read has four storeys; the pixel landmarks put the wall top at 588, below that light. Not measured: a storey-count error for the read, not the grid"
+  },
+  "0363100012179668": {
+   "address": "Herengracht 40",
+   "ppm": 70,
+   "width": 928,
+   "height": 1852,
+   "landmarks": {
+    "pavement": 1806,
+    "floors": [
+     1296,
+     1009,
+     778
+    ],
+    "top": 537,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "round",
+     "panes": {
+      "cols": 2,
+      "rows": 4,
+      "transom": 0.25
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 109,
+       "x1": 190,
+       "y0": 1363,
+       "y1": 1583
+      },
+      {
+       "x0": 258,
+       "x1": 342,
+       "y0": 1363,
+       "y1": 1583
+      },
+      {
+       "x0": 410,
+       "x1": 499,
+       "y0": 1363,
+       "y1": 1583
+      },
+      {
+       "x0": 570,
+       "x1": 661,
+       "y0": 1363,
+       "y1": 1583
+      },
+      {
+       "x0": 730,
+       "x1": 818,
+       "y0": 1363,
+       "y1": 1583
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 98,
+       "x1": 187,
+       "y0": 1052,
+       "y1": 1236
+      },
+      {
+       "x0": 250,
+       "x1": 339,
+       "y0": 1052,
+       "y1": 1236
+      },
+      {
+       "x0": 407,
+       "x1": 504,
+       "y0": 1052,
+       "y1": 1236
+      },
+      {
+       "x0": 568,
+       "x1": 666,
+       "y0": 1052,
+       "y1": 1236
+      },
+      {
+       "x0": 732,
+       "x1": 829,
+       "y0": 1052,
+       "y1": 1236
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 93,
+       "x1": 183,
+       "y0": 824,
+       "y1": 951
+      },
+      {
+       "x0": 244,
+       "x1": 335,
+       "y0": 824,
+       "y1": 951
+      },
+      {
+       "x0": 408,
+       "x1": 504,
+       "y0": 824,
+       "y1": 951
+      },
+      {
+       "x0": 568,
+       "x1": 666,
+       "y0": 824,
+       "y1": 951
+      },
+      {
+       "x0": 737,
+       "x1": 832,
+       "y0": 824,
+       "y1": 951
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 93,
+       "x1": 183,
+       "y0": 600,
+       "y1": 732
+      },
+      {
+       "x0": 244,
+       "x1": 335,
+       "y0": 600,
+       "y1": 732
+      },
+      {
+       "x0": 408,
+       "x1": 504,
+       "y0": 600,
+       "y1": 732
+      },
+      {
+       "x0": 568,
+       "x1": 666,
+       "y0": 600,
+       "y1": 732
+      },
+      {
+       "x0": 737,
+       "x1": 832,
+       "y0": 600,
+       "y1": 732
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "grey ashlar five-bay front; white frames; round-headed bel-etage windows with fanlights; French windows with balconettes on the first storey"
+  },
+  "0363100012179671": {
+   "address": "Herengracht 38",
+   "ppm": 100,
+   "width": 564,
+   "height": 1726,
+   "landmarks": {
+    "pavement": 1666,
+    "floors": [
+     1174,
+     811
+    ],
+    "top": 595,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 3,
+      "rows": 6
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2a",
+     "boxes": [
+      {
+       "x0": 32,
+       "x1": 162,
+       "y0": 1229,
+       "y1": 1511
+      },
+      {
+       "x0": 193,
+       "x1": 325,
+       "y0": 1229,
+       "y1": 1511
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 3,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2a",
+     "boxes": [
+      {
+       "x0": 32,
+       "x1": 164,
+       "y0": 910,
+       "y1": 1129
+      },
+      {
+       "x0": 198,
+       "x1": 333,
+       "y0": 910,
+       "y1": 1129
+      },
+      {
+       "x0": 368,
+       "x1": 495,
+       "y0": 910,
+       "y1": 1129
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 2
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2a",
+     "boxes": [
+      {
+       "x0": 95,
+       "x1": 163,
+       "y0": 727,
+       "y1": 848
+      },
+      {
+       "x0": 202,
+       "x1": 331,
+       "y0": 727,
+       "y1": 848
+      },
+      {
+       "x0": 370,
+       "x1": 434,
+       "y0": 727,
+       "y1": 848
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "red brick with stone-blocked relieving arches; white frames, dark small-paned sashes; the gable light at y 495-605 is the crown's"
+  },
+  "0363100012179684": {
+   "address": "Herengracht 36",
+   "ppm": 100,
+   "width": 547,
+   "height": 1780,
+   "landmarks": {
+    "pavement": 1691,
+    "floors": [
+     1210,
+     940
+    ],
+    "top": 667,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#e0dccf",
+     "sash": "#2b3a32",
+     "boxes": [
+      {
+       "x0": 202,
+       "x1": 315,
+       "y0": 1256,
+       "y1": 1515
+      },
+      {
+       "x0": 357,
+       "x1": 471,
+       "y0": 1256,
+       "y1": 1515
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#e0dccf",
+     "sash": "#2b3a32",
+     "boxes": [
+      {
+       "x0": 46,
+       "x1": 160,
+       "y0": 969,
+       "y1": 1168
+      },
+      {
+       "x0": 202,
+       "x1": 315,
+       "y0": 969,
+       "y1": 1168
+      },
+      {
+       "x0": 357,
+       "x1": 474,
+       "y0": 969,
+       "y1": 1168
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#e0dccf",
+     "sash": "#2b3a32",
+     "boxes": [
+      {
+       "x0": 46,
+       "x1": 160,
+       "y0": 730,
+       "y1": 907
+      },
+      {
+       "x0": 202,
+       "x1": 315,
+       "y0": 730,
+       "y1": 907
+      },
+      {
+       "x0": 357,
+       "x1": 474,
+       "y0": 730,
+       "y1": 907
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark red brick, cast anchors; cream frames, dark green sashes; two casements under a toplight"
+  },
+  "0363100012168139": {
+   "address": "Herengracht 34",
+   "ppm": 85,
+   "width": 606,
+   "height": 1692,
+   "landmarks": {
+    "pavement": 1575,
+    "floors": [
+     1245,
+     930
+    ],
+    "top": 577,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.6
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 369,
+       "x1": 490,
+       "y0": 1278,
+       "y1": 1557
+      },
+      {
+       "x0": 518,
+       "x1": 600,
+       "y0": 1278,
+       "y1": 1557
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.36
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 64,
+       "x1": 187,
+       "y0": 961,
+       "y1": 1212
+      },
+      {
+       "x0": 215,
+       "x1": 338,
+       "y0": 961,
+       "y1": 1212
+      },
+      {
+       "x0": 369,
+       "x1": 490,
+       "y0": 961,
+       "y1": 1212
+      },
+      {
+       "x0": 518,
+       "x1": 600,
+       "y0": 961,
+       "y1": 1212
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.36
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 64,
+       "x1": 187,
+       "y0": 651,
+       "y1": 898
+      },
+      {
+       "x0": 215,
+       "x1": 338,
+       "y0": 651,
+       "y1": 898
+      },
+      {
+       "x0": 369,
+       "x1": 490,
+       "y0": 651,
+       "y1": 898
+      },
+      {
+       "x0": 518,
+       "x1": 600,
+       "y0": 651,
+       "y1": 898
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "modern grey concrete grid; white frames, one tall light under a toplight with guard rails; the shop ground front lends panes only; the right bay is cut by the crop; the ground's toplight is 0.65 of the window, held at the grid's 0.6 cap"
+  },
+  "0363100012168069": {
+   "address": "Herengracht 32",
+   "ppm": 90,
+   "width": 452,
+   "height": 1782,
+   "landmarks": {
+    "pavement": 1711,
+    "floors": [
+     1287,
+     1019,
+     757
+    ],
+    "top": 535,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.31
+     },
+     "frame": "#ddd6c4",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 131,
+       "y0": 1320,
+       "y1": 1558
+      },
+      {
+       "x0": 165,
+       "x1": 255,
+       "y0": 1320,
+       "y1": 1558
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.29
+     },
+     "frame": "#ddd6c4",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 130,
+       "y0": 1058,
+       "y1": 1260
+      },
+      {
+       "x0": 165,
+       "x1": 255,
+       "y0": 1058,
+       "y1": 1260
+      },
+      {
+       "x0": 290,
+       "x1": 377,
+       "y0": 1058,
+       "y1": 1260
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#ddd6c4",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 130,
+       "y0": 794,
+       "y1": 987
+      },
+      {
+       "x0": 165,
+       "x1": 255,
+       "y0": 794,
+       "y1": 987
+      },
+      {
+       "x0": 290,
+       "x1": 377,
+       "y0": 794,
+       "y1": 987
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 1,
+      "rows": 2
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ddd6c4",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 130,
+       "y0": 593,
+       "y1": 730
+      },
+      {
+       "x0": 165,
+       "x1": 255,
+       "y0": 593,
+       "y1": 730
+      },
+      {
+       "x0": 290,
+       "x1": 377,
+       "y0": 593,
+       "y1": 730
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brown brick under a deep cornice; cream frames; one-over-one sashes under a toplight; graffiti and a hedge hide the basement"
+  },
+  "0363100012168138": {
+   "address": "Herengracht 30",
+   "ppm": 90,
+   "width": 434,
+   "height": 1797,
+   "landmarks": {
+    "pavement": 1725,
+    "floors": [
+     1272,
+     952
+    ],
+    "top": 647,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#3a2e28",
+     "boxes": [
+      {
+       "x0": 21,
+       "x1": 119,
+       "y0": 1316,
+       "y1": 1533
+      },
+      {
+       "x0": 141,
+       "x1": 239,
+       "y0": 1316,
+       "y1": 1533
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.38
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       }
+      }
+     },
+     "frame": "#3a2e28",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 9,
+       "x1": 106,
+       "y0": 1005,
+       "y1": 1212
+      },
+      {
+       "x0": 141,
+       "x1": 239,
+       "y0": 1005,
+       "y1": 1212
+      },
+      {
+       "x0": 274,
+       "x1": 371,
+       "y0": 1005,
+       "y1": 1212
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 2
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       }
+      }
+     },
+     "frame": "#3a2e28",
+     "surround": "block-dressings",
+     "boxes": [
+      {
+       "x0": 9,
+       "x1": 106,
+       "y0": 720,
+       "y1": 912
+      },
+      {
+       "x0": 141,
+       "x1": 241,
+       "y0": 720,
+       "y1": 912
+      },
+      {
+       "x0": 276,
+       "x1": 376,
+       "y0": 720,
+       "y1": 912
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "orange brick with white stone blocks and keystoned relieving arches; dark brown frames; centre bay French windows to balconies; the gable light at y 500-620 is the crown's"
+  },
+  "0363100012179837": {
+   "address": "Herengracht 28",
+   "ppm": 95,
+   "width": 581,
+   "height": 1761,
+   "landmarks": {
+    "pavement": 1699,
+    "floors": [
+     1194,
+     872
+    ],
+    "top": 608,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#e2ddcd",
+     "boxes": [
+      {
+       "x0": 219,
+       "x1": 345,
+       "y0": 1238,
+       "y1": 1518
+      },
+      {
+       "x0": 393,
+       "x1": 518,
+       "y0": 1238,
+       "y1": 1518
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#e2ddcd",
+     "boxes": [
+      {
+       "x0": 36,
+       "x1": 170,
+       "y0": 914,
+       "y1": 1146
+      },
+      {
+       "x0": 214,
+       "x1": 344,
+       "y0": 914,
+       "y1": 1146
+      },
+      {
+       "x0": 393,
+       "x1": 523,
+       "y0": 914,
+       "y1": 1146
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e2ddcd",
+     "boxes": [
+      {
+       "x0": 29,
+       "x1": 166,
+       "y0": 670,
+       "y1": 825
+      },
+      {
+       "x0": 209,
+       "x1": 344,
+       "y0": 670,
+       "y1": 825
+      },
+      {
+       "x0": 389,
+       "x1": 520,
+       "y0": 670,
+       "y1": 825
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark painted brick neck gable; cream frames; the gable light at y 470-610 is the crown's"
+  },
+  "0363100012179836": {
+   "address": "Herengracht 26",
+   "ppm": 80,
+   "width": 490,
+   "height": 1644,
+   "landmarks": {
+    "pavement": 1578,
+    "floors": [
+     1098,
+     847,
+     633
+    ],
+    "top": 386,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 4
+     },
+     "frame": "#e8e6dc",
+     "boxes": [
+      {
+       "x0": 182,
+       "x1": 283,
+       "y0": 1124,
+       "y1": 1390
+      },
+      {
+       "x0": 330,
+       "x1": 432,
+       "y0": 1124,
+       "y1": 1390
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#e8e6dc",
+     "boxes": [
+      {
+       "x0": 30,
+       "x1": 137,
+       "y0": 880,
+       "y1": 1069
+      },
+      {
+       "x0": 184,
+       "x1": 288,
+       "y0": 880,
+       "y1": 1069
+      },
+      {
+       "x0": 335,
+       "x1": 438,
+       "y0": 880,
+       "y1": 1069
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#e8e6dc",
+     "boxes": [
+      {
+       "x0": 30,
+       "x1": 139,
+       "y0": 665,
+       "y1": 820
+      },
+      {
+       "x0": 186,
+       "x1": 290,
+       "y0": 665,
+       "y1": 820
+      },
+      {
+       "x0": 339,
+       "x1": 441,
+       "y0": 665,
+       "y1": 820
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.25
+     },
+     "frame": "#e8e6dc",
+     "boxes": [
+      {
+       "x0": 27,
+       "x1": 137,
+       "y0": 470,
+       "y1": 583
+      },
+      {
+       "x0": 184,
+       "x1": 290,
+       "y0": 470,
+       "y1": 583
+      },
+      {
+       "x0": 339,
+       "x1": 443,
+       "y0": 470,
+       "y1": 583
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brown brick under a bracketed cornice with oculus frieze; white frames, small-paned casements; ground windows tall 2x4"
+  },
+  "0363100012179838": {
+   "address": "Herengracht 24",
+   "ppm": 95,
+   "width": 451,
+   "height": 1769,
+   "landmarks": {
+    "pavement": 1707,
+    "floors": [
+     1206,
+     870
+    ],
+    "top": 623,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "segmental",
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.27
+     },
+     "frame": "#ebe3c5",
+     "boxes": [
+      {
+       "x0": 22,
+       "x1": 149,
+       "y0": 1266,
+       "y1": 1562
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#ebe3c5",
+     "boxes": [
+      {
+       "x0": 22,
+       "x1": 152,
+       "y0": 929,
+       "y1": 1150
+      },
+      {
+       "x0": 224,
+       "x1": 354,
+       "y0": 929,
+       "y1": 1150
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 3,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ebe3c5",
+     "boxes": [
+      {
+       "x0": 22,
+       "x1": 152,
+       "y0": 675,
+       "y1": 811
+      },
+      {
+       "x0": 224,
+       "x1": 357,
+       "y0": 675,
+       "y1": 811
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "black painted brick; cream frames; the ground window under a segmental head beside the door"
+  },
+  "0363100012179752": {
+   "address": "Herengracht 22",
+   "ppm": 95,
+   "width": 810,
+   "height": 1712,
+   "landmarks": {
+    "pavement": 1618,
+    "floors": [
+     1100,
+     760
+    ],
+    "top": 530,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#ddd6c2",
+     "sash": "#2d2f2c",
+     "boxes": [
+      {
+       "x0": 359,
+       "x1": 491,
+       "y0": 1167,
+       "y1": 1448
+      },
+      {
+       "x0": 615,
+       "x1": 750,
+       "y0": 1167,
+       "y1": 1448
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ddd6c2",
+     "sash": "#2d2f2c",
+     "boxes": [
+      {
+       "x0": 101,
+       "x1": 239,
+       "y0": 833,
+       "y1": 1049
+      },
+      {
+       "x0": 359,
+       "x1": 496,
+       "y0": 833,
+       "y1": 1049
+      },
+      {
+       "x0": 618,
+       "x1": 754,
+       "y0": 833,
+       "y1": 1049
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "head": "segmental",
+     "panes": {
+      "cols": 3,
+      "rows": 2
+     },
+     "frame": "#ddd6c2",
+     "sash": "#2d2f2c",
+     "boxes": [
+      {
+       "x0": 98,
+       "x1": 239,
+       "y0": 577,
+       "y1": 700
+      },
+      {
+       "x0": 361,
+       "x1": 500,
+       "y0": 577,
+       "y1": 700
+      },
+      {
+       "x0": 622,
+       "x1": 759,
+       "y0": 577,
+       "y1": 700
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brown brick, wide three-bay front; cream frames with dark sashes, segmental heads; the right of the crop is the neighbour's roof"
+  },
+  "0363100012179753": {
+   "address": "Herengracht 20",
+   "ppm": 75,
+   "width": 508,
+   "height": 1804,
+   "landmarks": {
+    "pavement": 1741,
+    "floors": [
+     1259,
+     1014,
+     785,
+     577
+    ],
+    "top": 370,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.28
+     },
+     "frame": "#e4dfcc",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 143,
+       "y0": 1295,
+       "y1": 1514
+      },
+      {
+       "x0": 186,
+       "x1": 287,
+       "y0": 1295,
+       "y1": 1514
+      },
+      {
+       "x0": 329,
+       "x1": 427,
+       "y0": 1295,
+       "y1": 1514
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.2
+     },
+     "frame": "#e4dfcc",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 143,
+       "y0": 1056,
+       "y1": 1225
+      },
+      {
+       "x0": 186,
+       "x1": 287,
+       "y0": 1056,
+       "y1": 1225
+      },
+      {
+       "x0": 329,
+       "x1": 427,
+       "y0": 1056,
+       "y1": 1225
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.2
+     },
+     "frame": "#e4dfcc",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 143,
+       "y0": 817,
+       "y1": 991
+      },
+      {
+       "x0": 186,
+       "x1": 287,
+       "y0": 817,
+       "y1": 991
+      },
+      {
+       "x0": 329,
+       "x1": 427,
+       "y0": 817,
+       "y1": 991
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.2
+     },
+     "frame": "#e4dfcc",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 143,
+       "y0": 619,
+       "y1": 753
+      },
+      {
+       "x0": 186,
+       "x1": 287,
+       "y0": 619,
+       "y1": 753
+      },
+      {
+       "x0": 329,
+       "x1": 427,
+       "y0": 619,
+       "y1": 753
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 4,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.2
+     },
+     "frame": "#e4dfcc",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 143,
+       "y0": 456,
+       "y1": 540
+      },
+      {
+       "x0": 186,
+       "x1": 287,
+       "y0": 456,
+       "y1": 540
+      },
+      {
+       "x0": 329,
+       "x1": 427,
+       "y0": 456,
+       "y1": 540
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey brick; cream frames; single lights under a toplight on every storey; the ground front's tall windows lend panes only"
+  },
+  "0363100012179760": {
+   "address": "Herengracht 18",
+   "ppm": 100,
+   "width": 446,
+   "height": 1748,
+   "landmarks": {
+    "pavement": 1678,
+    "floors": [
+     1162,
+     874
+    ],
+    "top": 621,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.28
+     },
+     "frame": "#4d5052",
+     "boxes": [
+      {
+       "x0": 25,
+       "x1": 208,
+       "y0": 1207,
+       "y1": 1474
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#4d5052",
+     "boxes": [
+      {
+       "x0": 35,
+       "x1": 164,
+       "y0": 911,
+       "y1": 1122
+      },
+      {
+       "x0": 224,
+       "x1": 355,
+       "y0": 911,
+       "y1": 1122
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.38
+     },
+     "frame": "#4d5052",
+     "boxes": [
+      {
+       "x0": 35,
+       "x1": 169,
+       "y0": 662,
+       "y1": 830
+      },
+      {
+       "x0": 227,
+       "x1": 357,
+       "y0": 662,
+       "y1": 830
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey brick; dark grey frames with grey sills; two casements under a toplight; one wide ground window beside a white doorcase"
+  },
+  "0363100012179761": {
+   "address": "Herengracht 16",
+   "ppm": 100,
+   "width": 453,
+   "height": 1749,
+   "landmarks": {
+    "pavement": 1640,
+    "floors": [
+     1170,
+     850
+    ],
+    "top": 615,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#ece9e0",
+     "sash": "#2d3a33",
+     "boxes": [
+      {
+       "x0": 157,
+       "x1": 249,
+       "y0": 1231,
+       "y1": 1494
+      },
+      {
+       "x0": 288,
+       "x1": 378,
+       "y0": 1231,
+       "y1": 1494
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 1,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#ece9e0",
+     "sash": "#2d3a33",
+     "boxes": [
+      {
+       "x0": 28,
+       "x1": 124,
+       "y0": 906,
+       "y1": 1128
+      },
+      {
+       "x0": 160,
+       "x1": 253,
+       "y0": 906,
+       "y1": 1128
+      },
+      {
+       "x0": 289,
+       "x1": 384,
+       "y0": 906,
+       "y1": 1128
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "sash": "#2d3a33",
+     "boxes": [
+      {
+       "x0": 28,
+       "x1": 124,
+       "y0": 692,
+       "y1": 827
+      },
+      {
+       "x0": 160,
+       "x1": 253,
+       "y0": 692,
+       "y1": 827
+      },
+      {
+       "x0": 291,
+       "x1": 386,
+       "y0": 692,
+       "y1": 827
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brown brick neck gable under relieving arches; white frames, dark green sashes; the gable light at y 515-600 is the crown's"
+  },
+  "0363100012179764": {
+   "address": "Herengracht 14",
+   "ppm": 75,
+   "width": 754,
+   "height": 1830,
+   "landmarks": {
+    "pavement": 1766,
+    "floors": [
+     1373,
+     1144,
+     933
+    ],
+    "top": 732,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 4,
+      "transom": 0.2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 57,
+       "x1": 154,
+       "y0": 1406,
+       "y1": 1614
+      },
+      {
+       "x0": 360,
+       "x1": 454,
+       "y0": 1406,
+       "y1": 1614
+      },
+      {
+       "x0": 510,
+       "x1": 602,
+       "y0": 1406,
+       "y1": 1614
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 3,
+      "transom": 0.2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 57,
+       "x1": 157,
+       "y0": 1171,
+       "y1": 1342
+      },
+      {
+       "x0": 210,
+       "x1": 310,
+       "y0": 1171,
+       "y1": 1342
+      },
+      {
+       "x0": 364,
+       "x1": 460,
+       "y0": 1171,
+       "y1": 1342
+      },
+      {
+       "x0": 514,
+       "x1": 604,
+       "y0": 1171,
+       "y1": 1342
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 2,
+      "transom": 0.3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 57,
+       "x1": 157,
+       "y0": 966,
+       "y1": 1116
+      },
+      {
+       "x0": 210,
+       "x1": 310,
+       "y0": 966,
+       "y1": 1116
+      },
+      {
+       "x0": 364,
+       "x1": 460,
+       "y0": 966,
+       "y1": 1116
+      },
+      {
+       "x0": 517,
+       "x1": 604,
+       "y0": 966,
+       "y1": 1116
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 54,
+       "x1": 157,
+       "y0": 768,
+       "y1": 893
+      },
+      {
+       "x0": 210,
+       "x1": 310,
+       "y0": 768,
+       "y1": 893
+      },
+      {
+       "x0": 364,
+       "x1": 457,
+       "y0": 768,
+       "y1": 893
+      },
+      {
+       "x0": 517,
+       "x1": 607,
+       "y0": 768,
+       "y1": 893
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "grey stone front between pilaster strips; white frames under segmental heads with fan-barred toplights"
+  },
+  "0363100012179765": {
+   "address": "Herengracht 12",
+   "ppm": 80,
+   "width": 693,
+   "height": 1800,
+   "landmarks": {
+    "pavement": 1737,
+    "floors": [
+     1238,
+     950
+    ],
+    "top": 662,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.32
+     },
+     "frame": "#2e3030",
+     "boxes": [
+      {
+       "x0": 259,
+       "x1": 402,
+       "y0": 1306,
+       "y1": 1584
+      },
+      {
+       "x0": 516,
+       "x1": 613,
+       "y0": 1306,
+       "y1": 1584
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "frame": "#2e3030",
+     "boxes": [
+      {
+       "x0": 42,
+       "x1": 150,
+       "y0": 1009,
+       "y1": 1186
+      },
+      {
+       "x0": 259,
+       "x1": 405,
+       "y0": 1009,
+       "y1": 1186
+      },
+      {
+       "x0": 524,
+       "x1": 625,
+       "y0": 1009,
+       "y1": 1186
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "frame": "#2e3030",
+     "boxes": [
+      {
+       "x0": 40,
+       "x1": 152,
+       "y0": 792,
+       "y1": 903
+      },
+      {
+       "x0": 257,
+       "x1": 407,
+       "y0": 792,
+       "y1": 903
+      },
+      {
+       "x0": 526,
+       "x1": 625,
+       "y0": 792,
+       "y1": 903
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "brown brick over a cream rusticated ground front; dark frames; the centre first-storey window in a pedimented aedicule; ground front's windows lend panes only"
+  },
+  "0363100012179763": {
+   "address": "Herengracht 10",
+   "ppm": 90,
+   "width": 777,
+   "height": 1861,
+   "landmarks": {
+    "pavement": 1814,
+    "floors": [
+     1262,
+     986,
+     748
+    ],
+    "top": 484,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 2,
+      "rows": 5
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2b",
+     "boxes": [
+      {
+       "x0": 25,
+       "x1": 150,
+       "y0": 1303,
+       "y1": 1616
+      },
+      {
+       "x0": 395,
+       "x1": 515,
+       "y0": 1303,
+       "y1": 1616
+      },
+      {
+       "x0": 574,
+       "x1": 690,
+       "y0": 1303,
+       "y1": 1616
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2b",
+     "boxes": [
+      {
+       "x0": 17,
+       "x1": 150,
+       "y0": 1012,
+       "y1": 1211
+      },
+      {
+       "x0": 208,
+       "x1": 339,
+       "y0": 1012,
+       "y1": 1211
+      },
+      {
+       "x0": 395,
+       "x1": 523,
+       "y0": 1012,
+       "y1": 1211
+      },
+      {
+       "x0": 582,
+       "x1": 700,
+       "y0": 1012,
+       "y1": 1211
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2b",
+     "boxes": [
+      {
+       "x0": 17,
+       "x1": 155,
+       "y0": 778,
+       "y1": 942
+      },
+      {
+       "x0": 208,
+       "x1": 339,
+       "y0": 778,
+       "y1": 942
+      },
+      {
+       "x0": 400,
+       "x1": 525,
+       "y0": 778,
+       "y1": 942
+      },
+      {
+       "x0": 586,
+       "x1": 704,
+       "y0": 778,
+       "y1": 942
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "sash": "#2a2c2b",
+     "boxes": [
+      {
+       "x0": 17,
+       "x1": 155,
+       "y0": 561,
+       "y1": 701
+      },
+      {
+       "x0": 208,
+       "x1": 339,
+       "y0": 561,
+       "y1": 701
+      },
+      {
+       "x0": 400,
+       "x1": 525,
+       "y0": 561,
+       "y1": 701
+      },
+      {
+       "x0": 586,
+       "x1": 704,
+       "y0": 561,
+       "y1": 701
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "grey brick under a deep bracketed cornice; white frames, dark small-paned sashes; Louis XV doorcase; ground front's windows lend panes only"
+  },
+  "0363100012179833": {
+   "address": "Herengracht 8",
+   "ppm": 75,
+   "width": 332,
+   "height": 1804,
+   "landmarks": {
+    "pavement": 1745,
+    "floors": [
+     1400,
+     1035,
+     795
+    ],
+    "top": 556,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "round",
+     "panes": {
+      "cols": 1,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 155,
+       "x1": 194,
+       "y0": 1447,
+       "y1": 1611
+      },
+      {
+       "x0": 220,
+       "x1": 256,
+       "y0": 1447,
+       "y1": 1611
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.35
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 74,
+       "y0": 1153,
+       "y1": 1352
+      },
+      {
+       "x0": 155,
+       "x1": 260,
+       "y0": 1153,
+       "y1": 1352
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1,
+      "transom": 0.3
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.3
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 76,
+       "y0": 895,
+       "y1": 1024
+      },
+      {
+       "x0": 155,
+       "x1": 260,
+       "y0": 895,
+       "y1": 1024
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "except": {
+      "0": {
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 8,
+       "x1": 81,
+       "y0": 621,
+       "y1": 775
+      },
+      {
+       "x0": 155,
+       "x1": 260,
+       "y0": 621,
+       "y1": 775
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "red brick with white stone bands and carved arches (neo-renaissance); white frames, a narrow left bay and a wide right; the ground's right bay a stone arcade of two round-headed lights"
+  },
+  "0363100012179834": {
+   "address": "Herengracht 6",
+   "ppm": 50,
+   "width": 264,
+   "height": 1207,
+   "landmarks": {
+    "pavement": 1195,
+    "floors": [
+     965,
+     760,
+     592
+    ],
+    "top": 305,
+    "by": "eye"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "head": "round",
+     "panes": {
+      "cols": 1,
+      "rows": 1
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 39,
+       "y0": 1000,
+       "y1": 1094
+      },
+      {
+       "x0": 49,
+       "x1": 83,
+       "y0": 1000,
+       "y1": 1094
+      },
+      {
+       "x0": 128,
+       "x1": 174,
+       "y0": 1000,
+       "y1": 1094
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "head": "segmental",
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 85,
+       "y0": 808,
+       "y1": 947
+      },
+      {
+       "x0": 131,
+       "x1": 176,
+       "y0": 808,
+       "y1": 947
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 85,
+       "y0": 639,
+       "y1": 745
+      },
+      {
+       "x0": 131,
+       "x1": 178,
+       "y0": 639,
+       "y1": 745
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 3,
+     "panes": {
+      "cols": 2,
+      "rows": 1
+     },
+     "except": {
+      "1": {
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       }
+      }
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 6,
+       "x1": 85,
+       "y0": 471,
+       "y1": 584
+      },
+      {
+       "x0": 131,
+       "x1": 178,
+       "y0": 471,
+       "y1": 584
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "red brick with white stone bands and fan-blocked lintels; white frames; a wide two-light left bay and a narrow right; French windows on the first storey; a low-resolution crop (50 px/m), parked cars over the ground"
+  },
+  "0363100100091828": {
+   "address": "Herengracht 2–4",
+   "ppm": 50,
+   "width": 407,
+   "height": 913,
+   "landmarks": {
+    "pavement": 808,
+    "floors": [
+     627,
+     490
+    ],
+    "top": 380,
+    "by": "pixel-measures.json (scaled)"
+   },
+   "rows": [
+    {
+     "storey": 0,
+     "panes": {
+      "cols": 3,
+      "rows": 4
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 54,
+       "x1": 125,
+       "y0": 645,
+       "y1": 800
+      },
+      {
+       "x0": 154,
+       "x1": 224,
+       "y0": 645,
+       "y1": 800
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 1,
+     "panes": {
+      "cols": 2,
+      "rows": 3
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 61,
+       "x1": 122,
+       "y0": 507,
+       "y1": 612
+      },
+      {
+       "x0": 157,
+       "x1": 220,
+       "y0": 507,
+       "y1": 612
+      },
+      {
+       "x0": 255,
+       "x1": 316,
+       "y0": 507,
+       "y1": 612
+      }
+     ],
+     "by": "eye"
+    },
+    {
+     "storey": 2,
+     "panes": {
+      "cols": 2,
+      "rows": 2
+     },
+     "frame": "#ece9e0",
+     "boxes": [
+      {
+       "x0": 64,
+       "x1": 125,
+       "y0": 400,
+       "y1": 474
+      },
+      {
+       "x0": 161,
+       "x1": 221,
+       "y0": 400,
+       "y1": 474
+      },
+      {
+       "x0": 257,
+       "x1": 319,
+       "y0": 400,
+       "y1": 474
+      }
+     ],
+     "by": "eye"
+    }
+   ],
+   "note": "dark grey plaster over a white ground front; white frames, small-paned sashes; a tree crosses the top; ground front's windows lend panes only"
+  }
+ }
+}

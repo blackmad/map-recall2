@@ -14,6 +14,7 @@ import type { CrownForm } from './houseRead.ts';
 import { CORNICE_RATIO } from './pixelProfile.ts';
 import { corniceOnTop, corniceReadParts, type CorniceReadExtras } from '../houseLine/entablature.ts';
 import { flatCrownOf, groundFrontOf, type FlatCrown, type GroundFront } from '../designUnits/soloGround.ts';
+import { openingGridOf, type OpeningGrid } from '../houseLine/openingGrid.ts';
 
 /** The photo read's extras as describe.ts stores them per pand (houseRead.ts readExtras). */
 export interface PhotoReadExtras extends CorniceReadExtras {
@@ -49,6 +50,8 @@ export interface PhotoReadExtras extends CorniceReadExtras {
   groundFront?: GroundFront;
   /** A flat canopy or slab on piers in place of a cornice (designUnits/soloGround.ts). */
   flatCrown?: FlatCrown;
+  /** The windows as measured (houseLine/openingGrid.ts). */
+  openings?: OpeningGrid;
 }
 
 /** The crown read's measures (m), from its pixel landmarks at the crop's pixels per metre. */
@@ -173,7 +176,9 @@ export const TEXT_CUES = {
   hoist: /hoist|hijs/,
   stuccoGround: /(stucco|stuccoed|plaster(ed)?|rendered|white[- ]painted|cream)[^|]{0,40}ground|ground[^|]{0,40}(stucco|stuccoed|plaster|rendered)/,
   plinth: /plinth|stone base|bluestone|hardstone|grey stone (base|ground)/,
-  pilasters: /pilaster/,
+  // Pilasters up the front: a clause naming them on the ground storey, a shopfront, a doorcase, a dormer or a risalit is
+  // that part's dress (Herengracht 90's "shopfront with pilasters" drew corner pilasters over its upper windows).
+  pilasters: /(^|\|)(?![^|]*(ground|shop|door|dormer|risalit))[^|]*pilaster/,
   anchors: /wall anchor|iron anchor|muurank/,
   fanlight: /fanlight|transom light|bovenlicht|oval light over (the )?door/,
 } as const;
@@ -279,7 +284,7 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   if (TEXT_CUES.stuccoGround.test(text)) facts.stone = 'ground';
   else if (TEXT_CUES.plinth.test(text)) facts.stone = 'plinth';
   // Pilasters in the wall's own dark brick are no white corner strips (Herengracht 84: "dark-painted brick pilasters").
-  if (TEXT_CUES.pilasters.test(text.replace(DARK_PILASTERS, ''))) facts.pilasters = 'corners';
+  if (TEXT_CUES.pilasters.test(text.replace(DARK_PILASTERS, '').replace(/ \| /g, '|'))) facts.pilasters = 'corners';
   if (typeof read.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(read.wallHex)) facts.wallHex = read.wallHex.toLowerCase();
   if (typeof fields.cornice === 'string' && CORNICES.has(fields.cornice) && !isGable) facts.cornice = fields.cornice as PlotFacts['cornice'];
   // The door: its place among the ground-storey openings (the read counts doors and windows from the left).
@@ -298,6 +303,9 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   const gf = groundFrontOf(read.groundFront), fc = flatCrownOf(read.flatCrown);
   if (gf && facts.ground === 'dwelling') facts.groundFront = gf;
   if (fc && !isGable) { facts.flatCrown = fc; delete facts.cornice; delete facts.corniceForm; delete facts.attic; }
+  // Belt windows lane: the windows as measured, row by row (houseLine/openingGrid.ts).
+  const og = openingGridOf(read.openings);
+  if (og) facts.openings = og;
   const eaves = Number(fields.eavesM), widthM = opts.widthM && opts.widthM > 0 ? opts.widthM : 6;
   let eavesM = Number.isFinite(eaves) && eaves > 4 && eaves >= MIN_STOREY_M * (facts.storeys ?? 2) ? +eaves.toFixed(2) : null;
   // A gable front's crown read: the gable stands on its photo foot (3DBAG's eaves on a gabled house is the saddle's foot

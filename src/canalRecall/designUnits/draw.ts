@@ -359,6 +359,12 @@ function soloDress(props: Record<string, unknown>, f: DesignUnitDraw['plot'], pl
     forced.length = 0; forced.push(...kept, ...(gf.face || gf.band ? ['solo-ground-face'] : []), ...(gf.tier ? ['solo-ground-tier'] : []));
     out.registerForce = forced;
   }
+  // Belt windows lane: the measured windows (houseLine/openingGrid.ts); a measured ground row on a dwelling ground cuts the
+  // ground at its windows, at the stock ratios when the self-check measured none.
+  if (f?.openings) {
+    out.designOpenings = f.openings;
+    if (plan.ground !== 'shop' && !out.designGround && f.openings.rows.some(r => r.storey === 0)) out.designGround = { ...SOLO_FRONT_RATIOS };
+  }
   if (f?.flatCrown) {
     out.designFlatCrown = f.flatCrown;
     const kept = forced.filter(id => id !== 'kroonlijst' && id !== 'console-cornice' && id !== 'row-cornice');

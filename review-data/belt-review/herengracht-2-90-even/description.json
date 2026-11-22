@@ -335,7 +335,7 @@
     ],
     "groundWindowRatio": 1.48,
     "doorRatio": 0.75,
-    "corniceRatio": 0.127,
+    "corniceRatio": 0.095,
     "crownForm": {
      "kind": "cornice",
      "px": {
@@ -378,7 +378,79 @@
      "cap": "segmental",
      "riseM": 1.3,
      "share": 0.46,
-     "light": "square"
+     "light": "square",
+     "dropM": 1.2,
+     "lightM": [
+      -1.06,
+      -0.14
+     ]
+    },
+    "openings": {
+     "frontM": 5.66,
+     "storeyM": [
+      5.64,
+      3.48,
+      2.68,
+      2.52
+     ],
+     "rows": [
+      {
+       "storey": 1,
+       "x": [
+        0.171,
+        0.493,
+        0.818
+       ],
+       "w": 1.34,
+       "h": 2.48,
+       "sill": 0.66,
+       "panes": {
+        "cols": 2,
+        "rows": 2,
+        "transom": 0.26
+       },
+       "frame": "#efece4",
+       "sash": "#3b2c22",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.171,
+        0.493,
+        0.818
+       ],
+       "w": 1.34,
+       "h": 1.9,
+       "sill": 0.2,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.32
+       },
+       "frame": "#efece4",
+       "sash": "#3b2c22",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.171,
+        0.496,
+        0.822
+       ],
+       "w": 1.34,
+       "h": 1.46,
+       "sill": 0.3,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#efece4",
+       "sash": "#3b2c22",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000445"
    },
@@ -675,6 +747,52 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "openings": {
+     "frontM": 7.14,
+     "storeyM": [
+      6.2,
+      4.2,
+      2.7
+     ],
+     "rows": [
+      {
+       "storey": 1,
+       "x": [
+        0.196,
+        0.49,
+        0.793
+       ],
+       "w": 1.4,
+       "h": 2.92,
+       "sill": 0.62,
+       "panes": {
+        "cols": 2,
+        "rows": 2,
+        "transom": 0.3
+       },
+       "frame": "#3a3d3a",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.203,
+        0.494,
+        0.796
+       ],
+       "w": 1.34,
+       "h": 1.8,
+       "sill": 0.6,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#3a3d3a",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2021-01-25-TMX7316010203-001979_pano_0001_000444"
    },
@@ -1000,6 +1118,99 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 4.98,
+     "storeyM": [
+      6.22,
+      3.34,
+      3.24
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.105,
+        0.377
+       ],
+       "w": 1.05,
+       "h": 3.72,
+       "sill": 1.91,
+       "panes": {
+        "cols": 2,
+        "rows": 2,
+        "transom": 0.35
+       },
+       "frame": "#2a2c2b",
+       "except": {
+        "0": {
+         "w": 0.95
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.199,
+        0.648
+       ],
+       "w": 1.44,
+       "h": 2,
+       "sill": 0.76,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.33,
+        "topCols": 1
+       },
+       "frame": "#e6e2d8",
+       "sash": "#2b2b2b",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.09,
+        0.412,
+        0.735
+       ],
+       "w": 0.88,
+       "h": 1.75,
+       "sill": 0.67,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e6e2d8",
+       "sash": "#2b2b2b",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 2
+         },
+         "w": 0.7
+        },
+        "1": {
+         "w": 1.6,
+         "h": 1.9,
+         "sill": 0.47
+        },
+        "2": {
+         "panes": {
+          "cols": 1,
+          "rows": 1,
+          "transom": 0.25,
+          "topCols": 2
+         },
+         "h": 1.63
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002879"
    },
    "specParts": [
@@ -1313,6 +1524,82 @@
      "consoles": "none",
      "frieze": "none"
     },
+    "openings": {
+     "frontM": 5.6,
+     "storeyM": [
+      6.29,
+      3.76,
+      2.6
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.121,
+        0.433
+       ],
+       "w": 1.15,
+       "h": 3.77,
+       "sill": 1.93,
+       "panes": {
+        "cols": 3,
+        "rows": 7
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.121,
+        0.433,
+        0.754
+       ],
+       "w": 1.15,
+       "h": 2.17,
+       "sill": 0.59,
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "2": {
+         "w": 1.25
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.138,
+        0.431,
+        0.714
+       ],
+       "w": 0.9,
+       "h": 1.6,
+       "sill": 0.3,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 3,
+          "rows": 3
+         },
+         "w": 1.27,
+         "h": 1.45,
+         "sill": 0.15
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002878"
    },
    "specParts": [
@@ -1534,6 +1821,71 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "openings": {
+     "frontM": 6.68,
+     "storeyM": [
+      4.56,
+      2.84,
+      2.4,
+      2.3
+     ],
+     "rows": [
+      {
+       "storey": 1,
+       "x": [
+        0.157,
+        0.431,
+        0.702
+       ],
+       "w": 1.24,
+       "h": 1.98,
+       "sill": 0.46,
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       },
+       "frame": "#2f3a33",
+       "surround": "sill",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.165,
+        0.439,
+        0.708
+       ],
+       "w": 1.26,
+       "h": 1.72,
+       "sill": 0.44,
+       "panes": {
+        "cols": 3,
+        "rows": 3
+       },
+       "frame": "#2f3a33",
+       "surround": "sill",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.168,
+        0.439,
+        0.711
+       ],
+       "w": 1.26,
+       "h": 1.6,
+       "sill": 0.36,
+       "panes": {
+        "cols": 3,
+        "rows": 3
+       },
+       "frame": "#2f3a33",
+       "surround": "sill",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006499"
    },
@@ -1784,6 +2136,107 @@
      "clawWaist": 0.15,
      "clawBand": 0.2
     },
+    "openings": {
+     "frontM": 4.33,
+     "storeyM": [
+      3.2,
+      2.75,
+      2.25,
+      2.95
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.52,
+        0.762
+       ],
+       "w": 0.85,
+       "h": 2.57,
+       "sill": 0.18,
+       "panes": {
+        "cols": 2,
+        "rows": 5
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.127,
+        0.435,
+        0.744
+       ],
+       "w": 0.92,
+       "h": 1.87,
+       "sill": 0.25,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 3,
+          "rows": 4
+         },
+         "w": 1.13
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.127,
+        0.435,
+        0.744
+       ],
+       "w": 0.92,
+       "h": 1.85,
+       "sill": 0.15,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 3,
+          "rows": 4
+         },
+         "w": 1.13
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.125,
+        0.425,
+        0.73
+       ],
+       "w": 0.9,
+       "h": 1.65,
+       "sill": 0.25,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "w": 1.1
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002874"
    },
    "specParts": [],
@@ -2019,6 +2472,128 @@
      "pair": true,
      "clawWaist": 0.15,
      "clawBand": 0.18
+    },
+    "openings": {
+     "frontM": 8.37,
+     "storeyM": [
+      4.45,
+      2.6,
+      2.55
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.229,
+        0.382,
+        0.805
+       ],
+       "w": 1.12,
+       "h": 2.64,
+       "sill": 1.4,
+       "panes": {
+        "cols": 2,
+        "rows": 3,
+        "transom": 0.34
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "2": {
+         "panes": {
+          "cols": 4,
+          "rows": 6
+         },
+         "w": 1.81,
+         "sill": 1.65
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.101,
+        0.349,
+        0.61,
+        0.839
+       ],
+       "w": 1.45,
+       "h": 2.05,
+       "sill": 0.32,
+       "panes": {
+        "cols": 3,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "w": 1.59
+        },
+        "2": {
+         "panes": {
+          "cols": 4,
+          "rows": 4
+         }
+        },
+        "3": {
+         "panes": {
+          "cols": 4,
+          "rows": 4
+         },
+         "w": 1.33
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.058,
+        0.218,
+        0.383,
+        0.575,
+        0.723,
+        0.873
+       ],
+       "w": 0.92,
+       "h": 1.45,
+       "sill": 0.45,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "h": 1.2,
+         "sill": 0.31
+        },
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 2
+         },
+         "w": 1.17,
+         "sill": 0.02
+        },
+        "2": {
+         "h": 1.2,
+         "sill": 0.31
+        },
+        "3": {
+         "sill": 0.6
+        },
+        "4": {
+         "w": 1.11,
+         "sill": 0.6
+        },
+        "5": {
+         "sill": 0.6
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
    },
@@ -2303,6 +2878,76 @@
        "archNearSweep": true
       }
      }
+    },
+    "openings": {
+     "frontM": 4.4,
+     "storeyM": [
+      5.47,
+      4.15,
+      4.14
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.747
+       ],
+       "w": 2.19,
+       "h": 2.77,
+       "sill": 1.88,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.36
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.403,
+        0.853
+       ],
+       "w": 1.41,
+       "h": 2.55,
+       "sill": 0.64,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "surround": "stone-lintel",
+       "except": {
+        "0": {
+         "w": 1.57
+        },
+        "1": {
+         "w": 1.25
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.375,
+        0.842
+       ],
+       "w": 1.43,
+       "h": 2.24,
+       "sill": 0.49,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "surround": "stone-lintel",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2023-03-13-TMX7316010203-002998_pano_0002_000059"
    },
@@ -2600,6 +3245,114 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "oculi"
+    },
+    "openings": {
+     "frontM": 4.2,
+     "storeyM": [
+      6.92,
+      4.2,
+      3.5,
+      2.3
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.205
+       ],
+       "w": 1.4,
+       "h": 3.72,
+       "sill": 2.4,
+       "panes": {
+        "cols": 2,
+        "rows": 5
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.171,
+        0.614
+       ],
+       "w": 1.3,
+       "h": 2.8,
+       "sill": 0.78,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.37,
+        "topCols": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.04
+        },
+        "1": {
+         "w": 1.56
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.157,
+        0.619
+       ],
+       "w": 1.2,
+       "h": 2.32,
+       "sill": 0.6,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 2
+         },
+         "w": 1
+        },
+        "1": {
+         "w": 1.4
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.157,
+        0.612
+       ],
+       "w": 1.23,
+       "h": 1.44,
+       "sill": 0.66,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 1
+         },
+         "w": 1
+        },
+        "1": {
+         "w": 1.46
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000496"
    },
@@ -2932,6 +3685,111 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 4.17,
+     "storeyM": [
+      8.54,
+      4.25,
+      4,
+      3.63
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.266,
+        0.71
+       ],
+       "w": 1.46,
+       "h": 3.96,
+       "sill": 3.27,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.33
+       },
+       "frame": "#2f3230",
+       "surround": "full-frame",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.225,
+        0.695
+       ],
+       "w": 1.38,
+       "h": 2.65,
+       "sill": 0.54,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "surround": "full-frame",
+       "except": {
+        "0": {
+         "w": 1.65
+        },
+        "1": {
+         "w": 1.1
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.213,
+        0.687
+       ],
+       "w": 1.36,
+       "h": 1.99,
+       "sill": 0.71,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.45
+       },
+       "frame": "#ece9e0",
+       "surround": "full-frame",
+       "except": {
+        "0": {
+         "w": 1.63
+        },
+        "1": {
+         "w": 1.09
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.205,
+        0.674
+       ],
+       "w": 1.44,
+       "h": 0.84,
+       "sill": 0.97,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.69
+        },
+        "1": {
+         "w": 1.2
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000527"
    },
    "specParts": [
@@ -3213,6 +4071,127 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "windows"
+    },
+    "openings": {
+     "frontM": 9.38,
+     "storeyM": [
+      4.78,
+      3.4,
+      3.16,
+      2.72,
+      2.56
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.108,
+        0.348,
+        0.818
+       ],
+       "w": 1.44,
+       "h": 3.3,
+       "sill": 1,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.094,
+        0.332,
+        0.568,
+        0.81
+       ],
+       "w": 1.49,
+       "h": 2.32,
+       "sill": 0.56,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.36
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.094,
+        0.332,
+        0.568,
+        0.81
+       ],
+       "w": 1.49,
+       "h": 2.34,
+       "sill": 0.42,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.36
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.094,
+        0.332,
+        0.568,
+        0.81
+       ],
+       "w": 1.49,
+       "h": 1.98,
+       "sill": 0.36,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.36
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 4,
+       "x": [
+        0.094,
+        0.332,
+        0.568,
+        0.81
+       ],
+       "w": 1.49,
+       "h": 1.66,
+       "sill": 0.44,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.36
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
    },
@@ -3514,6 +4493,92 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 6.02,
+     "storeyM": [
+      5.28,
+      3.1,
+      2.56,
+      2.94
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.442,
+        0.748
+       ],
+       "w": 1.32,
+       "h": 3.04,
+       "sill": 1.68,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.135,
+        0.439,
+        0.746
+       ],
+       "w": 1.34,
+       "h": 2.2,
+       "sill": 0.5,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.135,
+        0.439,
+        0.746
+       ],
+       "w": 1.34,
+       "h": 1.9,
+       "sill": 0.38,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.131,
+        0.439,
+        0.746
+       ],
+       "w": 1.34,
+       "h": 2.02,
+       "sill": 0.28,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 1,
+          "rows": 1
+         }
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000394"
    },
    "specParts": [
@@ -3785,6 +4850,81 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 6.98,
+     "storeyM": [
+      5.5,
+      3.04,
+      2.76
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.48,
+        0.799
+       ],
+       "w": 1.49,
+       "h": 3.24,
+       "sill": 1.8,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ece9e0",
+       "sash": "#2e4a3c",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.162,
+        0.477,
+        0.799
+       ],
+       "w": 1.54,
+       "h": 2.38,
+       "sill": 0.4,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.36
+       },
+       "frame": "#ece9e0",
+       "sash": "#2e4a3c",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.153,
+        0.473,
+        0.797
+       ],
+       "w": 1.52,
+       "h": 1.68,
+       "sill": 0.68,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "sash": "#2e4a3c",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 2
+         },
+         "h": 2.22,
+         "sill": 0.2
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000393"
    },
    "specParts": [],
@@ -4049,6 +5189,83 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "plain"
+    },
+    "openings": {
+     "frontM": 5.33,
+     "storeyM": [
+      7.07,
+      4.1,
+      3.61,
+      3.46
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.325
+       ],
+       "w": 1.24,
+       "h": 2.89,
+       "sill": 3.16,
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.325,
+        0.653
+       ],
+       "w": 1.27,
+       "h": 2,
+       "sill": 0.7,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.4
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.325,
+        0.653
+       ],
+       "w": 1.27,
+       "h": 2.11,
+       "sill": 0.88,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.325,
+        0.653
+       ],
+       "w": 1.27,
+       "h": 2.17,
+       "sill": 0.71,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003514"
    },
@@ -4382,6 +5599,84 @@
      "centre": "none",
      "light": "none"
     },
+    "openings": {
+     "frontM": 4.86,
+     "storeyM": [
+      5.9,
+      3.6,
+      2.88,
+      2.58
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.241,
+        0.689
+       ],
+       "w": 1.48,
+       "h": 3.12,
+       "sill": 2.14,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.31
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.241,
+        0.689
+       ],
+       "w": 1.48,
+       "h": 2.66,
+       "sill": 0.5,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.39
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.241,
+        0.689
+       ],
+       "w": 1.48,
+       "h": 2.14,
+       "sill": 0.36,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.46
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.241,
+        0.689
+       ],
+       "w": 1.48,
+       "h": 1.8,
+       "sill": 0.42,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e8e4d8",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000500"
    },
    "specParts": [
@@ -4676,6 +5971,103 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 7.52,
+     "storeyM": [
+      6.89,
+      3.34,
+      2.91,
+      2.82
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.095,
+        0.412
+       ],
+       "w": 1.41,
+       "h": 3.88,
+       "sill": 1.84,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#3a3c3a",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.091,
+        0.408,
+        0.736
+       ],
+       "w": 1.46,
+       "h": 2.49,
+       "sill": 0.28,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "surround": "block-dressings",
+       "except": {
+        "0": {
+         "w": 1.34
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.1,
+        0.409,
+        0.73
+       ],
+       "w": 1.6,
+       "h": 1.96,
+       "sill": 0.19,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "surround": "block-dressings",
+       "except": {
+        "0": {
+         "w": 1.43
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.1,
+        0.409,
+        0.73
+       ],
+       "w": 1.6,
+       "h": 1.47,
+       "sill": 0.3,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "surround": "block-dressings",
+       "except": {
+        "0": {
+         "w": 1.43
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003512"
    },
    "specParts": [],
@@ -4952,6 +6344,99 @@
      "consoles": "ends",
      "frieze": "panels"
     },
+    "openings": {
+     "frontM": 6.87,
+     "storeyM": [
+      6.14,
+      3.46,
+      2.59,
+      2.78
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.521,
+        0.857
+       ],
+       "w": 1.4,
+       "h": 3.52,
+       "sill": 1.96,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#e6e2d6",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.195,
+        0.526,
+        0.864
+       ],
+       "w": 1.46,
+       "h": 2.31,
+       "sill": 0.69,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#e6e2d6",
+       "surround": "block-dressings",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.194,
+        0.531,
+        0.861
+       ],
+       "w": 1.56,
+       "h": 1.71,
+       "sill": 0.39,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e6e2d6",
+       "surround": "block-dressings",
+       "except": {
+        "2": {
+         "w": 1.46
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.194,
+        0.531,
+        0.861
+       ],
+       "w": 1.56,
+       "h": 1.26,
+       "sill": 0.52,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e6e2d6",
+       "surround": "block-dressings",
+       "except": {
+        "2": {
+         "w": 1.46
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2023-01-30-TMX7316010203-002950_pano_0000_000517"
    },
    "specParts": [
@@ -5178,6 +6663,93 @@
      },
      "riseM": 1.55,
      "share": 0.45
+    },
+    "openings": {
+     "frontM": 14.05,
+     "storeyM": [
+      6.1,
+      3.33,
+      2.97
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.076,
+        0.234,
+        0.709,
+        0.865
+       ],
+       "w": 1.26,
+       "h": 3.2,
+       "sill": 2.18,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.28
+       },
+       "frame": "#2e302f",
+       "surround": "full-frame",
+       "except": {
+        "3": {
+         "w": 1.07
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.081,
+        0.236,
+        0.471,
+        0.708,
+        0.859
+       ],
+       "w": 1.31,
+       "h": 1.97,
+       "sill": 0.62,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#2e302f",
+       "surround": "full-frame",
+       "except": {
+        "4": {
+         "w": 1.08
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.081,
+        0.236,
+        0.471,
+        0.708,
+        0.859
+       ],
+       "w": 1.31,
+       "h": 1.27,
+       "sill": 0.59,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#2e302f",
+       "surround": "full-frame",
+       "except": {
+        "4": {
+         "w": 1.08
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2025-06-16-recording_2025-06-16_03-46-32_01311"
    },
@@ -5464,6 +7036,72 @@
      "centreLight": "none",
      "consoles": "dense",
      "frieze": "windows"
+    },
+    "openings": {
+     "frontM": 19.48,
+     "storeyM": [
+      4.12,
+      3.56,
+      3.2
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.063,
+        0.179,
+        0.524,
+        0.646
+       ],
+       "w": 1.49,
+       "h": 3.46,
+       "sill": 0.08,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ddd8c8",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.062,
+        0.178,
+        0.35,
+        0.524,
+        0.646
+       ],
+       "w": 1.52,
+       "h": 2.7,
+       "sill": 0.4,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ddd8c8",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.062,
+        0.178,
+        0.35,
+        0.524,
+        0.646
+       ],
+       "w": 1.52,
+       "h": 1.9,
+       "sill": 0.38,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ddd8c8",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504"
    },
@@ -5767,6 +7405,115 @@
      "share": 0.25,
      "light": "none"
     },
+    "openings": {
+     "frontM": 8.56,
+     "storeyM": [
+      6.29,
+      4.08,
+      3.4,
+      3.33
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.403,
+        0.713
+       ],
+       "w": 1.38,
+       "h": 3.4,
+       "sill": 2.16,
+       "head": "segmental",
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#4a4c4c",
+       "surround": "full-frame",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.083,
+        0.4,
+        0.719
+       ],
+       "w": 1.43,
+       "h": 2.93,
+       "sill": 0.57,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.32
+       },
+       "frame": "#4a4c4c",
+       "surround": "full-frame",
+       "except": {
+        "0": {
+         "w": 1.32
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.08,
+        0.391,
+        0.723
+       ],
+       "w": 1.49,
+       "h": 2.23,
+       "sill": 0.49,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#4a4c4c",
+       "surround": "full-frame",
+       "except": {
+        "0": {
+         "w": 1.32
+        },
+        "1": {
+         "w": 1.65
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.08,
+        0.391,
+        0.723
+       ],
+       "w": 1.49,
+       "h": 1.96,
+       "sill": 0.49,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#4a4c4c",
+       "surround": "full-frame",
+       "except": {
+        "0": {
+         "w": 1.32
+        },
+        "1": {
+         "w": 1.65
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2023-02-20-TMX7316010203-002980_pano_0008_000036"
    },
    "specParts": [],
@@ -6021,6 +7768,108 @@
      "frieze": "none",
      "clawWaist": 0.21,
      "clawBand": 0.22
+    },
+    "openings": {
+     "frontM": 4.56,
+     "storeyM": [
+      6,
+      3.58,
+      2.84,
+      2.84
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.349,
+        0.674
+       ],
+       "w": 1.14,
+       "h": 2.89,
+       "sill": 2.24,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.069,
+        0.349,
+        0.681
+       ],
+       "w": 1.14,
+       "h": 2.85,
+       "sill": 0.29,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 0.59
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.058,
+        0.348,
+        0.693
+       ],
+       "w": 1.03,
+       "h": 1.99,
+       "sill": 0.35,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 0.48
+        },
+        "1": {
+         "w": 1.29
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.058,
+        0.355,
+        0.704
+       ],
+       "w": 1.05,
+       "h": 1.43,
+       "sill": 0.82,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 0.48
+        },
+        "1": {
+         "w": 1.29,
+         "h": 1.87,
+         "sill": 0.38
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003501"
    },
@@ -6278,6 +8127,78 @@
      "frieze": "none",
      "clawWaist": 0.1,
      "clawBand": 0.2
+    },
+    "openings": {
+     "frontM": 4.46,
+     "storeyM": [
+      5.35,
+      2.79,
+      2.7
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.337,
+        0.643
+       ],
+       "w": 0.98,
+       "h": 2.76,
+       "sill": 2.12,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.28
+       },
+       "frame": "#e6dfc6",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.073,
+        0.35,
+        0.66
+       ],
+       "w": 1.03,
+       "h": 1.97,
+       "sill": 0.41,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.38
+       },
+       "frame": "#e6dfc6",
+       "except": {
+        "0": {
+         "w": 0.65
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.073,
+        0.353,
+        0.665
+       ],
+       "w": 0.99,
+       "h": 1.28,
+       "sill": 0.46,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e6dfc6",
+       "except": {
+        "0": {
+         "w": 0.65
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005305"
    },
@@ -6544,6 +8465,84 @@
      },
      "riseM": 0.6,
      "share": 0.37
+    },
+    "openings": {
+     "frontM": 4.37,
+     "storeyM": [
+      4.43,
+      3.02,
+      2.87,
+      3.07
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.579
+       ],
+       "w": 1.9,
+       "h": 2.02,
+       "sill": 1.86,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.22
+       },
+       "frame": "#ece6d4",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.136,
+        0.593
+       ],
+       "w": 1.25,
+       "h": 2.02,
+       "sill": 0.51,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.36
+       },
+       "frame": "#ece6d4",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.136,
+        0.593
+       ],
+       "w": 1.25,
+       "h": 1.86,
+       "sill": 0.52,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.4
+       },
+       "frame": "#ece6d4",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.136,
+        0.593
+       ],
+       "w": 1.25,
+       "h": 1.86,
+       "sill": 0.52,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.4
+       },
+       "frame": "#ece6d4",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005304"
    },
@@ -6841,6 +8840,108 @@
     },
     "cornicePaint": "#857f76",
     "photoWallM": 18.14,
+    "openings": {
+     "frontM": 13.26,
+     "storeyM": [
+      7.29,
+      4.1,
+      3.3,
+      3.44
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.161,
+        0.323,
+        0.49,
+        0.663,
+        0.834
+       ],
+       "w": 1.26,
+       "h": 3.14,
+       "sill": 3.19,
+       "head": "round",
+       "panes": {
+        "cols": 2,
+        "rows": 4,
+        "transom": 0.25
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.16
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.154,
+        0.317,
+        0.491,
+        0.665,
+        0.841
+       ],
+       "w": 1.39,
+       "h": 2.63,
+       "sill": 0.86,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.27
+        },
+        "1": {
+         "w": 1.27
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.149,
+        0.312,
+        0.491,
+        0.665,
+        0.845
+       ],
+       "w": 1.36,
+       "h": 1.81,
+       "sill": 0.83,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.149,
+        0.312,
+        0.491,
+        0.665,
+        0.845
+       ],
+       "w": 1.36,
+       "h": 1.89,
+       "sill": 0.66,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002846"
    },
    "specParts": [
@@ -7122,6 +9223,78 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
+    },
+    "openings": {
+     "frontM": 5.64,
+     "storeyM": [
+      4.92,
+      3.63,
+      2.16
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.172,
+        0.459
+       ],
+       "w": 1.31,
+       "h": 2.82,
+       "sill": 1.55,
+       "panes": {
+        "cols": 3,
+        "rows": 6
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2a",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.174,
+        0.471,
+        0.765
+       ],
+       "w": 1.32,
+       "h": 2.19,
+       "sill": 0.45,
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2a",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.229,
+        0.473,
+        0.713
+       ],
+       "w": 0.68,
+       "h": 1.21,
+       "sill": -0.37,
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2a",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 2
+         },
+         "w": 1.29
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00588"
    },
@@ -7435,6 +9608,72 @@
      "consoles": "none",
      "frieze": "plain"
     },
+    "openings": {
+     "frontM": 5.47,
+     "storeyM": [
+      4.81,
+      2.7,
+      2.73
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.473,
+        0.757
+       ],
+       "w": 1.13,
+       "h": 2.59,
+       "sill": 1.76,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e0dccf",
+       "sash": "#2b3a32",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.188,
+        0.473,
+        0.76
+       ],
+       "w": 1.14,
+       "h": 1.99,
+       "sill": 0.42,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e0dccf",
+       "sash": "#2b3a32",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.188,
+        0.473,
+        0.76
+       ],
+       "w": 1.14,
+       "h": 1.77,
+       "sill": 0.33,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#e0dccf",
+       "sash": "#2b3a32",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002843"
    },
    "specParts": [
@@ -7687,6 +9926,89 @@
      "pierW": 0.4,
      "recessHex": "#3e3f3e",
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
+    "openings": {
+     "frontM": 7.13,
+     "storeyM": [
+      3.88,
+      3.71,
+      4.15
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.709,
+        0.922
+       ],
+       "w": 1.19,
+       "h": 3.28,
+       "sill": 0.21,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.6
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.42
+        },
+        "1": {
+         "w": 0.96
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.207,
+        0.456,
+        0.709,
+        0.922
+       ],
+       "w": 1.44,
+       "h": 2.95,
+       "sill": 0.39,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.36
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "3": {
+         "w": 0.96
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.207,
+        0.456,
+        0.709,
+        0.922
+       ],
+       "w": 1.44,
+       "h": 2.91,
+       "sill": 0.38,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.36
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "3": {
+         "w": 0.96
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
    },
@@ -7951,6 +10273,95 @@
      "consoles": "dense",
      "frieze": "plain"
     },
+    "openings": {
+     "frontM": 5.02,
+     "storeyM": [
+      4.71,
+      2.98,
+      2.91,
+      2.47
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.191,
+        0.465
+       ],
+       "w": 0.99,
+       "h": 2.64,
+       "sill": 1.7,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.31
+       },
+       "frame": "#ddd6c4",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.19,
+        0.465,
+        0.738
+       ],
+       "w": 0.98,
+       "h": 2.24,
+       "sill": 0.3,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.29
+       },
+       "frame": "#ddd6c4",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.19,
+        0.465,
+        0.738
+       ],
+       "w": 0.98,
+       "h": 2.14,
+       "sill": 0.36,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ddd6c4",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.19,
+        0.465,
+        0.738
+       ],
+       "w": 0.98,
+       "h": 1.52,
+       "sill": 0.3,
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       },
+       "frame": "#ddd6c4",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 2
+         }
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002841"
    },
    "specParts": [
@@ -8191,6 +10602,88 @@
      "riseM": 1.9,
      "share": 0.43,
      "light": "square"
+    },
+    "openings": {
+     "frontM": 4.82,
+     "storeyM": [
+      5.03,
+      3.56,
+      3.39
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.161,
+        0.438
+       ],
+       "w": 1.09,
+       "h": 2.41,
+       "sill": 2.13,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#3a2e28",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.132,
+        0.438,
+        0.743
+       ],
+       "w": 1.08,
+       "h": 2.3,
+       "sill": 0.67,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.38
+       },
+       "frame": "#3a2e28",
+       "surround": "block-dressings",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 1,
+          "transom": 0.35
+         }
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.132,
+        0.44,
+        0.751
+       ],
+       "w": 1.11,
+       "h": 2.13,
+       "sill": 0.44,
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       },
+       "frame": "#3a2e28",
+       "surround": "block-dressings",
+       "except": {
+        "1": {
+         "panes": {
+          "cols": 2,
+          "rows": 1,
+          "transom": 0.3
+         }
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00583"
    },
@@ -8475,6 +10968,68 @@
      "clawWaist": 0.13,
      "clawBand": 0.18
     },
+    "openings": {
+     "frontM": 6.12,
+     "storeyM": [
+      5.32,
+      3.39,
+      2.78
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.485,
+        0.784
+       ],
+       "w": 1.32,
+       "h": 2.95,
+       "sill": 1.91,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#e2ddcd",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.177,
+        0.48,
+        0.788
+       ],
+       "w": 1.37,
+       "h": 2.44,
+       "sill": 0.51,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#e2ddcd",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.168,
+        0.476,
+        0.782
+       ],
+       "w": 1.42,
+       "h": 1.63,
+       "sill": 0.49,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e2ddcd",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
    },
    "specParts": [
@@ -8736,6 +11291,85 @@
      "centreLight": "none",
      "consoles": "even",
      "frieze": "oculi"
+    },
+    "openings": {
+     "frontM": 6.13,
+     "storeyM": [
+      6,
+      3.14,
+      2.67,
+      3.09
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.474,
+        0.778
+       ],
+       "w": 1.27,
+       "h": 3.33,
+       "sill": 2.35,
+       "panes": {
+        "cols": 2,
+        "rows": 4
+       },
+       "frame": "#e8e6dc",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.17,
+        0.482,
+        0.789
+       ],
+       "w": 1.3,
+       "h": 2.36,
+       "sill": 0.36,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#e8e6dc",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.172,
+        0.486,
+        0.796
+       ],
+       "w": 1.3,
+       "h": 1.94,
+       "sill": 0.34,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#e8e6dc",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.167,
+        0.484,
+        0.798
+       ],
+       "w": 1.32,
+       "h": 1.41,
+       "sill": 0.63,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.25
+       },
+       "frame": "#e8e6dc",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006458"
    },
@@ -9008,6 +11642,74 @@
      "consoles": "none",
      "frieze": "plain"
     },
+    "openings": {
+     "frontM": 4.75,
+     "storeyM": [
+      5.27,
+      3.54,
+      2.6
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.19
+       ],
+       "w": 1.34,
+       "h": 3.12,
+       "sill": 1.53,
+       "head": "segmental",
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.27
+       },
+       "frame": "#ebe3c5",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.193,
+        0.641
+       ],
+       "w": 1.37,
+       "h": 2.33,
+       "sill": 0.59,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ebe3c5",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.193,
+        0.644
+       ],
+       "w": 1.38,
+       "h": 1.43,
+       "sill": 0.62,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ebe3c5",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 3,
+          "rows": 2
+         }
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2024-12-03-b_20241203_0939_Track01_Sphere_00580"
    },
    "specParts": [
@@ -9271,6 +11973,73 @@
      "centreLight": "none",
      "consoles": "ends",
      "frieze": "plain"
+    },
+    "openings": {
+     "frontM": 8.53,
+     "storeyM": [
+      5.45,
+      3.58,
+      2.42
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.525,
+        0.843
+       ],
+       "w": 1.41,
+       "h": 2.96,
+       "sill": 1.79,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ddd6c2",
+       "sash": "#2d2f2c",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.21,
+        0.528,
+        0.847
+       ],
+       "w": 1.44,
+       "h": 2.27,
+       "sill": 0.54,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ddd6c2",
+       "sash": "#2d2f2c",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.208,
+        0.531,
+        0.852
+       ],
+       "w": 1.46,
+       "h": 1.29,
+       "sill": 0.63,
+       "head": "segmental",
+       "panes": {
+        "cols": 3,
+        "rows": 2
+       },
+       "frame": "#ddd6c2",
+       "sash": "#2d2f2c",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2019-01-15-TMX7316010203-001054_pano_0000_006455"
    },
@@ -9612,6 +12381,108 @@
      "hex": "#f2f1ec",
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 6.77,
+     "storeyM": [
+      6.43,
+      3.27,
+      3.05,
+      2.77,
+      2.76
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.182,
+        0.466,
+        0.744
+       ],
+       "w": 1.35,
+       "h": 2.92,
+       "sill": 3.03,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.28
+       },
+       "frame": "#e4dfcc",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.182,
+        0.466,
+        0.744
+       ],
+       "w": 1.35,
+       "h": 2.25,
+       "sill": 0.45,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.2
+       },
+       "frame": "#e4dfcc",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.182,
+        0.466,
+        0.744
+       ],
+       "w": 1.35,
+       "h": 2.32,
+       "sill": 0.31,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.2
+       },
+       "frame": "#e4dfcc",
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.182,
+        0.466,
+        0.744
+       ],
+       "w": 1.35,
+       "h": 1.79,
+       "sill": 0.43,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.2
+       },
+       "frame": "#e4dfcc",
+       "by": "eye"
+      },
+      {
+       "storey": 4,
+       "x": [
+        0.182,
+        0.466,
+        0.744
+       ],
+       "w": 1.35,
+       "h": 1.12,
+       "sill": 0.49,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.2
+       },
+       "frame": "#e4dfcc",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002834"
    },
    "specParts": [
@@ -9921,6 +12792,66 @@
      "consoles": "ends",
      "frieze": "plain"
     },
+    "openings": {
+     "frontM": 4.46,
+     "storeyM": [
+      5.16,
+      2.88,
+      2.53
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.261
+       ],
+       "w": 1.83,
+       "h": 2.67,
+       "sill": 2.04,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.28
+       },
+       "frame": "#4d5052",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.223,
+        0.649
+       ],
+       "w": 1.3,
+       "h": 2.11,
+       "sill": 0.4,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#4d5052",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.229,
+        0.655
+       ],
+       "w": 1.32,
+       "h": 1.68,
+       "sill": 0.44,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.38
+       },
+       "frame": "#4d5052",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002833"
    },
    "specParts": [
@@ -10200,6 +13131,71 @@
      "clawWaist": 0.24,
      "clawBand": 0.28
     },
+    "openings": {
+     "frontM": 4.53,
+     "storeyM": [
+      4.7,
+      3.2,
+      2.35
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.448,
+        0.735
+       ],
+       "w": 0.91,
+       "h": 2.63,
+       "sill": 1.46,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "sash": "#2d3a33",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.168,
+        0.456,
+        0.743
+       ],
+       "w": 0.95,
+       "h": 2.22,
+       "sill": 0.42,
+       "panes": {
+        "cols": 1,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "sash": "#2d3a33",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.168,
+        0.456,
+        0.747
+       ],
+       "w": 0.95,
+       "h": 1.35,
+       "sill": 0.23,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "sash": "#2d3a33",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002832"
    },
    "specParts": [
@@ -10438,6 +13434,106 @@
     },
     "cornicePaint": "#85817a",
     "photoWallM": 13.79,
+    "openings": {
+     "frontM": 10.05,
+     "storeyM": [
+      5.24,
+      3.05,
+      2.81,
+      2.68
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.14,
+        0.54,
+        0.737
+       ],
+       "w": 1.25,
+       "h": 2.77,
+       "sill": 2.03,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 4,
+        "transom": 0.2
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.142,
+        0.345,
+        0.546,
+        0.741
+       ],
+       "w": 1.31,
+       "h": 2.28,
+       "sill": 0.41,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 3,
+        "transom": 0.2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "3": {
+         "w": 1.2
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.142,
+        0.345,
+        0.546,
+        0.743
+       ],
+       "w": 1.31,
+       "h": 2,
+       "sill": 0.37,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 2,
+        "transom": 0.3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "3": {
+         "w": 1.16
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.14,
+        0.345,
+        0.544,
+        0.745
+       ],
+       "w": 1.29,
+       "h": 1.67,
+       "sill": 0.53,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
    },
    "specParts": [
@@ -10786,6 +13882,89 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 8.66,
+     "storeyM": [
+      6.24,
+      3.6,
+      3.6
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.477,
+        0.815
+       ],
+       "w": 1.5,
+       "h": 3.48,
+       "sill": 1.91,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.32
+       },
+       "frame": "#2e3030",
+       "except": {
+        "0": {
+         "w": 1.79
+        },
+        "1": {
+         "w": 1.21
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.139,
+        0.479,
+        0.829
+       ],
+       "w": 1.35,
+       "h": 2.21,
+       "sill": 0.65,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#2e3030",
+       "except": {
+        "1": {
+         "w": 1.82
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.139,
+        0.479,
+        0.83
+       ],
+       "w": 1.4,
+       "h": 1.39,
+       "sill": 0.59,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#2e3030",
+       "except": {
+        "1": {
+         "w": 1.88
+        },
+        "2": {
+         "w": 1.24
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2019-05-13-TMX7316010203-001178_pano_0001_005285"
    },
    "specParts": [
@@ -11090,6 +14269,113 @@
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
     },
+    "openings": {
+     "frontM": 8.63,
+     "storeyM": [
+      6.13,
+      3.07,
+      2.64,
+      2.93
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.113,
+        0.586,
+        0.813
+       ],
+       "w": 1.33,
+       "h": 3.48,
+       "sill": 2.2,
+       "panes": {
+        "cols": 2,
+        "rows": 5
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2b",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.107,
+        0.352,
+        0.591,
+        0.825
+       ],
+       "w": 1.44,
+       "h": 2.21,
+       "sill": 0.57,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2b",
+       "except": {
+        "3": {
+         "w": 1.31
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.111,
+        0.352,
+        0.595,
+        0.83
+       ],
+       "w": 1.42,
+       "h": 1.82,
+       "sill": 0.49,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2b",
+       "except": {
+        "0": {
+         "w": 1.53
+        },
+        "3": {
+         "w": 1.31
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.111,
+        0.352,
+        0.595,
+        0.83
+       ],
+       "w": 1.42,
+       "h": 1.56,
+       "sill": 0.52,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "sash": "#2a2c2b",
+       "except": {
+        "0": {
+         "w": 1.53
+        },
+        "3": {
+         "w": 1.31
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003479"
    },
    "specParts": [
@@ -11339,6 +14625,122 @@
      "share": 0.47,
      "light": "none"
     },
+    "openings": {
+     "frontM": 4.43,
+     "storeyM": [
+      4.6,
+      4.87,
+      3.2,
+      3.19
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.526,
+        0.717
+       ],
+       "w": 0.5,
+       "h": 2.19,
+       "sill": 1.79,
+       "head": "round",
+       "panes": {
+        "cols": 1,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.123,
+        0.625
+       ],
+       "w": 1.14,
+       "h": 2.65,
+       "sill": 0.64,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.35
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 1,
+          "transom": 0.35
+         },
+         "w": 0.88
+        },
+        "1": {
+         "w": 1.4
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.127,
+        0.625
+       ],
+       "w": 1.15,
+       "h": 1.72,
+       "sill": 0.15,
+       "panes": {
+        "cols": 2,
+        "rows": 1,
+        "transom": 0.3
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 1,
+          "transom": 0.3
+         },
+         "w": 0.91
+        },
+        "1": {
+         "w": 1.4
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.134,
+        0.625
+       ],
+       "w": 1.19,
+       "h": 2.05,
+       "sill": 0.27,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "panes": {
+          "cols": 1,
+          "rows": 2
+         },
+         "w": 0.97
+        },
+        "1": {
+         "w": 1.4
+        }
+       },
+       "by": "eye"
+      }
+     ]
+    },
     "candidateId": "w-2020-04-22-TMX7316010203-001666_pano_0000_003478"
    },
    "specParts": [],
@@ -11581,6 +14983,125 @@
      "shoulders": "scrolls",
      "cap": "segmental",
      "light": "square"
+    },
+    "openings": {
+     "frontM": 5.28,
+     "storeyM": [
+      4.6,
+      4.1,
+      3.36,
+      5.74
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.085,
+        0.25,
+        0.572
+       ],
+       "w": 0.68,
+       "h": 1.88,
+       "sill": 2.02,
+       "head": "round",
+       "panes": {
+        "cols": 1,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "2": {
+         "w": 0.92
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.172,
+        0.581
+       ],
+       "w": 1.24,
+       "h": 2.78,
+       "sill": 0.36,
+       "head": "segmental",
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.58
+        },
+        "1": {
+         "panes": {
+          "cols": 1,
+          "rows": 1
+         },
+         "w": 0.9
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.172,
+        0.585
+       ],
+       "w": 1.26,
+       "h": 2.12,
+       "sill": 0.3,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.58
+        },
+        "1": {
+         "panes": {
+          "cols": 1,
+          "rows": 1
+         },
+         "w": 0.94
+        }
+       },
+       "by": "eye"
+      },
+      {
+       "storey": 3,
+       "x": [
+        0.172,
+        0.585
+       ],
+       "w": 1.26,
+       "h": 2.26,
+       "sill": 0.16,
+       "panes": {
+        "cols": 2,
+        "rows": 1
+       },
+       "frame": "#ece9e0",
+       "except": {
+        "0": {
+         "w": 1.58
+        },
+        "1": {
+         "panes": {
+          "cols": 1,
+          "rows": 1
+         },
+         "w": 0.94
+        }
+       },
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373"
    },
@@ -11900,6 +15421,66 @@
       "case": "frame"
      },
      "by": "claude lane, measured by eye (kit-ground 2026-11-21)"
+    },
+    "openings": {
+     "frontM": 8.14,
+     "storeyM": [
+      3.62,
+      2.74,
+      2.2
+     ],
+     "rows": [
+      {
+       "storey": 0,
+       "x": [
+        0.22,
+        0.464
+       ],
+       "w": 1.41,
+       "h": 3.1,
+       "sill": 0.16,
+       "panes": {
+        "cols": 3,
+        "rows": 4
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 1,
+       "x": [
+        0.225,
+        0.463,
+        0.701
+       ],
+       "w": 1.22,
+       "h": 2.1,
+       "sill": 0.3,
+       "panes": {
+        "cols": 2,
+        "rows": 3
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      },
+      {
+       "storey": 2,
+       "x": [
+        0.232,
+        0.469,
+        0.708
+       ],
+       "w": 1.22,
+       "h": 1.48,
+       "sill": 0.32,
+       "panes": {
+        "cols": 2,
+        "rows": 2
+       },
+       "frame": "#ece9e0",
+       "by": "eye"
+      }
+     ]
     },
     "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000521"
    },

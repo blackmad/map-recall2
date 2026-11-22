@@ -33,6 +33,7 @@ import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.
 import { boxPlacementFor, cellUnit, groundOpeningRect } from './houseLine/boxCells.js';
 import { cellOnBox, groundSpans } from './houseLine/boxPlacement.js';
 import { groundFrontBoxes, type GroundFront, type SoloGroundBox } from './designUnits/soloGround.js';
+import { openingBoxes, resolvedLook, SINGLE_LIGHT } from './houseLine/openingGrid.js';
 import { runTakesSteps, runTakesTrace } from './houseLine/rowFront.js';
 import type { RowCrown } from './houseLine/crownProfile.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
@@ -163,6 +164,12 @@ export type MeshBuilding = {
   designGround?: { windowRatio: number; doorRatio: number; basementRatio?: number; raisedDoor?: true; /** Kit-ground lane: the ground storey's own front as measured (designUnits/soloGround.ts). */ front?: import('./designUnits/soloGround.ts').GroundFront };
   /** Kit-ground lane: a flat canopy or slab on piers in place of the cornice (designUnits/soloGround.ts). */
   flatCrown?: import('./designUnits/soloGround.ts').FlatCrown;
+  /** Belt windows lane: the solo plot's windows as measured (houseLine/openingGrid.ts), drawn as joinery on a plain wall on
+   *  its front run; `openingFrameHex` the read frame paint they default to. */
+  designOpenings?: import('./houseLine/openingGrid.ts').OpeningGrid;
+  openingFrameHex?: string;
+  /** Belt windows lane: the upper storeys' accent (painted frames and bars) where the building's accent is a shop's colour. */
+  upperAccentHex?: string;
   layoutScale?: LayoutScale;
   /** Design units (`?designUnits=1`): the segment seed every per-building dice here hashes on instead of `id`, and the
    *  member's slice of the segment frontage (m from its left end), on which its street run's bays are laid out. */
@@ -732,7 +739,9 @@ export function soloBasementM(ratio: number | undefined, G: number): number {
  * (`doorIndex` among them, as seen) from the base to `doorRatio` of the ground storey, the others windows `windowRatio`
  * times the first upper window's height, their heads on the door's. Undefined without upper openings or room.
  */
-export function soloGroundBoxes(layout: Pick<RunLayout, 'bays' | 'bayWidthM' | 'groundM' | 'storeyM' | 'storeyHeightsM' | 'lengthM'>, o: Openings | undefined, g: { windowRatio: number; doorRatio: number; basementRatio?: number; raisedDoor?: true; front?: GroundFront }, doorIndex: number | undefined, ltr: boolean, margin: { l: number; r: number; t: number; b: number } = { l: 0, r: 0, t: 0, b: 0 }): SoloGroundBox[] | undefined {
+/** How far (m) a door may move off the read's axis into a gap between measured ground windows. */
+const DOOR_SHIFT_M = 1.5;
+export function soloGroundBoxes(layout: Pick<RunLayout, 'bays' | 'bayWidthM' | 'groundM' | 'storeyM' | 'storeyHeightsM' | 'lengthM'>, o: Openings | undefined, g: { windowRatio: number; doorRatio: number; basementRatio?: number; raisedDoor?: true; front?: GroundFront }, doorIndex: number | undefined, ltr: boolean, margin: { l: number; r: number; t: number; b: number } = { l: 0, r: 0, t: 0, b: 0 }, measured?: ReadonlyArray<{ x: number; hw: number; z0: number; z1: number }>): SoloGroundBox[] | undefined {
   // Kit-ground lane: a read ground front lists its own openings (as seen, in shares of the front and the ground storey):
   // they are drawn as read, whatever the upper axes; a measured basement band keeps its low window under each window.
   const read = g.front && layout.lengthM > 0 ? groundFrontBoxes(g.front, layout.groundM, margin) : undefined;
@@ -755,6 +764,34 @@ export function soloGroundBoxes(layout: Pick<RunLayout, 'bays' | 'bayWidthM' | '
   for (let i = 0; i < layout.bays; i++) for (const [k, axis] of o.upper.axes.entries()) axes.push({ x: (i + axis) * bw, hw: (o.upper.widths?.[k] ?? o.upper.width) * bw / 2 });
   const seen = (ltr ? axes : axes.map(a => ({ ...a, x: L - a.x }))).sort((p, q) => p.x - q.x);
   const door = doorIndex !== undefined && doorIndex >= 0 ? Math.min(seen.length - 1, doorIndex) : -1;
+  if (measured?.length) {
+    // Belt windows lane: the ground row's windows as measured (x as seen, z over the pavement), the door where the read puts
+    // it among the openings; a measured window over the door's box gives way to it. Margins as the cells' (the glass is the box).
+    const out: SoloGroundBox[] = [];
+    const doorBox = door >= 0 ? (() => {
+      const a = seen[door], hw = Math.min(0.75, Math.max(0.5, a.hw)), up = basement && g.raisedDoor ? B : 0, dh = up ? Math.min(G - 0.15, up + Math.max(2, doorHead)) : doorHead;
+      // The door stands in the wall between the measured windows nearest the read door's axis (Herengracht 76-78: the
+      // stock axis put it over a measured window); where no gap within DOOR_SHIFT_M holds it, at the axis, the clashing window
+      // dropped (Herengracht 40: its door stands under the bel-etage's centre window, which one ground storey cannot stack).
+      const wins = [...measured].sort((p, q) => p.x - q.x), gaps: Array<[number, number]> = [];
+      let from = 0.1;
+      for (const m of wins) { gaps.push([from, m.x - m.hw - 0.1]); from = m.x + m.hw + 0.1; }
+      gaps.push([from, L - 0.1]);
+      const fits = gaps.filter(([p, q]) => q - p >= 2 * hw && Math.min(Math.abs(p + hw - a.x), Math.abs(q - hw - a.x), p + hw <= a.x && a.x <= q - hw ? 0 : Infinity) <= DOOR_SHIFT_M), clash = wins.some(m => Math.abs(m.x - a.x) < m.hw + hw);
+      const x = clash && fits.length ? fits.map(([p, q]) => Math.min(q - hw, Math.max(p + hw, a.x))).sort((p, q) => Math.abs(p - a.x) - Math.abs(q - a.x))[0] : a.x;
+      return { a0: (x - hw) / L, a1: (x + hw) / L, sillM: +Math.min(up, dh - 2).toFixed(3), headM: +dh.toFixed(3), kind: 'door' as const };
+    })() : null;
+    if (doorBox) out.push(doorBox);
+    for (const m of measured) {
+      const h = m.z1 - m.z0, a0 = (m.x - m.hw * (1 + 2 * margin.l)) / L, a1 = (m.x + m.hw * (1 + 2 * margin.r)) / L;
+      if (doorBox && a1 > doorBox.a0 && a0 < doorBox.a1) continue;
+      // A basement band keeps its low window under each measured window standing over it (Herengracht 54, 14).
+      const bh = B - 0.45;
+      if (basement && bh >= 0.35 && m.z0 >= B) out.push({ a0: (m.x - m.hw) / L, a1: (m.x + m.hw) / L, sillM: 0.2, headM: +(0.2 + bh).toFixed(3), kind: 'basement' as const });
+      out.push({ a0, a1, sillM: +(m.z0 - h * margin.b).toFixed(3), headM: +(m.z1 + h * margin.t).toFixed(3), kind: 'window' as const });
+    }
+    return out.sort((p, q) => p.a0 - q.a0);
+  }
   return seen.map((a, j) => {
     // A window box holds the window unit with its frame and sill (the cell crop's margins round the glass).
     // A raised door (up the stoop over the basement) is doorRatio of the ground storey tall from the band's top.
@@ -766,6 +803,33 @@ export function soloGroundBoxes(layout: Pick<RunLayout, 'bays' | 'bayWidthM' | '
     // (kind `basement`: drawn by the solo-basement extra in the band, never cut into the ground cell over it.)
     return basement && bh >= 0.35 ? [{ a0: (a.x - a.hw) / L, a1: (a.x + a.hw) / L, sillM: 0.2, headM: +(0.2 + bh).toFixed(3), kind: 'basement' as const }, win] : [win];
   }).flat();
+}
+/**
+ * Belt windows lane: a solo plot's measured windows on one wall of its front run (x from the wall's start, z absolute), with
+ * their joinery's look (houseLine/openingGrid.ts): the upper rows at the drawn storeys, the ground row on the ground boxes
+ * cut for it (`ground`: the edge's ground windows), each taking the look of the measured bay nearest it.
+ */
+export function soloOpeningsOnEdge(b: Pick<MeshBuilding, 'openingFrameHex'>, g: import('./houseLine/openingGrid.ts').OpeningGrid, layout: Pick<RunLayout, 'storeys' | 'storeyM' | 'storeyHeightsM' | 'lengthM'>, groundTop: number, facadeTop: number, ltr: boolean, edgeStartM: number, edgeM: number, ground: ReadonlyArray<{ x: number; hw: number; z0: number; z1: number }>): NonNullable<ExtraContext['soloOpenings']> {
+  const L = layout.lengthM, frame = (f?: string) => f ?? b.openingFrameHex ?? '#f1efe8', out: NonNullable<ExtraContext['soloOpenings']> = [];
+  const onEdge = (xSeen: number) => (ltr ? xSeen : L - xSeen) - edgeStartM;
+  let z = groundTop;
+  for (let st = 0; st < layout.storeys; st++) {
+    const z1 = st === layout.storeys - 1 ? facadeTop : z + (layout.storeyHeightsM?.[st] ?? layout.storeyM);
+    for (const o of openingBoxes(g, st + 1, { frontM: L, storeyM: z1 - z })) {
+      const x = onEdge(o.x);
+      // A window belongs to the wall that holds its centre (a front kinked under a window draws it whole on one wall).
+      if (x < 0 || x >= edgeM) continue;
+      out.push({ storey: st + 1, x: +x.toFixed(4), hw: o.hw, z0: +(z + o.z0).toFixed(4), z1: +(z + o.z1).toFixed(4), head: o.head, panes: o.panes, frame: frame(o.frame), ...(o.sash ? { sash: o.sash } : {}), surround: o.surround });
+    }
+    z = z1;
+  }
+  const row = g.rows.find(r => r.storey === 0);
+  if (row) for (const w of ground) {
+    const seen = ltr ? (w.x + edgeStartM) / L : 1 - (w.x + edgeStartM) / L;
+    const bay = row.x.reduce((best, v, i) => Math.abs(v - seen) < Math.abs(row.x[best] - seen) ? i : best, 0), l = resolvedLook(g, row, bay);
+    out.push({ storey: 0, x: w.x, hw: w.hw, z0: w.z0, z1: w.z1, head: l?.head ?? 'flat', panes: l?.panes ?? SINGLE_LIGHT, frame: frame(l?.frame), ...(l?.sash ? { sash: l.sash } : {}), surround: l?.surround ?? 'none' });
+  }
+  return out;
 }
 /** A solo plot's ground window boxes on one wall of its run (x from the wall's start), the glass inside the unit's margins. */
 function soloWindowsOnEdge(cut: ReadonlyArray<{ a0: number; a1: number; kind: string; sillM?: number; headM?: number }>, s: number, len: number, m?: { l: number; r: number; t: number; b: number }): Array<{ x: number; hw: number; z0: number; z1: number }> {
@@ -821,6 +885,22 @@ export function rowDoorBay(door: { side: string; index?: number; bays?: number }
   const seen = door.index !== undefined && door.bays ? (door.index + 0.5) / door.bays : door.side === 'left' ? 0.001 : door.side === 'right' ? 0.999 : 0.5;
   const f = ltr ? seen : 1 - seen, bay = Math.max(0, Math.min(bays - 1, Math.floor(f * bays))), local = f * bays - bay;
   return { bay, mirror: Math.abs(1 - axis - local) + 1e-6 < Math.abs(axis - local) };
+}
+/** The cornice's centre piece fields (houseSpec/row/types.ts RowCorniceDress). */
+const CENTRE_KEYS = ['centre', 'centreShare', 'centreRiseM', 'centreCap', 'centreLight', 'centreBody', 'centreShoulders', 'centreArc', 'centreDropM', 'centreLightM'] as const;
+/**
+ * Belt review: a solo plot's cornice centre piece (an attic, a cap, a balustrade) stands once, over its front's middle: on
+ * the wall of its front run that holds the run's middle. Herengracht 90's rear wing faces the canal 14.7 m behind the front;
+ * it carried its own attic, which showed over the flat roof as a second lump with a light (read as a dormer).
+ */
+export function soloCentreOnEdge<T extends { corniceDress?: import('./houseSpec/row/types.js').RowCorniceDress }>(b: Pick<MeshBuilding, 'designSolo'>, rd: T, frontRun: boolean, runM: number, edgeStartM: number, edgeM: number): T {
+  const cd = rd.corniceDress;
+  if (!b.designSolo || !cd?.centre) return rd;
+  const mid = runM / 2 - edgeStartM;
+  if (frontRun && mid >= 0 && mid <= edgeM) return rd;
+  const out = { ...cd } as Record<string, unknown>;
+  for (const k of CENTRE_KEYS) delete out[k];
+  return { ...rd, corniceDress: out as import('./houseSpec/row/types.js').RowCorniceDress };
 }
 function rowDressOnEdge(b: MeshBuilding, runM: number, edgeStartM: number, edgeM: number, ltr: boolean, base: number, boxed: boolean, stoopRun = true): NonNullable<ExtraContext['rowDress']> {
   const boxes = boxed ? b.specRecipe?.windowBoxes ?? [] : [], heads = b.rowDress?.heads ?? [];
@@ -1045,6 +1125,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // House rows: a stated stoop stands on the building's longest street run only (rowDressOnEdge).
     const runLen = (r: Array<{ e: Edge }>) => r.reduce((s, { e }) => s + e.len, 0);
     const rowStoopRun = b.rowDress?.stoop ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
+    // Belt review: a solo plot's front is its longest street run; the measured windows and the cornice's centre piece stand
+    // on it alone (Herengracht 90's rear wing faces the canal too: its own attic drew over the roof as a second lump).
+    const soloFrontRun = b.designSolo ? runList.filter(r => r.some(({ e }) => doorAllowed.has(e))).sort((p, q) => runLen(q) - runLen(p))[0] : undefined;
     for (const run of runList) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
@@ -1114,6 +1197,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
+      const upperAccent = b.upperAccentHex ? parseHex(b.upperAccentHex) : accent;
       if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });
       if(!shell && b.surveyedEnvelope&&b.plainLayer!==undefined)for(const {e}of run)for(const s of sourceEdgeFor(b,e)!.segments){
         if(Math.max(s.z0,s.z1)-top<1e-7)continue;
@@ -1224,7 +1308,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Lane 1 (rowFront): the ground storey cut at the record's traced doors and shop windows (houseLine/boxPlacement
       // groundSpans); a front that keeps a door has it moved to the traced one, so the extras hang on the drawn door.
       const soloMargin = b.designSolo && b.layers ? cellUnit(b.layers.upper)?.margin : undefined;
-      const soloBoxes = !b.specRecipe?.groundBoxes && b.designSolo && b.designGround && streetRun && base < 0.5 && !b.shopfront && b.layers && b.plainLayer !== undefined && !b.plainWalls ? soloGroundBoxes(layout, units ? units.openings : b.openings, b.designGround, b.rowDress?.door?.index, seenLeftToRight(first), soloMargin) : undefined;
+      // Belt windows lane: the measured windows on the solo plot's front run (absent: the cells, as before).
+      const gridHere = b.designOpenings && b.designSolo && run === soloFrontRun && streetRun && !shell && b.plainLayer !== undefined && !b.plainWalls && !compound && !regular && !terrace ? b.designOpenings : undefined;
+      const groundRow = gridHere && !b.shopfront && base < 0.5 && b.designGround ? gridHere.rows.find(r => r.storey === 0) : undefined;
+      const groundMeasured = groundRow && !b.designGround?.front ? openingBoxes(gridHere!, 0, { frontM: layout.lengthM, storeyM: layout.groundM }) : undefined;
+      const soloBoxes = !b.specRecipe?.groundBoxes && b.designSolo && b.designGround && streetRun && base < 0.5 && !b.shopfront && b.layers && b.plainLayer !== undefined && !b.plainWalls ? soloGroundBoxes(layout, units ? units.openings : b.openings, b.designGround, b.rowDress?.door?.index, seenLeftToRight(first), soloMargin, groundMeasured) : undefined;
       const groundBoxes = b.specRecipe?.groundBoxes ?? soloBoxes?.filter((o): o is typeof o & { kind: 'door' | 'window' } => o.kind === 'door' || o.kind === 'window');
       // The same boxes in run metres (as seen -> the run's direction), for the extras' ground windows in every mode.
       const soloRun = soloBoxes?.length ? (seenLeftToRight(first) ? soloBoxes : soloBoxes.map(o => ({ ...o, a0: 1 - o.a1, a1: 1 - o.a0 }))).map(o => ({ ...o, a0: o.a0 * layout.lengthM, a1: o.a1 * layout.lengthM, sillM: o.sillM + base, headM: o.headM + base })) : null;
@@ -1279,7 +1367,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         }
         const q0 = quads.length;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : b.seed ? { seriesId: b.seed } : {}), ...(b.designSlice && streetRun ? { designMember: true as const, ...plotContext(b, seenLeftToRight(first), k === 0, k === run.length - 1) } : {}), ...(soloRun ? { groundWindows: soloWindowsOnEdge(soloRun, s, e.len, soloMargin), ...soloDoorOnEdge(soloRun, s, e.len), ...soloBasementOnEdge(soloRun, s, e.len, base, soloBasementM(b.designGround?.basementRatio, layout.groundM)), ...soloFrontOnEdge(b.designGround?.front, soloRun, s, e.len, base, layout.groundM) } : {}), ...(b.flatCrown && streetRun ? { flatCrown: b.flatCrown } : {}), ...(b.rowDress && streetRun ? { rowDress: rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k) || (gridHere && e.len >= 0.3))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.specBandM ? { bandM: b.specBandM } : {}), ...(b.specFieldsForce?.length ? { statedFirst: b.specFieldsForce } : {}), ...(b.onlyExtras ? { onlyExtras: b.onlyExtras } : {}), ...(b.rowSeries ? { seriesId: b.rowSeries } : b.seed ? { seriesId: b.seed } : {}), ...(b.designSlice && streetRun ? { designMember: true as const, ...plotContext(b, seenLeftToRight(first), k === 0, k === run.length - 1) } : {}), ...(gridHere ? { soloOpeningRows: gridHere.rows.map(r => r.storey), soloOpenings: soloOpeningsOnEdge(b, gridHere, layout, groundTop, facadeTop, seenLeftToRight(first), s, e.len, groundRow && soloRun ? soloWindowsOnEdge(soloRun, s, e.len, soloMargin) : []) } : {}), ...(soloRun ? { groundWindows: soloWindowsOnEdge(soloRun, s, e.len, soloMargin), ...soloDoorOnEdge(soloRun, s, e.len), ...soloBasementOnEdge(soloRun, s, e.len, base, soloBasementM(b.designGround?.basementRatio, layout.groundM)), ...soloFrontOnEdge(b.designGround?.front, soloRun, s, e.len, base, layout.groundM) } : {}), ...(b.flatCrown && streetRun ? { flatCrown: b.flatCrown } : {}), ...(b.rowDress && streetRun ? { rowDress: soloCentreOnEdge(b, rowDressOnEdge(b, layout.lengthM, layout.edgeStartM[k], e.len, seenLeftToRight(first), base, traceRun, !b.rowDress.stoop || run === rowStoopRun), run === soloFrontRun, layout.lengthM, layout.edgeStartM[k], e.len) } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop || b.retailFront), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -1302,7 +1390,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         }else if (groundCut) for (const piece of groundCut) {
           const a0 = Math.max(s, piece.a0), a1 = Math.min(s + e.len, piece.a1); if (a1 - a0 < 1e-4) continue;
           const along0 = (a0 - s) / e.len, along1 = (a1 - s) / e.len;
-          if (piece.kind === 'wall') { quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: base / 3, v1: groundTop / 3, layer: b.plainLayer!, accent, z0: base, z1: groundTop, tint: paint, along0, along1 }); continue; }
+          // Belt windows lane: a measured ground row's windows are joinery on the plain wall (facadeOrnaments solo-openings).
+          if (piece.kind === 'wall' || (piece.kind === 'window' && groundRow)) { quads.push({ kind: 'ground-wall', e, u0: a0 / 5, u1: a1 / 5, v0: base / 3, v1: groundTop / 3, layer: b.plainLayer!, accent, z0: base, z1: groundTop, tint: paint, along0, along1 }); continue; }
           // A traced opening: the cell's own opening (its door, a shop's glass, a ground window: boxCells
           // groundOpeningRect) lands on the traced box across and up; the storey's rest above and below is wall.
           // Belt review: a solo plot's measured ground window is its upper window (the front's own sash), stretched to the box.
@@ -1338,12 +1427,18 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           }
         } else if (upperFacet === 'plain' && layout.storeys > 0) quads.push({ kind: 'upper-wall', e, u0: s / 5, u1: (s + e.len) / 5, v0: groundTop / 3, v1: facadeTop / 3, layer: b.plainLayer!, accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         else if (upperFacet && upperFacet !== 'plain' && layout.storeys > 0) quads.push({ kind: 'upper', e, u0: facetU(upperFacet, s, layout.lengthM), u1: facetU(upperFacet, s + e.len, layout.lengthM), v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
-        else if (!compound&&!regular&&!terrace&&layout.storeys > 0&&layout.storeyHeightsM) {
-          // A measured storey profile (belt review): one cell row per storey, each its own height.
+        else if (!compound&&!regular&&!terrace&&layout.storeys > 0&&(layout.storeyHeightsM||gridHere)) {
+          // A measured storey profile (belt review): one cell row per storey, each its own height. A storey whose windows
+          // are measured (belt windows lane, gridHere) is plain wall: the extras draw its windows as joinery.
           let z = groundTop;
-          for (let st = 0; st < layout.storeys; st++) { const h = layout.storeyHeightsM[st], z1 = st === layout.storeys - 1 ? facadeTop : z + h; quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v0: 0, v1: 1, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: z, z1, tint, along0: 0, along1: 1 }); z = z1; }
+          for (let st = 0; st < layout.storeys; st++) {
+            const h = layout.storeyHeightsM?.[st] ?? layout.storeyM, z1 = st === layout.storeys - 1 ? facadeTop : z + h;
+            if (gridHere?.rows.some(r => r.storey === st + 1)) quads.push({ kind: 'upper-wall', e, u0: s / 5, u1: (s + e.len) / 5, v0: z / 3, v1: z1 / 3, layer: b.plainLayer!, accent, z0: z, z1, tint, along0: 0, along1: 1 });
+            else quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v0: layout.storeyHeightsM ? 0 : st, v1: layout.storeyHeightsM ? 1 : st + 1, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent: upperAccent, z0: z, z1, tint, along0: 0, along1: 1 });
+            z = z1;
+          }
         }
-        else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        else if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent: upperAccent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: uOf(k, s, e.len)[0], u1: uOf(k, s, e.len)[1], v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
         if (steps && b.plainLayer !== undefined) {
           // Each front's wall stops at its own top; above a lower front, a wall set STEP_NOTCH_M back up to the run's
