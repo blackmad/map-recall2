@@ -1037,7 +1037,9 @@ export const SHOP_HEADS = ['round', 'segmental'] as const;
 
 /**
  * Shop sign: `text` (letters, digits, & ' - . and spaces; drawn as capitals), its letter colour, and where it is
- * mounted: on the fascia board (default; needs `fascia: true`), on the wall band above the glass, or on the glass.
+ * mounted: on the fascia board (default; needs `fascia: true`), on the wall band above the glass, on the glass, or
+ * `awning`: lettered on a fabric awning (Van Baerlestraat 46, Ace & Dik, 2024-12-11): across the sloped face of a
+ * `fabric-straight` awning, on the valance of a `fabric-dutch` one; a fascia board may stay behind it.
  */
 export interface ShopSign {
   text: string;
@@ -1049,7 +1051,7 @@ export interface ShopSign {
   span?: number;
   align?: 'left' | 'centre' | 'right';
 }
-export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing'] as const;
+export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing', 'awning'] as const;
 /** Characters the sign lettering can draw (signage.ts GLYPHS, case-folded). */
 export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,40}$/;
 const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'bays', 'storeys', 'display', 'head', 'evidence'];
@@ -2131,7 +2133,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
         if (sign.align !== undefined) oneOf(sign.align, ['left', 'centre', 'right'], `${at}.shopfront.sign.align`);
         if (sign.mount !== undefined) oneOf(sign.mount, SIGN_MOUNTS, `${at}.shopfront.sign.mount`);
         if ((sign.mount ?? 'fascia') === 'fascia' && !sf.fascia) problems.push(`${at}.shopfront.sign: a fascia-mounted sign needs fascia: true`);
-        if (sign.mount && sign.mount !== 'fascia' && sf.fascia) problems.push(`${at}.shopfront.sign: a ${sign.mount}-mounted sign with a fascia board; mount it on the fascia or drop the board`);
+        if (sign.mount === 'awning' && !(sf.awning?.style === 'fabric-straight' || sf.awning?.style === 'fabric-dutch')) problems.push(`${at}.shopfront.sign: an awning-mounted sign needs a fabric awning (fabric-straight or fabric-dutch)`);
+        if (sign.mount && sign.mount !== 'fascia' && sign.mount !== 'awning' && sf.fascia) problems.push(`${at}.shopfront.sign: a ${sign.mount}-mounted sign with a fascia board; mount it on the fascia or drop the board`);
       } else if (sign !== undefined && sign !== null) problems.push(`${at}.shopfront.sign must be an object (or null in an override)`);
       if (sf.displayWindows !== undefined) count(sf.displayWindows, `${at}.shopfront.displayWindows`, 1, 8);
       if (sf.entrance !== undefined) oneOf(sf.entrance, SHOP_ENTRANCES, `${at}.shopfront.entrance`);
