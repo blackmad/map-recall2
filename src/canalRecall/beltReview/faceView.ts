@@ -62,7 +62,9 @@ export async function mountFace(root: HTMLElement, faceId: string): Promise<void
   const pands = () => b.face.pands;
   const cands = (pandId: string): PandCandidates | undefined => b.candidates?.pands.find(p => p.pandId === pandId);
   const imgUrl = (pandId: string, c: PhotoCandidate) => `/api/belt-review/faces/${faceId}/image/${pandId}/${encodeURIComponent(c.id)}`;
-  const editable = (stage: Stage) => b.state.status !== 'accepted' && stage === b.state.stage;
+  // Stage 1 (picks) locks once confirmed; marks and grouping stay open until the block is accepted, because each pass of
+  // drawing fixes asks for them again.
+  const editable = (stage: Stage) => b.state.status !== 'accepted' && (stage === b.state.stage || (stage >= 2 && stage <= b.state.stage));
 
   let derived: Derived | null = null, catalogue: Catalogue | null = null;
   const renders = new Map<string, Promise<RenderInfo>>();

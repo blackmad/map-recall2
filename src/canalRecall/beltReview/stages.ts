@@ -153,7 +153,7 @@ export function renderStage2(ctx: FaceCtx) {
 }
 
 function mark(ctx: FaceCtx, id: string, m: MarkValue, note?: string) {
-  if (!ctx.editable(2)) { ctx.say('Marks are open while stage 2 is', 'err'); return; }
+  if (!ctx.editable(2)) { ctx.say('Marks open once stage 1 is confirmed', 'err'); return; }
   const hash = ctx.derived?.pands[id]?.hash ?? null;
   const prior = ctx.b.marks.marks[id];
   if (m === 'wrong' && view === 'row') focus = id;
@@ -236,7 +236,7 @@ function renderOne(ctx: FaceCtx, p: FaceBundle['face']['pands'][number], can: bo
       h('div', { class: 'chips' }, note, h('button', { class: 'big next', onclick: () => next(ctx, p.pandId) }, 'Next house', h('span', { class: 'key' }, '↵'))));
   }
   replace(ctx.main,
-    can ? null : h('p', { class: 'locked' }, b.state.status === 'accepted' ? 'The block is accepted.' : b.state.stage > 2 ? 'Stage 2 is confirmed; marks are read-only.' : 'Stage 2 opens after stage 1.'),
+    can ? null : h('p', { class: 'locked' }, b.state.status === 'accepted' ? 'The block is accepted.' : 'Stage 2 opens after stage 1.'),
     h('div', { class: 'pand-head one' },
       h('button', { class: 'nav', onclick: () => step(ctx, -1), disabled: pos <= 0, title: 'Previous (←)' }, '‹'),
       h('h2', {}, p.address),
