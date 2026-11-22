@@ -323,6 +323,8 @@ import {buildNieuweAchtergracht129} from './nieuwe-achtergracht-129-builder';
 import {buildKweekschoolMachinisten} from './kweekschool-machinisten-builder';
 import {buildMuziekschoolJacobVanCampen} from './muziekschool-jacob-van-campen-builder';
 import {buildOostenburgergracht15} from './oostenburgergracht-15-builder';
+import {buildMaisonDeVriesLeidseplein} from './maison-de-vries-leidseplein-builder';
+import {buildBroekmansKoningsplein} from './broekmans-koningsplein-builder';
 import {buildOranjekerkPijp} from './oranjekerk-pijp-builder';
 import {buildUtrechtsestraat917} from './utrechtsestraat-9-17-builder';
 import {buildCasaRosso} from './casa-rosso-builder';
@@ -1238,6 +1240,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='kweekschool-machinisten')buildKweekschoolMachinisten(w,d,helpers);
     else if(id==='muziekschool-jacob-van-campen')buildMuziekschoolJacobVanCampen(w,d,helpers);
     else if(id==='oostenburgergracht-15')buildOostenburgergracht15(w,d,helpers);
+    else if(id==='maison-de-vries-leidseplein')buildMaisonDeVriesLeidseplein(w,d,helpers);
+    else if(id==='broekmans-koningsplein')buildBroekmansKoningsplein(w,d,helpers);
     else if(id==='oranjekerk-pijp')buildOranjekerkPijp(w,d,helpers);
     else if(id==='utrechtsestraat-9-17')buildUtrechtsestraat917(w,d,helpers);
     else if(id==='casa-rosso')buildCasaRosso(w,d,helpers);

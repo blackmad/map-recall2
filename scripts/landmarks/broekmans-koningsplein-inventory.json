@@ -1,0 +1,249 @@
+{
+ "schemaVersion": 1,
+ "id": "broekmans-koningsplein",
+ "pand": "0363100012253807",
+ "brief": "scripts/landmarks/broekmans-koningsplein-brief.md",
+ "signature": [
+  "k-corner",
+  "k-railing",
+  "k-windows",
+  "k-balustrade",
+  "k-cresting",
+  "k-waterlijst",
+  "k-mezzanine"
+ ],
+ "walls": [
+  {
+   "tag": "w01-153",
+   "bearing": 153,
+   "lengthM": 16.8,
+   "centre": [
+    4.888637,
+    52.367006
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track05_Sphere_00289",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-corner",
+     "kind": "window-shape",
+     "where": "the rounded corner to the Herengracht, all storeys (register: bollende hoek over een as)",
+     "approxSizeM": [
+      3.4,
+      18
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG arc facets carry one curved axis: curved shop glass, storey glazing and mezzanine lights per facet, with every band and the balcony railing mitred round the curve (offsetPath in the builder)",
+     "seenIn": "TMX7316010203-002860_pano_0000_000020"
+    },
+    {
+     "id": "k-windows",
+     "kind": "window-shape",
+     "where": "first and second storeys, four axes: part 1 three lights, part 2 four lights, transoms (register: grote vensters)",
+     "approxSizeM": [
+      3.3,
+      3
+     ],
+     "plan": "modelled",
+     "how": "glass behind light frames, mullions per light, a transom at 8.25 m and 12.1/12.45 m (the parts differ)",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-railing",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron railing on the balcony ledge of the first storey, 5.7-6.65 m, the whole front and round the corner (register: smeedijzeren hekwerk in de borstwering)",
+     "approxSizeM": [
+      24,
+      0.95
+     ],
+     "plan": "simplified",
+     "how": "barRailing kit (src/canalRecall/landmarks/barRailing.ts): top and bottom rail and bars at 11 cm, dark; the scrolls of the ironwork are not drawn",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-mezzanine",
+     "kind": "window-shape",
+     "where": "fourth layer, 14.7-16.4 m: per axis three lights, the middle widest (part 2 four), between small stone posts",
+     "approxSizeM": [
+      3.3,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-waterlijst",
+     "kind": "other",
+     "where": "projecting waterlijst 16.9-17.35 m over the whole front",
+     "approxSizeM": [
+      24,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "two stepped courses, 0.3 and 0.6 m out, mitred round the corner",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "attic balustrade of part 1 between postamenten over the piers, 18.25-19.0 m (register: balustrade met postamenten)",
+     "approxSizeM": [
+      8,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "venue-kit balustradeRun: plinth, balusters, rail; postamenten as capped stone blocks over the piers",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-cresting",
+     "kind": "crest",
+     "where": "part 2 parapet: a row of small round-topped merlons, 18.45-18.77 m, about 0.65 m apart",
+     "approxSizeM": [
+      7,
+      0.32
+     ],
+     "plan": "modelled",
+     "how": "archSlab merlons on a parapet course",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-piers",
+     "kind": "colonnade",
+     "where": "sandstone-clad piers between the axes, the wide one between the parts at 7.55-8.4 m (register: doorlopende penant)",
+     "approxSizeM": [
+      0.45,
+      11.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-pui",
+     "kind": "other",
+     "where": "shop fronts between stone piers with block capitals under a plain beam, 0-5.45 m; timber double doors in the second axis",
+     "approxSizeM": [
+      16.8,
+      5.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    },
+    {
+     "id": "k-awnings",
+     "kind": "canopy",
+     "where": "white shop awnings over three Koningsplein windows and the edge-7 window, at about 3.3 m",
+     "approxSizeM": [
+      2.9,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "stripedAwning kit in one colour (white)",
+     "seenIn": "TMX7316010203-002542_pano_0004_000298"
+    },
+    {
+     "id": "k-lettering",
+     "kind": "lettering",
+     "where": "ARKET blade sign on the pier at 7.5-8.4 m and window lettering",
+     "approxSizeM": [
+      0.3,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage (ARKET since about 2020)"
+     },
+     "seenIn": "TMX7316010203-002361_pano_0007_000213"
+    }
+   ],
+   "note": "Koningsplein front with the rounded corner and ring edge 7 (w03-149, 3.2 m); heights from the 2021 rectified crop (balustrade top 18.6 m = 3DBAG roof)"
+  },
+  {
+   "tag": "w02-224",
+   "bearing": 224,
+   "lengthM": 7.9,
+   "centre": [
+    4.8883985,
+    52.3669825
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000548",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-windows",
+     "kind": "window-shape",
+     "where": "two axes on the Herengracht, the same tripartite storey windows and mezzanine lights",
+     "approxSizeM": [
+      3.3,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002860_pano_0000_000025"
+    },
+    {
+     "id": "h-railing",
+     "kind": "balcony-ironwork",
+     "where": "the first-storey railing continues along the Herengracht",
+     "approxSizeM": [
+      7.3,
+      0.95
+     ],
+     "plan": "simplified",
+     "how": "barRailing kit, part of the one run round the corner",
+     "seenIn": "TMX7316010203-002860_pano_0000_000025"
+    },
+    {
+     "id": "h-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "attic balustrade with two postamenten",
+     "approxSizeM": [
+      7.3,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "balustradeRun as on the Koningsplein",
+     "seenIn": "TMX7316010203-002860_pano_0000_000025"
+    },
+    {
+     "id": "h-pui",
+     "kind": "other",
+     "where": "two shop windows with white awnings",
+     "approxSizeM": [
+      7.3,
+      5.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002860_pano_0000_000025"
+    }
+   ],
+   "note": "Herengracht front; the brief crop stands under the bridge, the 2022 view TMX7316010203-002860_pano_0000_000025 shows the whole front"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 202025 (Winkelhuis Broekmans)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/29c90175-fcc2-44de-96f0-0612fec071cc?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand 0363100012253807 (PDOK)",
+   "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012253807",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012253807",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253807",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
