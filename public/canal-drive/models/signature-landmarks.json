@@ -126671,6 +126671,248 @@
       "triangles": 20956,
       "bytes": 307568,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "broekmans-koningsplein": {
+      "id": "broekmans-koningsplein",
+      "name": "Winkelhuis Broekmans, Koningsplein 16-20",
+      "modelUrl": "./models/broekmans-koningsplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253807"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8884533,
+          52.36698739
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 25.7,
+        "widthMetres": 26.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.8884533,
+          52.36698739
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012253807 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/broekmans-koningsplein-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002361_pano_0007_000213 (2021, Koningsplein, heights), TMX7316010203-002542_pano_0004_000298 (2022, Koningsplein), TMX7316010203-002860_pano_0000_000020 (2022, the rounded corner), TMX7316010203-002860_pano_0000_000025 (2022, Herengracht) and b_20250109_1300_Track05_Sphere_00289 (2025), CC BY 4.0. Rijksmonument 202025. Per wall in scripts/landmarks/broekmans-koningsplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19.1,
+      "galleryView": {
+        "theta": 3.4,
+        "phi": 1.1
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#cbc2aa",
+        "frame": "#cdc7b5",
+        "white": "#ecebe5",
+        "glass": "#59636a",
+        "dark": "#36393b",
+        "slate": "#6b6e72",
+        "ochre": "#7d5f40"
+      },
+      "attribution": {
+        "title": "Winkelhuis Broekmans, Koningsplein 16-20 / Herengracht 439, Amsterdam (A. Jacot with W. Oldewelt, 1904)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002860_pano_0000_000020/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012253807 (CC0): the sandstone piers and bands round the rounded corner, the large tripartite storey windows, the wrought-iron balcony railing, the mezzanine lights, the waterlijst, the attic balustrade with postamenten and the merlon cresting of the second part, the shop fronts and their white awnings, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8883544,
+              52.3670056
+            ],
+            [
+              4.8883553,
+              52.3670051
+            ],
+            [
+              4.8883548,
+              52.3670048
+            ],
+            [
+              4.8883595,
+              52.3670019
+            ],
+            [
+              4.8883617,
+              52.3670032
+            ],
+            [
+              4.8883738,
+              52.366996
+            ],
+            [
+              4.8883717,
+              52.3669946
+            ],
+            [
+              4.8883751,
+              52.3669926
+            ],
+            [
+              4.8883772,
+              52.3669938
+            ],
+            [
+              4.8884027,
+              52.3669787
+            ],
+            [
+              4.8884022,
+              52.3669782
+            ],
+            [
+              4.888406,
+              52.3669759
+            ],
+            [
+              4.8884067,
+              52.3669763
+            ],
+            [
+              4.8884187,
+              52.3669692
+            ],
+            [
+              4.8884322,
+              52.3669611
+            ],
+            [
+              4.8884303,
+              52.3669598
+            ],
+            [
+              4.8884374,
+              52.3669556
+            ],
+            [
+              4.8884379,
+              52.3669559
+            ],
+            [
+              4.8884393,
+              52.3669551
+            ],
+            [
+              4.8884407,
+              52.366956
+            ],
+            [
+              4.8884463,
+              52.3669535
+            ],
+            [
+              4.8884527,
+              52.366952
+            ],
+            [
+              4.8884595,
+              52.3669514
+            ],
+            [
+              4.8884663,
+              52.3669519
+            ],
+            [
+              4.8884728,
+              52.3669533
+            ],
+            [
+              4.8884738,
+              52.3669523
+            ],
+            [
+              4.8884754,
+              52.3669528
+            ],
+            [
+              4.8884757,
+              52.3669524
+            ],
+            [
+              4.8884845,
+              52.3669553
+            ],
+            [
+              4.888483,
+              52.3669568
+            ],
+            [
+              4.8885244,
+              52.3669704
+            ],
+            [
+              4.8885257,
+              52.3669688
+            ],
+            [
+              4.8885335,
+              52.3669714
+            ],
+            [
+              4.8887435,
+              52.3670388
+            ],
+            [
+              4.8885939,
+              52.3671025
+            ],
+            [
+              4.8886527,
+              52.3671479
+            ],
+            [
+              4.8885708,
+              52.3671828
+            ],
+            [
+              4.8883544,
+              52.3670056
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.194189548492432,
+          -2.4125541804787725e-16,
+          -21.66699981689453
+        ],
+        "max": [
+          20.030261993408203,
+          20.26300048828125,
+          4.542337417602539
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8884533,
+          52.36698739
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.224451541900635,
+        "heightMetres": 20.26300048828125,
+        "depthMetres": 26.20933723449707,
+        "depthCoverage": 0.9890315937546065
+      },
+      "triangles": 9060,
+      "bytes": 128344,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
