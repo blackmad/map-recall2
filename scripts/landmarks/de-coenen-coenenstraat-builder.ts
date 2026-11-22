@@ -34,10 +34,15 @@ const wall = (i: number): Wall => ringFrame(ring, i);
  * the ledge at 10.1 m, the top-floor band 10.3-12.6 m, the white cornice 12.9 m, the eaves soffit 13.7 m. */
 const GF: [number, number] = [1.0, 3.9], F1: [number, number] = [5.4, 8.5], F2: [number, number] = [10.3, 12.6];
 const PLINTH = 0.9, EAVES = 13.75;
+/** The street front is pale cream render over the brick (w01-146: 2021 and 2022 crops), the sides and the north-east bay buff
+ *  brick (w03-235, w07-146): `sandstone` is the render's palette name (tagged stucco, material-slot-tags.ts). */
+const RENDER = 'sandstone';
+let reveal = 'brick';
 
 export function buildDeCoenenCoenenstraat(_w: number, _d: number, b: BuildingTools) {
   B = b;
-  addShell(b, src as never, {wall: 'brick', roof: 'red', roofFor: s => (isFlat(s) ? 'slate' : 'red')});
+  const front = wall(22);
+  addShell(b, src as never, {wall: 'brick', roof: 'red', roofFor: s => (isFlat(s) ? 'slate' : 'red'), wallFor: s => (onFront(s, front) ? RENDER : 'brick')});
   const sink0 = getSink();
   setSink(0.12, true);
   streetFront(wall(22));
@@ -50,6 +55,13 @@ export function buildDeCoenenCoenenstraat(_w: number, _d: number, b: BuildingToo
   setSink(sink0);
 }
 
+/** A 3DBAG wall surface standing in the street front's plane (within 0.35 m of edge 22's line, inside its length). */
+function onFront(s: Surface, w: Wall) {
+  return s.rings[0].every(p => {
+    const dx = p[0] - w.f.origin[0], dz = p[2] - w.f.origin[1], t = dx * w.f.tangent[0] + dz * w.f.tangent[1];
+    return Math.abs(dx * w.f.n[0] + dz * w.f.n[1]) < 0.35 && t > -0.4 && t < w.len + 0.4;
+  });
+}
 function isFlat(s: Surface) {
   const ys = s.rings[0].map(p => p[1]);
   return Math.max(...ys) - Math.min(...ys) < 0.6;
@@ -70,7 +82,7 @@ function bar(f: Frame, t: number, y: number, w: number, h: number, out: number) 
  * of the shell plane, glazing bars 20 cm), so the window reads set back behind the brick face.
  */
 function schoolWindow(w: Wall, t0: number, t1: number, y0: number, y1: number, lights: number, o: {upperRows?: number; lowerRows?: number; reveal?: string} = {}) {
-  const width = t1 - t0, h = y1 - y0, t = (t0 + t1) / 2, rv = o.reveal ?? 'brick';
+  const width = t1 - t0, h = y1 - y0, t = (t0 + t1) / 2, rv = o.reveal ?? reveal;
   slab(B, w.f, t, y0 - 0.06, width + 0.12, h + 0.12, 0.1, 'frame', 0);
   slab(B, w.f, t, y0 + 0.05, width - 0.1, h - 0.1, 0.06, 'glass', 0.1);
   const lw = (width - 0.1) / lights, ur = o.upperRows ?? 2, lr = o.lowerRows ?? 2;
@@ -98,7 +110,7 @@ function eaves(w: Wall, t0: number, t1: number, y = EAVES) {
 function topBand(w: Wall, centres: number[], width: number) {
   for (const c of centres) schoolWindow(w, c - width / 2, c + width / 2, F2[0], F2[1], 2, {upperRows: 1, lowerRows: 1});
   const piers = centres.slice(1).map((c, i) => (c + centres[i]) / 2);
-  for (const p of [centres[0] - width / 2 - 0.25, ...piers, centres.at(-1)! + width / 2 + 0.25]) slab(B, w.f, p, F2[0] - 0.2, 0.42, F2[1] - F2[0] + 0.45, 0.1, 'brick');
+  for (const p of [centres[0] - width / 2 - 0.25, ...piers, centres.at(-1)! + width / 2 + 0.25]) slab(B, w.f, p, F2[0] - 0.2, 0.42, F2[1] - F2[0] + 0.45, 0.1, reveal);
   slab(B, w.f, (centres[0] + centres.at(-1)!) / 2, F2[0] - 0.3, centres.at(-1)! - centres[0] + width + 0.9, 0.12, 0.1, 'stone');
 }
 
@@ -111,6 +123,7 @@ function topBand(w: Wall, centres: number[], width: number) {
  * 162 ... 1052 px between brick piers (2022 crop).
  */
 function streetFront(w: Wall) {
+  reveal = RENDER;
   for (const [a, c] of [[0, 0.45], [1.65, 21.3], [23.5, w.len]]) plinth(w, a, c);
   // side door with a transom light (the 2021 crop's 20-70 px, moved 0.15 m in: the 3DBAG corner stands inside the BAG one)
   slab(B, w.f, 1.05, 0, 1.0, 2.3, 0.12, 'blue');
@@ -121,7 +134,7 @@ function streetFront(w: Wall) {
   // entrance porch: the recess, the light over it, two notice boxes, the iron ornament
   slab(B, w.f, 22.35, 0, 1.9, 2.55, 0.03, 'dark', 0.1);
   // the porch is a recess: brick jambs 0.3 m deep either side and the white lintel over it
-  for (const t of [21.33, 23.37]) slab(B, w.f, t, 0, 0.16, 2.55, 0.42, 'brick');
+  for (const t of [21.33, 23.37]) slab(B, w.f, t, 0, 0.16, 2.55, 0.42, RENDER);
   slab(B, w.f, 22.4, 2.55, 2.6, 0.14, 0.3, 'white', 0.1);
   schoolWindow(w, 21.45, 23.35, 2.82, 3.3, 3, {upperRows: 1, lowerRows: 1});
   for (const t of [20.95, 23.85]) slab(B, w.f, t, 1.0, 0.55, 0.85, 0.12, 'ochre');
@@ -130,6 +143,7 @@ function streetFront(w: Wall) {
   // the ledge under the top floor and the top-floor band
   topBand(w, [3.24, 6.2, 9.2, 12.1, 15.1, 18.04, 21.04], 2.45);
   eaves(w, -0.2, w.len + 0.2);
+  reveal = 'brick';
 }
 
 /** Wrought-iron ornament over the entrance (2021: 1080-1160 px, 705-745 px): a lamp-shaped openwork of bars, simplified. */

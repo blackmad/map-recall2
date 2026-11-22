@@ -104475,7 +104475,8 @@
    "concrete": "#ebe9e2",
    "blue": "#2e4466",
    "dark": "#2b2a29",
-   "ochre": "#b8863c"
+   "ochre": "#b8863c",
+   "sandstone": "#e6dfcc"
   },
   "attribution": {
    "title": "De Coenen, Johannes M. Coenenstraat 4, Amsterdam (former school, 1923)",
@@ -104657,7 +104658,7 @@
   "bagYear": 1963,
   "materialOverrides": {
    "brick": "#7a5a50",
-   "greyBrick": "#9c8a72",
+   "greyBrick": "#c4b8a2",
    "slate": "#5c5b58",
    "white": "#e9e7e1",
    "glass": "#363d42",

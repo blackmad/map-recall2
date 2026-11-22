@@ -1007,7 +1007,7 @@
       "storeyHeights": [
        4.4,
        3.6,
-       3.0
+       3
       ],
       "windowHead": {
        "kind": "flat"
@@ -1045,7 +1045,11 @@
      }
     ],
     "roof": {
-     "material": "slate"
+     "material": "slate",
+     "source": "front",
+     "form": "attic",
+     "pitchDeg": 25,
+     "evidence": "strip 2024-12-11: the 83-93 stucco terrace shows only its cornice against the sky from the street; the 3DBAG roof (to 15.4-15.8 m) is drawn as a 25 degree attic set back behind the cornice, under the sight line from the far pavement (a 70 degree attic showed a grey mansard the photo never shows)"
     },
     "palette": {
      "brick": "#d6c3aa",
@@ -1114,7 +1118,7 @@
       "storeyHeights": [
        4.4,
        3.6,
-       3.0
+       3
       ],
       "windowHead": {
        "kind": "flat"
@@ -1152,7 +1156,11 @@
      }
     ],
     "roof": {
-     "material": "slate"
+     "material": "slate",
+     "source": "front",
+     "form": "attic",
+     "pitchDeg": 25,
+     "evidence": "strip 2024-12-11: the 83-93 stucco terrace shows only its cornice against the sky from the street; the 3DBAG roof (to 15.4-15.8 m) is drawn as a 25 degree attic set back behind the cornice, under the sight line from the far pavement (a 70 degree attic showed a grey mansard the photo never shows)"
     },
     "palette": {
      "brick": "#dac6ac",
@@ -1219,7 +1227,7 @@
       "storeyHeights": [
        4.4,
        3.6,
-       3.0
+       3
       ],
       "windowHead": {
        "kind": "flat"
@@ -1256,7 +1264,11 @@
      }
     ],
     "roof": {
-     "material": "slate"
+     "material": "slate",
+     "source": "front",
+     "form": "attic",
+     "pitchDeg": 25,
+     "evidence": "strip 2024-12-11: the 83-93 stucco terrace shows only its cornice against the sky from the street; the 3DBAG roof (to 15.4-15.8 m) is drawn as a 25 degree attic set back behind the cornice, under the sight line from the far pavement (a 70 degree attic showed a grey mansard the photo never shows)"
     },
     "palette": {
      "brick": "#e2d0b7",
@@ -1315,7 +1327,7 @@
       "storeyHeights": [
        4.4,
        3.6,
-       3.0
+       3
       ],
       "windowHead": {
        "kind": "flat"
@@ -1360,7 +1372,11 @@
      }
     ],
     "roof": {
-     "material": "slate"
+     "material": "slate",
+     "source": "front",
+     "form": "attic",
+     "pitchDeg": 25,
+     "evidence": "strip 2024-12-11: the 83-93 stucco terrace shows only its cornice against the sky from the street; the 3DBAG roof (to 15.4-15.8 m) is drawn as a 25 degree attic set back behind the cornice, under the sight line from the far pavement (a 70 degree attic showed a grey mansard the photo never shows)"
     },
     "palette": {
      "brick": "#d8c4a6",
@@ -1421,7 +1437,7 @@
       "storeyHeights": [
        4.4,
        3.6,
-       3.0
+       3
       ],
       "windowHead": {
        "kind": "flat"
@@ -1458,7 +1474,11 @@
      }
     ],
     "roof": {
-     "material": "slate"
+     "material": "slate",
+     "source": "front",
+     "form": "attic",
+     "pitchDeg": 25,
+     "evidence": "strip 2024-12-11: the 83-93 stucco terrace shows only its cornice against the sky from the street; the 3DBAG roof (to 15.4-15.8 m) is drawn as a 25 degree attic set back behind the cornice, under the sight line from the far pavement (a 70 degree attic showed a grey mansard the photo never shows)"
     },
     "palette": {
      "brick": "#d8c5a5",

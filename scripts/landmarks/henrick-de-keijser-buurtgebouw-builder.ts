@@ -195,7 +195,32 @@ export function buildHenrickDeKeijserBuurtgebouw(_w: number, _d: number, b: Buil
   for (const e of [6, 8]) gableFace(b, e, gables[e] ?? []);
   flushFaces(b);
   for (const s of src.surfaces) if (s.type === 'RoofSurface' && !isFlat(s) && Math.max(...s.rings[0].map(p => p[1])) > 8) courses(b, s);
+  for (const s of src.surfaces) if (s.type === 'RoofSurface' && !isFlat(s) && Math.max(...s.rings[0].map(p => p[1])) > 8) overhang(b, s);
   setSink(sink0);
+}
+
+/**
+ * The tiled eaves overhang (w01-258, w05-168: the pantiles run about 0.45 m past the wall on the long sides): each horizontal
+ * bottom edge of a pitched hall roof plane (at the 3.9-4.2 m eaves) is carried on down its slope as a 0.1 m thick tile strip.
+ */
+function overhang(b: BuildingTools, s: Surface, reach = 0.45) {
+  const r = s.rings[0].map(p => new T.Vector3(p[0], p[1], p[2]));
+  const n = new T.Vector3();
+  for (let k = 0; k < r.length; k++) { const a = r[k], c = r[(k + 1) % r.length]; n.x += (a.y - c.y) * (a.z + c.z); n.y += (a.z - c.z) * (a.x + c.x); n.z += (a.x - c.x) * (a.y + c.y); }
+  n.normalize();
+  if (n.y < 0) n.negate();
+  const lo = Math.min(...r.map(p => p.y));
+  if (lo > 4.6) return;
+  for (let k = 0; k < r.length; k++) {
+    const a = r[k], c = r[(k + 1) % r.length], L = a.distanceTo(c);
+    if (L < 1 || Math.abs(a.y - lo) > 0.08 || Math.abs(c.y - lo) > 0.08) continue;
+    const x = c.clone().sub(a).normalize(), down = new T.Vector3().crossVectors(n, x).normalize();
+    if (down.y > 0) { down.negate(); x.negate(); }
+    const g = new T.BoxGeometry(L, reach, 0.1);
+    const m = new T.Matrix4().makeBasis(x, down, n).setPosition(a.clone().add(c).multiplyScalar(0.5).addScaledVector(down, reach / 2).addScaledVector(n, -0.05));
+    g.applyMatrix4(m);
+    b.add(g, TILE);
+  }
 }
 
 function isFlat(s: Surface) {

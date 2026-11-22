@@ -129164,7 +129164,7 @@
         "depthCoverage": 1.0507081485376126
       },
       "triangles": 4404,
-      "bytes": 65480,
+      "bytes": 65508,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-coenen-coenenstraat": {
@@ -129213,7 +129213,8 @@
         "concrete": "#ebe9e2",
         "blue": "#2e4466",
         "dark": "#2b2a29",
-        "ochre": "#b8863c"
+        "ochre": "#b8863c",
+        "sandstone": "#e6dfcc"
       },
       "attribution": {
         "title": "De Coenen, Johannes M. Coenenstraat 4, Amsterdam (former school, 1923)",
@@ -129388,7 +129389,7 @@
         "depthCoverage": 1.021424840005596
       },
       "triangles": 11607,
-      "bytes": 183596,
+      "bytes": 184992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-kandelaar-vening-meineszlaan": {
@@ -129427,7 +129428,7 @@
       "bagYear": 1963,
       "materialOverrides": {
         "brick": "#7a5a50",
-        "greyBrick": "#9c8a72",
+        "greyBrick": "#c4b8a2",
         "slate": "#5c5b58",
         "white": "#e9e7e1",
         "glass": "#363d42",
@@ -130146,8 +130147,8 @@
         "depthMetres": 18.14408588409424,
         "depthCoverage": 0.7345783758742607
       },
-      "triangles": 6834,
-      "bytes": 111696,
+      "triangles": 6858,
+      "bytes": 112108,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "archipel-makassarplein": {

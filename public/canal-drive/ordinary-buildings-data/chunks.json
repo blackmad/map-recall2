@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T14:14:40.674Z",
+ "generatedAt": "2026-11-22T15:13:50.431Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -115741,11 +115741,11 @@
    "id": "chunk-face-hooft-67-99",
    "category": "street-survey",
    "name": "face-hooft-67-99",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-67-99.glb?asset=f701d84a4636b36d",
-   "sha256": "f701d84a4636b36d97800667115020ca188448efdaba102f07374eca670739c4",
-   "bytes": 481788,
-   "triangles": 20440,
-   "primitives": 47,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-67-99.glb?asset=96d13a77d8c8459c",
+   "sha256": "96d13a77d8c8459c84a5719ed69393739506d954bbc1ff4defeb791881949f01",
+   "bytes": 483376,
+   "triangles": 20417,
+   "primitives": 48,
    "instance": {
     "anchor": [
      4.880264799966783,
@@ -116280,7 +116280,7 @@
        "triangleCount": 22
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 0,
        "triangleCount": 30
       }
@@ -116356,7 +116356,7 @@
        "triangleCount": 9
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 30,
        "triangleCount": 17
       }
@@ -116437,7 +116437,7 @@
        "triangleCount": 16
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 47,
        "triangleCount": 16
       }
@@ -116518,7 +116518,7 @@
        "triangleCount": 18
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 63,
        "triangleCount": 31
       }
@@ -116584,7 +116584,7 @@
        "triangleCount": 6
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 94,
        "triangleCount": 1
       }
@@ -116650,7 +116650,7 @@
        "triangleCount": 7
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 95,
        "triangleCount": 4
       }
@@ -116721,7 +116721,7 @@
        "triangleCount": 11
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 99,
        "triangleCount": 9
       }
@@ -116787,7 +116787,7 @@
        "triangleCount": 8
       },
       {
-       "primitive": 46,
+       "primitive": 47,
        "firstTriangle": 108,
        "triangleCount": 7
       }
@@ -116811,16 +116811,16 @@
       ],
       "max": [
        6.048,
-       13.851,
+       13.585,
        0.273
       ]
      },
-     "triangles": 975,
+     "triangles": 966,
      "ranges": [
       {
        "primitive": 9,
        "firstTriangle": 0,
-       "triangleCount": 118
+       "triangleCount": 110
       },
       {
        "primitive": 17,
@@ -116860,12 +116860,17 @@
       {
        "primitive": 45,
        "firstTriangle": 97,
-       "triangleCount": 10
+       "triangleCount": 3
       },
       {
        "primitive": 46,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 47,
        "firstTriangle": 115,
-       "triangleCount": 47
+       "triangleCount": 41
       }
      ]
     },
@@ -116887,16 +116892,16 @@
       ],
       "max": [
        11.128,
-       14.08,
+       13.778,
        0.263
       ]
      },
-     "triangles": 940,
+     "triangles": 935,
      "ranges": [
       {
        "primitive": 12,
        "firstTriangle": 0,
-       "triangleCount": 99
+       "triangleCount": 96
       },
       {
        "primitive": 17,
@@ -116935,13 +116940,18 @@
       },
       {
        "primitive": 45,
-       "firstTriangle": 107,
-       "triangleCount": 19
+       "firstTriangle": 100,
+       "triangleCount": 13
       },
       {
        "primitive": 46,
-       "firstTriangle": 162,
-       "triangleCount": 22
+       "firstTriangle": 12,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 47,
+       "firstTriangle": 156,
+       "triangleCount": 17
       }
      ]
     },
@@ -116963,7 +116973,7 @@
       ],
       "max": [
        16.519,
-       13.915,
+       13.57,
        0.237
       ]
      },
@@ -116972,7 +116982,7 @@
       {
        "primitive": 14,
        "firstTriangle": 0,
-       "triangleCount": 80
+       "triangleCount": 81
       },
       {
        "primitive": 17,
@@ -117010,14 +117020,14 @@
        "triangleCount": 12
       },
       {
-       "primitive": 45,
-       "firstTriangle": 126,
-       "triangleCount": 4
+       "primitive": 46,
+       "firstTriangle": 21,
+       "triangleCount": 7
       },
       {
-       "primitive": 46,
-       "firstTriangle": 184,
-       "triangleCount": 39
+       "primitive": 47,
+       "firstTriangle": 173,
+       "triangleCount": 35
       }
      ]
     },
@@ -117039,16 +117049,16 @@
       ],
       "max": [
        27.018,
-       13.787,
+       13.458,
        0.279
       ]
      },
-     "triangles": 1346,
+     "triangles": 1339,
      "ranges": [
       {
        "primitive": 10,
        "firstTriangle": 0,
-       "triangleCount": 83
+       "triangleCount": 78
       },
       {
        "primitive": 17,
@@ -117091,14 +117101,14 @@
        "triangleCount": 12
       },
       {
-       "primitive": 45,
-       "firstTriangle": 130,
-       "triangleCount": 5
+       "primitive": 46,
+       "firstTriangle": 28,
+       "triangleCount": 9
       },
       {
-       "primitive": 46,
-       "firstTriangle": 223,
-       "triangleCount": 36
+       "primitive": 47,
+       "firstTriangle": 208,
+       "triangleCount": 30
       }
      ]
     },
@@ -117120,11 +117130,11 @@
       ],
       "max": [
        32.499,
-       13.698,
+       13.338,
        0.3
       ]
      },
-     "triangles": 798,
+     "triangles": 796,
      "ranges": [
       {
        "primitive": 11,
@@ -117167,14 +117177,14 @@
        "triangleCount": 24
       },
       {
-       "primitive": 45,
-       "firstTriangle": 135,
-       "triangleCount": 5
+       "primitive": 46,
+       "firstTriangle": 37,
+       "triangleCount": 7
       },
       {
-       "primitive": 46,
-       "firstTriangle": 259,
-       "triangleCount": 10
+       "primitive": 47,
+       "firstTriangle": 238,
+       "triangleCount": 6
       }
      ]
     },
@@ -117239,12 +117249,12 @@
       },
       {
        "primitive": 45,
-       "firstTriangle": 140,
+       "firstTriangle": 113,
        "triangleCount": 5
       },
       {
-       "primitive": 46,
-       "firstTriangle": 269,
+       "primitive": 47,
+       "firstTriangle": 244,
        "triangleCount": 19
       }
      ]
@@ -117315,12 +117325,12 @@
       },
       {
        "primitive": 45,
-       "firstTriangle": 145,
+       "firstTriangle": 118,
        "triangleCount": 38
       },
       {
-       "primitive": 46,
-       "firstTriangle": 288,
+       "primitive": 47,
+       "firstTriangle": 263,
        "triangleCount": 6
       }
      ]
@@ -117391,12 +117401,12 @@
       },
       {
        "primitive": 45,
-       "firstTriangle": 183,
+       "firstTriangle": 156,
        "triangleCount": 24
       },
       {
-       "primitive": 46,
-       "firstTriangle": 294,
+       "primitive": 47,
+       "firstTriangle": 269,
        "triangleCount": 102
       }
      ]

@@ -528,6 +528,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     gold: {slot: 'door', why: 'brown varnished wooden doors of the factory side parts (w01-248: the double door at n 39 and the door at n 62.6)'},
     copper: {slot: 'roofTile', why: 'red-brown pantiles on the dairy gable and its short roof (register 524830 "zadeldak met pannen", "dakschild met pannen")'},
   },
+  'tugelahuis-tugelaweg': {
+    red: {slot: 'roofTile', measured: '#9c5a40', why: 'the dark rust-red tiled roof and rake boards (PDOK 2025 orthophoto; w01-63 rakes): the city pantile range lifted it to bright orange (r12 sheet)'},
+  },
+  'de-coenen-coenenstraat': {
+    sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
+  },
   'andreas-ensemble': {
     sandstone: {slot: 'brick', why: 'the WestCord Fashion Hotel tower: buff brick that reads ochre-yellow in sun (w12-90 sunlit brick #e4c9a0, Lab h 82; w06-90 upper storeys), drawn apart from the warm red-brown Lelylaan bar and west wing brick'},
   },
