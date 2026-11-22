@@ -104321,5 +104321,676 @@
     ]
    ]
   }
+ },
+ {
+  "id": "tugelahuis-tugelaweg",
+  "name": "Tugelahuis, Tugelaweg 59A",
+  "modelUrl": "./models/tugelahuis-tugelaweg.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012240693"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.92065216,
+    52.35583883
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 17.1,
+   "widthMetres": 16.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.92065216,
+    52.35583883
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012240693 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/tugelahuis-tugelaweg-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas recording_2024-10-02_13-17-06_00528 (2024) and TMX7316010203-001604_pano_0000_000379 (2019, the glazed north-east gable), TMX7315120208-000071_pano_0006_000749 (2016, the south-east side with its portholes), recording_2025-06-20_09-22-37_01794 (2025) and TMX7316010203-002142_pano_0000_003131 (2021, the south-west gable), CC BY 4.0; roof colour and roof lights from the PDOK orthophoto (open data). Per wall in scripts/landmarks/tugelahuis-tugelaweg-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 6.5,
+  "galleryView": {
+   "theta": 0.9,
+   "phi": 1.15
+  },
+  "bagYear": 2015,
+  "materialOverrides": {
+   "white": "#ebe9e2",
+   "red": "#9c5a40",
+   "slate": "#6f716c",
+   "ochre": "#8c6a4c",
+   "glass": "#5a6668",
+   "dark": "#3f3830",
+   "bronze": "#433931",
+   "frame": "#6e706a",
+   "concrete": "#b9b4a8",
+   "pink": "#c98d86",
+   "gold": "#d2b15a"
+  },
+  "attribution": {
+   "title": "Tugelahuis, Tugelaweg 59A, Amsterdam (community centre, 2015)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012240693/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012240693 (CC0): the glazed north-east gable between timber posts with the name on its beam, the rust-red rake boards, the south-east side's three round portholes under the dark fascia, the south-west gable's timber frame, round gable window and mural (as flat colour panels), and the red tile roof with three roof lights, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9207263,
+      52.3558718
+     ],
+     [
+      4.9207151,
+      52.3558849
+     ],
+     [
+      4.9206715,
+      52.355871
+     ],
+     [
+      4.9206544,
+      52.3558913
+     ],
+     [
+      4.9205762,
+      52.3558665
+     ],
+     [
+      4.9205936,
+      52.3558459
+     ],
+     [
+      4.9205573,
+      52.3558343
+     ],
+     [
+      4.9205893,
+      52.3557968
+     ],
+     [
+      4.9206401,
+      52.3557376
+     ],
+     [
+      4.9207978,
+      52.3557882
+     ],
+     [
+      4.9207263,
+      52.3558718
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-coenen-coenenstraat",
+  "name": "De Coenen (former school), Johannes M. Coenenstraat 4",
+  "modelUrl": "./models/de-coenen-coenenstraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012085712"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88131318,
+    52.35266712
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 38.7,
+   "widthMetres": 35.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.88131318,
+    52.35266712
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012085712 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-coenen-coenenstraat-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002118_pano_0000_000477 (2021) and TMX7316010203-002800_pano_0012_000005 (2022, the street front), TMX7316010203-002800_pano_0012_000008 (2022) and recording_2025-09-29_08-09-56_00231 (2025, the north-east bay and its letters), TMX7316010203-002118_pano_0000_000479 (2021, the south-west side), TMX7316010203-002457_pano_0000_001842 (2022, the rear wing), CC BY 4.0. Per wall in scripts/landmarks/de-coenen-coenenstraat-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 20.5,
+  "galleryView": {
+   "theta": 0.35,
+   "phi": 1.1
+  },
+  "bagYear": 1923,
+  "materialOverrides": {
+   "brick": "#dcc189",
+   "red": "#8c6e5c",
+   "slate": "#6a6a66",
+   "frame": "#ecebe4",
+   "glass": "#6f7774",
+   "stone": "#cbbf9f",
+   "greyBrick": "#4f5a62",
+   "white": "#efede6",
+   "concrete": "#ebe9e2",
+   "blue": "#2e4466",
+   "dark": "#2b2a29",
+   "ochre": "#b8863c"
+  },
+  "attribution": {
+   "title": "De Coenen, Johannes M. Coenenstraat 4, Amsterdam (former school, 1923)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012085712/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012085712 (CC0): the buff-brick school front with its small-paned white windows in brick reveals on two tall storeys, the top-floor window band between brick piers, the deep white eaves, the blue-grey glazed plinth, the entrance porch under its iron ornament, the north-east bay with the DE COENEN letters and its dormer, and the roof lights, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8812806,
+      52.3527921
+     ],
+     [
+      4.8812048,
+      52.3527601
+     ],
+     [
+      4.8812299,
+      52.3527373
+     ],
+     [
+      4.88125,
+      52.3527457
+     ],
+     [
+      4.8812689,
+      52.3527286
+     ],
+     [
+      4.8812861,
+      52.3527353
+     ],
+     [
+      4.8813121,
+      52.3527132
+     ],
+     [
+      4.8813335,
+      52.3527218
+     ],
+     [
+      4.8814048,
+      52.3526593
+     ],
+     [
+      4.8813725,
+      52.352646
+     ],
+     [
+      4.8813308,
+      52.3526829
+     ],
+     [
+      4.8813069,
+      52.3526736
+     ],
+     [
+      4.881321,
+      52.3526613
+     ],
+     [
+      4.8813037,
+      52.3526543
+     ],
+     [
+      4.8813001,
+      52.3526572
+     ],
+     [
+      4.8812852,
+      52.3526507
+     ],
+     [
+      4.8812882,
+      52.352648
+     ],
+     [
+      4.8812615,
+      52.3526367
+     ],
+     [
+      4.8812889,
+      52.352611
+     ],
+     [
+      4.8812164,
+      52.3525809
+     ],
+     [
+      4.8811612,
+      52.3526288
+     ],
+     [
+      4.8810587,
+      52.3525864
+     ],
+     [
+      4.8811054,
+      52.3525443
+     ],
+     [
+      4.8812037,
+      52.3524571
+     ],
+     [
+      4.8815143,
+      52.3525881
+     ],
+     [
+      4.8815024,
+      52.3525986
+     ],
+     [
+      4.8815808,
+      52.352632
+     ],
+     [
+      4.8815184,
+      52.3526868
+     ],
+     [
+      4.8815205,
+      52.3526877
+     ],
+     [
+      4.8813904,
+      52.3528053
+     ],
+     [
+      4.881307,
+      52.3527697
+     ],
+     [
+      4.8812806,
+      52.3527921
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-kandelaar-vening-meineszlaan",
+  "name": "De Kandelaar (Salvation Army corps building), Burgemeester Vening Meineszlaan 64",
+  "modelUrl": "./models/de-kandelaar-vening-meineszlaan.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012149095"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.83317569,
+    52.38322358
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 35.2,
+   "widthMetres": 48.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.83317569,
+    52.38322358
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012149095 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-kandelaar-vening-meineszlaan-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001326_pano_0000_005074 (2019) and recording_2025-10-02_10-04-24_00414 (2025, the house's south front), TMX7316010203-002509_pano_0004_002196 (2022, the house's west side), TMX7316010203-000831_pano_0000_002250 (2018) and b_20240918_0854_Track07_Sphere_01244 (2024, the entrance pavilion), recording_2025-10-02_08-33-49_01079 (2025) and TMX7316010203-001326_pano_0000_004058 (2019, the hall's studded east end), TMX7316010203-001326_pano_0000_005066 (2019, the folded south wall), TMX7316010203-002067_pano_0000_002697 (2021, the west wing), CC BY 4.0. Per wall in scripts/landmarks/de-kandelaar-vening-meineszlaan-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 8.5,
+  "galleryView": {
+   "theta": 2.6,
+   "phi": 1.1
+  },
+  "bagYear": 1963,
+  "materialOverrides": {
+   "brick": "#7a5a50",
+   "greyBrick": "#9c8a72",
+   "slate": "#5c5b58",
+   "white": "#e9e7e1",
+   "glass": "#363d42",
+   "red": "#b8382c",
+   "pink": "#a9b5ae",
+   "dark": "#45423e",
+   "frame": "#8c979a",
+   "sandstone": "#8c979a",
+   "concrete": "#e5e3dc",
+   "blue": "#2c3f7a"
+  },
+  "attribution": {
+   "title": "De Kandelaar, Burgemeester Vening Meineszlaan 64, Amsterdam (Salvation Army corps building, 1963)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012149095/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012149095 (CC0): the hall's folded south wall with its tall slit windows, the faceted east end studded with a grid of dark bosses and the red shield, the two-storey house with its window ribbon and red casements, the glazed entrance pavilion with DE KANDELAAR on its white fascia, and the low west wing with the red garage door, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8328623,
+      52.3834078
+     ],
+     [
+      4.8327776,
+      52.3832036
+     ],
+     [
+      4.832792,
+      52.3832013
+     ],
+     [
+      4.8327813,
+      52.3831758
+     ],
+     [
+      4.8327436,
+      52.3831817
+     ],
+     [
+      4.8327379,
+      52.3831826
+     ],
+     [
+      4.8327087,
+      52.3831132
+     ],
+     [
+      4.8328508,
+      52.3830913
+     ],
+     [
+      4.8328802,
+      52.3831602
+     ],
+     [
+      4.8328693,
+      52.383162
+     ],
+     [
+      4.8328801,
+      52.3831874
+     ],
+     [
+      4.832891,
+      52.3831857
+     ],
+     [
+      4.8328913,
+      52.3831862
+     ],
+     [
+      4.8330441,
+      52.3831618
+     ],
+     [
+      4.8330619,
+      52.3832043
+     ],
+     [
+      4.8330848,
+      52.3832008
+     ],
+     [
+      4.8330999,
+      52.3831655
+     ],
+     [
+      4.8331061,
+      52.3831644
+     ],
+     [
+      4.8331144,
+      52.3831697
+     ],
+     [
+      4.8331292,
+      52.3831674
+     ],
+     [
+      4.8331417,
+      52.383159
+     ],
+     [
+      4.8331501,
+      52.3831641
+     ],
+     [
+      4.8331653,
+      52.3831618
+     ],
+     [
+      4.8331773,
+      52.3831534
+     ],
+     [
+      4.8331857,
+      52.3831586
+     ],
+     [
+      4.8332009,
+      52.3831562
+     ],
+     [
+      4.8332129,
+      52.3831479
+     ],
+     [
+      4.8332211,
+      52.383153
+     ],
+     [
+      4.8332363,
+      52.3831507
+     ],
+     [
+      4.8332485,
+      52.3831423
+     ],
+     [
+      4.833257,
+      52.3831474
+     ],
+     [
+      4.8332722,
+      52.3831451
+     ],
+     [
+      4.8332841,
+      52.3831368
+     ],
+     [
+      4.8332923,
+      52.3831419
+     ],
+     [
+      4.8333075,
+      52.3831396
+     ],
+     [
+      4.8333197,
+      52.3831313
+     ],
+     [
+      4.8333278,
+      52.3831364
+     ],
+     [
+      4.8333432,
+      52.383134
+     ],
+     [
+      4.8333554,
+      52.3831257
+     ],
+     [
+      4.8333969,
+      52.383151
+     ],
+     [
+      4.8334257,
+      52.38322
+     ],
+     [
+      4.8334096,
+      52.3832556
+     ],
+     [
+      4.8334082,
+      52.3832605
+     ],
+     [
+      4.833407,
+      52.3832643
+     ],
+     [
+      4.8334061,
+      52.3832669
+     ],
+     [
+      4.8334048,
+      52.3832693
+     ],
+     [
+      4.8334032,
+      52.3832719
+     ],
+     [
+      4.8334009,
+      52.3832746
+     ],
+     [
+      4.8333964,
+      52.3832786
+     ],
+     [
+      4.8333913,
+      52.383282
+     ],
+     [
+      4.8333872,
+      52.383284
+     ],
+     [
+      4.8333834,
+      52.3832857
+     ],
+     [
+      4.8333751,
+      52.3832885
+     ],
+     [
+      4.8333649,
+      52.3832915
+     ],
+     [
+      4.8333544,
+      52.383294
+     ],
+     [
+      4.8333445,
+      52.3832958
+     ],
+     [
+      4.8333381,
+      52.3832968
+     ],
+     [
+      4.8333307,
+      52.3832977
+     ],
+     [
+      4.8333232,
+      52.3832983
+     ],
+     [
+      4.8332717,
+      52.3833016
+     ],
+     [
+      4.83322,
+      52.3833008
+     ],
+     [
+      4.8332206,
+      52.3832982
+     ],
+     [
+      4.8332237,
+      52.3832983
+     ],
+     [
+      4.8332311,
+      52.383283
+     ],
+     [
+      4.8332152,
+      52.3832795
+     ],
+     [
+      4.8332,
+      52.3832819
+     ],
+     [
+      4.8331968,
+      52.3832889
+     ],
+     [
+      4.8331791,
+      52.3832853
+     ],
+     [
+      4.8331644,
+      52.3832877
+     ],
+     [
+      4.8331613,
+      52.3832948
+     ],
+     [
+      4.8331551,
+      52.3832957
+     ],
+     [
+      4.8331127,
+      52.3832693
+     ],
+     [
+      4.8330916,
+      52.3832728
+     ],
+     [
+      4.8331148,
+      52.3833277
+     ],
+     [
+      4.8329607,
+      52.3833521
+     ],
+     [
+      4.8329765,
+      52.3833895
+     ],
+     [
+      4.8328623,
+      52.3834078
+     ]
+    ]
+   ]
+  }
  }
 ]
