@@ -106414,5 +106414,192 @@
     ]
    ]
   }
+ },
+ {
+  "id": "krakeling-passeerdersstraat",
+  "name": "Former Turnzaal (De Krakeling theatre 1978-2020), Nieuwe Passeerdersstraat 1",
+  "modelUrl": "./models/krakeling-passeerdersstraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012174374"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87912737,
+    52.36636629
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 38.6,
+   "widthMetres": 55.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.87912737,
+    52.36636629
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012174374 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/krakeling-passeerdersstraat-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001178_pano_0001_003680 (2019) and TMX7316010203-001047_pano_0000_001548 (2018, the Nieuwe Passeerdersstraat front), TMX7316010203-001178_pano_0001_003686 (2019, the corner with the letters), TMX7316010203-002550_pano_0000_001599 (2022, the corner bay), b_20241216_0911_Track04_Sphere_00032 (2024) and recording_2025-07-03_08-35-58_01846 (2025, the Marnixstraat wing), TMX7316010203-002994_pano_0002_000530 (2023) and TMX7316010203-002978_pano_0004_000262 (2023, the Leidsekade wing), CC BY 4.0. Per wall in scripts/landmarks/krakeling-passeerdersstraat-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 18.2,
+  "galleryView": {
+   "theta": 0.2,
+   "phi": 1.1
+  },
+  "bagYear": 1887,
+  "materialOverrides": {
+   "brick": "#9a6656",
+   "slate": "#55524f",
+   "frame": "#ebe9e2",
+   "glass": "#3f474b",
+   "stone": "#c4beb0",
+   "sandstone": "#b8a684",
+   "red": "#b3262b",
+   "dark": "#2e2c2b",
+   "bronze": "#2e2c2b",
+   "concrete": "#e8e6de",
+   "greyBrick": "#6e4a40"
+  },
+  "attribution": {
+   "title": "Former Turnzaal, Nieuwe Passeerdersstraat 1, Amsterdam (J. Ingenohl and K. Muller, 1886-87; De Krakeling theatre 1978-2020)",
+   "author": "Map Recall",
+   "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518465",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012174374 (CC0): the set-back gymnasium hall with its eight lattice-topped windows between capped buttresses and the stepped middle gable, the low annex along the street with barred windows under the red fascia, the two hipped pavilions with their red doors under slated hoods, the red De Krakeling letters on the corner cornice and the stone figure, and the Marnixstraat and Leidsekade dwelling wings with their stone bands, arched souterrain windows, segmental and round window heads, iron date and fleur-de-lis anchors, the portico, the pointed Marnixstraat dormer gable and the stepped Leidsekade gable, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8795315,
+      52.3664195
+     ],
+     [
+      4.8794664,
+      52.3665313
+     ],
+     [
+      4.8794709,
+      52.3665326
+     ],
+     [
+      4.8794439,
+      52.3665669
+     ],
+     [
+      4.8793398,
+      52.3665361
+     ],
+     [
+      4.8793413,
+      52.3665343
+     ],
+     [
+      4.8792839,
+      52.3665173
+     ],
+     [
+      4.8792831,
+      52.3665184
+     ],
+     [
+      4.8788808,
+      52.3663997
+     ],
+     [
+      4.8788817,
+      52.3663987
+     ],
+     [
+      4.8788241,
+      52.3663817
+     ],
+     [
+      4.8788227,
+      52.3663836
+     ],
+     [
+      4.8787175,
+      52.3663525
+     ],
+     [
+      4.8787522,
+      52.3663079
+     ],
+     [
+      4.8787602,
+      52.3663102
+     ],
+     [
+      4.8788558,
+      52.3662215
+     ],
+     [
+      4.8788518,
+      52.3662198
+     ],
+     [
+      4.878854,
+      52.3662177
+     ],
+     [
+      4.8790578,
+      52.3662779
+     ],
+     [
+      4.8790805,
+      52.3662488
+     ],
+     [
+      4.879101,
+      52.3662548
+     ],
+     [
+      4.8790783,
+      52.3662839
+     ],
+     [
+      4.8790987,
+      52.3662899
+     ],
+     [
+      4.8791217,
+      52.3662605
+     ],
+     [
+      4.8793112,
+      52.3663164
+     ],
+     [
+      4.8792882,
+      52.3663458
+     ],
+     [
+      4.8793088,
+      52.3663519
+     ],
+     [
+      4.8793319,
+      52.3663225
+     ],
+     [
+      4.8793524,
+      52.3663285
+     ],
+     [
+      4.8793293,
+      52.366358
+     ],
+     [
+      4.8795315,
+      52.3664195
+     ]
+    ]
+   ]
+  }
  }
 ]

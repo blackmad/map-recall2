@@ -1,0 +1,659 @@
+{
+ "schemaVersion": 1,
+ "id": "krakeling-passeerdersstraat",
+ "pand": "0363100012174374",
+ "brief": "scripts/landmarks/krakeling-passeerdersstraat-brief.md",
+ "signature": [
+  "c-letters",
+  "n-stepped-gable",
+  "n-hall-windows",
+  "n-red-fascia",
+  "m-date-anchors",
+  "l-portico",
+  "n-buttresses"
+ ],
+ "walls": [
+  {
+   "tag": "w01-335",
+   "bearing": 335,
+   "lengthM": 42.7,
+   "centre": [
+    4.879003,
+    52.3664375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_003680",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-hall-windows",
+     "kind": "window-shape",
+     "where": "the set-back gymnasium hall: eight three-light windows, the upper third a diamond lattice over a transom, white frames, three small round arches in the brick over each window",
+     "approxSizeM": [
+      2.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "latticeWindow(): frame, pane, two mullions, transom, 2 x 3 glass lozenges per light on the white ground; archBand x3 over each non-gable window",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-buttresses",
+     "kind": "other",
+     "where": "brick buttresses between the hall bays rising above the eaves to small gabled caps",
+     "approxSizeM": [
+      0.55,
+      4.8
+     ],
+     "plan": "modelled",
+     "how": "slab buttress 0.4 m deep, stone cap course, slated triangular cap; the two at the gable taller",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-stepped-gable",
+     "kind": "other",
+     "where": "the stepped gable over the two middle bays: three steps with stone copings, a top block with a pair of small windows and the pinecone finial",
+     "approxSizeM": [
+      7.6,
+      5.8
+     ],
+     "plan": "modelled",
+     "how": "steppedGable() poly with stone copings per tread, stone pedestal and a hexagonal cone finial, win() pair in the top block",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-gable-arches",
+     "kind": "relief",
+     "where": "two big round relieving arches over the gable windows, the two shields and the stone plaque between them",
+     "approxSizeM": [
+      2.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "archBand rowlocks, shield polys and a stone plaque slab",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-annex",
+     "kind": "window-shape",
+     "where": "the single-storey annex along the street: barred windows between brick piers, brick base",
+     "approxSizeM": [
+      30.6,
+      3.4
+     ],
+     "plan": "modelled",
+     "how": "annex(): nine window groups with mullions and iron bars every 14 cm, brick plinth",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-red-fascia",
+     "kind": "sign",
+     "where": "the red fascia band and grey roof edge along the whole annex",
+     "approxSizeM": [
+      30.8,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "red slab 0.2 m proud with the slated edge over it",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-red-door",
+     "kind": "other",
+     "where": "the red double door in the annex",
+     "approxSizeM": [
+      1.1,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "red leaf slab and a red head board",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-pavilion-doors",
+     "kind": "canopy",
+     "where": "the two hipped pavilions at the ends of the annex: red arched doors under slated hoods on stone posts, a window with a segmental head over each",
+     "approxSizeM": [
+      2.4,
+      4
+     ],
+     "plan": "modelled",
+     "how": "door(), stone posts and frieze, a four-sided slated hood, win() + segHead()",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-hall-eaves",
+     "kind": "other",
+     "where": "the hall eaves: a brick corbel course and the dark gutter",
+     "approxSizeM": [
+      30,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "two slabs per run either side of the gable",
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-roof-dormers",
+     "kind": "window-shape",
+     "where": "six small gabled dormers on the hall roof",
+     "approxSizeM": [
+      0.9,
+      1.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 1 m wide, 9 m up behind the annex; the one 3DBAG roof polygon over the hall is warped, so a dormer placed on its plane is half buried in the triangulated roof"
+     },
+     "seenIn": "TMX7316010203-001047_pano_0000_001548"
+    },
+    {
+     "id": "n-posters",
+     "kind": "sign",
+     "where": "theatre posters in frames on the annex piers",
+     "approxSizeM": [
+      0.5,
+      0.7
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "the theatre left in 2020; poster frames change"
+     },
+     "seenIn": "TMX7316010203-001178_pano_0001_003680"
+    },
+    {
+     "id": "n-parking-sign",
+     "kind": "sign",
+     "where": "parking sign and lamp post in front",
+     "approxSizeM": [
+      0.6,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not on the building"
+     },
+     "seenIn": "TMX7316010203-001178_pano_0001_003680"
+    }
+   ]
+  },
+  {
+   "tag": "w02-155",
+   "bearing": 155,
+   "lengthM": 14.3,
+   "centre": [
+    4.879219,
+    52.3662905
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-003007_pano_0009_000155",
+   "capturedAt": "2023-03-20",
+   "checked": true,
+   "items": [],
+   "note": "The only panorama (47 deg oblique) shows the neighbouring white-stuccoed house and its stoop, not this pand: the courtyard side is not seen from any street. Left to the 3DBAG shell."
+  },
+  {
+   "tag": "w03-71",
+   "bearing": 71,
+   "lengthM": 13.1,
+   "centre": [
+    4.8795015,
+    52.3664775
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track04_Sphere_00032",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-souterrain",
+     "kind": "window-shape",
+     "where": "souterrain: four round-arched windows with iron grilles and two arched doors at the left",
+     "approxSizeM": [
+      1.15,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "archWin() with bars every 11 cm and a brick arch; door() arched leaves (one dark, one brown)",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-first-floor",
+     "kind": "window-shape",
+     "where": "first floor: seven cross windows (paired narrow ones at both ends) under the white dentil cornice",
+     "approxSizeM": [
+      1.2,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "win() 2 x 4 panes, brick reveals, stone sills; white cornice slab with a dentil row",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-upper-windows",
+     "kind": "window-shape",
+     "where": "second floor five windows under segmental stone-and-brick heads, third floor five under round relieving arches",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "win() + segHead() / roundHead()",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-date-anchors",
+     "kind": "lettering",
+     "where": "iron anchors between the second-floor windows reading A 1 8 8 7 and a ring",
+     "approxSizeM": [
+      0.35,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "lettering() glyph pixels in dark iron, a torus ring for the last anchor",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-stone-bands",
+     "kind": "other",
+     "where": "light stone speklagen through the brick at every storey",
+     "approxSizeM": [
+      13,
+      0.09
+     ],
+     "plan": "modelled",
+     "how": "bands() via speklagen, broken at every opening",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-dormer-gable",
+     "kind": "other",
+     "where": "the pointed dormer gable over the middle risalit: brick shoulders with stone kneelers, stone coped rakes and a finial, four small white blind arches under the eaves line and a small window just above it",
+     "approxSizeM": [
+      3.4,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "poly() brick body with shoulders, stone coping poly behind, kneeler slabs, finial slab, archSlab x4, win()",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-white-dormers",
+     "kind": "window-shape",
+     "where": "the two white timber dormers either side of the gable",
+     "approxSizeM": [
+      1.7,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "whiteDormer(): white box set back from the eaves, two-light window, slated cap",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-eaves",
+     "kind": "other",
+     "where": "the white eaves board",
+     "approxSizeM": [
+      13,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "white slab along the eaves",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    },
+    {
+     "id": "m-anchors",
+     "kind": "other",
+     "where": "iron T-anchors on the piers over the third floor",
+     "approxSizeM": [
+      0.25,
+      0.4
+     ],
+     "plan": "simplified",
+     "how": "anchor(): two thin dark slabs",
+     "seenIn": "b_20241216_0911_Track04_Sphere_00032"
+    }
+   ]
+  },
+  {
+   "tag": "w04-333",
+   "bearing": 333,
+   "lengthM": 12.2,
+   "centre": [
+    4.879367,
+    52.366544
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_003686",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-letters",
+     "kind": "lettering",
+     "where": "the red \"De Krakeling\" channel letters standing on the white cornice over the first floor",
+     "approxSizeM": [
+      7,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "lettering() mixed-case pixel glyphs (0.098 m px) in red, 0.16 m off the wall on the cornice",
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-cornice",
+     "kind": "other",
+     "where": "the white cornice on consoles across the corner block",
+     "approxSizeM": [
+      8,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "white slab 0.34 m deep and consoles every 0.85 m",
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-statue",
+     "kind": "sculpture",
+     "where": "a standing stone figure on a console right of the paired windows",
+     "approxSizeM": [
+      0.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "how": "a console and a block figure (body, head, arms) in pale stone; the carving belongs to the sculpture track",
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-windows",
+     "kind": "window-shape",
+     "where": "a round-arched grilled souterrain window, the paired first-floor windows, the second-floor window under a segmental head and the third-floor window under a round arch",
+     "approxSizeM": [
+      1.3,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "archWin(), win(), segHead(), roundHead()",
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-dormer-gable",
+     "kind": "other",
+     "where": "the small stepped gable on the corner roof with four blind arches and a window",
+     "approxSizeM": [
+      3.6,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "steppedGable() + archSlab x4 + win()",
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-empty-frame",
+     "kind": "sign",
+     "where": "an empty steel sign frame on the brick left of the windows",
+     "approxSizeM": [
+      2.1,
+      3.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a frame for banners, empty in 2019"
+     },
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    },
+    {
+     "id": "c-boards",
+     "kind": "sign",
+     "where": "poster boards and the chalk board at street level",
+     "approxSizeM": [
+      2,
+      1.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "theatre posters, gone since the 2020 move"
+     },
+     "seenIn": "TMX7316010203-001178_pano_0001_003686"
+    }
+   ]
+  },
+  {
+   "tag": "w05-237",
+   "bearing": 237,
+   "lengthM": 11.7,
+   "centre": [
+    4.8788105,
+    52.366268
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002978_pano_0004_000262",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "l-portico",
+     "kind": "colonnade",
+     "where": "the portico axis: stone steps up to the round-arched red door, and the loggia over it with its stone column",
+     "approxSizeM": [
+      1.7,
+      5.5
+     ],
+     "plan": "modelled",
+     "how": "stone step slabs, door(), loggia recess with a stone column and arch band",
+     "seenIn": "TMX7316010203-002978_pano_0004_000262"
+    },
+    {
+     "id": "l-windows",
+     "kind": "window-shape",
+     "where": "tall cross windows on four storeys: segmental heads on the souterrain and second floor, round relieving arches on the first and third floors",
+     "approxSizeM": [
+      1.3,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "leidseColumn(): win() + segHead()/roundHead() per storey",
+     "seenIn": "TMX7316010203-002978_pano_0004_000262"
+    },
+    {
+     "id": "l-fleur-anchors",
+     "kind": "balcony-ironwork",
+     "where": "iron fleur-de-lis anchors between the first-floor arches, with stone consoles under them",
+     "approxSizeM": [
+      0.4,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "fleur() polys in dark iron and a stone console slab",
+     "seenIn": "TMX7316010203-002978_pano_0004_000262"
+    },
+    {
+     "id": "l-bands",
+     "kind": "other",
+     "where": "stone speklagen and the stone band over the souterrain",
+     "approxSizeM": [
+      11.8,
+      0.1
+     ],
+     "plan": "modelled",
+     "how": "bands() and a stone slab at 2.0 m",
+     "seenIn": "TMX7316010203-002978_pano_0004_000262"
+    },
+    {
+     "id": "l-dormer",
+     "kind": "other",
+     "where": "the dormer gable over the portico axis with two small windows",
+     "approxSizeM": [
+      3.2,
+      2.2
+     ],
+     "plan": "modelled",
+     "how": "steppedGable() + two win()",
+     "seenIn": "TMX7316010203-002978_pano_0004_000262"
+    }
+   ]
+  },
+  {
+   "tag": "w06-245",
+   "bearing": 245,
+   "lengthM": 5.5,
+   "centre": [
+    4.8787375,
+    52.3663325
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002994_pano_0002_000530",
+   "capturedAt": "2023-03-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-windows",
+     "kind": "window-shape",
+     "where": "two axes of tall cross windows, segmental and round heads alternating by storey",
+     "approxSizeM": [
+      1.3,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "leidseColumn() x2",
+     "seenIn": "TMX7316010203-002994_pano_0002_000530"
+    },
+    {
+     "id": "g-fleur",
+     "kind": "balcony-ironwork",
+     "where": "the fleur-de-lis anchor between the first-floor arches and T-anchors above",
+     "approxSizeM": [
+      0.4,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "fleur() and anchor()",
+     "seenIn": "TMX7316010203-002994_pano_0002_000530"
+    },
+    {
+     "id": "g-gable-window",
+     "kind": "window-shape",
+     "where": "the three-light window in the stepped gable",
+     "approxSizeM": [
+      1.1,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "win() 3 x 1",
+     "seenIn": "TMX7316010203-002994_pano_0002_000530"
+    },
+    {
+     "id": "g-stepped-gable",
+     "kind": "other",
+     "where": "the stepped gable of the corner bay",
+     "approxSizeM": [
+      5.5,
+      4
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG gable wall (crown 17.4 m) as scanned",
+     "seenIn": "TMX7316010203-002994_pano_0002_000530"
+    },
+    {
+     "id": "g-bands",
+     "kind": "other",
+     "where": "stone speklagen at every storey",
+     "approxSizeM": [
+      5.5,
+      0.1
+     ],
+     "plan": "modelled",
+     "how": "bands()",
+     "seenIn": "TMX7316010203-002994_pano_0002_000530"
+    }
+   ]
+  },
+  {
+   "tag": "w07-64",
+   "bearing": 64,
+   "lengthM": 4.2,
+   "centre": [
+    4.8794605,
+    52.366552
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002550_pano_0000_001599",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-bay-windows",
+     "kind": "window-shape",
+     "where": "the corner bay: arched souterrain window, single first-floor window, paired second-floor windows under round arches, a triple window with three round heads, a small top window",
+     "approxSizeM": [
+      2.3,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "archWin(), win(), roundHead(), win() 6 x 4 with two mullions and three arch bands",
+     "seenIn": "TMX7316010203-002550_pano_0000_001599"
+    },
+    {
+     "id": "e-stone-band",
+     "kind": "other",
+     "where": "the heavy stone band at 5.0 m and the speklagen",
+     "approxSizeM": [
+      4.2,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "stone slab and bands()",
+     "seenIn": "TMX7316010203-002550_pano_0000_001599"
+    },
+    {
+     "id": "e-street-sign",
+     "kind": "sign",
+     "where": "the blue Marnixstraat street-name plate",
+     "approxSizeM": [
+      0.6,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.6 m enamel plate"
+     },
+     "seenIn": "TMX7316010203-002550_pano_0000_001599"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012174374",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012174374/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174374",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 518465",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518465",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Jeugdtheater De Krakeling",
+   "url": "https://nl.wikipedia.org/wiki/Jeugdtheater_De_Krakeling",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

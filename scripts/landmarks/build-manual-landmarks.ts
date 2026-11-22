@@ -551,6 +551,7 @@ import {buildDeKandelaarVeningMeineszlaan} from './de-kandelaar-vening-meineszla
 import {buildDepotScheepvaartmuseum} from './depot-scheepvaartmuseum-builder';
 import {buildDeCoenenCoenenstraat} from './de-coenen-coenenstraat-builder';
 import {buildOlympusHygieaplein} from './olympus-hygieaplein-builder';
+import {buildKrakelingPasseerdersstraat} from './krakeling-passeerdersstraat-builder';
 import {buildWitteBoeiWittenburg} from './witte-boei-wittenburg-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
 import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
@@ -1297,6 +1298,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='depot-scheepvaartmuseum')buildDepotScheepvaartmuseum(w,d,helpers);
     else if(id==='de-coenen-coenenstraat')buildDeCoenenCoenenstraat(w,d,helpers);
     else if(id==='olympus-hygieaplein')buildOlympusHygieaplein(w,d,helpers);
+    else if(id==='krakeling-passeerdersstraat')buildKrakelingPasseerdersstraat(w,d,helpers);
     else if(id==='witte-boei-wittenburg')buildWitteBoeiWittenburg(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
