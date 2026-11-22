@@ -2041,6 +2041,11 @@
       "version": "8dec29350cde4a10",
       "dateSource": "asset-update"
     },
+    "depot-scheepvaartmuseum": {
+      "updatedAt": "2026-11-22T17:58:23.865Z",
+      "version": "824aaeb143ac6e58",
+      "dateSource": "asset-update"
+    },
     "diamant-museum": {
       "updatedAt": "2026-11-15T09:11:05.533Z",
       "version": "482d3e0478526be4",
@@ -2834,6 +2839,11 @@
     "hannekes-boom.lod2": {
       "updatedAt": "2026-11-07T14:08:58.153Z",
       "version": "c7ee78e9f1fae36a",
+      "dateSource": "asset-update"
+    },
+    "hans-en-grietje-spiegelgracht": {
+      "updatedAt": "2026-11-22T18:19:39.977Z",
+      "version": "c4b57eec0f173698",
       "dateSource": "asset-update"
     },
     "haparandaweg-11": {
@@ -3761,6 +3771,11 @@
       "version": "cb146e75077203aa",
       "dateSource": "asset-update"
     },
+    "jungle-swindenstraat": {
+      "updatedAt": "2026-11-22T18:52:56.348Z",
+      "version": "7bb513485eb6d6ec",
+      "dateSource": "asset-update"
+    },
     "kadijksplein-17-18": {
       "updatedAt": "2026-11-20T10:35:19.866Z",
       "version": "5aef5291c712d334",
@@ -4146,6 +4161,11 @@
       "version": "d0a785b921aea4b1",
       "dateSource": "asset-update"
     },
+    "krakeling-passeerdersstraat": {
+      "updatedAt": "2026-11-22T18:20:01.111Z",
+      "version": "a85751aa8775c218",
+      "dateSource": "asset-update"
+    },
     "kramatplantsoen-203": {
       "updatedAt": "2026-11-20T13:26:33.390Z",
       "version": "56d21a0a83f22de2",
@@ -4387,13 +4407,13 @@
       "dateSource": "asset-update"
     },
     "maagdenhuis.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.404Z",
-      "version": "3c6093c8b0913869",
+      "updatedAt": "2026-11-22T18:36:46.537Z",
+      "version": "f36fbc8ad0d880b1",
       "dateSource": "asset-update"
     },
     "maagdenhuis.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.168Z",
-      "version": "94f0078600584d40",
+      "updatedAt": "2026-11-22T18:36:46.537Z",
+      "version": "e51e32ef6299ad27",
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk": {
@@ -4612,13 +4632,13 @@
       "dateSource": "asset-update"
     },
     "mercatorplein-noordtoren.lod1": {
-      "updatedAt": "2026-10-16T07:11:29.173Z",
-      "version": "cb189232aeae9183",
+      "updatedAt": "2026-11-22T18:36:46.553Z",
+      "version": "0606c4c3066b62f5",
       "dateSource": "asset-update"
     },
     "mercatorplein-noordtoren.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.170Z",
-      "version": "f436e7bc65e1d269",
+      "updatedAt": "2026-11-22T18:36:46.553Z",
+      "version": "371516db5692774b",
       "dateSource": "asset-update"
     },
     "mercatorplein-zuidtoren": {
@@ -4627,13 +4647,13 @@
       "dateSource": "asset-update"
     },
     "mercatorplein-zuidtoren.lod1": {
-      "updatedAt": "2026-10-16T07:11:29.180Z",
-      "version": "87e1a3ed788d8248",
+      "updatedAt": "2026-11-22T18:36:46.554Z",
+      "version": "1419e4e9668862bb",
       "dateSource": "asset-update"
     },
     "mercatorplein-zuidtoren.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.170Z",
-      "version": "e4016d4be65b086c",
+      "updatedAt": "2026-11-22T18:36:46.554Z",
+      "version": "64aba2633dcc681d",
       "dateSource": "asset-update"
     },
     "micropia-ledenlokalen": {
@@ -5091,6 +5111,11 @@
       "version": "b3d17bb04a36e827",
       "dateSource": "asset-update"
     },
+    "nieuwe-doelenstraat-12": {
+      "updatedAt": "2026-11-22T18:29:47.558Z",
+      "version": "e6384dd894335e2c",
+      "dateSource": "asset-update"
+    },
     "nieuwe-kerk": {
       "updatedAt": "2026-10-24T18:34:03.831Z",
       "version": "5ee4be33beed348c",
@@ -5324,6 +5349,11 @@
     "olympisch-stadion.lod2": {
       "updatedAt": "2026-11-07T14:08:58.175Z",
       "version": "d6cb304885cf669b",
+      "dateSource": "asset-update"
+    },
+    "olympus-hygieaplein": {
+      "updatedAt": "2026-11-22T17:58:08.416Z",
+      "version": "d7da25a6b4b87f0e",
       "dateSource": "asset-update"
     },
     "ons-lieve-heer-op-solder": {
@@ -6027,13 +6057,13 @@
       "dateSource": "asset-update"
     },
     "rapenburgerstraat-220.lod1": {
-      "updatedAt": "2026-11-22T15:06:27.868Z",
-      "version": "8bee344f3e037f48",
+      "updatedAt": "2026-11-22T18:36:47.144Z",
+      "version": "c7747f9e0e2ad212",
       "dateSource": "asset-update"
     },
     "rapenburgerstraat-220.lod2": {
-      "updatedAt": "2026-11-22T15:06:27.869Z",
-      "version": "85a6729bf62cba86",
+      "updatedAt": "2026-11-22T18:36:47.144Z",
+      "version": "2c610f594b9a423d",
       "dateSource": "asset-update"
     },
     "rapenburgerstraat-4": {
@@ -6337,13 +6367,13 @@
       "dateSource": "asset-update"
     },
     "room-mate-aitana.lod1": {
-      "updatedAt": "2026-11-20T06:16:11.522Z",
-      "version": "e98601a81060ccb5",
+      "updatedAt": "2026-11-22T18:36:47.166Z",
+      "version": "5f5c4ae5cb61015a",
       "dateSource": "asset-update"
     },
     "room-mate-aitana.lod2": {
-      "updatedAt": "2026-11-20T06:16:11.522Z",
-      "version": "d51ee9f11bfb462d",
+      "updatedAt": "2026-11-22T18:36:47.166Z",
+      "version": "f33b4b98511de122",
       "dateSource": "asset-update"
     },
     "royal-theater-carre": {
@@ -7287,13 +7317,13 @@
       "dateSource": "asset-update"
     },
     "tropenmuseum.lod1": {
-      "updatedAt": "2026-10-17T12:44:28.446Z",
-      "version": "860b22c48da74f9a",
+      "updatedAt": "2026-11-22T18:36:47.232Z",
+      "version": "95fbd04f5b09922d",
       "dateSource": "asset-update"
     },
     "tropenmuseum.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.195Z",
-      "version": "0226f8d6eec640ef",
+      "updatedAt": "2026-11-22T18:36:47.233Z",
+      "version": "bcdf6e0e5226e3af",
       "dateSource": "asset-update"
     },
     "tugelahuis-tugelaweg": {
@@ -8274,36 +8304,6 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
-      "dateSource": "asset-update"
-    },
-    "depot-scheepvaartmuseum": {
-      "updatedAt": "2026-11-22T17:58:23.865Z",
-      "version": "824aaeb143ac6e58",
-      "dateSource": "asset-update"
-    },
-    "jungle-swindenstraat": {
-      "updatedAt": "2026-11-22T18:00:23.981Z",
-      "version": "62d7255785b2f01f",
-      "dateSource": "asset-update"
-    },
-    "olympus-hygieaplein": {
-      "updatedAt": "2026-11-22T17:58:08.416Z",
-      "version": "d7da25a6b4b87f0e",
-      "dateSource": "asset-update"
-    },
-    "krakeling-passeerdersstraat": {
-      "updatedAt": "2026-11-22T18:20:01.111Z",
-      "version": "a85751aa8775c218",
-      "dateSource": "asset-update"
-    },
-    "hans-en-grietje-spiegelgracht": {
-      "updatedAt": "2026-11-22T18:19:39.977Z",
-      "version": "c4b57eec0f173698",
-      "dateSource": "asset-update"
-    },
-    "nieuwe-doelenstraat-12": {
-      "updatedAt": "2026-11-22T18:29:47.558Z",
-      "version": "e6384dd894335e2c",
       "dateSource": "asset-update"
     }
   }
