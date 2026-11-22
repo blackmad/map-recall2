@@ -206,6 +206,9 @@
   },
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 90,
+  "materialOverrides": {
+   "stone": "#efe9db"
+  },
   "attribution": {
    "title": "Pontsteiger",
    "author": "Map Recall",
