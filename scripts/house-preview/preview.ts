@@ -539,10 +539,10 @@ function placedToEnu(p: Placement): (x: number, y: number, z: number) => Vec3 {
   return (x, y, z) => { const xm = p.mirror ? -x : x; return [ex + xm * c - z * s, ny - xm * s - z * c, y]; };
 }
 /** Recipe GLB (x east, y up, z south, RD metres from anchorRD) to chunk metres, through RD -> WGS84 per vertex. */
-function recipeToEnu(anchorRD: [number, number]): (x: number, y: number, z: number) => Vec3 {
+export function recipeToEnu(anchorRD: [number, number]): (x: number, y: number, z: number) => Vec3 {
   return (x, y, z) => { const [lng, lat] = rdToLngLat({ x: anchorRD[0] + x, y: anchorRD[1] - z }); const [e, n] = chunkMetres(lng, lat); return [e, n, y]; };
 }
-function soupToEnu(soup: MaterialSoup, f: (x: number, y: number, z: number) => Vec3): MaterialSoup {
+export function soupToEnu(soup: MaterialSoup, f: (x: number, y: number, z: number) => Vec3): MaterialSoup {
   const P = soup.positions, out: number[] = new Array(P.length);
   for (let v = 0; v * 3 < P.length; v++) { const q = f(P[v * 3], P[v * 3 + 1], P[v * 3 + 2]); out[v * 3] = q[0]; out[v * 3 + 1] = q[1]; out[v * 3 + 2] = q[2]; }
   const { normals: _n, ...rest } = soup;
@@ -757,8 +757,8 @@ export async function compareSheet(panels: { png: Buffer; label: string; topM: n
 // ---------------------------------------------------------------------------------------------------------------
 // GLB routes: the installed model (covers.json) and the recipe compiler's model
 // ---------------------------------------------------------------------------------------------------------------
-type GlbJob = { soup: MaterialSoup; route: Route; why: string; label: string; measure: Record<string, unknown>; eavesHint?: number };
-async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, args: Args, tm: Timer): Promise<PreviewResult> {
+export type GlbJob = { soup: MaterialSoup; route: Route; why: string; label: string; measure: Record<string, unknown>; eavesHint?: number };
+export async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, args: Args, tm: Timer): Promise<PreviewResult> {
   const tile = session.tileOf(pandId), rows = await session.rows(tile);
   const own = rows.find(r => r.raw.properties.id === full(pandId))?.styled;
   if (!own) throw new Error(`${pandId} not in tile ${tile}`);
