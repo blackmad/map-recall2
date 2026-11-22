@@ -193,6 +193,7 @@
   <span id="foot"></span>
 </footer>
 
+<script src="./js/whats-new-lightbox.bundle.js" defer></script>
 <script src="./js/three.bundle.js"></script>
 <script>
 (() => {
@@ -500,16 +501,29 @@ const shotUrl = src => /^https?:\/\//.test(src) ? src : SHOTS_BASE + String(src)
 function renderShots(images) {
   const list = (Array.isArray(images) ? images : []).filter(i => i && typeof i.src === 'string');
   if (!list.length) return null;
+  const items = [];
   const ul = document.createElement('ul'); ul.className = 'shots';
-  for (const i of list) {
-    const li = document.createElement('li'); const a = document.createElement('a'); a.href = shotUrl(i.src); a.target = '_blank'; a.rel = 'noopener';
+  // A click opens the note's images in the in-page lightbox
+  // (src/canalRecall/whatsNewLightbox.ts); without the bundle the link opens the image in this tab.
+  const boxed = list.map(i => ({ src: shotUrl(i.src), alt: i.alt || '', caption: i.caption || '' }));
+  list.forEach((i, idx) => {
+    const li = document.createElement('li'); const a = document.createElement('a'); a.href = shotUrl(i.src);
+    a.setAttribute('aria-label', `${i.caption || i.alt || 'Screenshot'}: open larger`);
+    a.addEventListener('click', e => {
+      const lb = window.CanalWhatsNewLightbox; if (!lb || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      // Images that failed to load were removed from the list; skip them in the lightbox too.
+      const live = items.map((_, k) => k).filter(k => ul.contains(items[k]));
+      lb.open(live.map(k => boxed[k]), Math.max(0, live.indexOf(idx)), a);
+    });
+    items.push(li);
     const fig = document.createElement('figure'); fig.style.margin = '0';
     const img = document.createElement('img'); img.src = a.href; img.alt = i.alt || ''; img.loading = 'lazy'; img.decoding = 'async';
     img.addEventListener('error', () => li.remove(), { once: true });
     fig.append(img);
     if (i.caption) { const c = document.createElement('figcaption'); c.textContent = i.caption; fig.append(c); }
     a.append(fig); li.append(a); ul.append(li);
-  }
+  });
   return ul;
 }
 function renderChanges(notes) {
