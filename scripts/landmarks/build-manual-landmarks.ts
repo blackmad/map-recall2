@@ -543,6 +543,15 @@ import {buildSpaarbankSingel548} from './spaarbank-singel-548-builder';
 import {buildPakhuisAfrika} from './pakhuis-afrika-builder';
 import {buildRioolgemaalZeeburgerdijk} from './rioolgemaal-zeeburgerdijk-builder';
 import {buildAuroraOvertoom} from './aurora-overtoom-builder';
+import {buildCommandementsgebouw} from './commandementsgebouw-builder';
+import {buildGeneratorMauritskade} from './generator-mauritskade-builder';
+import {buildWonderkamerKanaalstraat} from './wonderkamer-kanaalstraat-builder';
+import {buildTugelahuisTugelaweg} from './tugelahuis-tugelaweg-builder';
+import {buildDeKandelaarVeningMeineszlaan} from './de-kandelaar-vening-meineszlaan-builder';
+import {buildDeCoenenCoenenstraat} from './de-coenen-coenenstraat-builder';
+import {buildWitteBoeiWittenburg} from './witte-boei-wittenburg-builder';
+import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
+import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
  // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
@@ -1277,6 +1286,15 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='pakhuis-afrika')buildPakhuisAfrika(w,d,helpers);
     else if(id==='rioolgemaal-zeeburgerdijk')buildRioolgemaalZeeburgerdijk(w,d,helpers);
     else if(id==='aurora-overtoom')buildAuroraOvertoom(w,d,helpers);
+    else if(id==='commandementsgebouw')buildCommandementsgebouw(w,d,helpers);
+    else if(id==='generator-mauritskade')buildGeneratorMauritskade(w,d,helpers);
+    else if(id==='wonderkamer-kanaalstraat')buildWonderkamerKanaalstraat(w,d,helpers);
+    else if(id==='tugelahuis-tugelaweg')buildTugelahuisTugelaweg(w,d,helpers);
+    else if(id==='de-kandelaar-vening-meineszlaan')buildDeKandelaarVeningMeineszlaan(w,d,helpers);
+    else if(id==='de-coenen-coenenstraat')buildDeCoenenCoenenstraat(w,d,helpers);
+    else if(id==='witte-boei-wittenburg')buildWitteBoeiWittenburg(w,d,helpers);
+    else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
+    else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

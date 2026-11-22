@@ -70,7 +70,7 @@ export function buildAuroraOvertoom(_w: number, _d: number, b: BuildingTools) {
   outer.forEach((F, i) => {
     const Fc = face(F, SOFFIT, TOP, 'stone');
     const w = i === 0 || i === 6 ? WIN_W : Math.min(WIN_W, F.len / 2 - 0.25);
-    for (const t of cols[i]) for (const y of ROWS) opening(b, Fc, t, y - WIN_H / 2, w, WIN_H, {depth: 0.18, frame: 'frame', bars: [WIN_H * 0.74], sill: false});
+    for (const t of cols[i]) for (const y of ROWS) opening(b, Fc, t, y - WIN_H / 2, w, WIN_H, {depth: 0.18, frame: 'frame', edge: 0.1, bars: [WIN_H * 0.74], sill: false});
     // stone ribs between the columns and at the facet ends, sill ledges, the soffit edge and the cornice band
     const ribs = cols[i].slice(1).map((t, k) => (t + cols[i][k]) / 2);
     for (const t of ribs) ledgeStrip(b, F.f, t, SOFFIT + 0.45, 0.16, CORNICE - SOFFIT - 0.45, 0.1, 'stone', 0);

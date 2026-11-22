@@ -1,0 +1,198 @@
+{
+ "id": "witte-boei-wittenburg",
+ "countedBy": "lane landmarks-r12-a from the rectified crops w01-45.jpg (b_20250130_0915_Track20_Sphere_00005, 2025, 50 px/m) and w02-225.jpg (TMX7316010203-001195_pano_0001_001228, 2019), 2026-11-22, counted before the openings were placed. NE: ground 10 glazed openings (the cream blind panel at t 18.45-19.25 is not glazing), first floor 9 two-light windows. SW: the wing's two narrow lights, two three-light windows and three French-door pairs (7); the set-back first floor shows the tower's tall window and lantern and five windows (7). Recount 2026-11-22 after the first compare: NE axes 11 (the measured centres 2.9, 5.9, 7.3, 10.1, 11.5, 12.9, 14.6, 16.0, 17.3, 19.2, 20.5 m; the first count of 14 was an estimate), and the hall's clerestory rising over the two-storey ends is one silhouette peak in the photo. SW first floor 8: the SE tower's tall glazing at the right edge of the crop (t 16.3+) was missed; SW axes 13 are approximate (parallax between the wing and the set-back floor).",
+ "facades": [
+  {
+   "name": "NE front (Kleine Wittenburgerstraat)",
+   "bearing": 45,
+   "photo": "artifacts/landmark-briefs/witte-boei-wittenburg/w01-45.jpg",
+   "rows": [
+    10,
+    9
+   ],
+   "columns": 11,
+   "symmetric": false,
+   "gables": 1,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w01-45.jpg (b_20250130_0915_Track20_Sphere_00005, 2025): from the SE end three two-light windows (0.85 m in frame, 0.7 m glazed), a 0.5 m narrow light, the four-light hall window t 10.6-12.45, a second narrow light, four two-light windows",
+     "openings": [
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "four-light",
+       "w": 1.7
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w01-45.jpg: nine two-light windows on the first floor, grouped 2 + 3 + 2 + 2 round the hall and stair (the gaps are wall, not missing windows)",
+     "openings": [
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      },
+      {
+       "kind": "two-light",
+       "w": 0.8
+      },
+      {
+       "kind": "two-light",
+       "w": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "SW wing and set-back first floor",
+   "bearing": 225,
+   "photo": "artifacts/landmark-briefs/witte-boei-wittenburg/w02-225.jpg",
+   "rows": [
+    7,
+    8
+   ],
+   "columns": 13,
+   "symmetric": false,
+   "gables": 0,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w02-225.jpg (TMX7316010203-001195_pano_0001_001228, 2019): the wing two narrow lights, two three-light windows, three pairs of French doors",
+     "openings": [
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "narrow light",
+       "w": 0.3
+      },
+      {
+       "kind": "three-light",
+       "w": 1.3
+      },
+      {
+       "kind": "three-light",
+       "w": 1.3
+      },
+      {
+       "kind": "French doors",
+       "w": 1.1
+      },
+      {
+       "kind": "French doors",
+       "w": 1.1
+      },
+      {
+       "kind": "French doors",
+       "w": 1
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w02-225.jpg: the NW tower tall window and lantern, two windows, the three-light window, two windows, the SE tower lantern",
+     "openings": [
+      {
+       "kind": "tall window",
+       "w": 0.8
+      },
+      {
+       "kind": "lantern",
+       "w": 0.5
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "three-light",
+       "w": 1
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "window",
+       "w": 0.6
+      },
+      {
+       "kind": "lantern",
+       "w": 1.2
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

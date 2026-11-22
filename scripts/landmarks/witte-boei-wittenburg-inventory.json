@@ -1,0 +1,527 @@
+{
+ "schemaVersion": 1,
+ "id": "witte-boei-wittenburg",
+ "pand": "0363100012180557",
+ "brief": "scripts/landmarks/witte-boei-wittenburg-brief.md",
+ "signature": [
+  "f-clerestory",
+  "f-white-brick-bands",
+  "f-window-rows",
+  "nw-lantern",
+  "se-lantern"
+ ],
+ "walls": [
+  {
+   "tag": "w01-45",
+   "bearing": 45,
+   "lengthM": 23.1,
+   "centre": [
+    4.921795,
+    52.3715325
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track20_Sphere_00005",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-clerestory",
+     "kind": "other",
+     "where": "the hall's clerestory over the middle 13.5 m of the front: green vertical panels with standing seams from 6.2 to 8.05 m under a dark grey fascia to 8.7 m",
+     "approxSizeM": [
+      13.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "clerestory(): green panel slab with 0.5 m seams, cream coping, dark fascia"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-white-brick-bands",
+     "kind": "other",
+     "where": "white glazed brick with ochre-yellow brick bands at 0.6 and 4.5 m and thin grey courses at 2.95 and 6.3 m, broken by the windows",
+     "approxSizeM": [
+      23.1,
+      0.15
+     ],
+     "plan": "modelled",
+     "how": "BANDS ledge strips per rebuilt face, gapped at openings"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-window-rows",
+     "kind": "window-shape",
+     "where": "cream-framed two-light windows: seven on the ground floor with two narrow single lights and a four-light window, nine on the first floor in a projecting cream surround and sill",
+     "approxSizeM": [
+      0.85,
+      2.1
+     ],
+     "plan": "modelled",
+     "how": "opening() in 12 cm reveals, cols 2, stone sill; the four-light window with transoms on its outer lights"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-blind-panel",
+     "kind": "other",
+     "where": "a cream blind panel at the head of the ground storey (t 18.45-19.25)",
+     "approxSizeM": [
+      0.8,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "shallow opening with a cream back"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-vent-dome",
+     "kind": "dome",
+     "where": "a small round vent dome on the hall roof behind the fascia",
+     "approxSizeM": [
+      0.64,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "hemisphere on a square curb"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-street-signs",
+     "kind": "sign",
+     "where": "two blue street-name plates at 2.7-2.9 m near both ends",
+     "approxSizeM": [
+      1.1,
+      0.25
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "municipal name plates, 0.25 m tall"
+     }
+    },
+    {
+     "seenIn": "b_20250130_0915_Track20_Sphere_00005",
+     "id": "f-planting",
+     "kind": "other",
+     "where": "grasses and shrubs along the foot of the wall",
+     "approxSizeM": [
+      23,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "planting, not building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-225",
+   "bearing": 225,
+   "lengthM": 16.7,
+   "centre": [
+    4.9215535,
+    52.3714235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0001_001228",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-001195_pano_0001_001228",
+     "id": "sw-french-doors",
+     "kind": "window-shape",
+     "where": "three pairs of glazed French doors under transom lights in the right half of the one-storey wing, each under a cream lintel",
+     "approxSizeM": [
+      1.25,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "door openings 22 cm deep, cols 2, transom bar at 2.3 m"
+    },
+    {
+     "seenIn": "TMX7316010203-001195_pano_0001_001228",
+     "id": "sw-three-lights",
+     "kind": "window-shape",
+     "where": "two three-light windows in the wing's left half",
+     "approxSizeM": [
+      1.5,
+      2.25
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 3"
+    },
+    {
+     "seenIn": "TMX7316010203-001195_pano_0001_001228",
+     "id": "sw-grey-brick",
+     "kind": "other",
+     "where": "the left half of the wing is laid in a grey-mottled brick (t 2.1-8.9), darker than the white above",
+     "approxSizeM": [
+      6.8,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "greyBrick cladding strips between the openings over the bands"
+    },
+    {
+     "seenIn": "TMX7316010203-001195_pano_0001_001228",
+     "id": "sw-fascia",
+     "kind": "other",
+     "where": "a grey band along the top of the one-storey wing",
+     "approxSizeM": [
+      16.7,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "greyBrick ledge strip at 3.25-3.58 m"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000588",
+     "id": "sw-upper-windows",
+     "kind": "window-shape",
+     "where": "the first floor set 6.2 m back over the wing: two-light windows and one three-light window, the tower's tall window and its lantern at the NW end",
+     "approxSizeM": [
+      0.75,
+      1.35
+     ],
+     "plan": "simplified",
+     "how": "drawn on the setback face in the photo's order and spacing; positions are parallax-blurred in both SW panoramas (inferred along the wall)"
+    },
+    {
+     "seenIn": "TMX7316010203-001195_pano_0001_001228",
+     "id": "sw-curtains",
+     "kind": "other",
+     "where": "red curtains behind the wing's windows",
+     "approxSizeM": [
+      1.5,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "interior curtains"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-315",
+   "bearing": 315,
+   "lengthM": 10.6,
+   "centre": [
+    4.9215205,
+    52.37151
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track21_Sphere_00017",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00017",
+     "id": "nw-lantern",
+     "kind": "window-shape",
+     "where": "the glazed corner lantern at the end of the NW tower: three tall lights in cream frames from 4.3 to 7.7 m with transoms, a row of three cream panels on top, wrapping onto the SW face",
+     "approxSizeM": [
+      1.05,
+      4.3
+     ],
+     "plan": "modelled",
+     "how": "lantern(): opening with mullions and two transoms on both faces of the corner, the cream panel row as the upper bars"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00017",
+     "id": "nw-tall-window",
+     "kind": "window-shape",
+     "where": "a two-storey two-light window with a transom at 6.4 m in the tower",
+     "approxSizeM": [
+      0.9,
+      3.3
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 2, bar at 1.75 m"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00017",
+     "id": "nw-wing-windows",
+     "kind": "window-shape",
+     "where": "two ground windows in the tower and two three-light windows in the one-storey wing",
+     "approxSizeM": [
+      1.5,
+      2.35
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 2 / 3"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00017",
+     "id": "nw-top-band",
+     "kind": "other",
+     "where": "a third ochre band at 7.8 m on the 8.7 m tower",
+     "approxSizeM": [
+      4.3,
+      0.15
+     ],
+     "plan": "modelled",
+     "how": "BANDS row at 7.8 m"
+    }
+   ]
+  },
+  {
+   "tag": "w04-135",
+   "bearing": 135,
+   "lengthM": 6.7,
+   "centre": [
+    4.9218815,
+    52.3714385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0001_000100",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000100",
+     "id": "se-side-door",
+     "kind": "other",
+     "where": "a cream side door with a narrow vertical light",
+     "approxSizeM": [
+      0.85,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "door opening 22 cm deep with a cream back and a glass strip"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000100",
+     "id": "se-wide-window",
+     "kind": "window-shape",
+     "where": "the wide four-light window, its third light narrower with a transom",
+     "approxSizeM": [
+      2.25,
+      2.25
+     ],
+     "plan": "modelled",
+     "how": "opening() colsAt 0.6/1.15/1.6, bar at 1.25"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000100",
+     "id": "se-upper",
+     "kind": "window-shape",
+     "where": "three first-floor windows behind the tree",
+     "approxSizeM": [
+      0.8,
+      1.35
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 2"
+    }
+   ]
+  },
+  {
+   "tag": "w05-315",
+   "bearing": 315,
+   "lengthM": 5.1,
+   "centre": [
+    4.9215885,
+    52.3715675
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002546_pano_0002_003482",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7316010203-002546_pano_0002_003482",
+     "id": "nw-service-door",
+     "kind": "other",
+     "where": "a cream service door and a meter cupboard on the NW annex",
+     "approxSizeM": [
+      1,
+      2.35
+     ],
+     "plan": "modelled",
+     "how": "door opening with a cream back; cupboard as a shallow cream panel"
+    },
+    {
+     "seenIn": "TMX7316010203-002546_pano_0002_003482",
+     "id": "nw-narrow",
+     "kind": "window-shape",
+     "where": "a narrow single light at the annex corner",
+     "approxSizeM": [
+      0.4,
+      1.75
+     ],
+     "plan": "modelled",
+     "how": "opening()"
+    }
+   ]
+  },
+  {
+   "tag": "w06-135",
+   "bearing": 135,
+   "lengthM": 5,
+   "centre": [
+    4.921796,
+    52.371385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0001_000098",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-lantern",
+     "kind": "window-shape",
+     "where": "the second glazed corner lantern on the SE tower's SW corner, as on the NW tower",
+     "approxSizeM": [
+      1.45,
+      4.3
+     ],
+     "plan": "modelled",
+     "how": "lantern() on edges 12 and 11"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-tall-window",
+     "kind": "window-shape",
+     "where": "the tower's two-storey window and two ground windows",
+     "approxSizeM": [
+      0.95,
+      3.3
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 2"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-entrance",
+     "kind": "other",
+     "where": "the glazed entrance door beside the tower (right edge of the crop, the contact sheet shows it behind the flag)",
+     "approxSizeM": [
+      1,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "door opening 22 cm deep with a transom on edge 13; its exact width is inferred"
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-lamp",
+     "kind": "lamp",
+     "where": "a small wall lamp at 3.6 m",
+     "approxSizeM": [
+      0.25,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.25 m fitting"
+     }
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-notice",
+     "kind": "sign",
+     "where": "a white notice board beside the door",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m board"
+     }
+    },
+    {
+     "seenIn": "TMX7315120208-000054_pano_0001_000098",
+     "id": "se-flag",
+     "kind": "sign",
+     "where": "a red beach flag at the entrance",
+     "approxSizeM": [
+      0.6,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable flag, 2016"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-316",
+   "bearing": 316,
+   "lengthM": 4.4,
+   "centre": [
+    4.921651,
+    52.371591
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track21_Sphere_00015",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00015",
+     "id": "nw-five-light",
+     "kind": "window-shape",
+     "where": "a five-light window with a glazed door in its middle on the curved NW corner",
+     "approxSizeM": [
+      2.4,
+      2.25
+     ],
+     "plan": "modelled",
+     "how": "opening() cols 5, bar at 1.6 m"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00015",
+     "id": "nw-louvres",
+     "kind": "other",
+     "where": "two louvred vents high on the wall",
+     "approxSizeM": [
+      1,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "shallow openings with a dark back and three bars"
+    },
+    {
+     "seenIn": "b_20250130_0915_Track21_Sphere_00015",
+     "id": "nw-curve",
+     "kind": "other",
+     "where": "the corner wall is curved in plan",
+     "approxSizeM": [
+      4.4,
+      7
+     ],
+     "plan": "simplified",
+     "how": "the BAG/3DBAG facets as scanned"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012180557",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012180557",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180557",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

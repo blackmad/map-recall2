@@ -1,0 +1,269 @@
+{
+ "schemaVersion": 1,
+ "id": "tugelahuis-tugelaweg",
+ "pand": "0363100012240693",
+ "brief": "scripts/landmarks/tugelahuis-tugelaweg-brief.md",
+ "signature": [
+  "ne-glazed-gable",
+  "se-portholes",
+  "ne-name",
+  "ne-rakes"
+ ],
+ "walls": [
+  {
+   "tag": "w01-63",
+   "bearing": 63,
+   "lengthM": 12.2,
+   "centre": [
+    4.9207595,
+    52.3558385
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_13-17-06_00528",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-glazed-gable",
+     "kind": "window-shape",
+     "where": "the whole north-east gable: glass from floor to rakes in three bays between four timber posts, sloped lights under the rakes",
+     "approxSizeM": [
+      12.1,
+      6.0
+     ],
+     "plan": "modelled",
+     "how": "northEastGable(): glass panes per bay (lower to the beam, upper polygons to the rake), ochre timber posts and beam, dark mullions",
+     "seenIn": "recording_2024-10-02_13-17-06_00528"
+    },
+    {
+     "id": "ne-name",
+     "kind": "lettering",
+     "where": "centre of the timber beam at 2.8 m, light letters 'Tugelahuis'",
+     "approxSizeM": [
+      2.0,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "letters() in capitals 0.3 m tall on the beam (the real letters are mixed case)",
+     "seenIn": "recording_2024-10-02_13-17-06_00528"
+    },
+    {
+     "id": "ne-rakes",
+     "kind": "other",
+     "where": "the rust-red rake boards along both slopes of the gable",
+     "approxSizeM": [
+      13,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "rakes(): sloped red boards 0.32 m deep, 0.35 m past the eaves",
+     "seenIn": "TMX7316010203-001604_pano_0000_000379"
+    },
+    {
+     "id": "ne-curtains",
+     "kind": "other",
+     "where": "white curtains behind the side bays' lower glass",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "thin white panels behind the glass in the side bays",
+     "seenIn": "recording_2024-10-02_13-17-06_00528"
+    },
+    {
+     "id": "ne-doors",
+     "kind": "other",
+     "where": "glass doors in the centre bay",
+     "approxSizeM": [
+      1.6,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "dark mullions in the centre bay's lower glass",
+     "seenIn": "recording_2024-10-02_13-17-06_00528"
+    },
+    {
+     "id": "ne-notices",
+     "kind": "sign",
+     "where": "small notice boards and posters behind the glass",
+     "approxSizeM": [
+      0.5,
+      0.7
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "A4 posters behind the glass, change weekly"
+     },
+     "seenIn": "recording_2024-10-02_13-17-06_00528"
+    }
+   ]
+  },
+  {
+   "tag": "w02-153",
+   "bearing": 153,
+   "lengthM": 12.1,
+   "centre": [
+    4.920722,
+    52.355765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000071_pano_0006_000749",
+   "capturedAt": "2016-06-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-portholes",
+     "kind": "window-shape",
+     "where": "three round windows 1.7 m across along the white south-east wall, centres 2.4 m under the eaves line",
+     "approxSizeM": [
+      1.7,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "southEastSide(): grey ringSlab frames with glass discs and an inner frame ring",
+     "seenIn": "TMX7315120208-000071_pano_0006_000749"
+    },
+    {
+     "id": "se-fascia",
+     "kind": "other",
+     "where": "the deep dark fascia with a timber strip under it and a grey metal capping along the eaves",
+     "approxSizeM": [
+      12.1,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "ochre strip, dark fascia 0.42 m 0.4 m proud, grey capping",
+     "seenIn": "TMX7315120208-000071_pano_0006_000749"
+    },
+    {
+     "id": "se-downpipe",
+     "kind": "other",
+     "where": "grey downpipe at the north-east corner",
+     "approxSizeM": [
+      0.1,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipe"
+     },
+     "seenIn": "TMX7315120208-000071_pano_0006_000749"
+    }
+   ]
+  },
+  {
+   "tag": "w03-242",
+   "bearing": 242,
+   "lengthM": 12.1,
+   "centre": [
+    4.9206015,
+    52.355788
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_09-22-37_01794",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-round-window",
+     "kind": "window-shape",
+     "where": "round window high in the centre of the south-west gable",
+     "approxSizeM": [
+      1.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "ringSlab frame and glass disc at 5.15 m",
+     "seenIn": "TMX7316010203-002142_pano_0000_003131"
+    },
+    {
+     "id": "sw-timber-frame",
+     "kind": "other",
+     "where": "two timber posts and a beam at eaves height across the white gable",
+     "approxSizeM": [
+      12,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "ochre posts and beam",
+     "seenIn": "TMX7316010203-002142_pano_0000_003131"
+    },
+    {
+     "id": "sw-mural",
+     "kind": "relief",
+     "where": "painted mural of children's faces and pink/yellow patches across the gable above the beam",
+     "approxSizeM": [
+      11,
+      2.0
+     ],
+     "plan": "simplified",
+     "how": "six flat pink and yellow colour panels where the mural's largest patches are (no textures)",
+     "seenIn": "TMX7316010203-002142_pano_0000_003131"
+    },
+    {
+     "id": "sw-window",
+     "kind": "window-shape",
+     "where": "one wide grey-framed window right of centre, sill 2.4 m",
+     "approxSizeM": [
+      2.2,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "frame, glass and a centre mullion",
+     "seenIn": "TMX7316010203-002142_pano_0000_003131"
+    },
+    {
+     "id": "sw-door",
+     "kind": "other",
+     "where": "white door near the south corner",
+     "approxSizeM": [
+      1.0,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "light panel",
+     "seenIn": "TMX7316010203-002142_pano_0000_003131"
+    }
+   ]
+  },
+  {
+   "tag": "w04-334",
+   "bearing": 334,
+   "lengthM": 5.9,
+   "centre": [
+    4.920618,
+    52.355881
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (orthophoto, roof colour and roof lights)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012240693",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012240693/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240693",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "commandementsgebouw",
+ "name": "Commandementsgebouw, Marineterrein (Kattenburgerstraat 5)",
+ "heightMetres": 8.5,
+ "bagYear": 1966,
+ "galleryView": {
+  "theta": 2.4,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012164987 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/commandementsgebouw-footprints.json, bag-shell-prepare.ts) for the flat roof; every wall drawn by the builder on the facade ring from the rectified Gemeente Amsterdam panoramas TMX7316010203-000248_pano_0000_000101 (2017, south-east), TMX7315120208-000054_pano_0002_000334 (2016, north-west), TMX7315120208-000054_pano_0002_000325 and TMX7316010203-000248_pano_0000_000071 (north-east), CC BY 4.0. Gemeentelijk monument 230003. Per wall in scripts/landmarks/commandementsgebouw-inventory.json.",
+ "materialOverrides": {
+  "concrete": "#978e7f",
+  "brick": "#5f5247",
+  "greyBrick": "#4d4f4b",
+  "frame": "#eeede8",
+  "glass": "#3a4046",
+  "dark": "#2e2d2b",
+  "pink": "#c3c3bd"
+ },
+ "attribution": {
+  "title": "Commandementsgebouw, Marineterrein, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/77ad5cc5-96e4-4ee0-bb8c-988448f8c31f",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012164987 (CC0): the exposed-aggregate concrete panel bands, two ribbons of white-framed windows between grey posts, brick end walls and corner piers, the glazed stair tower, the entrance with its canopy and the covered walkway, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}

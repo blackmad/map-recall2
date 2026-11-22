@@ -1,0 +1,68 @@
+{
+ "id": "de-kandelaar-vening-meineszlaan",
+ "countedBy": "blind counter subagent (photo only, recipe section 7 rules), lane landmarks-r12-b, 2026-11-22, from w04-195.alt.jpg (the house front: two lower windows, one upper ribbon with white infill panels) and w01-285.alt.jpg (the west wing: five windows 0.4 m apart; the red garage door is solid and not counted). House front band 2: the counter read one framed band with two opaque white infill panels (x 176-212 and 318-355 px, about 0.7 m each) and gave 3 as the reading if the panels count as solid; recipe section 7 splits glazing at solid runs over 0.3 m, so band 2 is 3. West wing: alongM stops at the wing's end (23.4 m); the house's west side beyond it, facing the same way, is a separate photo (w05-285).",
+ "facades": [
+  {
+   "name": "house south front",
+   "bearing": 195,
+   "photo": "artifacts/landmark-briefs/de-kandelaar-vening-meineszlaan/w04-195.alt.jpg",
+   "rows": [
+    2,
+    3
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w04-195.alt.jpg (TMX7316010203-001326_pano_0000_005074, 2019, 50 px/m), blind counter pixel ranges: a wide three-light shop window x 43-232 px (3.8 m) and a smaller window x 296-422 px (2.5 m)",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 3.8
+      },
+      {
+       "kind": "window",
+       "w": 2.5
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w04-195.alt.jpg (TMX7316010203-001326_pano_0000_005074, 2019, 50 px/m), blind counter pixel ranges: the upper band x 3-462 px split by two opaque white panels (x 176-212 and 318-355 px): glazed runs of 3.5, 2.1 and 2.1 m",
+     "openings": [
+      {
+       "kind": "window",
+       "w": 3.5
+      },
+      {
+       "kind": "window",
+       "w": 2.1
+      },
+      {
+       "kind": "window",
+       "w": 2.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "west wing",
+   "bearing": 285,
+   "photo": "artifacts/landmark-briefs/de-kandelaar-vening-meineszlaan/w01-285.alt.jpg",
+   "rows": [
+    5
+   ],
+   "columns": 5,
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    23.4
+   ]
+  }
+ ]
+}

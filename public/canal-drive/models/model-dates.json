@@ -7952,8 +7952,8 @@
       "dateSource": "asset-update"
     },
     "aurora-overtoom": {
-      "updatedAt": "2026-11-22T13:09:22.798Z",
-      "version": "4ed6641171ef09e6",
+      "updatedAt": "2026-11-22T13:45:29.343Z",
+      "version": "28c92aa532c0ee3e",
       "dateSource": "asset-update"
     },
     "spaarbank-singel-548.lod1": {
@@ -7994,6 +7994,51 @@
     "aurora-overtoom.lod2": {
       "updatedAt": "2026-11-22T13:13:09.756Z",
       "version": "71d0b16bba9848d0",
+      "dateSource": "asset-update"
+    },
+    "archipel-makassarplein": {
+      "updatedAt": "2026-11-22T15:03:17.942Z",
+      "version": "4bcf4339bdae9033",
+      "dateSource": "asset-update"
+    },
+    "commandementsgebouw": {
+      "updatedAt": "2026-11-22T15:03:17.736Z",
+      "version": "048458cd2f2ba4b0",
+      "dateSource": "asset-update"
+    },
+    "de-coenen-coenenstraat": {
+      "updatedAt": "2026-11-22T15:03:17.867Z",
+      "version": "17715e0f606d5235",
+      "dateSource": "asset-update"
+    },
+    "de-kandelaar-vening-meineszlaan": {
+      "updatedAt": "2026-11-22T15:03:17.885Z",
+      "version": "867dd54f9013a11c",
+      "dateSource": "asset-update"
+    },
+    "generator-mauritskade": {
+      "updatedAt": "2026-11-22T15:03:17.793Z",
+      "version": "0830a3bd758c1723",
+      "dateSource": "asset-update"
+    },
+    "henrick-de-keijser-buurtgebouw": {
+      "updatedAt": "2026-11-22T15:03:17.930Z",
+      "version": "511a90958db9746d",
+      "dateSource": "asset-update"
+    },
+    "tugelahuis-tugelaweg": {
+      "updatedAt": "2026-11-22T15:03:17.826Z",
+      "version": "d40906cdac6b88bc",
+      "dateSource": "asset-update"
+    },
+    "witte-boei-wittenburg": {
+      "updatedAt": "2026-11-22T15:03:17.904Z",
+      "version": "67dc0ecff586319a",
+      "dateSource": "asset-update"
+    },
+    "wonderkamer-kanaalstraat": {
+      "updatedAt": "2026-11-22T15:03:17.807Z",
+      "version": "cf41d5e3fe936edd",
       "dateSource": "asset-update"
     }
   }
