@@ -1,0 +1,417 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (live), fetched 2026-11-22T13:35:12.647Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237096",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 111A",
+    "Pieter Cornelisz. Hooftstraat 111B",
+    "Pieter Cornelisz. Hooftstraat 111C",
+    "Pieter Cornelisz. Hooftstraat 111D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 111A",
+     "use": "winkelfunctie",
+     "areaM2": 225,
+     "bagId": "0363010001008210"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 111B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001008212"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 111C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001008213"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 111D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001008214"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776718,
+     "lngLat": [
+      4.8788505,
+      52.3596673
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "111",
+      "addr:postcode": "1071BR",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Michael Kors",
+      "brand:wikidata": "Q19572998",
+      "brand:wikipedia": "en:Capri Holdings",
+      "name": "Michael Kors",
+      "phone": "+31 20 486 0620",
+      "shop": "clothes",
+      "website": "https://www.michaelkors.com/"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4706776719,
+     "lngLat": [
+      4.8789876,
+      52.3597012
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "107",
+      "addr:postcode": "1071BR",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Douglas",
+      "brand:wikidata": "Q2052213",
+      "brand:wikipedia": "de:Parfümerie Douglas",
+      "name": "Douglas",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 20 679 5822",
+      "shop": "perfumery",
+      "website": "https://www.douglas.nl/douglas/perfumery/info.html?code=0022&division=0023"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166355",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 113-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000770093"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9213879391,
+     "lngLat": [
+      4.878769,
+      52.3596437
+     ],
+     "tags": {
+      "clothes": "women",
+      "name": "Caroline Biss",
+      "shop": "clothes",
+      "website": "https://www.carolinebiss.com"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158400",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 115-H",
+     "use": "winkelfunctie",
+     "areaM2": 342,
+     "bagId": "0363010000770099"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776717,
+     "lngLat": [
+      4.8786759,
+      52.3596035
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "115-H",
+      "addr:postcode": "1071BS",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Marina Rinaldi",
+      "brand:wikidata": "Q2349550",
+      "clothes": "oversize;women",
+      "name": "Marina Rinaldi",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237166",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 117",
+     "use": "winkelfunctie",
+     "areaM2": 515,
+     "bagId": "0363010000936502"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776716,
+     "lngLat": [
+      4.878588,
+      52.3595852
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117",
+      "addr:postcode": "1071BS",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Hackett London",
+      "brand:wikidata": "Q1136426",
+      "clothes": "men",
+      "name": "Hackett",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237160",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 119-H",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000770103"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776715,
+     "lngLat": [
+      4.8784856,
+      52.3595665
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "119-H",
+      "addr:postcode": "1071BS",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Diesel",
+      "brand:wikidata": "Q158285",
+      "brand:wikipedia": "en:Diesel (brand)",
+      "name": "Diesel",
+      "phone": "+31 20 798 1300",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://storelocator.diesel.com/400696-diesel-store-amsterdam-pc-hoofstraat"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236167",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 121-H",
+     "use": "winkelfunctie",
+     "areaM2": 234,
+     "bagId": "0363010000770109"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235986",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 123-H",
+     "use": "winkelfunctie",
+     "areaM2": 296,
+     "bagId": "0363010012158234"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 123-H",
+     "use": "winkelfunctie",
+     "areaM2": 225,
+     "bagId": "0363010001172653"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237033",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 125-H",
+     "use": "winkelfunctie",
+     "areaM2": 218,
+     "bagId": "0363010001002166"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776713,
+     "lngLat": [
+      4.8782222,
+      52.3594846
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "125-H",
+      "addr:postcode": "1071BS",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "name": "Hilfiger",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166614",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 127",
+     "use": "winkelfunctie",
+     "areaM2": 320,
+     "bagId": "0363010001018471"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236705",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 129",
+     "use": "winkelfunctie",
+     "areaM2": 330,
+     "bagId": "0363010000770129"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 129",
+     "use": "winkelfunctie",
+     "areaM2": 736,
+     "bagId": "0363010012114892"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153582",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 428,
+     "bagId": "0363010012062430"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 317,
+     "bagId": "0363010000834748"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776712,
+     "lngLat": [
+      4.8779185,
+      52.3594161
+     ],
+     "tags": {
+      "check_date": "2025-11-14",
+      "name": "Massimu Dutti",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T13:35:12.647Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158051",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 133"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
