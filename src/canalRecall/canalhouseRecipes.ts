@@ -557,7 +557,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         frame();
         box(o.leftM+t,o.bottomM+t,o.widthM-2*t,o.heightM-2*t,.03,paneOffset+projection,paneSurface,`${name}/pane`);
       }
-      if(o.paneTint){const pane=facade.children.find(child=>child.name===`${name}/pane`) as T.Mesh;const material=(pane.material as T.MeshStandardMaterial).clone();material.color.set(o.paneTint);pane.material=material;}
+      if(o.paneTint){const pane=facade.children.find(child=>child.name===`${name}/pane`) as T.Mesh;const material=(pane.material as T.MeshStandardMaterial).clone();material.color.set(o.paneTint);material.userData={...material.userData,tintSource:'measured'};pane.material=material;}
       const paneWidth=o.widthM-2*t,paneHeight=o.heightM-2*t;
       const barWidth=o.mullionWidthM??t;
       if(o.mullionWidthM!==undefined&&(!Number.isFinite(barWidth)||barWidth<.008||barWidth>Math.min(t,.08)))throw new Error('Unsupported opening mullion width');

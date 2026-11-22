@@ -725,8 +725,11 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const trusted = ground.groups.find(gr => gr.trust === 'photo' && gr.snapped && gr.pands.includes(intent.pandId));
     const measured = ground.measured?.[intent.pandId], measuredOk = !!measured && fit.report.fronts.every(f => measured[f.id] === undefined || Math.abs(f.eavesM - measured[f.id]) <= 0.05);
     g(pand, 'eaves-vs-3dbag', measured ? measuredOk : intent.fronts.length > 1 || Math.abs(f0.eavesM - ground.eavesBefore[i]) <= 0.5 || (!!trusted && Math.abs(f0.eavesM - ground.eavesAfter[i]) <= 0.3), {modelM: f0.eavesM, threeDBagM: ground.eavesBefore[i], groupLineM: ground.eavesAfter[i], ...(trusted ? {photoOverride: `line of ${trusted.reference!.slice(-6)}`} : {}), ...(measured ? {photoMeasured: Object.fromEntries(fit.report.fronts.map(f => [f.id, {modelM: f.eavesM, stripM: measured[f.id] ?? null}]))} : {})}, '|Δ| <= 0.5 m (cornice-group snapping included); a photo-trusted group is checked against its line; a strip-measured front against its measurement (<= 5 cm); multi-front pands report only (each front fits its own share of the profile, as in gates.ts)');
+    // A measured entablature (`front.entablature.rise`) is drawn inside the top storey but is crown, not storey: the gate
+    // reads the top storey without it (PC Hooftstraat 94-102, 2026-11-22: 1.7-2.4 m crown bands over 4 m storeys).
+    const crownBand = intent.fronts[0].entablature?.rise ?? 0;
     const uppers = f0.storeyHeightsM.slice(f0.storeyHeightsM[0] < 1.5 ? 2 : 1);
-    g(pand, 'storey-height', uppers.every(h => h >= 2.3 && h <= 4.6), f0.storeyHeightsM, 'upper storeys 2.3–4.6 m');
+    g(pand, 'storey-height', uppers.every((h, k) => h >= 2.3 && (k === uppers.length - 1 ? h - crownBand : h) <= 4.6), crownBand ? {storeyHeightsM: f0.storeyHeightsM, entablatureM: crownBand} : f0.storeyHeightsM, 'upper storeys 2.3–4.6 m (the top one at most 4.6 m without a measured entablature)');
     const massTris = t.filter(x => isWall(x.slot) || ['roofTile', 'slate', 'bitumen'].includes(x.slot)), iou = rasterIoU(massTris, rings[i]);
     // 3DBAG sometimes reconstructs a smaller ground than the BAG polygon (177915: a 12.5 m2 rear wedge missing from
     // LoD2.2, b3_opp_grond 40.28 vs BAG 52.77). The model then cannot match BAG; it must still match the survey it was
