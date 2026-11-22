@@ -103346,5 +103346,199 @@
     ]
    ]
   }
+ },
+ {
+  "id": "aurora-overtoom",
+  "name": "Kantoorgebouw Aurora, Stadhouderskade / Overtoom",
+  "modelUrl": "./models/aurora-overtoom.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012233556"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8787381,
+    52.36338528
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 50.4,
+   "widthMetres": 54.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.8787381,
+    52.36338528
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012233556 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/aurora-overtoom-footprints.json, bag-shell-prepare.ts), its street-front walls replaced by the builder's stone front and recessed ground storey; the fronts read from the rectified Gemeente Amsterdam panoramas recording_2025-07-03_10-58-37_00099 (2025, Stadhouderskade) and recording_2025-07-31_06-59-14_01744 (2025, Overtoom), CC BY 4.0. Gemeentelijk monument 200973. Per wall in scripts/landmarks/aurora-overtoom-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 31,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.15
+  },
+  "bagYear": 1961,
+  "materialOverrides": {
+   "stone": "#b3a998",
+   "frame": "#dcd6ca",
+   "glass": "#3a4046",
+   "concrete": "#cfcac0",
+   "bronze": "#3c3b39",
+   "dark": "#262626",
+   "slate": "#55524e"
+  },
+  "attribution": {
+   "title": "Kantoorgebouw Aurora, Stadhouderskade / Overtoom, Amsterdam (G. Zanstra and partners, 1961)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/236797b0-068e-4c69-8e7e-0c297d3ae75c",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012233556 (CC0): the curved natural-stone front with its grid of windows between thin ribs, the cornice band and soffit, the ground storey glazed 2 m back behind round pilotis with the shop boxes, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8791334,
+      52.3633571
+     ],
+     [
+      4.8791538,
+      52.3633725
+     ],
+     [
+      4.8788436,
+      52.3635302
+     ],
+     [
+      4.8788298,
+      52.3635366
+     ],
+     [
+      4.8788151,
+      52.3635422
+     ],
+     [
+      4.8787997,
+      52.363547
+     ],
+     [
+      4.8787836,
+      52.363551
+     ],
+     [
+      4.8787671,
+      52.3635541
+     ],
+     [
+      4.8787501,
+      52.3635563
+     ],
+     [
+      4.8787329,
+      52.3635575
+     ],
+     [
+      4.8787156,
+      52.3635578
+     ],
+     [
+      4.8786983,
+      52.3635572
+     ],
+     [
+      4.8786812,
+      52.3635557
+     ],
+     [
+      4.8786643,
+      52.3635532
+     ],
+     [
+      4.8786479,
+      52.3635498
+     ],
+     [
+      4.878632,
+      52.3635456
+     ],
+     [
+      4.8784153,
+      52.3634805
+     ],
+     [
+      4.8784159,
+      52.3634797
+     ],
+     [
+      4.8785995,
+      52.3632233
+     ],
+     [
+      4.8785528,
+      52.3632106
+     ],
+     [
+      4.8785519,
+      52.3632067
+     ],
+     [
+      4.878479,
+      52.3631871
+     ],
+     [
+      4.8784203,
+      52.3631702
+     ],
+     [
+      4.8783743,
+      52.3631571
+     ],
+     [
+      4.8784077,
+      52.3631111
+     ],
+     [
+      4.8784125,
+      52.363104
+     ],
+     [
+      4.8786086,
+      52.3631534
+     ],
+     [
+      4.8788678,
+      52.3632257
+     ],
+     [
+      4.8788996,
+      52.3632354
+     ],
+     [
+      4.8791773,
+      52.3633353
+     ],
+     [
+      4.8791781,
+      52.3633359
+     ],
+     [
+      4.8791747,
+      52.3633375
+     ],
+     [
+      4.8791739,
+      52.3633369
+     ],
+     [
+      4.8791334,
+      52.3633571
+     ]
+    ]
+   ]
+  }
  }
 ]

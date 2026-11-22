@@ -1,0 +1,8 @@
+{
+ "id": "aurora-overtoom",
+ "countedBy": "lane landmarks-r11, 2026-11-22. Stadhouderskade from w01-40.alt.jpg (recording_2025-07-03_10-58-37_00099, 44.6 px/m up, ground at 1390 px): 18 window columns (centres 57 ... 1222 px), six rows (centres 270, 415, 560, 700, 845, 985 px). Overtoom from w02-334.alt.jpg (recording_2025-07-31_06-59-14_01744, 50.6 px/m, ground at 1540 px): 11 columns (the first partly cut at the left crop edge, x 10 px; full ones 80 ... 775 px), six rows (centres 275 ... 1085 px). The ground storey under the soffit (6.55 m) is glazing behind pilotis, not counted.",
+ "facades": [
+  {"name": "Stadhouderskade", "bearing": 40, "alongM": [3.88, 31.34], "heightM": [6.6, 27.45], "photo": "artifacts/landmark-briefs/aurora-overtoom/w01-40.alt.jpg", "rows": [18, 18, 18, 18, 18, 18], "columns": 18, "symmetric": true, "gables": 0},
+  {"name": "Overtoom", "bearing": 334, "alongM": [12.05, 29.68], "heightM": [6.6, 27.45], "photo": "artifacts/landmark-briefs/aurora-overtoom/w02-334.alt.jpg", "rows": [11, 11, 11, 11, 11, 11], "columns": 11, "symmetric": true, "gables": 0}
+ ]
+}

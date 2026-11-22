@@ -1,0 +1,31 @@
+{
+ "id": "aurora-overtoom",
+ "name": "Kantoorgebouw Aurora, Stadhouderskade / Overtoom",
+ "heightMetres": 31,
+ "bagYear": 1961,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012233556 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/aurora-overtoom-footprints.json, bag-shell-prepare.ts), its street-front walls replaced by the builder's stone front and recessed ground storey; the fronts read from the rectified Gemeente Amsterdam panoramas recording_2025-07-03_10-58-37_00099 (2025, Stadhouderskade) and recording_2025-07-31_06-59-14_01744 (2025, Overtoom), CC BY 4.0. Gemeentelijk monument 200973. Per wall in scripts/landmarks/aurora-overtoom-inventory.json.",
+ "materialOverrides": {
+  "stone": "#c2baab",
+  "frame": "#dcd6ca",
+  "glass": "#3a4046",
+  "concrete": "#cfcac0",
+  "bronze": "#3c3b39",
+  "dark": "#262626",
+  "slate": "#55524e",
+  "blue": "#2e2d2b"
+ },
+ "attribution": {
+  "title": "Kantoorgebouw Aurora, Stadhouderskade / Overtoom, Amsterdam (G. Zanstra and partners, 1961)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/236797b0-068e-4c69-8e7e-0c297d3ae75c",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012233556 (CC0): the curved natural-stone front with its grid of windows between thin ribs, the cornice band and soffit, the ground storey glazed 2 m back behind round pilotis with the shop boxes, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the municipal monument register (CC0). No pixels or meshes imported."
+ },
+ "partyWallBearings": []
+}
