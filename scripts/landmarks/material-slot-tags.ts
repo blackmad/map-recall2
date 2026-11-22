@@ -540,6 +540,11 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     red: {slot: 'paint', why: 'palette name only: the red stripes of the canvas markiezen, the flowers and the chef\'s apron, not brick'},
     pink: {slot: 'paint', why: 'palette name only: the painted face of the cut-out chef'},
   },
+  'nieuwe-doelenstraat-12': {
+    greyBrick: {slot: 'slate', why: 'palette name only: the slate-hung cheeks of the two small mansard dormers on the Nieuwe Doelenstraat (w01-329, 2018 crop), not brick'},
+    bronze: {slot: 'paint', why: 'palette name only: the black painted cast-iron balcony and its brackets (w04-149, 2021)'},
+    sandstone: {slot: 'stone', why: 'carved sandstone rosettes, tympana, corbels and dormer pilasters (w02-147, 2017), not buff brick'},
+  },
   'de-coenen-coenenstraat': {
     sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
   },

@@ -130580,6 +130580,175 @@
       "triangles": 9367,
       "bytes": 146508,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "nieuwe-doelenstraat-12": {
+      "id": "nieuwe-doelenstraat-12",
+      "name": "Kantoorgebouw Labouchere Oyens, Nieuwe Doelenstraat 12",
+      "modelUrl": "./models/nieuwe-doelenstraat-12.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180414"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89491089,
+          52.36778226
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 33.7,
+        "widthMetres": 30.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.89491089,
+          52.36778226
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012180414 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/nieuwe-doelenstraat-12-footprints.json, bag-shell-prepare.ts), the water fronts carried up to the cornice the photos show; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-000354_pano_0001_001510 (2017, Binnen-Amstel risalit), TMX7316010203-001975_pano_0000_001283/_001284 (2021, Binnen-Amstel), TMX7316010203-000717_pano_0000_000476 (2018) and TMX7315120208-000073_pano_0003_000693 (2016, Nieuwe Doelenstraat), CC BY 4.0. Rijksmonument 518440 (F.W.M. Poggenbeek 1889-1890; street front Gebr. van Gendt 1905). Per wall in scripts/landmarks/nieuwe-doelenstraat-12-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "measuredOverrides": true,
+      "heightMetres": 21.2,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.1
+      },
+      "bagYear": 1890,
+      "materialOverrides": {
+        "brick": "#8a5646",
+        "stone": "#dccaa2",
+        "sandstone": "#c2b08a",
+        "white": "#ece8de",
+        "glass": "#7f9fa8",
+        "slate": "#6f7470",
+        "dark": "#2e3230",
+        "bronze": "#2e3230",
+        "greyBrick": "#7a7d7a"
+      },
+      "attribution": {
+        "title": "Kantoorgebouw Nieuwe Doelenstraat 12 / Binnen-Amstel, Amsterdam (F.W.M. Poggenbeek for Labouchere Oyens, 1889-1890)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_001510/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012180414 (CC0): the Binnen-Amstel risalit with its sandstone base, speklagen, relieving arches and tympana, rosette panels, modillion cornice, open balustrade, obelisk pinnacles and aedicule dormer, the side bays with the arcaded terrace and the cast-iron balcony, and the 1905 Nieuwe Doelenstraat front with its rusticated ground storey, stone surrounds, festoon frieze and stone dormer, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8949059,
+              52.3679263
+            ],
+            [
+              4.8949047,
+              52.3679257
+            ],
+            [
+              4.8948942,
+              52.3679217
+            ],
+            [
+              4.8948348,
+              52.3678991
+            ],
+            [
+              4.8948065,
+              52.3678883
+            ],
+            [
+              4.8947847,
+              52.36788
+            ],
+            [
+              4.8947291,
+              52.3678589
+            ],
+            [
+              4.8947283,
+              52.3678587
+            ],
+            [
+              4.8948335,
+              52.3677591
+            ],
+            [
+              4.8948643,
+              52.367771
+            ],
+            [
+              4.894911,
+              52.3677263
+            ],
+            [
+              4.8948806,
+              52.3677145
+            ],
+            [
+              4.8948847,
+              52.3677106
+            ],
+            [
+              4.8949768,
+              52.3676235
+            ],
+            [
+              4.8950433,
+              52.367648
+            ],
+            [
+              4.8950676,
+              52.3676252
+            ],
+            [
+              4.8951755,
+              52.3676694
+            ],
+            [
+              4.8951705,
+              52.3676742
+            ],
+            [
+              4.8949059,
+              52.3679263
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -12.76992130279541,
+          -9.536743306171047e-8,
+          -16.534780502319336
+        ],
+        "max": [
+          18.32429313659668,
+          23.208999633789062,
+          18.72270393371582
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89491089,
+          52.36778226
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 35.257484436035156,
+        "heightMetres": 23.208999729156496,
+        "depthMetres": 31.09421443939209,
+        "depthCoverage": 1.026211697669706
+      },
+      "triangles": 13230,
+      "bytes": 178564,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
