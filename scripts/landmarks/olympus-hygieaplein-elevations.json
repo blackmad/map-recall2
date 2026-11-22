@@ -1,0 +1,39 @@
+{
+ "id": "olympus-hygieaplein",
+ "countedBy": "blind counter subagent (haiku, photos only, recipe section 7 rules), lane landmarks-r13-olympus, 2026-11-22, from the rectified crops w02-124.alt.jpg (2024), w03-122.jpg (2021) and w05-124.alt.jpg (2025) at 50 px/m: two three-light windows per storey on each bay, three storeys, symmetric, flat parapet (the middle bay's teeth and spire piers noted as decoration, not gables). alongM crops each bay out of the one straight front (metres from its SW corner) to what its rectified crop frames: the side-bay crops are anchored on the tower edge, and their far ends (about 1.2 m of the SW bay, 1.7 m of the NE bay) are hidden behind the forward-standing neighbour blocks in the oblique panoramas; the round towers are outside every crop.",
+ "facades": [
+  {
+   "name": "SW bay (Hygiëaplein)",
+   "bearing": 123,
+   "photo": "artifacts/landmark-briefs/olympus-hygieaplein/w02-124.alt.jpg",
+   "rows": [2, 2, 2],
+   "columns": 2,
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [1.2, 15.75],
+   "heightM": [0, 14.5]
+  },
+  {
+   "name": "middle bay between the towers",
+   "bearing": 123,
+   "photo": "artifacts/landmark-briefs/olympus-hygieaplein/w05-124.alt.jpg",
+   "rows": [2, 2, 2],
+   "columns": 2,
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [18.7, 34.0],
+   "heightM": [0, 14.5]
+  },
+  {
+   "name": "NE bay (Hygiëaplein)",
+   "bearing": 123,
+   "photo": "artifacts/landmark-briefs/olympus-hygieaplein/w03-122.jpg",
+   "rows": [2, 2, 2],
+   "columns": 2,
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [36.9, 50.9],
+   "heightM": [0, 14.5]
+  }
+ ]
+}

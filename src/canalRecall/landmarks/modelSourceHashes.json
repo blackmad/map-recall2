@@ -1,5 +1,5 @@
 {
-  "toolchain": "4b32ee6037424f0c72a417ebc518fd511078ebb1959cbe9b30d8c621bf087f4c",
+  "toolchain": "33d94bf57cbd68030c10821c9a55a4be2198f03e34d88f58f83a499f1a7d3bec",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -142,7 +142,7 @@
     "de-valerius": "726011dec7435bf6a03e82359fdbf66151d3f87bd3672d811f15727013640972",
     "de-wester": "07f677aa83295c7b9c043ffe2f7d8f82924d7910fa932bd63912c225dbf6ac25",
     "delamar": "cb58219b91ab8e044023ebb88542063696dd5596fb9a72df543a2d146eaf7799",
-    "depot-scheepvaartmuseum": "d21959f4c08474754eaf71ca749f961040002156b1b6f08a01fc75d75e84a655",
+    "depot-scheepvaartmuseum": "53e56bfea0a8e51f286ab39cb9da71f9920866eb8bfcc4c4082718a096518390",
     "diamant-museum": "cd6576f42c9ab22b4344d865e84a3b761691534dbfbd8319357f8e80e424c8ec",
     "doelen-hotel": "1b653decaa973fb2d3f5fa9ffe75ecb029dfeb58beb9227be09e818722780a7f",
     "dominicus-savius-school": "643f0231e4445d2c4744c1e9fefac49088b36eb619f6d8a8cd8603dfee879818",
@@ -256,7 +256,7 @@
     "johnny-jordaan-groep": "d501173b757622431701fc8d57bb5eef32353d749ae494d6cfd92353dc5ac0c4",
     "joods-verzetsmonument": "f026aedf5262aead26d0a5a5ebb7dc3a45b73c3e2439e7ab264c232170206ee0",
     "joodse-invalide": "6816d972514978d42070ae25860846902f91abb2865e701866c9462f520c3b83",
-    "jungle-swindenstraat": "cb8d35ffe61910e68531dd6e898ef2654af2b3a3378abe73a58c88e324a63a77",
+    "jungle-swindenstraat": "1b5c77409000e8b57e572599d8fc2b1aa6753299e792741e7e8ab61e21102c1e",
     "kadijksplein-17-18": "8521d5d2d2719f9dbf91d53657380d46f50cd5d73f2f812113ad281a73dc8f7a",
     "kalvertoren": "ce7fc7123dfde2321c6034ae610b5ee6d37668ece0ad907df0148e14b02eea77",
     "kattenkabinet": "95deeca6505f8b59a08a9153d3b001894c295933bc1990137ea4fd20fcf0aacf",
@@ -367,6 +367,7 @@
     "olvg-oost": "dee42ef0d7b54aa3d79f8be5d5d8a0ca18cafecdea82824aa7ea48160da82967",
     "olvg-west": "a8ca6338b56ffef9ea94df79272ead5dedcc4a14a562f2fe85b916bab10324bd",
     "olympisch-stadion": "2f63314fef272f8eb0ae8730d68da95ccfd8b46282191749bc9711ebd5960fb2",
+    "olympus-hygieaplein": "8eb2e9f61850648afcdc27f31e7f6627216f89368ac27d75d884688d57b121ed",
     "ons-lieve-heer-op-solder": "56f496096beca071e84623de2c4a8fa87b7b09fb3bf09757e8e519319526c35a",
     "oost-indisch-huis": "c4c4f4d90bb471efaac656c43dbfe0bfc979fa60cea548571bb35f894c711b34",
     "oostenburgergracht-15": "cd5dba1c724f7ceac97157e9dfd5c322e180c1c99d142b0fba366589dba8c626",

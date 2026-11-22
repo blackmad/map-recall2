@@ -560,6 +560,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     ochre: {slot: 'paint', why: 'the orange band of the knitted post cover and the round sign on the school gate'},
     bronze: {slot: 'frame', why: 'dark brown window frames of the street-front shop and entrance (w01-340)'},
   },
+  'olympus-hygieaplein': {
+    sandstone: {slot: 'brick', why: 'palette name only: the darker buff brick of the two banded stair towers (w05-124 2018/2025, Commons Europaschool pic1-3), not stone'},
+    red: {slot: 'brick', why: 'the dark purple-brown brick plinth and planter walls (w05-124 2025, w02-124, w03-122), not render'},
+    slate: {slot: 'bitumen', why: 'the flat roofs behind the parapets (3DBAG LoD2.2 roof 13.9-14.5 m, no pitch in any photo), not slate'},
+    pink: {slot: 'paint', why: 'the red painted HUIS VAN DE WIJK box sign on the SW canopy (Commons Europaschool pic3)'},
+  },
   'andreas-ensemble': {
     sandstone: {slot: 'brick', why: 'the WestCord Fashion Hotel tower: buff brick that reads ochre-yellow in sun (w12-90 sunlit brick #e4c9a0, Lab h 82; w06-90 upper storeys), drawn apart from the warm red-brown Lelylaan bar and west wing brick'},
   },
