@@ -129850,10 +129850,16 @@
       "bytes": 95656,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "40308349db889b0c",
+        "sourceHash": "bf0c3c31f4c6c6da",
         "buildVersion": 2,
-        "bytes": 31780,
-        "triangles": 1066
+        "bytes": 32040,
+        "triangles": 1080
+      },
+      "lod2": {
+        "sourceHash": "bf0c3c31f4c6c6da",
+        "buildVersion": 6,
+        "bytes": 5932,
+        "triangles": 117
       }
     },
     "witte-boei-wittenburg": {
@@ -130224,10 +130230,16 @@
       "bytes": 113756,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b232d65641a9ba62",
+        "sourceHash": "3f8804eb4207e05c",
         "buildVersion": 2,
-        "bytes": 40140,
-        "triangles": 1368
+        "bytes": 41824,
+        "triangles": 1390
+      },
+      "lod2": {
+        "sourceHash": "3f8804eb4207e05c",
+        "buildVersion": 6,
+        "bytes": 8380,
+        "triangles": 137
       }
     },
     "archipel-makassarplein": {
@@ -130602,7 +130614,13 @@
       },
       "triangles": 1949,
       "bytes": 39056,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "824aaeb143ac6e58",
+        "buildVersion": 6,
+        "bytes": 7508,
+        "triangles": 190
+      }
     },
     "jungle-swindenstraat": {
       "id": "jungle-swindenstraat",
@@ -130924,7 +130942,19 @@
       },
       "triangles": 33639,
       "bytes": 398220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "7bb513485eb6d6ec",
+        "buildVersion": 2,
+        "bytes": 102136,
+        "triangles": 5292
+      },
+      "lod2": {
+        "sourceHash": "7bb513485eb6d6ec",
+        "buildVersion": 6,
+        "bytes": 21360,
+        "triangles": 671
+      }
     },
     "olympus-hygieaplein": {
       "id": "olympus-hygieaplein",
@@ -131497,7 +131527,19 @@
       },
       "triangles": 12850,
       "bytes": 186180,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d7da25a6b4b87f0e",
+        "buildVersion": 2,
+        "bytes": 52916,
+        "triangles": 2078
+      },
+      "lod2": {
+        "sourceHash": "d7da25a6b4b87f0e",
+        "buildVersion": 6,
+        "bytes": 10032,
+        "triangles": 257
+      }
     },
     "krakeling-passeerdersstraat": {
       "id": "krakeling-passeerdersstraat",
@@ -131716,7 +131758,19 @@
       },
       "triangles": 25283,
       "bytes": 333856,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a85751aa8775c218",
+        "buildVersion": 2,
+        "bytes": 81852,
+        "triangles": 3873
+      },
+      "lod2": {
+        "sourceHash": "a85751aa8775c218",
+        "buildVersion": 6,
+        "bytes": 14660,
+        "triangles": 486
+      }
     },
     "hans-en-grietje-spiegelgracht": {
       "id": "hans-en-grietje-spiegelgracht",
@@ -131889,7 +131943,19 @@
       },
       "triangles": 9367,
       "bytes": 146508,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "c4b57eec0f173698",
+        "buildVersion": 2,
+        "bytes": 51960,
+        "triangles": 2124
+      },
+      "lod2": {
+        "sourceHash": "c4b57eec0f173698",
+        "buildVersion": 6,
+        "bytes": 8120,
+        "triangles": 186
+      }
     },
     "nieuwe-doelenstraat-12": {
       "id": "nieuwe-doelenstraat-12",
@@ -132058,7 +132124,19 @@
       },
       "triangles": 13230,
       "bytes": 178564,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e6384dd894335e2c",
+        "buildVersion": 2,
+        "bytes": 52040,
+        "triangles": 2227
+      },
+      "lod2": {
+        "sourceHash": "e6384dd894335e2c",
+        "buildVersion": 6,
+        "bytes": 9736,
+        "triangles": 258
+      }
     }
   }
 }

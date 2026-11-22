@@ -3,6 +3,32 @@
   "notes": [
     {
       "date": "2026-11-22",
+      "title": "PC Hooftstraat finished, and seven more buildings",
+      "text": "The whole of PC Hooftstraat now has its real shopfronts: Saint Laurent’s and Prada’s lettered canopies, Chopard and the rest, and Van Baerlestraat 32-50 has begun (Miele, Joe & The Juice, Ace & Dik’s lettered awning). New: the Scheepvaartmuseum depot behind its navy-yard wall, Jungle Amsterdam in the Dapperbuurt, the Europaschool on the Hygiëaplein, De Krakeling’s old gym, Café Hans en Grietje’s striped awnings on the Spiegelgracht and Poggenbeek’s office on the Nieuwe Doelenstraat. Henrick de Keijser’s roof is its true red-brown and De Kandelaar has its campanile.",
+      "where": [
+        4.8783,
+        52.3594
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-pc-hooftstraat-saint-laurent.jpg",
+          "alt": "PC Hooftstraat 101-103: the panorama, then generic brick fronts with a plain shop band before, and Saint Laurent’s dark shopfront with its lettered sign after",
+          "caption": "Saint Laurent, PC Hooftstraat: photo, before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-jungle-amsterdam.jpg",
+          "alt": "Jungle Amsterdam on the Swindenstraat in the game: an empty lot before, the community centre with its roof frame, coloured posts and blue and red window frames after",
+          "caption": "Jungle Amsterdam: before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-hans-en-grietje.jpg",
+          "alt": "The Spiegelgracht corner in the game: an empty corner before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
+          "caption": "Café Hans en Grietje, Spiegelgracht: before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
       "title": "Real statues and carved stone",
       "text": "Three statues get proper figures (Spinoza on the Zwanenburgwal, Mama Baranka in the Oosterpark and the fallen-tree monument to Walraven van Hall), and three buildings get their carving back: the pediment of the West-Indisch Huis, the figure group on top of the Barlaeus Gymnasium and the six busts of the Huis met de Hoofden.",
       "where": [
