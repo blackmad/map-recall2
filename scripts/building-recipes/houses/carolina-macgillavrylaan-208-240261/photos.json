@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-carolina-macgillavrylaan",
+  "panoId": "TMX7316010203-001075_pano_0000_000149",
+  "timestamp": "2019-01-30T12:41:39.646720Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/30/TMX7316010203-001075/pano_0000_000149/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125188.67739923124,
+   485332.1996545338
+  ],
+  "headingDeg": 177.0193838665856,
+  "fovDeg": 74.91145075640938,
+  "pitchDeg": 34.80091211050275,
+  "distanceM": 15.233262342404172,
+  "image": "artifacts/building-recipes/carolina-macgillavrylaan-208-240261/photo-wall-carolina-macgillavrylaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-carolina-mcgillivray-laan",
+  "panoId": "TMX7316010203-001075_pano_0000_000170",
+  "timestamp": "2019-01-30T12:42:08.596480Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/30/TMX7316010203-001075/pano_0000_000170/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125113.35346487667,
+   485377.2958670888
+  ],
+  "headingDeg": 134.00821260907964,
+  "fovDeg": 90.6779922100658,
+  "pitchDeg": 23.753348348825806,
+  "distanceM": 20.69827945437081,
+  "image": "artifacts/building-recipes/carolina-macgillavrylaan-208-240261/photo-wall-carolina-mcgillivray-laan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-science-park",
+  "panoId": "TMX7316010203-001685_pano_0000_004262",
+  "timestamp": "2020-04-30T10:36:10.852870Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2020/04/30/TMX7316010203-001685/pano_0000_004262/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125270.88098385003,
+   485222.6738369353
+  ],
+  "headingDeg": 315.9970235691654,
+  "fovDeg": 55.84500698037347,
+  "pitchDeg": 29.60142811244047,
+  "distanceM": 42.39191668010028,
+  "image": "artifacts/building-recipes/carolina-macgillavrylaan-208-240261/photo-wall-science-park.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-ridderspoorweg",
+  "panoId": "TMX7316010203-002335_pano_0003_000528",
+  "timestamp": "2021-12-23T12:28:21.920730Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/12/23/TMX7316010203-002335/pano_0003_000528/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122265.32558367393,
+   490159.60949476465
+  ],
+  "headingDeg": 121.13201362011102,
+  "fovDeg": 70.87092467230137,
+  "pitchDeg": 17.69593370161937,
+  "distanceM": 35.118635446105635,
+  "image": "artifacts/building-recipes/klaprozenweg-35-37-253708/photo-wall-ridderspoorweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-klaprozenweg",
+  "panoId": "TMX7316010203-001513_pano_0002_001374",
+  "timestamp": "2019-12-12T09:58:58.411580Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/12/12/TMX7316010203-001513/pano_0002_001374/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122351.00086049191,
+   490183.822040883
+  ],
+  "headingDeg": 214.61113593177464,
+  "fovDeg": 78.39286355145117,
+  "pitchDeg": 20.435401956722007,
+  "distanceM": 30.096608436807426,
+  "image": "artifacts/building-recipes/klaprozenweg-35-37-253708/photo-wall-klaprozenweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

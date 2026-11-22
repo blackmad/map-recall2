@@ -1220,7 +1220,13 @@ export interface RoofIntent {
  * `scripts/building-recipes/walls.ts`.
  */
 export interface LargeWindowShape {w: number; h: number; sill: number}
-export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[]}
+export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[];
+  /**
+   * Straight glazed box window (lane kit-batch-2005b-20261122, Klaprozenweg 35-37, crop w03-33 2024-10-22: bronze-framed
+   * boxes standing about 1 m out of a pale brick tower): the frame stands `out` m proud at head and sill alike (0.3..1.2)
+   * with a glass sheet across its front, in `colour` (default the stone colour). Absent: the tilted hotel box, byte-identical.
+   */
+  out?: number; colour?: string}
 /** Crown of one house of a row split (`LargeWallIntent.houses`): `cornice` = a stone cornice at the house's own eaves;
  *  `flat` = a plain parapet; `gable` = the 3DBAG gable wall over the eaves kept as the crown (no cornice). */
 export const LARGE_HOUSE_CROWNS = ['cornice', 'flat', 'gable'] as const;
@@ -1569,7 +1575,20 @@ export interface LargeWallIntent {
    * The offset small sash windows beside wide windows, singles and doubles that change from storey to storey.
    * brick-bay-grid only, not with windowPattern, windowGroup or storeyShapes on the same storeys. Absent: byte-identical.
    */
-  bayWindows?: {storeys: number[]; pattern: {w: number; at?: number; h?: number; sill?: number; light?: number; door?: boolean}[]}[];
+  bayWindows?: {storeys: number[]; pattern: {w: number; at?: number; h?: number; sill?: number; light?: number; door?: boolean;
+    /** a Juliet rail across this window's foot (needs the group's `julietRails`): the French window between casements */ rail?: boolean}[]}[];
+  /**
+   * Window hoods (blockBuilding/windowTrim.ts, lane kit-batch-2005b-20261122, Rode Kruisstraat 2, crop w03-262
+   * 2024-08-29): a head strip over each punched window in `colour`, with a leg `drop` m long down each side (0.05..0.8;
+   * absent: a flat head), on `storeys` (0 = ground; default all). brick-bay-grid only. Absent: byte-identical.
+   */
+  windowHeads?: {colour: string; drop?: number; storeys?: number[]};
+  /**
+   * Juliet rails (windowTrim.ts, frans balkon): a top rail and bars `h` m tall (0.4..1.3, default 0.9) across the foot of
+   * every punched window of `storeys`, and of the `bayWindows` entries marked `rail: true`, in `colour`, just proud of the
+   * wall. brick-bay-grid only. Absent: byte-identical.
+   */
+  julietRails?: {colour: string; h?: number; storeys?: number[]};
   /**
    * Recessed loggia bands (GitHub #86, the GWL-terrein blocks, 1997: a gallery storey cut across a run of bays of a
    * punched brick front, the south end's stack of loggias): per band one opening across `bays` [first, last] and

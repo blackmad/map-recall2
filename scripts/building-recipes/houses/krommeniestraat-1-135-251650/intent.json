@@ -1,0 +1,744 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "krommeniestraat-1-135-251650",
+ "pandId": "0363100012251650",
+ "address": "Krommeniestraat 1-135, Houthavens-west/Spaarndammerbuurt: 2021 courtyard block in buff-brown brick, a two-storey base of four-light windows over glazed ground doors pierced by two great round-arched gateways, stepped back above in two storeys of deep brick-framed window recesses (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2025-10-02-w01-64d25",
+   "kind": "street-panorama",
+   "capturedAt": "2025-10-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-10-02_08-47-34_00783/",
+   "image": "source-data://pand-reference-walls/0363100012251650/w01-64d25.jpg",
+   "sha256": "d08ad852c03028f8db96d621d903a7d793f4d19a2d4365f53ab640094672d62c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    107
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "storeyFactors": [
+    3.4,
+    3.1
+   ],
+   "baysPerStorey": 1,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#8a7a5a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    87
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.4,
+    3.1,
+    3.0
+   ],
+   "baysPerStorey": 1,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#8a7a5a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    183
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.4,
+    3.1,
+    3.0
+   ],
+   "baysPerStorey": 1,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#8a7a5a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    53
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.4,
+    3.1,
+    3.0
+   ],
+   "baysPerStorey": 3,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette",
+    "gateways",
+    "bayWindows"
+   ],
+   "gateways": {
+    "bays": [
+     1
+    ],
+    "arch": "round",
+    "keepRow": true
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.8,
+       "h": 0.62,
+       "sill": 0.2
+      },
+      {
+       "w": 0
+      },
+      {
+       "w": 0.8,
+       "h": 0.62,
+       "sill": 0.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    14,
+    49
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.4,
+    3.1,
+    3.0
+   ],
+   "baysPerStorey": 4,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette",
+    "gateways",
+    "bayWindows"
+   ],
+   "gateways": {
+    "bays": [
+     3
+    ],
+    "arch": "round",
+    "keepRow": true
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 0.8,
+       "h": 0.62,
+       "sill": 0.2
+      },
+      {
+       "w": 0.8,
+       "h": 0.62,
+       "sill": 0.2
+      },
+      {
+       "w": 0.8,
+       "h": 0.62,
+       "sill": 0.2
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "wallSurfaces": [
+    43
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "storeyFactors": [
+    3.4,
+    3.1,
+    3.0
+   ],
+   "baysPerStorey": 3,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.8,
+    "h": 0.62,
+    "sill": 0.2
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "loggias",
+    "ground",
+    "palette"
+   ],
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "window",
+     "door"
+    ],
+    "doors": "#8a7a5a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    182
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1,
+    2
+   ],
+   "baysPerStorey": 3,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    71
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1,
+    2
+   ],
+   "baysPerStorey": 2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    24,
+    70
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1
+   ],
+   "baysPerStorey": 2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    185
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1,
+    2
+   ],
+   "baysPerStorey": 2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1,
+    2
+   ],
+   "baysPerStorey": 2,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    54
+   ],
+   "street": "Krommeniestraat",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "storeyFactors": [
+    3.4,
+    3.3,
+    3.3,
+    3.0,
+    3.0
+   ],
+   "blankStoreys": [
+    0,
+    1,
+    2
+   ],
+   "baysPerStorey": 1,
+   "windows": "three-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.78,
+    "h": 0.8,
+    "sill": 0.06
+   },
+   "palette": {
+    "brick": "#8a7154",
+    "frame": "#a08a60",
+    "stone": "#9a8466"
+   },
+   "loggias": {
+    "storeys": [
+     3,
+     4
+    ],
+    "w": 0.78,
+    "h": 0.82,
+    "sill": 0.06,
+    "deep": 0.3,
+    "rail": "none",
+    "lights": 4,
+    "lining": "#8a7154"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "blankStoreys",
+    "baysPerStorey",
+    "loggias",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#8a7154",
+  "frame": "#a08a60",
+  "door": "#5e4e38",
+  "stone": "#9a8466"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from w01-64d25 2025-10-02 (re-cropped with a date filter: the archived w01-64 2020-02-07 is the building site). Groups 0-5 are the street base panels 85, 69, 143, 43, 11, 35 from the SE end (left in the crop) to the NW: a tall ground of glazed doors, a storey of wide four-light windows and the first setback storey of deep brick-framed recesses that 3DBAG merges into the base (eaves 9.7 m); panels 43 and 11 carry the two round-arched gateways. Groups 6-11 are the setback panels 142, 58, 19, 144, 29, 44 (eaves 16 m): deep brick-framed window recesses on every storey. Courtyard and side walls take otherWalls (no straight crop).",
+  "The gateways are two storeys tall in the photo (crown at the base parapet); the kit gateway is one ground storey tall with plain brick above it in storey 1."
+ ],
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#6f6b64"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

@@ -1,0 +1,304 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "klaprozenweg-35-37-253708",
+ "pandId": "0363100012253708",
+ "address": "Klaprozenweg 35-37, Buiksloterham (Ymere): 2022 housing in pale grey brick with bronze-framed windows, a stepped tower of up to eight storeys whose upper floors carry projecting bronze-framed glazed box windows in a staggered pattern, over a two-storey wing with a glazed ground and perforated brick screens (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2025-09-16-w02-303",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-16_08-06-38_00466/",
+   "image": "source-data://pand-reference-walls/0363100012253708/w02-303.jpg",
+   "sha256": "1536ac7256c9b4aa5b664b34f79e3522a5c83565478cdcd87de5da321e6c257d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-22-w03-33",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_11-23-02_02884/",
+   "image": "source-data://pand-reference-walls/0363100012253708/w03-33.jpg",
+   "sha256": "5f438d64caa12d0f99558b6ac407d254b6867e73d3940c606e432bd07116b361",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-27-w04-32L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-27",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002895_pano_0002_000110/",
+   "image": "source-data://pand-reference-walls/0363100012253708/w04-32L.jpg",
+   "sha256": "1337037c3a36b03b2a83ffdf7e850a79f4b2cb58f63b69472b72d6fc2e0b4b7c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    87
+   ],
+   "street": "Klaprozenweg",
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "groundFactor": 1.3,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#8c7a4c",
+    "stone": "#86754a"
+   },
+   "ground": "glazed",
+   "tiltedBays": [
+    {
+     "storeys": [
+      2,
+      4,
+      6
+     ],
+     "bays": [
+      0,
+      2
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    },
+    {
+     "storeys": [
+      3,
+      5,
+      7
+     ],
+     "bays": [
+      1
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windowShape",
+    "tiltedBays",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    101
+   ],
+   "street": "Klaprozenweg",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 1.3,
+   "baysPerStorey": 4,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#8c7a4c",
+    "stone": "#86754a"
+   },
+   "ground": "glazed",
+   "tiltedBays": [
+    {
+     "storeys": [
+      2,
+      4,
+      6
+     ],
+     "bays": [
+      0,
+      2
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    },
+    {
+     "storeys": [
+      3,
+      5
+     ],
+     "bays": [
+      1,
+      3
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windowShape",
+    "tiltedBays",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    34
+   ],
+   "street": "Klaprozenweg",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "groundFactor": 1.3,
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.62,
+    "sill": 0.18
+   },
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#8c7a4c",
+    "stone": "#86754a"
+   },
+   "ground": "glazed",
+   "tiltedBays": [
+    {
+     "storeys": [
+      2,
+      4
+     ],
+     "bays": [
+      0,
+      2
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    },
+    {
+     "storeys": [
+      3
+     ],
+     "bays": [
+      1
+     ],
+     "out": 0.9,
+     "colour": "#86754a"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "windowShape",
+    "tiltedBays",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    111
+   ],
+   "street": "Klaprozenweg",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "storeyFactors": [
+    4.4,
+    4.0
+   ],
+   "baysPerStorey": 7,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.5,
+    "sill": 0.22
+   },
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#8c7a4c",
+    "stone": "#86754a"
+   },
+   "ground": "glazed",
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    137
+   ],
+   "street": "Klaprozenweg",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "storeyFactors": [
+    4.4,
+    4.0
+   ],
+   "baysPerStorey": 3,
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.5,
+    "sill": 0.22
+   },
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#8c7a4c",
+    "stone": "#86754a"
+   },
+   "ground": "glazed",
+   "hand": [
+    "system",
+    "storeys",
+    "storeyFactors",
+    "baysPerStorey",
+    "windowShape",
+    "ground",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#a8acb0",
+  "frame": "#8c7a4c",
+  "door": "#5e5440",
+  "stone": "#86754a"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from the archived crops. footprintParts: BAG LoD0 is the top-view union including the cantilevered upper volumes, so the LoD2.2 ground (the recessed plinth) has IoU 0.84 against it. Groups 0-2 = the stepped NE tower panels 80 (25.9 m eaves), 58 (22.8 m) and 32 (16.9 m) from w03-33 2024-10-22 and w04-32L 2022-12-27: pale grey brick, bronze-framed two-light windows, a glazed ground with the Ymere entrance, and bronze-framed glazed box windows standing about 0.9 m out on alternate bays storey by storey. Groups 3-4 = the NW wing panels 99 and 116 from w02-303 2025-09-16 (trees in front): a glazed ground storey and one storey of bronze-framed windows. Other walls take otherWalls.",
+  "Not modelled: the cantilevered upper volumes with bronze soffits (the 3DBAG walls are vertical), the perforated brick screens at the NW wing east end, and the louvred bronze cheeks of the box windows."
+ ],
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#6a6a66"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000,
+ "footprintParts": true
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-elfendansstraat",
+  "panoId": "MS_26112024_845_Track25_Sphere_00001",
+  "timestamp": "2024-11-26T11:13:00Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/AMS_26112024_845_Track25_Sphere_00001/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117799.32608682098,
+   488315.86628442217
+  ],
+  "headingDeg": 48.93613983718882,
+  "fovDeg": 95.1097758256657,
+  "pitchDeg": 39.44170652192687,
+  "distanceM": 7.351144865861012,
+  "image": "artifacts/building-recipes/akbarstraat-165-217-253686/photo-wall-elfendansstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-lidewijdepad",
+  "panoId": "MS_26112024_845_Track21_Sphere_00002",
+  "timestamp": "2024-11-26T11:04:15Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/AMS_26112024_845_Track21_Sphere_00002/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117837.00008266035,
+   488239.82928454375
+  ],
+  "headingDeg": 14.59423202730926,
+  "fovDeg": 101.39853079994832,
+  "pitchDeg": 42.50087811313169,
+  "distanceM": 6.54876434074552,
+  "image": "artifacts/building-recipes/akbarstraat-165-217-253686/photo-wall-lidewijdepad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-akbarstraat",
+  "panoId": "TMX7316010203-002387_pano_0000_000026",
+  "timestamp": "2022-01-04T09:52:58.991060Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/01/04/TMX7316010203-002387/pano_0000_000026/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117852.89938684372,
+   488277.84391580295
+  ],
+  "headingDeg": 263.38473080686225,
+  "fovDeg": 110,
+  "pitchDeg": 32.64606747896341,
+  "distanceM": 9.506492622484439,
+  "image": "artifacts/building-recipes/akbarstraat-165-217-253686/photo-wall-akbarstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

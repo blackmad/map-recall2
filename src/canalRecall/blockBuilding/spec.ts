@@ -14,6 +14,13 @@ export interface WinParams {
   transom?: number;
   frameW?: number;
   frame?: Slot; glass?: Slot; sillSlot?: Slot | null; headSlot?: Slot | null;
+  /**
+   * Window trim (windowTrim.ts, opt-in; Rode Kruisstraat 2's care home, 2024 crop w03-262): with `headSlot`, a leg this
+   * many metres long down each side of the head, so the head reads as a hood over the window; absent = the flat head only.
+   */
+  headDrop?: number;
+  /** Juliet rail (windowTrim.ts, opt-in): a bar rail `h` m tall across the foot of the opening, standing just proud of the wall, in `slot`. */
+  juliet?: { h: number; slot: Slot };
   /** stone/render surround of this thickness around the opening */
   surround?: { slot: Slot; t: number; out?: number };
   /** extra horizontal glazing bars (count of divisions - 1) */
@@ -46,7 +53,7 @@ export interface WinParams {
    * tilted bay (box) window: a frame ring of closed solids round the opening, `t` wide, standing `outBottom` off the wall at
    * the sill and `outTop` at the head, so its face leans (hotel box windows); the glass stays in the opening (opt-in)
    */
-  tilt?: { slot: Slot; t: number; outTop: number; outBottom: number };
+  tilt?: { slot: Slot; t: number; outTop: number; outBottom: number; /** a glass sheet across the box's front, `front` m in front of the wall (a projecting glazed box window; opt-in) */ front?: { slot: Slot; d: number } };
   /** arched head (round, segmental or pointed) with reveals and an optional arch band (opt-in, arch.ts) */
   arch?: import('./arch.ts').ArchParams;
   /**

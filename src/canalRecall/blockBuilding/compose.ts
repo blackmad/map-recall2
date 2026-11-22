@@ -11,6 +11,7 @@ import { buildHost, fitsPanel, rectPoly, pt, insidePoly, newell, triangulate3, t
 import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign, PanesParams } from './spec.ts';
 import { drawArchedOpening, drawArchedProud } from './arch.ts';
 import { rectMinusRects } from './loggia.ts';
+import { drawWindowTrim } from './windowTrim.ts';
 
 export interface TextShaper { (text: string, font?: string): { shapes: T.Shape[]; width: number; ascent: number } }
 export interface ComposeOptions {
@@ -315,6 +316,7 @@ function drawTilt(c: Ctx, u0: number, u1: number, v0: number, v1: number, tilt: 
     const us = [a, b], vs = [lo, hi];
     solid(c, tilt.slot, (i, j, k) => c.P(us[i], vs[j], k ? D(vs[j]) : 0), part);
   }
+  if (tilt.front) c.quad(tilt.front.slot, u0, v0, u1, v1, tilt.front.d, c.part());
 }
 export { Ctx as PanelCtx, drawOpening, stripBox, intervals };
 const frac = (x: number | undefined, total: number, dflt: number) => { const v = x ?? dflt; return v <= 1 ? v * total : v; };
@@ -392,6 +394,7 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
   }
   if (w.sillSlot) { part = c.part(); const sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, part); }
   if (w.headSlot) { part = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, part); }
+  if (w.headDrop || w.juliet) { const tp = c.part(); drawWindowTrim((sl, a0, a1, b0, b1, d0, d1) => c.box(sl, a0, a1, b0, b1, d0, d1, tp), u0, u1, v0, v1, w); }
   void seed;
   return 0.035;
 }
@@ -509,6 +512,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift);
   }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
+  if (w.headDrop || w.juliet) { const tp = c.part(); drawWindowTrim((sl, a0, a1, b0, b1, d0, d1) => c.box(sl, a0, a1, b0, b1, d0, d1, tp), u0, u1, v0, v1, w); }
   if (w.tilt) drawTilt(c, u0, u1, v0, v1, w.tilt);
   if (w.loggia?.rail && corners) drawLoggiaRail(c, Q, u0, u1, v0, v1, -back, w.loggia.rail, w.frame ?? 'frame');
   return back;
