@@ -548,6 +548,7 @@ import {buildGeneratorMauritskade} from './generator-mauritskade-builder';
 import {buildWonderkamerKanaalstraat} from './wonderkamer-kanaalstraat-builder';
 import {buildTugelahuisTugelaweg} from './tugelahuis-tugelaweg-builder';
 import {buildDeKandelaarVeningMeineszlaan} from './de-kandelaar-vening-meineszlaan-builder';
+import {buildDepotScheepvaartmuseum} from './depot-scheepvaartmuseum-builder';
 import {buildDeCoenenCoenenstraat} from './de-coenen-coenenstraat-builder';
 import {buildWitteBoeiWittenburg} from './witte-boei-wittenburg-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
@@ -1291,6 +1292,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='wonderkamer-kanaalstraat')buildWonderkamerKanaalstraat(w,d,helpers);
     else if(id==='tugelahuis-tugelaweg')buildTugelahuisTugelaweg(w,d,helpers);
     else if(id==='de-kandelaar-vening-meineszlaan')buildDeKandelaarVeningMeineszlaan(w,d,helpers);
+    else if(id==='depot-scheepvaartmuseum')buildDepotScheepvaartmuseum(w,d,helpers);
     else if(id==='de-coenen-coenenstraat')buildDeCoenenCoenenstraat(w,d,helpers);
     else if(id==='witte-boei-wittenburg')buildWitteBoeiWittenburg(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);

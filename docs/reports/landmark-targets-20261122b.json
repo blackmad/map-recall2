@@ -1,0 +1,166 @@
+{
+ "generated": "2026-11-22",
+ "generatedBy": "scripts/landmarks/landmark-targets-next.ts --kit-open --monument-types=church,school,almshouse,mansion,warehouse,workshop,coachHouse --exclude=docs/reports/landmark-targets-20261115.json,docs/reports/landmark-targets-20261120.json,docs/reports/landmark-targets-20261122.json --top=80 (raw list docs/reports/landmark-targets-20261122b-raw.json, Overpass cache of 2026-11-15); covers, catalogue and recipes as on main f1288ad563 plus the r13 follow-ups; the twelve best-scored recognisable pands briefed (landmark-brief.ts contact sheets) and read by hand for evidence",
+ "method": "Ride exposure is ride-visibility/v1 (seeded bike routes between teachable destinations, 5 m samples, walls visible within 60 m with a footprint sightline). Recognisable = a register name, OSM name or Wikipedia/wikidata identity. Everything already catalogued, in covers.json or in an earlier target list is excluded by the script. Order: exposure x recognisability, gated on a clear, square panorama of the main front; canal houses carrying only a rijksmonument number are left to the canal-house kit.",
+ "ride": "ride-visibility/v1",
+ "targets": [
+  {
+   "rank": 1,
+   "id": "depot-scheepvaartmuseum",
+   "name": "Depot Scheepvaartmuseum, Kattenburgerstraat (OSM way 269078495)",
+   "pand": "0363100012169346",
+   "drawnAs": "generic",
+   "exposure": 267298,
+   "routeMetres": 4595,
+   "damKm": 1.73,
+   "evidence": "eight Kattenburgerstraat walls 2019-2025 at 50 px/m (recording_2025-06-17_08-04-10_03287 and seven more), the SW end 2019; the NW side faces the closed Marineterrein (no panorama). Today nothing is drawn on the pand.",
+   "verdict": "build",
+   "lane": "r13 (parent)"
+  },
+  {
+   "rank": 2,
+   "id": "krakeling-passeerdersstraat",
+   "name": "Theater De Krakeling, Nieuwe Passeerdersstraat 1 (rijksmonument 518465, former school)",
+   "pand": "0363100012174374",
+   "drawnAs": "generic",
+   "exposure": 229885,
+   "routeMetres": 7290,
+   "damKm": 1.21,
+   "evidence": "seven walls 2019-2024, the corner with the red De Krakeling letters (w04-333 2019), the school fronts w03-71 2024 and w05-237 2023",
+   "verdict": "build",
+   "lane": "r13-c",
+   "note": "the catalogue entry `de-krakeling` is a Westergasfabriek hall (zuiveringshallen builder at 4.8737, 52.3860) wrongly named Theater De Krakeling"
+  },
+  {
+   "rank": 3,
+   "id": "hans-en-grietje-spiegelgracht",
+   "name": "Café Hans en Grietje, Spiegelgracht 27 (wikidata Q17306644)",
+   "pand": "0363100012169479",
+   "drawnAs": "generic",
+   "exposure": 157908,
+   "routeMetres": 12340,
+   "damKm": 1.32,
+   "evidence": "w01-191 2023 square to the corner front with RESTAURANT / CAFE HANS en GRIETJE lettering and striped awnings; w02-300 2017 and w03-300 2021 across the canal",
+   "verdict": "build",
+   "lane": "r13-d"
+  },
+  {
+   "rank": 4,
+   "id": "school-raamplein-1",
+   "name": "School Raamplein 1 (rijksmonument, wikidata Q17302591)",
+   "pand": "0363100012165430",
+   "drawnAs": "generic",
+   "exposure": 157966,
+   "routeMetres": 4060,
+   "damKm": 1.14,
+   "evidence": "curved stone-and-brick front w03-247 2023 and w04-246 2019 at 13 m, the corner bay w07/w09/w10 2019-2022, side w12-66 2020",
+   "verdict": "build",
+   "lane": "r13-c"
+  },
+  {
+   "rank": 5,
+   "id": "nieuwe-doelenstraat-12",
+   "name": "Kantoorgebouw in neo-renaissance stijl, Nieuwe Doelenstraat 12 (rijksmonument, wikidata Q17291545)",
+   "pand": "0363100012180414",
+   "drawnAs": "generic",
+   "exposure": 127642,
+   "routeMetres": 9130,
+   "damKm": 0.6,
+   "evidence": "w02-147 2017 from the water (brick with white stone bands, ornate top, balcony), w01-329 2016 street side partly behind a lorry; check which crops are the pand",
+   "verdict": "build",
+   "lane": "r13-d"
+  },
+  {
+   "rank": 6,
+   "id": "hotel-v-frederiksplein",
+   "name": "Hotel V Frederiksplein (wikidata Q111410225)",
+   "pand": "0363100012253826",
+   "drawnAs": "generic",
+   "exposure": 187631,
+   "routeMetres": 7165,
+   "damKm": 1.58,
+   "evidence": "w01-346 2022 partly behind trees, w02-255 2021, w03-76 2018: brick over a stone-clad ground storey with the HOTEL V and THEATER signs",
+   "verdict": "next"
+  },
+  {
+   "rank": 7,
+   "id": "sarphatistraat-47",
+   "name": "Sarphatistraat 47-55 (wikidata Q118390882)",
+   "pand": "0363100012170759",
+   "drawnAs": "generic",
+   "exposure": 190641,
+   "routeMetres": 5155,
+   "damKm": 1.61,
+   "evidence": "one wall, w01-162 2022 at 37 m, half behind trees: a 1920s-30s brick office block under a hipped roof with a coloured glass panel band",
+   "verdict": "next"
+  },
+  {
+   "rank": 8,
+   "id": "hotel-notting-hill",
+   "name": "Hotel Notting Hill, Westeinde (wikidata Q111410221)",
+   "pand": "0363100012178268",
+   "drawnAs": "generic",
+   "exposure": 122729,
+   "routeMetres": 4955,
+   "damKm": 1.68,
+   "evidence": "w01-75 2025, w03-165 2022, w07-75 2025 square and sunlit: brick with stone quoins and a stone-clad ground storey, curved corner, dormers",
+   "verdict": "next"
+  },
+  {
+   "rank": 9,
+   "id": "koetshuis-2389",
+   "name": "Koetshuis (rijksmonument 2389)",
+   "pand": "0363100012167975",
+   "drawnAs": "kit",
+   "exposure": 395318,
+   "routeMetres": 9995,
+   "damKm": 0.99,
+   "evidence": "not briefed this round; the highest exposure in the raw list (395k), drawn by a kit install",
+   "verdict": "next"
+  }
+ ],
+ "ruledOut": [
+  {
+   "id": "lijnbaansgracht-211",
+   "pand": "0363100012169615",
+   "name": "Lijnbaansgracht 211-218 (wikidata Q30141566)",
+   "reason": "kit: the crops show 1990s and post-war flats with balconies; nothing a landmark builder adds over the ordinary tiers"
+  },
+  {
+   "id": "plantage-middenlaan-51",
+   "pand": "0363100012181158",
+   "name": "Plantage Middenlaan 51 (wikidata Q17302607)",
+   "reason": "no-evidence: the villa is behind trees on every crop but w01-208"
+  },
+  {
+   "id": "vijzelgracht-57",
+   "pand": "0363100012168285",
+   "name": "Vijzelgracht 57 (rijksmonument)",
+   "reason": "no-evidence: the crops show a 1980s office block and neighbours, not the register gable"
+  },
+  {
+   "id": "pakhuis-wilhelmina",
+   "pand": "0363100012118320",
+   "name": "Pakhuis Wilhelmina, Veemkade (wikidata Q42413157)",
+   "reason": "large tier: the pand includes the 2010s residential tower round the warehouse (9 of 9 walls), 2.37 km out; drawn by a kit install today"
+  },
+  {
+   "id": "groot-laboratorium",
+   "pand": "w1207503213",
+   "name": "Groot Laboratorium (nl:Groot Laboratorium)",
+   "reason": "not-in-tiles: an OSM way with no BAG pand in the building tiles"
+  },
+  {
+   "id": "bimhuis",
+   "pand": "w755464131",
+   "name": "Bimhuis",
+   "reason": "not-in-tiles here: an OSM way; the Bimhuis box belongs to the Muziekgebouw model family (shared Bimhuis identity in check:manual-landmarks)"
+  },
+  {
+   "id": "samhoud-places",
+   "pand": "w1487606274",
+   "name": "&samhoud places (former restaurant, wikidata Q4540372)",
+   "reason": "not-in-tiles: an OSM way with no BAG pand"
+  }
+ ]
+}

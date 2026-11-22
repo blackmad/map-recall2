@@ -130407,6 +130407,202 @@
         "bytes": 5948,
         "triangles": 108
       }
+    },
+    "depot-scheepvaartmuseum": {
+      "id": "depot-scheepvaartmuseum",
+      "name": "Depot Scheepvaartmuseum, Kattenburgerstraat",
+      "modelUrl": "./models/depot-scheepvaartmuseum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169346"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91865782,
+          52.37319661
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 74.4,
+        "widthMetres": 73.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.91865782,
+          52.37319661
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012169346 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/depot-scheepvaartmuseum-footprints.json, bag-shell-prepare.ts); the Kattenburgerstraat front and the south-west end read from the rectified Gemeente Amsterdam panoramas recording_2025-06-17_08-04-10_03287, b_20250108_1041_Track01_Sphere_00031 and _00029, TMX7316010203-001536_pano_0000_001551 (2020), recording_2025-06-19_07-14-50_01897 and TMX7316010203-001195_pano_0000_003836 (2019), CC BY 4.0. Per wall in scripts/landmarks/depot-scheepvaartmuseum-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "measuredOverrides": true,
+      "heightMetres": 15,
+      "galleryView": {
+        "theta": 2.3,
+        "phi": 1.15
+      },
+      "bagYear": 1005,
+      "materialOverrides": {
+        "concrete": "#dcd3c0",
+        "brick": "#5e5246",
+        "stone": "#7d7a70",
+        "frame": "#b9b09c",
+        "slate": "#cfd2d2",
+        "gold": "#6b5a48",
+        "greyBrick": "#4f4a40",
+        "bronze": "#3a3a38"
+      },
+      "attribution": {
+        "title": "Depot Scheepvaartmuseum, Kattenburgerstraat, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169346",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169346 (CC0): the pale metal-clad depot with its cladding courses and louvres over the dark brick yard wall with its coping, piers, bricked-up arch and timber gates, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9191223,
+              52.3733755
+            ],
+            [
+              4.9191904,
+              52.3734257
+            ],
+            [
+              4.919016,
+              52.3735313
+            ],
+            [
+              4.9188234,
+              52.3734294
+            ],
+            [
+              4.9187317,
+              52.3733623
+            ],
+            [
+              4.9187108,
+              52.3733469
+            ],
+            [
+              4.9186963,
+              52.3733364
+            ],
+            [
+              4.9186792,
+              52.3733272
+            ],
+            [
+              4.9185473,
+              52.3732569
+            ],
+            [
+              4.918434,
+              52.3731737
+            ],
+            [
+              4.9184204,
+              52.3731637
+            ],
+            [
+              4.9184026,
+              52.3731543
+            ],
+            [
+              4.9182704,
+              52.3730843
+            ],
+            [
+              4.9181078,
+              52.3729642
+            ],
+            [
+              4.9182823,
+              52.3728585
+            ],
+            [
+              4.9183247,
+              52.3728809
+            ],
+            [
+              4.9184268,
+              52.3729348
+            ],
+            [
+              4.9184224,
+              52.372939
+            ],
+            [
+              4.9184694,
+              52.3729636
+            ],
+            [
+              4.9185959,
+              52.3730569
+            ],
+            [
+              4.9187458,
+              52.3731364
+            ],
+            [
+              4.9188723,
+              52.3732296
+            ],
+            [
+              4.9190225,
+              52.3733091
+            ],
+            [
+              4.919062,
+              52.3733391
+            ],
+            [
+              4.9190686,
+              52.3733358
+            ],
+            [
+              4.9191223,
+              52.3733755
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.730899810791016,
+          -4.7683716530855236e-8,
+          -37.367130279541016
+        ],
+        "max": [
+          36.57734298706055,
+          16.031999588012695,
+          37.76521301269531
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91865782,
+          52.37319661
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.13234329223633,
+        "heightMetres": 16.031999635696412,
+        "depthMetres": 74.30824279785156,
+        "depthCoverage": 1.0096228641012441
+      },
+      "triangles": 1949,
+      "bytes": 39052,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

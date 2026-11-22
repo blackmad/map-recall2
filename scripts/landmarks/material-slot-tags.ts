@@ -535,6 +535,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     red: {slot: 'roofTile', measured: '#8f5445', why: 'the red-brown pantiles (w01-258 2020, w05-168 2019 sunlit plane, PDOK 2025 orthophoto): the city pantile range drew them bright orange (board, r12 follow-up)'},
     dark: {slot: 'brick', measured: '#4e3a33', why: 'the dark brown brick chimney stack on the ridge by the south gable (w01-258, w05-168)'},
   },
+  'depot-scheepvaartmuseum': {
+    concrete: {slot: 'paint', measured: '#dcd3c0', why: 'pale champagne metal cladding panels (w04-225, w12-130 lit), not concrete'},
+    slate: {slot: 'paint', measured: '#cfd2d2', why: 'pale metal roof planes, white in sun and blue-grey in shade (PDOK 2025 orthophoto), not slate'},
+    brick: {slot: 'brick', measured: '#5e5246', why: 'the dark brown-grey brick of the old yard wall (w03-138, w04-225, w12-130)'},
+    gold: {slot: 'door', why: 'weathered brown timber gates and canopy (w04-225, w10-139), not metal'},
+  },
   'de-coenen-coenenstraat': {
     sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
   },
