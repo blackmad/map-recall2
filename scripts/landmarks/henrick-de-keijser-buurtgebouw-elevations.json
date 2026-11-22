@@ -1,0 +1,8 @@
+{
+ "id": "henrick-de-keijser-buurtgebouw",
+ "countedBy": "lane landmarks-r12-a from the rectified crops w01-258.jpg (TMX7316010203-001793_pano_0000_005619, 2020) and w05-168.jpg (TMX7316010203-001168_pano_0000_004018, 2019), 50 px/m, 2026-11-22, counted before the openings were placed. W: one storey band of glazing, the two-light window, the glazed red double door and the single light (3 openings, 3 axes) under a level eaves; the frieze vents are not glazing. S gable: two three-light windows, two small four-pane windows high in the gable (2, 2), symmetric, one gable peak.",
+ "facades": [
+  {"name": "W front on the square", "bearing": 257.5, "photo": "artifacts/landmark-briefs/henrick-de-keijser-buurtgebouw/w01-258.jpg", "rows": [2], "columns": 2, "symmetric": false, "gables": 0, "note": "Recount under the ribbon convention after the first compare: the two-light window (t 4.98-6.46), the glazed red double door (6.48-7.85) and the single light (7.87-8.6) stand frame to frame under the one name board; only the door's meeting stiles (about 0.35 m of red between its two tall lights) are wider than 0.3 m, so the photo shows two glazed runs, window + left leaf and right leaf + single light (the first count of 3 counted the parts)."},
+  {"name": "S gable", "bearing": 167.5, "photo": "artifacts/landmark-briefs/henrick-de-keijser-buurtgebouw/w05-168.jpg", "rows": [2, 2], "columns": 2, "symmetric": true, "gables": 1, "alongM": [0, 7.34], "depthBand": 2}
+ ]
+}
