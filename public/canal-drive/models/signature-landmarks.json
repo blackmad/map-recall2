@@ -132777,6 +132777,301 @@
       "triangles": 14777,
       "bytes": 211952,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hotel-v-frederiksplein": {
+      "id": "hotel-v-frederiksplein",
+      "name": "Hotel V Frederiksplein, Weteringschans 136",
+      "modelUrl": "./models/hotel-v-frederiksplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253826"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89800053,
+          52.35913057
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 26.1,
+        "widthMetres": 25.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.89800053,
+          52.35913057
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012253826 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/hotel-v-frederiksplein-footprints.json, bag-shell-prepare.ts), with the 4.8 m gate wall to the Huidekoperstraat that 3DBAG reads as a courtyard roof; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002545_pano_0000_000625 (2022) and TMX7316010203-001048_pano_0000_000788 (2018, Weteringschans), b_20241204_1003_Track09_Sphere_00104 (2024), TMX7316010203-002364_pano_0004_000329 (2021) and TMX7316060226-000020_pano_0000_000428 (2016, Huidekoperstraat), CC BY 4.0. Gemeentelijk monument 205051. Per wall in scripts/landmarks/hotel-v-frederiksplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "measuredOverrides": true,
+      "heightMetres": 18.7,
+      "galleryView": {
+        "theta": 3.6,
+        "phi": 1.1
+      },
+      "bagYear": 1870,
+      "materialOverrides": {
+        "brick": "#85715f",
+        "greyBrick": "#7a5f50",
+        "red": "#71564a",
+        "stone": "#e2d8c2",
+        "sandstone": "#aca28d",
+        "white": "#ebe7dc",
+        "glass": "#4d5960",
+        "dark": "#2c2b29",
+        "bronze": "#2e2e2c",
+        "ochre": "#8c5d36",
+        "slate": "#5d5b58"
+      },
+      "attribution": {
+        "title": "Hotel V Frederiksplein, Weteringschans 136 / Huidekoperstraat 19, Amsterdam (three houses and Huidekoperstraat 19, one project of about 1870 on Sarphati's plan)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002545_pano_0000_000625/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012253826 (CC0): the stone-clad ground storey with its shopfronts, wooden side door, white triple door and the HOTEL V lettering, the panelled stone pilasters with roundels, segmental-headed windows under brick relieving arches, the stone aedicules with pediment hoods and iron balconies, the frieze and bracketed cornice, the three stone dormers with flared cheeks, the gate wall and Huidekoperstraat 19 with its bracketed cornice and dormer, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8977872,
+              52.359186
+            ],
+            [
+              4.8978295,
+              52.3590891
+            ],
+            [
+              4.8978304,
+              52.3590893
+            ],
+            [
+              4.8978325,
+              52.3590847
+            ],
+            [
+              4.8978598,
+              52.3590231
+            ],
+            [
+              4.8978686,
+              52.3590032
+            ],
+            [
+              4.898074,
+              52.3590358
+            ],
+            [
+              4.8981671,
+              52.3590515
+            ],
+            [
+              4.8981231,
+              52.3591569
+            ],
+            [
+              4.898159,
+              52.3591627
+            ],
+            [
+              4.8981282,
+              52.3592365
+            ],
+            [
+              4.8981265,
+              52.3592362
+            ],
+            [
+              4.8981255,
+              52.3592387
+            ],
+            [
+              4.898096,
+              52.3592343
+            ],
+            [
+              4.8977872,
+              52.359186
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.21870231628418,
+          -9.536743306171047e-8,
+          -12.204740524291992
+        ],
+        "max": [
+          11.289999961853027,
+          18.69499969482422,
+          14.136794090270996
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89800053,
+          52.35913057
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.508702278137207,
+        "heightMetres": 18.694999790191652,
+        "depthMetres": 26.34153461456299,
+        "depthCoverage": 1.0209897137427515
+      },
+      "triangles": 13884,
+      "bytes": 196212,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sarphatistraat-47": {
+      "id": "sarphatistraat-47",
+      "name": "citizenM, Sarphatistraat 47-55 (former Amsterdamsche Bank)",
+      "modelUrl": "./models/sarphatistraat-47.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170759"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90635294,
+          52.36109436
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 30.7,
+        "widthMetres": 41.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.90635294,
+          52.36109436
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012170759 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/sarphatistraat-47-footprints.json, bag-shell-prepare.ts); the Sarphatistraat front read from the rectified Gemeente Amsterdam panoramas 20241203_0939_Track10-1_Sphere_00298 (2024), TMX7316010203-002541_pano_0004_000379 (2022) and TMX7316010203-001675_pano_0000_006016 (2020), CC BY 4.0. Gemeentelijk monument 210049. Per wall in scripts/landmarks/sarphatistraat-47-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "measuredOverrides": true,
+      "heightMetres": 23.9,
+      "galleryView": {
+        "theta": 0.3,
+        "phi": 1.15
+      },
+      "bagYear": 1928,
+      "materialOverrides": {
+        "brick": "#7a5a46",
+        "greyBrick": "#6a4a3a",
+        "red": "#c8323c",
+        "copper": "#6b3a2a",
+        "sandstone": "#9a8f84",
+        "stone": "#b8ab95",
+        "white": "#e8e6df",
+        "glass": "#4d5960",
+        "dark": "#2c2a28",
+        "bronze": "#3a3530",
+        "slate": "#68625a",
+        "concrete": "#c3c6c4",
+        "pink": "#d98a8c",
+        "blue": "#7f9cc0",
+        "ochre": "#e08a3c",
+        "green": "#6f9a6a"
+      },
+      "attribution": {
+        "title": "citizenM Amstel, Sarphatistraat 47-55, Amsterdam (former office of the Amsterdamsche Bank, C.B. Posthumus Meyjes, 1928)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0004_000379/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012170759 (CC0): the granite ground zone with the eight tall windows and their art panels, the doors and the citizenM sign, the grid-paned windows, patterned brick panels, projecting profiled brick piers, cornice and attic, the dormers and the chimney, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9065416,
+              52.3611905
+            ],
+            [
+              4.9065361,
+              52.3612005
+            ],
+            [
+              4.9063288,
+              52.3611586
+            ],
+            [
+              4.9063304,
+              52.3611542
+            ],
+            [
+              4.9060251,
+              52.3610896
+            ],
+            [
+              4.9060348,
+              52.3610722
+            ],
+            [
+              4.9061173,
+              52.3609231
+            ],
+            [
+              4.9066314,
+              52.3610298
+            ],
+            [
+              4.9066309,
+              52.3610306
+            ],
+            [
+              4.9065416,
+              52.3611905
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -22.334999084472656,
+          -4.7683716530855236e-8,
+          -11.729999542236328
+        ],
+        "max": [
+          19.008670806884766,
+          23.90999984741211,
+          19.41642189025879
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90635294,
+          52.36109436
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 41.34366989135742,
+        "heightMetres": 23.909999895095826,
+        "depthMetres": 31.146421432495117,
+        "depthCoverage": 0.7541506400119884
+      },
+      "triangles": 12814,
+      "bytes": 197036,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
