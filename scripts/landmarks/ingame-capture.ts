@@ -4,6 +4,7 @@
  *   node --import tsx scripts/landmarks/ingame-capture.ts --id=de-roos --port=4484 --views=vondelpark:337,pc-hooftstraat:157
  *   ... --views=user:125:4.8796:52.3573[:zoom[:pitch]]   (a view may name its own look-at point, zoom and pitch)
  *   ... --query='buildings3d=storybook'   (appended to the game URL: a Building look, a flag A/B)
+ *   ... --anchor=4.8928,52.3642   (look-at point for an id outside manualCatalogue.json, e.g. an ordinary-<pand> install)
  *   ... --underlay   (also a shot of each view with the model hidden: what else draws on its footprint; it fails when that shot
  *                    equals the model shot, capture-diff.ts)
  *
@@ -27,7 +28,9 @@ const views = (arg('views') ?? 'north:180,south:0').split(',').map(v => {
   return {name, bearing: Number(b), centre: lng && lat ? [Number(lng), Number(lat)] : undefined, zoom: z ? Number(z) : undefined, pitch: p ? Number(p) : undefined};
 });
 const spec = (catalogue as Array<{id: string; surveyed?: {anchor?: number[]}; footprint?: {centre?: number[]}}>).find(m => m.id === id);
-const anchor = spec?.surveyed?.anchor ?? spec?.footprint?.centre;
+// --anchor=lng,lat captures a model that is not in the manual catalogue (an ordinary install's id), for a today shot.
+const anchorArg = arg('anchor')?.split(',').map(Number);
+const anchor = anchorArg ?? spec?.surveyed?.anchor ?? spec?.footprint?.centre;
 if (!anchor) throw new Error(`${id}: no anchor in manualCatalogue.json`);
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const out = path.resolve(ROOT, arg('out') ?? `artifacts/review/${id}`);

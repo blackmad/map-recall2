@@ -107161,5 +107161,299 @@
     ]
    ]
   }
+ },
+ {
+  "id": "hotel-notting-hill",
+  "name": "Hotel Notting Hill, Westeinde 26",
+  "modelUrl": "./models/hotel-notting-hill.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012178268"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89874451,
+    52.35834229
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 30.2,
+   "widthMetres": 26.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.89874451,
+    52.35834229
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178268 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/hotel-notting-hill-footprints.json, bag-shell-prepare.ts), set 1.3 m down so the cornice stands where the square 2022 view puts it over the pavement; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002545_pano_0000_000344 (2022, south front), recording_2025-07-14_07-34-51_01035 and _01037 (2025, Westeinde front and entrance bay), TMX7316060226-000020_pano_0000_000365 (2016, north bays) and TMX7316010203-002975_pano_0007_000115 (2023, annexe), CC BY 4.0. Westeinde 26, the 1977 bank building in A.L. van Gendt's row Westeinde 2-26 (gemeentelijk monument 200110), now Hotel Notting Hill (wikidata Q111410221). Per wall in scripts/landmarks/hotel-notting-hill-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21,
+  "galleryView": {
+   "theta": 2.2,
+   "phi": 1.1
+  },
+  "bagYear": 1977,
+  "materialOverrides": {
+   "brick": "#806a58",
+   "greyBrick": "#978c7c",
+   "stone": "#bbad93",
+   "red": "#6b5244",
+   "white": "#eeeedb",
+   "ochre": "#eeeedb",
+   "frame": "#dcdac8",
+   "glass": "#879f97",
+   "slate": "#868a74",
+   "dark": "#33383a",
+   "sandstone": "#aaa69a",
+   "green": "#a9c2b5",
+   "bronze": "#2a2c2b",
+   "concrete": "#5a5d5d"
+  },
+  "measuredOverrides": true,
+  "attribution": {
+   "title": "Hotel Notting Hill, Westeinde 26, Amsterdam (bank building 1977 behind a front matched to A.L. van Gendt's row, c. 1870)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002545_pano_0000_000344/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178268 (CC0): the stone quoins and pilasters, the grey-brick ground storey on its stone plinth with basement lights, the stone-clad lounge front with its segment-headed openings, the segment-headed windows with rowlock arches, keystones and scalloped sill consoles, the balconettes in stone surrounds, the cornice, the white mansard dormers, the entrance steps, canopy and sign block, and the annexe, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8988079,
+      52.3585422
+     ],
+     [
+      4.898601,
+      52.3585083
+     ],
+     [
+      4.8985025,
+      52.3584084
+     ],
+     [
+      4.8985475,
+      52.3583063
+     ],
+     [
+      4.8985582,
+      52.3582821
+     ],
+     [
+      4.8985571,
+      52.3582819
+     ],
+     [
+      4.898559,
+      52.3582775
+     ],
+     [
+      4.8985601,
+      52.3582777
+     ],
+     [
+      4.8985604,
+      52.358277
+     ],
+     [
+      4.8985636,
+      52.3582776
+     ],
+     [
+      4.8985664,
+      52.3582781
+     ],
+     [
+      4.8985661,
+      52.3582787
+     ],
+     [
+      4.8985675,
+      52.3582789
+     ],
+     [
+      4.8986201,
+      52.3582878
+     ],
+     [
+      4.8986263,
+      52.3582742
+     ],
+     [
+      4.8986255,
+      52.3582741
+     ],
+     [
+      4.898627,
+      52.3582701
+     ],
+     [
+      4.8986275,
+      52.3582702
+     ],
+     [
+      4.8986277,
+      52.3582699
+     ],
+     [
+      4.8986352,
+      52.3582711
+     ],
+     [
+      4.8986349,
+      52.3582718
+     ],
+     [
+      4.8986646,
+      52.3582766
+     ],
+     [
+      4.8986649,
+      52.358276
+     ],
+     [
+      4.8986717,
+      52.3582771
+     ],
+     [
+      4.8986714,
+      52.3582778
+     ],
+     [
+      4.8988191,
+      52.358302
+     ],
+     [
+      4.8988194,
+      52.3583014
+     ],
+     [
+      4.8988262,
+      52.3583025
+     ],
+     [
+      4.8988259,
+      52.3583032
+     ],
+     [
+      4.8988556,
+      52.358308
+     ],
+     [
+      4.8988559,
+      52.3583074
+     ],
+     [
+      4.8988627,
+      52.3583085
+     ],
+     [
+      4.8988627,
+      52.3583089
+     ],
+     [
+      4.8988633,
+      52.358309
+     ],
+     [
+      4.8988614,
+      52.3583132
+     ],
+     [
+      4.8988602,
+      52.358313
+     ],
+     [
+      4.8988556,
+      52.3583243
+     ],
+     [
+      4.8988472,
+      52.3583446
+     ],
+     [
+      4.8988663,
+      52.3583475
+     ],
+     [
+      4.8988843,
+      52.3583503
+     ],
+     [
+      4.8988845,
+      52.3583497
+     ],
+     [
+      4.8988914,
+      52.3583508
+     ],
+     [
+      4.8988912,
+      52.3583514
+     ],
+     [
+      4.8988918,
+      52.3583515
+     ],
+     [
+      4.8988898,
+      52.3583559
+     ],
+     [
+      4.8988892,
+      52.3583559
+     ],
+     [
+      4.8988602,
+      52.3584208
+     ],
+     [
+      4.8988613,
+      52.3584209
+     ],
+     [
+      4.8988594,
+      52.3584252
+     ],
+     [
+      4.8988583,
+      52.358425
+     ],
+     [
+      4.8988296,
+      52.3584903
+     ],
+     [
+      4.8988307,
+      52.3584905
+     ],
+     [
+      4.8988289,
+      52.3584947
+     ],
+     [
+      4.8988278,
+      52.3584945
+     ],
+     [
+      4.8988087,
+      52.3585378
+     ],
+     [
+      4.8988098,
+      52.358538
+     ],
+     [
+      4.8988079,
+      52.3585422
+     ]
+    ]
+   ]
+  }
  }
 ]
