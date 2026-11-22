@@ -75220,11 +75220,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012247551",
       "name": "Wiborgeiland 1-72, Houthavens: 2018 perimeter block of five- and six-storey fronts on one BAG pand: dark brick spout-gabled houses with a white strip on the NW quay, red brick with white balcony columns and a dark six-storey front with balconies on the SW, the SE row with orange shutters on one gable, a grey four-storey wing on the NE",
-      "hash": "39bc61199da6d27231a5c63363ea9e271084a110bf2ede353a3250cd8cc9d1db",
-      "sha256": "39bc61199da6d27231a5c63363ea9e271084a110bf2ede353a3250cd8cc9d1db",
-      "meshHash": "0c397123a84c3d76",
-      "bytes": 1556904,
-      "triangles": 20902,
+      "hash": "1893c2c864c21bffe70b7eb16f526be6661e03d9804fcc4512233406022545e6",
+      "sha256": "1893c2c864c21bffe70b7eb16f526be6661e03d9804fcc4512233406022545e6",
+      "meshHash": "661f4302a5ae3f4c",
+      "bytes": 1563700,
+      "triangles": 20973,
       "materials": 28,
       "textures": 0,
       "scale": 1,
@@ -75430,11 +75430,11 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (window shape tall vs photo wide; storey 1: widest opening 2.6 m vs photo 8.4 m (a ribbon against windows); columns 17 vs photo 35)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g0)",
+        "walls[0] not confirmed by the photo (FAIL (storey 1: widest opening 2.6 m vs photo 8.4 m (a ribbon against windows); columns 16 vs photo 35)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g0)",
         "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.52 mean 0.25 vs photo 0.61)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g1)",
         "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.31)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g2)",
         "walls[3] not confirmed by the photo (FAIL (wall dL -0.20; glazing storey band off by 0.30 mean 0.25 vs photo 0.49)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g3)",
-        "walls[4] not confirmed by the photo (FAIL (wall dL -0.18; glazing  mean 0.25 vs photo 0.35)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g4)",
+        "walls[4] not confirmed by the photo (FAIL (wall dL -0.18; glazing storey band off by 0.17 mean 0.25 vs photo 0.35)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g4)",
         "walls[5] not confirmed by the photo (FAIL (glazing storey band off by 0.56 mean 0.28 vs photo 0.61; window shape tall vs photo square; columns 6 vs photo 3)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g5)",
         "walls[6] likeness WARN (mask IoU 0.2 < 0.45).",
         "walls[7] not confirmed by the photo (FAIL (wall dL +0.12; glazing storey band off by 0.38 mean 0.23 vs photo 0.51)); inferred: row of gabled quay houses split at the 3DBAG gable joints, the whole-wall grid misreads the row (g7)",
@@ -75445,7 +75445,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247551",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-20T10:54:00.758Z"
+      "updatedAt": "2026-11-22T18:35:06.592Z"
     },
     {
       "id": "ordinary-0363100012247676",
@@ -80477,10 +80477,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012097332",
       "name": "Bos en Lommerplein 2-136, Amsterdam-West: 2003 housing in dark brown brick over shops, continuous balcony bands with bar rails on the square front and a taller corner tower with white-framed windows (kit batch 8504, lane kit-batch-8504-20261121: not installed)",
-      "hash": "0d88b5aed93406a7e14b588a90520a8bd0f4c0b4bcace75fd9d5b9fde29f9355",
-      "sha256": "0d88b5aed93406a7e14b588a90520a8bd0f4c0b4bcace75fd9d5b9fde29f9355",
-      "meshHash": "15ac10f7cf8c402b",
-      "bytes": 769224,
+      "hash": "e05770f0ded9b7df30e957268d7a39e9b1825424389df767bbb3b985de0da522",
+      "sha256": "e05770f0ded9b7df30e957268d7a39e9b1825424389df767bbb3b985de0da522",
+      "meshHash": "ff7079ce998eed08",
+      "bytes": 769288,
       "triangles": 10590,
       "materials": 9,
       "textures": 0,
@@ -80603,7 +80603,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012097332",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-21T22:29:43.345Z"
+      "updatedAt": "2026-11-22T18:34:46.465Z"
     },
     {
       "id": "ordinary-0363100012170653",
@@ -82012,12 +82012,12 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012131508",
       "name": "Jesse Owenshof 1-89, Amsterdam Nieuw-West: 1995 U-shaped courtyard block over a car park deck, pale grey-cream brick wings of four and five storeys with punched white windows and stacked loggias, a darker brick top storey on the five-storey side, glazed stair towers with blue spandrels at the wing ends, red brick end walls under a ribbon-window top storey (kit2 recipe, lane kit-batch-8504-20261121: not installed)",
-      "hash": "95e4191f3b263e1d5cbac0c3df253283f27f90bdf8151d7c0bdfaf0c27ea7917",
-      "sha256": "95e4191f3b263e1d5cbac0c3df253283f27f90bdf8151d7c0bdfaf0c27ea7917",
-      "meshHash": "01e51233ce90510e",
-      "bytes": 762388,
-      "triangles": 10032,
-      "materials": 15,
+      "hash": "042d371e6a182812af21038b083e9fee33b282bf325e1d6a7ea6adc3698b2265",
+      "sha256": "042d371e6a182812af21038b083e9fee33b282bf325e1d6a7ea6adc3698b2265",
+      "meshHash": "63fa744deca7802d",
+      "bytes": 774064,
+      "triangles": 10184,
+      "materials": 16,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -82527,15 +82527,16 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park (its red INRIT / UITRIT garage doors are not drawn: garageBays does not render on a blank ground, see kit gaps), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at)."
+        "walls[0] not confirmed by the photo (NO EVIDENCE (usable upper cells 39 % < 40 %; foliage 49 % > 25 %; washed out 63 % > 30 %)); inferred: w07-114n 2024-10-23 straight-on, window and loggia positions measured per bay, judge blocked by sky wash and hedge",
+        "walls[4] not confirmed by the photo (FAIL (wall dL +0.71; glazing storey band off by 0.16 mean 0.24 vs photo 0.13; wall family unresolved (#0c130d is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 12 vs photo 27)); inferred: w02-24n 2024-10-23, tree over the left third, layout mirrored from the visible right half, photo wall #0c130d is the tree",
+        "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park (its red INRIT / UITRIT garage doors as garageBays [0, 1] on walls[0] and [5, 6] on walls[1], one door over each pair, palette.garage #9e5754 measured from the w07-114n and w06-114n door leaves; lane kit-fixes-20261122: the low 2.4 m ground on 2.6 m bays was too small for the plain door), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at)."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012131508",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-21T22:30:11.114Z"
+      "updatedAt": "2026-11-22T18:34:49.373Z"
     },
     {
       "id": "ordinary-0363100012247342",
@@ -83029,11 +83030,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012145730",
       "name": "Veemkade 366-556 / Piet Heinkade / Purperhoedenveem, Oostelijk Havengebied: 2005 block in dark blue-grey brick with a punched grid of transom windows, a ten-storey tower over Piet Heinkade, six-storey wings and a two-storey stone colonnade of glazed shops and offices (kit batch 2005+, lane kit-batch-2005-20261121)",
-      "hash": "e3625c73b8a58f7d74c45204e69bc5cfeb5aa419b2b3138dd8e8955c36902c02",
-      "sha256": "e3625c73b8a58f7d74c45204e69bc5cfeb5aa419b2b3138dd8e8955c36902c02",
-      "meshHash": "f2951b57572f07e5",
-      "bytes": 1091084,
-      "triangles": 14917,
+      "hash": "4c0483ca7efddbcd5b48b12725205e28c28720b98a483bea3b852d3e81ba97da",
+      "sha256": "4c0483ca7efddbcd5b48b12725205e28c28720b98a483bea3b852d3e81ba97da",
+      "meshHash": "2a3d1b061e9a8be5",
+      "bytes": 1097996,
+      "triangles": 15015,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -83198,7 +83199,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012145730",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-21T22:30:33.296Z"
+      "updatedAt": "2026-11-22T18:35:03.436Z"
     },
     {
       "id": "ordinary-0363100012105724",
@@ -85137,11 +85138,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253816",
       "name": "Borneostraat 42-70 / Madurastraat / Sumatrastraat, Indische Buurt: 2022 housing block in dark brown brick, raised brick bays with paired slot windows rising through a zinc mansard with dormers, French windows with iron balconettes between them, residential doors on a banded brick ground (kit batch 2005+, lane kit-batch-2005-20261121)",
-      "hash": "8eac72067d84a8d6c4442fe8174d438b60ba1e2c2194866f1690498cfdbb8942",
-      "sha256": "8eac72067d84a8d6c4442fe8174d438b60ba1e2c2194866f1690498cfdbb8942",
-      "meshHash": "cb9393cea4d5ea14",
-      "bytes": 1292900,
-      "triangles": 17532,
+      "hash": "16a419b5016d7e0975b8407d0b7828e0b49bc127ffedc090bb1eb7d53b3f3e2b",
+      "sha256": "16a419b5016d7e0975b8407d0b7828e0b49bc127ffedc090bb1eb7d53b3f3e2b",
+      "meshHash": "a78a72b44394608f",
+      "bytes": 1307180,
+      "triangles": 17752,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -85352,7 +85353,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253816",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-21T22:31:21.993Z"
+      "updatedAt": "2026-11-22T18:34:42.831Z"
     },
     {
       "id": "ordinary-0363100012239704",
@@ -85615,10 +85616,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012241221",
       "name": "Laing's Nekstraat 1-17 / Retiefstraat / Tugelaweg / Hertzogstraat, Transvaalbuurt: 2015 four-storey housing block in red-brown mixed brick under a thin pale canopy eave, recessed loggias and projecting brick-parapet balconies by house, zinc dormers on the roof, residential doors with louvred storage doors on the ground (kit batch 2005+, lane kit-batch-2005-20261121)",
-      "hash": "9728bd27dec8c4760aa95ee09be53831e2391bba74466d34273c5065ab6e41ff",
-      "sha256": "9728bd27dec8c4760aa95ee09be53831e2391bba74466d34273c5065ab6e41ff",
-      "meshHash": "93c6f73bdd943b24",
-      "bytes": 783016,
+      "hash": "000035d97c577eaba856ba87ebde32132e00a0616ccaccdddb5d8f65b5f0d841",
+      "sha256": "000035d97c577eaba856ba87ebde32132e00a0616ccaccdddb5d8f65b5f0d841",
+      "meshHash": "182d0b9888e383d0",
+      "bytes": 783300,
       "triangles": 10520,
       "materials": 12,
       "textures": 0,
@@ -85780,14 +85781,18 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+        "walls[0] not confirmed by the photo (NO EVIDENCE (camera 7.4 m < 8 m from a 54 m wall)); inferred: blind2 new preferred 2/2, Retiefstraat front read by hand from w02-158L 2022-01-12: seven house units by downpipe joints, two-bay loggias on storeys 2-3 over paired storey-1 windows, storage louvres and doors on the ground, the judge has no evidence as the camera stood 7.5 m from a 54 m wall and a plane tree covers the left third",
+        "walls[1] likeness WARN (mask IoU 0.281 < 0.45).",
+        "walls[2] likeness WARN (columns 16 vs photo 8; mask IoU 0.101 < 0.45).",
+        "walls[3] not confirmed by the photo (FAIL (wall dL +0.16; glazing storey band off by 0.19 mean 0.18 vs photo 0.05)); inferred: blind2 new preferred 2/2, south-west front main panel read by hand from w04-245 2019-12-19: two brick-parapet balcony stacks on storeys 1-3, the wall is in deep shade and the stacks cover the window columns so wall lightness and glazing bands fail",
+        "walls[4] not confirmed by the photo (FAIL (wall dL +0.18; glazing storey band off by 0.35 mean 0.20 vs photo 0.46)); inferred: blind2 new preferred 2/2, south-west south end read by hand from w04-245 2019-12-19: one brick-parapet balcony stack on storeys 1-3, the shaded wall and the stack soffits read as glazing to the judge"
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241221",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-11-21T22:31:40.456Z"
+      "updatedAt": "2026-11-22T18:34:56.584Z"
     },
     {
       "id": "ordinary-0363100012249646",
