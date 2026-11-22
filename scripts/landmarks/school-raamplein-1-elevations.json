@@ -6,8 +6,16 @@
    "name": "Raamplein, NW corner risalit (aedicule)",
    "bearing": 247.5,
    "photo": "artifacts/landmark-briefs/school-raamplein-1/w10-246.jpg",
-   "alongM": [1.8, 8.6],
-   "rows": [2, 2, 2, 1],
+   "alongM": [
+    1.8,
+    8.6
+   ],
+   "rows": [
+    2,
+    2,
+    2,
+    1
+   ],
    "columns": 2,
    "symmetric": true,
    "gables": 1
@@ -16,8 +24,16 @@
    "name": "Raamplein, north brick wing (INSPIRING)",
    "bearing": 247.5,
    "photo": "artifacts/landmark-briefs/school-raamplein-1/w04-246.jpg",
-   "alongM": [9.1, 23.4],
-   "rows": [4, 4, 4, 2],
+   "alongM": [
+    9.1,
+    23.4
+   ],
+   "rows": [
+    4,
+    4,
+    4,
+    2
+   ],
    "columns": 4,
    "symmetric": true,
    "gables": 0
@@ -26,12 +42,70 @@
    "name": "Raamplein, middle risalit (AUDIENCES, balcony, entrance)",
    "bearing": 247.5,
    "photo": "artifacts/landmark-briefs/school-raamplein-1/w07-246.jpg",
-   "alongM": [23.3, 32.0],
-   "heightM": [6.6, 26],
-   "rows": [4, 4, 2],
+   "alongM": [
+    23.3,
+    32
+   ],
+   "heightM": [
+    6.6,
+    26
+   ],
+   "rows": [
+    4,
+    4,
+    2
+   ],
    "columns": 4,
    "symmetric": true,
-   "gables": 1
+   "gables": 1,
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w07-246.jpg (TMX7316010203-001178_pano_0001_002898, 2019) and the blind count: each upper storey of the middle risalit is one four-light group, a narrow light either side of two wide lights, divided by colonnettes",
+     "openings": [
+      {
+       "kind": "narrow side light",
+       "w": 0.85
+      },
+      {
+       "kind": "wide light",
+       "w": 1.75
+      },
+      {
+       "kind": "wide light",
+       "w": 1.75
+      },
+      {
+       "kind": "narrow side light",
+       "w": 0.85
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w07-246.jpg (TMX7316010203-001178_pano_0001_002898, 2019) and the blind count: each upper storey of the middle risalit is one four-light group, a narrow light either side of two wide lights, divided by colonnettes",
+     "openings": [
+      {
+       "kind": "narrow side light",
+       "w": 0.85
+      },
+      {
+       "kind": "wide light",
+       "w": 1.75
+      },
+      {
+       "kind": "wide light",
+       "w": 1.75
+      },
+      {
+       "kind": "narrow side light",
+       "w": 0.85
+      }
+     ]
+    }
+   ]
   }
  ]
 }
