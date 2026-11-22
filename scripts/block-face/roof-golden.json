@@ -6969,6 +6969,50 @@
     "hash": "a1fe7065f354f441",
     "class": "front"
    }
+  },
+  "schuyt-7-15": {
+   "152757": {
+    "hash": "9521678121ed4074",
+    "class": "front"
+   },
+   "156820": {
+    "hash": "ddabfaf2d67b4a94",
+    "class": "front"
+   },
+   "158436": {
+    "hash": "3714cf0e8da99dd0",
+    "class": "front"
+   },
+   "159412": {
+    "hash": "001460543592fd38",
+    "class": "front"
+   },
+   "236236": {
+    "hash": "88d1e5a683a1c982",
+    "class": "front"
+   }
+  },
+  "schuyt-8-16": {
+   "160728": {
+    "hash": "6c589e68fd4079ce",
+    "class": "front"
+   },
+   "163293": {
+    "hash": "a096af303c3ad9db",
+    "class": "front"
+   },
+   "163757": {
+    "hash": "7ee530a21bed5b32",
+    "class": "front"
+   },
+   "167420": {
+    "hash": "557c34827a94d4ff",
+    "class": "front"
+   },
+   "237103": {
+    "hash": "5b728d0dd9bd4ed1",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -7294,6 +7338,8 @@
   "baerle-22-30": "98886d7976d43127",
   "baerle-56-88": "18fe8cd510bdaf89",
   "schuyt-17-33": "040d683a63f43bc1",
-  "schuyt-18-34": "dd5d65676d72ab69"
+  "schuyt-18-34": "dd5d65676d72ab69",
+  "schuyt-7-15": "23720fe63e7ab5b8",
+  "schuyt-8-16": "4a62c67205ea1d71"
  }
 }
