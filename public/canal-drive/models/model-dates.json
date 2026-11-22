@@ -116,6 +116,21 @@
       "version": "8737a0f039be3fdc",
       "dateSource": "asset-update"
     },
+    "albatrospad-1": {
+      "updatedAt": "2026-11-21T15:22:56.875Z",
+      "version": "c6529817e625c6a1",
+      "dateSource": "asset-update"
+    },
+    "albatrospad-1.lod1": {
+      "updatedAt": "2026-11-22T10:46:36.770Z",
+      "version": "544941390a51fa37",
+      "dateSource": "asset-update"
+    },
+    "albatrospad-1.lod2": {
+      "updatedAt": "2026-11-22T10:46:36.776Z",
+      "version": "630afb60d9ca8cff",
+      "dateSource": "asset-update"
+    },
     "albert-heijn-museumplein": {
       "updatedAt": "2026-11-05T21:08:00.051Z",
       "version": "4682501c32475d6b",
@@ -581,9 +596,24 @@
       "version": "cfbd903233375376",
       "dateSource": "asset-update"
     },
+    "banana-bar": {
+      "updatedAt": "2026-11-21T15:48:24.856Z",
+      "version": "b630c146377e31f7",
+      "dateSource": "asset-update"
+    },
+    "banana-bar.lod1": {
+      "updatedAt": "2026-11-22T10:46:37.163Z",
+      "version": "cfe5b23a73462668",
+      "dateSource": "asset-update"
+    },
+    "banana-bar.lod2": {
+      "updatedAt": "2026-11-22T10:46:37.164Z",
+      "version": "cec61dd8b59a5ab9",
+      "dateSource": "asset-update"
+    },
     "banks-mansion": {
-      "updatedAt": "2026-11-20T06:26:48.728Z",
-      "version": "7bece2342c73897d",
+      "updatedAt": "2026-11-22T11:08:09.050Z",
+      "version": "4a77146c9b6b368d",
       "dateSource": "asset-update"
     },
     "banks-mansion.lod1": {
@@ -689,6 +719,21 @@
     "belastingdienst-amsterdam.lod2": {
       "updatedAt": "2026-11-07T14:08:58.135Z",
       "version": "f9b5a66349705701",
+      "dateSource": "asset-update"
+    },
+    "belle": {
+      "updatedAt": "2026-11-21T16:08:38.933Z",
+      "version": "b7a0aff5fd65dd68",
+      "dateSource": "asset-update"
+    },
+    "belle.lod1": {
+      "updatedAt": "2026-11-22T10:46:37.211Z",
+      "version": "e5f77882ed97eb94",
+      "dateSource": "asset-update"
+    },
+    "belle.lod2": {
+      "updatedAt": "2026-11-22T10:46:37.212Z",
+      "version": "37bf405a231b1469",
       "dateSource": "asset-update"
     },
     "bercylaan-801-855": {
@@ -1086,6 +1131,21 @@
       "version": "ce6a36378678e3f6",
       "dateSource": "asset-update"
     },
+    "casa-rosso": {
+      "updatedAt": "2026-11-21T13:46:51.314Z",
+      "version": "3f6b29b913982ff7",
+      "dateSource": "asset-update"
+    },
+    "casa-rosso.lod1": {
+      "updatedAt": "2026-11-21T18:44:11.431Z",
+      "version": "3a9588e3ba4af2d5",
+      "dateSource": "asset-update"
+    },
+    "casa-rosso.lod2": {
+      "updatedAt": "2026-11-21T18:44:11.431Z",
+      "version": "6e287bc78d8de65e",
+      "dateSource": "asset-update"
+    },
     "cavia": {
       "updatedAt": "2026-10-13T19:11:26.069Z",
       "version": "fa6677a2e649764c",
@@ -1274,6 +1334,21 @@
     "concertgebouw.lod2": {
       "updatedAt": "2026-11-07T14:08:58.141Z",
       "version": "75662ce96cf375a1",
+      "dateSource": "asset-update"
+    },
+    "condomerie": {
+      "updatedAt": "2026-11-21T15:57:30.841Z",
+      "version": "cffc8c1356cf9c17",
+      "dateSource": "asset-update"
+    },
+    "condomerie.lod1": {
+      "updatedAt": "2026-11-22T10:46:37.515Z",
+      "version": "e5d63aeb41e85d42",
+      "dateSource": "asset-update"
+    },
+    "condomerie.lod2": {
+      "updatedAt": "2026-11-22T10:46:37.515Z",
+      "version": "2b9166240e715d1f",
       "dateSource": "asset-update"
     },
     "conservatorium-van-amsterdam": {
@@ -2079,6 +2154,21 @@
     "english-reformed-church.lod2": {
       "updatedAt": "2026-11-07T14:08:58.147Z",
       "version": "aa98506544537bb1",
+      "dateSource": "asset-update"
+    },
+    "erotic-museum": {
+      "updatedAt": "2026-11-21T15:50:23.918Z",
+      "version": "a05520b737935c0f",
+      "dateSource": "asset-update"
+    },
+    "erotic-museum.lod1": {
+      "updatedAt": "2026-11-22T10:46:37.852Z",
+      "version": "3873a549ecfddc1a",
+      "dateSource": "asset-update"
+    },
+    "erotic-museum.lod2": {
+      "updatedAt": "2026-11-22T10:46:37.854Z",
+      "version": "f13353b686cdb72f",
       "dateSource": "asset-update"
     },
     "escape-rembrandtplein": {
@@ -3556,6 +3646,16 @@
       "version": "5aef5291c712d334",
       "dateSource": "asset-update"
     },
+    "kadijksplein-17-18.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.139Z",
+      "version": "3a62a91f228e35a4",
+      "dateSource": "asset-update"
+    },
+    "kadijksplein-17-18.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.139Z",
+      "version": "bec7d2a36a340c09",
+      "dateSource": "asset-update"
+    },
     "kalvertoren": {
       "updatedAt": "2026-10-31T14:29:00.129Z",
       "version": "2a2010e69de4af5e",
@@ -3926,6 +4026,36 @@
       "version": "d0a785b921aea4b1",
       "dateSource": "asset-update"
     },
+    "kramatplantsoen-203": {
+      "updatedAt": "2026-11-20T13:26:33.390Z",
+      "version": "56d21a0a83f22de2",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen-203.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.160Z",
+      "version": "f030cb01049ea47c",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen-203.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.160Z",
+      "version": "7271ff9c7eecdc10",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen": {
+      "updatedAt": "2026-11-20T11:58:18.112Z",
+      "version": "2734f3776f370264",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.161Z",
+      "version": "c64d2d4ae09dd768",
+      "dateSource": "asset-update"
+    },
+    "kramatplantsoen.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.162Z",
+      "version": "82807f8d4d3a92fa",
+      "dateSource": "asset-update"
+    },
     "krasnapolsky": {
       "updatedAt": "2026-10-13T14:30:49.774Z",
       "version": "ae8f0cf664772dbe",
@@ -4197,13 +4327,13 @@
       "dateSource": "asset-update"
     },
     "magna-plaza.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.408Z",
-      "version": "ed022763810e179f",
+      "updatedAt": "2026-11-22T10:46:38.524Z",
+      "version": "5115530ccf687c76",
       "dateSource": "asset-update"
     },
     "magna-plaza.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.169Z",
-      "version": "da529bad4f0ffb13",
+      "updatedAt": "2026-11-22T10:46:38.525Z",
+      "version": "a7eabf780382b8fa",
       "dateSource": "asset-update"
     },
     "mama-baranka": {
@@ -4474,6 +4604,21 @@
     "motorkade-1.lod2": {
       "updatedAt": "2026-11-07T14:08:58.171Z",
       "version": "17834ac425b56ca2",
+      "dateSource": "asset-update"
+    },
+    "moulin-rouge-amsterdam": {
+      "updatedAt": "2026-11-21T13:46:51.362Z",
+      "version": "69dbff4584f956ea",
+      "dateSource": "asset-update"
+    },
+    "moulin-rouge-amsterdam.lod1": {
+      "updatedAt": "2026-11-21T18:44:13.161Z",
+      "version": "b1dfa96ee471a495",
+      "dateSource": "asset-update"
+    },
+    "moulin-rouge-amsterdam.lod2": {
+      "updatedAt": "2026-11-21T18:44:13.162Z",
+      "version": "0e188e689ae734b7",
       "dateSource": "asset-update"
     },
     "mountain-network": {
@@ -4766,6 +4911,21 @@
       "version": "1f76f66b23c3c729",
       "dateSource": "asset-update"
     },
+    "nieuwe-achtergracht-129": {
+      "updatedAt": "2026-11-20T12:33:44.060Z",
+      "version": "52b31c7c8d50836c",
+      "dateSource": "asset-update"
+    },
+    "nieuwe-achtergracht-129.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.215Z",
+      "version": "ef36db0783d9dd88",
+      "dateSource": "asset-update"
+    },
+    "nieuwe-achtergracht-129.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.215Z",
+      "version": "b3d17bb04a36e827",
+      "dateSource": "asset-update"
+    },
     "nieuwe-kerk": {
       "updatedAt": "2026-10-24T18:34:03.831Z",
       "version": "5ee4be33beed348c",
@@ -5031,6 +5191,21 @@
       "version": "616c0d1385adf882",
       "dateSource": "asset-update"
     },
+    "oostenburgergracht-15": {
+      "updatedAt": "2026-11-20T14:12:38.593Z",
+      "version": "dc3409caebec9f02",
+      "dateSource": "asset-update"
+    },
+    "oostenburgergracht-15.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.236Z",
+      "version": "f28551ae840b9f2e",
+      "dateSource": "asset-update"
+    },
+    "oostenburgergracht-15.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.236Z",
+      "version": "1a7616f18f9a464a",
+      "dateSource": "asset-update"
+    },
     "oostenburgermiddenstraat-228": {
       "updatedAt": "2026-10-20T10:16:57.940Z",
       "version": "a0f0d0edbed6f1ea",
@@ -5112,13 +5287,13 @@
       "dateSource": "asset-update"
     },
     "oranjekerk-pijp.lod1": {
-      "updatedAt": "2026-11-20T09:39:07.832Z",
-      "version": "cf12d6ffdcb9a9bc",
+      "updatedAt": "2026-11-22T10:46:38.772Z",
+      "version": "93a452be951bbf16",
       "dateSource": "asset-update"
     },
     "oranjekerk-pijp.lod2": {
-      "updatedAt": "2026-11-20T09:39:11.402Z",
-      "version": "1d04e347ccf05096",
+      "updatedAt": "2026-11-22T10:46:38.772Z",
+      "version": "8b8a8f26593db0ce",
       "dateSource": "asset-update"
     },
     "orgelpark": {
@@ -5321,6 +5496,21 @@
       "version": "ba5562b87eac40c2",
       "dateSource": "asset-update"
     },
+    "pentagon": {
+      "updatedAt": "2026-11-20T11:08:43.683Z",
+      "version": "5f982c7292f3b9bb",
+      "dateSource": "asset-update"
+    },
+    "pentagon.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.761Z",
+      "version": "f703294af7c8a9db",
+      "dateSource": "asset-update"
+    },
+    "pentagon.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.763Z",
+      "version": "ab866e507ed52d4e",
+      "dateSource": "asset-update"
+    },
     "perdu": {
       "updatedAt": "2026-11-15T08:54:38.063Z",
       "version": "94166a5620444b41",
@@ -5379,6 +5569,21 @@
     "pianola-museum.lod2": {
       "updatedAt": "2026-11-07T14:08:58.178Z",
       "version": "2618188f9f68345a",
+      "dateSource": "asset-update"
+    },
+    "pieter-de-hoochstraat-13": {
+      "updatedAt": "2026-11-21T15:06:08.020Z",
+      "version": "8179e7406930013b",
+      "dateSource": "asset-update"
+    },
+    "pieter-de-hoochstraat-13.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.016Z",
+      "version": "0aebc858bbf0e88a",
+      "dateSource": "asset-update"
+    },
+    "pieter-de-hoochstraat-13.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.017Z",
+      "version": "192e9b1133f7b98a",
       "dateSource": "asset-update"
     },
     "plein-theater": {
@@ -5487,8 +5692,8 @@
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort": {
-      "updatedAt": "2026-11-20T08:11:20.022Z",
-      "version": "a214b6ca04899764",
+      "updatedAt": "2026-11-22T11:00:57.111Z",
+      "version": "af6147c42f580e88",
       "dateSource": "asset-update"
     },
     "politiebureau-raampoort.lod1": {
@@ -5636,6 +5841,36 @@
       "version": "62cd61201aac7667",
       "dateSource": "asset-update"
     },
+    "rapenburgerstraat-220": {
+      "updatedAt": "2026-11-21T15:01:24.262Z",
+      "version": "c29cbd603ef9cc9e",
+      "dateSource": "asset-update"
+    },
+    "rapenburgerstraat-220.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.056Z",
+      "version": "8bee344f3e037f48",
+      "dateSource": "asset-update"
+    },
+    "rapenburgerstraat-220.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.057Z",
+      "version": "85a6729bf62cba86",
+      "dateSource": "asset-update"
+    },
+    "rapenburgerstraat-4": {
+      "updatedAt": "2026-11-21T15:55:34.183Z",
+      "version": "1970d2972392d8a5",
+      "dateSource": "asset-update"
+    },
+    "rapenburgerstraat-4.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.059Z",
+      "version": "8d702f16d3541aeb",
+      "dateSource": "asset-update"
+    },
+    "rapenburgerstraat-4.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.059Z",
+      "version": "71d0d60dc0192bb4",
+      "dateSource": "asset-update"
+    },
     "rasphuispoort": {
       "updatedAt": "2026-10-20T10:15:06.850Z",
       "version": "999ec12436855ecc",
@@ -5649,6 +5884,21 @@
     "rasphuispoort.lod2": {
       "updatedAt": "2026-11-07T14:08:58.180Z",
       "version": "2539a438b9b2ae58",
+      "dateSource": "asset-update"
+    },
+    "red-light-secrets": {
+      "updatedAt": "2026-11-21T15:50:24.048Z",
+      "version": "39f7ff7622fd2b92",
+      "dateSource": "asset-update"
+    },
+    "red-light-secrets.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.062Z",
+      "version": "b6d122864c87c1e0",
+      "dateSource": "asset-update"
+    },
+    "red-light-secrets.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.063Z",
+      "version": "439ed85e569893c0",
       "dateSource": "asset-update"
     },
     "reinwardt-academie": {
@@ -5726,6 +5976,21 @@
       "version": "21a619b2d9750317",
       "dateSource": "asset-update"
     },
+    "revaleiland-121": {
+      "updatedAt": "2026-11-21T15:37:03.075Z",
+      "version": "b67eae9faa5ccc15",
+      "dateSource": "asset-update"
+    },
+    "revaleiland-121.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.068Z",
+      "version": "7f0cb5ad0139bae7",
+      "dateSource": "asset-update"
+    },
+    "revaleiland-121.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.068Z",
+      "version": "7553035989b34c12",
+      "dateSource": "asset-update"
+    },
     "rialto": {
       "updatedAt": "2026-10-13T19:25:19.706Z",
       "version": "956f5bc48609ca1a",
@@ -5781,6 +6046,21 @@
       "version": "a1319426dd02acb1",
       "dateSource": "asset-update"
     },
+    "rinus-michelslaan-1": {
+      "updatedAt": "2026-11-21T15:42:52.632Z",
+      "version": "ccc79ce77f4e2aa4",
+      "dateSource": "asset-update"
+    },
+    "rinus-michelslaan-1.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.079Z",
+      "version": "8a1edadc1bee2ab4",
+      "dateSource": "asset-update"
+    },
+    "rinus-michelslaan-1.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.080Z",
+      "version": "e8cf85eb878f9249",
+      "dateSource": "asset-update"
+    },
     "rode-hoed": {
       "updatedAt": "2026-10-20T10:12:58.179Z",
       "version": "22db86629558b27c",
@@ -5802,13 +6082,13 @@
       "dateSource": "asset-update"
     },
     "roeterseiland-rec-a.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.700Z",
-      "version": "2c833b195ec3f347",
+      "updatedAt": "2026-11-22T10:46:40.091Z",
+      "version": "f6ccb5221c9ac9bb",
       "dateSource": "asset-update"
     },
     "roeterseiland-rec-a.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.181Z",
-      "version": "3766f39c53c1f767",
+      "updatedAt": "2026-11-22T10:46:40.091Z",
+      "version": "8dabd13bc54fef19",
       "dateSource": "asset-update"
     },
     "ronde-lutherse-kerk": {
@@ -6271,6 +6551,21 @@
       "version": "6e459cea8902cf30",
       "dateSource": "asset-update"
     },
+    "spiegelhof": {
+      "updatedAt": "2026-11-20T11:10:54.017Z",
+      "version": "ccedd30f5c5527af",
+      "dateSource": "asset-update"
+    },
+    "spiegelhof.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.840Z",
+      "version": "3fb49f6cf85137e7",
+      "dateSource": "asset-update"
+    },
+    "spiegelhof.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.840Z",
+      "version": "bda0ba90dc02553e",
+      "dateSource": "asset-update"
+    },
     "spinoza-standbeeld": {
       "updatedAt": "2026-10-14T03:41:35.199Z",
       "version": "705002e5ff4d04dd",
@@ -6416,6 +6711,21 @@
       "version": "64b3ac7d7ae6acd6",
       "dateSource": "asset-update"
     },
+    "sumatrakade-1101": {
+      "updatedAt": "2026-11-21T15:55:57.592Z",
+      "version": "f20cdc2214411113",
+      "dateSource": "asset-update"
+    },
+    "sumatrakade-1101.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.188Z",
+      "version": "706fb7fc366503a7",
+      "dateSource": "asset-update"
+    },
+    "sumatrakade-1101.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.189Z",
+      "version": "0713abf16e79b5c8",
+      "dateSource": "asset-update"
+    },
     "symphony": {
       "updatedAt": "2026-11-06T23:48:02.543Z",
       "version": "29641e783661205c",
@@ -6429,6 +6739,21 @@
     "symphony.lod2": {
       "updatedAt": "2026-11-07T14:08:58.190Z",
       "version": "8f6021d5243946bd",
+      "dateSource": "asset-update"
+    },
+    "technische-school-meeuwenlaan": {
+      "updatedAt": "2026-11-20T11:45:45.314Z",
+      "version": "80a2019dd0d4c8ac",
+      "dateSource": "asset-update"
+    },
+    "technische-school-meeuwenlaan.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.853Z",
+      "version": "b017520ce663e51c",
+      "dateSource": "asset-update"
+    },
+    "technische-school-meeuwenlaan.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.853Z",
+      "version": "060a00ac0accfc06",
       "dateSource": "asset-update"
     },
     "telefooncentrale-spuistraat": {
@@ -6776,6 +7101,21 @@
       "version": "77439d7470845e0e",
       "dateSource": "asset-update"
     },
+    "tweede-atjehstraat-2": {
+      "updatedAt": "2026-11-21T15:17:03.648Z",
+      "version": "415fafdca0bd9621",
+      "dateSource": "asset-update"
+    },
+    "tweede-atjehstraat-2.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.227Z",
+      "version": "11d2bb35e6d97475",
+      "dateSource": "asset-update"
+    },
+    "tweede-atjehstraat-2.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.229Z",
+      "version": "eb884e6f2bcdccbd",
+      "dateSource": "asset-update"
+    },
     "uilenburger-synagoge": {
       "updatedAt": "2026-10-30T18:19:39.050Z",
       "version": "6b3bb1b5c5dbafbb",
@@ -6809,6 +7149,31 @@
     "utrechtsestraat-9-17": {
       "updatedAt": "2026-11-20T10:29:57.155Z",
       "version": "b5bf4561fd9b629d",
+      "dateSource": "asset-update"
+    },
+    "utrechtsestraat-9-17.lod1": {
+      "updatedAt": "2026-11-21T13:52:36.877Z",
+      "version": "ca9b5ccbcfce9b25",
+      "dateSource": "asset-update"
+    },
+    "utrechtsestraat-9-17.lod2": {
+      "updatedAt": "2026-11-21T13:52:36.877Z",
+      "version": "623fc49c98c09c1d",
+      "dateSource": "asset-update"
+    },
+    "valkenburgerstraat-69": {
+      "updatedAt": "2026-11-21T19:00:44.077Z",
+      "version": "4aad9865c1855a73",
+      "dateSource": "asset-update"
+    },
+    "valkenburgerstraat-69.lod1": {
+      "updatedAt": "2026-11-22T10:46:40.237Z",
+      "version": "e0cfa9fe96f694f8",
+      "dateSource": "asset-update"
+    },
+    "valkenburgerstraat-69.lod2": {
+      "updatedAt": "2026-11-22T10:46:40.237Z",
+      "version": "861231156eeedb81",
       "dateSource": "asset-update"
     },
     "valley": {
@@ -7246,6 +7611,21 @@
       "version": "0443e3ff77e0c04c",
       "dateSource": "asset-update"
     },
+    "westerdoksdijk-215": {
+      "updatedAt": "2026-11-21T16:04:45.204Z",
+      "version": "e3c043513f0eb199",
+      "dateSource": "asset-update"
+    },
+    "westerdoksdijk-215.lod1": {
+      "updatedAt": "2026-11-22T10:46:01.871Z",
+      "version": "599bc0b635a31402",
+      "dateSource": "asset-update"
+    },
+    "westerdoksdijk-215.lod2": {
+      "updatedAt": "2026-11-22T10:46:01.895Z",
+      "version": "151ac026f91aabf9",
+      "dateSource": "asset-update"
+    },
     "westergas-bazenwoning-west": {
       "updatedAt": "2026-11-14T11:56:06.596Z",
       "version": "2d4f9b3f4a3ce1d7",
@@ -7314,6 +7694,21 @@
     "weteringschans-corner-office.lod2": {
       "updatedAt": "2026-11-07T14:08:58.200Z",
       "version": "8bea7b4f764175df",
+      "dateSource": "asset-update"
+    },
+    "wiborgeiland-76": {
+      "updatedAt": "2026-11-21T15:36:10.830Z",
+      "version": "420f2f49da79b72b",
+      "dateSource": "asset-update"
+    },
+    "wiborgeiland-76.lod1": {
+      "updatedAt": "2026-11-22T10:46:02.766Z",
+      "version": "be0453970b861952",
+      "dateSource": "asset-update"
+    },
+    "wiborgeiland-76.lod2": {
+      "updatedAt": "2026-11-22T10:46:02.784Z",
+      "version": "1807d348255fc568",
       "dateSource": "asset-update"
     },
     "wilhelmina-ruiterstandbeeld": {
@@ -7629,251 +8024,6 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
-      "dateSource": "asset-update"
-    },
-    "pentagon": {
-      "updatedAt": "2026-11-20T11:08:43.683Z",
-      "version": "5f982c7292f3b9bb",
-      "dateSource": "asset-update"
-    },
-    "spiegelhof": {
-      "updatedAt": "2026-11-20T11:10:54.017Z",
-      "version": "ccedd30f5c5527af",
-      "dateSource": "asset-update"
-    },
-    "technische-school-meeuwenlaan": {
-      "updatedAt": "2026-11-20T11:45:45.314Z",
-      "version": "80a2019dd0d4c8ac",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen": {
-      "updatedAt": "2026-11-20T11:58:18.112Z",
-      "version": "2734f3776f370264",
-      "dateSource": "asset-update"
-    },
-    "nieuwe-achtergracht-129": {
-      "updatedAt": "2026-11-20T12:33:44.060Z",
-      "version": "52b31c7c8d50836c",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen-203": {
-      "updatedAt": "2026-11-20T13:26:33.390Z",
-      "version": "56d21a0a83f22de2",
-      "dateSource": "asset-update"
-    },
-    "oostenburgergracht-15": {
-      "updatedAt": "2026-11-20T14:12:38.593Z",
-      "version": "dc3409caebec9f02",
-      "dateSource": "asset-update"
-    },
-    "valkenburgerstraat-69": {
-      "updatedAt": "2026-11-21T19:00:44.077Z",
-      "version": "4aad9865c1855a73",
-      "dateSource": "asset-update"
-    },
-    "casa-rosso": {
-      "updatedAt": "2026-11-21T13:46:51.314Z",
-      "version": "3f6b29b913982ff7",
-      "dateSource": "asset-update"
-    },
-    "moulin-rouge-amsterdam": {
-      "updatedAt": "2026-11-21T13:46:51.362Z",
-      "version": "69dbff4584f956ea",
-      "dateSource": "asset-update"
-    },
-    "kadijksplein-17-18.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.139Z",
-      "version": "3a62a91f228e35a4",
-      "dateSource": "asset-update"
-    },
-    "kadijksplein-17-18.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.139Z",
-      "version": "bec7d2a36a340c09",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen-203.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.160Z",
-      "version": "f030cb01049ea47c",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen-203.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.160Z",
-      "version": "7271ff9c7eecdc10",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.161Z",
-      "version": "c64d2d4ae09dd768",
-      "dateSource": "asset-update"
-    },
-    "kramatplantsoen.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.162Z",
-      "version": "82807f8d4d3a92fa",
-      "dateSource": "asset-update"
-    },
-    "nieuwe-achtergracht-129.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.215Z",
-      "version": "ef36db0783d9dd88",
-      "dateSource": "asset-update"
-    },
-    "nieuwe-achtergracht-129.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.215Z",
-      "version": "b3d17bb04a36e827",
-      "dateSource": "asset-update"
-    },
-    "oostenburgergracht-15.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.236Z",
-      "version": "f28551ae840b9f2e",
-      "dateSource": "asset-update"
-    },
-    "oostenburgergracht-15.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.236Z",
-      "version": "1a7616f18f9a464a",
-      "dateSource": "asset-update"
-    },
-    "pentagon.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.761Z",
-      "version": "f703294af7c8a9db",
-      "dateSource": "asset-update"
-    },
-    "pentagon.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.763Z",
-      "version": "ab866e507ed52d4e",
-      "dateSource": "asset-update"
-    },
-    "rapenburgerstraat-220": {
-      "updatedAt": "2026-11-21T15:01:24.262Z",
-      "version": "c29cbd603ef9cc9e",
-      "dateSource": "asset-update"
-    },
-    "rapenburgerstraat-4": {
-      "updatedAt": "2026-11-21T15:55:34.183Z",
-      "version": "1970d2972392d8a5",
-      "dateSource": "asset-update"
-    },
-    "spiegelhof.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.840Z",
-      "version": "3fb49f6cf85137e7",
-      "dateSource": "asset-update"
-    },
-    "spiegelhof.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.840Z",
-      "version": "bda0ba90dc02553e",
-      "dateSource": "asset-update"
-    },
-    "sumatrakade-1101": {
-      "updatedAt": "2026-11-21T15:55:57.592Z",
-      "version": "f20cdc2214411113",
-      "dateSource": "asset-update"
-    },
-    "technische-school-meeuwenlaan.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.853Z",
-      "version": "b017520ce663e51c",
-      "dateSource": "asset-update"
-    },
-    "technische-school-meeuwenlaan.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.853Z",
-      "version": "060a00ac0accfc06",
-      "dateSource": "asset-update"
-    },
-    "utrechtsestraat-9-17.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.877Z",
-      "version": "ca9b5ccbcfce9b25",
-      "dateSource": "asset-update"
-    },
-    "utrechtsestraat-9-17.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.877Z",
-      "version": "623fc49c98c09c1d",
-      "dateSource": "asset-update"
-    },
-    "valkenburgerstraat-69.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.881Z",
-      "version": "0ac346e9fe6e14fa",
-      "dateSource": "asset-update"
-    },
-    "valkenburgerstraat-69.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.881Z",
-      "version": "30970d7eaf38a423",
-      "dateSource": "asset-update"
-    },
-    "westerdoksdijk-215": {
-      "updatedAt": "2026-11-21T16:04:45.204Z",
-      "version": "e3c043513f0eb199",
-      "dateSource": "asset-update"
-    },
-    "albatrospad-1": {
-      "updatedAt": "2026-11-21T15:22:56.875Z",
-      "version": "c6529817e625c6a1",
-      "dateSource": "asset-update"
-    },
-    "pieter-de-hoochstraat-13": {
-      "updatedAt": "2026-11-21T15:06:08.020Z",
-      "version": "8179e7406930013b",
-      "dateSource": "asset-update"
-    },
-    "revaleiland-121": {
-      "updatedAt": "2026-11-21T15:37:03.075Z",
-      "version": "b67eae9faa5ccc15",
-      "dateSource": "asset-update"
-    },
-    "rinus-michelslaan-1": {
-      "updatedAt": "2026-11-21T15:42:52.632Z",
-      "version": "ccc79ce77f4e2aa4",
-      "dateSource": "asset-update"
-    },
-    "tweede-atjehstraat-2": {
-      "updatedAt": "2026-11-21T15:17:03.648Z",
-      "version": "415fafdca0bd9621",
-      "dateSource": "asset-update"
-    },
-    "wiborgeiland-76": {
-      "updatedAt": "2026-11-21T15:36:10.830Z",
-      "version": "420f2f49da79b72b",
-      "dateSource": "asset-update"
-    },
-    "erotic-museum": {
-      "updatedAt": "2026-11-21T15:50:23.918Z",
-      "version": "a05520b737935c0f",
-      "dateSource": "asset-update"
-    },
-    "condomerie": {
-      "updatedAt": "2026-11-21T15:57:30.841Z",
-      "version": "cffc8c1356cf9c17",
-      "dateSource": "asset-update"
-    },
-    "red-light-secrets": {
-      "updatedAt": "2026-11-21T15:50:24.048Z",
-      "version": "39f7ff7622fd2b92",
-      "dateSource": "asset-update"
-    },
-    "banana-bar": {
-      "updatedAt": "2026-11-21T15:48:24.856Z",
-      "version": "b630c146377e31f7",
-      "dateSource": "asset-update"
-    },
-    "belle": {
-      "updatedAt": "2026-11-21T16:08:38.933Z",
-      "version": "b7a0aff5fd65dd68",
-      "dateSource": "asset-update"
-    },
-    "casa-rosso.lod1": {
-      "updatedAt": "2026-11-21T18:44:11.431Z",
-      "version": "3a9588e3ba4af2d5",
-      "dateSource": "asset-update"
-    },
-    "casa-rosso.lod2": {
-      "updatedAt": "2026-11-21T18:44:11.431Z",
-      "version": "6e287bc78d8de65e",
-      "dateSource": "asset-update"
-    },
-    "moulin-rouge-amsterdam.lod1": {
-      "updatedAt": "2026-11-21T18:44:13.161Z",
-      "version": "b1dfa96ee471a495",
-      "dateSource": "asset-update"
-    },
-    "moulin-rouge-amsterdam.lod2": {
-      "updatedAt": "2026-11-21T18:44:13.162Z",
-      "version": "0e188e689ae734b7",
       "dateSource": "asset-update"
     }
   }

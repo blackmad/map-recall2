@@ -16,7 +16,8 @@
   "dark": "#26292c",
   "slate": "#4b5058",
   "copper": "#5f8f7e",
-  "gold": "#c9a24a"
+  "gold": "#c9a24a",
+  "concrete": "#5f6670"
  },
  "attribution": {
   "title": "Politiebureau Raampoort, Marnixstraat 148: police station of 1888 by Willem Springer",
@@ -26,5 +27,6 @@
   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with the 3DBAG LoD2.2 shell (CC BY 4.0): the square clock tower with its dial, corbel table and slate spire, the crenellated rounded corner over the Singelgracht, the octagonal corner pinnacles, the arched corbel table, the banded brick storeys, round-headed windows under dark relieving arches, paired top-floor windows, the copper coping and the dark basement out of the water. Measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
  },
- "bagYear": 1888
+ "bagYear": 1888,
+ "measuredOverrides": true
 }

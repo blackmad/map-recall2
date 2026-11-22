@@ -105651,8 +105651,10 @@
         "dark": "#26292c",
         "slate": "#4b5058",
         "copper": "#5f8f7e",
-        "gold": "#c9a24a"
+        "gold": "#c9a24a",
+        "concrete": "#5f6670"
       },
+      "measuredOverrides": true,
       "attribution": {
         "title": "Politiebureau Raampoort, Marnixstraat 148: police station of 1888 by Willem Springer",
         "author": "Map Recall",
@@ -105854,18 +105856,18 @@
         "depthCoverage": 1.0255247064538904
       },
       "triangles": 29363,
-      "bytes": 360964,
+      "bytes": 361016,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a214b6ca04899764",
+        "sourceHash": "af6147c42f580e88",
         "buildVersion": 2,
-        "bytes": 96076,
+        "bytes": 96128,
         "triangles": 4584
       },
       "lod2": {
-        "sourceHash": "a214b6ca04899764",
+        "sourceHash": "af6147c42f580e88",
         "buildVersion": 6,
-        "bytes": 17184,
+        "bytes": 17232,
         "triangles": 582
       }
     },
@@ -105911,7 +105913,8 @@
         "dark": "#232527",
         "slate": "#69707a",
         "gold": "#e8d9a8",
-        "bronze": "#2a2c2e"
+        "bronze": "#2a2c2e",
+        "ochre": "#4e3828"
       },
       "attribution": {
         "title": "Banks Mansion, Herengracht 519-525: former bank of 1923 on the Vijzelstraat corner",
@@ -105997,20 +106000,20 @@
         "depthMetres": 27.437297821044922,
         "depthCoverage": 1.0237797694419746
       },
-      "triangles": 16366,
-      "bytes": 244948,
+      "triangles": 16498,
+      "bytes": 248204,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7bece2342c73897d",
+        "sourceHash": "4a77146c9b6b368d",
         "buildVersion": 2,
-        "bytes": 64360,
-        "triangles": 2908
+        "bytes": 67500,
+        "triangles": 3044
       },
       "lod2": {
-        "sourceHash": "7bece2342c73897d",
+        "sourceHash": "4a77146c9b6b368d",
         "buildVersion": 6,
         "bytes": 8932,
-        "triangles": 326
+        "triangles": 329
       }
     },
     "schiller-rembrandtplein": {
