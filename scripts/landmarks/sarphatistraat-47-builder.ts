@@ -20,7 +20,8 @@ import source from './sarphatistraat-47-footprints.json';
  * the 3DBAG wall (17.2 m): h = (950 - y) * 0.0261. The front is symmetric about t 18.49 above the ground storey:
  * the west half is measured and mirrored.
  *
- *  - ground zone: granite to 2.75 m under a granite band; in the middle eight bays the granite rises to 5.3 m as piers
+ *  - ground zone: granite to 3.0 m under a granite band (r15: was 2.75; the 2020 alt crop puts the wing granite's top at
+ *    2.9-3.1 m over the low windows); in the middle eight bays the granite rises to 5.3 m as piers
  *    between eight tall windows whose upper lights (2.9-4.95 m) carry colourful painted art panels today;
  *  - storeys: grid-paned white windows at 3.2-6.25 (wings), 5.45-6.25 (middle mezzanine), 7.65-9.95 and 11.35-13.7 m,
  *    patterned brick panels between them, the piers rising through the cornice (15.05-15.5 m) to the attic (to 17.2 m);
@@ -42,7 +43,7 @@ const R1: [number, number] = [3.2, 6.25];
 const R2: [number, number] = [7.65, 9.95];
 const R3: [number, number] = [11.35, 13.7];
 const MEZZ: [number, number] = [5.45, 6.25];
-const GRANITE = 2.75, CENTRE_GRANITE = 5.3;
+const GRANITE = 3.0, CENTRE_GRANITE = 5.3;
 const CORNICE: [number, number] = [15.05, 15.5];
 const ATTIC_TOP = 17.2;
 /** Wing bay axes (west half), middle bay axes. */
@@ -90,7 +91,7 @@ function gridWin(b: BuildingTools, f: Frame, c: number, [y0, y1]: [number, numbe
 
 /** Granite ground zone, the eight tall windows with their art panels, the doors and the low windows of the wings. */
 function ground(b: BuildingTools) {
-  // granite cladding: to 2.75 m across the front, to 5.3 m over the middle eight bays; a projecting band on top
+  // granite cladding: to 3.0 m across the front, to 5.3 m over the middle eight bays; a projecting band on top
   // (stopped 8 cm short of the front's ends, where the side faces would lie in the party walls' planes)
   slab(b, F, (E0 + MID_T0) / 2, 0, MID_T0 - E0, GRANITE, 0.06, 'sandstone');
   slab(b, F, (MID_T1 + E1) / 2, 0, E1 - MID_T1, GRANITE, 0.06, 'sandstone');
@@ -124,18 +125,19 @@ function ground(b: BuildingTools) {
     for (const [col, dx, y, sw, sh] of art[k]) slab(b, F, c + dx, y, sw, sh, 0.05, col, base + 0.13);
   });
   // west end bay: the red-brown timber door; west wing: low window, dark door, low window
-  door(b, 2.83, 1.5, 2.4, 'copper');
-  gridWin(b, F, WING[0], [0.35, 1.6], 0.95, 2, 2, {base: 0.06, sill: false});
-  door(b, WING[1], 0.95, 2.35, 'dark');
-  gridWin(b, F, WING[2], [0.35, 1.6], 0.95, 2, 2, {base: 0.06, sill: false});
+  // (r15: the doors were drawn too small; the west door fills the end bay to 2.75 m, the wing door 1.15 x 2.5 m)
+  door(b, 2.83, 2.0, 2.75, 'copper');
+  gridWin(b, F, WING[0], [0.45, 1.9], 1.0, 2, 2, {base: 0.06, sill: false});
+  door(b, WING[1], 1.15, 2.5, 'dark');
+  gridWin(b, F, WING[2], [0.45, 1.9], 1.0, 2, 2, {base: 0.06, sill: false});
   // east wing: three low windows (2022); east end bay: a door under the citizenM sign (behind the tram shelter and the
   // bus in both photos: inferred as the west end's door)
-  for (const t of WING) gridWin(b, F, m(t), [0.35, 1.6], 0.95, 2, 2, {base: 0.06, sill: false});
-  door(b, m(2.83), 1.5, 1.95, 'copper');
+  for (const t of WING) gridWin(b, F, m(t), [0.45, 1.9], 1.0, 2, 2, {base: 0.06, sill: false});
+  door(b, m(2.83), 1.9, 2.35, 'copper');
   // citizenM: red lower-case word and the M in a red box on the granite over that door (2022), drawn as capitals
-  letters(b, F, 'CITIZEN', 33.85, 2.15, 0.06, 0.045, 0.05, 'red', 0.05);
-  slab(b, F, 35.25, 2.1, 0.42, 0.42, 0.05, 'red', 0.06);
-  letters(b, F, 'M', 35.25, 2.15, 0.11, 0.055, 0.05, 'white', 0.045);
+  letters(b, F, 'CITIZEN', 33.85, 2.55, 0.06, 0.045, 0.05, 'red', 0.05);
+  slab(b, F, 35.4, 2.45, 0.4, 0.4, 0.05, 'red', 0.06);
+  letters(b, F, 'M', 35.4, 2.5, 0.11, 0.055, 0.05, 'white', 0.045);
   // the bronze plaque by the east end of the middle zone (2024: 0.8 x 0.5 m at 2.5 m)
   slab(b, F, 26.6, 2.5, 0.75, 0.5, 0.05, 'bronze', 0.06);
 }
@@ -172,7 +174,9 @@ function storeys(b: BuildingTools) {
     slab(b, F, t, (r[0] + r[1]) / 2, 0.3, 0.05, 0.05, 'white', 0.13);
   }
   for (const c of MIDDLE) {
-    gridWin(b, F, c, MEZZ, WIN_W, 3, 1, {sill: false});
+    // mezzanine (r15: read weak): nearly bay-wide, four lights under a row of small top lights, bold white frame
+    // (2020 sunlit crop: 1.3 m of the 1.37 m between the piers)
+    gridWin(b, F, c, MEZZ, 1.3, 4, 2, {sill: false});
     gridWin(b, F, c, R2, WIN_W, 3, 4);
     gridWin(b, F, c, R3, WIN_W, 3, 4);
     panel(c, MEZZ[1], R2[0], WIN_W);
@@ -200,6 +204,8 @@ function piers(b: BuildingTools) {
   for (const t of [...RIBS_W, ...RIBS_E]) rib(t, GRANITE + 0.08, CORNICE[0]);
   // middle zone: piers between the bays above the granite
   for (let k = 0; k < 7; k++) pier(MIDDLE[k] + 1.865 / 2, 0.5, CENTRE_GRANITE);
+  // grey cylinder wall lamps on the middle piers just above the mezzanine (2020 sunlit crop: 0.15 x 0.5 m at 6.4 m)
+  for (let k = 0; k < 7; k++) slab(b, F, MIDDLE[k] + 1.865 / 2, 6.35, 0.14, 0.5, 0.14, 'concrete', 0.42);
 }
 
 /** Stone cornice along the whole front and the coping of the attic. */
