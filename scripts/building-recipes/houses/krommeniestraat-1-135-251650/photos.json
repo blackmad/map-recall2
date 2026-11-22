@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-krommeniestraat",
+  "panoId": "TMX7316010203-001068_pano_0002_000119",
+  "timestamp": "2019-01-18T10:16:30.150020Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/18/TMX7316010203-001068/pano_0002_000119/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120169.7501704979,
+   489342.4968341202
+  ],
+  "headingDeg": 256.2417035608192,
+  "fovDeg": 110,
+  "pitchDeg": 27.71831566262534,
+  "distanceM": 8.978535856992567,
+  "image": "artifacts/building-recipes/krommeniestraat-1-135-251650/photo-wall-krommeniestraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-spaarndammerplantsoen",
+  "panoId": "TMX7316010203-001068_pano_0002_000120",
+  "timestamp": "2019-01-18T10:16:30.855070Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/18/TMX7316010203-001068/pano_0002_000120/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120171.90530479485,
+   489338.00947275566
+  ],
+  "headingDeg": 245.4846211390139,
+  "fovDeg": 110,
+  "pitchDeg": 29.440290295072472,
+  "distanceM": 8.360230130000632,
+  "image": "artifacts/building-recipes/krommeniestraat-1-135-251650/photo-wall-spaarndammerplantsoen.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

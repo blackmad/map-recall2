@@ -3,6 +3,7 @@
  * validator: names, counts and component switches only; no coordinate or metric field anywhere. Wall surfaces are
  * checked against the facts when the fit runs (`fitLarge`), not here.
  */
+import {julietRailsProblems, windowHeadsProblems} from '../blockBuilding/windowTrim.ts';
 import {arcadePiersProblems} from '../blockBuilding/arcadePiers.ts';
 import {windowBoxProblems} from '../blockBuilding/windowBox.ts';
 import {galleryProblems} from '../blockBuilding/gallery.ts';
@@ -26,7 +27,7 @@ import {residentialGroundProblems} from '../blockBuilding/residentialGround.ts';
 import {HOUSE_COMPONENT_KEYS, HOUSE_GROUNDS, hasHouseComponents, houseAsWall} from './houseComponents.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces', 'residential', 'renderPanels', 'accentPanels'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys', 'signs', 'wallLights', 'terraces', 'residential', 'renderPanels', 'accentPanels', 'windowHeads', 'julietRails'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'blankWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'shellClose', 'footprint', 'groundClamp', 'footprintParts', 'osmAliases', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -424,6 +425,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.system !== 'brick-bay-grid') problems.push(`${at}.sideLight: brick-bay-grid windows only`);
       if (w.glazing === 'panes') problems.push(`${at}.sideLight: not with glazing panes (the ring stands on the glass)`);
     }
+    if (w.windowHeads !== undefined) {
+      problems.push(...windowHeadsProblems(w.windowHeads, `${at}.windowHeads`));
+      if (w.system !== 'brick-bay-grid') problems.push(`${at}.windowHeads: brick-bay-grid windows only`);
+    }
+    if (w.julietRails !== undefined) {
+      problems.push(...julietRailsProblems(w.julietRails, `${at}.julietRails`));
+      if (w.system !== 'brick-bay-grid') problems.push(`${at}.julietRails: brick-bay-grid windows only`);
+      if (!w.julietRails?.storeys && !w.bayWindows?.some(e => e?.pattern?.some(b => b?.rail))) problems.push(`${at}.julietRails: give storeys or mark bayWindows entries rail: true`);
+    }
     if (w.bayWindows !== undefined) {
       const list = w.bayWindows, seenSt = new Set<number>();
       if (!Array.isArray(list) || !list.length || list.length > 8) problems.push(`${at}.bayWindows: 1..8 entries {storeys, pattern}`);
@@ -437,7 +447,10 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (!Array.isArray(e?.pattern) || !e.pattern.length || e.pattern.length > 80) problems.push(`${at2}.pattern: 1..80 bays {w, at, h, sill, light}`);
         else e.pattern.forEach((b, j) => {
           const pa = `${at2}.pattern[${j}]`;
-          for (const key of Object.keys(b ?? {})) if (!['w', 'at', 'h', 'sill', 'light', 'door'].includes(key)) problems.push(`${pa}.${key}: unknown field (w, at, h, sill, light, door)`);
+          for (const key of Object.keys(b ?? {})) if (!['w', 'at', 'h', 'sill', 'light', 'door', 'rail'].includes(key)) problems.push(`${pa}.${key}: unknown field (w, at, h, sill, light, door, rail)`);
+          bool(b?.rail, `${pa}.rail`);
+          if (b?.rail && !w.julietRails) problems.push(`${pa}.rail needs the group's julietRails`);
+          if (b?.rail && b?.door) problems.push(`${pa}.rail: not on a door leaf`);
           bool(b?.door, `${pa}.door`);
           if (!(typeof b?.w === 'number' && (b.w === 0 || (b.w >= 0.08 && b.w <= 2)))) problems.push(`${pa}.w: 0 (wall) or a fraction 0.08..2 of the bay`);
           if (b?.at !== undefined && !(typeof b.at === 'number' && b.at >= -1 && b.at <= 1)) problems.push(`${pa}.at: fraction -1..1 of the bay`);
@@ -587,7 +600,9 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     const tiltSeen = new Set<number>();
     for (const [ti, t] of (w.tiltedBays === undefined ? [] : Array.isArray(w.tiltedBays) ? w.tiltedBays : [w.tiltedBays]).entries()) {
       if (Array.isArray(w.tiltedBays)) { if (t.storeys === undefined) problems.push(`${at}.tiltedBays[${ti}]: a list entry names its storeys`); else for (const st of t.storeys) { if (tiltSeen.has(st)) problems.push(`${at}.tiltedBays: storey ${st} in two entries`); tiltSeen.add(st); } }
-      for (const k of Object.keys(t)) if (!['every', 'first', 'bays', 'storeys'].includes(k)) problems.push(`${at}.tiltedBays.${k}: unknown field (every, first, bays, storeys)`);
+      for (const k of Object.keys(t)) if (!['every', 'first', 'bays', 'storeys', 'out', 'colour'].includes(k)) problems.push(`${at}.tiltedBays.${k}: unknown field (every, first, bays, storeys, out, colour)`);
+      if (t.out !== undefined && !(typeof t.out === 'number' && t.out >= 0.3 && t.out <= 1.2)) problems.push(`${at}.tiltedBays.out: 0.3..1.2 m`);
+      if (t.colour !== undefined && !(typeof t.colour === 'string' && /^#[0-9a-fA-F]{6}$/.test(t.colour))) problems.push(`${at}.tiltedBays.colour: #rrggbb`);
       if ((t.every === undefined) === (t.bays === undefined)) problems.push(`${at}.tiltedBays: give every (with first) or bays`);
       if (t.every !== undefined) count(t.every, `${at}.tiltedBays.every`, 1, 12);
       if (t.first !== undefined) count(t.first, `${at}.tiltedBays.first`, 0, Math.max(0, (t.every ?? 1) - 1));

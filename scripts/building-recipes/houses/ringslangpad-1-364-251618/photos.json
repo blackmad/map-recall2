@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-ringslangpad",
+  "panoId": "TMX7316010203-002943_pano_0014_000023",
+  "timestamp": "2023-01-20T12:29:16.488480Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/01/20/TMX7316010203-002943/pano_0014_000023/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125138.72267169112,
+   485028.1377332671
+  ],
+  "headingDeg": 227.46411628351316,
+  "fovDeg": 13.605691902522638,
+  "pitchDeg": 3.0727981147472683,
+  "distanceM": 41.913551994894064,
+  "image": "artifacts/building-recipes/ringslangpad-1-364-251618/photo-wall-ringslangpad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-middenmeerpad",
+  "panoId": "TMX7316010203-001082_pano_0001_000008",
+  "timestamp": "2019-02-11T09:45:03.408500Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/02/11/TMX7316010203-001082/pano_0001_000008/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   125060.84328286815,
+   484938.8516956635
+  ],
+  "headingDeg": 49.40176872405539,
+  "fovDeg": 68.0361076150093,
+  "pitchDeg": 12.905975285256012,
+  "distanceM": 20.63663200441781,
+  "image": "artifacts/building-recipes/ringslangpad-1-364-251618/photo-wall-middenmeerpad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,614 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "carolina-macgillavrylaan-208-240261",
+ "pandId": "0363100012240261",
+ "address": "Carolina MacGillavrylaan 2082-3198, Science Park: 2017 student housing, a 52 m tower and lower blocks clad in khaki metal panels with ribbon window groups and deep dark-framed windows over a glazed SPAR plinth, beside two black steel-framed blocks of loggias with green and grey glass rails (kit batch 2005+ b, lane kit-batch-2005b-20261122)",
+ "sources": [
+  {
+   "id": "pano-2025-06-20-w06-47",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_08-09-45_00319/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w06-47.jpg",
+   "sha256": "7edd08c3147750ae0b5e3f25a4482d15231e38831c0419b0867780bc3bb7c525",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-18-w03-47",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002585_pano_0002_001407/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w03-47.jpg",
+   "sha256": "79993a1b07046a77cf5c28ba00ccc9af59e2f1856b927f94158851098ef4a235",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-01-29-w09-47L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001604_pano_0001_000481/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w09-47L.jpg",
+   "sha256": "76f77c5cf6700aae0e8a9d308914a5bccc7d17852530995f36aab42605ee7fc9",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-29-w03-47L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001474_pano_0000_002198/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w03-47L.jpg",
+   "sha256": "d3ae3b5c1550a5558613ecb15a366c8a5526247ed81e91ae2993e1f266618f8d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-29-w04-47L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001474_pano_0000_002189/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w04-47L.jpg",
+   "sha256": "c92137b983dc40a163b07824ca21ca6eaf2706584334845d570335e599cef0e7",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-11-29-w10-47L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-11-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001474_pano_0000_002172/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w10-47L.jpg",
+   "sha256": "dfa17186574fac669f05af3865e23718b3abe18a86a10a8a66ca251751d9a344",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-30-w05-317",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001075_pano_0000_000170/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w05-317.jpg",
+   "sha256": "ce9a7913286515917fb00b398e83ac2dfa35ac9f97efbbcdc07b1f5e114af7ef",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-30-w08-137",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001075_pano_0000_000126/",
+   "image": "source-data://pand-reference-walls/0363100012240261/w08-137.jpg",
+   "sha256": "0cb1c7ea750ff43e8781afc7e6f16b6439149c505d596b7a46ab976ba1b75a7a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    14
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 16,
+   "groundFactor": 1.4,
+   "baysPerStorey": 10,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#727260",
+    "frame": "#3c3f3e",
+    "stone": "#6e6f5c"
+   },
+   "ground": "plinth-shopfronts",
+   "dressings": {
+    "colour": "#2c2e2c",
+    "surrounds": {
+     "storeys": [
+      1,
+      2,
+      5,
+      6,
+      9,
+      10,
+      13,
+      14
+     ]
+    }
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      3,
+      4,
+      7,
+      8,
+      11,
+      12,
+      15
+     ],
+     "pattern": [
+      {
+       "w": 1.62,
+       "at": 0.5,
+       "h": 0.48,
+       "sill": 0.3
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "dressings",
+    "bayWindows",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    12,
+    40
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 10,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#727260",
+    "frame": "#3c3f3e",
+    "stone": "#6e6f5c"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#2a2a2a"
+   },
+   "dressings": {
+    "colour": "#2c2e2c",
+    "surrounds": {
+     "storeys": [
+      2,
+      3,
+      4
+     ]
+    }
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 1.5,
+       "at": 0.5,
+       "h": 0.45,
+       "sill": 0.4
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 1.62,
+       "at": 0.5,
+       "h": 0.48,
+       "sill": 0.3
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "dressings",
+    "bayWindows",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    135
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 1.3,
+   "baysPerStorey": 10,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.88,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#2b2e2d",
+    "frame": "#2a2c2c",
+    "stone": "#2b2e2d"
+   },
+   "ground": "glazed",
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "w": 0.93,
+    "h": 0.9,
+    "sill": 0.02,
+    "deep": 0.3,
+    "rail": "glass",
+    "colour": "#93ad86",
+    "lights": 3,
+    "lining": "#3a3d3b"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "wallMaterial",
+    "loggias",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    58
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "groundFactor": 1.3,
+   "baysPerStorey": 10,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.88,
+    "sill": 0.04
+   },
+   "palette": {
+    "brick": "#2b2e2d",
+    "frame": "#2a2c2c",
+    "stone": "#2b2e2d"
+   },
+   "ground": "glazed",
+   "loggias": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "w": 0.93,
+    "h": 0.9,
+    "sill": 0.02,
+    "deep": 0.3,
+    "rail": "glass",
+    "colour": "#a2acac",
+    "lights": 3,
+    "lining": "#3a3d3b"
+   },
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "wallMaterial",
+    "loggias",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    19
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 5,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#727260",
+    "frame": "#3c3f3e",
+    "stone": "#6e6f5c"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#2a2a2a"
+   },
+   "dressings": {
+    "colour": "#2c2e2c",
+    "surrounds": {
+     "storeys": [
+      2,
+      3,
+      4
+     ]
+    }
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 1.5,
+       "at": 0.5,
+       "h": 0.45,
+       "sill": 0.4
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 1.62,
+       "at": 0.5,
+       "h": 0.48,
+       "sill": 0.3
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "dressings",
+    "bayWindows",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 5,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#727260",
+    "frame": "#3c3f3e",
+    "stone": "#6e6f5c"
+   },
+   "ground": "residential",
+   "residential": {
+    "pattern": [
+     "door",
+     "window"
+    ],
+    "doors": "#2a2a2a"
+   },
+   "dressings": {
+    "colour": "#2c2e2c",
+    "surrounds": {
+     "storeys": [
+      2,
+      3,
+      4
+     ]
+    }
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      1
+     ],
+     "pattern": [
+      {
+       "w": 1.5,
+       "at": 0.5,
+       "h": 0.45,
+       "sill": 0.4
+      },
+      {
+       "w": 0
+      }
+     ]
+    },
+    {
+     "storeys": [
+      5,
+      6
+     ],
+     "pattern": [
+      {
+       "w": 1.62,
+       "at": 0.5,
+       "h": 0.48,
+       "sill": 0.3
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "dressings",
+    "bayWindows",
+    "ground",
+    "palette"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "street": "Carolina MacGillavrylaan",
+   "system": "brick-bay-grid",
+   "storeys": 16,
+   "groundFactor": 1.4,
+   "baysPerStorey": 5,
+   "wallMaterial": "render",
+   "windows": "two-light",
+   "sills": false,
+   "windowShape": {
+    "w": 0.76,
+    "h": 0.48,
+    "sill": 0.33
+   },
+   "palette": {
+    "brick": "#727260",
+    "frame": "#3c3f3e",
+    "stone": "#6e6f5c"
+   },
+   "ground": "plinth-shopfronts",
+   "dressings": {
+    "colour": "#2c2e2c",
+    "surrounds": {
+     "storeys": [
+      1,
+      2,
+      5,
+      6,
+      9,
+      10,
+      13,
+      14
+     ]
+    }
+   },
+   "bayWindows": [
+    {
+     "storeys": [
+      3,
+      4,
+      7,
+      8,
+      11,
+      12,
+      15
+     ],
+     "pattern": [
+      {
+       "w": 1.62,
+       "at": 0.5,
+       "h": 0.48,
+       "sill": 0.3
+      },
+      {
+       "w": 0
+      }
+     ]
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "wallMaterial",
+    "windowShape",
+    "dressings",
+    "bayWindows",
+    "ground",
+    "palette"
+   ]
+  }
+ ],
+ "otherWalls": "window-grid",
+ "palette": {
+  "brick": "#727260",
+  "frame": "#3c3f3e",
+  "door": "#2a2a2a",
+  "stone": "#6e6f5c"
+ },
+ "notes": [
+  "Kit batch 2005+ b (lane kit-batch-2005b-20261122), hand-authored from the archived crops. Group 0 = tower panel 13 (NE, 38.3 m, 51.7 m) from w03-47L 2019-11-29 (w03-47 2022 has flare): khaki panels, ribbon groups of five lights across two bays alternating in pairs of storeys with deep dark-framed windows, the SPAR glazed plinth; the crops reach 26 m and the tower above is continued in the same rhythm. Group 1 = panel 11 (NE, 37.5 m) from w04-47L 2019-11-29: maisonette doors and windows, a storey of wide windows, three storeys of deep dark-framed windows and two of ribbon groups. Group 2 = panel 114 (NE, 37.6 m) from w06-47 2025-06-20: black steel frame of loggias with green glass rails over a glazed lobby. Group 3 = panel 51 (NW, 36.4 m) from w05-317 2019-01-30: the same frame with pale grey glass rails. Groups 4 and 5 = panels 18 and 0 (NE, 18.7 / 18.5 m) from w09-47L 2020-01-29 and w10-47L 2019-11-29, as group 1. Group 6 = tower SE panel 14 from w08-137 2019-01-30 (34 deg oblique), as group 0.",
+  "Not modelled: the green and yellow glass panels that fill half of some loggia openings, and the random mix of ribbon and framed windows on the tower (drawn as alternating pairs of storeys)."
+ ],
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#5d5d5a"
+ },
+ "closedBands": true,
+ "shellRepair": true,
+ "budgetTriangles": 30000
+}

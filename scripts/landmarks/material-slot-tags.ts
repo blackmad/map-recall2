@@ -455,13 +455,18 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     greyBrick: {slot: 'frame', why: 'light metal roof railing on the Rembrandtplein front (2025 panorama), not brick'},
     blue: {slot: 'paint', why: 'teal clock dials of the tower (tower-top.jpg)'},
   },
+  pontsteiger: {
+    stone: {slot: 'stucco', why: 'palette name only: the white round columns of the open ground floor, drawn as the palette white (catalogue override); stucco as the inferred `white` slot'},
+  },
   'pentagon': {
     concrete: {slot: 'stone', why: 'exposed light grey-beige concrete frame: columns, slab edges, copings and balcony slabs (w01-71, w08-318)'},
     slate: {slot: 'bitumen', why: 'low-pitch dark grey roofs of the housing block (PDOK orthophoto), not slate'},
     blue: {slot: 'paint', why: 'pale blue-grey spandrel panels under the windows (w04-220, w08-318)'},
     green: {slot: 'paint', why: 'pale green spandrel panels on the Moddermolenstraat side (w07-306)'},
     stone: {slot: 'paint', why: 'palette name only: the white-painted raking struts of the Sint Antoniesbreestraat arcade (w01-71)'},
-    bronze: {slot: 'frame', why: 'dark grey metal balcony railings (w01-71, w08-318)'},
+    // `paint`, as condomerie and moulin-rouge tag their painted railings: a `frame` railing is solid host to the openings gate, which then
+    // read the corner-balcony window frames behind it as buried (poke 4 on a rebuild; the installed GLB predates this tag and drew paint).
+    bronze: {slot: 'paint', why: 'dark grey painted metal balcony railings (w01-71, w08-318)'},
     greyBrick: {slot: 'brick', why: 'pale grey brick plinth under the ground-floor glazing (w04-220)'},
     red: {slot: 'frame', why: 'red-painted shop frames in the arcade (w01-71)'},
   },
