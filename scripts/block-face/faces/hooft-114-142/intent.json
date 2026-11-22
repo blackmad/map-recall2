@@ -1,0 +1,1668 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hooft-114-142",
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/hooft-114-142/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-3 lane), from strip-labelled.png and per-pand crops",
+  "passes": 1,
+  "note": "PC Hooftstraat 114-142 (even), Van Baerlestraat corner to Hermes block: watch and jewellery houses (TAG Heuer, Hublot, Cartier, Van Cleef & Arpels, IWC, Breitling, Panerai) and fashion (Boss, IRO, Isabel Marant). Signs read from the 2024-12-11 strip; where OSM disagrees the photo wins and the conflict is in groundFloor.note."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012162374",
+    "stripRow": 176,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 176"
+   },
+   {
+    "pand": "0363100012163305",
+    "stripRow": 363,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 363"
+   },
+   {
+    "pand": "0363100012165739",
+    "stripRow": 333,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 333"
+   },
+   {
+    "pand": "0363100012116485",
+    "stripRow": 350,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 350"
+   },
+   {
+    "pand": "0363100012159571",
+    "stripRow": 329,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 329"
+   },
+   {
+    "pand": "0363100012158516",
+    "stripRow": 270,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 270"
+   },
+   {
+    "pand": "0363100012235890",
+    "stripRow": 395,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 395"
+   },
+   {
+    "pand": "0363100012236038",
+    "stripRow": 399,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 399"
+   },
+   {
+    "pand": "0363100012161033",
+    "stripRow": 395,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 395"
+   },
+   {
+    "pand": "0363100012165352",
+    "stripRow": 435,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 435"
+   },
+   {
+    "pand": "0363100012157039",
+    "stripRow": 433,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 433"
+   },
+   {
+    "pand": "0363100012080749",
+    "stripRow": 376,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 376"
+   },
+   {
+    "pand": "0363100012236029",
+    "stripRow": 412,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 412"
+   },
+   {
+    "pand": "0363100012236042",
+    "stripRow": 398,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 398"
+   }
+  ],
+  "notes": [
+   "Cornice tops measured per pand on the strip (first row where 70 % of the span is not sky; 080749, 236029, 236042 read by eye under their set-back roof storeys)."
+  ],
+  "streetLevelPands": {
+   "pands": [
+    "0363100012162374",
+    "0363100012163305",
+    "0363100012165739",
+    "0363100012116485"
+   ],
+   "evidence": "strip 2024-12-11: 142F, 142, 140 and 138 stand on the shared pavement line like their neighbours (shop sills and doors on one row); 3DBAG reads their maaiveld ~1.2 m high (+0.13..0.17 NAP against -1.07)"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012162374",
+   "slug": "hface-162374",
+   "address": "Pieter Cornelisz. Hooftstraat 142F",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 5,
+      "bayWidths": [
+       3.0,
+       2.65,
+       3.05,
+       2.65,
+       2.85
+      ],
+      "storeys": 4,
+      "storeyHeights": [
+       4.35,
+       3.7,
+       3.7,
+       3.6
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.8,
+       "cap": 0.4,
+       "frieze": "trim",
+       "consoles": 2,
+       "architrave": 0.15
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0,
+        2,
+        3,
+        4
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#3b3d3a",
+       "fascia": true,
+       "fasciaColour": "#2a2c2a",
+       "name": "TAG Heuer",
+       "display": "#d9b46a",
+       "sign": {
+        "text": "TAG HEUER",
+        "textColour": "#eeeae0",
+        "span": 0.3,
+        "align": "left"
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#4a4c48",
+       "evidence": "strip 2024-12-11 x 0-568: grey granite pui under a black sign band, TAGHeuer white at the left, HUBLOT white at the right over a black awning; lit jewellery windows"
+      },
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.64
+      ]
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#64473a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b7b2a0",
+     "band": "#6a4434"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "Two watch shops on one pand: TAG Heuer (left) and Hublot (right, Van Baerlestraat corner); OSM matched no node here.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "TAG Heuer",
+    "category": "shop=watches"
+   },
+   "rhythm": {
+    "bays": "5 axes in 2 + 3 (a pilaster between); axis 2 is blind on every storey",
+    "windowsPerStorey": "ground: two shops | uppers: 4 windows + 1 blind recess | roof: crest",
+    "symmetry": "asymmetric (2 + 3 axes)",
+    "groundFloor": "grey granite piers, black sign band, two lit shop windows and a centre door",
+    "signage": "TAGHeuer and HUBLOT white on black",
+    "roofline": "deep white attic entablature (~2.8 m) with a raised centre crest",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 0-568 px",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "axis 2 is a blind brick recess on every storey; the kit draws a window there",
+     "the second shop sign (HUBLOT) and its black awning: one sign per front",
+     "the raised centre crest of the attic is not drawn (triangle budget)",
+     "iron railings only on storey 2 (the storey-3 railings cost the triangle budget)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012163305",
+   "slug": "hface-163305",
+   "address": "Pieter Cornelisz. Hooftstraat 142-142C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.5,
+       3.3,
+       3.3
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.6,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#e8e5dc",
+       "fascia": false,
+       "name": "Cartier",
+       "display": "#c9a46a",
+       "entrance": "none",
+       "glazing": "single",
+       "stallriser": "none",
+       "evidence": "strip 2024-12-11 x 568-830: a deep white stone portal round one tall glass front, the gold neon Cartier panther in the glass; no lettering on the wall"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#55514a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#cfc8bc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM puts Cartier at 132; the 2024-12-11 strip shows the Cartier panther at 142 and IWC at 132.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "Cartier",
+    "category": "shop=jewelry"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: portal | uppers: 3 windows",
+    "symmetry": "symmetric",
+    "groundFloor": "deep white portal, one tall glass front",
+    "signage": "gold neon panther, no lettering",
+    "roofline": "white entablature with a small crest",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 568-830 px",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dark glazed bricks sparkle with white speckle; drawn as dark painted brick",
+     "the neon panther"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165739",
+   "slug": "hface-165739",
+   "address": "Pieter Cornelisz. Hooftstraat 140",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.3,
+       3.7,
+       3.7
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.7,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#e8e5dc",
+       "fascia": false,
+       "name": "Van Cleef & Arpels",
+       "display": "#7a6c50",
+       "sign": {
+        "text": "VAN CLEEF & ARPELS",
+        "textColour": "#f0ece2",
+        "mount": "wall",
+        "span": 0.75
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "none",
+       "evidence": "strip 2024-12-11 x 830-1088: white stone portal over the whole shop, a white-framed double door in the middle of dark glass; van cleef & arpels in white serif on the dark wall over it"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#524f46",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#c2bdb3"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Van Cleef & Arpels",
+    "category": "shop=jewelry"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: portal | uppers: 3 windows",
+    "symmetry": "symmetric",
+    "groundFloor": "white portal, dark glass, white double door",
+    "signage": "van cleef & arpels white serif on the wall (drawn in capitals)",
+    "roofline": "white entablature with a small crest",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 830-1088 px",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "lettering is lower-case serif in the photo; the kit draws capitals",
+     "the glazed speckled brick is drawn as dark painted brick"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012116485",
+   "slug": "hface-116485",
+   "address": "Pieter Cornelisz. Hooftstraat 138",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "plain",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.6,
+       3.4,
+       3.3
+      ],
+      "partyClip": true,
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.7,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#7a4a36",
+       "fascia": false,
+       "name": "vacant",
+       "display": "#9aa6a2",
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 3,
+       "stallriser": "none",
+       "evidence": "strip 2024-12-11 x 1089-1350: the lower front is glass (curved glass panes in brick piers) to the first-floor sills; a to-let board in the right pane"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b4634",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#beb6a3"
+    }
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "A te-huur board in the window on 2024-12-11. The glass lower front is the 2016 Crystal Houses front (glass bricks).",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=vacant"
+   },
+   "rhythm": {
+    "bays": "3 equal axes between brick piers",
+    "windowsPerStorey": "ground: 3 glass bays | uppers: 3 large plate windows",
+    "symmetry": "symmetric",
+    "groundFloor": "glass between brick piers, no sign",
+    "signage": "none (vacant)",
+    "roofline": "white entablature with a small crest",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 1089-1350 px",
+    "photoRows": [
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the glass-brick lower front (melting into brick) is drawn as a shop front of three panes"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159571",
+   "slug": "hface-159571",
+   "address": "Pieter Cornelisz. Hooftstraat 136",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       4.8,
+       3.9,
+       3.9
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowHoods": {
+       "colour": "stone"
+      },
+      "shopfront": {
+       "colour": "#262b22",
+       "fascia": true,
+       "fasciaColour": "#1e2219",
+       "name": "Cybex",
+       "display": "#d8cfc0",
+       "sign": {
+        "text": "CYBEX",
+        "textColour": "#d8d6cc",
+        "span": 0.3
+       },
+       "entrance": "centre",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#262b22",
+       "evidence": "strip 2024-12-11 x 1350-1593: dark green-black panelled pui, cybex in small white letters on the fascia, a gold emblem sign under it, bright display"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#cfc8b6",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#f2f0e8",
+     "cornice": "#ece9df",
+     "wallMaterial": "stucco"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Paul Smith; the 2024-12-11 strip reads cybex on the fascia.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Cybex",
+    "category": "shop=baby_goods",
+    "osm": {
+     "type": "node",
+     "id": 4706702959,
+     "name": "Paul Smith",
+     "tags": "brand=Paul Smith; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 windows with ornamented hood bands",
+    "symmetry": "symmetric",
+    "groundFloor": "dark green panelled pui",
+    "signage": "cybex white on dark fascia",
+    "roofline": "white entablature with a small crest",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 1350-1593 px",
+    "photoRows": [
+     1,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the moulded string courses between storeys are plain hoods"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158516",
+   "slug": "hface-158516",
+   "address": "Pieter Cornelisz. Hooftstraat 132-134C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 6,
+      "storeys": 4,
+      "storeyHeights": [
+       5.45,
+       3.2,
+       3.2,
+       2.9
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": false,
+       "name": "IWC Schaffhausen",
+       "display": "#c9a870",
+       "sign": {
+        "text": "IWC",
+        "textColour": "#e8e6de",
+        "mount": "glazing",
+        "span": 0.3
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 3,
+       "stallriser": "none",
+       "evidence": "strip 2024-12-11 x 1593-2135: three tall black-framed openings between stone piers (wrapped in Christmas garland), IWC SCHAFFHAUSEN in white on the centre glass"
+      },
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.64
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a4a46",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#b9bcb0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Cartier (132); the 2024-12-11 strip shows IWC SCHAFFHAUSEN here and the Cartier panther at 142.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "IWC Schaffhausen",
+    "category": "shop=watches",
+    "osm": {
+     "type": "node",
+     "id": 4706702958,
+     "name": "Cartier",
+     "tags": "brand=Cartier; shop=jewelry"
+    }
+   },
+   "rhythm": {
+    "bays": "6 equal axes",
+    "windowsPerStorey": "ground: 3 openings | uppers: 6 windows",
+    "symmetry": "symmetric",
+    "groundFloor": "black-framed glass between piers",
+    "signage": "IWC SCHAFFHAUSEN white on glass",
+    "roofline": "plain projecting slab cornice with a raised centre",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 1593-2135 px",
+    "photoRows": [
+     3,
+     6,
+     6,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "seasonal gold garland not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012235890",
+   "slug": "hface-235890",
+   "address": "Pieter Cornelisz. Hooftstraat 130",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "archRing": {
+        "colour": "band",
+        "widthCourses": 3
+       }
+      },
+      "entablature": {
+       "rise": 1.8,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Breitling",
+       "display": "#d9b46a",
+       "sign": {
+        "text": "BREITLING",
+        "textColour": "#f2efe6",
+        "span": 0.6
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 2135-2399: black pui, BREITLING white with the yellow wing logo on the fascia, lit window and centre door"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#86604c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#cacbbf",
+     "band": "#6e4c3c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Claudia Straeter; the 2024-12-11 strip reads BREITLING.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Breitling",
+    "category": "shop=watches",
+    "osm": {
+     "type": "node",
+     "id": 4706702957,
+     "name": "Claudia Sträter",
+     "tags": "brand=Claudia Sträter; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | uppers: 3 sash windows | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "BREITLING white on black",
+    "roofline": "white entablature with consoles; stone pediment dormer",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 2135-2399 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236038",
+   "slug": "hface-236038",
+   "address": "Pieter Cornelisz. Hooftstraat 128",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.2,
+       3.5,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Panerai",
+       "display": "#8c7a52",
+       "sign": {
+        "text": "PANERAI",
+        "textColour": "#f2efe6",
+        "span": 0.6
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 2399-2655: black pui, PANERAI white on the fascia, one wide window, door at the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#2a2b24",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#b7b2a4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Nespresso; the 2024-12-11 strip reads PANERAI.",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "name": "Panerai",
+    "category": "shop=watches",
+    "osm": {
+     "type": "node",
+     "id": 4706702956,
+     "name": "Nespresso",
+     "tags": "shop=gift"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | uppers: 3 windows | roof: 1 tall dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "PANERAI white on black",
+    "roofline": "white entablature; a tall black centre dormer with a white pediment and balcony",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 2399-2655 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the tall black centre dormer (white pediment, balcony) is not drawn: the kit dormer crosses this footprint",
+     "the white aedicule (columns, hood, balcony) round the first-floor centre window is a balcony guard only"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161033",
+   "slug": "hface-161033",
+   "address": "Pieter Cornelisz. Hooftstraat 126",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.3,
+       3.5,
+       3.3
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.5,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#8c8a84",
+       "fascia": true,
+       "fasciaColour": "#8c8a84",
+       "name": "Maura",
+       "display": "#c8a868",
+       "sign": {
+        "text": "MAURA",
+        "textColour": "#f4f2ec",
+        "span": 0.45
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "none",
+       "evidence": "strip 2024-12-11 x 2655-2911: grey stone surround, MAURA white serif on the band, a white canopy line over a lit window with a green-lit display at the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#2c2f2c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#b5b2a3"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Maura",
+    "category": "shop=clothes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | uppers: 3 sash windows | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "grey stone surround",
+    "signage": "MAURA white serif",
+    "roofline": "white entablature with consoles; stone pediment dormer",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 2655-2911 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012165352",
+   "slug": "hface-165352",
+   "address": "Pieter Cornelisz. Hooftstraat 124",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       3.3,
+       3.2
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "DITA",
+       "display": "#b89a62",
+       "sign": {
+        "text": "DITA",
+        "textColour": "#d8bf86",
+        "span": 0.4
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 2911-3128: black pui, DITA in gold capitals on the black fascia, one lit window, door at the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#22271f",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#bfc1b5"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Dolce & Gabbana; the 2024-12-11 strip reads DITA.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "DITA",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 4706702954,
+     "name": "Dolce & Gabbana",
+     "tags": "brand=Dolce & Gabbana; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 sash windows | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "black pui",
+    "signage": "DITA gold on black",
+    "roofline": "white cornice; stone pediment dormer",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 2911-3128 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012157039",
+   "slug": "hface-157039",
+   "address": "Pieter Cornelisz. Hooftstraat 122",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       3.3,
+       3.2
+      ],
+      "windowHead": {
+       "kind": "flat"
+      },
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "shopfront": {
+       "colour": "#e9e5da",
+       "fascia": true,
+       "fasciaColour": "#ece8de",
+       "name": "Fabiana Filippi",
+       "display": "#e0c080",
+       "sign": {
+        "text": "FABIANA FILIPPI",
+        "textColour": "#b89656",
+        "span": 0.85
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e2ddd0",
+       "evidence": "strip 2024-12-11 x 3128-3336: cream stone pui, FABIANA FILIPPI in gold capitals on the cream fascia, one lit window, door at the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#22271f",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#c4c4b6"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Azzurro Kids; the 2024-12-11 strip reads FABIANA FILIPPI.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Fabiana Filippi",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4706702953,
+     "name": "Azzurro Kids",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: shop | uppers: 2 sash windows | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "cream stone pui",
+    "signage": "FABIANA FILIPPI gold on cream",
+    "roofline": "white cornice; stone pediment dormer",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 3128-3336 px",
+    "photoRows": [
+     1,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012080749",
+   "slug": "hface-080749",
+   "address": "Pieter Cornelisz. Hooftstraat 118-120D",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 6,
+      "storeys": 3,
+      "storeyHeights": [
+       5.75,
+       3.2,
+       3.15
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.3,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 8,
+       "architrave": 0.12
+      },
+      "shopfront": {
+       "colour": "#1e1f1e",
+       "fascia": false,
+       "name": "Boss",
+       "display": "#e0b96a",
+       "sign": {
+        "text": "BOSS",
+        "textColour": "#f0eee8",
+        "mount": "wall",
+        "span": 0.3
+       },
+       "entrance": "left",
+       "glazing": "split",
+       "displayWindows": 3,
+       "stallriser": "low",
+       "stallriserColour": "#1e1f1e",
+       "evidence": "strip 2024-12-11 x 3337-3810: black front to the cornice, BOSS in big white capitals on the wall over three tall lit windows"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#2a2c2a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#c8c8bf"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "OSM: Hugo Boss (short_name Boss); the sign reads BOSS.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "Boss",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4706702952,
+     "name": "Hugo Boss",
+     "tags": "brand=Hugo Boss; shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "6 equal axes",
+    "windowsPerStorey": "ground: 3 lit windows | uppers: 6 windows",
+    "symmetry": "symmetric",
+    "groundFloor": "black, three tall lit windows",
+    "signage": "BOSS white on the wall",
+    "roofline": "white cornice with consoles; roof storey set back",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 3337-3810 px",
+    "photoRows": [
+     3,
+     6,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the glazed roof storey set back behind the cornice is the 3DBAG roof"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236029",
+   "slug": "hface-236029",
+   "address": "Pieter Cornelisz. Hooftstraat 116",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.1,
+       3.4,
+       3.35
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "shopfront": {
+       "colour": "#e6e0d2",
+       "fascia": true,
+       "fasciaColour": "#ebe6da",
+       "name": "IRO",
+       "display": "#e8c890",
+       "sign": {
+        "text": "IRO",
+        "textColour": "#3a3a36",
+        "span": 0.3
+       },
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e2dccf",
+       "evidence": "strip 2024-12-11 x 3810-4062: cream stone surround round one big lit window, I R O spaced dark capitals on the cream band"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#40433e",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#cbc8bb"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "name": "IRO",
+    "category": "shop=clothes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | uppers: 3 sash windows",
+    "symmetry": "symmetric",
+    "groundFloor": "cream stone surround, one big window",
+    "signage": "IRO dark on cream",
+    "roofline": "white cornice with consoles; glazed roof storey set back",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 3810-4062 px",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the glazed roof storey set back behind the cornice is the 3DBAG roof"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236042",
+   "slug": "hface-236042",
+   "address": "Pieter Cornelisz. Hooftstraat 114",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.6,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "relieving",
+       "archRing": {
+        "colour": "band",
+        "widthCourses": 3
+       }
+      },
+      "entablature": {
+       "rise": 1.3,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#3e403d",
+       "fascia": true,
+       "fasciaColour": "#2e302d",
+       "name": "Isabel Marant",
+       "display": "#e0b060",
+       "sign": {
+        "text": "ISABEL MARANT",
+        "textColour": "#f0ece4",
+        "span": 0.4
+       },
+       "entrance": "centre-recessed",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#3e403d",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#2e302d"
+       },
+       "shopShare": 0.8,
+       "evidence": "strip 2024-12-11 x 4062-4313: dark grey stone pui, ISABEL MARANT white on the fascia, lit windows either side of a recessed door; a dark street door at the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6e4e3c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b9bbab",
+     "band": "#6a4438"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Isabel Marant",
+    "category": "shop=clothes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop + street door | uppers: 3 windows under brick hoods",
+    "symmetry": "symmetric",
+    "groundFloor": "dark grey pui, recessed door, street door right",
+    "signage": "ISABEL MARANT white on dark grey",
+    "roofline": "white cornice with consoles; glazed roof storey set back",
+    "citation": "hooft-114-142 strip.jpg (2024-12-11) x 4062-4313 px",
+    "photoRows": [
+     1,
+     3,
+     3
+    ],
+    "photoGables": 0
+   }
+  }
+ ]
+}
