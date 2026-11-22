@@ -1,0 +1,508 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (face cache), fetched 2026-11-22T12:44:58.041Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162374",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 142F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 155,
+     "bagId": "0363010003684866"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 142F",
+     "use": "winkelfunctie",
+     "areaM2": 260,
+     "bagId": "0363010012114449"
+    },
+    {
+     "address": "Van Baerlestraat 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 260,
+     "bagId": "0363010012130902"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706776726,
+     "lngLat": [
+      4.8802175,
+      52.3600361
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17",
+      "addr:postcode": "1071BL",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Wolford",
+      "brand:wikidata": "Q431607",
+      "brand:wikipedia": "en:Wolford",
+      "name": "Wolford",
+      "opening_hours": "Mo-Sa 10:00-17:00",
+      "phone": "+31 20 470 1737",
+      "shop": "clothes",
+      "website": "https://www.wolfordshop.nl"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "address",
+     "distanceM": 165.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163305",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 142",
+    "Pieter Cornelisz. Hooftstraat 142A",
+    "Pieter Cornelisz. Hooftstraat 142B",
+    "Pieter Cornelisz. Hooftstraat 142C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 142-H",
+     "use": "winkelfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000770161"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 142A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012111886"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 142B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012111887"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 142C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001002764"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165739",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000991846"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 140",
+     "use": "winkelfunctie",
+     "areaM2": 565,
+     "bagId": "0363010012111885"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116485",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 138-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000997052"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 138-H",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012115031"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159571",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 136-H",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000770148"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702959,
+     "lngLat": [
+      4.8781853,
+      52.3596873
+     ],
+     "tags": {
+      "brand": "Paul Smith",
+      "brand:wikidata": "Q56356277",
+      "name": "Paul Smith",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158516",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 132",
+    "Pieter Cornelisz. Hooftstraat 134B",
+    "Pieter Cornelisz. Hooftstraat 134C",
+    "Pieter Cornelisz. Hooftstraat 134A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 134B",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001006538"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 134C",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010001006541"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 134A",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001006537"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 132",
+     "use": "winkelfunctie",
+     "areaM2": 305,
+     "bagId": "0363010001006535"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702958,
+     "lngLat": [
+      4.8783215,
+      52.3597246
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "132",
+      "addr:postcode": "1071CE",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Cartier",
+      "brand:wikidata": "Q538587",
+      "brand:wikipedia": "en:Cartier (jeweler)",
+      "name": "Cartier",
+      "phone": "+31 20 670 3434",
+      "shop": "jewelry",
+      "website": "https://www.cartier.com/"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235890",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 130-H",
+     "use": "winkelfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000770130"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702957,
+     "lngLat": [
+      4.8784495,
+      52.3597631
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126",
+      "addr:postcode": "1071CE",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Claudia Sträter",
+      "brand:wikidata": "Q52903369",
+      "brand:wikipedia": "nl:Claudia Sträter",
+      "name": "Claudia Sträter",
+      "opening_hours": "Mo 11:00-17:00; Tu-Sa 09:00-17:00; Su 12:00-17:00",
+      "phone": "+31 20 248 0204",
+      "shop": "clothes",
+      "website": "https://www.claudiastrater.com/"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236038",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 128-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000770126"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702956,
+     "lngLat": [
+      4.8785451,
+      52.3597854
+     ],
+     "tags": {
+      "name": "Nespresso",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161033",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 126-H",
+     "use": "winkelfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000770122"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165352",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 124-H",
+     "use": "winkelfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000770118"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702954,
+     "lngLat": [
+      4.8787077,
+      52.3598301
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124",
+      "addr:postcode": "1071CD",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Dolce & Gabbana",
+      "brand:wikidata": "Q214480",
+      "brand:wikipedia": "en:Dolce & Gabbana",
+      "name": "Dolce & Gabbana",
+      "opening_hours": "Mo 11:00-17:00; Tu-Sa 10:00-17:00",
+      "phone": "+31 20 364 0420",
+      "shop": "clothes",
+      "website": "https://boutique.dolcegabbana.com/netherlands/amsterdam/pieter-cornelisz-hooftstraat-123/amsterdam-p.c.-hooftstraat-123"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157039",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 122-H",
+     "use": "winkelfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000770113"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702953,
+     "lngLat": [
+      4.8787768,
+      52.3598512
+     ],
+     "tags": {
+      "name": "Azzurro Kids",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012080749",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 118",
+    "Pieter Cornelisz. Hooftstraat 120A",
+    "Pieter Cornelisz. Hooftstraat 120B",
+    "Pieter Cornelisz. Hooftstraat 120C",
+    "Pieter Cornelisz. Hooftstraat 120D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 118",
+     "use": "winkelfunctie",
+     "areaM2": 410,
+     "bagId": "0363010000770102"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 120A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000770105"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 120B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000770106"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 120C",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000770107"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 120D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000770108"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4706702952,
+     "lngLat": [
+      4.8789049,
+      52.3598872
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118",
+      "addr:postcode": "1071CD",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "Hugo Boss",
+      "brand:wikidata": "Q491627",
+      "brand:wikipedia": "en:Hugo Boss",
+      "check_date": "2026-07-13",
+      "name": "Hugo Boss",
+      "opening_hours": "Mo-Sa 10:00-17:00; Su 12:00-17:00",
+      "phone": "+31 20 471 5835",
+      "shop": "clothes",
+      "short_name": "Boss",
+      "website": "https://www.hugoboss.com/nl/storedetail?storeid=9926459"
+     },
+     "fetchedAt": "2026-11-22T12:44:58.041Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236029",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 116",
+     "use": "kantoorfunctie",
+     "areaM2": 446,
+     "bagId": "0363010000770101"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236042",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000770096"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

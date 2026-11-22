@@ -26,7 +26,9 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
  */
 /** `offline`: a cache miss throws instead of fetching (house:crops --offline: judge-pick re-rectification must cost no downloads;
  *  PAND_REFERENCE_OFFLINE=1 sets it for any run, e.g. house:frames on cached panoramas only) */
-export const http = { offline: process.env.PAND_REFERENCE_OFFLINE === '1', minGapMs: 0, maxAttempts: 4, /** A stalled connection otherwise hangs a long run forever (lane retail-real round 6). */ timeoutMs: 90_000, userAgent: UA, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0 };
+export const http = { offline: process.env.PAND_REFERENCE_OFFLINE === '1',
+  /** PAND_REFERENCE_OFFLINE_IMAGES=1: a panorama (.jpg) cache miss throws while API JSON still fetches (low-disk runs: no new panoramas). */
+  offlineImages: process.env.PAND_REFERENCE_OFFLINE_IMAGES === '1', minGapMs: 0, maxAttempts: 4, /** A stalled connection otherwise hangs a long run forever (lane retail-real round 6). */ timeoutMs: 90_000, userAgent: UA, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0 };
 let nextStart = 0;
 async function pace() {
   if (!http.minGapMs) return;
@@ -69,6 +71,7 @@ export async function cachedBytes(url: string, ext: string): Promise<Buffer> {
   const file = cachePath(url, ext);
   if (ext === '.jpg') panoTracker.touched?.add(file);
   try { return await fs.readFile(file); } catch { /* miss */ }
+  if (ext === '.jpg' && http.offlineImages) throw new Error(`offline images: panorama cache miss ${url}`);
   const bytes = await get(url);
   await fs.mkdir(CACHE_DIR, { recursive: true });
   await fs.writeFile(file, bytes);
