@@ -1,0 +1,311 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass (live), fetched 2026-11-22T16:24:55.398Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153801",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010001006476"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161508",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 15",
+    "Pieter Cornelisz. Hooftstraat 15A",
+    "Pieter Cornelisz. Hooftstraat 15B",
+    "Pieter Cornelisz. Hooftstraat 15D",
+    "Pieter Cornelisz. Hooftstraat 15C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000769861"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 15A",
+     "use": "winkelfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012116271"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 15D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012160097"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012160096"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160173",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 17",
+    "Pieter Cornelisz. Hooftstraat 17A",
+    "Pieter Cornelisz. Hooftstraat 17B",
+    "Pieter Cornelisz. Hooftstraat 17C",
+    "Pieter Cornelisz. Hooftstraat 17D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000769867"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 17A",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012124738"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012124740"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012124739"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012124741"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152826",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000769873"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164620",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000769879"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 21-1",
+     "use": "kantoorfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000769880"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165945",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 23A",
+    "Pieter Cornelisz. Hooftstraat 23B",
+    "Pieter Cornelisz. Hooftstraat 23C",
+    "Pieter Cornelisz. Hooftstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 23A",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001963450"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 23B",
+     "use": "kantoorfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001963451"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010001963453"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 23A",
+     "use": "winkelfunctie",
+     "areaM2": 188,
+     "bagId": "0363010012076415"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000960389"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4964087931,
+     "lngLat": [
+      4.8831789,
+      52.3609243
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-22T16:24:55.398Z",
+     "match": "frontage",
+     "distanceM": 7.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157150",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 25C",
+    "Pieter Cornelisz. Hooftstraat 25B",
+    "Pieter Cornelisz. Hooftstraat 25A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010003696169"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010003696170"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010003696168"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165990",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 27-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000769887"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 497169603,
+     "lngLat": [
+      4.8831414,
+      52.3606764
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "27",
+      "addr:postcode": "1071BL",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "amenity": "restaurant",
+      "contact:facebook": "https://www.facebook.com/profile.php?id=100054419023408",
+      "cuisine": "indonesian",
+      "indoor_seating": "yes",
+      "name": "Sama Sebo",
+      "opening_hours": "Mo-Sa 12:00-15:00, 17:00+; PH off",
+      "outdoor_seating": "no",
+      "website": "https://www.samasebo.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-22T16:24:55.398Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 856795053,
+     "lngLat": [
+      4.8830765,
+      52.3608089
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "27",
+      "addr:postcode": "1071BL",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "amenity": "pub",
+      "check_date": "2025-03-16",
+      "indoor_seating": "yes",
+      "name": "De Posthoorn",
+      "note": "Pub part of Sama Sebo",
+      "opening_hours": "Mo-Sa 09:00-01:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 662 8146",
+      "smoking": "outside",
+      "website": "https://www.samasebo.nl"
+     },
+     "fetchedAt": "2026-11-22T16:24:55.398Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

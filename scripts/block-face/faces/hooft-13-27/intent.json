@@ -1,0 +1,973 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hooft-13-27",
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/hooft-13-27/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-4 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "PC Hooftstraat 13-27 (odd): the quiet Hobbemastraat end, mostly houses over a few small shops; white aedicule axes, console balconies, a black-painted front (15), a white attic storey (19), the De Posthoorn café (27)."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012153801",
+    "stripRow": 352,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 352"
+   },
+   {
+    "pand": "0363100012161508",
+    "stripRow": 352,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 352"
+   },
+   {
+    "pand": "0363100012160173",
+    "stripRow": 353,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 353"
+   },
+   {
+    "pand": "0363100012152826",
+    "stripRow": 267,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 267"
+   },
+   {
+    "pand": "0363100012164620",
+    "stripRow": 320,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 320"
+   },
+   {
+    "pand": "0363100012165945",
+    "stripRow": 294,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 294"
+   },
+   {
+    "pand": "0363100012157150",
+    "stripRow": 297,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 297"
+   },
+   {
+    "pand": "0363100012165990",
+    "stripRow": 290,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 290"
+   }
+  ],
+  "notes": [
+   "Cornice tops per pand: first strip row where 70 % of the span is not sky; 152826 at the top of its white attic storey, 165990 at the cornice under its mansard."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012153801",
+   "slug": "hface-153801",
+   "address": "Pieter Cornelisz. Hooftstraat 13",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": 0,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.6,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "paintedStoreys": {
+       "storeys": [
+        0,
+        1,
+        2
+       ],
+       "colour": "#e6e4da",
+       "axes": [
+        1,
+        1
+       ]
+      },
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#605645",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b9c7b8"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG woonfunctie on the ground floor; no OSM business.",
+    "bag": [
+     "woonfunctie"
+    ]
+   },
+   "rhythm": {
+    "bays": "3 axes, the centre one a white stucco aedicule",
+    "windowsPerStorey": "ground: door left + 2 windows | uppers: 3 windows x 2 | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "residential, door left",
+    "signage": "none",
+    "roofline": "white entablature with consoles; stone crest dormer",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 0-251 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the aedicule pilasters, pediments and the balustrade are drawn as a painted axis and an iron guard"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161508",
+   "slug": "hface-161508",
+   "address": "Pieter Cornelisz. Hooftstraat 15-15D",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.6,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1
+      ],
+      "surroundBays": [
+       1
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1e1e",
+       "fascia": false,
+       "display": "#d8a860",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1e1e",
+       "evidence": "strip 2024-12-11 x 251-504: black-painted front; a black shop with two gold-lit windows either side of a centre door, gold medallions above them"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#1a201c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#262828",
+     "cornice": "#262828",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#b9c7b8"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 15A; no OSM node and no readable sign on 2024-12-11.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 axes with a centre oriel",
+    "windowsPerStorey": "ground: shop | uppers: 3 x 2, a black oriel on the first-floor centre | roof: crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black shop, gold-lit windows",
+    "signage": "gold medallions, no text",
+    "roofline": "black-painted entablature; crest dormer",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 251-504 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the whole front is painted black, the entablature too; drawn with the house stone colour black"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160173",
+   "slug": "hface-160173",
+   "address": "Pieter Cornelisz. Hooftstraat 17-17D",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": 0,
+      "windows": "sash",
+      "bays": 2,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.6,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "paintedStoreys": {
+       "storeys": [
+        1,
+        2
+       ],
+       "colour": "#e6e4da",
+       "axes": [
+        1,
+        1
+       ]
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#d8d6cc",
+       "fascia": false,
+       "display": "#f0c070",
+       "entrance": "centre",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#d8d6cc",
+       "bays": [
+        1,
+        1
+       ],
+       "evidence": "strip 2024-12-11 x 504-668: a pale green door left, a lit shop window with a door on the right"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a6252",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b9c7b8"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 17A; no OSM node; no sign visible (the strip covers only 4.1 m).",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "2 axes seen (the strip gap hides the rest)",
+    "windowsPerStorey": "ground: door + shop | uppers: 2 x 2, the right axis a white aedicule",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "door and shop",
+    "signage": "none",
+    "roofline": "white entablature; crest dormer",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 504-668 px",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012152826",
+   "slug": "hface-152826",
+   "address": "Pieter Cornelisz. Hooftstraat 19",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "doorBay": 2,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.7,
+       3.7,
+       3.4,
+       2.9
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "paintedStoreys": {
+       "storeys": [
+        3
+       ],
+       "colour": "#eceae2"
+      },
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1
+      ],
+      "surroundBays": [
+       1
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.64
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a5848",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#dbe3da"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG woonfunctie on the ground floor; no OSM business.",
+    "bag": [
+     "woonfunctie"
+    ]
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: 2 windows + a door right (souterrain lights under) | first: 3 windows, the centre in a white aedicule over a console balcony | second: 3 | attic: white render, 3 paired lights",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "residential, door right",
+    "signage": "none",
+    "roofline": "a white rendered attic storey (later) over the old cornice",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 757-1059 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the souterrain lights are not drawn",
+     "the attic storey is a painted storey, its paired lights drawn as single windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164620",
+   "slug": "hface-164620",
+   "address": "Pieter Cornelisz. Hooftstraat 21",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.0,
+       3.6,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.8,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1
+      ],
+      "surroundBays": [
+       1
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#ece8e0",
+       "display": "#f0c890",
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 1059-1361: a white fascia box over one wide lit window with a garland, a dark door left; no lettering"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#574836",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#a9b2a2"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie (21-H) and kantoorfunctie; no OSM node; no sign on 2024-12-11.",
+    "bag": [
+     "kantoorfunctie",
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: shop | first: 3, the centre a white aedicule window over a console balcony | second: 3 with iron balconettes | roof: tall crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white fascia, wide window",
+    "signage": "none",
+    "roofline": "white entablature with consoles; a tall stone crest dormer",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 1059-1361 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012165945",
+   "slug": "hface-165945",
+   "address": "Pieter Cornelisz. Hooftstraat 23-23C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.6,
+       3.8,
+       3.7
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1
+      ],
+      "surroundBays": [
+       1
+      ],
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2a28",
+       "fascia": false,
+       "display": "#f0b070",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#2a2a28",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#1c1c1a"
+       },
+       "evidence": "strip 2024-12-11 x 1361-1632: a tall lit glass entrance in the centre, black awnings over the side windows, two small brass plaques"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#605540",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b7bdaf"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie (23A) and kantoorfunctie; OSM only a charging station; no sign on 2024-12-11.",
+    "bag": [
+     "kantoorfunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "category": "shop",
+    "osm": {
+     "type": "node",
+     "id": 4964087931,
+     "tags": "amenity=charging_station"
+    }
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: shop | first: 3, the centre a white aedicule over a white balustrade balcony | second: 3 | roof: flat behind a bracketed cornice",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "tall lit centre glass, black awnings",
+    "signage": "brass plaques, unreadable",
+    "roofline": "bracketed white cornice",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 1361-1632 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     0
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the two black awnings over the side windows are drawn as one awning across the front"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157150",
+   "slug": "hface-157150",
+   "address": "Pieter Cornelisz. Hooftstraat 25A-25C",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": 2,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       5.4,
+       3.9,
+       3.7
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       1
+      ],
+      "surroundBays": [
+       1
+      ],
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        0,
+        1,
+        2
+       ],
+       "style": "guard"
+      },
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#474231",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#abafa0"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "BAG woonfunctie on the ground floor; no OSM business.",
+    "bag": [
+     "woonfunctie"
+    ]
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: 2 tall windows + an arched doorway right (souterrain lights under) | first: 3 with balconettes, the centre a white aedicule over a console balcony | second: 3",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "residential, arched door right",
+    "signage": "none",
+    "roofline": "bracketed white cornice",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 1632-1913 px",
+    "photoRows": [
+     3,
+     3,
+     3,
+     0
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the arched doorway is drawn square-headed"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165990",
+   "slug": "hface-165990",
+   "address": "Pieter Cornelisz. Hooftstraat 27",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.4,
+       3.7,
+       3.7,
+       3.5
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "windowSurround": "full-frame",
+      "surroundStoreys": [
+       2
+      ],
+      "surroundBays": [
+       1
+      ],
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a3a30",
+       "fascia": true,
+       "fasciaColour": "#2a3a30",
+       "name": "De Posthoorn",
+       "display": "#d09050",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#2a3a30",
+       "evidence": "strip 2024-12-11 x 1914-2237: dark café front behind a terrace of green umbrellas; a name board on the right is unreadable"
+      },
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.64
+      ],
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a5040",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#b6b5a4"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "OSM: De Posthoorn (pub) and Sama Sebo (restaurant); the terrace umbrellas hide the fascia.",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "name": "De Posthoorn",
+    "category": "amenity=pub",
+    "osm": {
+     "type": "node",
+     "id": 497169603,
+     "name": "Sama Sebo",
+     "tags": "amenity=restaurant"
+    }
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: café | first: 3, iron balcony on the centre | second: 3, the centre a white aedicule | third: 3 | mansard: 1 dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "dark café front, terrace",
+    "signage": "hidden by the umbrellas",
+    "roofline": "bracketed cornice; slate mansard (drawn as the 70 degree front attic) with a centre dormer and chimneys",
+    "citation": "hooft-13-27 strip.jpg (2024-12-11) x 1914-2237 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the terrace umbrellas are not modelled"
+    ]
+   }
+  }
+ ]
+}

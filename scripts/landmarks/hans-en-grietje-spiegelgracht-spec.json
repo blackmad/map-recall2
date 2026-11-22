@@ -1,0 +1,36 @@
+{
+ "id": "hans-en-grietje-spiegelgracht",
+ "name": "Café Hans en Grietje, Spiegelgracht 27",
+ "heightMetres": 12.7,
+ "bagYear": 1856,
+ "galleryView": {
+  "theta": 3.9,
+  "phi": 1.12
+ },
+ "measuredOverrides": true,
+ "partyWallBearings": [29, 103, 120],
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012169479 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/hans-en-grietje-spiegelgracht-footprints.json, bag-shell-prepare.ts), the north part's eaves lifted to the cornice the photos show; the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002952_pano_0003_000196 (2023, south front, heights and tints), TMX7316010203-000355_pano_0000_000220 (2017) and TMX7316010203-001974_pano_0000_001138 (2021, Spiegelgracht), TMX7316010203-003002_pano_0007_000280 (2023, the corner) and recording_2025-07-14_05-25-22_00428/_00429/_00431/_00548/_00550 (2025, close views), CC BY 4.0. Rijksmonument (register 5504). Per wall in scripts/landmarks/hans-en-grietje-spiegelgracht-inventory.json.",
+ "materialOverrides": {
+  "brick": "#946652",
+  "slate": "#b47c5e",
+  "white": "#eeece6",
+  "glass": "#3e474b",
+  "dark": "#263236",
+  "red": "#b3363a",
+  "gold": "#e2d4ae",
+  "green": "#2f6a48",
+  "stone": "#8e8b86",
+  "concrete": "#eceae3",
+  "frame": "#d8d6cf",
+  "pink": "#e2bfa2",
+  "bronze": "#2c3134"
+ },
+ "attribution": {
+  "title": "Café Hans en Grietje, Spiegelgracht 27 / Tweede Weteringdwarsstraat, Amsterdam",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002952_pano_0003_000196/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169479 (CC0): the red-and-white striped markiezen (quarter-round hoods over the first storey, valances and drapes below), CAFE HANS en GRIETJE and RESTAURANT lettering, the white cornice and dormers, the shopfront with fluted pilasters, door 27, the stoop, the basement print shop with its green awning, the cut-out chef and the Heineken disc, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

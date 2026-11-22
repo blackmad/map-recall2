@@ -1,0 +1,5 @@
+{
+ "id": "depot-scheepvaartmuseum",
+ "countedBy": "lane landmarks-r13, 2026-11-22, from the rectified crops w03-138 (recording_2025-06-17_08-04-10_03287), w10-139 (b_20250108_1041_Track01_Sphere_00029), w12-130 (TMX7316010203-001536_pano_0000_001551) and w04-225 (TMX7316010203-001195_pano_0000_003836), 50 px/m. The depot has no windows: every street wall is the closed brick yard wall (a bricked-up arch, two piers, two boarded timber gates) under closed metal cladding with three louvre grilles; 0 glazed openings on any crop. No facade is listed: compare:facades counts glazing per storey band, and a front with no glazing gives it nothing to compare. The louvres, gates and arch were checked by eye on the in-game frames (artifacts/r13-sheets/depot-scheepvaartmuseum).",
+ "facades": []
+}

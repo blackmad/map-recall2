@@ -1,0 +1,414 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hooft-101-105",
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/hooft-101-105/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-4 lane), from strip-labelled.png",
+  "passes": 1,
+  "note": "PC Hooftstraat 101-105 (odd): Saint Laurent over 101-103 (lettered canopies over the first-floor windows), 105 with a pointed gable, vacant on 2024-12-11."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236916",
+    "stripRow": 381,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 381"
+   },
+   {
+    "pand": "0363100012236256",
+    "stripRow": 401,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 401"
+   },
+   {
+    "pand": "0363100012152413",
+    "stripRow": 568,
+    "evidence": "strip 2024-12-11: top of the white cornice cap at row 568"
+   }
+  ],
+  "notes": [
+   "Cornice tops per pand: first strip row where 70 % of the span is not sky; 152413 at the cornice under the gable."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012236916",
+   "slug": "hface-236916",
+   "address": "Pieter Cornelisz. Hooftstraat 101",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.8,
+       3.7,
+       3.6,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.1,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.12
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "partyClip": true,
+      "windowHeights": [
+       0.6,
+       0.78,
+       0.7,
+       0.62
+      ],
+      "wallAnchors": {
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "windowCanopies": {
+       "storey": 1,
+       "colour": "#1c1c1a",
+       "sign": {
+        "text": "SAINT LAURENT",
+        "textColour": "#f0ece4"
+       },
+       "evidence": "strip 2024-12-11 x 0-290: a black canopy lettered SAINT LAURENT in white over each of the three first-floor windows"
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Saint Laurent",
+       "display": "#e8c890",
+       "sign": {
+        "text": "SAINT LAURENT",
+        "textColour": "#f0ece4",
+        "span": 0.45
+       },
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 0-290: black pui, SAINT LAURENT white on the black fascia, lit windows either side of a centre door; black canopies lettered SAINT LAURENT over the three lit first-floor windows"
+      },
+      "windowShare": 0.58,
+      "dormerSize": {
+       "sill": 0.5,
+       "rise": 1.5,
+       "setback": 0.8
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#887861",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#dad8bc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "osm-and-photo",
+    "note": "One Saint Laurent store over 101-103.",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "name": "Saint Laurent",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4706776721,
+     "name": "Saint Laurent",
+     "tags": "shop=clothes"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 lit shop windows under lettered black canopies | second: 3, iron balcony on the centre | third: 3 | roof: stone crest dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "SAINT LAURENT white on black (fascia and the first-floor canopies)",
+    "roofline": "white entablature with consoles; stone crest dormer",
+    "citation": "hooft-101-105 strip.jpg (2024-12-11) x 0-290 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236256",
+   "slug": "hface-236256",
+   "address": "Pieter Cornelisz. Hooftstraat 103",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 4,
+      "storeyHeights": [
+       3.8,
+       3.7,
+       3.6,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 2.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "partyClip": true,
+      "windowHeights": [
+       0.6,
+       0.78,
+       0.7,
+       0.62
+      ],
+      "wallAnchors": {
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#1c1c1a",
+       "fascia": true,
+       "fasciaColour": "#1c1c1a",
+       "name": "Saint Laurent",
+       "display": "#e8d0a8",
+       "sign": {
+        "text": "SAINT LAURENT",
+        "textColour": "#f0ece4",
+        "span": 0.45
+       },
+       "entrance": "left",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#1c1c1a",
+       "evidence": "strip 2024-12-11 x 290-557: black pui, SAINT LAURENT white on the black fascia, a door with an art-deco grille left, one wide lit window"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7f6b55",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#d0d2c6"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "agreement": "photo-only",
+    "note": "No OSM node on 103; the strip signs SAINT LAURENT on its fascia (one store over 101-103).",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Saint Laurent",
+    "category": "shop=clothes"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3, the centre in a white aedicule with an iron balconette | third: 3 | roof: a V sculpture",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black pui",
+    "signage": "SAINT LAURENT white on black",
+    "roofline": "white entablature with consoles; a small V sculpture on the roof",
+    "citation": "hooft-101-105 strip.jpg (2024-12-11) x 290-557 px",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     0
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white aedicule round the second-floor centre window is drawn as a balconette",
+     "the V sculpture on the roof is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012152413",
+   "slug": "hface-152413",
+   "address": "Pieter Cornelisz. Hooftstraat 105",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Pieter Cornelisz. Hooftstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "cornice": "simple",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       3.9,
+       3.3,
+       3.4
+      ],
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "crownAt": {
+       "from": 0.1,
+       "to": 0.9
+      },
+      "crownRise": 1.25,
+      "atticWindows": 1,
+      "windowHeights": [
+       0.6,
+       0.7,
+       0.68
+      ],
+      "wallAnchors": {
+       "storeys": [
+        1,
+        2
+       ]
+      },
+      "partyClip": true,
+      "shopfront": {
+       "colour": "#e4ded2",
+       "fascia": false,
+       "display": "#2a2a28",
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "stallriserColour": "#e4ded2",
+       "evidence": "strip 2024-12-11 x 557-830: cream stone pui, one dark window with a portrait poster and a red-white board, a door right; no sign"
+      },
+      "windowShare": 0.58
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#695440",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ece9df",
+     "cornice": "#ece9df",
+     "wallTint": "measured",
+     "whitePoint": "#a6b09e"
+    }
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2024-12-11",
+    "agreement": "conflict",
+    "note": "OSM: Douglas (perfumery) and Calvin Klein (clothes); on 2024-12-11 the ground floor shows a poster and a red-white board, no shop sign.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop=vacant",
+    "osm": {
+     "type": "node",
+     "id": 4706776719,
+     "name": "Douglas",
+     "tags": "brand=Douglas; shop=perfumery"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: window + door | first: 3 | second: 3 | gable: 1 attic window",
+    "symmetry": "symmetric",
+    "groundFloor": "cream stone pui",
+    "signage": "none",
+    "roofline": "pointed brick gable with stone copings standing on a moulded cornice that runs the full width",
+    "citation": "hooft-101-105 strip.jpg (2024-12-11) x 557-830 px",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  }
+ ]
+}

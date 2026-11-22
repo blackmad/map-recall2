@@ -1,0 +1,128 @@
+{
+ "id": "krakeling-passeerdersstraat",
+ "countedBy": "blind counter subagent (haiku, photo only, recipe section 7 rules), lane landmarks-r13-c, 2026-11-22, from the rectified crops at 50 px/m. w03-71: band 0 doors x 15-55, 75-118 and arched windows x 175-235, 290-350, 408-468, 525-585 (y 600-705); band 1 x 10-55, 72-115, 175-232, 290-350, 408-465, 522-568, 585-628; bands 2 and 3 five windows each; band 4 the small window in the gable (x 305-335). w06-245: two axes x 62-125 and 187-250 on four bands; the gable band cut off (null). w04-333 (the letters block, x 0-430 only): an arched souterrain window, the paired first-floor windows, one window on each of the next two storeys; top cut off (null). The w07-64 corner bay (4.2 m) and the set-back hall (w01-335) were not counted: the bay faces within 7 degrees of the Marnixstraat front and the hall stands 3.5 m behind the annex.",
+ "facades": [
+  {
+   "name": "Marnixstraat wing",
+   "bearing": 71,
+   "photo": "artifacts/landmark-briefs/krakeling-passeerdersstraat/w03-71.jpg",
+   "rows": [
+    6,
+    7,
+    5,
+    5,
+    1
+   ],
+   "symmetric": false,
+   "gables": 1,
+   "alongM": [
+    1.2,
+    14.4
+   ],
+   "mixedRows": [
+    {
+     "row": 0,
+     "rowSizes": "mixed",
+     "evidence": "w03-71 blind count at 50 px/m: two doors x 15-55, 75-118 (0.80, 0.86 m) beside four arched souterrain windows x 175-235, 290-350, 408-468, 525-585 (1.2 m)",
+     "openings": [
+      {
+       "kind": "door",
+       "w": 0.8
+      },
+      {
+       "kind": "door",
+       "w": 0.86
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      },
+      {
+       "kind": "window",
+       "w": 1.2
+      }
+     ]
+    },
+    {
+     "row": 1,
+     "rowSizes": "mixed",
+     "evidence": "w03-71 blind count at 50 px/m: narrow pair x 10-55, 72-115 (0.90, 0.86 m), three wide windows x 175-232, 290-350, 408-465 (1.14-1.2 m), narrow pair x 522-568, 585-628 (0.92, 0.86 m)",
+     "openings": [
+      {
+       "kind": "narrow",
+       "w": 0.9
+      },
+      {
+       "kind": "narrow",
+       "w": 0.86
+      },
+      {
+       "kind": "wide",
+       "w": 1.14
+      },
+      {
+       "kind": "wide",
+       "w": 1.2
+      },
+      {
+       "kind": "wide",
+       "w": 1.14
+      },
+      {
+       "kind": "narrow",
+       "w": 0.92
+      },
+      {
+       "kind": "narrow",
+       "w": 0.86
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Leidsekade corner bay",
+   "bearing": 245,
+   "photo": "artifacts/landmark-briefs/krakeling-passeerdersstraat/w06-245.jpg",
+   "rows": [
+    2,
+    2,
+    2,
+    2,
+    null
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    5.6
+   ]
+  },
+  {
+   "name": "Marnixstraat corner (the letters block)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-briefs/krakeling-passeerdersstraat/w04-333.jpg",
+   "rows": [
+    1,
+    2,
+    1,
+    1,
+    null
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    7.9
+   ]
+  }
+ ]
+}

@@ -27,6 +27,7 @@ import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
+import {windowCanopyProblems, type WindowCanopiesIntent} from './windowCanopies.ts';
 import {pierBlockProblems} from './pierBlocks.ts';
 import {beltFrontProblems, type DoorSurroundIntent, type WindowFramesIntent} from './beltFront.ts';
 import {entablatureProblems} from './entablature.ts';
@@ -557,6 +558,12 @@ export interface FrontIntent {
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
   surroundStoreys?: number[];
+  /**
+   * Bay axes (0-based, as in the opening ids `s<storey>-b<bay>`) carrying the surround: an aedicule round only the centre
+   * window (PC Hooftstraat 13-27, 1880s: a white pedimented frame on the first-floor centre axis, plain brick heads beside
+   * it). Absent = every bay, byte-identical.
+   */
+  surroundBays?: number[];
   /** Thick painted window frames, with an eared surround on the top storeys (Keizersgracht 616A; buildingRecipe/beltFront.ts). Absent = byte-identical. */
   windowFrames?: WindowFramesIntent;
   /** A street-level door in the souterrain's base on this ground bay, under an all-window bel-etage (Keizersgracht 616A, 614; beltFront.ts). Absent = byte-identical. */
@@ -703,6 +710,12 @@ export interface FrontIntent {
    * 1887: red doors, black anchors); default the door colour. Absent = byte-identical.
    */
   wallAnchors?: {storeys?: number[]; size?: number; over?: number; colour?: string};
+  /**
+   * Lettered canopies over every window of one upper storey (buildingRecipe/windowCanopies.ts; PC Hooftstraat 2024-12-11:
+   * Saint Laurent 101, Prada 63, Chopard 53): a short rigid canopy per window in `colour`, the house name across each
+   * valance when `sign` is given. Absent = byte-identical.
+   */
+  windowCanopies?: WindowCanopiesIntent;
   /**
    * White head-line pier blocks (Den Texstraat 7-27; buildingRecipe/pierBlocks.ts): at the window-head line of each listed
    * storey (0 = ground; default every storey with windows) one white block on every pier, alternating `long` (default 0.55 m)
@@ -1024,7 +1037,9 @@ export const SHOP_HEADS = ['round', 'segmental'] as const;
 
 /**
  * Shop sign: `text` (letters, digits, & ' - . and spaces; drawn as capitals), its letter colour, and where it is
- * mounted: on the fascia board (default; needs `fascia: true`), on the wall band above the glass, or on the glass.
+ * mounted: on the fascia board (default; needs `fascia: true`), on the wall band above the glass, on the glass, or
+ * `awning`: lettered on a fabric awning (Van Baerlestraat 46, Ace & Dik, 2024-12-11): across the sloped face of a
+ * `fabric-straight` awning, on the valance of a `fabric-dutch` one; a fascia board may stay behind it.
  */
 export interface ShopSign {
   text: string;
@@ -1036,7 +1051,7 @@ export interface ShopSign {
   span?: number;
   align?: 'left' | 'centre' | 'right';
 }
-export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing'] as const;
+export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing', 'awning'] as const;
 /** Characters the sign lettering can draw (signage.ts GLYPHS, case-folded). */
 export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,40}$/;
 const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'bays', 'storeys', 'display', 'head', 'evidence'];
@@ -1963,6 +1978,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
+    if (f.windowCanopies !== undefined) problems.push(...windowCanopyProblems(f, at));
     if (f.pierBlocks !== undefined) problems.push(...pierBlockProblems(f, at));
     if (f.windowFrames !== undefined || f.basementDoor !== undefined || f.doorSurround !== undefined || f.stoopRails !== undefined || f.atticWindowWidth !== undefined) problems.push(...beltFrontProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
@@ -2117,7 +2133,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
         if (sign.align !== undefined) oneOf(sign.align, ['left', 'centre', 'right'], `${at}.shopfront.sign.align`);
         if (sign.mount !== undefined) oneOf(sign.mount, SIGN_MOUNTS, `${at}.shopfront.sign.mount`);
         if ((sign.mount ?? 'fascia') === 'fascia' && !sf.fascia) problems.push(`${at}.shopfront.sign: a fascia-mounted sign needs fascia: true`);
-        if (sign.mount && sign.mount !== 'fascia' && sf.fascia) problems.push(`${at}.shopfront.sign: a ${sign.mount}-mounted sign with a fascia board; mount it on the fascia or drop the board`);
+        if (sign.mount === 'awning' && !(sf.awning?.style === 'fabric-straight' || sf.awning?.style === 'fabric-dutch')) problems.push(`${at}.shopfront.sign: an awning-mounted sign needs a fabric awning (fabric-straight or fabric-dutch)`);
+        if (sign.mount && sign.mount !== 'fascia' && sign.mount !== 'awning' && sf.fascia) problems.push(`${at}.shopfront.sign: a ${sign.mount}-mounted sign with a fascia board; mount it on the fascia or drop the board`);
       } else if (sign !== undefined && sign !== null) problems.push(`${at}.shopfront.sign must be an object (or null in an override)`);
       if (sf.displayWindows !== undefined) count(sf.displayWindows, `${at}.shopfront.displayWindows`, 1, 8);
       if (sf.entrance !== undefined) oneOf(sf.entrance, SHOP_ENTRANCES, `${at}.shopfront.entrance`);
@@ -2149,6 +2166,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
     if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
+    if (f.surroundBays !== undefined) {
+      if (!Array.isArray(f.surroundBays) || !f.surroundBays.length || f.surroundBays.some(v => !Number.isInteger(v) || v < 0 || v > 24)) problems.push(`${at}.surroundBays: a non-empty list of bay indices 0..24`);
+      if (!f.windowSurround || f.windowSurround === 'none') problems.push(`${at}.surroundBays: only with a windowSurround`);
+    }
     if (f.quoins !== undefined) oneOf(f.quoins, QUOINS, `${at}.quoins`);
     const aw = f.shopfront?.awning;
     if (aw) {

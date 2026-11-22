@@ -1,3 +1,4 @@
+import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {getSink, letters, poly, ringFrame, roofHeightAt, setSink, slab, type Frame} from './nearbar-kit';
@@ -9,8 +10,8 @@ import source from './de-kandelaar-vening-meineszlaan-footprints.json';
  * flat roofs: the meeting hall (8.4 m) with a folded south wall of tall slit windows and a faceted east end whose brown-grey
  * brick is studded with a grid of dark round bosses; the two-storey house at the west end (6.1 m) with a ribbon of windows
  * and red casements; the glazed entrance pavilion between them under a white fascia with "DE KANDELAAR" in red; the low
- * wing along the west (3.6-4.0 m). The three-post concrete campanile in the forecourt is a separate structure, not in the
- * pand, and is not drawn here.
+ * wing along the west (3.6-4.0 m). The three-post white concrete campanile in the forecourt stands outside the pand; it is
+ * drawn with the building (`campanile`, placed from the PDOK orthophoto), since no other model or record carries it.
  *
  * Massing: the 3DBAG LoD2.2 shell as scanned. Fronts read from rectified Gemeente Amsterdam panoramas (CC BY 4.0), t in metres
  * along each facade-ring edge from the viewer's left (ringFrame), y up from the 3DBAG ground:
@@ -65,7 +66,26 @@ export function buildDeKandelaarVeningMeineszlaan(_w: number, _d: number, b: Bui
   // fascias: the hall's grey metal cap, the white boards of the house, pavilion and wing
   src.surfaces.forEach((s, i) => { if (s.type === 'WallSurface' && hallWall(s)) { const w = surfaceWall(i); if (w.len > 0.3) slab(B, w.f, w.len / 2, HALL - 0.16, w.len, 0.24, 0.05, 'sandstone'); } });
   for (const i of [0, 1, 2, 3, 4, 5, 6, 8, 10, 11, 54, 55, 56]) { const w = wall(i), y = top(w); slab(B, w.f, w.len / 2, y - 0.34, w.len, 0.4, 0.3, 'concrete'); }
+  campanile(b);
   setSink(sink0);
+}
+
+/**
+ * The forecourt campanile, south-west of the hall's folded wall: three white concrete posts on a triangle about 2.4 m
+ * across, tied at the top by a Y of beams from a centre hub (PDOK 2025 orthophoto: the white Y and the three posts at
+ * RD 117272.3, 488505.3, i.e. 7.4 m west and 12.5 m south of the model anchor; w02-15 2025 and w12-315 2022 show the posts
+ * rising well above the 8.4 m hall, and the Y beams at the top). Height about 11 m (inventory p-campanile, by eye).
+ */
+function campanile(b: BuildingTools) {
+  const cx = -7.4, cz = 12.5, R = 1.2, H = 11, POST = 0.42, BEAM = 0.45;
+  // one post points north-west (w12-315: the centre post stands in front, the other two behind it to each side)
+  for (let k = 0; k < 3; k++) {
+    const a = (3 * Math.PI) / 4 + (k * 2 * Math.PI) / 3, dx = Math.cos(a), dz = -Math.sin(a);
+    const px = cx + dx * R, pz = cz + dz * R, yaw = Math.atan2(-dz, dx);
+    b.add(new T.BoxGeometry(POST + 0.25, H, POST).rotateY(yaw).translate(px, H / 2 - 0.1, pz), 'white');
+    b.add(new T.BoxGeometry(R, BEAM, 0.3).rotateY(yaw).translate(cx + (dx * R) / 2, H - 0.75, cz + (dz * R) / 2), 'white');
+  }
+  b.add(new T.BoxGeometry(0.5, BEAM, 0.5).translate(cx, H - 0.75, cz), 'white');
 }
 
 /** Wall surfaces of the hall: anything reaching above 7 m. */

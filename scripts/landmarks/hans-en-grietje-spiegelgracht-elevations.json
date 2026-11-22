@@ -1,0 +1,39 @@
+{
+  "id": "hans-en-grietje-spiegelgracht",
+  "countedBy": "lane landmarks-r13-d-20261122 from the rectified panoramas (all-walls.ts, 50 px/m) TMX7316010203-002952_pano_0003_000196 (2023, south), TMX7316010203-000355_pano_0000_000220 (2017) and TMX7316010203-001974_pano_0000_001138 (2021, Spiegelgracht), checked against the 2025 close views; not yet blind-counted. Glazing only: the dark panelled doors and the menu cases are not openings; the dormer is the top band.",
+  "facades": [
+    {
+      "name": "south (Tweede Weteringdwarsstraat)",
+      "bearing": 191,
+      "photo": "staging/pand-ref/0363100012169479/w01-191.jpg",
+      "rows": [3, 2, 1],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 1,
+      "openings": ["glass"]
+    },
+    {
+      "name": "Spiegelgracht north part (raised ground storey over the basement shop)",
+      "bearing": 299,
+      "photo": "staging/pand-ref/0363100012169479/w03-300.jpg",
+      "span": [-6.35, -0.5],
+      "heightM": [2.6, 12.9],
+      "rows": [2, 2, 1],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "openings": ["glass"]
+    },
+    {
+      "name": "Spiegelgracht south part (stoop, shopfront, door 27)",
+      "bearing": 299,
+      "photo": "staging/pand-ref/0363100012169479/w02-300.jpg",
+      "span": [-0.4, 6.8],
+      "rows": [2, 2, 1],
+      "columns": 5,
+      "symmetric": false,
+      "gables": 0,
+      "openings": ["glass"]
+    }
+  ]
+}

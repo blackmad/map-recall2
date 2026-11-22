@@ -30,6 +30,7 @@ const src = source as unknown as Src;
 const ring = src.facadeRing;
 
 const BOARDS: Col = 'green', WHITE: Col = 'concrete', TILE: Col = 'red', BRICK: Col = 'brick', PANEL: Col = 'blue', YELLOW: Col = 'ochre';
+const CHIMNEY: Col = 'dark';
 const LIGHTBLUE: Col = 'stone', FRAME: Col = 'frame', DOOR: Col = 'pink', INK: Col = 'bronze', GUTTER: Col = 'greyBrick';
 const BOARD_TOP = 2.78;
 
@@ -196,7 +197,25 @@ export function buildHenrickDeKeijserBuurtgebouw(_w: number, _d: number, b: Buil
   flushFaces(b);
   for (const s of src.surfaces) if (s.type === 'RoofSurface' && !isFlat(s) && Math.max(...s.rings[0].map(p => p[1])) > 8) courses(b, s);
   for (const s of src.surfaces) if (s.type === 'RoofSurface' && !isFlat(s) && Math.max(...s.rings[0].map(p => p[1])) > 8) overhang(b, s);
+  chimney(b);
   setSink(sink0);
+}
+
+/**
+ * The dark brown brick chimney on the hall's ridge near the south gable (w01-258 2020: at the right end of the ridge, about
+ * 0.6 m wide and 0.8 m above it; w05-168 2019: just behind the gable apex). The 3DBAG ridge runs from (-8.33, -5.97) at the
+ * north gable to (-5.08, 8.75) at the south one, at 9.1-9.3 m; the stack stands 1 m in from the south end.
+ */
+function chimney(b: BuildingTools) {
+  const n: [number, number] = [-8.326, -5.965], s: [number, number] = [-5.084, 8.753];
+  const L = Math.hypot(s[0] - n[0], s[1] - n[1]), k = (L - 1) / L;
+  const x = n[0] + (s[0] - n[0]) * k, z = n[1] + (s[1] - n[1]) * k, ridge = roofHeightAt(src.surfaces, x, z) ?? 9.3;
+  const yaw = -Math.atan2(s[1] - n[1], s[0] - n[0]);
+  const top = ridge + 0.8, bottom = ridge - 0.7;
+  const stack = new T.BoxGeometry(0.6, top - bottom, 0.55).rotateY(yaw).translate(x, (top + bottom) / 2, z);
+  b.add(stack, CHIMNEY);
+  const cap = new T.BoxGeometry(0.72, 0.08, 0.67).rotateY(yaw).translate(x, top + 0.04, z);
+  b.add(cap, CHIMNEY);
 }
 
 /**

@@ -41,6 +41,14 @@ export type StripedAwningOpts = {
   cheekHem?: number;
   /** Colour index of the first stripe (default 0). */
   first?: 0 | 1;
+  /**
+   * Quarter-round hood (the Dutch "Hollandse markies" over a sash window): the cloth follows `dome` segments of a quarter
+   * ellipse from the head (leaving the wall level) to the lip (arriving vertical), each stripe running head to lip over the
+   * curve, and the cheeks become fans of `dome` stripes radiating from the quarter's centre (on the wall, `drop` below the
+   * head) instead of vertical bands, so the side of the hood reads as the striped quarter disc of the photos. Omitted or 0:
+   * the straight sloping cloth, byte-identical to before.
+   */
+  dome?: number;
 };
 
 const lerp2 = (a: TO, b: TO, k: number): TO => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
@@ -75,6 +83,7 @@ export function stripedAwning(o: StripedAwningOpts): StripedAwning {
   const val = Math.max(0, o.valance ?? 0), sc = Math.min(val, Math.max(0, o.scallop ?? 0));
   const yLip = yHead - drop, yHem = yLip - val;
   const cloth: AwningPolygon[] = [], valance: AwningPolygon[] = [], cheeks: AwningPolygon[] = [];
+  if (o.dome && o.dome > 0) return domeAwning(o, Math.max(1, Math.round(o.dome)), val, sc);
   let s = o.first ?? 0, count = 0;
   for (let i = 0; i + 1 < head.length; i++) {
     const len = Math.hypot(head[i + 1][0] - head[i][0], head[i + 1][1] - head[i][1]);
@@ -102,6 +111,46 @@ export function stripedAwning(o: StripedAwningOpts): StripedAwning {
         const wallHem = Math.min(o.cheekHem ?? yHem, yLip), hem = (j: number) => wallHem + (yHem - wallHem) * j / n;
         cheeks.push(...both([P(a, ya), P(b, yb), P(b, hem(k + 1)), P(a, hem(k))], ((o.first ?? 0) + k) % 2 as 0 | 1));
       }
+    }
+  }
+  return {cloth, valance, cheeks, stripes: count};
+}
+
+/**
+ * The quarter-round hood (`dome` > 0): the section is a quarter ellipse, out = proj sin(a), y = yHead - drop (1 - cos(a)),
+ * a from 0 at the head to 90 degrees at the lip, so the cloth leaves the wall level and meets the lip vertical. Each
+ * stripe is a strip of `segs` quads over the curve; the cheeks are fans of `segs` triangles from the centre (head point,
+ * drop lower) with alternating colours, the radiating stripes of a markies' side.
+ */
+function domeAwning(o: StripedAwningOpts, segs: number, val: number, sc: number): StripedAwning {
+  const {head, lip, yHead, drop, stripe} = o;
+  const yLip = yHead - drop, yHem = yLip - val;
+  const at = (h: TO, l: TO, k: number): [number, number, number] => {
+    const a = (Math.PI / 2) * k / segs, m = Math.sin(a);
+    const p = lerp2(h, l, m);
+    return [p[0], yHead - drop * (1 - Math.cos(a)), p[1]];
+  };
+  const cloth: AwningPolygon[] = [], valance: AwningPolygon[] = [], cheeks: AwningPolygon[] = [];
+  let s = o.first ?? 0, count = 0;
+  for (let i = 0; i + 1 < head.length; i++) {
+    const len = Math.hypot(head[i + 1][0] - head[i][0], head[i + 1][1] - head[i][1]);
+    const n = Math.max(1, Math.round(len / stripe));
+    for (let k = 0; k < n; k++) {
+      const h0 = lerp2(head[i], head[i + 1], k / n), h1 = lerp2(head[i], head[i + 1], (k + 1) / n);
+      const l0 = lerp2(lip[i], lip[i + 1], k / n), l1 = lerp2(lip[i], lip[i + 1], (k + 1) / n);
+      const c = s as 0 | 1;
+      for (let j = 0; j < segs; j++) cloth.push(...both([at(h0, l0, j), at(h1, l1, j), at(h1, l1, j + 1), at(h0, l0, j + 1)], c));
+      if (val > 0) {
+        const mid = lerp2(l0, l1, 0.5);
+        valance.push(...both(sc > 0 ? [P(l0, yLip), P(l1, yLip), P(l1, yHem + sc), P(mid, yHem), P(l0, yHem + sc)] : [P(l0, yLip), P(l1, yLip), P(l1, yHem), P(l0, yHem)], c));
+      }
+      s = (1 - s) as 0 | 1; count++;
+    }
+  }
+  if (o.cheeks) {
+    for (const [hp, lp] of [[head[0], lip[0]], [head[head.length - 1], lip[lip.length - 1]]] as [TO, TO][]) {
+      const centre = P(hp, yLip);
+      for (let j = 0; j < segs; j++) cheeks.push(...both([centre, at(hp, lp, j), at(hp, lp, j + 1)], ((o.first ?? 0) + j) % 2 as 0 | 1));
     }
   }
   return {cloth, valance, cheeks, stripes: count};
