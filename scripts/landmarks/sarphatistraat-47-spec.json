@@ -1,0 +1,38 @@
+{
+ "id": "sarphatistraat-47",
+ "name": "citizenM, Sarphatistraat 47-55 (former Amsterdamsche Bank)",
+ "heightMetres": 23.9,
+ "bagYear": 1928,
+ "galleryView": {
+  "theta": 0.3,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012170759 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/sarphatistraat-47-footprints.json, bag-shell-prepare.ts); the Sarphatistraat front read from the rectified Gemeente Amsterdam panoramas 20241203_0939_Track10-1_Sphere_00298 (2024), TMX7316010203-002541_pano_0004_000379 (2022) and TMX7316010203-001675_pano_0000_006016 (2020), CC BY 4.0. Gemeentelijk monument 210049. Per wall in scripts/landmarks/sarphatistraat-47-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7a5a46",
+  "greyBrick": "#6a4a3a",
+  "red": "#c8323c",
+  "copper": "#6b3a2a",
+  "sandstone": "#9a8f84",
+  "stone": "#b8ab95",
+  "white": "#e8e6df",
+  "glass": "#4d5960",
+  "dark": "#2c2a28",
+  "bronze": "#3a3530",
+  "slate": "#7c7466",
+  "concrete": "#c3c6c4",
+  "pink": "#d98a8c",
+  "blue": "#7f9cc0",
+  "ochre": "#e08a3c",
+  "green": "#6f9a6a"
+ },
+ "attribution": {
+  "title": "citizenM Amstel, Sarphatistraat 47-55, Amsterdam (former office of the Amsterdamsche Bank, C.B. Posthumus Meyjes, 1928)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0004_000379/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012170759 (CC0): the granite ground zone with the eight tall windows and their art panels, the doors and the citizenM sign, the grid-paned windows, patterned brick panels, projecting profiled brick piers, cornice and attic, the dormers and the chimney, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

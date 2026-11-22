@@ -586,6 +586,18 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     bronze: {slot: 'paint', why: 'black painted iron balconies, gate and lamps (w01-346, w02-255)'},
     slate: {slot: 'slate', measured: '#5d5b58', why: 'the grey slate roofs and dormer cheeks (w01-346 2018 leaf-off, w02-255 2016): the city slate cell read blue-grey in game'},
   },
+  'sarphatistraat-47': {
+    sandstone: {slot: 'stone', measured: '#9a8f84', why: 'palette name only: the grey granite of the ground zone, its band and piers (w01-162 2022 overcast #60564c lifted, 2024 rectification), not buff brick'},
+    greyBrick: {slot: 'brick', measured: '#6a4a3a', why: 'palette name only: the darker patterned brick panels between the storey windows (w01-162 2022 #45362c lifted)'},
+    stone: {slot: 'stone', measured: '#b8ab95', why: 'the pale stone cornice, coping, pier caps and sills (2024 rectification), not render'},
+    slate: {slot: 'roofTile', measured: '#7c7466', why: 'palette name only: the grey-brown tiled hipped roof (w01-162 2022 #625e4e lifted), not slate'},
+    concrete: {slot: 'paint', why: 'palette name only: the pale painted art panels in the upper lights of the eight tall windows (w01-162 2022)'},
+    pink: {slot: 'paint', why: 'painted shapes on the art panels'}, blue: {slot: 'paint', why: 'painted shapes on the art panels'},
+    ochre: {slot: 'paint', why: 'painted shapes on the art panels'}, green: {slot: 'paint', why: 'painted shapes on the art panels'},
+    bronze: {slot: 'paint', why: 'palette name only: the dark bronze plaque by the middle zone (2024)'},
+    red: {slot: 'paint', why: 'the red citizenM sign (2022) and red shapes on the art panels'},
+    copper: {slot: 'door', why: 'palette name only: the red-brown timber doors of the end bays (2024), not metal'},
+  },
 };
 
 /**
