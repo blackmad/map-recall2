@@ -40,7 +40,7 @@ import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellR
 import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
 import {tidyRoof, type RoofTidyReport} from './roofTidy.ts';
 import {houseCuts, rowCoherence, spanEaves, spanTop} from './rowSplit.ts';
-import {houseSystemFit} from './houseComponents.ts';
+import {houseCountsOwnBays, houseSystemFit} from './houseComponents.ts';
 import {loggiaBackItems} from '../blockBuilding/loggia.ts';
 import {fitFacePanels, type FacePanelFit} from '../blockBuilding/facePanels.ts';
 
@@ -94,7 +94,8 @@ export interface LargeGroupFit {
   brickStoreys?: {storeys: number[]; slot: string}[];
   /** stone dressings (intent `dressings`, drawn by blockBuilding/dressings.ts) and their slot: the group's stone, or `dress@g<i>` in `dressings.colour` */
   dressings?: StoneDressings & {slot: string};
-  garage: {panel: number; bays: number[]} | null;
+  /** `slot`: the group's garage door colour (`palette.garage`, `door@garage<i>`); absent: the door slot */
+  garage: {panel: number; bays: number[]; slot?: string} | null;
   signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'; along?: [number, number]; up?: [number, number]} | null;
   police: {stripe: boolean; lamp: boolean} | null;
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
@@ -158,6 +159,8 @@ export interface LargeHouseFit {
   brickStoreys?: {storeys: number[]; slot: string}[];
   /** intent `houses[].ground`: the house's own ground system (its fascia follows it) */
   ground?: string;
+  /** the house has bay-indexed fields of its own (`houseCountsOwnBays`): its rows' per-bay cycles count from its left bay */
+  localBays?: true;
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -567,6 +570,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       if (list.length < w.garageDoors) warnings.push(`walls[${gi}]: ${w.garageDoors} garage doors but only ${list.length} free bays`);
       garage = {panel: main.index, bays: list.sort((a, b) => a - b)};
     }
+    if (garage && w.palette?.garage) { palette[`door@garage${gi}`] = swatch(w.palette.garage); garage.slot = `door@garage${gi}`; }
     const specSystem = SYSTEM_SLOT(gi);
     // Recessed arcade: the intent's measures over the kit defaults (Mercatorplein); the facing flag rides on the group fit.
     const ap = ground === 'arcade' ? {...ARCADE_PROPORTIONS, ...Object.fromEntries(Object.entries(w.arcade ?? {}).filter(([k, v]) => k in ARCADE_PROPORTIONS && v !== undefined))} as typeof ARCADE_PROPORTIONS : undefined;
@@ -648,7 +652,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         const fit: LargeHouseFit = {u0: r3(u0), u1: r3(u1), system: name, slot, eavesM: eavesK, topM: r3(topK), storeys: stK.storeys, lines: stK.lines, bays: nb, bayOffset, pitchM: r3(pk),
           crown: h.crown ?? (w.cornice ? 'cornice' : 'flat'), ...(eavesK !== raw[k] ? {clampedFromM: raw[k]} : {}), ...(dress ? {dress} : {}),
           ...(h.brickStoreys ? {brickStoreys: h.brickStoreys.map((b, j) => { const sl = `painted@g${gi}h${k}s${j}`; palette[sl] = swatch(b.brick); return {storeys: [...b.storeys], slot: sl}; })} : {}),
-          ...(h.ground !== undefined ? {ground: h.ground} : {})};
+          ...(h.ground !== undefined ? {ground: h.ground} : {}), ...(houseCountsOwnBays(h) ? {localBays: true as const} : {})};
         bayOffset += nb;
         return fit;
       });

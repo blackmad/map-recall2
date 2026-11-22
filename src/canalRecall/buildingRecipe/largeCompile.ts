@@ -108,7 +108,14 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
       }
     }
   }
-  if (g.garage?.panel === p.index) for (const cell of info.cells) if (cell.floor === 0 && g.garage.bays.includes(cell.bay) && drawGarageDoor(c, cell, {door: s.door, frame: s.frame})) { counts.garageDoors++; skip.push([cell.u0, cell.u1]); }
+  if (g.garage?.panel === p.index) {
+    const gs = {door: g.garage.slot ?? s.door, frame: s.frame}, missed: Cell[] = [];
+    for (const cell of info.cells) if (cell.floor === 0 && g.garage.bays.includes(cell.bay)) {
+      if (drawGarageDoor(c, cell, gs)) { counts.garageDoors++; skip.push([cell.u0, cell.u1]); } else missed.push(cell);
+    }
+    // a bay too small for the plain door: one door over each run of adjacent missed bays (components GARAGE_FIT)
+    for (const run of garageRuns(missed)) if (drawGarageDoor(c, cellSpanOf(run), gs, {bays: run.length})) { counts.garageDoors++; skip.push([run[0].u0, run.at(-1)!.u1]); }
+  }
   // Stone-faced storeys and banded end pilasters, round the openings already cut; under the cornice.
   const eaves = panelEaves(p), underCornice = eaves - (g.cornice ? 0.45 : 0.05);
   for (const st of g.stoneStoreys ?? []) {
@@ -532,7 +539,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     // row split: the houses of a group's main panel, each with its own system (only when a group has `houses`)
-    ...(recipe.groups.some(g => g.houses) ? {segmentsFor: (p: Panel) => { const h = groupOf(p.index)?.houses; return h?.panel === p.index ? h.segs.map(x => ({system: x.system, u0: x.u0, u1: x.u1, top: x.topM, bayOffset: x.bayOffset, bays: h.segs.reduce((a, y) => a + y.bays, 0)})) : null; }} : {}),
+    ...(recipe.groups.some(g => g.houses) ? {segmentsFor: (p: Panel) => { const h = groupOf(p.index)?.houses; return h?.panel === p.index ? h.segs.map(x => ({system: x.system, u0: x.u0, u1: x.u1, top: x.topM, bayOffset: x.bayOffset, bays: h.segs.reduce((a, y) => a + y.bays, 0), ...(x.localBays ? {local: true} : {})})) : null; }} : {}),
     // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? (recipe.other.windowGrid && !isPartyPanel(p) ? WINDOW_GRID_WALL_SLOT : 'wall') : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
@@ -558,3 +565,14 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   const blockGates = runGates(res.mesh, recipe.set, {budget: budgetTriangles});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, budgetTriangles, panels: res.panels, ...(crown ? {crown} : {}), ...(blockPlans.length ? {blockPlans} : {}), ...(intent.footprintParts ? {footprintParts: true as const} : {})};
 }
+
+/** Runs of consecutive bays (each cell's left edge on the previous cell's right edge) among floor-0 garage cells. */
+export function garageRuns(cells: Cell[]): Cell[][] {
+  const runs: Cell[][] = [];
+  for (const cell of [...cells].sort((a, b) => a.u0 - b.u0)) {
+    const last = runs.at(-1)?.at(-1);
+    if (last && cell.bay === last.bay + 1 && Math.abs(cell.u0 - last.u1) < 0.01) runs.at(-1)!.push(cell); else runs.push([cell]);
+  }
+  return runs;
+}
+const cellSpanOf = (run: Cell[]): Cell => ({...run[0], u1: run.at(-1)!.u1, v1: Math.min(...run.map(x => x.v1))});

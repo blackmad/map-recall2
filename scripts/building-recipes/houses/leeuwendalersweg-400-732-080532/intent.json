@@ -772,10 +772,10 @@
      "ground": "residential",
      "residential": {
       "pattern": [
-       "window",
        "door",
        "window",
-       "door"
+       "door",
+       "window"
       ],
       "doors": "#a87a4c"
      }

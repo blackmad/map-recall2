@@ -16,6 +16,16 @@ import type {SystemFit} from '../blockBuilding/systems.ts';
 export const HOUSE_COMPONENT_KEYS = ['windows', 'sills', 'blankStoreys', 'ribbonStoreys', 'bayWindows', 'brickStoreys', 'ground', 'residential', 'wallMaterial'] as const;
 export const HOUSE_GROUNDS = ['system', 'residential', 'plinth-shopfronts', 'blank'] as const;
 
+/**
+ * True when the house has a field of its own whose `bays` / `pattern` count from the house's left bay: per-bay windows,
+ * a residential ground pattern, ribbon storeys, loggias or balconies with `bays`. Compose numbers a row split's cells
+ * across the whole row, so before this the house read its cycles at `bayOffset + b`: a house after a 1-bay house drew its
+ * pattern one bay late, and a wide window (w > 1) meant for its first bays fell on its last bay, past the panel end, and
+ * was skipped (Bos en Lommerplein, kit batch 8504, 2026-11-21). Such a house now reads its cycles at its own bay.
+ */
+export const houseCountsOwnBays = (h: LargeHouseIntent) => !!(h.bayWindows || h.residential?.pattern || h.ribbonStoreys?.some(r => r.bays)
+  || h.loggias?.bays || h.balconies?.bays);
+
 /** True when the house sets any per-house component (the stand-in wall is only validated then). */
 export const hasHouseComponents = (h: LargeHouseIntent) => HOUSE_COMPONENT_KEYS.some(k => h[k] !== undefined);
 

@@ -115,7 +115,8 @@
    },
    "palette": {
     "brick": "#cdc8bb",
-    "frame": "#ecece6"
+    "frame": "#ecece6",
+    "garage": "#9e5754"
    },
    "bayWindows": [
     {
@@ -172,9 +173,14 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias"
+    "loggias",
+    "garageBays"
    ],
-   "street": "Jesse Owenshof"
+   "street": "Jesse Owenshof",
+   "garageBays": [
+    0,
+    1
+   ]
   },
   {
    "wallSurfaces": [
@@ -192,7 +198,8 @@
    },
    "palette": {
     "brick": "#cdc8bb",
-    "frame": "#ecece6"
+    "frame": "#ecece6",
+    "garage": "#9e5754"
    },
    "bayWindows": [
     {
@@ -251,9 +258,14 @@
     "windowShape",
     "palette",
     "bayWindows",
-    "loggias"
+    "loggias",
+    "garageBays"
    ],
-   "alignWith": 0
+   "alignWith": 0,
+   "garageBays": [
+    5,
+    6
+   ]
   },
   {
    "wallSurfaces": [
@@ -971,7 +983,7 @@
  },
  "notes": [
   "Kit2 read (lane kit-batch-8504-20261121). Newer captures archived with all-walls.ts --date=2023,2024,2025 --suffix=n --min-len=8 (2024-10-23 and 2025-06-30, straight-on, 2-8 deg obliquity); the north-west faces and two red end walls are seen only in 2016-2018 crops.",
-  "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park (its red INRIT / UITRIT garage doors are not drawn: garageBays does not render on a blank ground, see kit gaps), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at).",
+  "walls[0] (surface 190, w07-114n 2024-10-23) and walls[1] (261, w06-114n 2024-10-23): the low wing fronts, four storeys: a blank ground storey over the car park (its red INRIT / UITRIT garage doors as garageBays [0, 1] on walls[0] and [5, 6] on walls[1], one door over each pair, palette.garage #9e5754 measured from the w07-114n and w06-114n door leaves; lane kit-fixes-20261122: the low 2.4 m ground on 2.6 m bays was too small for the plain door), three storeys of pale brick with white two-light windows and a stack of loggias at one end (storeys 2-3; storey 1 glazed there); window positions per bay from the crops (bayWindows at).",
   "walls[2] (218, w08-294 2018-08-02) and walls[3] (288, w05-294 2017-05-26, 50 deg oblique): the north-west wing, read as mirrors of walls[0] and walls[1]; the 2018 crop confirms loggias at the far end and the stair tower beside it, no garage doors drawn.",
   "walls[4] (232, w02-24n 2024-10-23, tree over the left third, mirrored from the visible right half), walls[5] (102, w09-24n 2024-10-23) and walls[6] (121, w10-24n 2025-06-30, the mirror of 102): the five-storey courtyard-street fronts, a raised ground floor over a vent band, loggia stacks on storeys 1-4, the top storey in darker grey-brown brick (brickStoreys).",
   "walls[7] (188, 70, 31, 123): the glazed stair towers at the wing ends, white mullions and blue-grey spandrel panels (curtain wall), from w06-114n / w07-114n.",
