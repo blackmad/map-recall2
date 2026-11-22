@@ -44,18 +44,49 @@ export async function gameListsModel(page: Page, id: string): Promise<boolean> {
  * and the neighbours still do not stream (moving the rider there did not help either), so judge surroundings on
  * `npm run house:frames -- --rule10` frames, which teleport the rider and let the world settle.
  */
-export async function settleHeldWorld(page: Page, timeoutMs = 60000): Promise<void> {
+export interface HeldSettle { own: boolean; settled: boolean; pending: string[]; buildings: number | null; waitedMs: number }
+
+/**
+ * 2026-11-22 (user: the What's New Raamplein "before" showed empty lots): settleTick() drives the ground and the far
+ * and baked tiers only. With `sync` stubbed, nothing told the facades' detail block or the building tiles that the
+ * camera had jumped, so they kept the route start's plan and `worldSettled()` reported "settled" with nothing requested
+ * at the shot. Each tick now also hands the held camera's centre to the detail block (`setDetailCentre`, what sync
+ * does every frame) and asks the tiles to follow the camera (`followCamera`), and the wait ends only when the camera has
+ * no pending work (engine/settle.ts: building tiles, facades, landmark GLBs) and the resident building count has held
+ * for three polls. Returns what it saw: callers refuse a shot that is not `settled`.
+ */
+export async function settleHeldWorld(page: Page, timeoutMs = 90000): Promise<HeldSettle> {
   const own = await page.evaluate(() => typeof (window as any).canalRecallGame?.vectorMap?.settleTick === 'function');
-  if (!own) { await page.waitForTimeout(5000); return; }
+  if (!own) {
+    await page.waitForTimeout(5000);
+    console.log('in-game shot: the default engine has no settleTick, so the neighbours do not stream at a held camera; pass --query=engine=own');
+    return {own, settled: false, pending: ['default engine'], buildings: null, waitedMs: 5000};
+  }
   let previous = '', stable = 0;
   const start = Date.now();
+  let last: HeldSettle = {own, settled: false, pending: ['not polled'], buildings: null, waitedMs: 0};
   while (Date.now() - start < timeoutMs) {
-    for (let k = 0; k < 5; k++) { await page.evaluate(() => (window as any).canalRecallGame.vectorMap.settleTick()); await page.waitForTimeout(100); }
-    const now = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.worldSettled?.() ?? {settled: true});
+    for (let k = 0; k < 5; k++) {
+      await page.evaluate(() => {
+        const vm = (window as any).canalRecallGame.vectorMap, cam = vm.cameraMap?.camera;
+        vm.settleTick();
+        if (cam) vm._threeBuildings?.setDetailCentre?.(cam.lng, cam.lat, false);
+        vm._completeCity?.followCamera?.();
+      });
+      await page.waitForTimeout(100);
+    }
+    const now = await page.evaluate(() => {
+      const vm = (window as any).canalRecallGame.vectorMap;
+      const w = vm.worldSettled?.() ?? {settled: true};
+      const stats = vm._threeBuildings?.stats?.();
+      return {settled: !!w.settled, pending: (vm.pendingWork?.() ?? []) as string[], buildings: typeof stats?.buildings === 'number' ? stats.buildings as number : null};
+    });
+    last = {own, ...now, waitedMs: Date.now() - start};
     const key = JSON.stringify(now);
-    stable = now.settled && key === previous ? stable + 1 : 0;
+    stable = now.settled && !now.pending.length && key === previous ? stable + 1 : 0;
     previous = key;
-    if (stable >= 2) return;
+    if (stable >= 3) return last;
   }
   console.log(`in-game shot: world not settled after ${timeoutMs / 1000} s: ${previous}`);
+  return {...last, settled: false};
 }

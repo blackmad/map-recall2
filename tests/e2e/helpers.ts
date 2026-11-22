@@ -161,6 +161,62 @@ export async function settleWorld(page: Page, where = 'settle', timeoutMs = 90_0
   return last;
 }
 
+/** What a shot's world looked like when it was taken (src/canalRecall/whatsNewPairGuard.ts EngineState). */
+export type ShotWorld = { settled: boolean; pending: string[]; buildings: number | null; waitedMs: number; tiers?: unknown };
+
+/**
+ * Settle for a screenshot (What's New pairs, demo shots; user 2026-11-22: a "before" frame showed empty lots because
+ * it was taken on a fixed timer). settleWorld waits for the streaming tiers; this then also waits until the camera has
+ * no pending work (engine/settle.ts: overview, ground, building tiles, facades within 800 m, landmark GLBs in flight)
+ * and the resident building count has stopped changing for three polls in a row. Returns what it saw, so the caller
+ * can record it and refuse the frame (ShotWorld.settled false) instead of publishing a half-loaded world.
+ */
+export async function settleForShot(page: Page, where = 'shot', timeoutMs = 120_000): Promise<ShotWorld> {
+  const start = Date.now();
+  const tiers = await settleWorld(page, where, timeoutMs);
+  let previous = '', stable = 0;
+  let last: ShotWorld = { settled: false, pending: ['not polled'], buildings: null, waitedMs: 0 };
+  while (Date.now() - start < timeoutMs) {
+    const now = await page.evaluate(() => {
+      const vm = (window as any).canalRecallGame?.vectorMap;
+      if (vm?.settleTick) vm.settleTick(); else vm?.host?.triggerRepaint?.();
+      const w = vm?.worldSettled?.() ?? { settled: true };
+      const pending: string[] = vm?.pendingWork?.() ?? [];
+      const stats = vm?._threeBuildings?.stats?.();
+      return { settled: !!w.settled, pending, buildings: typeof stats?.buildings === 'number' ? stats.buildings : null };
+    });
+    last = { ...now, waitedMs: Date.now() - start, tiers };
+    const key = JSON.stringify(now);
+    stable = now.settled && !now.pending.length && key === previous ? stable + 1 : 0;
+    previous = key;
+    if (stable >= 3) return last;
+    await page.waitForTimeout(500);
+  }
+  console.warn(`${where}: not settled for a shot after ${timeoutMs / 1000} s: ${previous}`);
+  return { ...last, settled: false };
+}
+
+/** A spot `standM` metres from `centre` on bearing `standDeg`, looking back at it (or along `faceDeg`). */
+export function standpoint(s: { centre: readonly [number, number]; standDeg: number; standM: number; faceDeg?: number }): { lng: number; lat: number; bearing: number } {
+  const b = s.standDeg * Math.PI / 180;
+  const dLat = s.standM * Math.cos(b) / 111320;
+  const dLng = s.standM * Math.sin(b) / (111320 * Math.cos(s.centre[1] * Math.PI / 180));
+  return { lng: s.centre[0] + dLng, lat: s.centre[1] + dLat, bearing: s.faceDeg ?? (s.standDeg + 180) % 360 };
+}
+
+/** Put the rider at a lng/lat facing `bearing`, stopped and deaf to input (demo shots, What's New pairs). */
+export async function teleportRider(page: Page, p: { lng: number; lat: number; bearing: number }): Promise<void> {
+  await page.evaluate(({ lng, lat, bearing }) => {
+    const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number;
+    const b = bearing * Math.PI / 180;
+    g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
+    g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
+    g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b));
+    Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
+    g.player.handleInput = () => {};
+  }, p);
+}
+
 /** A finish/pause/run-card action's hit box, in canvas units (presentationRuntime `_finishButtonBounds`). */
 export type CardActionBounds = { x: number; y: number; w: number; h: number; id: string };
 

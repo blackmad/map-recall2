@@ -1,0 +1,23 @@
+{
+  "about": "What's New 2026-11-22 re-shoots (tests/e2e/whats-new-pair.spec.ts). before.ref is the last main commit (first-parent) whose signature-landmarks.json lacks the landmark, so the before frame shows the generic building it replaced. target/frame are fractions of the 1440x900 frame.",
+  "pairs": [
+    {
+      "name": "handelsschool-raamplein",
+      "centre": [4.88042582, 52.36650968], "standDeg": 260, "standM": 95,
+      "before": { "ref": "096ef6b32b" },
+      "target": { "x": 0.28, "y": 0.12, "w": 0.5, "h": 0.5 }, "frame": { "x": 0, "y": 0.1, "w": 1, "h": 0.8 }
+    },
+    {
+      "name": "jungle-amsterdam",
+      "centre": [4.92631943, 52.3616314], "standDeg": 37, "standM": 95,
+      "before": { "ref": "29651e4f26" },
+      "target": { "x": 0.25, "y": 0.15, "w": 0.5, "h": 0.5 }, "frame": { "x": 0, "y": 0.1, "w": 1, "h": 0.8 }
+    },
+    {
+      "name": "hans-en-grietje",
+      "centre": [4.88728717, 52.36176264], "standDeg": 230, "standM": 45,
+      "before": { "ref": "29651e4f26" },
+      "target": { "x": 0.35, "y": 0.05, "w": 0.35, "h": 0.6 }, "frame": { "x": 0, "y": 0.1, "w": 1, "h": 0.8 }
+    }
+  ]
+}
