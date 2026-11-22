@@ -21,6 +21,7 @@ import {applyAmsterdamSchool} from './amsterdamSchool.ts';
 import {addTilePanels} from './tileAccents.ts';
 import {addFriezeVents} from './friezeVents.ts';
 import {addJambBlocks} from './jambBlocks.ts';
+import {addSegmentalHoods} from './segmentalHoods.ts';
 import {addWallAnchors} from './wallAnchors.ts';
 import {addWindowCanopies} from './windowCanopies.ts';
 import {addPierBlocks} from './pierBlocks.ts';
@@ -231,6 +232,8 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   // Frieze vents under the cornice (opt-in, Helmersbuurt 1893-1901 rows).
   if (intent.fronts.some(f => f.friezeVents)) addFriezeVents(built.group, intent, recipe, report);
   if (intent.fronts.some(f => f.jambBlocks)) addJambBlocks(built.group, intent, recipe, report);
+  // Moulded segmental hoods over square-headed windows (opt-in, Cornelis Schuytstraat 1897 rows).
+  if (intent.fronts.some(f => f.segmentalHoods)) addSegmentalHoods(built.group, intent, recipe, report);
   // Iron wall anchors on the piers (opt-in, De Pijp 1882-1893 rows).
   if (intent.fronts.some(f => f.wallAnchors)) addWallAnchors(built.group, intent, recipe, report);
   // Lettered canopies over one storey's windows (opt-in, PC Hooftstraat shop houses).

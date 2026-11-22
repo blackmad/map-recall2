@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T20:42:35.466Z",
+ "generatedAt": "2026-11-22T22:07:33.105Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -125823,6 +125823,1164 @@
        "primitive": 35,
        "firstTriangle": 84,
        "triangleCount": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-schuyt-7-15",
+   "category": "street-survey",
+   "name": "face-schuyt-7-15",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-schuyt-7-15.glb?asset=b6154b18250cf8f0",
+   "sha256": "b6154b18250cf8f0f5f33c59d2fa9a1dc44f692cf2415eb61bde3583af7ce4c9",
+   "bytes": 311548,
+   "triangles": 13017,
+   "primitives": 25,
+   "instance": {
+    "anchor": [
+     4.871088983793505,
+     52.35566524379826
+    ],
+    "northOffsetDegrees": 66.4701,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.171,
+     0,
+     -19.09
+    ],
+    "max": [
+     15.088,
+     15.686,
+     1.001
+    ]
+   },
+   "height": 15.686,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012156820",
+    "NL.IMBAG.Pand.0363100012158436",
+    "NL.IMBAG.Pand.0363100012152757",
+    "NL.IMBAG.Pand.0363100012236236",
+    "NL.IMBAG.Pand.0363100012159412"
+   ],
+   "replaces": [
+    "ordinary-0363100012156820",
+    "ordinary-0363100012158436",
+    "ordinary-0363100012152757",
+    "ordinary-0363100012236236",
+    "ordinary-0363100012159412"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8711697,
+        52.355821
+       ],
+       [
+        4.8711604,
+        52.3558186
+       ],
+       [
+        4.8711458,
+        52.355815
+       ],
+       [
+        4.8711149,
+        52.3558201
+       ],
+       [
+        4.8709999,
+        52.3557902
+       ],
+       [
+        4.87104,
+        52.3557339
+       ],
+       [
+        4.8712016,
+        52.3557763
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.87104,
+        52.3557339
+       ],
+       [
+        4.8710732,
+        52.3556873
+       ],
+       [
+        4.8712793,
+        52.3557437
+       ],
+       [
+        4.8712474,
+        52.3557883
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8710732,
+        52.3556873
+       ],
+       [
+        4.8711053,
+        52.3556423
+       ],
+       [
+        4.8713609,
+        52.355711
+       ],
+       [
+        4.8713276,
+        52.3557569
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8713948,
+        52.3556643
+       ],
+       [
+        4.8713609,
+        52.355711
+       ],
+       [
+        4.8711053,
+        52.3556423
+       ],
+       [
+        4.8711388,
+        52.3555954
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8711752,
+        52.3555443
+       ],
+       [
+        4.8713846,
+        52.3556006
+       ],
+       [
+        4.87136,
+        52.3556332
+       ],
+       [
+        4.8713126,
+        52.3556205
+       ],
+       [
+        4.8712996,
+        52.3556387
+       ],
+       [
+        4.8711388,
+        52.3555954
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-156820",
+     "pandId": "0363100012156820",
+     "buildingId": "NL.IMBAG.Pand.0363100012156820",
+     "address": "Cornelis Schuytstraat 7",
+     "frontage": {
+      "x0": -15.171,
+      "x1": -8.338,
+      "widthM": 6.833
+     },
+     "bounds": {
+      "min": [
+       -15.171,
+       0,
+       -12.012
+      ],
+      "max": [
+       -8.251,
+       15.373,
+       1
+      ]
+     },
+     "triangles": 1840,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 500
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-158436",
+     "pandId": "0363100012158436",
+     "buildingId": "NL.IMBAG.Pand.0363100012158436",
+     "address": "Cornelis Schuytstraat 9",
+     "frontage": {
+      "x0": -8.339,
+      "x1": -2.683,
+      "widthM": 5.656
+     },
+     "bounds": {
+      "min": [
+       -8.339,
+       0,
+       -15.412
+      ],
+      "max": [
+       -2.683,
+       15.054,
+       0.4
+      ]
+     },
+     "triangles": 2324,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 58
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 628,
+       "triangleCount": 1080
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 184,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 500,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 120,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 108,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 13,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 11,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-152757",
+     "pandId": "0363100012152757",
+     "buildingId": "NL.IMBAG.Pand.0363100012152757",
+     "address": "Cornelis Schuytstraat 11",
+     "frontage": {
+      "x0": -2.683,
+      "x1": 2.787,
+      "widthM": 5.47
+     },
+     "bounds": {
+      "min": [
+       -2.839,
+       0,
+       -19.051
+      ],
+      "max": [
+       2.787,
+       15.042,
+       1.001
+      ]
+     },
+     "triangles": 2424,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 49
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1708,
+       "triangleCount": 1080
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 404,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1044,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 240,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 232,
+       "triangleCount": 124
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 37,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 17,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-236236",
+     "pandId": "0363100012236236",
+     "buildingId": "NL.IMBAG.Pand.0363100012236236",
+     "address": "Cornelis Schuytstraat 13",
+     "frontage": {
+      "x0": 2.788,
+      "x1": 8.476,
+      "widthM": 5.688
+     },
+     "bounds": {
+      "min": [
+       2.744,
+       0,
+       -19.09
+      ],
+      "max": [
+       8.476,
+       15.042,
+       0.401
+      ]
+     },
+     "triangles": 2576,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 42
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2788,
+       "triangleCount": 1092
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 624,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1588,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 360,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 356,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 60,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 33,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-159412",
+     "pandId": "0363100012159412",
+     "buildingId": "NL.IMBAG.Pand.0363100012159412",
+     "address": "Cornelis Schuytstraat 15",
+     "frontage": {
+      "x0": 8.476,
+      "x1": 14.687,
+      "widthM": 6.211
+     },
+     "bounds": {
+      "min": [
+       8.448,
+       0,
+       -15.611
+      ],
+      "max": [
+       15.088,
+       15.686,
+       0.4
+      ]
+     },
+     "triangles": 3853,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 3880,
+       "triangleCount": 1632
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 844,
+       "triangleCount": 440
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2216,
+       "triangleCount": 916
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 600,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 482,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 83,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 42,
+       "triangleCount": 43
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-schuyt-8-16",
+   "category": "street-survey",
+   "name": "face-schuyt-8-16",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-schuyt-8-16.glb?asset=952448b92145456c",
+   "sha256": "952448b92145456ccc92e88cc12eb6d736014605db7e344a4d4f06f719657c37",
+   "bytes": 269884,
+   "triangles": 10045,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.870822299556289,
+     52.355594405866995
+    ],
+    "northOffsetDegrees": 247.9428,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -14.876,
+     0,
+     -19.473
+    ],
+    "max": [
+     14.94,
+     14.145,
+     1.111
+    ]
+   },
+   "height": 14.145,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012237103",
+    "NL.IMBAG.Pand.0363100012163757",
+    "NL.IMBAG.Pand.0363100012167420",
+    "NL.IMBAG.Pand.0363100012160728",
+    "NL.IMBAG.Pand.0363100012163293"
+   ],
+   "replaces": [
+    "ordinary-0363100012237103",
+    "ordinary-0363100012163757",
+    "ordinary-0363100012167420",
+    "ordinary-0363100012160728",
+    "ordinary-0363100012163293"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8708713,
+        52.3555255
+       ],
+       [
+        4.87071,
+        52.3554811
+       ],
+       [
+        4.8706146,
+        52.3554549
+       ],
+       [
+        4.8706487,
+        52.355408
+       ],
+       [
+        4.8706497,
+        52.3554082
+       ],
+       [
+        4.8706503,
+        52.3554073
+       ],
+       [
+        4.8707461,
+        52.3554315
+       ],
+       [
+        4.8709076,
+        52.3554737
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8708403,
+        52.35557
+       ],
+       [
+        4.8706779,
+        52.3555251
+       ],
+       [
+        4.87071,
+        52.355481
+       ],
+       [
+        4.8708713,
+        52.3555255
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8708069,
+        52.3556178
+       ],
+       [
+        4.8706427,
+        52.3555732
+       ],
+       [
+        4.8706779,
+        52.3555251
+       ],
+       [
+        4.8708403,
+        52.35557
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8707747,
+        52.3556639
+       ],
+       [
+        4.8705147,
+        52.3555937
+       ],
+       [
+        4.8705478,
+        52.3555475
+       ],
+       [
+        4.8708069,
+        52.3556178
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8707368,
+        52.3557181
+       ],
+       [
+        4.8706272,
+        52.3556905
+       ],
+       [
+        4.8706177,
+        52.3556793
+       ],
+       [
+        4.8705817,
+        52.3556694
+       ],
+       [
+        4.8705147,
+        52.3555937
+       ],
+       [
+        4.8707747,
+        52.3556639
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hface-237103",
+     "pandId": "0363100012237103",
+     "buildingId": "NL.IMBAG.Pand.0363100012237103",
+     "address": "Cornelis Schuytstraat 16",
+     "frontage": {
+      "x0": -14.639,
+      "x1": -8.356,
+      "widthM": 6.283
+     },
+     "bounds": {
+      "min": [
+       -14.876,
+       0,
+       -18.976
+      ],
+      "max": [
+       -8.338,
+       13.812,
+       1.111
+      ]
+     },
+     "triangles": 2086,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 147
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 500
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 100
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-163757",
+     "pandId": "0363100012163757",
+     "buildingId": "NL.IMBAG.Pand.0363100012163757",
+     "address": "Cornelis Schuytstraat 14",
+     "frontage": {
+      "x0": -8.356,
+      "x1": -2.982,
+      "widthM": 5.374
+     },
+     "bounds": {
+      "min": [
+       -8.806,
+       0,
+       -12.046
+      ],
+      "max": [
+       -2.974,
+       13.753,
+       0.612
+      ]
+     },
+     "triangles": 2049,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 500,
+       "triangleCount": 532
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 240,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 100,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 19,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 60,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-167420",
+     "pandId": "0363100012167420",
+     "buildingId": "NL.IMBAG.Pand.0363100012167420",
+     "address": "Cornelis Schuytstraat 12",
+     "frontage": {
+      "x0": -2.982,
+      "x1": 2.802,
+      "widthM": 5.784
+     },
+     "bounds": {
+      "min": [
+       -3.442,
+       0,
+       -12.248
+      ],
+      "max": [
+       2.81,
+       13.677,
+       0.514
+      ]
+     },
+     "triangles": 2095,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 628,
+       "triangleCount": 616
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 220,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1032,
+       "triangleCount": 640
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 480,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 208,
+       "triangleCount": 194
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 37,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 62,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-160728",
+     "pandId": "0363100012160728",
+     "buildingId": "NL.IMBAG.Pand.0363100012160728",
+     "address": "Cornelis Schuytstraat 10",
+     "frontage": {
+      "x0": 2.802,
+      "x1": 8.385,
+      "widthM": 5.583
+     },
+     "bounds": {
+      "min": [
+       2.202,
+       0,
+       -19.473
+      ],
+      "max": [
+       8.392,
+       14.145,
+       1.005
+      ]
+     },
+     "triangles": 1953,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 63
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1244,
+       "triangleCount": 616
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 440,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1672,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 720,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 402,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 51,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 64,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "hface-163293",
+     "pandId": "0363100012163293",
+     "buildingId": "NL.IMBAG.Pand.0363100012163293",
+     "address": "Cornelis Schuytstraat 8",
+     "frontage": {
+      "x0": 8.385,
+      "x1": 14.938,
+      "widthM": 6.553
+     },
+     "bounds": {
+      "min": [
+       7.817,
+       0,
+       -19.443
+      ],
+      "max": [
+       14.94,
+       12.779,
+       0.903
+      ]
+     },
+     "triangles": 1862,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 101
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1860,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 660,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2104,
+       "triangleCount": 452
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 960,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 20,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 504,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 66,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 81,
+       "triangleCount": 8
       }
      ]
     }

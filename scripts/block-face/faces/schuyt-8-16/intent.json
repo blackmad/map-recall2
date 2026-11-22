@@ -1,0 +1,702 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "schuyt-8-16",
+ "street": "Cornelis Schuytstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-10",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-10",
+   "image": "staging/block-face/schuyt-8-16/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/schuyt-8-16-2022/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2025-07-30",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-30",
+   "image": "staging/block-face/schuyt-8-16-2025/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (shopping-streets-6 lane), from strip-labelled.png (face strip 2023-01-10, overcast: wall colour and exposure; 2022-03-21, bare trees: uppers and eaves rows; 2025-07-30: ground floors)",
+  "passes": 1,
+  "note": "Cornelis Schuytstraat 8-16 (even), between the Willemsparkweg and the Van Breestraat: the 1897 row 10-16 under a deep white entablature and slate mansards with stone dormers (16 painted pale grey), 8 (1894) lower; Boekhandel Mulder (14), Buise (12), and the red awning of Brasserie Van Dam over 10 and 8."
+ },
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012237103",
+    "stripRow": 307,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 307"
+   },
+   {
+    "pand": "0363100012163757",
+    "stripRow": 322,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 322"
+   },
+   {
+    "pand": "0363100012167420",
+    "stripRow": 322,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 322"
+   },
+   {
+    "pand": "0363100012160728",
+    "stripRow": 322,
+    "evidence": "strip 2022-03-21: top of the white entablature under the mansard at row 322"
+   },
+   {
+    "pand": "0363100012163293",
+    "stripRow": 372,
+    "evidence": "strip 2022-03-21: top of the white cornice under the mansard at row 372"
+   }
+  ],
+  "notes": [
+   "Rows read on the strip at 40 px/m, ground row 773. Eaves rows are read on the 2022-03-21 strip (same rectification and scale as the face strip). Brick is the overcast 2023-01-10 face-strip measure, shifted 2 steps bluer for the game light; white point the 2023 frames, so the chunk exposure is measured on the strip the colour came from."
+  ]
+ },
+ "houses": [
+  {
+   "pandId": "0363100012237103",
+   "slug": "hface-237103",
+   "address": "Cornelis Schuytstraat 16",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 1.1,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#e8e8e4",
+       "fascia": true,
+       "display": "#c8c4bc",
+       "entrance": "left",
+       "glazing": "single",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#5a5e62"
+       },
+       "shopShare": 0.78,
+       "evidence": "strip 2022-03-21 x 0-251: a white fascia lettered in small dark capitals (ST.APE?) over a full-width glazed display, a grey house door at the right; 2025-07-30 the same glazed front with violet lettering in the window",
+       "stallriser": "low",
+       "stallriserColour": "#e8e8e4"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#43474c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#ecebe4",
+     "cornice": "#ecebe4",
+     "wallMaterial": "painted-brick",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 16-H; no OSM business; the fascia word on 2022-03-21 is not certain (ST.APE?); fundainbusiness listed 16-H for rent. No name is drawn.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop, house door | first: 3, balcony | second: 3, balcony | roof: 1 tall stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "white fascia, glazed",
+    "signage": "small capitals, not certain",
+    "roofline": "painted pale grey front with white bands, a deep white entablature, slate mansard with a stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "painted colour by judgement: slate grey (#43474c): the 2022-01-26 and 2023-01-10 winter captures read it dark grey (photo L 0.35); the low March sun of 2022-03-21 washes it cream",
+     "the Van Breestraat side is not modelled: its 3DBAG wall steps (a low wing, then the painted flank), which the kit cannot group as one front; it draws blank"
+    ],
+    "citation": "schuyt-8-16 strip.jpg (2022-03-21) x 0-251 px"
+   }
+  },
+  {
+   "pandId": "0363100012163757",
+   "slug": "hface-163757",
+   "address": "Cornelis Schuytstraat 14",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 1.1,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#5a3c28",
+       "fascia": true,
+       "name": "Boekhandel Mulder",
+       "display": "#b89870",
+       "sign": {
+        "text": "Mulder",
+        "textColour": "#f0ece0",
+        "span": 0.4,
+        "align": "left"
+       },
+       "entrance": "right",
+       "glazing": "split",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "right",
+        "colour": "#5a2a22"
+       },
+       "shopShare": 0.82,
+       "evidence": "strip 2025-07-30 x 251-466: a brown fascia with a dark name board lettered Mulder, book tables in a deep display, a dark-red house door at the right; 2022-03-21 a white fascia lettered Boekhandel ... Mulder",
+       "stallriser": "low",
+       "stallriserColour": "#5a3c28"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#423d3b",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2022-03-21",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 2816316670 Boekhandel Mulder / Zwart op Wit (books, 14-H); the fascia reads Mulder on 2022-03-21 and 2025-07-30.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Boekhandel Mulder",
+    "category": "shop=books",
+    "osm": {
+     "type": "node",
+     "id": 2816316670,
+     "name": "Boekhandel Mulder / Zwart op Wit",
+     "tags": "shop=books"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: bookshop, house door | first: 3, balcony | second: 3, balcony | roof: 1 stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "brown fascia",
+    "signage": "Mulder",
+    "roofline": "a deep white entablature with consoles, slate mansard with a stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the name board is drawn as fascia lettering"
+    ],
+    "citation": "schuyt-8-16 strip.jpg (2022-03-21) x 251-466 px"
+   }
+  },
+  {
+   "pandId": "0363100012167420",
+   "slug": "hface-167420",
+   "address": "Cornelis Schuytstraat 12",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "entablature": {
+       "rise": 1.1,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#3a2a22",
+       "fascia": true,
+       "name": "Buise",
+       "display": "#c8b8a0",
+       "entrance": "right",
+       "glazing": "single",
+       "evidence": "strip 2025-07-30 x 466-697: a dark brown pui with a row of small transom lights, one wide display window and varnished double doors at the right",
+       "stallriser": "low",
+       "stallriserColour": "#3a2a22"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a3f3a",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2025-07-30",
+    "agreement": "bag-only",
+    "note": "BAG winkelfunctie at 12; no OSM business; no sign readable; the listing https://www.openingstijden.nl/Noord-Holland/Amsterdam/Cornelis-Schuytstraat/ names Buise at 12.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Buise",
+    "category": "shop"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | first: 3 | second: 3, balcony | roof: 1 stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "dark brown pui",
+    "signage": "none readable",
+    "roofline": "segmental window heads, a deep white entablature with consoles, slate mansard with a stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the transom lights are drawn as one display"
+    ],
+    "citation": "schuyt-8-16 strip.jpg (2022-03-21) x 466-697 px"
+   }
+  },
+  {
+   "pandId": "0363100012160728",
+   "slug": "hface-160728",
+   "address": "Cornelis Schuytstraat 10",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.5,
+       3.4
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 1.1,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "stone",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2422",
+       "fascia": true,
+       "name": "Van Dam",
+       "display": "#a88a68",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#a0303a"
+       },
+       "evidence": "strip 2025-07-30 x 698-921: a red fabric awning the width of the front over a dark glazed brasserie and a terrace under parasols",
+       "stallriser": "low",
+       "stallriserColour": "#2a2422"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a4340",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2025-07-30",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 500331309 Van Dam (restaurant, no address, at 8); the listing https://www.openingstijden.nl/Noord-Holland/Amsterdam/Cornelis-Schuytstraat/ gives Traiteur en Brasserie Van Dam at 8-10; one red awning runs over 10 and 8 on 2025-07-30, a terrace under parasols.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Van Dam",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 500331309,
+     "name": "Van Dam",
+     "tags": "amenity=restaurant"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: brasserie | first: 3, balcony | second: 3, balcony | roof: 1 stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "red awning, terrace",
+    "signage": "none readable",
+    "roofline": "a deep white entablature with consoles, slate mansard with a stone dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the parasols and terrace are not drawn"
+    ],
+    "citation": "schuyt-8-16 strip.jpg (2022-03-21) x 698-921 px"
+   }
+  },
+  {
+   "pandId": "0363100012163293",
+   "slug": "hface-163293",
+   "address": "Cornelis Schuytstraat 8",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Cornelis Schuytstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "doorBay": null,
+      "windows": "sash",
+      "bays": 3,
+      "storeys": 3,
+      "storeyHeights": [
+       4.4,
+       3.4,
+       3.2
+      ],
+      "windowHeights": [
+       0.62,
+       0.66,
+       0.64
+      ],
+      "windowSurround": "jack-blocks",
+      "bands": "painted",
+      "bandLines": [
+       "transom"
+      ],
+      "bandTransomAt": 0.76,
+      "bandHeights": {
+       "transom": 0.14
+      },
+      "entablature": {
+       "rise": 0.8,
+       "cap": 0.22,
+       "frieze": "trim",
+       "consoles": 4,
+       "architrave": 0.12
+      },
+      "roofFront": "mansard",
+      "towers": [
+       {
+        "bays": {
+         "from": 1,
+         "to": 1
+        },
+        "rise": 1.0,
+        "cap": "flat",
+        "finish": "stone",
+        "lightRise": 0.5,
+        "lightSill": 0.2
+       }
+      ],
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        1
+       ],
+       "style": "guard"
+      },
+      "shopfront": {
+       "colour": "#2a2422",
+       "fascia": true,
+       "name": "Van Dam",
+       "display": "#a88a68",
+       "entrance": "centre",
+       "glazing": "split",
+       "displayWindows": 2,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#a0303a"
+       },
+       "evidence": "strip 2025-07-30 x 921-1183: the red awning of the brasserie runs on over the whole front, parasols in front",
+       "stallriser": "low",
+       "stallriserColour": "#2a2422"
+      },
+      "partyClip": true
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4a403c",
+     "frame": "white",
+     "door": "#2a2a28",
+     "stone": "#e8e6de",
+     "cornice": "#e8e6de",
+     "wallTint": "measured",
+     "whitePoint": "#dfe1e1"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2025-07-30",
+    "agreement": "osm-and-photo",
+    "note": "OSM node 500331309 Van Dam (restaurant, no address, at 8); the listing https://www.openingstijden.nl/Noord-Holland/Amsterdam/Cornelis-Schuytstraat/ gives Traiteur en Brasserie Van Dam at 8-10; one red awning runs over 10 and 8 on 2025-07-30, a terrace under parasols.",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Van Dam",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 500331309,
+     "name": "Van Dam",
+     "tags": "amenity=restaurant"
+    }
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: brasserie | first: 3 | second: 3, balcony | roof: 1 tall stone dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "red awning, terrace",
+    "signage": "none readable",
+    "roofline": "a lower white cornice than 10-16 (1894), slate mansard with a tall white stone dormer; the corner with the Willemsparkweg",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the Willemsparkweg side is not part of this face"
+    ],
+    "citation": "schuyt-8-16 strip.jpg (2022-03-21) x 921-1183 px"
+   }
+  }
+ ]
+}

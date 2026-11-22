@@ -32,6 +32,7 @@ import {pierBlockProblems} from './pierBlocks.ts';
 import {beltFrontProblems, type DoorSurroundIntent, type WindowFramesIntent} from './beltFront.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
+import {segmentalHoodProblems, type SegmentalHoodsIntent} from './segmentalHoods.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
@@ -783,6 +784,11 @@ export interface FrontIntent {
    * `reach` m out from the jamb, in the stone colour. Absent = byte-identical.
    */
   jambBlocks?: {count: number; rise: number; reach: number; storeys?: number[]};
+  /**
+   * White moulded segmental hoods over the square-headed windows of the listed storeys, on short ears (Cornelis
+   * Schuytstraat 9-15, 1897; buildingRecipe/segmentalHoods.ts), in the stone colour. Absent = byte-identical.
+   */
+  segmentalHoods?: SegmentalHoodsIntent;
   /**
    * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
@@ -1994,6 +2000,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
     if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
     if (f.jambBlocks !== undefined) problems.push(...jambBlockProblems(f, at));
+    if (f.segmentalHoods !== undefined) problems.push(...segmentalHoodProblems(f, at));
     if (f.axisHeads !== undefined) {
       const ah = f.axisHeads as Record<string, {kind?: unknown; storeys?: unknown}>;
       if (!ah || typeof ah !== 'object') problems.push(`${at}.axisHeads: {"<axis>": {kind, storeys}}`);
