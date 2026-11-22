@@ -7,6 +7,7 @@
  */
 import { fork, type ChildProcess } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp, { type OverlayOptions } from 'sharp';
@@ -16,8 +17,11 @@ export const RENDER_VERSION = 2;
 export interface RenderMeta { hash: string; pandId: string; file: string; ms: number; cached: boolean; measure: Record<string, any>; widthPx: number; heightPx: number }
 export interface RenderStat { at: string; pandId: string; ms: number; cached: boolean; cold: boolean }
 
+// Renders depend on the drawing code as well as the design: the commit the server runs is part of every key, so a merged
+// renderer fix is never hidden behind a cached image of the same design (2026-11-22: 88's two tops survived a fix merge).
+const CODE_STAMP = (() => { try { return execFileSync('/usr/bin/git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim().slice(0, 12); } catch { return 'unknown'; } })();
 const sha = (v: unknown) => createHash('sha256').update(JSON.stringify(v)).digest('hex').slice(0, 24);
-export const designHash = (pandId: string, design: unknown, ppm: number, sliceM?: [number, number]) => sha(sliceM ? { v: RENDER_VERSION, pandId, design, ppm, sliceM } : { v: RENDER_VERSION, pandId, design, ppm });
+export const designHash = (pandId: string, design: unknown, ppm: number, sliceM?: [number, number]) => sha(sliceM ? { v: RENDER_VERSION, code: CODE_STAMP, pandId, design, ppm, sliceM } : { v: RENDER_VERSION, code: CODE_STAMP, pandId, design, ppm });
 
 export class RenderService {
   private worker: ChildProcess | null = null;
