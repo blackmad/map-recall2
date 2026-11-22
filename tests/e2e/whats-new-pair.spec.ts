@@ -32,6 +32,8 @@ type Pair = {
   camZoom?: number; query?: string; before: Side; after?: Side;
   /** Fractions of the frame: what the note is about (default whole frame) and the part to judge (default whole). */
   target?: Box; frame?: Box;
+  /** Keep the HUD (default off: a transient card, such as "Entering quarter", in one frame only reads as a change). */
+  hud?: boolean;
   caption?: [string, string];
 };
 
@@ -90,6 +92,8 @@ async function shoot(page: Page, pair: Pair, side: Side, label: string): Promise
   await page.waitForTimeout(2500);
   await teleportRider(page, p); // the game re-routes after the first jump; pin the spot again
   if (pair.camZoom) await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, pair.camZoom);
+  // HUD off, as house-frames.spec.ts does: only the 3D view is drawn.
+  if (!pair.hud) await page.addStyleTag({ content: 'body > *:not(#vector-map) { visibility: hidden !important; } .maplibregl-control-container { display: none !important; }' });
   const world = await settleForShot(page, `${pair.name} ${label}`);
   return { png: await page.screenshot(), world };
 }
