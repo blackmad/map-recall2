@@ -627,6 +627,17 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     bronze: {slot: 'paint', why: 'palette name only: black painted iron railings and lanterns'},
     concrete: {slot: 'stone', measured: '#e8e7df', why: 'palette name only: the white painted stone of the three dormers (2019, 2023), not concrete'},
   },
+  'uva-binnengasthuisstraat-9': {
+    brick: {slot: 'brick', measured: '#827260', why: 'the brown-yellow brick of the front, between the rectified crop (w01-0 2022, shaded median #736454) and the sunlit 2022 sheet view (~#a08c74); #706356 drew too dark beside the photo on the review sheet'},
+    white: {slot: 'frame', measured: '#dcd8c6', why: 'palette name only: the cream painted window frames, mullions and transoms (w01-0 2022), not stone'},
+    frame: {slot: 'frame', measured: '#2f3d35', why: 'the dark green sash bars (w01-0 2022, zoomed)'},
+    stone: {slot: 'stone', measured: '#8c8a82', why: 'the grey stone sills, stacked blocks, crosses, string course, eave moulding and plinth (w01-0 #746e61 overcast)'},
+    sandstone: {slot: 'stone', measured: '#9a8f7e', why: 'palette name only: the weathered stone figure and its panel in the raised attic (w01-0 #7d6d60 overcast)'},
+    slate: {slot: 'slate', measured: '#5e5853', why: 'palette name only: the brown-grey tile roof and the dormer caps (w01-0 #67645f), not slate'},
+    concrete: {slot: 'slate', measured: '#5e5853', why: 'palette name only: the tile-hung dormer bodies, not concrete'},
+    copper: {slot: 'door', measured: '#8a5a32', why: 'palette name only: the varnished timber double door of the west entrance (w02-270 2016), not metal'},
+    dark: {slot: 'door', why: 'the meeting rail of the west doors'},
+  },
 };
 
 /**

@@ -562,6 +562,7 @@ import {buildHotelNottingHill} from './hotel-notting-hill-builder';
 import {buildHotelVFrederiksplein} from './hotel-v-frederiksplein-builder';
 import {buildSarphatistraat47} from './sarphatistraat-47-builder';
 import {buildKoetshuisKeizersgracht607} from './koetshuis-keizersgracht-607-builder';
+import {buildUvaBinnengasthuisstraat9} from './uva-binnengasthuisstraat-9-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
 import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
 import {buildJungleSwindenstraat} from './jungle-swindenstraat-builder';
@@ -1318,6 +1319,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='hotel-v-frederiksplein')buildHotelVFrederiksplein(w,d,helpers);
     else if(id==='sarphatistraat-47')buildSarphatistraat47(w,d,helpers);
     else if(id==='koetshuis-keizersgracht-607')buildKoetshuisKeizersgracht607(w,d,helpers);
+    else if(id==='uva-binnengasthuisstraat-9')buildUvaBinnengasthuisstraat9(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else if(id==='jungle-swindenstraat')buildJungleSwindenstraat(w,d,helpers);
