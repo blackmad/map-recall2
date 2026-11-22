@@ -7,11 +7,13 @@
  * https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.<pand>; both cached) and writes scripts/landmarks/<id>-footprints.json
  * in the native frame: x east, z south, y up from the 3DBAG ground, metres, origin = vertex average of the BAG ring (RD).
  * `surfaces` is the LoD2.2 shell (ShellSource format), `nativeRing` the BAG ring, `facadeRing` the ring with near-collinear
- * vertices (< 0.15 m off the chord) merged.
+ * vertices (< 0.15 m off the chord) merged. Every 3DBAG BuildingPart of the pand is read (bag-shell-parts.ts); walls shared
+ * between two parts are dropped. A single-part pand comes out byte-identical to the part -0 reader it replaced.
  */
 import fs from 'node:fs';
 import {cachedJson} from '../pand-reference/core.ts';
 import {rdToLngLat} from '../../src/canalRecall/rdCoordinates.ts';
+import {nativeVertices, partIds, shellSurfaces} from './bag-shell-parts.ts';
 
 const ID = process.argv[2], PAND = process.argv[3], OUT = process.argv[4] ?? `scripts/landmarks/${ID}-footprints.json`;
 if (!ID || !PAND) { console.error('usage: bag-shell-prepare.ts <id> <pand> [out.json]'); process.exit(2); }
@@ -38,9 +40,9 @@ function simplify(ring: number[][], tol: number): number[][] {
 const attrs = d.feature.CityObjects[`NL.IMBAG.Pand.${PAND}`].attributes;
 const ground = attrs.b3_h_maaiveld as number;
 const tr = d.metadata.transform;
-const verts = (d.feature.vertices as number[][]).map(v => { const p = v.map((n, i) => n * tr.scale[i] + tr.translate[i]); return [r3(p[0] - ax), r3(Math.max(0, p[2] - ground)), r3(-(p[1] - ay))]; });
-const g = d.feature.CityObjects[`NL.IMBAG.Pand.${PAND}-0`].geometry.find((x: {lod: string}) => x.lod === '2.2');
-const surfaces = (g.boundaries[0] as number[][][]).map((s, i) => ({type: g.semantics.surfaces[g.semantics.values[0][i]].type as string, rings: s.map(r => r.map(k => verts[k]))}));
+const verts = nativeVertices(d.feature, tr, [ax, ay], ground);
+const parts = partIds(d.feature, PAND);
+const surfaces = shellSurfaces(d.feature, PAND, verts);
 const out = {
   id: ID, bagId: PAND, anchorRD: [r3(ax), r3(ay)], anchor: rdToLngLat(ax, ay).map(v => +v.toFixed(8)), groundNAP: ground,
   coordinateConvention: 'native east/south metres from anchor; y above local ground',
@@ -52,4 +54,4 @@ const out = {
 };
 out.facadeRing = simplify(out.nativeRing, 0.15);
 fs.writeFileSync(OUT, JSON.stringify(out) + '\n');
-console.log(out.anchor, 'ring', out.nativeRing.length, 'facade ring', out.facadeRing.length, 'surfaces', surfaces.length, Object.entries(surfaces.reduce((m: Record<string, number>, s) => (m[s.type] = (m[s.type] ?? 0) + 1, m), {})));
+console.log(out.anchor, 'parts', parts.length, 'ring', out.nativeRing.length, 'facade ring', out.facadeRing.length, 'surfaces', surfaces.length, Object.entries(surfaces.reduce((m: Record<string, number>, s) => (m[s.type] = (m[s.type] ?? 0) + 1, m), {})));
