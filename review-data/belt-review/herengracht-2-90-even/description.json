@@ -3,7 +3,7 @@
  "faceId": "herengracht-2-90-even",
  "street": "Herengracht",
  "side": "even",
- "generatedAt": "2026-11-21",
+ "generatedAt": "2026-11-22",
  "about": "Belt review stage 2 (lane C): the first description per pand from the library, a source and confidence per field (sources strongest first: reviewed > face-intent > photo-read > own-read > register > survey > based-on > donor > period-default); library = sources above donor, newRead = donor, period-default or absent. Built by scripts/belt-review/describe.ts.",
  "inputs": {
   "face": "review-data/belt-review/herengracht-2-90-even/face.json",
@@ -15,7 +15,7 @@
   "register": "public/data/extracts/amsterdam/monument-facts.json",
   "ordekaart": "/Users/blackmad/Code/map-recall2-worktrees/belt-review-serve/.cache/ordekaart-20261119/ORDE_CENTRUM_GEBOUWEN.geojson (centrum layer; a pand joins the object holding >= 0.5 of its footprint)",
   "kitGaps": "review-data/belt-review/kit-gaps.json",
-  "photoRead": "review-data/belt-review/herengracht-2-90-even/photo-read.json (42 houses)"
+  "photoRead": "review-data/belt-review/herengracht-2-90-even/photo-read.json (46 houses)"
  },
  "counts": {
   "pands": 42,
@@ -23,11 +23,11 @@
   "library": 714,
   "newRead": 0,
   "bySource": {
-   "photo-read": 619,
+   "photo-read": 621,
    "survey": 42,
    "register": 26,
    "reviewed": 6,
-   "face-intent": 21
+   "face-intent": 19
   },
   "libraryShare": 1,
   "byField": {
@@ -114,7 +114,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-25-TMX7316010203-001979_pano_0001_000445",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-25-TMX7316010203-001979_pano_0001_000445 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -410,7 +410,7 @@
       {
        "value": 3,
        "source": "photo-read",
-       "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-25-TMX7316010203-001979_pano_0001_000444"
+       "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-25-TMX7316010203-001979_pano_0001_000444 (count confirmed by the measured storey profile)"
       },
       {
        "value": 3,
@@ -1022,18 +1022,20 @@
    "order": 3,
    "fields": {
     "storeys": {
-     "value": 2,
-     "source": "face-intent",
-     "confidence": 0.85,
-     "ref": "house-spec fronts/0/storeys (streetlevel-measured: house-specs extract)",
-     "agree": [
-      "own-read"
-     ],
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002878 (count confirmed by the measured storey profile)",
      "others": [
       {
-       "value": 3,
-       "source": "photo-read",
-       "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002878"
+       "value": 2,
+       "source": "face-intent",
+       "ref": "house-spec fronts/0/storeys (streetlevel-measured: house-specs extract)"
+      },
+      {
+       "value": 2,
+       "source": "own-read",
+       "ref": "D1 D1 opus v4.3 cut belt-20261114 artifacts/describer-d1/belt-20261114/cuts/0363100012175702.jpg"
       }
      ]
     },
@@ -1300,7 +1302,7 @@
      "cap": "none",
      "crest": false,
      "neckLights": 1,
-     "lowerLights": 3,
+     "lowerLights": 0,
      "lightHead": "square",
      "shoulderOvals": false,
      "footLedge": false,
@@ -1321,8 +1323,8 @@
     "library": 17,
     "newRead": 0,
     "bySource": {
-     "face-intent": 11,
-     "photo-read": 4,
+     "photo-read": 5,
+     "face-intent": 10,
      "survey": 1,
      "register": 1
     }
@@ -1337,7 +1339,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006499"
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006499 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 3,
@@ -1557,8 +1559,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002874",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002874 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -1803,8 +1805,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 3,
@@ -2042,8 +2044,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-03-13-TMX7316010203-002998_pano_0002_000059",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-03-13-TMX7316010203-002998_pano_0002_000059 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -2323,8 +2325,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000496",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000496 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -2622,8 +2624,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-01-30-TMX7316010203-002950_pano_0000_000527",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-01-30-TMX7316010203-002950_pano_0000_000527 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -2953,8 +2955,8 @@
     "storeys": {
      "value": 5,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -3237,7 +3239,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000394 (count confirmed by the measured storey profile)",
      "agree": [
       "donor"
      ]
@@ -3536,8 +3538,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000393"
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000393 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 3,
@@ -3805,7 +3807,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003514",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003514 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -4069,8 +4071,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000500",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000500 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -4405,7 +4407,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003512",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003512 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -4696,7 +4698,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-01-30-TMX7316010203-002950_pano_0000_000517",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-01-30-TMX7316010203-002950_pano_0000_000517 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -4975,7 +4977,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2025-06-16-recording_2025-06-16_03-46-32_01311"
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2025-06-16-recording_2025-06-16_03-46-32_01311 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 5,
@@ -5201,8 +5203,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (count confirmed by the measured storey profile)",
      "others": [
       {
        "value": 4,
@@ -5488,7 +5490,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-20-TMX7316010203-002980_pano_0008_000036",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-20-TMX7316010203-002980_pano_0008_000036 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -5787,8 +5789,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003501",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003501 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -5879,7 +5881,7 @@
      ]
     },
     "wallColour": {
-     "value": "red-brown",
+     "value": "buff",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003501"
@@ -5961,7 +5963,7 @@
    },
    "kitCannotDraw": [],
    "photoRead": {
-    "wallHex": "#9a6a52",
+    "wallHex": "#b8a185",
     "dormerStyle": "plain",
     "roofMaterial": "not-visible",
     "whiteHeads": "none",
@@ -6044,8 +6046,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005305",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005305 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -6567,8 +6569,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002846",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002846 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -6863,8 +6865,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00588",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00588 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -7144,11 +7146,11 @@
    "fields": {
     "storeys": {
      "value": 3,
-     "source": "face-intent",
-     "confidence": 0.85,
-     "ref": "house-spec fronts/0/storeys (streetlevel-measured: house-specs extract)",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002843 (count confirmed by the measured storey profile)",
      "agree": [
-      "photo-read",
+      "face-intent",
       "own-read"
      ]
     },
@@ -7443,8 +7445,8 @@
     "library": 17,
     "newRead": 0,
     "bySource": {
-     "face-intent": 10,
-     "photo-read": 6,
+     "photo-read": 7,
+     "face-intent": 9,
      "survey": 1
     }
    }
@@ -7458,7 +7460,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-06-TMX7316010203-002961_pano_0025_000065"
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2023-02-06-TMX7316010203-002961_pano_0025_000065 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 4,
@@ -7671,8 +7673,8 @@
     },
     "flatCrown": {
      "kind": "slab-on-piers",
-     "depthM": 1.1,
-     "slabM": 0.5,
+     "depthM": 1.5,
+     "slabM": 0.47,
      "outM": 0.5,
      "hex": "#cfcabb",
      "piers": [
@@ -7711,7 +7713,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002841",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002841 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -7809,7 +7811,7 @@
      ]
     },
     "wallColour": {
-     "value": "red-brown",
+     "value": "brown",
      "source": "photo-read",
      "confidence": 0.75,
      "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002841"
@@ -7896,7 +7898,7 @@
    },
    "kitCannotDraw": [],
    "photoRead": {
-    "wallHex": "#6e4a3c",
+    "wallHex": "#6a5a4e",
     "dormerStyle": "plain",
     "roofMaterial": "not-visible",
     "whiteHeads": "none",
@@ -7973,8 +7975,8 @@
     "storeys": {
      "value": 3,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00583"
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00583 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 3,
@@ -8212,7 +8214,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -8498,7 +8500,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006458 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -8757,7 +8759,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00580",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2024-12-03-b_20241203_0939_Track01_Sphere_00580 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -9031,7 +9033,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006455",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-01-15-TMX7316010203-001054_pano_0000_006455 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -9296,7 +9298,7 @@
      "value": 5,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002834",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002834 (count confirmed by the measured storey profile)",
      "others": [
       {
        "value": 6,
@@ -9635,7 +9637,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002833",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002833 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -9944,7 +9946,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002832",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002832 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -10223,7 +10225,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002831"
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002831 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 4,
@@ -10461,7 +10463,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005285",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2019-05-13-TMX7316010203-001178_pano_0001_005285 (count confirmed by the measured storey profile)",
      "others": [
       {
        "value": 4,
@@ -10809,7 +10811,7 @@
      "value": 4,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003479",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003479 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -11113,8 +11115,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003478"
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2020-04-22-TMX7316010203-001666_pano_0000_003478 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 2,
@@ -11358,8 +11360,8 @@
     "storeys": {
      "value": 4,
      "source": "photo-read",
-     "confidence": 0.5,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000373"
+     "confidence": 0.75,
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2021-01-22-TMX7316010203-001975_pano_0000_000373 (count confirmed by the measured storey profile)"
     },
     "bays": {
      "value": 2,
@@ -11573,6 +11575,13 @@
      "consoles": "even",
      "frieze": "plain"
     },
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "light": "square"
+    },
     "candidateId": "w-2021-01-22-TMX7316010203-001975_pano_0000_000373"
    },
    "specParts": [],
@@ -11595,7 +11604,7 @@
      "value": 3,
      "source": "photo-read",
      "confidence": 0.75,
-     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000521",
+     "ref": "photo-read claude-opus-5-5 2026-11-21 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000521 (count confirmed by the measured storey profile)",
      "agree": [
       "own-read"
      ]
@@ -11903,6 +11912,825 @@
      "photo-read": 15,
      "reviewed": 1,
      "survey": 1
+    }
+   }
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012175784#1",
+   "address": "Herengracht 78",
+   "order": 6,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "crown": {
+     "value": "neck",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "cornice": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "wallColour": {
+     "value": "red-brown",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "door": {
+     "value": {
+      "bay": 0
+     },
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#1)"
+    },
+    "eavesM": {
+     "value": 9.9,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height (the pand's)"
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract) (the pand's)"
+    }
+   },
+   "missing": [],
+   "group": {
+    "unit": {
+     "id": "0363100012175784#1",
+     "source": "single",
+     "faceMembers": [
+      "0363100012175784#1"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "photoRead": {
+    "wallHex": "#6e4636",
+    "dormerStyle": "plain",
+    "roofMaterial": "not-visible",
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "ornaments": [
+     "neck gable with carved sandstone scroll claws and a carved round crowning top",
+     "hoist beam projecting from the gable top",
+     "carved transom panel over the door",
+     "iron wall anchors"
+    ],
+    "kitCannotSay": [
+     "ground storey: the door and one wide double window under three upper bays"
+    ],
+    "notes": "Herengracht 78, the left house of the pand: three bays, a neck gable with carved claws.",
+    "storeyShares": [
+     0.427,
+     0.309,
+     0.264
+    ],
+    "crownRiseM": 3.15,
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "basementRatio": 0.15,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1437,
+      "foot": 530,
+      "shoulder": 450,
+      "capBase": 270,
+      "apex": 215,
+      "left": 0,
+      "right": 400,
+      "neckLeft": 72,
+      "neckRight": 287,
+      "w": 400,
+      "h": 1500,
+      "ppm": 100
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none",
+     "clawWaist": 0.15,
+     "clawBand": 0.18
+    },
+    "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
+   },
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 17,
+    "newRead": 0,
+    "bySource": {
+     "photo-read": 15,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175784#2",
+   "address": "Herengracht 76",
+   "order": 6,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "bays": {
+     "value": 2,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "crown": {
+     "value": "bell",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "cornice": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "roofStorey": {
+     "value": "gable-attic",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "windows": {
+     "value": "sash-small-panes",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "wallColour": {
+     "value": "red-brown",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "door": {
+     "value": {
+      "bay": 0,
+      "surround": true
+     },
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "stoop": {
+     "value": "stoop-and-windows",
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2020-01-08-TMX7316010203-001543_pano_0000_002873 (split house 0363100012175784#2)"
+    },
+    "eavesM": {
+     "value": 9.9,
+     "source": "survey",
+     "confidence": 0.65,
+     "ref": "scripts/house-specs/rows/rows.json herengracht-76-90: the cut's wall height (the pand's)"
+    },
+    "facadeYear": {
+     "value": 1762,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract) (the pand's)"
+    }
+   },
+   "missing": [],
+   "group": {
+    "unit": {
+     "id": "0363100012175784#2",
+     "source": "single",
+     "faceMembers": [
+      "0363100012175784#2"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "photoRead": {
+    "wallHex": "#6e4636",
+    "dormerStyle": "plain",
+    "roofMaterial": "not-visible",
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "ornaments": [
+     "bell gable: the neck sweeps out in large white stone scrolls to the foot, a carved crest on top",
+     "hoist beam projecting from the gable top",
+     "oval fanlight with ornament over the door in a white door frame",
+     "iron wall anchors"
+    ],
+    "kitCannotSay": [
+     "second storey has three windows over the two bays below (the middle one a former hoist door)"
+    ],
+    "notes": "Herengracht 76, the right house of the pand: two bays (three at the top storey), a bell gable in white stone scrolls.",
+    "storeyShares": [
+     0.424,
+     0.299,
+     0.277
+    ],
+    "crownRiseM": 2.7,
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "basementRatio": 0.15,
+    "crownForm": {
+     "kind": "bell",
+     "px": {
+      "ground": 1437,
+      "foot": 500,
+      "shoulder": 330,
+      "capBase": 290,
+      "apex": 230,
+      "left": 0,
+      "right": 437,
+      "neckLeft": 90,
+      "neckRight": 300,
+      "w": 437,
+      "h": 1500,
+      "ppm": 100
+     },
+     "claws": "none",
+     "cap": "carved",
+     "crest": true,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    },
+    "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873"
+   },
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 17,
+    "newRead": 0,
+    "bySource": {
+     "photo-read": 15,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169272#1",
+   "address": "Herengracht 52",
+   "order": 18,
+   "fields": {
+    "storeys": {
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "bays": {
+     "value": 5,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "cornice": {
+     "value": "attic-frieze",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "roofStorey": {
+     "value": "attic",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "dormers": {
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "heads": {
+     "value": "flat",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "windows": {
+     "value": "sash",
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "windowSurround": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "wallColour": {
+     "value": "dark",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "door": {
+     "value": {
+      "bay": 2,
+      "surround": true
+     },
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.5,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#1)"
+    },
+    "eavesM": {
+     "value": 15.84,
+     "source": "survey",
+     "confidence": 0.75,
+     "ref": "AHN front band p90 (n 116) (the pand's)"
+    },
+    "facadeYear": {
+     "value": 1812,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract) (the pand's)"
+    }
+   },
+   "missing": [],
+   "group": {
+    "unit": {
+     "id": "0363100012169272#1",
+     "source": "single",
+     "faceMembers": [
+      "0363100012169272#1"
+     ]
+    }
+   },
+   "kitCannotDraw": [
+    {
+     "field": "dormers",
+     "value": {
+      "count": 1,
+      "kind": "plain"
+     },
+     "drawnAs": null,
+     "why": "held: no compiler draws this read yet"
+    },
+    {
+     "field": "cornice",
+     "value": "attic-frieze",
+     "drawnAs": "frieze",
+     "why": "drawn as \"frieze\""
+    }
+   ],
+   "photoRead": {
+    "wallHex": "#3a3536",
+    "dormerStyle": "pediment",
+    "roofMaterial": "black-tile",
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "ornaments": [
+     "stone doorcase with pilasters, entablature and arched fanlight",
+     "framed stone window surround with cornice above door bay on first floor",
+     "dentilled main cornice"
+    ],
+    "kitCannotSay": [
+     "cream stucco attic storey with small windows forming the frieze below cornice",
+     "door bay window dressing only on one window, others undressed",
+     "sash windows with 2-over-2 panes plus transom"
+    ],
+    "notes": "Herengracht 52, the left house of the pand: five bays, the door in the middle under a stone doorcase, a cream attic frieze with small windows under the cornice, a tiled roof with one small dormer.",
+    "storeyShares": [
+     0.378,
+     0.327,
+     0.294
+    ],
+    "roofSeenRiseM": 0.7,
+    "groundWindowRatio": 1.29,
+    "doorRatio": 0.7,
+    "corniceRatio": 0.171,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 432,
+      "apex": 322,
+      "left": 0,
+      "right": 718,
+      "w": 718,
+      "h": 1067,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "windows"
+    },
+    "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504"
+   },
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 17,
+    "newRead": 0,
+    "bySource": {
+     "photo-read": 15,
+     "survey": 1,
+     "register": 1
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169272#2",
+   "address": "Herengracht 50",
+   "order": 18,
+   "fields": {
+    "storeys": {
+     "value": 4,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "bays": {
+     "value": 3,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "crown": {
+     "value": "cornice",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "cornice": {
+     "value": "simple",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "roofStorey": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "dormers": {
+     "value": {
+      "count": 0
+     },
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "heads": {
+     "value": "segmental",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "windows": {
+     "value": "sash",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "windowSurround": {
+     "value": "sill",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "wallFinish": {
+     "value": "brick",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "wallColour": {
+     "value": "dark",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "whiteFrames": {
+     "value": true,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "ground": {
+     "value": "dwelling",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "door": {
+     "value": null,
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "stoop": {
+     "value": "none",
+     "source": "photo-read",
+     "confidence": 0.75,
+     "ref": "photo-read claude (by eye) 2026-11-22 crop w-2017-03-13-TMX7316010203-000205_pano_0000_000504 (split house 0363100012169272#2)"
+    },
+    "eavesM": {
+     "value": 15.84,
+     "source": "survey",
+     "confidence": 0.75,
+     "ref": "AHN front band p90 (n 116) (the pand's)"
+    },
+    "facadeYear": {
+     "value": 1812,
+     "source": "register",
+     "confidence": 0.8,
+     "ref": "house-spec facts/facadeYear (monument-text: house-specs extract) (the pand's)"
+    }
+   },
+   "missing": [],
+   "group": {
+    "unit": {
+     "id": "0363100012169272#2",
+     "source": "single",
+     "faceMembers": [
+      "0363100012169272#2"
+     ]
+    }
+   },
+   "kitCannotDraw": [],
+   "photoRead": {
+    "wallHex": "#3a3536",
+    "dormerStyle": "plain",
+    "roofMaterial": "not-visible",
+    "whiteHeads": "keystone",
+    "stringCourses": false,
+    "speklagen": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "ornaments": [
+     "white keystones over the ground and first-storey windows",
+     "white carved sill aprons under the first and second-storey windows",
+     "date stone between the top two storeys"
+    ],
+    "kitCannotSay": [
+     "ornate white sill aprons under the windows",
+     "a set-back light attic with a railing behind the wall top"
+    ],
+    "notes": "Herengracht 50, the right house of the pand: three bays, four storeys, segmental heads, no attic frieze; the wall top meets the neighbour's cornice line.",
+    "storeyShares": [
+     0.311,
+     0.23,
+     0.23,
+     0.229
+    ],
+    "groundWindowRatio": 1.28,
+    "doorRatio": 0.75,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 335,
+      "apex": 325,
+      "left": 5,
+      "right": 252,
+      "w": 256,
+      "h": 1067,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.039,
+       "x1": 0.293,
+       "z0": 0.124,
+       "z1": 0.876
+      },
+      {
+       "kind": "window",
+       "x0": 0.352,
+       "x1": 0.59,
+       "z0": 0.124,
+       "z1": 0.876
+      },
+      {
+       "kind": "window",
+       "x0": 0.664,
+       "x1": 0.902,
+       "z0": 0.124,
+       "z1": 0.876
+      }
+     ],
+     "by": "claude belt-fixes lane, measured by eye (crop x 718-974: ground windows x 728-793, 808-869, 888-949, y 816-974 in a ground storey 790-1000)"
+    },
+    "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504"
+   },
+   "specParts": [],
+   "counts": {
+    "fields": 17,
+    "library": 17,
+    "newRead": 0,
+    "bySource": {
+     "photo-read": 15,
+     "survey": 1,
+     "register": 1
     }
    }
   }

@@ -177,6 +177,9 @@ export interface DescriptionFile {
   generatedAt?: string;
   counts?: Record<string, unknown>;
   pands: PandDescription[];
+  /** Split houses (`<pand>#n`) with their own photo read: described alone (describe.ts); a split house without one starts
+   *  from its pand's entry (houses.ts expandDescription). */
+  houses?: PandDescription[];
 }
 
 // ------------------------------------------------------------------------------------------------------- writable docs

@@ -821,7 +821,7 @@
      "cap": "none",
      "crest": false,
      "neckLights": 1,
-     "lowerLights": 3,
+     "lowerLights": 0,
      "lightHead": "square",
      "shoulderOvals": false,
      "footLedge": false,
@@ -831,7 +831,20 @@
      "centreLight": "none",
      "consoles": "none",
      "frieze": "none"
-    }
+    },
+    "corrections": [
+     {
+      "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop",
+      "at": "2026-11-22",
+      "was": {
+       "crownForm.lowerLights": 3
+      },
+      "now": {
+       "crownForm.lowerLights": 0
+      },
+      "note": "crop 560x1838: the steps start at y ~525 (the read's own foot); the three windows at y 600-760 stand under it, in the top full storey; the gable holds only the hoist door's light (y 380-500)"
+     }
+    ]
    },
    "crownRead": {
     "model": "claude-opus-5-5",
@@ -3403,8 +3416,8 @@
     "windowSurround": "none",
     "wallFinish": "brick",
     "wallColour": {
-     "hex": "#9a6a52",
-     "family": "red-brown"
+     "hex": "#b8a185",
+     "family": "buff"
     },
     "whiteFrames": true,
     "whiteHeads": "none",
@@ -3461,6 +3474,23 @@
       "now": {
        "heads": "flat"
       }
+     },
+     {
+      "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop",
+      "at": "2026-11-22",
+      "was": {
+       "wallColour": {
+        "hex": "#9a6a52",
+        "family": "red-brown"
+       }
+      },
+      "now": {
+       "wallColour": {
+        "hex": "#b8a185",
+        "family": "buff"
+       }
+      },
+      "note": "sunlit wall #bca990, shaded #7c6f5f: a sand-coloured (buff) brick; the read's #9a6a52 drew red"
      }
     ],
     "basementRatio": 0.3,
@@ -4447,8 +4477,8 @@
     },
     "flatCrown": {
      "kind": "slab-on-piers",
-     "depthM": 1.1,
-     "slabM": 0.5,
+     "depthM": 1.5,
+     "slabM": 0.47,
      "outM": 0.5,
      "hex": "#cfcabb",
      "piers": [
@@ -4471,6 +4501,19 @@
       "now": {
        "ground": "dwelling"
       }
+     },
+     {
+      "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop",
+      "at": "2026-11-22",
+      "was": {
+       "flatCrown.depthM": 1.1,
+       "flatCrown.slabM": 0.5
+      },
+      "now": {
+       "flatCrown.depthM": 1.5,
+       "flatCrown.slabM": 0.47
+      },
+      "note": "crop 606x1692 (75 px/m): slab y 465-500, piers y 500-580 over the open set-back top; three full storeys under it (pavement 1580, storey lines ~1245, ~935, ~600)"
      }
     ]
    },
@@ -4523,8 +4566,8 @@
     "windowSurround": "none",
     "wallFinish": "brick",
     "wallColour": {
-     "hex": "#6e4a3c",
-     "family": "red-brown"
+     "hex": "#6a5a4e",
+     "family": "brown"
     },
     "whiteFrames": true,
     "whiteHeads": "none",
@@ -4580,6 +4623,23 @@
       "now": {
        "heads": "flat"
       }
+     },
+     {
+      "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop",
+      "at": "2026-11-22",
+      "was": {
+       "wallColour": {
+        "hex": "#6e4a3c",
+        "family": "red-brown"
+       }
+      },
+      "now": {
+       "wallColour": {
+        "hex": "#6a5a4e",
+        "family": "brown"
+       }
+      },
+      "note": "wall patches between the windows average #5d524f, #453a32, #716a65 (overcast): a dark grey-brown brick; the read's #6e4a3c drew orange-red"
      }
     ],
     "basementRatio": 0.12,
@@ -6738,6 +6798,23 @@
       "now": {
        "storeys": 4
       }
+     },
+     {
+      "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop",
+      "at": "2026-11-22",
+      "was": {
+       "centreDress": null
+      },
+      "now": {
+       "centreDress": {
+        "centre": "attic",
+        "body": "paint",
+        "shoulders": "scrolls",
+        "cap": "segmental",
+        "light": "square"
+       }
+      },
+      "note": "crop 264x1207: the piece over the cornice (x 10-120, y 258-430) is cream stucco with scroll sides and a carved round top over a square light; it drew as a brick tower with a flat cap"
      }
     ],
     "storeyShares": [
@@ -6775,6 +6852,13 @@
      "centreLight": "square",
      "consoles": "even",
      "frieze": "plain"
+    },
+    "centreDress": {
+     "centre": "attic",
+     "body": "paint",
+     "shoulders": "scrolls",
+     "cap": "segmental",
+     "light": "square"
     }
    },
    "crownRead": {
@@ -6789,6 +6873,455 @@
      262,
      1200
     ]
+   }
+  },
+  "0363100012175784#1": {
+   "address": "Herengracht 78",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+   "spanPx": [
+    150,
+    550
+   ],
+   "cropPx": [
+    400,
+    1500
+   ],
+   "model": "claude (by eye)",
+   "at": "2026-11-22T12:00:00.000Z",
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 3,
+    "crown": "neck",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4636",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": false
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "neck gable with carved sandstone scroll claws and a carved round crowning top",
+     "hoist beam projecting from the gable top",
+     "carved transom panel over the door",
+     "iron wall anchors"
+    ],
+    "kitCannotSay": [
+     "ground storey: the door and one wide double window under three upper bays"
+    ],
+    "low": [
+     "storeys",
+     "door",
+     "facadeYear",
+     "stoop"
+    ],
+    "notes": "Herengracht 78, the left house of the pand: three bays, a neck gable with carved claws.",
+    "storeyShares": [
+     0.427,
+     0.309,
+     0.264
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "basementRatio": 0.15,
+    "crownRiseM": 3.15,
+    "crownForm": {
+     "kind": "neck",
+     "px": {
+      "ground": 1437,
+      "foot": 530,
+      "shoulder": 450,
+      "capBase": 270,
+      "apex": 215,
+      "left": 0,
+      "right": 400,
+      "neckLeft": 72,
+      "neckRight": 287,
+      "w": 400,
+      "h": 1500,
+      "ppm": 100
+     },
+     "claws": "carved",
+     "cap": "carved",
+     "crest": false,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none",
+     "clawWaist": 0.15,
+     "clawBand": 0.18
+    }
+   },
+   "byEye": {
+    "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop (the API was out of credit)",
+    "at": "2026-11-22",
+    "fields": "all",
+    "note": "crop x 0-400 of the 837 px span (100 px/m): pavement 1437; storey lines ~1050, ~770; gable foot 530 (claw bases), claw tops ~450, neck x 72-287 up to the cap cornice at 270, carved round cap to 215; one light in the neck (x 125-225, y 455-530); door left, a wide double window right on the ground, three bays above"
+   }
+  },
+  "0363100012175784#2": {
+   "address": "Herengracht 76",
+   "candidateId": "w-2020-01-08-TMX7316010203-001543_pano_0000_002873",
+   "spanPx": [
+    550,
+    987
+   ],
+   "cropPx": [
+    437,
+    1500
+   ],
+   "model": "claude (by eye)",
+   "at": "2026-11-22T12:00:00.000Z",
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 2,
+    "crown": "bell",
+    "cornice": "none",
+    "roofStorey": "gable-attic",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "flat",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#6e4636",
+     "family": "red-brown"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 0,
+     "surround": true
+    },
+    "stoop": "stoop-and-windows",
+    "stoopFlight": "front",
+    "balconies": "none",
+    "facadeYear": 1740,
+    "ornaments": [
+     "bell gable: the neck sweeps out in large white stone scrolls to the foot, a carved crest on top",
+     "hoist beam projecting from the gable top",
+     "oval fanlight with ornament over the door in a white door frame",
+     "iron wall anchors"
+    ],
+    "kitCannotSay": [
+     "second storey has three windows over the two bays below (the middle one a former hoist door)"
+    ],
+    "low": [
+     "storeys",
+     "door",
+     "facadeYear",
+     "stoop"
+    ],
+    "notes": "Herengracht 76, the right house of the pand: two bays (three at the top storey), a bell gable in white stone scrolls.",
+    "storeyShares": [
+     0.424,
+     0.299,
+     0.277
+    ],
+    "groundWindowRatio": 1.25,
+    "doorRatio": 0.75,
+    "basementRatio": 0.15,
+    "crownRiseM": 2.7,
+    "crownForm": {
+     "kind": "bell",
+     "px": {
+      "ground": 1437,
+      "foot": 500,
+      "shoulder": 330,
+      "capBase": 290,
+      "apex": 230,
+      "left": 0,
+      "right": 437,
+      "neckLeft": 90,
+      "neckRight": 300,
+      "w": 437,
+      "h": 1500,
+      "ppm": 100
+     },
+     "claws": "none",
+     "cap": "carved",
+     "crest": true,
+     "neckLights": 1,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": true,
+     "hoistBeam": true,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "none"
+    }
+   },
+   "byEye": {
+    "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop (the API was out of credit)",
+    "at": "2026-11-22",
+    "fields": "all",
+    "note": "crop x 400-837 of the span (local x = x - 400): pavement 1437; storey lines ~1040, ~760; gable foot 500 (the scroll bases on the ledge), the scrolls meet the neck at ~330, neck x 90-300 to the cap cornice at 290, carved crest to 230; one light in the neck (x 125-260, y 413-536); door left in a white frame with an oval fanlight, one window right; two bays on the first storey, three on the second"
+   }
+  },
+  "0363100012169272#1": {
+   "address": "Herengracht 52",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+   "spanPx": [
+    75,
+    793
+   ],
+   "cropPx": [
+    718,
+    1067
+   ],
+   "model": "claude (by eye)",
+   "at": "2026-11-22T12:00:00.000Z",
+   "answer": {
+    "readable": true,
+    "storeys": 3,
+    "bays": 5,
+    "crown": "cornice",
+    "cornice": "attic-frieze",
+    "roofStorey": "attic",
+    "dormers": {
+     "count": 1,
+     "style": "pediment"
+    },
+    "roofMaterial": "black-tile",
+    "heads": "flat",
+    "windows": "sash",
+    "windowSurround": "none",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3a3536",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "none",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": {
+     "bay": 2,
+     "surround": true
+    },
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": 1790,
+    "ornaments": [
+     "stone doorcase with pilasters, entablature and arched fanlight",
+     "framed stone window surround with cornice above door bay on first floor",
+     "dentilled main cornice"
+    ],
+    "kitCannotSay": [
+     "cream stucco attic storey with small windows forming the frieze below cornice",
+     "door bay window dressing only on one window, others undressed",
+     "sash windows with 2-over-2 panes plus transom"
+    ],
+    "low": [
+     "storeys",
+     "dormers",
+     "roofMaterial",
+     "windows",
+     "facadeYear",
+     "stoop"
+    ],
+    "notes": "Herengracht 52, the left house of the pand: five bays, the door in the middle under a stone doorcase, a cream attic frieze with small windows under the cornice, a tiled roof with one small dormer.",
+    "storeyShares": [
+     0.378,
+     0.327,
+     0.294
+    ],
+    "groundWindowRatio": 1.29,
+    "doorRatio": 0.7,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 432,
+      "apex": 322,
+      "left": 0,
+      "right": 718,
+      "w": 718,
+      "h": 1067,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "dense",
+     "frieze": "windows"
+    },
+    "corniceRatio": 0.171,
+    "roofSeenRiseM": 0.7
+   },
+   "byEye": {
+    "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop (the API was out of credit)",
+    "at": "2026-11-22",
+    "fields": "all",
+    "note": "crop x 0-718 of the 974 px span (50 px/m): the five-bay house as the pand read described it (pavement 1000, brick wall top 432, attic frieze to the cornice top 322, tiled roof ~0.7 m over it with one small dormer); its read fields carried over"
+   }
+  },
+  "0363100012169272#2": {
+   "address": "Herengracht 50",
+   "candidateId": "w-2017-03-13-TMX7316010203-000205_pano_0000_000504",
+   "spanPx": [
+    793,
+    1049
+   ],
+   "cropPx": [
+    256,
+    1067
+   ],
+   "model": "claude (by eye)",
+   "at": "2026-11-22T12:00:00.000Z",
+   "answer": {
+    "readable": true,
+    "storeys": 4,
+    "bays": 3,
+    "crown": "cornice",
+    "cornice": "simple",
+    "roofStorey": "none",
+    "dormers": {
+     "count": 0,
+     "style": "plain"
+    },
+    "roofMaterial": "not-visible",
+    "heads": "segmental",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "wallFinish": "brick",
+    "wallColour": {
+     "hex": "#3a3536",
+     "family": "dark"
+    },
+    "whiteFrames": true,
+    "whiteHeads": "keystone",
+    "stringCourses": false,
+    "speklagen": "none",
+    "ground": "dwelling",
+    "door": null,
+    "stoop": "none",
+    "stoopFlight": "none",
+    "balconies": "none",
+    "facadeYear": null,
+    "ornaments": [
+     "white keystones over the ground and first-storey windows",
+     "white carved sill aprons under the first and second-storey windows",
+     "date stone between the top two storeys"
+    ],
+    "kitCannotSay": [
+     "ornate white sill aprons under the windows",
+     "a set-back light attic with a railing behind the wall top"
+    ],
+    "notes": "Herengracht 50, the right house of the pand: three bays, four storeys, segmental heads, no attic frieze; the wall top meets the neighbour's cornice line.",
+    "storeyShares": [
+     0.311,
+     0.23,
+     0.23,
+     0.229
+    ],
+    "groundWindowRatio": 1.28,
+    "crownForm": {
+     "kind": "cornice",
+     "px": {
+      "ground": 1000,
+      "foot": 335,
+      "apex": 325,
+      "left": 5,
+      "right": 252,
+      "w": 256,
+      "h": 1067,
+      "ppm": 50
+     },
+     "claws": "none",
+     "cap": "none",
+     "crest": false,
+     "neckLights": 0,
+     "lowerLights": 0,
+     "lightHead": "square",
+     "shoulderOvals": false,
+     "footLedge": false,
+     "hoistBeam": false,
+     "centre": "none",
+     "centreLight": "none",
+     "consoles": "none",
+     "frieze": "plain"
+    },
+    "groundFront": {
+     "openings": [
+      {
+       "kind": "window",
+       "x0": 0.039,
+       "x1": 0.293,
+       "z0": 0.124,
+       "z1": 0.876
+      },
+      {
+       "kind": "window",
+       "x0": 0.352,
+       "x1": 0.59,
+       "z0": 0.124,
+       "z1": 0.876
+      },
+      {
+       "kind": "window",
+       "x0": 0.664,
+       "x1": 0.902,
+       "z0": 0.124,
+       "z1": 0.876
+      }
+     ],
+     "by": "claude belt-fixes lane, measured by eye (crop x 718-974: ground windows x 728-793, 808-869, 888-949, y 816-974 in a ground storey 790-1000)"
+    },
+    "doorRatio": 0.75
+   },
+   "byEye": {
+    "by": "claude belt-fixes lane (lane/belt-fixes-20261122), measured by eye on the picked crop (the API was out of credit)",
+    "at": "2026-11-22",
+    "fields": "all",
+    "note": "crop x 718-974 of the span (local x = x - 718): brick from x ~5; pavement 1000; window rows 816-974, 647-770, 492-600, 346-448 under segmental heads; storey lines ~790, ~635, ~480; the wall top (a thin ledge) at 325, a set-back cream attic with a railing above it (280-325); no street door in view (three tall ground windows)"
    }
   }
  }

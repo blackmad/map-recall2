@@ -7,6 +7,7 @@
 import '../world/useBrowserMath.ts';
 import fs from 'node:fs';
 import path from 'node:path';
+import { lineOf, sliceGeometry, type FootprintSlice } from '../../src/canalRecall/beltReview/sliceFootprint.ts';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
@@ -683,7 +684,10 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   // The override's view keys go over the pand's own extract view (its crownRiseM still gates a register gable).
   const base = raw.raw.properties.houseSpec as HouseSpecView | undefined, mine = ov?.patch.houseSpec as HouseSpecView | undefined;
   const merged = mine ? { houseSpec: { ...(base ?? {}), ...mine, src: { ...(base?.src ?? {}), ...mine.src } } } : {};
-  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch, ...merged } }) : raw.styled;
+  // Belt review split houses (beltReview/sliceFootprint.ts): the house is drawn on its own part of the pand's footprint, cut
+  // at its dividers across the framed wall; a design without a slice draws the whole pand as before.
+  const cut = splitHouseGeometry(raw.raw.geometry as never, override?.design, args.wall);
+  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, ...(cut ? { geometry: cut } : {}), properties: { ...raw.raw.properties, ...ov.patch, ...merged } }) : raw.styled;
   const styled = all.map(r => r === raw ? own : r.styled);
   const kitHide = new Set(KIT_HIDE_IDS);
   const ctx = new BuildingContextIndex(styled, boxOf);
@@ -766,6 +770,13 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
       properties: p, overrides: ov ? { source: override!.source, applied: ov.applied, notApplied: ov.notApplied } : null,
     },
   });
+}
+
+/** A split house's footprint: the pand's geometry cut to `design.slice` across the `line:` wall; null for a whole pand. */
+export function splitHouseGeometry(geometry: { type: string; coordinates: unknown }, design: unknown, wall: string | undefined) {
+  const slice = (design as { slice?: FootprintSlice } | undefined)?.slice, line = lineOf(wall);
+  if (!slice || !line || !(slice.cutFrom || slice.cutTo)) return null;
+  return sliceGeometry(geometry, line[0], line[1], slice);
 }
 
 /** The summary fields a reader compares (the full FacadeMeasurement is large). */

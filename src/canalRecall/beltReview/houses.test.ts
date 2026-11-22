@@ -67,3 +67,13 @@ it('review order: worst first by likeness, else by weak fields; markState sees a
   assert.equal(markState(b, null, P), 'good');
   assert.equal(markState(b, null, Q), null);
 });
+it('a split house read on its own crop is described from its own entry (belt fixes 2026-11-22: Herengracht 50 and 52)', () => {
+  const picks = parsePicks({ revision: 1, picks: { [P]: { candidateId: 'a', autoPick: 'a', revision: 1, houses: [{ fromM: 0, toM: 14.36, label: '52' }, { fromM: 14.36, toM: 19.48, label: '50' }] } } }, 'f');
+  const hf = expandFace(face, picks);
+  const f = (v: number) => ({ storeys: { value: v, source: 'photo-read' as const, confidence: 0.8, ref: '' } });
+  const d = expandDescription({ pands: [{ pandId: P, fields: f(3) }, { pandId: Q, fields: f(5) }], houses: [{ pandId: `${P}#2`, fields: f(4) }] }, hf)!;
+  assert.deepEqual(d.pands.map(p => [p.pandId, p.address, p.fields.storeys?.value]), [[`${P}#1`, 'Herengracht 52', 3], [`${P}#2`, 'Herengracht 50', 4], [Q, 'Herengracht 54', 5]]);
+  // An own entry never stands in for an unsplit pand.
+  const whole = expandDescription({ pands: [{ pandId: P, fields: f(3) }], houses: [{ pandId: P, fields: f(9) }] }, expandFace(face, parsePicks({ revision: 1, picks: {} }, 'f')))!;
+  assert.equal(whole.pands[0].fields.storeys?.value, 3);
+});

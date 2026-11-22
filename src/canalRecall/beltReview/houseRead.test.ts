@@ -50,3 +50,19 @@ test('likeness answers are checked', () => {
   assert.deepEqual(likenessProblems({ score: 0.4, differences: [{ tag: 'roof', what: 'x' }] }), []);
   assert.deepEqual(likenessProblems({ score: 1.4, differences: [{ tag: 'gable' as never, what: 'x' }] }), ['score', 'differences']);
 });
+
+test('a storey count its measured profile confirms outranks the face intent, not a review (belt fixes 2026-11-22: Herengracht 84)', () => {
+  const face: FieldCandidate = { field: 'storeys', value: 2, source: 'face-intent', confidence: 0.85, ref: 'intent' };
+  const reviewed: FieldCandidate = { field: 'storeys', value: 4, source: 'reviewed', confidence: 0.95, ref: 'row review' };
+  const measured = candidatesFromHouseRead({ ...READ, storeyShares: [0.4, 0.3, 0.3], measured: { fields: ['storeyShares'] } } as HouseRead, 'read');
+  const s = measured.find(c => c.field === 'storeys')!;
+  assert.equal(s.outranks, 'face-intent'); assert.match(s.ref, /measured storey profile/);
+  assert.equal(pickFields([face, ...measured]).storeys!.value, 3);
+  assert.equal(pickFields([reviewed, ...measured]).storeys!.value, 4);
+  // Shares that disagree with the count, or shares nobody measured, keep the old ladder.
+  for (const a of [{ storeyShares: [0.5, 0.5], measured: { fields: ['storeyShares'] } }, { storeyShares: [0.4, 0.3, 0.3] }]) {
+    const c = candidatesFromHouseRead({ ...READ, ...a } as HouseRead, 'read');
+    assert.equal(c.find(x => x.field === 'storeys')!.outranks, undefined);
+    assert.equal(pickFields([face, ...c]).storeys!.value, 2);
+  }
+});

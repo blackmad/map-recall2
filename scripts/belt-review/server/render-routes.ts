@@ -25,6 +25,7 @@ import sharp from 'sharp';
 import { ReviewError } from '../../../src/canalRecall/beltReview/logic.ts';
 import { pandDesign } from '../../../src/canalRecall/beltReview/design.ts';
 import { frontLineArg, type FaceWall } from '../../../src/canalRecall/beltReview/frontLine.ts';
+import { houseSlice } from '../../../src/canalRecall/beltReview/sliceFootprint.ts';
 import { DESC_FIELDS, type DescField } from '../../../src/canalRecall/beltReview/fields.ts';
 import { kitCannotDraw, parseKitGaps, type KitGap } from '../../../src/canalRecall/beltReview/kitGaps.ts';
 import { readJson, type BeltReviewStore } from '../../../src/canalRecall/beltReview/store.ts';
@@ -74,9 +75,14 @@ export function mountRenderRoutes(router: Router, store: BeltReviewStore, fail: 
       const cand = (cands as { pands?: Array<{ pandId: string; candidates: Array<{ id: string; pandSpanPx?: [number, number]; ppm?: number }> }> } | null)?.pands?.find(x => x.pandId === p.basePandId)?.candidates.find(c => c.id === pk?.candidateId);
       const line = frontLineArg(walls?.[p.basePandId], p.part ? undefined : { facadeSpanPx: pk?.facadeSpanPx, pandSpanPx: cand?.pandSpanPx, ppm: cand?.ppm });
       if (line) (d.design as Record<string, unknown>).wall = line;
+      // A split house is drawn on its own part of the footprint (sliceFootprint.ts), cut at its dividers only.
+      if (p.part && p.spanM && line) {
+        const sibs = face.pands.filter(q => q.basePandId === p.basePandId && q.spanM);
+        (d.design as Record<string, unknown>).slice = houseSlice(p.spanM, [Math.min(...sibs.map(q => q.spanM![0])), Math.max(...sibs.map(q => q.spanM![1]))]);
+      }
       const asDesc: Partial<Record<DescField, DescFieldValue>> = {};
       for (const f of DESC_FIELDS) if (d.fields[f]) asDesc[f] = { value: d.fields[f]!.value, source: d.fields[f]!.source as never, confidence: 1, ref: d.fields[f]!.ref ?? '' };
-      const notes = p.part ? [...d.notes, `Split house ${p.part}: the renderer draws whole pands, so this is pand ${p.basePandId} drawn with this house's fields, cut to ${p.spanM![0]}–${p.spanM![1]} m.`] : d.notes;
+      const notes = p.part ? [...d.notes, `Split house ${p.part}: pand ${p.basePandId}'s footprint cut to ${p.spanM![0]}–${p.spanM![1]} m along the photo's wall, drawn with this house's fields.`] : d.notes;
       const desc = description?.pands.find(x => x.pandId === p.pandId) as (NonNullable<typeof description>['pands'][number] & { likeness?: unknown }) | undefined;
       const weak = DESC_FIELDS.filter(f => !['eavesM', 'facadeYear'].includes(f) && !d.fields[f]?.edited && (!desc?.fields?.[f] || (desc.fields[f]!.source === 'own-read' && (desc.fields[f]!.confidence ?? 0) < 0.6)));
       const likeness = typeof desc?.likeness === 'number' ? desc.likeness : null;

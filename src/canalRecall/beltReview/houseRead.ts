@@ -321,7 +321,12 @@ export function candidatesFromHouseRead(a: Partial<HouseRead>, ref: string): Fie
     if (bad.has(key) || value === undefined) return;
     out.push({ field, value, source: 'photo-read', confidence: low.has(field) ? Math.min(conf, PHOTO_READ_LOW_CONFIDENCE) : conf, ref });
   };
-  put('storeys', 'storeys', a.storeys);
+  // A count the crop's own measured storey profile confirms (the self-check's storeyShares, one share per storey) outranks
+  // an older strip count: Herengracht 84's October face intent said 2 under a front the read and its profile count as 3.
+  const shares = (a as { storeyShares?: unknown }).storeyShares, measured = (a as { measured?: { fields?: unknown } }).measured?.fields;
+  if (!bad.has('storeys') && Array.isArray(shares) && shares.length === a.storeys && Array.isArray(measured) && measured.includes('storeyShares'))
+    out.push({ field: 'storeys', value: a.storeys, source: 'photo-read', confidence: PHOTO_READ_CONFIDENCE, ref: `${ref} (count confirmed by the measured storey profile)`, outranks: 'face-intent' });
+  else put('storeys', 'storeys', a.storeys);
   put('bays', 'bays', a.bays);
   put('crown', 'crown', a.crown);
   put('cornice', 'cornice', a.cornice);

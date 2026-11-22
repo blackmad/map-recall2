@@ -52,8 +52,9 @@ export function expandFace(face: FaceFile, picks: PicksFile): HouseFace {
 /** The description with each split house starting from its pand's statements (same unit, same fields). */
 export function expandDescription(desc: DescriptionFile | null, face: HouseFace): DescriptionFile | null {
   if (!desc) return null;
-  const by = new Map(desc.pands.map(d => [d.pandId, d]));
-  return { ...desc, pands: face.pands.flatMap(h => { const d = by.get(h.basePandId); return d ? [{ ...structuredClone(d), pandId: h.pandId, address: h.address }] : []; }) };
+  const by = new Map(desc.pands.map(d => [d.pandId, d])), own = new Map((desc.houses ?? []).map(d => [d.pandId, d]));
+  // A split house read on its own crop is described alone; else it starts from its pand's statements.
+  return { ...desc, pands: face.pands.flatMap(h => { const d = (h.part ? own.get(h.pandId) : undefined) ?? by.get(h.basePandId); return d ? [{ ...structuredClone(d), pandId: h.pandId, address: h.address }] : []; }) };
 }
 
 /** Split houses from the facade span and the dividers between them (metres from the BAG span start). */

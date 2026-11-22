@@ -5,7 +5,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { beltDesignUnit, beltPlotFacts, DARK_FRAME_HEX } from './plotRead.ts';
+import { beltDesignUnit, beltPlotFacts, DARK_FRAME_HEX, DARK_PILASTERS, TEXT_CUES } from './plotRead.ts';
 import { fieldsToDesign, withPhotoRead, type FieldSet } from './design.ts';
 import { withDesignUnitRoof } from '../designUnits/draw.ts';
 import { designUnitOf } from '../designUnits/drawProps.ts';
@@ -202,4 +202,13 @@ test('Herengracht 50-52: a measured glimpse sets a roof storey\'s rise too (0.7 
   assert.equal(beltPlotFacts(f, r)!.facts.roofRiseM, undefined);
   // A glimpse under 0.55 m is not a measure the roof planner can draw (its row roof needs over 0.5 m).
   assert.equal(beltPlotFacts(f, { ...r, roofSeenRiseM: 0.4 })!.facts.roofRiseM, undefined);
+});
+
+test('dark or brick pilasters are the wall itself, not white strips (belt fixes 2026-11-22: Herengracht 84)', () => {
+  const cue = (t: string) => TEXT_CUES.pilasters.test(t.replace(DARK_PILASTERS, ''));
+  assert.equal(cue('stepped gable with dark-painted brick pilasters between the windows'), false);
+  assert.equal(cue('brick pilasters at the corners'), false);
+  assert.equal(cue('dark pilaster'), false);
+  assert.equal(cue('white stucco pilaster at each corner'), true);
+  assert.equal(cue('stone pilasters | dark-painted brick pilasters'), true);
 });

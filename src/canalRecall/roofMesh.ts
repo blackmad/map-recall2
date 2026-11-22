@@ -1350,8 +1350,9 @@ export function roofPiecesForOutline(outer: readonly number[][], origin: { lng: 
 /** A plan's pieces, each in the mesh frame, with a `streetRidge` saddle turned across its street front (streetRidge.ts).
  *  Only a single-piece roof turns (an inscribed wing's ends are interior walls); no `facing`, nothing turns. */
 function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, mapRect: (r: Rect) => Rect, facing: StreetFacing | undefined): Array<{ rect: Rect; plan: RoofPlan }> {
-  return pieces.flatMap(piece => {
-    const rect = mapRect(piece.rect);
+  const mapped = pieces.map(piece => ({ rect: mapRect(piece.rect), plan: piece.plan }));
+  return (crownOnStreetPiece(mapped, facing) ?? mapped).flatMap(piece => {
+    const rect = piece.rect;
     // A measured ridge is never street-turned. Where its ends meet no street but a long side does, the ridge runs along
     // the street and the ornamental end crown (a gable front) has no street end to stand on: a plain pitched roof.
     if (piece.plan.ridgeDeg !== undefined) {
@@ -1366,6 +1367,32 @@ function meshPieces(plan: RoofPlan, pieces: NonNullable<RoofPlan['pieces']>, map
     const turned = facing && pieces.length === 1 && !plan.keepLid && !plan.sourceCrownFront ? turnRidgeToStreet(rect, piece.plan, facing) : null;
     return turned ?? [{ rect, plan: piece.plan }];
   });
+}
+
+/**
+ * The crown stands on the street front (belt fixes 2026-11-22, Herengracht 88). An inscribed plan crowns its largest box,
+ * and on a deep plan whose street front is a narrow wing that box runs away from the street: its gable ends met the rear
+ * and an inner wall, the wing in front got a plain pitched roof, and the street saw two plain triangles (the wing's end
+ * and the large box's saddle beside it) while the crown stood on the back. When the crowned box has no exterior end on a
+ * street and another piece's end does, the crown moves onto that piece (the same pitch, or the stated crown's rise), and
+ * the box behind becomes a plain saddle no higher than a pitched roof on the street piece's width, so it stays behind
+ * the crown. Anything else (one piece, a measured ridge, a crown already on a street end, no street known): null.
+ */
+export function crownOnStreetPiece(pieces: ReadonlyArray<{ rect: Rect; plan: RoofPlan }>, facing: StreetFacing | undefined): Array<{ rect: Rect; plan: RoofPlan }> | null {
+  if (!facing || pieces.length < 2) return null;
+  const main = pieces[0];
+  if (main.plan.kind !== 'gable' || (!main.plan.rowCrown && main.plan.gable === 'plain') || main.plan.rowDormers || main.plan.ridgeDeg !== undefined) return null;
+  if (gableEndWalls(main.rect).some((w, i) => main.plan.gableEnds?.[i] !== false && facing(w) < Infinity)) return null;
+  let best = -1, bestD = Infinity;
+  for (let i = 1; i < pieces.length; i++) for (const w of gableEndWalls(pieces[i].rect)) { const d = facing(w); if (d < bestD) { bestD = d; best = i; } }
+  if (best < 0 || pieces[best].plan.ridgeDeg !== undefined) return null;
+  const wing = pieces[best];
+  const riseM = main.plan.rowCrown ? main.plan.riseM : +(main.plan.riseM * Math.min(1, wing.rect.wid / main.rect.wid)).toFixed(2);
+  const { gableEnds: _ends, ...crowned } = main.plan;
+  const street: RoofPlan = { ...crowned, riseM };
+  const { rowCrown: _rc, ...plainWing } = wing.plan;
+  const rear: RoofPlan = { ...plainWing, kind: 'pitched', gable: 'plain', dormers: false, chimney: false, shutters: undefined, riseM: Math.min(main.plan.riseM, riseFor('pitched', wing.rect.wid)) };
+  return pieces.map((p, i) => i === 0 ? { rect: p.rect, plan: rear } : i === best ? { rect: p.rect, plan: street } : p);
 }
 
 /**

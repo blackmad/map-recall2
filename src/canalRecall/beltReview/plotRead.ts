@@ -178,6 +178,9 @@ export const TEXT_CUES = {
   fanlight: /fanlight|transom light|bovenlicht|oval light over (the )?door/,
 } as const;
 
+/** Pilasters named only as the wall's own dark or brick piers, not stone or stucco. */
+export const DARK_PILASTERS = /\b(?:dark|brick)(?:[\s-]+(?:painted|dark|brick))*[\s-]+pilasters?\b/g;
+
 /**
  * The plot facts of one house: `fields` are its drawn description values (description + edits + links), `read` its own
  * photo read. Returns null with no read (nothing changes).
@@ -275,7 +278,8 @@ export function beltPlotFacts(fields: Record<string, unknown>, read: PhotoReadEx
   if (typeof fields.whiteFrames === 'boolean') facts.whiteFrames = fields.whiteFrames;
   if (TEXT_CUES.stuccoGround.test(text)) facts.stone = 'ground';
   else if (TEXT_CUES.plinth.test(text)) facts.stone = 'plinth';
-  if (TEXT_CUES.pilasters.test(text)) facts.pilasters = 'corners';
+  // Pilasters in the wall's own dark brick are no white corner strips (Herengracht 84: "dark-painted brick pilasters").
+  if (TEXT_CUES.pilasters.test(text.replace(DARK_PILASTERS, ''))) facts.pilasters = 'corners';
   if (typeof read.wallHex === 'string' && /^#[0-9a-f]{6}$/i.test(read.wallHex)) facts.wallHex = read.wallHex.toLowerCase();
   if (typeof fields.cornice === 'string' && CORNICES.has(fields.cornice) && !isGable) facts.cornice = fields.cornice as PlotFacts['cornice'];
   // The door: its place among the ground-storey openings (the read counts doors and windows from the left).

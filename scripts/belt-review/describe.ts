@@ -243,6 +243,26 @@ for (const p of pands) {
   });
 }
 
+// Split houses (`<pand>#n`, picks.json houses) read on their own crop (read-house.ts keys them so): each is described alone,
+// from its own read plus what holds for the whole pand (the survey's eaves, the register's year). The pand's other
+// sources (specs, face intents, D1 reads) describe the pand as one front, so they do not speak for a half of it.
+const houses: PandDescription[] = [];
+for (const [key, hr] of Object.entries(houseReads)) {
+  const m = /^(\d{16})#(\d{1,2})$/.exec(key), base = m ? pands.find(p => p.pandId === m[1]) : undefined;
+  if (!m || !base || !hr?.answer) continue;
+  const cands: FieldCandidate[] = [], baseFields = out.find(d => d.pandId === base.pandId)?.fields ?? {};
+  // The pand's measured eaves and its dated year, as its own entry states them.
+  for (const f of ['eavesM', 'facadeYear'] as const) { const v = baseFields[f]; if (v && (v.source === 'survey' || v.source === 'register')) cands.push({ field: f, value: v.value, source: v.source, confidence: v.confidence, ref: `${v.ref} (the pand's)` }); }
+  cands.push(...candidatesFromHouseRead(hr.answer, `photo-read ${hr.model} ${hr.at.slice(0, 10)} crop ${hr.candidateId} (split house ${key})`).filter(c => c.field !== 'facadeYear' || !cands.some(o => o.field === 'facadeYear')));
+  const extras = readExtras(hr.answer), fields = pickFields(cands);
+  houses.push({
+    pandId: key, address: (hr as { address?: string }).address ?? `${base.address} (${m[2]})`, order: base.order, fields, missing: DESC_FIELDS.filter(f => !fields[f]),
+    group: { unit: { id: key, source: 'single', faceMembers: [key] } }, kitCannotDraw: kitCannotDraw(base.pandId, fields, gaps),
+    ...(extras ? { photoRead: { ...extras, candidateId: hr.candidateId } } : {}), specParts: [], counts: countFields([fields]),
+  });
+}
+houses.sort((a, b) => a.order - b.order || a.pandId.localeCompare(b.pandId));
+
 const counts = countFields(out.map(d => d.fields));
 const byField = Object.fromEntries(DESC_FIELDS.map(f => [f, {
   library: out.filter(d => d.fields[f] && LIBRARY_SOURCES.has(d.fields[f]!.source)).length,
@@ -256,6 +276,7 @@ const file = {
     pandsWithKitGaps: out.filter(d => d.kitCannotDraw.length).length, ordekaartUnits: new Set(out.filter(d => d.group.unit.source === 'ordekaart').map(d => d.group.unit.id)).size,
     multiPandUnits: new Set(out.filter(d => d.group.unit.faceMembers.length > 1).map(d => d.group.unit.id)).size },
   pands: out,
+  ...(houses.length ? { houses } : {}),
 };
 console.log(JSON.stringify({ faceId, ...file.counts, byField: undefined }, null, 1));
 console.log('per field (library/newRead): ' + DESC_FIELDS.map(f => `${f} ${byField[f].library}/${byField[f].newRead}`).join(', '));

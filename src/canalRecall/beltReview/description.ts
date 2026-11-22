@@ -40,7 +40,12 @@ export const SOURCE_CONFIDENCE: Readonly<Record<DescSource, number>> = {
 };
 
 /** One statement of one field by one source. */
-export interface FieldCandidate { field: DescField; value: unknown; source: DescSource; confidence: number; ref: string }
+export interface FieldCandidate {
+  field: DescField; value: unknown; source: DescSource; confidence: number; ref: string;
+  /** Ranks just above this source (still labelled `source`): a photo read's storey count its own measured profile
+   *  confirms outranks an older strip count (face-intent), not a reviewed one. */
+  outranks?: DescSource;
+}
 /** A field as the description shows it: the winning statement, and what else was said (for the review page). */
 export interface DescFieldValue {
   value: unknown;
@@ -219,7 +224,8 @@ export function pickFields(cands: readonly FieldCandidate[]): Partial<Record<Des
   for (const field of DESC_FIELDS) {
     const list = by.get(field);
     if (!list?.length) continue;
-    const sorted = list.map((c, i) => ({ c, i })).sort((x, y) => (RANK.get(y.c.source)! - RANK.get(x.c.source)!) || (y.c.confidence - x.c.confidence) || (x.i - y.i)).map(x => x.c);
+    const rank = (c: FieldCandidate) => c.outranks ? RANK.get(c.outranks)! + 0.5 : RANK.get(c.source)!;
+    const sorted = list.map((c, i) => ({ c, i })).sort((x, y) => (rank(y.c) - rank(x.c)) || (y.c.confidence - x.c.confidence) || (x.i - y.i)).map(x => x.c);
     const w = sorted[0];
     const agree = [...new Set(sorted.slice(1).filter(c => same(c.value, w.value)).map(c => c.source))];
     const others = sorted.slice(1).filter(c => !same(c.value, w.value)).map(c => ({ value: c.value, source: c.source, ref: c.ref }));
