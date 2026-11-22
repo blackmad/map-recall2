@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T11:32:02.808Z",
+ "generatedAt": "2026-11-22T12:42:45.749Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -108690,10 +108690,10 @@
    "id": "chunk-face-hooft-80-112",
    "category": "street-survey",
    "name": "face-hooft-80-112",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-80-112.glb?asset=cfee9a5467b2b1f1",
-   "sha256": "cfee9a5467b2b1f1453be9c57047da0f52a7af1775a48cd137420fc8b071d5b4",
-   "bytes": 649740,
-   "triangles": 26796,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hooft-80-112.glb?asset=5331b689f7661ec6",
+   "sha256": "5331b689f7661ec6afba54cce5d309ca8e6443b783a50a99c7349af7df7aa605",
+   "bytes": 645904,
+   "triangles": 26580,
    "primitives": 80,
    "instance": {
     "anchor": [
@@ -109241,7 +109241,7 @@
      "triangles": 1297,
      "ranges": [
       {
-       "primitive": 10,
+       "primitive": 8,
        "firstTriangle": 0,
        "triangleCount": 76
       },
@@ -109499,7 +109499,7 @@
      "triangles": 1682,
      "ranges": [
       {
-       "primitive": 8,
+       "primitive": 6,
        "firstTriangle": 0,
        "triangleCount": 103
       },
@@ -109590,7 +109590,7 @@
      "triangles": 1397,
      "ranges": [
       {
-       "primitive": 11,
+       "primitive": 10,
        "firstTriangle": 0,
        "triangleCount": 80
       },
@@ -109681,7 +109681,7 @@
      "triangles": 1836,
      "ranges": [
       {
-       "primitive": 6,
+       "primitive": 9,
        "firstTriangle": 0,
        "triangleCount": 99
       },
@@ -109782,7 +109782,7 @@
      "triangles": 2997,
      "ranges": [
       {
-       "primitive": 9,
+       "primitive": 12,
        "firstTriangle": 0,
        "triangleCount": 425
       },
@@ -109873,7 +109873,7 @@
      "triangles": 2278,
      "ranges": [
       {
-       "primitive": 12,
+       "primitive": 11,
        "firstTriangle": 0,
        "triangleCount": 111
       },
@@ -110032,17 +110032,17 @@
        1.143
       ]
      },
-     "triangles": 2377,
+     "triangles": 2161,
      "ranges": [
       {
-       "primitive": 3,
+       "primitive": 2,
        "firstTriangle": 0,
        "triangleCount": 173
       },
       {
        "primitive": 13,
        "firstTriangle": 0,
-       "triangleCount": 456
+       "triangleCount": 240
       },
       {
        "primitive": 24,
@@ -110293,7 +110293,7 @@
      "triangles": 2045,
      "ranges": [
       {
-       "primitive": 2,
+       "primitive": 3,
        "firstTriangle": 0,
        "triangleCount": 175
       },

@@ -654,8 +654,11 @@ export interface FrontIntent {
    * block): a second paint `breadth` metres wide centred on grid `axis`, 1 cm proud of the painted storeys, from the floor
    * of storey `fromStorey` (default the first listed storey, plus `from`) to 2 cm under the eaves, cut around the openings
    * like them, in its own measured `colour`. Absent = byte-identical.
+   * `axes` [first, last] (PC Hooftstraat 86, two houses on one pand: white stucco over the left three axes, brick on the
+   * right three): only those grid axes (viewer-left, inclusive) are painted, bay edge to bay edge (the front's ends at the
+   * first/last axis); the other bays keep the brick. Absent = the whole width, byte-identical.
    */
-  paintedStoreys?: {storeys: number[]; colour: string; from?: number; panels?: PaintedPanel[]};
+  paintedStoreys?: {storeys: number[]; colour: string; from?: number; panels?: PaintedPanel[]; axes?: [number, number]};
   /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
@@ -2329,7 +2332,9 @@ export const PAINTED_PANEL_BREADTH = [0.3, 4] as const;
 /** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
   const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
-  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from', 'panels'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?} (and panels?)`];
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from', 'panels', 'axes'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?} (and panels?, axes?)`];
+  const axes = (ps as {axes?: unknown}).axes;
+  if (axes !== undefined) { const grid = frontGrid(f); if (!Array.isArray(axes) || axes.length !== 2 || !axes.every(a => Number.isInteger(a) && a >= 0 && a < grid) || axes[0] > axes[1] || (axes[0] === 0 && axes[1] === grid - 1)) p.push(`${at}.paintedStoreys.axes: [first, last] grid axes within 0..${grid - 1}, not the whole front`); }
   const panels = (ps as {panels?: unknown}).panels;
   if (panels !== undefined) {
     const grid = frontGrid(f);

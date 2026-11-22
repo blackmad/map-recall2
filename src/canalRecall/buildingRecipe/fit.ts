@@ -1186,7 +1186,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     elevation.bands.value.push(...lintelBands);
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinthBand), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinthBand - 0.02), depthM: 0.03, surface: 'wall'});
     // Storeys painted in a second colour (`paintedStoreys`): a wall facing per storey, recoloured and marked measured in oudWest.ts.
-    if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves));
+    if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves, flipX));
     // Its panels (`paintedStoreys.panels`): a second paint on a grid axis, 1 cm proud of the painted storeys.
     if (front.paintedStoreys?.panels) elevation.bands.value.push(...paintedPanelBlocks(front, layout, width, eaves, flipX));
     // Horizontal brick stripes (`brickStripes`, brickStripes.ts): band-brick facings the library cuts around the openings.
@@ -1422,17 +1422,22 @@ export const paintedStoreyId = (s: number) => `painted-storey-s${s}`;
 
 /**
  * Painted storeys (`paintedStoreys`): each listed storey whole, floor to next floor (the top storey to 2 cm under the
- * eaves), as a wall facing the library cuts around the openings. Facade x; the whole front width.
+ * eaves), as a wall facing the library cuts around the openings. Facade x; the whole front width, or the bays of
+ * `axes` only (PC Hooftstraat 86: one pand of two houses, the left three axes white stucco over the right three in brick).
  */
-function paintedStoreyBands(front: FrontIntent, layout: Layout, width: number, eaves: number): CanalhouseFacadeBlock[] {
+function paintedStoreyBands(front: FrontIntent, layout: Layout, width: number, eaves: number, flipX: (x: number, w: number) => number): CanalhouseFacadeBlock[] {
   const heights = layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0), full = Math.floor(width * 1000) / 1000;
+  // `axes` [first, last]: only those grid axes are painted, from the bay edge before the first to the bay edge after
+  // the last (the front's ends at the first and last axis); viewer-left numbering, mirrored into facade x like the panels.
+  const axes = front.paintedStoreys!.axes, edges = layout.bayEdges;
+  const span = axes ? (() => { const l = axes[0] === 0 ? 0 : edges[axes[0]], r = axes[1] + 1 >= edges.length - 1 ? width : edges[axes[1] + 1], w = Math.floor((r - l) * 1000) / 1000; return {leftM: round(flipX(l, w)), widthM: w}; })() : {leftM: 0, widthM: full};
   let acc = layout.groundBase;
   const bottoms = heights.map(h => { const b = acc; acc += h; return b; });
   return front.paintedStoreys!.storeys.filter(s => s < heights.length).map(s => {
     // `from`: brick under the paint (the paint starts at the window sills).
     const lift = front.paintedStoreys!.from ?? 0;
     const bottom = (s === 0 ? Math.max(bottoms[0], 0.3) : bottoms[s]) + lift, top = Math.min(bottoms[s] + heights[s], eaves - 0.02);
-    return {id: paintedStoreyId(s), leftM: 0, bottomM: round(bottom), widthM: full, heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M, surface: 'wall' as const};
+    return {id: paintedStoreyId(s), leftM: span.leftM, bottomM: round(bottom), widthM: span.widthM, heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M, surface: 'wall' as const};
   }).filter(b => b.heightM > 0.1);
 }
 
