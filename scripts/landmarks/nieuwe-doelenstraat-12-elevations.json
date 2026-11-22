@@ -1,0 +1,104 @@
+{
+  "id": "nieuwe-doelenstraat-12",
+  "countedBy": "lane landmarks-r13-d-20261122 from the rectified panoramas (all-walls.ts, 50 px/m) TMX7316010203-000354_pano_0001_001510 (2017, Binnen-Amstel risalit), TMX7316010203-001975_pano_0000_001284 (2021, Binnen-Amstel side bays) and TMX7316010203-000717_pano_0000_000476 (2018, Nieuwe Doelenstraat); not yet blind-counted. Glazing only, bottom row first: the risalit's base storey shows six small grilled windows in three pairs; the street entrance door is not an opening; the mansard dormers are the top row. On the side bays the mansard dormer stands centred between the two window axes (a third axis), and the crop is cut by the neighbour wall on the left and the risalit on the right, with the balcony bracket and terrace on one side only, so it is not counted as mirror symmetric. The street dormer's two arched lights stand about 0.23 m apart and read as one opening under the ribbon rule (top row 3). The risalit crop runs from the water (camera 2017, base -1.72 m) to 20.66 m, which is the height compared. The street front is mirror symmetric above the ground storey about the central stone dormer, whose paired lights (one opening) are the axis of the dormer row; the entrance breaks the symmetry only in the ground storey.",
+  "facades": [
+    {
+      "name": "Binnen-Amstel risalit (base storey, three storeys, aedicule dormer)",
+      "bearing": 147,
+      "photo": "staging/pand-ref/0363100012180414/w02-147.jpg",
+      "span": [
+        -0.6,
+        8.2
+      ],
+      "rows": [
+        6,
+        3,
+        3,
+        3,
+        2
+      ],
+      "columns": 3,
+      "symmetric": true,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "heightM": [
+        -0.4,
+        20.66
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w02-147.jpg (TMX7316010203-000354_pano_0001_001510, 2017): the sandstone base storey carries its small grilled windows in three pairs, one pair under each bay axis (lights about 0.5 m wide, 0.26 m apart within a pair, 1.6 m between pairs); the pairing is the design, not a missing window",
+          "openings": [
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            },
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            },
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            },
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            },
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            },
+            {
+              "kind": "paired base light",
+              "w": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Binnen-Amstel side bays (arcaded terrace, balcony, dormer)",
+      "bearing": 149,
+      "photo": "staging/pand-ref/0363100012180414/w04-149.jpg",
+      "span": [
+        -5.4,
+        -0.75
+      ],
+      "rows": [
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ]
+    },
+    {
+      "name": "Nieuwe Doelenstraat (1905 front)",
+      "bearing": 329,
+      "photo": "staging/pand-ref/0363100012180414/w01-329.jpg",
+      "rows": [
+        4,
+        5,
+        5,
+        3
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ]
+    }
+  ]
+}

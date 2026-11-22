@@ -81,3 +81,29 @@ test('one colour: first stripe and option checks', () => {
   assert.throws(() => stripedAwning({head, lip: [[0, 0.3]], yHead: 2, drop: 0.3, stripe: 0.5}));
   assert.throws(() => stripedAwning({head, lip: lipFromHead(head, 0.3), yHead: 2, drop: 0, stripe: 0.5}));
 });
+
+test('dome: the quarter-round hood leaves the wall level at the head and meets the lip vertical, stripes over the curve', () => {
+  const head: TO[] = [[0, 0], [1.2, 0]];
+  const r = stripedAwning({head, lip: lipFromHead(head, 0.5), yHead: 7, drop: 0.6, stripe: 0.2, dome: 4, cheeks: true});
+  assert.equal(r.stripes, 6);
+  assert.equal(r.cloth.length, 6 * 4 * 2, 'four quads per stripe, both windings');
+  const pts = r.cloth.flatMap(p => p.pts);
+  assert.ok(Math.abs(Math.max(...pts.map(p => p[1])) - 7) < 1e-9 && Math.abs(Math.min(...pts.map(p => p[1])) - 6.4) < 1e-9);
+  assert.ok(Math.abs(Math.max(...pts.map(p => p[2])) - 0.5) < 1e-9);
+  // first segment: level at the head (rises less than it runs out); last: vertical at the lip (runs out less than it drops)
+  const first = r.cloth[0].pts, last = r.cloth[6].pts;
+  assert.ok(Math.abs(first[3][1] - first[0][1]) < Math.abs(first[3][2] - first[0][2]));
+  assert.ok(Math.abs(last[3][2] - last[0][2]) < Math.abs(last[3][1] - last[0][1]));
+  // the stripe colour stays the same over the curve of one stripe
+  assert.ok(r.cloth.slice(0, 8).every(p => p.stripe === 0));
+  // cheeks: a fan of four alternating triangles per end, all from the centre on the wall at the lip height
+  assert.equal(r.cheeks.length, 2 * 4 * 2);
+  for (const c of r.cheeks) { assert.equal(c.pts.length, 3); assert.ok(c.pts.some(p => p[2] === 0 && Math.abs(p[1] - 6.4) < 1e-9)); }
+  assert.deepEqual(r.cheeks.filter((_, i) => i % 2 === 0).slice(0, 4).map(c => c.stripe), [0, 1, 0, 1]);
+});
+
+test('dome 0 or absent draws the straight cloth unchanged', () => {
+  const head: TO[] = [[0, 0], [1, 0]];
+  const o = {head, lip: lipFromHead(head, 0.4), yHead: 5, drop: 0.4, stripe: 0.25, valance: 0.1, cheeks: true};
+  assert.deepEqual(stripedAwning({...o, dome: 0}), stripedAwning(o));
+});

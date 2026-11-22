@@ -541,6 +541,16 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     brick: {slot: 'brick', measured: '#5e5246', why: 'the dark brown-grey brick of the old yard wall (w03-138, w04-225, w12-130)'},
     gold: {slot: 'door', why: 'weathered brown timber gates and canopy (w04-225, w10-139), not metal'},
   },
+  'hans-en-grietje-spiegelgracht': {
+    slate: {slot: 'roofTile', measured: '#b47c5e', why: 'red-orange pantiles of the hipped roof (w01-191 2023 sunlit crop, median #cc9472 washed out; drawn a step deeper): not slate, and the city pantile range drew r12 tiled roofs bright orange'},
+    red: {slot: 'paint', why: 'palette name only: the red stripes of the canvas markiezen, the flowers and the chef\'s apron, not brick'},
+    pink: {slot: 'paint', why: 'palette name only: the painted face of the cut-out chef'},
+  },
+  'nieuwe-doelenstraat-12': {
+    greyBrick: {slot: 'slate', why: 'palette name only: the slate-hung cheeks of the two small mansard dormers on the Nieuwe Doelenstraat (w01-329, 2018 crop), not brick'},
+    bronze: {slot: 'paint', why: 'palette name only: the black painted cast-iron balcony and its brackets (w04-149, 2021)'},
+    sandstone: {slot: 'stone', why: 'carved sandstone rosettes, tympana, corbels and dormer pilasters (w02-147, 2017), not buff brick'},
+  },
   'de-coenen-coenenstraat': {
     sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
   },

@@ -553,6 +553,8 @@ import {buildDeCoenenCoenenstraat} from './de-coenen-coenenstraat-builder';
 import {buildOlympusHygieaplein} from './olympus-hygieaplein-builder';
 import {buildKrakelingPasseerdersstraat} from './krakeling-passeerdersstraat-builder';
 import {buildWitteBoeiWittenburg} from './witte-boei-wittenburg-builder';
+import {buildHansEnGrietjeSpiegelgracht} from './hans-en-grietje-spiegelgracht-builder';
+import {buildNieuweDoelenstraat12} from './nieuwe-doelenstraat-12-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
 import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
 import {buildJungleSwindenstraat} from './jungle-swindenstraat-builder';
@@ -1300,6 +1302,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='olympus-hygieaplein')buildOlympusHygieaplein(w,d,helpers);
     else if(id==='krakeling-passeerdersstraat')buildKrakelingPasseerdersstraat(w,d,helpers);
     else if(id==='witte-boei-wittenburg')buildWitteBoeiWittenburg(w,d,helpers);
+    else if(id==='hans-en-grietje-spiegelgracht')buildHansEnGrietjeSpiegelgracht(w,d,helpers);
+    else if(id==='nieuwe-doelenstraat-12')buildNieuweDoelenstraat12(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else if(id==='jungle-swindenstraat')buildJungleSwindenstraat(w,d,helpers);
