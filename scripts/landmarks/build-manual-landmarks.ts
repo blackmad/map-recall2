@@ -1304,7 +1304,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   if(external){built.pop();externals.push(id);console.log(id,'no in-driver builder; GLB kept from its own pipeline');continue;}
   // Installed statue reconstructions (installed-figures.ts): the kit figure is swapped for the user-picked TRELLIS.2/TripoSR mesh.
   {const swap=await applyInstalledFigures(id,parts);if(swap)console.log(id,'installed figures',JSON.stringify(swap));}
-  {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
+  // Keep the lod1 and lod2 records (lod2 was dropped here until 2026-11-22: a full rebuild erased 537 lod2 entries);
+  // build:landmark-lods / check:landmark-lods catch either going stale.
+  {const prev=manifest.models[id];manifest.models[id]=await save(id);if(prev?.lod1)manifest.models[id].lod1=prev.lod1;if(prev?.lod2)manifest.models[id].lod2=prev.lod2;}
 }
 // Record the source hash of every model this run built; skipped models already match. Models outside this run keep their recorded hash.
 {

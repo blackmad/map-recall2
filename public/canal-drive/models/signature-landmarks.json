@@ -51296,18 +51296,18 @@
         "depthCoverage": 1.0029711042131697
       },
       "triangles": 12308,
-      "bytes": 191084,
+      "bytes": 191148,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f0b34170920942b6",
+        "sourceHash": "c34fc876ce56972f",
         "buildVersion": 2,
-        "bytes": 72364,
+        "bytes": 72348,
         "triangles": 3634
       },
       "lod2": {
-        "sourceHash": "f0b34170920942b6",
+        "sourceHash": "c34fc876ce56972f",
         "buildVersion": 6,
-        "bytes": 31324,
+        "bytes": 31336,
         "triangles": 1480
       }
     },
@@ -54648,18 +54648,18 @@
         "depthCoverage": 0.7349262297528345
       },
       "triangles": 33908,
-      "bytes": 496288,
+      "bytes": 496368,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "62bb1f9ad28b4c9b",
+        "sourceHash": "06f3e2bbcd59afb5",
         "buildVersion": 2,
-        "bytes": 126200,
+        "bytes": 126208,
         "triangles": 7337
       },
       "lod2": {
-        "sourceHash": "62bb1f9ad28b4c9b",
+        "sourceHash": "06f3e2bbcd59afb5",
         "buildVersion": 6,
-        "bytes": 33160,
+        "bytes": 33100,
         "triangles": 1499
       }
     },
@@ -56863,18 +56863,18 @@
         "depthCoverage": 1.0127489404244856
       },
       "triangles": 16994,
-      "bytes": 250884,
+      "bytes": 250892,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "3a3caa031f218cde",
+        "sourceHash": "611acd0841ca7146",
         "buildVersion": 2,
-        "bytes": 65920,
+        "bytes": 65924,
         "triangles": 3373
       },
       "lod2": {
-        "sourceHash": "3a3caa031f218cde",
+        "sourceHash": "611acd0841ca7146",
         "buildVersion": 6,
-        "bytes": 31756,
+        "bytes": 31764,
         "triangles": 1499
       }
     },
@@ -57000,16 +57000,16 @@
         "depthCoverage": 1.022002303993309
       },
       "triangles": 4913,
-      "bytes": 84880,
+      "bytes": 84892,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "edbf5280bf75e26d",
+        "sourceHash": "9fcfdd196f05f8de",
         "buildVersion": 2,
-        "bytes": 37028,
+        "bytes": 37036,
         "triangles": 1430
       },
       "lod2": {
-        "sourceHash": "edbf5280bf75e26d",
+        "sourceHash": "9fcfdd196f05f8de",
         "buildVersion": 6,
         "bytes": 19160,
         "triangles": 813
@@ -113579,10 +113579,10 @@
       },
       "bagYear": 2012,
       "materialOverrides": {
-        "glass": "#a7b9bf",
+        "glass": "#b3c4ce",
         "concrete": "#9a9a96",
         "dark": "#3c4650",
-        "frame": "#43494e",
+        "frame": "#5f676d",
         "stone": "#8a8884"
       },
       "attribution": {
@@ -113641,14 +113641,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -24.397537231445312,
-          -8.687233048476628e-7,
+          -24.368642807006836,
+          -7.675306505916524e-7,
           -35.970001220703125
         ],
         "max": [
-          37.129520416259766,
+          37.12099838256836,
           43.70800018310547,
-          44.25775146484375
+          44.21992111206055
         ]
       },
       "placement": {
@@ -113662,27 +113662,27 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 80.22775268554688,
-        "heightMetres": 43.708001051828774,
-        "depthMetres": 61.52705764770508,
-        "depthCoverage": 1.000439961751302
+        "widthMetres": 80.18992233276367,
+        "heightMetres": 43.70800095063612,
+        "depthMetres": 61.489641189575195,
+        "depthCoverage": 0.9998315640581332
       },
-      "triangles": 9358,
-      "bytes": 142316,
+      "triangles": 6706,
+      "bytes": 102452,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "3d1249a24a77dfed",
+        "sourceHash": "2cff2362ca96b98b",
         "buildVersion": 2,
-        "bytes": 28564,
+        "bytes": 28592,
         "triangles": 1182
       },
-      "held": true,
       "lod2": {
-        "sourceHash": "3d1249a24a77dfed",
+        "sourceHash": "2cff2362ca96b98b",
         "buildVersion": 6,
-        "bytes": 6012,
+        "bytes": 6040,
         "triangles": 133
-      }
+      },
+      "held": true
     },
     "schutterstoren": {
       "id": "schutterstoren",
@@ -120880,18 +120880,18 @@
         "depthCoverage": 0.9632797511118764
       },
       "triangles": 20326,
-      "bytes": 278292,
+      "bytes": 278260,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "c29cbd603ef9cc9e",
+        "sourceHash": "f8aad2537ef68d7e",
         "buildVersion": 2,
-        "bytes": 142428,
+        "bytes": 142400,
         "triangles": 9041
       },
       "lod2": {
-        "sourceHash": "c29cbd603ef9cc9e",
+        "sourceHash": "f8aad2537ef68d7e",
         "buildVersion": 6,
-        "bytes": 32584,
+        "bytes": 32556,
         "triangles": 1498
       }
     },
