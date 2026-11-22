@@ -32,6 +32,9 @@ export const ordinarySpecFor = (m: Entry): SignatureModelSpec => ({
 /** Catalogue installs whose pand a bespoke landmark model already draws: the landmark wins and the install is not drawn
  * (both drew on the same ground). Keyed by ordinary id, valued by the landmark id; modelOverlap.test.ts pins each pair. */
 export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
+  // Klapmutsenveem 30-62 (large recipe, mostly blank sides): the hand landmark (lane hand-blocks-c-20261122) draws the
+  // arcade warehouses and pilaster blocks of the 192 m quay front over all three 3DBAG parts.
+  'ordinary-0363100012239388': 'klapmutsenveem-30',
   // Westerdoksdijk 215-421 / Westerdok 536 (2026-10-14 large recipe, one front class per wall): the hand landmark
   // (lane hand-blocks-a-20261121, block-sized triage rank 8) draws the five fronts of the multi-architect Westerdok block.
   'ordinary-0363100012186086': 'westerdoksdijk-215',

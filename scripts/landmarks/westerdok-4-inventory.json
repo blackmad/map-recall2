@@ -1,0 +1,515 @@
+{
+ "schemaVersion": 1,
+ "id": "westerdok-4",
+ "pand": "0363100012184746",
+ "brief": "scripts/landmarks/westerdok-4-brief.md",
+ "signature": [
+  "w-cantilever-balconies",
+  "w-white-frames",
+  "s-balcony-stacks",
+  "w-punched-front",
+  "n-towers"
+ ],
+ "walls": [
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 112.3,
+   "centre": [
+    4.8915414,
+    52.3838465
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_10-16-05_00155",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-cantilever-balconies",
+     "kind": "balcony-ironwork",
+     "where": "the staggered lattice of 15 deep cantilevered balconies over the long Westerdok front: timber soffits, steel and glass rails, a dark brick-clad box at each outer end, about 6 m out",
+     "approxSizeM": [
+      22,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00155",
+     "how": "timber deck slabs 6.4 m out, glass side rails, a dark box at the end, on the measured lattice (three columns per row, alternate rows offset)"
+    },
+    {
+     "id": "w-white-frames",
+     "kind": "window-shape",
+     "where": "the middle tower and the low wing beside it: windows set in white concrete frames, two per storey, glazed shopfronts below",
+     "approxSizeM": [
+      28,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00155",
+     "how": "openings with a 24 cm white frame and a white mullion"
+    },
+    {
+     "id": "w-punched-front",
+     "kind": "window-shape",
+     "where": "the long front: small punched windows with white sills on a 1.8 m pitch, one column of wide windows",
+     "approxSizeM": [
+      54,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00155",
+     "how": "one opening per column and storey with a white sill"
+    },
+    {
+     "id": "w-ground",
+     "kind": "other",
+     "where": "the ground of the long front: a recessed glazed lobby with a white column, a dark garage mouth, four light grey garage doors",
+     "approxSizeM": [
+      50,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00155",
+     "how": "recesses, a column and door openings"
+    },
+    {
+     "id": "w-tower-north",
+     "kind": "window-shape",
+     "where": "the north tower: four columns of wide windows over tall white-framed ground windows",
+     "approxSizeM": [
+      15,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00155",
+     "how": "openings with mullions"
+    }
+   ]
+  },
+  {
+   "tag": "w02-5",
+   "bearing": 5,
+   "lengthM": 79.3,
+   "centre": [
+    4.8921829,
+    52.3843236
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_10-16-05_00135",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-towers",
+     "kind": "window-shape",
+     "where": "two towers (three and five window columns) over a two-storey wing with a row of shop windows",
+     "approxSizeM": [
+      79,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_10-16-05_00135",
+     "how": "measured columns and rows per segment"
+    },
+    {
+     "id": "n-bridge-tower",
+     "kind": "other",
+     "where": "behind the wing, the bridge tower with its dark soffit over the court entrance",
+     "approxSizeM": [
+      22,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_10-16-05_00135",
+     "how": "the 3DBAG shell massing with the inferred grid; the soffit in the roof colour"
+    }
+   ]
+  },
+  {
+   "tag": "w03-5",
+   "bearing": 5,
+   "lengthM": 68,
+   "centre": [
+    4.8921846,
+    52.3838015
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-185",
+   "bearing": 185,
+   "lengthM": 48.6,
+   "centre": [
+    4.892431,
+    52.3838506
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-166",
+   "bearing": 166,
+   "lengthM": 39,
+   "centre": [
+    4.8925269,
+    52.3835106
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001899_pano_0000_000350",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-balcony-stacks",
+     "kind": "balcony-ironwork",
+     "where": "four stacks of brick-clad balcony boxes with dark soffits over the south front",
+     "approxSizeM": [
+      33,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001899_pano_0000_000350",
+     "how": "a dark slab and a solid brick parapet box 1.8 m out per balcony"
+    },
+    {
+     "id": "s-void",
+     "kind": "colonnade",
+     "where": "a two-storey void under the west part of the south tower, two columns",
+     "approxSizeM": [
+      15,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001899_pano_0000_000350",
+     "how": "a 6 m deep dark recess and two white columns"
+    }
+   ]
+  },
+  {
+   "tag": "w06-166",
+   "bearing": 166,
+   "lengthM": 38.2,
+   "centre": [
+    4.8917516,
+    52.3833865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001074_pano_0000_000426",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-awning",
+     "kind": "canopy",
+     "where": "a long black caf\u00e9 awning along the ground of the south-west tower",
+     "approxSizeM": [
+      36,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001074_pano_0000_000426",
+     "how": "a boxed band 1.8 m out"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "narrow and wide windows with grey sill panels in a fixed rhythm",
+     "approxSizeM": [
+      25,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001074_pano_0000_000426",
+     "how": "openings with a bar at the panel line"
+    },
+    {
+     "id": "s-steel-balconies",
+     "kind": "balcony-ironwork",
+     "where": "open steel balconies stacked on the step between the tower and the low wing",
+     "approxSizeM": [
+      3,
+      9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001074_pano_0000_000426",
+     "skip": {
+      "reason": "not-visible",
+      "note": "on the set-back side wall, hidden from the quay at ride height by the tower"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-185",
+   "bearing": 185,
+   "lengthM": 26,
+   "centre": [
+    4.8918926,
+    52.3839398
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-81",
+   "bearing": 81,
+   "lengthM": 24.5,
+   "centre": [
+    4.8927731,
+    52.3836632
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_01786",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_01786",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w09-96",
+   "bearing": 96,
+   "lengthM": 23.4,
+   "centre": [
+    4.8927452,
+    52.3841925
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02277",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_02277",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w10-185",
+   "bearing": 185,
+   "lengthM": 15.1,
+   "centre": [
+    4.8921296,
+    52.3833922
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_001989",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_001989",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w11-95",
+   "bearing": 95,
+   "lengthM": 15.1,
+   "centre": [
+    4.8927953,
+    52.383902
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_001819",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_001819",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w12-95",
+   "bearing": 95,
+   "lengthM": 13.9,
+   "centre": [
+    4.8916943,
+    52.3838862
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-92",
+   "bearing": 92,
+   "lengthM": 12.8,
+   "centre": [
+    4.892725,
+    52.3840304
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0001_002884",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002050_pano_0001_002884",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w14-95",
+   "bearing": 95,
+   "lengthM": 8.8,
+   "centre": [
+    4.8922453,
+    52.3834268
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_001995",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_001995",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w15-275",
+   "bearing": 275,
+   "lengthM": 7.2,
+   "centre": [
+    4.8920792,
+    52.3838991
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-4",
+   "bearing": 4,
+   "lengthM": 5.5,
+   "centre": [
+    4.8927634,
+    52.3839713
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02277",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w16-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_02277",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  },
+  {
+   "tag": "w17-4",
+   "bearing": 4,
+   "lengthM": 4.1,
+   "centre": [
+    4.8927123,
+    52.3837728
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02282",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-grid",
+     "kind": "window-shape",
+     "where": "short end and court-entrance walls: dark brick with window grids, glazed ground floors; the white underside of the bridge tower above the court entrance (w10, w11)",
+     "approxSizeM": [
+      20,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_02282",
+     "how": "inferred grid on the shell wall"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

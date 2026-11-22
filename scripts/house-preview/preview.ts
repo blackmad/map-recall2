@@ -71,6 +71,9 @@ Flags
   --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
                       (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
                       game draws today: the after frame of a chunk change before the integrator installs it
+  --pose <lng,lat,heading,fov[,pitch]>  add a perspective from a street pose (pose.png, 800x800): eye 1.7 m over the drawn
+                      ground at lng/lat, heading degrees clockwise from north, field of view, pitch up (a panorama's
+                      aimed thumbnail pose, so a render can sit beside the photo the brief cropped)
   --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
@@ -133,7 +136,7 @@ in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium)
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; /** F1: generic chunks on the record shader's CPU twin. */ shaderFacades?: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; /** F1: generic chunks on the record shader's CPU twin. */ shaderFacades?: boolean; glbLit: boolean; photo: boolean; threeq: boolean; pose?: number[]; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, preferCrop: false, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -143,6 +146,7 @@ export function parseArgs(argv: string[]): Args {
       case '--help': case '-h': a.help = true; break;
       case '--photo': a.photo = true; break;
       case '--threeq': a.threeq = true; break;
+      case '--pose': a.pose = value().split(',').map(Number); break;
       case '--unlit': a.unlit = true; break;
       case '--shader-facades': a.shaderFacades = true; break;
       case '--glb-lit': a.glbLit = true; break;
@@ -579,6 +583,12 @@ function groundRgb(light: LitShading | undefined): Vec3 {
 }
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.floor(s.length / 2)] : 0; };
 export const THREEQ_FOV_DEG = 20;
+/** A street pose (lng, lat, heading, fov, pitch) as a perspective view 1.7 m over `groundZ`. */
+function poseView(pose: number[], groundZ: number) {
+  const [lng, lat, heading, fov, pitch = 0] = pose, [ex, ny] = chunkMetres(lng, lat), h = heading * Math.PI / 180, p = pitch * Math.PI / 180;
+  const eye: Vec3 = [ex, ny, groundZ + 1.7];
+  return { kind: 'perspective' as const, eye, target: [ex + Math.sin(h) * Math.cos(p) * 10, ny + Math.cos(h) * Math.cos(p) * 10, eye[2] + Math.sin(p) * 10] as Vec3, fovDeg: fov, width: 800, height: 800, near: 0.3 };
+}
 function threeqView(frame: ReturnType<typeof wallFrame>, top: number, groundZ: number) {
   const mid: Vec3 = [frame.origin[0] + frame.right[0] * frame.len / 2, frame.origin[1] + frame.right[1] * frame.len / 2, groundZ + top * 0.45];
   const size = Math.max(frame.len * 1.6, top) * 1.25, dist = size / 2 / Math.tan(THREEQ_FOV_DEG / 2 * Math.PI / 180), yaw = 38 * Math.PI / 180;
@@ -713,6 +723,11 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
     await png(threeq, files[files.length - 1]);
     tm.mark('threeq');
   }
+  if (args.pose) {
+    files.push(path.join(out, 'pose.png'));
+    // the pand alone, as the GLB route draws its model alone
+    await png(rasterise(mesh, atlas, poseView(args.pose, groundZ), { supersample: 2, background: SKY, lit, keep: v => inOwn[v] === 1, ground: { z: groundZ, rgb: groundRgb(lit) } }), files[files.length - 1]);
+  }
   // Measurement on the wall below the eaves, with storey lines from the pand's own heights.
   const p = own.properties, eaves = Math.min(top, wallTopHeightM(p));
   return finish({
@@ -796,6 +811,10 @@ async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, a
     files.push(path.join(out, 'threeq.png'));
     await png(threeq, files[files.length - 1]);
     tm.mark('threeq');
+  }
+  if (args.pose) {
+    files.push(path.join(out, 'pose.png'));
+    await png(rasterise(mesh, FLAT_ATLAS, poseView(args.pose, groundZ), { supersample: 2, background: SKY, lit, twoSided: true, ground: { z: groundZ, rgb: groundRgb(lit) } }), files[files.length - 1]);
   }
   const eaves = Math.min(top, job.eavesHint || wallTopHeightM(own.properties) || top);
   return finish({ pandId, route: job.route, why: job.why, args, out, files, front, top, eaves, lines: storeyLines(eaves, Number(own.properties.groundFloorHeightM) || 3.2), frameLen: frame.len, wall, tm, label: job.label, shader: args.unlit || !args.glbLit ? 'GLB flat game colours' : 'GLB, rig Lambert on game colours', measure: { tile, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2), ...job.measure } });
