@@ -34,7 +34,9 @@ test('Herengracht 2-4: tile roof on the 12.75 m cornice, one hoist dormer, stucc
   assert.equal(p.eavesM, 12.75);
   assert.equal(p.gable, null, 'a cornice front: no gable');
   assert.deepEqual({ roof: p.facts.roof, dormers: p.facts.dormers, dormer: p.facts.dormer, hoist: p.facts.hoist, roofMaterial: p.facts.roofMaterial }, { roof: 'dormers', dormers: 1, dormer: 'pediment', hoist: true, roofMaterial: 'tile' });
-  assert.deepEqual({ stone: p.facts.stone, pilasters: p.facts.pilasters, courses: p.facts.stringCourses, heads: p.facts.whiteHeads, cornice: p.facts.cornice }, { stone: 'ground', pilasters: 'corners', courses: true, heads: 'none', cornice: 'frieze' });
+  // Its pilasters are the stucco ground's ("ground storey: white stuccoed pilaster-and-lintel frontage"), not full-height
+  // corner pilasters (belt windows lane, 2026-11-22: the cue skips a ground's, shop's, door's, dormer's or risalit's).
+  assert.deepEqual({ stone: p.facts.stone, pilasters: p.facts.pilasters, courses: p.facts.stringCourses, heads: p.facts.whiteHeads, cornice: p.facts.cornice }, { stone: 'ground', pilasters: undefined, courses: true, heads: 'none', cornice: 'frieze' });
   assert.deepEqual(p.facts.door, { index: 3, of: 4 });
   assert.equal(p.facts.wallHex, '#4e4a4c');
 });
@@ -84,7 +86,8 @@ test('the solo draw: roof storey on the cornice (tile, hoist dormer), white part
     // A read frieze cornice is the timber cornice on modillions over a panelled frieze (2026-11-21).
     assert.deepEqual(p.designCorniceDress, { supports: 'modillions', frieze: 'panels', scale: 1.4 });
     assert.deepEqual(p.designDoor, { index: 3, of: 4 });
-    for (const id of ['string-courses', 'rusticated-plinth', 'corner-pilasters', 'row-cornice', 'white-window-frames']) assert.ok(p.registerForce.includes(id), id);
+    for (const id of ['string-courses', 'rusticated-plinth', 'row-cornice', 'white-window-frames']) assert.ok(p.registerForce.includes(id), id);
+    assert.ok(!p.registerForce.includes('corner-pilasters'), 'the ground\'s pilasters are not the front\'s');
   } finally { delete g.__canalRecallDesignUnits; }
 });
 

@@ -16,7 +16,7 @@ import { continuousShopCanopy } from './shopCanopies.js';
 import { specStoopExtra } from './stoopExtra.js';
 import { fitProjectionFor } from './projectionWindowFit.js';
 import { plotBreakBoxes } from './designUnits/plotBreak.js';
-import { ORNAMENT_COMPONENTS, CREAM, WHITE as ORN_WHITE, shadeHex, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, CREAM, WHITE as ORN_WHITE, shadeHex, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans, soloOpeningJoinery } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
@@ -337,7 +337,7 @@ export function buildingWallExtras(contexts: readonly ExtraContext[], sink: Extr
   // without a row dressing the building budget is unchanged.
   const rowWalls = ordered.filter(({ c }) => (c.rowDress || c.designMember) && isStreetWall(c)).length;
   // Stated joinery (row-sash, round 5) draws every upper window's frame and bars: its walls get that much more.
-  const glazed = ordered.filter(({ c }) => c.rowDress?.glazing && isStreetWall(c)).length * EXTRA_BUDGET.rowGlazing;
+  const glazed = ordered.filter(({ c }) => c.rowDress?.glazing && isStreetWall(c) || c.soloOpenings?.length).length * EXTRA_BUDGET.rowGlazing;
   // A kinked front (Kinkerstraat 126-138: three street walls and a side street) spent the two-wall cap on its first walls,
   // and the gable axes' arch rings on its last wall never drew (round 4): the cap grows with the row walls past two.
   if (rowWalls) sink.budget = Math.max(sink.budget, Math.min(sink.tris.length + rowWalls * EXTRA_BUDGET.rowWall + glazed, EXTRA_BUDGET.building + Math.max(2, rowWalls) * EXTRA_BUDGET.rowWall + glazed));
@@ -421,7 +421,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing || c.soloOpenings?.length ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;
@@ -432,6 +432,13 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     const before = sink.tris.length;
     plotCrown(c, sink);
     if (sink.tris.length > before) { used.push('plot-crown'); groups.add('crown'); }
+  }
+  // Belt windows lane: the measured windows (a solo plot's front run) before any dressing that hangs on them.
+  // Measured openings are set only on the front run's walls, a short jog without a door bay among them (76-78's 1.7 m).
+  if ((phase === 'optional' || phase === 'all') && c.soloOpenings?.length) {
+    const before = sink.tris.length;
+    soloOpeningJoinery(c, sink);
+    if (sink.tris.length > before) used.push('solo-openings');
   }
   // A plot read that saw no balcony: no dice balconette either.
   if (street && c.plotBalconies && !c.plotBalconies.length) groups.add('balcony');

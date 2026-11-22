@@ -116,7 +116,7 @@ export interface PlotFacts {
   /** Belt review crown read: the cornice's parts as read (houseSpec/row/types.ts RowCorniceDress), over the kind's own. */
   corniceForm?: Pick<RowCorniceDress, 'supports' | 'supportsAt' | 'frieze' | 'centre' | 'centreShare' | 'centreRiseM' | 'centreCap' | 'centreLight'
     /* cornice lane: a measured deep cornice, its paint, and the centre's body, shoulders and arc */
-    | 'paint' | 'profile' | 'centreBody' | 'centreShoulders' | 'centreArc'>;
+    | 'paint' | 'profile' | 'centreBody' | 'centreShoulders' | 'centreArc' | 'centreDropM' | 'centreLightM'>;
   /** Belt review, measured on the crop: the cornice zone's depth (m), its foot over the top storey to the cornice's top
    *  (frieze, attic band, bed moulding and corona). The timber cornice is drawn at this depth; absent: the kind's own. */
   corniceDepthM?: number;
@@ -140,6 +140,8 @@ export interface PlotFacts {
   groundFront?: GroundFront;
   /** Belt review: a flat projecting canopy or slab on piers in place of the cornice. */
   flatCrown?: FlatCrown;
+  /** Belt windows lane: the windows as measured on the crop, storey by storey (houseLine/openingGrid.ts). */
+  openings?: import('../houseLine/openingGrid.ts').OpeningGrid;
   /** Where the facts came from: the gate photo rows, the D1 reads, or (roof only) the segment's mirror symmetry. */
   src: 'photo' | 'reads';
   roofSrc?: 'photo' | 'reads' | 'pattern';

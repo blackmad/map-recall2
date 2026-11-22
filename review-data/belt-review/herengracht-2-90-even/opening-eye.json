@@ -1,0 +1,4458 @@
+{
+ "_about": "Belt windows lane, by eye on ruler-gridded zooms of each picked crop (full-resolution px, y down from the crop's top): per storey row the window columns x [x0, x1] and the frame's top and bottom y (outer edge of the frame, sill board included), the panes, head, frame and sash paint. Merged into opening-measures.json by scripts/belt-review/measure-openings.ts --eye.",
+ "Herengracht 90": {
+  "landmarks": {
+   "pavement": 966,
+   "floors": [
+    684,
+    510,
+    376
+   ],
+   "top": 250
+  },
+  "note": "white casings, dark brown sashes; first floor two lights under a two-light transom over two rows, second floor two lights under a transom, top floor 2x2; ground is the shop (not measured)",
+  "rows": [
+   {
+    "storey": 1,
+    "x": [
+     [
+      15,
+      82
+     ],
+     [
+      106,
+      173
+     ],
+     [
+      198,
+      265
+     ]
+    ],
+    "y": [
+     527,
+     651
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2,
+     "transom": 0.26
+    },
+    "frame": "#efece4",
+    "sash": "#3b2c22"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      15,
+      82
+     ],
+     [
+      106,
+      173
+     ],
+     [
+      198,
+      265
+     ]
+    ],
+    "y": [
+     405,
+     500
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.32
+    },
+    "frame": "#efece4",
+    "sash": "#3b2c22"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      15,
+      82
+     ],
+     [
+      107,
+      174
+     ],
+     [
+      199,
+      266
+     ]
+    ],
+    "y": [
+     288,
+     361
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#efece4",
+    "sash": "#3b2c22"
+   }
+  ]
+ },
+ "Herengracht 88": {
+  "landmarks": {
+   "pavement": 855,
+   "floors": [
+    545,
+    335
+   ],
+   "top": 200
+  },
+  "note": "neo-renaissance brick and white stone bands; dark grey frames; ground is the restaurant (awnings), not measured; the gable's attic light is the crown's",
+  "rows": [
+   {
+    "storey": 1,
+    "x": [
+     [
+      35,
+      105
+     ],
+     [
+      140,
+      210
+     ],
+     [
+      248,
+      318
+     ]
+    ],
+    "y": [
+     368,
+     514
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2,
+     "transom": 0.3
+    },
+    "frame": "#3a3d3a"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      40,
+      105
+     ],
+     [
+      143,
+      210
+     ],
+     [
+      250,
+      318
+     ]
+    ],
+    "y": [
+     215,
+     305
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#3a3d3a"
+   }
+  ]
+ },
+ "Herengracht 86": {
+  "landmarks": {
+   "pavement": 1713,
+   "floors": [
+    1091,
+    757
+   ],
+   "top": 433
+  },
+  "note": "bell gable; cream casings with dark sashes; storey 2 has three windows (a narrow open casement left, a wide centre, a narrower right); the ground's windows are the ground front's (panes only)",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      5,
+      100
+     ],
+     [
+      130,
+      245
+     ]
+    ],
+    "y": [
+     1150,
+     1522
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2,
+     "transom": 0.35
+    },
+    "frame": "#2a2c2b"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      28,
+      170
+     ],
+     [
+      250,
+      395
+     ]
+    ],
+    "y": [
+     815,
+     1015
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.33,
+     "topCols": 1
+    },
+    "frame": "#e6e2d8",
+    "sash": "#2b2b2b"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      10,
+      80
+     ],
+     [
+      125,
+      285
+     ],
+     [
+      322,
+      410
+     ]
+    ],
+    "y": [
+     520,
+     710
+    ],
+    "ys": {
+     "0": [
+      505,
+      680
+     ],
+     "2": [
+      527,
+      690
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 2
+      }
+     },
+     "2": {
+      "panes": {
+       "cols": 1,
+       "rows": 1,
+       "transom": 0.25,
+       "topCols": 2
+      }
+     }
+    },
+    "frame": "#e6e2d8",
+    "sash": "#2b2b2b"
+   }
+  ]
+ },
+ "Herengracht 84": {
+  "landmarks": {
+   "pavement": 1785,
+   "floors": [
+    1156,
+    780
+   ],
+   "top": 520
+  },
+  "note": "step gable on dark-painted brick; white frames, small-paned sashes; ground windows tall sashes under a transom",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      10,
+      125
+     ],
+     [
+      185,
+      300
+     ]
+    ],
+    "y": [
+     1215,
+     1592
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 7
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      10,
+      125
+     ],
+     [
+      185,
+      300
+     ],
+     [
+      360,
+      485
+     ]
+    ],
+    "y": [
+     880,
+     1097
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      35,
+      120
+     ],
+     [
+      178,
+      305
+     ],
+     [
+      355,
+      445
+     ]
+    ],
+    "y": [
+     590,
+     750
+    ],
+    "ys": {
+     "1": [
+      620,
+      765
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 3,
+       "rows": 3
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 82": {
+  "note": "stucco front; dark green frames with grey sill boards; ground is the cafe (not measured)",
+  "rows": [
+   {
+    "storey": 1,
+    "x": [
+     [
+      22,
+      83
+     ],
+     [
+      113,
+      175
+     ],
+     [
+      203,
+      266
+     ]
+    ],
+    "y": [
+     590,
+     689
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 4
+    },
+    "frame": "#2f3a33",
+    "surround": "sill"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      25,
+      85
+     ],
+     [
+      115,
+      178
+     ],
+     [
+      205,
+      268
+     ]
+    ],
+    "y": [
+     462,
+     548
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 3
+    },
+    "frame": "#2f3a33",
+    "surround": "sill"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      25,
+      87
+     ],
+     [
+      115,
+      178
+     ],
+     [
+      205,
+      270
+     ]
+    ],
+    "y": [
+     352,
+     432
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 3
+    },
+    "frame": "#2f3a33",
+    "surround": "sill"
+   }
+  ]
+ },
+ "Herengracht 80": {
+  "landmarks": {
+   "pavement": 1730,
+   "floors": [
+    1410,
+    1135,
+    910
+   ],
+   "top": 615
+  },
+  "note": "neck gable over three upper storeys; white frames; side windows two lights wide, the centre three; ground a white timber front with two doors and a wide two-part window",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      182,
+      268
+     ],
+     [
+      288,
+      372
+     ]
+    ],
+    "y": [
+     1455,
+     1712
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 5
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      10,
+      100
+     ],
+     [
+      132,
+      245
+     ],
+     [
+      276,
+      368
+     ]
+    ],
+    "y": [
+     1198,
+     1385
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 3,
+       "rows": 4
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      10,
+      100
+     ],
+     [
+      132,
+      245
+     ],
+     [
+      276,
+      368
+     ]
+    ],
+    "y": [
+     935,
+     1120
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 3,
+       "rows": 4
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      10,
+      98
+     ],
+     [
+      129,
+      239
+     ],
+     [
+      271,
+      361
+     ]
+    ],
+    "y": [
+     720,
+     885
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 76–78": {
+  "landmarks": {
+   "pavement": 1480,
+   "floors": [
+    1035,
+    775
+   ],
+   "top": 520
+  },
+  "note": "a pair of fronts on one pand: 76 (left) two wide windows on the first floor and three on the second, 78 (right) two and three, its floors ~40 px higher (one floor line between them); white frames; the necks' lights are the crowns'",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      136,
+      248
+     ],
+     [
+      264,
+      376
+     ],
+     [
+      583,
+      764
+     ]
+    ],
+    "y": [
+     1076,
+     1340
+    ],
+    "ys": {
+     "2": [
+      1059,
+      1315
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 3,
+     "transom": 0.34
+    },
+    "except": {
+     "2": {
+      "panes": {
+       "cols": 4,
+       "rows": 6
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      8,
+      161
+     ],
+     [
+      213,
+      372
+     ],
+     [
+      442,
+      579
+     ],
+     [
+      636,
+      769
+     ]
+    ],
+    "y": [
+     815,
+     1010
+    ],
+    "ys": {
+     "2": [
+      782,
+      997
+     ],
+     "3": [
+      778,
+      993
+     ]
+    },
+    "panes": {
+     "cols": 3,
+     "rows": 3
+    },
+    "except": {
+     "2": {
+      "panes": {
+       "cols": 4,
+       "rows": 4
+      }
+     },
+     "3": {
+      "panes": {
+       "cols": 4,
+       "rows": 4
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      4,
+      93
+     ],
+     [
+      124,
+      241
+     ],
+     [
+      273,
+      368
+     ],
+     [
+      438,
+      525
+     ],
+     [
+      550,
+      661
+     ],
+     [
+      688,
+      773
+     ]
+    ],
+    "y": [
+     624,
+     744
+    ],
+    "ys": {
+     "1": [
+      620,
+      773
+     ],
+     "3": [
+      570,
+      715
+     ],
+     "4": [
+      570,
+      715
+     ],
+     "5": [
+      570,
+      715
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 74": {
+  "landmarks": {
+   "pavement": 1877,
+   "floors": [
+    1330,
+    915
+   ],
+   "top": 501
+  },
+  "note": "Jugendstil; white T-windows whose transom bar is arched (the kit draws it straight); stone lintels; the right bay is cut by the crop's edge (measured to it)",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      219,
+      438
+     ]
+    ],
+    "y": [
+     1412,
+     1689
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.36
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      99,
+      256
+     ],
+     [
+      313,
+      438
+     ]
+    ],
+    "y": [
+     1011,
+     1266
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#ece9e0",
+    "surround": "stone-lintel"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      90,
+      240
+     ],
+     [
+      303,
+      438
+     ]
+    ],
+    "y": [
+     642,
+     866
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#ece9e0",
+    "surround": "stone-lintel"
+   }
+  ]
+ },
+ "Herengracht 72": {
+  "landmarks": {
+   "pavement": 1086,
+   "floors": [
+    740,
+    530,
+    355
+   ],
+   "top": 240
+  },
+  "note": "dark brown walls in a white stucco grid; white frames; the left bay's windows narrow; ground: one tall window, the door with a light over it (the door's)",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      8,
+      78
+     ]
+    ],
+    "y": [
+     780,
+     966
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 5
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      10,
+      62
+     ],
+     [
+      90,
+      168
+     ]
+    ],
+    "y": [
+     561,
+     701
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.37,
+     "topCols": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      8,
+      58
+     ],
+     [
+      95,
+      165
+     ]
+    ],
+    "y": [
+     384,
+     500
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      8,
+      58
+     ],
+     [
+      92,
+      165
+     ]
+    ],
+    "y": [
+     250,
+     322
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 1
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 70": {
+  "landmarks": {
+   "pavement": 1903,
+   "floors": [
+    1220,
+    880,
+    560
+   ],
+   "top": 270
+  },
+  "note": "Neo-renaissance stucco grid; dark sashes in white stucco frames; ground: the ground front's two tall windows over the street tier (panes only); top storey's openings low under the cartouches",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      32,
+      146
+     ],
+     [
+      177,
+      297
+     ]
+    ],
+    "y": [
+     1324,
+     1641
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.33
+    },
+    "frame": "#2f3230",
+    "surround": "full-frame"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      9,
+      141
+     ],
+     [
+      188,
+      276
+     ]
+    ],
+    "y": [
+     965,
+     1177
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#ece9e0",
+    "surround": "full-frame"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      6,
+      136
+     ],
+     [
+      186,
+      273
+     ]
+    ],
+    "y": [
+     664,
+     823
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.45
+    },
+    "frame": "#ece9e0",
+    "surround": "full-frame"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      1,
+      136
+     ],
+     [
+      177,
+      273
+     ]
+    ],
+    "y": [
+     415,
+     482
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 68": {
+  "note": "dark grey plastered brick; white frames, two-by-two sashes in four bays; the ground's door in the third bay",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      16,
+      85
+     ],
+     [
+      127,
+      199
+     ],
+     [
+      346,
+      421
+     ]
+    ],
+    "y": [
+     925,
+     1090
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      10,
+      78
+     ],
+     [
+      118,
+      193
+     ],
+     [
+      229,
+      304
+     ],
+     [
+      343,
+      417
+     ]
+    ],
+    "y": [
+     757,
+     873
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      10,
+      78
+     ],
+     [
+      118,
+      193
+     ],
+     [
+      229,
+      304
+     ],
+     [
+      343,
+      417
+     ]
+    ],
+    "y": [
+     593,
+     710
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      10,
+      78
+     ],
+     [
+      118,
+      193
+     ],
+     [
+      229,
+      304
+     ],
+     [
+      343,
+      417
+     ]
+    ],
+    "y": [
+     456,
+     555
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 4,
+    "x": [
+     [
+      10,
+      78
+     ],
+     [
+      118,
+      193
+     ],
+     [
+      229,
+      304
+     ],
+     [
+      343,
+      417
+     ]
+    ],
+    "y": [
+     332,
+     415
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 66": {
+  "landmarks": {
+   "pavement": 999,
+   "floors": [
+    735,
+    580,
+    452
+   ],
+   "top": 305
+  },
+  "note": "dark grey plaster; white frames, 2x2 casements; the third storey's centre a single blind-looking light; the frieze's attic lights are the cornice's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      100,
+      166
+     ],
+     [
+      192,
+      258
+     ]
+    ],
+    "y": [
+     763,
+     915
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      8,
+      73
+     ],
+     [
+      98,
+      166
+     ],
+     [
+      191,
+      258
+     ]
+    ],
+    "y": [
+     600,
+     710
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      8,
+      73
+     ],
+     [
+      98,
+      166
+     ],
+     [
+      191,
+      258
+     ]
+    ],
+    "y": [
+     466,
+     561
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      6,
+      73
+     ],
+     [
+      98,
+      166
+     ],
+     [
+      191,
+      258
+     ]
+    ],
+    "y": [
+     337,
+     438
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 1,
+       "rows": 1
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 64": {
+  "landmarks": {
+   "pavement": 945,
+   "floors": [
+    670,
+    518
+   ],
+   "top": 380
+  },
+  "note": "orange-pink plaster under an elevated neck (its storey window is the crown's lower light); dark green sashes in white frames",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      130,
+      205
+     ],
+     [
+      242,
+      316
+     ]
+    ],
+    "y": [
+     693,
+     855
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#ece9e0",
+    "sash": "#2e4a3c"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      18,
+      95
+     ],
+     [
+      128,
+      205
+     ],
+     [
+      240,
+      318
+     ]
+    ],
+    "y": [
+     531,
+     650
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.36
+    },
+    "frame": "#ece9e0",
+    "sash": "#2e4a3c"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      15,
+      92
+     ],
+     [
+      127,
+      203
+     ],
+     [
+      240,
+      316
+     ]
+    ],
+    "y": [
+     400,
+     484
+    ],
+    "ys": {
+     "1": [
+      397,
+      508
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0",
+    "sash": "#2e4a3c"
+   }
+  ]
+ },
+ "Herengracht 62": {
+  "note": "grey stucco between pilaster strips; cream frames, two casements under a toplight; ground window single sash beside the door",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      100,
+      212
+     ]
+    ],
+    "y": [
+     1295,
+     1555
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 2
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      100,
+      212
+     ],
+     [
+      255,
+      372
+     ]
+    ],
+    "y": [
+     960,
+     1140
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.4
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      100,
+      212
+     ],
+     [
+      255,
+      372
+     ]
+    ],
+    "y": [
+     565,
+     755
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      100,
+      212
+     ],
+     [
+      255,
+      372
+     ]
+    ],
+    "y": [
+     250,
+     445
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#e8e4d8"
+   }
+  ]
+ },
+ "Herengracht 60": {
+  "note": "dark grey plaster; cream frames; two casements under a toplight, the third storey 2x2; the arched attic light is the cornice's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      21,
+      96
+     ],
+     [
+      131,
+      204
+     ]
+    ],
+    "y": [
+     802,
+     958
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.31
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      21,
+      96
+     ],
+     [
+      131,
+      204
+     ]
+    ],
+    "y": [
+     612,
+     745
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.39
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      21,
+      96
+     ],
+     [
+      131,
+      204
+     ]
+    ],
+    "y": [
+     465,
+     572
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.46
+    },
+    "frame": "#e8e4d8"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      21,
+      96
+     ],
+     [
+      131,
+      204
+     ]
+    ],
+    "y": [
+     335,
+     425
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e4d8"
+   }
+  ]
+ },
+ "Herengracht 58": {
+  "note": "grey brick with white block dressings and relieving arches; white frames; ground front's windows lend panes only",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      3,
+      125
+     ],
+     [
+      213,
+      345
+     ]
+    ],
+    "y": [
+     1307,
+     1656
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#3a3c3a"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      1,
+      122
+     ],
+     [
+      211,
+      342
+     ],
+     [
+      431,
+      565
+     ]
+    ],
+    "y": [
+     953,
+     1177
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0",
+    "surround": "block-dressings"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      3,
+      132
+     ],
+     [
+      204,
+      350
+     ],
+     [
+      422,
+      566
+     ]
+    ],
+    "y": [
+     708,
+     884
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0",
+    "surround": "block-dressings"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      3,
+      132
+     ],
+     [
+      204,
+      350
+     ],
+     [
+      422,
+      566
+     ]
+    ],
+    "y": [
+     480,
+     612
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0",
+    "surround": "block-dressings"
+   }
+  ]
+ },
+ "Herengracht 56": {
+  "note": "red brick, stone block dressings and relieving arches; cream frames; first-storey casements under a toplight",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      245,
+      364
+     ],
+     [
+      441,
+      560
+     ]
+    ],
+    "y": [
+     1371,
+     1670
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#e6e2d6"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      52,
+      176
+     ],
+     [
+      245,
+      369
+     ],
+     [
+      444,
+      565
+     ]
+    ],
+    "y": [
+     1060,
+     1256
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#e6e2d6",
+    "surround": "block-dressings"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      47,
+      180
+     ],
+     [
+      243,
+      377
+     ],
+     [
+      441,
+      565
+     ]
+    ],
+    "y": [
+     843,
+     988
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e6e2d6",
+    "surround": "block-dressings"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      47,
+      180
+     ],
+     [
+      243,
+      377
+     ],
+     [
+      441,
+      565
+     ]
+    ],
+    "y": [
+     650,
+     757
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e6e2d6",
+    "surround": "block-dressings"
+   }
+  ]
+ },
+ "Herengracht 54": {
+  "note": "cream stucco palazzo, five bays round a stone centre risalit; dark frames in white moulded surrounds",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      39,
+      160
+     ],
+     [
+      244,
+      371
+     ],
+     [
+      873,
+      988
+     ],
+     [
+      1085,
+      1185
+     ]
+    ],
+    "y": [
+     1261,
+     1560
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.28
+    },
+    "frame": "#2e302f",
+    "surround": "full-frame"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      45,
+      167
+     ],
+     [
+      247,
+      371
+     ],
+     [
+      555,
+      680
+     ],
+     [
+      870,
+      988
+     ],
+     [
+      1077,
+      1178
+     ]
+    ],
+    "y": [
+     952,
+     1136
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#2e302f",
+    "surround": "full-frame"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      45,
+      167
+     ],
+     [
+      247,
+      371
+     ],
+     [
+      555,
+      680
+     ],
+     [
+      870,
+      988
+     ],
+     [
+      1077,
+      1178
+     ]
+    ],
+    "y": [
+     709,
+     828
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#2e302f",
+    "surround": "full-frame"
+   }
+  ]
+ },
+ "Herengracht 50–52": {
+  "note": "dark plastered five-bay front under a cream frieze; cream frames; the 3-bay house at crop x>720 is the neighbour; a tree crosses the left bays",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      26,
+      96
+     ],
+     [
+      138,
+      211
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     799,
+     972
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ddd8c8"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      24,
+      96
+     ],
+     [
+      136,
+      211
+     ],
+     [
+      302,
+      379
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     615,
+     750
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ddd8c8"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      24,
+      96
+     ],
+     [
+      136,
+      211
+     ],
+     [
+      302,
+      379
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     478,
+     573
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ddd8c8"
+   }
+  ]
+ },
+ "Herengracht 48": {
+  "note": "pale grey stucco; dark grey frames in white moulded surrounds with shell keystones; segmental heads",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      208,
+      310
+     ],
+     [
+      405,
+      510
+     ]
+    ],
+    "y": [
+     1320,
+     1575
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#4a4c4c",
+    "surround": "full-frame",
+    "head": "segmental"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      4,
+      103
+     ],
+     [
+      203,
+      310
+     ],
+     [
+      408,
+      515
+     ]
+    ],
+    "y": [
+     1002,
+     1222
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.32
+    },
+    "frame": "#4a4c4c",
+    "surround": "full-frame",
+    "head": "segmental"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      2,
+      101
+     ],
+     [
+      189,
+      313
+     ],
+     [
+      408,
+      520
+     ]
+    ],
+    "y": [
+     755,
+     922
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#4a4c4c",
+    "surround": "full-frame",
+    "head": "segmental"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      2,
+      101
+     ],
+     [
+      189,
+      313
+     ],
+     [
+      408,
+      520
+     ]
+    ],
+    "y": [
+     520,
+     667
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#4a4c4c",
+    "surround": "full-frame",
+    "head": "segmental"
+   }
+  ]
+ },
+ "Herengracht 46": {
+  "landmarks": {
+   "pavement": 1870,
+   "floors": [
+    1300,
+    960,
+    690
+   ],
+   "top": 420
+  },
+  "note": "brick neck gable; white frames, small-paned sashes under relieving arches; the left bay is cut by the crop edge",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      97,
+      205
+     ],
+     [
+      238,
+      346
+     ]
+    ],
+    "y": [
+     1382,
+     1657
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      2,
+      58
+     ],
+     [
+      97,
+      205
+     ],
+     [
+      241,
+      349
+     ]
+    ],
+    "y": [
+     1001,
+     1272
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      2,
+      48
+     ],
+     [
+      89,
+      212
+     ],
+     [
+      251,
+      349
+     ]
+    ],
+    "y": [
+     738,
+     927
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      2,
+      48
+     ],
+     [
+      92,
+      215
+     ],
+     [
+      255,
+      355
+     ]
+    ],
+    "y": [
+     476,
+     654
+    ],
+    "ys": {
+     "0": [
+      476,
+      612
+     ],
+     "2": [
+      476,
+      612
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.2
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 44": {
+  "note": "dark painted brick neck gable; cream frames; the gable light at y 402-510 is the crown's; ground and first storey big panes under a toplight",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      100,
+      201
+     ],
+     [
+      239,
+      335
+     ]
+    ],
+    "y": [
+     1078,
+     1354
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.28
+    },
+    "frame": "#e6dfc6"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      0,
+      65
+     ],
+     [
+      102,
+      210
+     ],
+     [
+      243,
+      346
+     ]
+    ],
+    "y": [
+     793,
+     990
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.38
+    },
+    "frame": "#e6dfc6"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      0,
+      65
+     ],
+     [
+      105,
+      210
+     ],
+     [
+      247,
+      346
+     ]
+    ],
+    "y": [
+     578,
+     706
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e6dfc6"
+   }
+  ]
+ },
+ "Herengracht 42": {
+  "note": "red brick under relieving arches; cream frames, two casements under a toplight. The photo shows five window levels (a fifth light at y 426-548 under the arched cornice, x 76-199) but the read has four storeys; the pixel landmarks put the wall top at 588, below that light. Not measured: a storey-count error for the read, not the grid",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      142,
+      313
+     ]
+    ],
+    "y": [
+     1444,
+     1626
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.22
+    },
+    "frame": "#ece6d4"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      0,
+      107
+     ],
+     [
+      174,
+      292
+     ]
+    ],
+    "y": [
+     1166,
+     1348
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.36
+    },
+    "frame": "#ece6d4"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      0,
+      107
+     ],
+     [
+      174,
+      292
+     ]
+    ],
+    "y": [
+     908,
+     1075
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.4
+    },
+    "frame": "#ece6d4"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      0,
+      107
+     ],
+     [
+      174,
+      292
+     ]
+    ],
+    "y": [
+     650,
+     817
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.4
+    },
+    "frame": "#ece6d4"
+   }
+  ]
+ },
+ "Herengracht 40": {
+  "note": "grey ashlar five-bay front; white frames; round-headed bel-etage windows with fanlights; French windows with balconettes on the first storey",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      109,
+      190
+     ],
+     [
+      258,
+      342
+     ],
+     [
+      410,
+      499
+     ],
+     [
+      570,
+      661
+     ],
+     [
+      730,
+      818
+     ]
+    ],
+    "y": [
+     1363,
+     1583
+    ],
+    "head": "round",
+    "panes": {
+     "cols": 2,
+     "rows": 4,
+     "transom": 0.25
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      98,
+      187
+     ],
+     [
+      250,
+      339
+     ],
+     [
+      407,
+      504
+     ],
+     [
+      568,
+      666
+     ],
+     [
+      732,
+      829
+     ]
+    ],
+    "y": [
+     1052,
+     1236
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      93,
+      183
+     ],
+     [
+      244,
+      335
+     ],
+     [
+      408,
+      504
+     ],
+     [
+      568,
+      666
+     ],
+     [
+      737,
+      832
+     ]
+    ],
+    "y": [
+     824,
+     951
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      93,
+      183
+     ],
+     [
+      244,
+      335
+     ],
+     [
+      408,
+      504
+     ],
+     [
+      568,
+      666
+     ],
+     [
+      737,
+      832
+     ]
+    ],
+    "y": [
+     600,
+     732
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 38": {
+  "note": "red brick with stone-blocked relieving arches; white frames, dark small-paned sashes; the gable light at y 495-605 is the crown's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      32,
+      162
+     ],
+     [
+      193,
+      325
+     ]
+    ],
+    "y": [
+     1229,
+     1511
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 6
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2a"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      32,
+      164
+     ],
+     [
+      198,
+      333
+     ],
+     [
+      368,
+      495
+     ]
+    ],
+    "y": [
+     910,
+     1129
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 4
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2a"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      95,
+      163
+     ],
+     [
+      202,
+      331
+     ],
+     [
+      370,
+      434
+     ]
+    ],
+    "y": [
+     727,
+     848
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 2
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2a"
+   }
+  ]
+ },
+ "Herengracht 36": {
+  "note": "dark red brick, cast anchors; cream frames, dark green sashes; two casements under a toplight",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      202,
+      315
+     ],
+     [
+      357,
+      471
+     ]
+    ],
+    "y": [
+     1256,
+     1515
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#e0dccf",
+    "sash": "#2b3a32"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      46,
+      160
+     ],
+     [
+      202,
+      315
+     ],
+     [
+      357,
+      474
+     ]
+    ],
+    "y": [
+     969,
+     1168
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#e0dccf",
+    "sash": "#2b3a32"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      46,
+      160
+     ],
+     [
+      202,
+      315
+     ],
+     [
+      357,
+      474
+     ]
+    ],
+    "y": [
+     730,
+     907
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#e0dccf",
+    "sash": "#2b3a32"
+   }
+  ]
+ },
+ "Herengracht 34": {
+  "landmarks": {
+   "pavement": 1575,
+   "floors": [
+    1245,
+    930
+   ],
+   "top": 577
+  },
+  "note": "modern grey concrete grid; white frames, one tall light under a toplight with guard rails; the shop ground front lends panes only; the right bay is cut by the crop; the ground's toplight is 0.65 of the window, held at the grid's 0.6 cap",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      369,
+      490
+     ],
+     [
+      518,
+      600
+     ]
+    ],
+    "y": [
+     1278,
+     1557
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.6
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      64,
+      187
+     ],
+     [
+      215,
+      338
+     ],
+     [
+      369,
+      490
+     ],
+     [
+      518,
+      600
+     ]
+    ],
+    "y": [
+     961,
+     1212
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.36
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      64,
+      187
+     ],
+     [
+      215,
+      338
+     ],
+     [
+      369,
+      490
+     ],
+     [
+      518,
+      600
+     ]
+    ],
+    "y": [
+     651,
+     898
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.36
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 32": {
+  "note": "brown brick under a deep cornice; cream frames; one-over-one sashes under a toplight; graffiti and a hedge hide the basement",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      42,
+      131
+     ],
+     [
+      165,
+      255
+     ]
+    ],
+    "y": [
+     1320,
+     1558
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.31
+    },
+    "frame": "#ddd6c4"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      42,
+      130
+     ],
+     [
+      165,
+      255
+     ],
+     [
+      290,
+      377
+     ]
+    ],
+    "y": [
+     1058,
+     1260
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.29
+    },
+    "frame": "#ddd6c4"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      42,
+      130
+     ],
+     [
+      165,
+      255
+     ],
+     [
+      290,
+      377
+     ]
+    ],
+    "y": [
+     794,
+     987
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#ddd6c4"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      42,
+      130
+     ],
+     [
+      165,
+      255
+     ],
+     [
+      290,
+      377
+     ]
+    ],
+    "y": [
+     593,
+     730
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 2
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ddd6c4"
+   }
+  ]
+ },
+ "Herengracht 30": {
+  "note": "orange brick with white stone blocks and keystoned relieving arches; dark brown frames; centre bay French windows to balconies; the gable light at y 500-620 is the crown's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      21,
+      119
+     ],
+     [
+      141,
+      239
+     ]
+    ],
+    "y": [
+     1316,
+     1533
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#3a2e28"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      9,
+      106
+     ],
+     [
+      141,
+      239
+     ],
+     [
+      274,
+      371
+     ]
+    ],
+    "y": [
+     1005,
+     1212
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.38
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 1,
+       "transom": 0.35
+      }
+     }
+    },
+    "frame": "#3a2e28",
+    "surround": "block-dressings"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      9,
+      106
+     ],
+     [
+      141,
+      241
+     ],
+     [
+      276,
+      376
+     ]
+    ],
+    "y": [
+     720,
+     912
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 2
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 1,
+       "transom": 0.3
+      }
+     }
+    },
+    "frame": "#3a2e28",
+    "surround": "block-dressings"
+   }
+  ]
+ },
+ "Herengracht 28": {
+  "note": "dark painted brick neck gable; cream frames; the gable light at y 470-610 is the crown's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      219,
+      345
+     ],
+     [
+      393,
+      518
+     ]
+    ],
+    "y": [
+     1238,
+     1518
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#e2ddcd"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      36,
+      170
+     ],
+     [
+      214,
+      344
+     ],
+     [
+      393,
+      523
+     ]
+    ],
+    "y": [
+     914,
+     1146
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#e2ddcd"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      29,
+      166
+     ],
+     [
+      209,
+      344
+     ],
+     [
+      389,
+      520
+     ]
+    ],
+    "y": [
+     670,
+     825
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e2ddcd"
+   }
+  ]
+ },
+ "Herengracht 26": {
+  "note": "brown brick under a bracketed cornice with oculus frieze; white frames, small-paned casements; ground windows tall 2x4",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      182,
+      283
+     ],
+     [
+      330,
+      432
+     ]
+    ],
+    "y": [
+     1124,
+     1390
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 4
+    },
+    "frame": "#e8e6dc"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      30,
+      137
+     ],
+     [
+      184,
+      288
+     ],
+     [
+      335,
+      438
+     ]
+    ],
+    "y": [
+     880,
+     1069
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#e8e6dc"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      30,
+      139
+     ],
+     [
+      186,
+      290
+     ],
+     [
+      339,
+      441
+     ]
+    ],
+    "y": [
+     665,
+     820
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e6dc"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      27,
+      137
+     ],
+     [
+      184,
+      290
+     ],
+     [
+      339,
+      443
+     ]
+    ],
+    "y": [
+     470,
+     583
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.25
+    },
+    "frame": "#e8e6dc"
+   }
+  ]
+ },
+ "Herengracht 24": {
+  "note": "black painted brick; cream frames; the ground window under a segmental head beside the door",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      22,
+      149
+     ]
+    ],
+    "y": [
+     1266,
+     1562
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.27
+    },
+    "frame": "#ebe3c5"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      22,
+      152
+     ],
+     [
+      224,
+      354
+     ]
+    ],
+    "y": [
+     929,
+     1150
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#ebe3c5"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      22,
+      152
+     ],
+     [
+      224,
+      357
+     ]
+    ],
+    "y": [
+     675,
+     811
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 3,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ebe3c5"
+   }
+  ]
+ },
+ "Herengracht 22": {
+  "landmarks": {
+   "pavement": 1618,
+   "floors": [
+    1100,
+    760
+   ],
+   "top": 530
+  },
+  "note": "brown brick, wide three-bay front; cream frames with dark sashes, segmental heads; the right of the crop is the neighbour's roof",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      359,
+      491
+     ],
+     [
+      615,
+      750
+     ]
+    ],
+    "y": [
+     1167,
+     1448
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#ddd6c2",
+    "sash": "#2d2f2c"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      101,
+      239
+     ],
+     [
+      359,
+      496
+     ],
+     [
+      618,
+      754
+     ]
+    ],
+    "y": [
+     833,
+     1049
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ddd6c2",
+    "sash": "#2d2f2c"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      98,
+      239
+     ],
+     [
+      361,
+      500
+     ],
+     [
+      622,
+      759
+     ]
+    ],
+    "y": [
+     577,
+     700
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 3,
+     "rows": 2
+    },
+    "frame": "#ddd6c2",
+    "sash": "#2d2f2c"
+   }
+  ]
+ },
+ "Herengracht 20": {
+  "note": "dark grey brick; cream frames; single lights under a toplight on every storey; the ground front's tall windows lend panes only",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      42,
+      143
+     ],
+     [
+      186,
+      287
+     ],
+     [
+      329,
+      427
+     ]
+    ],
+    "y": [
+     1295,
+     1514
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.28
+    },
+    "frame": "#e4dfcc"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      42,
+      143
+     ],
+     [
+      186,
+      287
+     ],
+     [
+      329,
+      427
+     ]
+    ],
+    "y": [
+     1056,
+     1225
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.2
+    },
+    "frame": "#e4dfcc"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      42,
+      143
+     ],
+     [
+      186,
+      287
+     ],
+     [
+      329,
+      427
+     ]
+    ],
+    "y": [
+     817,
+     991
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.2
+    },
+    "frame": "#e4dfcc"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      42,
+      143
+     ],
+     [
+      186,
+      287
+     ],
+     [
+      329,
+      427
+     ]
+    ],
+    "y": [
+     619,
+     753
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.2
+    },
+    "frame": "#e4dfcc"
+   },
+   {
+    "storey": 4,
+    "x": [
+     [
+      42,
+      143
+     ],
+     [
+      186,
+      287
+     ],
+     [
+      329,
+      427
+     ]
+    ],
+    "y": [
+     456,
+     540
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.2
+    },
+    "frame": "#e4dfcc"
+   }
+  ]
+ },
+ "Herengracht 18": {
+  "note": "dark grey brick; dark grey frames with grey sills; two casements under a toplight; one wide ground window beside a white doorcase",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      25,
+      208
+     ]
+    ],
+    "y": [
+     1207,
+     1474
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.28
+    },
+    "frame": "#4d5052"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      35,
+      164
+     ],
+     [
+      224,
+      355
+     ]
+    ],
+    "y": [
+     911,
+     1122
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#4d5052"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      35,
+      169
+     ],
+     [
+      227,
+      357
+     ]
+    ],
+    "y": [
+     662,
+     830
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.38
+    },
+    "frame": "#4d5052"
+   }
+  ]
+ },
+ "Herengracht 16": {
+  "landmarks": {
+   "pavement": 1640,
+   "floors": [
+    1170,
+    850
+   ],
+   "top": 615
+  },
+  "note": "brown brick neck gable under relieving arches; white frames, dark green sashes; the gable light at y 515-600 is the crown's",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      157,
+      249
+     ],
+     [
+      288,
+      378
+     ]
+    ],
+    "y": [
+     1231,
+     1494
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#ece9e0",
+    "sash": "#2d3a33"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      28,
+      124
+     ],
+     [
+      160,
+      253
+     ],
+     [
+      289,
+      384
+     ]
+    ],
+    "y": [
+     906,
+     1128
+    ],
+    "panes": {
+     "cols": 1,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#ece9e0",
+    "sash": "#2d3a33"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      28,
+      124
+     ],
+     [
+      160,
+      253
+     ],
+     [
+      291,
+      386
+     ]
+    ],
+    "y": [
+     692,
+     827
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0",
+    "sash": "#2d3a33"
+   }
+  ]
+ },
+ "Herengracht 14": {
+  "note": "grey stone front between pilaster strips; white frames under segmental heads with fan-barred toplights",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      57,
+      154
+     ],
+     [
+      360,
+      454
+     ],
+     [
+      510,
+      602
+     ]
+    ],
+    "y": [
+     1406,
+     1614
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 4,
+     "transom": 0.2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      57,
+      157
+     ],
+     [
+      210,
+      310
+     ],
+     [
+      364,
+      460
+     ],
+     [
+      514,
+      604
+     ]
+    ],
+    "y": [
+     1171,
+     1342
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 3,
+     "transom": 0.2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      57,
+      157
+     ],
+     [
+      210,
+      310
+     ],
+     [
+      364,
+      460
+     ],
+     [
+      517,
+      604
+     ]
+    ],
+    "y": [
+     966,
+     1116
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 2,
+     "transom": 0.3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      54,
+      157
+     ],
+     [
+      210,
+      310
+     ],
+     [
+      364,
+      457
+     ],
+     [
+      517,
+      607
+     ]
+    ],
+    "y": [
+     768,
+     893
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 12": {
+  "note": "brown brick over a cream rusticated ground front; dark frames; the centre first-storey window in a pedimented aedicule; ground front's windows lend panes only",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      259,
+      402
+     ],
+     [
+      516,
+      613
+     ]
+    ],
+    "y": [
+     1306,
+     1584
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.32
+    },
+    "frame": "#2e3030"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      42,
+      150
+     ],
+     [
+      259,
+      405
+     ],
+     [
+      524,
+      625
+     ]
+    ],
+    "y": [
+     1009,
+     1186
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "frame": "#2e3030"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      40,
+      152
+     ],
+     [
+      257,
+      407
+     ],
+     [
+      526,
+      625
+     ]
+    ],
+    "y": [
+     792,
+     903
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "frame": "#2e3030"
+   }
+  ]
+ },
+ "Herengracht 10": {
+  "note": "grey brick under a deep bracketed cornice; white frames, dark small-paned sashes; Louis XV doorcase; ground front's windows lend panes only",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      25,
+      150
+     ],
+     [
+      395,
+      515
+     ],
+     [
+      574,
+      690
+     ]
+    ],
+    "y": [
+     1303,
+     1616
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 5
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2b"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      17,
+      150
+     ],
+     [
+      208,
+      339
+     ],
+     [
+      395,
+      523
+     ],
+     [
+      582,
+      700
+     ]
+    ],
+    "y": [
+     1012,
+     1211
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2b"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      17,
+      155
+     ],
+     [
+      208,
+      339
+     ],
+     [
+      400,
+      525
+     ],
+     [
+      586,
+      704
+     ]
+    ],
+    "y": [
+     778,
+     942
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2b"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      17,
+      155
+     ],
+     [
+      208,
+      339
+     ],
+     [
+      400,
+      525
+     ],
+     [
+      586,
+      704
+     ]
+    ],
+    "y": [
+     561,
+     701
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0",
+    "sash": "#2a2c2b"
+   }
+  ]
+ },
+ "Herengracht 8": {
+  "landmarks": {
+   "pavement": 1745,
+   "floors": [
+    1400,
+    1035,
+    795
+   ],
+   "top": 556
+  },
+  "note": "red brick with white stone bands and carved arches (neo-renaissance); white frames, a narrow left bay and a wide right; the ground's right bay a stone arcade of two round-headed lights",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      155,
+      194
+     ],
+     [
+      220,
+      256
+     ]
+    ],
+    "y": [
+     1447,
+     1611
+    ],
+    "head": "round",
+    "panes": {
+     "cols": 1,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      8,
+      74
+     ],
+     [
+      155,
+      260
+     ]
+    ],
+    "y": [
+     1153,
+     1352
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.35
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 1,
+       "transom": 0.35
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      8,
+      76
+     ],
+     [
+      155,
+      260
+     ]
+    ],
+    "y": [
+     895,
+     1024
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1,
+     "transom": 0.3
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 1,
+       "transom": 0.3
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      8,
+      81
+     ],
+     [
+      155,
+      260
+     ]
+    ],
+    "y": [
+     621,
+     775
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "except": {
+     "0": {
+      "panes": {
+       "cols": 1,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 6": {
+  "landmarks": {
+   "pavement": 1195,
+   "floors": [
+    965,
+    760,
+    592
+   ],
+   "top": 305
+  },
+  "note": "red brick with white stone bands and fan-blocked lintels; white frames; a wide two-light left bay and a narrow right; French windows on the first storey; a low-resolution crop (50 px/m), parked cars over the ground",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      6,
+      39
+     ],
+     [
+      49,
+      83
+     ],
+     [
+      128,
+      174
+     ]
+    ],
+    "y": [
+     1000,
+     1094
+    ],
+    "head": "round",
+    "panes": {
+     "cols": 1,
+     "rows": 1
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      6,
+      85
+     ],
+     [
+      131,
+      176
+     ]
+    ],
+    "y": [
+     808,
+     947
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 1,
+       "rows": 1
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      6,
+      85
+     ],
+     [
+      131,
+      178
+     ]
+    ],
+    "y": [
+     639,
+     745
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 1,
+       "rows": 1
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      6,
+      85
+     ],
+     [
+      131,
+      178
+     ]
+    ],
+    "y": [
+     471,
+     584
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 1
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 1,
+       "rows": 1
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 2–4": {
+  "note": "dark grey plaster over a white ground front; white frames, small-paned sashes; a tree crosses the top; ground front's windows lend panes only",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      54,
+      125
+     ],
+     [
+      154,
+      224
+     ]
+    ],
+    "y": [
+     645,
+     800
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      61,
+      122
+     ],
+     [
+      157,
+      220
+     ],
+     [
+      255,
+      316
+     ]
+    ],
+    "y": [
+     507,
+     612
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      64,
+      125
+     ],
+     [
+      161,
+      221
+     ],
+     [
+      257,
+      319
+     ]
+    ],
+    "y": [
+     400,
+     474
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ }
+}

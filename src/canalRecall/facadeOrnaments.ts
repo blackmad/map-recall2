@@ -22,6 +22,7 @@ import { fitProjectionFor } from './projectionWindowFit.js';
 import { HEAD, headGrammarOf, headPieces, headRise, type HeadGrammar } from './houseLine/headGrammar.js';
 import { ENTABLATURE, entablatureBands, pieceCentres, pieceWidth, type CorniceProfile } from './houseLine/entablature.js';
 import { groundPilasters } from './designUnits/soloGround.js';
+import { joineryPieces } from './houseLine/openingGrid.js';
 
 // --- Palette ---------------------------------------------------------------------
 export const WHITE = '#efece4', CREAM = '#e4d9bf', STONE = '#cfc6b4', SANDSTONE = '#cdbb98', BLUESTONE = '#5b6066';
@@ -51,6 +52,8 @@ export type Span = { x: number; hw: number; z0: number; z1: number };
 /** The window openings of one row across the wall: upper storey `s`, or the ground floor (s = -1). */
 export function windowSpans(c: ExtraContext, s: number): Span[] {
   if (s < 0 && c.groundWindows) return c.groundWindows.map(w => ({ ...w }));
+  // Belt windows lane: a measured storey's windows are the measured ones (sills, heads and piers follow them).
+  if (s >= 0 && c.soloOpenings && c.soloOpeningRows?.includes(s + 1)) return c.soloOpenings.filter(o => o.storey === s + 1).map(o => ({ x: o.x, hw: o.hw, z0: o.z0, z1: o.z1 }));
   const o = openingsOf(c), l = c.layout, bw = l.bayWidthM, out: Span[] = [];
   const doors = new Set(l.doorBays);
   for (let i = 0; i < l.bays; i++) {
@@ -297,6 +300,11 @@ const ROW_GLASS = { light: '#566b79', pane: '#2c3b46' } as const;
 const ROW_TYPE_GLASS = { light: '#8d9ca5', pane: '#5f6f79', frame: 0.1, frameOut: 0.03 } as const;
 /** A single stated shopfront (row-shopfront): frame and fascia in the stated colour, a door, one wide curtained pane. */
 const ROW_SHOP = { glass: '#2f3a40', sheen: '#3b4950', panel: '#3c464b', doorHex: '#262c30', door: 1.05, post: 0.14, riser: 0.45, fascia: 0.45, side: 0.22, out: 0.03 } as const;
+/** Belt windows lane (houseLine/openingGrid.ts): the measured windows' joinery on the plain wall: surround, glass (the
+ *  toplight paler), the frame in its paint, transom, mullions and bars, the head's arc. */
+export function soloOpeningJoinery(c: ExtraContext, s: ExtraSink): void {
+  for (const o of c.soloOpenings ?? []) for (const p of joineryPieces(o, o.frame, WHITE)) s.wallQuad(c.f, p.pts, p.out, p.hex);
+}
 /** Row joinery (row-sash): the glass a little proud of the painted cell, the frame and bars proud of the glass. */
 const ROW_SASH_OUT = { glass: 0.014, frame: 0.024 } as const;
 /** Panes per sash by window kind (RowDesign.glazing.panes overrides): 8-over-8, 12-over-12 small panes, a plain sash 1. */
@@ -876,6 +884,9 @@ function rowCorniceCentre(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
     // Cornice lane: shoulders at the attic's foot either side (90's scrolls, 30's stepped shoulders).
     if (dr.centreShoulders) atticShoulders(c, s, dr.centreShoulders, a, b, t, bodyTop - t, dr.centreBody === 'paint' ? P : c.wallHex, P, ledge, K);
     const body = dr.centreBody === 'paint' ? P : c.wallHex;
+    // Belt windows lane: a body running down through the cornice into the frieze (90's aedicule), proud of the corona.
+    const drop = dr.centreDropM ?? 0, proud = drop ? K.coronaOut + 0.06 : 0;
+    if (drop) { s.box(c.f, a, b, 0, proud, t - drop, t, body, true); for (const x of [a, b - A.pilaster]) s.box(c.f, x, x + A.pilaster, 0, proud + 0.06, t - drop, t, shadeHex(P, 0.9), true); }
     s.box(c.f, a, b, 0, 0.1, t, bodyTop, body);
     for (const x of [a, b - A.pilaster]) s.box(c.f, x, x + A.pilaster, 0, 0.16, t, bodyTop, dr.centreBody === 'paint' ? shadeHex(P, 0.9) : P);
     s.box(c.f, a - 0.06, b + 0.06, 0, K.bedOut * 0.8, bodyTop, bodyTop + ledge, P, true);
@@ -892,7 +903,8 @@ function rowCorniceCentre(c: ExtraContext, s: ExtraSink, dr: NonNullable<NonNull
         wallBar(c, s, [x0, z1 + h(u0)], [x1, z1 + h(u1)], 0.1, 0.2, shadeHex(P, 0.86));
       }
     }
-    if (dr.centreLight) centreLight(c, s, dr.centreLight, mid, t + 0.2, bodyTop - 0.15, Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P);
+    if (dr.centreLight && dr.centreLightM) centreLight(c, s, dr.centreLight, mid, t + dr.centreLightM[0], t + dr.centreLightM[1], Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P, proud);
+    else if (dr.centreLight) centreLight(c, s, dr.centreLight, mid, t + 0.2, bodyTop - 0.15, Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P);
     // A round light in a stucco attic under its moulded arched hood (60's lunette).
     if (dr.centreLight === 'round' && dr.centreBody === 'paint') roundHood(c, s, mid, t + 0.2, bodyTop - 0.15, Math.min(A.light.w, w - 2 * A.pilaster - 0.3) / 2, P);
   } else if (dr.centre === 'balustrade') {
@@ -1104,7 +1116,7 @@ function wallOval(c: ExtraContext, s: ExtraSink, x: number, z: number, rx: numbe
   }
 }
 /** A cornice centre's light between z0 and z1, `hw` half wide: a square or round-headed window, or an oculus. */
-function centreLight(c: ExtraContext, s: ExtraSink, kind: 'square' | 'round' | 'oculus', x: number, z0: number, z1: number, hw: number, P: string): void {
+function centreLight(c: ExtraContext, s: ExtraSink, kind: 'square' | 'round' | 'oculus', x: number, z0: number, z1: number, hw: number, P: string, o = 0): void {
   const h = z1 - z0;
   if (h < 0.3 || hw < 0.12) return;
   if (kind === 'oculus') {
@@ -1114,13 +1126,13 @@ function centreLight(c: ExtraContext, s: ExtraSink, kind: 'square' | 'round' | '
     return;
   }
   const F = 0.07, top = kind === 'round' ? z1 - hw : z1;
-  s.strip(c.f, x - hw - F, x + hw + F, 0.13, z0 - F, top, P);
-  s.strip(c.f, x - hw, x + hw, 0.14, z0, top, ROW_DOORCASE.glass);
+  s.strip(c.f, x - hw - F, x + hw + F, 0.13 + o, z0 - F, top, P);
+  s.strip(c.f, x - hw, x + hw, 0.14 + o, z0, top, ROW_DOORCASE.glass);
   if (kind === 'round' && top > z0) {
-    wallOval(c, s, x, top, hw + F, hw + F, 0.13, P, 12);
-    wallOval(c, s, x, top, hw, hw, 0.14, ROW_DOORCASE.glass, 12);
+    wallOval(c, s, x, top, hw + F, hw + F, 0.13 + o, P, 12);
+    wallOval(c, s, x, top, hw, hw, 0.14 + o, ROW_DOORCASE.glass, 12);
   }
-  s.strip(c.f, x - 0.02, x + 0.02, 0.15, z0, top, WHITE);
+  s.strip(c.f, x - 0.02, x + 0.02, 0.15 + o, z0, top, WHITE);
 }
 /** A disc of radius r on the wall face (a scroll's eye, a boss), as a fan of quads. */
 function wallDisc(c: ExtraContext, s: ExtraSink, x: number, z: number, r: number, out: number, hex: string, n = 12): void {

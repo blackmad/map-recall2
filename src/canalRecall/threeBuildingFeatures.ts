@@ -1,5 +1,6 @@
 import { groundFloorOf, groundFloorOn } from './groundFloor/extract.js';
 import { flatCrownOf, groundFrontOf } from './designUnits/soloGround.js';
+import { openingGridOf } from './houseLine/openingGrid.js';
 import { logoFor, retailLogoLayer } from './retailLogos.js';
 import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, VARIETY_BASE, retailBrandOn, retailPartsOn, retailRealOn } from './retailPages.js';
 import { shopVarietyOn } from './shopVariety.js';
@@ -484,6 +485,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       const shares = (ds as { shares?: unknown } | undefined)?.shares;
       if (building.designStoreys && Array.isArray(shares) && shares.length === building.designStoreys.storeys && shares.every(x => typeof x === 'number' && x > 0)) building.designStoreys.shares = shares as number[];
       if (typeof p.designFrameHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designFrameHex) && !building.shopfront) building.accentHex = p.designFrameHex;
+      // Belt windows lane: a shopfront's accent is the shop's colour (its sign and awning), which painted the upper
+      // storeys' frames and bars too (Herengracht 90: read white, drawn the awnings' red). The upper cells take the read paint.
+      if (typeof p.designFrameHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designFrameHex) && building.shopfront) building.upperAccentHex = p.designFrameHex;
+      // Belt windows lane (houseLine/openingGrid.ts): the windows as measured, drawn as joinery on a plain wall.
+      const og = openingGridOf(p.designOpenings);
+      if (og) { building.designOpenings = og; if (typeof p.designFrameHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.designFrameHex)) building.openingFrameHex = p.designFrameHex; }
       const gr = p.designGround as { windowRatio?: unknown; doorRatio?: unknown; basementRatio?: unknown; raisedDoor?: unknown } | undefined;
       if (gr && Number(gr.windowRatio) > 0 && Number(gr.doorRatio) > 0) building.designGround = { windowRatio: Number(gr.windowRatio), doorRatio: Number(gr.doorRatio), ...(Number(gr.basementRatio) > 0 ? { basementRatio: Number(gr.basementRatio) } : {}), ...(gr.raisedDoor === true ? { raisedDoor: true as const } : {}) , ...(groundFrontOf((gr as { front?: unknown }).front) ? { front: groundFrontOf((gr as { front?: unknown }).front)! } : {}) };
       // Kit-ground lane: a flat canopy or slab on piers in place of the cornice; the storeys stop under its zone.
@@ -501,6 +508,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Belt review (a solo plot, a reviewed description): only what the read states plus the plain sills and downpipe, never
   // the dice's string courses, floor cornices or lintels the read did not see.
   if (building.designSolo && building.extras) building.onlyExtras = [...SOLO_PLAIN_EXTRAS, ...(building.registerForce ?? [])];
+  // Measured windows draw their own frames (houseLine/openingGrid.ts joinery): no white frame boards round them as well.
+  if (building.designOpenings && building.onlyExtras) building.onlyExtras = building.onlyExtras.filter(id => id !== 'white-window-frames');
   // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, first, on the door
   // wall nearest the street (threeBuildingMesh.ts stoopFor).
   if (p.specStoop && typeof p.specStoop === 'object' && building.extras) building.stoop = p.specStoop as StoopIntent;

@@ -13,6 +13,7 @@ import { STOOP_FLIGHTS } from '../buildingRecipe/stoop.ts';
 import { SPEC_CORNICES, SPEC_WINDOW_SURROUNDS } from '../houseSpec/spec.ts';
 import type { DescField, FieldCandidate } from './description.ts';
 import { flatCrownOf, groundFrontOf, type FlatCrown, type GroundFront } from '../designUnits/soloGround.ts';
+import { openingGridOf, type OpeningGrid } from '../houseLine/openingGrid.ts';
 
 export const WALL_FAMILIES = ['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'] as const;
 /** The enums each read field may take (kit values; the extra spec-level values the page also offers). */
@@ -87,6 +88,9 @@ export interface HouseRead {
   groundFront?: GroundFront;
   /** A flat projecting canopy or slab on piers in place of a cornice (designUnits/soloGround.ts). */
   flatCrown?: FlatCrown;
+  /** The windows as measured on the crop, storey by storey (houseLine/openingGrid.ts): bay centres, size, sill, head,
+   *  panes, frame and surround, each row with how it was measured (belt-windows lane, 2026-11-22). */
+  openings?: OpeningGrid;
 }
 
 // ------------------------------------------------------------------------------------------------------------ crown form
@@ -359,6 +363,7 @@ export function readExtras(a: Partial<HouseRead>) {
     ...corniceLaneExtras(a as CorniceReadExtras),
     ...((gf => gf ? { groundFront: gf } : {})(groundFrontOf(a.groundFront))),
     ...((fc => fc ? { flatCrown: fc } : {})(flatCrownOf(a.flatCrown))),
+    ...((og => og ? { openings: og } : {})(openingGridOf(a.openings))),
   };
 }
 function corniceLaneExtras(a: CorniceReadExtras): CorniceReadExtras {
