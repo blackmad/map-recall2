@@ -1,0 +1,477 @@
+{
+ "schemaVersion": 1,
+ "id": "de-coenen-coenenstraat",
+ "pand": "0363100012085712",
+ "brief": "scripts/landmarks/de-coenen-coenenstraat-brief.md",
+ "signature": [
+  "f-school-windows",
+  "f-top-band",
+  "f-eaves",
+  "b-letters",
+  "f-roof-lights"
+ ],
+ "walls": [
+  {
+   "tag": "w01-146",
+   "bearing": 146,
+   "lengthM": 25.7,
+   "centre": [
+    4.8813615,
+    52.3525245
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002800_pano_0012_000005",
+   "capturedAt": "2022-09-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-school-windows",
+     "kind": "window-shape",
+     "where": "three wide windows on the ground floor and four on the first floor, each three lights of small panes over a transom and a lower sash, white frames in brick reveals",
+     "approxSizeM": [
+      4.2,
+      3.0
+     ],
+     "plan": "modelled",
+     "how": "schoolWindow(): frame, glass, mullions, paneGrid bars per light, brick jambs and head 20 cm proud, stone sill",
+     "seenIn": "TMX7316010203-002118_pano_0000_000477"
+    },
+    {
+     "id": "f-top-band",
+     "kind": "window-shape",
+     "where": "the top storey: a band of seven windows between brick piers under a white cornice band",
+     "approxSizeM": [
+      21,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "topBand(): seven two-light windows, eight piers 6 cm proud, a stone ledge under them",
+     "seenIn": "TMX7316010203-002800_pano_0012_000005"
+    },
+    {
+     "id": "f-eaves",
+     "kind": "other",
+     "where": "the deep white eaves soffit along the whole front under the tiled roof",
+     "approxSizeM": [
+      26,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "eaves(): white board 0.75 m deep with a cornice band under it",
+     "seenIn": "TMX7316010203-002800_pano_0012_000005"
+    },
+    {
+     "id": "f-roof-lights",
+     "kind": "window-shape",
+     "where": "eight flat roof lights in a row low on the street slope",
+     "approxSizeM": [
+      1.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "roofLights(): glass boxes laid on the 3DBAG slope",
+     "seenIn": "TMX7316010203-002800_pano_0012_000005"
+    },
+    {
+     "id": "f-plinth",
+     "kind": "other",
+     "where": "dark blue-grey glazed brick plinth with two lighter stripes",
+     "approxSizeM": [
+      26,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "plinth(): greyBrick slab with two stone stripes",
+     "seenIn": "TMX7316010203-002118_pano_0000_000477"
+    },
+    {
+     "id": "f-iron-ornament",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron lamp-shaped ornament over the entrance porch at the north-east end",
+     "approxSizeM": [
+      1.6,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "ironOrnament(): a top bar, four uprights, two diagonals and a base plate in dark iron, two side rods",
+     "seenIn": "TMX7316010203-002118_pano_0000_000477"
+    },
+    {
+     "id": "f-entrance",
+     "kind": "other",
+     "where": "recessed entrance porch with a light over the door and two yellow notice boxes beside it",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "how": "dark recess between 0.3 m brick jambs, white lintel, a three-light window, ochre boxes",
+     "seenIn": "TMX7316010203-002118_pano_0000_000477"
+    },
+    {
+     "id": "f-side-door",
+     "kind": "other",
+     "where": "blue side door with a transom light at the south-west end",
+     "approxSizeM": [
+      1.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "how": "blue slab, white frame bar, a one-light transom",
+     "seenIn": "TMX7316010203-002118_pano_0000_000477"
+    },
+    {
+     "id": "f-tram-wires",
+     "kind": "other",
+     "where": "tram overhead wires and their wall hooks",
+     "approxSizeM": [
+      26,
+      0.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "wires and 10 cm wall rosettes"
+     },
+     "seenIn": "TMX7316010203-002800_pano_0012_000005"
+    }
+   ]
+  },
+  {
+   "tag": "w02-56",
+   "bearing": 56,
+   "lengthM": 15.7,
+   "centre": [
+    4.881458,
+    52.3527485
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000469",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-roundel",
+     "kind": "gable-stone",
+     "where": "round roundel with a white triangle beside the stair windows, left of the big window",
+     "approxSizeM": [
+      0.7,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "roundel(): white ring, dark disc, white triangle",
+     "seenIn": "TMX7316010203-002118_pano_0000_000469"
+    },
+    {
+     "id": "e-big-window",
+     "kind": "window-shape",
+     "where": "big two-tier window on the first floor: five lights over a wide lower light",
+     "approxSizeM": [
+      4.0,
+      3.3
+     ],
+     "plan": "simplified",
+     "how": "two schoolWindow() tiers; heights read from the oblique aimed thumbnail",
+     "seenIn": "TMX7316010203-002118_pano_0000_000469"
+    },
+    {
+     "id": "e-low-bands",
+     "kind": "window-shape",
+     "where": "low window bands between brick piers at the ground floor, behind a railing",
+     "approxSizeM": [
+      4.5,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "one-light windows in brick reveals in three bands; the 2 cm railing left out",
+     "seenIn": "TMX7316010203-002118_pano_0000_000469"
+    },
+    {
+     "id": "e-arched-door",
+     "kind": "other",
+     "where": "round-arched side door at the ground floor",
+     "approxSizeM": [
+      1.0,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "archSlab door in an archBand brick reveal",
+     "seenIn": "TMX7316010203-002118_pano_0000_000469"
+    },
+    {
+     "id": "e-stair-windows",
+     "kind": "window-shape",
+     "where": "staggered stair windows at half-landings up the street end and single windows above",
+     "approxSizeM": [
+      1.2,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "schoolWindow() per window at heights read from the oblique thumbnail",
+     "seenIn": "TMX7316010203-002118_pano_0000_000469"
+    }
+   ]
+  },
+  {
+   "tag": "w03-235",
+   "bearing": 235,
+   "lengthM": 8.6,
+   "centre": [
+    4.881372,
+    52.3526925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000479",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "two columns of white school windows on the street end of the south-west side, three storeys",
+     "approxSizeM": [
+      2.6,
+      3.0
+     ],
+     "plan": "simplified",
+     "how": "two windows per storey at the measured storey lines; their exact widths are behind a parked van in the only panorama",
+     "seenIn": "TMX7316010203-002118_pano_0000_000479"
+    }
+   ]
+  },
+  {
+   "tag": "w04-326",
+   "bearing": 326,
+   "lengthM": 8.5,
+   "centre": [
+    4.8811125,
+    52.3526095
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-326",
+   "bearing": 326,
+   "lengthM": 6.9,
+   "centre": [
+    4.8813515,
+    52.3527895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002457_pano_0000_001842",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-window-group",
+     "kind": "window-shape",
+     "where": "the rear wing's window group under the white canopy edge of its flat roof",
+     "approxSizeM": [
+      3.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "how": "one three-light schoolWindow and a white edge board along the roof",
+     "seenIn": "TMX7316010203-002457_pano_0000_001842"
+    },
+    {
+     "id": "r-grille",
+     "kind": "balcony-ironwork",
+     "where": "iron grille in front of the low entrance beside the window group",
+     "approxSizeM": [
+      3.5,
+      1.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "seen only from the courtyard panorama at the rear; not from a ride street"
+     },
+     "seenIn": "TMX7316010203-002457_pano_0000_001842"
+    }
+   ]
+  },
+  {
+   "tag": "w06-55",
+   "bearing": 55,
+   "lengthM": 6.5,
+   "centre": [
+    4.8811915,
+    52.352607
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track24_Sphere_00149",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-scaffold",
+     "kind": "other",
+     "where": "the whole wall was under scaffolding and netting in 2024",
+     "approxSizeM": [
+      6.5,
+      14
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "scaffolding hides the wall in the only panorama (2024); drawn as plain brick"
+     },
+     "seenIn": "b_20241106_1111_Track24_Sphere_00149"
+    }
+   ]
+  },
+  {
+   "tag": "w07-146",
+   "bearing": 146,
+   "lengthM": 6.5,
+   "centre": [
+    4.8815445,
+    52.3526175
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_00231",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-letters",
+     "kind": "lettering",
+     "where": "'DE COENEN' in dark blue capitals over the bay's ground-floor window group",
+     "approxSizeM": [
+      2.6,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "letters() 0.35 m tall, blue",
+     "seenIn": "recording_2025-09-29_08-09-56_00231"
+    },
+    {
+     "id": "b-windows",
+     "kind": "window-shape",
+     "where": "the bay's window on every storey (four lights on the ground floor, three above)",
+     "approxSizeM": [
+      4.3,
+      3.0
+     ],
+     "plan": "modelled",
+     "how": "schoolWindow() per storey",
+     "seenIn": "TMX7316010203-002800_pano_0012_000008"
+    },
+    {
+     "id": "b-dormer",
+     "kind": "other",
+     "where": "white dormer with three lights on the roof over the bay",
+     "approxSizeM": [
+      3.4,
+      1.7
+     ],
+     "plan": "modelled",
+     "how": "white box 1.3 m behind the wall, three-light window, flat white top",
+     "seenIn": "TMX7316010203-002800_pano_0012_000008"
+    }
+   ]
+  },
+  {
+   "tag": "w08-326",
+   "bearing": 326,
+   "lengthM": 6.3,
+   "centre": [
+    4.881245,
+    52.352778
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_005483",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-bay",
+     "kind": "window-shape",
+     "where": "canted two-storey bay of white windows on the rear",
+     "approxSizeM": [
+      3.2,
+      6.2
+     ],
+     "plan": "simplified",
+     "how": "rearBay(): a brick box 0.8 m deep with two three-light windows and a white flat top (the canted sides drawn square)",
+     "seenIn": "TMX7316010203-002118_pano_0000_005483"
+    }
+   ]
+  },
+  {
+   "tag": "w09-327",
+   "bearing": 327,
+   "lengthM": 6,
+   "centre": [
+    4.8812555,
+    52.352598
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-56",
+   "bearing": 56,
+   "lengthM": 5,
+   "centre": [
+    4.881354,
+    52.3526665
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track24_Sphere_00146",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-roundel",
+     "kind": "gable-stone",
+     "where": "the roundel with the triangle on the courtyard side",
+     "approxSizeM": [
+      0.7,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "roundel()",
+     "seenIn": "b_20241106_1111_Track24_Sphere_00146"
+    },
+    {
+     "id": "k-windows",
+     "kind": "window-shape",
+     "where": "two columns of white windows on the courtyard side",
+     "approxSizeM": [
+      1.1,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "schoolWindow() per storey in two columns",
+     "seenIn": "b_20241106_1111_Track24_Sphere_00146"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012085712",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012085712/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012085712",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

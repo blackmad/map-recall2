@@ -103649,6 +103649,198 @@
   }
  },
  {
+  "id": "de-coenen-coenenstraat",
+  "name": "De Coenen (former school), Johannes M. Coenenstraat 4",
+  "modelUrl": "./models/de-coenen-coenenstraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012085712"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88131318,
+    52.35266712
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 38.7,
+   "widthMetres": 35.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.88131318,
+    52.35266712
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012085712 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/de-coenen-coenenstraat-footprints.json, bag-shell-prepare.ts); the fronts read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002118_pano_0000_000477 (2021) and TMX7316010203-002800_pano_0012_000005 (2022, the street front), TMX7316010203-002800_pano_0012_000008 (2022) and recording_2025-09-29_08-09-56_00231 (2025, the north-east bay and its letters), TMX7316010203-002118_pano_0000_000479 (2021, the south-west side), TMX7316010203-002457_pano_0000_001842 (2022, the rear wing), CC BY 4.0. Per wall in scripts/landmarks/de-coenen-coenenstraat-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "measuredOverrides": true,
+  "heightMetres": 20.5,
+  "galleryView": {
+   "theta": 0.35,
+   "phi": 1.1
+  },
+  "bagYear": 1923,
+  "materialOverrides": {
+   "brick": "#dcc189",
+   "red": "#8c6e5c",
+   "slate": "#6a6a66",
+   "frame": "#ecebe4",
+   "glass": "#6f7774",
+   "stone": "#cbbf9f",
+   "greyBrick": "#4f5a62",
+   "white": "#efede6",
+   "concrete": "#ebe9e2",
+   "blue": "#2e4466",
+   "dark": "#2b2a29",
+   "ochre": "#b8863c"
+  },
+  "attribution": {
+   "title": "De Coenen, Johannes M. Coenenstraat 4, Amsterdam (former school, 1923)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012085712/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012085712 (CC0): the buff-brick school front with its small-paned white windows in brick reveals on two tall storeys, the top-floor window band between brick piers, the deep white eaves, the blue-grey glazed plinth, the entrance porch under its iron ornament, the north-east bay with the DE COENEN letters and its dormer, and the roof lights, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8812806,
+      52.3527921
+     ],
+     [
+      4.8812048,
+      52.3527601
+     ],
+     [
+      4.8812299,
+      52.3527373
+     ],
+     [
+      4.88125,
+      52.3527457
+     ],
+     [
+      4.8812689,
+      52.3527286
+     ],
+     [
+      4.8812861,
+      52.3527353
+     ],
+     [
+      4.8813121,
+      52.3527132
+     ],
+     [
+      4.8813335,
+      52.3527218
+     ],
+     [
+      4.8814048,
+      52.3526593
+     ],
+     [
+      4.8813725,
+      52.352646
+     ],
+     [
+      4.8813308,
+      52.3526829
+     ],
+     [
+      4.8813069,
+      52.3526736
+     ],
+     [
+      4.881321,
+      52.3526613
+     ],
+     [
+      4.8813037,
+      52.3526543
+     ],
+     [
+      4.8813001,
+      52.3526572
+     ],
+     [
+      4.8812852,
+      52.3526507
+     ],
+     [
+      4.8812882,
+      52.352648
+     ],
+     [
+      4.8812615,
+      52.3526367
+     ],
+     [
+      4.8812889,
+      52.352611
+     ],
+     [
+      4.8812164,
+      52.3525809
+     ],
+     [
+      4.8811612,
+      52.3526288
+     ],
+     [
+      4.8810587,
+      52.3525864
+     ],
+     [
+      4.8811054,
+      52.3525443
+     ],
+     [
+      4.8812037,
+      52.3524571
+     ],
+     [
+      4.8815143,
+      52.3525881
+     ],
+     [
+      4.8815024,
+      52.3525986
+     ],
+     [
+      4.8815808,
+      52.352632
+     ],
+     [
+      4.8815184,
+      52.3526868
+     ],
+     [
+      4.8815205,
+      52.3526877
+     ],
+     [
+      4.8813904,
+      52.3528053
+     ],
+     [
+      4.881307,
+      52.3527697
+     ],
+     [
+      4.8812806,
+      52.3527921
+     ]
+    ]
+   ]
+  }
+ },
+ {
   "id": "de-kandelaar-vening-meineszlaan",
   "name": "De Kandelaar (Salvation Army corps building), Burgemeester Vening Meineszlaan 64",
   "modelUrl": "./models/de-kandelaar-vening-meineszlaan.glb",
