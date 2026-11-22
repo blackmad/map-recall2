@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-22T20:28:31.513Z",
+ "generatedAt": "2026-11-22T20:42:35.466Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -125024,9 +125024,9 @@
    "id": "chunk-face-schuyt-18-34",
    "category": "street-survey",
    "name": "face-schuyt-18-34",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-schuyt-18-34.glb?asset=0949f06c19fef0ff",
-   "sha256": "0949f06c19fef0ffa90d4ee52e94ad992daba4daf01790f385f6673c6d2b6d9f",
-   "bytes": 353532,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-schuyt-18-34.glb?asset=945f2d5ce74b2302",
+   "sha256": "945f2d5ce74b2302be95e6cd6b4035ccfd999cd16fbd89c7cf61c1aec6a38e00",
+   "bytes": 353552,
    "triangles": 14315,
    "primitives": 36,
    "instance": {
@@ -125299,7 +125299,7 @@
      "triangles": 3605,
      "ranges": [
       {
-       "primitive": 1,
+       "primitive": 0,
        "firstTriangle": 0,
        "triangleCount": 416
       },
@@ -125390,7 +125390,7 @@
      "triangles": 1847,
      "ranges": [
       {
-       "primitive": 0,
+       "primitive": 2,
        "firstTriangle": 0,
        "triangleCount": 149
       },
@@ -125466,7 +125466,7 @@
      "triangles": 2013,
      "ranges": [
       {
-       "primitive": 3,
+       "primitive": 4,
        "firstTriangle": 0,
        "triangleCount": 59
       },
@@ -125552,7 +125552,7 @@
      "triangles": 1825,
      "ranges": [
       {
-       "primitive": 4,
+       "primitive": 3,
        "firstTriangle": 0,
        "triangleCount": 74
       },
@@ -125699,7 +125699,7 @@
      "triangles": 1973,
      "ranges": [
       {
-       "primitive": 2,
+       "primitive": 1,
        "firstTriangle": 0,
        "triangleCount": 67
       },
