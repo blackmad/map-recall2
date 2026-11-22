@@ -420,8 +420,10 @@ function plotBalconies(c: ExtraContext, s: ExtraSink): void {
 function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'stated' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
-  const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing || c.soloOpenings?.length ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
+  // Belt windows 2: a measured front's kinked wall carries its windows whether or not it holds the door (76-78's 1.48 m
+  // second wall ran out at the side wall's budget and drew one window's glass).
+  const reserve = street || streetDressed.has(sink) || c.soloOpenings?.length ? 0 : EXTRA_BUDGET.streetReserve;
+  const remaining = Math.max(0, (street ? (c.rowDress || c.designMember ? EXTRA_BUDGET.rowWall + (c.rowDress?.glazing || c.soloOpenings?.length ? EXTRA_BUDGET.rowGlazing : 0) : EXTRA_BUDGET.wall) + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall + (c.soloOpenings?.length ? EXTRA_BUDGET.rowGlazing : 0)) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&phase!=='stated'&&street&&c.recipe?.shopCanopy&&(!c.onlyExtras||c.onlyExtras.includes('continuous-shop-canopy'))){
     const before=sink.tris.length;

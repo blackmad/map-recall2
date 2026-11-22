@@ -1663,7 +1663,7 @@
      "rows": 1,
      "transom": 0.3
     },
-    "frame": "#3a3c3a"
+    "frame": "#ece9e0"
    },
    {
     "storey": 1,
@@ -3415,8 +3415,7 @@
      "rows": 1,
      "transom": 0.3
     },
-    "frame": "#ddd6c2",
-    "sash": "#2d2f2c"
+    "frame": "#ddd6c2"
    },
    {
     "storey": 1,
@@ -3443,8 +3442,7 @@
      "cols": 2,
      "rows": 2
     },
-    "frame": "#ddd6c2",
-    "sash": "#2d2f2c"
+    "frame": "#ddd6c2"
    },
    {
     "storey": 2,
@@ -3471,8 +3469,7 @@
      "cols": 3,
      "rows": 2
     },
-    "frame": "#ddd6c2",
-    "sash": "#2d2f2c"
+    "frame": "#ddd6c2"
    }
   ]
  },
@@ -3617,7 +3614,7 @@
   ]
  },
  "Herengracht 18": {
-  "note": "dark grey brick; dark grey frames with grey sills; two casements under a toplight; one wide ground window beside a white doorcase",
+  "note": "dark grey brick; pale grey frames round dark sashes, grey sills (belt windows 2); two casements under a toplight; one wide ground window beside a white doorcase",
   "rows": [
    {
     "storey": 0,
@@ -3636,7 +3633,8 @@
      "rows": 1,
      "transom": 0.28
     },
-    "frame": "#4d5052"
+    "frame": "#d9d9d2",
+    "sash": "#3a3d3f"
    },
    {
     "storey": 1,
@@ -3659,7 +3657,8 @@
      "rows": 1,
      "transom": 0.35
     },
-    "frame": "#4d5052"
+    "frame": "#d9d9d2",
+    "sash": "#3a3d3f"
    },
    {
     "storey": 2,
@@ -3682,7 +3681,8 @@
      "rows": 1,
      "transom": 0.38
     },
-    "frame": "#4d5052"
+    "frame": "#d9d9d2",
+    "sash": "#3a3d3f"
    }
   ]
  },
@@ -3908,7 +3908,7 @@
   ]
  },
  "Herengracht 12": {
-  "note": "brown brick over a cream rusticated ground front; dark frames; the centre first-storey window in a pedimented aedicule; ground front's windows lend panes only",
+  "note": "brown brick over a cream rusticated ground front; white frames with thin dark sash bars (belt windows 2: the frames were read dark); the centre first-storey window in a pedimented aedicule; ground front's windows lend panes only",
   "rows": [
    {
     "storey": 0,
@@ -3931,7 +3931,8 @@
      "rows": 1,
      "transom": 0.32
     },
-    "frame": "#2e3030"
+    "frame": "#ece9e0",
+    "sash": "#2e3030"
    },
    {
     "storey": 1,
@@ -3958,7 +3959,8 @@
      "rows": 1,
      "transom": 0.35
     },
-    "frame": "#2e3030"
+    "frame": "#ece9e0",
+    "sash": "#2e3030"
    },
    {
     "storey": 2,
@@ -3984,7 +3986,8 @@
      "cols": 2,
      "rows": 1
     },
-    "frame": "#2e3030"
+    "frame": "#ece9e0",
+    "sash": "#2e3030"
    }
   ]
  },
@@ -4452,6 +4455,432 @@
      "rows": 2
     },
     "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 78": {
+  "landmarks": {
+   "pavement": 1480,
+   "floors": [
+    1040,
+    785
+   ],
+   "top": 540
+  },
+  "note": "belt windows 2: the left house of pand 0363100012175784's split (crop x 0-400 of the pair's span); white frames and sashes; two windows in one ground frame; a French window over a balconet in the second storey's middle",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      136,
+      248
+     ],
+     [
+      264,
+      376
+     ]
+    ],
+    "y": [
+     1076,
+     1340
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3,
+     "transom": 0.34
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      8,
+      161
+     ],
+     [
+      213,
+      372
+     ]
+    ],
+    "y": [
+     815,
+     1010
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 3
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      4,
+      93
+     ],
+     [
+      124,
+      241
+     ],
+     [
+      273,
+      368
+     ]
+    ],
+    "y": [
+     624,
+     744
+    ],
+    "ys": {
+     "1": [
+      620,
+      773
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 76": {
+  "landmarks": {
+   "pavement": 1480,
+   "floors": [
+    1030,
+    760
+   ],
+   "top": 545
+  },
+  "note": "belt windows 2: the right house of the split (crop x 0-437 from the divider); its floors ~30 px higher than 78's; white frames and sashes; one wide twelve-light ground window beside the door; a French window in the second storey's middle",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      183,
+      364
+     ]
+    ],
+    "y": [
+     1059,
+     1315
+    ],
+    "panes": {
+     "cols": 4,
+     "rows": 4,
+     "transom": 0.22
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      42,
+      179
+     ],
+     [
+      236,
+      369
+     ]
+    ],
+    "y": [
+     782,
+     997
+    ],
+    "panes": {
+     "cols": 3,
+     "rows": 4
+    },
+    "frame": "#ece9e0"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      35,
+      122
+     ],
+     [
+      150,
+      260
+     ],
+     [
+      286,
+      370
+     ]
+    ],
+    "y": [
+     565,
+     712
+    ],
+    "ys": {
+     "1": [
+      560,
+      735
+     ]
+    },
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "except": {
+     "1": {
+      "panes": {
+       "cols": 2,
+       "rows": 2
+      }
+     }
+    },
+    "frame": "#ece9e0"
+   }
+  ]
+ },
+ "Herengracht 52": {
+  "landmarks": {
+   "pavement": 976,
+   "floors": [
+    770,
+    592
+   ],
+   "top": 432
+  },
+  "note": "belt windows 2: the left house of pand 0363100012169272's split (crop x 0-718): the rows of the pair's read, all its windows; cream frames",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      26,
+      96
+     ],
+     [
+      138,
+      211
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     799,
+     972
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ddd8c8"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      24,
+      96
+     ],
+     [
+      136,
+      211
+     ],
+     [
+      302,
+      379
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     615,
+     750
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 3
+    },
+    "frame": "#ddd8c8"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      24,
+      96
+     ],
+     [
+      136,
+      211
+     ],
+     [
+      302,
+      379
+     ],
+     [
+      472,
+      549
+     ],
+     [
+      591,
+      667
+     ]
+    ],
+    "y": [
+     478,
+     573
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#ddd8c8"
+   }
+  ]
+ },
+ "Herengracht 50": {
+  "landmarks": {
+   "pavement": 976,
+   "floors": [
+    790,
+    630,
+    470
+   ],
+   "top": 335
+  },
+  "note": "belt windows 2: the right house of the split (crop x 0-256 from the divider): three bays, four storeys under the cornice, segmental heads over the lower three, white sill boards; cream frames; cars hide the ground windows' feet (sill by eye)",
+  "rows": [
+   {
+    "storey": 0,
+    "x": [
+     [
+      12,
+      72
+     ],
+     [
+      90,
+      150
+     ],
+     [
+      172,
+      228
+     ]
+    ],
+    "y": [
+     815,
+     962
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e6dc"
+   },
+   {
+    "storey": 1,
+    "x": [
+     [
+      10,
+      72
+     ],
+     [
+      90,
+      150
+     ],
+     [
+      170,
+      228
+     ]
+    ],
+    "y": [
+     648,
+     768
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e6dc",
+    "surround": "sill"
+   },
+   {
+    "storey": 2,
+    "x": [
+     [
+      10,
+      72
+     ],
+     [
+      90,
+      150
+     ],
+     [
+      170,
+      228
+     ]
+    ],
+    "y": [
+     490,
+     608
+    ],
+    "head": "segmental",
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e6dc",
+    "surround": "sill"
+   },
+   {
+    "storey": 3,
+    "x": [
+     [
+      10,
+      72
+     ],
+     [
+      90,
+      150
+     ],
+     [
+      170,
+      230
+     ]
+    ],
+    "y": [
+     345,
+     448
+    ],
+    "panes": {
+     "cols": 2,
+     "rows": 2
+    },
+    "frame": "#e8e6dc"
    }
   ]
  }

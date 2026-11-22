@@ -62,6 +62,10 @@ export interface OpeningRow extends Partial<OpeningLook> {
 export interface OpeningGrid {
   /** The measured front's width (m): the crop's span over its pixels per metre. */
   frontM: number;
+  /** The photo's front line [lngA, latA, lngB, latB], left to right as seen (belt windows 2: the wall the crop was cut on,
+   *  at the picked facade edges). A drawn street run longer than `frontM` (a footprint edge running past the photo's wall,
+   *  Herengracht 72: a 6.61 m run under a 4.2 m front) takes the grid on the stretch of it this line covers. */
+  line?: [number, number, number, number];
   /** The measured floor-to-floor heights (m), the ground storey (pavement to first floor) first; the top storey up to
    *  the cornice zone's foot or the gable's eaves line. */
   storeyM: number[];
@@ -82,8 +86,19 @@ export interface OpeningBox {
   panes: PaneLayout;
   frame?: string;
   sash?: string;
-  surround: OpeningSurround;
+  surround: DrawnSurround;
 }
+
+/**
+ * Belt windows 2: the stock kit's dressing round a window (bayTextures.ts windowAt: a stone lintel, a sill and pale side
+ * blocks), drawn round a measured window whose grid states no surround, so a measured front keeps what the stock cells
+ * painted (Herengracht 12, 54: the lane's bare frames had replaced them). `restrained`: the thin lintel and sill.
+ */
+export interface StockTrim { lintel: 'flat' | 'arch' | 'none'; restrained: boolean; blocks: boolean }
+/** A drawn window's dressing: a stated surround, or the stock kit's. */
+export type DrawnSurround = OpeningSurround | { stock: StockTrim };
+/** The stock kit's stone (bayTextures.ts windowAt `stone`). */
+export const STOCK_STONE = '#cfc8b8';
 
 const HEX = /^#[0-9a-f]{6}$/i;
 const num = (v: unknown, lo: number, hi: number): v is number => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
@@ -117,6 +132,7 @@ export function openingGridProblems(v: unknown): string[] {
   if (!v || typeof v !== 'object' || Array.isArray(v)) return ['openings: an object'];
   const g = v as Record<string, unknown>, p: string[] = [];
   if (!num(g.frontM, 1.5, 40)) p.push('frontM: 1.5-40 m');
+  if (g.line !== undefined && !(Array.isArray(g.line) && g.line.length === 4 && g.line.every(v => num(v, -180, 180)))) p.push('line: [lngA, latA, lngB, latB]');
   if (!Array.isArray(g.storeyM) || !g.storeyM.length || !g.storeyM.every(x => num(x, 1, 10))) p.push('storeyM: a list of 1-10 m');
   if (g.default !== undefined) p.push(...lookProblems(g.default, 'default'));
   if (!Array.isArray(g.rows) || !g.rows.length) p.push('rows: a non-empty list');
@@ -180,7 +196,7 @@ export const SINGLE_LIGHT: PaneLayout = { cols: 1, rows: 1 };
  */
 /** How far (share) the drawn front may differ from the measured one and still take the grid stretched to it. */
 export const OPENING_STRETCH = 0.15;
-export function openingBoxes(g: OpeningGrid, storey: number, drawn: { frontM: number; storeyM: number }): OpeningBox[] {
+export function openingBoxes(g: OpeningGrid, storey: number, drawn: { frontM: number; storeyM: number }, stock?: StockTrim): OpeningBox[] {
   const row = g.rows.find(r => r.storey === storey), measured = g.storeyM[storey];
   if (!row || !(measured > 0) || !(drawn.frontM > 0) || !(drawn.storeyM > 0)) return [];
   // A drawn front within STRETCH of the photo's takes the grid stretched to it; one further off is a footprint run longer
@@ -194,7 +210,7 @@ export function openingBoxes(g: OpeningGrid, storey: number, drawn: { frontM: nu
     const x = share * g.frontM * kx, hw = Math.min(l.w * kx / 2, x, drawn.frontM - x);
     const z0 = Math.max(0, l.sill * kz), z1 = Math.min(drawn.storeyM - 0.1, (l.sill + l.h) * kz);
     if (!(hw > 0.1) || !(z1 - z0 > 0.2)) return;
-    out.push({ storey, bay, x: +x.toFixed(4), hw: +hw.toFixed(4), z0: +z0.toFixed(4), z1: +z1.toFixed(4), head: l.head ?? 'flat', panes: l.panes ?? SINGLE_LIGHT, ...(l.frame ? { frame: l.frame } : {}), ...(l.sash ? { sash: l.sash } : {}), surround: l.surround ?? 'none' });
+    out.push({ storey, bay, x: +x.toFixed(4), hw: +hw.toFixed(4), z0: +z0.toFixed(4), z1: +z1.toFixed(4), head: l.head ?? 'flat', panes: l.panes ?? SINGLE_LIGHT, ...(l.frame ? { frame: l.frame } : {}), ...(l.sash ? { sash: l.sash } : {}), surround: l.surround ?? (stock ? { stock } : 'none') });
   });
   return out;
 }
@@ -203,9 +219,24 @@ export function openingBoxes(g: OpeningGrid, storey: number, drawn: { frontM: nu
 
 /** The joinery's sizes (m) and its depth over the wall (the window drawn on a flat wall: glass a little proud of it, the
  *  frame and bars proud of the glass). */
-export const JOINERY = { frame: 0.085, bar: 0.035, rail: 0.06, transom: 0.075, glassOut: 0.012, frameOut: 0.028, surroundOut: 0.04, surround: 0.13, block: 0.32, arcSteps: 8 } as const;
+// Belt windows 2: the frame 0.085 -> 0.12 m and the bars 0.035 -> 0.045 m (the stock cell's frame is 0.09 m with the era
+// frame boards outside it; the lane's thinner ring read as a bare dark box at review scale).
+export const JOINERY = { frame: 0.12, bar: 0.045, rail: 0.075, transom: 0.08, reveal: 0.04, revealOut: 0.006, glassOut: 0.012, frameOut: 0.028, surroundOut: 0.04, surround: 0.13, block: 0.32, arcSteps: 8 } as const;
 /** The glass: the toplight a little paler (sky in it), the panes darker. */
-export const OPENING_GLASS = { pane: '#2f3d47', light: '#4d606c' } as const;
+export const OPENING_GLASS = { pane: '#2f3d47', light: '#4d606c', sky: '#4a5d6a' } as const;
+/**
+ * Belt windows 2: the glass behind dark joinery. Dark sashes (Herengracht 10, 16, 38, 64, 90) or dark frames (30, 48, 54,
+ * 82, 88) on the dark glass drew plain dark boxes; in the photos that glass shows the sky, and the bars read dark on it.
+ */
+export const OPENING_GLASS_LIT = { pane: '#7d909c', light: '#a7b6bf', sky: '#97a8b3' } as const;
+/** The reveal's shadow round the frame (the stock cell's 4 px band). */
+export const OPENING_REVEAL = '#2a221c';
+/** A paint dark enough that the glass behind it is drawn lit (relative luminance, 0-1). */
+export function darkPaint(hex: string | undefined): boolean {
+  if (!hex || !HEX.test(hex)) return false;
+  const v = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+  return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2] < 0.3;
+}
 
 /** A flat piece of joinery: a quad (x along the front, z up, in the window's frame of reference) at its depth. */
 export interface JoineryPiece { pts: [[number, number], [number, number], [number, number], [number, number]]; out: number; hex: string }
@@ -232,7 +263,8 @@ function arcAt(head: OpeningHead, x0: number, x1: number, x: number): number {
 export function joineryPieces(b: Pick<OpeningBox, 'x' | 'hw' | 'z0' | 'z1' | 'head' | 'panes' | 'surround' | 'sash'>, frameHex: string, surroundHex: string): JoineryPiece[] {
   const sashHex = b.sash ?? frameHex, J = JOINERY, x0 = b.x - b.hw, x1 = b.x + b.hw, w = x1 - x0, out: JoineryPiece[] = [];
   const rise = Math.min(arcRise(b.head, w), (b.z1 - b.z0) * 0.6), spring = b.z1 - rise;
-  const F = Math.min(J.frame, w * 0.12, (b.z1 - b.z0) * 0.08), B = Math.min(J.bar, F * 0.6);
+  const F = Math.min(J.frame, w * 0.13, (b.z1 - b.z0) * 0.09), B = Math.min(J.bar, F * 0.5);
+  const G = darkPaint(sashHex) || darkPaint(frameHex) ? OPENING_GLASS_LIT : OPENING_GLASS;
   const quad = (a0: number, a1: number, z0: number, z1: number, o: number, hex: string) => { if (a1 - a0 > 1e-4 && z1 - z0 > 1e-4) out.push({ pts: [[a0, z0], [a1, z0], [a1, z1], [a0, z1]], out: o, hex }); };
   // An arched band between two outlines (outer and inner), in slices: [xa, xb] at heights top(x) and bottom(x).
   const arcBand = (a0: number, a1: number, top: (x: number) => number, bottom: (x: number) => number, o: number, hex: string) => {
@@ -245,6 +277,37 @@ export function joineryPieces(b: Pick<OpeningBox, 'x' | 'hw' | 'z0' | 'z1' | 'he
   const outerTop = (x: number) => spring + (rise > 0 ? arcAt(b.head, x0, x1, x) : 0);
   // The surround: a flat band round the frame (full-frame: all round; a sill: under it only; a stone lintel: over it).
   const S = J.surround;
+  // The reveal's shadow round the frame (the stock cell's dark band), under every other piece.
+  arcBand(x0 - J.reveal, x1 + J.reveal, x => (rise > 0 ? spring + arcAt(b.head, x0 - J.reveal, x1 + J.reveal, x) : b.z1) + J.reveal, () => b.z0 - J.reveal, J.revealOut, OPENING_REVEAL);
+  if (typeof b.surround === 'object') {
+    // The stock kit's dressing (bayTextures.ts windowAt, 100 px a metre): a stone lintel 6 cm over the head (26 cm tall,
+    // 12 cm past each jamb; restrained 8 cm and 4 cm), a stone sill under the frame, pale blocks beside the jambs.
+    const t = b.surround.stock, r = t.restrained, stone = STOCK_STONE;
+    if (t.blocks) {
+      const bw = r ? 0.1 : 0.18, bh = r ? 0.12 : 0.18, step = r ? 0.7 : 0.42;
+      for (let z = b.z0 + 0.08; z + bh <= spring; z += step) { quad(x0 - bw - J.reveal, x0 - J.reveal, z, z + bh, J.surroundOut, '#eee9de'); quad(x1 + J.reveal, x1 + J.reveal + bw, z, z + bh, J.surroundOut, '#eee9de'); }
+    }
+    if (t.lintel !== 'none') {
+      const ov = r ? 0.04 : 0.12, lh = r ? 0.08 : 0.26;
+      if (t.lintel === 'arch' || rise > 0) arcBand(x0 - ov, x1 + ov, x => spring + Math.max(rise, w / 6) * Math.sqrt(Math.max(0, 1 - ((x - b.x) / (b.hw + ov)) ** 2)) + J.reveal + lh * 0.5, x => spring + Math.max(rise, w / 6) * Math.sqrt(Math.max(0, 1 - ((x - b.x) / (b.hw + ov)) ** 2)) + J.reveal, J.surroundOut, stone);
+      else {
+        quad(x0 - ov, x1 + ov, b.z1 + 0.06, b.z1 + 0.06 + lh, J.surroundOut, stone);
+        // The soldier course's joints (the cell's dark strokes every 10 cm).
+        if (!r) for (let x = x0 - ov + 0.1; x < x1 + ov - 0.02; x += 0.1) quad(x - 0.01, x + 0.01, b.z1 + 0.06, b.z1 + 0.06 + lh, J.surroundOut + 0.002, '#7a6150');
+      }
+      quad(x0 - (r ? 0.04 : 0.1), x1 + (r ? 0.04 : 0.1), b.z0 - (r ? 0.07 : 0.14), b.z0 - 0.02, J.surroundOut, stone);
+    }
+  }
+  if (b.surround === 'keystone' || b.surround === 'jack-blocks') {
+    // A stone head over the frame and a sill; keystone: a raised block at its middle; jack-blocks: the head's ends as
+    // blocks dropping past it, and short blocks up the jambs.
+    const top = rise > 0 ? b.z1 : b.z1 + S * 1.4;
+    if (rise > 0) arcBand(x0 - S, x1 + S, x => spring + arcAt(b.head, x0 - S, x1 + S, x) + S, x => outerTop(Math.min(x1, Math.max(x0, x))), J.surroundOut, surroundHex);
+    else quad(x0 - S, x1 + S, b.z1, top, J.surroundOut, surroundHex);
+    quad(x0 - S, x1 + S, b.z0 - S * 0.6, b.z0, J.surroundOut, surroundHex);
+    if (b.surround === 'keystone') { const kw = Math.min(0.22, w * 0.18); quad(b.x - kw / 2, b.x + kw / 2, b.z1 - S * 0.5, top + S * 0.6 + (rise > 0 ? S : 0), J.surroundOut + 0.02, surroundHex); }
+    else for (const [a, c] of [[x0 - S * 1.8, x0], [x1, x1 + S * 1.8]] as const) { quad(a, c, spring - S * 1.6, spring, J.surroundOut, surroundHex); quad(a, c, b.z0, b.z0 + S * 1.3, J.surroundOut, surroundHex); }
+  }
   if (b.surround === 'block-dressings') {
     // Stone blocks up each jamb, long and short in turn (Herengracht 58's white dressings in grey brick).
     const n = Math.max(2, Math.round((spring - b.z0) / J.block)), h = (spring - b.z0) / n;
@@ -254,22 +317,34 @@ export function joineryPieces(b: Pick<OpeningBox, 'x' | 'hw' | 'z0' | 'z1' | 'he
     }
   }
   if (b.surround === 'full-frame' || b.surround === 'block-dressings') {
-    if (b.surround === 'full-frame') { quad(x0 - S, x0, b.z0 - S * 0.6, spring, J.surroundOut, surroundHex); quad(x1, x1 + S, b.z0 - S * 0.6, spring, J.surroundOut, surroundHex); }
-    arcBand(x0 - S, x1 + S, x => (rise > 0 ? spring + arcAt(b.head, x0 - S, x1 + S, x) : b.z1) + S, x => rise > 0 ? Math.max(spring, outerTop(Math.min(x1, Math.max(x0, x)))) : b.z1, J.surroundOut, surroundHex);
+    // Belt windows 2: a full frame stands a reveal's shadow off the window frame, so a white surround round a white frame
+    // still reads as two members (54's and 70's moulded surrounds drew as one fat frame).
+    const g = b.surround === 'full-frame' ? 0.03 : 0;
+    if (b.surround === 'full-frame') { quad(x0 - S - g, x0 - g, b.z0 - S * 0.6, spring + g, J.surroundOut, surroundHex); quad(x1 + g, x1 + S + g, b.z0 - S * 0.6, spring + g, J.surroundOut, surroundHex); }
+    arcBand(x0 - S - g, x1 + S + g, x => (rise > 0 ? spring + arcAt(b.head, x0 - S - g, x1 + S + g, x) : b.z1) + S + g, x => rise > 0 ? Math.max(spring, outerTop(Math.min(x1, Math.max(x0, x)))) + g : b.z1 + g, J.surroundOut, surroundHex);
   }
   if (b.surround === 'full-frame' || b.surround === 'sill' || b.surround === 'block-dressings') quad(x0 - S, x1 + S, b.z0 - S * 0.6, b.z0, J.surroundOut, surroundHex);
+  // A full frame's head: a moulded cap over it, proud of the architrave (Herengracht 54, 72: the surrounds' cornices; the
+  // lane's flat band read as a bare frame).
+  if (b.surround === 'full-frame') {
+    const capZ = (rise > 0 ? b.z1 : b.z1 + S) + 0.03, cx0 = x0 - S - 0.1, cx1 = x1 + S + 0.1;
+    quad(cx0, cx1, capZ, capZ + 0.07, J.surroundOut + 0.03, surroundHex);
+    quad(cx0 - 0.04, cx1 + 0.04, capZ + 0.07, capZ + 0.15, J.surroundOut + 0.05, surroundHex);
+  }
   if (b.surround === 'stone-lintel' && !rise) quad(x0 - S, x1 + S, b.z1, b.z1 + S * 1.4, J.surroundOut, surroundHex);
   // The glass inside the frame: the toplight (over the transom) paler.
   const gx0 = x0 + F, gx1 = x1 - F, gz0 = b.z0 + F, glassTop = (x: number) => outerTop(x) - F;
   const gSpring = spring - F, glassH = gSpring - gz0 + (rise > 0 ? rise : 0);
   const t = b.panes.transom, zt = t ? gSpring + (rise > 0 ? rise : 0) - glassH * t : undefined;
+  // The panes: the sky's band over their upper part (the stock cell's gradient), the toplight paler still.
+  const panes = (z0: number, z1: number) => { const zs = z0 + (z1 - z0) * 0.55; quad(gx0, gx1, z0, zs, J.glassOut, G.pane); quad(gx0, gx1, zs, z1, J.glassOut, G.sky); };
   if (zt !== undefined && zt < gSpring) {
-    quad(gx0, gx1, gz0, zt, J.glassOut, OPENING_GLASS.pane);
-    quad(gx0, gx1, zt, gSpring, J.glassOut, OPENING_GLASS.light);
-    if (rise > 0) arcBand(gx0, gx1, glassTop, () => gSpring, J.glassOut, OPENING_GLASS.light);
+    panes(gz0, zt);
+    quad(gx0, gx1, zt, gSpring, J.glassOut, G.light);
+    if (rise > 0) arcBand(gx0, gx1, glassTop, () => gSpring, J.glassOut, G.light);
   } else {
-    quad(gx0, gx1, gz0, gSpring, J.glassOut, OPENING_GLASS.pane);
-    if (rise > 0) arcBand(gx0, gx1, glassTop, () => gSpring, J.glassOut, zt !== undefined ? OPENING_GLASS.light : OPENING_GLASS.pane);
+    panes(gz0, gSpring);
+    if (rise > 0) arcBand(gx0, gx1, glassTop, () => gSpring, J.glassOut, zt !== undefined ? G.light : G.sky);
   }
   // The frame ring: sill rail, jambs, head (arched where the head is).
   quad(x0, x1, b.z0, gz0, J.frameOut, frameHex);

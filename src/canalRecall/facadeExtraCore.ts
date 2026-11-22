@@ -71,7 +71,7 @@ export type ExtraContext = {
    *  storey 0 the ground: the `solo-openings` joinery draws them, and the window spans of their storeys are theirs. */
   /** The storeys (0 = ground) the grid measures: their window spans are the measured ones only, whatever this wall holds. */
   soloOpeningRows?: number[];
-  soloOpenings?: Array<{ storey: number; x: number; hw: number; z0: number; z1: number; head: import('./houseLine/openingGrid.js').OpeningHead; panes: import('./houseLine/openingGrid.js').PaneLayout; frame: string; sash?: string; surround: import('./houseLine/openingGrid.js').OpeningSurround }>;
+  soloOpenings?: Array<{ storey: number; x: number; hw: number; z0: number; z1: number; head: import('./houseLine/openingGrid.js').OpeningHead; panes: import('./houseLine/openingGrid.js').PaneLayout; frame: string; sash?: string; surround: import('./houseLine/openingGrid.js').DrawnSurround }>;
   /** Belt review: the solo plot's measured street door on this wall (as `groundWindows`). */
   groundDoor?: { x: number; hw: number; z0: number; z1: number };
   /** Belt review: the solo plot's measured basement band (top z, absolute) and its pavement-level windows. */

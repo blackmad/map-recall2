@@ -6,10 +6,10 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { JOINERY, OPENING_GLASS, joineryPieces, methodOf, openingBoxes, openingGridOf, openingGridProblems, resolvedLook, type OpeningGrid } from './openingGrid.ts';
+import { JOINERY, OPENING_GLASS, OPENING_GLASS_LIT, OPENING_REVEAL, STOCK_STONE, darkPaint, joineryPieces, methodOf, openingBoxes, openingGridOf, openingGridProblems, resolvedLook, type OpeningGrid } from './openingGrid.ts';
 import { bandWindows, runsOver, windowBars, type RgbImage } from '../beltReview/openingProfile.ts';
 import { TEXT_CUES } from '../beltReview/plotRead.ts';
-import { soloCentreOnEdge, soloGroundBoxes } from '../threeBuildingMesh.ts';
+import { gridSpanOnRun, runOnLine, soloCentreOnEdge, soloGroundBoxes, stockTrimOf } from '../threeBuildingMesh.ts';
 
 /** Herengracht 90 as measured by eye on its crop (50 px/m): three bays, wide 2-light casements under a toplight. */
 const H90: OpeningGrid = {
@@ -65,16 +65,19 @@ test('openingBoxes: stretched to a drawn front near the photo\'s, metres kept on
 test('joineryPieces: glass (the toplight paler), the frame ring, the sash bars in the sash colour; a surround when asked', () => {
   const [b] = openingBoxes(H90, 1, { frontM: 5.66, storeyM: 3.48 });
   const p = joineryPieces({ ...b, sash: '#3b2c22' }, '#efece4', '#ffffff');
-  assert.ok(p.some(q => q.hex === OPENING_GLASS.light), 'a toplight');
-  assert.ok(p.some(q => q.hex === OPENING_GLASS.pane));
+  // Dark sashes: the glass behind them lit (the sky in it), so the bars read (belt windows 2).
+  assert.ok(p.some(q => q.hex === OPENING_GLASS_LIT.light), 'a toplight');
+  assert.ok(p.some(q => q.hex === OPENING_GLASS_LIT.pane) && p.some(q => q.hex === OPENING_GLASS_LIT.sky));
+  assert.ok(!p.some(q => q.hex === OPENING_GLASS.pane), 'no dark glass behind dark sashes');
   assert.ok(p.some(q => q.hex === '#efece4' && q.out === JOINERY.frameOut), 'the frame');
   assert.ok(p.filter(q => q.hex === '#3b2c22').length >= 3, 'a mullion, a rail and the transom in the sash colour');
   assert.ok(!p.some(q => q.hex === '#ffffff'), 'no surround by default');
+  assert.ok(p.some(q => q.hex === OPENING_REVEAL && q.out < JOINERY.glassOut), 'the reveal\'s shadow behind the frame');
   const blocks = joineryPieces({ ...b, surround: 'block-dressings' }, '#efece4', '#ffffff').filter(q => q.hex === '#ffffff');
   const widths = new Set(blocks.map(q => +(q.pts[1][0] - q.pts[0][0]).toFixed(3)));
   assert.ok(widths.size >= 2, 'long and short blocks in turn');
   const arch = joineryPieces({ ...b, head: 'round' }, '#efece4', '#ffffff');
-  assert.ok(Math.max(...arch.flatMap(q => q.pts.map(t => t[1]))) <= b.z1 + 1e-6, 'an arched head stays inside the box');
+  assert.ok(Math.max(...arch.filter(q => q.hex !== OPENING_REVEAL).flatMap(q => q.pts.map(t => t[1]))) <= b.z1 + 1e-6, 'an arched head stays inside the box (its reveal\'s shadow round it)');
 });
 
 /** A synthetic crop: a wall colour with dark windows and a white bar in each. */
@@ -138,4 +141,63 @@ test('soloGroundBoxes (measured): the door between measured windows near its axi
   const d5 = b5.find(b => b.kind === 'door')!;
   assert.ok(Math.abs((d5.a0 + d5.a1) / 2 * 6 - 3) < 0.05);
   assert.equal(b5.filter(b => b.kind === 'window').length, 4);
+});
+
+test('belt windows 2: white joinery keeps the dark glass; the frame and bars at least the stock cell\'s', () => {
+  const [b] = openingBoxes(H90, 1, { frontM: 5.66, storeyM: 3.48 });
+  const p = joineryPieces({ ...b, sash: undefined }, '#efece4', '#ffffff');
+  assert.ok(p.some(q => q.hex === OPENING_GLASS.pane) && !p.some(q => q.hex === OPENING_GLASS_LIT.pane));
+  assert.ok(p.filter(q => q.hex === '#efece4').length >= 6, 'bars in the frame colour when no sash paint is stated');
+  assert.ok(JOINERY.frame >= 0.09 && JOINERY.bar >= 0.04);
+  assert.equal(darkPaint('#2e302f'), true);
+  assert.equal(darkPaint('#ece9e0'), false);
+  assert.equal(darkPaint(undefined), false);
+});
+
+test('belt windows 2: a grid row without a surround takes the stock trim; stated surrounds draw', () => {
+  const stock = stockTrimOf({ lintel: 'flat', family: 'masonry', archetype: 'canal', shape: 'rect', trimDensity: undefined, paleAccents: true });
+  assert.deepEqual(stock, { lintel: 'flat', restrained: false, blocks: true });
+  assert.equal(stockTrimOf({ lintel: 'none', archetype: 'canal', shape: 'rect' }).lintel, 'none');
+  assert.equal(stockTrimOf({ archetype: 'canal', shape: 'arch' }).lintel, 'arch');
+  const [b] = openingBoxes(H90, 1, { frontM: 5.66, storeyM: 3.48 }, stock);
+  assert.deepEqual(b.surround, { stock });
+  const p = joineryPieces(b, '#efece4', '#ffffff');
+  assert.ok(p.some(q => q.hex === STOCK_STONE && q.pts[0][1] > b.z1), 'a stone lintel over the head');
+  assert.ok(p.some(q => q.hex === STOCK_STONE && q.pts[2][1] <= b.z0), 'a stone sill under it');
+  assert.ok(p.some(q => q.hex === '#eee9de'), 'pale blocks beside the jambs');
+  const stated = openingBoxes({ ...H90, default: { ...H90.default, surround: 'sill' } }, 1, { frontM: 5.66, storeyM: 3.48 }, stock)[0];
+  assert.equal(stated.surround, 'sill', 'a stated surround wins over the stock trim');
+  for (const s of ['keystone', 'jack-blocks', 'full-frame'] as const) assert.ok(joineryPieces({ ...b, surround: s }, '#2e302f', '#ffffff').some(q => q.hex === '#ffffff' && q.pts[0][1] >= b.z1 - 0.01), `${s}: a head`);
+});
+
+test('belt windows 2: the photo line places the grid on its stretch of a longer run (Herengracht 72), and picks the run', () => {
+  const origin = { lng: 4.89, lat: 52.377 }, kx = 111_320 * Math.cos(52.377 * Math.PI / 180), M = 110_540;
+  const ll = (x: number, y: number): [number, number] => [origin.lng + x / kx, origin.lat + y / M];
+  // A 6.6 m run along x; the photo's 4.2 m front from 2.4 m to 6.6 m.
+  const line = [...ll(2.4, 0.3), ...ll(6.6, 0.3)] as [number, number, number, number];
+  assert.deepEqual(openingGridProblems({ ...H90, line }), []);
+  assert.ok(openingGridProblems({ ...H90, line: [1, 2, 3] }).length);
+  const span = gridSpanOnRun({ line }, [0, 0, 6.6, 0], 6.6, true, origin);
+  assert.ok(Math.abs(span.startM - 2.4) < 0.02 && Math.abs(span.frontM - 4.2) < 0.02);
+  const rev = gridSpanOnRun({ line }, [6.6, 0, 0, 0], 6.6, false, origin);
+  assert.ok(Math.abs(rev.startM - 2.4) < 0.02, 'a run drawn right to left as seen: the same stretch as seen');
+  assert.deepEqual(gridSpanOnRun({}, [0, 0, 6.6, 0], 6.6, true, origin), { startM: 0, frontM: 6.6 }, 'no line: the whole run');
+  assert.deepEqual(gridSpanOnRun({ line: [...ll(2, 9), ...ll(6, 9)] as [number, number, number, number] }, [0, 0, 6.6, 0], 6.6, true, origin), { startM: 0, frontM: 6.6 }, 'a line off the run: the whole run');
+  // A corner house (Herengracht 82): the longer side-street run is not on the line.
+  const edge = (x0: number, y0: number, x1: number, y1: number) => ({ e: { x0, y0, x1, y1 } as never });
+  const canal = [edge(0, 0, 6.7, 0)], side = [edge(6.7, 0, 6.7, -10.6)];
+  assert.equal(runOnLine([side, canal], [...ll(0, 0.2), ...ll(6.7, 0.2)] as [number, number, number, number], origin), canal);
+});
+
+test('belt windows 2: the read door index takes the gap before that measured window (Herengracht 78)', () => {
+  const layout = { bays: 3, bayWidthM: 1.33, groundM: 4, storeyM: 3, lengthM: 4 };
+  const g = { windowRatio: 0.6, doorRatio: 0.6 };
+  const o = { upper: { axes: [0.5], head: 0.85, sill: 0.25, width: 0.5 } } as unknown as Parameters<typeof soloGroundBoxes>[1];
+  // Door first from the left, windows at 1.92 m and 3.2 m: the stock axis (bay 0, 0.67 m) is in the first gap already;
+  // with the door read second, it stands between the windows only when that gap holds it.
+  const wins = [{ x: 1.92, hw: 0.56, z0: 1.4, z1: 3.9 }, { x: 3.2, hw: 0.56, z0: 1.4, z1: 3.9 }];
+  const boxes = soloGroundBoxes(layout, o, g, 0, true, undefined, wins)!;
+  const door = boxes.find(b => b.kind === 'door')!;
+  assert.ok(door.a1 * 4 <= 1.36 + 1e-6, 'the door left of the first window');
+  assert.equal(boxes.filter(b => b.kind === 'window').length, 2, 'both windows kept');
 });

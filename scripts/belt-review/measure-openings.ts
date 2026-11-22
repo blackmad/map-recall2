@@ -160,6 +160,34 @@ export function pandFrame(pandId: string, widthPx: number): { offM: number; pand
   return { offM: r2((f0 - p0) / ppm), pandM: r2((p1 - p0) / ppm) };
 }
 
+/**
+ * Belt windows 2: the photo's front line under a staged house's grid (lng/lat, left to right as seen): the wall the photo
+ * was cut on (walls.json), cut to the measured crop (David's facade edges, or a split house's metres along the BAG span),
+ * or the whole wall where the grid was moved onto the pand's span (`frame`). Null without a wall.
+ */
+export function frontLineOf(house: string, widthPx: number, frame: { offM: number; pandM: number } | null): [number, number, number, number] | null {
+  const json = (f: string) => JSON.parse(fs.readFileSync(f, 'utf8'));
+  const wallsFile = path.join(faceDir, 'walls.json');
+  if (!fs.existsSync(wallsFile)) return null;
+  const pandId = house.split('#')[0], part = house.includes('#') ? Number(house.split('#')[1]) : 0;
+  const wall = (json(wallsFile).walls as Record<string, { a: [number, number]; b: [number, number]; lengthM: number }>)[pandId];
+  if (!wall || !(wall.lengthM > 0.5)) return null;
+  const r8 = (x: number) => +x.toFixed(8), at = (m: number): [number, number] => { const t = m / wall.lengthM; return [r8(wall.a[0] + (wall.b[0] - wall.a[0]) * t), r8(wall.a[1] + (wall.b[1] - wall.a[1]) * t)]; };
+  const whole: [number, number, number, number] = [r8(wall.a[0]), r8(wall.a[1]), r8(wall.b[0]), r8(wall.b[1])];
+  if (frame) return whole;
+  const cands = json(path.join(stateDir, 'candidates.json')) as { pands: Array<{ pandId: string; candidates: Array<{ id: string; ppm?: number; pandSpanPx?: [number, number] }> }> };
+  const pk = (json(path.join(stateDir, 'picks.json')).picks as Record<string, { candidateId: string | null; facadeSpanPx?: [number, number]; houses?: Array<{ fromM: number; toM: number }> }>)[pandId];
+  const c = pk?.candidateId ? cands.pands.find(x => x.pandId === pandId)?.candidates.find(x => x.id === pk.candidateId) : undefined;
+  const ppm = c?.ppm ?? 50, p0 = c?.pandSpanPx?.[0];
+  if (part) {
+    const hs = pk?.houses?.[part - 1];
+    return hs ? [...at(hs.fromM), ...at(hs.toM)] : null;
+  }
+  const fs0 = pk?.facadeSpanPx;
+  if (fs0 && p0 !== undefined && Math.abs((fs0[1] - fs0[0]) - widthPx) <= 3) return [...at((fs0[0] - p0) / ppm), ...at((fs0[1] - p0) / ppm)];
+  return whole;
+}
+
 /** A staged house's opening grid (null when it has no usable row). */
 export function gridOf(h: StagedHouse, frame?: { offM: number; pandM: number } | null): OpeningGrid | null {
   const L = h.landmarks, lines = [L.pavement, ...L.floors, L.top], ppm = h.ppm;
@@ -196,7 +224,9 @@ if (argv.includes('--apply')) {
   let n = 0;
   for (const [house, h] of Object.entries(stage.houses)) {
     if (only.size && !only.has(house) && !only.has(h.address)) continue;
-    const a = rf.reads[house]?.answer, g = gridOf(h, pandFrame(house, h.width));
+    const frame = house.includes('#') ? null : pandFrame(house, h.width), a = rf.reads[house]?.answer, g = gridOf(h, frame);
+    const line = g ? frontLineOf(house, h.width, frame) : null;
+    if (g && line) g.line = line;
     if (!a || !g) { console.log(`${h.address}: ${a ? 'no rows' : 'no read'}`); continue; }
     const p = openingGridProblems(g);
     if (p.length) { console.log(`${h.address}: ${p.join('; ')}`); continue; }
