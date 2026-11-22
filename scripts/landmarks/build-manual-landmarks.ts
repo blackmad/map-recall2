@@ -550,6 +550,7 @@ import {buildTugelahuisTugelaweg} from './tugelahuis-tugelaweg-builder';
 import {buildDeKandelaarVeningMeineszlaan} from './de-kandelaar-vening-meineszlaan-builder';
 import {buildDeCoenenCoenenstraat} from './de-coenen-coenenstraat-builder';
 import {buildWitteBoeiWittenburg} from './witte-boei-wittenburg-builder';
+import {buildHansEnGrietjeSpiegelgracht} from './hans-en-grietje-spiegelgracht-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
 import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
 const out=path.resolve('public/canal-drive/models');
@@ -1293,6 +1294,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-kandelaar-vening-meineszlaan')buildDeKandelaarVeningMeineszlaan(w,d,helpers);
     else if(id==='de-coenen-coenenstraat')buildDeCoenenCoenenstraat(w,d,helpers);
     else if(id==='witte-boei-wittenburg')buildWitteBoeiWittenburg(w,d,helpers);
+    else if(id==='hans-en-grietje-spiegelgracht')buildHansEnGrietjeSpiegelgracht(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);

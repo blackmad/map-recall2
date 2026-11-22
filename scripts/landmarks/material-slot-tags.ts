@@ -535,6 +535,11 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     red: {slot: 'roofTile', measured: '#8f5445', why: 'the red-brown pantiles (w01-258 2020, w05-168 2019 sunlit plane, PDOK 2025 orthophoto): the city pantile range drew them bright orange (board, r12 follow-up)'},
     dark: {slot: 'brick', measured: '#4e3a33', why: 'the dark brown brick chimney stack on the ridge by the south gable (w01-258, w05-168)'},
   },
+  'hans-en-grietje-spiegelgracht': {
+    slate: {slot: 'roofTile', measured: '#b47c5e', why: 'red-orange pantiles of the hipped roof (w01-191 2023 sunlit crop, median #cc9472 washed out; drawn a step deeper): not slate, and the city pantile range drew r12 tiled roofs bright orange'},
+    red: {slot: 'paint', why: 'palette name only: the red stripes of the canvas markiezen, the flowers and the chef\'s apron, not brick'},
+    pink: {slot: 'paint', why: 'palette name only: the painted face of the cut-out chef'},
+  },
   'de-coenen-coenenstraat': {
     sandstone: {slot: 'stucco', why: 'palette name only: the pale cream render of the Coenenstraat front (w01-146, 2021 and 2022 crops); the sides are buff brick'},
   },
