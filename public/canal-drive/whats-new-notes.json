@@ -3,6 +3,32 @@
   "notes": [
     {
       "date": "2026-11-22",
+      "title": "Five landmarks and Van Baerlestraat",
+      "text": "The Openbare Handelsschool now stands on the Raamplein, where the game drew an empty lot. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which was also an empty lot. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
+      "where": [
+        4.8804,
+        52.3665
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg",
+          "alt": "The Raamplein from above in the game: an empty lot before, the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
+          "caption": "Openbare Handelsschool, Raamplein: before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-nieuwe-doelenstraat-12.jpg",
+          "alt": "Nieuwe Doelenstraat 12 in the game: orange-red brick before, a deeper purple-red brick with arched window heads after",
+          "caption": "Nieuwe Doelenstraat 12: before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-van-baerlestraat.jpg",
+          "alt": "Van Baerlestraat: the panorama, then generic brick fronts before, and the row with its stepped and bell gables, arched windows and the Oogappel shop sign after",
+          "caption": "Van Baerlestraat: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
       "title": "Klapmutsenveem rebuilt, and fixes to new-build rows",
       "text": "The Klapmutsenveem warehouse block now has its arched warehouse windows, oriel stacks and arcades, where before it was mostly blank brick. Bay windows in new-build rows now sit on the right bays (several on Bos en Lommerplein, Borneostraat and Laing's Nekstraat had shifted or vanished), and the Jesse Owenshof car park gets its red entry and exit doors.",
       "where": [

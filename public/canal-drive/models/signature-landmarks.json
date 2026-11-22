@@ -132378,16 +132378,16 @@
       "bytes": 196356,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e6384dd894335e2c",
+        "sourceHash": "b6a7a27b02f56a1c",
         "buildVersion": 2,
-        "bytes": 52040,
-        "triangles": 2227
+        "bytes": 54948,
+        "triangles": 2396
       },
       "lod2": {
-        "sourceHash": "e6384dd894335e2c",
+        "sourceHash": "b6a7a27b02f56a1c",
         "buildVersion": 6,
-        "bytes": 9736,
-        "triangles": 258
+        "bytes": 10304,
+        "triangles": 286
       }
     },
     "school-raamplein-1": {
@@ -132702,7 +132702,19 @@
       },
       "triangles": 31694,
       "bytes": 399240,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e3943d3cacdef018",
+        "buildVersion": 2,
+        "bytes": 97740,
+        "triangles": 4884
+      },
+      "lod2": {
+        "sourceHash": "e3943d3cacdef018",
+        "buildVersion": 6,
+        "bytes": 17916,
+        "triangles": 632
+      }
     },
     "hotel-notting-hill": {
       "id": "hotel-notting-hill",
@@ -133028,7 +133040,19 @@
       },
       "triangles": 14777,
       "bytes": 211952,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "71d7b2e0878ed064",
+        "buildVersion": 2,
+        "bytes": 63116,
+        "triangles": 2617
+      },
+      "lod2": {
+        "sourceHash": "71d7b2e0878ed064",
+        "buildVersion": 6,
+        "bytes": 10596,
+        "triangles": 295
+      }
     },
     "hotel-v-frederiksplein": {
       "id": "hotel-v-frederiksplein",
@@ -133183,7 +133207,19 @@
       },
       "triangles": 13884,
       "bytes": 196212,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "971b7cc03f4ff8cc",
+        "buildVersion": 2,
+        "bytes": 62860,
+        "triangles": 2774
+      },
+      "lod2": {
+        "sourceHash": "971b7cc03f4ff8cc",
+        "buildVersion": 6,
+        "bytes": 11312,
+        "triangles": 277
+      }
     },
     "sarphatistraat-47": {
       "id": "sarphatistraat-47",
@@ -133323,7 +133359,19 @@
       },
       "triangles": 12814,
       "bytes": 197036,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "b8e229affa2356be",
+        "buildVersion": 2,
+        "bytes": 61880,
+        "triangles": 2428
+      },
+      "lod2": {
+        "sourceHash": "b8e229affa2356be",
+        "buildVersion": 6,
+        "bytes": 9656,
+        "triangles": 255
+      }
     }
   }
 }
