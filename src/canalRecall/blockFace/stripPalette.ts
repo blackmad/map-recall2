@@ -63,13 +63,25 @@ export function classifyPixel(p: Rgb): PixelClass {
   return 'wall';
 }
 
+/**
+ * Why a strip image cannot be measured against its strip.json, or null when it can: the pand spans are pixel columns of
+ * the image strip.json describes, so a file of another size (a stale archive copy of an earlier crop) would put every
+ * span on the wrong facade.
+ */
+export function stripImageMismatch(strip: {width: number; height: number}, image: {width: number; height: number}): string | null {
+  return strip.width === image.width && strip.height === image.height ? null
+    : `strip image is ${image.width}x${image.height} px, strip.json describes ${strip.width}x${strip.height} px`;
+}
+
 export function measureStripPalette(input: StripPaletteInput): StripPalette {
   const {rgb, width, height, pixelsPerMetre: ppm, eavesM} = input;
   const x0 = Math.max(0, Math.round(input.x0)), x1 = Math.min(width, Math.round(input.x1));
   const rowOf = (m: number) => Math.max(0, Math.min(height, Math.round(height - m * ppm)));
   const px = (x: number, y: number): Rgb => { const i = (y * width + x) * 3; return [rgb[i], rgb[i + 1], rgb[i + 2]]; };
   // Keep 6 % off each side: party-wall downpipes and the neighbour's bleed.
-  const inset = Math.round((x1 - x0) * 0.06), xa = x0 + inset, xb = x1 - inset;
+  // A span wholly outside the image (a strip.json describing a wider strip than the file on disk: Bellamyplein 18-38 r1's
+  // archived strip.jpg is the 1101 px crop from before its 2203 px re-run) measures nothing instead of a negative array.
+  const inset = Math.round(Math.max(0, x1 - x0) * 0.06), xa = x0 + inset, xb = Math.max(xa, x1 - inset);
   const bodyTop = rowOf(eavesM - 1), bodyBottom = rowOf(input.bodyFromM ?? (eavesM > 6 ? 4.4 : 0.9));
   const wall: Rgb[] = [], accentBand: Rgb[] = [], accentOther: Rgb[] = [];
   const bandRows: number[] = [];
@@ -145,7 +157,9 @@ export function measureStripWallFit(input: StripPaletteInput, opts: WallFitOptio
   const {rgb, width, height, pixelsPerMetre: ppm, eavesM} = input;
   const x0 = Math.max(0, Math.round(input.x0)), x1 = Math.min(width, Math.round(input.x1));
   const rowOf = (m: number) => Math.max(0, Math.min(height, Math.round(height - m * ppm)));
-  const inset = Math.round((x1 - x0) * 0.06), xa = x0 + inset, xb = x1 - inset;
+  // A span wholly outside the image (a strip.json describing a wider strip than the file on disk: Bellamyplein 18-38 r1's
+  // archived strip.jpg is the 1101 px crop from before its 2203 px re-run) measures nothing instead of a negative array.
+  const inset = Math.round(Math.max(0, x1 - x0) * 0.06), xa = x0 + inset, xb = Math.max(xa, x1 - inset);
   const bodyTop = rowOf(eavesM - 1), bodyBottom = rowOf(input.bodyFromM ?? (eavesM > 6 ? 4.4 : 0.9));
   const wall: Rgb[] = [];
   for (let y = bodyTop; y < bodyBottom; y++) for (let x = xa; x < xb; x++) {

@@ -24,7 +24,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {measureStripPalette, stripImageMismatch} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {faceStripOverDrawn, houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
@@ -58,6 +58,15 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
     continue;
   }
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
+  // A strip file of another size than strip.json describes is a stale copy (2026-11-22: Bellamyplein 18-38 r1's archive
+  // strip is its 1101 px crop from before the 2203 px re-run, and crashed the whole regen): keep the published entry.
+  const mismatch = stripImageMismatch(strip, info);
+  if (mismatch) {
+    const kept = (CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name];
+    if (kept) entries[chunk.name] = kept;
+    rows.push(`${chunk.name}: ${mismatch} (${path.relative(process.cwd(), file)}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
+    continue;
+  }
   const rgb = new Uint8Array(data.buffer, data.byteOffset, data.length);
   const faceIntent = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members);
   const intents = houseIntents(faceIntent);
