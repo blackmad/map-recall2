@@ -887,6 +887,9 @@ Flags
   --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
                       (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
                       game draws today: the after frame of a chunk change before the integrator installs it
+  --pose <lng,lat,heading,fov[,pitch]>  add a perspective from a street pose (pose.png, 800x800): eye 1.7 m over the drawn
+                      ground at lng/lat, heading degrees clockwise from north, field of view, pitch up (a panorama's
+                      aimed thumbnail pose, so a render can sit beside the photo the brief cropped)
   --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
