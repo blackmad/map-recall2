@@ -145,14 +145,13 @@ function dormer(b: BuildingTools) {
     ringSlab(b, F, tc, h(178), 0.07, 0.15, 0.06, 'sandstone', 0.16, 12);
     slab(b, F, tc, h(178), 0.07, h(135) - h(178), 0.06, 'sandstone', 0.16);
   }
-  // window: dark glass, white frame, a mullion (two lights) and one transom
+  // window: dark glass, white frame, a mullion: two tall lights (2021 crop shows no transom)
   const w0 = t(268), w1 = t(342), wy0 = h(192), wy1 = h(115), wm = (w0 + w1) / 2, ww = w1 - w0;
   slab(b, F, wm, wy0, ww, wy1 - wy0, 0.05, 'glass', 0.16);
   for (const s of [-1, 1]) slab(b, F, wm + s * (ww / 2 - 0.05), wy0, 0.1, wy1 - wy0, 0.12, 'frame', 0.16);
   slab(b, F, wm, wy0, ww, 0.1, 0.12, 'frame', 0.16);
   slab(b, F, wm, wy1 - 0.1, ww, 0.1, 0.12, 'frame', 0.16);
   slab(b, F, wm, wy0, 0.06, wy1 - wy0, 0.1, 'frame', 0.16);
-  slab(b, F, wm, wy0 + (wy1 - wy0) * 0.55, ww, 0.06, 0.1, 'frame', 0.16);
   // arched hood: a moulded band 0.14 m over the arch, standing 0.3 m proud
   const outer = arc(bw / 2 + 0.12, crown - spring + 0.04), inner = arc(bw / 2 + 0.12, crown - spring - 0.02);
   const band: [number, number][] = [...outer.map(([x, y]) => [x, y + 0.12] as [number, number]), ...inner.reverse().map(([x, y]) => [x, y - 0.02] as [number, number])];

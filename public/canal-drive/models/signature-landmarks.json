@@ -136922,7 +136922,7 @@
       },
       "bagYear": 1802,
       "materialOverrides": {
-        "brick": "#64524b",
+        "brick": "#5c4b44",
         "slate": "#5c5b5b",
         "sandstone": "#e4e3da",
         "frame": "#e8e7df",
@@ -137011,8 +137011,8 @@
         "depthMetres": 15.802302360534668,
         "depthCoverage": 1.0465100901016338
       },
-      "triangles": 5292,
-      "bytes": 75976,
+      "triangles": 5280,
+      "bytes": 75804,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "weltevreden": {

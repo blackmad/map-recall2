@@ -656,7 +656,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     dark: {slot: 'door', why: 'palette name only: the door leaves\' dark meeting stile'},
   },
   'welgelegen': {
-    brick: {slot: 'brick', measured: '#64524b', why: 'the dark brown brick front (2021 overcast crop #453930, hue 27), authored lighter for the game light and a step bluer because it warms ~7 deg'},
+    brick: {slot: 'brick', measured: '#5c4b44', why: 'the dark brown brick front (2021 overcast crop #453930, hue 27; one step darker after the blind judge), authored lighter for the game light and a step bluer because it warms ~7 deg'},
     slate: {slot: 'roofTile', measured: '#5c5b5b', why: 'the grey glazed pantile roof (2021 crop #504e4c): a tiled roof, not slate'},
     sandstone: {slot: 'stucco', measured: '#e4e3da', why: 'palette name only: the white painted door surround, cornice and wooden dormer (2021 #969587 in overcast shade)'},
     frame: {slot: 'frame', measured: '#e8e7df', why: 'the white sash frames and glazing bars (2021)'},
