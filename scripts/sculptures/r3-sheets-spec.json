@@ -1,0 +1,88 @@
+[
+ {
+  "id": "hoofdbureau-arms",
+  "kind": "relief",
+  "title": "Amsterdam arms with lions, crown and banner (Krop), Hoofdbureau van Politie, Marnixstraat end wall",
+  "photos": [
+   "artifacts/sculpture-r2/cutouts/reliefs/hoofdbureau-arms.png"
+  ],
+  "today": "artifacts/sculpture-r3/hoofdbureau/today.glb",
+  "new": "artifacts/sculpture-r3/hoofdbureau/new.glb",
+  "label": "r3-slim2400",
+  "facing": 337.0,
+  "crop": "-0.71,10.70,-98.03,10.43,15.90,-92.61",
+  "insitu": {
+   "view": "artifacts/sculpture-r2/views/hoofdbureau-arms.json",
+   "target": [
+    4.8778562,
+    52.3686031
+   ],
+   "up": 13.0,
+   "model": "hoofdbureau-elandsgracht"
+  }
+ },
+ {
+  "id": "palace-pediment",
+  "kind": "relief",
+  "title": "Artus Quellinus east pediment (Amsterdam with the four continents / sea gods), Paleis op de Dam",
+  "photos": [
+   "artifacts/sculpture-r2/views/palace-pediment.jpg"
+  ],
+  "today": "artifacts/sculpture-r3/palace/today.glb",
+  "new": "artifacts/sculpture-r3/palace/new.glb",
+  "label": "r3-fit2-welded",
+  "facing": 90.0,
+  "crop": "32.60,25.70,-12.75,33.80,31.00,13.65",
+  "insitu": {
+   "view": "artifacts/sculpture-r2/views/palace-pediment.json",
+   "target": [
+    4.8918246,
+    52.3731443
+   ],
+   "up": 28.0,
+   "model": "palace-on-the-dam"
+  }
+ },
+ {
+  "id": "spinoza-standbeeld",
+  "kind": "statue",
+  "title": "Spinoza monument (Nicolas Dings, 2008), Zwanenburgwal",
+  "photos": [
+   "artifacts/sculpture-r3/photos/spinoza.jpg"
+  ],
+  "today": "artifacts/sculpture-r3/spinoza/today.glb",
+  "new": "artifacts/sculpture-r3/spinoza/model-16000.glb",
+  "label": "trellis-s42-16k",
+  "facing": 180,
+  "crop": "-1.6,0,-3.3,1.8,3,0",
+  "insitu": {
+   "eyeY": 1.6,
+   "dist": 11,
+   "az": -20,
+   "fov": 40
+  }
+ },
+ {
+  "id": "hmdh-busts",
+  "kind": "relief",
+  "title": "six bel-etage busts (Apollo, Ceres, Mercury, Minerva, Bacchus, Diana), Huis met de Hoofden, Keizersgracht 123; second photo: each bust, left to right",
+  "photos": [
+   "artifacts/sculpture-r2/views/hmdh-busts.jpg",
+   "artifacts/sculpture-r3/photos/hmdh-six.jpg"
+  ],
+  "today": "artifacts/sculpture-r3/hmdh/today.glb",
+  "new": "artifacts/sculpture-r3/hmdh/new.glb",
+  "label": "r3-six-trellis",
+  "facing": 300.0,
+  "crop": "-7.92,3.90,-11.14,0.67,5.35,2.88",
+  "insitu": {
+   "view": "artifacts/sculpture-r2/views/hmdh-busts.json",
+   "target": [
+    4.8873434,
+    52.3764355
+   ],
+   "up": 4.75,
+   "model": "huis-met-de-hoofden"
+  }
+ }
+]
