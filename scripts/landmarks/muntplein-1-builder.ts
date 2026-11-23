@@ -311,10 +311,10 @@ function corner(b: BuildingTools) {
   }
   setSink(0.04);
   cornerTurretOn(b, F, {
-    plan: {sides: 8, apothem: 1.0, centre: [tc, -0.4]},
-    stages: {corbel: [3.55, 4.45], body: [4.45, 12.6], drum: [12.6, 14.2], cone: {y: 14.2, rise: 2.2}, finial: 0.45},
-    drumApothem: 0.8, coneApothem: 0.95,
-    windows: [{y0: N.win1[0], y1: N.win1[1]}, {y0: N.win2[0], y1: N.win2[1], arched: true}],
+    plan: {sides: 8, apothem: 1.15, centre: [tc, -0.85]},
+    stages: {corbel: [3.55, 4.45], body: [4.45, 12.6], drum: [12.6, 14.2], cone: {y: 14.2, rise: 3.5}, finial: 0.45},
+    drumApothem: 0.92, coneApothem: 1.09,
+    windows: [{y0: N.win1[0], y1: N.win1[1], width: 0.41}, {y0: N.win2[0], y1: N.win2[1], arched: true, width: 0.41}],
     drumLights: [12.95, 13.75],
     bands: [4.9, 7.85, 8.6, 13.0, 13.9],
     quoins: true,

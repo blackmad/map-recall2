@@ -136924,8 +136924,8 @@
       "measuredOverrides": true,
       "materialOverrides": {
         "brick": "#8a5546",
-        "stone": "#cbc6ba",
-        "sandstone": "#a8a296",
+        "stone": "#bdb5a6",
+        "sandstone": "#9d9585",
         "greyBrick": "#6c6b69",
         "slate": "#55595e",
         "glass": "#343e47",
@@ -137001,11 +137001,11 @@
         "min": [
           -7.3624653816223145,
           -5.817413395448057e-8,
-          -4.793552875518799
+          -4.657796382904053
         ],
         "max": [
           6.993905067443848,
-          16.75,
+          18.049999237060547,
           5.9079999923706055
         ]
       },
@@ -137021,12 +137021,12 @@
       },
       "extent": {
         "widthMetres": 14.356370449066162,
-        "heightMetres": 16.750000058174134,
-        "depthMetres": 10.701552867889404,
-        "depthCoverage": 1.0595596898900401
+        "heightMetres": 18.04999929523468,
+        "depthMetres": 10.565796375274658,
+        "depthCoverage": 1.046118452997491
       },
-      "triangles": 20293,
-      "bytes": 282228,
+      "triangles": 18597,
+      "bytes": 257208,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
