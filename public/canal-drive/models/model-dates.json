@@ -3352,8 +3352,8 @@
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht": {
-      "updatedAt": "2026-10-20T10:17:07.530Z",
-      "version": "88499b8a887d3aaa",
+      "updatedAt": "2026-11-23T01:27:02.325Z",
+      "version": "4fc0fcd2df2a866a",
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
@@ -3567,8 +3567,8 @@
       "dateSource": "asset-update"
     },
     "huis-met-de-hoofden": {
-      "updatedAt": "2026-11-22T15:36:32.657Z",
-      "version": "84a0c0386c7a23e3",
+      "updatedAt": "2026-11-23T01:27:02.401Z",
+      "version": "538aa0b2ea4ecced",
       "dateSource": "asset-update"
     },
     "huis-met-de-hoofden.lod1": {
@@ -4169,6 +4169,21 @@
     "klimmuur-centraal.lod2": {
       "updatedAt": "2026-11-07T14:08:58.165Z",
       "version": "ef8b08f0a03fd7bc",
+      "dateSource": "asset-update"
+    },
+    "koetshuis-keizersgracht-607": {
+      "updatedAt": "2026-11-22T22:02:23.072Z",
+      "version": "0784970aa356d418",
+      "dateSource": "asset-update"
+    },
+    "koetshuis-keizersgracht-607.lod1": {
+      "updatedAt": "2026-11-23T00:19:19.617Z",
+      "version": "c285c996d0ee5748",
+      "dateSource": "asset-update"
+    },
+    "koetshuis-keizersgracht-607.lod2": {
+      "updatedAt": "2026-11-23T00:19:19.617Z",
+      "version": "64923a2577776a10",
       "dateSource": "asset-update"
     },
     "kohnstammhuis": {
@@ -5742,8 +5757,8 @@
       "dateSource": "asset-update"
     },
     "palace-on-the-dam": {
-      "updatedAt": "2026-10-13T23:12:15.857Z",
-      "version": "0b3213c7240b8985",
+      "updatedAt": "2026-11-23T01:26:59.334Z",
+      "version": "ca21ae5f18914a70",
       "dateSource": "asset-update"
     },
     "palace-on-the-dam.lod1": {
@@ -5812,13 +5827,13 @@
       "dateSource": "asset-update"
     },
     "pentagon.lod1": {
-      "updatedAt": "2026-11-21T13:52:36.761Z",
-      "version": "f703294af7c8a9db",
+      "updatedAt": "2026-11-22T21:56:45.609Z",
+      "version": "7dba23462c0f3d1a",
       "dateSource": "asset-update"
     },
     "pentagon.lod2": {
-      "updatedAt": "2026-11-21T13:52:36.763Z",
-      "version": "ab866e507ed52d4e",
+      "updatedAt": "2026-11-22T21:56:46.444Z",
+      "version": "a2e92e57145c8627",
       "dateSource": "asset-update"
     },
     "perdu": {
@@ -6032,13 +6047,13 @@
       "dateSource": "asset-update"
     },
     "pontsteiger.lod1": {
-      "updatedAt": "2026-11-14T09:36:17.181Z",
-      "version": "ffffcfda37f4b20c",
+      "updatedAt": "2026-11-22T21:56:45.561Z",
+      "version": "497dcbaf29c736eb",
       "dateSource": "asset-update"
     },
     "pontsteiger.lod2": {
-      "updatedAt": "2026-11-14T09:36:17.183Z",
-      "version": "b65c245edd4e5c90",
+      "updatedAt": "2026-11-22T21:56:45.960Z",
+      "version": "a26a2898feadebc4",
       "dateSource": "asset-update"
     },
     "port-van-cleve": {
@@ -6542,13 +6557,13 @@
       "dateSource": "asset-update"
     },
     "sarphatistraat-47.lod1": {
-      "updatedAt": "2026-11-22T21:26:31.372Z",
-      "version": "34547b0d65e741dc",
+      "updatedAt": "2026-11-23T00:19:19.623Z",
+      "version": "cca029fbf7ec6b2d",
       "dateSource": "asset-update"
     },
     "sarphatistraat-47.lod2": {
-      "updatedAt": "2026-11-22T21:26:31.372Z",
-      "version": "8ca7c37e4616e210",
+      "updatedAt": "2026-11-23T00:19:19.624Z",
+      "version": "56e70bab79e73510",
       "dateSource": "asset-update"
     },
     "scheepvaarthuis": {
@@ -6632,13 +6647,13 @@
       "dateSource": "asset-update"
     },
     "school-raamplein-1.lod1": {
-      "updatedAt": "2026-11-22T21:26:31.373Z",
-      "version": "5cfcab20f55f3862",
+      "updatedAt": "2026-11-23T00:19:19.627Z",
+      "version": "1cde987758053db1",
       "dateSource": "asset-update"
     },
     "school-raamplein-1.lod2": {
-      "updatedAt": "2026-11-22T21:26:31.373Z",
-      "version": "9b4f2bfe53235948",
+      "updatedAt": "2026-11-23T00:19:19.628Z",
+      "version": "3c1f929bf4e63844",
       "dateSource": "asset-update"
     },
     "schreierstoren": {
@@ -7546,6 +7561,21 @@
       "version": "623fc49c98c09c1d",
       "dateSource": "asset-update"
     },
+    "uva-binnengasthuisstraat-9": {
+      "updatedAt": "2026-11-22T22:35:11.726Z",
+      "version": "1d1333ddd967b7f5",
+      "dateSource": "asset-update"
+    },
+    "uva-binnengasthuisstraat-9.lod1": {
+      "updatedAt": "2026-11-23T00:19:19.646Z",
+      "version": "929be86639fe0756",
+      "dateSource": "asset-update"
+    },
+    "uva-binnengasthuisstraat-9.lod2": {
+      "updatedAt": "2026-11-23T00:19:19.646Z",
+      "version": "199324513ab09f61",
+      "dateSource": "asset-update"
+    },
     "valkenburgerstraat-69": {
       "updatedAt": "2026-11-21T19:00:44.077Z",
       "version": "4aad9865c1855a73",
@@ -7984,6 +8014,16 @@
     "westerdok-4": {
       "updatedAt": "2026-11-22T21:56:42.618Z",
       "version": "41369f59c0a3c4dd",
+      "dateSource": "asset-update"
+    },
+    "westerdok-4.lod1": {
+      "updatedAt": "2026-11-22T21:56:45.714Z",
+      "version": "892310b01ef17122",
+      "dateSource": "asset-update"
+    },
+    "westerdok-4.lod2": {
+      "updatedAt": "2026-11-22T21:56:47.149Z",
+      "version": "b0a60ee4079c21c3",
       "dateSource": "asset-update"
     },
     "westerdok-748": {
@@ -8439,16 +8479,6 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
-      "dateSource": "asset-update"
-    },
-    "koetshuis-keizersgracht-607": {
-      "updatedAt": "2026-11-22T22:02:23.072Z",
-      "version": "0784970aa356d418",
-      "dateSource": "asset-update"
-    },
-    "uva-binnengasthuisstraat-9": {
-      "updatedAt": "2026-11-22T22:35:11.726Z",
-      "version": "1d1333ddd967b7f5",
       "dateSource": "asset-update"
     }
   }

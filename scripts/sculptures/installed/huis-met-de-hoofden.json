@@ -1,10 +1,10 @@
 {
  "id": "huis-met-de-hoofden",
- "provenance": "scripts/sculptures/rebuild-sources-r2/reliefs.json#hmdh-busts",
+ "provenance": "scripts/sculptures/rebuild-sources-r3/hmdh-busts.json",
  "figures": [
   {
-   "name": "hmdh-busts",
-   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-busts.glb",
+   "name": "hmdh-apollo",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-apollo.glb",
    "at": [
     0,
     0,
@@ -26,135 +26,263 @@
     "stone"
    ],
    "material": "stone",
-   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, trellis-s42, wall relief round 2 2026-11-22",
-   "wallCut": [
-    {
-     "origin": [
-      -0.28,
-      4.2,
-      -9.93
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    },
-    {
-     "origin": [
-      -1.63,
-      4.2,
-      -7.59
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    },
-    {
-     "origin": [
-      -2.92,
-      4.2,
-      -5.36
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    },
-    {
-     "origin": [
-      -4.33,
-      4.2,
-      -2.9
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    },
-    {
-     "origin": [
-      -5.62,
-      4.2,
-      -0.66
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    },
-    {
-     "origin": [
-      -6.97,
-      4.2,
-      1.67
-     ],
-     "normal": [
-      -0.866,
-      -0.5
-     ],
-     "min": [
-      -0.35,
-      0,
-      0
-     ],
-     "max": [
-      0.35,
-      0.95,
-      0.7
-     ]
-    }
-   ]
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -0.28,
+     4.2,
+     -9.93
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
+  },
+  {
+   "name": "hmdh-ceres",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-ceres.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42 (third input: the first two crops clipped the bust edge and came out as a slab), its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -1.63,
+     4.2,
+     -7.59
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
+  },
+  {
+   "name": "hmdh-mercury",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-mercury.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -2.92,
+     4.2,
+     -5.36
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
+  },
+  {
+   "name": "hmdh-minerva",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-minerva.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -4.33,
+     4.2,
+     -2.9
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
+  },
+  {
+   "name": "hmdh-bacchus",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-bacchus.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -5.62,
+     4.2,
+     -0.66
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
+  },
+  {
+   "name": "hmdh-diana",
+   "glb": "scripts/sculptures/installed/huis-met-de-hoofden/hmdh-diana.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TRELLIS.2 int8 (ComfyUI native), seed 42, its own panorama view (rebuild-sources-r3/hmdh-busts.json), welded (slim-relief.ts), round 3 2026-11-22",
+   "wallCut": {
+    "origin": [
+     -6.97,
+     4.2,
+     1.67
+    ],
+    "normal": [
+     -0.866,
+     -0.5
+    ],
+    "min": [
+     -0.35,
+     0,
+     0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   }
   }
  ]
 }

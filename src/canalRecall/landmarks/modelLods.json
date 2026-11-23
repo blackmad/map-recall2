@@ -493,15 +493,15 @@
   }
  },
  "palace-on-the-dam": {
-  "sourceHash": "0b3213c7240b8985",
+  "sourceHash": "ca21ae5f18914a70",
   "buildVersion": 2,
-  "bytes": 94660,
-  "triangles": 4749,
+  "bytes": 105008,
+  "triangles": 5331,
   "lod2": {
-   "sourceHash": "0b3213c7240b8985",
+   "sourceHash": "ca21ae5f18914a70",
    "buildVersion": 6,
-   "bytes": 14900,
-   "triangles": 583
+   "bytes": 16260,
+   "triangles": 685
   }
  },
  "rijksmuseum": {
@@ -3999,15 +3999,15 @@
   }
  },
  "hoofdbureau-elandsgracht": {
-  "sourceHash": "88499b8a887d3aaa",
+  "sourceHash": "4fc0fcd2df2a866a",
   "buildVersion": 2,
-  "bytes": 150660,
-  "triangles": 9243,
+  "bytes": 153956,
+  "triangles": 9498,
   "lod2": {
-   "sourceHash": "88499b8a887d3aaa",
+   "sourceHash": "4fc0fcd2df2a866a",
    "buildVersion": 6,
-   "bytes": 34004,
-   "triangles": 1500
+   "bytes": 34000,
+   "triangles": 1499
   }
  },
  "max-euwe-centrum": {
@@ -4515,15 +4515,15 @@
   }
  },
  "huis-met-de-hoofden": {
-  "sourceHash": "84a0c0386c7a23e3",
+  "sourceHash": "538aa0b2ea4ecced",
   "buildVersion": 2,
-  "bytes": 68244,
-  "triangles": 3651,
+  "bytes": 67072,
+  "triangles": 3587,
   "lod2": {
-   "sourceHash": "84a0c0386c7a23e3",
+   "sourceHash": "538aa0b2ea4ecced",
    "buildVersion": 6,
-   "bytes": 11524,
-   "triangles": 438
+   "bytes": 11176,
+   "triangles": 420
   }
  },
  "lensbomen": {

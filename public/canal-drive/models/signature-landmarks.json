@@ -1167,20 +1167,20 @@
         "depthMetres": 67.39957809448242,
         "depthCoverage": 0.8180758572061129
       },
-      "triangles": 30372,
-      "bytes": 425540,
+      "triangles": 34258,
+      "bytes": 448564,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0b3213c7240b8985",
+        "sourceHash": "ca21ae5f18914a70",
         "buildVersion": 2,
-        "bytes": 94660,
-        "triangles": 4749
+        "bytes": 105008,
+        "triangles": 5331
       },
       "lod2": {
-        "sourceHash": "0b3213c7240b8985",
+        "sourceHash": "ca21ae5f18914a70",
         "buildVersion": 6,
-        "bytes": 14900,
-        "triangles": 583
+        "bytes": 16260,
+        "triangles": 685
       }
     },
     "rijksmuseum": {
@@ -49389,20 +49389,20 @@
         "depthMetres": 83.30898666381836,
         "depthCoverage": 1.0073638048829305
       },
-      "triangles": 35530,
-      "bytes": 483720,
+      "triangles": 37217,
+      "bytes": 490852,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "88499b8a887d3aaa",
+        "sourceHash": "4fc0fcd2df2a866a",
         "buildVersion": 2,
-        "bytes": 150660,
-        "triangles": 9243
+        "bytes": 153956,
+        "triangles": 9498
       },
       "lod2": {
-        "sourceHash": "88499b8a887d3aaa",
+        "sourceHash": "4fc0fcd2df2a866a",
         "buildVersion": 6,
-        "bytes": 34004,
-        "triangles": 1500
+        "bytes": 34000,
+        "triangles": 1499
       }
     },
     "max-euwe-centrum": {
@@ -59309,20 +59309,20 @@
         "depthMetres": 24.42636203765869,
         "depthCoverage": 1.4368112615723736
       },
-      "triangles": 21955,
-      "bytes": 396840,
+      "triangles": 21415,
+      "bytes": 203736,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "84a0c0386c7a23e3",
+        "sourceHash": "538aa0b2ea4ecced",
         "buildVersion": 2,
-        "bytes": 68244,
-        "triangles": 3651
+        "bytes": 67072,
+        "triangles": 3587
       },
       "lod2": {
-        "sourceHash": "84a0c0386c7a23e3",
+        "sourceHash": "538aa0b2ea4ecced",
         "buildVersion": 6,
-        "bytes": 11524,
-        "triangles": 438
+        "bytes": 11176,
+        "triangles": 420
       }
     },
     "lensbomen": {
