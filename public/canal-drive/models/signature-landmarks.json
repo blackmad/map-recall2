@@ -134623,6 +134623,204 @@
         "bytes": 5740,
         "triangles": 130
       }
+    },
+    "huis-fuld": {
+      "id": "huis-fuld",
+      "name": "Huis Fuld, Keizersgracht 452",
+      "modelUrl": "./models/huis-fuld.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012174769"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88386744,
+          52.36727168
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 26.3,
+        "widthMetres": 32.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.88386744,
+          52.36727168
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012174769 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/huis-fuld-footprints.json, bag-shell-prepare.ts); the Keizersgracht front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001666_pano_0000_002780 (2020, frontal) and TMX7316010203-000707_pano_0000_000330 (2018, oblique), the Molenpad side from b_20241121_1354_Track03_Sphere_00954 (2024) and the yard gate from recording_2025-06-16_04-42-37_02170 (2025), CC BY 4.0, heights fitted to the 3DBAG wall tops. Rijksmonument 2609 (RCE: double corner house, 1685, rebuilt 1860-61 by Cornelis Outshoorn). Per wall in scripts/landmarks/huis-fuld-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21,
+      "galleryView": {
+        "theta": 1.75,
+        "phi": 1.15
+      },
+      "bagYear": 1860,
+      "materialOverrides": {
+        "ochre": "#e2e0d5",
+        "white": "#e9e7dd",
+        "concrete": "#d3cfc1",
+        "stone": "#8e8c86",
+        "greyBrick": "#a19f97",
+        "glass": "#3b454a",
+        "frame": "#e6e4da",
+        "dark": "#232a27",
+        "bronze": "#1e2020",
+        "slate": "#5b5e60"
+      },
+      "measuredOverrides": true,
+      "attribution": {
+        "title": "Huis Fuld, Keizersgracht 452, Amsterdam (1685, rebuilt 1860-61 by Cornelis Outshoorn; rijksmonument 2609)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001666_pano_0000_002780/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012174769 (CC0): the grey basement and channelled ground storey, eared window architraves with hoods, the arched door, columns, balcony and double stoop with cast-iron railings, balustered aprons, the aedicule with its segmental pediment, medallions and crest, the relief friezes, rusticated quoins and the modillion cornice, the Molenpad side's blind axes and the yard gate with its lantern, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8836942,
+              52.3672798
+            ],
+            [
+              4.883659,
+              52.3672748
+            ],
+            [
+              4.8836849,
+              52.3672072
+            ],
+            [
+              4.88372,
+              52.3672123
+            ],
+            [
+              4.8837259,
+              52.3671969
+            ],
+            [
+              4.8837548,
+              52.367201
+            ],
+            [
+              4.8838324,
+              52.3672119
+            ],
+            [
+              4.8838536,
+              52.3672149
+            ],
+            [
+              4.8838807,
+              52.3672187
+            ],
+            [
+              4.8838901,
+              52.3671937
+            ],
+            [
+              4.8839022,
+              52.3671609
+            ],
+            [
+              4.8841092,
+              52.3672298
+            ],
+            [
+              4.8841424,
+              52.3672409
+            ],
+            [
+              4.8841245,
+              52.3672873
+            ],
+            [
+              4.8841173,
+              52.3673062
+            ],
+            [
+              4.8841077,
+              52.3673311
+            ],
+            [
+              4.8841004,
+              52.3673499
+            ],
+            [
+              4.8840831,
+              52.3673948
+            ],
+            [
+              4.8836776,
+              52.3673962
+            ],
+            [
+              4.8836916,
+              52.3673595
+            ],
+            [
+              4.8836659,
+              52.3673558
+            ],
+            [
+              4.883666,
+              52.3673534
+            ],
+            [
+              4.8836942,
+              52.3672798
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -14.1899995803833,
+          -2.3841858265427618e-8,
+          -14.873668670654297
+        ],
+        "max": [
+          20.171218872070312,
+          21.045000076293945,
+          13.848246574401855
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88386744,
+          52.36727168
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 34.36121845245361,
+        "heightMetres": 21.045000100135802,
+        "depthMetres": 28.721915245056152,
+        "depthCoverage": 0.8730065424029226
+      },
+      "triangles": 22178,
+      "bytes": 295440,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ac8a0cc1776b9057",
+        "buildVersion": 2,
+        "bytes": 76784,
+        "triangles": 3545
+      },
+      "lod2": {
+        "sourceHash": "ac8a0cc1776b9057",
+        "buildVersion": 6,
+        "bytes": 13536,
+        "triangles": 442
+      }
     }
   }
 }
