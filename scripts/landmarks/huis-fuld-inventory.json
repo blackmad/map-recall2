@@ -1,0 +1,380 @@
+{
+ "schemaVersion": 1,
+ "id": "huis-fuld",
+ "pand": "0363100012174769",
+ "brief": "scripts/landmarks/huis-fuld-brief.md",
+ "signature": [
+  "s-cornice",
+  "s-portico-balcony",
+  "s-stoop",
+  "s-aedicule-crest",
+  "s-window-hoods",
+  "s-quoins"
+ ],
+ "walls": [
+  {
+   "tag": "w01-152",
+   "bearing": 152,
+   "lengthM": 18.6,
+   "centre": [
+    4.884025,
+    52.367203
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_1354_Track03_Sphere_00954",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-blind-axes",
+     "kind": "window-shape",
+     "where": "blind windows in eared architraves on three storeys",
+     "approxSizeM": [
+      1.6,
+      3.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_1354_Track03_Sphere_00954",
+     "how": "six axes on the front's rhythm; two in view, four inferred"
+    },
+    {
+     "id": "m-cornice",
+     "kind": "other",
+     "where": "the front's frieze and modillion cornice carried round",
+     "approxSizeM": [
+      18.6,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_1354_Track03_Sphere_00954"
+    },
+    {
+     "id": "m-chimney",
+     "kind": "other",
+     "where": "chimney stack on the hipped roof (2024; also over the west face, 2018)",
+     "approxSizeM": [
+      0.8,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_1354_Track03_Sphere_00954",
+     "how": "the 3DBAG LoD2.2 shell carries the stack (21.0 m), where the 2024 photo shows it"
+    }
+   ],
+   "note": "Molenpad side. Every panorama (2024, 2025) sees only its east end past Keizersgracht 454: channelled ground storey with blind windows, tall blind first-storey windows, the frieze and the modillion cornice carried round, quoins, a tiled hipped roof with a chimney. Six blind axes on the front's rhythm; the four west of the view are inferred."
+  },
+  {
+   "tag": "w02-77",
+   "bearing": 77,
+   "lengthM": 17.6,
+   "centre": [
+    4.8841155,
+    52.36732
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000707_pano_0000_000330",
+   "capturedAt": "2018-05-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "crown of the front, 14.0-16.0 m, full width",
+     "approxSizeM": [
+      17.6,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "how": "bed moulding, a row of modillions at 0.55 m under a corona projecting 1.05 m and the crown to the 3DBAG wall top"
+    },
+    {
+     "id": "s-relief-frieze",
+     "kind": "relief",
+     "where": "frieze under the cornice, 13.0-14.0 m",
+     "approxSizeM": [
+      17.6,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "how": "garland lozenges and rosettes on the band at 1.1 m pitch, not carved"
+    },
+    {
+     "id": "s-portico-balcony",
+     "kind": "colonnade",
+     "where": "centre bay: two columns on pedestals (landing to 6.05 m) carrying the entablature, two consoles and the balcony at 6.96 m with its balustrade",
+     "approxSizeM": [
+      4.2,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000707_pano_0000_000330",
+     "how": "round shafts, moulded capitals, slab, balusters laid out by balustrade.ts"
+    },
+    {
+     "id": "s-stoop",
+     "kind": "other",
+     "where": "double stoop in front of the door: landing at 1.7 m, flights left and right along the front",
+     "approxSizeM": [
+      9,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "how": "stepped slabs, stone cheeks"
+    },
+    {
+     "id": "s-stoop-railing",
+     "kind": "balcony-ironwork",
+     "where": "cast-iron railings along both flights and the landing, roundels between the bars",
+     "approxSizeM": [
+      9,
+      0.95
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "how": "bars, sloped handrail and rings; the scrolls are not drawn"
+    },
+    {
+     "id": "s-door",
+     "kind": "window-shape",
+     "where": "arched door with a radiating fanlight in an arched white surround, 1.7-5.57 m",
+     "approxSizeM": [
+      2,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780"
+    },
+    {
+     "id": "s-side-lights",
+     "kind": "window-shape",
+     "where": "narrow lights either side of the columns, 3.6-5.2 m",
+     "approxSizeM": [
+      0.42,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000707_pano_0000_000330"
+    },
+    {
+     "id": "s-aedicule-crest",
+     "kind": "sculpture",
+     "where": "over the balcony door: pilasters, entablature, segmental pediment over a niche with a cartouche, two oval medallions and the sculpted crest rising into the frieze (11.7-13.9 m)",
+     "approxSizeM": [
+      3.8,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "how": "cartouche and reclining figures as extruded outlines and discs"
+    },
+    {
+     "id": "s-window-hoods",
+     "kind": "window-shape",
+     "where": "ground and first storey windows in eared architraves; first-storey friezes between consoles under projecting hoods; balustered aprons under the first-storey windows",
+     "approxSizeM": [
+      2.3,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780"
+    },
+    {
+     "id": "s-attic-windows",
+     "kind": "window-shape",
+     "where": "square attic windows in eared surrounds, 11.34-12.44 m",
+     "approxSizeM": [
+      1.3,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780"
+    },
+    {
+     "id": "s-quoins",
+     "kind": "other",
+     "where": "rusticated quoins at both corners, alternating long and short blocks, 1.95-12.75 m",
+     "approxSizeM": [
+      0.75,
+      10.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780"
+    },
+    {
+     "id": "s-channelled",
+     "kind": "other",
+     "where": "channelled rustication of the ground storey (the register's sandstone pui)",
+     "approxSizeM": [
+      17.6,
+      3.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000707_pano_0000_000330"
+    },
+    {
+     "id": "s-cellar-lights",
+     "kind": "balcony-ironwork",
+     "where": "grey stone basement with barred cellar lights",
+     "approxSizeM": [
+      1.3,
+      0.95
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000707_pano_0000_000330"
+    },
+    {
+     "id": "s-lamp",
+     "kind": "lamp",
+     "where": "small wall lamp under the balcony",
+     "approxSizeM": [
+      0.2,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001666_pano_0000_002780",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.2 m lamp under the balcony soffit"
+     }
+    }
+   ],
+   "note": "Keizersgracht front, read from the frontal 2020 rectification (TMX7316010203-001666_pano_0000_002780, w02-77.alt.jpg) with depths from the oblique 2018 crop (TMX7316010203-000707_pano_0000_000330). Symmetric about the door; axes at +-3.75 and +-6.7 m."
+  },
+  {
+   "tag": "w03-167",
+   "bearing": 167,
+   "lengthM": 10.8,
+   "centre": [
+    4.883806,
+    52.36721
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_02170",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "y-lantern-arch",
+     "kind": "lamp",
+     "where": "wrought-iron scroll arch over the west gate carrying a six-sided lantern",
+     "approxSizeM": [
+      3.4,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_04-42-37_02170",
+     "how": "bar, rings and a tapered glass lantern with a cap"
+    },
+    {
+     "id": "y-gates",
+     "kind": "balcony-ironwork",
+     "where": "iron bar gates between white piers with dark caps",
+     "approxSizeM": [
+      10,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_04-42-37_02170"
+    },
+    {
+     "id": "y-sign",
+     "kind": "sign",
+     "where": "yellow towing-zone sign on the pier",
+     "approxSizeM": [
+      0.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_04-42-37_02170",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.5 m traffic sign"
+     }
+    }
+   ],
+   "note": "Yard wall on the Molenpad (2025 frontal, 2021): white gate piers with dark caps, iron gates, a wrought-iron arch with a lantern over the west gate; the low yard building behind. The 3DBAG puts a 6.6 m wall on the street line; the gate is drawn on it."
+  },
+  {
+   "tag": "w04-257",
+   "bearing": 257,
+   "lengthM": 8.3,
+   "centre": [
+    4.883683,
+    52.3673185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000707_pano_0000_000387",
+   "capturedAt": "2018-05-04",
+   "checked": true,
+   "items": [],
+   "note": "Yard side (2018 crops): the low white yard building with iron railings on its walls and gate lanterns, and the main block's plain west face with two window axes and the cornice carried round. Drawn as the 3DBAG shell in the render colour; the main block's west face (ring edge 5) gets its two axes and cornice."
+  },
+  {
+   "tag": "w05-257",
+   "bearing": 257,
+   "lengthM": 7.8,
+   "centre": [
+    4.883675,
+    52.367243
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000707_pano_0000_000388",
+   "capturedAt": "2018-05-04",
+   "checked": true,
+   "items": [],
+   "note": "Yard side (2018 crops): the low white yard building with iron railings on its walls and gate lanterns, and the main block's plain west face with two window axes and the cornice carried round. Drawn as the 3DBAG shell in the render colour; the main block's west face (ring edge 5) gets its two axes and cornice."
+  },
+  {
+   "tag": "w06-257",
+   "bearing": 257,
+   "lengthM": 6.6,
+   "centre": [
+    4.883894,
+    52.367192
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000707_pano_0000_000390",
+   "capturedAt": "2018-05-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-west-axes",
+     "kind": "window-shape",
+     "where": "two plain window axes on three storeys under the cornice",
+     "approxSizeM": [
+      1.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000707_pano_0000_000390"
+    }
+   ],
+   "note": "Yard side (2018 crops): the low white yard building with iron railings on its walls and gate lanterns, and the main block's plain west face with two window axes and the cornice carried round. Drawn as the 3DBAG shell in the render colour; the main block's west face (ring edge 5) gets its two axes and cornice."
+  },
+  {
+   "tag": "w07-257",
+   "bearing": 257,
+   "lengthM": 4.2,
+   "centre": [
+    4.883687,
+    52.3673795
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; a 4.2 m yard wall. Drawn as the 3DBAG shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

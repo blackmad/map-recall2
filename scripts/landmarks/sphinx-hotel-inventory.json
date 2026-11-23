@@ -1,0 +1,222 @@
+{
+ "schemaVersion": 1,
+ "id": "sphinx-hotel",
+ "pand": "0363100012179513",
+ "brief": "scripts/landmarks/sphinx-hotel-brief.md",
+ "signature": [
+  "s-gable",
+  "s-speklagen",
+  "s-hotel-sign",
+  "s-round-arches",
+  "s-oculus-aedicule",
+  "s-awning"
+ ],
+ "walls": [
+  {
+   "tag": "w01-96",
+   "bearing": 96,
+   "lengthM": 13.6,
+   "centre": [
+    4.8941795,
+    52.359295
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track10_Sphere_00077",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "East side: a party wall over a building site, sheeted in blue in 2022 (TMX7316010203-002857_pano_0008_000057) and 2024 (b_20241211_0954_Track10_Sphere_00077); no openings. Drawn as the 3DBAG shell in the east house brick."
+  },
+  {
+   "tag": "w02-186",
+   "bearing": 186,
+   "lengthM": 12.3,
+   "centre": [
+    4.89408,
+    52.3592395
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Back; no panorama. Drawn as the 3DBAG shell."
+  },
+  {
+   "tag": "w03-6",
+   "bearing": 6,
+   "lengthM": 12.3,
+   "centre": [
+    4.894099,
+    52.3593615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001048_pano_0000_000480",
+   "capturedAt": "2019-01-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-gable",
+     "kind": "other",
+     "where": "west house: pointed gable over t 6.0-12.0, apex 21.0 m, white coping, attic window with a lintel ornament",
+     "approxSizeM": [
+      6,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639",
+     "how": "symmetric after the photo; the 3DBAG lopsided left slope drawn as roof behind the coping"
+    },
+    {
+     "id": "s-speklagen",
+     "kind": "other",
+     "where": "west house: white bands every ~0.72 m from the plinth into the gable",
+     "approxSizeM": [
+      6.3,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-segment-heads",
+     "kind": "window-shape",
+     "where": "west house: tall windows with transoms under segmental heads, white keystone and two white blocks a side",
+     "approxSizeM": [
+      1.12,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-balconies",
+     "kind": "balcony-ironwork",
+     "where": "west house middle axis: French doors with black railings on slabs at the second and third storeys",
+     "approxSizeM": [
+      1.7,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-hotel-sign",
+     "kind": "sign",
+     "where": "vertical blade sign HOTEL, white with blue letters, on the middle axis, 4.7-9.5 m",
+     "approxSizeM": [
+      0.6,
+      4.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_07-34-51_00639",
+     "how": "blade with blue border strips and pixel letters on both faces; the SPHINX plate under it is not drawn"
+    },
+    {
+     "id": "s-awning",
+     "kind": "canopy",
+     "where": "red quarter-round awning over the hotel door in the west bay",
+     "approxSizeM": [
+      2.2,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-door-aedicule",
+     "kind": "window-shape",
+     "where": "west bay: paired round-headed lights in a white aedicule over the hotel door, a small rosette above",
+     "approxSizeM": [
+      1.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-round-arches",
+     "kind": "window-shape",
+     "where": "east house: round-headed windows on four storeys with white keystones and alternating white jamb blocks, relieving arches",
+     "approxSizeM": [
+      1.08,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-oculus-aedicule",
+     "kind": "window-shape",
+     "where": "east house entrance: white aedicule with an oculus and a semicircular pediment over the dark door",
+     "approxSizeM": [
+      1.7,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-entablature",
+     "kind": "other",
+     "where": "east house: white entablature with frieze panels and a projecting cornice at 16.3-17.0 m",
+     "approxSizeM": [
+      6,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-basement",
+     "kind": "other",
+     "where": "east house black basement with barred lights; west house grey stone plinth with barred lights",
+     "approxSizeM": [
+      12.3,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_07-34-51_00639"
+    },
+    {
+     "id": "s-wall-lamps",
+     "kind": "lamp",
+     "where": "three small wall lamps between the west house ground-storey windows",
+     "approxSizeM": [
+      0.15,
+      0.25
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_07-34-51_00639",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.15 m lamps"
+     }
+    },
+    {
+     "id": "s-sphinx-plate",
+     "kind": "sign",
+     "where": "small SPHINX plate under the blade sign",
+     "approxSizeM": [
+      0.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_07-34-51_00639",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.5 m plate under the blade"
+     }
+    }
+   ],
+   "note": "Weteringschans front, two houses on one pand, read from the frontal 2025 rectification (recording_2025-07-14_07-34-51_00639, w03-6.alt.jpg, 50 px/m) and the 2019 frontal crop. East house t 0-6.0 (dark brick), west house t 6.0-12.3 (red brick with white bands)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

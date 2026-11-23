@@ -1,0 +1,15 @@
+{
+  "id": "sphinx-hotel",
+  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama recording_2025-07-14_07-34-51_00639 (2025, frontal, w03-6.alt.jpg), checked against the 2019 frontal crop (w03-6.jpg); not yet blind-counted. Glazed windows only, bottom row first, east house then west house: basement lights (two each), the ground storey (two each; the east house's third axis is the oculus entrance and the west house's is the hotel door), the three upper storeys (three each, the west house's middle axis French doors), the gable's attic window.",
+  "facades": [
+    {
+      "name": "north (Weteringschans)",
+      "bearing": 6,
+      "photo": "artifacts/landmark-briefs/sphinx-hotel/w03-6.alt.jpg",
+      "rows": [4, 4, 6, 6, 6, 1],
+      "columns": 6,
+      "symmetric": false,
+      "openings": ["glass"]
+    }
+  ]
+}
