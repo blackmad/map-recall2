@@ -1,0 +1,489 @@
+{
+ "schemaVersion": 1,
+ "id": "sofitel-the-grand-1926",
+ "pand": "0363100012250983",
+ "brief": "scripts/landmarks/sofitel-the-grand-1926-brief.md",
+ "signature": [
+  "s-wide-windows",
+  "s-granite-base",
+  "s-stair-window",
+  "s-tower-crest",
+  "s-attic-row",
+  "s-pier-figures"
+ ],
+ "walls": [
+  {
+   "tag": "w01-300",
+   "bearing": 300,
+   "lengthM": 20,
+   "centre": [
+    4.8953155,
+    52.371083
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000228",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-granite-base",
+     "kind": "other",
+     "where": "granite base storey (0-2.9 m) with a projecting band, ten dark-wood windows",
+     "approxSizeM": [
+      18.9,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228"
+    },
+    {
+     "id": "n-mezzanine",
+     "kind": "window-shape",
+     "where": "mezzanine row of eleven small sash windows at 4.3-6.5 m",
+     "approxSizeM": [
+      1.15,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228"
+    },
+    {
+     "id": "n-corbels",
+     "kind": "relief",
+     "where": "carved brick/stone corbels between the mezzanine windows under a corbelled course",
+     "approxSizeM": [
+      0.3,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228",
+     "how": "a stone block and a wider cap per corbel, a row of brick dentils"
+    },
+    {
+     "id": "s-wide-windows",
+     "kind": "window-shape",
+     "where": "two rows of four wide white windows, five upper lights over three lower",
+     "approxSizeM": [
+      2.7,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228"
+    },
+    {
+     "id": "s-attic-row",
+     "kind": "window-shape",
+     "where": "set-back attic storey with four groups of three small windows under dark headers",
+     "approxSizeM": [
+      0.75,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228"
+    },
+    {
+     "id": "n-band",
+     "kind": "other",
+     "where": "stone band at the 16.2 m wall top",
+     "approxSizeM": [
+      18.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000228"
+    }
+   ],
+   "note": "North block, 20.1 m (3DBAG edge 1), frontal 2021 crop at 50 px/m, heights fitted to the 16.2 m wall top and 19.3 m eaves."
+  },
+  {
+   "tag": "w02-194",
+   "bearing": 194,
+   "lengthM": 15.2,
+   "centre": [
+    4.8950675,
+    52.3705105
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002629_pano_0001_000770",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w2-slots",
+     "kind": "window-shape",
+     "where": "column of small slot windows up the south tower with a stepped stone crest",
+     "approxSizeM": [
+      0.4,
+      16
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770",
+     "skip": {
+      "reason": "not-visible",
+      "note": "set back behind the low block, seen only from the narrow Agnietenstraat end"
+     }
+    }
+   ],
+   "note": "South side (Agnietenstraat end), 2022 with a skip and truck in front; the tower face with slot windows and a stepped crest stands set back from the ring here."
+  },
+  {
+   "tag": "w03-29",
+   "bearing": 29,
+   "lengthM": 9.3,
+   "centre": [
+    4.895449,
+    52.371141
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0004_000076",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [],
+   "note": "NE end: the crop shows mostly the adjoining 1903-05 wing; this wing's end is plain brick."
+  },
+  {
+   "tag": "w04-108",
+   "bearing": 108,
+   "lengthM": 7.9,
+   "centre": [
+    4.8952505,
+    52.370688
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001662_pano_0000_000102",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [],
+   "note": "The crop shows the neighbouring white-stuccoed building, not this wing; shell."
+  },
+  {
+   "tag": "w05-110",
+   "bearing": 110,
+   "lengthM": 7.9,
+   "centre": [
+    4.895349,
+    52.3707525
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama (courtyard); shell."
+  },
+  {
+   "tag": "w06-300",
+   "bearing": 300,
+   "lengthM": 6.7,
+   "centre": [
+    4.8952085,
+    52.370982
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000196",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-stair-window",
+     "kind": "window-shape",
+     "where": "stone-framed stair window, three lights in seven tiers, 1.9-17.2 m",
+     "approxSizeM": [
+      3.2,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000196"
+    },
+    {
+     "id": "t-top-windows",
+     "kind": "window-shape",
+     "where": "three small windows under little hoods at 18.1-19.5 m",
+     "approxSizeM": [
+      2.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000196"
+    },
+    {
+     "id": "s-tower-crest",
+     "kind": "other",
+     "where": "stepped stone crest over the parapet with two uprights running down to the top windows",
+     "approxSizeM": [
+      2.4,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001981_pano_0000_000196",
+     "how": "three stepped stone blocks and two thin stone fins"
+    }
+   ],
+   "note": "Stair tower, 6.7 m (edge 3), frontal 2021 crop; top 22.4 m."
+  },
+  {
+   "tag": "w07-285",
+   "bearing": 285,
+   "lengthM": 6.2,
+   "centre": [
+    4.8949705,
+    52.370554
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000202",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-low-window",
+     "kind": "window-shape",
+     "where": "low block: wide white window of three by two lights over the granite base",
+     "approxSizeM": [
+      3.9,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000202"
+    },
+    {
+     "id": "e-tower-windows",
+     "kind": "window-shape",
+     "where": "tower: narrow windows at three levels and a pair at the top",
+     "approxSizeM": [
+      1,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001981_pano_0000_000202",
+     "how": "single windows on the 1.4 m tower face the 3DBAG gives"
+    }
+   ],
+   "note": "South end (edge 37): the low block and the tall south tower."
+  },
+  {
+   "tag": "w08-297",
+   "bearing": 297,
+   "lengthM": 5.2,
+   "centre": [
+    4.895138,
+    52.370885
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000198",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w09-293",
+   "bearing": 293,
+   "lengthM": 5.2,
+   "centre": [
+    4.8951025,
+    52.3708375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000225",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w10-297",
+   "bearing": 297,
+   "lengthM": 5.1,
+   "centre": [
+    4.895177,
+    52.3709315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000197",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w11-287",
+   "bearing": 287,
+   "lengthM": 5.1,
+   "centre": [
+    4.8950455,
+    52.370739
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000200",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w12-290",
+   "bearing": 290,
+   "lengthM": 5.1,
+   "centre": [
+    4.8950715,
+    52.3707885
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000199",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-wide-windows",
+     "kind": "window-shape",
+     "where": "three wide white windows per facet (3.2 m), five lights over three",
+     "approxSizeM": [
+      3.2,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199"
+    },
+    {
+     "id": "c-wood-window",
+     "kind": "window-shape",
+     "where": "wide dark-wood window in the granite base",
+     "approxSizeM": [
+      3.9,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199"
+    },
+    {
+     "id": "s-pier-figures",
+     "kind": "sculpture",
+     "where": "granite pier at each facet joint with a carved figure under the base band (2016 w16 close-up)",
+     "approxSizeM": [
+      0.8,
+      2.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199",
+     "how": "pier slab with a stacked-block figure and a sphere head"
+    },
+    {
+     "id": "c-string",
+     "kind": "other",
+     "where": "stone string course at 13.9 m",
+     "approxSizeM": [
+      5.1,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199"
+    },
+    {
+     "id": "c-attic",
+     "kind": "window-shape",
+     "where": "four small attic windows under dark headers",
+     "approxSizeM": [
+      0.85,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199"
+    },
+    {
+     "id": "c-dormer",
+     "kind": "window-shape",
+     "where": "white dormer with four lights in the tiled roof above each facet",
+     "approxSizeM": [
+      3,
+      0.95
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000199"
+    }
+   ],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w13-285",
+   "bearing": 285,
+   "lengthM": 5.1,
+   "centre": [
+    4.8950225,
+    52.370689
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000223",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w14-121",
+   "bearing": 121,
+   "lengthM": 5,
+   "centre": [
+    4.8953585,
+    52.3708675
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama (courtyard); shell."
+  },
+  {
+   "tag": "w15-285",
+   "bearing": 285,
+   "lengthM": 4.9,
+   "centre": [
+    4.895001,
+    52.3706395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000201",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Curved front facet (5 m), same composition on every facet; measured on w12-290 (frontal 2021) and checked on w08, w09, w15."
+  },
+  {
+   "tag": "w16-15",
+   "bearing": 15,
+   "lengthM": 4.7,
+   "centre": [
+    4.8952665,
+    52.3706485
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0004_000064",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [],
+   "note": "Close-up of a ground-storey pier with its carved figure and a wood window (2016); modelled on the curve facets (s-pier-figures)."
+  },
+  {
+   "tag": "w17-110",
+   "bearing": 110,
+   "lengthM": 4.7,
+   "centre": [
+    4.8953285,
+    52.370828
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama (courtyard); shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

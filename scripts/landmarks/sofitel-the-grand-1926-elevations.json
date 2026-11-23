@@ -1,0 +1,15 @@
+{
+  "id": "sofitel-the-grand-1926",
+  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama TMX7316010203-001981_pano_0000_000228 (2021, frontal, w01-300.jpg), the north block only (3DBAG edge 1, t 0-18.9 m); not yet blind-counted. Glazed windows bottom row first: the granite base's ten wood windows, the mezzanine's eleven sashes, two rows of four wide windows, the attic's twelve small windows in four groups of three. The curved facets south of the stair tower repeat one composition per 5 m facet (wood window, three wide windows, four attic windows, a dormer) and are not counted here.",
+  "facades": [
+    {
+      "name": "north block (Oudezijds Achterburgwal)",
+      "bearing": 300,
+      "photo": "artifacts/landmark-briefs/sofitel-the-grand-1926/w01-300.jpg",
+      "rows": [10, 11, 4, 4, 12],
+      "columns": 4,
+      "symmetric": false,
+      "openings": ["glass"]
+    }
+  ]
+}

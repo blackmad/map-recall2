@@ -1,5 +1,5 @@
 {
-  "toolchain": "1fb731cfd630c5c5a504d7c44e798a279b91378a6060db1e88dfbc3e95fdcf72",
+  "toolchain": "1565f4ebe97d20d4b4bb8dc83af9b47d97770272128255c30f294a6a489dc115",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -241,6 +241,7 @@
     "huis-aan-drie-grachten": "44ffec2eb0a9e8b3da532265b592b5a9f6c82e65f9a266f3e11af8e9aa540617",
     "huis-bartolotti": "1a718e12407f4ccc9470ec8bb7dd0cefa40b58e6fe228c8b92559f92db825aab",
     "huis-de-pinto": "97d30e597835ffa2f8c0999c940abae37f312041fed6c29fdd409db22cda098f",
+    "huis-fuld": "05ca2d8aa761ce65d16986f6d8a79033c181931f503188920729800587179907",
     "huis-marseille": "3df905ceac723ae4430785d49b9319bd605ff9b1b36d6b3ac684733c31b90cef",
     "huis-met-de-hoofden": "779522bd3d2f4661d871087def5f6368f3f6677ca937c83ac2ac2c1bcf0f9ce5",
     "huize-frankendael": "53054d809aeac7e149e01b7ca99993a1d2e0b7052556a33347724fd9d3dabc9e",
@@ -473,8 +474,10 @@
     "sloterdijk-station": "9bc82ef221f997c21743f3554483099fa7649da4767de8f4f236644343ef3547",
     "sloterparkbad": "c0b1ccbdb8a1265a936983ad91a73e3f70e551780ef33827a3d71e5668357e49",
     "social-history": "17864020947311f211363753cd9b177d88c469d12f727f15b7a78aa91952d9db",
+    "sofitel-the-grand-1926": "7a4330a740491ea391ccf4f06b99ce3894c11ebbe4986ae8c775c823e0dad78e",
     "spaarbank-singel-548": "e0282b9a69ecf8bf44a95bec35067248627d0e62355eb3bc59235c71493a4702",
     "spanjemonument": "a1bca13aa1166c98529d7bc9bc8b43d9681f045044da862b0df5139a7f10728b",
+    "sphinx-hotel": "82a77c8825444944259ad442b657748136032735b25bf3cd4580ca30d80aa417",
     "spiegelhof": "63faf3b122e7f743c2c18cd9e2411da812f9aa3f4fc672fe3ff4c9a3a1b7ebb1",
     "spinoza-standbeeld": "9053321e899a7b40b7a391afd3132b717fa78ce1a536a05d0a4588c049054dba",
     "splendor": "facedb77749677394ecfff3de987488498c70480bca5d8d14207ddd3e9d41dd1",

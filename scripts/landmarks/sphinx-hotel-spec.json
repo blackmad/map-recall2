@@ -1,0 +1,34 @@
+{
+ "id": "sphinx-hotel",
+ "name": "Hotel Sphinx, Weteringschans",
+ "heightMetres": 21.3,
+ "bagYear": 1922,
+ "galleryView": {
+  "theta": 6.2,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012179513 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/sphinx-hotel-footprints.json, bag-shell-prepare.ts); the Weteringschans front read from the rectified Gemeente Amsterdam panoramas recording_2025-07-14_07-34-51_00639 (2025, frontal) and TMX7316010203-001048_pano_0000_000480 (2019, frontal), CC BY 4.0, heights fitted to the 3DBAG roof and gable. Per wall in scripts/landmarks/sphinx-hotel-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7d5a56",
+  "greyBrick": "#554d4b",
+  "white": "#e2e0d8",
+  "stone": "#8f8c86",
+  "dark": "#2a3134",
+  "glass": "#3d474c",
+  "frame": "#e4e2da",
+  "bronze": "#1f2223",
+  "slate": "#55585b",
+  "red": "#93353a",
+  "blue": "#2f4f86",
+  "concrete": "#d9d6cc"
+ },
+ "attribution": {
+  "title": "Hotel Sphinx, Weteringschans, Amsterdam (two late-19th-century houses on one pand)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_07-34-51_00639/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012179513 (CC0): the east house's dark brick, round-headed windows with white keystones and jamb blocks, oculus aedicule over the door and white entablature; the west house's red brick with white bands, segmental-headed windows, French balconies, the HOTEL blade sign, the red awning and the symmetric pointed gable with its coping, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}
