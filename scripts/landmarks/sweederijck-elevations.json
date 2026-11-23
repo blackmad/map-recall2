@@ -1,0 +1,28 @@
+{
+  "id": "sweederijck",
+  "countedBy": "lane landmarks-r17-20261123 from the rectified panorama TMX7316010203-001975_pano_0000_000569 (2021, frontal, w01-43.alt.jpg, 50 px/m) with the 2017 frontal crop (w01-43.jpg); not yet blind-counted. Glazed openings, bottom row first: four barred basement lights (one in view, three inferred under the outer axes), the bel-etage's four windows, the door's fanlight, five first-storey windows, five second-storey windows, the attic's four oval windows (two pairs over the outer axes).",
+  "facades": [
+    {
+      "name": "canal front (Herengracht)",
+      "bearing": 43,
+      "photo": "artifacts/landmark-briefs/sweederijck/w01-43.alt.jpg",
+      "rows": [4, 4, 1, 5, 5, 4],
+      "columns": 5,
+      "symmetric": true,
+      "openings": ["glass"],
+      "note": "The attic row holds two pairs of oval windows over the outer axes only; symmetric about the door.",
+      "mixedRows": [
+        {
+          "row": 5,
+          "rowSizes": "mixed",
+          "evidence": "w01-43.alt.jpg (TMX7316010203-001975_pano_0000_000569, 2021, 50 px/m): attic ovals at x 68-100 and 112-148 px over the east axis and x 600-636 and 650-684 px over the west axis, y 65-85 px; only 12 px (0.24 m) of stone between the two ovals of a pair, so at the audit's 0.1 m cells the east pair closes into one 1.6 m opening while the west pair reads as two (the drawn pairs are mirror images).",
+          "openings": [
+            {"kind": "oval pair, read as one", "w": 1.6},
+            {"kind": "oval", "w": 0.6},
+            {"kind": "oval", "w": 0.6}
+          ]
+        }
+      ]
+    }
+  ]
+}

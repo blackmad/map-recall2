@@ -314,6 +314,7 @@ import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
+import {buildSweederijck} from './sweederijck-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
@@ -1329,6 +1330,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else if(id==='jungle-swindenstraat')buildJungleSwindenstraat(w,d,helpers);
+    else if(id==='sweederijck')buildSweederijck(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

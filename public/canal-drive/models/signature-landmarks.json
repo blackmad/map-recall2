@@ -135695,6 +135695,160 @@
       "triangles": 21484,
       "bytes": 290308,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sweederijck": {
+      "id": "sweederijck",
+      "name": "Sweederijck, Herengracht",
+      "modelUrl": "./models/sweederijck.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176171"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88998082,
+          52.36533752
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 31.1,
+        "widthMetres": 28.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.88998082,
+          52.36533752
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176171 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/sweederijck-footprints.json, bag-shell-prepare.ts); the canal front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001975_pano_0000_000569 (2021, frontal) and TMX7316010203-000355_pano_0000_000773 (2017, frontal), the Nieuwe Spiegelstraat side from b_20241203_0939_Track01_Sphere_00903 (2024, oblique) and the shop front at the back from TMX7316010203-001543_pano_0000_001961 (2020), CC BY 4.0, heights fitted to the 3DBAG wall top. Rijksmonument 1859 (register elements: stoop, attic, glazing bars, entrance, sculpture; stone, empire; core c. 1671). Per wall in scripts/landmarks/sweederijck-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19,
+      "galleryView": {
+        "theta": 0.8,
+        "phi": 1.2
+      },
+      "bagYear": 1671,
+      "materialOverrides": {
+        "sandstone": "#9e9c95",
+        "concrete": "#b3b0a6",
+        "white": "#e6e4dc",
+        "frame": "#e8e6de",
+        "glass": "#363f44",
+        "stone": "#6f7472",
+        "brick": "#4a403c",
+        "ochre": "#6a4a2e",
+        "bronze": "#1d1f1f",
+        "slate": "#55585a",
+        "dark": "#232827"
+      },
+      "attribution": {
+        "title": "Sweederijck, Herengracht, Amsterdam (core c. 1671; rijksmonument 1859)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000569/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176171 (CC0): the banded sandstone canal front with its pilaster strips, five axes of sash windows with glazing bars, the arched entrance with its fanlight, pilasters and cornice, the two statues beside the centre window, the attic's paired oval windows, the cornice and roof balustrade, the stoop and area railings, the brick side with its tall windows and the shop front at the back, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8902169,
+              52.3653799
+            ],
+            [
+              4.8901528,
+              52.365416
+            ],
+            [
+              4.8901199,
+              52.3654345
+            ],
+            [
+              4.8900964,
+              52.3654477
+            ],
+            [
+              4.8900554,
+              52.3654707
+            ],
+            [
+              4.8898036,
+              52.3653047
+            ],
+            [
+              4.8898198,
+              52.3652955
+            ],
+            [
+              4.8898998,
+              52.3653482
+            ],
+            [
+              4.8899456,
+              52.3653222
+            ],
+            [
+              4.8899131,
+              52.3653009
+            ],
+            [
+              4.8899104,
+              52.3653024
+            ],
+            [
+              4.8898288,
+              52.3652487
+            ],
+            [
+              4.88993,
+              52.3651911
+            ],
+            [
+              4.8900391,
+              52.3652629
+            ],
+            [
+              4.8902169,
+              52.3653799
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -12.095000267028809,
+          -3.814697002724188e-9,
+          -15.640057563781738
+        ],
+        "max": [
+          16.88323974609375,
+          19.70599937438965,
+          16.266000747680664
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88998082,
+          52.36533752
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.906058311462402,
+        "heightMetres": 19.705999378204346,
+        "depthMetres": 28.97824001312256,
+        "depthCoverage": 1.0275971635859062
+      },
+      "triangles": 7784,
+      "bytes": 121656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
