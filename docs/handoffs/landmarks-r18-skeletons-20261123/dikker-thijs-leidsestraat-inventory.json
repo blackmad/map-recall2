@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "id": "dikker-thijs-leidsestraat",
+ "pand": "0363100012169650",
+ "brief": "scripts/landmarks/dikker-thijs-leidsestraat-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-48",
+   "bearing": 48,
+   "lengthM": 18.9,
+   "centre": [
+    4.8840375,
+    52.365013
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000172",
+   "capturedAt": "2017-07-07",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-142",
+   "bearing": 142,
+   "lengthM": 16,
+   "centre": [
+    4.8840355,
+    52.3648895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000789",
+   "capturedAt": "2016-08-16",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

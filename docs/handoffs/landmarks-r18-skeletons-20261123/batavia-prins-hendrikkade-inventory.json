@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "id": "batavia-prins-hendrikkade",
+ "pand": "0363100012171926",
+ "brief": "scripts/landmarks/batavia-prins-hendrikkade-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-141",
+   "bearing": 141,
+   "lengthM": 6.1,
+   "centre": [
+    4.9018755,
+    52.3764985
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track19_Sphere_00447",
+   "capturedAt": "2025-01-08",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-237",
+   "bearing": 237,
+   "lengthM": 4.3,
+   "centre": [
+    4.9017225,
+    52.376577
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000369",
+   "capturedAt": "2017-07-06",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-348",
+   "bearing": 348,
+   "lengthM": 4.2,
+   "centre": [
+    4.901568,
+    52.376735
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03815",
+   "capturedAt": "2025-06-17",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-341",
+   "bearing": 341,
+   "lengthM": 4,
+   "centre": [
+    4.901628,
+    52.376741
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03815",
+   "capturedAt": "2025-06-17",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

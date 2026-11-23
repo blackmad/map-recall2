@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "id": "raadhuisstraat-52",
+ "pand": "0363100012172357",
+ "brief": "scripts/landmarks/raadhuisstraat-52-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-198",
+   "bearing": 198,
+   "lengthM": 15.6,
+   "centre": [
+    4.8855145,
+    52.374054
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002045_pano_0001_003044",
+   "capturedAt": "2021-03-17",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-274",
+   "bearing": 274,
+   "lengthM": 9.6,
+   "centre": [
+    4.885409,
+    52.374118
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000942",
+   "capturedAt": "2017-07-07",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

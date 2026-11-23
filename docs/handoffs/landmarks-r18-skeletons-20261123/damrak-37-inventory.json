@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "id": "damrak-37",
+ "pand": "0363100012178237",
+ "brief": "scripts/landmarks/damrak-37-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-214",
+   "bearing": 214,
+   "lengthM": 12.5,
+   "centre": [
+    4.896213,
+    52.3758655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001643_pano_0002_000113",
+   "capturedAt": "2020-02-14",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-131",
+   "bearing": 131,
+   "lengthM": 8.4,
+   "centre": [
+    4.896333,
+    52.375863
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track19_Sphere_00344",
+   "capturedAt": "2025-01-08",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

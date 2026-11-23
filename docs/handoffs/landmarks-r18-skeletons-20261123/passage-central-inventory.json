@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "passage-central",
+ "pand": "0363100012170968",
+ "brief": "scripts/landmarks/passage-central-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-162",
+   "bearing": 162,
+   "lengthM": 17.7,
+   "centre": [
+    4.89557,
+    52.3783565
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track06_Sphere_00021",
+   "capturedAt": "2025-01-20",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-233",
+   "bearing": 233,
+   "lengthM": 11,
+   "centre": [
+    4.895397,
+    52.3783715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000303",
+   "capturedAt": "2019-12-20",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 8.9,
+   "centre": [
+    4.8957615,
+    52.378383
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000495",
+   "capturedAt": "2022-06-27",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-42",
+   "bearing": 42,
+   "lengthM": 4.9,
+   "centre": [
+    4.896319,
+    52.3785195
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_00533",
+   "capturedAt": "2025-06-16",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-47",
+   "bearing": 47,
+   "lengthM": 4.9,
+   "centre": [
+    4.8962115,
+    52.378583
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_000033",
+   "capturedAt": "2021-09-15",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

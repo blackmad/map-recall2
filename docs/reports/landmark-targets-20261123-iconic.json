@@ -1,0 +1,659 @@
+{
+ "generated": "2026-11-23",
+ "generatedBy": "lane landmarks-r18-20261123: scripts/landmarks/landmark-targets-iconic.ts (raw top 150: docs/reports/landmark-targets-20261123-iconic-raw.json, 1,304 open candidates), read by hand with landmark-brief.ts crops for the top rows",
+ "method": "Characterful buildings riders pass that the game still draws generic (not in covers.json, not near a signature footprint, not suppressed by the manual catalogue). Ranked by memorable street presence first (striped or coloured awnings, domes, turrets; painted or tiled fronts, Art Nouveau and Amsterdam School; famous cafes, shops, theatres, hotels; unusual shapes), then by ride exposure (ride-visibility/v1, 1500 seeded routes, seed 7). Presence signals come from RCE register description words and OSM venue tags; the crops then reordered the rows by eye.",
+ "prompt": "David 2026-11-23: 'I LOVE that building with the striped awnings' (the stripedAwning kit part: Cafe Hans en Grietje, Spiegelgracht 27, and the former Maison De Vries, Leidseplein 1-3; plain awnings on Winkelhuis Broekmans).",
+ "ride": "ride-visibility/v1",
+ "targets": [
+  {
+   "rank": 1,
+   "id": "muntplein-1",
+   "pand": "0363100012179461",
+   "name": "Muntplein 1 / Amstel 2, former Volharding office and koffiehuis (A.L. van Gendt, 1892)",
+   "whyIconic": "Red brick and stone neo-renaissance corner opposite the Munttoren, arched café storey, banded brick and scrolled gables",
+   "exposure": 209077,
+   "routeMetres": 21130,
+   "presence": 4.7,
+   "signals": [
+    "register: curved",
+    "register: café",
+    "register: oriel"
+   ],
+   "register": "518344",
+   "year": 1892,
+   "evidence": "w01-16 2024, w02-305 2025",
+   "status": "modelling r18 (lane E)"
+  },
+  {
+   "rank": 2,
+   "id": "old-bell-rembrandtplein",
+   "pand": "0363100012178852",
+   "name": "The Old Bell / City Hotel, Rembrandtplein 46 (1891-92, insurance office)",
+   "whyIconic": "Rounded corner bay crowned by a balustrade on the Rembrandtplein, red brick banded with stone, gilt 'The Old Bell' lettering and red CITY HOTEL signs",
+   "exposure": 115598,
+   "routeMetres": 7335,
+   "presence": 11,
+   "signals": [
+    "register: curved",
+    "register: café",
+    "register: hotel",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork",
+    "osm: pub",
+    "osm: hotel"
+   ],
+   "register": "518404",
+   "year": 1891,
+   "evidence": "w01-77 2025, w02-348 2022: corner crown, banding, lettering",
+   "status": "modelling r18 (lane B)"
+  },
+  {
+   "rank": 3,
+   "id": "koningsplein-1",
+   "pand": "0363100012176247",
+   "name": "Koningsplein 1 (Schill and Haverkamp, 1890-91, neo-baroque)",
+   "whyIconic": "Round corner tower with a domed cap over the Singel at the Bloemenmarkt, iron balconies, pedimented windows",
+   "exposure": 139604,
+   "routeMetres": 13745,
+   "presence": 7,
+   "signals": [
+    "register: dome",
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: curved",
+    "register: shopfront",
+    "register: sculpture"
+   ],
+   "register": "518359",
+   "year": 1890,
+   "evidence": "w01-331 2022: domed corner tower, balconies",
+   "status": "modelling r18 (lane C)"
+  },
+  {
+   "rank": 4,
+   "id": "cafe-riche-rokin",
+   "pand": "0363100012168347",
+   "name": "Former Café-Restaurant Riche, Rokin 84 (A.L. van Gendt, 1883), now Het Lagerhuys",
+   "whyIconic": "Richly carved white stone front with a long iron balcony, red awnings over the upper windows and three tall arched café windows on the Rokin",
+   "exposure": 85273,
+   "routeMetres": 4270,
+   "presence": 6.5,
+   "signals": [
+    "register: café",
+    "osm: cafe",
+    "osm: pub"
+   ],
+   "register": "5009",
+   "year": 1883,
+   "evidence": "w04-102 2025: carved front, red awnings, arches",
+   "status": "modelling r18 (lane D)"
+  },
+  {
+   "rank": 5,
+   "id": "weltevreden",
+   "pand": "0363100012181160",
+   "name": "Weltevreden, Plantage (1815, rijksmonument 4106)",
+   "whyIconic": "Tiny white garden house with black shutters, its name board and a mansard storey: a villa-scale survivor among the Plantage blocks",
+   "exposure": 70911,
+   "routeMetres": 5620,
+   "presence": null,
+   "signals": [
+    "board: r16 brief (exposure from landmark-targets-20261122c.json, same scorer)"
+   ],
+   "register": null,
+   "year": null,
+   "evidence": "w01-209 2023, w03-299 2022: shutters, name board, dormer storey",
+   "status": "modelling r18 (lane A); r16 brief"
+  },
+  {
+   "rank": 6,
+   "id": "welgelegen",
+   "pand": "0363100012181157",
+   "name": "Welgelegen, Plantage (1802, rijksmonument 4107)",
+   "whyIconic": "Weltevreden's older neighbour: a low dark-brick garden house under a pantile roof with a dormer, behind iron railings",
+   "exposure": 90870,
+   "routeMetres": 5615,
+   "presence": null,
+   "signals": [
+    "board: r16 brief (exposure from landmark-targets-20261122c.json, same scorer)"
+   ],
+   "register": null,
+   "year": null,
+   "evidence": "w03-120 2021 (the 2024 front is wrapped in sheeting)",
+   "status": "modelling r18 (lane A); r16 brief"
+  },
+  {
+   "rank": 7,
+   "id": "metz-keizersgracht-455",
+   "pand": "0363100012176395",
+   "name": "Metz & Co / 'New York' building, Keizersgracht 455 / Leidsestraat (Jac. van Looy, 1891)",
+   "whyIconic": "Sandstone eclectic corner with oriels and the 1933 Rietveld glass cupola on the roof, one of the best-known shop buildings in the centre",
+   "exposure": 243059,
+   "routeMetres": 12405,
+   "presence": 7,
+   "signals": [
+    "register: dome",
+    "register: turret",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture"
+   ],
+   "register": "408905",
+   "year": 1891,
+   "evidence": "w03-175 2022 (sandstone corner, oriels); w01 is a bridge underside",
+   "status": "next: needs a canal-side panorama and the roof cupola"
+  },
+  {
+   "rank": 8,
+   "id": "art-otel-prins-hendrikkade-33",
+   "pand": "0363100012170961",
+   "name": "Former Koninklijke Hollandsche Lloyd office, Prins Hendrikkade 33 (E. Breman, 1917-21), now art'otel",
+   "whyIconic": "Long curved sandstone front facing Centraal Station with a domed lantern on the corner; ride exposure 370,961",
+   "exposure": 370961,
+   "routeMetres": 22190,
+   "presence": 7,
+   "signals": [
+    "register: dome",
+    "register: turret",
+    "register: curved",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "register": "518433",
+   "year": 1917,
+   "evidence": "w01-341 2025, w04-61 2025 (w02 under scaffolding 2020)",
+   "status": "next: large (curved 26 m front)"
+  },
+  {
+   "rank": 9,
+   "id": "sluyswacht",
+   "pand": "0363100012182908",
+   "name": "Café De Sluyswacht, Jodenbreestraat 1 (lock keeper's house, 1695)",
+   "whyIconic": "The black timber house that leans visibly over the Oudeschans lock, red roof and white windows: a postcard image",
+   "exposure": 111823,
+   "routeMetres": 8810,
+   "presence": 2,
+   "signals": [
+    "osm: pub"
+   ],
+   "register": "2028",
+   "year": 1700,
+   "evidence": "w02-313 2025, w04-44 2021 (w03 a bridge underside)",
+   "status": "next: small; needs the lean (nearbar-kit leanSlab)"
+  },
+  {
+   "rank": 10,
+   "id": "hajenius-rokin",
+   "pand": "0363100012168350",
+   "name": "Hajenius, Rokin 92-96 (1914-15, tobacco shop)",
+   "whyIconic": "Sandstone shop front with dark red awnings and the gilt HAJENIUS signs on the Rokin; the Art Deco shop is famous",
+   "exposure": 105138,
+   "routeMetres": 6170,
+   "presence": 5,
+   "signals": [
+    "osm: shop (wikidata)",
+    "osm: cafe"
+   ],
+   "register": [
+    "5010",
+    "518452"
+   ],
+   "year": null,
+   "evidence": "w03-104 2024: red awnings, sandstone",
+   "status": "next"
+  },
+  {
+   "rank": 11,
+   "id": "leidsestraat-40",
+   "pand": "0363100012176402",
+   "name": "Leidsestraat 40 / Keizersgracht 508 (A.C. Bleys, 1892)",
+   "whyIconic": "Red brick corner with a slate-spired corner turret, oriels and carved stone over a full period shopfront",
+   "exposure": 106543,
+   "routeMetres": 11880,
+   "presence": 4.2,
+   "signals": [
+    "register: turret",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "register": "2628",
+   "year": 1892,
+   "evidence": "w01-140 2016: spired turret, oriels, arched shop",
+   "status": "next"
+  },
+  {
+   "rank": 12,
+   "id": "batavia-prins-hendrikkade",
+   "pand": "0363100012171926",
+   "name": "Gebouw Batavia, Prins Hendrikkade 84-85 (J.H. Slot, 1918-20, Amsterdam School)",
+   "whyIconic": "Slim dark-brick Amsterdam School tower front with 'GEBOUW BATAVIA' lettering and red-and-white shutters on the Geldersekade side",
+   "exposure": 78286,
+   "routeMetres": 12820,
+   "presence": 9,
+   "signals": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: curved",
+    "register: sculpture",
+    "register: stained glass",
+    "osm: pub"
+   ],
+   "register": "518460",
+   "year": 1918,
+   "evidence": "w03-348 2025, w02-237 2017",
+   "status": "next"
+  },
+  {
+   "rank": 13,
+   "id": "dikker-thijs-leidsestraat",
+   "pand": "0363100012169650",
+   "name": "Dikker & Thijs, Leidsestraat 82 / Prinsengracht 444 (B.J. Ouëndag, 1914-15)",
+   "whyIconic": "Expressionist corner with rows of canted bay windows, dark stone piers and the Dikker & Thijs script lettering at the Prinsengracht bridge",
+   "exposure": 285344,
+   "routeMetres": 13140,
+   "presence": 5.9,
+   "signals": [
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "register: stained glass",
+    "osm: hotel"
+   ],
+   "register": "518364",
+   "year": 1914,
+   "evidence": "w01-48 2017, w02-142 2016",
+   "status": "next"
+  },
+  {
+   "rank": 14,
+   "id": "raadhuisstraat-52",
+   "pand": "0363100012172357",
+   "name": "Raadhuisstraat 52-54 / Keizersgracht 185 (G. van Arkel, 1902-03, Art Nouveau)",
+   "whyIconic": "Art Nouveau corner block with stacked round corner oriels on the Raadhuisstraat tram route",
+   "exposure": 340664,
+   "routeMetres": 19850,
+   "presence": 7,
+   "signals": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "register": "518499",
+   "year": 1902,
+   "evidence": "w01-198 2021, w02-274 2017",
+   "status": "next"
+  },
+  {
+   "rank": 15,
+   "id": "leidsestraat-1",
+   "pand": "0363100012177446",
+   "name": "Leidsestraat 1 / Herengracht 430 (1904-05, Art Nouveau clothing store)",
+   "whyIconic": "Art Nouveau corner store with a rounded corner bay and large glazed shop storeys at the Herengracht bridge",
+   "exposure": 241466,
+   "routeMetres": 12860,
+   "presence": 7,
+   "signals": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: painted",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "register": "518332",
+   "year": 1904,
+   "evidence": "w03-45 2020 (w01/w02 crops poor)",
+   "status": "next"
+  },
+  {
+   "rank": 16,
+   "id": "damrak-37",
+   "pand": "0363100012178237",
+   "name": "Damrak 37-38 (J.W.F. Hartkamp, 1903-04, Art Nouveau)",
+   "whyIconic": "Art Nouveau office with a turret and tiled panels on the busiest approach to the Dam",
+   "exposure": 35021,
+   "routeMetres": 3270,
+   "presence": 7,
+   "signals": [
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "register": "518424",
+   "year": 1903,
+   "evidence": "brief crops",
+   "status": "next"
+  },
+  {
+   "rank": 17,
+   "id": "passage-central",
+   "pand": "0363100012170968",
+   "name": "Passage Central, Prins Hendrikkade 20-21 / Nieuwendijk (1882-83)",
+   "whyIconic": "The 1880s shopping arcade, hotel and café block facing Centraal Station: banded palazzo front with balconies",
+   "exposure": 147675,
+   "routeMetres": 12580,
+   "presence": 7,
+   "signals": [
+    "register: painted",
+    "register: café",
+    "register: hotel",
+    "register: market/arcade",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "register": "518505",
+   "year": 1882,
+   "evidence": "w04-42 2025, w05-47 2021",
+   "status": "next"
+  },
+  {
+   "rank": 18,
+   "id": "kweekschool-zeevaart",
+   "pand": "0363100012181563",
+   "name": "Kweekschool voor de Zeevaart, Prins Hendrikkade 190 (1878-80)",
+   "whyIconic": "Neo-renaissance maritime school at the Schippersgracht with tiled tympana and sculpture; ride exposure 936,490, the most-passed pand on the list",
+   "exposure": 936490,
+   "routeMetres": 25385,
+   "presence": 5,
+   "signals": [
+    "register: tiles",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "register": "518430",
+   "year": 1878,
+   "evidence": "brief crops",
+   "status": "next"
+  },
+  {
+   "rank": 19,
+   "id": "vrijmetselaars-vondelstraat",
+   "pand": "0363100012235904",
+   "name": "Freemasons' lodge, Vondelstraat 39-41",
+   "whyIconic": "Turreted lodge with tiles and painted work on the Vondelpark route",
+   "exposure": 280047,
+   "routeMetres": 9425,
+   "presence": 7,
+   "signals": [
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: café",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "register": "492004",
+   "year": null,
+   "evidence": "register text; listed in an earlier report, never briefed",
+   "status": "next"
+  },
+  {
+   "rank": 20,
+   "id": "spuistraat-172-bank",
+   "pand": "0363100012175847",
+   "name": "Labouchère bank, Spuistraat 172 / Singel 213 (Poggenbeek, 1906-08)",
+   "whyIconic": "Art Nouveau bank front with tiles and a canopy between Singel and Spuistraat",
+   "exposure": 344832,
+   "routeMetres": 11185,
+   "presence": 7,
+   "signals": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: awning/canopy",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "register": "518453",
+   "year": 1906,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 21,
+   "id": "herengracht-179-cassa",
+   "pand": "0363100012176936",
+   "name": "Associatie Cassa, Herengracht 179-189 (Posthumus Meyjes, 1900-02)",
+   "whyIconic": "Nieuwe Kunst bank with a corner turret and tiled bands on the Herengracht",
+   "exposure": 116655,
+   "routeMetres": 2835,
+   "presence": 7,
+   "signals": [
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "register": "518339",
+   "year": 1900,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 22,
+   "id": "rokin-102-leesmuseum",
+   "pand": "0363100012168349",
+   "name": "Het Leesmuseum, Rokin 102 (1902-03, Art Nouveau society building)",
+   "whyIconic": "Art Nouveau club house on the Rokin with tiled bands and a curved front",
+   "exposure": 79118,
+   "routeMetres": 5745,
+   "presence": 7,
+   "signals": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: ironwork"
+   ],
+   "register": "518450",
+   "year": 1902,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 23,
+   "id": "de-ijsbreker",
+   "pand": "0363100012127170",
+   "name": "Café De IJsbreker, Weesperzijde 23 (A.L. van Gendt, 1884-85)",
+   "whyIconic": "The Amstel-side café-restaurant with a plaster neo-renaissance front, a famous music café",
+   "exposure": 11383,
+   "routeMetres": 780,
+   "presence": 7,
+   "signals": [
+    "register: tiles",
+    "register: café",
+    "register: hotel",
+    "register: ironwork"
+   ],
+   "register": "526992",
+   "year": 1884,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 24,
+   "id": "onder-de-ooievaar",
+   "pand": "0363100012182664",
+   "name": "Onder de Ooievaar, Prinsengracht 808 / Utrechtsestraat 119 (Gebr. van Gendt, 1906-07)",
+   "whyIconic": "Corner shop building with a stork tile tableau and stained glass at the Utrechtsestraat bridge",
+   "exposure": 65047,
+   "routeMetres": 5170,
+   "presence": 5.9,
+   "signals": [
+    "register: tiles",
+    "register: oriel",
+    "register: stained glass",
+    "osm: pub"
+   ],
+   "register": "518367",
+   "year": 1906,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 25,
+   "id": "jantjes-verjaardag",
+   "pand": "0363100012185850",
+   "name": "Reguliersdwarsstraat 108-114 (J.F. Staal, 1910-11)",
+   "whyIconic": "Early Amsterdam School showroom with tiles and a curved front",
+   "exposure": 14041,
+   "routeMetres": 730,
+   "presence": 7.2,
+   "signals": [
+    "register: tiles",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "osm: nightclub"
+   ],
+   "register": "518504",
+   "year": 1910,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 26,
+   "id": "diamantbeurs-weesperplein",
+   "pand": "0363100012170849",
+   "name": "Diamantbeurs, Weesperplein 4 (G. van Arkel, 1910-11)",
+   "whyIconic": "Art Nouveau diamond exchange with a dome and turret over the Weesperplein",
+   "exposure": 184978,
+   "routeMetres": 4410,
+   "presence": 7,
+   "signals": [
+    "register: dome",
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "register": "518478",
+   "year": 1910,
+   "evidence": "register text; earlier diamantbeurs-brief.md",
+   "status": "next: brief exists"
+  },
+  {
+   "rank": 27,
+   "id": "peperstraat-scheepvaart-nederland",
+   "pand": "0363100012571678",
+   "name": "Stoomvaart Maatschappij Nederland office, Prins Hendrikkade 159 (Gebr. van Gendt, 1902-03)",
+   "whyIconic": "Shipping office on the IJ front with oriels and stained glass",
+   "exposure": 284299,
+   "routeMetres": 16230,
+   "presence": 4.4,
+   "signals": [
+    "register: art nouveau",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "register": "518429",
+   "year": 1902,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 28,
+   "id": "eden-hotel",
+   "pand": "0363100012186290",
+   "name": "Eden Hotel, Amstel 144",
+   "whyIconic": "Hotel front on the Amstel at the Rembrandtplein corner",
+   "exposure": 239178,
+   "routeMetres": 12185,
+   "presence": 4,
+   "signals": [
+    "osm: hotel"
+   ],
+   "register": [
+    "215",
+    "518341"
+   ],
+   "year": 1899,
+   "evidence": "OSM hotel",
+   "status": "next: brief"
+  },
+  {
+   "rank": 29,
+   "id": "egelantiersgracht-2",
+   "pand": "0363100012172993",
+   "name": "Gunters & Meuser, Egelantiersgracht 2 (Vorkink and Wormser, 1917-18)",
+   "whyIconic": "Amsterdam School ironmonger's corner at the Prinsengracht with sculpted brick and lettering",
+   "exposure": 40884,
+   "routeMetres": 3055,
+   "presence": 5.2,
+   "signals": [
+    "register: Amsterdam School",
+    "register: shopfront",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "register": "518321",
+   "year": 1917,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 30,
+   "id": "de-zeevaart-ruijterkade",
+   "pand": "0363100012181960",
+   "name": "De Zeevaart, De Ruijterkade 105-106 (1884)",
+   "whyIconic": "Neo-renaissance corner with painted work and a café on the IJ front",
+   "exposure": 114579,
+   "routeMetres": 5745,
+   "presence": 6.4,
+   "signals": [
+    "register: painted",
+    "register: café",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "register": "518411",
+   "year": null,
+   "evidence": "register text",
+   "status": "next: brief"
+  },
+  {
+   "rank": 31,
+   "id": "liberty-kerkstraat",
+   "pand": "0363100012169630",
+   "name": "Liberty atelier, Kerkstraat 45-49 (1926-27)",
+   "whyIconic": "Expressionist / Amsterdam School workshop front with shops",
+   "exposure": 13249,
+   "routeMetres": 1125,
+   "presence": 5.7,
+   "signals": [
+    "register: Amsterdam School",
+    "register: oriel",
+    "osm: hotel"
+   ],
+   "register": "518358",
+   "year": 1926,
+   "evidence": "register text",
+   "status": "next: brief"
+  }
+ ],
+ "ruledOut": [
+  {
+   "name": "Cafes in plain canal houses (Hoppe, 't Smalle, Papeneiland, Karpershoek, Chris)",
+   "reason": "famous names but ordinary gable fronts: the canal-house kit is the right tool, not a bespoke model"
+  },
+  {
+   "name": "Villas on the Apollolaan, Van Eeghenstraat and Churchilllaan (raw ranks 24-48)",
+   "reason": "register words score high but exposure is low and gardens hide them"
+  },
+  {
+   "name": "Purmerplein shop rows, Tuindorp Nieuwendam",
+   "reason": "Amsterdam School but far from the centre, low exposure"
+  }
+ ]
+}

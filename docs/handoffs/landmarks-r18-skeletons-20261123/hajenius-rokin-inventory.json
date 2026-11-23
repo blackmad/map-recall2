@@ -1,0 +1,58 @@
+{
+ "schemaVersion": 1,
+ "id": "hajenius-rokin",
+ "pand": "0363100012168350",
+ "brief": "scripts/landmarks/hajenius-rokin-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-189",
+   "bearing": 189,
+   "lengthM": 24.4,
+   "centre": [
+    4.891756,
+    52.369501
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_003545",
+   "capturedAt": "2016-08-15",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-102",
+   "bearing": 102,
+   "lengthM": 14.9,
+   "centre": [
+    4.8919555,
+    52.3695505
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track24_Sphere_00264",
+   "capturedAt": "2025-01-08",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-104",
+   "bearing": 104,
+   "lengthM": 5.4,
+   "centre": [
+    4.892005,
+    52.3696735
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track19_Sphere_00311",
+   "capturedAt": "2024-12-11",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "schemaVersion": 1,
+ "id": "leidsestraat-1",
+ "pand": "0363100012177446",
+ "brief": "scripts/landmarks/leidsestraat-1-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-323",
+   "bearing": 323,
+   "lengthM": 18.3,
+   "centre": [
+    4.887874,
+    52.3665775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002951_pano_0016_000182",
+   "capturedAt": "2023-01-30",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-43",
+   "bearing": 43,
+   "lengthM": 9.8,
+   "centre": [
+    4.8881715,
+    52.366546
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000550",
+   "capturedAt": "2021-01-22",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-45",
+   "bearing": 45,
+   "lengthM": 8.7,
+   "centre": [
+    4.8880695,
+    52.3666015
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001543_pano_0000_003117",
+   "capturedAt": "2020-01-08",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
