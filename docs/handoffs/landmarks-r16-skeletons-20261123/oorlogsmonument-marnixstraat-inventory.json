@@ -1,0 +1,58 @@
+{
+ "schemaVersion": 1,
+ "id": "oorlogsmonument-marnixstraat",
+ "pand": "0363100012169858",
+ "brief": "scripts/landmarks/oorlogsmonument-marnixstraat-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-227",
+   "bearing": 227,
+   "lengthM": 25.7,
+   "centre": [
+    4.8808615,
+    52.3641525
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002970_pano_0003_000025",
+   "capturedAt": "2023-02-13",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-48",
+   "bearing": 48,
+   "lengthM": 17.9,
+   "centre": [
+    4.881043,
+    52.364304
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01868",
+   "capturedAt": "2025-07-14",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-47",
+   "bearing": 47,
+   "lengthM": 7.6,
+   "centre": [
+    4.8811735,
+    52.364221
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00115",
+   "capturedAt": "2024-12-11",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

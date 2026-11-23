@@ -1,0 +1,282 @@
+{
+ "schemaVersion": 1,
+ "id": "pakhuis-1068-1070",
+ "pand": "0363100012186193",
+ "brief": "scripts/landmarks/pakhuis-1068-1070-brief.md",
+ "signature": [],
+ "walls": [
+  {
+   "tag": "w01-30",
+   "bearing": 30,
+   "lengthM": 67.8,
+   "centre": [
+    4.9162035,
+    52.3685745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_002327",
+   "capturedAt": "2021-03-18",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 54.6,
+   "centre": [
+    4.9153495,
+    52.368766
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_002315",
+   "capturedAt": "2021-03-18",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-210",
+   "bearing": 210,
+   "lengthM": 24.2,
+   "centre": [
+    4.9150775,
+    52.3687515
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01793",
+   "capturedAt": "2025-06-19",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-210",
+   "bearing": 210,
+   "lengthM": 18.4,
+   "centre": [
+    4.9155785,
+    52.3685775
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01785",
+   "capturedAt": "2025-06-19",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-210",
+   "bearing": 210,
+   "lengthM": 18.2,
+   "centre": [
+    4.9152655,
+    52.3684565
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_003136",
+   "capturedAt": "2021-03-18",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-120",
+   "bearing": 120,
+   "lengthM": 11.5,
+   "centre": [
+    4.915419,
+    52.368573
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01782",
+   "capturedAt": "2025-06-19",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-210",
+   "bearing": 210,
+   "lengthM": 11.3,
+   "centre": [
+    4.916104,
+    52.368465
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track12_Sphere_00039",
+   "capturedAt": "2024-12-10",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-210",
+   "bearing": 210,
+   "lengthM": 11.3,
+   "centre": [
+    4.915888,
+    52.36854
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01781",
+   "capturedAt": "2025-06-19",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-300",
+   "bearing": 300,
+   "lengthM": 10.2,
+   "centre": [
+    4.9157345,
+    52.368685
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01694",
+   "capturedAt": "2025-06-19",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-120",
+   "bearing": 120,
+   "lengthM": 9.9,
+   "centre": [
+    4.915732,
+    52.3685755
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track10_Sphere_00029",
+   "capturedAt": "2024-12-10",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-30",
+   "bearing": 30,
+   "lengthM": 6.5,
+   "centre": [
+    4.9154185,
+    52.3685135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_002318",
+   "capturedAt": "2021-03-18",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.916499,
+    52.3683275
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track12_Sphere_00033",
+   "capturedAt": "2024-12-10",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w13-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.916367,
+    52.3683895
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w14-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.916284,
+    52.3684025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002926_pano_0019_000080",
+   "capturedAt": "2023-01-11",
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w15-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.916235,
+    52.3684515
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w16-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.916019,
+    52.3685265
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w17-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9164505,
+    52.3683775
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9158035,
+    52.3686015
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-300",
+   "bearing": 300,
+   "lengthM": 4.9,
+   "centre": [
+    4.9152145,
+    52.368679
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_001408",
+   "capturedAt": "2022-04-25",
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
