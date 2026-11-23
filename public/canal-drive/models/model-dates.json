@@ -4137,18 +4137,18 @@
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30": {
-      "updatedAt": "2026-11-23T04:03:17.153Z",
-      "version": "b49988b01e707ae4",
+      "updatedAt": "2026-11-23T05:13:11.781Z",
+      "version": "12ead2f0f3c5aca3",
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30.lod1": {
-      "updatedAt": "2026-11-22T18:32:18.074Z",
-      "version": "bf1a819ade5c32dd",
+      "updatedAt": "2026-11-23T04:03:19.255Z",
+      "version": "993076b6a8c57fd6",
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30.lod2": {
-      "updatedAt": "2026-11-22T18:32:20.580Z",
-      "version": "2fdee81879e06776",
+      "updatedAt": "2026-11-23T04:03:21.907Z",
+      "version": "0529bb78cc30e337",
       "dateSource": "asset-update"
     },
     "kleine-komedie": {
@@ -5789,6 +5789,16 @@
     "panamalaan-10": {
       "updatedAt": "2026-11-23T04:03:17.297Z",
       "version": "6b261c0973c477cf",
+      "dateSource": "asset-update"
+    },
+    "panamalaan-10.lod1": {
+      "updatedAt": "2026-11-23T04:03:19.314Z",
+      "version": "173b1956f543c511",
+      "dateSource": "asset-update"
+    },
+    "panamalaan-10.lod2": {
+      "updatedAt": "2026-11-23T04:03:24.416Z",
+      "version": "16e6d18991363546",
       "dateSource": "asset-update"
     },
     "paradiso": {
@@ -7582,8 +7592,18 @@
       "dateSource": "asset-update"
     },
     "tweede-hugo-de-grootstraat-43": {
-      "updatedAt": "2026-11-23T04:03:17.248Z",
-      "version": "d89e58d17431d4b8",
+      "updatedAt": "2026-11-23T05:13:11.875Z",
+      "version": "b8ad024bd72ab167",
+      "dateSource": "asset-update"
+    },
+    "tweede-hugo-de-grootstraat-43.lod1": {
+      "updatedAt": "2026-11-23T04:03:19.293Z",
+      "version": "6445851bae59089d",
+      "dateSource": "asset-update"
+    },
+    "tweede-hugo-de-grootstraat-43.lod2": {
+      "updatedAt": "2026-11-23T04:03:23.118Z",
+      "version": "16d70b3a35bbf732",
       "dateSource": "asset-update"
     },
     "uilenburger-synagoge": {
