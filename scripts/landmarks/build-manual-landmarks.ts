@@ -346,6 +346,8 @@ import {buildRapenburgerstraat4} from './rapenburgerstraat-4-builder';
 import {buildSumatrakade1101} from './sumatrakade-1101-builder';
 import {buildKlapmutsenveem30} from './klapmutsenveem-30-builder';
 import {buildWesterdok4} from './westerdok-4-builder';
+import {buildTweedeHugoDeGrootstraat43} from './tweede-hugo-de-grootstraat-43-builder';
+import {buildPanamalaan10} from './panamalaan-10-builder';
 import {buildRinusMichelslaan1} from './rinus-michelslaan-1-builder';
 import {buildPieterDeHoochstraat13} from './pieter-de-hoochstraat-13-builder';
 import {buildTweedeAtjehstraat2} from './tweede-atjehstraat-2-builder';
@@ -1293,6 +1295,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='sumatrakade-1101')buildSumatrakade1101(w,d,helpers);
     else if(id==='klapmutsenveem-30')buildKlapmutsenveem30(w,d,helpers);
     else if(id==='westerdok-4')buildWesterdok4(w,d,helpers);
+    else if(id==='tweede-hugo-de-grootstraat-43')buildTweedeHugoDeGrootstraat43(w,d,helpers);
+    else if(id==='panamalaan-10')buildPanamalaan10(w,d,helpers);
     else if(id==='rinus-michelslaan-1')buildRinusMichelslaan1(w,d,helpers);
     else if(id==='pieter-de-hoochstraat-13')buildPieterDeHoochstraat13(w,d,helpers);
     else if(id==='tweede-atjehstraat-2')buildTweedeAtjehstraat2(w,d,helpers);

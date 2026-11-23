@@ -1,0 +1,219 @@
+{
+ "schemaVersion": 1,
+ "id": "panamalaan-10",
+ "pand": "0363100012141142",
+ "brief": "scripts/landmarks/panamalaan-10-brief.md",
+ "signature": [
+  "w03-timber-bands",
+  "w01-glazed-ground",
+  "w01-panel-cladding",
+  "w04-punched-ribbons",
+  "w01-poem"
+ ],
+ "walls": [
+  {
+   "tag": "w01-270",
+   "bearing": 270,
+   "lengthM": 120,
+   "centre": [
+    4.93462,
+    52.370458
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000739_pano_0000_000003",
+   "capturedAt": "2018-05-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-glazed-ground",
+     "kind": "window-shape",
+     "where": "the 120 m glazed ground storey of offices and shops in red-brown timber frames, timber door and letterbox panels between",
+     "approxSizeM": [
+      120,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000739_pano_0000_000003",
+     "how": "3.9 m bays of framed glass with a transom, every fourth bay a timber panel, a grey ledge over them"
+    },
+    {
+     "id": "w01-panel-cladding",
+     "kind": "other",
+     "where": "dark slate-grey panel cladding over the three lower housing storeys of the northern 80 m, dark brick above and at the south end",
+     "approxSizeM": [
+      80,
+      8.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000739_pano_0000_000003",
+     "how": "a slate-grey colour band from 4.7 to 13.1 m on s 0-80; panel joints not drawn"
+    },
+    {
+     "id": "w01-window-pairs",
+     "kind": "window-shape",
+     "where": "a wide three-light window and a narrow window per bay, red-brown timber frames, five storeys",
+     "approxSizeM": [
+      120,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000739_pano_0000_000003",
+     "how": "a 5.9 m rhythm of a 3.4 m three-light and a 1.2 m window on every storey (the photo is mostly behind leaves)"
+    },
+    {
+     "id": "w01-poem",
+     "kind": "relief",
+     "where": "raised relief lettering (a poem) in the brick over the first housing storey at the south end, s 110-118, about 7.4-8.1 m; the words are not legible in any cached panorama",
+     "approxSizeM": [
+      8.4,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_08-26-12_01221",
+     "how": "one line of raised word blocks 5 cm proud in a lighter brick at the measured place and size; the words themselves are not drawn"
+    },
+    {
+     "id": "w01-shop-lettering",
+     "kind": "sign",
+     "where": "office and shop names lettered on the ground-storey glass (amstel advocaten, BUNT, a dental practice)",
+     "approxSizeM": [
+      4,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_01221",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant lettering on the glass changes between the 2018 and 2025 panoramas"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-90",
+   "bearing": 90,
+   "lengthM": 87.1,
+   "centre": [
+    4.93486,
+    52.3704595
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-135",
+   "bearing": 135,
+   "lengthM": 23.1,
+   "centre": [
+    4.9347505,
+    52.3699935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_001373",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-timber-bands",
+     "kind": "other",
+     "where": "dark timber boarding in bands between continuous ribbons of four-light windows on the curved south end",
+     "approxSizeM": [
+      23,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_001373",
+     "how": "timber colour bands with a board course over each ribbon, ribbons of four-light windows with a transom; the curve stays the 3DBAG straight wall"
+    },
+    {
+     "id": "w03-stair-strip",
+     "kind": "other",
+     "where": "a grey panel strip running up the stair between the window ribbons",
+     "approxSizeM": [
+      0.9,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_001373",
+     "how": "a thin grey slab over the timber"
+    },
+    {
+     "id": "w03-glazed-ground",
+     "kind": "window-shape",
+     "where": "full-height glazed ground storey in red-brown frames",
+     "approxSizeM": [
+      23,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001195_pano_0000_001373",
+     "how": "six framed glass bays with a transom"
+    }
+   ]
+  },
+  {
+   "tag": "w04-0",
+   "bearing": 0,
+   "lengthM": 16.8,
+   "centre": [
+    4.9347315,
+    52.370998
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002136_pano_0000_002014",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-punched-ribbons",
+     "kind": "window-shape",
+     "where": "dark brick front with punched windows in red-brown frames and two wide ribbon windows on alternate storeys, garage door and shop glass on the ground",
+     "approxSizeM": [
+      17,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_002014",
+     "how": "windows per storey at the crop positions, the 9.4 m ribbons on storeys 2 and 4, the garage door and the four-light shop glass"
+    }
+   ]
+  },
+  {
+   "tag": "w05-89",
+   "bearing": 89,
+   "lengthM": 16,
+   "centre": [
+    4.934855,
+    52.370925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001667_pano_0000_005549",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-staggered",
+     "kind": "window-shape",
+     "where": "deep-set windows staggered storey to storey, a door and a dark passage",
+     "approxSizeM": [
+      16,
+      19
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001667_pano_0000_005549",
+     "how": "windows 0.35 m deep alternating between two column sets; the door and passage recessed"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

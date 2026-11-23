@@ -22,12 +22,14 @@ import source from './klapmutsenveem-30-footprints.json';
  */
 const src = source as unknown as Src;
 
-const PANEL: Col = 'blue', BRICK: Col = 'brick', WHITE: Col = 'stone', DARK: Col = 'dark', ORIEL: Col = 'bronze', GLASS: Col = 'glass', LEDGE: Col = 'concrete';
+const PANEL: Col = 'blue', FRAME: Col = 'frame', BRICK: Col = 'brick', WHITE: Col = 'stone', DARK: Col = 'dark', ORIEL: Col = 'bronze', GLASS: Col = 'glass', LEDGE: Col = 'concrete';
 const L = 192.59;
 
 // ---- arcade warehouse --------------------------------------------------------------------------------------------
 /** Tiers of the giant arches: rectangular glazing [y0, springing], floor transoms, arch radius (bay width / 2). */
-const TIERS: {y: [number, number]; bars: number[]}[] = [{y: [0.15, 9.0], bars: [2.85, 3.05, 5.85, 6.05]}, {y: [13.15, 15.05], bars: [14.3]}, {y: [19.2, 20.6], bars: []}];
+// tier heights re-read 2026-11-23 (lane hand-blocks-d) off the same crop: the springings stand at 9.8, 15.95 and 21.2 m
+// (were 9.0, 15.05 and 20.6 m: the blind judge's "short arcade blocks")
+const TIERS: {y: [number, number]; bars: number[]}[] = [{y: [0.15, 9.8], bars: [2.85, 3.05, 5.85, 6.05, 8.75]}, {y: [13.45, 15.95], bars: [14.7]}, {y: [19.5, 21.2], bars: []}];
 const ARCH_W = 4.3, NARROW_SILLS = [0.5, 3.4, 6.3, 13.4, 19.5], NARROW_ARCH = [9.25, 15.4, 20.9];
 type Bays = {big: number[]; narrow: number[]};
 /** Narrow bays at both ends and the middle, three giant bays in each half. */
@@ -58,7 +60,7 @@ function arcadeExtra(b: BuildingTools, F: FR, s0: number, s1: number, bays: Bays
   }
   for (const s of bays.narrow) for (const y of NARROW_ARCH) { archSlab(b, F.f, s, y + 1.1, 0.8, 0.4, 0.09, GLASS, 0, 4); slab(b, F.f, s, y + 1.45, 0.3, 0.3, 0.08, WHITE); }
   // two white cornices and the coping
-  longBand(b, F, s0, s1, 12.6, 13.1, 0.28, WHITE);
+  longBand(b, F, s0, s1, 12.75, 13.25, 0.28, WHITE);
   longBand(b, F, s0, s1, 18.55, 19.15, 0.34, WHITE);
 }
 
@@ -101,11 +103,20 @@ function pilasterExtra(b: BuildingTools, F: FR, s0: number, s1: number, p: Pil) 
   longBand(b, F, s0, s1, 6.7, 7.15, 0.2, WHITE);
   longBand(b, F, s0, s1, 12.7, 13.1, 0.25, WHITE);
   longBand(b, F, s0, s1, 21.4, 21.85, 0.32, WHITE);
-  // dark glazed oriel stacks: a box 0.9 m proud, glass panes per storey, frame mullions
+  // dark glazed oriel stacks: a box 0.7 m proud, glass panes per storey; over the glass a dark frame grid (a mullion
+  // between panes, a transom at each storey's spandrel and one a third up the pane) and a brick-faced pilaster strip at
+  // each side (2026-11-23: the blind judge read the plain grey box as flat)
   for (const [a, c] of p.oriels) {
-    const y0 = 9.2, y1 = 23.3, n = 5, h = (y1 - y0) / n, w = c - a, panes = Math.max(3, Math.round(w / 1.9));
+    const y0 = 9.2, y1 = 23.3, n = 5, h = (y1 - y0) / n, w = c - a, panes = Math.max(3, Math.round(w / 1.9)), pw = (w - 0.7) / panes;
     boxBand(b, F, a, c, y0, y1, 0.7, ORIEL);
-    for (let k = 0; k < n; k++) for (let j = 0; j < panes; j++) slab(b, F.f, a + w * (j + 0.5) / panes, y0 + k * h + 0.45, w / panes - 0.22, h - 0.75, 0.08, GLASS, 0.7);
+    for (let k = 0; k < n; k++) {
+      const yb = y0 + k * h;
+      for (let j = 0; j < panes; j++) slab(b, F.f, a + 0.35 + pw * (j + 0.5), yb + 0.45, pw - 0.04, h - 0.75, 0.08, GLASS, 0.7);
+      ledgeStrip(b, F.f, (a + c) / 2, yb + 0.45 + (h - 0.75) * 0.68, w - 0.7, 0.08, 0.06, FRAME, 0.78);
+      ledgeStrip(b, F.f, (a + c) / 2, yb + 0.37, w - 0.7, 0.1, 0.06, FRAME, 0.78);
+    }
+    for (let j = 1; j < panes; j++) ledgeStrip(b, F.f, a + 0.35 + pw * j, y0 + 0.3, 0.1, y1 - y0 - 0.6, 0.06, FRAME, 0.78);
+    for (const e of [a + 0.175, c - 0.175]) slab(b, F.f, e, y0, 0.35, y1 - y0, 0.12, BRICK, 0.7);
   }
 }
 

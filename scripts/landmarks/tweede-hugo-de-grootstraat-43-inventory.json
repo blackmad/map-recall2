@@ -3,7 +3,12 @@
  "id": "tweede-hugo-de-grootstraat-43",
  "pand": "0363100012148379",
  "brief": "scripts/landmarks/tweede-hugo-de-grootstraat-43-brief.md",
- "signature": [],
+ "signature": [
+  "s-dirk-sign",
+  "s-podium-bands",
+  "s-buff-housing",
+  "s-zinc-fascia"
+ ],
  "walls": [
   {
    "tag": "w01-114",
@@ -16,8 +21,33 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002055_pano_0000_000532",
    "capturedAt": "2021-03-22",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "s-podium-bands",
+     "kind": "window-shape",
+     "where": "the supermarket podium round every corner: brick plinth, red strip, dark-framed shop glass with a transom, brown-brick sign band, a glazed storey in blue-grey frames",
+     "approxSizeM": [
+      60,
+      7.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002055_pano_0000_000532",
+     "how": "one storey style by height on every podium wall (hand-block-kit `zoned`): plinth, red band, shop glass 2.2 m pitch, sign band, glazed storey 1.5 m pitch with transom; the curved corners stay the 3DBAG facets"
+    },
+    {
+     "id": "s-zinc-fascia",
+     "kind": "other",
+     "where": "a projecting zinc fascia/roof edge over the glazed podium storey, 0.7 m tall",
+     "approxSizeM": [
+      60,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002055_pano_0000_000532",
+     "how": "a boxed band 0.3 m proud at 7.55-8.35 m on every podium-only wall"
+    }
+   ]
   },
   {
    "tag": "w02-287",
@@ -30,7 +60,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002330",
    "capturedAt": "2017-04-26",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -44,8 +74,21 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-18_08-56-14_01786",
    "capturedAt": "2025-06-18",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "s-dirk-sign",
+     "kind": "lettering",
+     "where": "red \"Dirk van den Broek\" letters on the brown-brick sign band over the shop glass, the main corner (also w12-24, w06-99, s04-25, s03-24)",
+     "approxSizeM": [
+      7,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-18_08-56-14_01786",
+     "how": "raised block lettering (nearbar-kit pixel font, upper case: the kit has no lower case) 7 cm proud in the measured red, 0.84 m tall from 3.72 m, on the three corner walls that carry it"
+    }
+   ]
   },
   {
    "tag": "w04-204",
@@ -58,7 +101,7 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-18_08-56-14_02004",
    "capturedAt": "2025-06-18",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -72,7 +115,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001134_pano_0000_001446",
    "capturedAt": "2019-04-17",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -86,7 +129,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002055_pano_0000_001653",
    "capturedAt": "2021-03-22",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -100,8 +143,21 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002330",
    "capturedAt": "2017-04-26",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-pilotis",
+     "kind": "colonnade",
+     "where": "round concrete columns under the brick corner tower, glazed ground recessed behind",
+     "approxSizeM": [
+      6,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000280_pano_0000_002330",
+     "how": "two round columns 0.6 m in front of the glazed ground wall"
+    }
+   ]
   },
   {
    "tag": "w08-309",
@@ -114,7 +170,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001132_pano_0000_001199",
    "capturedAt": "2019-04-17",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -128,7 +184,7 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-18_08-56-14_02006",
    "capturedAt": "2025-06-18",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -142,7 +198,7 @@
    "evidence": "photo",
    "panoId": "recording_2024-09-11_10-46-56_00539",
    "capturedAt": "2024-09-11",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -156,7 +212,7 @@
    "evidence": "photo",
    "panoId": "recording_2024-09-11_10-46-56_00535",
    "capturedAt": "2024-09-11",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -170,7 +226,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002055_pano_0000_002755",
    "capturedAt": "2021-03-22",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -184,7 +240,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002328",
    "capturedAt": "2017-04-26",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -198,7 +254,7 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-16_03-37-16_00318",
    "capturedAt": "2025-06-16",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -212,7 +268,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002824_pano_0012_000069",
    "capturedAt": "2022-10-07",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -226,7 +282,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002333",
    "capturedAt": "2017-04-26",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -240,7 +296,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001132_pano_0000_001196",
    "capturedAt": "2019-04-17",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -254,8 +310,45 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001878_pano_0005_001090",
    "capturedAt": "2020-08-17",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "s-buff-housing",
+     "kind": "window-shape",
+     "where": "three storeys of buff brick housing over the podium with punched windows and light sills",
+     "approxSizeM": [
+      65,
+      8.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001878_pano_0005_001090",
+     "how": "buff brick (measured, by judgement between the 2019-2022 crops) with paired windows at 2.7 m pitch and stone sills on every housing wall"
+    },
+    {
+     "id": "s01-curved-balconies",
+     "kind": "balcony-ironwork",
+     "where": "curved-ended balconies with glass rails on three decks at both ends of the long south-west front",
+     "approxSizeM": [
+      5,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001878_pano_0005_001090",
+     "how": "straight slab balconies 1.5 m deep with glass rails at s 1.4-6.1 and 51.2-60 on three decks; the curved ends are square"
+    },
+    {
+     "id": "s01-top-eave",
+     "kind": "other",
+     "where": "the deep zinc eave of the set-back top storey",
+     "approxSizeM": [
+      65,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001878_pano_0005_001090",
+     "how": "a boxed band 0.9 m proud along every top-storey wall"
+    }
+   ]
   },
   {
    "tag": "s02-204",
@@ -268,7 +361,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000044_pano_0000_001015",
    "capturedAt": "2016-08-03",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -282,8 +375,24 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000790_pano_0000_006040",
    "capturedAt": "2018-06-13",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "s03-entrance-canopy",
+     "kind": "canopy",
+     "where": "a glass canopy over the housing entrance beside the shop",
+     "approxSizeM": [
+      3.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000790_pano_0000_006040",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 3.5 m glass canopy between the podium front and the cropped plane; its plane is not cropped"
+     }
+    }
+   ]
   },
   {
    "tag": "s04-25",
@@ -296,8 +405,21 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002552_pano_0001_000022",
    "capturedAt": "2022-04-29",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "s04-loggias",
+     "kind": "colonnade",
+     "where": "recessed loggias with slender blue-grey columns and steel rails on two housing storeys",
+     "approxSizeM": [
+      9,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002552_pano_0001_000022",
+     "how": "three slender columns and open steel rails (top and bottom rail, balusters every 0.6 m) on the front plane at s 5.6-14.1; the recess itself is not cut"
+    }
+   ]
   },
   {
    "tag": "s05-108",
@@ -310,7 +432,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-002824_pano_0012_000051",
    "capturedAt": "2022-10-07",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -324,7 +446,7 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-17_11-17-15_01548",
    "capturedAt": "2025-06-17",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -338,7 +460,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001893_pano_0000_000614",
    "capturedAt": "2020-08-27",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -352,7 +474,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001893_pano_0000_000617",
    "capturedAt": "2020-08-27",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -366,7 +488,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002330",
    "capturedAt": "2017-04-26",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -380,7 +502,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-000280_pano_0000_002329",
    "capturedAt": "2017-04-26",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -394,7 +516,7 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001134_pano_0000_001784",
    "capturedAt": "2019-04-17",
-   "checked": false,
+   "checked": true,
    "items": []
   },
   {
@@ -408,7 +530,7 @@
    "evidence": "photo",
    "panoId": "recording_2025-06-16_03-37-16_00312",
    "capturedAt": "2025-06-16",
-   "checked": false,
+   "checked": true,
    "items": []
   }
  ],
