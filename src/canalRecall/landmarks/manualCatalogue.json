@@ -110002,15 +110002,14 @@
   "bagYear": 2001,
   "materialOverrides": {
    "brick": "#4c3b3a",
-   "slate": "#4f5c67",
-   "ochre": "#463d38",
-   "frame": "#78432d",
+   "slate": "#3d4448",
+   "ochre": "#3f3734",
+   "frame": "#6a3a26",
    "bronze": "#7a4a32",
    "greyBrick": "#5e4a48",
    "concrete": "#8a8c8e",
    "glass": "#47525a",
-   "dark": "#2a2a2c",
-   "stone": "#67696b"
+   "dark": "#2a2a2c"
   },
   "attribution": {
    "title": "Panamalaan 10-186, Amsterdam (housing, 2001)",
