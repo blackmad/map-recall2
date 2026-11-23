@@ -12,6 +12,15 @@
     },
     {
       "date": "2026-11-22",
+      "title": "The Koetshuis, a UvA building and the Schuytstraat shop corner",
+      "text": "The Koetshuis at Keizersgracht 607 stands with its carriage arch, white pilasters, oculi and three peaked dormers, where before there was a generic box. The UvA building at Binnengasthuisstraat 9 gets its cream-framed windows, stone crosses and attic figure. The citizenM at Sarphatistraat 47 has a taller granite base, doors of the right size and its mezzanine row, and the Handelsschool on the Raamplein is now a darker brick. The Cornelis Schuytstraat shop corner by the Willemspark is in: Marlies Dekkers, Boekhandel Mulder and their neighbours, each with its own shopfront and the white window hoods of 1897.",
+      "where": [
+        4.8931,
+        52.364
+      ]
+    },
+    {
+      "date": "2026-11-22",
       "title": "Westerdok 4",
       "text": "The big block at Westerdok 4 now has its dark brick, tall glazed ground floor and long cantilevered timber balconies, instead of a generic brown block.",
       "where": [
@@ -31,7 +40,7 @@
     {
       "date": "2026-11-22",
       "title": "Five landmarks and Van Baerlestraat",
-      "text": "The Openbare Handelsschool now stands on the Raamplein, where the game drew a plain generic block. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which was also an empty lot. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
+      "text": "The Openbare Handelsschool now stands on the Raamplein, where it replaces a plain generic block. It has its lettered frieze and aedicule towers. Also new: Hotel Notting Hill on the Westeinde, Hotel V on the Weteringschans, and the 1928 Amsterdamsche Bank (now citizenM) on the Sarphatistraat, which also replaces a plain generic block. Nieuwe Doelenstraat 12 is now its deep purple-red brick. Van Baerlestraat is finished, and the Cornelis Schuytstraat shop end is in, with stepped gables, continuous white bands and real shop signs.",
       "where": [
         4.8804,
         52.3665
@@ -39,7 +48,7 @@
       "images": [
         {
           "src": "whats-new/2026-11-22-handelsschool-raamplein-v2.jpg",
-          "alt": "The Raamplein from above in the game: a plain generic block before, the Openbare Handelsschool after, red brick with stone bands, slate roofs and two aedicule towers",
+          "alt": "The Raamplein from above in the game: a plain generic block before, the Openbare Handelsschool after, red brick with stone bands, a lettered frieze and two aedicule towers",
           "caption": "Openbare Handelsschool, Raamplein: before, after"
         }
       ]
@@ -69,12 +78,12 @@
         },
         {
           "src": "whats-new/2026-11-22-jungle-amsterdam-v2.jpg",
-          "alt": "Jungle Amsterdam on the Tweede van Swindenstraat in the game: a blank grey block before, the community centre with its roof frame, round windows and blue window frames after",
+          "alt": "Jungle Amsterdam on the Swindenstraat in the game: a plain generic block before, the community centre with its roof frame, coloured posts and blue and red window frames after",
           "caption": "Jungle Amsterdam: before, after"
         },
         {
           "src": "whats-new/2026-11-22-hans-en-grietje-v2.jpg",
-          "alt": "The Spiegelgracht corner from above in the game: a generic corner house before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
+          "alt": "The Spiegelgracht corner in the game: a plain generic block before, Café Hans en Grietje with red-and-white striped awnings and its lettered front after",
           "caption": "Café Hans en Grietje, Spiegelgracht: before, after"
         }
       ]
@@ -157,7 +166,7 @@
         },
         {
           "src": "whats-new/2026-11-22-kweekschool-v2.jpg",
-          "alt": "Plantage Muidergracht across the water in the game: a generic six-storey block before, the former Kweekschool voor Machinisten with its stone bands and tall windows after",
+          "alt": "Plantage Muidergracht from above: a plain generic block before, the former Kweekschool voor Machinisten after",
           "caption": "Kweekschool: before, after"
         }
       ]
@@ -1965,14 +1974,12 @@
     {
       "date": "2026-11-10",
       "title": "Trees no longer blink",
-      "text": "As you ride or fly, new trees now fade in and old ones fade out instead of the whole row of trees swapping at once, and a landmark arriving in the distance no longer leaves a see-through moment where the building it replaces was.",
-      "images": []
+      "text": "As you ride or fly, new trees now fade in and old ones fade out instead of the whole row of trees swapping at once, and a landmark arriving in the distance no longer leaves a see-through moment where the building it replaces was."
     },
     {
       "date": "2026-11-10",
       "title": "Calmer distant landmarks",
-      "text": "From the air, landmarks appearing in the distance and the far city handing over to nearer buildings now fade in instead of snapping.",
-      "images": []
+      "text": "From the air, landmarks appearing in the distance and the far city handing over to nearer buildings now fade in instead of snapping."
     },
     {
       "date": "2026-11-10",
@@ -2133,8 +2140,7 @@
     {
       "date": "2026-11-09",
       "title": "Bike paths through parks",
-      "text": "Park and garden paths where bikes are allowed are now on the bike map, so paths like the one off the Javaplantsoen promenade lead on instead of stopping short: from the end of the promenade to the Kramatweg is now a 103 m ride instead of a 625 m detour.",
-      "images": []
+      "text": "Park and garden paths where bikes are allowed are now on the bike map, so paths like the one off the Javaplantsoen promenade lead on instead of stopping short: from the end of the promenade to the Kramatweg is now a 103 m ride instead of a 625 m detour."
     },
     {
       "date": "2026-11-09",
@@ -2219,14 +2225,12 @@
     {
       "date": "2026-11-09",
       "title": "A dead end turns you round",
-      "text": "Riding into the end of a park path whose real exit is a flight of steps (Javaplantsoen, from a player's screenshot) left the bike standing with the throttle open. After a second and a half of pushing forward without moving, the bike now turns itself round so you can ride on. The paths themselves are being added to the bike map next.",
-      "images": []
+      "text": "Riding into the end of a park path whose real exit is a flight of steps (Javaplantsoen, from a player's screenshot) left the bike standing with the throttle open. After a second and a half of pushing forward without moving, the bike now turns itself round so you can ride on. The paths themselves are being added to the bike map next."
     },
     {
       "date": "2026-11-09",
       "title": "Short phones keep the bike in view",
-      "text": "On small phones the question card covered the bike. It now sits lower and more compactly, with a 2×2 answer grid, so you can still see where you are riding.",
-      "images": []
+      "text": "On small phones the question card covered the bike. It now sits lower and more compactly, with a 2×2 answer grid, so you can still see where you are riding."
     },
     {
       "date": "2026-11-09",
@@ -2248,8 +2252,7 @@
     {
       "date": "2026-11-09",
       "title": "A new personal best says so",
-      "text": "When you set a personal best, the arrival card could still read \"Personal best 00:03.899\" as if an older record stood: the ride timer ticked a few frames past the moment the best was saved, so your own time looked slower than itself. The card now trusts the save and shows \"★ New personal best\".",
-      "images": []
+      "text": "When you set a personal best, the arrival card could still read \"Personal best 00:03.899\" as if an older record stood: the ride timer ticked a few frames past the moment the best was saved, so your own time looked slower than itself. The card now trusts the save and shows \"★ New personal best\"."
     },
     {
       "date": "2026-11-09",
@@ -2300,8 +2303,7 @@
     {
       "date": "2026-11-09",
       "title": "The landmark question sticks to buildings",
-      "text": "\"Which building is this?\" is no longer asked about a bust or a statue, and its four choices are all buildings. Only 18 of the 193 askable landmarks are statues or memorials, too few for fair four-name questions, so they keep their drive-by card instead. The question's neighbourhood now matches the plaque.",
-      "images": []
+      "text": "\"Which building is this?\" is no longer asked about a bust or a statue, and its four choices are all buildings. Only 18 of the 193 askable landmarks are statues or memorials, too few for fair four-name questions, so they keep their drive-by card instead. The question's neighbourhood now matches the plaque."
     },
     {
       "date": "2026-11-09",
@@ -2323,14 +2325,12 @@
     {
       "date": "2026-11-09",
       "title": "Landmarks come back for review",
-      "text": "A landmark you name correctly is asked again after 1 day, then 3, then 7, then every 21 days. One you miss comes back on your next ride, and never twice in one ride. Before this a landmark you had named right was never asked again, and one you missed could be asked again straight after a reload. \"Clear all data\" clears this too.",
-      "images": []
+      "text": "A landmark you name correctly is asked again after 1 day, then 3, then 7, then every 21 days. One you miss comes back on your next ride, and never twice in one ride. Before this a landmark you had named right was never asked again, and one you missed could be asked again straight after a reload. \"Clear all data\" clears this too."
     },
     {
       "date": "2026-11-09",
       "title": "IJselbuurt has its story",
-      "text": "Arriving in the IJselbuurt now tells you where the name comes from: the north-western corner of Berlage's Plan Zuid, built in the 1920s and 30s in the Amsterdam School style, named like its neighbours after a Dutch river, the IJssel. Every one of the 65 daily-ride finish neighbourhoods now has a sourced story.",
-      "images": []
+      "text": "Arriving in the IJselbuurt now tells you where the name comes from: the north-western corner of Berlage's Plan Zuid, built in the 1920s and 30s in the Amsterdam School style, named like its neighbours after a Dutch river, the IJssel. Every one of the 65 daily-ride finish neighbourhoods now has a sourced story."
     },
     {
       "date": "2026-11-09",
@@ -2403,8 +2403,7 @@
     {
       "date": "2026-11-09",
       "title": "From 17 November, every finish buurt takes its turn",
-      "text": "Some buurten share a key in the daily draw, and the same place in them won every time while another never finished a ride all year. From 17 November the daily ride rotates the finish within such a buurt, so every place sees at least one arrival a year. The rides already announced for 10 to 16 November are unchanged.",
-      "images": []
+      "text": "Some buurten share a key in the daily draw, and the same place in them won every time while another never finished a ride all year. From 17 November the daily ride rotates the finish within such a buurt, so every place sees at least one arrival a year. The rides already announced for 10 to 16 November are unchanged."
     },
     {
       "date": "2026-11-09",
@@ -2739,8 +2738,7 @@
       "where": [
         4.9515,
         52.3655
-      ],
-      "images": []
+      ]
     },
     {
       "date": "2026-11-09",
@@ -2783,8 +2781,7 @@
     {
       "date": "2026-11-09",
       "title": "The ground around you finishes sooner",
-      "text": "At the start of a ride the ground right around you now finishes building half a second to a second and a half sooner on the same start. The ground builders used to let a tile outside your block jump the queue when it sat next to one they already held; a free builder now only picks among tiles of the same level and the same side of your block.",
-      "images": []
+      "text": "At the start of a ride the ground right around you now finishes building half a second to a second and a half sooner on the same start. The ground builders used to let a tile outside your block jump the queue when it sat next to one they already held; a free builder now only picks among tiles of the same level and the same side of your block."
     },
     {
       "date": "2026-11-09",
@@ -2810,8 +2807,7 @@
     {
       "date": "2026-11-09",
       "title": "The ground is there when the ride starts",
-      "text": "The ground under the camera now begins building during the loading screen and is in place about a second sooner after the reveal, and the ride is revealed no later than before. The ground builders no longer queue up behind each other: each takes the next most urgent cell as soon as it is free, prefers cells next to ones it already holds, and a finished cell is never built twice.",
-      "images": []
+      "text": "The ground under the camera now begins building during the loading screen and is in place about a second sooner after the reveal, and the ride is revealed no later than before. The ground builders no longer queue up behind each other: each takes the next most urgent cell as soon as it is free, prefers cells next to ones it already holds, and a finished cell is never built twice."
     },
     {
       "date": "2026-11-09",
@@ -3051,8 +3047,7 @@
     {
       "date": "2026-11-07",
       "title": "The baked city from the air is back on",
-      "text": "Earlier this evening the baked city from the air was switched off for a few hours after a test showed the canal houses missing at some chase heights. That turned out to be the test holding the camera still, not the ride: with the game running, the houses were always there. It is on again on desktop, and the fade that brings each baked block in no longer depends on the camera moving. Add ?bakedCoarse=0 to the ride link to compare.",
-      "images": []
+      "text": "Earlier this evening the baked city from the air was switched off for a few hours after a test showed the canal houses missing at some chase heights. That turned out to be the test holding the camera still, not the ride: with the game running, the houses were always there. It is on again on desktop, and the fade that brings each baked block in no longer depends on the camera moving. Add ?bakedCoarse=0 to the ride link to compare."
     },
     {
       "date": "2026-11-07",
@@ -3558,14 +3553,12 @@
     {
       "date": "2026-11-05",
       "title": "New engine preview: houses stay put when you bump into them",
-      "text": "In the new engine (?engine=own), riding into a house front made the house vanish, because the rule that lets you see through the Centraal passage fired on any building you touched. It now fires only when your route runs through the building, and it dims instead of hiding.",
-      "images": []
+      "text": "In the new engine (?engine=own), riding into a house front made the house vanish, because the rule that lets you see through the Centraal passage fired on any building you touched. It now fires only when your route runs through the building, and it dims instead of hiding."
     },
     {
       "date": "2026-11-05",
       "title": "Buildings stop appearing right in front of you",
-      "text": "The city used to load the next stretch of buildings only when you crossed into a new map tile, which could be sixty metres ahead of you. It now loads as you move, buildings that do change dissolve in and out instead of popping, and the detailed buildings along your route are fetched before you reach them.",
-      "images": []
+      "text": "The city used to load the next stretch of buildings only when you crossed into a new map tile, which could be sixty metres ahead of you. It now loads as you move, buildings that do change dissolve in and out instead of popping, and the detailed buildings along your route are fetched before you reach them."
     },
     {
       "date": "2026-11-05",
@@ -3812,8 +3805,7 @@
     {
       "date": "2026-11-02",
       "title": "Rail viaducts no longer sit as blocks on the tracks",
-      "text": "Around the stations, the railway viaducts and decks that were drawn as solid buildings over the tracks are gone, and platform canopies are cut to their real shape, as they already were on the older map.",
-      "images": []
+      "text": "Around the stations, the railway viaducts and decks that were drawn as solid buildings over the tracks are gone, and platform canopies are cut to their real shape, as they already were on the older map."
     },
     {
       "date": "2026-11-02",
@@ -4013,8 +4005,7 @@
     {
       "date": "2026-11-01",
       "title": "Your second ride starts faster",
-      "text": "The first time you ride, the game builds the city's street network on your device. It now keeps that build, so when you come back the ride is ready a few seconds sooner after you press Start, on phones most of all. Nothing is sent anywhere; the copy lives in your browser and is rebuilt if the city data changes.",
-      "images": []
+      "text": "The first time you ride, the game builds the city's street network on your device. It now keeps that build, so when you come back the ride is ready a few seconds sooner after you press Start, on phones most of all. Nothing is sent anywhere; the copy lives in your browser and is rebuilt if the city data changes."
     },
     {
       "date": "2026-11-01",
@@ -4030,8 +4021,7 @@
     {
       "date": "2026-11-01",
       "title": "The ride starts sooner after you read the briefing",
-      "text": "While the briefing is on screen the game now builds the city's streets and routing in the background, for the city and mode you have picked. If you read the briefing for a few seconds, the ride starts about twice as fast afterwards (on a phone, roughly three seconds instead of seven). Tapping Start the instant the briefing appears is unchanged for now; that case is next.",
-      "images": []
+      "text": "While the briefing is on screen the game now builds the city's streets and routing in the background, for the city and mode you have picked. If you read the briefing for a few seconds, the ride starts about twice as fast afterwards (on a phone, roughly three seconds instead of seven). Tapping Start the instant the briefing appears is unchanged for now; that case is next."
     },
     {
       "date": "2026-11-01",
@@ -4294,8 +4284,7 @@
       "where": [
         4.8936,
         52.3702
-      ],
-      "images": []
+      ]
     },
     {
       "date": "2026-10-31",

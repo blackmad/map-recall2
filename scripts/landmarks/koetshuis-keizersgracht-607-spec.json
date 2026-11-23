@@ -1,0 +1,31 @@
+{
+ "id": "koetshuis-keizersgracht-607",
+ "name": "Koetshuis, Keizersgracht 607",
+ "heightMetres": 13.5,
+ "bagYear": 1672,
+ "galleryView": {
+  "theta": 3.35,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012167905 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/koetshuis-keizersgracht-607-footprints.json, bag-shell-prepare.ts); the Keizersgracht front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001543_pano_0000_002272 (2019, frontal) and TMX7316010203-002970_pano_0008_000009 (2023, sunlit), CC BY 4.0, heights fitted to the 3DBAG wall tops. Rijksmonument 2389 (RCE kennisregistratie 193098, BAG relation Keizersgracht 607). Per wall in scripts/landmarks/koetshuis-keizersgracht-607-inventory.json.",
+ "materialOverrides": {
+  "brick": "#8e7b69",
+  "white": "#ecebe4",
+  "stone": "#a9a69c",
+  "glass": "#3f4a4f",
+  "frame": "#33393a",
+  "dark": "#30373a",
+  "bronze": "#24282a",
+  "slate": "#62676a",
+  "concrete": "#e8e7df"
+ },
+ "attribution": {
+  "title": "Koetshuis, Keizersgracht 607, Amsterdam (coach house, before 1767; rijksmonument 2389)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002970_pano_0008_000009/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012167905 (CC0): the arched carriage door between paired white pilasters, the two side doors with their transoms and lanterns, the white entablature, three window axes with white surrounds, French railings, slabs and hoods, two oculi, the rusticated corner lesenes, the straight white cornice and the three dormers, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

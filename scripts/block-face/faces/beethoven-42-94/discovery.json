@@ -1,0 +1,1584 @@
+{
+ "street": "Beethovenstraat",
+ "seed": "0363100012114905",
+ "members": [
+  "0363100012108330",
+  "0363100012099398",
+  "0363100012068658",
+  "0363100012087751",
+  "0363100012105112",
+  "0363100012067032",
+  "0363100012072795",
+  "0363100012111717",
+  "0363100012108548",
+  "0363100012115388",
+  "0363100012114905",
+  "0363100012109960"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012070640 24.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061655",
+   "reason": "frontage 46.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012062021",
+   "reason": "frontage 107.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012062142",
+   "reason": "frontage 47.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012062349",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012062407",
+   "reason": "frontage 73.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012062725",
+   "reason": "frontage 145.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012063706",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012064016",
+   "reason": "frontage 90.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012064556",
+   "reason": "frontage 83.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012064947",
+   "reason": "frontage 86.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012065963",
+   "reason": "frontage 91.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012065991",
+   "reason": "frontage 114.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066090",
+   "reason": "frontage 46.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066209",
+   "reason": "frontage 47.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066414",
+   "reason": "frontage 130.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066529",
+   "reason": "frontage 93.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066534",
+   "reason": "frontage 42.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066955",
+   "reason": "frontage 121.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067161",
+   "reason": "frontage 71.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067527",
+   "reason": "frontage 67.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067574",
+   "reason": "frontage 45.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067868",
+   "reason": "frontage 115.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067882",
+   "reason": "frontage 183.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012067964",
+   "reason": "frontage 46.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012068129",
+   "reason": "frontage 140.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012068294",
+   "reason": "frontage 153.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012068659",
+   "reason": "frontage 80.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012068902",
+   "reason": "frontage 80.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012069379",
+   "reason": "frontage 128.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012070266",
+   "reason": "frontage 142.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012070578",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012071822",
+   "reason": "frontage 82.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012072235",
+   "reason": "frontage 49.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012072253",
+   "reason": "frontage 94.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012072562",
+   "reason": "frontage 108.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012073796",
+   "reason": "frontage 38.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012073954",
+   "reason": "frontage 142.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012074112",
+   "reason": "frontage 142.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012074113",
+   "reason": "frontage 151.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012074145",
+   "reason": "frontage 165.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012074666",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012075305",
+   "reason": "frontage 132.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012075540",
+   "reason": "frontage 144.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012075833",
+   "reason": "frontage 46.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012076209",
+   "reason": "frontage 190.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012076306",
+   "reason": "frontage 61.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012076414",
+   "reason": "frontage 46.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012077106",
+   "reason": "frontage 211.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012077857",
+   "reason": "frontage 139.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012078669",
+   "reason": "frontage 165.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012078737",
+   "reason": "frontage 138.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012079056",
+   "reason": "frontage 102.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012079164",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012079742",
+   "reason": "frontage 35.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012080303",
+   "reason": "frontage 132.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012080391",
+   "reason": "frontage 106.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012080774",
+   "reason": "frontage 39.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012081353",
+   "reason": "frontage 142.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012081379",
+   "reason": "frontage 107.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012081455",
+   "reason": "frontage 67.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012082373",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012082374",
+   "reason": "frontage 42.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012084763",
+   "reason": "frontage 48.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085041",
+   "reason": "frontage 102.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085217",
+   "reason": "frontage 167.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085304",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085553",
+   "reason": "frontage 41.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085724",
+   "reason": "frontage 168.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085818",
+   "reason": "frontage 64.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012085885",
+   "reason": "frontage 55.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012086282",
+   "reason": "frontage 159.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012086568",
+   "reason": "frontage 113.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012087388",
+   "reason": "frontage 154.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012087495",
+   "reason": "frontage 46.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012087943",
+   "reason": "frontage 162.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012088025",
+   "reason": "frontage 187.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012089157",
+   "reason": "frontage 135.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012089229",
+   "reason": "frontage 47.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012089276",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012089553",
+   "reason": "frontage 132.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012089833",
+   "reason": "frontage 136.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012090778",
+   "reason": "frontage 145.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012090818",
+   "reason": "frontage 148.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012090993",
+   "reason": "frontage 161.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091099",
+   "reason": "frontage 119.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091517",
+   "reason": "frontage 121.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091605",
+   "reason": "frontage 165.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091771",
+   "reason": "frontage 87.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091856",
+   "reason": "frontage 198.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091920",
+   "reason": "frontage 44.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012091984",
+   "reason": "frontage 69.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012092000",
+   "reason": "frontage 155.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012092428",
+   "reason": "frontage 47.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012092601",
+   "reason": "frontage 170.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012092889",
+   "reason": "frontage 149.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012093427",
+   "reason": "frontage 101.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012093605",
+   "reason": "frontage 46.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012093923",
+   "reason": "frontage 72.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012093974",
+   "reason": "frontage 127.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012094102",
+   "reason": "frontage 44.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012094137",
+   "reason": "frontage 127.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012094187",
+   "reason": "frontage 42.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012094290",
+   "reason": "sightline to Beethovenstraat crosses 0363100012108330"
+  },
+  {
+   "pandId": "0363100012094346",
+   "reason": "frontage 132.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012095136",
+   "reason": "frontage 100.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012095378",
+   "reason": "frontage 56.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012095813",
+   "reason": "frontage 56.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012096185",
+   "reason": "frontage 155.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012096699",
+   "reason": "frontage 49.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012096791",
+   "reason": "sightline to Beethovenstraat crosses 0363100012074701"
+  },
+  {
+   "pandId": "0363100012097280",
+   "reason": "frontage 32.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012097352",
+   "reason": "sightline to Beethovenstraat crosses 0363100012097214"
+  },
+  {
+   "pandId": "0363100012097394",
+   "reason": "frontage 31.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012097581",
+   "reason": "frontage 91.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012097591",
+   "reason": "frontage 76.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012098627",
+   "reason": "frontage 155.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012099092",
+   "reason": "frontage 55.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012099375",
+   "reason": "frontage 151.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012099378",
+   "reason": "frontage 77.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012099802",
+   "reason": "sightline to Beethovenstraat crosses 0363100012075101"
+  },
+  {
+   "pandId": "0363100012100469",
+   "reason": "frontage 46.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012100929",
+   "reason": "frontage 80.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012101059",
+   "reason": "frontage 135.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012101647",
+   "reason": "frontage 164.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012102401",
+   "reason": "frontage 125.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012102643",
+   "reason": "frontage 155.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012103552",
+   "reason": "frontage 97.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012103726",
+   "reason": "frontage 113.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012103809",
+   "reason": "frontage 139.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104097",
+   "reason": "frontage 79.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104313",
+   "reason": "frontage 140.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104548",
+   "reason": "frontage 80.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104612",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104837",
+   "reason": "frontage 149.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012104922",
+   "reason": "frontage 31.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012105202",
+   "reason": "frontage 66.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012105229",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012105611",
+   "reason": "sightline to Beethovenstraat crosses 0363100012091684"
+  },
+  {
+   "pandId": "0363100012106496",
+   "reason": "frontage 76.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012106766",
+   "reason": "frontage 48.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012107436",
+   "reason": "frontage 57.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012107585",
+   "reason": "frontage 35.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012108297",
+   "reason": "frontage 46.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012108519",
+   "reason": "frontage 53.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012109213",
+   "reason": "frontage 76.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012110007",
+   "reason": "frontage 178.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012110689",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012110788",
+   "reason": "frontage 127.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012110889",
+   "reason": "frontage 124.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012111310",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012112301",
+   "reason": "frontage 122.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012112495",
+   "reason": "frontage 109.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012112565",
+   "reason": "frontage 158.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012113090",
+   "reason": "frontage 152.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012113789",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012114073",
+   "reason": "sightline to Beethovenstraat crosses 0363100012115027"
+  },
+  {
+   "pandId": "0363100012115290",
+   "reason": "frontage 162.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012115467",
+   "reason": "frontage 151.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012115819",
+   "reason": "frontage 128.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012116137",
+   "reason": "frontage 93.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012116588",
+   "reason": "frontage 148.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012116653",
+   "reason": "frontage 110.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012116769",
+   "reason": "frontage 59.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012116824",
+   "reason": "frontage 106.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012117611",
+   "reason": "frontage 148.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012117997",
+   "reason": "frontage 140.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012118268",
+   "reason": "frontage 100.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012118376",
+   "reason": "frontage 141.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012119113",
+   "reason": "frontage 140.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012119191",
+   "reason": "frontage 124.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012119699",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012119701",
+   "reason": "frontage 80.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012119774",
+   "reason": "frontage 150.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012120143",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012121399",
+   "reason": "frontage 144.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012121874",
+   "reason": "frontage 126.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012122328",
+   "reason": "frontage 44.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012123188",
+   "reason": "frontage 113.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012123579",
+   "reason": "frontage 55.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012123869",
+   "reason": "frontage 178.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012123905",
+   "reason": "frontage 76.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012124253",
+   "reason": "frontage 106.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012124269",
+   "reason": "frontage 113.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012124524",
+   "reason": "frontage 146.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012124613",
+   "reason": "frontage 44.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012125641",
+   "reason": "frontage 150.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012125801",
+   "reason": "sightline to Beethovenstraat crosses 0363100012109960"
+  },
+  {
+   "pandId": "0363100012127239",
+   "reason": "frontage 142.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012127458",
+   "reason": "frontage 78.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012128616",
+   "reason": "frontage 156.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012128985",
+   "reason": "frontage 61.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012129639",
+   "reason": "frontage 65.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012130355",
+   "reason": "frontage 48.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012130489",
+   "reason": "frontage 111.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012130642",
+   "reason": "frontage 30.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012130778",
+   "reason": "frontage 131.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012131221",
+   "reason": "frontage 157.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012131697",
+   "reason": "frontage 139.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012132029",
+   "reason": "frontage 107.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012132256",
+   "reason": "frontage 138.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133053",
+   "reason": "frontage 106.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133112",
+   "reason": "frontage 153.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133238",
+   "reason": "frontage 99.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133297",
+   "reason": "frontage 71.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133321",
+   "reason": "frontage 145.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133833",
+   "reason": "frontage 75.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012133969",
+   "reason": "frontage 89.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012134372",
+   "reason": "frontage 49.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012134480",
+   "reason": "frontage 86.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012135099",
+   "reason": "sightline to Beethovenstraat crosses 0363100012074701"
+  },
+  {
+   "pandId": "0363100012135637",
+   "reason": "frontage 90.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012136077",
+   "reason": "frontage 61.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012136154",
+   "reason": "frontage 46.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012137602",
+   "reason": "frontage 138.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012137669",
+   "reason": "frontage 134.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012137700",
+   "reason": "frontage 43.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012138048",
+   "reason": "frontage 43.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012138145",
+   "reason": "frontage 116.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012138453",
+   "reason": "frontage 134.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012138875",
+   "reason": "frontage 78.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012138943",
+   "reason": "frontage 38.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012139261",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012139771",
+   "reason": "frontage 140.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012139904",
+   "reason": "frontage 33.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012140099",
+   "reason": "frontage 119.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012140120",
+   "reason": "frontage 148.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012140477",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012141202",
+   "reason": "frontage 146.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012141561",
+   "reason": "frontage 89.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012142046",
+   "reason": "frontage 66.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012142793",
+   "reason": "frontage 47.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012143970",
+   "reason": "sightline to Beethovenstraat crosses 0363100012149517"
+  },
+  {
+   "pandId": "0363100012144325",
+   "reason": "frontage 120.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012144350",
+   "reason": "frontage 104.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012144442",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012144635",
+   "reason": "frontage 68.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012145072",
+   "reason": "frontage 51.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012145181",
+   "reason": "frontage 45.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012145411",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012145582",
+   "reason": "frontage 102.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012145770",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012146425",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012148120",
+   "reason": "frontage 106.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012148722",
+   "reason": "frontage 45.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012149304",
+   "reason": "frontage 134.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012149665",
+   "reason": "frontage 142.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012149765",
+   "reason": "frontage 47.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012149807",
+   "reason": "frontage 51.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012150465",
+   "reason": "frontage 119.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012150612",
+   "reason": "frontage 88.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012151052",
+   "reason": "frontage 80.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012151450",
+   "reason": "frontage 149.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012151818",
+   "reason": "frontage 53.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012154847",
+   "reason": "frontage 72.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012154911",
+   "reason": "frontage 125.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012155279",
+   "reason": "frontage 38.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012183238",
+   "reason": "frontage 150.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012183307",
+   "reason": "frontage 92.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012183548",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012184097",
+   "reason": "frontage 67.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012185079",
+   "reason": "frontage 39.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012186884",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012187007",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012187881",
+   "reason": "frontage 36.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012189239",
+   "reason": "frontage 147.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012189732",
+   "reason": "frontage 134.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012189800",
+   "reason": "frontage 96.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012190065",
+   "reason": "frontage 149.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012190068",
+   "reason": "frontage 38.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012191236",
+   "reason": "frontage 37.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012194150",
+   "reason": "frontage 36.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012196929",
+   "reason": "frontage 93.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012198209",
+   "reason": "frontage 157.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012198313",
+   "reason": "frontage 99.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012200310",
+   "reason": "frontage 37.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012201608",
+   "reason": "frontage 92.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012202799",
+   "reason": "frontage 122.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012203384",
+   "reason": "frontage 33.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012203557",
+   "reason": "frontage 40.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012203746",
+   "reason": "frontage 41.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012203747",
+   "reason": "frontage 42.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012206476",
+   "reason": "frontage 141.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012207155",
+   "reason": "frontage 149.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012208087",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012208211",
+   "reason": "frontage 68.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012208272",
+   "reason": "frontage 110.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012210081",
+   "reason": "frontage 40.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012210082",
+   "reason": "frontage 39.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012210669",
+   "reason": "frontage 157.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012211429",
+   "reason": "frontage 152.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012214448",
+   "reason": "frontage 65.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012216551",
+   "reason": "sightline to Beethovenstraat crosses 0363100012070128"
+  },
+  {
+   "pandId": "0363100012217923",
+   "reason": "frontage 147.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012218428",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012219047",
+   "reason": "frontage 39.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012220043",
+   "reason": "frontage 97.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012223719",
+   "reason": "frontage 48.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012224605",
+   "reason": "frontage 39.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012224652",
+   "reason": "frontage 98.4 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012225607",
+   "reason": "frontage 60.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012226340",
+   "reason": "sightline to Beethovenstraat crosses 0363100012112655"
+  },
+  {
+   "pandId": "0363100012227622",
+   "reason": "frontage 94.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012228292",
+   "reason": "frontage 64.0 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012228293",
+   "reason": "frontage 54.1 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012228294",
+   "reason": "frontage 51.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012228487",
+   "reason": "frontage 53.9 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012229510",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012230146",
+   "reason": "frontage 116.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012230578",
+   "reason": "frontage 134.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012230648",
+   "reason": "no frontage on Beethovenstraat: No footprint edge faces Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012231089",
+   "reason": "frontage 137.8 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012231746",
+   "reason": "frontage 181.6 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012232412",
+   "reason": "frontage 116.2 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012234997",
+   "reason": "frontage 66.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012254325",
+   "reason": "frontage 31.7 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012255152",
+   "reason": "frontage 37.3 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012571278",
+   "reason": "frontage 127.5 m from Beethovenstraat"
+  },
+  {
+   "pandId": "0363100012066937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070991",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071849",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072434",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074701",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075101",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076857",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078513",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082698",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091101",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091684",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093212",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096456",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097214",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097347",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103105",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109130",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117496",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117851",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124290",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129120",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132517",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136095",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143968",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149517",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012108330",
+   "alongM": -99.22,
+   "widthM": 9.89,
+   "eavesM": 13.84,
+   "roofMaxM": 20.14,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099398",
+   "alongM": -88.06,
+   "widthM": 12.43,
+   "eavesM": 13.72,
+   "roofMaxM": 19.28,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012068658",
+   "alongM": -75.88,
+   "widthM": 11.92,
+   "eavesM": 14.17,
+   "roofMaxM": 19.37,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012087751",
+   "alongM": -63.96,
+   "widthM": 11.92,
+   "eavesM": 14.15,
+   "roofMaxM": 19.42,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012105112",
+   "alongM": -52.04,
+   "widthM": 11.92,
+   "eavesM": 14.18,
+   "roofMaxM": 19.53,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012067032",
+   "alongM": -40.12,
+   "widthM": 11.92,
+   "eavesM": 14.19,
+   "roofMaxM": 19.41,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012072795",
+   "alongM": -30.35,
+   "widthM": 7.63,
+   "eavesM": 14.12,
+   "roofMaxM": 19.34,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012111717",
+   "alongM": -22.74,
+   "widthM": 7.58,
+   "eavesM": 13.59,
+   "roofMaxM": 19.97,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012108548",
+   "alongM": -15.16,
+   "widthM": 7.58,
+   "eavesM": 13.97,
+   "roofMaxM": 19.61,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115388",
+   "alongM": -7.58,
+   "widthM": 7.58,
+   "eavesM": 14.24,
+   "roofMaxM": 19.41,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114905",
+   "alongM": 0,
+   "widthM": 7.58,
+   "eavesM": 19.03,
+   "roofMaxM": 19.06,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109960",
+   "alongM": 24.74,
+   "widthM": 41.91,
+   "eavesM": 15.21,
+   "roofMaxM": 28.58,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

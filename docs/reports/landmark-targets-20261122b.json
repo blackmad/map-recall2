@@ -108,15 +108,15 @@
   },
   {
    "rank": 9,
-   "id": "koetshuis-2389",
-   "name": "Koetshuis (rijksmonument 2389)",
-   "pand": "0363100012167975",
-   "drawnAs": "kit",
-   "exposure": 395318,
-   "routeMetres": 9995,
+   "id": "koetshuis-keizersgracht-607",
+   "name": "Koetshuis, Keizersgracht 607 (rijksmonument 2389)",
+   "pand": "0363100012167905",
+   "drawnAs": "generic",
+   "exposure": 27759,
+   "routeMetres": 3220,
    "damKm": 0.99,
-   "evidence": "not briefed this round; the highest exposure in the raw list (395k), drawn by a kit install",
-   "verdict": "next"
+   "evidence": "corrected 2026-11-22 (r15): this row had pand 0363100012167975 (the 1976 office at Keizersgracht 603 / Vijzelstraat 79, exposure 395318) because monument-facts.json joins register nr 2389 by its RD point (121334, 486354), which falls inside that office's footprint; the RCE register's BAG relation is Keizersgracht 607 (1017DS), pand 0363100012167905. In game (engine=own) it was a generic dark-brown box between the office and Foam. Exposure recomputed for the right pand (ride-visibility v1, 1500 routes, seed 7).",
+   "verdict": "modelled r15"
   }
  ],
  "ruledOut": [

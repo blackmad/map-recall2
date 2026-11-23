@@ -16,22 +16,21 @@
 //   stripOverDrawn lin(strip wall) / lin(the wall the chunk draws head-on: cityTint(palette.brick) x brick cell mean),
 //                  median over the brick pands whose strip body is at least 30 % wall: how far the authored colour sits
 //                  from its photo (1 = matched; Bilderdijkstraat 135-153 was lifted 1.44x in sRGB over its strip); only
-//                  with a white (a strip without one has an unknown exposure). A face whose intent says
-//                  `continuity.wallExposure: {reference: "palette"}` (a cast strip; the palette measured on other captures)
-//                  takes 1.
+//                  with a white (a strip without one has an unknown exposure).
 // Writes src/canalRecall/look/chunkWallExposure.ts. Chunks without a strip (the post-hoc house chunks) are not listed and
 // take FALLBACK_WALL_GAIN, like a measured wall with no recorded white.
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {measureStripPalette, stripImageMismatch} from '../../src/canalRecall/blockFace/stripPalette.ts';
-import {faceStripOverDrawn, houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
+import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {drawnWallLuma} from '../../src/canalRecall/look/drawnWall.ts';
 import {srgbToLinear} from '../../src/canalRecall/look/sunny.ts';
 import {chunkWallGain} from '../../src/canalRecall/look/chunkWallExposure.ts';
 import {CHUNK_WALL_EXPOSURE_DATA} from '../../src/canalRecall/look/chunkWallExposureData.ts';
+import {pickStripImage, rebuildExposure} from '../../src/canalRecall/look/chunkWallExposureBuild.ts';
 
 const FACES = 'scripts/block-face/faces', OUT = 'src/canalRecall/look/chunkWallExposureData.ts';
 const MANIFEST = 'public/canal-drive/ordinary-buildings-data/chunks.json';
@@ -40,42 +39,34 @@ const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slic
 // <main>-worktrees/<name>).
 const ARCHIVE = arg('archive') ?? path.resolve(process.cwd().replace(/\/\.claude\/worktrees\/[^/]+$/, '').replace(/-worktrees\/[^/]+$/, ''), '../map-recall2-source-data/models');
 type RGB = [number, number, number];
+type Entry = {white: RGB | null; stripOverDrawn: number | null};
 const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
 const med = (a: number[]) => { const s = a.filter(Number.isFinite).sort((p, q) => p - q); return s.length ? (s.length % 2 ? s[s.length >> 1] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : NaN; };
-const stripFile = (face: string, strip: {image?: string}) => [strip.image, `staging/block-face/${face}/strip.jpg`, path.join(ARCHIVE, face, 'files', 'strip.jpg')].find(f => f && fs.existsSync(f));
+const stripCandidates = (face: string, strip: {image?: string}) => [strip.image, `staging/block-face/${face}/strip.jpg`, path.join(ARCHIVE, face, 'files', 'strip.jpg')];
+const sizeOf = async (file: string) => { if (!fs.existsSync(file)) return undefined; const m = await sharp(file).metadata(); return {width: m.width ?? 0, height: m.height ?? 0}; };
 
-const entries: Record<string, {white: RGB | null; stripOverDrawn: number | null}> = {}, rows: string[] = [];
-for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {name: string}[]) {
-  const face = chunk.name.replace(/^face-/, ''), dir = path.join(FACES, face);
-  if (!chunk.name.startsWith('face-') || !fs.existsSync(path.join(dir, 'strip.json'))) { rows.push(`${chunk.name}: no strip (fallback gain ${chunkWallGain(undefined).toFixed(3)})`); continue; }
-  const strip = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8')), file = stripFile(face, strip);
+// Each face is measured in its own try/catch (chunkWallExposureBuild.ts): one bad strip keeps that face's published
+// entry instead of stopping the whole build (2026-11-22, bellamyplein-18-38-r1's archived strip was an older crop).
+const names = (JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {name: string}[]).map(c => c.name);
+const {entries, rows, failed} = await rebuildExposure<Entry>(names, async name => {
+  const face = name.replace(/^face-/, ''), dir = path.join(FACES, face);
+  if (!name.startsWith('face-') || !fs.existsSync(path.join(dir, 'strip.json'))) return {row: `${name}: no strip (fallback gain ${chunkWallGain(undefined).toFixed(3)})`};
+  const strip = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8'));
   // A face whose strip is in neither staging nor the archive keeps the entry it was published with (2026-10-24: some
-  // older faces' strips were never archived, which used to stop every later face from being re-measured).
+  // older faces' strips were never archived, which used to stop every later face from being re-measured). An image of
+  // another size than strip.json is skipped: the spans are that image's pixels.
+  const {file, rejected} = await pickStripImage(stripCandidates(face, strip), {width: strip.width, height: strip.height}, sizeOf);
   // A face whose palette is its exposure reference (continuity.wallExposure) needs no strip for stripOverDrawn: keep the
   // published white and write 1 even when the strip is missing or stale (2026-11-23: baerle-22-30 kept its cast 1.735).
-  const paletteRef = (kept: {white: RGB | null; stripOverDrawn: number | null} | undefined) => {
-    const intent = JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8'));
-    return intent?.continuity?.wallExposure?.reference === 'palette' ? {white: kept?.white ?? null, stripOverDrawn: 1} : kept;
-  };
-  if (!file) {
-    const kept = paletteRef((CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name]);
-    if (kept) entries[chunk.name] = kept;
-    rows.push(`${chunk.name}: strip image missing (staging or ${ARCHIVE}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
-    continue;
+  const paletteRef = JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8'))?.continuity?.wallExposure?.reference === 'palette';
+  if (!file && paletteRef) {
+    const published = (CHUNK_WALL_EXPOSURE_DATA as Record<string, Entry>)[name];
+    return {entry: {white: published?.white ?? null, stripOverDrawn: 1}, row: `${name}: strip image missing; palette is the exposure reference (stripOverDrawn 1)`};
   }
+  if (!file) return {keep: true, row: `${name}: strip image missing (staging or ${ARCHIVE})${rejected.length ? `; size mismatch: ${rejected.join('; ')}` : ''}`};
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
-  // A strip file of another size than strip.json describes is a stale copy (2026-11-22: Bellamyplein 18-38 r1's archive
-  // strip is its 1101 px crop from before the 2203 px re-run, and crashed the whole regen): keep the published entry.
-  const mismatch = stripImageMismatch(strip, info);
-  if (mismatch) {
-    const kept = paletteRef((CHUNK_WALL_EXPOSURE_DATA as Record<string, {white: RGB | null; stripOverDrawn: number | null}>)[chunk.name]);
-    if (kept) entries[chunk.name] = kept;
-    rows.push(`${chunk.name}: ${mismatch} (${path.relative(process.cwd(), file)}); ${kept ? 'kept the published entry' : 'fallback gain'}`);
-    continue;
-  }
   const rgb = new Uint8Array(data.buffer, data.byteOffset, data.length);
-  const faceIntent = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members);
-  const intents = houseIntents(faceIntent);
+  const intents = houseIntents(validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members));
   const pands = strip.spans.map((s: any) => {
     const facts = path.join(dir, 'pands', s.pandId, 'facts.json'), h = fs.existsSync(facts) ? JSON.parse(fs.readFileSync(facts, 'utf8')).heights : null;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
@@ -88,11 +79,11 @@ for (const chunk of JSON.parse(fs.readFileSync(MANIFEST, 'utf8')).chunks as {nam
   const white = frames.length ? [0, 1, 2].map(i => Math.round(med(frames.map(f => f[i])))) as RGB : null;
   // Without a light trim the strip's exposure is unknown (a dark capture reads its trims as wall), so its wall reading is
   // not a reference either: such a chunk takes the fallback gain alone.
-  const ratio = med(pands.map((p: any) => p.ratio)), entry = {white, stripOverDrawn: faceStripOverDrawn(faceIntent, white && Number.isFinite(ratio) ? +ratio.toFixed(3) : null)};
-  entries[chunk.name] = entry;
-  rows.push(`${chunk.name}: white ${white ? `${white.join(',')} (luma ${Math.round(luma(white))}, ${frames.length}/${pands.length} pands)` : 'none'} | strip/drawn ${entry.stripOverDrawn ?? '-'} (linear) | gain ${chunkWallGain(entry).toFixed(3)} | ${path.relative(process.cwd(), file)}`);
-}
+  const ratio = med(pands.map((p: any) => p.ratio)), entry: Entry = {white, stripOverDrawn: paletteRef ? 1 : white && Number.isFinite(ratio) ? +ratio.toFixed(3) : null};
+  return {entry, row: `${name}: white ${white ? `${white.join(',')} (luma ${Math.round(luma(white))}, ${frames.length}/${pands.length} pands)` : 'none'} | strip/drawn ${entry.stripOverDrawn ?? '-'} (linear) | gain ${chunkWallGain(entry).toFixed(3)} | ${path.relative(process.cwd(), file)}`};
+}, CHUNK_WALL_EXPOSURE_DATA as Record<string, Entry>);
 rows.forEach(r => console.log(r));
+if (failed.length) console.warn(`${failed.length} face(s) failed to measure and kept their published entry: ${failed.join(', ')}`);
 const src = `// Generated by scripts/look/build-chunk-wall-exposure.ts from the block faces' strips; do not edit.
 // ${Object.keys(entries).length} chunks measured on their strips.
 

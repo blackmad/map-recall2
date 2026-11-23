@@ -1,0 +1,293 @@
+{
+ "schemaVersion": 1,
+ "id": "uva-binnengasthuisstraat-9",
+ "pand": "0363100012180195",
+ "brief": "scripts/landmarks/uva-binnengasthuisstraat-9-brief.md",
+ "signature": [
+  "s-figure",
+  "s-window-grid",
+  "s-raised-attic",
+  "s-stacked-blocks",
+  "s-crosses"
+ ],
+ "walls": [
+  {
+   "tag": "w01-0",
+   "bearing": 0,
+   "lengthM": 16.3,
+   "centre": [
+    4.8948475,
+    52.369106
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002629_pano_0001_000602",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-figure",
+     "kind": "sculpture",
+     "where": "middle of the raised attic, t 7.6-8.7 m, 14.6-17.2 m, on a stone corbel",
+     "approxSizeM": [
+      1.1,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602",
+     "how": "stone panel with a stepped standing figure (robe, torso, head) on a two-step corbel; the carving's detail is left out"
+    },
+    {
+     "id": "s-window-grid",
+     "kind": "window-shape",
+     "where": "seven axes at 2.08 m in three storeys (1.84-4.7, 6.7-9.12, 11.34-14.2 m)",
+     "approxSizeM": [
+      1.26,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602",
+     "how": "cream frames with transoms, dark green sash bars (six small upper lights in the second storey), stone sills"
+    },
+    {
+     "id": "s-raised-attic",
+     "kind": "other",
+     "where": "the middle of the front rises above the eave (16.2 m) to 17.74 m between t 5.35 and 10.95 m",
+     "approxSizeM": [
+      5.6,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602",
+     "how": "3DBAG shell wall with a stone coping; the eave moulding stops at it"
+    },
+    {
+     "id": "s-stacked-blocks",
+     "kind": "relief",
+     "where": "three small stone blocks stacked on every axis between the storeys (5.1-6.0 and 9.5-10.4 m)",
+     "approxSizeM": [
+      0.18,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602"
+    },
+    {
+     "id": "s-crosses",
+     "kind": "relief",
+     "where": "stone crosses in the attic band over the two outer axes each side, 14.9-15.8 m",
+     "approxSizeM": [
+      0.57,
+      0.94
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602"
+    },
+    {
+     "id": "s-pilaster-strips",
+     "kind": "colonnade",
+     "where": "shallow brick strips between the axes from the plinth to the string course at 14.25 m",
+     "approxSizeM": [
+      0.16,
+      13.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602"
+    },
+    {
+     "id": "s-lintel-blocks",
+     "kind": "other",
+     "where": "small stone blocks on the strips at 10.4 m and brackets at 11.3 m",
+     "approxSizeM": [
+      0.45,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602"
+    },
+    {
+     "id": "s-string-course",
+     "kind": "other",
+     "where": "stone string course over the second storey (14.25 m) and an eave moulding (16.0 m)",
+     "approxSizeM": [
+      16.2,
+      0.18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602"
+    },
+    {
+     "id": "s-dormers",
+     "kind": "window-shape",
+     "where": "two small low dormers just over the eave above the second and sixth axes",
+     "approxSizeM": [
+      1.3,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002629_pano_0001_000602",
+     "how": "tile-coloured box with a low light over the 3DBAG roof plane and a cap"
+    }
+   ]
+  },
+  {
+   "tag": "w02-270",
+   "bearing": 270,
+   "lengthM": 9.9,
+   "centre": [
+    4.894671,
+    52.3690405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000667",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-west-entrance",
+     "kind": "canopy",
+     "where": "timber double door under a glazed white bay (six lights) and a curved hood, in the taller part of the west wall",
+     "approxSizeM": [
+      2.4,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000073_pano_0003_000667",
+     "how": "placed by fitting the oblique crop to the 3DBAG step between the low and tall parts of the wall: timber double door on two stone steps in a stone surround, a white bay of six lights over it and a stone hood; the hood's curve and lettering are left out. The wall's windows (two in the low part, two over the entrance, a tall narrow light beside it) are drawn with it"
+    }
+   ]
+  },
+  {
+   "tag": "w03-90",
+   "bearing": 90,
+   "lengthM": 9.9,
+   "centre": [
+    4.895025,
+    52.3690415
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "east side towards the neighbouring building; no panorama, drawn as the shell"
+  },
+  {
+   "tag": "w04-180",
+   "bearing": 180,
+   "lengthM": 4.3,
+   "centre": [
+    4.8949935,
+    52.368997
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_000757",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [],
+   "note": "courtyard side to the south: plain brick with windows behind the wings; out of the riding line, drawn as the shell"
+  },
+  {
+   "tag": "w05-180",
+   "bearing": 180,
+   "lengthM": 4.2,
+   "centre": [
+    4.894702,
+    52.368996
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000717_pano_0000_000528",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [],
+   "note": "courtyard side to the south beside the modern glazed hall; drawn as the shell"
+  },
+  {
+   "tag": "w06-341",
+   "bearing": 341,
+   "lengthM": 4.1,
+   "centre": [
+    4.8946995,
+    52.369091
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track14_Sphere_00146",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-corner-w",
+     "kind": "window-shape",
+     "where": "angled north-west corner: one axis of two stair-landing windows (3.8-6.7 and 8.7-11.2 m), stacked blocks and a cross",
+     "approxSizeM": [
+      1.26,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track14_Sphere_00146",
+     "how": "the front's window type at the crop's heights under the 3DBAG parapet (13.6 m), half a storey off the front's floors"
+    },
+    {
+     "id": "s-roof-box",
+     "kind": "other",
+     "where": "a modern dark-framed glazed box on the wing roof with a curved UvA sign",
+     "approxSizeM": [
+      4.0,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track14_Sphere_00146",
+     "how": "glass panes and a dark top rail on the face of the 3DBAG box mass, found per 0.5 m by probing the roof; the curved UvA sign is left out"
+    }
+   ]
+  },
+  {
+   "tag": "w07-19",
+   "bearing": 19,
+   "lengthM": 4.1,
+   "centre": [
+    4.8949965,
+    52.369092
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track16_Sphere_00094",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-corner-e",
+     "kind": "window-shape",
+     "where": "angled north-east corner: one axis of two stair-landing windows (3.8-6.7 and 8.7-11.2 m), stacked blocks and a cross",
+     "approxSizeM": [
+      1.26,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track16_Sphere_00094",
+     "how": "the front's window type at the crop's heights under the 3DBAG parapet (13.6 m), half a storey off the front's floors"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012180195 (PDOK)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012180195",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180195",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Monument register 518310 (Gemeente Amsterdam)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/11898999-13b3-4990-aad0-d3d9134a526d?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}
