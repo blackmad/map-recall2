@@ -59,7 +59,11 @@ import { changedCoversTiles, coversHides } from '../../src/canalRecall/world/til
 export const COMPILER_VERSION = 'world-compiler-2';
 /** What a cell's shells are baked from beyond the cell itself (the mesher and its tables): a change rebakes every shell. */
 // facadeExtras/facadeExtraCore are imported by threeBuildingMesh: listed so an extras-only change rebakes the shells (2026-11-13, downpipes/fins).
-const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/facadeExtras.ts', 'src/canalRecall/facadeExtraCore.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json', 'src/canalRecall/streetFronts.ts', 'src/canalRecall/routing/roadExtract.ts', 'src/canalRecall/routing/bikeAccess.ts', 'public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'].map(f => path.join(ROOT, f));
+// Lane shopfront-feedback-20261123: the shop fronts a shell bakes (retailFront.ts and what it reads: templates, chain
+// tables, the historic puis) are shell code too, so a shopfront change rebakes the shells instead of leaving stale fronts.
+const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/retailFront.ts', 'src/canalRecall/retailTemplates.ts',
+  'src/canalRecall/retailChains.ts', 'src/canalRecall/retailChains.gen.ts', 'src/canalRecall/retailChainLogos.gen.ts', 'src/canalRecall/retailFit/historic-puis.json', 'src/canalRecall/retailFit/historicPuiFront.ts', 'src/canalRecall/retailFit/historicPui.ts',
+  'src/canalRecall/facadeExtras.ts', 'src/canalRecall/facadeExtraCore.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json', 'src/canalRecall/streetFronts.ts', 'src/canalRecall/routing/roadExtract.ts', 'src/canalRecall/routing/bikeAccess.ts', 'public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'].map(f => path.join(ROOT, f));
 const WORLD_FORMAT_VERSION = BUILDING_FORMAT_VERSION;
 const args = process.argv.slice(2);
 const flag = (name: string) => args.find(a => a === `--${name}` || a.startsWith(`--${name}=`));
