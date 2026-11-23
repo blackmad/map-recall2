@@ -22,7 +22,7 @@
    "kind": "template",
    "name": "Hairdresser",
    "template": "hairdresser",
-   "pands": 375,
+   "pands": 376,
    "example": {
     "pand": "NL.IMBAG.Pand.0363100012179959",
     "lng": 4.895117,
@@ -173,7 +173,7 @@
    "kind": "template",
    "name": "Butcher",
    "template": "butcher",
-   "pands": 73,
+   "pands": 74,
    "example": {
     "pand": "NL.IMBAG.Pand.0363100012170936",
     "lng": 4.900353,
@@ -836,8 +836,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Praxis_logo_2018.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-praxis.webp",
+   "drawn": true
   },
   {
    "id": "service-apotheek",
@@ -1119,7 +1119,7 @@
     "lat": 52.368674
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg",
+   "logoSource": "https://www.ekoplaza.nl/nl/foodmarqt",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-ekoplaza-foodmarqt.webp",
    "drawn": true
   },
@@ -1324,7 +1324,7 @@
     "lat": 52.345577
    },
    "brandAccepted": false,
-   "logoSource": "https://www.alexanderhoeve.nl/",
+   "logoSource": "https://www.alexanderhoevekaas.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-alexanderhoeve.webp",
    "drawn": true
   },
@@ -1402,8 +1402,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Burger_King_2020.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-burger-king.webp",
+   "drawn": true
   },
   {
    "id": "cafe-bonjour",
@@ -1509,7 +1509,7 @@
     "lat": 52.369021
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Travelex_Logo.svg",
+   "logoSource": "https://commons.wikimedia.org/wiki/File:GWK_Travelex_logo.jpg",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-gwk-travelex.webp",
    "drawn": true
   },
@@ -1541,8 +1541,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Kfc_textlogo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-kfc.webp",
+   "drawn": true
   },
   {
    "id": "kinki",
@@ -1634,8 +1634,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Pets_Place_logo_01.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pets-place.webp",
+   "drawn": true
   },
   {
    "id": "pontmeyer",
@@ -1679,7 +1679,7 @@
     "lat": 52.369206
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Simon_Levelt_Logo.png",
+   "logoSource": "https://www.simonlevelt.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-simon-levelt.webp",
    "drawn": true
   },
@@ -1727,8 +1727,9 @@
     "lat": 52.365362
    },
    "brandAccepted": false,
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://tacomundo.com/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-taco-mundo.webp",
+   "drawn": true
   },
   {
    "id": "technische-unie",
@@ -1867,6 +1868,7 @@
     "lat": 52.368912
    },
    "brandAccepted": false,
+   "logoSource": "https://www.annemax.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-anne-and-max.webp",
    "drawn": true
   },
@@ -1882,6 +1884,7 @@
     "lat": 52.381477
    },
    "brandAccepted": false,
+   "logoSource": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240925_0919_Track35_Sphere_00951/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-bakkerij-kara-firin.webp",
    "drawn": true
   },
@@ -1898,8 +1901,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://www.beterhoren.nl/",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-beter-horen.webp",
+   "drawn": true
   },
   {
    "id": "dekamarkt",
@@ -1930,8 +1933,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Dille_%26_Kamille_Logo.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dille-and-kamille.webp",
+   "drawn": true
   },
   {
    "id": "douglas",
@@ -1962,8 +1965,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Flying_Tiger_Copenhagen.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-flying-tiger-copenhagen.webp",
+   "drawn": true
   },
   {
    "id": "foot-locker",
@@ -2243,6 +2246,7 @@
     "lat": 52.352629
    },
    "brandAccepted": false,
+   "logoSource": "https://www.massimogelato.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-massimo-gelato.webp",
    "drawn": true
   },
@@ -2303,8 +2307,9 @@
     "lat": 52.35298
    },
    "brandAccepted": false,
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://www.pipoos.com/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-pipoos.webp",
+   "drawn": true
   },
   {
    "id": "plus",
@@ -2334,7 +2339,7 @@
     "lat": 52.366319
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Rituals_Cosmetics_logo.png",
+   "logoSource": "https://www.rituals.com/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-rituals.webp",
    "drawn": true
   },
@@ -2366,8 +2371,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Specsavers_logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-specsavers.webp",
+   "drawn": true
   },
   {
    "id": "the-color",
@@ -2445,8 +2450,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Wagamama-Logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-wagamama.webp",
+   "drawn": true
   },
   {
    "id": "wok-to-go",
@@ -2495,21 +2500,6 @@
    "drawn": true
   },
   {
-   "id": "atlas",
-   "kind": "chain",
-   "name": "Atlas",
-   "template": "butcher",
-   "pands": 2,
-   "example": {
-    "pand": "NL.IMBAG.Pand.0363100012071805",
-    "lng": 4.86575,
-    "lat": 52.368759
-   },
-   "brandAccepted": false,
-   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-atlas.webp",
-   "drawn": true
-  },
-  {
    "id": "beter-bed",
    "kind": "chain",
    "name": "Beter Bed",
@@ -2522,8 +2512,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:BeterBed-logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-beter-bed.webp",
+   "drawn": true
   },
   {
    "id": "bever",
@@ -2663,6 +2653,7 @@
     "lat": 52.357202
    },
    "brandAccepted": false,
+   "logoSource": "https://www.debakkerszonen.nl/",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-de-bakkerszonen.webp",
    "drawn": true
   },
@@ -2694,9 +2685,9 @@
     "lat": 52.366735
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Dunkin1.JPG",
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Dunkin'_logo.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-dunkin.webp",
+   "drawn": true
   },
   {
    "id": "g-star-raw",
@@ -2742,8 +2733,9 @@
     "lat": 52.379985
    },
    "brandAccepted": false,
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000831_pano_0000_001471/",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-halal-fried-chicken.webp",
+   "drawn": true
   },
   {
    "id": "ici-paris-xl",
@@ -2774,8 +2766,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://www.intertoys.nl/",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-intertoys.webp",
+   "drawn": true
   },
   {
    "id": "johnny-s-burger-company",
@@ -2915,8 +2907,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Media_Markt_logo.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-mediamarkt.webp",
+   "drawn": true
   },
   {
    "id": "nespresso",
@@ -2930,7 +2922,7 @@
     "lat": 52.359785
    },
    "brandAccepted": false,
-   "logoSource": "https://commons.wikimedia.org/wiki/File:Nespresso_logo_(monogram_%2B_wordmark).svg",
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Nespresso_logo_(wordmark).svg",
    "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-nespresso.webp",
    "drawn": true
   },
@@ -2979,8 +2971,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Papa_John%27s_Logo_2019.svg",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-papa-john-s.webp",
+   "drawn": true
   },
   {
    "id": "pieter-bas",
@@ -3009,8 +3001,9 @@
     "lat": 52.365335
    },
    "brandAccepted": false,
-   "thumb": null,
-   "drawn": false
+   "logoSource": "https://commons.wikimedia.org/wiki/File:Praxis_logo_2018.svg",
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-praxis-city.webp",
+   "drawn": true
   },
   {
    "id": "samsonite",
@@ -3136,8 +3129,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Vodafone_logo_1997.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-vodafone.webp",
+   "drawn": true
   },
   {
    "id": "wibra",
@@ -3168,8 +3161,8 @@
    },
    "brandAccepted": false,
    "logoSource": "https://commons.wikimedia.org/wiki/File:Logo-Xenos-Rubin-Red.png",
-   "thumb": null,
-   "drawn": false
+   "thumb": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/ui/shopfronts/chain-xenos.webp",
+   "drawn": true
   },
   {
    "id": "bake-my-day",
