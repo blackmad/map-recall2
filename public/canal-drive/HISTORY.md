@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Round 20261123d: landmarks r18, iconic picks (2026-11-23)
+
+- **Why:** David loved the striped-awning building and asked for more iconic picks: buildings a rider remembers, not only the ones the exposure ranking surfaces.
+- **Iconic ranking, `scripts/landmarks/landmark-targets-iconic.ts`** (read-only; raw report `docs/reports/landmark-targets-20261123-iconic-raw.json`). Candidates come from the RCE register descriptions (CC0, joined through monument-facts.json), scored on presence words (koepel, torentje, jugendstil, Amsterdamse School, tegeltableau, luifel, markies, café, hotel, theater, afgeronde hoek, ...), and from OSM venue tags (named cafés, bars, hotels, theatres, cinemas, markets and shops, with a wikidata/wikipedia bonus and an awning/tile/dome tag bonus). Pands already covered, near a signature footprint or suppressed are excluded. Rank = presence x log10(1 + ride exposure) on the ride-visibility routes. The curated list `docs/reports/landmark-targets-20261123-iconic.json` (31 rows) was read by hand from the raw list and the panorama crops.
+- **Six buildings (lane/landmarks-r18-20261123 b769bde1e6, helpers r18-a…e):**
+  - `muntplein-1`: Muntplein 1 / Amstel 2, the Volharding building (A.L. van Gendt 1892) opposite the Munttoren, with its corner turret, scroll dormers, arcade and stone friezes.
+  - `old-bell-rembrandtplein`: The Old Bell / City Hotel, Rembrandtplein 46 - Utrechtsestraat 2 (rijksmonument 518404): banded brick, the corner oriel with its stepped crown and bell, the eight-step gable on the Utrechtsestraat.
+  - `koningsplein-1`: Verzekeringsbank Kosmos (Schill and Haverkamp 1890-91) by the Bloemenmarkt: the half-round corner tower under a slate dome with zinc ribs and an open lantern, speklagen, pediments and the blue frieze.
+  - `cafe-riche-rokin`: the former Café-Restaurant Riche, Rokin 84-90 (A.L. van Gendt 1883, rijksmonument 5009): carved white front, red awnings over the arched ground windows, the attic dormers.
+  - `welgelegen` and `weltevreden`: the Plantage Middenlaan 49 and 47 garden houses (rijksmonumenten 4107 and 4106), with dormers, shutters, weatherboarding and front railings.
+- **Four kit parts (typed, tested, in `test:landmark-kits`, 374 tests):** `cornerTurret` (a corbelled polygonal oriel in a canted corner, carried past the cornice as a drum with a cone spire), `steppedGable` (crow-stepped gable tiers with coping slabs and unequal step runs), `roundTower` (wall frames on a circle, bay angles over a tower's free arc, and a helmet-dome lathe profile with a lantern neck), `archAwning` (a markies whose cloth follows a round-arched head, drawn by the `stripedAwning` adapter).
+- **Integration.** Registries merged by id (dispatcher, material-slot-tags.ts parses, manualCatalogue, signature-landmarks; modelSourceHashes takes main's entries plus the six ids, with the toolchain hash recomputed on the merged tree). Model dates are main's file plus the six ids and their LODs only. After the merge audit:glb passes all six: muntplein-1 18,597 tris, score 12.5; old-bell-rembrandtplein 16,339, 12.0; koningsplein-1 18,261, 14.5; cafe-riche-rokin 20,170, 27.1; welgelegen 5,280, 6.4; weltevreden 4,320, 2.6. check:landmark-inventory 684 landmarks, 0 fail; check:manual-landmarks 584 passed.
+- **World rebuilt.** `world:compile --no-policy --shell --against=none`: 604 cells written (gz 10.44 MB), shells 604, far prisms 270,371; world:verify fresh (295 tiles, no stale tiles or covers).
+- **What's New:** "Six iconic corners", with before/after pairs of Muntplein 1, The Old Bell and Koningsplein 1. The Old Bell's before is the lane's `-underlay` after frame (the generic block the game drew), because its before/ camera was misplaced.
+- **Open:** the Muntplein turret is shallow (0.3 m proud); The Old Bell's carved panels, ironwork and pixel lettering; Kosmos's reliefs and dome banding; Welgelegen and Weltevreden's pantile texture and dormer scrolls. Next briefs are on the board.
+
 ## Round 20261123c: shopfront feedback and shop templates in the baked world (2026-11-23)
 
 - **lane/shopfront-feedback-20261123 c94005c737: David's 41 Shopfronts notes of 2026-11-23 handled.**

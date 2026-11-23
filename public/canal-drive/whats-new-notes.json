@@ -3,6 +3,65 @@
   "notes": [
     {
       "date": "2026-11-23",
+      "title": "Six iconic corners",
+      "text": "The turreted Volharding building opposite the Munttoren, The Old Bell's banded brick corner on the Rembrandtplein, the domed Kosmos bank tower on the Koningsplein by the Bloemenmarkt, the carved white front of the old Café Riche with its red awnings on the Rokin, and the two Plantage garden houses Welgelegen and Weltevreden.",
+      "where": [
+        4.89385793,
+        52.36700052
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-muntplein-1.jpg",
+          "alt": "The corner of the Muntplein and the Amstel: before, a plain grey block; after, the red-brick Volharding building with white stone bands, arched windows and a corner turret",
+          "caption": "Muntplein 1 (Volharding): before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.29,
+              0.32,
+              0.22,
+              0.46
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-old-bell-rembrandtplein.jpg",
+          "alt": "The Rembrandtplein corner at the Utrechtsestraat: before, a plain red-brick block; after, The Old Bell with banded brick and white stone, a slate roof with dormers and a stepped gable",
+          "caption": "The Old Bell, Rembrandtplein: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.41,
+              0.17,
+              0.2,
+              0.55
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-koningsplein-1.jpg",
+          "alt": "Koningsplein 1 beside the Bloemenmarkt: before, a plain brown block; after, the Kosmos building in red brick with white bands and a round corner tower under a dark dome",
+          "caption": "Koningsplein 1 (Kosmos): before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.42,
+              0.18,
+              0.22,
+              0.6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
       "title": "Shops wear their real logos",
       "text": "Praxis, Burger King, KFC, GWK, Dunkin', MediaMarkt and 20 more. Café Bonjour gets its é. The Duck Store fills its window with ducks. Bever and Decathlon show sportswear, Samsonite suitcases, Hunkemöller lingerie. Historic cafés like Leentje on the Thorbeckeplein draw their own shopfronts in the normal game again.",
       "where": [
