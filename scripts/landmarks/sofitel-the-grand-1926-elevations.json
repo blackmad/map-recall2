@@ -1,15 +1,280 @@
 {
   "id": "sofitel-the-grand-1926",
-  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama TMX7316010203-001981_pano_0000_000228 (2021, frontal, w01-300.jpg), the north block only (3DBAG edge 1, t 0-18.9 m); not yet blind-counted. Glazed windows bottom row first: the granite base's ten wood windows, the mezzanine's eleven sashes, two rows of four wide windows, the attic's twelve small windows in four groups of three. The curved facets south of the stair tower repeat one composition per 5 m facet (wood window, three wide windows, four attic windows, a dormer) and are not counted here.",
+  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama TMX7316010203-001981_pano_0000_000228 (2021, frontal, w01-300.jpg), the north block; lane landmarks-r17-20261123 recounted it and added the stair tower, the seven full curve facets (w08-w13, TMX7316010203-001981_pano_0000_000196 to _000225, 2021) and the south end (w07-285, w15-285) as their own spans (alongM, metres from the face's west end along bearing 300), because r16's single facade with no span measured the whole 76 m curve against the north block's rows. Glazed windows only, bottom row first. Not yet blind-counted.",
   "facades": [
     {
       "name": "north block (Oudezijds Achterburgwal)",
       "bearing": 300,
       "photo": "artifacts/landmark-briefs/sofitel-the-grand-1926/w01-300.jpg",
-      "rows": [10, 11, 4, 4, 12],
+      "rows": [
+        10,
+        11,
+        4,
+        4,
+        12
+      ],
       "columns": 4,
       "symmetric": false,
-      "openings": ["glass"]
+      "openings": [
+        "glass"
+      ],
+      "alongM": [
+        0,
+        20.4
+      ],
+      "mixedRows": [
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "w01-300.jpg (TMX7316010203-001981_pano_0000_000228, 2021-01-25, 50 px/m): the attic storey's twelve windows stand in four groups of three, x 149-186, 205-244, 262-301 | 369-408, 426-465, 481-521 | 588-627, 645-685, 701-741 | 810-847, 867-905, 925-960 px (1.13 m pitch in a group, 4.4 m between group centres); the wider gaps are brick piers under the group headers, not missing windows. Widths listed are the glass inside the white frames.",
+          "openings": [
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            },
+            {
+              "kind": "attic light",
+              "w": 0.6
+            }
+          ]
+        }
+      ],
+      "note": "The attic row is grouped (mixedRows row 4)."
+    },
+    {
+      "name": "stair tower (Oudezijds Achterburgwal)",
+      "bearing": 300,
+      "photo": "artifacts/landmark-briefs/sofitel-the-grand-1926/w06-300.jpg",
+      "alongM": [
+        20.4,
+        26.4
+      ],
+      "rows": [
+        3
+      ],
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "w06-300.jpg (TMX7316010203-001981_pano_0000_000196, 2021): the leaded stair window (seven tiers of three lights) is drawn in copper-toned leaded glass and not counted as glass; the three small windows under hoods at the top are."
+    },
+    {
+      "name": "curve facets (Oudezijds Achterburgwal)",
+      "bearing": 300,
+      "photo": "artifacts/landmark-briefs/sofitel-the-grand-1926/w12-290.jpg",
+      "alongM": [
+        26.6,
+        66.8
+      ],
+      "rows": [
+        7,
+        7,
+        7,
+        7,
+        28,
+        6
+      ],
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Seven 5.1 m facets (3DBAG ring edges 5-29) facing 285-298, measured along bearing 300 (widths shrink by up to 3.5%). Per facet: a dark-wood window in the granite base, three wide white windows, four attic windows, a dormer; edge 29's dormer is not drawn (under the bridge and tree in w13-285, no evidence of it).",
+      "mixedRows": [
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "w12-290.jpg and w09-293.jpg (TMX7316010203-001981_pano_0000_000199 and _000225, 2021-01-25, 50 px/m): four attic windows per facet at x 12-53, 69-112, 128-171, 187-229 px (w12; w09: 13-58, 72-117, 132-177, 192-235), a 1.16 m pitch, with brick at both facet ends and the 0.44 m pilaster (ring edges 6-8, 10-12, ...) between facets, so each facet's four form a group; the wider gaps are those piers, not missing windows. Widths listed are the glass inside the white frames.",
+          "openings": [
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "south end (Oudezijds Achterburgwal)",
+      "bearing": 300,
+      "photo": "artifacts/landmark-briefs/sofitel-the-grand-1926/w07-285.jpg",
+      "alongM": [
+        66.8,
+        76.5
+      ],
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "The narrow facet (edge 33, 2.76 m: a narrower wood window and wide window) and the south end (edge 37, w07-285: the low block's wood and wide windows, the 24 m tower's narrow windows at three levels and a pair at the top). Row 4 mixes the narrow facet's attic lights with the tower window (mixedRows).",
+      "mixedRows": [
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "w07-285.jpg (TMX7316010203-001981_pano_0000_000202, 2021-01-25, 50 px/m): the south tower's narrow two-over-one windows stand at their own three levels (x 370-435 px; y 315-440, 500-625, 685-810), so the highest one shares a row with the narrow facet's two attic lights. The narrow facet (ring edge 33, 2.76 m) has no crop of its own (under the brief's 4 m wall minimum); its two attic lights follow the full facets' attic row (w12-290).",
+          "openings": [
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "attic light",
+              "w": 0.65
+            },
+            {
+              "kind": "tower window",
+              "w": 0.8
+            }
+          ]
+        }
+      ]
     }
   ]
 }

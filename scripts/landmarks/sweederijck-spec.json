@@ -1,0 +1,33 @@
+{
+ "id": "sweederijck",
+ "name": "Sweederijck, Herengracht",
+ "heightMetres": 19,
+ "bagYear": 1671,
+ "galleryView": {
+  "theta": 0.8,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012176171 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/sweederijck-footprints.json, bag-shell-prepare.ts); the canal front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001975_pano_0000_000569 (2021, frontal) and TMX7316010203-000355_pano_0000_000773 (2017, frontal), the Nieuwe Spiegelstraat side from b_20241203_0939_Track01_Sphere_00903 (2024, oblique) and the shop front at the back from TMX7316010203-001543_pano_0000_001961 (2020), CC BY 4.0, heights fitted to the 3DBAG wall top. Rijksmonument 1859 (register elements: stoop, attic, glazing bars, entrance, sculpture; stone, empire; core c. 1671). Per wall in scripts/landmarks/sweederijck-inventory.json.",
+ "materialOverrides": {
+  "sandstone": "#b4b0a7",
+  "concrete": "#c6c3ba",
+  "white": "#e6e4dc",
+  "frame": "#e8e6de",
+  "glass": "#363f44",
+  "stone": "#8e8f8b",
+  "brick": "#4a403c",
+  "ochre": "#6a4a2e",
+  "bronze": "#1d1f1f",
+  "slate": "#55585a",
+  "dark": "#232827"
+ },
+ "attribution": {
+  "title": "Sweederijck, Herengracht, Amsterdam (core c. 1671; rijksmonument 1859)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000569/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176171 (CC0): the banded sandstone canal front with its pilaster strips, five axes of sash windows with glazing bars, the arched entrance with its fanlight, pilasters and cornice, the two statues beside the centre window, the attic's paired oval windows, the cornice and roof balustrade, the stoop and area railings, the brick side with its tall windows and the shop front at the back, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

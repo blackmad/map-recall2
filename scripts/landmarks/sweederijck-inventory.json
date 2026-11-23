@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "id": "sweederijck",
+ "pand": "0363100012176171",
+ "brief": "scripts/landmarks/sweederijck-brief.md",
+ "signature": [
+  "s-entrance",
+  "s-statues",
+  "s-balustrade",
+  "s-attic-ovals",
+  "s-banded-stone",
+  "s-pilasters"
+ ],
+ "walls": [
+  {
+   "tag": "w01-43",
+   "bearing": 43,
+   "lengthM": 15,
+   "centre": [
+    4.890139,
+    52.3654275
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000773",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-banded-stone",
+     "kind": "other",
+     "where": "grey sandstone front laid in bands (joints every ~0.33 m) from the basement to the cornice",
+     "approxSizeM": [
+      14.9,
+      13.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-entrance",
+     "kind": "window-shape",
+     "where": "arched double door of varnished wood under a radial fanlight, in a stone archivolt with a keystone, between pilasters carrying an entablature (x 297-465, y 448-705)",
+     "approxSizeM": [
+      3.4,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-statues",
+     "kind": "sculpture",
+     "where": "two standing statues on the door's entablature either side of the centre window (2017: x 290 and 450, y 385-445; 2021 shows the east one, the west one behind the tree)",
+     "approxSizeM": [
+      0.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000355_pano_0000_000773",
+     "how": "block plinth, draped body block, shoulders and a sphere head; no carving"
+    },
+    {
+     "id": "s-attic-ovals",
+     "kind": "window-shape",
+     "where": "paired oval windows in a sunk panel over each outer axis in the attic band (x 68-148 and mirror, y 55-110)",
+     "approxSizeM": [
+      2.3,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-balustrade",
+     "kind": "other",
+     "where": "white roof balustrade on the cornice over the three middle axes (2017: x 195-560 at the top edge)",
+     "approxSizeM": [
+      7.3,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000773"
+    },
+    {
+     "id": "s-sashes",
+     "kind": "window-shape",
+     "where": "five axes of white sash windows with glazing bars on three storeys (bel-etage and first storey eight lights, low second storey four)",
+     "approxSizeM": [
+      1.6,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-pilasters",
+     "kind": "other",
+     "where": "plain pilaster strips over the banding: wide at both corners, narrow between the outer and inner axes and either side of the centre bay",
+     "approxSizeM": [
+      0.5,
+      13.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000773"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "stone cornice with bed moulding and corona at the 15.6 m wall top; string courses at the first- and second-storey sills and under the attic",
+     "approxSizeM": [
+      14.9,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-stoop",
+     "kind": "other",
+     "where": "straight stoop of five steps from the door to the pavement with iron railings either side (y 705-765)",
+     "approxSizeM": [
+      2.5,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-lanterns",
+     "kind": "lamp",
+     "where": "two wall lanterns on brackets beside the door (x 293 and 470, y 565-610)",
+     "approxSizeM": [
+      0.3,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569",
+     "how": "black box on a bracket with a white glass core"
+    },
+    {
+     "id": "s-area-railing",
+     "kind": "balcony-ironwork",
+     "where": "black iron area railings along the basement either side of the stoop",
+     "approxSizeM": [
+      13.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569"
+    },
+    {
+     "id": "s-cellar-lights",
+     "kind": "window-shape",
+     "where": "barred basement lights under the windows (one in view behind the railing, x 80-150, y 720-770)",
+     "approxSizeM": [
+      1.4,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569",
+     "how": "glass with vertical bars under all four outer axes; three of them are inferred from the one in view"
+    },
+    {
+     "id": "s-plaque",
+     "kind": "sign",
+     "where": "small brass name plate on the east door pilaster (x 455-472, y 615-630)",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000569",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.3 m plate"
+     }
+    },
+    {
+     "id": "s-roof-statue",
+     "kind": "sculpture",
+     "where": "a standing statue on the roof balustrade over the fourth axis (2017 panorama TMX7316010203-000355_pano_0000_000773, aimed view; cut off in both rectified crops)",
+     "approxSizeM": [
+      0.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000355_pano_0000_000773",
+     "how": "the same block figure as the entablature statues"
+    }
+   ],
+   "note": "Canal front, 14.9 m (facade ring edge 0), frontal 2021 crop at 50 px/m with the 2017 frontal crop; heights fitted to the 15.6 m 3DBAG wall top."
+  },
+  {
+   "tag": "w02-315",
+   "bearing": 315,
+   "lengthM": 11.3,
+   "centre": [
+    4.88989,
+    52.3652875
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_0939_Track01_Sphere_00903",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [],
+   "note": "Unresolved. The brief's wall is the rear wing's north-west face (facade ring edges 5-7), 5.6 m behind the 25.2 m party wall with the north-west neighbour. The only crop (2024, 34 m off, 51 deg oblique) shows dark brick, a grey stone basement and two tall windows with curved iron railings; the camera-matched render puts this pand's wing behind the left window but not the right one, so which face the windows belong to cannot be told at 51 deg. Shell until a frontal capture of the yard side exists."
+  },
+  {
+   "tag": "w03-224",
+   "bearing": 224,
+   "lengthM": 9.4,
+   "centre": [
+    4.8898825,
+    52.365222
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama (yard). Shell."
+  },
+  {
+   "tag": "w04-134",
+   "bearing": 134,
+   "lengthM": 7.9,
+   "centre": [
+    4.889862,
+    52.365324
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001543_pano_0000_001961",
+   "capturedAt": "2020-01-08",
+   "checked": true,
+   "items": [],
+   "note": "Not this pand's face. The 3DBAG wall on this ring edge (facade ring edge 3) is a 2.4 m yard wall; the 2020 crop (32 m off, across the south-east neighbour's lot) shows the 'spiegel' shop front with brick storeys over it, which is another building. Shell."
+  },
+  {
+   "tag": "w05-223",
+   "bearing": 223,
+   "lengthM": 4.3,
+   "centre": [
+    4.889925,
+    52.365337
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama (yard). Shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

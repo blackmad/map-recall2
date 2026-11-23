@@ -102,7 +102,8 @@ function eastHouse(b: BuildingTools) {
   // entrance: dark door under a white aedicule with an oculus and a semicircular pediment (2025)
   const t = EAST_AXES[0];
   slab(b, F, t, 0, 0.98, 2.95, 0.1, 'dark');
-  slab(b, F, t, 1.95, 0.6, 0.85, 0.04, 'glass', 0.1);
+  // r17 recount (2025 crop x 42-86, y 867-882 px): the door is panelled; its only glass is the transom light over it
+  slab(b, F, t, 2.45, 0.84, 0.33, 0.04, 'glass', 0.1);
   for (const s of [-1, 1]) slab(b, F, t + s * 0.6, 0, 0.22, 3.0, 0.14, 'white');
   slab(b, F, t, 2.95, 1.6, 0.25, 0.22, 'white');
   slab(b, F, t, 3.2, 1.35, 1.2, 0.12, 'white');
