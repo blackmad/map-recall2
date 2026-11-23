@@ -111013,5 +111013,282 @@
     ]
    ]
   }
+ },
+ {
+  "id": "cafe-riche-rokin",
+  "name": "Former Café-Restaurant Riche, Rokin",
+  "modelUrl": "./models/cafe-riche-rokin.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168347"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8919753,
+    52.36988082
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 36.8,
+   "widthMetres": 33.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.8919753,
+    52.36988082
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168347 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/cafe-riche-rokin-footprints.json, bag-shell-prepare.ts); the Riche front (Rokin 84) read from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_03-28-47_01404 (2025, frontal) and TMX7316010203-002857_pano_0002_000054 (2022, frontal), Rokin 86 and 88-90 from TMX7316010203-002542_pano_0003_000113 and _000115 (2022, frontal), the side lane from TMX7316060226-000019_pano_0000_003527 (2016, 45 deg) and TMX7316010203-002628_pano_0000_000295 (2022, 31 deg), CC BY 4.0. Rijksmonument 5009 (v.m. Cafe-Restaurant Riche, 1883, A.L. van Gendt; richly worked eclectic front). Per wall in scripts/landmarks/cafe-riche-rokin-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21,
+  "galleryView": {
+   "theta": 1.35,
+   "phi": 1.2
+  },
+  "bagYear": 1883,
+  "materialOverrides": {
+   "sandstone": "#b9b6ac",
+   "greyBrick": "#8e8b83",
+   "stone": "#6f6a63",
+   "white": "#e4e2da",
+   "red": "#8e2435",
+   "frame": "#5a3a30",
+   "ochre": "#5e3b26",
+   "glass": "#3c4a52",
+   "bronze": "#1f2121",
+   "slate": "#4f585c",
+   "brick": "#6a544c",
+   "pink": "#aba190",
+   "concrete": "#e2e0d8",
+   "gold": "#c0562a",
+   "copper": "#5f4840",
+   "blue": "#b2a891",
+   "green": "#4a4a48"
+  },
+  "measuredOverrides": true,
+  "attribution": {
+   "title": "Former Café-Restaurant Riche, Rokin 84, Amsterdam (A.L. van Gendt, 1883; rijksmonument 5009), with Rokin 86-90",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01404/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168347 (CC0): the Riche's granite plinth, rusticated ground storey with three arched windows, keystone masks and the arched door, the relief band, consoles and long iron balcony, engaged columns, oculus cartouches, garland frieze and modillion cornice, red markiezen on every window, the slate mansard with the white dormer dated 1883; the brick Rokin 86 front with its white cornice and balustrade, the stone Rokin 88-90 office with its attic bays, and the side lane's brick office over a stone arcade with its lion corbel, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8920797,
+      52.369983
+     ],
+     [
+      4.8918628,
+      52.3700018
+     ],
+     [
+      4.891863,
+      52.3700028
+     ],
+     [
+      4.8916474,
+      52.3700208
+     ],
+     [
+      4.8916263,
+      52.3699753
+     ],
+     [
+      4.8917027,
+      52.3699685
+     ],
+     [
+      4.8916867,
+      52.369934
+     ],
+     [
+      4.8917168,
+      52.3699313
+     ],
+     [
+      4.891686,
+      52.369865
+     ],
+     [
+      4.8917342,
+      52.3698607
+     ],
+     [
+      4.891721,
+      52.3698049
+     ],
+     [
+      4.89159,
+      52.3698168
+     ],
+     [
+      4.8915768,
+      52.3697614
+     ],
+     [
+      4.8916037,
+      52.369759
+     ],
+     [
+      4.8920217,
+      52.369722
+     ],
+     [
+      4.8920225,
+      52.3697232
+     ],
+     [
+      4.892039,
+      52.3697694
+     ],
+     [
+      4.8920231,
+      52.3697753
+     ],
+     [
+      4.8920293,
+      52.3697927
+     ],
+     [
+      4.8920477,
+      52.3697939
+     ],
+     [
+      4.8920612,
+      52.3698317
+     ],
+     [
+      4.8920775,
+      52.3698767
+     ],
+     [
+      4.8920777,
+      52.3698775
+     ],
+     [
+      4.8920778,
+      52.3698782
+     ],
+     [
+      4.8920778,
+      52.369879
+     ],
+     [
+      4.8920777,
+      52.3698798
+     ],
+     [
+      4.8920775,
+      52.3698806
+     ],
+     [
+      4.8920771,
+      52.3698813
+     ],
+     [
+      4.8920767,
+      52.3698821
+     ],
+     [
+      4.8920762,
+      52.3698828
+     ],
+     [
+      4.8920755,
+      52.3698835
+     ],
+     [
+      4.8920748,
+      52.3698841
+     ],
+     [
+      4.892074,
+      52.3698847
+     ],
+     [
+      4.8920731,
+      52.3698853
+     ],
+     [
+      4.8920721,
+      52.3698858
+     ],
+     [
+      4.892071,
+      52.3698862
+     ],
+     [
+      4.8920699,
+      52.3698866
+     ],
+     [
+      4.8920688,
+      52.3698869
+     ],
+     [
+      4.8920675,
+      52.3698872
+     ],
+     [
+      4.8920663,
+      52.3698874
+     ],
+     [
+      4.8920693,
+      52.3698958
+     ],
+     [
+      4.8920837,
+      52.3698939
+     ],
+     [
+      4.8920854,
+      52.3698986
+     ],
+     [
+      4.8920882,
+      52.3698982
+     ],
+     [
+      4.8920902,
+      52.3699032
+     ],
+     [
+      4.892083,
+      52.3699042
+     ],
+     [
+      4.8920883,
+      52.3699177
+     ],
+     [
+      4.8920955,
+      52.3699166
+     ],
+     [
+      4.8920976,
+      52.369922
+     ],
+     [
+      4.8920942,
+      52.3699225
+     ],
+     [
+      4.8921148,
+      52.36998
+     ],
+     [
+      4.8920797,
+      52.369983
+     ]
+    ]
+   ]
+  }
  }
 ]
