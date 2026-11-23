@@ -88,23 +88,64 @@ export function glyphCellBox(): { x: number; y: number; w: number; h: number } {
   const { cols, rows } = LOGO_GRID;
   return { x: (GLYPH_CELL % cols) / cols, y: Math.floor(GLYPH_CELL / cols) / rows, w: 1 / cols, h: 1 / rows };
 }
-export type GlyphQuad = { ch: string; a0: number; a1: number; rect: [number, number, number, number] };
+/**
+ * A letter quad: its span along the word (units of the quad's height) and uv rect. `z` (accent marks only): its
+ * vertical span in units of the quad's height from the letter quad's foot, where it differs from the letter's [0, 1].
+ */
+export type GlyphQuad = { ch: string; a0: number; a1: number; rect: [number, number, number, number]; z?: readonly [number, number] };
+
+// Lane shopfront-feedback-20261123 (David's note fd607d78, "Café Bonjour: missing the é"): accented letters drew as a
+// gap ('CAF BONJOUR'). The lettering cell's two free slots (after the apostrophe) hold two marks, an acute stroke and
+// a diaeresis, drawn over the cap band of their slot (accentGlyphSvg); a decomposed letter (NFD) draws its base glyph
+// and its mark as a second quad over the capital. A grave is the acute mirrored (u swapped), a circumflex an acute and
+// a grave side by side; a tilde, ring or cedilla draws the bare letter, which still reads better than a gap.
+export const ACCENT_SLOTS = { acute: 38, diaeresis: 39 } as const;
+/** A mark's quad: as wide as this share of the letter quad's height, centred on its letter, from ACCENT_Z (units of
+ *  the letter quad's height from its foot: the caps run to 0.8625 of it, GLYPH_V and the 0.21 cap line). */
+export const ACCENT_W = 0.34, ACCENT_Z = [0.885, 1.075] as const;
+/** The slot's uv band the mark is drawn over and sampled from (fractions of the slot, from its top-left). */
+export const ACCENT_UV = { u: [0.1, 0.9], v: [0.21, 0.79] } as const;
+/** The SVG for a mark in its slot at (x, y), gw x gh px (white on the cell's black, as the letters). The quad squashes
+ *  the band to ACCENT_W x (ACCENT_Z[1] - ACCENT_Z[0]) of the letter height, so the shapes are drawn pre-stretched. */
+export function accentGlyphSvg(kind: keyof typeof ACCENT_SLOTS, x: number, y: number, gw: number, gh: number): string {
+  const U = (f: number) => (x + gw * (ACCENT_UV.u[0] + (ACCENT_UV.u[1] - ACCENT_UV.u[0]) * f)).toFixed(2);
+  const V = (f: number) => (y + gh * (ACCENT_UV.v[0] + (ACCENT_UV.v[1] - ACCENT_UV.v[0]) * f)).toFixed(2);
+  if (kind === 'acute') return `<path d="M${U(0.18)} ${V(1)}L${U(0.52)} ${V(1)}L${U(0.88)} ${V(0)}L${U(0.48)} ${V(0)}Z" fill="#ffffff"/>`;
+  return `<path d="M${U(0.06)} ${V(0.12)}H${U(0.38)}V${V(0.88)}H${U(0.06)}Z M${U(0.62)} ${V(0.12)}H${U(0.94)}V${V(0.88)}H${U(0.62)}Z" fill="#ffffff"/>`;
+}
+const MARKS: Readonly<Record<string, Array<{ slot: keyof typeof ACCENT_SLOTS; flip?: boolean; half?: 0 | 1 }>>> = {
+  '́': [{ slot: 'acute' }], '̀': [{ slot: 'acute', flip: true }], '̈': [{ slot: 'diaeresis' }],
+  '̂': [{ slot: 'acute', half: 0 }, { slot: 'acute', flip: true, half: 1 }],
+};
 /**
  * The word laid out in units of the letter quad's height: one quad per letter with its uv rect (v up, as logoFor), and
- * the word's width. Characters outside A-Z 0-9 advance as a space.
+ * the word's width. An accented letter is its base letter and a mark quad over it (ACCENT_SLOTS). Other characters
+ * outside A-Z 0-9 advance as a space.
  */
 export function glyphLayout(word: string): { quads: GlyphQuad[]; width: number } {
   const box = glyphCellBox(), gw = box.w / GLYPH_GRID.cols, gh = box.h / GLYPH_GRID.rows, quads: GlyphQuad[] = [];
   const cellAspect = gw / gh;
+  const slotXY = (i: number) => [box.x + (i % GLYPH_GRID.cols) * gw, box.y + Math.floor(i / GLYPH_GRID.cols) * gh] as const;
   let x = 0;
-  for (const ch of [...word.toUpperCase()]) {
+  for (const raw of [...word.toUpperCase()]) {
+    // Precomposed letters outside the cell (É, Ö) decompose to their base letter and combining marks.
+    const parts = GLYPH_CHARS.includes(raw) ? [raw] : [...raw.normalize('NFD')], ch = parts[0];
     const i = GLYPH_CHARS.indexOf(ch), ink = GLYPH_INK[ch];
     if (i < 0 || !ink) { x += GLYPH_SPACE; continue; }
-    const cx = box.x + (i % GLYPH_GRID.cols) * gw, cy = box.y + Math.floor(i / GLYPH_GRID.cols) * gh;
+    const [cx, cy] = slotXY(i);
     const side = GLYPH_SIDE * (GLYPH_V[1] - GLYPH_V[0]) / cellAspect;
     const f0 = Math.max(0, ink[0] - side), f1 = Math.min(1, ink[1] + side), w = (f1 - f0) * cellAspect / (GLYPH_V[1] - GLYPH_V[0]);
     const y0 = cy + GLYPH_V[0] * gh, y1 = cy + GLYPH_V[1] * gh;
     quads.push({ ch, a0: x, a1: x + w, rect: [cx + f0 * gw, 1 - y1, cx + f1 * gw, 1 - y0] });
+    const mid = x + w / 2;
+    for (const m of parts.slice(1).flatMap(c => MARKS[c] ?? [])) {
+      const [sx, sy] = slotXY(ACCENT_SLOTS[m.slot]);
+      let u0 = sx + ACCENT_UV.u[0] * gw, u1 = sx + ACCENT_UV.u[1] * gw;
+      if (m.flip) [u0, u1] = [u1, u0];
+      const half = m.half === undefined ? null : m.half, mw = half === null ? ACCENT_W : ACCENT_W * 0.55;
+      const c = half === null ? mid : mid + (half === 0 ? -1 : 1) * mw * 0.45;
+      quads.push({ ch: `${ch}${m.slot}`, a0: c - mw / 2, a1: c + mw / 2, rect: [u0, 1 - (sy + ACCENT_UV.v[1] * gh), u1, 1 - (sy + ACCENT_UV.v[0] * gh)], z: ACCENT_Z });
+    }
     x += w;
   }
   return { quads, width: x };

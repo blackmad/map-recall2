@@ -22,6 +22,8 @@ export const GOODS_KINDS = [
   'souvenirs', 'tobacco', 'exchange', 'bikes', 'coffeeshop', 'smartshop', 'clothing', 'magazines', 'ducks', 'deli', 'bowls',
   'automatiek', 'fastfood', 'bainMarie', 'jars', 'liquor', 'hair', 'pharmacy', 'frites', 'cafe', 'optician', 'shoes',
   'cosmetics', 'pancakes', 'brownBar', 'pizza', 'redWindow', 'tattoo',
+  // Lane shopfront-feedback-20261123: kinds a chain takes in place of its template's (retailChains.ts RetailChain.goods).
+  'sports', 'outdoor', 'luggage', 'lingerie',
 ] as const;
 export type GoodsKind = (typeof GOODS_KINDS)[number];
 /** Cells per goods layer (2 x 2). */
@@ -387,10 +389,22 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
     rect(p, 0, 226, W, 4, '#0a3d91');
   },
   ducks(p) {
+    // Lane shopfront-feedback-20261123 (David's note 7fb182c1, "can we see some ducks in the window?"): shelves of
+    // rubber ducks behind, and at the glass a pyramid of big ducks round one giant duck, so they read from the street.
     room(p, '#fff6d0', '#d8c890', '255,250,220', 2);
-    shelves(p, [60, 100, 140, 180, 220], '#ffffff');
-    for (const y of [60, 100, 140, 180, 220]) for (let x = 6; x < W - 10; x += 15) { const col = p.r() < 0.8 ? '#ffd21f' : pick(p.r, ['#ff8a1f', '#e8457a', '#2f6fb0', '#ffffff', '#1d1d1b']);
-      oval(p, x + 6, y - 7, 7, 6, col); oval(p, x + 9, y - 16, 4.5, 4.5, col); poly(p, [[x + 12, y - 16], [x + 16, y - 15], [x + 12, y - 13]], '#ff7a1a'); oval(p, x + 10, y - 17, 0.9, 0.9, '#111'); }
+    shelves(p, [52, 88, 124], '#ffffff');
+    const duck = (x: number, y: number, s: number, col: string) => {
+      oval(p, x, y - 7 * s, 9 * s, 7 * s, col); poly(p, [[x - 9 * s, y - 9 * s], [x - 13 * s, y - 15 * s], [x - 6 * s, y - 11 * s]], col);
+      oval(p, x + 4 * s, y - 17 * s, 5.5 * s, 5.5 * s, col); poly(p, [[x + 8 * s, y - 18 * s], [x + 14 * s, y - 16 * s], [x + 8 * s, y - 14 * s]], '#ff7a1a');
+      oval(p, x + 5.5 * s, y - 19 * s, 1.1 * s, 1.1 * s, '#111'); oval(p, x - 1 * s, y - 9 * s, 4 * s, 2.5 * s, 'rgba(255,255,255,0.35)');
+    };
+    const tint = () => (p.r() < 0.75 ? '#ffd21f' : pick(p.r, ['#ff8a1f', '#e8457a', '#2f6fb0', '#ffffff', '#1d1d1b', '#3f8f4a']));
+    for (const y of [52, 88, 124]) for (let x = 12; x < W - 8; x += 15) duck(x, y, 0.8, tint());
+    // The window display: a stepped white plinth with rows of big ducks, the giant one in the middle.
+    rect(p, 6, 200, W - 12, 30, '#ffffff'); rect(p, 22, 170, W - 44, 30, '#f4f1e6'); rect(p, 6, 228, W - 12, 2, 'rgba(0,0,0,0.15)');
+    for (let x = 18; x < W - 10; x += 24) duck(x, 200, 1.5, tint());
+    for (let x = 34; x < W - 26; x += 26) if (Math.abs(x - W / 2) > 18) duck(x, 170, 1.4, tint());
+    duck(W / 2 - 4, 170, 2.6, '#ffd21f');
   },
   deli(p) {
     // A deli/café counter (Stach): cakes and sandwiches in a glass counter, a chalkboard, shelves of jars.
@@ -534,6 +548,94 @@ const PAINTERS: Record<GoodsKind, (p: P) => void> = {
     for (let k = 0; k < 6; k++) poly(p, [[k * 8, 0], [k * 8 + 9, 0], [k * 8 + 6 + (k % 2) * 3, H], [k * 8 - 2, H]], k % 2 ? '#4a0614' : '#5e0a1c');
     rect(p, 0, 0, W, 6, '#2a0208');
   },
+  // Lane shopfront-feedback-20261123 (David's Shopfronts notes of 2026-11-23): kinds a chain takes in place of its
+  // template's (retailChains.ts RetailChain.goods), so a sports or luggage chain under the clothes template stops
+  // showing dresses on mannequins.
+  sports(p) {
+    // Bever, Decathlon: a mannequin in a bright shell jacket and leggings, a rail of technical jackets, a wall of
+    // trainers in profile, a bin of balls and rackets on the wall.
+    room(p, '#eeeeea', '#b8b6b0', '255,252,244', 3);
+    const tech = ['#1f6fd6', '#e8452c', '#1d1d1b', '#27a36a', '#f2b92e', '#2b3a6a', '#e85a9a', '#9ab0c0'];
+    rail(p, 62, W, 40, tech, 58);
+    shelves(p, [128, 152], '#ffffff', 62, W);
+    for (const y of [128, 152]) for (let x = 66; x < W - 18; x += 21) { const col = pick(p.r, ['#ffffff', '#1d1d1b', '#1f6fd6', '#e8452c', '#27a36a', '#f2b92e']);
+      poly(p, [[x, y], [x + 17, y], [x + 17, y - 5], [x + 8, y - 7], [x + 5, y - 13], [x, y - 13]], col); rect(p, x, y - 3, 17, 3, '#f4f4f0'); }
+    // Rackets and a ball net on the wall at the left, above the mannequin's shoulder.
+    for (const [x, col] of [[10, '#e8452c'], [26, '#1f6fd6']] as const) { oval(p, x + 6, 44, 6, 9, 'rgba(0,0,0,0)'); p.c.lineWidth = 2; p.c.strokeStyle = col; p.c.beginPath(); p.c.ellipse(x + 6, 44, 6, 9, 0, 0, Math.PI * 2); p.c.stroke(); rect(p, x + 5, 53, 2, 14, '#1d1d1b'); }
+    // The mannequin: jacket, dark leggings, trainers.
+    const s = 0.95, x = 34, y = 236;
+    oval(p, x, y - 150 * s, 9 * s, 11 * s, '#d8d4cc');
+    poly(p, [[x - 18 * s, y - 134 * s], [x + 18 * s, y - 134 * s], [x + 16 * s, y - 84 * s], [x - 16 * s, y - 84 * s]], pick(p.r, ['#1f6fd6', '#e8452c', '#27a36a']));
+    poly(p, [[x - 18 * s, y - 134 * s], [x - 25 * s, y - 128 * s], [x - 27 * s, y - 86 * s], [x - 20 * s, y - 86 * s]], '#1d1d1b');
+    poly(p, [[x + 18 * s, y - 134 * s], [x + 25 * s, y - 128 * s], [x + 27 * s, y - 86 * s], [x + 20 * s, y - 86 * s]], '#1d1d1b');
+    rect(p, x - 1 * s, y - 132 * s, 2 * s, 46 * s, 'rgba(255,255,255,0.5)');
+    rect(p, x - 13 * s, y - 84 * s, 11 * s, 76 * s, '#22252a'); rect(p, x + 2 * s, y - 84 * s, 11 * s, 76 * s, '#22252a');
+    rect(p, x - 16 * s, y - 9 * s, 15 * s, 7 * s, '#ffffff'); rect(p, x + 1 * s, y - 9 * s, 15 * s, 7 * s, '#ffffff');
+    // A bin of balls at the glass.
+    rect(p, 70, 196, 70, 30, '#3a3d42');
+    for (let k = 0; k < 6; k++) oval(p, 78 + k * 11, 194, 6, 6, pick(p.r, ['#f2b92e', '#ffffff', '#e8452c', '#1f6fd6', '#27a36a']));
+  },
+  outdoor(p) {
+    // Timberland: rugged outdoor wear in earth tones on warm timber, work boots on crates at the glass, a folded
+    // flannel stack and a mannequin in a waxed jacket over jeans.
+    room(p, '#d9cdb8', '#6a5038', '255,226,180', 3);
+    vgrad(p, 0, 20, W, 150, [[0, 'rgba(120,80,40,0.25)'], [1, 'rgba(120,80,40,0.05)']]);
+    for (let y = 30; y < 170; y += 14) rect(p, 60, y, W - 60, 1.2, 'rgba(70,45,20,0.35)');
+    const earth = ['#5a4a2a', '#2f3a2a', '#8a5a2a', '#b88a4a', '#3a2a20', '#6a6a4a', '#7a2a1f', '#c9b48a'];
+    rail(p, 62, W, 36, earth, 62);
+    // Flannel stacks: checked blocks.
+    shelves(p, [150], '#6a4a2a', 62, W);
+    for (let x = 66; x < W - 16; x += 20) for (let k = 0; k < 3; k++) { const col = pick(p.r, ['#8a2a1f', '#2f4a3a', '#3a3a5a', '#b88a4a']); rect(p, x, 144 - k * 7, 17, 6, col); rect(p, x + 5, 144 - k * 7, 2, 6, 'rgba(0,0,0,0.3)'); rect(p, x, 146 - k * 7, 17, 1.2, 'rgba(0,0,0,0.3)'); }
+    // The mannequin: waxed jacket, jeans, wheat boots.
+    const s = 0.95, x = 32, y = 236;
+    oval(p, x, y - 150 * s, 9 * s, 11 * s, '#d8d0c4');
+    poly(p, [[x - 19 * s, y - 134 * s], [x + 19 * s, y - 134 * s], [x + 18 * s, y - 80 * s], [x - 18 * s, y - 80 * s]], pick(p.r, ['#4a4a2a', '#5a3a22', '#2f3a2a']));
+    poly(p, [[x - 19 * s, y - 134 * s], [x - 26 * s, y - 128 * s], [x - 28 * s, y - 84 * s], [x - 21 * s, y - 84 * s]], '#3a3a22');
+    poly(p, [[x + 19 * s, y - 134 * s], [x + 26 * s, y - 128 * s], [x + 28 * s, y - 84 * s], [x + 21 * s, y - 84 * s]], '#3a3a22');
+    rect(p, x - 13 * s, y - 80 * s, 12 * s, 66 * s, '#2f4466'); rect(p, x + 1 * s, y - 80 * s, 12 * s, 66 * s, '#2f4466');
+    for (const bx of [x - 16 * s, x + 1 * s]) { rect(p, bx, y - 18 * s, 15 * s, 16 * s, '#c9922e'); rect(p, bx, y - 3 * s, 17 * s, 3 * s, '#3a2412'); }
+    // Boots on crates at the glass.
+    for (const cx of [72, 108]) { rect(p, cx, 200, 32, 26, '#8a6438'); rect(p, cx, 200, 32, 3, '#a87e4e'); rect(p, cx + 15, 200, 2, 26, 'rgba(0,0,0,0.25)');
+      for (const bx of [cx + 2, cx + 17]) { poly(p, [[bx, 200], [bx + 14, 200], [bx + 14, 194], [bx + 7, 192], [bx + 6, 180], [bx, 180]], '#c9922e'); rect(p, bx, 198, 14, 2, '#3a2412'); } }
+  },
+  luggage(p) {
+    // Samsonite: hard-shell suitcases standing in rows on white plinths, ribbed shells in bright and dark colours,
+    // a cabin case open at the glass.
+    room(p, '#f2f1ee', '#c8c6c2', '255,252,246', 3);
+    const shells = ['#1d1d1b', '#2b3a6a', '#c8262d', '#9aa8b4', '#e8e2d2', '#2f6a5a', '#d68a2a', '#5a5f66'];
+    const caseAt = (x: number, y: number, w: number, h: number, col: string) => {
+      round(p, x, y - h, w, h, 3, col);
+      for (let k = 1; k < 4; k++) rect(p, x + (w * k) / 4 - 0.7, y - h + 3, 1.4, h - 6, 'rgba(255,255,255,0.18)');
+      rect(p, x + w * 0.35, y - h - 6, w * 0.3, 2, '#3a3a3a'); rect(p, x + w * 0.35 - 1, y - h - 6, 2, 6, '#3a3a3a'); rect(p, x + w * 0.65 - 1, y - h - 6, 2, 6, '#3a3a3a');
+      rect(p, x + 2, y, 4, 3, '#222'); rect(p, x + w - 6, y, 4, 3, '#222');
+    };
+    shelves(p, [92, 154], '#ffffff');
+    for (let x = 6; x < W - 26; x += 30) caseAt(x, 92, 24, 40, pick(p.r, shells));
+    for (let x = 4; x < W - 30; x += 36) caseAt(x, 154, 30, 48, pick(p.r, shells));
+    // Plinth at the glass: a large case and a cabin case.
+    rect(p, 10, 214, W - 20, 12, '#ffffff'); rect(p, 10, 226, W - 20, 4, 'rgba(0,0,0,0.15)');
+    caseAt(22, 214, 46, 66, pick(p.r, ['#c8262d', '#2b3a6a', '#1d1d1b'])); caseAt(84, 214, 36, 50, pick(p.r, ['#9aa8b4', '#d68a2a', '#2f6a5a']));
+  },
+  lingerie(p) {
+    // Hunkemöller: a blush-pink boudoir behind black frames, bust forms in bras and slips along the glass, a rail of
+    // lace and satin in black, blush and red, pink light.
+    room(p, '#3a2a2e', '#1e1618', '255,200,210', 3);
+    vgrad(p, 0, 20, W, 160, [[0, 'rgba(240,170,190,0.35)'], [1, 'rgba(240,170,190,0.08)']]);
+    glow(p, W * 0.5, 40, 70, '255,170,200', 0.35);
+    rail(p, 0, W, 38, ['#1d1d1b', '#f2c6d0', '#c8263a', '#e8d8d0', '#7a1f3a', '#1d1d1b', '#f4a6c0'], 54);
+    // Bust forms on stands: skin-tone torso, a bra (two cups and a band), a brief.
+    const bust = (x: number, y: number, s: number, col: string) => {
+      poly(p, [[x - 15 * s, y - 120 * s], [x + 15 * s, y - 120 * s], [x + 13 * s, y - 70 * s], [x + 17 * s, y - 48 * s], [x - 17 * s, y - 48 * s], [x - 13 * s, y - 70 * s]], '#efd6c8');
+      rect(p, x - 4 * s, y - 128 * s, 8 * s, 8 * s, '#efd6c8');
+      oval(p, x - 7 * s, y - 104 * s, 7 * s, 6 * s, col); oval(p, x + 7 * s, y - 104 * s, 7 * s, 6 * s, col);
+      rect(p, x - 14 * s, y - 100 * s, 28 * s, 3 * s, col); rect(p, x - 8 * s, y - 118 * s, 1.5 * s, 12 * s, col); rect(p, x + 6.5 * s, y - 118 * s, 1.5 * s, 12 * s, col);
+      poly(p, [[x - 17 * s, y - 58 * s], [x + 17 * s, y - 58 * s], [x + 4 * s, y - 48 * s], [x - 4 * s, y - 48 * s]], col);
+      rect(p, x - 1.5 * s, y - 48 * s, 3 * s, 44 * s, '#1d1d1b'); rect(p, x - 12 * s, y - 4 * s, 24 * s, 4 * s, '#1d1d1b');
+    };
+    bust(38, 236, 1, pick(p.r, ['#1d1d1b', '#c8263a'])); bust(108, 236, 0.95, pick(p.r, ['#f4a6c0', '#1d1d1b', '#7a1f3a']));
+    // A low table of folded pieces between them.
+    rect(p, 60, 200, 30, 26, '#1d1d1b'); for (let k = 0; k < 3; k++) rect(p, 62, 196 - k * 5, 26, 4, pick(p.r, ['#f2c6d0', '#1d1d1b', '#c8263a', '#e8d8d0']));
+  },
   tattoo(p) {
     // A tattoo studio: a dark room, the wall covered in framed flash sheets, a neon sign, the chair under a lamp.
     if (p.room) room(p, '', ''); else { rect(p, 0, 0, W, H, '#1c1a1a'); vgrad(p, 0, 0, W, H, [[0, '#2a2626'], [1, '#121010']]); }
@@ -576,6 +678,7 @@ const LIT: Partial<Record<GoodsKind, number>> = {
   aisles: 0.9, drugstore: 0.9, pharmacy: 0.85, phones: 0.8, gelato: 0.8, waffles: 0.75, magazines: 0.8, ducks: 0.8, exchange: 0.7,
   automatiek: 1, fastfood: 0.7, bowls: 0.75, optician: 0.85, bread: 0.7, butcher: 0.8, frites: 0.75, bainMarie: 0.7, doner: 0.7,
   coffeeshop: 0.2, smartshop: 0.35, redWindow: 1, tattoo: 0.3, brownBar: 0.25, liquor: 0.45, cosmetics: 0.5, hair: 0.8, books: 0.55, cheese: 0.6, pancakes: 0.55,
+  sports: 0.85, outdoor: 0.6, luggage: 0.85, lingerie: 0.4,
 };
 
 /**

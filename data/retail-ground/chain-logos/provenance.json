@@ -214,13 +214,12 @@
   "name": "Rituals",
   "pois": 12,
   "wikidata": "Q62874140",
-  "file": "File:Rituals Cosmetics logo.png",
-  "source": "https://commons.wikimedia.org/wiki/File:Rituals_Cosmetics_logo.png",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Rituals_Cosmetics_logo.png/960px-Rituals_Cosmetics_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "07bcf48973c2eab4906a68c4d98262641576ff68",
-  "licence": "Public domain",
+  "source": "https://www.rituals.com/",
+  "renderUrl": "https://www.rituals.com/en-nl/home (header SVG)",
+  "licence": "trademark logo; mark from Commons File:Rituals_Cosmetics_logo.png, wordmark from the brand site header SVG",
   "artist": "Rituals",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: square mark + RITUALS... on black"
  },
  "douglas": {
   "name": "Douglas",
@@ -306,13 +305,11 @@
   "name": "Ekoplaza",
   "pois": 10,
   "wikidata": "Q47017915",
-  "file": "File:Logo of Ekoplaza.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Logo_of_Ekoplaza.svg/960px-Logo_of_Ekoplaza.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "9025ec5de09c6e5a0340e19289180287d6e15a2f",
-  "licence": "Public domain",
+  "licence": "Commons file (text logo)",
   "artist": "Unknown authorUnknown author",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: leaf + EKOPLAZA on one line"
  },
  "hunkemoller": {
   "name": "Hunkemöller",
@@ -376,25 +373,21 @@
   "name": "GWK Travelex",
   "pois": 8,
   "wikidata": "Q2337964",
-  "file": "File:Travelex Logo.svg",
-  "source": "https://commons.wikimedia.org/wiki/File:Travelex_Logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Travelex_Logo.svg/960px-Travelex_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "6ebda78eb6bbce652205d162746ca9d6823faa24",
-  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:GWK_Travelex_logo.jpg",
+  "licence": "Commons file (text logo)",
   "artist": "Travelex UK Ltd",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: blue band + red tab on white"
  },
  "h-and-m": {
   "name": "H&M",
   "pois": 8,
   "wikidata": "Q188326",
-  "file": "File:H&M-Logo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:H%26M-Logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/960px-H%26M-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "e08c567a59664099d72f410ff3b98badc69c4227",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Original: Unknown Vector:  Afrank99",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: padded to fit the board (minAspect)"
  },
  "eye-wish": {
   "name": "Eye Wish",
@@ -531,13 +524,12 @@
   "name": "Simon Lévelt",
   "pois": 7,
   "wikidata": "Q2220070",
-  "file": "File:Simon Levelt Logo.png",
-  "source": "https://commons.wikimedia.org/wiki/File:Simon_Levelt_Logo.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Simon_Levelt_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "96995a22675404adcdc3c9368260154f22f49ce2",
-  "licence": "Public domain",
+  "source": "https://www.simonlevelt.nl/",
+  "renderUrl": "https://www.simonlevelt.nl/on/demandware.static/-/Sites-simonlevelt-Library/default/dw62b437bc/branding/logo.svg",
+  "licence": "trademark logo; brand site SVG",
   "artist": "Simon Lévelt",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: script name with 'SINDS 1826' beside it"
  },
  "ici-paris-xl": {
   "name": "ICI PARIS XL",
@@ -567,13 +559,11 @@
   "name": "Dunkin'",
   "pois": 6,
   "wikidata": "Q847743",
-  "file": "File:Dunkin1.JPG",
-  "source": "https://commons.wikimedia.org/wiki/File:Dunkin1.JPG",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Dunkin1.JPG/960px-Dunkin1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "36cb17d75f76d0e75e042bb3eed2254b83806c50",
-  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Dunkin'_logo.svg",
+  "licence": "Commons file (text logo)",
   "artist": "M. Miltzow",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: orange wordmark on dark grey"
  },
  "c-and-a": {
   "name": "C&A",
@@ -591,13 +581,11 @@
   "name": "Beter Bed",
   "pois": 6,
   "wikidata": "Q831076",
-  "file": "File:BeterBed-logo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:BeterBed-logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/BeterBed-logo.svg/960px-BeterBed-logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "7ed83aba9235c2d41968717d38c9673604afeaa3",
-  "licence": "Public domain",
+  "licence": "Commons file (text logo)",
   "artist": "Unknown authorUnknown author",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: blue 'Beter Bed' without 'Holding', on orange"
  },
  "leen-bakker": {
   "name": "Leen Bakker",
@@ -795,13 +783,11 @@
   "name": "Uniqlo",
   "pois": 4,
   "wikidata": "Q26070",
-  "file": "File:UNIQLO logo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/UNIQLO_logo.svg/960px-UNIQLO_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "015ca4e47ffba574985333aeb7ee868ae80b37d8",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Kashiwa Satō",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: padded to fit the board (minAspect)"
  },
  "wagamama": {
   "name": "Wagamama",
@@ -1071,13 +1057,11 @@
   "name": "Nespresso",
   "pois": 3,
   "wikidata": "Q301301",
-  "file": "File:Nespresso logo (monogram + wordmark).svg",
-  "source": "https://commons.wikimedia.org/wiki/File:Nespresso_logo_(monogram_%2B_wordmark).svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Nespresso_logo_%28monogram_%2B_wordmark%29.svg/960px-Nespresso_logo_%28monogram_%2B_wordmark%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "9a72cf6e4e04c1a3d1b15fadc5c44d0d56bd369d",
-  "licence": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Nespresso_logo_(wordmark).svg",
+  "licence": "Commons files (text logo): monogram File:Monogramme_Nespresso.png, wordmark File:Nespresso_logo_(wordmark).svg",
   "artist": "Nespresso",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: monogram + white wordmark on one line, on black"
  },
  "bever": {
   "name": "Bever",
@@ -1330,10 +1314,11 @@
  "alexanderhoeve": {
   "name": "Alexanderhoeve",
   "pois": 11,
-  "source": "https://www.alexanderhoeve.nl/",
-  "renderUrl": "https://www.alexanderhoeve.nl/wp-content/uploads/2020/01/logo-A-footer.png",
-  "licence": "trademark logo; brand site 150x150 PNG footer mark",
-  "fetched": "2026-11-15"
+  "source": "https://www.alexanderhoevekaas.nl/",
+  "renderUrl": "https://alexanderhoeve.blob.core.windows.net/platform/alexanderhoeve-logo-wit.png",
+  "licence": "trademark logo; brand site PNG",
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: white logo on the shop green"
  },
  "jamin": {
   "name": "Jamin",
@@ -1411,10 +1396,10 @@
  "ekoplaza-foodmarqt": {
   "name": "Ekoplaza Foodmarqt",
   "pois": 6,
-  "source": "https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg",
-  "renderUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_Ekoplaza.svg",
-  "licence": "trademark logo; Ekoplaza logo (generic, not Foodmarqt-specific)",
-  "fetched": "2026-11-15"
+  "source": "https://www.ekoplaza.nl/nl/foodmarqt",
+  "licence": "Commons Ekoplaza logo (text logo); 'foodmarqt' set in Helvetica Neue Medium after the store fronts",
+  "fetched": "2026-11-23",
+  "wordmark": "round 3: leaf + EKOPLAZA + foodmarqt"
  },
  "beter-horen": {
   "name": "Beter Horen",
@@ -1554,5 +1539,58 @@
   "licence": "drawn after the city panorama (CC BY 4.0): tile frieze and lettering set in Futura Medium",
   "wordmark": "round 2: green tile frieze, ochre diamonds, gold capitals",
   "fetched": "2026-11-20"
+ },
+ "praxis-city": {
+  "source": "https://commons.wikimedia.org/wiki/File:Praxis_logo_2018.svg",
+  "licence": "Public domain (Commons) Praxis logo; City set in Helvetica Neue Bold after the panorama",
+  "wordmark": "round 3: Praxis logo + yellow City on dark grey",
+  "fetched": "2026-11-23"
+ },
+ "taco-mundo": {
+  "source": "https://tacomundo.com/",
+  "renderUrl": "https://cdn.prod.website-files.com/67c98627c9c2b7dee9caccea/67c99435bb64747cc726a005_TM_logo-mexican%20delivery_2023_-01.png",
+  "licence": "trademark logo; brand site PNG",
+  "wordmark": "round 3: red logo on white",
+  "fetched": "2026-11-23"
+ },
+ "anne-and-max": {
+  "source": "https://www.annemax.nl/",
+  "renderUrl": "https://annemax.nl/app/uploads/2026/04/logo-2.svg",
+  "licence": "trademark logo; brand site SVG",
+  "wordmark": "round 3: white badge on dark board",
+  "fetched": "2026-11-23"
+ },
+ "pipoos": {
+  "source": "https://www.pipoos.com/",
+  "renderUrl": "https://www.pipoos.com/cdn/shop/files/pipoos-logo.svg?v=1781179010",
+  "licence": "trademark logo; brand site SVG",
+  "wordmark": "round 3: red word on dark grey",
+  "fetched": "2026-11-23"
+ },
+ "massimo-gelato": {
+  "source": "https://www.massimogelato.nl/",
+  "renderUrl": "https://www.massimogelato.nl/assets/files/logo.svg",
+  "licence": "trademark logo; brand site SVG; name set in Futura Medium in the badge green",
+  "wordmark": "round 3: badge + green name on cream",
+  "fetched": "2026-11-23"
+ },
+ "de-bakkerszonen": {
+  "source": "https://www.debakkerszonen.nl/",
+  "renderUrl": "https://mosveld.debakkerszonen.nl/storage/images/logos/6621366a7aa6c_BZ_Logo_staand.png",
+  "licence": "trademark logo; brand site PNG",
+  "wordmark": "round 3: copper pretzel + white lettering on black",
+  "fetched": "2026-11-23"
+ },
+ "halal-fried-chicken": {
+  "source": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000831_pano_0000_001471/",
+  "licence": "drawn after the city panorama (CC BY 4.0): lettering set in Copperplate Bold",
+  "wordmark": "round 3: white capitals on maroon",
+  "fetched": "2026-11-23"
+ },
+ "bakkerij-kara-firin": {
+  "source": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240925_0919_Track35_Sphere_00951/",
+  "licence": "drawn after the city panorama (CC BY 4.0): lettering set in Arial Black",
+  "wordmark": "round 3: white heavy capitals on dark brown",
+  "fetched": "2026-11-23"
  }
 }

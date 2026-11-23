@@ -17,7 +17,7 @@ import { TEMPLATE_WORDMARK } from '../../src/canalRecall/retailChainLogos.ts';
 import { CHAIN_LOGO_PACK } from '../../src/canalRecall/retailChainLogos.gen.ts';
 
 type Counted = { key: string; name: string; n: number; wikidata: string; kinds: Record<string, number>; names: Record<string, number> };
-type Override = { fascia?: string; letters?: string; template?: RetailTemplate; skip?: boolean; word?: string; noLogo?: boolean; logoInk?: string; frame?: string; awning?: string; minAspect?: number };
+type Override = { fascia?: string; letters?: string; template?: RetailTemplate; skip?: boolean; word?: string; noLogo?: boolean; logoInk?: string; frame?: string; awning?: string; minAspect?: number; goods?: string };
 const counted = JSON.parse(fs.readFileSync('data/retail-ground/chains-counted.json', 'utf8')) as Counted[];
 const prov = JSON.parse(fs.readFileSync('data/retail-ground/chain-logos/provenance.json', 'utf8')) as Record<string, Record<string, unknown>>;
 const overrides = (fs.existsSync('data/retail-ground/chain-overrides.json') ? JSON.parse(fs.readFileSync('data/retail-ground/chain-overrides.json', 'utf8')) : {}) as Record<string, Override>;
@@ -82,7 +82,7 @@ for (const c of counted) {
   }
   fascia ??= '#1d1d1b'; letters ??= '#ffffff';
   const names = Object.keys(c.names).filter(n => n.trim().toLowerCase() === c.name.trim().toLowerCase() || c.names[n] >= 2);
-  chains[c.key] = { name: c.name, word: o.word ?? c.name, ...(c.wikidata ? { wikidata: c.wikidata } : {}), names: [...new Set([c.name, ...names])], template, fascia, letters, ...(o.frame ? { frame: o.frame } : {}), ...(o.awning ? { awning: o.awning } : {}), pois: c.n };
+  chains[c.key] = { name: c.name, word: o.word ?? c.name, ...(c.wikidata ? { wikidata: c.wikidata } : {}), names: [...new Set([c.name, ...names])], template, fascia, letters, ...(o.frame ? { frame: o.frame } : {}), ...(o.awning ? { awning: o.awning } : {}), ...(o.goods ? { goods: o.goods } : {}), pois: c.n };
 }
 
 // Round-6 templates' better logos (retailChainLogos.ts TEMPLATE_CHAIN_LOGO, TEMPLATE_WORDMARK): the wordmarks

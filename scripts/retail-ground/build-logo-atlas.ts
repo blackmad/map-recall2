@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { GLYPH_CHARS, GLYPH_FONT, GLYPH_GRID, GLYPH_INK, LOGOS, LOGOS_2, LOGO_ATLAS_PATH, LOGO_ATLAS_2_PATH, glyphCellBox, logoBox } from '../../src/canalRecall/retailLogos.ts';
+import { ACCENT_SLOTS, GLYPH_CHARS, GLYPH_FONT, GLYPH_GRID, GLYPH_INK, LOGOS, LOGOS_2, LOGO_ATLAS_PATH, LOGO_ATLAS_2_PATH, accentGlyphSvg, glyphCellBox, logoBox } from '../../src/canalRecall/retailLogos.ts';
 import { TEMPLATE_LOOKS } from '../../src/canalRecall/retailTemplates.ts';
 
 const SIZE = 512, SRC = 'data/retail-ground/logos', OUT = 'data/retail-ground/retail-logos.png', OUT_2 = 'data/retail-ground/retail-logos-2.png';
@@ -46,6 +46,9 @@ for (const [i, ch] of [...GLYPH_CHARS].entries()) {
   if (!want) { console.log(`glyph ${JSON.stringify(ch)}: ink [${ink.map(v => v.toFixed(3)).join(', ')}] (add to retailLogos.ts GLYPH_INK)`); continue; }
   if (Math.abs(ink[0] - want[0]) > 0.012 || Math.abs(ink[1] - want[1]) > 0.012) throw new Error(`glyph ${ch}: ink ${ink.map(v => v.toFixed(3))}, retailLogos.ts GLYPH_INK ${want}`);
 }
+// Lane shopfront-feedback-20261123: the accent marks in the cell's two free slots (retailLogos.ts ACCENT_SLOTS);
+// scripts/retail-real/add-accent-glyphs.ts paints the same marks into the published atlas without a rebuild.
+for (const [kind, i] of Object.entries(ACCENT_SLOTS)) cells.push(accentGlyphSvg(kind as keyof typeof ACCENT_SLOTS, gb.x * SIZE + (i % GLYPH_GRID.cols) * gw, gb.y * SIZE + Math.floor(i / GLYPH_GRID.cols) * gh, gw, gh));
 const board = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}"><rect width="${SIZE}" height="${SIZE}" fill="#ffffff"/>${cells.join('')}</svg>`);
 const png = await sharp(board).composite(layers).png({ compressionLevel: 9 }).toBuffer();
 fs.writeFileSync(OUT, png);

@@ -12,8 +12,10 @@ import { TYPE_METRICS } from './retailTypeMetrics.gen.js';
 
 export const TYPE_FACES = ['serif', 'condensed', 'script'] as const;
 export type TypeFace = (typeof TYPE_FACES)[number];
-/** The characters each page holds; others advance as a space. */
-export const TYPE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&'.-";
+/** The characters each page holds; an accented letter not on it draws its base letter (NFD), others advance as a space.
+ *  Lane shopfront-feedback-20261123 (note fd607d78, 'Café Bonjour' lettered 'CAF BONJOUR'): the accented letters of
+ *  Dutch, French and Turkish shop names appended after the original set, so every earlier glyph keeps its place. */
+export const TYPE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&'.-" + 'ÉÈËÊÖÔÜÏÁÀÄÇéèëêöôüïáàäç';
 /** Page geometry (px at the 512 px publish): rows of ROW_PX, the font at FONT_PX, its baseline BASE_PX down a row. */
 export const TYPE_PAGE = { size: 512, rowPx: 84, fontPx: 64, basePx: 62, gapPx: 4 } as const;
 /** A face's cap height as a share of the quad's height (measured by the builder; for the letter-size rule). */
@@ -30,7 +32,7 @@ export function typeLayout(face: TypeFace, text: string): { quads: TypeQuad[]; w
   const P = TYPE_PAGE.size, rowH = TYPE_PAGE.rowPx;
   let x = 0;
   for (const ch of face === 'script' ? text : text.toUpperCase()) {
-    const g = m.glyphs[ch];
+    const g = m.glyphs[ch] ?? m.glyphs[ch.normalize('NFD')[0]];
     if (!g) { x += m.space; continue; }
     const [gx, row, adv] = g, w = adv / rowH, y0 = row * rowH;
     quads.push({ ch, a0: x, a1: x + w, rect: [gx / P, 1 - (y0 + rowH) / P, (gx + adv) / P, 1 - y0 / P] });

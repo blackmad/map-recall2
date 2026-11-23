@@ -86,7 +86,7 @@ function inputFor(template: RetailTemplate, chainKey: string | null, seed: strin
   return {
     template, seed, door: { a0: SPAN - 1.9, a1: SPAN - 0.9, depthM: 0.5 }, letters: LOGO, ...(word ? { word } : {}), ...(logo ? { logo } : {}),
     ...(real ? { goods: LOGO + GOODS_BASE, faces: LOGO + TYPE_BASE, ...(VARIETY ? { variety: LOGO + VARIETY_BASE } : {}) } : {}),
-    ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word } } : {}),
+    ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word, ...(retailChain.goods ? { goods: retailChain.goods } : {}) } } : {}),
     ...(retailChain?.awning ? { awning: retailChain.awning } : {}), ...(retailChain?.frame ? { frameHex: retailChain.frame } : {}),
     ...(brandKey in BRAND_STYLES ? { brand: brandKey, wallHex: WALL } : {}),
   };

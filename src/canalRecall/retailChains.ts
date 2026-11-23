@@ -6,12 +6,16 @@
 // the chain as the word '@<key>' (build-templates.ts), so its row format is unchanged. Pure.
 import { RETAIL_CHAINS_GEN } from './retailChains.gen.js';
 import type { RetailTemplate } from './retailTemplates.js';
+import type { GoodsKind } from './retailGoods.js';
 
 export type RetailChain = {
   name: string; word: string; wikidata?: string; names: string[]; template: RetailTemplate; fascia: string; letters: string; pois: number;
   /** Lane chain-logos2-20261120: the chain's own pui frame and awning colours (chain-overrides.json), drawn wherever the
    *  pand has no measured frame or awning of its own (Simon Meijssen's amber-glazed pilasters and brown awning). */
   frame?: string; awning?: string;
+  /** Lane shopfront-feedback-20261123 (David: "Bever: sports clothes", "Samsonite: luggage"): the window goods kind the
+   *  chain shows in place of its template's (chain-overrides.json `goods`), where the template draws goods at all. */
+  goods?: GoodsKind;
 };
 export const RETAIL_CHAINS: Record<string, RetailChain> = RETAIL_CHAINS_GEN as Record<string, RetailChain>;
 const byWikidata = new Map<string, string>(), byName = new Map<string, string>();
@@ -32,5 +36,11 @@ export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu',
   // Lane chain-logos2-20261120 (David's Shopfronts notes of 2026-11-20, "find logo"): chains of a real-only type template
   // that has not won its blind (fast food, restaurant, optician, telecom, liquor, variety) drew no front at all; these
   // draw it under their own board and logo (round n's window, not the type's goods).
-  'new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']);
+  'new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker',
+  // Lane shopfront-feedback-20261123 (David's Shopfronts notes of 2026-11-23, "Logo?" x 24): the same, for every chain
+  // he named whose logo was tabled but whose type template (fast food, restaurant, optician, telecom, variety, exchange,
+  // Turkish bakery) has not won, so the board drew no logo or nothing at all.
+  'praxis', 'praxis-city', 'burger-king', 'kfc', 'pets-place', 'taco-mundo', 'beter-horen', 'dille-and-kamille',
+  'flying-tiger-copenhagen', 'pipoos', 'specsavers', 'wagamama', 'beter-bed', 'dunkin', 'mediamarkt', 'halal-fried-chicken',
+  'intertoys', 'papa-john-s', 'vodafone', 'xenos', 'gwk-travelex', 'bakkerij-kara-firin']);
 export const chainOwnFront = (key: string): boolean => CHAINS_OWN_FRONT.has(key);

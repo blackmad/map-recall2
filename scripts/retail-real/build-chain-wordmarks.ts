@@ -166,6 +166,101 @@ made.cigo = { buf: await trim(fs.readFileSync(path.join(SRC, 'cigo-wide.png'))),
   made['simon-meijssen'] = { buf: await sharp(svgText(W, Hh, svg)).png().toBuffer(), source: 'https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-30_08-35-53_00865/', licence: 'drawn after the city panorama (CC BY 4.0): tile frieze and lettering set in Futura Medium', note: 'round 2: green tile frieze, ochre diamonds, gold capitals', fetched: F2 };
 }
 
+// ---- Round 3 (lane shopfront-feedback-20261123, David's 41 Shopfronts notes of 2026-11-23). Sources fetched
+// 2026-11-23 into chain-logos/src/ (URL per key); board colours read on city panoramas (data.amsterdam.nl, CC BY 4.0)
+// where one shows the front (pano ids in each note), else the logo's own.
+const F3 = '2026-11-23';
+/** The horizontal bands of a transparent image: runs of rows holding any pixel with alpha > 24, top to bottom. */
+async function bands(buf: Buffer): Promise<Array<[number, number]>> {
+  const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const out: Array<[number, number]> = [];
+  let start = -1;
+  for (let y = 0; y <= info.height; y++) {
+    let any = false;
+    if (y < info.height) for (let x = 0; x < info.width && !any; x++) any = data[(y * info.width + x) * 4 + 3] > 24;
+    if (any && start < 0) start = y;
+    if (!any && start >= 0) { out.push([start, y]); start = -1; }
+  }
+  return out;
+}
+const band = async (buf: Buffer, [y0, y1]: [number, number]) => { const { w } = await meta(buf); return trim(await sharp(buf).extract({ left: 0, top: y0, width: w, height: y1 - y0 }).png().toBuffer()); };
+/** One line of lettering in a macOS face, trimmed. */
+const letter = async (text: string, font: string, fill: string, extra = '') => trim(await sharp(svgText(Math.max(1200, text.length * 260), 360, `<text x="20" y="280" font-family="${font}" font-size="260" fill="${fill}" ${extra}>${text.replace(/&/g, '&amp;')}</text>`)).png().toBuffer());
+const white = (_r: number, _g: number, _b: number, a: number): [number, number, number, number] => [255, 255, 255, a];
+
+// Praxis City (note 2c64ffff "reuse praxis?"; Kinkerstraat front, pano TMX7316010203-001148_pano_0000_000805: the
+// Praxis word and 'City' run together in the same yellow on a dark grey band): the Praxis logo, then 'City'.
+{
+  const mark = await trim(fs.readFileSync(path.join(DIR, 'praxis.png')));
+  made['praxis-city'] = { buf: await row([{ buf: mark, h: H }, { buf: await letter('City', 'Helvetica Neue', '#ffd500', 'font-weight="bold"'), h: Math.round(H * 0.74) }], 30), source: 'https://commons.wikimedia.org/wiki/File:Praxis_logo_2018.svg', licence: 'Public domain (Commons) Praxis logo; City set in Helvetica Neue Bold after the panorama', note: 'round 3: Praxis logo + yellow City on dark grey', fetched: F3 };
+}
+// Taco Mundo (note 0ca8bd5e): the brand site's logo (red TACO MUNDO round the sun disc, 'Mexican Delivery' below).
+made['taco-mundo'] = { buf: await trim(fs.readFileSync(path.join(SRC, 'taco-mundo.png'))), source: 'https://tacomundo.com/', renderUrl: 'https://cdn.prod.website-files.com/67c98627c9c2b7dee9caccea/67c99435bb64747cc726a005_TM_logo-mexican%20delivery_2023_-01.png', licence: 'trademark logo; brand site PNG', note: 'round 3: red logo on white', fetched: F3 };
+// Anne&Max (note 2ed2ff9e): the brand site's header badge (brown Anne&Max on the white trapezoid), on a dark board.
+made['anne-and-max'] = { buf: await svgPng('anne-and-max.svg', 600), source: 'https://www.annemax.nl/', renderUrl: 'https://annemax.nl/app/uploads/2026/04/logo-2.svg', licence: 'trademark logo; brand site SVG', note: 'round 3: white badge on dark board', fetched: F3 };
+// pipoos (note 023b3ee6; Ceintuurbaan 334, pano TMX7316010203-002469_pano_0000_001968: red pipoos on a dark grey band).
+made.pipoos = { buf: await svgPng('pipoos.svg', 600), source: 'https://www.pipoos.com/', renderUrl: 'https://www.pipoos.com/cdn/shop/files/pipoos-logo.svg?v=1781179010', licence: 'trademark logo; brand site SVG', note: 'round 3: red word on dark grey', fetched: F3 };
+// Massimo Gelato (note 9d43e0cd): the site's round badge (green on cream), then the name in its green, so the round
+// mark keeps to the board (a lone disc drew a 0.95 m lightbox).
+made['massimo-gelato'] = { buf: await row([{ buf: await svgPng('massimo-gelato.svg', 600), h: H }, { buf: await letter('MASSIMO GELATO', 'Futura', '#5f7d43', 'font-weight="bold" letter-spacing="14"'), h: Math.round(H * 0.42) }], 50), source: 'https://www.massimogelato.nl/', renderUrl: 'https://www.massimogelato.nl/assets/files/logo.svg', licence: 'trademark logo; brand site SVG; name set in Futura Medium in the badge green', note: 'round 3: badge + green name on cream', fetched: F3 };
+// De Bakkerszonen (note 973203b2; Land van Cocagneplein corner, pano: black frames): the site's logo (copper pretzel
+// and black DE BAKKERS ZONEN), its black lettering re-inked white for the black board.
+made['de-bakkerszonen'] = { buf: await reink(await trim(fs.readFileSync(path.join(SRC, 'de-bakkerszonen.png'))), (r, g, b, a) => (r + g + b < 150 ? [255, 255, 255, a] : [r, g, b, a])), source: 'https://www.debakkerszonen.nl/', renderUrl: 'https://mosveld.debakkerszonen.nl/storage/images/logos/6621366a7aa6c_BZ_Logo_staand.png', licence: 'trademark logo; brand site PNG', note: 'round 3: copper pretzel + white lettering on black', fetched: F3 };
+// Halal Fried Chicken (note dd6c41f9; Burgemeester De Vlugtlaan 60-62, pano TMX7316010203-000831_pano_0000_001471:
+// white flared small capitals on a maroon band; the brand site is a parked page): the name set in Copperplate Bold.
+made['halal-fried-chicken'] = { buf: await letter('HALAL FRIED CHICKEN', 'Copperplate', '#ffffff', 'font-weight="bold" letter-spacing="10"'), source: 'https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000831_pano_0000_001471/', licence: 'drawn after the city panorama (CC BY 4.0): lettering set in Copperplate Bold', note: 'round 3: white capitals on maroon', fetched: F3 };
+// Bakkerij Kara Firin (note 985d6e6a "Wordmark?"; Osdorp front, pano b_20240925_0919_Track35_Sphere_00951: heavy white
+// capitals on a dark brown board; the site has no logo file): the name in Arial Black, white.
+made['bakkerij-kara-firin'] = { buf: await letter('BAKKERIJ KARA FIRIN', 'Arial Black', '#ffffff', 'letter-spacing="6"'), source: 'https://api.data.amsterdam.nl/panorama/panoramas/b_20240925_0919_Track35_Sphere_00951/', licence: 'drawn after the city panorama (CC BY 4.0): lettering set in Arial Black', note: 'round 3: white heavy capitals on dark brown', fetched: F3 };
+// Alexanderhoeve (note 0c373fc0 "why pure white": the site's footer A was white, packed on a white board). The brand
+// site's white logo (farmhouse, Alexanderhoeve, 'kaas & noten') on the dark green fascia of the Rijnstraat front (pano
+// TMX7316010203-001173_pano_0000_005735, fascia and banners #25402a-#425746 in shade).
+made.alexanderhoeve = { buf: await trim(fs.readFileSync(path.join(SRC, 'alexanderhoeve-white.png'))), source: 'https://www.alexanderhoevekaas.nl/', renderUrl: 'https://alexanderhoeve.blob.core.windows.net/platform/alexanderhoeve-logo-wit.png', licence: 'trademark logo; brand site PNG', note: 'round 3: white logo on the shop green', fetched: F3 };
+// GWK Travelex (note bb6d47b2; Kalverstraat 150, pano TMX7316010203-001530_pano_0004_000054: blue GWK Travelex and red
+// 'worldwide money' over the door): the Commons logo (blue band and red tab).
+made['gwk-travelex'] = { buf: await trim(fs.readFileSync(path.join(SRC, 'gwk-travelex-commons.jpg'))), source: 'https://commons.wikimedia.org/wiki/File:GWK_Travelex_logo.jpg', licence: 'Commons file (text logo)', note: 'round 3: blue band + red tab on white', fetched: F3 };
+// Dunkin' (note 233ec46d; the chain was lettered because its Commons image was a shop photo): the Commons 2019
+// wordmark (orange DUNKIN' with the pink apostrophe), on the dark grey of the Reguliersbreestraat front.
+made.dunkin = { buf: await svgPng('dunkin-commons.svg', 300), source: "https://commons.wikimedia.org/wiki/File:Dunkin'_logo.svg", licence: 'Commons file (text logo)', note: 'round 3: orange wordmark on dark grey', fetched: F3 };
+// Beter Bed (note 2084985b): the logo drew 'Beter Bed Holding' (the holding company's box). Its blue Beter Bed alone,
+// on the orange of the box.
+made['beter-bed'] = { buf: await trim(await reink(fs.readFileSync(path.join(SRC, 'beter-bed-holding.png')), (r, g, b, a) => (b > r + 40 && b > g ? [r, g, b, a] : [0, 0, 0, 0]))), source: 'https://commons.wikimedia.org/wiki/File:BeterBed-logo.svg', licence: 'Commons file (text logo)', note: "round 3: blue 'Beter Bed' without 'Holding', on orange", fetched: F3 };
+// Nespresso (note 1dac1124 "logo then wordmark on one line"): the Commons monogram (white N on black), then the Commons
+// wordmark in white, for the black board.
+{
+  const mono = await trim(fs.readFileSync(path.join(SRC, 'nespresso-monogram.png')));
+  const word = await reink(await svgPng('nespresso-wordmark.svg', 600), white);
+  made.nespresso = { buf: await row([{ buf: mono, h: H }, { buf: word, h: Math.round(H * 0.62) }], 40), source: 'https://commons.wikimedia.org/wiki/File:Nespresso_logo_(wordmark).svg', licence: 'Commons files (text logo): monogram File:Monogramme_Nespresso.png, wordmark File:Nespresso_logo_(wordmark).svg', note: 'round 3: monogram + white wordmark on one line, on black', fetched: F3 };
+}
+// Rituals (note 79ee786c "long wordmark ... ideally both"): the square mark (Commons), then the brand site's
+// RITUALS... wordmark in white, on black.
+made.rituals = { buf: await row([{ buf: await trim(fs.readFileSync(path.join(SRC, 'rituals-mark.png'))), h: H }, { buf: await reink(await svgPng('rituals-word.svg', 1200), white), h: Math.round(H * 0.42) }], 50), source: 'https://www.rituals.com/', renderUrl: 'https://www.rituals.com/en-nl/home (header SVG)', licence: 'trademark logo; mark from Commons File:Rituals_Cosmetics_logo.png, wordmark from the brand site header SVG', note: 'round 3: square mark + RITUALS... on black', fetched: F3 };
+// Simon Lévelt (note eab1ebda "split out the since line"): the brand site's logo, its 'SINDS 1826' band set beside the
+// script name (stacked under it, it shrank the name), in the logo's green on white.
+{
+  const full = await svgPng('simon-levelt.svg', 600), bs = await bands(full);
+  const name = await band(full, [bs[0][0], bs[bs.length - 2][1]]), since = await band(full, bs[bs.length - 1]);
+  made['simon-levelt'] = { buf: await row([{ buf: name, h: H }, { buf: since, h: Math.round(H * 0.16) }], 60), source: 'https://www.simonlevelt.nl/', renderUrl: 'https://www.simonlevelt.nl/on/demandware.static/-/Sites-simonlevelt-Library/default/dw62b437bc/branding/logo.svg', licence: 'trademark logo; brand site SVG', note: "round 3: script name with 'SINDS 1826' beside it", fetched: F3 };
+}
+// Ekoplaza (note b76bc5bd "rearrange the logo to be wide"): the Commons logo's leaf (its green pixels, without the
+// purple rules) beside EKOPLAZA, on one line.
+{
+  const full = await trim(fs.readFileSync(path.join(SRC, 'ekoplaza-commons.png'))), bs = await bands(full);
+  const leaf = await trim(await reink(await band(full, bs[0]), (r, g, b, a) => (g > r + 20 && g > b ? [r, g, b, a] : [0, 0, 0, 0])));
+  const word = await band(full, bs[bs.length - 1]);
+  made.ekoplaza = { buf: await row([{ buf: leaf, h: H }, { buf: word, h: Math.round(H * 0.62) }], 36), source: 'https://commons.wikimedia.org/wiki/File:Logo_of_Ekoplaza.svg', licence: 'Commons file (text logo)', note: 'round 3: leaf + EKOPLAZA on one line', fetched: F3 };
+  // Ekoplaza Foodmarqt (note cbe3fcb1 "a different logo that includes Marqt"; the former Marqt fronts on Bilderdijkstraat
+  // and Ceintuurbaan, panos TMX7316010203-002059_pano_0000_002311 and -002112_pano_0001_001579: lower-case 'marqt' and
+  // green-and-white striped awnings): the wide Ekoplaza, then 'foodmarqt' in lower case in the leaf green.
+  const fm = await letter('foodmarqt', 'Helvetica Neue', '#4c8c2b', 'font-weight="500"');
+  made['ekoplaza-foodmarqt'] = { buf: await row([{ buf: leaf, h: H }, { buf: word, h: Math.round(H * 0.62) }, { buf: fm, h: Math.round(H * 0.7) }], 36), source: 'https://www.ekoplaza.nl/nl/foodmarqt', licence: "Commons Ekoplaza logo (text logo); 'foodmarqt' set in Helvetica Neue Medium after the store fronts", note: 'round 3: leaf + EKOPLAZA + foodmarqt', fetched: F3 };
+}
+// H&M (note b89bf416 "doesn't fit good") and Uniqlo (note 981a7974 "overflowing"): their marks are square-ish (aspect
+// under 1.6), so the front drew them as a 0.95 m lightbox standing over the 0.6 m board. chain-overrides.json minAspect
+// pads them to a wordmark cell inside the board (as Lidl); the sources are the committed Commons renders.
+made['h-and-m'] = { buf: await trim(fs.readFileSync(path.join(SRC, 'h-and-m-commons.png'))), source: 'https://commons.wikimedia.org/wiki/File:H%26M-Logo.svg', licence: 'Public domain (Commons)', note: 'round 3: padded to fit the board (minAspect)', fetched: F3 };
+made.uniqlo = { buf: await trim(fs.readFileSync(path.join(SRC, 'uniqlo-commons.png'))), source: 'https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg', licence: 'Public domain (Commons)', note: 'round 3: padded to fit the board (minAspect)', fetched: F3 };
+
 // `--only=a,b`: write just these keys (round 1's files stay as committed).
 const only = process.argv.find(a => a.startsWith('--only='))?.slice(7).split(',');
 const provFile = path.join(DIR, 'provenance.json'), prov = JSON.parse(fs.readFileSync(provFile, 'utf8')) as Record<string, Record<string, unknown>>;

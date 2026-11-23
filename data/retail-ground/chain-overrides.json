@@ -1,8 +1,7 @@
 {
  "dunkin": {
-  "noLogo": true,
-  "fascia": "#ff671f",
-  "letters": "#ffffff"
+  "fascia": "#2b2b2b",
+  "letters": "#ff671f"
  },
  "the-bulldog": {
   "fascia": "#1d1d1b",
@@ -32,7 +31,8 @@
   "fascia": "#ffffff"
  },
  "h-and-m": {
-  "fascia": "#ffffff"
+  "fascia": "#ffffff",
+  "minAspect": 2.4
  },
  "vodafone": {
   "fascia": "#ffffff"
@@ -58,11 +58,13 @@
   "fascia": "#502314"
  },
  "kfc": {
-  "fascia": "#ffffff"
+  "fascia": "#2b2b2b",
+  "logoInk": "#ffffff"
  },
  "hunkemoller": {
   "fascia": "#1d1d1b",
-  "logoInk": "#ffffff"
+  "logoInk": "#ffffff",
+  "goods": "lingerie"
  },
  "douglas": {
   "fascia": "#ffffff"
@@ -80,7 +82,9 @@
   "fascia": "#ffd200"
  },
  "alexanderhoeve": {
-  "noLogo": true
+  "fascia": "#2f4f38",
+  "letters": "#ffffff",
+  "minAspect": 2.2
  },
  "bloem": {
   "noLogo": true
@@ -154,5 +158,74 @@
   "letters": "#d2ab55",
   "frame": "#b5792c",
   "awning": "#6b4636"
+ },
+ "praxis-city": {
+  "fascia": "#363437",
+  "letters": "#ffd500"
+ },
+ "taco-mundo": {
+  "fascia": "#ffffff"
+ },
+ "anne-and-max": {
+  "fascia": "#2b2724"
+ },
+ "pipoos": {
+  "fascia": "#3b3b3d"
+ },
+ "massimo-gelato": {
+  "fascia": "#faf9ef"
+ },
+ "de-bakkerszonen": {
+  "fascia": "#111111"
+ },
+ "halal-fried-chicken": {
+  "fascia": "#6b2330",
+  "letters": "#ffffff"
+ },
+ "bakkerij-kara-firin": {
+  "fascia": "#2b1c14",
+  "letters": "#ffffff"
+ },
+ "gwk-travelex": {
+  "fascia": "#ffffff"
+ },
+ "beter-bed": {
+  "fascia": "#f39200"
+ },
+ "nespresso": {
+  "fascia": "#111111",
+  "letters": "#ffffff"
+ },
+ "simon-levelt": {
+  "fascia": "#ffffff"
+ },
+ "ekoplaza": {
+  "fascia": "#ffffff"
+ },
+ "ekoplaza-foodmarqt": {
+  "fascia": "#ffffff"
+ },
+ "uniqlo": {
+  "fascia": "#ee252b",
+  "minAspect": 2.4
+ },
+ "intertoys": {
+  "fascia": "#4a5553"
+ },
+ "bever": {
+  "goods": "sports"
+ },
+ "decathlon": {
+  "goods": "sports"
+ },
+ "samsonite": {
+  "goods": "luggage"
+ },
+ "timberland": {
+  "goods": "outdoor"
+ },
+ "atlas": {
+  "skip": true,
+  "note": "not a chain: three unrelated shops named Atlas (butcher Javastraat 56-H, hairdresser Douwes Dekkerstraat 20, coffeeshop Buikslotermeerplein 389); the hairdresser drew a butcher front. David 2026-11-23, Shopfronts note e92dcc7c"
  }
 }

@@ -25,7 +25,9 @@ for (const face of TYPE_FACES) {
   const glyphs: Record<string, [number, number, number]> = {};
   let x = gapPx, row = 0;
   // Bebas has no lower case (its lower-case slots repeat the capitals): uppercase only.
-  const chars = face === 'condensed' || face === 'serif' ? [...TYPE_CHARS].filter(ch => !/[a-z]/.test(ch)) : [...TYPE_CHARS];
+  const chars = face === 'condensed' || face === 'serif' ? [...TYPE_CHARS].filter(ch => ch === ch.toUpperCase())
+    // Lobster's page holds the lower-case accents only (an accented capital draws its base letter, retailTypeFaces.ts).
+    : [...TYPE_CHARS].filter(ch => ch.charCodeAt(0) < 128 || ch !== ch.toUpperCase());
   for (const ch of chars) {
     const adv = Math.ceil(ctx.measureText(ch).width);
     if (x + adv + gapPx > P) { x = gapPx; row++; }
