@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Round 20261123z: hand blocks round d: Tweede Hugo de Grootstraat 43, Panamalaan 10-186, Klapmutsenveem brick (2026-11-23)
+
+- **lane/hand-blocks-d-20261123 9494205cb1.** Blind A/B (one fresh opus judge, seeded sides, key held apart): new won all 9 walls. The integrator checked two sheets by eye (Tweede Hugo w01 street, Panamalaan w01 street) and agrees.
+- **Tweede Hugo de Grootstraat 43 (pand 0363100012148379):** the >5 m setback blocker fixed by `--setback`. New hand-block-kit `zoned` option (one storey style by height on every wall without a measured front; byte-identical when absent, so the five earlier hand blocks are unchanged) for the ~40 short facets of the podium's curved corners. Draws the Dirk van den Broek podium (red strip, shop glass, sign band, glazed storey, zinc fascia), the buff-brick housing, the deep eave, slab balconies, loggia columns and pilotis. 3DBAG walls 28/107 duplicated 70/90 at 1-6 cm and are cut to the strips past their twins. 26,816 tris, 342 KB.
+- **Panamalaan 10-186 (pand 0363100012141142):** four fronts (glazed base with timber and slate over dark brick; timber between ribbons at the south end; brick and alternating ribbons at the north end; staggered deep-set windows on the east return). The relief poem is unreadable in every cached panorama, so it is drawn as one line of illegible raised word blocks at the measured place (inventory: simplified). 16,187 tris, 188 KB.
+- **Klapmutsenveem 30:** brick `#7a4439` → `#514240`, measured in OKLab against the 2016 and 2025 crops (ΔE ≈ 0.10 → 0.03). Arcade springings re-read at 9.8/15.95/21.2 m. Oriels get dark frame grids and brick pilaster strips. 24,774 tris, 315 KB.
+- `hand-block-ab.ts --today-glb` lets "today" be an installed landmark GLB. The two skeletons are back in scripts/landmarks/.
+- **Kit gaps:** lower-case pixel lettering; curved walls from faceted 3DBAG rings; recessed loggias; curved balcony ends; timber board texture; the front-elevation preview drops a set-back wall.
+
 ## Round 20261123y: What's New pictures are checked in the gate (2026-11-23)
 
 - **Why:** after round x removed weak or misleading pairs, merges of other sessions' rounds put them back twice (notes regenerated from older copies), and round 20261123a published a Huis Fuld pair whose "today" frame was the plot-clearing underlay shot.
