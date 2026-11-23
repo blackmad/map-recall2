@@ -44,7 +44,7 @@ function outsideTwin(ring: V3[], twin: V3[]): V3[][] {
 const cutAway = new Map(TWINS.map(([d, t]) => [d, outsideTwin(shell.surfaces[d].rings[0] as V3[], shell.surfaces[t].rings[0] as V3[])]));
 const src: Src = {...shell, surfaces: shell.surfaces.flatMap((sf, i) => cutAway.has(i) ? cutAway.get(i)!.map(r => ({...sf, rings: [r]})) : [sf])};
 
-const HOUSE: Col = 'brick', PODIUM: Col = 'greyBrick', FRAME: Col = 'frame', ZINC: Col = 'concrete', RED: Col = 'red', SILL: Col = 'stone';
+const BLIND: Col = 'sandstone', HOUSE: Col = 'brick', PODIUM: Col = 'greyBrick', FRAME: Col = 'frame', ZINC: Col = 'concrete', RED: Col = 'red', SILL: Col = 'stone';
 
 const PODIUM_BANDS: [number, Col][] = [[0.45, PODIUM], [0.85, RED], [3.6, FRAME], [4.95, PODIUM], [7.55, FRAME], [8.3, ZINC], [99, HOUSE]];
 const HOUSING_ROWS = [[9.2, 10.7], [11.9, 13.4], [14.6, 16.0]].map(y => ({y: y as [number, number], pitch: 2.7, w: 1.2, o: {depth: 0.15, edge: 0.06, cols: 2, sill: SILL}}));
@@ -68,7 +68,29 @@ function sign(b: BuildingTools, F: FR, w: WallGeom) {
   }
 }
 
+/**
+ * The glass stair tower (lane hand-blocks-e-20261123): the full-height notch between the main sign corner's podium bulge
+ * (3DBAG walls 38/127/24) and the loggia wing's (106/23): its 3.6 m back wall 88 faces the street 4 m behind the podium
+ * fronts, its cheeks 70 and 90 run back to them, all ground to 16.4 m. The 2025 aimed view (w03-24 thumb) and the 2022 crop
+ * (s04-25, right edge) show it fully glazed: a dark-framed curtain wall of ~1 m lights with a transom at every floor, the
+ * housing entrance under a glass canopy at its foot. Round d drew these walls as buff brick with punched windows.
+ */
+const TOWER: P2[] = [[18.19, 5.26], [16.74, 2.25], [21.75, 3.94]];
+const isTower = (w: WallGeom) => TOWER.some(([x, z]) => Math.abs(w.cx - x) < 0.3 && Math.abs(w.cz - z) < 0.3);
+const TOWER_FLOORS = [0.5, 3.75, 6.45, 9.15, 11.85, 14.55];
+function tower(w: WallGeom): Zone {
+  // slender mullions: 6 cm between lights (the least `cut` keeps apart), 4 cm frames, a 10 cm transom at each floor
+  const o = {depth: 0.08, edge: 0.04, frame: FRAME};
+  return {bands: [[0.45, PODIUM], [99, FRAME]], rows: TOWER_FLOORS.map((y0, k) => ({
+    y: [y0, Math.min(k + 1 < TOWER_FLOORS.length ? TOWER_FLOORS[k + 1] - 0.1 : 16.25, w.yt - 0.15)] as [number, number], pitch: 1.1, gap: 0.06, o})),
+  extra: (b, F) => { if (w.yt - w.yb > 1.5) longBand(b, F, 0, F.len, w.yt - 0.25, w.yt + 0.05, 0.15, ZINC); }};
+}
+/** The glazed storey (5.05-7.45 m): the 2019 crop (w01-114) shows pale blinds drawn in nearly every pane, the 2022 and 2025
+ * views curtains in most; five panes in seven closed (pale grey-beige, #847f76 overcast), two open (glass). */
+const GLAZED_BACKS: Col[] = [BLIND, BLIND, 'glass', BLIND, BLIND, BLIND, 'glass'];
+
 function zoned(w: WallGeom): Zone {
+  if (isTower(w)) return tower(w);
   if (w.yb > 16) {
     // the top storey: wide glazed bays between brick piers (on its full-height walls; the sloped roof's low walls stay brick), a deep zinc eave
     return {bands: [[99, HOUSE]], rows: w.yt < 18.8 || w.yb > 16.8 ? [] : [{y: [w.yb + 0.25, Math.min(w.yt - 0.35, w.yb + 2.25)], pitch: 2.6, gap: 0.7, o: {depth: 0.2, edge: 0.07, cols: 2}}],
@@ -77,7 +99,7 @@ function zoned(w: WallGeom): Zone {
   // strips under 0.9 m (corner returns, the cut twins) stay solid
   const rows = w.len < 0.9 ? [] : [
     {y: [0.9, 3.5] as [number, number], pitch: 2.2, gap: 0.1, o: {depth: 0.12, edge: 0.06, bars: [2.0]}},
-    {y: [5.05, 7.45] as [number, number], pitch: 1.5, gap: 0.1, o: {depth: 0.12, edge: 0.06, bars: [1.65]}},
+    {y: [5.05, 7.45] as [number, number], pitch: 1.5, gap: 0.1, o: {depth: 0.12, edge: 0.06, bars: [1.65]}, backs: GLAZED_BACKS},
     ...HOUSING_ROWS,
   ];
   return {bands: w.yb > 8 ? [[99, HOUSE]] : PODIUM_BANDS, rows, extra: (b, F) => {
@@ -108,6 +130,9 @@ function columns(b: BuildingTools) {
     for (const yy of [y, y + 0.95]) slab(b, S04.f, 9.7, yy, 8.8, 0.05, 0.05, FRAME, 0.1);
     for (let s = 5.6; s < 14.1; s += 0.6) slab(b, S04.f, s, y + 0.05, 0.03, 0.9, 0.03, FRAME, 0.11);
   }
+  // the stair tower's two round light-grey columns at the ends of its front (wall 88), from the entrance canopy to the eave
+  const T88 = frameOn([16.525, 4.524], [19.846, 5.996], [0.4053, -0.9142]);
+  for (const s of [0.2, T88.len - 0.2]) strut(b, at(T88, s, 0.25, 3.6), at(T88, s, 0.25, 16.4), 0.17, SILL, 8);
   const W07 = frameOn([-30.08, -8.87], [-32.78, -2.89], [-0.9117, -0.4108]);
   for (const s of [2.2, 4.6]) strut(b, at(W07, s, 0.6, 0), at(W07, s, 0.6, 5.5), 0.22, SILL, 8);
 }

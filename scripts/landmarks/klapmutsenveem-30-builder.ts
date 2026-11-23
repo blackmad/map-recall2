@@ -55,13 +55,18 @@ function arcadeExtra(b: BuildingTools, F: FR, s0: number, s1: number, bays: Bays
     const y = T.y[1];
     archSlab(b, F.f, s, y, ARCH_W, ARCH_W / 2, 0.09, GLASS, 0, 7);
     // white impost blocks at the springing and a keystone
-    for (const d of [-1, 1]) slab(b, F.f, s + d * (ARCH_W / 2 + 0.2), y - 0.2, 0.45, 0.32, 0.08, WHITE);
-    slab(b, F.f, s, y + ARCH_W / 2 + 0.02, 0.42, 0.4, 0.1, WHITE);
+    // round e: imposts 0.6 x 0.42 m and keystones 0.5 x 0.55 m, 12 cm proud (2016 crop: the white reads at 30 m)
+    for (const d of [-1, 1]) slab(b, F.f, s + d * (ARCH_W / 2 + 0.25), y - 0.3, 0.6, 0.42, 0.12, WHITE);
+    slab(b, F.f, s, y + ARCH_W / 2 - 0.05, 0.5, 0.55, 0.12, WHITE);
   }
   for (const s of bays.narrow) for (const y of NARROW_ARCH) { archSlab(b, F.f, s, y + 1.1, 0.8, 0.4, 0.09, GLASS, 0, 4); slab(b, F.f, s, y + 1.45, 0.3, 0.3, 0.08, WHITE); }
   // two white cornices and the coping
-  longBand(b, F, s0, s1, 12.75, 13.25, 0.28, WHITE);
-  longBand(b, F, s0, s1, 18.55, 19.15, 0.34, WHITE);
+  // round e: the cornices as the 2016 crop draws them, 0.75 and 0.8 m deep bands of moulding (were 0.5 and 0.6 m), each
+  // with a white sill course under it
+  longBand(b, F, s0, s1, 12.6, 13.35, 0.3, WHITE);
+  longBand(b, F, s0, s1, 12.35, 12.5, 0.1, WHITE);
+  longBand(b, F, s0, s1, 18.4, 19.2, 0.36, WHITE);
+  longBand(b, F, s0, s1, 18.15, 18.3, 0.1, WHITE);
 }
 
 // ---- pilaster block ----------------------------------------------------------------------------------------------
@@ -96,27 +101,46 @@ function pilasterExtra(b: BuildingTools, F: FR, s0: number, s1: number, p: Pil) 
   // white blocks between the windows of storeys 3-4 and on the piers at the upper springings
   p.cols.slice(0, -1).forEach((s, k) => {
     const m = s + p.pitch / 2;
-    if (free(m, 0)) slab(b, F.f, m, 5.15, p.pitch - 1.1, 0.3, 0.08, WHITE);
-    for (const y of P_ROWS) if (free(m, y[0])) slab(b, F.f, m, y[1] - 0.3, p.pitch - 1.05, 0.3, 0.06, WHITE);
-    if (free(m, 14)) slab(b, F.f, m, 19.85, p.pitch - 0.95, 0.32, 0.06, WHITE);
-  });
-  longBand(b, F, s0, s1, 6.7, 7.15, 0.2, WHITE);
-  longBand(b, F, s0, s1, 12.7, 13.1, 0.25, WHITE);
-  longBand(b, F, s0, s1, 21.4, 21.85, 0.32, WHITE);
-  // dark glazed oriel stacks: a box 0.7 m proud, glass panes per storey; over the glass a dark frame grid (a mullion
-  // between panes, a transom at each storey's spandrel and one a third up the pane) and a brick-faced pilaster strip at
-  // each side (2026-11-23: the blind judge read the plain grey box as flat)
-  for (const [a, c] of p.oriels) {
-    const y0 = 9.2, y1 = 23.3, n = 5, h = (y1 - y0) / n, w = c - a, panes = Math.max(3, Math.round(w / 1.9)), pw = (w - 0.7) / panes;
-    boxBand(b, F, a, c, y0, y1, 0.7, ORIEL);
-    for (let k = 0; k < n; k++) {
-      const yb = y0 + k * h;
-      for (let j = 0; j < panes; j++) slab(b, F.f, a + 0.35 + pw * (j + 0.5), yb + 0.45, pw - 0.04, h - 0.75, 0.08, GLASS, 0.7);
-      ledgeStrip(b, F.f, (a + c) / 2, yb + 0.45 + (h - 0.75) * 0.68, w - 0.7, 0.08, 0.06, FRAME, 0.78);
-      ledgeStrip(b, F.f, (a + c) / 2, yb + 0.37, w - 0.7, 0.1, 0.06, FRAME, 0.78);
+    // round e: the blocks as tall as the crop draws them (0.42-0.45 m, were 0.3) and 10 cm proud; storeys 3-4 get a
+    // second block at sill height, so each window there stands in a white frame of four blocks as in the photo
+    if (free(m, 0)) slab(b, F.f, m, 5.05, p.pitch - 1.1, 0.42, 0.1, WHITE);
+    for (const y of P_ROWS) if (free(m, y[0])) {
+      slab(b, F.f, m, y[1] - 0.42, p.pitch - 1.05, 0.42, 0.1, WHITE);
+      slab(b, F.f, m, y[0] - 0.05, p.pitch - 1.05, 0.38, 0.1, WHITE);
     }
-    for (let j = 1; j < panes; j++) ledgeStrip(b, F.f, a + 0.35 + pw * j, y0 + 0.3, 0.1, y1 - y0 - 0.6, 0.06, FRAME, 0.78);
-    for (const e of [a + 0.175, c - 0.175]) slab(b, F.f, e, y0, 0.35, y1 - y0, 0.12, BRICK, 0.7);
+    if (free(m, 14)) slab(b, F.f, m, 19.7, p.pitch - 0.95, 0.45, 0.1, WHITE);
+    if (free(m, 14)) slab(b, F.f, m, 13.0, p.pitch - 0.95, 0.4, 0.1, WHITE);
+  });
+  longBand(b, F, s0, s1, 6.55, 7.15, 0.24, WHITE);
+  longBand(b, F, s0, s1, 12.55, 13.1, 0.3, WHITE);
+  longBand(b, F, s0, s1, 21.3, 21.95, 0.36, WHITE);
+  // white window sills on storeys 3-4
+  for (const s of p.cols) for (const y of P_ROWS) if (free(s, y[0])) slab(b, F.f, s, y[0] - 0.12, 1.2, 0.12, 0.14, WHITE);
+  // dark glazed oriel stacks (round e: they must read as projecting bays, not panels): a box 1.05 m proud (was 0.7),
+  // glazed on its front and both cheeks; per storey a deep dark frame band (spandrel) standing 6 cm proud of the glass,
+  // mullions 12 cm wide, a transom a third up; a stepped dark corbel under the box and a projecting cap over it; brick
+  // pilaster strips at the sides of the wall behind (the 2016 crop, s 115-123 and 132-141: four to five lights a storey,
+  // a glazed cheek, the stack throwing a shadow on the brick)
+  const D = 1.05;
+  for (const [a, c] of p.oriels) {
+    const y0 = 9.2, y1 = 23.3, n = 5, h = (y1 - y0) / n, w = c - a, panes = Math.max(4, Math.round(w / 1.7)), pw = (w - 0.3) / panes;
+    boxBand(b, F, a, c, y0, y1, D, ORIEL);
+    // corbel: two steps under the box, and the cap
+    slab(b, F.f, (a + c) / 2, y0 - 0.35, w - 0.2, 0.35, D - 0.25, ORIEL, 0);
+    slab(b, F.f, (a + c) / 2, y0 - 0.6, w - 0.5, 0.25, D - 0.55, ORIEL, 0);
+    slab(b, F.f, (a + c) / 2, y1, w + 0.2, 0.3, D + 0.15, ORIEL, 0);
+    for (let k = 0; k < n; k++) {
+      const yb = y0 + k * h, gy = yb + 0.55, gh = h - 0.75;
+      for (let j = 0; j < panes; j++) slab(b, F.f, a + 0.15 + pw * (j + 0.5), gy, pw - 0.12, gh, 0.04, GLASS, D);
+      // the cheeks: one tall light each side, glass standing just off the box's side faces
+      for (const t of [a - 0.02, c + 0.02]) slab(b, F.f, t, gy, 0.04, gh, D - 0.3, GLASS, 0.15);
+      // dark spandrel band and transom over the front glass
+      // (the frame stands 4 cm proud of the glass front and stops 2 cm short of each pane's foot: no coplanar faces)
+      ledgeStrip(b, F.f, (a + c) / 2, yb, w, 0.53, 0.06, FRAME, D + 0.02);
+      ledgeStrip(b, F.f, (a + c) / 2, gy + gh * 0.68, w - 0.3, 0.1, 0.07, FRAME, D + 0.02);
+    }
+    for (let j = 0; j <= panes; j++) ledgeStrip(b, F.f, a + 0.15 + pw * j, y0, 0.12, y1 - y0, 0.06, FRAME, D + 0.02);
+    for (const e of [a - 0.3, c + 0.3]) slab(b, F.f, e, y0 - 0.6, 0.45, y1 - y0 + 0.9, 0.14, BRICK, 0);
   }
 }
 

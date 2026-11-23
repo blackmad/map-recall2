@@ -52,7 +52,10 @@ export type BlockOpts = {
 export type WallGeom = {n: P2; cx: number; cz: number; len: number; yb: number; yt: number};
 /** One row of openings in a `Zone`: `pitch` the target spacing, `w` the opening width (or `gap`: the pier between openings,
  * width = spacing - gap, for continuous glazing); openings outside the wall's height are skipped as everywhere. */
-export type ZoneRow = {y: [number, number]; pitch: number; w?: number; gap?: number; o?: OpenOpts};
+export type ZoneRow = {y: [number, number]; pitch: number; w?: number; gap?: number; o?: OpenOpts;
+  /** The back of opening k is `backs[k % backs.length]` (absent: `o.back`): drawn blinds or curtains closed in some panes
+   * and open in others, counted from each wall's own first opening (lane hand-blocks-e-20261123). */
+  backs?: (Col | null)[]};
 export type Zone = {bands: [number, Col][]; rows: ZoneRow[]; extra?: (b: BuildingTools, F: FR, w: WallGeom) => void};
 
 type WallInfo = {i: number; f: Frame; len: number; yb: number; yt: number; cx: number; cz: number; rect: boolean; stepTop?: number; stepped?: boolean};
@@ -199,7 +202,7 @@ function zonedWall(b: BuildingTools, w: WallInfo, z: Zone, o: BlockOpts) {
   for (const r of z.rows) {
     const n = Math.max(1, Math.round(w.len / r.pitch)), p = w.len / n, ow = r.gap !== undefined ? p - r.gap : Math.min(r.w ?? 1.2, p - 0.3);
     if (ow < 0.4) continue;
-    for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * p, {s: 0, w: ow, y: r.y, o: r.o}, o.gridDefaults ?? {});
+    for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * p, {s: 0, w: ow, y: r.y, o: r.backs?.length ? {...r.o, back: r.backs[k % r.backs.length]} : r.o}, o.gridDefaults ?? {});
   }
   z.extra?.(b, frOf(w), {n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt});
   coping(b, w, o.ledge);
