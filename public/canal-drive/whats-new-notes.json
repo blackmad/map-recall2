@@ -4,10 +4,46 @@
     {
       "date": "2026-11-23",
       "title": "Two modern blocks with their own faces, and a darker Klapmutsenveem",
-      "text": "Tweede Hugo de Grootstraat 43 now has its supermarket podium with the red band, the glazed storey and the brick flats set back above. Panamalaan's long block shows its four different sides: glass and timber at the bottom, slate and dark brick above. The Klapmutsenveem on the IJ is now the dark purple-brown of the photo instead of orange, and its bay windows have proper frames.",
+      "text": "Tweede Hugo de Grootstraat 43 now has its supermarket podium with the red band, the glazed storey and the brick flats set back above. Panamalaan's long block shows its four different sides: glass and timber at the bottom, slate and dark brick above. The Klapmutsenveem on the IJ is now the dark purple-brown of the photo instead of orange, and its bay windows have proper frames. Later the same day the Klapmutsenveem's bay windows came out from the wall and its white bands got stronger, and Tweede Hugo de Grootstraat got its glass stair tower and the blinds behind the shop's upper windows.",
       "where": [
         4.87056869,
         52.37499018
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-tweede-hugo-de-grootstraat-43.jpg",
+          "alt": "Tweede Hugo de Grootstraat 43: the street photo, today's generic full-height block, and the new model with the Dirk van den Broek shop podium and the buff-brick housing set back above it",
+          "caption": "Tweede Hugo de Grootstraat 43: photo, before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 3,
+            "gutter": 6,
+            "pair": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-klapmutsenveem-30.jpg",
+          "alt": "Klapmutsenveem 30: the street photo, the orange-red brick of the earlier model, and the new darker purple-brown brick with taller arcades and white bands",
+          "caption": "Klapmutsenveem 30: photo, before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 3,
+            "gutter": 6,
+            "pair": [
+              1,
+              2
+            ],
+            "target": [
+              0.04,
+              0,
+              0.8,
+              0.62
+            ]
+          }
+        }
       ]
     },
     {

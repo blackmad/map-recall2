@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Round 20261123aa: hand blocks round e: Klapmutsenveem oriels, Tweede Hugo stair tower; Panamalaan held (2026-11-23)
+
+- **lane/hand-blocks-e-20261123 b0f80c8abc.** Blind A/B against main's installed GLBs: new won 8 of 10 walls.
+- **Klapmutsenveem 30 (2/2):** oriels project 1.05 m with corbel, cap, glazed sides and a proud frame grid; stronger white imposts, keystones, cornices and sill courses; brick measured `#584a45` (the city look had drawn `#514240` as a mauve `#6b5755`). 27,378 tris, 350 KB. audit:glb geometry-regression overlap 0.8 m², down from main's 1.1 m².
+- **Tweede Hugo de Grootstraat 43 (4/4):** pale blinds in five of seven panes of the glazed storey; the glass stair tower (notch walls 88/70/90 as a dark-framed curtain wall with two round columns). 26,766 tris, 342 KB.
+- **Panamalaan 10-186 held:** the blind split 2-2. Both losses were on a measured grey brick, and the lane then dropped that brick, so the version proposed for install was never judged. Its builder, inventory, catalogue entry and tint tags stay at main's; it rebuilds byte-identical with the new kit.
+- **Root cause of the "too light and mauve" colours:** `materialOverrides` go through `cityLookTint`. A `measured` tint in material-slot-tags.ts now pins the photo colour per landmark. Kit: `bar` (mullion/transom width) on window openings, `backs` (blind/glass cycle) on zoned rows; 24 other kit models rebuilt unchanged.
+- **What's New:** round z's note got its pictures (shot with whats-new-pair.spec, today 9582e1f1c6, new 36716fb798; guard 4.3 % and 8.6 %; checked by eye).
+
 ## Round 20261123z: hand blocks round d: Tweede Hugo de Grootstraat 43, Panamalaan 10-186, Klapmutsenveem brick (2026-11-23)
 
 - **lane/hand-blocks-d-20261123 9494205cb1.** Blind A/B (one fresh opus judge, seeded sides, key held apart): new won all 9 walls. The integrator checked two sheets by eye (Tweede Hugo w01 street, Panamalaan w01 street) and agrees.
