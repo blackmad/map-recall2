@@ -258,8 +258,60 @@ made.rituals = { buf: await row([{ buf: await trim(fs.readFileSync(path.join(SRC
 // H&M (note b89bf416 "doesn't fit good") and Uniqlo (note 981a7974 "overflowing"): their marks are square-ish (aspect
 // under 1.6), so the front drew them as a 0.95 m lightbox standing over the 0.6 m board. chain-overrides.json minAspect
 // pads them to a wordmark cell inside the board (as Lidl); the sources are the committed Commons renders.
+// Pets Place: the stacked two-line mark read as two small lines on the board; the name on one line, white on the red board.
+made['pets-place'] = { buf: await letter('pets place', 'Arial Rounded MT Bold', '#ffffff'), source: 'https://commons.wikimedia.org/wiki/File:Pets_Place_logo_01.png', licence: 'name set in Arial Rounded Bold after the Commons logo (src/pets-place-commons.png)', note: 'round 3b: white pets place on one line, on red', fetched: F3 };
 made['h-and-m'] = { buf: await trim(fs.readFileSync(path.join(SRC, 'h-and-m-commons.png'))), source: 'https://commons.wikimedia.org/wiki/File:H%26M-Logo.svg', licence: 'Public domain (Commons)', note: 'round 3: padded to fit the board (minAspect)', fetched: F3 };
 made.uniqlo = { buf: await trim(fs.readFileSync(path.join(SRC, 'uniqlo-commons.png'))), source: 'https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg', licence: 'Public domain (Commons)', note: 'round 3: padded to fit the board (minAspect)', fetched: F3 };
+
+// ---- Round 3b (coordinator review of the logo sheet): a logo must never read worse than the lettering it replaces. A
+// mark whose name is small inside it (a badge, a stacked or square mark) is set as mark + the name in big letters on one
+// line, or the name alone is lifted out of the mark, so the name fills the board's height (retailFront.ts draws a wide
+// logo at the board's height).
+const keep = (pred: (r: number, g: number, b: number, a: number) => boolean, ink?: string) => (r: number, g: number, b: number, a: number): [number, number, number, number] => {
+  if (!pred(r, g, b, a)) return [0, 0, 0, 0];
+  if (!ink) return [r, g, b, a];
+  const [R, G, B] = rgb(ink); return [R, G, B, a];
+};
+const tallest = async (buf: Buffer) => { const bs = await bands(buf); return band(buf, bs.reduce((m, x) => (x[1] - x[0] > m[1] - m[0] ? x : m))); };
+{
+  // Anne&Max: the brown name lifted out of the white badge (no subtitle, no rule), white on the dark board.
+  const svg = await svgPng('anne-and-max.svg', 600);
+  const name = await tallest(await trim(await reink(svg, keep((r, g, b, a) => a > 60 && r + g + b < 330 && !(g > r + 20), '#ffffff'))));
+  made['anne-and-max'] = { buf: name, source: 'https://www.annemax.nl/', renderUrl: 'https://annemax.nl/app/uploads/2026/04/logo-2.svg', licence: 'trademark logo; brand site SVG (the name lifted out of the badge)', note: 'round 3b: the Anne&Max name, white, filling the dark board', fetched: F3 };
+}
+made['massimo-gelato'] = { buf: await row([{ buf: await svgPng('massimo-gelato.svg', 600), h: H }, { buf: await letter('MASSIMO GELATO', 'Futura', '#5f7d43', 'font-weight="bold" letter-spacing="6"'), h: Math.round(H * 0.72) }], 40), source: 'https://www.massimogelato.nl/', renderUrl: 'https://www.massimogelato.nl/assets/files/logo.svg', licence: 'trademark logo; brand site SVG; name set in Futura Bold in the badge green', note: 'round 3b: badge + big green name on cream', fetched: F3 };
+{
+  // De Bakkerszonen: the copper pretzel, then the name on one line in white capitals (the stacked logo's name was a quarter of the board).
+  const pretzel = await trim(await reink(fs.readFileSync(path.join(SRC, 'de-bakkerszonen.png')), keep((r, g, b, a) => a > 24 && r > b + 50)));
+  made['de-bakkerszonen'] = { buf: await row([{ buf: pretzel, h: H }, { buf: await letter('DE BAKKERSZONEN', 'Helvetica Neue', '#ffffff', 'font-weight="bold"'), h: Math.round(H * 0.6) }], 40), source: 'https://www.debakkerszonen.nl/', renderUrl: 'https://mosveld.debakkerszonen.nl/storage/images/logos/6621366a7aa6c_BZ_Logo_staand.png', licence: 'trademark logo (pretzel) from the brand site PNG; name set in Helvetica Neue Bold', note: 'round 3b: copper pretzel + DE BAKKERSZONEN on one line, on black', fetched: F3 };
+}
+made['burger-king'] = { buf: await row([{ buf: await trim(fs.readFileSync(path.join(SRC, 'burger-king-commons.png'))), h: H }, { buf: await letter('BURGER KING', 'Arial Rounded MT Bold', '#f5ebdc'), h: Math.round(H * 0.72) }], 40), source: 'https://commons.wikimedia.org/wiki/File:Burger_King_2020.svg', licence: 'Public domain (Commons); name set in Arial Rounded Bold', note: 'round 3b: bun mark + cream BURGER KING on the brown board', fetched: F3 };
+{
+  const v = await trim(fs.readFileSync(path.join(SRC, 'vodafone-commons.png'))), bs = await bands(v);
+  made.vodafone = { buf: await row([{ buf: await band(v, bs[0]), h: H }, { buf: await band(v, bs[bs.length - 1]), h: Math.round(H * 0.85) }], 40), source: 'https://commons.wikimedia.org/wiki/File:Vodafone_logo_1997.png', licence: 'Public domain (Commons)', note: 'round 3b: speech mark + vodafone side by side on one line', fetched: F3 };
+}
+// Specsavers: the white name lifted out of the green ovals, on a green board (chain-overrides fascia).
+made.specsavers = { buf: await trim(await reink(fs.readFileSync(path.join(SRC, 'specsavers-commons.png')), keep((r, g, b, a) => a > 60 && r > 200 && g > 200 && b > 200))), source: 'https://commons.wikimedia.org/wiki/File:Specsavers_logo.svg', licence: 'Public domain (Commons); the name lifted out of the ovals', note: 'round 3b: white Specsavers on the green board', fetched: F3 };
+// Papa John's: the red name lifted out of the badge (no PIZZA banner, no outline), red on white.
+made['papa-john-s'] = { buf: await tallest(await trim(await reink(fs.readFileSync(path.join(SRC, 'papa-john-s-commons.png')), keep((r, g, b, a) => a > 60 && r > 150 && g < 90 && b < 90)))), source: "https://commons.wikimedia.org/wiki/File:Papa_John%27s_Logo_2019.svg", licence: 'Public domain (Commons); the name lifted out of the badge', note: "round 3b: red PAPA JOHN'S on white", fetched: F3 };
+made['dille-and-kamille'] = { buf: await row([{ buf: await trim(fs.readFileSync(path.join(SRC, 'dille-and-kamille-commons.png'))), h: H }, { buf: await letter('DILLE & KAMILLE', 'American Typewriter', '#111111', 'font-weight="bold"'), h: Math.round(H * 0.5) }], 40), source: 'https://commons.wikimedia.org/wiki/File:Dille_%26_Kamille_Logo.png', licence: 'Public domain (Commons); name set in American Typewriter Bold', note: 'round 3b: octagon mark + DILLE & KAMILLE on one line, on white', fetched: F3 };
+{
+  const t = await trim(fs.readFileSync(path.join(SRC, 'flying-tiger-copenhagen-commons.png'))), bs = await bands(t);
+  made['flying-tiger-copenhagen'] = { buf: await band(t, bs[0]), source: 'https://commons.wikimedia.org/wiki/File:Flying_Tiger_Copenhagen.svg', licence: 'Public domain (Commons)', note: "round 3b: 'flying tiger' alone (the small 'copenhagen' line dropped) so the name fills the board", fetched: F3 };
+}
+{
+  // GWK Travelex: the name in the brand blue, big, then the red 'worldwide money' tab (cut from the Commons logo) at full height.
+  const jpg = await sharp(path.join(SRC, 'gwk-travelex-commons.jpg')).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = jpg.info, my = Math.floor(h / 2);
+  let cut = w - 1;
+  for (let x = 0; x < w; x++) { const i = (my * w + x) * 4; if (jpg.data[i] > 180 && jpg.data[i + 1] < 90 && jpg.data[i + 2] < 90) { cut = x; break; } }
+  const tab = await trim(await sharp(path.join(SRC, 'gwk-travelex-commons.jpg')).extract({ left: cut, top: 0, width: w - cut, height: h }).png().toBuffer());
+  made['gwk-travelex'] = { buf: await row([{ buf: await letter('GWK Travelex', 'Helvetica Neue', '#1d3f94', 'font-weight="bold"'), h: Math.round(H * 0.86) }, { buf: tab, h: H }], 30), source: 'https://commons.wikimedia.org/wiki/File:GWK_Travelex_logo.jpg', licence: 'Commons file (text logo); name set in Helvetica Neue Bold in the brand blue', note: "round 3b: big blue GWK Travelex + the red 'worldwide money' tab, on white (panorama TMX7316010203-001530_pano_0004_000054)", fetched: F3 };
+}
+// Pets Place: the stacked two-line mark read as two small lines on the board; the name on one line, white on the red board.
+made['pets-place'] = { buf: await letter('pets place', 'Arial Rounded MT Bold', '#ffffff'), source: 'https://commons.wikimedia.org/wiki/File:Pets_Place_logo_01.png', licence: 'name set in Arial Rounded Bold after the Commons logo (src/pets-place-commons.png)', note: 'round 3b: white pets place on one line, on red', fetched: F3 };
+made['h-and-m'] = { buf: await trim(fs.readFileSync(path.join(SRC, 'h-and-m-commons.png'))), source: 'https://commons.wikimedia.org/wiki/File:H%26M-Logo.svg', licence: 'Public domain (Commons)', note: 'round 3b: the mark at the board height (retailFront.ts own-front square mark)', fetched: F3 };
+made.uniqlo = { buf: await row([{ buf: await trim(fs.readFileSync(path.join(SRC, 'uniqlo-commons.png'))), h: H }, { buf: await letter('UNIQLO', 'Helvetica Neue', '#e3001b', 'font-weight="bold" letter-spacing="30"'), h: Math.round(H * 0.7) }], 50), source: 'https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg', licence: 'Public domain (Commons); UNIQLO set in Helvetica Neue Bold in the brand red', note: 'round 3b: red square + big red UNIQLO on white', fetched: F3 };
 
 // `--only=a,b`: write just these keys (round 1's files stay as committed).
 const only = process.argv.find(a => a.startsWith('--only='))?.slice(7).split(',');

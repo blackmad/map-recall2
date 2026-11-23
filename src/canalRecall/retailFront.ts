@@ -726,9 +726,12 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     // the street (centred on it, up to 0.95 m); a wordmark keeps to the board. Lane shopfront-feedback-20261123: an
     // own-front chain (retailChains.ts CHAINS_OWN_FRONT, drawn with no goods) too, or Burger King's and Vodafone's
     // square marks shrank to a 0.5 m patch on the board; every own-front chain before it had a wide logo.
-    const box = (input.goods !== undefined || input.chain !== undefined) && input.logo.aspect < 1.6;
-    const hM = box ? 0.95 : FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
-    const z0 = box ? (top + bottom) / 2 - wM / input.logo.aspect / 2 : bottom + 0.05;
+    // Coordinator review (round 3b): an own-front chain's square mark (H&M) is as tall as the board (the cap stands in front of anything higher),
+    // not a 0.95 m box over the cap (Vodafone stuck out above the board); a chain's wide logo fills 90 % of the board.
+    const box = (input.goods !== undefined || input.chain !== undefined) && input.logo.aspect < 1.6, chainBox = box && input.chain !== undefined;
+    const hM = chainBox ? FRONT.fasciaM - 0.04 : box ? 0.95 : input.chain ? FRONT.fasciaM - 0.06 : FRONT.fasciaM - 0.1;
+    const wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
+    const z0 = chainBox ? bottom + 0.02 : box ? (top + bottom) / 2 - wM / input.logo.aspect / 2 : input.chain ? bottom + 0.03 + (hM - wM / input.logo.aspect) / 2 : bottom + 0.05;
     b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM + (box ? 0.03 : 0), z0, z0 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
   } else if (word) {
     const face = look.face && input.faces !== undefined ? { face: look.face, layer: input.faces + ['serif', 'condensed', 'script'].indexOf(look.face) } : undefined;

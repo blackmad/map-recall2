@@ -31,8 +31,7 @@
   "fascia": "#ffffff"
  },
  "h-and-m": {
-  "fascia": "#ffffff",
-  "minAspect": 2.4
+  "fascia": "#ffffff"
  },
  "vodafone": {
   "fascia": "#ffffff"
@@ -73,7 +72,8 @@
   "fascia": "#ffffff"
  },
  "specsavers": {
-  "fascia": "#ffffff"
+  "fascia": "#18995d",
+  "letters": "#ffffff"
  },
  "vomar": {
   "fascia": "#ffffff"
@@ -170,7 +170,7 @@
   "fascia": "#2b2724"
  },
  "pipoos": {
-  "fascia": "#3b3b3d"
+  "fascia": "#ffffff"
  },
  "massimo-gelato": {
   "fascia": "#faf9ef"
@@ -206,8 +206,7 @@
   "fascia": "#ffffff"
  },
  "uniqlo": {
-  "fascia": "#ffffff",
-  "minAspect": 1.7
+  "fascia": "#ffffff"
  },
  "intertoys": {
   "fascia": "#4a5553"
@@ -227,5 +226,15 @@
  "atlas": {
   "skip": true,
   "note": "not a chain: three unrelated shops named Atlas (butcher Javastraat 56-H, hairdresser Douwes Dekkerstraat 20, coffeeshop Buikslotermeerplein 389); the hairdresser drew a butcher front. David 2026-11-23, Shopfronts note e92dcc7c"
+ },
+ "papa-john-s": {
+  "fascia": "#ffffff"
+ },
+ "dille-and-kamille": {
+  "fascia": "#ffffff"
+ },
+ "pets-place": {
+  "fascia": "#e2001a",
+  "letters": "#ffffff"
  }
 }

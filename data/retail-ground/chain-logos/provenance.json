@@ -269,13 +269,11 @@
   "name": "Burger King",
   "pois": 10,
   "wikidata": "Q177054",
-  "file": "File:Burger King 2020.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Burger_King_2020.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/960px-Burger_King_2020.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "32a4b97c8e3b4c16c1ea4be207775672c7a7ab97",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons); name set in Arial Rounded Bold",
   "artist": "Burger King",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: bun mark + cream BURGER KING on the brown board"
  },
  "geldmaat": {
   "name": "Geldmaat",
@@ -351,13 +349,11 @@
   "name": "Specsavers",
   "pois": 9,
   "wikidata": "Q2000610",
-  "file": "File:Specsavers logo.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Specsavers_logo.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Specsavers_logo.svg/960px-Specsavers_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "d3923f474131d16d6492c6a6088d52537644308a",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons); the name lifted out of the ovals",
   "artist": "Specsavers",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: white Specsavers on the green board"
  },
  "aldi": {
   "name": "ALDI",
@@ -374,10 +370,10 @@
   "pois": 8,
   "wikidata": "Q2337964",
   "source": "https://commons.wikimedia.org/wiki/File:GWK_Travelex_logo.jpg",
-  "licence": "Commons file (text logo)",
+  "licence": "Commons file (text logo); name set in Helvetica Neue Bold in the brand blue",
   "artist": "Travelex UK Ltd",
   "fetched": "2026-11-23",
-  "wordmark": "round 3: blue band + red tab on white"
+  "wordmark": "round 3b: big blue GWK Travelex + the red 'worldwide money' tab, on white (panorama TMX7316010203-001530_pano_0004_000054)"
  },
  "h-and-m": {
   "name": "H&M",
@@ -387,7 +383,7 @@
   "licence": "Public domain (Commons)",
   "artist": "Original: Unknown Vector:  Afrank99",
   "fetched": "2026-11-23",
-  "wordmark": "round 3: padded to fit the board (minAspect)"
+  "wordmark": "round 3b: the mark at the board height (retailFront.ts own-front square mark)"
  },
  "eye-wish": {
   "name": "Eye Wish",
@@ -453,13 +449,11 @@
   "name": "Pets Place",
   "pois": 7,
   "wikidata": "Q116951772",
-  "file": "File:Pets Place logo 01.png",
   "source": "https://commons.wikimedia.org/wiki/File:Pets_Place_logo_01.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/Pets_Place_logo_01.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "c63754ba8e03e5b556fc05b866018ab05b012dc6",
-  "licence": "Public domain",
+  "licence": "name set in Arial Rounded Bold after the Commons logo (src/pets-place-commons.png)",
   "artist": "Pets Place",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: white pets place on one line, on red"
  },
  "jysk": {
   "name": "JYSK",
@@ -500,13 +494,11 @@
   "name": "Vodafone",
   "pois": 7,
   "wikidata": "Q122141",
-  "file": "File:Vodafone logo 1997.png",
   "source": "https://commons.wikimedia.org/wiki/File:Vodafone_logo_1997.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Vodafone_logo_1997.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "f7951d5b619f36f03abb60bfe4ce33d70fa941df",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Vodafone Group Plc",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: speech mark + vodafone side by side on one line"
  },
  "xenos": {
   "name": "Xenos",
@@ -735,13 +727,11 @@
   "name": "Dille & Kamille",
   "pois": 5,
   "wikidata": "Q65154379",
-  "file": "File:Dille & Kamille Logo.png",
   "source": "https://commons.wikimedia.org/wiki/File:Dille_%26_Kamille_Logo.png",
-  "renderUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Dille_%26_Kamille_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "sha1": "ae3eac24cf02c9bd42a302254948ec06f5ac98ab",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons); name set in American Typewriter Bold",
   "artist": "Dille &amp; Kamille",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: octagon mark + DILLE & KAMILLE on one line, on white"
  },
  "swarovski": {
   "name": "Swarovski",
@@ -784,10 +774,10 @@
   "pois": 4,
   "wikidata": "Q26070",
   "source": "https://commons.wikimedia.org/wiki/File:UNIQLO_logo.svg",
-  "licence": "Public domain (Commons)",
+  "licence": "Public domain (Commons); UNIQLO set in Helvetica Neue Bold in the brand red",
   "artist": "Kashiwa Satō",
   "fetched": "2026-11-23",
-  "wordmark": "round 3: padded to fit the board (minAspect)"
+  "wordmark": "round 3b: red square + big red UNIQLO on white"
  },
  "wagamama": {
   "name": "Wagamama",
@@ -961,13 +951,11 @@
   "name": "Papa John's",
   "pois": 4,
   "wikidata": "Q2759586",
-  "file": "File:Papa John's Logo 2019.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Papa_John%27s_Logo_2019.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Papa_John%27s_Logo_2019.svg/960px-Papa_John%27s_Logo_2019.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "8ce831a6f1257af8d84c87c9344400366b204203",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons); the name lifted out of the badge",
   "artist": "Unknown authorUnknown author",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: red PAPA JOHN'S on white"
  },
  "lucardi": {
   "name": "Lucardi",
@@ -1079,13 +1067,11 @@
   "name": "Flying Tiger Copenhagen",
   "pois": 3,
   "wikidata": "Q2786319",
-  "file": "File:Flying Tiger Copenhagen.svg",
   "source": "https://commons.wikimedia.org/wiki/File:Flying_Tiger_Copenhagen.svg",
-  "renderUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Flying_Tiger_Copenhagen.svg/960px-Flying_Tiger_Copenhagen.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "sha1": "7b58577b07deb49f517be2fbf30139d159e0d84b",
-  "licence": "Public domain",
+  "licence": "Public domain (Commons)",
   "artist": "Flying Tiger Copenhagen",
-  "fetched": "2026-11-15"
+  "fetched": "2026-11-23",
+  "wordmark": "round 3b: 'flying tiger' alone (the small 'copenhagen' line dropped) so the name fills the board"
  },
  "lush": {
   "name": "Lush",
@@ -1556,8 +1542,8 @@
  "anne-and-max": {
   "source": "https://www.annemax.nl/",
   "renderUrl": "https://annemax.nl/app/uploads/2026/04/logo-2.svg",
-  "licence": "trademark logo; brand site SVG",
-  "wordmark": "round 3: white badge on dark board",
+  "licence": "trademark logo; brand site SVG (the name lifted out of the badge)",
+  "wordmark": "round 3b: the Anne&Max name, white, filling the dark board",
   "fetched": "2026-11-23"
  },
  "pipoos": {
@@ -1570,15 +1556,15 @@
  "massimo-gelato": {
   "source": "https://www.massimogelato.nl/",
   "renderUrl": "https://www.massimogelato.nl/assets/files/logo.svg",
-  "licence": "trademark logo; brand site SVG; name set in Futura Medium in the badge green",
-  "wordmark": "round 3: badge + green name on cream",
+  "licence": "trademark logo; brand site SVG; name set in Futura Bold in the badge green",
+  "wordmark": "round 3b: badge + big green name on cream",
   "fetched": "2026-11-23"
  },
  "de-bakkerszonen": {
   "source": "https://www.debakkerszonen.nl/",
   "renderUrl": "https://mosveld.debakkerszonen.nl/storage/images/logos/6621366a7aa6c_BZ_Logo_staand.png",
-  "licence": "trademark logo; brand site PNG",
-  "wordmark": "round 3: copper pretzel + white lettering on black",
+  "licence": "trademark logo (pretzel) from the brand site PNG; name set in Helvetica Neue Bold",
+  "wordmark": "round 3b: copper pretzel + DE BAKKERSZONEN on one line, on black",
   "fetched": "2026-11-23"
  },
  "halal-fried-chicken": {
