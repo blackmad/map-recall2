@@ -43,6 +43,9 @@ export const ROOM_FAMILY_OF: Readonly<Partial<Record<GoodsKind, RoomFamily>>> = 
   gelato: 'sweet', waffles: 'sweet',
   cafe: 'warm', pancakes: 'warm', bread: 'warm', cheese: 'warm', produce: 'warm', flowers: 'warm', books: 'warm',
   brownBar: 'dark', coffeeshop: 'dark', smartshop: 'dark', tattoo: 'dark', hair: 'dark', cosmetics: 'dark', tobacco: 'dark', liquor: 'dark',
+  // Lane shopfront-feedback-20261123: the chain goods kinds (sports and luggage chains in the white shop room, Timberland's
+  // timber room, Hunkemöller's dark boudoir).
+  sports: 'shop', luggage: 'shop', outdoor: 'warm', lingerie: 'dark',
 };
 
 /** The fillers painted on each family's room (one atlas cell each): only what suits that family's shops. */

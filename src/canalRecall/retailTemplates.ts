@@ -330,6 +330,9 @@ export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate
   'snackbar', // 0-2-0 with the red board, 2-0-1 with the dark one
   'tattoo', // 2-1-2
   'shoes', 'supermarket', 'clothes', 'cafe', 'chemist', 'cosmetics', // chain types, each a net win
+  // Lane shopfront-feedback-20261123: David's Shopfronts note 7fb182c1 ("can we see some ducks in the window?"; round n's
+  // window drew rows of flat yellow chips): Duck Store shows its goods cell, the rubber ducks on shelves. Not blind-judged.
+  'duck',
 ]);
 /**
  * Round 4 (lane retail-real, after the r1/r2 judges' notes): template parts the photos show and the fronts lacked, drawn

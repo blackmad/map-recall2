@@ -90,6 +90,11 @@ export const PANE_SETS: Readonly<Partial<Record<GoodsKind, PaneSet>>> = {
   ducks: { signature: 'most', share: 0.7, fillers: ['plinthDisplay', 'counterTill'] },
   exchange: { signature: 'once', fillers: ['promoPoster', 'blind', 'counterTill'] },
   bikes: { signature: 'most', share: 0.6, fillers: ['counterTill', 'promoPoster'] },
+  // Lane shopfront-feedback-20261123: the chain goods kinds, as clothing (each filler on its kind's family room).
+  sports: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
+  luggage: { signature: 'most', share: 0.55, fillers: ['plinthDisplay', 'promoPoster', 'counterTill'] },
+  outdoor: { signature: 'most', share: 0.5, fillers: ['plinthDisplay', 'wallShelves', 'counterTill'] },
+  lingerie: { signature: 'most', share: 0.5, fillers: ['promoPoster', 'plinthDisplay', 'counterTill'] },
 };
 
 /** One pane tile of a front: its span along the wall (m) and its window bay (tiles of one bay share the glass). */

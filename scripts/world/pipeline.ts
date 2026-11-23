@@ -17,7 +17,9 @@ import crypto from 'node:crypto';
 import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
 import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
-import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
+import { setShopfronts, setShopTemplates } from '../../src/canalRecall/shopfronts.js';
+import { retailGroundOn } from '../../src/canalRecall/retailTemplates.js';
+import { groundFloorOn, setGroundFloors } from '../../src/canalRecall/groundFloor/extract.js';
 import { setShopAnchors, shopRunOn } from '../../src/canalRecall/shopRun.js';
 import { registerFactsEnabled, registerFactsFromExtract, type RegisterFactsMap } from '../../src/canalRecall/facade/registerRecipe.js';
 import { stampTile } from '../../src/canalRecall/buildingTilesBrowser.js';
@@ -40,7 +42,10 @@ export const COVERS = process.env.COVERS_FILE ? path.resolve(process.env.COVERS_
 // covers.json is NOT here (house line H3): it reaches the world only through each cell's hide list, so each tile hashes
 // its own slice of it (tileCoversHashes below) and an install rebuilds the cells of the tiles it covers, not the city.
 // Lane shop-band-ground: the shop anchors are an input only with SHOP_RUN on (shopRun.ts), so the default hash is unchanged.
-export const GLOBAL_INPUTS = ['monument-gables.json', 'monument-facts.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json', ...(shopRunOn() ? ['shop-anchors.json'] : [])].map(f => path.join(EXTRACT, f));
+export const GLOBAL_INPUTS = ['monument-gables.json', 'monument-facts.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json', ...(shopRunOn() ? ['shop-anchors.json'] : []),
+  // Lane shopfront-feedback-20261123: the shop templates (and the ground floors they carry) the runtime decorator stamps;
+  // before this the compiler never installed them, so every baked cell drew plain shopfronts (Leentje's historic pui).
+  ...(retailGroundOn() ? ['shop-templates.json', ...(groundFloorOn() ? ['ground-floors.json'] : [])] : [])].map(f => path.join(EXTRACT, f));
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
 
@@ -123,6 +128,15 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
   const landmarkIds = new Set<string>();
   for (const list of Object.values<string[]>(readJson(path.join(EXTRACT, 'landmark-buildings.json')).buildings ?? {})) for (const id of list) landmarkIds.add(String(id));
   setShopfronts(readJson(path.join(EXTRACT, 'shopfronts.json')));
+  // Lane shopfront-feedback-20261123: the shop-template extract, as ownWorldView/vector-map install it when retailGround is
+  // on (the default): without it decorateShopTemplate stamps nothing and no baked cell carries a template, a chain logo
+  // or a historic pui (Leentje, Thorbeckeplein, drew generic panes under engine=own while world=live drew its pui).
+  if (retailGroundOn()) {
+    const gf = path.join(EXTRACT, 'ground-floors.json');
+    if (groundFloorOn() && fs.existsSync(gf)) setGroundFloors(readJson(gf));
+    const st = path.join(EXTRACT, 'shop-templates.json');
+    setShopTemplates(fs.existsSync(st) ? readJson(st) : null);
+  }
   // Lane shop-band-ground (SHOP_RUN=1, shopRun.ts): the shops' anchor points; SHOP_ANCHORS_FILE reads a staged file.
   if (shopRunOn()) { const file = process.env.SHOP_ANCHORS_FILE ? path.resolve(process.env.SHOP_ANCHORS_FILE) : path.join(EXTRACT, 'shop-anchors.json'); setShopAnchors(fs.existsSync(file) ? readJson(file) : null); }
   const decorate = gameDecorator({ gables, landmarkIds, listed, registerFacts }) as (f: Feature) => Feature;

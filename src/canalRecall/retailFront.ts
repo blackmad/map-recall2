@@ -172,7 +172,10 @@ export class Builder {
     if (face) layer = face.layer;
     for (const q of quads) {
       const first = this.out.length;
-      this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer!, q.rect);
+      // An accent mark (retailLogos.ts glyphLayout `z`) stands over its capital, 3 mm proud of the letter quads it overlaps.
+      const z = (q as { z?: readonly [number, number] }).z;
+      if (z) this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o + 0.003, zMid - h / 2 + z[0] * h, zMid - h / 2 + z[1] * h, layer!, q.rect);
+      else this.textured(w0 + q.a0 * h, w0 + q.a1 * h, o, zMid - h / 2, zMid + h / 2, layer!, q.rect);
       for (const t of this.out.slice(first)) { t.hex = hex; t.accentHex = board; if (!lit) delete t.lit; }
     }
   }
@@ -495,7 +498,7 @@ export type RetailFrontInput = {
    *  its word in that face. Absent: the bold sans. */
   faces?: number;
   /** Lane retail-real: a chain's board and letter colours and its name (lettered when it has no logo). */
-  chain?: { fascia: string; letters: string; word: string };
+  chain?: { fascia: string; letters: string; word: string; goods?: GoodsKind };
   /** Round 7 (`?retailBrand=1`): the chain's key in BRAND_STYLES (retailBrandStyles.ts), and the building's wall colour
    *  that shows behind letters on the wall. */
   brand?: string;
@@ -679,7 +682,7 @@ function fillPanes(b: Builder, look: TemplateLook, input: RetailFrontInput, c0: 
  */
 export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: number, s1: number, base: number, groundM: number): FrontTri[] {
   // Lane retail-real: a chain (retailChains.ts) draws its type's template under its own board and letter colours.
-  const look0: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
+  const look0 = chainLook(input);
   // Round 7: the chain's measured brand style over its template (retailBrandStyles.ts).
   const brand = input.brand && retailBrandOn() && brandAccepted(input.brand) ? brandLook(input.brand) : undefined, look: TemplateLook = brand ? { ...look0, ...brand } : look0;
   if (s1 - s0 < 1.2) return [];
@@ -720,10 +723,15 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     b.word(word, s0 + 0.2, s1 - 0.2, (top + bottom) / 2, 0.006 + FRONT.letterOutM, FRONT.fasciaM - 0.04, look.letters, wallHex, look.lit, input.letters);
   } else if (input.logo) {
     // Lane retail-real: a square-ish mark (Lidl, Aldi, Vodafone, Burger King) is a lightbox larger than the board, as on
-    // the street (centred on it, up to 0.95 m); a wordmark keeps to the board.
-    const box = input.goods !== undefined && input.logo.aspect < 1.6;
-    const hM = box ? 0.95 : FRONT.fasciaM - 0.1, wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
-    const z0 = box ? (top + bottom) / 2 - wM / input.logo.aspect / 2 : bottom + 0.05;
+    // the street (centred on it, up to 0.95 m); a wordmark keeps to the board. Lane shopfront-feedback-20261123: an
+    // own-front chain (retailChains.ts CHAINS_OWN_FRONT, drawn with no goods) too, or Burger King's and Vodafone's
+    // square marks shrank to a 0.5 m patch on the board; every own-front chain before it had a wide logo.
+    // Coordinator review (round 3b): an own-front chain's square mark (H&M) is as tall as the board (the cap stands in front of anything higher),
+    // not a 0.95 m box over the cap (Vodafone stuck out above the board); a chain's wide logo fills 90 % of the board.
+    const box = (input.goods !== undefined || input.chain !== undefined) && input.logo.aspect < 1.6, chainBox = box && input.chain !== undefined;
+    const hM = chainBox ? FRONT.fasciaM - 0.04 : box ? 0.95 : input.chain ? FRONT.fasciaM - 0.06 : FRONT.fasciaM - 0.1;
+    const wM = Math.min(s1 - s0 - 0.4, hM * input.logo.aspect), mid = (s0 + s1) / 2;
+    const z0 = chainBox ? bottom + 0.02 : box ? (top + bottom) / 2 - wM / input.logo.aspect / 2 : input.chain ? bottom + 0.03 + (hM - wM / input.logo.aspect) / 2 : bottom + 0.05;
     b.textured(mid - wM / 2, mid + wM / 2, FRONT.fasciaOutM + FRONT.letterOutM + (box ? 0.03 : 0), z0, z0 + (wM / input.logo.aspect), input.logo.layer, input.logo.rect);
   } else if (word) {
     const face = look.face && input.faces !== undefined ? { face: look.face, layer: input.faces + ['serif', 'condensed', 'script'].indexOf(look.face) } : undefined;
@@ -845,8 +853,15 @@ export const GF_FINISH_HEX: Readonly<Record<GfFinish, string>> = { stone: '#c9c1
 /** How far piers stand proud of the finish, how deep openings are set in, by material (m). */
 export const GF_DEPTH = { pierOutStone: 0.08, pierOutPui: 0.04, recessMasonry: 0.25, recessPui: 0.2, courseM: 0.42, channelM: 0.035, archSegments: 10 } as const;
 
+/** The template's look under a chain's board and letter colours (lane retail-real), and (lane shopfront-feedback-
+ *  20261123) the chain's own goods kind where the template shows goods: Bever's sports gear, Samsonite's cases. */
+export function chainLook(input: Pick<RetailFrontInput, 'template' | 'chain'>): TemplateLook {
+  const t = TEMPLATE_LOOKS[input.template];
+  if (!input.chain) return t;
+  return { ...t, fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined, ...(input.chain.goods && t.goods ? { goods: input.chain.goods } : {}) };
+}
 function frontLook(input: RetailFrontInput): TemplateLook {
-  const look0: TemplateLook = input.chain ? { ...TEMPLATE_LOOKS[input.template], fascia: input.chain.fascia, letters: input.chain.letters, cap: undefined, word: undefined, face: undefined } : TEMPLATE_LOOKS[input.template];
+  const look0 = chainLook(input);
   const brand = input.brand && retailBrandOn() && brandAccepted(input.brand) ? brandLook(input.brand) : undefined;
   return brand ? { ...look0, ...brand } : look0;
 }
