@@ -316,6 +316,7 @@ import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signat
 // Landmark queue lane 5 (2026-10-13)
 import {buildSweederijck} from './sweederijck-builder';
 import {buildWelgelegen} from './welgelegen-builder';
+import {buildWeltevreden} from './weltevreden-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
@@ -1337,6 +1338,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='jungle-swindenstraat')buildJungleSwindenstraat(w,d,helpers);
     else if(id==='sweederijck')buildSweederijck(w,d,helpers);
     else if(id==='welgelegen')buildWelgelegen(w,d,helpers);
+    else if(id==='weltevreden')buildWeltevreden(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

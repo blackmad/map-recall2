@@ -111108,5 +111108,93 @@
     ]
    ]
   }
+ },
+ {
+  "id": "weltevreden",
+  "name": "Weltevreden, Plantage Middenlaan",
+  "modelUrl": "./models/weltevreden.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012181160"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.9155417,
+    52.36532649
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 11.1,
+   "widthMetres": 16.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.9155417,
+    52.36532649
+   ],
+   "northOffsetDegrees": 0,
+   "source": "BAG footprint of pand 0363100012181160 (BAG CC0) with the 3DBAG eaves and ridge (CC BY 4.0) in native east/south metres (scripts/landmarks/weltevreden-footprints.json, bag-shell-prepare.ts), massing drawn by hand because the 3DBAG roof carries the taller neighbour's 10.2 m wall along the north-west end; the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001181_pano_0000_003955 (2019, frontal), TMX7316010203-002933_pano_0009_000098 (2023, frontal) and TMX7316010203-002541_pano_0003_000060 (2022, oblique), CC BY 4.0. Rijksmonument 4106, Buitenhuis Weltevreden (dwarshuis XIX A; dormer, glazing bars), Plantage Middenlaan 47. Per wall in scripts/landmarks/weltevreden-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 9,
+  "galleryView": {
+   "theta": 3.65,
+   "phi": 1.2
+  },
+  "bagYear": 1815,
+  "materialOverrides": {
+   "sandstone": "#e4e5dd",
+   "stone": "#c3c4bd",
+   "slate": "#2e2e31",
+   "concrete": "#8b8f90",
+   "frame": "#e8e8e0",
+   "glass": "#2f383d",
+   "dark": "#1e2221",
+   "bronze": "#1b1d1d",
+   "brick": "#6a5249"
+  },
+  "attribution": {
+   "title": "Weltevreden, Plantage Middenlaan 47, Amsterdam (1815; rijksmonument 4106)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001181_pano_0000_003955/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) of pand 0363100012181160 with 3DBAG heights (CC BY 4.0): the white weatherboarded front, the tall windows with black shutters, the black double door under its radial fanlight, the name WELTEVREDEN on the frieze, the cornice, the black pantile hipped roof, the wide dormer storey with three windows, the chimney and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9156424,
+      52.3653474
+     ],
+     [
+      4.9156177,
+      52.3653559
+     ],
+     [
+      4.9155799,
+      52.3653148
+     ],
+     [
+      4.9154438,
+      52.3653618
+     ],
+     [
+      4.9154025,
+      52.365317
+     ],
+     [
+      4.9155639,
+      52.3652621
+     ],
+     [
+      4.9156424,
+      52.3653474
+     ]
+    ]
+   ]
+  }
  }
 ]
