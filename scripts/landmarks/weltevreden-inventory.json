@@ -1,0 +1,227 @@
+{
+ "schemaVersion": 1,
+ "id": "weltevreden",
+ "pand": "0363100012181160",
+ "brief": "scripts/landmarks/weltevreden-brief.md",
+ "signature": [
+  "wt-dormer",
+  "wt-shutters",
+  "wt-name",
+  "wt-entrance",
+  "wt-weatherboard",
+  "wt-fence",
+  "wt-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-209",
+   "bearing": 209,
+   "lengthM": 12.6,
+   "centre": [
+    4.915486,
+    52.3652915
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0009_000098",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "wt-dormer",
+     "kind": "window-shape",
+     "where": "wide white dormer storey (x 165-460, y 75-205: 5.9 m wide, h 4.4-7.0) standing back behind the cornice on the front slope, three windows with dark 3 x 3 glazing bars, a moulded cap and grey zinc cheeks; a glazed roof light on its flat top (2019)",
+     "approxSizeM": [
+      5.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "how": "box dormer on the hip roof: weatherboarded white front, zinc cheeks, flat top with a pale roof-light strip, three windows"
+    },
+    {
+     "id": "wt-shutters",
+     "kind": "window-shape",
+     "where": "tall black shutters folded open beside both ground-floor windows (x 50-92, 168-205, 422-460, 538-578; y 255-375)",
+     "approxSizeM": [
+      0.8,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955"
+    },
+    {
+     "id": "wt-name",
+     "kind": "lettering",
+     "where": "WELTEVREDEN in dark capitals across the white frieze over the door (x 272-355, y 228-240)",
+     "approxSizeM": [
+      1.65,
+      0.24
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "how": "nearbar-kit letters, dark on the white frieze"
+    },
+    {
+     "id": "wt-entrance",
+     "kind": "window-shape",
+     "where": "black double door (x 273-354, y 298-425) under a fanlight with a half-round radial fan (y 248-290), between white pilasters carrying the frieze",
+     "approxSizeM": [
+      2.7,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955"
+    },
+    {
+     "id": "wt-windows",
+     "kind": "window-shape",
+     "where": "two tall ground-floor windows (1.45 x 2.45 m) with a transom row and 3-column glazing bars, dark bars on white curtains",
+     "approxSizeM": [
+      1.45,
+      2.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955"
+    },
+    {
+     "id": "wt-weatherboard",
+     "kind": "other",
+     "where": "white painted wooden facade of horizontal boards (lines every ~0.2 m) between corner and door pilasters",
+     "approxSizeM": [
+      12.6,
+      4.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002541_pano_0003_000060",
+     "how": "thin horizontal board edges (ledge strips) every 0.2 m on the white wall"
+    },
+    {
+     "id": "wt-cornice",
+     "kind": "other",
+     "where": "white frieze and cornice with a zinc gutter at the wall top (h 4.0-4.4)",
+     "approxSizeM": [
+      12.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955"
+    },
+    {
+     "id": "wt-fence",
+     "kind": "balcony-ironwork",
+     "where": "low black cast-iron railing on a kerb along the front garden with posts and a gate before the door (y 345-425)",
+     "approxSizeM": [
+      12.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "how": "bars, two rails and posts 1.2 m in front of the facade"
+    },
+    {
+     "id": "wt-chimney",
+     "kind": "other",
+     "where": "short brick chimney on the dormer top (x 305-320, y 48-75)",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955"
+    },
+    {
+     "id": "wt-skylight",
+     "kind": "window-shape",
+     "where": "roof light in the right front slope (x 470-500, y 128-160)",
+     "approxSizeM": [
+      0.55,
+      0.65
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "how": "pale glass panel on the roof plane"
+    },
+    {
+     "id": "wt-lamp",
+     "kind": "lamp",
+     "where": "small black wall lamp left of the door (x 228, y 300)",
+     "approxSizeM": [
+      0.15,
+      0.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "how": "black box"
+    },
+    {
+     "id": "wt-number",
+     "kind": "sign",
+     "where": "house number 47 plate right of the door (x 365, y 325)",
+     "approxSizeM": [
+      0.2,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001181_pano_0000_003955",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 20 cm plate"
+     }
+    }
+   ],
+   "note": "Plantage Middenlaan front, 12.57 m (facade ring edge 4), read from the rectified 2019 crop w01-209.alt.jpg (TMX7316010203-001181_pano_0000_003955, 50.2 px/m, heights h = (425 - y) / 50) and the 2023 frontal crop; the 2022 oblique (TMX7316010203-002541_pano_0000_003955 aimed view) shows the weatherboarding and the dormer set back behind the cornice with grey zinc cheeks."
+  },
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 10.7,
+   "centre": [
+    4.9155145,
+    52.3653405
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "Garden side (Artis), no panorama. Plain white shell with the hip roof; the 3DBAG 10.2 m strip at the north-west end is the taller neighbour bleeding into this pand and is not drawn."
+  },
+  {
+   "tag": "w03-299",
+   "bearing": 299,
+   "lengthM": 5.2,
+   "centre": [
+    4.9156015,
+    52.3653375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0003_000060",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "The brief's wall is the back wing's north-west face (facade ring edge 1, a 1.9 m wide, 2.7 m high annexe behind the house); its 2022 crop sees the front obliquely past the tall brick neighbour Plantage Middenlaan 45, which covers the house's own north-west end entirely. Plain white shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama TMX7316010203-001181_pano_0000_003955 (2019, frontal)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001181_pano_0000_003955/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama TMX7316010203-002933_pano_0009_000098 (2023, frontal)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002933_pano_0009_000098/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama TMX7316010203-002541_pano_0003_000060 (2022, oblique)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0003_000060/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Monument register 4106 (Buitenhuis Weltevreden, Plantage Middenlaan 47: dwarshuis XIX A, dormer, glazing bars)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/93065d8c-7a83-45a4-8fee-2259e1b9ba5d?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

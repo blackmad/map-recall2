@@ -1,0 +1,244 @@
+{
+ "schemaVersion": 1,
+ "id": "welgelegen",
+ "pand": "0363100012181157",
+ "brief": "scripts/landmarks/welgelegen-brief.md",
+ "signature": [
+  "wg-dormer",
+  "wg-entrance",
+  "wg-name",
+  "wg-oval-grille",
+  "wg-windows",
+  "wg-chimney",
+  "wg-fence"
+ ],
+ "walls": [
+  {
+   "tag": "w01-210",
+   "bearing": 210,
+   "lengthM": 14.4,
+   "centre": [
+    4.915659,
+    52.365232
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001809",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "wg-dormer",
+     "kind": "window-shape",
+     "where": "tall white wooden dormer standing on the cornice over the entrance (x 240-372, y 62-218): a two-light window between carved C-scroll cheeks flaring out at the foot, under an arched hood with a projecting hoist-beam knob at the apex",
+     "approxSizeM": [
+      2.6,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "kit scrollDormer outline for the flared cheeks, scroll discs on the cheeks, arched hood, a hoist-beam block at the apex"
+    },
+    {
+     "id": "wg-entrance",
+     "kind": "window-shape",
+     "where": "white stone door surround from the pavement to the cornice (x 240-372, y 225-450) framing a black panelled double door (y 322-450) under a tall transom light (y 250-318)",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809"
+    },
+    {
+     "id": "wg-oval-grille",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron oval ring with scroll ends and a small crown in the transom light over the door (x 268-345, y 255-315)",
+     "approxSizeM": [
+      1.5,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "oval ring of thin black bars with two scroll stubs and a crown block, over the dark glass"
+    },
+    {
+     "id": "wg-name",
+     "kind": "lettering",
+     "where": "WELGELEGEN in dark capitals on a white board in the frieze above the door surround (x 275-332, y 236-246)",
+     "approxSizeM": [
+      1.2,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "nearbar-kit letters, dark on the white frieze"
+    },
+    {
+     "id": "wg-windows",
+     "kind": "window-shape",
+     "where": "two rows of white-framed sash windows with one glazing bar each way (2 x 2 lights) in the dark brick: two bays left of the door, three right; the lower row low (h 0.2-1.5) and the upper row h 2.3-4.1",
+     "approxSizeM": [
+      1.24,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809"
+    },
+    {
+     "id": "wg-cornice",
+     "kind": "other",
+     "where": "white wooden cornice and gutter board along the whole front at h 4.3-4.6",
+     "approxSizeM": [
+      14.4,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809"
+    },
+    {
+     "id": "wg-chimney",
+     "kind": "other",
+     "where": "tall brick chimney stack just right of the dormer (x 355-387) rising above the ridge, a second stack near the east hip (x 520-550)",
+     "approxSizeM": [
+      0.65,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809"
+    },
+    {
+     "id": "wg-lanterns",
+     "kind": "lamp",
+     "where": "two small black wall lanterns either side of the door surround (x 210 and 395, y 333-350)",
+     "approxSizeM": [
+      0.25,
+      0.35
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "black box with a pale glass core"
+    },
+    {
+     "id": "wg-fence",
+     "kind": "balcony-ironwork",
+     "where": "tall black cast-iron railing along the front garden edge with spear bars and taller posts, a gate in front of the door (y 365-452)",
+     "approxSizeM": [
+      14.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "bars, rails and taller posts 1.0 m in front of the facade"
+    },
+    {
+     "id": "wg-skylight",
+     "kind": "window-shape",
+     "where": "roof light in the left front slope (x 110-150, y 160-185)",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "how": "pale glass panel on the roof plane"
+    },
+    {
+     "id": "wg-plaque",
+     "kind": "sign",
+     "where": "small house-number plate on the right door pilaster (x 355, y 355)",
+     "approxSizeM": [
+      0.15,
+      0.1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002047_pano_0000_001809",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 15 cm plate"
+     }
+    }
+   ],
+   "note": "Plantage Middenlaan front, 14.45 m (facade ring edge 1). The brief panorama (2024-12-10) shows the house wrapped in scaffolding sheeting (temporary); read from the unwrapped 2021 rectified crop w01-210.alt.jpg (TMX7316010203-002047_pano_0000_001809, ~50 px/m, heights h = (452 - y) / 50) with the 2021 oblique TMX7316010203-002047_pano_0000_001806."
+  },
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 9.8,
+   "centre": [
+    4.915726,
+    52.3652625
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-120",
+   "bearing": 120,
+   "lengthM": 5.7,
+   "centre": [
+    4.9156835,
+    52.3653065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001806",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [],
+   "note": "The brief's wall is the rear wing's south-east face (facade ring edge 4), behind the front block; its 2021 crop is a tree trunk and the oblique thumb shows only the front and the hip end. Plain brick shell with the 3DBAG roof."
+  },
+  {
+   "tag": "w04-120",
+   "bearing": 120,
+   "lengthM": 5.2,
+   "centre": [
+    4.91577,
+    52.3652205
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_00933",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "South-east end of the front block under the hip (facade ring edge 2): the 2025 crop is a hedge and trees; the 2021 oblique shows dark brick under the hipped roof with the white cornice returning round the corner. Plain brick, cornice returned."
+  },
+  {
+   "tag": "w05-29",
+   "bearing": 29,
+   "lengthM": 4.6,
+   "centre": [
+    4.9156745,
+    52.365339
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001809 (2021, frontal)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001809/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001806 (2021, oblique)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001806/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 pand 0363100012181157",
+   "url": "https://3dbag.nl",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Monument register 4107 (Plantage Middenlaan 49, dwarshuis, glazing bars)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/53b3ed33-73be-4002-a99e-7bf991f0ade9?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

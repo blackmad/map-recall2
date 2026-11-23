@@ -137325,6 +137325,253 @@
       "triangles": 20170,
       "bytes": 283656,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "welgelegen": {
+      "id": "welgelegen",
+      "name": "Welgelegen, Plantage Middenlaan",
+      "modelUrl": "./models/welgelegen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181157"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91565381,
+          52.36527237
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 16.7,
+        "widthMetres": 15.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012181157 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/welgelegen-footprints.json, bag-shell-prepare.ts); the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001809 (2021, frontal) and the oblique TMX7316010203-002047_pano_0000_001806 (2021), CC BY 4.0 (the 2024 panorama shows the house under scaffolding sheeting), heights fitted to the 3DBAG eaves. Rijksmonument 4107 (dwarshuis, glazing bars), Plantage Middenlaan 49. Per wall in scripts/landmarks/welgelegen-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 3.7,
+        "phi": 1.2
+      },
+      "bagYear": 1802,
+      "materialOverrides": {
+        "brick": "#5c4b44",
+        "slate": "#5c5b5b",
+        "sandstone": "#e4e3da",
+        "frame": "#e8e7df",
+        "glass": "#30393e",
+        "dark": "#1f2427",
+        "bronze": "#1d1f1f",
+        "concrete": "#c9c7bd"
+      },
+      "attribution": {
+        "title": "Welgelegen, Plantage Middenlaan 49, Amsterdam (1802; rijksmonument 4107)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001809/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181157 (CC0): the dark brick front with two rows of white sash windows, the white door surround with the black double door, the transom light with its wrought-iron oval and the name WELGELEGEN, the white cornice, the dormer with carved scroll cheeks, arched hood and hoist-beam knob, the chimneys and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9156424,
+              52.3653474
+            ],
+            [
+              4.9155639,
+              52.3652621
+            ],
+            [
+              4.9155643,
+              52.365262
+            ],
+            [
+              4.9155639,
+              52.3652615
+            ],
+            [
+              4.9157487,
+              52.3651977
+            ],
+            [
+              4.9157864,
+              52.3652387
+            ],
+            [
+              4.9156599,
+              52.3652824
+            ],
+            [
+              4.9157011,
+              52.3653271
+            ],
+            [
+              4.9156424,
+              52.3653474
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -6.562742233276367,
+          -1.1444091541079615e-7,
+          -8.348999977111816
+        ],
+        "max": [
+          9.2395601272583,
+          9,
+          9.219623565673828
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.568623542785645,
+        "heightMetres": 9.000000114440915,
+        "depthMetres": 15.802302360534668,
+        "depthCoverage": 1.0465100901016338
+      },
+      "triangles": 5280,
+      "bytes": 75804,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "weltevreden": {
+      "id": "weltevreden",
+      "name": "Weltevreden, Plantage Middenlaan",
+      "modelUrl": "./models/weltevreden.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181160"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9155417,
+          52.36532649
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 11.1,
+        "widthMetres": 16.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.9155417,
+          52.36532649
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG footprint of pand 0363100012181160 (BAG CC0) with the 3DBAG eaves and ridge (CC BY 4.0) in native east/south metres (scripts/landmarks/weltevreden-footprints.json, bag-shell-prepare.ts), massing drawn by hand because the 3DBAG roof carries the taller neighbour's 10.2 m wall along the north-west end; the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001181_pano_0000_003955 (2019, frontal), TMX7316010203-002933_pano_0009_000098 (2023, frontal) and TMX7316010203-002541_pano_0003_000060 (2022, oblique), CC BY 4.0. Rijksmonument 4106, Buitenhuis Weltevreden (dwarshuis XIX A; dormer, glazing bars), Plantage Middenlaan 47. Per wall in scripts/landmarks/weltevreden-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 3.65,
+        "phi": 1.2
+      },
+      "bagYear": 1815,
+      "materialOverrides": {
+        "sandstone": "#e4e5dd",
+        "stone": "#c3c4bd",
+        "slate": "#2e2e31",
+        "concrete": "#8b8f90",
+        "frame": "#e8e8e0",
+        "glass": "#2f383d",
+        "dark": "#1e2221",
+        "bronze": "#1b1d1d",
+        "brick": "#6a5249"
+      },
+      "attribution": {
+        "title": "Weltevreden, Plantage Middenlaan 47, Amsterdam (1815; rijksmonument 4106)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001181_pano_0000_003955/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) of pand 0363100012181160 with 3DBAG heights (CC BY 4.0): the white weatherboarded front, the tall windows with black shutters, the black double door under its radial fanlight, the name WELTEVREDEN on the frieze, the cornice, the black pantile hipped roof, the wide dormer storey with three windows, the chimney and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9156424,
+              52.3653474
+            ],
+            [
+              4.9156177,
+              52.3653559
+            ],
+            [
+              4.9155799,
+              52.3653148
+            ],
+            [
+              4.9154438,
+              52.3653618
+            ],
+            [
+              4.9154025,
+              52.365317
+            ],
+            [
+              4.9155639,
+              52.3652621
+            ],
+            [
+              4.9156424,
+              52.3653474
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.03874397277832,
+          -9.536743306171047e-8,
+          -4.380985736846924
+        ],
+        "max": [
+          6.820395469665527,
+          8.600000381469727,
+          8.254063606262207
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9155417,
+          52.36532649
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.859139442443848,
+        "heightMetres": 8.60000047683716,
+        "depthMetres": 12.63504934310913,
+        "depthCoverage": 0.7704298379944593
+      },
+      "triangles": 4320,
+      "bytes": 66808,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
