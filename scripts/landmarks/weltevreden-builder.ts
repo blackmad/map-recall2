@@ -222,8 +222,8 @@ function fence(b: BuildingTools) {
   slab(b, F, L / 2, 0, L - 0.2, 0.15, 0.18, 'stone', out - 0.08);
   slab(b, F, L / 2, 0.3, L - 0.3, 0.035, 0.035, 'bronze', out);
   slab(b, F, L / 2, H - 0.12, L - 0.3, 0.035, 0.035, 'bronze', out);
-  const n = Math.round((L - 0.3) / 0.12);
-  for (let k = 0; k <= n; k++) slab(b, F, 0.15 + k * (L - 0.3) / n, 0.15, 0.02, H - 0.1, 0.02, 'bronze', out + 0.008);
+  const n = Math.round((L - 0.3) / 0.2);
+  for (let k = 0; k <= n; k++) slab(b, F, 0.15 + k * (L - 0.3) / n, 0.15, 0.018, H - 0.1, 0.018, 'bronze', out + 0.008);
   for (const p of posts) {
     slab(b, F, p, 0.15, 0.06, H + 0.05, 0.06, 'bronze', out - 0.012);
     put(b, F, new T.SphereGeometry(0.05, 6, 4), p, H + 0.25, out + 0.018, 'bronze');

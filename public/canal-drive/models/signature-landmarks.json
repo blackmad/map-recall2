@@ -137011,8 +137011,8 @@
         "depthMetres": 15.802302360534668,
         "depthCoverage": 1.0465100901016338
       },
-      "triangles": 5748,
-      "bytes": 82796,
+      "triangles": 5292,
+      "bytes": 75976,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "weltevreden": {
@@ -137131,8 +137131,8 @@
         "depthMetres": 12.63504934310913,
         "depthCoverage": 0.7704298379944593
       },
-      "triangles": 4812,
-      "bytes": 73984,
+      "triangles": 4320,
+      "bytes": 66808,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
