@@ -61,3 +61,30 @@ test('a zone draws its bands and spaces each row evenly along every wall', () =>
   assert.equal(bare.perColour.get('glass') ?? 0, 0);
   assert.ok((r.perColour.get('glass') ?? 0) > 0);
 });
+
+// ---- zone row backs and heavier bars (lane hand-blocks-e-20261123) --------------------------------------------------
+const zoneWith = (row: Partial<import('./hand-block-kit').ZoneRow>): BlockOpts =>
+  ({...base(), zoned: () => ({bands: [[99, 'brick']], rows: [{y: [1.5, 3.5], pitch: 3, w: 1.2, ...row}]})});
+
+test('zone row backs cycle per opening; absent backs draw as before', () => {
+  const plain = recorder(), same = recorder(), mixed = recorder();
+  buildHandBlock(plain.b, zoneWith({}));
+  buildHandBlock(same.b, zoneWith({backs: [], o: undefined}));
+  assert.deepEqual(same.log, plain.log, 'an empty backs list is no backs');
+  buildHandBlock(mixed.b, zoneWith({backs: ['sandstone', 'sandstone', 'glass']}));
+  const blind = mixed.perColour.get('sandstone') ?? 0, glass = mixed.perColour.get('glass') ?? 0, glassBefore = plain.perColour.get('glass') ?? 0;
+  assert.ok(blind > 0, 'closed blinds are drawn');
+  assert.ok(glass > 0 && glass < glassBefore, 'some panes stay glass, fewer than before');
+  // two 12 m walls (4 openings: blind, blind, glass, blind) and two 6 m walls (2: blind, blind), counted per wall
+  assert.equal(blind / (glassBefore / 12), 10, 'ten of twelve openings closed');
+});
+
+test('opening bar width: absent equals 6 cm; a heavier bar changes only the mullions', () => {
+  const a = recorder(), six = recorder(), heavy = recorder();
+  buildHandBlock(a.b, zoneWith({o: {cols: 3, bars: [0.5]}}));
+  buildHandBlock(six.b, zoneWith({o: {cols: 3, bars: [0.5], bar: 0.06}}));
+  buildHandBlock(heavy.b, zoneWith({o: {cols: 3, bars: [0.5], bar: 0.1}}));
+  assert.deepEqual(six.log, a.log);
+  assert.notDeepEqual(heavy.log, a.log);
+  assert.equal(heavy.log.length, a.log.length, 'same parts, wider bars');
+});

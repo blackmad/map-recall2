@@ -77,7 +77,8 @@ export function flushFaces(b: BuildingTools) {
   FACES = [];
 }
 
-export type OpenOpts = {depth?: number; cols?: number; rows?: number; frame?: Col; back?: Col | null; edge?: number; bars?: number[]; sill?: Col | false; colsAt?: number[]};
+/** `bar`: the width of mullions, transoms and glazing bars (default 6 cm; heavier timber frames ~9-10 cm). */
+export type OpenOpts = {depth?: number; cols?: number; rows?: number; frame?: Col; back?: Col | null; edge?: number; bars?: number[]; sill?: Col | false; colsAt?: number[]; bar?: number};
 /** Opening cut into a face; its frame and glazing bars stand 9 cm off the back, inside the reveal (bottom rail 10 cm). */
 export function opening(b: BuildingTools, F: Face, t: number, y: number, w: number, h: number, o: OpenOpts = {}) {
   const depth = o.depth ?? 0.2, frame = o.frame ?? 'frame', back = o.back === undefined ? 'glass' : o.back, fw = o.edge ?? 0.06, d = Math.min(0.09, depth - 0.03), out = -depth;
@@ -88,10 +89,10 @@ export function opening(b: BuildingTools, F: Face, t: number, y: number, w: numb
     ledgeStrip(b, F.f, t, y + h - fw, w, fw, d, frame, out);
     for (const s of [-1, 1]) ledgeStrip(b, F.f, t + s * (w - fw) / 2, y + fb, fw, h - fw - fb, d, frame, out);
   }
-  const cols = o.cols ?? 1, rows = o.rows ?? 1;
-  for (const at of o.colsAt ?? Array.from({length: cols - 1}, (_, k) => w * (k + 1) / cols)) ledgeStrip(b, F.f, t - w / 2 + at, y + fw, 0.06, h - 2 * fw, d, frame, out);
-  for (let k = 1; k < rows; k++) ledgeStrip(b, F.f, t, y + h * k / rows - 0.03, w - 2 * fw, 0.06, d, frame, out);
-  for (const yb of o.bars ?? []) ledgeStrip(b, F.f, t, y + yb - 0.03, w - 2 * fw, 0.06, d, frame, out);
+  const cols = o.cols ?? 1, rows = o.rows ?? 1, bw = o.bar ?? 0.06;
+  for (const at of o.colsAt ?? Array.from({length: cols - 1}, (_, k) => w * (k + 1) / cols)) ledgeStrip(b, F.f, t - w / 2 + at, y + fw, bw, h - 2 * fw, d, frame, out);
+  for (let k = 1; k < rows; k++) ledgeStrip(b, F.f, t, y + h * k / rows - bw / 2, w - 2 * fw, bw, d, frame, out);
+  for (const yb of o.bars ?? []) ledgeStrip(b, F.f, t, y + yb - bw / 2, w - 2 * fw, bw, d, frame, out);
   if (o.sill) slab(b, F.f, t, y - 0.07, w + 0.1, 0.07, 0.1, o.sill);
 }
 

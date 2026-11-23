@@ -107726,10 +107726,10 @@
   },
   "bagYear": 2012,
   "materialOverrides": {
-   "brick": "#514240",
+   "brick": "#584a45",
    "stone": "#e4e0d6",
    "dark": "#2a2c2e",
-   "bronze": "#5f6461",
+   "bronze": "#4a4e4d",
    "blue": "#6c6f6c",
    "concrete": "#b8b4aa",
    "frame": "#2c3431",
@@ -109212,7 +109212,8 @@
    "stone": "#c9c4b8",
    "glass": "#47525a",
    "blue": "#7f8a90",
-   "slate": "#4a4a48"
+   "slate": "#4a4a48",
+   "sandstone": "#b7b2a7"
   },
   "attribution": {
    "title": "Tweede Hugo de Grootstraat 43, Amsterdam (supermarket and housing, 1995)",
@@ -110001,14 +110002,15 @@
   "bagYear": 2001,
   "materialOverrides": {
    "brick": "#4c3b3a",
-   "slate": "#3d4448",
-   "ochre": "#3f3734",
-   "frame": "#6a3a26",
+   "slate": "#4f5c67",
+   "ochre": "#463d38",
+   "frame": "#78432d",
    "bronze": "#7a4a32",
    "greyBrick": "#5e4a48",
    "concrete": "#8a8c8e",
    "glass": "#47525a",
-   "dark": "#2a2a2c"
+   "dark": "#2a2a2c",
+   "stone": "#67696b"
   },
   "attribution": {
    "title": "Panamalaan 10-186, Amsterdam (housing, 2001)",

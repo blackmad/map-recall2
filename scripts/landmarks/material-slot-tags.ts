@@ -692,6 +692,12 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     copper: {slot: 'door', measured: '#8a5a32', why: 'palette name only: the varnished timber double door of the west entrance (w02-270 2016), not metal'},
     dark: {slot: 'door', why: 'the meeting rail of the west doors'},
   },
+  'klapmutsenveem-30': {
+    brick: {slot: 'brick', measured: '#584a45', why: 'the brown brick (OKLab: 2016 crop w01-196 #4b3d38 in shade to #6a5c56 lit, L 0.37-0.49 C 0.02 h 41-44; the 2016 aimed view #655a53-#685a52); the city look drew #514240 as #6b5755, too mauve (lane hand-blocks-e-20261123)'},
+  },
+  'tweede-hugo-de-grootstraat-43': {
+    sandstone: {slot: 'stucco', measured: '#b7b2a7', why: 'palette name only: the pale blinds drawn behind the glazed storey (w01-114 2019 #847f76 overcast; 2022 and 2025 curtains), not sandstone (lane hand-blocks-e-20261123)'},
+  },
 };
 
 /**
