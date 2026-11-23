@@ -7161,5 +7161,41 @@
    "bytes": 13536,
    "triangles": 442
   }
+ },
+ "sphinx-hotel": {
+  "sourceHash": "18a9bec6999dfcaf",
+  "buildVersion": 2,
+  "bytes": 55776,
+  "triangles": 2502,
+  "lod2": {
+   "sourceHash": "18a9bec6999dfcaf",
+   "buildVersion": 6,
+   "bytes": 10344,
+   "triangles": 221
+  }
+ },
+ "sofitel-the-grand-1926": {
+  "sourceHash": "881bf570171030d9",
+  "buildVersion": 2,
+  "bytes": 70756,
+  "triangles": 3171,
+  "lod2": {
+   "sourceHash": "881bf570171030d9",
+   "buildVersion": 6,
+   "bytes": 13212,
+   "triangles": 428
+  }
+ },
+ "sweederijck": {
+  "sourceHash": "253a44aded446372",
+  "buildVersion": 2,
+  "bytes": 51444,
+  "triangles": 1980,
+  "lod2": {
+   "sourceHash": "253a44aded446372",
+   "buildVersion": 6,
+   "bytes": 7432,
+   "triangles": 155
+  }
  }
 }

@@ -3,6 +3,32 @@
   "notes": [
     {
       "date": "2026-11-23",
+      "title": "Sphinx, The Grand’s 1926 wing and Sweederijck",
+      "text": "Hotel Sphinx on the Weteringschans is now its pair of houses: a dark-brick front with arched windows beside a red-and-white striped front under a tall gable. The 1920s wing of Sofitel The Grand on the Oudezijds Achterburgwal follows the curve of the street as an Amsterdam School block in brown brick, with its glazed stair tower, a row of attic windows and its side on the Agnietenstraat. Sweederijck on the Herengracht has its sandstone front with oval attic windows, a balustrade along the roof and its stoop with railings.",
+      "where": [
+        4.89408949,
+        52.35927742
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-sphinx-hotel-v2.jpg",
+          "alt": "Hotel Sphinx on the Weteringschans: the street photo of the dark-brick house and the red-and-white gabled house, then the pair in the game",
+          "caption": "Hotel Sphinx, Weteringschans: photo, game"
+        },
+        {
+          "src": "whats-new/2026-11-23-sofitel-the-grand-1926.jpg",
+          "alt": "Sofitel The Grand 1926 wing: the photo from the Oudezijds Achterburgwal, then the curved brown-brick wing with its stair tower in the game",
+          "caption": "Sofitel The Grand, 1926 wing: photo, game"
+        },
+        {
+          "src": "whats-new/2026-11-23-sweederijck.jpg",
+          "alt": "Sweederijck on the Herengracht: the photo of the sandstone front with a roof balustrade, then the house in the game between its neighbours",
+          "caption": "Sweederijck, Herengracht: photo, game"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
       "title": "Carved stone on three buildings",
       "text": "The police headquarters on the Elandsgracht has its city arms with two lions and the crown, the pediment of the Royal Palace on the Dam is filled with its carved relief instead of plain bars, and the Huis met de Hoofden has six separate busts instead of one repeated head.",
       "where": [
