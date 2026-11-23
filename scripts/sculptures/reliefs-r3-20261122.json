@@ -1,0 +1,418 @@
+{
+ "note": "Round 3 wall reliefs (lane sculpture-r3-20261122) for scripts/sculptures/r2-relief.ts. Frames as in reliefs-r2-20261122.json. palace-pediment: the fit pass. The tympanum plane is the builder's sandstone triangle (palace-dam-builder.ts: x 33.2, base 25.5, half 12.8, rise 5.4); the raking cornice is 0.55 m deep across its rake line and 0.4 m proud of the tympanum, the base cornice tops out at 25.8. The relief sits in the inner triangle (base 25.8, half 11.38, apex 30.6), 0.4 m proud at most so it stays under the cornice line, and gable-clip.ts holds it inside the rakes. Cuts: one box per kit figure (palace-dam-builder.ts: 11 boxes 1.1 m wide every 2.1 m, 0.9 + (5-|i|) x 0.38 m tall from 25.9), clear of the raking cornice's long triangles (round 2's single box removed 8 of them, leaving a seam); figures 4 and -4 cut to 27.0 because the rake soffit's centroids sit at 27.05 over them. hmdh-*: the six busts each from its own panorama view (artifacts/sculpture-r3/hmdh/views, sources in rebuild-sources-r3/hmdh-busts.json), placed at round 2's six spots; yawDeg = camera bearing off the wall normal (camera at 300 + yaw from the bust), so a bust seen obliquely keeps its real head turn.",
+ "items": {
+  "palace-pediment": {
+   "model": "palace-on-the-dam",
+   "material": "stone",
+   "width": 22.76,
+   "height": 4.8,
+   "depth": 0.4,
+   "embed": 0.05,
+   "tris": 10000,
+   "gable": {
+    "halfBase": 11.38,
+    "rise": 4.8,
+    "flattenAt": 0.05
+   },
+   "instances": [
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ]
+    }
+   ],
+   "cutMaterials": [
+    "stone"
+   ],
+   "what": "Artus Quellinus east pediment (Amsterdam with the four continents / sea gods), Paleis op de Dam",
+   "alignToPlane": true,
+   "dropBackFacing": true,
+   "cuts": [
+    {
+     "min": [
+      9.9,
+      0.05,
+      0.02
+     ],
+     "max": [
+      11.1,
+      1.02,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      7.8,
+      0.05,
+      0.02
+     ],
+     "max": [
+      9.0,
+      1.22,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      5.7,
+      0.05,
+      0.02
+     ],
+     "max": [
+      6.9,
+      1.78,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      3.6,
+      0.05,
+      0.02
+     ],
+     "max": [
+      4.8,
+      2.16,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      1.5,
+      0.05,
+      0.02
+     ],
+     "max": [
+      2.7,
+      2.54,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -0.6,
+      0.05,
+      0.02
+     ],
+     "max": [
+      0.6,
+      2.92,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -2.7,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -1.5,
+      2.54,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -4.8,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -3.6,
+      2.16,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -6.9,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -5.7,
+      1.78,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -9.0,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -7.8,
+      1.22,
+      0.45
+     ]
+    },
+    {
+     "min": [
+      -11.1,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -9.9,
+      1.02,
+      0.45
+     ]
+    }
+   ]
+  },
+  "hmdh-apollo": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": 10,
+   "instances": [
+    {
+     "name": "Apollo",
+     "origin": [
+      -0.28,
+      4.2,
+      -9.93
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Apollo-1",
+   "what": "Apollo bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  },
+  "hmdh-ceres": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": 0,
+   "instances": [
+    {
+     "name": "Ceres",
+     "origin": [
+      -1.63,
+      4.2,
+      -7.59
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Ceres-1",
+   "what": "Ceres bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  },
+  "hmdh-mercury": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": 30,
+   "instances": [
+    {
+     "name": "Mercury",
+     "origin": [
+      -2.92,
+      4.2,
+      -5.36
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Mercury-3",
+   "what": "Mercury bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  },
+  "hmdh-minerva": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": -46,
+   "instances": [
+    {
+     "name": "Minerva",
+     "origin": [
+      -4.33,
+      4.2,
+      -2.9
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Minerva-3",
+   "what": "Minerva bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  },
+  "hmdh-bacchus": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": 12,
+   "instances": [
+    {
+     "name": "Bacchus",
+     "origin": [
+      -5.62,
+      4.2,
+      -0.66
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Bacchus-2",
+   "what": "Bacchus bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  },
+  "hmdh-diana": {
+   "model": "huis-met-de-hoofden",
+   "material": "stone",
+   "width": 0.6,
+   "height": 0.85,
+   "depth": 0.45,
+   "embed": 0.03,
+   "tris": 1800,
+   "yawDeg": 5,
+   "instances": [
+    {
+     "name": "Diana",
+     "origin": [
+      -6.97,
+      4.2,
+      1.67
+     ],
+     "normal": [
+      -0.866,
+      -0.5
+     ]
+    }
+   ],
+   "cut": {
+    "min": [
+     -0.35,
+     0,
+     0.0
+    ],
+    "max": [
+     0.35,
+     0.95,
+     0.7
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "view": "Diana-1",
+   "what": "Diana bust (bel-etage), Huis met de Hoofden, Keizersgracht 123: its own TRELLIS.2 mesh from its own panorama view"
+  }
+ }
+}

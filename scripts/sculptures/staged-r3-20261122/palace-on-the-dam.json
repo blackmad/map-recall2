@@ -1,0 +1,265 @@
+{
+ "id": "palace-on-the-dam",
+ "provenance": "scripts/sculptures/rebuild-sources-r2/reliefs.json#palace-pediment",
+ "figures": [
+  {
+   "name": "palace-pediment",
+   "glb": "scripts/sculptures/installed/palace-on-the-dam/palace-pediment.glb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "cut": {
+    "min": [
+     0,
+     0,
+     0
+    ],
+    "max": [
+     -1,
+     -1,
+     -1
+    ]
+   },
+   "cutMaterials": [
+    "stone"
+   ],
+   "material": "stone",
+   "route": "TripoSR, one photo, r3-fit2: seated in the tympanum (inner triangle, 0.4 m proud, gable-clip.ts), per-figure cuts, wall relief round 3 2026-11-22; welded (slim-relief.ts)",
+   "wallCut": [
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      9.9,
+      0.05,
+      0.02
+     ],
+     "max": [
+      11.1,
+      1.02,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      7.8,
+      0.05,
+      0.02
+     ],
+     "max": [
+      9,
+      1.22,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      5.7,
+      0.05,
+      0.02
+     ],
+     "max": [
+      6.9,
+      1.78,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      3.6,
+      0.05,
+      0.02
+     ],
+     "max": [
+      4.8,
+      2.16,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      1.5,
+      0.05,
+      0.02
+     ],
+     "max": [
+      2.7,
+      2.54,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -0.6,
+      0.05,
+      0.02
+     ],
+     "max": [
+      0.6,
+      2.92,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -2.7,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -1.5,
+      2.54,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -4.8,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -3.6,
+      2.16,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -6.9,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -5.7,
+      1.78,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -9,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -7.8,
+      1.22,
+      0.45
+     ]
+    },
+    {
+     "origin": [
+      33.2,
+      25.8,
+      0.45
+     ],
+     "normal": [
+      1,
+      0
+     ],
+     "min": [
+      -11.1,
+      0.05,
+      0.02
+     ],
+     "max": [
+      -9.9,
+      1.02,
+      0.45
+     ]
+    }
+   ]
+  }
+ ]
+}
