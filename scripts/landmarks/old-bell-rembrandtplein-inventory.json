@@ -1,0 +1,402 @@
+{
+ "schemaVersion": 1,
+ "id": "old-bell-rembrandtplein",
+ "pand": "0363100012178852",
+ "brief": "scripts/landmarks/old-bell-rembrandtplein-brief.md",
+ "signature": [
+  "n-lettering",
+  "c-oriel",
+  "n-banded-brick",
+  "e-stepped-gable",
+  "n-city-hotel",
+  "c-crown",
+  "n-balcony",
+  "c-bell"
+ ],
+ "walls": [
+  {
+   "tag": "w01-77",
+   "bearing": 77,
+   "lengthM": 11.6,
+   "centre": [
+    4.897465,
+    52.3657585
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track30_Sphere_00341",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-banded-brick",
+     "kind": "other",
+     "where": "light red brick banded with pale stone every 0.82 m between the cordon and the balcony, the bands stopped by the aedicules (2025 crop y 560-880)",
+     "approxSizeM": [
+      11.6,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341"
+    },
+    {
+     "id": "e-aedicules",
+     "kind": "window-shape",
+     "where": "three stone aedicules with double windows over two storeys, a stone colonnet mullion and two carved panels between the storeys (x 55-170, 230-345, 400-515)",
+     "approxSizeM": [
+      2.66,
+      6.55
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341"
+    },
+    {
+     "id": "e-carved-panels",
+     "kind": "relief",
+     "where": "paired carved panels (bandwork, shield with flower in a half-round field) over the first-storey windows (y 705-735)",
+     "approxSizeM": [
+      0.8,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341",
+     "how": "flat stone panels proud of the aedicule; the carving is not drawn"
+    },
+    {
+     "id": "e-consoles",
+     "kind": "relief",
+     "where": "carved stone consoles carrying brick colonnettes between the aedicules (x 200, 375; y 700-750)",
+     "approxSizeM": [
+      0.35,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341",
+     "how": "stone block console with a brick colonnette strip above"
+    },
+    {
+     "id": "e-balcony",
+     "kind": "balcony-ironwork",
+     "where": "narrow balcony along the whole front on carved consoles: stone posts with wrought-iron panels (2018 y 375-415)",
+     "approxSizeM": [
+      11.6,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000716_pano_0001_000026",
+     "how": "stone slab, posts every 0.55 m, rail, one dark iron panel per run; the iron scrollwork is not drawn"
+    },
+    {
+     "id": "e-french-doors",
+     "kind": "colonnade",
+     "where": "third storey: groups of three French doors between Ionic half-columns with top lights over a stone transom (2018 y 285-370)",
+     "approxSizeM": [
+      2.3,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000716_pano_0001_000026",
+     "how": "glazed group with two stone half-column strips and capital blocks; no volutes"
+    },
+    {
+     "id": "e-metopes",
+     "kind": "relief",
+     "where": "frieze of carved metopes between brick colonnettes on consoles under the beam ends of the broad timber eaves (2018 y 200-260)",
+     "approxSizeM": [
+      11.6,
+      0.95
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000716_pano_0001_000026",
+     "how": "stone panels with a disc medallion, consoles, colonnette strips and two-step beam ends"
+    },
+    {
+     "id": "e-stepped-gable",
+     "kind": "other",
+     "where": "high stepped gable with eight treads (four a side) breaking the eaves over the two southern axes, brick colonnettes up to the stone copings, recessed panels, two pairs of sash windows (2018 x 0-272, y 0-260)",
+     "approxSizeM": [
+      6.7,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000716_pano_0001_000026"
+    },
+    {
+     "id": "e-shopfronts",
+     "kind": "canopy",
+     "where": "stone piers with a wider foot between three shop fronts: red-brown panelling with painted pictures over leaded lights; the green hotel entrance on the left (x 0-578, y 880-1110)",
+     "approxSizeM": [
+      11.6,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341",
+     "how": "panelled fronts with one picture panel each and a lead-line grid; the pictures are flat ochre panels"
+    },
+    {
+     "id": "e-dormer",
+     "kind": "other",
+     "where": "one small dormer with an undivided window in the mansard over the north part (register; 2018 x 360-400, y 110-140)",
+     "approxSizeM": [
+      0.9,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000716_pano_0001_000026"
+    },
+    {
+     "id": "e-lamp",
+     "kind": "lamp",
+     "where": "cast-iron street lantern on a post in front of the middle bay (x 440-490)",
+     "approxSizeM": [
+      0.4,
+      4.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a city street lantern on the pavement, not part of the building; the game draws street furniture separately"
+     }
+    },
+    {
+     "id": "e-street-sign",
+     "kind": "sign",
+     "where": "enamel Utrechtsestraat street-name sign at the north end (x 528-570, y 858)",
+     "approxSizeM": [
+      0.5,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250120_0926_Track30_Sphere_00341",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.5 x 0.15 m name plate"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-348",
+   "bearing": 348,
+   "lengthM": 9.5,
+   "centre": [
+    4.897344,
+    52.365812
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0001_000087",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-lettering",
+     "kind": "lettering",
+     "where": "gilt uncial \"the old Bell\" letters standing on the stone cordon over the shop fronts (x 100-357, y 843-880: 5.1 x 0.75 m)",
+     "approxSizeM": [
+      5.1,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-city-hotel",
+     "kind": "sign",
+     "where": "red enamel boards with white capitals CITY and HOTEL and a green border on the upper sills of the two aedicules (x 77-179 and 285-387, y 648-670)",
+     "approxSizeM": [
+      2,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-banded-brick",
+     "kind": "other",
+     "where": "light red brick banded with pale stone every 0.82 m (y 525-855), bands stopped by the aedicules",
+     "approxSizeM": [
+      9.5,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-aedicules",
+     "kind": "window-shape",
+     "where": "two stone aedicules with double windows over two storeys and carved panels between (x 62-195, 268-400, y 525-855)",
+     "approxSizeM": [
+      2.66,
+      6.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-consoles",
+     "kind": "relief",
+     "where": "carved stone consoles with brick colonnettes between and beside the aedicules (x 20-50, 225-250, 430-450; y 690-735)",
+     "approxSizeM": [
+      0.35,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01657",
+     "how": "stone block console with a brick colonnette strip above"
+    },
+    {
+     "id": "n-balcony",
+     "kind": "balcony-ironwork",
+     "where": "narrow continuous balcony on carved consoles of two sizes: stone posts and wrought-iron panels (y 437-520)",
+     "approxSizeM": [
+      9.5,
+      1.65
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01657",
+     "how": "stone slab, posts every 0.55 m, rail and a dark iron panel; consoles as blocks, the big ones under the colonnettes"
+    },
+    {
+     "id": "n-french-doors",
+     "kind": "colonnade",
+     "where": "third storey: two groups of three French doors between Ionic half-columns with top lights (y 352-435)",
+     "approxSizeM": [
+      2.3,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01657",
+     "how": "glazed group with two stone half-column strips and capital blocks; no volutes"
+    },
+    {
+     "id": "n-metopes",
+     "kind": "relief",
+     "where": "seven carved metopes with medallions between colonnettes under the beam ends (y 300-338)",
+     "approxSizeM": [
+      0.78,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01657",
+     "how": "stone panel with a disc medallion per metope"
+    },
+    {
+     "id": "n-eaves",
+     "kind": "other",
+     "where": "broad light timber eaves on beam ends (y 248-300)",
+     "approxSizeM": [
+      9.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-mansard",
+     "kind": "other",
+     "where": "shingled mansard slope with four dormers (y 180-250; the register calls the dormer recent)",
+     "approxSizeM": [
+      9.5,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01657"
+    },
+    {
+     "id": "n-plaques",
+     "kind": "sign",
+     "where": "three cream enamel beer plaques (Guinness, Amstel, Courage) on the stone piers (y 915-990)",
+     "approxSizeM": [
+      0.62,
+      1.45
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01657",
+     "how": "cream panels with a flat picture panel; no wording"
+    },
+    {
+     "id": "n-shopfronts",
+     "kind": "canopy",
+     "where": "two shop fronts between stone piers: green fascia, red-brown panelling with a painted picture, leaded lower lights (y 900-1090)",
+     "approxSizeM": [
+      3.2,
+      3.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087",
+     "how": "panelled fronts, one picture panel, lead-line grid"
+    },
+    {
+     "id": "c-oriel",
+     "kind": "tower",
+     "where": "three-sided corner oriel over the first and second storeys on a sandstone shell console, a window in each side, carved frieze between the storeys (1919 date stone) (2022 thumb x 70-170, y 330-860)",
+     "approxSizeM": [
+      2.4,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087"
+    },
+    {
+     "id": "c-parapet",
+     "kind": "balcony-ironwork",
+     "where": "open stone parapet with ironwork on the oriel top: the small corner balcony (2022 thumb y 310-345)",
+     "approxSizeM": [
+      2.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087",
+     "how": "the balcony posts, rail and iron panel on the oriel top slab"
+    },
+    {
+     "id": "c-crown",
+     "kind": "other",
+     "where": "small stepped crown over the corner above the eaves with a richly carved top and finial (2022 thumb x 120-200, y 100-170)",
+     "approxSizeM": [
+      2.3,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087",
+     "how": "stepped gable of two treads a side with a carved panel and a stone finial; the bell-shaped slate hood under it is not drawn"
+    },
+    {
+     "id": "c-bell",
+     "kind": "lamp",
+     "where": "the copper bell on an iron bracket at the corner entrance (register: \"een koperen klok in een beugel\"; 2022 thumb x 60-130, y 970-1060)",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087",
+     "how": "bronze bracket bar and stay, a flared copper cylinder with a crown"
+    },
+    {
+     "id": "c-entrance",
+     "kind": "window-shape",
+     "where": "corner entrance on the chamfer: door with a top light",
+     "approxSizeM": [
+      1,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000087"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 518404 (Utrechtsestraat 2 / Rembrandtplein 46)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518404",
+   "licence": "CC0"
+  }
+ ]
+}

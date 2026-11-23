@@ -1,0 +1,4497 @@
+{
+ "generated": "2026-11-23",
+ "method": "ride-visibility/v1: teachable destinations ≤ 6 km of the Dam, seeded pairs 1–6 km, bike graph shortest paths, 5 m samples, walls ≥ 2 m within 60 m on their outer side with a 2D footprint sightline; score = Σ sample m × passes × visible facing-wall m",
+ "routes": 1500,
+ "candidates": 1304,
+ "top": [
+  {
+   "pand": "0363100012178852",
+   "names": [
+    "Rembrandtplein 46, Utrechtsestraat 2",
+    "The Old Bell",
+    "City Hotel"
+   ],
+   "presence": 11,
+   "reasons": [
+    "register: curved",
+    "register: café",
+    "register: hotel",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork",
+    "osm: pub",
+    "osm: hotel"
+   ],
+   "exposure": 115598,
+   "routeMetres": 7335,
+   "rank": 55.7,
+   "register": "518404",
+   "year": 1891,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n251528291",
+    "n251528295"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1891-1892 tot stand gekomen KANTOORGEBOUW. In eerste  instantie gebouwd in opdracht van 'De Eerste Nederlandsche Verzekeringsmaatschappij'. Gebouwd op de hoek van de Utrechtsestraat en het Rembrandtplein. Ontworpen door de firma J. Kok en A. van Ameijde van Duijm. De dakkapel in het dakschild aan de zijde van het Rembrandtplein is van recenter datum.\n\nNB. In 1926 in opdracht van ",
+   "box": [
+    121630.69542583553,
+    486534.88411952107,
+    121644.85896454852,
+    486549.9813545419
+   ]
+  },
+  {
+   "pand": "0363100012171926",
+   "names": [
+    "Prins Hendrikkade 84-85",
+    "Batavia"
+   ],
+   "presence": 9,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: curved",
+    "register: sculpture",
+    "register: stained glass",
+    "osm: pub"
+   ],
+   "exposure": 78286,
+   "routeMetres": 12820,
+   "rank": 44,
+   "register": "518460",
+   "year": 1918,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n4135929455"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1918-1920 tot stand gekomen HANDELSKANTOOR. Ook genoemd 'Gebouw Batavia'. Ontworpen in opdracht van de N.V. Batavia Arak Maatschappij door de architect J.H. Slot, die hierbij gebruik maakte van de stijl van de Amsterdamse School. Behalve kantoorgebouw tevens magazijnruimte en inpandige conciërgewoning. Bij de bouw was verder de N.V. Gewapend Beton \"De Kondor\" betrokken. Enkele la",
+   "box": [
+    121929.05973626566,
+    487734.0165007424,
+    121954.36636397964,
+    487763.696901173
+   ]
+  },
+  {
+   "pand": "0363100012131061",
+   "names": [
+    "Amsteldijk 67",
+    "Pestana Amsterdam Riverside"
+   ],
+   "presence": 8.2,
+   "reasons": [
+    "register: turret",
+    "register: curved",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork",
+    "osm: hotel"
+   ],
+   "exposure": 70375,
+   "routeMetres": 2010,
+   "rank": 39.7,
+   "register": "527846",
+   "year": 1889,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n11025513467"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nAan de Amsteldijk in 1889-1892 tot stand gekomen voormalig GEMEENTEHUIS van de gemeente Nieuwer-Amstel en vanaf 1914 bestemd als Gemeentearchief van de gemeente Amsterdam, met aan de Tolstraat een toegevoegde vleugel als ARCHIEFBEWAARPLAATS en aan de zuidzijde een HEK met poort. Het gemeentehuis werd ontworpen door Roelof Kuipers, opzichter van Gemeentewerken van Nieuwer-Amstel, in de s",
+   "box": [
+    122259.98431644542,
+    485126.44103547104,
+    122304.07934120912,
+    485171.58005927043
+   ]
+  },
+  {
+   "pand": "0363100012170961",
+   "names": [
+    "Prins Hendrikkade 33, Martelaarsgracht 5, Ramskooi 28"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: curved",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 370961,
+   "routeMetres": 22190,
+   "rank": 39,
+   "register": "518433",
+   "year": 1917,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Prins Hendrikkade en Martelaarsgracht in 1917-1921 tot stand gekomen SCHEEPVAARTKANTOOR naar een ontwerp in Um 1800-stijl van E. Breman in opdracht van de N.V. Koninklijke Hollandsche Lloyd bij monde van de directeuren J. Wilmink en A.C. Meurs. Het beeldhouwwerk is van J. Schultz. \n\nOmschrijving\n\nOp een samengestelde plattegrond geheel in natuursteen opgetrokken gebouw op",
+   "box": [
+    121589.4720570349,
+    487844.5666667148,
+    121638.28703873216,
+    487893.8023655037
+   ]
+  },
+  {
+   "pand": "0363100012175847",
+   "names": [
+    "Spuistraat 172-174, Singel 213, Paleisstraat 14"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: awning/canopy",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 344832,
+   "routeMetres": 11185,
+   "rank": 38.8,
+   "register": "518453",
+   "year": 1906,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nBANKGEBOUW met eerste bouwfase in de periode 1906-1908. Deze oudste bebouwing kwam naar een ontwerp van de architect F.W.M. Poggenbeek tot stand in opdracht van de bank Labouchère Oyens en Co. Stijlkenmerken uit verschillende architectuurperioden. Zo verwijzen de deels gegroefde pilasters met de bewerkte bekroningen naar het classicisme, terwijl de vormgeving van met name de bovenste ve",
+   "box": [
+    121068.4372747045,
+    487274.8185553926,
+    121103.91213664484,
+    487341.8572011932
+   ]
+  },
+  {
+   "pand": "0363100012172357",
+   "names": [
+    "Raadhuisstraat 52-54, Keizersgracht 185"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 340664,
+   "routeMetres": 19850,
+   "rank": 38.7,
+   "register": "518499",
+   "year": 1902,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1902-1903 op door de gemeente uitgegeven grond tot stand gekomen gebouw op de hoek van de Raadhuisstraat en de Keizersgracht met ETAGEWONINGEN, WINKEL, KANTOOR- en MAGAZIJNRUIMTE, naar een ontwerp van G. van Arkel in de stijl van een sobere Art Nouveau, met een door  Berlage  beïnvloedde opzet van de gevel, waarbij gelijkvloers de rooilijn gevolgd wordt en ter hoogte van de verdiepin",
+   "box": [
+    120828.5362345799,
+    487469.16342928546,
+    120850.10419508145,
+    487483.7275634082
+   ]
+  },
+  {
+   "pand": "0363100012235904",
+   "names": [
+    "Vondelstraat 39-41"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: café",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 280047,
+   "routeMetres": 9425,
+   "rank": 38.1,
+   "register": "492004",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": "docs/reports/landmark-targets-20261115.json",
+   "desc": "Inleiding\n\nIn verschillende bouwfasen tot stand gekomen LOGEGEBOUW met VERENIGINGSLOKAAL en CONCIERGEWONING, hoofdzetel van de Amsterdamse Vrijmetselaars, deels ter plaatse van het voormalige Bierhuis 'Vondel' (nr. 41) en het voormalige 'Vondelhuis' (nr. 39). Van het in oorsprong in 1873 in opdracht van G.A. Heineken naar ontwerp van P.J.H. Cuypers gebouwde Bierhuis resteren nog rudimenten van de ",
+   "box": [
+    120186.42060983142,
+    486093.07507217507,
+    120216.7853262297,
+    486122.1428338827
+   ]
+  },
+  {
+   "pand": "0363100012176395",
+   "names": [
+    "Keizersgracht 455"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture"
+   ],
+   "exposure": 243059,
+   "routeMetres": 12405,
+   "rank": 37.7,
+   "register": "408905",
+   "year": 1891,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "In 1891 in opdracht van de American Life Insurance Company naar ontwerp van Jac. van Looy gebouwd winkel/kantoorgebouw genaamd \"New York\", in internationale eclectische trant en opgetrokken met vijf bouwlagen, kelder en kapverdieping onder mansardekap - waaraan in 1933 naar functionalistisch ontwerp van G.Th. Rietveld een in glas en staal uitgevoerd koepelgebouw met opschrift METZ is toegevoegd - ",
+   "box": [
+    120895.51860403808,
+    486591.3738248554,
+    120924.32569464983,
+    486617.7083176687
+   ]
+  },
+  {
+   "pand": "0363100012177446",
+   "names": [
+    "Leidsestraat 1, Herengracht 430"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: painted",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 241466,
+   "routeMetres": 12860,
+   "rank": 37.7,
+   "register": "518332",
+   "year": 1904,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Herengracht en Leidsestraat in 1904-1905 tot stand gekomen 'MAGAZIJN en WINKEL voor den verkoop van Heeren-, Jongeheeren- en Kinderkleding en Modeartikelen' naar een ontwerp in Art Nouveau-stijl van P.A. Weeldenburg. Het winkelpand werd gebouwd in opdracht van de Levensverzekering Maatschappij 'Dordrecht' die het verhuurde aan A. Kreymborg. Deze vestigde hier de firma Kre",
+   "box": [
+    120983.66218376528,
+    486617.1314511483,
+    121014.71132819782,
+    486644.59039520944
+   ]
+  },
+  {
+   "pand": "0363100012170849",
+   "names": [
+    "Weesperplein 4"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 184978,
+   "routeMetres": 4410,
+   "rank": 36.9,
+   "register": "518478",
+   "year": 1910,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": "docs/reports/landmark-targets-20261122c.json",
+   "desc": "Inleiding\n\nOp de hoek van Weesperplein en Nieuwe Achtergracht in 1910-11 tot stand gekomen DIAMANTBEURS naar ontwerp in Art Nouveau trant van G. van Arkel in opdracht van het bestuur van de Vereeniging Beurs voor den Diamanthandel. Aannemer was M. Bakkeren.\n\nN.B. In het souterrain in oorsprong een kapperszaak, een kluis en een restaurant. De grote beurszaal bevond zich op de parterre. Daarboven be",
+   "box": [
+    122232.29990849557,
+    486101.2448571778,
+    122292.36059120265,
+    486137.43710711866
+   ]
+  },
+  {
+   "pand": "0363100012170755",
+   "names": [
+    "Amstel 179, Sarphatistraat 23"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: tiles",
+    "register: painted",
+    "register: café",
+    "register: hotel"
+   ],
+   "exposure": 167593,
+   "routeMetres": 7010,
+   "rank": 36.6,
+   "register": "527698",
+   "year": 1872,
+   "type": "woonhuis",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding \r\n\r\nBakstenen woonhuis dat in 1872 werd ontworpen. Begin jaren tachtig van de negentiende eeuw betrok de beroemde fysiotherapeut dr. J.G. Mezger het pand en werd het interieur verfraaid. Het hoekpand, op de hoek van de Amstel en de Sarphatistraat, is gelegen in het beschermd stadsgezicht van de Amsterdamse binnenstad op een stedenbouwkundig prominente positie aan de voet van de Amstelbru",
+   "box": [
+    122132.4210934616,
+    485969.5177221472,
+    122157.22409398126,
+    485983.40039908985
+   ]
+  },
+  {
+   "pand": "0363100012170968",
+   "names": [
+    "Prins Hendrikkade 20-21, Nieuwendijk 25-27"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: painted",
+    "register: café",
+    "register: hotel",
+    "register: market/arcade",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "exposure": 147675,
+   "routeMetres": 12580,
+   "rank": 36.2,
+   "register": "518505",
+   "year": 1882,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1882-1883 in opdracht van F.  Brix  en C.  Brix  van  De Maatschappij tot Exploitatie van de Passage  Central   tot stand gekomen WINKELPASSAGE (Passage  Central ) met circa 20 winkels, HOTEL, CAFÉ en BOVENWONINGEN naar een ontwerp van de architect Y.  Bijvoets Gzn. in de stijl van een classicistische  Neo -Renaissance. Het is met gerende gevels gebouwd op een na sloop van vier perce",
+   "box": [
+    121508.90030813229,
+    487942.90032818826,
+    121576.9254606048,
+    487972.2654866342
+   ]
+  },
+  {
+   "pand": "0363100012176247",
+   "names": [
+    "Koningsplein 1"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: curved",
+    "register: shopfront",
+    "register: sculpture"
+   ],
+   "exposure": 139604,
+   "routeMetres": 13745,
+   "rank": 36,
+   "register": "518359",
+   "year": 1890,
+   "type": "WINKELPAND",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Koningsplein en Singel in 1890-1891 opgetrokken WINKELPAND met KANTOREN en een CONCIERGEWONING naar een ontwerp in Neo-barok van Th.G. Schill en D.H. Haverkamp in opdracht van de directeuren der Verzekeringsbank 'Kosmos'. De winkel bevond zich op de beganegrond, de kantoren - van de verzekeringsbank 'Kosmos' zelf - waren gevestigd op de eerste en tweede verdieping en de c",
+   "box": [
+    121098.60158726381,
+    486676.5550807103,
+    121114.55183229878,
+    486692.799933084
+   ]
+  },
+  {
+   "pand": "0363100012176936",
+   "names": [
+    "Herengracht 179-189"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 116655,
+   "routeMetres": 2835,
+   "rank": 35.5,
+   "register": "518339",
+   "year": 1900,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1900-1902 tot stand gekomen BANKGEBOUW met HEK als erfscheiding, gebouwd in opdracht van de Associatie Cassa en ontworpen door de architect C.B. Posthumus Meyjes, in een Berlagiaans getinte variant van de Nieuwe Kunst. \n\n\nOmschrijving\n\nOp een grondplan in de vorm van een parallellogram opgetrokken bankgebouw bestaande uit een souterrain, twee bouwlagen en een mezzanine onder een dwar",
+   "box": [
+    120981.6781973224,
+    487461.3987135324,
+    121043.32463302412,
+    487522.19899283384
+   ]
+  },
+  {
+   "pand": "0363100012169331",
+   "names": [
+    "Kloveniersburgwal 114-166, Nieuwe Doelenstraat 15, e.o."
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: art nouveau",
+    "register: theatre",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 147209,
+   "routeMetres": 6940,
+   "rank": 34.6,
+   "register": "518308",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp het zuidelijk deel van het voormalige Binnengasthuisterrein tot stand gekomen TWEEDE CHIRURGISCHE KLINIEK met ZUSTERHUIS naar een ontwerp van F.W.M. Poggenbeek in een op Berlage geïnspireerde overgangsarchitectuur. De kliniek, gelegen aan Vendelstraat en Binnengasthuisstraat, werd gebouwd volgens het corridorsysteem tussen 1897 en 1900. In 1898 werd besloten de werktijd van de verple",
+   "box": [
+    121458.17511893253,
+    486796.3756739775,
+    121529.02349874077,
+    486873.503664656
+   ]
+  },
+  {
+   "pand": "0363100012168349",
+   "names": [
+    "Rokin 102"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: curved",
+    "register: ironwork"
+   ],
+   "exposure": 79118,
+   "routeMetres": 5745,
+   "rank": 34.3,
+   "register": "518450",
+   "year": 1902,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1902-1903 tot stand gekomen SOCIETEIT, genaamd 'Het Leesmuseum'. Circa 1800 werd het museum opgericht door A.R. Falck en C. van Vollenhoven. Zoals het eerste artikel van het reglement van 1800 het stelde: 'Het Leesmuseum is voornamelijk opgericht om de lezing van buitenlandsche, zowel als Nederduitsche journalen voor een groot getal van menschen gemakkelijk te maken'. Het eerste ",
+   "box": [
+    121234.00480662158,
+    486942.4102048482,
+    121268.67442722467,
+    486962.09078355035
+   ]
+  },
+  {
+   "pand": "0363100012108217",
+   "names": [
+    "Reijnier Vinkeleskade 1-5, Hobbemakade 94-119, e.o."
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: oriel",
+    "register: sculpture"
+   ],
+   "exposure": 75128,
+   "routeMetres": 4025,
+   "rank": 34.1,
+   "register": "527815",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nGesloten woningblok op een langgerekte, ongelijke vijfzijdige plattegrond aan de oostzijde van het Harmoniehof. Het bouwblok wordt omgeven door de Hobbemakade, de Reijnier Vinkeleskade, de Cornelis van der Lindenstraat en de Gerard Terborgstraat. De gevelwand aan de zijde van de Cornelis van der Lindenstraat heeft tegenover het Harmoniehof een iets teruggezet deel. Hiermee accentueer",
+   "box": [
+    120791.16476407506,
+    484939.70544572134,
+    120811.41612728828,
+    484959.9647449441
+   ]
+  },
+  {
+   "pand": "0363100012160188",
+   "names": [
+    "Honthorststraat 9"
+   ],
+   "presence": 6.9,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 87160,
+   "routeMetres": 4810,
+   "rank": 34.1,
+   "register": "505670",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen op de hoek van de Honthorststraat en Paulus Potterstraat aan vier zijden vrijstaande VILLA, genaamd villa Roelvink, met bijbehorend hekwerk naar een ontwerp uit 1899 in overgangs-architectuur met Berlagiaanse en Art Nouveau invloeden van A.L., A.D.N. en J.G. van Gendt in opdracht van de directie der Maatschappij 'Volharding' tot exploitatie van ontroerende goederen. De villa was bes",
+   "box": [
+    120587.17473640501,
+    485829.359432486,
+    120604.02500402521,
+    485848.2427595294
+   ]
+  },
+  {
+   "pand": "0363100012172129",
+   "names": [
+    "Weteringschans 20-22"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 67030,
+   "routeMetres": 5965,
+   "rank": 33.8,
+   "register": "518477",
+   "year": 1883,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nTussen Weteringschans en Singelgracht in 1883-84 tot stand gekomen DUBBELE VILLA met HEK gelegen in een reeks van vrijstaande gebouwen. Villa in eclectische stijl naar ontwerp van J. Daverman in opdracht van F.H. Koekkoek.  N.B. Serre aan achterzijde nr.22 door Z. Deenik & Zn. In 1928 tochtpui door J. Molenaar in opdracht van E. Penso (nr.20).\n\n\nOmschrijving\n\nHet grondplan van de dubbel",
+   "box": [
+    120823.86966001279,
+    486056.05677022546,
+    120838.22495814931,
+    486074.60276237526
+   ]
+  },
+  {
+   "pand": "0363100012170287",
+   "names": [
+    "De Ruijterkade 120"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 62498,
+   "routeMetres": 3385,
+   "rank": 33.6,
+   "register": "518491",
+   "year": 1914,
+   "type": "PAKHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1914 tot stand gekomen HANDELSKANTOOR/PAKHUIS genaamd 'Bestevaer' naar ontwerp in traditionalistische trant van de architect J.J. Kanters. Gebouwd in opdracht van de N.V. Maatschappij tot exploitatie van het pand 'Bestevaer'. \n\nNB. In 1929 vond er een verbouwing plaats door de architecten H.A.J. en J. Baanders, waarbij het gebouw gedeeltelijk aan de achterzijde met een derde verdiepi",
+   "box": [
+    122242.2697671022,
+    487844.7427744278,
+    122269.69859376622,
+    487872.9872606404
+   ]
+  },
+  {
+   "pand": "0363100012169708",
+   "names": [
+    "Herengracht 410-412"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: tiles",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 61167,
+   "routeMetres": 3380,
+   "rank": 33.5,
+   "register": "1840",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Gebouw, bestaand uit een nieuw in stijl aangepast rechtergedeelte (410) en het oorspronkelijke dubbele huis 412, gebouwd in 1664 door Philips Vingboons, met zandstenen gevel met twee pilasterorden in de middenrisaliet, waarboven een fronton. Oorspronkelijke ingang in sokkelverdieping. Gebouw, bestaand uit een nieuw in stijl aangepast rechtergedeelte (410) en het oorspronkelijke dubbele huis 412, g",
+   "box": [
+    120919.23111963405,
+    486666.9524665972,
+    120954.75300277135,
+    486702.9800231268
+   ]
+  },
+  {
+   "pand": "0363100012170543",
+   "names": [
+    "Plantage Middenlaan 36"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: art nouveau",
+    "register: awning/canopy",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 57548,
+   "routeMetres": 7040,
+   "rank": 33.3,
+   "register": "4112",
+   "year": null,
+   "type": "pand",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Onderkelderd drie verdiepingen hoog pand onder dwarsgeplaatst zadeldak, ontworpen door G. van Arkel en W.Wikens in 1892 (jaartalankers en inscriptie in voorgevel) in een aan neo-renaissance herinnerende bouwtrant. Voorgevel is voorzien van speklagen, natuurstenen sokkel. Rechts ingangspartij met stoep en driezijdige erker met driezijdige koepel afgedekt door een tentluifel met rondboog boven de in",
+   "box": [
+    122637.87600387186,
+    486563.8744056759,
+    122652.16193902757,
+    486579.9011956925
+   ]
+  },
+  {
+   "pand": "0363100012158232",
+   "names": [
+    "Weesperzijde 33-34"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: hotel",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 54893,
+   "routeMetres": 3620,
+   "rank": 33.2,
+   "register": "526999",
+   "year": null,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDubbel WOONHUIS in de stijl van de Neo-Renaissance met sterk Duitse inslag, naar een ontwerp van de Duitse architecten J.F. Henkenhaf en F. Ebert. Nummer 33 is ontstaan in de jaren 1883-1885, nummer 34 is in de jaren 1886-1887 aangebouwd. De opdrachtgevers waren repectievelijk de hotelier A.W. Krasnapolsky (ook betrokken bij de bouw van de IJsbreker op de Weesperzijde) en C. van der Bij",
+   "box": [
+    122294.60271273956,
+    485511.3485772655,
+    122323.34662874255,
+    485528.4108708723
+   ]
+  },
+  {
+   "pand": "0363100012068201",
+   "names": [
+    "Van Eeghenstraat 64",
+    "Hotel Atlas Vondelpark"
+   ],
+   "presence": 8.2,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "osm: hotel"
+   ],
+   "exposure": 9767,
+   "routeMetres": 1300,
+   "rank": 32.7,
+   "register": "505458",
+   "year": 1899,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n4051951351"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nLinkerdeel (W.) van een in 1899-1900 tot stand gekomen vrijstaande symmetrische dubbele WOONVILLA. De opdrachtgever was J.Bakker; de aanvraag werd tegelijkertijd met die voor de Jacob Obrechtstraat 2 (vm. Paviljoenstraat) ingediend. De architect was L. Beirer. De villa is gebouwd in overgangs-architectuur met invloerden van de Art Nouveau in de detaillering en invloeden van een meer lan",
+   "box": [
+    120018.7371913337,
+    485657.41564587504,
+    120034.7131201594,
+    485677.8995420684
+   ]
+  },
+  {
+   "pand": "0363100012118236",
+   "names": [
+    "Churchill-laan 223"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: painted",
+    "register: awning/canopy",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 47211,
+   "routeMetres": 1935,
+   "rank": 32.7,
+   "register": "530054",
+   "year": 1929,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding In 1929-1930 tot stand gekomen VILLA met deels aangebouwde en deels inpandige garage en vrijstaand gelegen op een perceel op de hoek van de Churchilllaan en de Boerenwetering en de Haringvlietstraat. De gevel aan de westzijde grenst onmiddellijk aan het water. Aan de oost- en zuidzijde bevindt zich de tuin omgeven door een eenvoudige tuinmuur. Gebouwd in opdracht van A. Haupt naar een on",
+   "box": [
+    120866.87290225594,
+    484466.8915468763,
+    120882.46383846279,
+    484485.22709703055
+   ]
+  },
+  {
+   "pand": "0363100012100628",
+   "names": [
+    "Apollolaan 166"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: painted",
+    "register: sculpture"
+   ],
+   "exposure": 44944,
+   "routeMetres": 1660,
+   "rank": 32.6,
+   "register": "527840",
+   "year": 1925,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1925-1927 tot stand gekomen en geheel vrijstaand op de hoek van de Apollolaan en het Albert Hahnplantsoen gelegen villa met aangebouwde garage. Gebouwd in opdracht van J.F.J. Eyrond & Zn. en C. Lebbink naar een ontwerp van de architect J.H. Mulder jr. in de stijl van de verstrakte Amsterdamse School.\n\nOmschrijving\n\nVilla met aangebouwde garage op een samengesteld rechthoekig gron",
+   "box": [
+    119697.67202776464,
+    484886.09707742,
+    119718.05825614964,
+    484909.12961689394
+   ]
+  },
+  {
+   "pand": "0363100012174123",
+   "names": [
+    "The Dylan",
+    "Vinkeles",
+    "OCCO"
+   ],
+   "presence": 9.5,
+   "reasons": [
+    "osm: hotel (wikidata)",
+    "osm: restaurant (wikidata)",
+    "osm: bar"
+   ],
+   "exposure": 2649,
+   "routeMetres": 375,
+   "rank": 32.5,
+   "register": [
+    "2587",
+    "4348"
+   ],
+   "year": 1638,
+   "type": null,
+   "wikidata": "Q111410305",
+   "osm": [
+    "n4548194081",
+    "n4571078874",
+    "n10312071206"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120684.11127659873,
+    486927.43963528937,
+    120732.11556300335,
+    486948.7376986674
+   ]
+  },
+  {
+   "pand": "0363100012168122",
+   "names": [
+    "Tweede Weteringplantsoen 21"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: tiles",
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 42934,
+   "routeMetres": 1100,
+   "rank": 32.4,
+   "register": "518483",
+   "year": 1891,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1891 tot stand gekomen en aan twee zijden vrijgelegen VILLA met HEK gelegen op de hoek Tweede Weteringplantsoen en Nicolaas Witsenkade. Gebouwd in opdracht van de heer Heineken, directeur van de gelijknamige brouwerij. De villa staat derhalve bekend als de 'Villa Heineken'. Gebouwd naar een ontwerp van de architect A.L. van Gendt in de stijl van de neo-renaissance, met invloeden ",
+   "box": [
+    121328.63317938286,
+    485727.93701023195,
+    121394.84982005256,
+    485779.865167287
+   ]
+  },
+  {
+   "pand": "0363100012181960",
+   "names": [
+    "De Ruijterkade 105-106"
+   ],
+   "presence": 6.4,
+   "reasons": [
+    "register: painted",
+    "register: café",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 114579,
+   "routeMetres": 5745,
+   "rank": 32.4,
+   "register": "518411",
+   "year": null,
+   "type": "hoekpand",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Oostertoegang en De Ruijterkade opgetrokken hoekpand, in oorsprong bestemd als gebouw 'De Zeevaart', met IJSKELDER en een REMISE met WERKPLAATS en BOVENWONINGEN naar een ontwerp uit 1884 in neo- renaissance-stijl van Y. Bijvoets Gzn. vermoedelijk in opdracht van H.A. te Mijtelaar.  In 1924 veranderd tot kantoorgebouw met twee conciërgewoningen in opdracht van J. van Laren",
+   "box": [
+    122171.68144756535,
+    487865.52092236996,
+    122189.12691082188,
+    487888.5773239416
+   ]
+  },
+  {
+   "pand": "0363100012120896",
+   "names": [
+    "Dintelstraat 5-11, Dongestraat 8-12"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 40618,
+   "routeMetres": 840,
+   "rank": 32.3,
+   "register": "526710",
+   "year": 1926,
+   "type": "SCHOOL",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1926-1928 tot stand gekomen SCHOOLGEBOUW, in opdracht van de Gemeente Amsterdam gebouwd naar een ontwerp van de architect N. Lansdorp van de Dienst der Publieke Werken in de stijl van de late of verstrakte Amsterdamse School. Het gebouw bevatte in de oorspronkelijke opzet twee dubbele scholen voor Gewoon Lager Onderwijs (G.L.O.), een school voor Voorbereidend Onderwijs (V.O.), ee",
+   "box": [
+    121314.45272142408,
+    484232.4291356486,
+    121396.76438031712,
+    484336.2372530321
+   ]
+  },
+  {
+   "pand": "0363100012176237",
+   "names": [
+    "Nieuwe Spiegelstraat 6"
+   ],
+   "presence": 6.5,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: sculpture"
+   ],
+   "exposure": 91955,
+   "routeMetres": 7075,
+   "rank": 32.3,
+   "register": "518363",
+   "year": 1903,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1903 gerealiseerde KANTOORWONING naar een ontwerp in Nieuwe Kunst-stijl van Ed. Cuypers. De opdrachtgever is onbekend. In 1925 werd het pand uitgebreid door de Gebr. Terlingen. In 1929 werd de begane grondgewijzigd door D.F. Slothouwer. Tegenwoordig is het pand gesplitst in apartementen.\n\nOmschrijving\n\nOp een nagenoeg rechthoekige plattegrond opgetrokken natuurstenen kantoorwonin",
+   "box": [
+    121107.73080137094,
+    486452.3720422626,
+    121137.40186931171,
+    486474.6227457172
+   ]
+  },
+  {
+   "pand": "0363100012169650",
+   "names": [
+    "Leidsestraat 82, Prinsengracht 444",
+    "Dikker & Thijs Fenice Hotel"
+   ],
+   "presence": 5.9,
+   "reasons": [
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "register: stained glass",
+    "osm: hotel"
+   ],
+   "exposure": 285344,
+   "routeMetres": 13140,
+   "rank": 32.2,
+   "register": "518364",
+   "year": 1914,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2730037011"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Prinsengracht en Leidsestraat in 1914-1915 gerealiseerd bedrijfsgebouw, in oorsprong met winkels en kantoren, gebouwd naar zakelijk-expressionistisch ontwerp van B.J. Ouëndag in opdracht van de N.V. Levensverzekeringsmaatschappij 'De Nederlanden'. Op het dak verscheen na de naamuitbreiding, 'De Nederlanden van 1870', een grote lichtreclame (' 1870'). De winkels werden ver",
+   "box": [
+    120709.42570179231,
+    486447.6737768908,
+    120734.66478142969,
+    486473.3745427553
+   ]
+  },
+  {
+   "pand": "0363100012168347",
+   "names": [
+    "Rokin 84",
+    "Cinnamood",
+    "Het Lagerhuys"
+   ],
+   "presence": 6.5,
+   "reasons": [
+    "register: café",
+    "osm: cafe",
+    "osm: pub"
+   ],
+   "exposure": 85273,
+   "routeMetres": 4270,
+   "rank": 32.1,
+   "register": "5009",
+   "year": 1883,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2724001489",
+    "n10672646213"
+   ],
+   "listedIn": null,
+   "desc": "V.m.Cafe-Restaurant Riche (1883, door A.L. van Gendt). Rijk bewerkte gevel in de laat-19e eeuwse internationale eclectische bouwtrant.",
+   "box": [
+    121245.75486882898,
+    486986.73432509264,
+    121282.4930434293,
+    487020.1760573522
+   ]
+  },
+  {
+   "pand": "0363100012172132",
+   "names": [
+    "Weteringschans 10-14"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 36950,
+   "routeMetres": 4685,
+   "rank": 32,
+   "register": "518479",
+   "year": 1882,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1882-1884 tot stand gekomen drievoudige VILLA met HEK, geheel vrijstaand tussen de Weteringschans en de Singelgracht gelegen in een reeks van vrijstaande gebouwen. In de bouwmassa laten zich de drie samenstellende wooneenheden onderscheiden: Weteringschans nrs. 10 en 12 en 14. Gebouwd naar een ontwerp van J. Daverman in de stijl van het eclecticisme. Gebouwd in opdracht van J.W. ",
+   "box": [
+    120763.8067202752,
+    486110.6551183035,
+    120774.33281931534,
+    486124.2239794051
+   ]
+  },
+  {
+   "pand": "0363100012171184",
+   "names": [
+    "Groenburgwal 24, Kloveniersburgwal 87"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: theatre",
+    "register: sculpture"
+   ],
+   "exposure": 35376,
+   "routeMetres": 6895,
+   "rank": 31.8,
+   "register": "518412",
+   "year": 1882,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nAan de Kloveniersburgwal in 1882-1883 tot stand gekomen VAKVERENIGINGSGEBOUW met een één travee breed achterhuis aan de Groenburgwal, naar een ontwerp van L. Beirer & J.J. Bekker in opdracht van het bestuur van de Maatschappij voor den Werkenden Stand. De gevels zijn opgetrokken in een Neo-Hollandse Renaissance stijl.\n\nN.B. Gelijkstraats bevonden zich o.a. drie restauratiezalen, een boe",
+   "box": [
+    121649.65797719637,
+    486907.10046345537,
+    121698.93821245173,
+    486944.8793396421
+   ]
+  },
+  {
+   "pand": "0363100012178237",
+   "names": [
+    "Damrak 37-38"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 35021,
+   "routeMetres": 3270,
+   "rank": 31.8,
+   "register": "518424",
+   "year": 1903,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek met de Oudebrugsteeg in 1903-1904 gerealiseerd KANTOORGEBOUW naar een ontwerp in Art Nouveau-stijl van J.W.F. Hartkamp in opdracht van B. Sanders namens de fa. B. Sanders & Zoon. In het gebouw bevonden zich verder nog een bierkelder en een fotografisch atelier op zolder.\n\nOmschrijving\n\nGeheel in natuursteen opgetrokken voor- en zijgevel: basement in graniet,  parterre in hard",
+   "box": [
+    121560.66019280504,
+    487664.5738728957,
+    121576.79478706283,
+    487679.07867891714
+   ]
+  },
+  {
+   "pand": "0363100012141080",
+   "names": [
+    "BRUG 404, AMSTELKANAAL"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: awning/canopy",
+    "register: shopfront",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "exposure": 33435,
+   "routeMetres": 4485,
+   "rank": 31.7,
+   "register": "527855",
+   "year": 1917,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOver het Amstelkanaal gelegen BRUG, (nr. 404, eerste ontwerp 1917, sterk gewijzigd uitgevoerd in 1928) gebouwd naar een ontwerp van P. Kramer. De verkeersbrug ligt op de radiaalroute die via de Schelde- en de Ferdinand Bolstraat vanaf plan Zuid naar de oude stad leidt. De constructie van deze vaste brug met een doorvaart van 10 meter is gebouwd naar ontwerp van de Afdeling Bruggen van d",
+   "box": [
+    121187.21963517422,
+    484602.61052198766,
+    121193.85894543747,
+    484610.42595076025
+   ]
+  },
+  {
+   "pand": "0363100012176312",
+   "names": [
+    "Herengracht 213"
+   ],
+   "presence": 5.9,
+   "reasons": [
+    "register: art nouveau",
+    "register: shopfront",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 234765,
+   "routeMetres": 17185,
+   "rank": 31.7,
+   "register": "518493",
+   "year": 1896,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1896-1897 in opdracht van de scheepsreder August J. Hendrichs  gebouwde WINKEL met BOVENWONINGEN, naar een ontwerp van A.L. van Gendt en J.G. van Gendt in een door het Eclecticisme, de Art Nouveau en Neorenaissance beïnvloede stijl. De namen van de architecten worden vermeld op een gevelsteen boven de toegang aan de Herengracht. \n\nOmschrijving\n\nHet gebouw is op een parallellogram-vor",
+   "box": [
+    120970.01410356225,
+    487368.64601815393,
+    120980.0255172456,
+    487381.4933812418
+   ]
+  },
+  {
+   "pand": "0363100012112493",
+   "names": [
+    "Koninginneweg 8"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: Amsterdam School",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 32132,
+   "routeMetres": 2260,
+   "rank": 31.5,
+   "register": "505243",
+   "year": 1924,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1924 door G.J. Rutgers in verstrakt Amsterdamse School-stijl ontworpen, aan drie zijden vrijstaande APPARTEMENTENGEBOUW op een rechthoekige plattegrond in opdracht van N.V. 'Koningsvijver'. De achterzijde van het pand is gelegen aan het Vondelpark.\n\nOmschrijving\n\nHet op een rechthoekige plattegrond in donkerbruine bakstenen gebouwde appartementengebouw bestaat uit vier bouwlagen en s",
+   "box": [
+    119592.12262923954,
+    485404.46983374626,
+    119609.78662617231,
+    485420.4183715027
+   ]
+  },
+  {
+   "pand": "0363100012074182",
+   "names": [
+    "Albert Hahnplantsoen 25-27"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: painted",
+    "register: awning/canopy",
+    "register: curved",
+    "register: stained glass"
+   ],
+   "exposure": 25750,
+   "routeMetres": 1660,
+   "rank": 30.9,
+   "register": "527836",
+   "year": 1925,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1925-1928 tot stand gekomen geheel vrijstaand aan het Albert Hahnplantsoen en Apollolaan gelegen dubbele VILLA. In opdracht van J. Polak Grodel naar een ontwerp van de architecten H.A.J. en Jan Baanders in de stijl van de verstrakte of late Amsterdamse School. Feitelijk betreft het hier een dubbele flatwoning of een villa met twee boven elkaar gelegen appartementen. De benedenwon",
+   "box": [
+    119644.19260578041,
+    484886.6168500115,
+    119670.59069419856,
+    484902.23074607755
+   ]
+  },
+  {
+   "pand": "0363100012126307",
+   "names": [
+    "Apollolaan 178"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: Amsterdam School",
+    "register: painted",
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "exposure": 24336,
+   "routeMetres": 1535,
+   "rank": 30.7,
+   "register": "527839",
+   "year": 1926,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1926-1928 tot stand gekomen en geheel vrijstaand aan de Apollolaan gelegen VILLA met aangebouwde garage. Achtertuin grenst aan het Noorder Amstelkanaal. Gebouwd in opdracht van C. Hülsmann naar een ontwerp van de architecten L.J.H. Zonneveldt en C.W. Rooyaards in de stijl van de Amsterdamse School met beeldhouwwerk van Mari S. Andriessen (1897-1979). \n\nNB.\n\nIn 1941 werd in opdrac",
+   "box": [
+    119554.5198081657,
+    484883.1242389457,
+    119569.53458473914,
+    484900.1975282146
+   ]
+  },
+  {
+   "pand": "0363100012177176",
+   "names": [
+    "The Hoxton"
+   ],
+   "presence": 6.5,
+   "reasons": [
+    "osm: hotel (wikidata)",
+    "osm: cafe"
+   ],
+   "exposure": 53232,
+   "routeMetres": 3830,
+   "rank": 30.7,
+   "register": "5343",
+   "year": null,
+   "type": "Pand",
+   "wikidata": "Q111410297",
+   "osm": [
+    "n603367748",
+    "n11609947769"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120957.32167327756,
+    487212.57272631844,
+    121007.52563155434,
+    487242.0456346934
+   ]
+  },
+  {
+   "pand": "0363100012165130",
+   "names": [
+    "Rokin 69"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 36019,
+   "routeMetres": 2915,
+   "rank": 30.5,
+   "register": "518463",
+   "year": 1901,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1901 tot stand gekomen VERZEKERINGSKANTOOR, gelegen op de hoek met de Wijde Lombardsteeg. Opdrachtgever was The Marine Insurance Company Limited.  De architect was G. van Arkel. Gebouwd in een stijl met verwantschap aan de  sobere art nouveau alsmede aan een op Berlage geïnspireerde vormentaal.  De bescherming betreft hier de bebouwing aan het Rokin 69/Wijde Lombardsteeg ongd. De",
+   "box": [
+    121345.24654886831,
+    487090.9500579955,
+    121381.37560966527,
+    487107.8678607038
+   ]
+  },
+  {
+   "pand": "0363100012156284",
+   "names": [
+    "Willemsparkweg 217"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: painted",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 22254,
+   "routeMetres": 3275,
+   "rank": 30.4,
+   "register": "520131",
+   "year": 1896,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDubbel WOONHUIS in 1896 gebouwd naar ontwerp van de Amsterdamse architect Gerrit van Arkel (1858-1918), in opdracht van Hendrika E. Hagedoorn en Arie C. van Ommen van Guijeck, oprichter van de NV Cement Wittenburg. Het pand is gelegen in de zuidoostelijke gesloten straatwand van de Willemsparkweg in de Concertgebouwbuurt, die voornamelijk met woonhuizen in Neo-Renaissancestijl is bebouw",
+   "box": [
+    119666.99987839554,
+    485383.7453456008,
+    119680.19606805869,
+    485400.1321236138
+   ]
+  },
+  {
+   "pand": "0363100012076340",
+   "names": [
+    "Andreas Bonnstraat 1, Mauritskade 11"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: tiles",
+    "register: awning/canopy",
+    "register: sculpture"
+   ],
+   "exposure": 324357,
+   "routeMetres": 6970,
+   "rank": 30.3,
+   "register": "526983",
+   "year": 1928,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1928-1933 tot stand gekomen voormalig KANTOORGEBOUW van de Amstel Bierbrouwerij op de hoek van de Mauritskade en de Andreas Bonnstraat, gebouwd in opdracht van de Beierse Bierbrouwerij naar een ontwerp van de architect F.A. Eschauzier in samenwerking met A.J. Langhout in de stijl van de Delftse School met invloeden van het functionalisme. Het achterliggende brouwerijcomplex is ge",
+   "box": [
+    122578.8989359021,
+    485884.25280395994,
+    122632.53052106267,
+    485932.53779426
+   ]
+  },
+  {
+   "pand": "0363100012082975",
+   "names": [
+    "Van Eeghenstraat 68"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 33204,
+   "routeMetres": 2330,
+   "rank": 30.3,
+   "register": "505324",
+   "year": 1900,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nLinkerdeel (W.) van een in 1900-1901 tot stand gekomen DUBBELVILLA, in opdracht van Z. Deenik en Zn. door J. Herman ontworpen in Overgangsarchitectuur met invloeden van de Art Nouveau. De tuin aan de achterzijde van de villa grenst aan een vijver rond het Vondelpark.\n\nOmschrijving\n\nLinkerdeel van een bakstenen villa bestaande uit vijf bouwlagen op een rechthoekige plattegrond. Zowel aan",
+   "box": [
+    119991.31508180873,
+    485653.51132615376,
+    120006.87827202631,
+    485672.53432998195
+   ]
+  },
+  {
+   "pand": "0363100012176731",
+   "names": [
+    "Herengracht 286"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: painted",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 21598,
+   "routeMetres": 2380,
+   "rank": 30.3,
+   "register": "518337",
+   "year": 1920,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1920-1922 tot stand gekomen KANTOORGEBOUW. Verder ook een tweetal inpandige woningen, elk voor de bewoning van één gezin. Een drietal panden werd in 1921 voor de bouw gesloopt. Van de gevel van het toen gesloopte pand Herengracht 286 werd de geveltop bewaard. Deze bevindt zich thans op het nieuw gemetselde tuinhuis. Opdrachtgever tot de bouw was de N.V. Deli - Batavia Maatschappi",
+   "box": [
+    120873.9332572452,
+    487073.62070598826,
+    120906.85979275641,
+    487092.9593719522
+   ]
+  },
+  {
+   "pand": "0363100012158108",
+   "names": [
+    "Van Eeghenstraat 66"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 31076,
+   "routeMetres": 2510,
+   "rank": 30.1,
+   "register": "505316",
+   "year": 1900,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nRechterdeel (O.) van een in 1900-1901 tot stand gekomen DUBBELVILLA, in opdracht van Z. Deenik en Zn. ontworpen door J. Herman in Overgangsarchitectuur met invloeden van de Art Nouveau. De tuin aan de achterzijde van de villa grenst aan een vijver van het Vondelpark.\n\nOmschrijving\n\nRechterdeel van een bakstenen villa bestaande uit vijf bouwlagen gebouwd op een rechthoekige plattegrond. ",
+   "box": [
+    119999.63622390226,
+    485654.3405857494,
+    120013.71730219471,
+    485673.81346885825
+   ]
+  },
+  {
+   "pand": "0363100012181563",
+   "names": [
+    "Prins Hendrikkade 190-194, Schippersgracht 2-3"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 936490,
+   "routeMetres": 25385,
+   "rank": 29.9,
+   "register": "518430",
+   "year": 1878,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1878-1880 tot stand gekomen HOGESCHOOL, de 'Kweekschool voor de zeevaart', waaruit later door fusie de 'hogere zeevaartschool' is ontstaan. Gelegen aan de Prins Hendrikkade, hoek Schippersgracht. De gevel aan de zijde van deze Schippersgracht is korter en als zijgevel behandeld. In de vestibule een gevelsteen met de tekst: 'Eerste steen Z.M. Koning Willem III, 4 mei 1878, voltooid 1 ",
+   "box": [
+    122601.737677644,
+    487105.7193865101,
+    122645.3128647806,
+    487143.4929825499
+   ]
+  },
+  {
+   "pand": "0363100012185850",
+   "names": [
+    "Reguliersdwarsstraat 108-114",
+    "Jantjes Verjaardag"
+   ],
+   "presence": 7.2,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel",
+    "osm: nightclub"
+   ],
+   "exposure": 14041,
+   "routeMetres": 730,
+   "rank": 29.9,
+   "register": "518504",
+   "year": 1910,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n1623897546"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1910-1911 tot stand gekomen MAGAZIJN met HANDELSKANTOOR, TOONZAAL op de eerste verdieping en inpandige conciërgewoning, gebouwd in opdracht van  Arnoldus  M.A.  Heystee  naar een ontwerp van de architect  J.F.  Staal jr. in de stijl van het  Berlagianisme. Heystee, lid van de firma  Heystee, Smit & Co., liet het als  magazijngebouw  bouwen om er zijn zaak in tegels en faience, voordi",
+   "box": [
+    121476.93693384813,
+    486520.5000596687,
+    121503.47769670197,
+    486545.60034098546
+   ]
+  },
+  {
+   "pand": "0363100012063301",
+   "names": [
+    "Purmerplein 22-36, Wognumerpad 1"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 17825,
+   "routeMetres": 3005,
+   "rank": 29.8,
+   "register": "508394",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nZuidoostelijk aan het Purmerplein gesitueerde reeks winkelwoningen naar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School, deel uitmakend van het Tuindorp Nieuwendam. \n\nOmschrijving\n\nVrijstaand bouwblok met oorspronkelijk zeven winkelwoonhuizen.\n\nPurmerplein 22 heeft een winkelplattegrond van het type C;Purmerplein 24-32 heeft een winkelplattegrond van het type B;",
+   "box": [
+    124846.7900533789,
+    489284.0032590198,
+    124853.53257035828,
+    489297.9863045295
+   ]
+  },
+  {
+   "pand": "0363100012143036",
+   "names": [
+    "Purmerplein 16-20"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 28048,
+   "routeMetres": 3760,
+   "rank": 29.8,
+   "register": "508396",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nCentraal aan de zuidwestelijke zijde van het Purmerplein gesitueerde reeks winkelwoningen naar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School, deel uitmakend van het Tuindorp Nieuwendam.\n\nOmschrijving\n\nVrijstaand bouwblok met drie winkelwoonhuizen. Purmerplein 16en 20 hebben een winkelplattegrond van het type D; Purmerplein18 heeft een winkelplattegrond van het",
+   "box": [
+    124807.52210757059,
+    489292.0032233264,
+    124819.62869044891,
+    489307.245117505
+   ]
+  },
+  {
+   "pand": "0363100012108839",
+   "names": [
+    "Purmerplein 2-14"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 23666,
+   "routeMetres": 3995,
+   "rank": 29.3,
+   "register": "508393",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nZuidwestelijk aan het Purmerplein gesitueerde reeks winkelwoningen naar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School, deel uitmakend van het Tuindorp Nieuwendam.\n\nOmschrijving\n\nVrijstaand bouwblok met zeven winkelwoonhuizen. Purmerplein 2 heeft een winkelplattegrond van het type A; Purmerplein 4-12 heeft een winkelplattegrond van het type B; Purmerplein 14 he",
+   "box": [
+    124778.42775744677,
+    489318.56322001247,
+    124791.17074941697,
+    489330.542604153
+   ]
+  },
+  {
+   "pand": "0363100012062598",
+   "names": [
+    "De Lairessestraat 176-180, Lassusstraat 10"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 13530,
+   "routeMetres": 665,
+   "rank": 28.9,
+   "register": "462002",
+   "year": 1930,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "inleiding In 1930-33 naar ontwerp van architect B.T. Boeyinga en constructeur ir. I.J. Kranenburg ten behoeve van de nieuw opgerichte vierde faculteit van de Vrije Universiteit gerealiseerd LABORATORIUM, uitgevoerd in late Amsterdamse Schooltrant met in oorsprong vier bouwlagen voor de scheikundige afdelingen en drie bouwlagen voor de natuurkundige afdelingen onder een pannen kap.\n\nIn 1951-52 is h",
+   "box": [
+    119453.8463817946,
+    485042.9884694565,
+    119478.78228753332,
+    485075.25554601295
+   ]
+  },
+  {
+   "pand": "0363100012179330",
+   "names": [
+    "Keizersgracht 676"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: painted",
+    "register: curved",
+    "register: café",
+    "register: theatre",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 12392,
+   "routeMetres": 825,
+   "rank": 28.7,
+   "register": "518336",
+   "year": null,
+   "type": "KERK",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in twee periodes tot stand gekomen KERK. Voormalige Nieuwe Waalse Kerk. In eerste instantie gebouwd tussen 1854 en 1856. Een gedenksteen naast de trap van de preekstoel vermeldt de eerste steenlegging in het jaar 1855. Tijdens brand in 1861 stortte de kap in. In 1862 in gewijzigde vorm herbouwd. In beide gevallen was A.N. Godefroy de architect. Opdrachtgever was het Kerkbestuur der ",
+   "box": [
+    121379.71339322103,
+    486256.7871896112,
+    121400.51697321166,
+    486287.66589510895
+   ]
+  },
+  {
+   "pand": "w1487606274",
+   "names": [
+    "Mama Pancake",
+    "&moshik"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "osm: cafe",
+    "osm: restaurant (wikidata)"
+   ],
+   "exposure": 166055,
+   "routeMetres": 3290,
+   "rank": 28.7,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q4540372",
+   "osm": [
+    "n3706860682",
+    "n4574227869"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122220.81430048226,
+    487678.91673173616,
+    122293.57256496378,
+    487757.37619861966
+   ]
+  },
+  {
+   "pand": "0363100012098457",
+   "names": [
+    "Valeriusstraat 193-199, Lomanstraat 40-46, e.o."
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: turret",
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel"
+   ],
+   "exposure": 17955,
+   "routeMetres": 490,
+   "rank": 28.5,
+   "register": "505686",
+   "year": 1911,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1911-1912 tot stand gekomen U-vormig bouwblok bestaande uit een REMISE en tien BOVENWONINGEN, waarvan vier vrije bovenwoningen aan de zijde van de Valeriusstraat, vier vrije bovenwoningen aan de zijde van de Lomanstraat en twee koetsierswoningen aan de zijde van de Hendrik Jacobszstraat. De in het middendeel van de voorgevel gelegen koetsierswoningen hadden elk twee kamers en een",
+   "box": [
+    119103.63827602743,
+    484978.20297819306,
+    119140.03885770499,
+    485022.3167104163
+   ]
+  },
+  {
+   "pand": "0363100012127170",
+   "names": [
+    "Weesperzijde 23"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: tiles",
+    "register: café",
+    "register: hotel",
+    "register: ironwork"
+   ],
+   "exposure": 11383,
+   "routeMetres": 780,
+   "rank": 28.4,
+   "register": "526992",
+   "year": 1884,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nCAFE-RESTAURANT met bovenWONINGEN, ontworpen door A.L. van Gendt in 1884-1885, in de stijl van de Neo-Renaissance, de decoratie in pleister uitgevoerd. De IJsbreker, vernoemd naar een oude herberg van dezelfde naam op dezelfde plaats, maakt deel uit van het negentiende-eeuwse rivierfront aan de Amstel, Weesperzijde, aan het eind van de negentiende eeuw ontwikkeld door particuliere bouwo",
+   "box": [
+    122266.41592078198,
+    485609.6809919009,
+    122334.09735789089,
+    485638.2642600079
+   ]
+  },
+  {
+   "pand": "0363100012182664",
+   "names": [
+    "Prinsengracht 808, Utrechtsestraat 119",
+    "Onder de Ooievaar"
+   ],
+   "presence": 5.9,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "register: stained glass",
+    "osm: pub"
+   ],
+   "exposure": 65047,
+   "routeMetres": 5170,
+   "rank": 28.4,
+   "register": "518367",
+   "year": 1906,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n349012999"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Prinsengracht en Utrechtsestraat in 1906-1907 opgetrokken 'winkelgebouw met bovenwoningen en kantoorlokalen' naar een ontwerp in Traditionalistische stijl van de Gebr. van Gendt ALzn. in opdracht van De Onderlinge Levensverzekering Mij. \"'s-Gravenhage\" bij monde van toenmalig directeur mr. P.A. Francken. De twee grote vensters direct aan weerszijden van de hoekpartij date",
+   "box": [
+    121753.7270807011,
+    486110.6988756432,
+    121774.15508774377,
+    486122.3758034056
+   ]
+  },
+  {
+   "pand": "0363100012094816",
+   "names": [
+    "Grafmonument Romme"
+   ],
+   "presence": 6.5,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: sculpture"
+   ],
+   "exposure": 21571,
+   "routeMetres": 590,
+   "rank": 28.2,
+   "register": "527754",
+   "year": 1907,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nGrafmonument voor de familie Wiegman-Dobbelmann, in 1907 gebouwd naar ontwerp van Ed. Cuypers, in samenwerking met beeldhouwer Pierre Elyssée van den Bossche. Het grafmonument werd opgericht naar aanleiding van het overlijden van Theresia Johanna Theodora Marie Dobbelmann (1866-1906). Het monument bevindt zich op de RK begraafplaats Buitenveldert te Amsterdam. \n\nOmschrijving \n\nHet GRAFM",
+   "box": [
+    119157.27652377235,
+    483770.73021900724,
+    119194.63126947323,
+    483799.76285382133
+   ]
+  },
+  {
+   "pand": "0363100012178800",
+   "names": [
+    "Keizersgracht 766"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: painted",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 10604,
+   "routeMetres": 2035,
+   "rank": 28.2,
+   "register": "518350",
+   "year": 1894,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1894 door verbouwing tot stand gekomen WOONHUIS voor de bakker W.J. Heinemann. Architect was G. van Arkel. Ontworpen en gebouwd in de stijl van de Nieuwe Kunst, waar het een vroeg voorbeeld van is. NB.\n\nIn 1927 en nog lange tijd daarna, werd het pand ingenomen door de firma W.J. Heinemann, bekend om het Haagsche beschuit en gerenommeerd als 'Fransche en Duitsche pain de luxe bakk",
+   "box": [
+    121719.1755612657,
+    486299.3060373194,
+    121725.88502102786,
+    486307.29400873074
+   ]
+  },
+  {
+   "pand": "0363100012088868",
+   "names": [
+    "Joh.M. Coenenstraat 21-35, Harmoniehof 32-39, e.o."
+   ],
+   "presence": 6.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 29960,
+   "routeMetres": 2080,
+   "rank": 27.8,
+   "register": "527817",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nGesloten bouwblok op onregelmatig grondplan met open binnenruimte. Gelegen aan de zuidwestzijde van de Harmoniehof. Het woonblok is tot stand gekomen in 1922-1923 naar een ontwerp van J.C. van Epen in samenwerking met M.J.E. Lippits. Het bouwblok wordt omgeven door de Reijnier Vinkeleskade, de Joh. M. Coenenstraat, Harmoniehof en de Daniël de Langestraat. De gevelwand aan de zijde va",
+   "box": [
+    120489.13863116858,
+    484985.4239990996,
+    120501.54320589604,
+    485004.23688388045
+   ]
+  },
+  {
+   "pand": "0363100012178613",
+   "names": [
+    "Kerkstraat 383, Utrechtsestraat 91"
+   ],
+   "presence": 6.2,
+   "reasons": [
+    "register: turret",
+    "register: painted",
+    "register: curved",
+    "register: oriel"
+   ],
+   "exposure": 28919,
+   "routeMetres": 6610,
+   "rank": 27.7,
+   "register": "518403",
+   "year": 1879,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1879-1880 tot stand gekomen gebouw met WINKEL en BOVENWONINGEN. Gebouwd in opdracht van A.J. Levert van de firma Haages en Levert. De eerdere bebouwing werd gesloopt. De opdracht tot het ontwerp werd verleend aan 'De Ing. Architect A.L. van Gendt'. Ontworpen en gebouwd in de stijl van het eclecticisme. Op de begane grond bevond zich aan weerszijden van een portaal een winkel. Aan",
+   "box": [
+    121726.72397757022,
+    486230.2665731666,
+    121734.82282044053,
+    486235.12679537595
+   ]
+  },
+  {
+   "pand": "0363100012236718",
+   "names": [
+    "Staringplein 9"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 8473,
+   "routeMetres": 175,
+   "rank": 27.5,
+   "register": "524832",
+   "year": 1907,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding In 1907-1909 tot stand gekomen HOF van de Evangelisch Lutherse Gemeente, thans genaamd 'Het Lutherhof', voorheen genaamd 'Evangelisch Lutherse Diaconie- en Zwaardvegershofjes'. De opening vond plaats op 2 juli 1909. Het Lutherhof is met strak symmetrische gevels gebouwd naar een ontwerp van de architect D. van Oort Hzn. in een op de Neo-Hollandse Renaissance geïnspireerde stijl. De aanne",
+   "box": [
+    119314.44341621066,
+    485989.22378908517,
+    119364.36387653716,
+    486040.06885224493
+   ]
+  },
+  {
+   "pand": "0363100012131129",
+   "names": [
+    "Apollolaan 25-63, Gerrit van der Veenstraat 2, Bachstraat 1"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel"
+   ],
+   "exposure": 8060,
+   "routeMetres": 495,
+   "rank": 27.3,
+   "register": "527833",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nTussen Gerrit van der Veenstraat (de vroegere Euterpestraat), Apollolaan en Bachstraat in 1928-1929 gerealiseerd blok met dertig ETAGEWONINGEN naar een ontwerp in Late Amsterdamse School-stijl van J. Boterenbrood. Apollolaan 25-35 en Gerrit van der Veenstraat 2 zijn gebouwd in opdracht van N.V. Bouwmij. 'De Vier'; de overige huisnummers in opdracht van N.V. Sellmeyer's Bouwmij. Tussen d",
+   "box": [
+    120532.69162852525,
+    484723.1581786433,
+    120551.16785147105,
+    484740.83892628184
+   ]
+  },
+  {
+   "pand": "0363100012094391",
+   "names": [
+    "WG Kunst",
+    "WG Cafe",
+    "Amsterdams Theaterhuis"
+   ],
+   "presence": 7,
+   "reasons": [
+    "osm: arts_centre",
+    "osm: pub",
+    "osm: theatre"
+   ],
+   "exposure": 7281,
+   "routeMetres": 175,
+   "rank": 27,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n343366912",
+    "n601508325",
+    "n2809966844"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    119773.9926131547,
+    486252.1453245338,
+    119839.53412769985,
+    486358.69576744887
+   ]
+  },
+  {
+   "pand": "0363100012171133",
+   "names": [
+    "Cooldown Cafe Rembrandtplein",
+    "Screaming Beans",
+    "John Doe"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: nightclub",
+    "osm: cafe"
+   ],
+   "exposure": 241309,
+   "routeMetres": 7880,
+   "rank": 26.9,
+   "register": [
+    "289",
+    "290",
+    "291",
+    "292",
+    "293"
+   ],
+   "year": 1600,
+   "type": "pand",
+   "wikidata": null,
+   "osm": [
+    "n1623897542",
+    "n1984268536",
+    "n10937849384"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121638.8221732117,
+    486602.4085907653,
+    121695.47819665195,
+    486658.3537701648
+   ]
+  },
+  {
+   "pand": "0363100012123029",
+   "names": [
+    "Apollolaan 191"
+   ],
+   "presence": 6.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 21332,
+   "routeMetres": 1005,
+   "rank": 26.8,
+   "register": "527850",
+   "year": 1928,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nAPPARTEMENTENGEBOUW uit 1928-30, gebouwd naar ontwerp van architect H.A. van Anrooy in een strakke trant van de Amsterdamse School met nieuwe zakelijke elementen.\n\nHet gebouw bevat vier appartementen en is opgenomen in de zuidelijke gevelwand van de Apollolaan in de nabijheid van het Olympiaplein. \n\nOmschrijving\n\nHet a-symmetrische pand telt vijf bouwlagen op een vrijwel rechthoekige pl",
+   "box": [
+    119615.93165108311,
+    484810.3713029749,
+    119637.87033647423,
+    484822.4632680254
+   ]
+  },
+  {
+   "pand": "0363100012133118",
+   "names": [
+    "Cornelis Schuytstraat 57"
+   ],
+   "presence": 5.4,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 90301,
+   "routeMetres": 2835,
+   "rank": 26.8,
+   "register": "505472",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van de De Lairessestraat en Cornelis Schuytstraat aan drie zijden vrijliggend, tussen 1917 en 1920 in verstrakte Amsterdamse School-stijl opgetrokken SCHEEPVAARTKUNDIG MUSEUM (thans veilinghuis) naar een ontwerp van G.F. La Croix in opdracht van H. van der Schaar Lzn.\n\nIn 1929 glazen overkapping in opdracht van de Vereeniging Scheepvaart Museum.\n\nOmschrijving\n\nVoormalig Schee",
+   "box": [
+    119942.84968574614,
+    485181.69694061496,
+    119978.70517494617,
+    485226.1047732286
+   ]
+  },
+  {
+   "pand": "0363100012152633",
+   "names": [
+    "Ringdijk 1, Middenweg 6"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: dome",
+    "register: turret"
+   ],
+   "exposure": 73471,
+   "routeMetres": 3305,
+   "rank": 26.8,
+   "register": "6776",
+   "year": 1777,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "RECHTHUIS, in 1777 opgetrokken ter vervanging van het oorspronkelijke, een rechthoekig gebouw onder door schoorstenen bekroond schilddak voorzien van geblokte hoeklisenen en in elke gevel van een door een fronton bekroonde middenrisaliet. Ingangspartij met balcon op toscaanse zuilen en vensteromlijsting. Op een uitbouw van het dak een koepeltorentje.",
+   "box": [
+    123727.9408342694,
+    485297.1880547149,
+    123766.08886634657,
+    485333.2937193166
+   ]
+  },
+  {
+   "pand": "0363100012171293",
+   "names": [
+    "Spuistraat 274"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: dome",
+    "register: art nouveau",
+    "register: tiles",
+    "register: painted",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 6686,
+   "routeMetres": 1310,
+   "rank": 26.8,
+   "register": "518458",
+   "year": 1898,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van de Spuistraat en de Raamsteeg in 1898 tot stand gekomen WINKELWONING. Gebouwd naar een ontwerp van de architect G. van Arkel in de stijl van de sobere art nouveau. Op de begane grond vestigde zich een bakkerij met de winkel op de hoek. \n\nOmschrijving\n\nWinkelwoonhuis op rechthoekig grondplan met vijf bouwlagen boven het maaiveld: begane grond en vier verdiepingen onder een",
+   "box": [
+    121055.47988028385,
+    487036.18393397937,
+    121065.2683591407,
+    487046.3896878935
+   ]
+  },
+  {
+   "pand": "0363100012080308",
+   "names": [
+    "Corantijnstraat 2"
+   ],
+   "presence": 5.7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: curved",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 42504,
+   "routeMetres": 1320,
+   "rank": 26.4,
+   "register": "527154",
+   "year": 1922,
+   "type": "SCHOOL",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1922-1923 tot stand gekomen SCHOOLGEBOUW in oorsprong voor twee scholen voor 'Gewoon Lager Onderwijs' op de hoek van de Corantijnstraat en de Hoofdweg, naar ontwerp van de Dienst Publieke Werken in de stijl van de verstrakte Amsterdamse School. De school werd 'Corantijnschool' genoemd; tegenwoordig onder meer Basisschool 'Corantijn'. N.B. De vensters zijn vernieuwd.\n\nOmschrijving\n\nOp",
+   "box": [
+    118558.36738386376,
+    486144.16236208606,
+    118610.98366393929,
+    486159.91958852386
+   ]
+  },
+  {
+   "pand": "0363100012110119",
+   "names": [
+    "Albert Hahnplantsoen 21-23"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 6004,
+   "routeMetres": 495,
+   "rank": 26.4,
+   "register": "527849",
+   "year": 1930,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDubbele VILLA in 1930 gebouwd in de stijl van de Amsterdamse School in opdracht van J.J. Eyrond. Het ontwerp van architect E. Nijsten stamt uit 1928. De villa is met de achterzijde - in een ruime tuinaanleg - aan de Apollolaan, één van de hoofdassen van Berlages Plan Zuid gelegen. Tot de dubbele villa behoren ook de erfafscheidingen aan de Apollolaan en het Albert Hahnplantsoen en de tw",
+   "box": [
+    119687.91559013081,
+    484909.2995640778,
+    119705.5213199029,
+    484926.37796107784
+   ]
+  },
+  {
+   "pand": "0363100012168578",
+   "names": [
+    "Berenstraat 1-3, Keizersgracht 316"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "exposure": 62120,
+   "routeMetres": 3880,
+   "rank": 26.4,
+   "register": "518507",
+   "year": 1935,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van de Keizersgracht en de Berenstraat gelegen en in 1935-1936 tot stand gekomen HANDELSKANTOOR met magazijnen, kantoren, monsterkamers, een conciërgewoning en verwarmingskelder voor de firma William  Koch  & Co, importeurs van Torpedo-rijwielnaven en F & S-kogellagers. Het gebouw werd ontworpen door de architect  A.A.  Kok in de stijl van de Delftse School. Kok heeft hier ge",
+   "box": [
+    120731.94167839966,
+    487046.85923254705,
+    120753.19675808211,
+    487059.5742244706
+   ]
+  },
+  {
+   "pand": "0363100012163533",
+   "names": [
+    "Van Eeghenstraat 62"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: awning/canopy",
+    "register: oriel"
+   ],
+   "exposure": 5587,
+   "routeMetres": 620,
+   "rank": 26.2,
+   "register": "505451",
+   "year": 1899,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nRechterdeel (O.) van een in 1899-1900 tot stand gekomen vrijstaande symmetrische dubbele WOONVILLA. De opdrachtgever was J. Bakker; de aanvraag werd tegelijkertijd met die voor de Jacob Obrechtstraat 2 (vm. Paviljoenstraat) ingediend. De architect was L. Beirer. De villa is gebouwd in overgangs-architectuur met invloeden van de Art Nouveau in de detaillering en de ornamentiek en met inv",
+   "box": [
+    120028.88027192066,
+    485659.92933346133,
+    120041.15047867071,
+    485679.1825851678
+   ]
+  },
+  {
+   "pand": "0363100012237162",
+   "names": [
+    "Koninginneweg 29, Emmastraat 2"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: tiles",
+    "register: awning/canopy",
+    "register: ironwork"
+   ],
+   "exposure": 163093,
+   "routeMetres": 5020,
+   "rank": 26.1,
+   "register": "505644",
+   "year": 1893,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1893 tot stand gekomen TRAMREMISE met bovenwoning. De ontwerptekeningen uit 1892 en 1893 vermelden een 'Ontwerp voor een Remise en Stallen aan de Parkweg in de Gemeente Nieuwer Amstel'. De opdracht tot de bouw werd verleend door de Amsterdamsche Omnibus Maatschappij. De architect was A.L. van Gendt. In het bouwdossier is verder sprake van de deelname van P.H. van Gendt. De remise",
+   "box": [
+    119630.74493616601,
+    485317.09550837276,
+    119664.10111777764,
+    485364.2781151565
+   ]
+  },
+  {
+   "pand": "0363100012179489",
+   "names": [
+    "Droogbak 13"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: turret",
+    "register: curved",
+    "register: hotel",
+    "register: stained glass"
+   ],
+   "exposure": 7714,
+   "routeMetres": 750,
+   "rank": 26,
+   "register": "518378",
+   "year": 1883,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Droogbak en Buiten Vissersstraat in 1883 gerealiseerd WOONHUIS voor twee gezinnen in opdracht van de regenten van het R.C. Oude Armenkantoor. Het pand is ontworpen door A.C. Bleys in een neo-Hollandse-renaissance stijl.\n\nN.B. In 1921 werd de zolder verbouwd tot logeerkamers door J.A. Terbeek in opdracht van C.H. Bakkers. In dat jaar deed het pand dienst als hotel. In 1924",
+   "box": [
+    121370.70448667678,
+    488133.11843390367,
+    121381.97993265575,
+    488147.6869576938
+   ]
+  },
+  {
+   "pand": "0363100012168532",
+   "names": [
+    "Nes 11-13"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: hotel",
+    "register: theatre",
+    "register: stained glass"
+   ],
+   "exposure": 97157,
+   "routeMetres": 3755,
+   "rank": 25.9,
+   "register": "518490",
+   "year": 1912,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1912-1913 in het voormalige theater Victoria tot stand gekomen voormalige GOUD- EN ZILVERFABRIEK genaamd 'H. Drijfhout & Zn.', een edelmetaalverwerkend bedrijf met kantoorruimte en gevels naar een ontwerp van de architect Joseph Herman in de stijl van het Traditionalisme en in opdracht van Willem Habes Drijfhout. Op de begane grond de voormalige kantoorruimte als publiekshal met aang",
+   "box": [
+    121398.41877990181,
+    487189.1207824618,
+    121453.12757363275,
+    487262.58252263797
+   ]
+  },
+  {
+   "pand": "0363100012175303",
+   "names": [
+    "Rokin 58"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: art nouveau",
+    "register: painted",
+    "register: shopfront",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 4942,
+   "routeMetres": 2295,
+   "rank": 25.9,
+   "register": "518454",
+   "year": 1898,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1898 tot stand gekomen KANTOORGEBOUW met opslagruimte op de begane grond. Gebouwd in opdracht van de N.V. Vriesseveem. De architect was G. van Arkel, die bij het ontwerp gebruik maakte van de sobere art nouveau als bouwstijl. Langgerekt en smal gebouw met verdiept geplaatste lantaarn tussen voor- en achterbouw. De kantoren bevonden zich op de verdiepingen. Op de tweede verdieping",
+   "box": [
+    121279.33755891437,
+    487109.26531768736,
+    121306.20016559755,
+    487118.1135956459
+   ]
+  },
+  {
+   "pand": "0363100012145699",
+   "names": [
+    "Wognumerplantsoen 2-4"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy"
+   ],
+   "exposure": 143288,
+   "routeMetres": 3880,
+   "rank": 25.8,
+   "register": "508535",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn de zuidoostelijke punt van het tuindorp Nieuwendam gelegendubbele christelijke SCHOOL voor Gewoon Lager Onderwijs inkubistisch-expressionistische trant. De aanbesteding vond plaatsop 6 april 1925, de nummering op 23 november 1926. Debouwtekeningen zijn afkomstig van de gemeentelijke dienstPublieke Werken.\n\nNB.\n\nThans bevindt zich op nr. 2 de oefenlocatie van de drumband'Marching at A",
+   "box": [
+    125131.4536820176,
+    488914.83828236925,
+    125190.69605231537,
+    488942.2473234057
+   ]
+  },
+  {
+   "pand": "0363100012146576",
+   "names": [
+    "Oudorperstraat 22-24"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: painted",
+    "register: oriel"
+   ],
+   "exposure": 90170,
+   "routeMetres": 3820,
+   "rank": 25.8,
+   "register": "508403",
+   "year": 1923,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nNaar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School en deel uitmakend van Tuindorp Nieuwendam, vrijstaand poortgebouw (type A) met winkelruimten aan weerszijden van de poort en met bovenwoningen.\n\nOmschrijving\n\nHet poortgebouw ligt parallel aan de Purmerweg en fungeert als poort voor de op die Purmerweg uitkomende Oudorperstraat en is opgetrokken in baksteen en",
+   "box": [
+    125065.38947895645,
+    489248.58543167164,
+    125092.43167009341,
+    489267.28746450174
+   ]
+  },
+  {
+   "pand": "0363100012102041",
+   "names": [
+    "Tasmanstraat 15"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: art nouveau",
+    "register: tiles",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 6376,
+   "routeMetres": 265,
+   "rank": 25.5,
+   "register": "526746",
+   "year": 1915,
+   "type": "SCHOOL",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\r\n\r\nVoormalig SCHOOLGEBOUW (Van Noordtschool), ontworpen in 1915 door de Dienst Publieke Werken in de trant van het Rationalisme, ten behoeve van het Gewoon Lager Onderwijs. Met name het interieur van het trappenhuis lijkt rechtstreeks te zijn ontleend aan Berlagiaanse voorbeelden.\r\n\r\nHet schoolgebouw, gesitueerd aan de zuidzijde van de Tasmanstraat, is tegenwoordig als bedrijfsverzamelge",
+   "box": [
+    120718.94775312261,
+    489320.0067677455,
+    120749.50330572268,
+    489337.9810364934
+   ]
+  },
+  {
+   "pand": "0363100012237306",
+   "names": [
+    "Vondelstraat 73"
+   ],
+   "presence": 5.7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 29444,
+   "routeMetres": 2185,
+   "rank": 25.5,
+   "register": "492043",
+   "year": 1876,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nLinkerdeel (O) van een in 1876-1877 tot stand gekomen DUBBELE VILLA, genaamd 'Nieuw Leyerhoven' en gebouwd in een sobere combinatie van neo-gotische en neo-renaissancistische invloeden. P.J.H. Cuypers was zowel opdrachtgever als architect en heeft hier tot 1881 gewoond. De villa is gelegen tegenover de Vondelkerk, juist ten westen van een ingang naar het Vondelpark. N.B. In 1936 werd di",
+   "box": [
+    120012.5866495243,
+    486007.53904994915,
+    120025.49551241542,
+    486023.7457524971
+   ]
+  },
+  {
+   "pand": "0363100012170539",
+   "names": [
+    "Plantage Middenlaan 33-35",
+    "Quentin Zoo Hotel"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "osm: hotel"
+   ],
+   "exposure": 72022,
+   "routeMetres": 7990,
+   "rank": 25.3,
+   "register": "532558",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2742884750"
+   ],
+   "listedIn": null,
+   "desc": "Hubertushuis met achterterrein. Voormalig tehuis voor alleenstaande ouders en kinderen, bestaande uit nieuwbouw en twee hiermee verbonden verbouwde panden. Links aan de straat de nieuwbouw met in hoogte en diepte verspringende, transparante kleurrijke gevels, terugliggende ingang en betonnen plint voorzien van gekleurde tegels in een spiegelende omlijsting. Rechts hiervan twee verbouwde panden met",
+   "box": [
+    122589.80919000838,
+    486639.5148965897,
+    122603.53989344028,
+    486655.5443778513
+   ]
+  },
+  {
+   "pand": "0363100012079728",
+   "names": [
+    "Weesperzijde 26"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: painted",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 3976,
+   "routeMetres": 690,
+   "rank": 25.2,
+   "register": "526996",
+   "year": 1887,
+   "type": "HERENHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn de straatwand opgenomen HERENHUIS in 1887 in Eclectische trant met TUINHUIS in de achtertuin. Het woonhuisis gebouwd naar een ontwerp van A. Salm GBzn. voor H.W. Nijman. Salm ontwierp voor deze ondernemer aan de Weesperzijde op een afgeschuind kavel een rij van vijf herenhuizen, waarbij hij experimenteerde met diverse stijlvormen. In de achtertuin bevindt zich het betonnen tuinhuis d",
+   "box": [
+    122273.66134063457,
+    485594.0563310449,
+    122291.88480519268,
+    485605.9648341364
+   ]
+  },
+  {
+   "pand": "0363100012177768",
+   "names": [
+    "Weteringschans 126"
+   ],
+   "presence": 5.4,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 44952,
+   "routeMetres": 6085,
+   "rank": 25.1,
+   "register": "512987",
+   "year": null,
+   "type": "HERENHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding \n\nHERENHUIS, onderdeel van een symmetrisch opgezet dubbel herenhuis in Neo-Renaissancestijl dat in 1890 is ontworpen door Z. Deenik & Zn, tevens opdrachtgever. Het herenhuis is gelegen in de gesloten 19e-eeuwse straatwand van de Weteringschans, die deel uitmaakt van de 19e-eeuwse Singelgrachtzone. De straat kenmerkt zich door bebouwing met soortgelijke welgestelde herenhuizen. Het woonhu",
+   "box": [
+    121590.81445793548,
+    485797.54970291915,
+    121599.98208002694,
+    485814.5977977881
+   ]
+  },
+  {
+   "pand": "0363100012168350",
+   "names": [
+    "Hajenius",
+    "B&B"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: shop (wikidata)",
+    "osm: cafe"
+   ],
+   "exposure": 105138,
+   "routeMetres": 6170,
+   "rank": 25.1,
+   "register": [
+    "5010",
+    "518452"
+   ],
+   "year": null,
+   "type": "Pand",
+   "wikidata": "Q1749140",
+   "osm": [
+    "n1819061235",
+    "n4212657869"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121245.02703635122,
+    486960.18482048076,
+    121275.96328762587,
+    486991.0456449759
+   ]
+  },
+  {
+   "pand": "0363100012177894",
+   "names": [
+    "De Ruijterkade 35"
+   ],
+   "presence": 6.5,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved"
+   ],
+   "exposure": 6986,
+   "routeMetres": 400,
+   "rank": 25,
+   "register": "518410",
+   "year": 1932,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp het uiteinde van Steiger 10 aan de zuidoever van het IJ in 1932-1933 opgetrokken REDERIJKANTOOR onder invloeden van het Nieuwe Bouwen naar een  ontwerp van J. de Meijer in opdracht van J.H. Smits namens het rederijkantoor  de N.V. Vrachtvaartdienst 'West Friesland'.\n\nOmschrijving\n\nOp een nagenoeg rechthoekige plattegrond gerealiseerd wit gepleisterd betonnen gebouwtje bestaande uit t",
+   "box": [
+    121822.73141347858,
+    488180.4710961828,
+    121835.24373735973,
+    488195.4559379721
+   ]
+  },
+  {
+   "pand": "0363100012179461",
+   "names": [
+    "Muntplein 1, Amstel 2"
+   ],
+   "presence": 4.7,
+   "reasons": [
+    "register: curved",
+    "register: café",
+    "register: oriel"
+   ],
+   "exposure": 209077,
+   "routeMetres": 21130,
+   "rank": 25,
+   "register": "518344",
+   "year": 1892,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1892 tot stand gekomen KANTOORGEBOUW/CAFE/KOFFIEHUIS, gebouwd naar een ontwerp van de architect A.L. van Gendt in de stijl van de neo-renaissance. Opdracht tot de bouw werd verleend door de Maatschappij \"Volharding\", een maatschappij tot exploitatie van onroerende goederen. Een van de eerste uitbaters was het sigarenmagazijn Van der Hulst. In de loop der tijd is het pand diverse ",
+   "box": [
+    121392.05681634869,
+    486677.20563480485,
+    121405.82902267057,
+    486687.26658713067
+   ]
+  },
+  {
+   "pand": "w755464131",
+   "names": [
+    "Bimhuis"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: theatre (wikidata)"
+   ],
+   "exposure": 95202,
+   "routeMetres": 3175,
+   "rank": 24.9,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q825421",
+   "osm": [
+    "n2816334295"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122688.41550810197,
+    487879.93015632225,
+    122718.32334185332,
+    487915.407961041
+   ]
+  },
+  {
+   "pand": "0363100012112295",
+   "names": [
+    "Cornelis Schuytstraat 67"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: Amsterdam School",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 3422,
+   "routeMetres": 220,
+   "rank": 24.7,
+   "register": "505534",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDeel van op de hoek van Cornelis Schuyt- en Hacquartstraat op een L-vormig terrein opgetrokken vier geschakelde EENGEZINSWONINGEN met houten TUINHEK aan de zijde van de Cornelis Schuytstraat. Het bouwblok is gebouwd in 1923-1924 in Amsterdamse School-stijl naar een ontwerp van G.J. Rutgers in opdracht van J. Vegersteen.\n\nOmschrijving\n\nAan drie zijden vrijliggend herenhuis met rode bakst",
+   "box": [
+    119977.65853813113,
+    485116.9815298603,
+    119987.68964144647,
+    485130.30597242026
+   ]
+  },
+  {
+   "pand": "0363100012178653",
+   "names": [
+    "Meertens Instituut",
+    "Huygens Instituut"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: research_institute (wikidata)"
+   ],
+   "exposure": 83153,
+   "routeMetres": 2985,
+   "rank": 24.6,
+   "register": "59",
+   "year": 1645,
+   "type": "hoekpand",
+   "wikidata": "Q487857",
+   "osm": [
+    "n4472738704",
+    "n14005962044"
+   ],
+   "listedIn": "docs/reports/landmark-targets-20261115.json",
+   "desc": null,
+   "box": [
+    121560.36931312064,
+    487064.7778482677,
+    121604.18452113679,
+    487099.97785539983
+   ]
+  },
+  {
+   "pand": "0363100012236473",
+   "names": [
+    "Stadhouderskade 42, Jan Luijkenstraat 2"
+   ],
+   "presence": 5.4,
+   "reasons": [
+    "register: art nouveau",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 33202,
+   "routeMetres": 3350,
+   "rank": 24.4,
+   "register": "2026",
+   "year": null,
+   "type": "Hoekpand",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Hoekpand (dubbelpand) met twee verdiepingen onder een samenstel van dwarsgeplaatste zadeldaken met licht overstek, op verschillende niveau's met dakkapellen, gebouwd 1898-99 door Ed.Cuypers in stijlopvattingen echter Nieuwe Kunst. Opgetrokken in baksteen met enkele versierende accenten in natuursteen, gedeeltelijk van reliëfs voorzien (gestileerde bloem- en bladmotieven). Op de hoek een boogvormig",
+   "box": [
+    120739.96108566184,
+    485986.5083375688,
+    120757.67644122164,
+    486009.85508115095
+   ]
+  },
+  {
+   "pand": "0363100012101770",
+   "names": [
+    "Jan van Goyenkade 27-30, De Lairessestraat 163-167"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: painted",
+    "register: oriel"
+   ],
+   "exposure": 45125,
+   "routeMetres": 2365,
+   "rank": 24.2,
+   "register": "505891",
+   "year": 1920,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp een rechthoekig terrein in 1920-1923 opgetrokken FLATGEBOUW, genaamd 'Westhove', met een gemeenschappelijke voor- en binnentuin naar een ontwerp in verstrakte Amsterdamse School-stijl van F.A. Warners in opdracht van H.K. Westendorp. De constructeur was E. Handl. De flat bestaat uit 16 woonappartementen en heeft in het midden een poort naar een gemeenschappelijk binnenterrein.\n\nOmsch",
+   "box": [
+    119450.61170733781,
+    484943.6649747046,
+    119511.7719569646,
+    485022.8441004413
+   ]
+  },
+  {
+   "pand": "0363100012141846",
+   "names": [
+    "Harry Koningsbergerstraat 94-348"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: painted",
+    "register: awning/canopy",
+    "register: curved"
+   ],
+   "exposure": 65594,
+   "routeMetres": 2520,
+   "rank": 24.1,
+   "register": "530911",
+   "year": 1919,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDe WESTEREINDFLAT is ontworpen door Jan Rietveld (1919-1986) en P.R. Bloemsma, werd gebouwd tussen 1955-1957 en is uitgevoerd in beton. Jan Rietveld, zoon van Gerrit Rietveld, realiseerde tijdens zijn leven ongeveer 100 woonhuizen en nog eens zoveel verbouwingen. De flat is evenwijdig aan het achterliggende spoortalud gesitueerd en telt tien verdiepingen met, oorspronkelijk, 83 één- en ",
+   "box": [
+    117602.39129699516,
+    488570.8330988356,
+    117618.05167871871,
+    488644.9794043344
+   ]
+  },
+  {
+   "pand": "w1533880136",
+   "names": [
+    "Pakhuis de Zwijger"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: theatre",
+    "osm: cafe"
+   ],
+   "exposure": 65183,
+   "routeMetres": 4050,
+   "rank": 24.1,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n6933045932",
+    "n6933068393"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    123325.17092932168,
+    487748.02813808504,
+    123348.7589684162,
+    487779.9487812465
+   ]
+  },
+  {
+   "pand": "0363100012172993",
+   "names": [
+    "Egelantiersgracht 2"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: shopfront",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 40884,
+   "routeMetres": 3055,
+   "rank": 24,
+   "register": "518321",
+   "year": 1917,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van Egelantiers- en Prinsengracht in 1917-1918 tot stand gekomen HANDEL IN IJZERWAREN, genaamd Gunters & Meuser, naar ontwerp in Amsterdamse School-stijl van P. Vorkink & Jac. Ph. Wormser in opdracht van Dhr. Gunters en Dhr. Meuser. Het betrof hier een winkel, een magazijn en een aantal kantoorlokalen. De uitvoerder was de Amsterdamsche Fabriek van cement-ijzerwerken (Systeem",
+   "box": [
+    120761.26345381764,
+    487774.7964564749,
+    120779.0304534442,
+    487795.5544765559
+   ]
+  },
+  {
+   "pand": "0363100012571678",
+   "names": [
+    "Peperstraat 1, Prins Hendrikkade 159"
+   ],
+   "presence": 4.4,
+   "reasons": [
+    "register: art nouveau",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 284299,
+   "routeMetres": 16230,
+   "rank": 24,
+   "register": "518429",
+   "year": 1902,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1902-1903 tot stand gekomen SCHEEPVAARTKANTOOR. Gebouwd in opdracht van de Stoomvaart Maatschappij Nederland. Het ontwerp was van de Gebr. van Gendt ALzn. Gebouwd in een stijl waarbij zowel invloeden van het rationalisme als de Art Nouveau herkenbaar zijn. In een later stadium vestigde de Holland West Afrika Lijn zich in het pand. Er zijn diverse verbouwingen geweest. Bij de geve",
+   "box": [
+    122387.74850855596,
+    487226.5461516933,
+    122412.5923574025,
+    487257.0832492664
+   ]
+  },
+  {
+   "pand": "0363100012126831",
+   "names": [
+    "Brouwerij Troost"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: pub (wikidata)"
+   ],
+   "exposure": 215977,
+   "routeMetres": 5385,
+   "rank": 24,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q28034318",
+   "osm": [
+    "n3855416069"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121146.97039676656,
+    484816.87725817075,
+    121216.36651661711,
+    484855.39082010294
+   ]
+  },
+  {
+   "pand": "0363100012118042",
+   "names": [
+    "Jan Maijenstraat 11-17"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: curved",
+    "register: oriel"
+   ],
+   "exposure": 40266,
+   "routeMetres": 875,
+   "rank": 23.9,
+   "register": "527156",
+   "year": 1926,
+   "type": "SCHOOL",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nVierdubbel SCHOOLGEBOUW (gangtype), in 1926 ontworpen door architect J.W. Frantzen, werkzaam bij de Dienst Publieke Werken. De dubbele school was bestemd voor Gewoon Lager Onderwijs (nummers 11-13), respectievelijk voor Gewoon Lager Onderwijs met Kleuter Onderwijs (nummers 15-17). De oorspronkelijke namen Vespucci-, Mercator-, Jan Evertsen- en Jan Maijenschool zijn samengesmolten tot la",
+   "box": [
+    118563.60146057543,
+    487132.83387240814,
+    118611.34322187986,
+    487157.3444951663
+   ]
+  },
+  {
+   "pand": "0363100012236544",
+   "names": [
+    "Circuswerkplaats Boost",
+    "Marci Panis"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: arts_centre",
+    "osm: theatre"
+   ],
+   "exposure": 61236,
+   "routeMetres": 1855,
+   "rank": 23.9,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2825117517",
+    "n5823830891"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122652.03999283203,
+    484906.88339915563,
+    122701.70209469048,
+    484968.77356939856
+   ]
+  },
+  {
+   "pand": "0363100012134352",
+   "names": [
+    "Valeriusplein 13"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy"
+   ],
+   "exposure": 58220,
+   "routeMetres": 2705,
+   "rank": 23.8,
+   "register": "504657",
+   "year": 1919,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1919 in verstrakte Amsterdamse School-stijl met invloeden van F.L. Wright op de hoek van Valeriusplein en De Lairessestraat opgetrokken RECTORSWONING, genaamd de 'Zonne-Wijzer' naar een ontwerp van H.A.J. en J. Baanders in opdracht van het bestuur van de Vereeniging 'Het Amsterdamsch Lyceum'.\n\nOmschrijving\n\nOp een in het zuiden geknikte vierkante plattegrond in een steeds wisselend m",
+   "box": [
+    119410.90801692804,
+    484977.7096338888,
+    119429.06383876607,
+    484997.45837740164
+   ]
+  },
+  {
+   "pand": "0363100012160637",
+   "names": [
+    "Oosterpark 78"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 2413,
+   "routeMetres": 300,
+   "rank": 23.7,
+   "register": "526277",
+   "year": 1888,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding \n\nWOONHUIS bestaande uit twee samengetrokken panden uit 1888 die in 1921-22 verbouwd zijn tot één woning door de architect Harry Elte in opdracht van de Duits-Russische zakenman Julius W. Barmat. Met name aan het interieur is zeer veel aandacht besteed. De betimmeringen zijn vervaardigd door de Nederlandsche Fabriek voor Betimmeringen v/h Gebrs. Reens te Amsterdam; het (vaste) meubilair ",
+   "box": [
+    123422.06355696585,
+    485822.8692859399,
+    123438.30361399696,
+    485839.53477891505
+   ]
+  },
+  {
+   "pand": "0363100012122365",
+   "names": [
+    "Purmerplein 21-33"
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: curved",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 2370,
+   "routeMetres": 400,
+   "rank": 23.6,
+   "register": "508392",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nNoordoostelijk aan het Purmerplein gesitueerde reeks winkelwoningen naar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School, deel uitmakend van het Tuindorp Nieuwendam.\n\nOmschrijving\n\nVrijstaand bouwblok met zeven winkelwoonhuizen. Purmerplein 21 heeft een winkelplattegrond van het type C; Purmerplein 23-31 heeft een winkelplattegrond van het type B; Purmerplein 33",
+   "box": [
+    124880.3139071676,
+    489359.77689218125,
+    124895.58419588026,
+    489373.1870447543
+   ]
+  },
+  {
+   "pand": "0363100012169630",
+   "names": [
+    "Kerkstraat 45-49",
+    "Acostar Hotel"
+   ],
+   "presence": 5.7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: oriel",
+    "osm: hotel"
+   ],
+   "exposure": 13249,
+   "routeMetres": 1125,
+   "rank": 23.5,
+   "register": "518358",
+   "year": 1926,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2729940121"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen tussen 1926-1927 gebouwd BEDRIJSFSATELIER, nabij de hoofdvestiging op de  hoek van Leidsestraat en Keizersgracht, met winkels en een woning van Liberty naar een ontwerp in een Expressionistische en Amsterdamse School-stijl van H.A. van Anrooy in opdracht van de fa. Metz & Co. De uitvoerder was B.C. Stein.\n\nOmschrijving\n\nOp een nagenoeg rechthoekige plattegrond deels in gele baksteen",
+   "box": [
+    120841.81521980606,
+    486491.18108560285,
+    120862.61740807674,
+    486508.15011985454
+   ]
+  },
+  {
+   "pand": "0363100012175309",
+   "names": [
+    "Wijde Kapelsteeg 2, Rokin 72",
+    "'t Mirakel"
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: shopfront",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork",
+    "osm: cafe"
+   ],
+   "exposure": 31356,
+   "routeMetres": 3560,
+   "rank": 23.4,
+   "register": "518449",
+   "year": 1917,
+   "type": "werkplaats",
+   "wikidata": null,
+   "osm": [
+    "n4212657871"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1917 tot stand gekomen WINKEL met werkplaats en kantoorruimte en bovengelegen conciërgewoning. Deze woning is een wijziging in 1918 van het oorspronkelijke bouwplan. De hier van oorsprong gevestigde opticien en  optiekzaak 'De Gouden Bril' is de oudste nog bestaande zaak in deze branche in Nederland. De opdrachtgever was J.C. Schmidt.  De bestaande bebouwing op deze hoek van Roki",
+   "box": [
+    121273.9969314968,
+    487060.3607413579,
+    121298.09692984226,
+    487073.7522261159
+   ]
+  },
+  {
+   "pand": "0363100012155643",
+   "names": [
+    "Weesperzijde 27"
+   ],
+   "presence": 6.4,
+   "reasons": [
+    "register: dome",
+    "register: curved",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 4297,
+   "routeMetres": 730,
+   "rank": 23.3,
+   "register": "526995",
+   "year": 1887,
+   "type": "HERENHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn de straatwand opgenomen HERENHUIS in 1887 in Eclectische trant, gebouwd naar een ontwerp van A. Salm GBzn. voor H.W. Nijman. Salm ontwierp voor deze ondernemer aan de Weesperzijde op een afgeschuind kavel een rij van vijf herenhuizen, waarbij hij experimenteerde met diverse stijlvormen.\n\nHet pand heeft een moderne dakkapel.\n\nOmschrijving\n\nOp een afgeschuinde rechthoekige plattegrond ",
+   "box": [
+    122275.12317414719,
+    485588.3715431902,
+    122294.61667309678,
+    485598.97603607445
+   ]
+  },
+  {
+   "pand": "0363100012062517",
+   "names": [
+    "Purmerplein 1-13"
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: awning/canopy",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 2853,
+   "routeMetres": 475,
+   "rank": 23.2,
+   "register": "508391",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nNoordwestelijk aan het Purmerplein gesitueerde reeks winkelwoningen naar ontwerp van B.T. Boeyinga uit 1923-1927 in verstrakte Amsterdamse School, deel uitmakend van het Tuindorp Nieuwendam.\n\nOmschrijving\n\nVrijstaand bouwblok met zeven winkelwoonhuizen. Purmerplein 1 heeft een winkelplattegrond van het type A; Purmerplein 3-11 heeft een winkelplattegrond van het type B; Purmerplein 13 h",
+   "box": [
+    124824.00973221278,
+    489392.2957292943,
+    124830.61528814609,
+    489401.9394595481
+   ]
+  },
+  {
+   "pand": "0363100012120986",
+   "names": [
+    "Nieuwendammerdijk 227"
+   ],
+   "presence": 4.7,
+   "reasons": [
+    "register: tiles",
+    "register: painted",
+    "register: stained glass"
+   ],
+   "exposure": 84129,
+   "routeMetres": 8230,
+   "rank": 23.1,
+   "register": "508533",
+   "year": 1888,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1888-1889 naar neo-gotisch ontwerp van A. Tepe uitgevoerde St. Augustinuskerk, dwars op de dijk gesitueerd met koor aan de noordzijde.\n\nOmschrijving\n\nDeels op een natuurstenen plint, in donkerbruine baksteen opgetrokken geheel onderkelderde pseudo-basilicale kruiskerk in neo-gotischestijl met uitgebouwde zuidtoren. De hoge toren bestaat uit vier bouwlagen, op de hoeken voorzien van z",
+   "box": [
+    124233.05419893654,
+    489389.5305404627,
+    124258.06565970498,
+    489433.2699428128
+   ]
+  },
+  {
+   "pand": "0363100012182544",
+   "names": [
+    "Casablanca",
+    "Mascini"
+   ],
+   "presence": 5,
+   "reasons": [
+    "osm: pub",
+    "osm: theatre"
+   ],
+   "exposure": 41069,
+   "routeMetres": 3175,
+   "rank": 23.1,
+   "register": "6550",
+   "year": null,
+   "type": "Pand",
+   "wikidata": null,
+   "osm": [
+    "n1904756929",
+    "n11649238129"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121863.2794492674,
+    487619.2820576765,
+    121884.57747963362,
+    487638.9239881151
+   ]
+  },
+  {
+   "pand": "0363100012236217",
+   "names": [
+    "Van Eeghenstraat 80"
+   ],
+   "presence": 4.9,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 49391,
+   "routeMetres": 3125,
+   "rank": 23,
+   "register": "505265",
+   "year": 1899,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nRechterdeel van een in 1899-1900 aan het Vondelpark gelegen, in eclectisch-renaissancistische stijl opgetrokken, DUBBELE VILLA door de bouwmeesters E. van der Eijk & De Waal in opdracht van henzelf.\n\nOmschrijving\n\nRechterdeel van een op een rechthoekige plattegrond - met een inwaartse sprong in de zuid-westelijk gelegen hoek - rode bakstenen dubbele villa bestaande uit sousterrain, hoof",
+   "box": [
+    119852.92521540914,
+    485611.34700072376,
+    119870.39630594975,
+    485625.28124310065
+   ]
+  },
+  {
+   "pand": "0363100012142927",
+   "names": [
+    "Zaanstraat 291-391, Oostzaanstraat 303-319, e.o."
+   ],
+   "presence": 6.7,
+   "reasons": [
+    "register: dome",
+    "register: turret",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 2357,
+   "routeMetres": 120,
+   "rank": 22.6,
+   "register": "526730",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nHalf vrijstaand noordelijk BOUWBLOK (A) van het woningbouwcomplex Patrimonium op een plattegrond van een geknikte L, aangelegd op de Spaardammerdijk en de Zaanstraat met kleine uitlopers (kopgevels) aan de Oostzaanstraat en de Zaanstraat. Vanaf de Zaanstraat geven twee, op regelmatige afstand geplaatste, poorten toegang tot de binnenring van de Zaanhof en vanaf de Spaardammerdijk één, d",
+   "box": [
+    119955.82333626418,
+    489550.9984985186,
+    119971.27159587527,
+    489562.78655887186
+   ]
+  },
+  {
+   "pand": "0363100012114178",
+   "names": [
+    "Nieuwendammerdijk 225"
+   ],
+   "presence": 4.7,
+   "reasons": [
+    "register: tiles",
+    "register: painted",
+    "register: stained glass"
+   ],
+   "exposure": 62064,
+   "routeMetres": 8195,
+   "rank": 22.5,
+   "register": "508534",
+   "year": 1888,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1888-1889 naar ontwerp van A. Tepe aan de westzijde van de St. Augustinuskerk gebouwde pastorie.\n\nOmschrijving\n\nOp een samengestelde plattegrond in donkerbruine baksteen opgetrokken, oostelijk door een uit een bouwlaag bestaand volume met de kerk verbonden, pastorie bestaande uit een begane grond en een kapverdieping onder een zadeldak met shingles. De beide korte zijden van het pand",
+   "box": [
+    124220.94598163494,
+    489392.75375632197,
+    124235.91309389981,
+    489411.01503120724
+   ]
+  },
+  {
+   "pand": "0363100012121310",
+   "names": [
+    "Cornelis Schuytstraat 69"
+   ],
+   "presence": 6.9,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: curved",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 1811,
+   "routeMetres": 245,
+   "rank": 22.5,
+   "register": "505541",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nDeel van op de hoek van Cornelis Schuyt- en Hacquartstraat op een L-vormig terrein opgetrokken vier geschakelde EENGEZINSWONINGEN met houten TUINHEK aan de zijde van de Cornelis Schuytstraat. Het bouwblok is gebouwd in 1923-1924 in Amsterdamse School-stijl naar een ontwerp van G.J. Rutgers in opdracht van J. Vegersteen.\n\nOmschrijving\n\nHoekherenhuis met rode bakstenen gevel aan Cornelis ",
+   "box": [
+    119981.88047605679,
+    485106.27907572035,
+    119992.04549924147,
+    485119.49950359314
+   ]
+  },
+  {
+   "pand": "0363100012162678",
+   "names": [
+    "Van Eeghenstraat 82"
+   ],
+   "presence": 4.9,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 39852,
+   "routeMetres": 3500,
+   "rank": 22.5,
+   "register": "505272",
+   "year": 1899,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nLinkerdeel van een in 1899-1900 aan het Vondelpark gelegen, in eclectisch-renaissancistische stijl opgetrokken, DUBBELE VILLA door de bouwmeesters E. van der Eijk & De Waal in opdracht van henzelf.\n\nOmschrijving\n\nAan drie zijden vrijgelegen linkerdeel van een op een rechthoekige plattegrond - met een inwaartse sprong in de zuid-westelijk gelegen hoek - rode bakstenen dubbele villa besta",
+   "box": [
+    119858.67447117151,
+    485602.4009064661,
+    119872.40757855077,
+    485614.80462880613
+   ]
+  },
+  {
+   "pand": "0363100012176429",
+   "names": [
+    "Brandon"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: pub (wikidata)"
+   ],
+   "exposure": 100835,
+   "routeMetres": 7870,
+   "rank": 22.5,
+   "register": "2263",
+   "year": 1600,
+   "type": "Hoekhuis",
+   "wikidata": "Q84571344",
+   "osm": [
+    "n538534998"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120896.42408819008,
+    487615.38481240434,
+    120909.09515324651,
+    487626.55205319665
+   ]
+  },
+  {
+   "pand": "0363100012236431",
+   "names": [
+    "Vondelstraat 75"
+   ],
+   "presence": 5.7,
+   "reasons": [
+    "register: turret",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 8646,
+   "routeMetres": 1415,
+   "rank": 22.4,
+   "register": "492050",
+   "year": 1876,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nRechterdeel (W, betrekking hebbend op zowel Vondelstraat 75 als 75A) van een in 1876-1877 tot stand gekomen DUBBELE VILLA, genaamd 'Nieuw Leyerhoven' en gebouwd in een sobere combinatie van neo-gotische en neo-renaissancistische invloeden. P.J.H. Cuypers was zowel de opdrachtgever als de architect. De villa is gelegen tegenover de Vondelkerk, juist ten westen van een ingang naar het Von",
+   "box": [
+    120006.46712802659,
+    486009.13389502093,
+    120013.92551446072,
+    486024.5219349719
+   ]
+  },
+  {
+   "pand": "0363100012169116",
+   "names": [
+    "Keizersgracht 269"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: tiles",
+    "register: painted",
+    "register: sculpture",
+    "register: ironwork"
+   ],
+   "exposure": 10802,
+   "routeMetres": 1795,
+   "rank": 22.2,
+   "register": "2305",
+   "year": 1617,
+   "type": "GRACHTENHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding \n\nGRACHTENHUIS gebouwd in 1617 voor Jan Cornelisz. Visscher. Als verwijzing naar de stichter en vanwege de sculptuur van een visser in de geveltop ooit 'De Visser' genaamd. De huidige gedaante van de voorgevel dateert van omstreeks 1809, toen eigenaar Pieter de Putter toestemming kreeg deze te wijzigen. Het interieur bevat meer dan dertig in betimmeringen gevatte behangsels geschilderd o",
+   "box": [
+    120807.91387247531,
+    487149.42654677865,
+    120840.15440326283,
+    487157.2994032071
+   ]
+  },
+  {
+   "pand": "0363100012088305",
+   "names": [
+    "Oostelijke Handelskade 12"
+   ],
+   "presence": 4.7,
+   "reasons": [
+    "register: awning/canopy",
+    "register: curved",
+    "register: oriel",
+    "register: ironwork"
+   ],
+   "exposure": 51507,
+   "routeMetres": 1240,
+   "rank": 22.1,
+   "register": "523290",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nVoormalig KANTOORGEBOUW (1) onderdeel van het Koninklijke Hollandse Lloyd complex (in oorsprong met achterliggende vrijstaande rijwielbergplaats) en  omgaand hek naar ontwerp van E. Breman uit 1915-1917.  Langgerekt kantoorgebouw op rechthoekig grondplan met kantoren en vertrekken aan weerszijden van middengang, op rechthoekig grondplan en met twee bouwlagen ter lengte van zestien tr",
+   "box": [
+    123999.53638190537,
+    487494.31571885495,
+    124071.41484744163,
+    487531.7419816092
+   ]
+  },
+  {
+   "pand": "0363100012155207",
+   "names": [
+    "Brinkstraat 82-157, Veeteeltstraat 106-116, e.o."
+   ],
+   "presence": 7,
+   "reasons": [
+    "register: awning/canopy",
+    "register: curved",
+    "register: café",
+    "register: shopfront"
+   ],
+   "exposure": 1427,
+   "routeMetres": 105,
+   "rank": 22.1,
+   "register": "335347",
+   "year": null,
+   "type": "TRANSFORMATORHUISJE",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "NOORDOOSTELIJKE REEKS WINKELWONINGEN MET POORT, TOREN EN TRANSFORMATORHUISJE. De reeks winkelwoningen met poort uit 1926-28 is grotendeels symmetrisch opgezet, maar wijkt hierin af door de toren aan de Veeteeltstraat; aan de Brinkzijde telt de reeks twee bouwlagen waarin beneden vier winkels, afgewisseld door twee woningen met elk vier gekoppelde vensters - samen met de etalageruiten overkragen -,",
+   "box": [
+    124749.93029134994,
+    483734.42730188736,
+    124764.00153597118,
+    483755.46554853214
+   ]
+  },
+  {
+   "pand": "0363100012185594",
+   "names": [
+    "Carstens Café",
+    "Illy"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: cafe"
+   ],
+   "exposure": 326702,
+   "routeMetres": 15215,
+   "rank": 22.1,
+   "register": [
+    "1444",
+    "1445",
+    "1446",
+    "1535"
+   ],
+   "year": 1600,
+   "type": "huis",
+   "wikidata": null,
+   "osm": [
+    "n2721772224",
+    "n5752245262"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121595.19373061202,
+    487788.346310952,
+    121657.10376683561,
+    487862.3960353283
+   ]
+  },
+  {
+   "pand": "0363100012068876",
+   "names": [
+    "Van der Helstplein 7-17, Karel du Jardinstraat 47, e.o.",
+    "Café Ruis"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: shopfront",
+    "osm: bar"
+   ],
+   "exposure": 10084,
+   "routeMetres": 1260,
+   "rank": 22,
+   "register": "527852",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2506658549"
+   ],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEnsemble van 24 WONINGEN met 8 WINKELS op de kop van een gesloten bouwblok, dat is gelegen aan de noordzijde van het gedeelte van de Pijp dat binnen Plan Zuid van H.P. Berlage valt. Aan de voorzijde van het bouwblokdeel, twaalf vensterassen breed, bevindt zich een klein plein. De afmetingen van de de bouwkundige eenheid zijn 45 (plein) bij 10 (zijstraten) meter. De woningen, althans de ",
+   "box": [
+    121468.85837442355,
+    484985.36674510606,
+    121482.61184042282,
+    484995.6535773923
+   ]
+  },
+  {
+   "pand": "0363100012116545",
+   "names": [
+    "Lunchcafee de Zwijger",
+    "Bendito"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: cafe"
+   ],
+   "exposure": 313282,
+   "routeMetres": 6885,
+   "rank": 22,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2812152611",
+    "n2812161270"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    119226.18903066721,
+    487556.12429022114,
+    119278.1614664025,
+    487585.5502789445
+   ]
+  },
+  {
+   "pand": "w755464129",
+   "names": [
+    "Muziekgebouw",
+    "Huil van de Wolff"
+   ],
+   "presence": 7.5,
+   "reasons": [
+    "osm: theatre (wikidata)",
+    "osm: artwork (wikidata)"
+   ],
+   "exposure": 851,
+   "routeMetres": 100,
+   "rank": 22,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q2637994",
+   "osm": [
+    "n2816348372",
+    "n13018134294"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122662.43203769208,
+    487891.51962454675,
+    122774.58170991763,
+    487970.54817527806
+   ]
+  },
+  {
+   "pand": "0363100012120055",
+   "names": [
+    "Daniël de Langestraat 11-19, e.o."
+   ],
+   "presence": 6.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: oriel"
+   ],
+   "exposure": 3358,
+   "routeMetres": 215,
+   "rank": 21.9,
+   "register": "527813",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nAan de zuidzijde van de Harmoniehof gelegen drielaags woonblok met boven- en benedenwoningen. Het gesloten, langgerekte bouwblok op rechthoekig grondplan rondom individuele binnentuinen, wordt omgeven door de Cornelis van der Lindenstraat, de Reijnier Vinkeleskade, de Daniël de Langestraat en Harmoniehof. Tot stand gekomen in 1920-1923 naar een ontwerp van J.C. van Epen in samenwerki",
+   "box": [
+    120571.80449715196,
+    484932.85342871374,
+    120586.08831189125,
+    484945.0214087522
+   ]
+  },
+  {
+   "pand": "0363100012168113",
+   "names": [
+    "Swissôtel"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 74368,
+   "routeMetres": 4635,
+   "rank": 21.9,
+   "register": [
+    "3797",
+    "18246"
+   ],
+   "year": null,
+   "type": "Pand",
+   "wikidata": "Q18393172",
+   "osm": [
+    "n251149366"
+   ],
+   "listedIn": "docs/reports/landmark-targets-20261120.json",
+   "desc": null,
+   "box": [
+    121328.6730137423,
+    487407.3906272444,
+    121374.31506325703,
+    487444.81325460714
+   ]
+  },
+  {
+   "pand": "0363100012169868",
+   "names": [
+    "Backstage Hotel"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 68651,
+   "routeMetres": 4370,
+   "rank": 21.8,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q111114742",
+   "osm": [
+    "n1342449715"
+   ],
+   "listedIn": "docs/reports/landmark-targets-20261122c.json",
+   "desc": null,
+   "box": [
+    120465.84698109863,
+    486516.9571584823,
+    120475.97867920053,
+    486533.6489615755
+   ]
+  },
+  {
+   "pand": "0363100012091055",
+   "names": [
+    "Van Eeghenstraat 57"
+   ],
+   "presence": 5.4,
+   "reasons": [
+    "register: turret",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 10003,
+   "routeMetres": 985,
+   "rank": 21.6,
+   "register": "505623",
+   "year": 1893,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp de hoek van de Van Eeghenstraat en Jacob Obrechtstraat in 1893 opgetrokken aan drie zijden vrijliggende VILLA naar een ontwerp van C.A. Alizis Wübbe in neo-maniëristische stijl.\n\nIn 1918 heeft er een inwendige verbouwingplaats gevonden door H. Hölte & Co. in opdracht van J.D.J. Eysken-Sluyters.\n\nN.B. In 1983 is het pand doorgebroken naar het naastliggende pand ten behoeve van bestemm",
+   "box": [
+    120067.92882313902,
+    485636.29803654493,
+    120083.42531268453,
+    485654.73293118505
+   ]
+  },
+  {
+   "pand": "0363100012168862",
+   "names": [
+    "Festina Lente",
+    "Vaste klant"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: pub",
+    "osm: artwork (wikidata)"
+   ],
+   "exposure": 63502,
+   "routeMetres": 6165,
+   "rank": 21.6,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q29167584",
+   "osm": [
+    "n410212543",
+    "n7556008111"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120546.1052410566,
+    486870.2538071938,
+    120558.70162789381,
+    486881.21892462065
+   ]
+  },
+  {
+   "pand": "0363100012083695",
+   "names": [
+    "Veeteeltstraat 121, Brink 1"
+   ],
+   "presence": 6.2,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: tiles",
+    "register: stained glass"
+   ],
+   "exposure": 2913,
+   "routeMetres": 140,
+   "rank": 21.5,
+   "register": "335330",
+   "year": 1926,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "VERENIGINGSGEBOUW. Het in 1926-28 als 'verenigingsgebouw' opgetrokken gebouw met de naam in - in oorsprong vergulde - Amsterdamse Schoolletters aangebracht rechts op de noordwestgevel, bestaat uit: een twee bouwlagen tellend, gesloten volume, met rechts aan de Veeteeltstraat een ingangsportiek met stoep (nr 121) en links een staande reeks en bovenaan een horizontale reeks verdiepte lichtopeningen ",
+   "box": [
+    124781.70422613103,
+    483682.79961566237,
+    124803.13924653415,
+    483701.5634289885
+   ]
+  },
+  {
+   "pand": "0363100012186290",
+   "names": [
+    "Eden Hotel Amsterdam"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: hotel"
+   ],
+   "exposure": 239178,
+   "routeMetres": 12185,
+   "rank": 21.5,
+   "register": [
+    "215",
+    "518341"
+   ],
+   "year": 1899,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n1310911723",
+    "n1984268556"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121693.73786872785,
+    486598.91736132867,
+    121767.55405580447,
+    486670.0534241586
+   ]
+  },
+  {
+   "pand": "0363100012175716",
+   "names": [
+    "Nieuwezijds Voorburgwal 327-333, Sint Luciënsteeg 18"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "register: dome",
+    "register: tiles"
+   ],
+   "exposure": 7870,
+   "routeMetres": 1500,
+   "rank": 21.4,
+   "register": "518328",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nOp een onregelmatig terrein, op de hoek van Nieuwezijds Voorburgwal en St. Luciënsteeg gelegen, in 1900-1901 in eclectische stijl zo goed als nieuw gebouwde DRUKKERIJ met KANTOREN in opdracht van D.A. van Waalwijk in opdracht van de Naamlooze Vennootschap het Nieuwsblad voor Nederland. De architecten waren A. Jacot en W. Oldewelt. Het betreft hier een in 1858 opgetrokken sociëteitsgebou",
+   "box": [
+    121179.27043272238,
+    487090.7252919172,
+    121198.8749894276,
+    487115.70395021833
+   ]
+  },
+  {
+   "pand": "0363100012233702",
+   "names": [
+    "Helmersplantsoen 1-15, e.o."
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 13245,
+   "routeMetres": 360,
+   "rank": 21.4,
+   "register": "524814",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nVoormalig HOOFDGEBOUW en POORT (1) als eerste onderdeel van het complex  Wilhelmina Gasthuis in 1891-1893 gebouwd in opdracht van de gemeente Amsterdam en ontworpen door de architect H. Leguyt van de dienst Publieke Werken. De bakstenen gevels van het U-vormige gebouw met zijvleugels ter weerszijden, zijn opgetrokken in neo-renaissance stijl. De centraal gesitueerde poort met dubbele",
+   "box": [
+    119801.0854245789,
+    486206.76520687254,
+    119851.3111044711,
+    486246.9351386472
+   ]
+  },
+  {
+   "pand": "0363100012145925",
+   "names": [
+    "Weesperzijde 25"
+   ],
+   "presence": 5.9,
+   "reasons": [
+    "register: tiles",
+    "register: painted",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 4062,
+   "routeMetres": 690,
+   "rank": 21.3,
+   "register": "526994",
+   "year": 1887,
+   "type": "HERENHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn de straatwand opgenomen HERENHUIS in 1887 in Eclectische trant gebouwd naar een ontwerp van A. Salm GBzn. voor H.W. Nijman. Salm ontwierp voor deze ondernemer aan de Weesperzijde op een afgeschuinde kavel een rij van vijf herenhuizen. In deze huizen experimenteerde hij met diverse stijlvormen. Rond 1930 is het interieur gedeeltelijk verbouwd in Art Décostijl. \n\nOmschrijving\n\nOp een a",
+   "box": [
+    122272.13212514856,
+    485599.62940510106,
+    122291.48417561037,
+    485609.79019389785
+   ]
+  },
+  {
+   "pand": "0363100012163452",
+   "names": [
+    "Van Eeghenstraat 92"
+   ],
+   "presence": 4.4,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: oriel",
+    "register: stained glass"
+   ],
+   "exposure": 68864,
+   "routeMetres": 2970,
+   "rank": 21.3,
+   "register": "505256",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nAan vier zijden vrijstaande VILLA, grenzend aan het Vondelpark, gebouwd door Ed. Cuypers in 1901-1902 in opdracht van Ch.E.H. Bossevain in de trant van het Rationalisme met invloed van chaletstijl.\n\nN.B. In 1927 deel van kapverdieping veranderd in stijl van Amsterdamse School met bestemming daarvan tot slaap- en badkamers.\n\nOmschrijving\n\nOp een vierkante plattegrond opgetrokken bakstene",
+   "box": [
+    119781.51142081444,
+    485563.7465302137,
+    119800.73717629087,
+    485584.9743587633
+   ]
+  },
+  {
+   "pand": "0363100012173754",
+   "names": [
+    "Korte Marnixkade 4"
+   ],
+   "presence": 4.9,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "register: sculpture",
+    "register: stained glass"
+   ],
+   "exposure": 20964,
+   "routeMetres": 5225,
+   "rank": 21.2,
+   "register": "518446",
+   "year": 1893,
+   "type": "WOONHUIS",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn de bocht van de Korte Marnixkade in 1893-'94 tot stand gekomen WOONHUIS met twee bovenhuizen naar een ontwerp van H.H. Baanders en G. van Arkel in opdracht van J.W. van Tubergen. Het herenhuis is gebouwd in een trant die wel aangeduid wordt als Overgangsarchitectuur.\n\nOmschrijving\n\nOp een rechthoekige plattegrond in een donkere baksteen opgetrokken woonhuis bestaande uit souterrain, ",
+   "box": [
+    120623.63276988383,
+    488622.8927664151,
+    120639.77110678297,
+    488635.21709378227
+   ]
+  },
+  {
+   "pand": "0363100012176402",
+   "names": [
+    "Leidsestraat 40, Keizersgracht 508"
+   ],
+   "presence": 4.2,
+   "reasons": [
+    "register: turret",
+    "register: shopfront",
+    "register: oriel"
+   ],
+   "exposure": 106543,
+   "routeMetres": 11880,
+   "rank": 21.1,
+   "register": "2628",
+   "year": 1892,
+   "type": "Hoekhuis",
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Hoekhuis (1892, door A.C.Bleys) in z.g. Oudhollandse, maar in werkelijkheid zeer electische neo-renaissancestijl, met gave winkelpui, door een torentje met Frans toit-en-pavillon bekroonde hoekerker en trapgevel.",
+   "box": [
+    120858.22521541282,
+    486553.74621996545,
+    120867.5739458053,
+    486562.847165535
+   ]
+  },
+  {
+   "pand": "0363100012177683",
+   "names": [
+    "Hotel Armada"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 45735,
+   "routeMetres": 2595,
+   "rank": 21,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q111875734",
+   "osm": [
+    "n1310911724"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    121702.24104443003,
+    486353.16130044,
+    121724.03252948442,
+    486371.7446173477
+   ]
+  },
+  {
+   "pand": "0363100012173182",
+   "names": [
+    "Linden"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 46058,
+   "routeMetres": 3215,
+   "rank": 21,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q111410344",
+   "osm": [
+    "n1590646925"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120493.51549615702,
+    488062.99011757463,
+    120502.92344402426,
+    488075.62983461464
+   ]
+  },
+  {
+   "pand": "0363100012071245",
+   "names": [
+    "Piet de Gruyter",
+    "Cafe Caribe"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: pub",
+    "osm: cafe"
+   ],
+   "exposure": 172907,
+   "routeMetres": 5990,
+   "rank": 21,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2189999314",
+    "n4360884523"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120138.14577894908,
+    488640.42904015,
+    120172.24344330136,
+    488670.82168774155
+   ]
+  },
+  {
+   "pand": "0363100012164994",
+   "names": [
+    "Singel 340"
+   ],
+   "presence": 4,
+   "reasons": [
+    "register: Amsterdam School",
+    "register: sculpture"
+   ],
+   "exposure": 163474,
+   "routeMetres": 4370,
+   "rank": 20.9,
+   "register": "518372",
+   "year": 1916,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nEen in 1916-1919 tot stand gekomen TELECOMMUNICATIEGEBOUW. Voormalig hoofdkantoor van de gemeentelijke telefoondienst; aanvankelijk Centraal Bureau Centrum van de Gemeentetelefoon, sinds 1942 de Plaatselijke Telefoondienst genaamd. Het gebouw met de voorgevel aan het Singel 340 was aanvankelijk doorlopend tot de Herengracht 293-305 (nr. 293 fungeerde hierbij als dienstwoning). Gebouwd i",
+   "box": [
+    120948.28842782843,
+    487063.3408380907,
+    120990.8018113549,
+    487106.80057258776
+   ]
+  },
+  {
+   "pand": "r2075291",
+   "names": [
+    "Hotel Mosaic",
+    "Amadi Park Hotel"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: hotel"
+   ],
+   "exposure": 165340,
+   "routeMetres": 2775,
+   "rank": 20.9,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n2414322869",
+    "n2809964354"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    119957.11823211928,
+    486443.13380466413,
+    120014.0778376009,
+    486503.94236513716
+   ]
+  },
+  {
+   "pand": "0363100012181308",
+   "names": [
+    "Cafe Koosje",
+    "Hotel Plantage"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: pub",
+    "osm: hotel"
+   ],
+   "exposure": 153727,
+   "routeMetres": 9885,
+   "rank": 20.7,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n440009810",
+    "n13634429827"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122602.97331582471,
+    486629.83319331036,
+    122623.24390190962,
+    486649.8895908298
+   ]
+  },
+  {
+   "pand": "0363100012233501",
+   "names": [
+    "The Manor Amsterdam"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 40431,
+   "routeMetres": 1380,
+   "rank": 20.7,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q111410202",
+   "osm": [
+    "n1335963238"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    123586.29243469288,
+    485759.63402051554,
+    123624.55720494443,
+    485827.56638668285
+   ]
+  },
+  {
+   "pand": "0363100012167460",
+   "names": [
+    "Krisotel Amsterdam"
+   ],
+   "presence": 4.5,
+   "reasons": [
+    "osm: hotel (wikidata)"
+   ],
+   "exposure": 39191,
+   "routeMetres": 3195,
+   "rank": 20.7,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q111875791",
+   "osm": [
+    "n2722146978"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    120426.00661476987,
+    486539.72684940096,
+    120442.35721457562,
+    486555.3452739103
+   ]
+  },
+  {
+   "pand": "0363100012133642",
+   "names": [
+    "The Coffee Bridge"
+   ],
+   "presence": 4,
+   "reasons": [
+    "osm: cafe"
+   ],
+   "exposure": 141989,
+   "routeMetres": 4210,
+   "rank": 20.6,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [
+    "n4738625221",
+    "n9039148482"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    119067.0052730425,
+    486459.69232441304,
+    119097.23492488672,
+    486501.1372873777
+   ]
+  },
+  {
+   "pand": "0363100012246190",
+   "names": [
+    "CC Amstel",
+    "OBA CC Amstel"
+   ],
+   "presence": 5.5,
+   "reasons": [
+    "osm: theatre",
+    "osm: library (wikidata)"
+   ],
+   "exposure": 5500,
+   "routeMetres": 220,
+   "rank": 20.6,
+   "register": null,
+   "year": null,
+   "type": null,
+   "wikidata": "Q60290434",
+   "osm": [
+    "n8338713828",
+    "n9139791976"
+   ],
+   "listedIn": null,
+   "desc": null,
+   "box": [
+    122195.58267653931,
+    485143.17947640043,
+    122243.4776467451,
+    485190.70449401886
+   ]
+  },
+  {
+   "pand": "0363100012121259",
+   "names": [
+    "Kruislaan 130-134"
+   ],
+   "presence": 5,
+   "reasons": [
+    "register: tiles",
+    "register: curved",
+    "register: sculpture"
+   ],
+   "exposure": 12557,
+   "routeMetres": 720,
+   "rank": 20.5,
+   "register": "526961",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nDoor A.W. Weissman in eclectische/neo-Hollandse Renaissance ontworpen en rondom vrijstaande doodgravers DIENSTWONINGEN (3 aaneengeschakelde) van de Nieuwe Oosterbegraafplaats. De woningen zijn links achter de hoofdingang van de begraafplaats gelegen en dateren van 1892. Gebouwd op een langgerekt samengesteld w-vormig grondplan, waarop dwarsvleugels van elk twee traveeën zijn gesituee",
+   "box": [
+    124456.17075733772,
+    484379.98605131253,
+    124478.36292828458,
+    484402.25588106207
+   ]
+  },
+  {
+   "pand": "0363100012075594",
+   "names": [
+    "Koninginneweg 18"
+   ],
+   "presence": 4.4,
+   "reasons": [
+    "register: tiles",
+    "register: oriel",
+    "register: stained glass",
+    "register: ironwork"
+   ],
+   "exposure": 44221,
+   "routeMetres": 3505,
+   "rank": 20.4,
+   "register": "505310",
+   "year": 1907,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Inleiding\n\nIn 1907 tot stand gekomen half vrijstaande VILLA met bijbehorend tuinhek ontworpen in de stijl van het Rationalisme door H.P. Berlage in opdracht van mevrouw A. Hingst door Amstels Bouwmaatschappij.\n\nOmschrijving\n\nIn staand verband gemetselde bakstenen villa bestaande uit vier bouwlagen op een samengestelde rechthoekige plattegrond. Het brede zadeldak wordt gedekt door rode pannen. De s",
+   "box": [
+    119593.64462719453,
+    485338.70874136046,
+    119612.02922708215,
+    485349.6164550504
+   ]
+  },
+  {
+   "pand": "0363100012084757",
+   "names": [
+    "Des Présstraat 7-23, Hendrik Jacobszstraat 36-50, e.o."
+   ],
+   "presence": 5.2,
+   "reasons": [
+    "register: tiles",
+    "register: awning/canopy",
+    "register: oriel"
+   ],
+   "exposure": 8046,
+   "routeMetres": 715,
+   "rank": 20.3,
+   "register": "504959",
+   "year": null,
+   "type": null,
+   "wikidata": null,
+   "osm": [],
+   "listedIn": null,
+   "desc": "Omschrijving\n\nOp een trapeziumvormig kavel in opdracht van Rochdale opgetrokken bakstenen bouwblok van 104 ETAGEWONINGEN met een gemeenschappelijke binnentuin, begrensd door de Cornelis Krusemanstraat, Hendrik Jacobszstraat, Pieter Lastmankade en Des Presstraat, bestaande uit een beganegrondverdieping, eerste verdieping, tweede verdieping, derde verdieping en een zolderverdieping onder een plat da",
+   "box": [
+    119094.52468603404,
+    484849.2763391859,
+    119112.37318177559,
+    484863.4560072315
+   ]
+  }
+ ]
+}

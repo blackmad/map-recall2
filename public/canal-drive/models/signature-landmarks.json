@@ -136888,6 +136888,1046 @@
         "bytes": 29608,
         "triangles": 1499
       }
+    },
+    "old-bell-rembrandtplein": {
+      "id": "old-bell-rembrandtplein",
+      "name": "The Old Bell, Rembrandtplein",
+      "modelUrl": "./models/old-bell-rembrandtplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012178852"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89740394,
+          52.36575394
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 15,
+        "widthMetres": 14.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89740394,
+          52.36575394
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178852 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/old-bell-rembrandtplein-footprints.json, bag-shell-prepare.ts) for the party walls, rear and inner roofs; the Rembrandtplein front, the corner and the Utrechtsestraat front drawn to the eaves from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_03-28-47_01657 (2025), TMX7316010203-002537_pano_0001_000087 (2022), b_20250120_0926_Track30_Sphere_00341 (2025) and TMX7316010203-000716_pano_0001_000026 (2018), CC BY 4.0. Rijksmonument 518404: office of De Eerste Nederlandsche Verzekeringsmaatschappij, 1891-92, J. Kok and A. van Ameijde van Duijm (register: corner oriel over two storeys, stepped gables, frieze with metopes, broad eaves, stone balcony with ironwork, Ionic half-columns, the corner entrance with a copper bell). Per wall in scripts/landmarks/old-bell-rembrandtplein-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22,
+      "galleryView": {
+        "theta": 2.6,
+        "phi": 1.2
+      },
+      "bagYear": 1891,
+      "materialOverrides": {
+        "brick": "#ad6a55",
+        "concrete": "#d9d3c4",
+        "stone": "#a3a49d",
+        "sandstone": "#cdc7b8",
+        "greyBrick": "#bdb6a6",
+        "blue": "#d4cfc3",
+        "slate": "#5e666b",
+        "glass": "#2f3639",
+        "frame": "#e4e0d6",
+        "bronze": "#222626",
+        "gold": "#c49a3a",
+        "red": "#c2333b",
+        "white": "#ece7da",
+        "green": "#2f5446",
+        "dark": "#5c3527",
+        "ochre": "#8a7b56",
+        "copper": "#b0763e",
+        "pink": "#7d4f42"
+      },
+      "attribution": {
+        "title": "The Old Bell / City Hotel, Rembrandtplein 46 - Utrechtsestraat 2, Amsterdam (1891-92; rijksmonument 518404)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0001_000087/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178852 (CC0): the banded red-brick fronts with stone aedicules and double windows, the CITY / HOTEL boards, the gilt 'the old Bell' letters, stone piers and panelled shop fronts, the corner entrance with its copper bell, the three-sided corner oriel and its parapet, the balcony with ironwork, the French doors between Ionic half-columns, the metope frieze and broad eaves, the stepped gables and the dormered mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8972737,
+              52.3658009
+            ],
+            [
+              4.8973346,
+              52.3656833
+            ],
+            [
+              4.8974819,
+              52.3657063
+            ],
+            [
+              4.8974818,
+              52.365707
+            ],
+            [
+              4.8974422,
+              52.3658073
+            ],
+            [
+              4.8974095,
+              52.3658188
+            ],
+            [
+              4.8972737,
+              52.3658009
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -8.983861923217773,
+          -1.1920929132713809e-8,
+          -7.938950061798096
+        ],
+        "max": [
+          5.80961799621582,
+          23.219999313354492,
+          7.836999893188477
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89740394,
+          52.36575394
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 15.775949954986572,
+        "heightMetres": 23.21999932527542,
+        "depthMetres": 14.793479919433594,
+        "depthCoverage": 1.0491829730094748
+      },
+      "triangles": 16339,
+      "bytes": 243076,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "cafe-riche-rokin": {
+      "id": "cafe-riche-rokin",
+      "name": "Former Café-Restaurant Riche, Rokin",
+      "modelUrl": "./models/cafe-riche-rokin.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012168347"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8919753,
+          52.36988082
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 36.8,
+        "widthMetres": 33.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8919753,
+          52.36988082
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168347 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/cafe-riche-rokin-footprints.json, bag-shell-prepare.ts); the Riche front (Rokin 84) read from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_03-28-47_01404 (2025, frontal) and TMX7316010203-002857_pano_0002_000054 (2022, frontal), Rokin 86 and 88-90 from TMX7316010203-002542_pano_0003_000113 and _000115 (2022, frontal), the side lane from TMX7316060226-000019_pano_0000_003527 (2016, 45 deg) and TMX7316010203-002628_pano_0000_000295 (2022, 31 deg), CC BY 4.0. Rijksmonument 5009 (v.m. Cafe-Restaurant Riche, 1883, A.L. van Gendt; richly worked eclectic front). Per wall in scripts/landmarks/cafe-riche-rokin-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21,
+      "galleryView": {
+        "theta": 1.35,
+        "phi": 1.2
+      },
+      "bagYear": 1883,
+      "materialOverrides": {
+        "sandstone": "#b9b6ac",
+        "greyBrick": "#8e8b83",
+        "stone": "#6f6a63",
+        "white": "#e4e2da",
+        "red": "#8e2435",
+        "frame": "#5a3a30",
+        "ochre": "#5e3b26",
+        "glass": "#3c4a52",
+        "bronze": "#1f2121",
+        "slate": "#4f585c",
+        "brick": "#6a544c",
+        "pink": "#aba190",
+        "concrete": "#e2e0d8",
+        "gold": "#c0562a",
+        "copper": "#5f4840",
+        "blue": "#b2a891",
+        "green": "#4a4a48"
+      },
+      "measuredOverrides": true,
+      "attribution": {
+        "title": "Former Café-Restaurant Riche, Rokin 84, Amsterdam (A.L. van Gendt, 1883; rijksmonument 5009), with Rokin 86-90",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01404/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168347 (CC0): the Riche's granite plinth, rusticated ground storey with three arched windows, keystone masks and the arched door, the relief band, consoles and long iron balcony, engaged columns, oculus cartouches, garland frieze and modillion cornice, red markiezen on every window, the slate mansard with the white dormer dated 1883; the brick Rokin 86 front with its white cornice and balustrade, the stone Rokin 88-90 office with its attic bays, and the side lane's brick office over a stone arcade with its lion corbel, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8920797,
+              52.369983
+            ],
+            [
+              4.8918628,
+              52.3700018
+            ],
+            [
+              4.891863,
+              52.3700028
+            ],
+            [
+              4.8916474,
+              52.3700208
+            ],
+            [
+              4.8916263,
+              52.3699753
+            ],
+            [
+              4.8917027,
+              52.3699685
+            ],
+            [
+              4.8916867,
+              52.369934
+            ],
+            [
+              4.8917168,
+              52.3699313
+            ],
+            [
+              4.891686,
+              52.369865
+            ],
+            [
+              4.8917342,
+              52.3698607
+            ],
+            [
+              4.891721,
+              52.3698049
+            ],
+            [
+              4.89159,
+              52.3698168
+            ],
+            [
+              4.8915768,
+              52.3697614
+            ],
+            [
+              4.8916037,
+              52.369759
+            ],
+            [
+              4.8920217,
+              52.369722
+            ],
+            [
+              4.8920225,
+              52.3697232
+            ],
+            [
+              4.892039,
+              52.3697694
+            ],
+            [
+              4.8920231,
+              52.3697753
+            ],
+            [
+              4.8920293,
+              52.3697927
+            ],
+            [
+              4.8920477,
+              52.3697939
+            ],
+            [
+              4.8920612,
+              52.3698317
+            ],
+            [
+              4.8920775,
+              52.3698767
+            ],
+            [
+              4.8920777,
+              52.3698775
+            ],
+            [
+              4.8920778,
+              52.3698782
+            ],
+            [
+              4.8920778,
+              52.369879
+            ],
+            [
+              4.8920777,
+              52.3698798
+            ],
+            [
+              4.8920775,
+              52.3698806
+            ],
+            [
+              4.8920771,
+              52.3698813
+            ],
+            [
+              4.8920767,
+              52.3698821
+            ],
+            [
+              4.8920762,
+              52.3698828
+            ],
+            [
+              4.8920755,
+              52.3698835
+            ],
+            [
+              4.8920748,
+              52.3698841
+            ],
+            [
+              4.892074,
+              52.3698847
+            ],
+            [
+              4.8920731,
+              52.3698853
+            ],
+            [
+              4.8920721,
+              52.3698858
+            ],
+            [
+              4.892071,
+              52.3698862
+            ],
+            [
+              4.8920699,
+              52.3698866
+            ],
+            [
+              4.8920688,
+              52.3698869
+            ],
+            [
+              4.8920675,
+              52.3698872
+            ],
+            [
+              4.8920663,
+              52.3698874
+            ],
+            [
+              4.8920693,
+              52.3698958
+            ],
+            [
+              4.8920837,
+              52.3698939
+            ],
+            [
+              4.8920854,
+              52.3698986
+            ],
+            [
+              4.8920882,
+              52.3698982
+            ],
+            [
+              4.8920902,
+              52.3699032
+            ],
+            [
+              4.892083,
+              52.3699042
+            ],
+            [
+              4.8920883,
+              52.3699177
+            ],
+            [
+              4.8920955,
+              52.3699166
+            ],
+            [
+              4.8920976,
+              52.369922
+            ],
+            [
+              4.8920942,
+              52.3699225
+            ],
+            [
+              4.8921148,
+              52.36998
+            ],
+            [
+              4.8920797,
+              52.369983
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -27.229999542236328,
+          -9.536743306171047e-8,
+          -16.277034759521484
+        ],
+        "max": [
+          10.810615539550781,
+          21.777999877929688,
+          17.808076858520508
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8919753,
+          52.36988082
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 38.04061508178711,
+        "heightMetres": 21.77799997329712,
+        "depthMetres": 34.08511161804199,
+        "depthCoverage": 1.0205123238934728
+      },
+      "triangles": 20170,
+      "bytes": 283656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "welgelegen": {
+      "id": "welgelegen",
+      "name": "Welgelegen, Plantage Middenlaan",
+      "modelUrl": "./models/welgelegen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181157"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91565381,
+          52.36527237
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 16.7,
+        "widthMetres": 15.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012181157 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/welgelegen-footprints.json, bag-shell-prepare.ts); the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001809 (2021, frontal) and the oblique TMX7316010203-002047_pano_0000_001806 (2021), CC BY 4.0 (the 2024 panorama shows the house under scaffolding sheeting), heights fitted to the 3DBAG eaves. Rijksmonument 4107 (dwarshuis, glazing bars), Plantage Middenlaan 49. Per wall in scripts/landmarks/welgelegen-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 3.7,
+        "phi": 1.2
+      },
+      "bagYear": 1802,
+      "materialOverrides": {
+        "brick": "#5c4b44",
+        "slate": "#5c5b5b",
+        "sandstone": "#e4e3da",
+        "frame": "#e8e7df",
+        "glass": "#30393e",
+        "dark": "#1f2427",
+        "bronze": "#1d1f1f",
+        "concrete": "#c9c7bd"
+      },
+      "attribution": {
+        "title": "Welgelegen, Plantage Middenlaan 49, Amsterdam (1802; rijksmonument 4107)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001809/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181157 (CC0): the dark brick front with two rows of white sash windows, the white door surround with the black double door, the transom light with its wrought-iron oval and the name WELGELEGEN, the white cornice, the dormer with carved scroll cheeks, arched hood and hoist-beam knob, the chimneys and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9156424,
+              52.3653474
+            ],
+            [
+              4.9155639,
+              52.3652621
+            ],
+            [
+              4.9155643,
+              52.365262
+            ],
+            [
+              4.9155639,
+              52.3652615
+            ],
+            [
+              4.9157487,
+              52.3651977
+            ],
+            [
+              4.9157864,
+              52.3652387
+            ],
+            [
+              4.9156599,
+              52.3652824
+            ],
+            [
+              4.9157011,
+              52.3653271
+            ],
+            [
+              4.9156424,
+              52.3653474
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -6.562742233276367,
+          -1.1444091541079615e-7,
+          -8.348999977111816
+        ],
+        "max": [
+          9.2395601272583,
+          9,
+          9.219623565673828
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.568623542785645,
+        "heightMetres": 9.000000114440915,
+        "depthMetres": 15.802302360534668,
+        "depthCoverage": 1.0465100901016338
+      },
+      "triangles": 5280,
+      "bytes": 75804,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "weltevreden": {
+      "id": "weltevreden",
+      "name": "Weltevreden, Plantage Middenlaan",
+      "modelUrl": "./models/weltevreden.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181160"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9155417,
+          52.36532649
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 11.1,
+        "widthMetres": 16.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.9155417,
+          52.36532649
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG footprint of pand 0363100012181160 (BAG CC0) with the 3DBAG eaves and ridge (CC BY 4.0) in native east/south metres (scripts/landmarks/weltevreden-footprints.json, bag-shell-prepare.ts), massing drawn by hand because the 3DBAG roof carries the taller neighbour's 10.2 m wall along the north-west end; the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001181_pano_0000_003955 (2019, frontal), TMX7316010203-002933_pano_0009_000098 (2023, frontal) and TMX7316010203-002541_pano_0003_000060 (2022, oblique), CC BY 4.0. Rijksmonument 4106, Buitenhuis Weltevreden (dwarshuis XIX A; dormer, glazing bars), Plantage Middenlaan 47. Per wall in scripts/landmarks/weltevreden-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 3.65,
+        "phi": 1.2
+      },
+      "bagYear": 1815,
+      "materialOverrides": {
+        "sandstone": "#e4e5dd",
+        "stone": "#c3c4bd",
+        "slate": "#2e2e31",
+        "concrete": "#8b8f90",
+        "frame": "#e8e8e0",
+        "glass": "#2f383d",
+        "dark": "#1e2221",
+        "bronze": "#1b1d1d",
+        "brick": "#6a5249"
+      },
+      "attribution": {
+        "title": "Weltevreden, Plantage Middenlaan 47, Amsterdam (1815; rijksmonument 4106)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001181_pano_0000_003955/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) of pand 0363100012181160 with 3DBAG heights (CC BY 4.0): the white weatherboarded front, the tall windows with black shutters, the black double door under its radial fanlight, the name WELTEVREDEN on the frieze, the cornice, the black pantile hipped roof, the wide dormer storey with three windows, the chimney and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9156424,
+              52.3653474
+            ],
+            [
+              4.9156177,
+              52.3653559
+            ],
+            [
+              4.9155799,
+              52.3653148
+            ],
+            [
+              4.9154438,
+              52.3653618
+            ],
+            [
+              4.9154025,
+              52.365317
+            ],
+            [
+              4.9155639,
+              52.3652621
+            ],
+            [
+              4.9156424,
+              52.3653474
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.03874397277832,
+          -9.536743306171047e-8,
+          -4.380985736846924
+        ],
+        "max": [
+          6.820395469665527,
+          8.600000381469727,
+          8.254063606262207
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9155417,
+          52.36532649
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.859139442443848,
+        "heightMetres": 8.60000047683716,
+        "depthMetres": 12.63504934310913,
+        "depthCoverage": 0.7704298379944593
+      },
+      "triangles": 4320,
+      "bytes": 66808,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "muntplein-1": {
+      "id": "muntplein-1",
+      "name": "Muntplein 1 / Amstel 2 (Volharding)",
+      "modelUrl": "./models/muntplein-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012179461"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89385793,
+          52.36700052
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 13.8,
+        "widthMetres": 10.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89385793,
+          52.36700052
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012179461 (3DBAG CC BY 4.0, BAG CC0: addresses Amstel 2 and Muntplein 1) in native east/south metres (scripts/landmarks/muntplein-1-footprints.json, bag-shell-prepare.ts); the Amstel front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002543_pano_0000_000105 (2022, frontal) with b_20241211_0954_Track19_Sphere_00246 (2024), the Muntplein front from recording_2025-06-19_03-28-47_01473 (2025, frontal) with TMX7316010203-002310_pano_0001_000397 (2021), the corner turret from both aimed views, CC BY 4.0, heights fitted to the 3DBAG wall tops (12.6 and 12.85 m). Rijksmonument 518344. Per wall in scripts/landmarks/muntplein-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 17,
+      "galleryView": {
+        "theta": -0.35,
+        "phi": 1.2
+      },
+      "bagYear": 1892,
+      "measuredOverrides": true,
+      "materialOverrides": {
+        "brick": "#8a5546",
+        "stone": "#bdb5a6",
+        "sandstone": "#9d9585",
+        "greyBrick": "#6c6b69",
+        "slate": "#55595e",
+        "glass": "#343e47",
+        "frame": "#e2ded3",
+        "ochre": "#c4a978",
+        "blue": "#21509e",
+        "white": "#e4e0d6",
+        "concrete": "#eeeeea",
+        "dark": "#2e2b29",
+        "bronze": "#2a2d2c"
+      },
+      "attribution": {
+        "title": "Muntplein 1 / Amstel 2, Amsterdam: office building and cafe for the Maatschappij Volharding (A.L. van Gendt, 1892; rijksmonument 518344)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002543_pano_0000_000105/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012179461 (CC0): the corbelled corner turret with its slate spire, the scrolled stone dormer gables, the rusticated ground storey with round-arched shop windows and the lettered Amstel 2 doorcase, the block-surround windows, the patterned brick friezes and yellow brick bands, the cornice, the mansard and its flat dormer, the paired windows and the DIAMOND FACTORY fascia of the Muntplein front, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8939586,
+              52.3670129
+            ],
+            [
+              4.8938262,
+              52.3670359
+            ],
+            [
+              4.8938254,
+              52.3670377
+            ],
+            [
+              4.893797,
+              52.3670328
+            ],
+            [
+              4.8937979,
+              52.3670308
+            ],
+            [
+              4.893756,
+              52.3669941
+            ],
+            [
+              4.8938208,
+              52.3669755
+            ],
+            [
+              4.8939163,
+              52.3669505
+            ],
+            [
+              4.8939271,
+              52.3669477
+            ],
+            [
+              4.8939539,
+              52.3669872
+            ],
+            [
+              4.8939586,
+              52.3670129
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.3624653816223145,
+          -5.817413395448057e-8,
+          -4.657796382904053
+        ],
+        "max": [
+          6.993905067443848,
+          18.049999237060547,
+          5.9079999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89385793,
+          52.36700052
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 14.356370449066162,
+        "heightMetres": 18.04999929523468,
+        "depthMetres": 10.565796375274658,
+        "depthCoverage": 1.046118452997491
+      },
+      "triangles": 18597,
+      "bytes": 257208,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "koningsplein-1": {
+      "id": "koningsplein-1",
+      "name": "Verzekeringsbank Kosmos, Koningsplein 1",
+      "modelUrl": "./models/koningsplein-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176247"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88959101,
+          52.36705371
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 16.3,
+        "widthMetres": 15.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.88959101,
+          52.36705371
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176247 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/koningsplein-1-footprints.json, bag-shell-prepare.ts) for the hipped roof, its glazed strip and the party walls; the round corner tower drawn on a circle fitted to the BAG corner (centre 0.167, 0.503; radius 2.32 m). Fronts, tower and dome read from Gemeente Amsterdam panoramas rectified onto the wall planes at 40 px/m: b_20250109_1300_Track05_Sphere_00277 (2025, Koningsplein), recording_2025-06-19_03-28-47_01535 (2025, the tower) and recording_2025-06-19_03-28-47_01537 (2025, the Singel side), with TMX7316010203-002542_pano_0004_000309 (2022) for the brief crop; CC BY 4.0, heights fitted to the 3DBAG cornice (17.5 m). Rijksmonument 518359 (register text: Th.G. Schill and D.H. Haverkamp, 1890-91, neo-baroque, for the Verzekeringsbank 'Kosmos'; tower crown altered 1928; shop front H. Elte 1929-30). Per wall in scripts/landmarks/koningsplein-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.4,
+      "galleryView": {
+        "theta": 3.3,
+        "phi": 1.15
+      },
+      "bagYear": 1891,
+      "materialOverrides": {
+        "brick": "#9c5a4e",
+        "stone": "#cdc3ad",
+        "sandstone": "#b8ad97",
+        "white": "#e8e6df",
+        "red": "#7e3e3a",
+        "gold": "#d2b25a",
+        "blue": "#8fb0c4",
+        "pink": "#6d6a7d",
+        "slate": "#5b6166",
+        "glass": "#384248",
+        "frame": "#4a3a30",
+        "concrete": "#e8e6df",
+        "copper": "#4f5c64",
+        "ochre": "#7a4e30",
+        "bronze": "#1e2020"
+      },
+      "attribution": {
+        "title": "Koningsplein 1, Amsterdam: shop and offices of the Verzekeringsbank 'Kosmos' (Th.G. Schill and D.H. Haverkamp, 1890-91; rijksmonument 518359)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01535/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176247 (CC0): the round corner tower with its balcony, VERZEKERINGSBANK frieze, stone drum, helmet dome and open lantern; red brick with sandstone speklagen; stone-framed windows, consoles and iron-railed balconies, pedimented French windows, paired round-arched top-storey windows between Ionic pilasters, the light-blue console frieze and cornice; the black granite shop front with its clerestories and mosaic tableaux, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the RCE register text. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.889681,
+              52.3670403
+            ],
+            [
+              4.8896425,
+              52.3670552
+            ],
+            [
+              4.8896293,
+              52.3670604
+            ],
+            [
+              4.8896282,
+              52.3670606
+            ],
+            [
+              4.8896268,
+              52.3670606
+            ],
+            [
+              4.8896241,
+              52.3670604
+            ],
+            [
+              4.8896222,
+              52.3670607
+            ],
+            [
+              4.8896202,
+              52.3670616
+            ],
+            [
+              4.8896102,
+              52.3670678
+            ],
+            [
+              4.8896073,
+              52.3670685
+            ],
+            [
+              4.8896043,
+              52.3670691
+            ],
+            [
+              4.8896013,
+              52.3670695
+            ],
+            [
+              4.8895982,
+              52.3670698
+            ],
+            [
+              4.8895951,
+              52.3670699
+            ],
+            [
+              4.8895917,
+              52.3670699
+            ],
+            [
+              4.8895883,
+              52.3670697
+            ],
+            [
+              4.8895849,
+              52.3670693
+            ],
+            [
+              4.8895816,
+              52.3670688
+            ],
+            [
+              4.8895783,
+              52.3670681
+            ],
+            [
+              4.8895779,
+              52.367068
+            ],
+            [
+              4.8895672,
+              52.367062
+            ],
+            [
+              4.889565,
+              52.3670612
+            ],
+            [
+              4.8895616,
+              52.3670604
+            ],
+            [
+              4.8895599,
+              52.367061
+            ],
+            [
+              4.8895579,
+              52.3670611
+            ],
+            [
+              4.8894473,
+              52.367023
+            ],
+            [
+              4.8895068,
+              52.3669639
+            ],
+            [
+              4.8895891,
+              52.3669234
+            ],
+            [
+              4.889681,
+              52.3670403
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.126838684082031,
+          0,
+          -2.741293430328369
+        ],
+        "max": [
+          6.4781670570373535,
+          26.630096435546875,
+          14.493000030517578
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88959101,
+          52.36705371
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.234293460845947,
+        "heightMetres": 26.630096435546875,
+        "depthMetres": 16.605005741119385,
+        "depthCoverage": 1.0443399837182004
+      },
+      "triangles": 18293,
+      "bytes": 230512,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

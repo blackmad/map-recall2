@@ -1,0 +1,67 @@
+{
+  "id": "koningsplein-1",
+  "countedBy": "lane landmarks-r18-c-20261123 from the plane-rectified panoramas b_20250109_1300_Track05_Sphere_00277 (2025, Koningsplein, 40 px/m) and recording_2025-06-19_03-28-47_01537 (2025, Singel side, 40 px/m), with the RCE register text (Koningsplein two window axes, Singel one); not yet blind-counted. Glazed openings, bottom row first: the ground floor is cropped out (hidden behind parked bicycles and blurred figures on both photos); first storey one sash per axis; second storey one French window per axis; third storey a coupled pair of round-arched windows per axis.",
+  "facades": [
+    {
+      "name": "Koningsplein front",
+      "bearing": 331,
+      "photo": "artifacts/landmark-briefs/koningsplein-1/w01-331.jpg",
+      "rows": [
+        2,
+        2,
+        4
+      ],
+      "columns": 2,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "Two axes; the third storey couples two round-arched windows per axis with 0.32 m of stone between them. Crop: the flat front above the shop front (the shop windows are hidden behind parked bicycles and blurred figures on both photos, and the 1929-30 shop front is asymmetric by design: side portico on the Koningsplein, mosaic field on the Singel); the round corner tower and its drum (in this face's ortho elevation) are a separate signature item, checked on the tower views.",
+      "alongM": [
+        6.75,
+        15.5
+      ],
+      "heightM": [
+        4.4,
+        17.5
+      ],
+      "mixedRows": [
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "nw-277.jpg (b_20250109_1300_Track05_Sphere_00277 rectified onto the Koningsplein front, 40 px/m): the third storey couples its round-arched windows two by two over each axis (x 172-197 / 208-235 and 330-355 / 366-392 px: ~0.3 m of stone inside a pair, ~3 m between the pairs); register: 'twee aan twee gekoppelde rondboogvormige vensters'. The spacing is paired, not a regular row with gaps.",
+          "openings": [
+            {"kind": "round-arched, coupled", "w": 0.6},
+            {"kind": "round-arched, coupled", "w": 0.6},
+            {"kind": "round-arched, coupled", "w": 0.6},
+            {"kind": "round-arched, coupled", "w": 0.6}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Singel front",
+      "bearing": 34,
+      "photo": "artifacts/landmark-briefs/koningsplein-1/extra/ne-1537.jpg",
+      "rows": [
+        1,
+        1,
+        2
+      ],
+      "columns": 1,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "One axis; the third storey couples two round-arched windows. Crop: the flat front above the shop front (the shop windows are hidden behind parked bicycles and blurred figures on both photos, and the 1929-30 shop front is asymmetric by design: side portico on the Koningsplein, mosaic field on the Singel); the round corner tower and its drum (in this face's ortho elevation) are a separate signature item, checked on the tower views.",
+      "alongM": [
+        1.75,
+        5.35
+      ],
+      "heightM": [
+        4.4,
+        17.5
+      ]
+    }
+  ]
+}

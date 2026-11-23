@@ -1,0 +1,273 @@
+{
+ "schemaVersion": 1,
+ "id": "koningsplein-1",
+ "pand": "0363100012176247",
+ "brief": "scripts/landmarks/koningsplein-1-brief.md",
+ "signature": [
+  "t-tower",
+  "t-dome-lantern",
+  "t-lettering",
+  "t-balcony",
+  "k-brick-speklagen",
+  "k-balconies",
+  "k-pediments",
+  "k-arched-pairs",
+  "k-blue-frieze-cornice",
+  "k-shopfront"
+ ],
+ "walls": [
+  {
+   "tag": "w01-331",
+   "bearing": 331,
+   "lengthM": 8.7,
+   "centre": [
+    4.8895055,
+    52.367044
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track05_Sphere_00277",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "note": "Koningsplein front, two window axes (register: 'twee vensterassen breed'). Read from Sphere_00277 rectified onto the wall plane at 40 px/m, cross-checked on the brief's 2022 crop TMX7316010203-002542_pano_0004_000309 (50 px/m).",
+   "items": [
+    {
+     "id": "k-brick-speklagen",
+     "kind": "other",
+     "where": "red brick laid with sandstone speklagen (a course every ~0.7 m) from the shop frieze to the painted frieze, stopped at the stone window surrounds; stone quoin strips at both ends",
+     "approxSizeM": [8.6, 8.3],
+     "plan": "modelled",
+     "how": "speklagen.ts runs cut round the window surrounds, on the 3DBAG brick wall",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-first-windows",
+     "kind": "window-shape",
+     "where": "first storey, both axes: sash windows with transom lights in stone surrounds (5.05-7.45 m)",
+     "approxSizeM": [1.5, 2.4],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-medallions",
+     "kind": "relief",
+     "where": "frieze over each first-storey window: a stone medallion with garlands between two ornamental consoles",
+     "approxSizeM": [1.8, 0.95],
+     "plan": "simplified",
+     "how": "a stone disc on a garland bar between two stepped console blocks",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-balconies",
+     "kind": "balcony-ironwork",
+     "where": "a balcony on the consoles in front of each second-storey French window, black iron bar railing (8.65-9.9 m)",
+     "approxSizeM": [2.4, 1.3],
+     "plan": "modelled",
+     "how": "stone slab 0.62 m deep, bar railing with returns",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-pediments",
+     "kind": "window-shape",
+     "where": "second storey: French windows in stone surrounds under an entablature and a triangular pediment that breaks into the painted frieze (9.0-12.9 m)",
+     "approxSizeM": [2.2, 3.9],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-painted-frieze",
+     "kind": "other",
+     "where": "the wide frieze painted with stencil motifs between the second and third storeys (12.0-13.3 m), dark red",
+     "approxSizeM": [8.6, 1.3],
+     "plan": "simplified",
+     "how": "a flat dark-red band; the stencil pattern is not drawn",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-arched-pairs",
+     "kind": "window-shape",
+     "where": "third storey: two coupled round-arched windows per axis with stone arches and keystones (13.65-15.3 m)",
+     "approxSizeM": [1.6, 1.8],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-pilasters-reliefs",
+     "kind": "relief",
+     "where": "third storey: stone Ionic pilasters at the corners and beside each pair, stencilled relief panels between them (at the tower end, the middle and the far end)",
+     "approxSizeM": [0.62, 1.45],
+     "plan": "simplified",
+     "how": "pilaster strips with a capital block; relief panels as a stone frame with a raised sandstone field",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-blue-frieze-cornice",
+     "kind": "other",
+     "where": "under the overhanging cornice: a light-blue painted frieze between stone consoles with gilded/blue tile roundels (15.55-16.55 m); cornice to 17.45 m",
+     "approxSizeM": [8.6, 1.9],
+     "plan": "modelled",
+     "how": "blue band, console blocks every ~0.68 m, gold discs between them, three-step cornice 0.74 m out",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-shopfront",
+     "kind": "canopy",
+     "where": "ground floor (H. Elte 1929-30): black Swedish granite, a wide shop window with a heavy transom, a clerestory of vertical matte-glass strips over it, granito mosaic tableaux, the side entrance in a portico in the outer bay with a white field divided by red lines above it",
+     "approxSizeM": [8.6, 4.4],
+     "plan": "simplified",
+     "how": "granite skin, glass, transom, mullioned clerestory, mosaic panels as one mid-tone colour, wooden door and white field with three red lines",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-glazed-roof",
+     "kind": "other",
+     "where": "a strip of window glass in the hipped roof behind the cornice on the Koningsplein side (register)",
+     "approxSizeM": [7.5, 2.0],
+     "plan": "simplified",
+     "how": "the 3DBAG's steep roof walls at 17.5-20 m behind the front drawn in glass",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "k-street-lamp",
+     "kind": "lamp",
+     "where": "the wall-hung globe lamp and the street lantern in front of the shop",
+     "approxSizeM": [0.4, 0.6],
+     "plan": "skipped",
+     "skip": {"reason": "too-small", "note": "street furniture, not part of the building"},
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    }
+   ]
+  },
+  {
+   "tag": "w02-34",
+   "bearing": 34,
+   "lengthM": 4.2,
+   "centre": [
+    4.889658,
+    52.3670525
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01537",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "note": "The Singel front, one window axis (register: 'die aan het Singel een vensteras'). The brief's w02-34 crop (TMX7316010203-001975_pano_0000_001367) is the underside of the Koningsplein bridge; this wall is read from recording_2025-06-19_03-28-47_01537 rectified onto the wall plane at 40 px/m, and the corner view _01535.",
+   "items": [
+    {
+     "id": "s-front",
+     "kind": "window-shape",
+     "where": "the same storey scheme as the Koningsplein front on one axis: sash with transom in a stone surround, medallion and consoles, balcony, pedimented French window, a coupled pair of round-arched windows, blue frieze and cornice",
+     "approxSizeM": [4.2, 12.5],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01537"
+    },
+    {
+     "id": "s-koekoek",
+     "kind": "other",
+     "where": "a dormer (koekoek) with a pointed roof in the slate hip roof over the axis (register)",
+     "approxSizeM": [1.1, 1.6],
+     "plan": "simplified",
+     "how": "slate box with a white-framed window and a gabled slate roof",
+     "seenIn": "recording_2025-06-19_03-28-47_01537"
+    },
+    {
+     "id": "s-shopfront",
+     "kind": "canopy",
+     "where": "black granite shop front with clerestory and mosaic tableau",
+     "approxSizeM": [4.2, 4.4],
+     "plan": "simplified",
+     "how": "as k-shopfront",
+     "seenIn": "recording_2025-06-19_03-28-47_01537"
+    }
+   ]
+  },
+  {
+   "tag": "tower-0",
+   "bearing": 0,
+   "lengthM": 4.5,
+   "centre": [
+    4.889591,
+    52.3670699
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01535",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "note": "The half-round corner tower (not a wall of the brief: its BAG facets are all < 4 m). Read from _01535 and Sphere_00277 rectified onto a plane through the tower front at 40 px/m, Sphere_00323 for the balcony consoles; heights of the drum and dome corrected for their distance behind that plane.",
+   "items": [
+    {
+     "id": "t-tower",
+     "kind": "tower",
+     "where": "the half-round corner tower, radius 2.32 m, rising through the four storeys with three windows each: narrow rectangular windows (first), round-headed windows between pilasters with arched surrounds (second), round-headed windows with keystones between Ionic pilasters (third)",
+     "approxSizeM": [4.6, 17.5],
+     "plan": "modelled",
+     "how": "drawn on a circle fitted to the BAG corner (roundTower.ts arcFrame / bayAngles), ring courses for speklagen, friezes and cornice",
+     "seenIn": "recording_2025-06-19_03-28-47_01535"
+    },
+    {
+     "id": "t-balcony",
+     "kind": "balcony-ironwork",
+     "where": "the curved balcony round the tower at the second storey, on stone consoles with stencilled relief between them, black iron bar railing",
+     "approxSizeM": [5.5, 1.3],
+     "plan": "modelled",
+     "how": "curved stone slab 0.85 m out, five console blocks, a sandstone band for the relief, ring rails and bars",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00323"
+    },
+    {
+     "id": "t-lettering",
+     "kind": "lettering",
+     "where": "the red painted frieze over the second-storey windows with VERZEKERINGSBANK in gold letters (register; 'VERZEKERING' legible on _01535, '...NGSBA' on the 2022 brief thumb)",
+     "approxSizeM": [8.1, 0.6],
+     "plan": "modelled",
+     "how": "arcLettering.ts placements, 5x7 kit glyphs 0.085 m per pixel in gold on a red ring band",
+     "seenIn": "recording_2025-06-19_03-28-47_01535"
+    },
+    {
+     "id": "t-drum",
+     "kind": "tower",
+     "where": "the fourth tower storey in stone above the cornice: five round-headed windows between half-columns, the wide white-plastered frieze all round, overhanging cornice (17.45-20.95 m)",
+     "approxSizeM": [4.4, 3.5],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "t-dome-lantern",
+     "kind": "dome",
+     "where": "the shingle-and-zinc dome (a steep helmet, springing 20.95 m, crown ~25 m) crowned by an open lantern with an iron spire (register; 1928 crown)",
+     "approxSizeM": [5.3, 5.4],
+     "plan": "modelled",
+     "how": "roundTower.ts domeProfile (superellipse exponent 2.3) lathe in slate with twelve zinc ribs; collar, six iron posts, cap, cone, ball and spire",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00277"
+    },
+    {
+     "id": "t-corner-door",
+     "kind": "other",
+     "where": "the main entrance on the corner: a wooden door with a glazed panel between shop windows, under the granito mosaic tableau that wraps the tower",
+     "approxSizeM": [4.6, 4.4],
+     "plan": "simplified",
+     "how": "wood door slab, glass, a mosaic ring band in one mid-tone colour",
+     "seenIn": "recording_2025-06-19_03-28-47_01535"
+    },
+    {
+     "id": "t-shop-sign",
+     "kind": "sign",
+     "where": "the current tenant's name letters on the mosaic over the corner door",
+     "approxSizeM": [1.6, 0.25],
+     "plan": "skipped",
+     "skip": {"reason": "temporary", "note": "a tenant's sign, changes with the shop"},
+     "seenIn": "recording_2025-06-19_03-28-47_01535"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 518359 (RCE), register text",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518359",
+   "licence": "CC0"
+  }
+ ]
+}

@@ -315,6 +315,12 @@ import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/la
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
 import {buildSweederijck} from './sweederijck-builder';
+import {buildOldBellRembrandtplein} from './old-bell-rembrandtplein-builder';
+import {buildCafeRicheRokin} from './cafe-riche-rokin-builder';
+import {buildWelgelegen} from './welgelegen-builder';
+import {buildWeltevreden} from './weltevreden-builder';
+import {buildMuntplein1} from './muntplein-1-builder';
+import {buildKoningsplein1} from './koningsplein-1-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
 import {buildRoodeLeeuwDamrak} from './roode-leeuw-damrak-builder';
@@ -1335,6 +1341,12 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
     else if(id==='jungle-swindenstraat')buildJungleSwindenstraat(w,d,helpers);
     else if(id==='sweederijck')buildSweederijck(w,d,helpers);
+    else if(id==='old-bell-rembrandtplein')buildOldBellRembrandtplein(w,d,helpers);
+    else if(id==='cafe-riche-rokin')buildCafeRicheRokin(w,d,helpers);
+    else if(id==='welgelegen')buildWelgelegen(w,d,helpers);
+    else if(id==='weltevreden')buildWeltevreden(w,d,helpers);
+    else if(id==='muntplein-1')buildMuntplein1(w,d,helpers);
+    else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

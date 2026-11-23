@@ -1131,6 +1131,11 @@
       "version": "b39060f391f24a06",
       "dateSource": "asset-update"
     },
+    "cafe-riche-rokin": {
+      "updatedAt": "2026-11-23T07:33:20.598Z",
+      "version": "aef8ebbab4f6edbe",
+      "dateSource": "asset-update"
+    },
     "canals-museum": {
       "updatedAt": "2026-10-20T10:13:42.499Z",
       "version": "a6eca24167c2892b",
@@ -4231,6 +4236,11 @@
       "version": "da2c7d42c31e3131",
       "dateSource": "asset-update"
     },
+    "koningsplein-1": {
+      "updatedAt": "2026-11-23T07:38:57.989Z",
+      "version": "9fcbb90bb6d4940e",
+      "dateSource": "asset-update"
+    },
     "kpn-teleport": {
       "updatedAt": "2026-11-02T04:49:16.940Z",
       "version": "4b34d4d29a6fc6d9",
@@ -4991,6 +5001,11 @@
       "version": "9d3660cb36064cde",
       "dateSource": "asset-update"
     },
+    "muntplein-1": {
+      "updatedAt": "2026-11-23T07:42:24.073Z",
+      "version": "2cf58c3785d84c0d",
+      "dateSource": "asset-update"
+    },
     "munttoren-amsterdam": {
       "updatedAt": "2026-10-20T10:13:08.590Z",
       "version": "45c6b9a10742979b",
@@ -5424,6 +5439,11 @@
     "odessa.lod2": {
       "updatedAt": "2026-11-07T14:08:58.175Z",
       "version": "9bc621bb29619ed6",
+      "dateSource": "asset-update"
+    },
+    "old-bell-rembrandtplein": {
+      "updatedAt": "2026-11-23T07:19:31.402Z",
+      "version": "1db8816711642a8b",
       "dateSource": "asset-update"
     },
     "olvg-oost": {
@@ -8569,6 +8589,16 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
+      "dateSource": "asset-update"
+    },
+    "welgelegen": {
+      "updatedAt": "2026-11-23T07:53:15.575Z",
+      "version": "5894dda4be49c5c3",
+      "dateSource": "asset-update"
+    },
+    "weltevreden": {
+      "updatedAt": "2026-11-23T07:45:16.374Z",
+      "version": "1cd78b2059a7dd93",
       "dateSource": "asset-update"
     }
   }
