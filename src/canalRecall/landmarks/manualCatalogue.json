@@ -111013,5 +111013,102 @@
     ]
    ]
   }
+ },
+ {
+  "id": "old-bell-rembrandtplein",
+  "name": "The Old Bell, Rembrandtplein",
+  "modelUrl": "./models/old-bell-rembrandtplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012178852"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89740394,
+    52.36575394
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 15,
+   "widthMetres": 14.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.89740394,
+    52.36575394
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178852 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/old-bell-rembrandtplein-footprints.json, bag-shell-prepare.ts) for the party walls, rear and inner roofs; the Rembrandtplein front, the corner and the Utrechtsestraat front drawn to the eaves from the rectified Gemeente Amsterdam panoramas recording_2025-06-19_03-28-47_01657 (2025), TMX7316010203-002537_pano_0001_000087 (2022), b_20250120_0926_Track30_Sphere_00341 (2025) and TMX7316010203-000716_pano_0001_000026 (2018), CC BY 4.0. Rijksmonument 518404: office of De Eerste Nederlandsche Verzekeringsmaatschappij, 1891-92, J. Kok and A. van Ameijde van Duijm (register: corner oriel over two storeys, stepped gables, frieze with metopes, broad eaves, stone balcony with ironwork, Ionic half-columns, the corner entrance with a copper bell). Per wall in scripts/landmarks/old-bell-rembrandtplein-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 22,
+  "galleryView": {
+   "theta": 2.6,
+   "phi": 1.2
+  },
+  "bagYear": 1891,
+  "materialOverrides": {
+   "brick": "#ad6a55",
+   "concrete": "#d9d3c4",
+   "stone": "#a3a49d",
+   "sandstone": "#cdc7b8",
+   "greyBrick": "#bdb6a6",
+   "blue": "#d4cfc3",
+   "slate": "#5e666b",
+   "glass": "#2f3639",
+   "frame": "#e4e0d6",
+   "bronze": "#222626",
+   "gold": "#c49a3a",
+   "red": "#c2333b",
+   "white": "#ece7da",
+   "green": "#2f5446",
+   "dark": "#5c3527",
+   "ochre": "#8a7b56",
+   "copper": "#b0763e",
+   "pink": "#7d4f42"
+  },
+  "attribution": {
+   "title": "The Old Bell / City Hotel, Rembrandtplein 46 - Utrechtsestraat 2, Amsterdam (1891-92; rijksmonument 518404)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0001_000087/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178852 (CC0): the banded red-brick fronts with stone aedicules and double windows, the CITY / HOTEL boards, the gilt 'the old Bell' letters, stone piers and panelled shop fronts, the corner entrance with its copper bell, the three-sided corner oriel and its parapet, the balcony with ironwork, the French doors between Ionic half-columns, the metope frieze and broad eaves, the stepped gables and the dormered mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8972737,
+      52.3658009
+     ],
+     [
+      4.8973346,
+      52.3656833
+     ],
+     [
+      4.8974819,
+      52.3657063
+     ],
+     [
+      4.8974818,
+      52.365707
+     ],
+     [
+      4.8974422,
+      52.3658073
+     ],
+     [
+      4.8974095,
+      52.3658188
+     ],
+     [
+      4.8972737,
+      52.3658009
+     ]
+    ]
+   ]
+  }
  }
 ]

@@ -1,0 +1,392 @@
+{
+  "id": "old-bell-rembrandtplein",
+  "countedBy": "lane landmarks-r18-b-20261123 from the rectified panoramas recording_2025-06-19_03-28-47_01657 (2025, Rembrandtplein, w02-348.alt.jpg, 50 px/m), b_20250120_0926_Track30_Sphere_00341 (2025, Utrechtsestraat, w01-77.jpg) and TMX7316010203-000716_pano_0001_000026 (2018, the gable, w01-77.alt.jpg); not yet blind-counted. Glazed openings, bottom row first.",
+  "facades": [
+    {
+      "name": "Rembrandtplein front",
+      "bearing": 348,
+      "photo": "artifacts/landmark-briefs/old-bell-rembrandtplein/w02-348.alt.jpg",
+      "rows": [
+        3,
+        1,
+        6,
+        6,
+        13,
+        4
+      ],
+      "columns": 2,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Seen square-on from the Rembrandtplein, the corner shows obliquely. Ground: two shop fronts (leaded lower lights) and the corner door, with the door top light above (register: \"een deur met bovenlicht\"); first and second storeys: two aedicules of double windows plus the oriel front and north side; third storey: two groups of three French doors with three top lights each (the 0.15 m transom does not split the row at the 0.1 m cells) and the corner balcony door behind the oriel parapet; four dormers in the mansard.",
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w02-348.alt.jpg (recording_2025-06-19_03-28-47_01657, 50 px/m) and w02-348.thumb.jpg (TMX7316010203-002537_pano_0001_000087, the corner): corner door, shop front share this row",
+          "openings": [
+            {
+              "kind": "corner door",
+              "w": 0.4
+            },
+            {
+              "kind": "shop front",
+              "w": 2.9
+            },
+            {
+              "kind": "shop front",
+              "w": 2.8
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w02-348.alt.jpg (recording_2025-06-19_03-28-47_01657, 50 px/m) and w02-348.thumb.jpg (TMX7316010203-002537_pano_0001_000087, the corner): oriel light, foreshortened, aedicule light share this row",
+          "openings": [
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.4
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w02-348.alt.jpg (recording_2025-06-19_03-28-47_01657, 50 px/m) and w02-348.thumb.jpg (TMX7316010203-002537_pano_0001_000087, the corner): oriel light, foreshortened, aedicule light share this row",
+          "openings": [
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.4
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "w02-348.alt.jpg (recording_2025-06-19_03-28-47_01657, 50 px/m) and w02-348.thumb.jpg (TMX7316010203-002537_pano_0001_000087, the corner): corner balcony door, French door, top light share this row",
+          "openings": [
+            {
+              "kind": "corner balcony door",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.4
+            },
+            {
+              "kind": "top light",
+              "w": 0.4
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.4
+            },
+            {
+              "kind": "top light",
+              "w": 0.4
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utrechtsestraat front",
+      "bearing": 77,
+      "photo": "artifacts/landmark-briefs/old-bell-rembrandtplein/w01-77.jpg",
+      "rows": [
+        4,
+        1,
+        8,
+        8,
+        19,
+        3,
+        2
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Seen square-on from the Utrechtsestraat, the corner shows obliquely. Ground: three shop fronts (the left one the hotel entrance) and the corner door with its top light; three aedicules of double windows plus the oriel front and east side; three groups of three French doors with top lights and the corner balcony door; above the eaves the stepped gable two pairs of sash windows over the southern axes (2018 crop) and one small dormer over the north axis, which shares the lower gable pair row.",
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w01-77.jpg (b_20250120_0926_Track30_Sphere_00341, 49.8 px/m) and w01-77.alt.jpg (TMX7316010203-000716_pano_0001_000026, 2018): shop front, corner door share this row",
+          "openings": [
+            {
+              "kind": "shop front",
+              "w": 1.3
+            },
+            {
+              "kind": "shop front",
+              "w": 2.3
+            },
+            {
+              "kind": "shop front",
+              "w": 2.3
+            },
+            {
+              "kind": "corner door",
+              "w": 0.5
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w01-77.jpg (b_20250120_0926_Track30_Sphere_00341, 49.8 px/m) and w01-77.alt.jpg (TMX7316010203-000716_pano_0001_000026, 2018): aedicule light, oriel light, foreshortened share this row",
+          "openings": [
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w01-77.jpg (b_20250120_0926_Track30_Sphere_00341, 49.8 px/m) and w01-77.alt.jpg (TMX7316010203-000716_pano_0001_000026, 2018): aedicule light, oriel light, foreshortened share this row",
+          "openings": [
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.7
+            },
+            {
+              "kind": "aedicule light",
+              "w": 0.8
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            },
+            {
+              "kind": "oriel light, foreshortened",
+              "w": 0.3
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "w01-77.jpg (b_20250120_0926_Track30_Sphere_00341, 49.8 px/m) and w01-77.alt.jpg (TMX7316010203-000716_pano_0001_000026, 2018): French door, top light, corner balcony door share this row",
+          "openings": [
+            {
+              "kind": "French door",
+              "w": 0.6
+            },
+            {
+              "kind": "top light",
+              "w": 0.6
+            },
+            {
+              "kind": "French door",
+              "w": 0.4
+            },
+            {
+              "kind": "top light",
+              "w": 0.4
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.4
+            },
+            {
+              "kind": "top light",
+              "w": 0.4
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "French door",
+              "w": 0.4
+            },
+            {
+              "kind": "top light",
+              "w": 0.4
+            },
+            {
+              "kind": "French door",
+              "w": 0.5
+            },
+            {
+              "kind": "top light",
+              "w": 0.5
+            },
+            {
+              "kind": "corner balcony door",
+              "w": 0.5
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "rowSizes": "mixed",
+          "evidence": "w01-77.jpg (b_20250120_0926_Track30_Sphere_00341, 49.8 px/m) and w01-77.alt.jpg (TMX7316010203-000716_pano_0001_000026, 2018): gable light, dormer light share this row",
+          "openings": [
+            {
+              "kind": "gable light",
+              "w": 0.6
+            },
+            {
+              "kind": "gable light",
+              "w": 0.7
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
