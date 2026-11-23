@@ -2,6 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {put, type Frame} from './nearbar-kit';
 import {lipFromHead, stripedAwning, type AwningPolygon, type StripedAwningOpts, type TO} from '../../src/canalRecall/landmarks/stripedAwning';
+import {archAwning, type ArchAwningOpts} from '../../src/canalRecall/landmarks/archAwning';
 
 /**
  * Builder adapter for src/canalRecall/landmarks/stripedAwning.ts: a striped fabric canopy (markies) on a wall frame
@@ -12,10 +13,25 @@ import {lipFromHead, stripedAwning, type AwningPolygon, type StripedAwningOpts, 
 export function stripedAwningOn(b: BuildingTools, f: Frame, o: Omit<StripedAwningOpts, 'lip'> & {proj: number; endProj?: number; colours: [string, string]}) {
   const lip = lipFromHead(o.head, o.proj, o.endProj);
   const r = stripedAwning({...o, lip});
-  const polys = [...r.cloth, ...r.valance, ...r.cheeks];
+  drawPolys(b, f, [...r.cloth, ...r.valance, ...r.cheeks], o.colours);
+  return r;
+}
+
+/**
+ * A markies over a round-arched window (src/canalRecall/landmarks/archAwning.ts): the cloth runs round the arch, the valance
+ * hangs inside it, optional legs come down the jambs. Same colour rule as `stripedAwningOn`.
+ */
+export function archAwningOn(b: BuildingTools, f: Frame, o: ArchAwningOpts & {colours: [string, string]}) {
+  const r = archAwning(o);
+  drawPolys(b, f, [...r.cloth, ...r.valance, ...r.legs], o.colours);
+  return r;
+}
+
+/** One geometry per colour, in first-use order. */
+function drawPolys(b: BuildingTools, f: Frame, polys: AwningPolygon[], colours: [string, string]) {
   const byColour = new Map<string, number[]>();
   for (const p of polys) {
-    const c = o.colours[p.stripe];
+    const c = colours[p.stripe];
     const arr = byColour.get(c) ?? [];
     fan(p, arr);
     byColour.set(c, arr);
@@ -26,7 +42,6 @@ export function stripedAwningOn(b: BuildingTools, f: Frame, o: Omit<StripedAwnin
     g.computeVertexNormals();
     put(b, f, g, 0, 0, 0, c);
   }
-  return r;
 }
 
 /** Fan-triangulate a convex polygon in (t, y, o) into local (x = t, y, z = o) positions. */

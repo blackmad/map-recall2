@@ -1,0 +1,26 @@
+{
+  "id": "cafe-riche-rokin",
+  "countedBy": "lane landmarks-r18-d-20261123 from the rectified panorama recording_2025-06-19_03-28-47_01404 (2025, frontal, w04-102.jpg, 50 px/m) with the 2025 aimed view (w04-102.thumb.jpg) for the door bay; not yet blind-counted. Glazed openings of the Riche front only (Rokin 84, the north 9.3 m of the Rokin plane), bottom row first: three basement lights, the three round-arched ground windows and the mezzanine light over the door (the door itself is wood), four first-storey windows, four second-storey windows, the dormer's two arched windows.",
+  "facades": [
+    {
+      "name": "Riche front (Rokin 84)",
+      "bearing": 102,
+      "photo": "artifacts/landmark-briefs/cafe-riche-rokin/w04-102.thumb.jpg",
+      "alongM": [
+        20.1,
+        29.65
+      ],
+      "rows": [
+        3,
+        3,
+        1,
+        4,
+        4,
+        2
+      ],
+      "columns": 4,
+      "symmetric": false,
+      "note": "The ground storey holds the three arched windows; the small framed light over the door sits higher (5.45-6.25 m, above the arch crowns) and is its own row. The door bay is the viewer-left bay, so the front is not symmetric."
+    }
+  ]
+}

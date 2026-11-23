@@ -1,0 +1,496 @@
+{
+ "schemaVersion": 1,
+ "id": "cafe-riche-rokin",
+ "pand": "0363100012168347",
+ "brief": "scripts/landmarks/cafe-riche-rokin-brief.md",
+ "signature": [
+  "r-awnings-upper",
+  "r-awnings-arched",
+  "r-balcony",
+  "r-dormer-1883",
+  "r-arched-windows",
+  "r-rustication",
+  "r-columns",
+  "r-oculi",
+  "r-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w01-9",
+   "bearing": 9,
+   "lengthM": 17.3,
+   "centre": [
+    4.891991,
+    52.369993
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_003527",
+   "capturedAt": "2016-08-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-lion",
+     "kind": "sculpture",
+     "where": "Rock Inn front on the side lane: a lion holding a shield on a corbel over the pier between the first two arches",
+     "approxSizeM": [
+      0.9,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_003527",
+     "how": "corbel, body block, sphere head and a shield plate"
+    },
+    {
+     "id": "n-arcade",
+     "kind": "window-shape",
+     "where": "stone ground storey with wide segmental arches (shop glazing, fascia boards) under brick storeys with stone quoins and sills",
+     "approxSizeM": [
+      29.0,
+      8.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_003527",
+     "how": "three segmental openings cut in a stone face (spans read from 45/31-degree crops, about +-1 m), fascia board and mullions"
+    },
+    {
+     "id": "n-riche-return",
+     "kind": "other",
+     "where": "the Riche's return on the lane: brick with stone corner quoins, one axis of windows (arched at ground) and the cornice returned",
+     "approxSizeM": [
+      2.8,
+      16.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000019_pano_0000_003527"
+    },
+    {
+     "id": "n-rockinn-sign",
+     "kind": "sign",
+     "where": "ROCK INN fascia lettering",
+     "approxSizeM": [
+      1.4,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000019_pano_0000_003527",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant fascia lettering of 2016"
+     }
+    }
+   ],
+   "note": "North side on the lane, s 0-17.3 from the Rokin corner: the Riche return (s 0-2.8) and the Rock Inn office (s 2.8 on). 45-degree crop: widths good to about 1 m."
+  },
+  {
+   "tag": "w02-8",
+   "bearing": 8,
+   "lengthM": 14.8,
+   "centre": [
+    4.891758,
+    52.370014
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000295",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-upper",
+     "kind": "window-shape",
+     "where": "Rock Inn brick storeys: grouped windows (narrow, wide, narrow) with stone sills and lintels; the west end steps down",
+     "approxSizeM": [
+      14.8,
+      10.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002628_pano_0000_000295",
+     "how": "window groups per arch, three wall tops from the 3DBAG; the oblique crops cannot fix every axis"
+    },
+    {
+     "id": "n-hoarding",
+     "kind": "other",
+     "where": "adidas construction hoarding along the ground floor",
+     "approxSizeM": [
+      14.0,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002628_pano_0000_000295",
+     "skip": {
+      "reason": "temporary",
+      "note": "2022 shopfitting hoarding"
+     }
+    }
+   ],
+   "note": "North side, s 17.2-32: the rest of the Rock Inn front; 31-degree crop, the 2024 second view is a night shot."
+  },
+  {
+   "tag": "w03-103",
+   "bearing": 103,
+   "lengthM": 9.5,
+   "centre": [
+    4.892065,
+    52.3698375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0003_000113",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "b86-balustrade",
+     "kind": "other",
+     "where": "Rokin 86: white stone cornice on brackets with a roof balustrade (14.04-15.74 m)",
+     "approxSizeM": [
+      6.9,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0003_000113",
+     "how": "balustrade kit, cornice with brackets"
+    },
+    {
+     "id": "b86-windows",
+     "kind": "window-shape",
+     "where": "Rokin 86: three axes of white two-light windows with transoms on three brick storeys; French iron balconies on the middle axis; segmental white hood over its top window",
+     "approxSizeM": [
+      6.9,
+      7.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0003_000113"
+    },
+    {
+     "id": "b86-valances",
+     "kind": "canopy",
+     "where": "Rokin 86: red valances over some windows (middle axis upper two, south axis lowest)",
+     "approxSizeM": [
+      1.4,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002542_pano_0003_000113",
+     "how": "one-colour stripedAwningOn without cheeks"
+    },
+    {
+     "id": "b86-ing",
+     "kind": "sign",
+     "where": "Rokin 86: orange ING panel with two cash machines in the dark grey shopfront",
+     "approxSizeM": [
+      4.3,
+      4.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002542_pano_0003_000113",
+     "how": "orange back panel and two orange boxes; the lion logo is not drawn"
+    },
+    {
+     "id": "o-office",
+     "kind": "other",
+     "where": "Rokin 88-90 (on this wall's left): stone office, six axes between pilasters, roundel spandrels, dark polished ground floor with the ING entrance",
+     "approxSizeM": [
+      13.3,
+      18.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0003_000113"
+    }
+   ],
+   "note": "Rokin 86 (T 9.28-16.15, the brick front) and the north end of Rokin 88-90; the 3DBAG part boundary at T 15.66 is 0.5 m north of the photo's brick/stone joint (T 16.15), which is used."
+  },
+  {
+   "tag": "w04-102",
+   "bearing": 102,
+   "lengthM": 6.6,
+   "centre": [
+    4.892107,
+    52.369953
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01404",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-awnings-upper",
+     "kind": "canopy",
+     "where": "red fabric markiezen over all eight upper windows: scalloped valance at the head, narrow red drapes hanging down both jambs (first storey ~1.1 m, second ~1.4 m)",
+     "approxSizeM": [
+      1.4,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "stripedAwningOn one colour (valance, scallop, cheeks with a low wall hem) plus drape strips in the reveal"
+    },
+    {
+     "id": "r-awnings-arched",
+     "kind": "canopy",
+     "where": "red cloth following the arch of each of the three tall ground windows, scalloped inside the arch and coming ~0.6 m down the jambs",
+     "approxSizeM": [
+      1.4,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "archAwning.ts (new kit part), archAwningOn, 9 segments, legs 0.6 m"
+    },
+    {
+     "id": "r-balcony",
+     "kind": "balcony-ironwork",
+     "where": "long iron balcony across the whole front at the second storey (10.66-11.8 m) on carved corbels",
+     "approxSizeM": [
+      9.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "stone slab, top/middle/bottom rails, bars every 0.115 m, posts over the corbels, end returns; the scroll pattern is drawn as bars"
+    },
+    {
+     "id": "r-dormer-1883",
+     "kind": "lettering",
+     "where": "white stone dormer pavilion over the cornice with two arched windows, cornice, attic dated \"1883\", segmental crest, urns at the corners",
+     "approxSizeM": [
+      3.6,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "mansardDormers front cut with two arched windows, pilasters, foot volutes, attic block with 5x7 \"1883\", segmental crest, finial, two urns"
+    },
+    {
+     "id": "r-arched-windows",
+     "kind": "window-shape",
+     "where": "three tall round-arched ground windows (2.3-5.65 m, 1.34 m wide) with wooden lower panels behind iron rails, in rusticated stone with radiating voussoirs",
+     "approxSizeM": [
+      1.34,
+      3.35
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404"
+    },
+    {
+     "id": "r-rustication",
+     "kind": "other",
+     "where": "V-jointed rusticated ground storey 2.14-6.3 m with voussoirs round the arches",
+     "approxSizeM": [
+      9.4,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "seven courses of blocks 4 cm apart on a darker joint face, staggered, cut round the openings"
+    },
+    {
+     "id": "r-columns",
+     "kind": "colonnade",
+     "where": "engaged columns with Corinthian capitals between the second-storey windows",
+     "approxSizeM": [
+      0.45,
+      3.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "12-sided shafts on plinth blocks, capitals as two stepped blocks (no acanthus)"
+    },
+    {
+     "id": "r-oculi",
+     "kind": "window-shape",
+     "where": "oval oculi in carved shell-crested cartouches over the four second-storey windows (13.5-14.74 m)",
+     "approxSizeM": [
+      0.8,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "stone ring, pale oval disc, half-round shell crest, two side bosses"
+    },
+    {
+     "id": "r-cornice",
+     "kind": "other",
+     "where": "garland frieze (15.0-15.75) and dentil-and-modillion cornice to 16.85 m",
+     "approxSizeM": [
+      9.4,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "frieze slab with swags (two tilted strips and a rosette), dentils every 0.17 m, modillions every 0.45 m, corona and crown"
+    },
+    {
+     "id": "r-consoles",
+     "kind": "relief",
+     "where": "carved consoles between the first-storey windows rising into the balcony corbels with faces",
+     "approxSizeM": [
+      0.45,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "strips, stepped corbel blocks, an ellipsoid boss for the carved face"
+    },
+    {
+     "id": "r-keystones",
+     "kind": "sculpture",
+     "where": "carved keystone masks over the three arched windows",
+     "approxSizeM": [
+      0.45,
+      0.65
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "keystone block with an ellipsoid head"
+    },
+    {
+     "id": "r-relief-band",
+     "kind": "relief",
+     "where": "relief panels in the band under the first-storey windows (6.5-7.22 m) and pedestals under the consoles",
+     "approxSizeM": [
+      1.45,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "dark sunk panel with three carved lozenges and a bar per window"
+    },
+    {
+     "id": "r-corner-piers",
+     "kind": "relief",
+     "where": "corner piers of the second storey with candelabrum relief panels",
+     "approxSizeM": [
+      0.8,
+      3.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "pier, dark sunk panel, raised stem with four lozenges"
+    },
+    {
+     "id": "r-door",
+     "kind": "window-shape",
+     "where": "round-arched varnished double door in the door bay (T 7.3-8.5) under a carved hood, with a framed mezzanine light and scrolls above, between rusticated pilasters",
+     "approxSizeM": [
+      2.7,
+      6.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404"
+    },
+    {
+     "id": "r-mansard",
+     "kind": "other",
+     "where": "slate mansard over the cornice",
+     "approxSizeM": [
+      9.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "mansardDormers slope with the dormer cut out, south end closed"
+    },
+    {
+     "id": "r-plinth",
+     "kind": "other",
+     "where": "grey granite plinth to 2.14 m with three basement lights",
+     "approxSizeM": [
+      9.4,
+      2.14
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01404"
+    },
+    {
+     "id": "r-lamp",
+     "kind": "lamp",
+     "where": "wall lamp beside the door",
+     "approxSizeM": [
+      0.2,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "how": "small white box"
+    },
+    {
+     "id": "r-sign",
+     "kind": "sign",
+     "where": "small green projecting sign at the north end (Het Lagerhuys)",
+     "approxSizeM": [
+      0.3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.3 m tenant blade sign"
+     }
+    },
+    {
+     "id": "r-umbrellas",
+     "kind": "canopy",
+     "where": "green terrace parasols in front of the ground floor",
+     "approxSizeM": [
+      2.5,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_03-28-47_01404",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture, folded in the 2025 view"
+     }
+    }
+   ],
+   "note": "The Riche front, Rokin 84 (T 0-9.28 from the north corner: ring edges 28-29 plus the door-bay jogs). Frontal 2025 crop at 50 px/m, heights h = (1012 - y)/50; the 2022 frontal crop agrees within 10 px. Four bays 2.0 m apart; the door bay is the south one. The corner turret at the right of the aimed view is across the lane (another pand)."
+  },
+  {
+   "tag": "w05-103",
+   "bearing": 103,
+   "lengthM": 5.2,
+   "centre": [
+    4.8920335,
+    52.369748
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0003_000115",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "o-attic",
+     "kind": "other",
+     "where": "Rokin 88-90: raised stone attic bays with a window over the second and fifth axes between peaked piers, slate roof between",
+     "approxSizeM": [
+      2.1,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002542_pano_0003_000115",
+     "how": "mansardDormers with the two attic bays as dormers, pier blocks with gabled tops"
+    },
+    {
+     "id": "o-spandrels",
+     "kind": "relief",
+     "where": "Rokin 88-90: light stone spandrel panels with three carved roundels under every window and under the cornice",
+     "approxSizeM": [
+      1.45,
+      0.42
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002542_pano_0003_000115",
+     "how": "panel with three lozenges per window"
+    }
+   ],
+   "note": "The south end of Rokin 88-90 (to T 29.4); left of it is De Rijnstroom/Hajenius, another pand."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
