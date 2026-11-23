@@ -132,7 +132,11 @@
         {
           "src": "whats-new/2026-11-22-generator.jpg",
           "alt": "The Generator on the Mauritskade in the game: a dark brick former laboratory with its tower and entrance sign among the trees of the Oosterpark",
-          "caption": "The Generator, Mauritskade"
+          "caption": "The Generator, Mauritskade",
+          "guard": {
+            "kind": "single",
+            "reason": "after only: the Generator in the ride"
+          }
         }
       ]
     },
@@ -256,7 +260,15 @@
         {
           "src": "whats-new/2026-11-21-postwar-grey-brick-before.jpg",
           "alt": "Windroosplein block before: red brick",
-          "caption": "Before"
+          "caption": "Before",
+          "guard": {
+            "target": [
+              0,
+              0,
+              0.67,
+              0.68
+            ]
+          }
         },
         {
           "src": "whats-new/2026-11-21-postwar-grey-brick-after.jpg",
@@ -268,14 +280,7 @@
     {
       "date": "2026-11-21",
       "title": "Every shop window looks into the same shop",
-      "text": "Yesterday's fix only evened out the light; a café's windows still showed a bottle shelf, a white poster wall and a café side by side. Now every window of a shop looks into one room, with the same back wall, floor, lights and counter line, and only the things in it change: tables in one window, the counter in another. Cafés are warm wood, ice-cream parlours pink and white, bars dark, and a cheese shop or bakery no longer has supermarket shelves.",
-      "images": [
-        {
-          "src": "whats-new/2026-11-21-shop-one-room.jpg",
-          "alt": "Shopfronts before and after: Bagels & Beans, Coffee Company, IJscuypje, Starbucks, Le Pain Quotidien, a bakery, a cheese shop and a doner",
-          "caption": "Before, after, in pairs"
-        }
-      ]
+      "text": "Yesterday's fix only evened out the light; a café's windows still showed a bottle shelf, a white poster wall and a café side by side. Now every window of a shop looks into one room, with the same back wall, floor, lights and counter line, and only the things in it change: tables in one window, the counter in another. Cafés are warm wood, ice-cream parlours pink and white, bars dark, and a cheese shop or bakery no longer has supermarket shelves."
     },
     {
       "date": "2026-11-21",
@@ -317,14 +322,7 @@
     {
       "date": "2026-11-20",
       "title": "A shop's windows look into one room",
-      "text": "After the windows stopped repeating, some shops looked like three stores side by side: a white-tiled room next to a warm café next to a dark green blind. The other windows now take the light and brightness of the shop's main window, and blinds are plain cream instead of red or green. Bagels & Beans, Coffee Company, Starbucks and IJscuypje each read as one shop again.",
-      "images": [
-        {
-          "src": "whats-new/2026-11-20-shop-one-room.jpg",
-          "alt": "Bagels & Beans, Coffee Company and IJscuypje shopfronts before and after",
-          "caption": "Before, after"
-        }
-      ]
+      "text": "After the windows stopped repeating, some shops looked like three stores side by side: a white-tiled room next to a warm café next to a dark green blind. The other windows now take the light and brightness of the shop's main window, and blinds are plain cream instead of red or green. Bagels & Beans, Coffee Company, Starbucks and IJscuypje each read as one shop again."
     },
     {
       "date": "2026-11-20",
@@ -2278,12 +2276,12 @@
       "text": "\"Reeks beëindigen\" shortens to \"Stop reeks\" when the long form would touch its button edges; the stamp line and the plaque drop their tally and step down a size before any ellipsis, so \"naar Pathé Tuschinski Cinema\" reads whole. The pause card's keycaps wrap to two rows instead of running past the card. On phones the What's New notice is a banner above the page with 44 px targets, not a toast over the heading.",
       "images": [
         {
-          "src": "ui/2026-11-09-r2-phone-fit/pause-card-desktop-after.jpg",
+          "src": "ui/2026-11-09-r2-phone-fit/r2-6-pause-en-after.jpg",
           "alt": "The pause card with its keycaps on two rows",
           "caption": "Pause card keycaps on two rows."
         },
         {
-          "src": "ui/2026-11-09-r2-phone-fit/landing-toast-phone-after.jpg",
+          "src": "ui/2026-11-09-r2-phone-fit/r2-11-toast-after.jpg",
           "alt": "The What's New banner above the landing page on a phone",
           "caption": "The notice no longer covers the heading."
         }
@@ -2292,31 +2290,12 @@
     {
       "date": "2026-11-09",
       "title": "A reload in the middle of a run keeps your leg",
-      "text": "Reloading the page during the second or later stop of a run used to drop you on the route setup card with a different destination while the run was still open. The leg is now saved whenever it is loading, riding or paused, so a reload keeps you riding to the same stop. The destination readout now shows the route left (1.4 km) instead of the straight line (1.1 km), so it agrees with the landing's \"about 1.5 km\".",
-      "images": [
-        {
-          "src": "ui/2026-11-09-r2-run-start/B-04b-after-reload-desktop-after.jpg",
-          "alt": "After a reload the same leg keeps riding",
-          "caption": "Same leg after a reload."
-        }
-      ]
+      "text": "Reloading the page during the second or later stop of a run used to drop you on the route setup card with a different destination while the run was still open. The leg is now saved whenever it is loading, riding or paused, so a reload keeps you riding to the same stop. The destination readout now shows the route left (1.4 km) instead of the straight line (1.1 km), so it agrees with the landing's \"about 1.5 km\"."
     },
     {
       "date": "2026-11-09",
       "title": "Het spel spreekt Nederlands",
-      "text": "In the Dutch game the answer feedback is now Dutch (\"Goed — Munttoren (+86 pnt · bonus nieuwe naam)\") and place names are Dutch on every card: the destination pill says NIEUWE KERK, the landmark card MUNTTOREN, the arrival Koninklijk Theater Tuschinski. Twenty-one Dutch names were added from the landmarks' own Dutch Wikipedia titles and Wikidata labels; nothing was machine-translated. The share picture stays English for now.",
-      "images": [
-        {
-          "src": "ui/2026-11-09-r2-dutch/C-01-ride-start-desktop-after.jpg",
-          "alt": "The Dutch ride start with the pill reading NIEUWE KERK",
-          "caption": "The destination pill in Dutch."
-        },
-        {
-          "src": "ui/2026-11-09-r2-dutch/C-q1-after-phone-after.jpg",
-          "alt": "The phone landmark card reading MUNTTOREN · Genoteerd",
-          "caption": "Munttoren asked, Munttoren shown."
-        }
-      ]
+      "text": "In the Dutch game the answer feedback is now Dutch (\"Goed — Munttoren (+86 pnt · bonus nieuwe naam)\") and place names are Dutch on every card: the destination pill says NIEUWE KERK, the landmark card MUNTTOREN, the arrival Koninklijk Theater Tuschinski. Twenty-one Dutch names were added from the landmarks' own Dutch Wikipedia titles and Wikidata labels; nothing was machine-translated. The share picture stays English for now."
     },
     {
       "date": "2026-11-09",
@@ -2490,7 +2469,7 @@
           "caption": "The run card agrees."
         },
         {
-          "src": "ui/2026-11-09-run-points/05-share-keycap-at-once.jpg",
+          "src": "ui/2026-11-09-run-points/05-share-keycap-at-once-desktop.jpg",
           "alt": "The Torture Museum to Pathé Tuschinski arrival on a phone, now with the Share key",
           "caption": "Share is there on every arrival."
         }

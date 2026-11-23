@@ -1,12 +1,62 @@
 [
-  { "src": "whats-new/2026-11-22-nieuwe-doelenstraat-12.jpg", "date": "2026-11-22", "why": "too similar: slightly darker brick and a few stone dots, 2.2 % target mean diff; the user: nearly identical" },
-  { "src": "whats-new/2026-11-22-van-baerlestraat.jpg", "date": "2026-11-22", "why": "the after barely differs at What's New size; the row was being redone in lane/baerle-fix-20261122" },
-  { "src": "whats-new/2026-11-22-pc-hooftstraat-brick*", "date": "2026-11-22", "why": "PC Hooftstraat 80-112 brick: the after barely differs at What's New size" },
-  { "src": "whats-new/2026-11-22-koetshuis-keizersgracht-607.jpg", "date": "2026-11-22", "why": "weak pair (little visible change), removed by the integrator when merging round 20261122f into round 20261123x" },
-  { "src": "whats-new/2026-11-22-sarphatistraat-47.jpg", "date": "2026-11-22", "why": "weak pair (little visible change), removed by the integrator when merging round 20261122f into round 20261123x" },
-  { "src": "whats-new/2026-11-23-huis-fuld.jpg", "date": "2026-11-23", "why": "the before is the plot-clearing underlay shot (an empty lot), refused by the pair guard at 2.6 %" },
-  { "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg", "date": "2026-11-22", "why": "unsettled capture: the before was a half-loaded empty lot; replaced by -v2" },
-  { "src": "whats-new/2026-11-22-jungle-amsterdam.jpg", "date": "2026-11-22", "why": "unsettled capture: both frames half-loaded; replaced by -v2" },
-  { "src": "whats-new/2026-11-22-hans-en-grietje.jpg", "date": "2026-11-22", "why": "unsettled capture: both frames half-loaded; replaced by -v2" },
-  { "src": "whats-new/2026-11-22-kweekschool.jpg", "date": "2026-11-22", "why": "unsettled capture before the settle fix; replaced by -v2" }
+  {
+    "src": "whats-new/2026-11-22-nieuwe-doelenstraat-12.jpg",
+    "date": "2026-11-22",
+    "why": "too similar: slightly darker brick and a few stone dots, 2.2 % target mean diff; the user: nearly identical"
+  },
+  {
+    "src": "whats-new/2026-11-22-van-baerlestraat.jpg",
+    "date": "2026-11-22",
+    "why": "the after barely differs at What's New size; the row was being redone in lane/baerle-fix-20261122"
+  },
+  {
+    "src": "whats-new/2026-11-22-pc-hooftstraat-brick*",
+    "date": "2026-11-22",
+    "why": "PC Hooftstraat 80-112 brick: the after barely differs at What's New size"
+  },
+  {
+    "src": "whats-new/2026-11-22-koetshuis-keizersgracht-607.jpg",
+    "date": "2026-11-22",
+    "why": "weak pair (little visible change), removed by the integrator when merging round 20261122f into round 20261123x"
+  },
+  {
+    "src": "whats-new/2026-11-22-sarphatistraat-47.jpg",
+    "date": "2026-11-22",
+    "why": "weak pair (little visible change), removed by the integrator when merging round 20261122f into round 20261123x"
+  },
+  {
+    "src": "whats-new/2026-11-23-huis-fuld.jpg",
+    "date": "2026-11-23",
+    "why": "the before is the plot-clearing underlay shot (an empty lot), refused by the pair guard at 2.6 %"
+  },
+  {
+    "src": "whats-new/2026-11-22-handelsschool-raamplein.jpg",
+    "date": "2026-11-22",
+    "why": "unsettled capture: the before was a half-loaded empty lot; replaced by -v2"
+  },
+  {
+    "src": "whats-new/2026-11-22-jungle-amsterdam.jpg",
+    "date": "2026-11-22",
+    "why": "unsettled capture: both frames half-loaded; replaced by -v2"
+  },
+  {
+    "src": "whats-new/2026-11-22-hans-en-grietje.jpg",
+    "date": "2026-11-22",
+    "why": "unsettled capture: both frames half-loaded; replaced by -v2"
+  },
+  {
+    "src": "whats-new/2026-11-22-kweekschool.jpg",
+    "date": "2026-11-22",
+    "why": "unsettled capture before the settle fix; replaced by -v2"
+  },
+  {
+    "src": "whats-new/2026-11-20-shop-one-room.jpg",
+    "date": "2026-11-23",
+    "why": "4x4 grid of shop windows: pairs differ 1.3-1.5 % at list size, the \"nearly nothing changes\" case the user rejected 2026-11-22"
+  },
+  {
+    "src": "whats-new/2026-11-21-shop-one-room.jpg",
+    "date": "2026-11-23",
+    "why": "4x4 grid of shop windows: pairs differ 1.3-1.5 % at list size, the \"nearly nothing changes\" case the user rejected 2026-11-22"
+  }
 ]

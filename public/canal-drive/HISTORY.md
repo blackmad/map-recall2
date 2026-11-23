@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Round 20261123y: What's New pictures are checked in the gate (2026-11-23)
+
+- **Why:** after round x removed weak or misleading pairs, merges of other sessions' rounds put them back twice (notes regenerated from older copies), and round 20261123a published a Huis Fuld pair whose "today" frame was the plot-clearing underlay shot.
+- **`check:whats-new-images` (lane/wn-guard-gate-20261123 9c34fea7c5), in check:canal:rest before test:hud:** runs the pair guard over every image of notes within 14 days of the newest note (floor `--from 2026-11-20` until 2026-12-03, because 115 older UI shots and sheets predate the guard), with optional per-image `guard` hints on the image entry (`kind: single|grid`, `panels`, `vertical`, `target`, ...; schema in src/canalRecall/whatsNewImageHints.ts). It fails on a refused pair, a missing file, or any image in `scripts/whats-new/removed-images.json` (12 entries: the 11-22/11-23 removals, the four unsettled originals the -v2 files replace, and both shop-one-room grids at 1.3-1.5 %). Images come from the screenshots clone or a one-time HTTPS fetch; offline it warns loudly and passes.
+- **Notes fixed:** generator marked `single` (after-only); post-war grey brick given a target box (3.4 %); both shop-one-room grids removed; six 404 links in the 2026-11-09 notes: three repointed to the files that exist (pause card, toast, share keycap), three dropped.
+
 ## Round 20261123x: What's New pictures checked and shown in a lightbox; Van Baerlestraat 22-30 redone; sculpture round 3 (2026-11-23)
 
 - **User feedback 2026-11-22 on three What's New pictures:** Van Baerlestraat 22-30's after was worse than its before; Nieuwe Doelenstraat 12 "looks like nearly nothing changes"; the Openbare Handelsschool before "didn't wait long enough to screenshot". Also: open pictures in a lightbox, not a new window.
