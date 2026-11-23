@@ -1,0 +1,50 @@
+{
+  "id": "muntplein-1",
+  "countedBy": "lane landmarks-r18-e-20261123 from the rectified panoramas TMX7316010203-002543_pano_0000_000105 (2022, Amstel front, w01-16.alt.jpg, 50.2 px/m) and recording_2025-06-19_03-28-47_01473 (2025, Muntplein front, w02-305.jpg, 50.2 px/m); not yet blind-counted. Glazed openings bottom row first; the door of Amstel 2 is solid wood and does not count, its pediment oculus does.",
+  "facades": [
+    {
+      "name": "Amstel front",
+      "bearing": 16,
+      "photo": "artifacts/landmark-briefs/muntplein-1/w01-16.alt.jpg",
+      "rows": [
+        3,
+        1,
+        3,
+        3,
+        2
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Cropped to the 9.4 m Amstel front (alongM: the silhouette's viewer-left edge is the shell's east side 0.47 m beyond the front's east corner; the turret and the Muntplein front beyond it are separate walls). Bands as the model's rows: the three round-arched shop windows; the oculus in the Amstel 2 door pediment (the door itself is solid wood); three first-storey and three second-storey axes; on the mansard the flat dormer (ten lights between posts narrower than 0.3 m, one ribbon) and the stone gable dormer's arched window over the west axis. Axes (2022 crop, px/50.2 from the east end): the door oculus 1.2 m, the first windows 2.5, the first arch with the flat dormer 3.5-3.9, the middle windows 5.2 and arch 5.7 (0.5 m apart), the west axis 7.9 (windows, arch and gable).",
+      "alongM": [
+        0.47,
+        9.84
+      ]
+    },
+    {
+      "name": "Muntplein front",
+      "bearing": 305,
+      "photo": "artifacts/landmark-briefs/muntplein-1/w02-305.jpg",
+      "rows": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Cropped to the 5.0 m Muntplein front (alongM: the silhouette's viewer-left edge is the Amstel front's east end, 4.65 m before the front's north corner). Bands as the model's rows: the round-arched shop window and the glazed shop door; the oculus over the door; each storey's pair of lights either side of a carved mullion narrower than 0.3 m (2025 crop: 0.26 m), one opening by the ribbon convention; the gable dormer's arched window. Axes (2025 crop): the shop window 1.6 m, the paired windows and the gable 2.5-2.6, the door and oculus 3.7.",
+      "alongM": [
+        4.65,
+        9.64
+      ]
+    }
+  ]
+}

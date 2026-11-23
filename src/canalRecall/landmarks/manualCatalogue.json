@@ -111013,5 +111013,114 @@
     ]
    ]
   }
+ },
+ {
+  "id": "muntplein-1",
+  "name": "Muntplein 1 / Amstel 2 (Volharding)",
+  "modelUrl": "./models/muntplein-1.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012179461"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89385793,
+    52.36700052
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 13.8,
+   "widthMetres": 10.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.89385793,
+    52.36700052
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012179461 (3DBAG CC BY 4.0, BAG CC0: addresses Amstel 2 and Muntplein 1) in native east/south metres (scripts/landmarks/muntplein-1-footprints.json, bag-shell-prepare.ts); the Amstel front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002543_pano_0000_000105 (2022, frontal) with b_20241211_0954_Track19_Sphere_00246 (2024), the Muntplein front from recording_2025-06-19_03-28-47_01473 (2025, frontal) with TMX7316010203-002310_pano_0001_000397 (2021), the corner turret from both aimed views, CC BY 4.0, heights fitted to the 3DBAG wall tops (12.6 and 12.85 m). Rijksmonument 518344. Per wall in scripts/landmarks/muntplein-1-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 17,
+  "galleryView": {
+   "theta": -0.35,
+   "phi": 1.2
+  },
+  "bagYear": 1892,
+  "measuredOverrides": true,
+  "materialOverrides": {
+   "brick": "#8a5546",
+   "stone": "#cbc6ba",
+   "sandstone": "#a8a296",
+   "greyBrick": "#6c6b69",
+   "slate": "#55595e",
+   "glass": "#343e47",
+   "frame": "#e2ded3",
+   "ochre": "#c4a978",
+   "blue": "#21509e",
+   "white": "#e4e0d6",
+   "concrete": "#eeeeea",
+   "dark": "#2e2b29",
+   "bronze": "#2a2d2c"
+  },
+  "attribution": {
+   "title": "Muntplein 1 / Amstel 2, Amsterdam: office building and cafe for the Maatschappij Volharding (A.L. van Gendt, 1892; rijksmonument 518344)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002543_pano_0000_000105/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012179461 (CC0): the corbelled corner turret with its slate spire, the scrolled stone dormer gables, the rusticated ground storey with round-arched shop windows and the lettered Amstel 2 doorcase, the block-surround windows, the patterned brick friezes and yellow brick bands, the cornice, the mansard and its flat dormer, the paired windows and the DIAMOND FACTORY fascia of the Muntplein front, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8939586,
+      52.3670129
+     ],
+     [
+      4.8938262,
+      52.3670359
+     ],
+     [
+      4.8938254,
+      52.3670377
+     ],
+     [
+      4.893797,
+      52.3670328
+     ],
+     [
+      4.8937979,
+      52.3670308
+     ],
+     [
+      4.893756,
+      52.3669941
+     ],
+     [
+      4.8938208,
+      52.3669755
+     ],
+     [
+      4.8939163,
+      52.3669505
+     ],
+     [
+      4.8939271,
+      52.3669477
+     ],
+     [
+      4.8939539,
+      52.3669872
+     ],
+     [
+      4.8939586,
+      52.3670129
+     ]
+    ]
+   ]
+  }
  }
 ]
