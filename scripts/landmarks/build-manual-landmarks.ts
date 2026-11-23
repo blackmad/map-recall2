@@ -564,6 +564,7 @@ import {buildSarphatistraat47} from './sarphatistraat-47-builder';
 import {buildKoetshuisKeizersgracht607} from './koetshuis-keizersgracht-607-builder';
 import {buildHuisFuld} from './huis-fuld-builder';
 import {buildSphinxHotel} from './sphinx-hotel-builder';
+import {buildSofitelTheGrand1926} from './sofitel-the-grand-1926-builder';
 import {buildUvaBinnengasthuisstraat9} from './uva-binnengasthuisstraat-9-builder';
 import {buildHenrickDeKeijserBuurtgebouw} from './henrick-de-keijser-buurtgebouw-builder';
 import {buildArchipelMakassarplein} from './archipel-makassarplein-builder';
@@ -1323,6 +1324,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='koetshuis-keizersgracht-607')buildKoetshuisKeizersgracht607(w,d,helpers);
     else if(id==='huis-fuld')buildHuisFuld(w,d,helpers);
     else if(id==='sphinx-hotel')buildSphinxHotel(w,d,helpers);
+    else if(id==='sofitel-the-grand-1926')buildSofitelTheGrand1926(w,d,helpers);
     else if(id==='uva-binnengasthuisstraat-9')buildUvaBinnengasthuisstraat9(w,d,helpers);
     else if(id==='henrick-de-keijser-buurtgebouw')buildHenrickDeKeijserBuurtgebouw(w,d,helpers);
     else if(id==='archipel-makassarplein')buildArchipelMakassarplein(w,d,helpers);
