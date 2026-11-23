@@ -22,9 +22,13 @@ test('pickStripImage skips an image of another size than strip.json (the bellamy
   assert.equal(both.file, 'staging/block-face/bellamyplein-18-38-r1/strip.jpg');
 });
 
-test('the mismatch really throws in measureStripPalette, which is why the build must catch per face', () => {
+// Two fixes for the same stale Bellamyplein strip met on 2026-11-23: pickStripImage skips a wrong-size image here, and
+// measureStripPalette (lane/baerle-fix-20261122) now measures nothing for a span past the image instead of throwing.
+// The per-face catch in rebuildExposure stays for any other error.
+test('a span past a stale strip image measures nothing instead of throwing', () => {
   const rgb = new Uint8Array(1101 * 755 * 3);
-  assert.throws(() => measureStripPalette({rgb, width: 1101, height: 755, x0: 1983, x1: 2203, pixelsPerMetre: 40, eavesM: 14}), RangeError);
+  const p = measureStripPalette({rgb, width: 1101, height: 755, x0: 1983, x1: 2203, pixelsPerMetre: 40, eavesM: 14});
+  assert.equal(p.wall, null);
 });
 
 test('rebuildExposure: a face that throws keeps its published entry; the others are measured', async () => {
