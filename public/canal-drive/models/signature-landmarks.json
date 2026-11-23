@@ -135730,12 +135730,12 @@
       },
       "bagYear": 1671,
       "materialOverrides": {
-        "sandstone": "#9e9c95",
-        "concrete": "#b3b0a6",
+        "sandstone": "#b4b0a7",
+        "concrete": "#c6c3ba",
         "white": "#e6e4dc",
         "frame": "#e8e6de",
         "glass": "#363f44",
-        "stone": "#6f7472",
+        "stone": "#8e8f8b",
         "brick": "#4a403c",
         "ochre": "#6a4a2e",
         "bronze": "#1d1f1f",
@@ -135847,7 +135847,7 @@
         "depthCoverage": 1.0275971635859062
       },
       "triangles": 7784,
-      "bytes": 121656,
+      "bytes": 121708,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

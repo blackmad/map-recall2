@@ -141,14 +141,16 @@ function front(b: BuildingTools) {
 
 /** A white sash window in the stone reveal: glass, frame, glazing bars, a stone sill. */
 function sash(b: BuildingTools, a: number, y0: number, y1: number, rows: number) {
-  const w = WIN_W - 0.08, B = 0.08;
+  // white frame 0.13 m (2021 crop: 6-7 px at 50 px/m), meeting rail 0.1 m, glazing bars 0.06 m, so the frames still read
+  // white at gallery and sheet distance
+  const w = WIN_W - 0.04, B = 0.13;
   slab(b, F, a, y0, w, y1 - y0, 0.02, 'glass', 0.04);
   for (const s of [-1, 1]) slab(b, F, a + s * (w / 2 - B / 2), y0, B, y1 - y0, 0.04, 'frame', 0.06);
   slab(b, F, a, y0, w, B, 0.04, 'frame', 0.06);
   slab(b, F, a, y1 - B, w, B, 0.04, 'frame', 0.06);
-  slab(b, F, a, y0 + (y1 - y0) / 2 - 0.04, w, 0.08, 0.04, 'frame', 0.06); // meeting rail
-  slab(b, F, a, y0, 0.04, y1 - y0, 0.03, 'frame', 0.065);
-  for (let r = 1; r < rows; r++) if (r * 2 !== rows) slab(b, F, a, y0 + r * (y1 - y0) / rows - 0.02, w, 0.04, 0.03, 'frame', 0.065);
+  slab(b, F, a, y0 + (y1 - y0) / 2 - 0.05, w, 0.1, 0.04, 'frame', 0.06); // meeting rail
+  slab(b, F, a, y0, 0.06, y1 - y0, 0.03, 'frame', 0.065);
+  for (let r = 1; r < rows; r++) if (r * 2 !== rows) slab(b, F, a, y0 + r * (y1 - y0) / rows - 0.03, w, 0.06, 0.03, 'frame', 0.065);
   slab(b, F, a, y0 - 0.12, WIN_W + 0.2, 0.12, SKIN + 0.12, 'concrete');
 }
 
