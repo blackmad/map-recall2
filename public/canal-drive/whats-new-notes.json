@@ -3,6 +3,75 @@
   "notes": [
     {
       "date": "2026-11-23",
+      "title": "Shops wear their real logos",
+      "text": "Praxis, Burger King, KFC, GWK, Dunkin', MediaMarkt and 20 more. Café Bonjour gets its é. The Duck Store fills its window with ducks. Bever and Decathlon show sportswear, Samsonite suitcases, Hunkemöller lingerie. Historic cafés like Leentje on the Thorbeckeplein draw their own shopfronts in the normal game again.",
+      "where": [
+        4.896084,
+        52.365502
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-leentje-thorbeckeplein.jpg",
+          "alt": "Leentje on the Thorbeckeplein from across the plein: before, a plain dark shopfront; after, its black pui with the LEENTJE frieze, and De Heeren van Aemstel next door with its own front",
+          "caption": "Leentje, Thorbeckeplein: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.4,
+              0.35,
+              0.4,
+              0.2
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-duck-store.jpg",
+          "alt": "The Duck Store's shopfront: before, generic shelves behind the glass; after, a window full of yellow rubber ducks",
+          "caption": "The Duck Store: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 0
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-cafe-bonjour.jpg",
+          "alt": "Café Bonjour's board: before it read CAF BONJOUR with the accented letter missing; after it reads CAFÉ BONJOUR",
+          "caption": "Café Bonjour: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 0,
+            "target": [
+              0.21,
+              0.29,
+              0.72,
+              0.18
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-23-bever.jpg",
+          "alt": "Bever's shopfront: before, dresses in the window; after, sports and outdoor clothing, shoes and rackets",
+          "caption": "Bever: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 0,
+            "target": [
+              0.22,
+              0.47,
+              0.68,
+              0.37
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
       "title": "Two modern blocks with their own faces, and a darker Klapmutsenveem",
       "text": "Tweede Hugo de Grootstraat 43 now has its supermarket podium with the red band, the glazed storey and the brick flats set back above. Panamalaan's long block shows its four different sides: glass and timber at the bottom, slate and dark brick above. The Klapmutsenveem on the IJ is now the dark purple-brown of the photo instead of orange, and its bay windows have proper frames. Later the same day the Klapmutsenveem's bay windows came out from the wall and its white bands got stronger, and Tweede Hugo de Grootstraat got its glass stair tower and the blinds behind the shop's upper windows.",
       "where": [

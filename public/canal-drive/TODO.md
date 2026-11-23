@@ -3046,6 +3046,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **KFC on the Damrak draws no board (round 20261123c).** Pand 0363100012179219 (KFC, Damrak, two
+  fronts in the 2025 panorama) shows a dark pui with no fascia or logo in the baked world at the house:frames
+  pose, while Burger King and Dunkin' on the Reguliersbreestraat do. Find whether the shop is matched to a
+  neighbouring pand or its run is suppressed.
+- **Own-front fast-food interiors are grey glass (round 20261123c).** The chains drawn under
+  their own board and logo (`CHAINS_OWN_FRONT` in `src/canalRecall/retailChains.ts`: Burger King,
+  KFC, Dunkin', Papa John's, Taco Mundo, Halal Fried Chicken and the other fast-food entries) show
+  grey glass with no goods, counter or menu boards behind it. Needs a fast-food interior layer
+  (counter, menu boards, seating) for own-front chains whose type template has not won.
 - **What's New "In progress" strip is stale (found 2026-10-30).** It renders
   `poi-work-queue.json` rows whose status matches draft/in-progress/awaiting,
   a queue nobody has written to since 2026-10-10. Of the nine rows shown, none
@@ -4404,6 +4413,11 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
+- **Halal Fried Chicken has no official logo (round 20261123c).** It is an own-front chain with
+  a set wordmark only; no sourced logo was found. Add one when a source with a URL turns up.
+- **H&M's mark reads modest on long boards (round 20261123c).** The square mark now fills the
+  board under the cap, but on fronts much wider than 6 m it still reads small; consider repeating
+  it or scaling with the board length.
 - **OSM outlines with nothing standing (2026-10-30).** AHN4 and AHN5 both
   see bare ground under some OSM-only outlines, now drawn as 1 m slabs
   (`source: "low"` in `scripts/data/osm-guessed-heights.json`). Examples are
