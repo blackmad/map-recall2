@@ -8,6 +8,18 @@
       "where": [
         4.87056869,
         52.37499018
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-tweede-hugo-de-grootstraat-43.jpg",
+          "alt": "Tweede Hugo de Grootstraat 43: the street photo of the supermarket corner, then the game from above, a plain brick box before and the red-banded podium with set-back flats after",
+          "caption": "Tweede Hugo de Grootstraat 43: photo, before, after"
+        },
+        {
+          "src": "whats-new/2026-11-23-klapmutsenveem-30.jpg",
+          "alt": "Klapmutsenveem on the IJ: the street photo of the dark brick warehouse block, then the game, orange brick before and the darker purple-brown after",
+          "caption": "Klapmutsenveem: photo, before, after"
+        }
       ]
     },
     {
@@ -43,6 +55,13 @@
       "where": [
         4.8913,
         52.3731
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-hoofdbureau-arms.jpg",
+          "alt": "The city arms on the police headquarters: the photo of two lions holding the crowned shield over a banner, then the model, two blocky shapes before and the lions, crown and banner after",
+          "caption": "Hoofdbureau van Politie arms: photo, before, after"
+        }
       ]
     },
     {
@@ -52,6 +71,13 @@
       "where": [
         4.8777,
         52.359
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-van-baerlestraat-26.jpg",
+          "alt": "Van Baerlestraat 22-30: the street photo, then the game, 26 with a bell-shaped stump before and its neck gable with a round cap and arched window after, in darker brick",
+          "caption": "Van Baerlestraat 22-30: photo, before, after"
+        }
       ]
     },
     {
@@ -61,6 +87,17 @@
       "where": [
         4.88387,
         52.36727
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-23-huis-fuld-photo-game.jpg",
+          "alt": "Huis Fuld from across the Keizersgracht: the street photo of the white stucco palazzo on the Molenpad corner, then the same view in the game",
+          "caption": "Huis Fuld: photo, game",
+          "guard": {
+            "kind": "single",
+            "reason": "photo beside the game at the same pose, not a before/after"
+          }
+        }
       ]
     },
     {
@@ -70,6 +107,17 @@
       "where": [
         4.8931,
         52.364
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-uva-binnengasthuisstraat-9.jpg",
+          "alt": "UvA, Binnengasthuisstraat 9: the street photo of the brick building with cream-framed windows and an attic figure, then the same view in the game",
+          "caption": "UvA, Binnengasthuisstraat 9: photo, game",
+          "guard": {
+            "kind": "single",
+            "reason": "photo beside the game at the same pose, not a before/after"
+          }
+        }
       ]
     },
     {
@@ -79,6 +127,13 @@
       "where": [
         4.8922,
         52.3838
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-westerdok-4.jpg",
+          "alt": "Westerdok 4: the street photo of the dark brick block with its glazed ground floor, then the game, a generic brown grid before and the dark brick with tall ground-floor glazing after",
+          "caption": "Westerdok 4: photo, before, after"
+        }
       ]
     },
     {
@@ -88,6 +143,18 @@
       "where": [
         4.8413,
         52.3813
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-akbarstraat-165-217.jpg",
+          "alt": "Akbarstraat 165-217: the street photo of red brick with box balconies, then the game, a dark grey grid before and red brick with box balconies after",
+          "caption": "Akbarstraat 165-217: photo, before, after"
+        },
+        {
+          "src": "whats-new/2026-11-22-krommeniestraat-1-135.jpg",
+          "alt": "Krommeniestraat 1-135: the street photo of buff brick with wide window bands, then the game, orange brick with small windows before and buff brick with window bands after",
+          "caption": "Krommeniestraat 1-135: photo, before, after"
+        }
       ]
     },
     {
@@ -113,6 +180,13 @@
       "where": [
         4.9305,
         52.3754
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-klapmutsenveem-rebuilt.jpg",
+          "alt": "Klapmutsenveem: the street photo of arched warehouse windows and oriels, then the game, a blank brick wall before and the arched windows after",
+          "caption": "Klapmutsenveem: photo, before, after"
+        }
       ]
     },
     {
@@ -148,6 +222,13 @@
       "where": [
         4.8842,
         52.3762
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-22-walraven-van-hall.jpg",
+          "alt": "The Walraven van Hall monument: the photo of the bronze fallen tree, then the model, a log with one branch before and the spreading roots and branches after",
+          "caption": "Walraven van Hall monument: photo, before, after"
+        }
       ]
     },
     {
@@ -377,7 +458,14 @@
     {
       "date": "2026-11-20",
       "title": "Post-war blocks take their real wall colour",
-      "text": "232 housing blocks built after 1965 now have the colour measured from a street photo, with buff brick, red brick and white render told apart, instead of a guessed one. 59 of them also keep their balconies, arcades and bay windows."
+      "text": "232 housing blocks built after 1965 now have the colour measured from a street photo, with buff brick, red brick and white render told apart, instead of a guessed one. 59 of them also keep their balconies, arcades and bay windows.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-20-postwar-spitsbergenstraat.jpg",
+          "alt": "Spitsbergenstraat 2-36: the street photo of the buff brick block, then the game at the same pose, red-brown brick before and buff brick after",
+          "caption": "Spitsbergenstraat 2-36: photo, before, after"
+        }
+      ]
     },
     {
       "date": "2026-11-20",
@@ -386,6 +474,17 @@
       "where": [
         4.8915,
         52.3742
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-20-magna-plaza.jpg",
+          "alt": "Magna Plaza on the Nieuwezijds Voorburgwal: the street photo of the striped brick and stone front with a tower spire, then the same view in the game",
+          "caption": "Magna Plaza: photo, game",
+          "guard": {
+            "kind": "single",
+            "reason": "photo beside the game at the same pose, not a before/after"
+          }
+        }
       ]
     },
     {
@@ -412,6 +511,17 @@
       "where": [
         4.88,
         52.3945
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-19-narva-eiland.jpg",
+          "alt": "A Narva-eiland block in the game from across the water: a row of separately designed fronts in red, grey, dark and pale brick",
+          "caption": "Narva-eiland in the game",
+          "guard": {
+            "kind": "single",
+            "reason": "after only: the street photos at this pose show the block under construction"
+          }
+        }
       ]
     },
     {
@@ -1599,6 +1709,13 @@
       "where": [
         4.87,
         52.3668
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-13-postjesweg-raised-street.jpg",
+          "alt": "Postjesweg by the Kinkerbrug: the street photo, then the game, the ground floor and front doors sunk under the pavement before and standing on it after",
+          "caption": "Postjesweg: photo, before, after"
+        }
       ]
     },
     {
