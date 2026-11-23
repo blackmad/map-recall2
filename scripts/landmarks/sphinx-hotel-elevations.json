@@ -1,15 +1,154 @@
 {
   "id": "sphinx-hotel",
-  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama recording_2025-07-14_07-34-51_00639 (2025, frontal, w03-6.alt.jpg), checked against the 2019 frontal crop (w03-6.jpg); not yet blind-counted. Glazed windows only, bottom row first, east house then west house: basement lights (two each), the ground storey (two each; the east house's third axis is the oculus entrance and the west house's is the hotel door), the three upper storeys (three each, the west house's middle axis French doors), the gable's attic window.",
+  "countedBy": "lane landmarks-r16-20261123 from the rectified panorama recording_2025-07-14_07-34-51_00639 (2025, frontal, w03-6.alt.jpg, 50 px/m), checked against the 2019 frontal crop (w03-6.jpg); lane landmarks-r17-20261123 recounted it and split the front into its two houses (alongM, metres from the east end; the photo's left is east): they share the facade plane but not their storey heights (the east house's first-floor windows stand 0.5 m above the west house's), so one facade clustered both houses' storeys into the same rows and judged each house's windows off-level against the other's. Glazed openings only, bottom row first. Not yet blind-counted.",
   "facades": [
     {
-      "name": "north (Weteringschans)",
+      "name": "north (Weteringschans), east house",
       "bearing": 6,
       "photo": "artifacts/landmark-briefs/sphinx-hotel/w03-6.alt.jpg",
-      "rows": [4, 4, 6, 6, 6, 1],
-      "columns": 6,
+      "alongM": [
+        0,
+        6.0
+      ],
+      "rows": [
+        2,
+        4,
+        3,
+        3,
+        3
+      ],
+      "columns": 3,
       "symmetric": false,
-      "openings": ["glass"]
+      "openings": [
+        "glass"
+      ],
+      "note": "w03-6.alt.jpg x 0-300 px: dark brown brick, three axes of round-headed windows. Basement: two barred lights. Ground storey: the entrance axis (transom light over the panelled door, the aedicule's oculus) and two round-headed windows. Three upper storeys of three.",
+      "mixedRows": [
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w03-6.alt.jpg (recording_2025-07-14_07-34-51_00639, 2025, 50 px/m, h = (1000 - y) * 0.0207 m): the entrance axis carries a transom light over the door (x 42-86, y 867-882 px) and the aedicule's round oculus (x 47-77, y 803-833) where the other two axes have round-headed windows (x 122-178 and 208-265, y 773-905); all four fall in one storey row.",
+          "openings": [
+            {
+              "kind": "door transom",
+              "w": 0.84
+            },
+            {
+              "kind": "oculus",
+              "w": 0.6
+            },
+            {
+              "kind": "window",
+              "w": 1.1
+            },
+            {
+              "kind": "window",
+              "w": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "north (Weteringschans), west house",
+      "bearing": 6,
+      "photo": "artifacts/landmark-briefs/sphinx-hotel/w03-6.alt.jpg",
+      "alongM": [
+        6.0,
+        12.4
+      ],
+      "rows": [
+        3,
+        4,
+        3,
+        3,
+        3,
+        1
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "w03-6.alt.jpg x 300-616 px: red brick with speklagen, three axes of segmental-headed windows, the gable's attic window. Basement: two barred lights under the east and middle axes; the hotel door's glazed upper panel falls in the same row. Ground storey: two windows and the paired round-headed lights of the aedicule over the hotel door. Second and third storeys: French doors with balconies on the middle axis. Fourth storey: three windows.",
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w03-6.alt.jpg (recording_2025-07-14_07-34-51_00639, 2025, 50 px/m, h = (1000 - y) * 0.0207 m): two barred basement lights under segmental heads (x 330-385 and 422-478, y 950-1000 px, 0-1.0 m) and the hotel door's glazed upper panel (x 525-565, y 912-965 px, 0.7-1.8 m) in the west bay; one row by height, two kinds.",
+          "openings": [
+            {
+              "kind": "basement light",
+              "w": 1.1
+            },
+            {
+              "kind": "basement light",
+              "w": 1.1
+            },
+            {
+              "kind": "door light",
+              "w": 0.8
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w03-6.alt.jpg: ground-storey windows on the east and middle axes (x 330-385 and 422-478, y 790-905 px) and, over the hotel door in the west axis, the aedicule's two round-headed lights with a white mullion between (x 527-567, y 792-852 px).",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.1
+            },
+            {
+              "kind": "window",
+              "w": 1.1
+            },
+            {
+              "kind": "paired lights",
+              "w": 0.85
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w03-6.alt.jpg: second storey, French doors with a balcony on the middle axis run 0.5 m lower than the side windows (middle glass x 422-475, y 625-760 px; sides x 330-385 and 515-570, y 625-735 px).",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.1
+            },
+            {
+              "kind": "french door",
+              "w": 1.1
+            },
+            {
+              "kind": "window",
+              "w": 1.1
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w03-6.alt.jpg: third storey, French doors with a balcony on the middle axis run 0.4 m lower than the side windows (middle glass x 422-475, y 467-590 px; sides y 467-570 px).",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 1.1
+            },
+            {
+              "kind": "french door",
+              "w": 1.1
+            },
+            {
+              "kind": "window",
+              "w": 1.1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

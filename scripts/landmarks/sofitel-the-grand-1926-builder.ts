@@ -49,6 +49,7 @@ export function buildSofitelTheGrand1926(_w: number, _d: number, b: BuildingTool
   for (const e of [5, 9, 13, 17, 21, 25, 29]) curveFacet(b, e, 5.1);
   curveFacet(b, 33, 2.76);
   southEnd(b);
+  southSide(b);
   setSink(sink0);
 }
 
@@ -119,8 +120,9 @@ function northBlock(b: BuildingTools) {
   // stone band at the 3DBAG wall top, then the attic storey 0.3 m back
   slab(b, f, L / 2, 15.95, L, 0.3, 0.2, 'stone');
   const fa = shift(f, -0.33);
-  // four groups of three (w01: centres x 223, 444, 664, 885 px), the last pulled in to clear the corner tower at t 18.9
-  for (const c of [4.4, 8.8, 13.2, 17.35]) for (const o of [-1.05, 0, 1.05]) small(b, fa, c + o, 16.6, 17.8, 0.72);
+  // four groups of three (w01: centres x 223, 444, 664, 885 px), the last pulled in to clear the corner tower at t 18.9;
+  // r17 recount (w01 at 50 px/m): windows 0.76 m frame to frame at a 1.13 m pitch in a group (x 149-186, 205-244, 262-301)
+  for (const c of [4.4, 8.8, 13.2, 17.35]) for (const o of [-1.13, 0, 1.13]) small(b, fa, c + o, 16.6, 17.8, 0.76);
   void len;
 }
 
@@ -171,10 +173,56 @@ function curveFacet(b: BuildingTools, e: number, len: number) {
   if (!narrow && e !== 29) dormer(b, f, 3.03, 3.0, e);
 }
 
+/** The facets' cornice (median 3DBAG wall top of edges 9-29: 19.39, 19.18, 18.72, 19.04, 19.35). The 2021 panoramas show one
+ *  continuous eaves line along the curve with every dormer just above it. */
+const CURVE_EAVES = 19.18;
+
+/** Front-plane 3DBAG walls of edge e, projected to (t, y), with how far each stands proud of the ring line. */
+function frontWalls(e: number): {pts: [number, number][]; proud: number}[] {
+  const {f} = ringFrame(src.facadeRing, e);
+  const out: {pts: [number, number][]; proud: number}[] = [];
+  for (const s of src.surfaces) {
+    if (s.type !== 'WallSurface') continue;
+    const r = s.rings[0];
+    const n = r.map(p => (p[0] - f.origin[0]) * f.n[0] + (p[2] - f.origin[1]) * f.n[1]);
+    if (Math.max(...n.map(Math.abs)) > 0.1) continue;
+    out.push({pts: r.map(p => [(p[0] - f.origin[0]) * f.tangent[0] + (p[2] - f.origin[1]) * f.tangent[1], p[1]] as [number, number]), proud: Math.max(0, ...n)});
+  }
+  return out;
+}
+
+/** The part of a polygon at or above height y (one Sutherland-Hodgman clip). */
+function clipAbove(pts: [number, number][], y: number): [number, number][] {
+  const res: [number, number][] = [];
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[i], c = pts[(i + 1) % pts.length];
+    const ia = a[1] >= y, ic = c[1] >= y;
+    if (ia) res.push(a);
+    if (ia !== ic) { const k = (y - a[1]) / (c[1] - a[1]); res.push([a[0] + k * (c[0] - a[0]), y]); }
+  }
+  return res;
+}
+
 /** A white dormer box in the tiled roof just above the eaves (w12: x 75-228, y 145-190), its front 0.1 m behind the wall (the 3DBAG roof rises ~1.3 m per metre back, so a deeper front sinks into the slope). */
 function dormer(b: BuildingTools, f: Frame, t: number, w: number, e: number) {
-  const top = eaves(e);
-  const y0 = top + 0.12, h = 0.95, fd = shift(f, -0.1);
+  let top = eaves(e), front = -0.1;
+  if (top > CURVE_EAVES + 0.4) {
+    // Edges 5 and 13: the 3DBAG fused the dormer and roof into the front wall (tops 21.7 and 20.7 m), which put these two
+    // dormers 1.5-2.5 m above their neighbours. The photo's tiled roof is drawn over the wall above the cornice line and
+    // the dormer sits on the line like the others.
+    top = CURVE_EAVES;
+    let proud = 0;
+    for (const {pts, proud: p} of frontWalls(e)) proud = Math.max(proud, p);
+    for (const {pts} of frontWalls(e)) {
+      if (Math.max(...pts.map(p => p[1])) <= CURVE_EAVES + 0.4) continue;
+      const up = clipAbove(pts, CURVE_EAVES);
+      if (up.length >= 3) poly(b, f, 0, 0, up, 0.03, 'slate', proud + 0.04);
+    }
+    front = proud + 0.1; // in front of that tiled cover
+  }
+  // Edge 21's 3DBAG wall top is 18.72 m, half a metre under the line its neighbours share; the photo's dormers stand level.
+  top = Math.max(top, CURVE_EAVES - 0.1);
+  const y0 = top + 0.12, h = 0.95, fd = shift(f, front);
   // cheeks and top in the roof's tile, the front in cream boarding
   slab(b, fd, t, y0, w + 0.2, h + 0.15, 1.6, 'slate', -1.6);
   slab(b, fd, t, y0, w, h, 0.04, 'concrete', 0.0);
@@ -221,4 +269,75 @@ function southEnd(b: BuildingTools) {
   slab(b, f, 0.7, 0, 1.36, 2.7, 0.08, 'stone');
   for (const [y0, y1] of [[7.0, 9.4], [10.7, 13.2], [14.4, 16.8]]) small(b, f, 0.7, y0, y1, 1.0, false);
   for (const o of [-0.27, 0.27]) small(b, f, 0.7 + o, 18.3, 19.2, 0.42, false);
+}
+
+/**
+ * The south side on the Agnietenstraat (ring edge 38, w02-194: TMX7316010203-002629_pano_0001_000770, 2022-06-27, frontal,
+ * rectified at 50 px/m; t = x / 50 from the west corner, h = (1203 - y) / 50, the low block's 7.66 m roof at y 820). r16
+ * skipped it as not visible; the 2022 crop shows it plainly: the low block's wide window, the tower face set ~1.5 m back with
+ * three wide windows and three dark louvres under the parapet, a column of thirteen slot windows under a stepped stone
+ * chevron, and the lower wing on the right with three more wide windows. The 3DBAG faces there lean up to 6 degrees off the
+ * ring edge, so each part is drawn on its own surface's plane.
+ */
+function southSide(b: BuildingTools) {
+  const e = ringFrame(src.facadeRing, 38).f;
+  const h = (y: number) => +((1203 - y) / 50).toFixed(2);
+  // A frame on 3DBAG surface i's own plane; `at` maps an edge-38 t (the photo's x / 50) onto it.
+  const plane = (i: number) => {
+    const r = src.surfaces[i].rings[0];
+    let nx = 0, nz = 0;
+    for (let k = 0; k < r.length; k++) { const a = r[k], c = r[(k + 1) % r.length]; nx += (a[1] - c[1]) * (a[2] + c[2]); nz += (a[0] - c[0]) * (a[1] + c[1]); }
+    const l = Math.hypot(nx, nz); nx /= l; nz /= l;
+    const along = (q: number[]) => (q[0] - e.origin[0]) * e.tangent[0] + (q[2] - e.origin[1]) * e.tangent[1];
+    const p = r.reduce((m, q) => (along(q) < along(m) ? q : m));
+    const f: Frame = {origin: [p[0], p[2]], tangent: [-nz, nx], n: [nx, nz]};
+    if (f.tangent[0] * e.tangent[0] + f.tangent[1] * e.tangent[1] < 0) f.tangent = [nz, -nx];
+    const at = (t: number) => {
+      const x = e.origin[0] + e.tangent[0] * t, z = e.origin[1] + e.tangent[1] * t;
+      // along the edge's normal onto the plane, then along the plane
+      const d = ((p[0] - x) * nx + (p[2] - z) * nz) / (e.n[0] * nx + e.n[1] * nz);
+      return (x + e.n[0] * d - p[0]) * f.tangent[0] + (z + e.n[1] * d - p[2]) * f.tangent[1];
+    };
+    return {f, at};
+  };
+  /** The wide window of this side: four lights in two tiers over one tall pane, white frames, a stone sill. */
+  const tiered = (f: Frame, t: number, y0: number, y1: number, w: number) => {
+    const mid = y0 + (y1 - y0) * 0.46;
+    lights(b, f, t, mid, y1, w, 4, 2);
+    lights(b, f, t, y0, mid, w, 1, 1);
+    slab(b, f, t, y0 - 0.12, w + 0.24, 0.12, 0.16, 'stone');
+  };
+  // the low block (surface 374, the ring line): granite base and band, the wide window of three lights in two tiers (x 0-160)
+  slab(b, e, 6.3, 0, 12.5, 2.3, 0.08, 'stone');
+  slab(b, e, 6.3, 1.85, 12.5, 0.45, 0.14, 'stone');
+  lights(b, e, 1.62, h(1035), h(885), 3.1, 3, 2);
+  slab(b, e, 1.62, h(1035) - 0.12, 3.3, 0.12, 0.16, 'stone');
+  // the tower face (surface 361): three wide windows (x 93-207) and three dark louvres under the parapet (y 90-148)
+  {
+    const {f, at} = plane(361);
+    const t = at(3.0);
+    for (const [ya, yb] of [[818, 690], [613, 460], [385, 232]]) tiered(f, t, h(ya), h(yb), 2.28);
+    // (top held at 21.9 m, under the 3DBAG parapet at 22.3)
+    for (const x of [91, 150, 209]) slab(b, f, at(x / 50), 20.75, 0.94, 1.15, 0.04, 'dark', 0.02);
+  }
+  // the slot column (surface 379): thirteen slots (x 318-347), 4.6-20.2 m in the crop; drawn from 5.0 m at a 1.2 m pitch,
+  // clear of the 3DBAG's 4.9 m roof in front of the column's foot
+  {
+    const {f, at} = plane(379);
+    const t = at(6.65);
+    slab(b, f, t, 4.95, 0.95, 16.45, 0.12, 'brick');
+    for (let k = 0; k < 13; k++) {
+      const y0 = 5.0 + k * 1.2;
+      slab(b, f, t, y0, 0.5, 0.78, 0.02, 'glass', 0.17);
+      slab(b, f, t, y0 - 0.1, 0.66, 0.1, 0.24, 'stone');
+    }
+    // the chevron: stone courses stepping in to a point (x 295-365, y 40-190)
+    for (let k = 0; k < 6; k++) slab(b, f, t, h(190) + k * 0.5, 1.4 - k * 0.22, 0.5, 0.3, 'stone', 0.02);
+  }
+  // the lower wing on the right (surface 240): three wide windows (x 520-622)
+  {
+    const {f, at} = plane(240);
+    const t = at(11.42);
+    for (const [ya, yb] of [[865, 732], [670, 535], [470, 332]]) tiered(f, t, h(ya), h(yb), 2.04);
+  }
 }

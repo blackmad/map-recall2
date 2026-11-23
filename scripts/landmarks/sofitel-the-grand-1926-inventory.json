@@ -111,20 +111,85 @@
     {
      "id": "w2-slots",
      "kind": "window-shape",
-     "where": "column of small slot windows up the south tower with a stepped stone crest",
+     "where": "column of thirteen slot windows with stone sills up the tower's south face, 4.6-20.2 m (crop x 318-347)",
      "approxSizeM": [
-      0.4,
+      0.6,
       16
      ],
-     "plan": "skipped",
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770"
+    },
+    {
+     "id": "w2-chevron",
+     "kind": "other",
+     "where": "stepped stone chevron over the slot column under the parapet, 20.3-23.3 m (crop x 295-365, y 40-190)",
+     "approxSizeM": [
+      1.4,
+      3
+     ],
+     "plan": "simplified",
      "seenIn": "TMX7316010203-002629_pano_0001_000770",
-     "skip": {
-      "reason": "not-visible",
-      "note": "set back behind the low block, seen only from the narrow Agnietenstraat end"
-     }
+     "how": "six stone courses stepping in to a point"
+    },
+    {
+     "id": "w2-tower-windows",
+     "kind": "window-shape",
+     "where": "three wide windows on the tower face, four lights in two tiers over one pane (crop x 93-207)",
+     "approxSizeM": [
+      2.3,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770"
+    },
+    {
+     "id": "w2-louvres",
+     "kind": "window-shape",
+     "where": "three dark louvred openings under the tower parapet (crop y 90-148)",
+     "approxSizeM": [
+      0.94,
+      1.15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770",
+     "how": "dark panels, no slats"
+    },
+    {
+     "id": "w2-wing-windows",
+     "kind": "window-shape",
+     "where": "three wide windows on the lower wing to the east (crop x 520-622)",
+     "approxSizeM": [
+      2,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770"
+    },
+    {
+     "id": "w2-low-window",
+     "kind": "window-shape",
+     "where": "the low block's wide window, three lights in two tiers (crop x 0-160, y 885-1035)",
+     "approxSizeM": [
+      3.1,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770"
+    },
+    {
+     "id": "w2-ground",
+     "kind": "other",
+     "where": "granite ground storey and band; its dark wood windows are behind a skip and a truck in 2022",
+     "approxSizeM": [
+      12.5,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002629_pano_0001_000770",
+     "how": "granite base and band only; the wood windows are not drawn (occluded in the only crop)"
     }
    ],
-   "note": "South side (Agnietenstraat end), 2022 with a skip and truck in front; the tower face with slot windows and a stepped crest stands set back from the ring here."
+   "note": "South side on the Agnietenstraat, frontal 2022 crop (a skip and a truck cover the ground storey). r16 skipped it as not visible; r17 modelled it from the crop: the low block, the tower face set ~1.5 m back with three wide windows, louvres and the slot column under its chevron, and the lower wing's three wide windows, each on its own 3DBAG surface plane."
   },
   {
    "tag": "w03-29",
