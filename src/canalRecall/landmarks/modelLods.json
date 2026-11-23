@@ -7221,5 +7221,77 @@
    "bytes": 29608,
    "triangles": 1499
   }
+ },
+ "old-bell-rembrandtplein": {
+  "sourceHash": "1db8816711642a8b",
+  "buildVersion": 2,
+  "bytes": 82008,
+  "triangles": 3298,
+  "lod2": {
+   "sourceHash": "1db8816711642a8b",
+   "buildVersion": 6,
+   "bytes": 12184,
+   "triangles": 293
+  }
+ },
+ "cafe-riche-rokin": {
+  "sourceHash": "aef8ebbab4f6edbe",
+  "buildVersion": 2,
+  "bytes": 90968,
+  "triangles": 4255,
+  "lod2": {
+   "sourceHash": "aef8ebbab4f6edbe",
+   "buildVersion": 6,
+   "bytes": 24460,
+   "triangles": 809
+  }
+ },
+ "welgelegen": {
+  "sourceHash": "5894dda4be49c5c3",
+  "buildVersion": 2,
+  "bytes": 26020,
+  "triangles": 872,
+  "lod2": {
+   "sourceHash": "5894dda4be49c5c3",
+   "buildVersion": 6,
+   "bytes": 5888,
+   "triangles": 105
+  }
+ },
+ "weltevreden": {
+  "sourceHash": "1cd78b2059a7dd93",
+  "buildVersion": 2,
+  "bytes": 24404,
+  "triangles": 700,
+  "lod2": {
+   "sourceHash": "1cd78b2059a7dd93",
+   "buildVersion": 6,
+   "bytes": 5232,
+   "triangles": 86
+  }
+ },
+ "muntplein-1": {
+  "sourceHash": "2cf58c3785d84c0d",
+  "buildVersion": 2,
+  "bytes": 94048,
+  "triangles": 4437,
+  "lod2": {
+   "sourceHash": "2cf58c3785d84c0d",
+   "buildVersion": 6,
+   "bytes": 14044,
+   "triangles": 370
+  }
+ },
+ "koningsplein-1": {
+  "sourceHash": "9fcbb90bb6d4940e",
+  "buildVersion": 2,
+  "bytes": 68168,
+  "triangles": 2894,
+  "lod2": {
+   "sourceHash": "9fcbb90bb6d4940e",
+   "buildVersion": 6,
+   "bytes": 13620,
+   "triangles": 365
+  }
  }
 }

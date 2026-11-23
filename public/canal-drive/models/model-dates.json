@@ -8600,6 +8600,66 @@
       "updatedAt": "2026-11-23T07:45:16.374Z",
       "version": "1cd78b2059a7dd93",
       "dateSource": "asset-update"
+    },
+    "cafe-riche-rokin.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.409Z",
+      "version": "eebccbe07957b975",
+      "dateSource": "asset-update"
+    },
+    "cafe-riche-rokin.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.178Z",
+      "version": "79ae9c5f85440ddf",
+      "dateSource": "asset-update"
+    },
+    "koningsplein-1.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.473Z",
+      "version": "a1cb9ed726cbde1c",
+      "dateSource": "asset-update"
+    },
+    "koningsplein-1.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.955Z",
+      "version": "e5bd525b6a136cb6",
+      "dateSource": "asset-update"
+    },
+    "muntplein-1.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.454Z",
+      "version": "11bf882c2d5dbba3",
+      "dateSource": "asset-update"
+    },
+    "muntplein-1.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.664Z",
+      "version": "62dd61c4663f31be",
+      "dateSource": "asset-update"
+    },
+    "old-bell-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.380Z",
+      "version": "8965b62869759865",
+      "dateSource": "asset-update"
+    },
+    "old-bell-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-23T09:07:32.640Z",
+      "version": "cf2b5aea95bbbbeb",
+      "dateSource": "asset-update"
+    },
+    "welgelegen.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.421Z",
+      "version": "7afff05640a6b6b6",
+      "dateSource": "asset-update"
+    },
+    "welgelegen.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.274Z",
+      "version": "bcb9ebd51818b542",
+      "dateSource": "asset-update"
+    },
+    "weltevreden.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.434Z",
+      "version": "dc2b057ee24f2f47",
+      "dateSource": "asset-update"
+    },
+    "weltevreden.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.332Z",
+      "version": "a5c30a204abafd4f",
+      "dateSource": "asset-update"
     }
   }
 }
