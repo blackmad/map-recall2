@@ -130428,6 +130428,8 @@
       "name": "Klapmutsenveem 30-62 housing block",
       "modelUrl": "./models/klapmutsenveem-30.glb",
       "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012239386",
+        "NL.IMBAG.Pand.0363100012239387",
         "NL.IMBAG.Pand.0363100012239388"
       ],
       "spatialSuppression": false,
@@ -130457,7 +130459,7 @@
       },
       "bagYear": 2012,
       "materialOverrides": {
-        "brick": "#7a4439",
+        "brick": "#514240",
         "stone": "#e4e0d6",
         "dark": "#2a2c2e",
         "bronze": "#5f6461",
@@ -130640,7 +130642,7 @@
         "max": [
           99.2618179321289,
           25.72100067138672,
-          39.04780960083008
+          39.116905212402344
         ]
       },
       "placement": {
@@ -130656,23 +130658,23 @@
       "extent": {
         "widthMetres": 191.57363891601562,
         "heightMetres": 25.72000067133922,
-        "depthMetres": 70.5306568145752,
-        "depthCoverage": 0.36849872943874185
+        "depthMetres": 70.59975242614746,
+        "depthCoverage": 0.3688597305441351
       },
-      "triangles": 24382,
-      "bytes": 309564,
+      "triangles": 24774,
+      "bytes": 315184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "384c92398054b74e",
+        "sourceHash": "b49988b01e707ae4",
         "buildVersion": 2,
-        "bytes": 144868,
-        "triangles": 10949
+        "bytes": 145512,
+        "triangles": 11065
       },
       "lod2": {
-        "sourceHash": "384c92398054b74e",
+        "sourceHash": "b49988b01e707ae4",
         "buildVersion": 6,
-        "bytes": 25736,
-        "triangles": 1500
+        "bytes": 25640,
+        "triangles": 1497
       }
     },
     "depot-scheepvaartmuseum": {
@@ -135884,6 +135886,1006 @@
         "buildVersion": 6,
         "bytes": 7432,
         "triangles": 155
+      }
+    },
+    "tweede-hugo-de-grootstraat-43": {
+      "id": "tweede-hugo-de-grootstraat-43",
+      "name": "Tweede Hugo de Grootstraat 43, Dirk van den Broek and housing",
+      "modelUrl": "./models/tweede-hugo-de-grootstraat-43.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012148379"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87056869,
+          52.37499018
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 50.3,
+        "widthMetres": 70.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.87056869,
+          52.37499018
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012148379 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/tweede-hugo-de-grootstraat-43-footprints.json, bag-shell-prepare.ts); the podium and the set-back housing fronts read from the rectified Gemeente Amsterdam panoramas listed per wall in scripts/landmarks/tweede-hugo-de-grootstraat-43-inventory.json (2019-2025, CC BY 4.0; set-back fronts cropped with landmark-brief.ts --setback)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19,
+      "galleryView": {
+        "theta": 3.6,
+        "phi": 1.05
+      },
+      "bagYear": 1995,
+      "materialOverrides": {
+        "brick": "#958568",
+        "greyBrick": "#7a6656",
+        "frame": "#2f3a44",
+        "concrete": "#8c9294",
+        "red": "#b3141c",
+        "stone": "#c9c4b8",
+        "glass": "#47525a",
+        "blue": "#7f8a90",
+        "slate": "#4a4a48"
+      },
+      "attribution": {
+        "title": "Tweede Hugo de Grootstraat 43, Amsterdam (supermarket and housing, 1995)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-18_08-56-14_01786/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012148379 (CC0): the supermarket podium with its shop glass, sign band and lettering, glazed storey and zinc fascia, the buff brick housing with balconies and the set-back top storey, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8702112,
+              52.3751033
+            ],
+            [
+              4.87017,
+              52.3751114
+            ],
+            [
+              4.8701423,
+              52.3750748
+            ],
+            [
+              4.8701231,
+              52.3750661
+            ],
+            [
+              4.8700843,
+              52.375012
+            ],
+            [
+              4.8701095,
+              52.375
+            ],
+            [
+              4.8700701,
+              52.3749188
+            ],
+            [
+              4.870108,
+              52.3748999
+            ],
+            [
+              4.8701655,
+              52.3748844
+            ],
+            [
+              4.8702131,
+              52.3748799
+            ],
+            [
+              4.8702332,
+              52.3748949
+            ],
+            [
+              4.8702944,
+              52.3748785
+            ],
+            [
+              4.870289,
+              52.3748593
+            ],
+            [
+              4.8703269,
+              52.3748408
+            ],
+            [
+              4.870384,
+              52.3748254
+            ],
+            [
+              4.8704319,
+              52.3748209
+            ],
+            [
+              4.8704535,
+              52.3748371
+            ],
+            [
+              4.8705205,
+              52.374819
+            ],
+            [
+              4.8705152,
+              52.3747983
+            ],
+            [
+              4.870553,
+              52.3747799
+            ],
+            [
+              4.8706066,
+              52.3747653
+            ],
+            [
+              4.8706544,
+              52.3747609
+            ],
+            [
+              4.870676,
+              52.374777
+            ],
+            [
+              4.8707429,
+              52.374759
+            ],
+            [
+              4.8707353,
+              52.374729
+            ],
+            [
+              4.8707731,
+              52.3747105
+            ],
+            [
+              4.870879,
+              52.3746818
+            ],
+            [
+              4.870927,
+              52.3746774
+            ],
+            [
+              4.8709932,
+              52.3747277
+            ],
+            [
+              4.8710881,
+              52.3748593
+            ],
+            [
+              4.8711041,
+              52.3749233
+            ],
+            [
+              4.8710664,
+              52.3749418
+            ],
+            [
+              4.8709604,
+              52.3749705
+            ],
+            [
+              4.8709129,
+              52.374975
+            ],
+            [
+              4.8708672,
+              52.3749401
+            ],
+            [
+              4.8708641,
+              52.3749377
+            ],
+            [
+              4.8708638,
+              52.3749377
+            ],
+            [
+              4.8708636,
+              52.3749378
+            ],
+            [
+              4.8708633,
+              52.3749379
+            ],
+            [
+              4.870863,
+              52.3749379
+            ],
+            [
+              4.8708628,
+              52.3749379
+            ],
+            [
+              4.8708625,
+              52.374938
+            ],
+            [
+              4.8708622,
+              52.374938
+            ],
+            [
+              4.870862,
+              52.3749379
+            ],
+            [
+              4.8708617,
+              52.3749379
+            ],
+            [
+              4.8708615,
+              52.3749379
+            ],
+            [
+              4.8708613,
+              52.3749378
+            ],
+            [
+              4.870861,
+              52.3749378
+            ],
+            [
+              4.8708608,
+              52.3749377
+            ],
+            [
+              4.8708119,
+              52.3749507
+            ],
+            [
+              4.8708119,
+              52.3749508
+            ],
+            [
+              4.8708119,
+              52.3749509
+            ],
+            [
+              4.8708119,
+              52.374951
+            ],
+            [
+              4.8708119,
+              52.3749511
+            ],
+            [
+              4.8708118,
+              52.3749512
+            ],
+            [
+              4.8708118,
+              52.3749513
+            ],
+            [
+              4.8708117,
+              52.3749514
+            ],
+            [
+              4.8708116,
+              52.3749515
+            ],
+            [
+              4.8708115,
+              52.3749516
+            ],
+            [
+              4.8708114,
+              52.3749517
+            ],
+            [
+              4.8708113,
+              52.3749518
+            ],
+            [
+              4.8708112,
+              52.3749518
+            ],
+            [
+              4.8708111,
+              52.3749519
+            ],
+            [
+              4.8708109,
+              52.374952
+            ],
+            [
+              4.8708108,
+              52.374952
+            ],
+            [
+              4.8708106,
+              52.3749521
+            ],
+            [
+              4.8708104,
+              52.3749521
+            ],
+            [
+              4.8708103,
+              52.3749521
+            ],
+            [
+              4.8708101,
+              52.3749521
+            ],
+            [
+              4.8708108,
+              52.3749551
+            ],
+            [
+              4.8708195,
+              52.3749902
+            ],
+            [
+              4.8707821,
+              52.3750089
+            ],
+            [
+              4.8707297,
+              52.3750231
+            ],
+            [
+              4.8707292,
+              52.3750232
+            ],
+            [
+              4.8707237,
+              52.3750237
+            ],
+            [
+              4.8706807,
+              52.3750277
+            ],
+            [
+              4.8706447,
+              52.3750004
+            ],
+            [
+              4.8706412,
+              52.3749978
+            ],
+            [
+              4.8706411,
+              52.3749979
+            ],
+            [
+              4.870641,
+              52.3749979
+            ],
+            [
+              4.8706408,
+              52.374998
+            ],
+            [
+              4.8706407,
+              52.374998
+            ],
+            [
+              4.8706405,
+              52.3749981
+            ],
+            [
+              4.8706404,
+              52.3749981
+            ],
+            [
+              4.8706402,
+              52.3749981
+            ],
+            [
+              4.8706401,
+              52.3749982
+            ],
+            [
+              4.8706399,
+              52.3749982
+            ],
+            [
+              4.8706397,
+              52.3749982
+            ],
+            [
+              4.8706396,
+              52.3749982
+            ],
+            [
+              4.8706394,
+              52.3749981
+            ],
+            [
+              4.8706392,
+              52.3749981
+            ],
+            [
+              4.8706391,
+              52.3749981
+            ],
+            [
+              4.8706389,
+              52.374998
+            ],
+            [
+              4.8706388,
+              52.374998
+            ],
+            [
+              4.8706387,
+              52.3749979
+            ],
+            [
+              4.8706385,
+              52.3749979
+            ],
+            [
+              4.8706384,
+              52.3749978
+            ],
+            [
+              4.8706383,
+              52.3749977
+            ],
+            [
+              4.8706382,
+              52.3749976
+            ],
+            [
+              4.8705897,
+              52.3750107
+            ],
+            [
+              4.8705897,
+              52.3750108
+            ],
+            [
+              4.8705897,
+              52.3750109
+            ],
+            [
+              4.8705897,
+              52.3750111
+            ],
+            [
+              4.8705897,
+              52.3750112
+            ],
+            [
+              4.8705896,
+              52.3750113
+            ],
+            [
+              4.8705895,
+              52.3750114
+            ],
+            [
+              4.8705895,
+              52.3750115
+            ],
+            [
+              4.8705894,
+              52.3750117
+            ],
+            [
+              4.8705892,
+              52.3750118
+            ],
+            [
+              4.8705891,
+              52.3750119
+            ],
+            [
+              4.870589,
+              52.3750119
+            ],
+            [
+              4.8705888,
+              52.375012
+            ],
+            [
+              4.8705886,
+              52.3750121
+            ],
+            [
+              4.8705885,
+              52.3750122
+            ],
+            [
+              4.8705883,
+              52.3750122
+            ],
+            [
+              4.8705881,
+              52.3750123
+            ],
+            [
+              4.8705879,
+              52.3750123
+            ],
+            [
+              4.8705877,
+              52.3750123
+            ],
+            [
+              4.8705875,
+              52.3750123
+            ],
+            [
+              4.8705873,
+              52.3750123
+            ],
+            [
+              4.8705882,
+              52.3750155
+            ],
+            [
+              4.870595,
+              52.3750411
+            ],
+            [
+              4.8705572,
+              52.3750596
+            ],
+            [
+              4.8704967,
+              52.3750761
+            ],
+            [
+              4.8704491,
+              52.3750806
+            ],
+            [
+              4.8704308,
+              52.3750666
+            ],
+            [
+              4.8704227,
+              52.3750604
+            ],
+            [
+              4.8704194,
+              52.3750578
+            ],
+            [
+              4.8704193,
+              52.3750579
+            ],
+            [
+              4.8704192,
+              52.375058
+            ],
+            [
+              4.8704191,
+              52.3750581
+            ],
+            [
+              4.870419,
+              52.3750581
+            ],
+            [
+              4.8704188,
+              52.3750582
+            ],
+            [
+              4.8704187,
+              52.3750582
+            ],
+            [
+              4.8704185,
+              52.3750583
+            ],
+            [
+              4.8704184,
+              52.3750583
+            ],
+            [
+              4.8704182,
+              52.3750584
+            ],
+            [
+              4.8704181,
+              52.3750584
+            ],
+            [
+              4.8704179,
+              52.3750584
+            ],
+            [
+              4.8704177,
+              52.3750584
+            ],
+            [
+              4.8704176,
+              52.3750584
+            ],
+            [
+              4.8704174,
+              52.3750584
+            ],
+            [
+              4.8704172,
+              52.3750584
+            ],
+            [
+              4.8704171,
+              52.3750584
+            ],
+            [
+              4.8704169,
+              52.3750583
+            ],
+            [
+              4.8704168,
+              52.3750583
+            ],
+            [
+              4.8704166,
+              52.3750582
+            ],
+            [
+              4.8704165,
+              52.3750582
+            ],
+            [
+              4.8704164,
+              52.3750581
+            ],
+            [
+              4.8704162,
+              52.375058
+            ],
+            [
+              4.8704161,
+              52.375058
+            ],
+            [
+              4.8704161,
+              52.3750579
+            ],
+            [
+              4.870416,
+              52.3750578
+            ],
+            [
+              4.8703672,
+              52.3750706
+            ],
+            [
+              4.8703673,
+              52.3750707
+            ],
+            [
+              4.8703674,
+              52.3750708
+            ],
+            [
+              4.8703674,
+              52.3750709
+            ],
+            [
+              4.8703674,
+              52.375071
+            ],
+            [
+              4.8703674,
+              52.3750712
+            ],
+            [
+              4.8703674,
+              52.3750713
+            ],
+            [
+              4.8703674,
+              52.3750714
+            ],
+            [
+              4.8703673,
+              52.3750715
+            ],
+            [
+              4.8703672,
+              52.3750716
+            ],
+            [
+              4.8703672,
+              52.3750717
+            ],
+            [
+              4.870367,
+              52.3750718
+            ],
+            [
+              4.8703669,
+              52.3750719
+            ],
+            [
+              4.8703668,
+              52.375072
+            ],
+            [
+              4.8703667,
+              52.3750721
+            ],
+            [
+              4.8703665,
+              52.3750722
+            ],
+            [
+              4.8703664,
+              52.3750722
+            ],
+            [
+              4.8703662,
+              52.3750723
+            ],
+            [
+              4.8703661,
+              52.3750723
+            ],
+            [
+              4.8703659,
+              52.3750724
+            ],
+            [
+              4.8703657,
+              52.3750724
+            ],
+            [
+              4.8703655,
+              52.3750724
+            ],
+            [
+              4.8703654,
+              52.3750724
+            ],
+            [
+              4.8703662,
+              52.3750756
+            ],
+            [
+              4.8703681,
+              52.3750834
+            ],
+            [
+              4.8703703,
+              52.3750919
+            ],
+            [
+              4.8703325,
+              52.3751104
+            ],
+            [
+              4.8702897,
+              52.375122
+            ],
+            [
+              4.8702419,
+              52.3751266
+            ],
+            [
+              4.8702219,
+              52.3751114
+            ],
+            [
+              4.8702112,
+              52.3751033
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -34.295963287353516,
+          0,
+          -15.620088577270508
+        ],
+        "max": [
+          36.699222564697266,
+          19.049999237060547,
+          35.283355712890625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87056869,
+          52.37499018
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 70.99518585205078,
+        "heightMetres": 19.049999237060547,
+        "depthMetres": 50.90344429016113,
+        "depthCoverage": 0.723060288212516
+      },
+      "triangles": 26816,
+      "bytes": 341740,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d89e58d17431d4b8",
+        "buildVersion": 2,
+        "bytes": 112816,
+        "triangles": 6711
+      },
+      "lod2": {
+        "sourceHash": "d89e58d17431d4b8",
+        "buildVersion": 6,
+        "bytes": 32124,
+        "triangles": 1497
+      }
+    },
+    "panamalaan-10": {
+      "id": "panamalaan-10",
+      "name": "Panamalaan 10-186 housing slab",
+      "modelUrl": "./models/panamalaan-10.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012141142"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.93481959,
+          52.37060534
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 120.1,
+        "widthMetres": 17.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.93481959,
+          52.37060534
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012141142 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/panamalaan-10-footprints.json, bag-shell-prepare.ts); the four fronts read from the rectified Gemeente Amsterdam panoramas listed per wall in scripts/landmarks/panamalaan-10-inventory.json (2018-2025, CC BY 4.0)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22,
+      "galleryView": {
+        "theta": 4.4,
+        "phi": 1.05
+      },
+      "bagYear": 2001,
+      "materialOverrides": {
+        "brick": "#4c3b3a",
+        "slate": "#3d4448",
+        "ochre": "#3f3734",
+        "frame": "#6a3a26",
+        "bronze": "#7a4a32",
+        "greyBrick": "#5e4a48",
+        "concrete": "#8a8c8e",
+        "glass": "#47525a",
+        "dark": "#2a2a2c"
+      },
+      "attribution": {
+        "title": "Panamalaan 10-186, Amsterdam (housing, 2001)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002136_pano_0000_002014/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012141142 (CC0): the glazed ground storey, slate panel cladding and dark brick of the Panamalaan front with its relief poem line, the timber-boarded south end with window ribbons, and the brick north and east fronts, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9348509,
+              52.3709843
+            ],
+            [
+              4.9348507,
+              52.3709946
+            ],
+            [
+              4.9348523,
+              52.3709946
+            ],
+            [
+              4.9348522,
+              52.3709974
+            ],
+            [
+              4.9346049,
+              52.3709952
+            ],
+            [
+              4.9346297,
+              52.3699171
+            ],
+            [
+              4.9348661,
+              52.3700656
+            ],
+            [
+              4.9348654,
+              52.370099
+            ],
+            [
+              4.9348648,
+              52.3701223
+            ],
+            [
+              4.9348642,
+              52.3701485
+            ],
+            [
+              4.9348483,
+              52.3708486
+            ],
+            [
+              4.9348514,
+              52.3708511
+            ],
+            [
+              4.9348538,
+              52.3708511
+            ],
+            [
+              4.9348509,
+              52.3709843
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -14.152997016906738,
+          0,
+          -43.6819953918457
+        ],
+        "max": [
+          3.0595147609710693,
+          21.88800048828125,
+          76.34852600097656
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.93481959,
+          52.37060534
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 120.03052139282227,
+        "heightMetres": 21.88800048828125,
+        "depthMetres": 17.212511777877808,
+        "depthCoverage": 1.0065796361332051
+      },
+      "triangles": 16187,
+      "bytes": 187768,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6b261c0973c477cf",
+        "buildVersion": 2,
+        "bytes": 82088,
+        "triangles": 6178
+      },
+      "lod2": {
+        "sourceHash": "6b261c0973c477cf",
+        "buildVersion": 6,
+        "bytes": 29608,
+        "triangles": 1499
       }
     }
   }

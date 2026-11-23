@@ -6987,15 +6987,15 @@
   }
  },
  "klapmutsenveem-30": {
-  "sourceHash": "384c92398054b74e",
+  "sourceHash": "b49988b01e707ae4",
   "buildVersion": 2,
-  "bytes": 144868,
-  "triangles": 10949,
+  "bytes": 145512,
+  "triangles": 11065,
   "lod2": {
-   "sourceHash": "384c92398054b74e",
+   "sourceHash": "b49988b01e707ae4",
    "buildVersion": 6,
-   "bytes": 25736,
-   "triangles": 1500
+   "bytes": 25640,
+   "triangles": 1497
   }
  },
  "depot-scheepvaartmuseum": {
@@ -7196,6 +7196,30 @@
    "buildVersion": 6,
    "bytes": 7432,
    "triangles": 155
+  }
+ },
+ "tweede-hugo-de-grootstraat-43": {
+  "sourceHash": "d89e58d17431d4b8",
+  "buildVersion": 2,
+  "bytes": 112816,
+  "triangles": 6711,
+  "lod2": {
+   "sourceHash": "d89e58d17431d4b8",
+   "buildVersion": 6,
+   "bytes": 32124,
+   "triangles": 1497
+  }
+ },
+ "panamalaan-10": {
+  "sourceHash": "6b261c0973c477cf",
+  "buildVersion": 2,
+  "bytes": 82088,
+  "triangles": 6178,
+  "lod2": {
+   "sourceHash": "6b261c0973c477cf",
+   "buildVersion": 6,
+   "bytes": 29608,
+   "triangles": 1499
   }
  }
 }

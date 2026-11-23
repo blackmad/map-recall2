@@ -1,5 +1,5 @@
 {
-  "toolchain": "8c6001be8a75d1651ac4e368e3fbe196b3104a94c09a8f37c7d3e96118b46560",
+  "toolchain": "0da7c5054ed74dd6c348c6e3ccb43062a2e7900683da97d3d0ae1abe583c711d",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -283,7 +283,7 @@
     "kiosk-park-bea": "6d8582cef366b0f5d68fc0a770b69c37246e7d84c69f6341d3a3582ecd5f8b93",
     "kiosk-ramons-coffee": "2c6ffb65b4779515488bb377365dee63fb0b88f544542ed9dd639024fb7bffca",
     "kiosk-stubbes-haring": "7a705208eaa5d84b7f86f495cb9d7ce453d3b8b2b3c35214422d38cbb4fd1806",
-    "klapmutsenveem-30": "97cdbfcdc7592a3a76b4678337f4be906e99082d8871f296b4323cda88dbe38d",
+    "klapmutsenveem-30": "d03eb1abf75288ede5a81696b0db0f5ba9d014effd68788bdb5573f7717dce90",
     "kleine-komedie": "48e778e0d2631d785c661a8af9d4c5df2e644b622bc7a3da52b134ca727849ca",
     "klimhal": "58daddd0dda0880356713315f97d110af8babd09aabc109b861300408725d0db",
     "klimmuur-centraal": "b64ebace6c705dab4ad617e39a4292beb7a869064bcb1de4c0416e287239165e",
@@ -396,6 +396,7 @@
     "pakhuis-australie": "582f2f892db3767f20a378e2163533ed4e582717fbe52818fa48a19df76a4fc5",
     "pakhuis-de-zwijger": "577533ffc94bfd6c562323cb84a2741c10c5d638b9b400202f2eb1e593fd3e09",
     "palace-on-the-dam": "5fbd8177c73958cf578624c71f300cb68ec971a36104a002ac786aa55c45c5c2",
+    "panamalaan-10": "4c75406be4bc459486d0868f6eb48981730921ab30d73fd642d3c0caec19ad5a",
     "paradiso": "9e5d6b2c941dcbfc029d78e992acd0057ead75c5e49ab669ad3ecdc4b629a64c",
     "park-centraal-stadhouderskade": "152d10e7f87190fd0e3af2af25579cf50ccb96beb5951a793ad9fe063cf302bf",
     "pathe-city": "bd941ab137713ab148e2c687d5b8708d6ebc54126fc08e5cc3954a4fd5749086",
@@ -519,6 +520,7 @@
     "tugelahuis-tugelaweg": "3c1fa3ddeb965169966b23743c9a0849dd917dc74020b8da87df3f2f9c1b5a22",
     "tuschinski": "4cdd99ef1c418340f9e9ebcddfb12e9aef163bca55370d4b21d3f00bd0086e65",
     "tweede-atjehstraat-2": "9117a31132c712ff11fb88dbac68a4549c8db15acfd80e7e019ee9093eaccce8",
+    "tweede-hugo-de-grootstraat-43": "c79521c8dd673b14ef8b2d81f5adc651a8b752770009c08ed22018a7733dc744",
     "uilenburger-synagoge": "321a798ae4008e3205085b2e5900397f48db332253f49fc8b909b7e9eb0800f5",
     "universiteitstheater": "b4f2f9f0f3c70add5abcbfbd339e4f779660e0526df77f14b614daebae8c9953",
     "utrechtsestraat-9-17": "bf6ce365a71530b2e005ae932303ffb08c2dc9bc601be03d75224ac28c6ee451",

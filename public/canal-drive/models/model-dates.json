@@ -3357,13 +3357,13 @@
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.378Z",
-      "version": "c7c244a60254a415",
+      "updatedAt": "2026-11-23T01:27:06.488Z",
+      "version": "1df4acd3325726eb",
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.158Z",
-      "version": "5db46d9b9a0910f5",
+      "updatedAt": "2026-11-23T01:27:11.468Z",
+      "version": "205424b9ecab4a06",
       "dateSource": "asset-update"
     },
     "hortus-greenhouses": {
@@ -3556,6 +3556,16 @@
       "version": "ac8a0cc1776b9057",
       "dateSource": "asset-update"
     },
+    "huis-fuld.lod1": {
+      "updatedAt": "2026-11-23T02:23:03.903Z",
+      "version": "c1cefa59225dd23c",
+      "dateSource": "asset-update"
+    },
+    "huis-fuld.lod2": {
+      "updatedAt": "2026-11-23T02:23:03.903Z",
+      "version": "2c428b09d430c821",
+      "dateSource": "asset-update"
+    },
     "huis-marseille": {
       "updatedAt": "2026-10-20T10:12:36.658Z",
       "version": "597d0a5418466dd6",
@@ -3577,13 +3587,13 @@
       "dateSource": "asset-update"
     },
     "huis-met-de-hoofden.lod1": {
-      "updatedAt": "2026-11-22T16:06:18.261Z",
-      "version": "1d260ea5f5c7558b",
+      "updatedAt": "2026-11-23T01:27:06.513Z",
+      "version": "6721ca561fdccdf2",
       "dateSource": "asset-update"
     },
     "huis-met-de-hoofden.lod2": {
-      "updatedAt": "2026-11-22T16:06:36.825Z",
-      "version": "219c2e879ee6c131",
+      "updatedAt": "2026-11-23T01:27:11.832Z",
+      "version": "ba15195477df0868",
       "dateSource": "asset-update"
     },
     "huize-frankendael": {
@@ -4127,8 +4137,8 @@
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30": {
-      "updatedAt": "2026-11-22T18:32:16.550Z",
-      "version": "384c92398054b74e",
+      "updatedAt": "2026-11-23T04:03:17.153Z",
+      "version": "b49988b01e707ae4",
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30.lod1": {
@@ -5767,13 +5777,18 @@
       "dateSource": "asset-update"
     },
     "palace-on-the-dam.lod1": {
-      "updatedAt": "2026-10-13T23:53:30.079Z",
-      "version": "f0661db0f7279051",
+      "updatedAt": "2026-11-23T01:27:06.439Z",
+      "version": "68d96e7a98c8c9f5",
       "dateSource": "asset-update"
     },
     "palace-on-the-dam.lod2": {
-      "updatedAt": "2026-11-07T14:08:58.177Z",
-      "version": "463b583d0f930c75",
+      "updatedAt": "2026-11-23T01:27:07.715Z",
+      "version": "9c26abafaeb25364",
+      "dateSource": "asset-update"
+    },
+    "panamalaan-10": {
+      "updatedAt": "2026-11-23T04:03:17.297Z",
+      "version": "6b261c0973c477cf",
       "dateSource": "asset-update"
     },
     "paradiso": {
@@ -6911,6 +6926,21 @@
       "version": "65f2edc4ba536fd6",
       "dateSource": "asset-update"
     },
+    "sofitel-the-grand-1926": {
+      "updatedAt": "2026-11-23T02:16:40.325Z",
+      "version": "881bf570171030d9",
+      "dateSource": "asset-update"
+    },
+    "sofitel-the-grand-1926.lod1": {
+      "updatedAt": "2026-11-23T04:02:49.804Z",
+      "version": "e2c5b6a41943eb4a",
+      "dateSource": "asset-update"
+    },
+    "sofitel-the-grand-1926.lod2": {
+      "updatedAt": "2026-11-23T04:02:49.804Z",
+      "version": "348ffdd483515b70",
+      "dateSource": "asset-update"
+    },
     "spaarbank-singel-548": {
       "updatedAt": "2026-11-22T12:42:30.115Z",
       "version": "ef04d80cf2535b48",
@@ -6939,6 +6969,21 @@
     "spanjemonument.lod2": {
       "updatedAt": "2026-11-07T14:08:58.188Z",
       "version": "6e459cea8902cf30",
+      "dateSource": "asset-update"
+    },
+    "sphinx-hotel": {
+      "updatedAt": "2026-11-23T02:11:43.285Z",
+      "version": "18a9bec6999dfcaf",
+      "dateSource": "asset-update"
+    },
+    "sphinx-hotel.lod1": {
+      "updatedAt": "2026-11-23T04:02:49.806Z",
+      "version": "6521455893a71af8",
+      "dateSource": "asset-update"
+    },
+    "sphinx-hotel.lod2": {
+      "updatedAt": "2026-11-23T04:02:49.806Z",
+      "version": "1aaeda66de2e8497",
       "dateSource": "asset-update"
     },
     "spiegelhof": {
@@ -7114,6 +7159,21 @@
     "sumatrakade-1101.lod2": {
       "updatedAt": "2026-11-22T15:06:27.937Z",
       "version": "0713abf16e79b5c8",
+      "dateSource": "asset-update"
+    },
+    "sweederijck": {
+      "updatedAt": "2026-11-23T03:07:34.887Z",
+      "version": "253a44aded446372",
+      "dateSource": "asset-update"
+    },
+    "sweederijck.lod1": {
+      "updatedAt": "2026-11-23T04:02:49.808Z",
+      "version": "5bd2274341c97719",
+      "dateSource": "asset-update"
+    },
+    "sweederijck.lod2": {
+      "updatedAt": "2026-11-23T04:02:49.808Z",
+      "version": "70a4f0aeb5ea5803",
       "dateSource": "asset-update"
     },
     "symphony": {
@@ -7521,6 +7581,11 @@
       "version": "eb884e6f2bcdccbd",
       "dateSource": "asset-update"
     },
+    "tweede-hugo-de-grootstraat-43": {
+      "updatedAt": "2026-11-23T04:03:17.248Z",
+      "version": "d89e58d17431d4b8",
+      "dateSource": "asset-update"
+    },
     "uilenburger-synagoge": {
       "updatedAt": "2026-10-30T18:19:39.050Z",
       "version": "6b3bb1b5c5dbafbb",
@@ -7569,21 +7634,6 @@
     "uva-binnengasthuisstraat-9": {
       "updatedAt": "2026-11-22T22:35:11.726Z",
       "version": "1d1333ddd967b7f5",
-      "dateSource": "asset-update"
-    },
-    "sweederijck": {
-      "updatedAt": "2026-11-23T03:07:34.887Z",
-      "version": "253a44aded446372",
-      "dateSource": "asset-update"
-    },
-    "sofitel-the-grand-1926": {
-      "updatedAt": "2026-11-23T02:16:40.325Z",
-      "version": "881bf570171030d9",
-      "dateSource": "asset-update"
-    },
-    "sphinx-hotel": {
-      "updatedAt": "2026-11-23T02:11:43.285Z",
-      "version": "18a9bec6999dfcaf",
       "dateSource": "asset-update"
     },
     "uva-binnengasthuisstraat-9.lod1": {
