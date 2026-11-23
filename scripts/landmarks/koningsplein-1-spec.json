@@ -1,0 +1,37 @@
+{
+ "id": "koningsplein-1",
+ "name": "Verzekeringsbank Kosmos, Koningsplein 1",
+ "heightMetres": 26.4,
+ "bagYear": 1891,
+ "galleryView": {
+  "theta": 3.3,
+  "phi": 1.15
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012176247 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/koningsplein-1-footprints.json, bag-shell-prepare.ts) for the hipped roof, its glazed strip and the party walls; the round corner tower drawn on a circle fitted to the BAG corner (centre 0.167, 0.503; radius 2.32 m). Fronts, tower and dome read from Gemeente Amsterdam panoramas rectified onto the wall planes at 40 px/m: b_20250109_1300_Track05_Sphere_00277 (2025, Koningsplein), recording_2025-06-19_03-28-47_01535 (2025, the tower) and recording_2025-06-19_03-28-47_01537 (2025, the Singel side), with TMX7316010203-002542_pano_0004_000309 (2022) for the brief crop; CC BY 4.0, heights fitted to the 3DBAG cornice (17.5 m). Rijksmonument 518359 (register text: Th.G. Schill and D.H. Haverkamp, 1890-91, neo-baroque, for the Verzekeringsbank 'Kosmos'; tower crown altered 1928; shop front H. Elte 1929-30). Per wall in scripts/landmarks/koningsplein-1-inventory.json.",
+ "materialOverrides": {
+  "brick": "#9c5a4e",
+  "stone": "#cdc3ad",
+  "sandstone": "#b8ad97",
+  "white": "#e8e6df",
+  "red": "#7e3e3a",
+  "gold": "#d2b25a",
+  "blue": "#8fb0c4",
+  "pink": "#6d6a7d",
+  "slate": "#5b6166",
+  "glass": "#384248",
+  "frame": "#4a3a30",
+  "concrete": "#e8e6df",
+  "copper": "#4f5c64",
+  "ochre": "#7a4e30",
+  "bronze": "#1e2020"
+ },
+ "attribution": {
+  "title": "Koningsplein 1, Amsterdam: shop and offices of the Verzekeringsbank 'Kosmos' (Th.G. Schill and D.H. Haverkamp, 1890-91; rijksmonument 518359)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01535/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176247 (CC0): the round corner tower with its balcony, VERZEKERINGSBANK frieze, stone drum, helmet dome and open lantern; red brick with sandstone speklagen; stone-framed windows, consoles and iron-railed balconies, pedimented French windows, paired round-arched top-storey windows between Ionic pilasters, the light-blue console frieze and cornice; the black granite shop front with its clerestories and mosaic tableaux, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the RCE register text. No pixels or meshes imported."
+ }
+}

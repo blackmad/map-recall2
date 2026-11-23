@@ -137713,6 +137713,220 @@
       "triangles": 18597,
       "bytes": 257208,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "koningsplein-1": {
+      "id": "koningsplein-1",
+      "name": "Verzekeringsbank Kosmos, Koningsplein 1",
+      "modelUrl": "./models/koningsplein-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176247"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88959101,
+          52.36705371
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 16.3,
+        "widthMetres": 15.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.88959101,
+          52.36705371
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176247 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/koningsplein-1-footprints.json, bag-shell-prepare.ts) for the hipped roof, its glazed strip and the party walls; the round corner tower drawn on a circle fitted to the BAG corner (centre 0.167, 0.503; radius 2.32 m). Fronts, tower and dome read from Gemeente Amsterdam panoramas rectified onto the wall planes at 40 px/m: b_20250109_1300_Track05_Sphere_00277 (2025, Koningsplein), recording_2025-06-19_03-28-47_01535 (2025, the tower) and recording_2025-06-19_03-28-47_01537 (2025, the Singel side), with TMX7316010203-002542_pano_0004_000309 (2022) for the brief crop; CC BY 4.0, heights fitted to the 3DBAG cornice (17.5 m). Rijksmonument 518359 (register text: Th.G. Schill and D.H. Haverkamp, 1890-91, neo-baroque, for the Verzekeringsbank 'Kosmos'; tower crown altered 1928; shop front H. Elte 1929-30). Per wall in scripts/landmarks/koningsplein-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.4,
+      "galleryView": {
+        "theta": 3.3,
+        "phi": 1.15
+      },
+      "bagYear": 1891,
+      "materialOverrides": {
+        "brick": "#9c5a4e",
+        "stone": "#cdc3ad",
+        "sandstone": "#b8ad97",
+        "white": "#e8e6df",
+        "red": "#7e3e3a",
+        "gold": "#d2b25a",
+        "blue": "#8fb0c4",
+        "pink": "#6d6a7d",
+        "slate": "#5b6166",
+        "glass": "#384248",
+        "frame": "#4a3a30",
+        "concrete": "#e8e6df",
+        "copper": "#4f5c64",
+        "ochre": "#7a4e30",
+        "bronze": "#1e2020"
+      },
+      "attribution": {
+        "title": "Koningsplein 1, Amsterdam: shop and offices of the Verzekeringsbank 'Kosmos' (Th.G. Schill and D.H. Haverkamp, 1890-91; rijksmonument 518359)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01535/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176247 (CC0): the round corner tower with its balcony, VERZEKERINGSBANK frieze, stone drum, helmet dome and open lantern; red brick with sandstone speklagen; stone-framed windows, consoles and iron-railed balconies, pedimented French windows, paired round-arched top-storey windows between Ionic pilasters, the light-blue console frieze and cornice; the black granite shop front with its clerestories and mosaic tableaux, read from Gemeente Amsterdam panoramas (CC BY 4.0) and the RCE register text. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.889681,
+              52.3670403
+            ],
+            [
+              4.8896425,
+              52.3670552
+            ],
+            [
+              4.8896293,
+              52.3670604
+            ],
+            [
+              4.8896282,
+              52.3670606
+            ],
+            [
+              4.8896268,
+              52.3670606
+            ],
+            [
+              4.8896241,
+              52.3670604
+            ],
+            [
+              4.8896222,
+              52.3670607
+            ],
+            [
+              4.8896202,
+              52.3670616
+            ],
+            [
+              4.8896102,
+              52.3670678
+            ],
+            [
+              4.8896073,
+              52.3670685
+            ],
+            [
+              4.8896043,
+              52.3670691
+            ],
+            [
+              4.8896013,
+              52.3670695
+            ],
+            [
+              4.8895982,
+              52.3670698
+            ],
+            [
+              4.8895951,
+              52.3670699
+            ],
+            [
+              4.8895917,
+              52.3670699
+            ],
+            [
+              4.8895883,
+              52.3670697
+            ],
+            [
+              4.8895849,
+              52.3670693
+            ],
+            [
+              4.8895816,
+              52.3670688
+            ],
+            [
+              4.8895783,
+              52.3670681
+            ],
+            [
+              4.8895779,
+              52.367068
+            ],
+            [
+              4.8895672,
+              52.367062
+            ],
+            [
+              4.889565,
+              52.3670612
+            ],
+            [
+              4.8895616,
+              52.3670604
+            ],
+            [
+              4.8895599,
+              52.367061
+            ],
+            [
+              4.8895579,
+              52.3670611
+            ],
+            [
+              4.8894473,
+              52.367023
+            ],
+            [
+              4.8895068,
+              52.3669639
+            ],
+            [
+              4.8895891,
+              52.3669234
+            ],
+            [
+              4.889681,
+              52.3670403
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.126838684082031,
+          0,
+          -2.741293430328369
+        ],
+        "max": [
+          6.4781670570373535,
+          26.630096435546875,
+          14.493000030517578
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88959101,
+          52.36705371
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.234293460845947,
+        "heightMetres": 26.630096435546875,
+        "depthMetres": 16.605005741119385,
+        "depthCoverage": 1.0443399837182004
+      },
+      "triangles": 18293,
+      "bytes": 230512,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
