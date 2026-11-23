@@ -44,7 +44,16 @@ export type BlockOpts = {
   /** opening defaults for the inferred grid (absent: the opening's own defaults, a 6 cm frame) */ gridDefaults?: OpenOpts;
   /** walls left plain (no inferred grid): party walls against a neighbour, blank ends. `n` the outward normal (x, z). */
   plain?: (w: {n: P2; cx: number; cz: number; len: number; yb: number; yt: number}) => boolean;
+  /** A storey style by height for walls without a measured front, in place of the inferred grid (absent or null: the grid).
+   * For curved or faceted fronts cut into many short 3DBAG walls that share one design (a podium of shop glass, a sign band,
+   * a glazed storey and a fascia): bands and rows of openings in absolute heights, spaced evenly along each wall. */
+  zoned?: (w: WallGeom) => Zone | null;
 };
+export type WallGeom = {n: P2; cx: number; cz: number; len: number; yb: number; yt: number};
+/** One row of openings in a `Zone`: `pitch` the target spacing, `w` the opening width (or `gap`: the pier between openings,
+ * width = spacing - gap, for continuous glazing); openings outside the wall's height are skipped as everywhere. */
+export type ZoneRow = {y: [number, number]; pitch: number; w?: number; gap?: number; o?: OpenOpts};
+export type Zone = {bands: [number, Col][]; rows: ZoneRow[]; extra?: (b: BuildingTools, F: FR, w: WallGeom) => void};
 
 type WallInfo = {i: number; f: Frame; len: number; yb: number; yt: number; cx: number; cz: number; rect: boolean; stepTop?: number; stepped?: boolean};
 function wallInfo(src: Src, s: Surface, i: number): WallInfo | null {
@@ -167,6 +176,10 @@ function frontWall(b: BuildingTools, w: WallInfo, F: Front, s0: number, o: Block
 
 function gridWall(b: BuildingTools, w: WallInfo, o: BlockOpts) {
   const setback = w.yb > o.setbackAbove, storey = o.storey ?? 2.9, first = o.firstSill ?? 3.9;
+  if (o.zoned && !o.plain?.({n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt})) {
+    const zone = o.zoned({n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt});
+    if (zone) { zonedWall(b, w, zone, o); return; }
+  }
   const faceAt = bandFaces(w, 0, w.len, [[99, setback ? (o.setbackColour ?? o.wall) : o.wall]]);
   if (w.len < 2.2) return;
   if (o.plain?.({n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt})) { coping(b, w, o.ledge); return; }
@@ -177,6 +190,18 @@ function gridWall(b: BuildingTools, w: WallInfo, o: BlockOpts) {
     if (y1 - y0 < 0.8 || y1 > w.yt - 0.4 || y0 < w.yb + 0.1) continue;
     for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * pitch, {s: 0, w: Math.min(setback ? 2.0 : (o.gridWin ?? 1.5), pitch - 0.6), y: [y0, y1], o: {cols: setback ? 2 : 1}}, o.gridDefaults ?? {});
   }
+  coping(b, w, o.ledge);
+}
+
+/** A wall in a `Zone` style: its bands, then each row's openings spaced evenly (the wall's own length over the pitch). */
+function zonedWall(b: BuildingTools, w: WallInfo, z: Zone, o: BlockOpts) {
+  const faceAt = bandFaces(w, 0, w.len, z.bands);
+  for (const r of z.rows) {
+    const n = Math.max(1, Math.round(w.len / r.pitch)), p = w.len / n, ow = r.gap !== undefined ? p - r.gap : Math.min(r.w ?? 1.2, p - 0.3);
+    if (ow < 0.4) continue;
+    for (let k = 0; k < n; k++) cut(b, faceAt, (k + 0.5) * p, {s: 0, w: ow, y: r.y, o: r.o}, o.gridDefaults ?? {});
+  }
+  z.extra?.(b, frOf(w), {n: w.f.n, cx: w.cx, cz: w.cz, len: w.len, yb: w.yb, yt: w.yt});
   coping(b, w, o.ledge);
 }
 

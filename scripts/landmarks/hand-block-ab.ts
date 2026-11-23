@@ -3,9 +3,11 @@
  * landmark GLB on shuffled sides, the key in a separate file the judge never sees.
  *
  *   node --import tsx scripts/landmarks/hand-block-ab.ts --id=<landmark id> --pand=<pand> --tag=<crop tag> --line=<lng,lat,lng,lat>
- *        [--pano=<panorama id>] [--top=<m>] [--seed=<string>] [--out=<dir>] [--glb=<path>] [--ppm=20]
+ *        [--pano=<panorama id>] [--top=<m>] [--seed=<string>] [--out=<dir>] [--glb=<path>] [--today-glb=<path>] [--ppm=20]
  *
- * Today is what house:preview draws for the pand (installed model, else the generic streamed path); the new model is
+ * Today is what house:preview draws for the pand (installed model, else the generic streamed path), or with --today-glb a
+ * landmark GLB placed like the new one (a re-built landmark: covers.json routes its pand to the shadowed ordinary model, not
+ * the landmark the game draws; lane hand-blocks-d-20261123); the new model is
  * public/canal-drive/models/<id>.glb placed at <id>-footprints.json's anchor (north offset 0), both through the
  * preview's GLB elevation renderer on the same wall line, plus (--pano) a street view from that panorama's camera aimed at
  * the wall centre as the brief's aimed thumbnail is (house:preview --pose), set beside the thumbnail. The photo is artifacts/landmark-briefs/<id>/<tag>.jpg (rectified on the same line). Writes
@@ -47,9 +49,10 @@ if (arg('pano')) {
   pose = `${cam[0]},${cam[1]},${(Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360},${fov},${pitch}`;
 }
 const base = parseArgs([pand, `--wall=line:${line}`, '--threeq', `--ppm=${ppm}`, ...(pose ? [`--pose=${pose}`] : [])]);
-const today = await renderPand(session, pand, {...base, out: path.join(out, `today-${tag}`)});
-const fresh = await renderInstalled(session, pand, {key: id, glb, anchor: src.anchor, northOffsetDegrees: 0, mirror: false, source: `${id}-footprints.json`},
-  {...base, out: path.join(out, `new-${tag}`)}, 'landmark GLB');
+const place = (file: string) => ({key: id, glb: path.resolve(file), anchor: src.anchor, northOffsetDegrees: 0, mirror: false, source: `${id}-footprints.json`});
+const today = arg('today-glb') ? await renderInstalled(session, pand, place(arg('today-glb')!), {...base, out: path.join(out, `today-${tag}`)}, 'landmark GLB (today)')
+  : await renderPand(session, pand, {...base, out: path.join(out, `today-${tag}`)});
+const fresh = await renderInstalled(session, pand, place(glb), {...base, out: path.join(out, `new-${tag}`)}, 'landmark GLB');
 const flip = seededFlip(`${seed}:${tag}`);
 const [A, B] = flip ? [fresh, today] : [today, fresh];
 const file = (r: typeof today, f: string) => r.files.find(x => x.endsWith(f))!;
@@ -73,5 +76,5 @@ const photo = `artifacts/landmark-briefs/${id}/${tag}.jpg`, thumb = `artifacts/l
 await stack([{f: photo, label: 'PHOTO (Gemeente Amsterdam panorama, rectified)'}, {f: file(A, 'front.png'), label: 'A'}, {f: file(B, 'front.png'), label: 'B'}], 1400, path.join(out, `${tag}-front.jpg`), true);
 const view = pose ? 'pose.png' : 'threeq.png';
 await stack([{f: fs.existsSync(thumb) ? thumb : photo, label: 'PHOTO'}, {f: file(A, view), label: 'A'}, {f: file(B, view), label: 'B'}], 620, path.join(out, `${tag}-street.jpg`), false);
-fs.writeFileSync(path.join(out, `key-${tag}.json`), JSON.stringify({id, tag, seed: `${seed}:${tag}`, A: flip ? 'new' : 'today', B: flip ? 'today' : 'new', todayRoute: today.measure.route, todayWhy: today.measure.routeWhy}, null, 1) + '\n');
+fs.writeFileSync(path.join(out, `key-${tag}.json`), JSON.stringify({id, tag, seed: `${seed}:${tag}`, A: flip ? 'new' : 'today', B: flip ? 'today' : 'new', todayRoute: today.measure.route, todayWhy: today.measure.routeWhy, ...(arg('today-glb') ? {todayGlb: arg('today-glb')} : {})}, null, 1) + '\n');
 console.log(`${tag}: ${path.relative(process.cwd(), path.join(out, `${tag}-front.jpg`))}, ${tag}-street.jpg; key in key-${tag}.json`);

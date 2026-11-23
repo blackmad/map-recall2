@@ -1,6 +1,6 @@
 # Brief: panamalaan-10 (BAG 0363100012141142)
 
-Generated 2026-11-22 by `node --import tsx scripts/landmarks/landmark-brief.ts --pand=0363100012141142 --id=panamalaan-10`. Crops are under
+Generated 2026-11-23 by `node --import tsx scripts/landmarks/landmark-brief.ts --pand=0363100012141142 --id=panamalaan-10`. Crops are under
 `artifacts/landmark-briefs/panamalaan-10/` (not committed; re-run the command, responses are cached). Panoramas: Gemeente Amsterdam, CC BY 4.0.
 
 **Rules.** Describe the building only from the crops and the cited texts below; nothing from memory. Fill
