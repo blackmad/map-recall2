@@ -1,0 +1,30 @@
+{
+ "id": "welgelegen",
+ "name": "Welgelegen, Plantage Middenlaan",
+ "heightMetres": 9,
+ "bagYear": 1802,
+ "galleryView": {
+  "theta": 3.7,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012181157 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/welgelegen-footprints.json, bag-shell-prepare.ts); the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001809 (2021, frontal) and the oblique TMX7316010203-002047_pano_0000_001806 (2021), CC BY 4.0 (the 2024 panorama shows the house under scaffolding sheeting), heights fitted to the 3DBAG eaves. Rijksmonument 4107 (dwarshuis, glazing bars), Plantage Middenlaan 49. Per wall in scripts/landmarks/welgelegen-inventory.json.",
+ "materialOverrides": {
+  "brick": "#64524b",
+  "slate": "#5c5b5b",
+  "sandstone": "#e4e3da",
+  "frame": "#e8e7df",
+  "glass": "#30393e",
+  "dark": "#1f2427",
+  "bronze": "#1d1f1f",
+  "concrete": "#c9c7bd"
+ },
+ "attribution": {
+  "title": "Welgelegen, Plantage Middenlaan 49, Amsterdam (1802; rijksmonument 4107)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001809/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181157 (CC0): the dark brick front with two rows of white sash windows, the white door surround with the black double door, the transom light with its wrought-iron oval and the name WELGELEGEN, the white cornice, the dormer with carved scroll cheeks, arched hood and hoist-beam knob, the chimneys and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

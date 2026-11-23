@@ -136887,6 +136887,133 @@
         "bytes": 29608,
         "triangles": 1499
       }
+    },
+    "welgelegen": {
+      "id": "welgelegen",
+      "name": "Welgelegen, Plantage Middenlaan",
+      "modelUrl": "./models/welgelegen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181157"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91565381,
+          52.36527237
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 16.7,
+        "widthMetres": 15.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012181157 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/welgelegen-footprints.json, bag-shell-prepare.ts); the Plantage Middenlaan front read from the rectified Gemeente Amsterdam panorama TMX7316010203-002047_pano_0000_001809 (2021, frontal) and the oblique TMX7316010203-002047_pano_0000_001806 (2021), CC BY 4.0 (the 2024 panorama shows the house under scaffolding sheeting), heights fitted to the 3DBAG eaves. Rijksmonument 4107 (dwarshuis, glazing bars), Plantage Middenlaan 49. Per wall in scripts/landmarks/welgelegen-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 9,
+      "galleryView": {
+        "theta": 3.7,
+        "phi": 1.2
+      },
+      "bagYear": 1802,
+      "materialOverrides": {
+        "brick": "#64524b",
+        "slate": "#5c5b5b",
+        "sandstone": "#e4e3da",
+        "frame": "#e8e7df",
+        "glass": "#30393e",
+        "dark": "#1f2427",
+        "bronze": "#1d1f1f",
+        "concrete": "#c9c7bd"
+      },
+      "attribution": {
+        "title": "Welgelegen, Plantage Middenlaan 49, Amsterdam (1802; rijksmonument 4107)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001809/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181157 (CC0): the dark brick front with two rows of white sash windows, the white door surround with the black double door, the transom light with its wrought-iron oval and the name WELGELEGEN, the white cornice, the dormer with carved scroll cheeks, arched hood and hoist-beam knob, the chimneys and the cast-iron front railing, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9156424,
+              52.3653474
+            ],
+            [
+              4.9155639,
+              52.3652621
+            ],
+            [
+              4.9155643,
+              52.365262
+            ],
+            [
+              4.9155639,
+              52.3652615
+            ],
+            [
+              4.9157487,
+              52.3651977
+            ],
+            [
+              4.9157864,
+              52.3652387
+            ],
+            [
+              4.9156599,
+              52.3652824
+            ],
+            [
+              4.9157011,
+              52.3653271
+            ],
+            [
+              4.9156424,
+              52.3653474
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -6.562742233276367,
+          -1.1444091541079615e-7,
+          -8.348999977111816
+        ],
+        "max": [
+          9.2395601272583,
+          9,
+          9.219623565673828
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91565381,
+          52.36527237
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.568623542785645,
+        "heightMetres": 9.000000114440915,
+        "depthMetres": 15.802302360534668,
+        "depthCoverage": 1.0465100901016338
+      },
+      "triangles": 5748,
+      "bytes": 82796,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
