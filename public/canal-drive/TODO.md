@@ -15,6 +15,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Engine round 2026-11-27 (P1) — HISTORY round 20261127b; waiting on David's ride
+- **David's ride on a quiet machine:** own engine only, 60 fps cap, the landmark dissolve and churn changes. Pause the lanes first. Judge fan, smoothness and pop-in; every change has its `?x=0` off-switch.
+- **Questions for David:** retire the flags in `docs/handoffs/dead-paths-20261127.md` (retire candidates first)? Keep the 60 fps cap as default? Landmark cool-down 30 s → 90 s (halves belt re-arrivals, but one of two runs doubled arrival diff pixels)? audit:glb inside check:canal?
+- **iPhone crash:** not reproduced; the friend's kills were on the now-deleted MapLibre path. Ask for the iPhone's Analytics Data (JetsamEvent) to confirm. The margin is measured on the simulator only. The next memory target is boot memory and the overview-map vertex arrays.
+- **Desktop power left (`docs/perf/desktop-power-20261127.md`):** allocation 33–50 MB/s → under 20 (three's uniform uploads, spread game-frame calls); wrapper objects force world-matrix updates through whole subtrees every frame (~0.4 ms); `onViewChange` costs 15–19 ms/s, throttle to ~10 Hz; the GPU is geometry-bound at dpr 2; a landmark budget of 96 needs a quiet-GPU memory reading; a 10-minute post-GC heap series.
+- **Engine leftovers:** SwiftShader start-hold cap; swap-gate tree failures; remaining MapLibre-era exports and comments; the overview map still holds vertex arrays at boot.
+
 ## Design units (P0): option A approved on #397 — Ring gate #399 waiting on David
 
 David chose **A** on #397 (2026-11-19): units are the identity everywhere, elevations draw in segments, and Centrum plots stay separate unless something joins them. The Ring layer comes first. The staged belt, Centrum and De Pijp looks stay held, and #392 and #393 stay paused.
@@ -625,7 +632,7 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
-**Amsterdam flip: done 2026-11-27 (HISTORY round 20261127a).** Own is the default; `?engine=maplibre` rolls back. Left: (1) the own start hold ends on its 10 s cap with `ownGround` pending on desktop: find why the ground never reports settled; (2) desktop JS heap ~1.07 GB at a ride start and the user's Mac fan spins under own: profile at his settings (dpr 2, 120 Hz, no frame cap in `frameHost.ts`); (3) iPhone start memory, both engines, lane `iphone-start-memory-20261127`; (4) decide Utrecht/Rotterdam/Den Haag (own extracts or unplayable), then delete `vector-map.js`, the loader, `mapGuard.ts`, `park-landscape.js` and the MapLibre-only flags. The paragraph below is history.
+**Amsterdam flip: done 2026-11-27, and MapLibre deleted the same day (HISTORY round 20261127b).** Open follow-ups are in "Engine round 2026-11-27" at the top of this file. The paragraph below is history.
 
 **Amsterdam flip (L1), after hand-back 20 (`040f36423`, HISTORY "Under own a POI
 label wins the click"):** blockers done (labels win the click, bag-tiles on the
