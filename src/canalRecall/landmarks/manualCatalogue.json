@@ -112041,5 +112041,101 @@
     ]
    ]
   }
+ },
+ {
+  "id": "leidsestraat-40",
+  "name": "Leidsestraat 40",
+  "modelUrl": "./models/leidsestraat-40.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012176402"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88602886,
+    52.36585136
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 9.1,
+   "widthMetres": 9.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.88602886,
+    52.36585136
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176402 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/leidsestraat-40-footprints.json, bag-shell-prepare.ts); the Leidsestraat front read from the rectified Gemeente Amsterdam panorama TMX7316060226-000022_pano_0000_000825 (2016), the corner turret and the Keizersgracht return from pitched looks out of b_20241203_0939_Track09_Sphere_00353 (2024) and b_20250120_0926_Track25_Sphere_00003 (2025), CC BY 4.0, heights fitted to the 3DBAG gable top (15.2 m). Per wall in scripts/landmarks/leidsestraat-40-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 19,
+  "galleryView": {
+   "theta": 0.9,
+   "phi": 1.2
+  },
+  "bagYear": 1881,
+  "materialOverrides": {
+   "brick": "#9a5a3e",
+   "stone": "#cdc5ad",
+   "greyBrick": "#a9aca3",
+   "concrete": "#e2e0d8",
+   "red": "#7a2e35",
+   "pink": "#5c2229",
+   "frame": "#a0402f",
+   "glass": "#343e47",
+   "slate": "#55585b",
+   "copper": "#8a8d8c",
+   "gold": "#9a8a5c",
+   "sandstone": "#c2b48c",
+   "bronze": "#2c2a28"
+  },
+  "attribution": {
+   "title": "Leidsestraat 40, Amsterdam: neo-renaissance corner house with an oriel turret (1881)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0000_000825/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176402 (CC0): the corbelled oxblood oriel turret with its tower stage and zinc spire, the bust and carved consoles under it, the round-arched shop windows with stained fanlights under the sculpted frieze, the stepped dormer gable, the paired windows on figure mullions under broken pediments, the stone bands, hoods and wall anchors, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8860274,
+      52.3658873
+     ],
+     [
+      4.8859313,
+      52.3658417
+     ],
+     [
+      4.8859791,
+      52.3658051
+     ],
+     [
+      4.8860634,
+      52.3658475
+     ],
+     [
+      4.8860664,
+      52.3658474
+     ],
+     [
+      4.8860688,
+      52.3658653
+     ],
+     [
+      4.8860657,
+      52.3658652
+     ],
+     [
+      4.8860274,
+      52.3658873
+     ]
+    ]
+   ]
+  }
  }
 ]

@@ -21,6 +21,8 @@ export interface CornerTurretDraw {
   drumLights?: [number, number];
   /** Which exposed drum facets get a light (default all). */
   drumLightOn?: (f: TurretFacet) => boolean;
+  /** Which exposed body facets get the window rows (default all; absent = byte-identical to before). */
+  windowOn?: (f: TurretFacet) => boolean;
   /** Stone band heights on the body and drum (each 0.16 m, 4 cm proud). */
   bands?: number[];
   /** Stone quoin strips at the exposed body corners. */
@@ -57,7 +59,7 @@ export function cornerTurretOn(b: BuildingTools, F: Frame, o: CornerTurretDraw) 
   const facets = turretFacets(P).filter(f => f.exposed);
   for (const f of facets) {
     const ff = facetFrame(F, f), w = Math.min(f.width * 0.5, f.width - 0.36);
-    for (const r of o.windows ?? []) {
+    for (const r of o.windowOn && !o.windowOn(f) ? [] : o.windows ?? []) {
       const ww = r.width ?? w;
       if (r.arched) {
         archSlab(b, ff, 0, r.y0 - 0.06, ww + 0.16, r.y1 - r.y0 + 0.14, 0.06, C.frame);
