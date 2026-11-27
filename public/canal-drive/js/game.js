@@ -105,9 +105,12 @@ class Game {
     // Engine programme (2026-10-30): `?engine=own` picks the three.js-owned
     // world view (src/canalRecall/engine/ownWorldView.ts); default stays MapLibre.
     const engine = window.CanalRecallEngine;
-    this.vectorMap = engine && engine.engineFlag(undefined, this.cityId) === 'own'
-      ? new engine.OwnWorldView(document.getElementById('vector-map'))
-      : new VectorBasemap(document.getElementById('vector-map'));
+    // A browser that refuses WebGL gets no own world view (ownWorldViewOrNull reports it and shows the notice); the
+    // ride then opens on the map-less VectorBasemap, as under MapLibre (webgl-refused.spec.ts).
+    const ownView = engine && engine.engineFlag(undefined, this.cityId) === 'own'
+      ? (engine.ownWorldViewOrNull ? engine.ownWorldViewOrNull(document.getElementById('vector-map')) : new engine.OwnWorldView(document.getElementById('vector-map')))
+      : null;
+    this.vectorMap = ownView || new VectorBasemap(document.getElementById('vector-map'));
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;

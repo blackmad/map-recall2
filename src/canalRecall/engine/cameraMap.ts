@@ -362,6 +362,8 @@ export class CameraMap {
     this.idleChecks.set(name, busy);
     return () => { this.idleChecks.delete(name); };
   }
+  /** Something waits on `whenIdle` (the game's start hold): covered frames then keep running (startHold.ts coveredFrameMs). */
+  get idleWaiting(): boolean { return this.idleWaiters.length > 0; }
   /** What the view is still waiting on: the counted `busy` work and every named check that is busy. */
   pendingWork(): string[] {
     const out = this.busyCount ? [`busy×${this.busyCount}`] : [];

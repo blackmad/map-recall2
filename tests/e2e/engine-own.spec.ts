@@ -1,10 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
-import { openRoute } from './helpers';
+import { openRoute, useEngine } from './helpers';
+import { OWN } from './worldCam';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
 const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
-const PROGRAMS_BUDGET: number = BUDGETS.programs.value;
 const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
@@ -19,7 +19,8 @@ test('the default path still loads maplibre-gl (script and stylesheet) and build
   test.setTimeout(120_000);
   const requests: string[] = [];
   page.on('request', r => { if (MAPLIBRE_ASSET.test(r.url())) requests.push(r.url()); });
-  test.skip(process.env.ENGINE === 'own', 'the default path only');
+  test.skip(OWN, 'the MapLibre path only: ENGINE=maplibre');
+  await useEngine(page);
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame?.vectorMap?.map), { timeout: 90_000 }).toBe(true);
   expect(requests.some(u => /\.js(\?|$)/.test(u)), 'maplibre-gl.js requested').toBe(true);
@@ -130,11 +131,19 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     const w = window as any;
     const watch = () => {
       const g = w.canalRecallGame;
+      // Named regression (2026-11-27): while the start hold waits on the view, the covered world renders at the hold's
+      // tick, not 1 Hz (startHold.ts coveredFrameMs): at 1 Hz the built ground cells queued for frames and settle.ts's
+      // ownGround held the start to the 10 s cap.
+      const vm = g?.vectorMap;
+      if (g?.state === 2 && g._startHoldTicking && vm?.cameraMap?.idleWaiting && typeof vm.host?.hooks?.coveredFrameMs === 'function') {
+        const ms = vm.host.hooks.coveredFrameMs();
+        w.__holdCoveredMs = Math.max(w.__holdCoveredMs ?? 0, ms ?? 0);
+      }
       if (g?.state === 4) {
         const tb = g.vectorMap?._threeBuildings;
         let count = 0;
         for (const chunk of tb?.chunks?.values?.() ?? []) if (chunk.mesh?.parent && chunk.mesh.visible !== false && chunk.info?.vertexCount > 0) count++;
-        w.__facadesAtRacing = { count, ready: !!tb?.ready, settle: g._lastMapSettle ?? null };
+        w.__facadesAtRacing = { count, ready: !!tb?.ready, settle: g._lastMapSettle ?? null, hold: g._startHold ?? null, holdCoveredMs: w.__holdCoveredMs ?? null };
         return;
       }
       requestAnimationFrame(watch);
@@ -146,6 +155,8 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   const atRacing = await page.evaluate(() => (window as any).__facadesAtRacing);
   console.log('facades at the first racing frame', JSON.stringify(atRacing));
   expect(atRacing.ready, 'the facade atlas is bound when racing begins').toBe(true);
+  expect(atRacing.holdCoveredMs, 'the covered world renders at the start hold tick while the hold waits (startHold.ts coveredFrameMs)').not.toBeNull();
+  expect(atRacing.holdCoveredMs).toBeLessThanOrEqual(250);
   expect(atRacing.count, 'facade chunk meshes are visible in the first racing frame').toBeGreaterThan(0);
   // Not a token few: standing still, the set 3 s later is what the spawn view holds.
   await page.waitForTimeout(3000);
@@ -207,7 +218,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.trees).not.toBeNull();
   expect(stats.roofs).toBe(true);
   expect(stats.calls).toBeLessThanOrEqual(700);
-  expect(stats.programs).toBeLessThanOrEqual(PROGRAMS_BUDGET);
+  expect(stats.programs, 'GL programs after the ride (budgets.json programs, per project)').toBeLessThanOrEqual(BUDGETS.programs.value[test.info().project.name === 'iphone' ? 'iphone' : 'desktop']);
   expect(errors).toEqual([]);
   // Spoiler rule: the name under question is never on the map.
   for (const name of stats.asked) expect(stats.labels.map((t: string) => t.toLowerCase())).not.toContain(String(name).toLowerCase());
@@ -232,7 +243,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
 // (engine/cameraMap.ts EngineCamera) projects the same ground points to within the budget (tests/perf/budgets.json cameraParityPx).
 // Under `?engine=own` itself: engine-parity.spec.ts.
 test('engine camera matches MapLibre within the parity budget along the intro and a ride', async ({ page }) => {
-  test.skip(process.env.ENGINE === 'own', 'the oracle is MapLibre: run without ENGINE=own');
+  test.skip(OWN, 'the oracle is MapLibre: ENGINE=maplibre');
   test.setTimeout(180_000);
   await openRoute(page, { viewMode: 'chase', enterRacing: false });
   const samples: number[][] = [];

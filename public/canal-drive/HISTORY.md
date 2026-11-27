@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Round 20261127b: the own engine is the default; the loading screen ends on "Ready!" (2026-11-27)
+
+- **Why:** David: "let's switch to engine=own by default please, I don't want to continue maintaining two codepaths." A friend's iPhone was killed three times in a minute on 2026-11-26 (Sentry CANAL-RECALL-V, heartbeat "previous ride ended without unload", all `engine: maplibre`, 5–21 s after load), so the tab-kill is on the MapLibre path; the iPhone start memory of both engines is being measured on `lane/iphone-start-memory-20261127` (iOS Simulator WebContent footprint + Chromium memory-infra).
+- **Engine flip:** the Nov 1 flip commit (6e5f121eec) cherry-picked clean onto main. `engineFlag` asks for the own engine unless `?engine=maplibre` (or `window.__canalRecallEngine = 'maplibre'`); `OWN_ENGINE_CITIES` still sends Utrecht, Rotterdam and Den Haag to MapLibre, so `vector-map.js` cannot be deleted until those cities have own-map extracts or are dropped. Specs: a plain run is own; `ENGINE=maplibre` is the MapLibre lane. `engine-own`, `loading-progress`, `start-heading` green on desktop (14 passed, 2 skipped as MapLibre-only). In that run the own start hold ended on its 10 s cap with `ownGround` pending, and the desktop JS heap read 1,069 MB.
+- **Loading lines:** "Ready!" was set before the intro hold, so it showed before "Finding your way…"; it is now the last line, a 200 ms beat before racing. Past 1.5 s a hold rotates 15 Amsterdam lines every 1.6 s ("Dredging the canals…", "Aligning the polders…", "Narrowing the canal houses…"), continuing across the ride and intro holds (`startHold.ts START_HOLD_BUILDING_LINES`, en + nl, unit test checks both catalogues).
+
 ## Round 20261127a: landmarks r19, ten iconic buildings (2026-11-27)
 
 - **Why:** the programme resumed after the 2026-11-23 pause. The r18 iconic list still had twelve briefs, and Bulldog The First and In 't Aepjen had been held after two lost blinds on 2026-11-21.

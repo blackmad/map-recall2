@@ -8,15 +8,17 @@
       "date": "2026-10-24"
     },
     "programs": {
-      "value": 40,
-      "measured": [
-        37,
-        37,
-        37
-      ],
-      "unit": "GL programs after the perf-gate 70 s own-engine landmark ride (DPR 2); engine-own.spec's 6 s ride stays far below",
-      "source": "lane perf-findings #299 2026-11-09: 33 compiled before RACING, +1-4 by route; new since the 32 line (2026-10-26, MapLibre phone ride): engine overview ShaderMaterials x3 (10-30), container furniture (11-05), landmark batch city-look+depth USE_BATCHING x3 and lod2 raw-Lambert stand-ins x3-4 (R4-B #244 11-07), baked-coarse depth (11-07); fold candidates in #299 (lod2 through city-look, one shadowSide, defer boat/transit compile) would take this back to 36",
-      "date": "2026-11-09"
+      "value": {
+        "desktop": 43,
+        "iphone": 43
+      },
+      "measured": {
+        "desktop": [34, 34, 42, 37],
+        "iphone": [40, 40, 36, 42]
+      },
+      "unit": "GL programs after engine-own.spec's ride (openRoute ?engine=own chase, 6 s forward + 2 s); the perf-gate 70 s landmark ride reads the desktop value",
+      "source": "lane loading-lines 2026-11-27, own engine the default (#129): re-pinned at the measured max + 1 per project, after removing the shadow-depth program keyed on instanceColor (rendererShared/depthInstanceColor.ts; shadow map texel-identical, 0 of 4.19M texels, 7 coloured instanced casters). Measured: three openRoute seeds (5eed1234, 2468ace0, 2468ace1) plus one engine-own.spec run per project, Playwright headless (SwiftShader), desktop 1440x900, iPhone 13. Why above 40: 23-31 programs at RACING; the ride compiles the rest (landmark arrivals and lod2 swaps with their lodDissolve twins, kit facades, landmark batch). Before the fold the same runs read desktop 31-44, iPhone 40-43. Grouped (iPhone seed 5eed1234, 40): shadow depth 8 (instancing x side) + facade chunk depth 1; own ground lit 5 (blend: vertex colours, uv, double-sided, rails); other lit Standard 4 (GLB landmarks, water/quay); street furniture 2; trees 1; engine overview ShaderMaterial 3; Basic 2; city-look facades 7 (chunk swap 1, slot uv 1 + lodDissolve twin, slot box 1 + twin, landmark batch 2); landmark lod2/kit Lambert 7 (facade, roof, flat vertex colour, each with its lodDissolve twin, + 1 twin alone). The lodDissolve twins (5-6) stay by integrator decision 2026-11-27: folding them puts a discard in every landmark fragment shader (early-z, iPhone hidden-surface removal). Previous line: 40 (lane perf-findings #299, 2026-11-09, 37/37/37 on the 70 s ride).",
+      "date": "2026-11-27"
     },
     "motionBudget": {
       "value": [

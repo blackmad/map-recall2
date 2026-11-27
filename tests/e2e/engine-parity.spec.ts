@@ -64,7 +64,8 @@ test('?engine=own camera matches MapLibre along the start flight and the Anne Fr
   // The oracle: the same viewport, MapLibre's world view, each pose replayed with jumpTo.
   const oracle = await page.context().newPage();
   await seed(oracle);
-  await oracle.goto('/canal-drive/');
+  // The oracle names its engine: the own engine is the default since the Amsterdam flip (#129).
+  await oracle.goto('/canal-drive/?engine=maplibre');
   await oracle.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?.map?.loaded?.(), null, { timeout: 90_000 });
   const misfits = await oracle.evaluate((poses: Pose[]) => {
     const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;

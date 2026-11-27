@@ -36,7 +36,7 @@ import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
-import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
+import { introHoldCapMs, revealDissolveAlpha, START_HOLD_LINE_MS, START_HOLD_MESSAGE_AFTER_MS, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, StartTagLatch, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
@@ -224,10 +224,14 @@ export class GamePresentationRuntime {
     const capMs = kind === 'ride' ? cap : introHoldCapMs(hold.spentMs, cap);
     const base = kind === 'ride' ? 'ride.load.settling' : 'ride.load.findingWay';
     const started = performance.now();
+    // The rotating "building" lines continue across the ride and intro holds (startHoldMessageKey's offset).
+    const offset = hold.lineOffset ?? 0;
+    let shown = 0;
     const timer = setInterval(() => {
       if (this.state !== GameState.LOADING) return;
-      const key = startHoldMessageKey(performance.now() - started, base);
-      if (key !== base) this.loadingMessage = tr(key as MessageKey);
+      const elapsed = performance.now() - started;
+      const key = startHoldMessageKey(elapsed, base, offset);
+      if (key !== base) { this.loadingMessage = tr(key as MessageKey); shown = Math.floor((elapsed - START_HOLD_MESSAGE_AFTER_MS) / START_HOLD_LINE_MS) + 1; }
     }, 250);
     // While this hold waits, the loading frame ticks the world (_tickHeldWorld): the hold ends when the city is built.
     this._startHoldTicking = true;
@@ -235,6 +239,7 @@ export class GamePresentationRuntime {
     const out = this._lastMapSettle;
     const ms = out?.ms ?? Math.round(performance.now() - started);
     hold.spentMs += ms;
+    hold.lineOffset = offset + shown;
     hold.capped = !!out?.timedOut;
     hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
     // The dissolve follows the last hold before racing: armed when it ended on its cap.
