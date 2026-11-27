@@ -1,0 +1,363 @@
+{
+ "schemaVersion": 1,
+ "id": "passage-central",
+ "pand": "0363100012170968",
+ "brief": "scripts/landmarks/passage-central-brief.md",
+ "signature": [
+  "pc-bands",
+  "pc-balconies",
+  "pc-oculus-dormers",
+  "pc-ground-stone",
+  "pc-portal",
+  "pc-surrounds",
+  "pc-cornice",
+  "pc-crest"
+ ],
+ "walls": [
+  {
+   "tag": "w01-162",
+   "bearing": 162,
+   "lengthM": 17.7,
+   "centre": [
+    4.89557,
+    52.3783565
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track06_Sphere_00021",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "pc-rear-shopfront",
+     "kind": "other",
+     "where": "a wide timber shop window with a mullioned transom band under a cream cornice (x 360-887, y 650-1299)",
+     "approxSizeM": [
+      10.5,
+      6.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track06_Sphere_00021",
+     "how": "glass field with a timber frame and transom bars, a cream cornice band"
+    },
+    {
+     "id": "pc-rear-windows",
+     "kind": "window-shape",
+     "where": "white sash windows: two axes on the dark house, two large ones on the red block (y 0-650)",
+     "approxSizeM": [
+      1.4,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track06_Sphere_00021",
+     "how": "sashWindows rows on brick facing slabs"
+    }
+   ],
+   "note": "The Nieuwendijk-side wall (facade ring edge 12, 17.7 m), on the 2025 rectified crop (the 2022 one is under scaffolding): a narrow dark-brick house with two window axes (t 2.4-7.2 m) and a red-brick block with a wide timber shop window and cream cornice (t 7.2-17.7 m). Plain fronts; nothing notable beyond the shop window."
+  },
+  {
+   "tag": "w02-233",
+   "bearing": 233,
+   "lengthM": 11,
+   "centre": [
+    4.895397,
+    52.3783715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000303",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "pc-w-shopfront",
+     "kind": "other",
+     "where": "cream-painted ground storey with doors and a shop window (y 820-1299)",
+     "approxSizeM": [
+      11.0,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000303",
+     "how": "cream facing slab, door and window fields"
+    },
+    {
+     "id": "pc-w-sign",
+     "kind": "sign",
+     "where": "projecting restaurant sign",
+     "approxSizeM": [
+      1.4,
+      1.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001530_pano_0004_000303",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ],
+   "note": "The west end wall (ring edge 11, 11 m), 2019 crop: dark brick upper storeys with white sash windows over a cream-painted ground storey with the restaurant front. Ordinary; no ornament."
+  },
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 8.9,
+   "centre": [
+    4.8957615,
+    52.378383
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000495",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "pc-shop-pilaster",
+     "kind": "other",
+     "where": "a cream-painted timber shopfront with fluted pilasters, Ionic capitals and fan-light panels over the window (whole crop)",
+     "approxSizeM": [
+      8.9,
+      4.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002628_pano_0000_000495",
+     "how": "cream facing slab with pilaster strips, capital blocks, a glazed field"
+    }
+   ],
+   "note": "Ring edge 14 (8.9 m), 2022 crop at 34 m and 28 deg: only a cream-painted shopfront with fluted pilasters and an Ionic capital and fan lights is legible; the upper storeys are out of the crop."
+  },
+  {
+   "tag": "w04-42",
+   "bearing": 42,
+   "lengthM": 4.9,
+   "centre": [
+    4.896319,
+    52.3785195
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_00533",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "pc-portal",
+     "kind": "other",
+     "where": "ground storey of the east bay: the passage portal, a tall rectangular opening in a dark grey steel frame over three steps, with two glazed round-arched lunettes above it (x 45-235, y 985-1290)",
+     "approxSizeM": [
+      3.8,
+      6.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "portal(): dark frame, glazed fanlight band and steps; two lunettes with stone archivolts"
+    },
+    {
+     "id": "pc-ground-stone",
+     "kind": "colonnade",
+     "where": "the grey stone ground storey of all three bays: rusticated piers, carved archivolts with mask keystones, a stone cornice band at 7.7-8.1 m (y 885-935)",
+     "approxSizeM": [
+      15.1,
+      8.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "rustic() block courses on every pier, archBand archivolts, keystone blocks, the cornice band"
+    },
+    {
+     "id": "pc-masks",
+     "kind": "relief",
+     "where": "carved masks on the arch keystones and the pier capitals (y 950-980)",
+     "approxSizeM": [
+      0.4,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "a stepped keystone block with a proud mask block per arch; capital blocks on the piers"
+    },
+    {
+     "id": "pc-bands",
+     "kind": "other",
+     "where": "red brick piers banded every ~0.6 m with cream stone courses (speklagen) from the first storey to the cornice (y 250-885)",
+     "approxSizeM": [
+      15.1,
+      13.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "speklagen kit runs stopped at the window surrounds"
+    },
+    {
+     "id": "pc-surrounds",
+     "kind": "window-shape",
+     "where": "cream stone window surrounds: two axes per side bay, framed as one panel with carved lintel friezes over the first and second storey (y 250-880)",
+     "approxSizeM": [
+      3.6,
+      12.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "surround(): jambs, sill and lintel slabs; frieze panels with a sunk carved block"
+    },
+    {
+     "id": "pc-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron balconettes across the lower third of every upper window (y 345-910)",
+     "approxSizeM": [
+      1.2,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "bar railings (top rail, bottom rail, bars) one per window"
+    },
+    {
+     "id": "pc-cornice",
+     "kind": "other",
+     "where": "the stone cornice with a modillion band under the corona at 21.2-22.5 m (y 165-230)",
+     "approxSizeM": [
+      15.1,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "cornice(): bed, modillion blocks, corona"
+    },
+    {
+     "id": "pc-oculus-dormers",
+     "kind": "window-shape",
+     "where": "stone dormers on the attic, two per side bay, each a bull's-eye window in a round-headed aedicule with scrolled cheeks (y 85-165)",
+     "approxSizeM": [
+      1.3,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "oculusDormer(): stone body with an arched hood, a glazed disc and ring, scroll discs at the feet"
+    },
+    {
+     "id": "pc-balconies",
+     "kind": "balcony-ironwork",
+     "where": "the central bay: two stone balconies with balustrades carried on consoles, at the first floor (8.1 m) and the second floor (12.3 m), the upper one on the two projecting piers (aimed view y 320-490)",
+     "approxSizeM": [
+      5.4,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "balustrade kit (posts, balusters, rail) on a slab with console blocks"
+    },
+    {
+     "id": "pc-piers",
+     "kind": "colonnade",
+     "where": "two projecting stone piers (0.95 m, 0.64 m proud, 3DBAG top 12.3 m) flanking the central bay, carrying the upper balcony; columns between the balconies",
+     "approxSizeM": [
+      0.95,
+      12.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "the 3DBAG pier shells clad in rusticated stone, a capital block, colonnettes"
+    },
+    {
+     "id": "pc-central-arches",
+     "kind": "window-shape",
+     "where": "two tall round-arched windows in the central bay's ground storey, like the west bay's",
+     "approxSizeM": [
+      3.0,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "archedShop() with transom and frame"
+    },
+    {
+     "id": "pc-crest",
+     "kind": "sculpture",
+     "where": "an ornamental stone crest over the central bay above the cornice: a cartouche between scrolls with a crowning finial (aimed view x 640-780, y 15-80)",
+     "approxSizeM": [
+      3.6,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "a stepped stone aedicule with scroll discs, a cartouche disc and a finial"
+    },
+    {
+     "id": "pc-mansard",
+     "kind": "other",
+     "where": "the roof behind the cornice: the 3DBAG wall stands sheer to 24.7 m; the aimed view shows the cornice at ~22.5 m with the dormers before a roof",
+     "approxSizeM": [
+      15.1,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_00533",
+     "how": "slate skin leaning from the cornice crown back to the shell wall top"
+    }
+   ],
+   "note": "The Prins Hendrikkade front, east bay (facade ring edge 1, 4.87 m): the entrance to the passage. Read on the rectified 2025 crop (w04-42.jpg, 50 px/m, heights from its foot) and the 2025 aimed view, which shows the whole three-bay front: this bay, the central balcony bay between two projecting stone piers (ring edges 2-8: 0.95 m piers standing 0.64 m proud and a 3.45 m bay) and the west bay (w05). Upper storeys of the two side bays are alike; the central-bay items are listed here because that bay (3.45 m) is below the brief's 4 m cut."
+  },
+  {
+   "tag": "w05-47",
+   "bearing": 47,
+   "lengthM": 4.9,
+   "centre": [
+    4.8962115,
+    52.378583
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_000033",
+   "capturedAt": "2021-09-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "pc-arched-windows",
+     "kind": "window-shape",
+     "where": "two tall round-arched windows with transoms in the ground storey (x 25-185, y 970-1150)",
+     "approxSizeM": [
+      3.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_000033",
+     "how": "archedShop(): glass, white frame, transom, stone archivolt and keystone"
+    },
+    {
+     "id": "pc-basement",
+     "kind": "other",
+     "where": "a basement door and light under the arched windows in the grey plinth (y 1190-1290)",
+     "approxSizeM": [
+      3.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002310_pano_0001_000033",
+     "how": "a white door slab and a glazed light in the plinth"
+    },
+    {
+     "id": "pc-ah-sign",
+     "kind": "sign",
+     "where": "shop lettering over the arched windows and a blue projecting sign",
+     "approxSizeM": [
+      2.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002310_pano_0001_000033",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ],
+   "note": "The Prins Hendrikkade front, west bay (facade ring edge 9, 4.88 m), on the rectified 2021 crop (w05-47.jpg, 50 px/m) and the 2025 second view. Same upper storeys as the east bay; the ground storey has two tall round-arched windows over a basement door and light."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
