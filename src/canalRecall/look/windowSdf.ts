@@ -187,7 +187,7 @@ export const WINDOW_SDF_FADE_PX = [2.5, 5] as const;
  *   barPx      glazing bars fade out as their width on screen falls from [1] to [0] px, the glass taking their mean;
  *              [0, 0] (the default) never fades them: a tent-filtered bar already draws at its true area, and fading
  *              them erased the sash panes at da-costakade-near while aliasPx was lower without the fade (#231 sweep 8).
- *   tent       filter the edges by a tent of half-width footprint x fwidth instead of a box (`?windowSdfTent=1`).
+ *   tent       filter the edges by a tent of half-width footprint x fwidth instead of a box.
  * The values are uniforms (`windowSdfBand`, `windowSdfShape`) so the probes sweep them in one page; the query flags
  * `?windowSdfFoot=`, `?windowSdfFade=a,b`, `?windowSdfFrameMin=`, `?windowSdfBar=a,b` set them for a page.
  */
@@ -219,8 +219,7 @@ export function windowSdfBandValues(): { band: [number, number, number, number];
   const fade = numbers(pageParam('windowSdfFade'), 2) ?? b.fadePx;
   const frameMin = numbers(pageParam('windowSdfFrameMin'), 1)?.[0] ?? b.frameMinPx;
   const bar = numbers(pageParam('windowSdfBar'), 2) ?? b.barPx;
-  const tentAsked = pageParam('windowSdfTent'), tent = tentAsked == null ? b.tent : tentAsked === '1';
-  return { band: [windowSdfBandEnabled() ? 1 : 0, foot, fade[0], fade[1]], shape: [frameMin, bar[0], bar[1], tent ? 1 : 0] };
+  return { band: [windowSdfBandEnabled() ? 1 : 0, foot, fade[0], fade[1]], shape: [frameMin, bar[0], bar[1], b.tent ? 1 : 0] };
 }
 
 let bandCache: { key: string; v: ReturnType<typeof windowSdfBandValues> } | null = null;

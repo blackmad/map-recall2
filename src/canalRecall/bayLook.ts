@@ -15,7 +15,7 @@ import type { FacadeStyle } from './genericFacades.js';
 import { profileTraits, unitDraw, type BuurtProfile, type ProfileTraits } from './buurtProfiles/profiles.js';
 import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
 import { shopGrammarEnabled, shopGroundHex } from './shopGrammar.js';
-import { SPANDREL_ACCENTS, modernFacadesEnabled, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
+import { SPANDREL_ACCENTS, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
 import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } from './contemporaryFamily.js';
 import { buurtKitEnabled } from './buurtGenerator/kitFlag.js';
 import { KIT_MULLION_SHARE } from './buurtGenerator/kit/frontKit.js';
@@ -329,7 +329,7 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
 /**
  * `modern`: the facts the modern vocabulary (modernFacades.ts) reads beyond year and height. Photo look, no recipe, a
  * dated post-1945 building: the era x use rule picks the preset and the wall instead of the hash and the buurt
- * profile (whose eras were measured on pre-1945 fronts). Absent, or `?modernFacades=0`: every pick is as before.
+ * profile (whose eras were measured on pre-1945 fronts). Absent: every pick is as before.
  */
 /**
  * `spec`: a HouseSpec's stated window look (houseSpec/decorate.ts SpecLook, lane H11): each stated trait replaces the buurt
@@ -353,7 +353,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
   // The contemporary family (`?newbuildFamily=1`): measured new-build walls and window shapes, every textured look.
   const contemporary: ContemporaryLook | null = modern && !recipe && archetype === 'modern' ? contemporaryLookFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }), at: modern.at }) : null;
-  const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
+  const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
   // The post-1965 housing kit (`?postwarKit=1`, postwarKit/kit.ts): a dated 1965+ housing block this lane read takes its
   // read (wall, preset, features); one with a brick-only panorama measurement takes that wall colour only, in today's preset
   // (its brick or smooth twin when the material changes). No evidence, or off: null, nothing changes.

@@ -3,7 +3,7 @@
  * measured on their own pand, calibrated by derive.ts and published as `modern-pand-walls.json`
  * ({ walls: { "<16-digit pand id>": "<b|p>rrggbb" } }, b brick, p paint or render). A measured building draws its
  * own wall and material; every other one draws from its buurt's modern mix. Bundled into the building layer and
- * its chunk worker; the `?modernFacades=0` A/B turns it off with the rest of the vocabulary.
+ * its chunk worker.
  */
 import SET from './modern-pand-walls.json';
 import CORRECTIONS from './modern-pand-wall-corrections.json';

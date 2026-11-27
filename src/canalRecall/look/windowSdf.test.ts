@@ -142,7 +142,7 @@ test('band flags and uniforms: on by default, ?windowSdfBand=0 is round two; que
   assert.equal(withGlobal('location', { search: '?windowSdfBand=0' }, () => windowSdfBandEnabled()), false);
   const b = WINDOW_SDF_BAND;
   assert.deepEqual(windowSdfBandValues(), { band: [1, b.footprint, b.fadePx[0], b.fadePx[1]], shape: [b.frameMinPx, b.barPx[0], b.barPx[1], b.tent ? 1 : 0] });
-  assert.deepEqual(withGlobal('location', { search: '?windowSdfBand=0&windowSdfFoot=1.5&windowSdfFade=1,2&windowSdfFrameMin=0&windowSdfBar=2,4&windowSdfTent=1' }, () => windowSdfBandValues()), { band: [0, 1.5, 1, 2], shape: [0, 2, 4, 1] });
+  assert.deepEqual(withGlobal('location', { search: '?windowSdfBand=0&windowSdfFoot=1.5&windowSdfFade=1,2&windowSdfFrameMin=0&windowSdfBar=2,4' }, () => windowSdfBandValues()), { band: [0, 1.5, 1, 2], shape: [0, 2, 4, 1] });
   const u1 = windowSdfBandUniforms(), u2 = windowSdfBandUniforms();
   assert.notEqual(u1.windowSdfBand, u2.windowSdfBand, 'each material its own uniform objects');
   // Round two's constants stay compiled in for band = 0.

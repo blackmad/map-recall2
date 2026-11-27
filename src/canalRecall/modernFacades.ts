@@ -25,16 +25,6 @@ import type { OwnWall } from './buurtProfiles/modernPandWalls.js';
 const labOf = (hex: string) => rgbToLab([1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)));
 const lightnessOf = (hex: string) => labOf(hex)[0];
 
-/**
- * A/B: `?modernFacades=0` (passed to the chunk worker) draws every post-1945 building as before. A test can set
- * `globalThis.__canalRecallModernFacades = false`.
- */
-export function modernFacadesEnabled(): boolean {
-  const g = globalThis as { __canalRecallModernFacades?: boolean; location?: { search?: string } };
-  if (typeof g.__canalRecallModernFacades === 'boolean') return g.__canalRecallModernFacades;
-  try { return new URLSearchParams(g.location?.search ?? '').get('modernFacades') !== '0'; } catch { return true; }
-}
-
 /** Indices into `BAY_STYLES.modern` (bayLook.ts). Pinned by modernFacades.test.ts. */
 export const MODERN_STYLE = {
   brick: 0, brickDark: 1, smooth: 2, smoothDark: 3, balanced: 4, wideDark: 5, ribbon: 6, curtain: 7, gallery: 8,

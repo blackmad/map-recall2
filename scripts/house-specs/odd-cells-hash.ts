@@ -80,6 +80,6 @@ for (const tile of tiles.sort()) {
   }
 }
 const all = createHash('sha256').update(Object.keys(hashes).sort().map(k => `${k}=${hashes[k]}`).join('\n')).digest('hex').slice(0, 16);
-const meta = { dir, force, forced, records: recordsArg ?? null, tiles: tiles.length, entries: Object.keys(hashes).length, all, oddAxisCells: process.env.ODD_AXIS_CELLS ?? 'default', specDesign: process.env.HOUSE_SPEC_DESIGN ?? 'default', vertices: totals };
+const meta = { dir, force, forced, records: recordsArg ?? null, tiles: tiles.length, entries: Object.keys(hashes).length, all, specDesign: process.env.HOUSE_SPEC_DESIGN ?? 'default', vertices: totals };
 console.log(JSON.stringify(meta));
 if (outAt >= 0) fs.writeFileSync(args[outAt + 1], JSON.stringify({ meta, hashes, vertices }));
