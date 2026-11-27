@@ -16,7 +16,7 @@
 // the relief itself — no seam, no step — and the quay walls, street ribbons
 // and route ribbon all sample this one function.
 
-import { applyLocalToRd, type GroundField, type LocalToRd } from './heightField.js';
+import { applyLocalToRdInto, type GroundField, type LocalToRd } from './heightField.js';
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
 import { cutRelief, insideCut, locateCut, type Cut } from './tunnels.js';
 
@@ -136,18 +136,20 @@ export class GroundSurface {
   readonly cuts: Cut[] = [];
   private readonly cutBuckets = new Map<number, Cut[]>();
 
+  /** applyLocalToRdInto's out pair (read at once, never held). */
+  private readonly rdScratch = new Float64Array(2);
   constructor(readonly field: GroundField, readonly localToRd: LocalToRd, readonly datumNAP: number) {}
 
   /** The relief's measured sample spacing under a scene point, metres (2 m in the measured centre, 4 m on the coarse ring). */
   dataStepAt(x: number, y: number): number {
-    const [rx, ry] = applyLocalToRd(this.localToRd, x, y);
-    return this.field.dataStepRd(rx, ry);
+    const rd = applyLocalToRdInto(this.localToRd, x, y, this.rdScratch);
+    return this.field.dataStepRd(rd[0], rd[1]);
   }
 
   /** The measured relief alone (no decks, no tunnel cuts), scene z. */
   relief = (x: number, y: number): number => {
-    const [rx, ry] = applyLocalToRd(this.localToRd, x, y);
-    const h = this.field.heightRd(rx, ry);
+    const rd = applyLocalToRdInto(this.localToRd, x, y, this.rdScratch);
+    const h = this.field.heightRd(rd[0], rd[1]);
     return h === h ? h - this.datumNAP : this.fallbackZ;
   };
 
@@ -173,7 +175,10 @@ export class GroundSurface {
   };
 
   /** Place a tunnel cut (tunnels.ts) and index it for `ground`, `height` and `cutFloor`. */
+  /** Bumped by every addCut / removeCut (`ground` reads the cuts). */
+  cutVersion = 0;
   addCut(cut: Cut): void {
+    this.cutVersion++;
     this.cuts.push(cut);
     const [x0, y0, x1, y1] = cut.bbox;
     for (let bx = Math.floor(x0 / BUCKET_M); bx <= Math.floor(x1 / BUCKET_M); bx++)
@@ -185,6 +190,7 @@ export class GroundSurface {
 
   /** Take a placed cut off the surface again (groundStore's deterministic cut plans: a lower-keyed plan's cut replaces it). */
   removeCut(cut: Cut): void {
+    this.cutVersion++;
     const i = this.cuts.indexOf(cut);
     if (i < 0) return;
     this.cuts.splice(i, 1);

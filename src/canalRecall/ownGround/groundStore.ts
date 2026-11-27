@@ -16,7 +16,7 @@
 import { lngLatToRd } from '../facade/rdNew.js';
 import { cellKey, localToLngLat, validateIndex, type BridgeExtract, type ElevationIndex, type WaterCell } from '../elevation/elevationData.js';
 import { decodeFallback, decodeProfile, type DeckProfile } from '../elevation/bridgeDeck.js';
-import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, tileKey, type GroundIndex } from './heightField.js';
+import { applyLocalToRdInto, extendTile, fitLocalToRd, GroundField, readGroundTile, tileKey, type GroundIndex } from './heightField.js';
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
@@ -589,11 +589,13 @@ export class GroundStore {
 
   get reliefTileCount(): number { return this.reliefTiles.size; }
 
+  private readonly rdScratch = new Float64Array(2);
   /** Is measured (or filled) relief resident under this game-frame point? */
   hasRelief(x: number, y: number): boolean {
     if (!this.surface) return false;
-    const [rx, ry] = applyLocalToRd(this.surface.localToRd, x, y);
-    return this.field.heightRd(rx, ry) === this.field.heightRd(rx, ry);
+    const rd = applyLocalToRdInto(this.surface.localToRd, x, y, this.rdScratch);
+    const h = this.field.heightRd(rd[0], rd[1]);
+    return h === h;
   }
 
   /** Drop relief tiles whose centre is farther than `keepM` from a game-frame point. */

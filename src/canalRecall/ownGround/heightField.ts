@@ -392,15 +392,32 @@ export class GroundField {
 
   private static key(tx: number, ty: number): number { return tx * 2097152 + ty; }
 
+  /**
+   * Bumped by every addTile / removeTile; each tile keeps the version it last changed at (desktop-perf 2026-11-27): a
+   * reader's memo of heights over an area stays good while `changedSince` says no tile under it changed.
+   */
+  version = 0;
+  private readonly stamps = new Map<number, number>();
+
+  /** Whether a tile within RD [x0, x1] × [y0, y1] (widened by one sample, which bilinear reads reach) changed after `version`. */
+  changedSince(version: number, x0: number, y0: number, x1: number, y1: number): boolean {
+    if (version >= this.version) return false;
+    const s = this.tileSizeM, tx0 = Math.floor((x0 - this.stepM) / s), tx1 = Math.floor((x1 + this.stepM) / s);
+    const ty0 = Math.floor((y0 - this.stepM) / s), ty1 = Math.floor((y1 + this.stepM) / s);
+    for (let tx = tx0; tx <= tx1; tx++) for (let ty = ty0; ty <= ty1; ty++) if ((this.stamps.get(GroundField.key(tx, ty)) ?? -1) > version) return true;
+    return false;
+  }
+
   /** `dataStepM`: the spacing the tile was measured at (its index entry), when coarser than the grid it is stored on. */
   addTile(tx: number, ty: number, heights: Float32Array, dataStepM = this.stepM): void {
     if (heights.length !== this.samples * this.samples) throw new Error('ground tile size mismatch');
     const key = GroundField.key(tx, ty);
+    this.stamps.set(key, ++this.version);
     this.tiles.set(key, wholeCentimetres(heights) ?? heights);
     if (dataStepM > this.stepM) this.steps.set(key, dataStepM); else this.steps.delete(key);
   }
 
-  removeTile(tx: number, ty: number): void { const key = GroundField.key(tx, ty); this.tiles.delete(key); this.steps.delete(key); }
+  removeTile(tx: number, ty: number): void { const key = GroundField.key(tx, ty); this.stamps.set(key, ++this.version); this.tiles.delete(key); this.steps.delete(key); }
 
   /** The measured sample spacing under RD (x, y), metres: finer detail between samples is interpolation, not data. */
   dataStepRd(x: number, y: number): number {
@@ -423,11 +440,15 @@ export class GroundField {
     const i = Math.floor(fx), j = Math.floor(fy), u = fx - i, v = fy - j;
     const a = this.sampleAt(i, j), b = this.sampleAt(i + 1, j), c = this.sampleAt(i, j + 1), d = this.sampleAt(i + 1, j + 1);
     if (a !== a || b !== b || c !== c || d !== d) {
-      // At the coverage edge use whichever neighbours exist rather than dropping out.
-      const known = [[a, (1 - u) * (1 - v)], [b, u * (1 - v)], [c, (1 - u) * v], [d, u * v]].filter(([h]) => h === h);
-      if (!known.length) return NaN;
-      const w = known.reduce((s, [, k]) => s + k, 0);
-      return w > 1e-9 ? known.reduce((s, [h, k]) => s + h * k, 0) / w : known[0][0];
+      // At the coverage edge use whichever neighbours exist rather than dropping out (inline: no arrays per sample).
+      let w = 0, sum = 0, first = NaN;
+      const wa = (1 - u) * (1 - v), wb = u * (1 - v), wc = (1 - u) * v, wd = u * v;
+      if (a === a) { w += wa; sum += a * wa; if (first !== first) first = a; }
+      if (b === b) { w += wb; sum += b * wb; if (first !== first) first = b; }
+      if (c === c) { w += wc; sum += c * wc; if (first !== first) first = c; }
+      if (d === d) { w += wd; sum += d * wd; if (first !== first) first = d; }
+      if (first !== first) return NaN;
+      return w > 1e-9 ? sum / w : first;
     }
     return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
   }
@@ -472,6 +493,17 @@ export function extendTile(field: GroundField, tx: number, ty: number, use: (tx:
  * (the cos-latitude scale), which the quadratic absorbs to millimetres.
  */
 export interface LocalToRd { cx: number; cy: number; r: number; a: number[]; b: number[] }
+
+/**
+ * applyLocalToRd into `out` (no array per call: the relief is sampled ~100 times per building base, and the fresh
+ * [rx, ry] pairs were a large share of the ride's allocation, desktop-perf 2026-11-27). Returns `out`.
+ */
+export function applyLocalToRdInto(m: LocalToRd, x: number, y: number, out: Float64Array): Float64Array {
+  const u = (x - m.cx) / m.r, v = (y - m.cy) / m.r, uu = u * u, uv = u * v, vv = v * v;
+  out[0] = m.a[0] + m.a[1] * u + m.a[2] * v + m.a[3] * uu + m.a[4] * uv + m.a[5] * vv;
+  out[1] = m.b[0] + m.b[1] * u + m.b[2] * v + m.b[3] * uu + m.b[4] * uv + m.b[5] * vv;
+  return out;
+}
 
 export function applyLocalToRd(m: LocalToRd, x: number, y: number): [number, number] {
   const u = (x - m.cx) / m.r, v = (y - m.cy) / m.r, uu = u * u, uv = u * v, vv = v * v;

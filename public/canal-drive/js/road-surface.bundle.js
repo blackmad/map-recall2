@@ -53,9 +53,23 @@ var CanalRecallRoadSurface = (() => {
     plazaGuardContact: () => plazaGuardContact,
     plazaSurface: () => plazaSurface,
     roadNameAt: () => roadNameAt,
+    roadQueryMemoOn: () => roadQueryMemoOn,
     roadsNear: () => roadsNear,
     roadsNearInto: () => roadsNearInto
   });
+
+  // src/canalRecall/hypot2.ts
+  function hypot2(x, y) {
+    const ax = Math.abs(x), ay = Math.abs(y);
+    if (ax === Infinity) return ax;
+    if (ay === Infinity) return ay;
+    if (ax !== ax) return ax;
+    if (ay !== ay) return ay;
+    const max = ax > ay ? ax : ay;
+    if (max === 0) return max;
+    const n0 = ax / max, n1 = ay / max;
+    return Math.sqrt(n0 * n0 + n1 * n1) * max;
+  }
 
   // src/canalRecall/buildScheduling.ts
   async function finishBatchedBuild(stages, scheduling = {}) {
@@ -435,8 +449,31 @@ var CanalRecallRoadSurface = (() => {
     spanCount = 0;
     contacts = [];
     contactCount = 0;
+    /**
+     * The last query's arguments (desktop-perf 2026-11-27): the road guard and the HUD plaque both ask for the contacts
+     * around the rider, at the same point, every frame. The same query on the same scratch returns what it already holds.
+     * The index is never changed in place (a new network builds a new one), so its identity is the key. `memo = false`
+     * (or `?roadMemo=0` through roadQueryMemoOn) recomputes every query.
+     */
+    memo = roadQueryMemoOn();
+    spansFor = { index: null, x: NaN, y: NaN, ring: -1 };
+    /** Bumped whenever `spans` is rewritten. */
+    spanStamp = 0;
+    contactsFor = { stamp: -1, x: NaN, y: NaN };
   };
+  function roadQueryMemoOn() {
+    const g = globalThis;
+    if (typeof g.__canalRecallRoadMemo === "boolean") return g.__canalRecallRoadMemo;
+    return !/[?&]roadMemo=(0|false|off)\b/.test(g.location?.search ?? "");
+  }
   function roadsNearInto(index, x, y, ring, scratch) {
+    const f = scratch.spansFor;
+    if (scratch.memo && f.index === index && f.x === x && f.y === y && f.ring === ring) return scratch.spanCount;
+    f.index = index;
+    f.x = x;
+    f.y = y;
+    f.ring = ring;
+    scratch.spanStamp++;
     const gx = Math.floor(x / index.cellSize);
     const gy = Math.floor(y / index.cellSize);
     const out = scratch.spans;
@@ -458,6 +495,11 @@ var CanalRecallRoadSurface = (() => {
     return n;
   }
   function contactsInto(scratch, x, y) {
+    const m = scratch.contactsFor;
+    if (scratch.memo && m.stamp === scratch.spanStamp && m.x === x && m.y === y) return scratch.contactCount;
+    m.stamp = scratch.spanStamp;
+    m.x = x;
+    m.y = y;
     const n = scratch.spanCount, spans = scratch.spans, out = scratch.contacts;
     for (let i = 0; i < n; i++) {
       const span = spans[i], a = span.a, b = span.b;
@@ -466,14 +508,14 @@ var CanalRecallRoadSurface = (() => {
       if (lengthSquared === 0) {
         hx = a.x;
         hy = a.y;
-        dist = Math.hypot(x - a.x, y - a.y);
+        dist = hypot2(x - a.x, y - a.y);
       } else {
         const t = Math.max(0, Math.min(1, ((x - a.x) * abx + (y - a.y) * aby) / lengthSquared));
         hx = a.x + abx * t;
         hy = a.y + aby * t;
-        dist = Math.hypot(x - hx, y - hy);
+        dist = hypot2(x - hx, y - hy);
       }
-      const rdx = b.x - a.x, rdy = b.y - a.y, length = Math.hypot(rdx, rdy) || 1;
+      const rdx = b.x - a.x, rdy = b.y - a.y, length = hypot2(rdx, rdy) || 1;
       let c = out[i];
       if (!c) {
         c = { x: 0, y: 0, dist: 0, angle: 0, width: 0, segIdx: 0, ptIdx: 0, nx: 0, ny: 0, length: 0, along: 0 };
@@ -489,7 +531,7 @@ var CanalRecallRoadSurface = (() => {
       c.nx = -rdy / length;
       c.ny = rdx / length;
       c.length = length;
-      c.along = Math.hypot(hx - a.x, hy - a.y);
+      c.along = hypot2(hx - a.x, hy - a.y);
     }
     scratch.contactCount = n;
     return n;

@@ -7,22 +7,30 @@
 // buildings are grouped into height bins (one mesh per bin and cell, lifted by
 // the bin), which bounds the error at half a bin.
 
+import { hypot2 } from '../hypot2.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
 export interface BaseHeight { base: number; max: number; mean: number; samples: number }
 
 export function footprintBase(ring: readonly Vec2[], height: HeightFn): BaseHeight {
-  const zs: number[] = [];
-  let cx = 0, cy = 0;
-  for (let i = 0; i < ring.length; i++) {
-    const a = ring[i], b = ring[(i + 1) % ring.length];
-    zs.push(height(a[0], a[1]), height((a[0] + b[0]) / 2, (a[1] + b[1]) / 2));
-    cx += a[0] / ring.length; cy += a[1] / ring.length;
+  // Running min / max / sum in the samples' order (corner, edge midpoint, ..., centroid): the same numbers as collecting
+  // them into an array and filtering, without the arrays (desktop-perf 2026-11-27: bases are taken per building on every
+  // chunk install and shell re-base).
+  // Written out, not a closure over the running values: mutated captured doubles live boxed in a context.
+  let cx = 0, cy = 0, min = Infinity, max = -Infinity, sum = 0, n = 0;
+  const count = ring.length;
+  for (let i = 0; i < count; i++) {
+    const a = ring[i], b = ring[(i + 1) % count];
+    const z0 = height(a[0], a[1]);
+    if (Number.isFinite(z0)) { if (z0 < min) min = z0; if (z0 > max) max = z0; sum += z0; n++; }
+    const z1 = height((a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
+    if (Number.isFinite(z1)) { if (z1 < min) min = z1; if (z1 > max) max = z1; sum += z1; n++; }
+    cx += a[0] / count; cy += a[1] / count;
   }
-  zs.push(height(cx, cy));
-  const finite = zs.filter(Number.isFinite);
-  if (!finite.length) return { base: 0, max: 0, mean: 0, samples: 0 };
-  return { base: Math.min(...finite), max: Math.max(...finite), mean: finite.reduce((s, z) => s + z, 0) / finite.length, samples: finite.length };
+  const zc = height(cx, cy);
+  if (Number.isFinite(zc)) { if (zc < min) min = zc; if (zc > max) max = zc; sum += zc; n++; }
+  if (!n) return { base: 0, max: 0, mean: 0, samples: 0 };
+  return { base: min, max, mean: sum / n, samples: n };
 }
 
 // Fronts on the street, walls down to the ground (lane F4, feedback 2026-11-13: the Kinkerbrug approach). The lowest
@@ -53,11 +61,13 @@ export const DRAPE_SINK_M = 0.1;
 /** Vertices this close to the building's own ground level (model z 0) are its wall feet, metres. */
 export const DRAPE_FOOT_TOL_M = 0.002;
 
-/** Quantile `q` of `values` (sorted copy, nearest rank). */
-function quantile(values: readonly number[], q: number): number {
-  const s = [...values].sort((a, b) => a - b);
-  return s[Math.min(s.length - 1, Math.max(0, Math.round(q * (s.length - 1))))];
+/** Quantile `q` (nearest rank) of the first `n` of a scratch array, sorted in place. */
+function quantileInPlace(values: Float64Array, n: number, q: number): number {
+  const s = values.subarray(0, n).sort();
+  return s[Math.min(n - 1, Math.max(0, Math.round(q * (n - 1))))];
 }
+/** frontBase's outside samples (grown as needed, never shrunk; frontBase is not re-entrant through `height`). */
+let frontScratch = new Float64Array(256);
 
 /**
  * The street-wall base of a footprint (lane F4): FRONT_QUANTILE of the relief FRONT_OUT_M outside its walls, never below
@@ -71,23 +81,25 @@ export function frontBase(ring: readonly Vec2[], height: HeightFn): BaseHeight &
   for (let i = 0; i < ring.length; i++) {
     const a = ring[i], b = ring[(i + 1) % ring.length];
     area += a[0] * b[1] - b[0] * a[1];
-    perimeter += Math.hypot(b[0] - a[0], b[1] - a[1]);
+    perimeter += hypot2(b[0] - a[0], b[1] - a[1]);
   }
   const outward = area > 0 ? 1 : -1; // CCW ring: the outside is to the right of each edge
   const step = Math.max(FRONT_STEP_M, perimeter / FRONT_MAX_SAMPLES);
-  const zs: number[] = [];
+  let zs = frontScratch, count = 0;
   for (let i = 0; i < ring.length; i++) {
-    const a = ring[i], b = ring[(i + 1) % ring.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    const a = ring[i], b = ring[(i + 1) % ring.length], len = hypot2(b[0] - a[0], b[1] - a[1]);
     if (len < 1e-6) continue;
     const ux = (b[0] - a[0]) / len, uy = (b[1] - a[1]) / len, nx = uy * outward * FRONT_OUT_M, ny = -ux * outward * FRONT_OUT_M;
     const n = Math.max(1, Math.round(len / step));
     for (let k = 0; k < n; k++) {
       const t = (k + 0.5) / n, z = height(a[0] + (b[0] - a[0]) * t + nx, a[1] + (b[1] - a[1]) * t + ny);
-      if (Number.isFinite(z)) zs.push(z);
+      if (!Number.isFinite(z)) continue;
+      if (count === zs.length) { const grown = new Float64Array(zs.length * 2); grown.set(zs); zs = frontScratch = grown; }
+      zs[count++] = z;
     }
   }
-  if (!zs.length) return { ...low, front: low.base, low: low.base };
-  const front = Math.min(low.base + FRONT_MAX_RAISE_M, Math.max(low.base, quantile(zs, FRONT_QUANTILE)));
+  if (!count) return { ...low, front: low.base, low: low.base };
+  const front = Math.min(low.base + FRONT_MAX_RAISE_M, Math.max(low.base, quantileInPlace(zs, count, FRONT_QUANTILE)));
   return { ...low, base: front, front, low: low.base };
 }
 

@@ -212,9 +212,15 @@ const state = () => page.evaluate(() => {
 // Measure.
 const phases0 = await page.evaluate(() => window.__canalRecallFramePhases?.() ?? null);
 await page.evaluate(() => { const w = window; w.__gpuT.recording = true; w.__fr = []; w.__rf = []; let lastR = performance.now(); canalRecallGame.vectorMap.host.on('render', () => { const n = performance.now(); if (!w.__frStop) w.__rf.push(n - lastR); lastR = n; }); let last = performance.now(); const tick = n => { w.__fr.push(n - last); last = n; if (!w.__frStop) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
-if (has('profile')) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start'); }
+const abMode = !!(opt('ab-on', null) && opt('ab-off', null));
+if (has('profile') && !abMode) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start'); }
 // --alloc: V8's sampling heap profiler over the window (what allocates the garbage the GC then sweeps), by function.
-if (has('alloc')) await cdp.send('HeapProfiler.startSampling', { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: true });
+const SAMPLING = { samplingInterval: 32768, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: true };
+// Under an A/B the sampler and the CPU profiler run per window instead (allocation MB/s and main-thread GC ms/s per mode).
+if (has('alloc') && !abMode) await cdp.send('HeapProfiler.startSampling', SAMPLING);
+// --probe <file.js>: a script evaluated in the page before the window that may set window.__probeRead (a function);
+// its return value after the window lands in the result as `probe` (ad-hoc owner hunts).
+if (opt('probe', null)) await page.evaluate(fs.readFileSync(opt('probe', null), 'utf8'));
 const s0 = await state(), m0 = await metrics(), p0 = await procs(), t0 = Date.now();
 log.loadAtMeasure = la();
 const util = [];
@@ -227,13 +233,26 @@ const ab = abOn && abOff ? { on: [], off: [] } : null;
 if (ab) {
   await page.evaluate(() => { const w = window; w.__abGpu = 0; w.__abGpuN = 0; const T = w.__gpuT; const push = T.frames.push.bind(T.frames); T.frames.push = v => { w.__abGpu += v; w.__abGpuN++; return push(v); }; });
   const read = async () => ({ m: await metrics(), p: await procs(), t: Date.now(), x: await page.evaluate(() => ({ gpu: window.__abGpu, gpuN: window.__abGpuN, frames: canalRecallGame.vectorMap.host.stats.frames })) });
+  const abAlloc = has('alloc'), abGc = true;
+  if (abGc) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); }
+  const sumSelf = n => n.selfSize + (n.children || []).reduce((t, c) => t + sumSelf(c), 0);
   for (let k = 0, mode = 'on'; k * abS < ride; k++, mode = mode === 'on' ? 'off' : 'on') {
     await page.evaluate(js => (0, eval)(js), mode === 'on' ? abOn : abOff);
     await page.waitForTimeout(1000);
+    if (abAlloc) await cdp.send('HeapProfiler.startSampling', SAMPLING);
+    if (abGc) await cdp.send('Profiler.start');
     const a = await read();
     await page.waitForTimeout((abS - 1) * 1000); util.push(gpuUtil());
     const b = await read(), w = (b.t - a.t) / 1000;
-    ab[mode].push({ s: w, cpu: cpuPerS(a.p, b.p, w), mainPct: (b.m.TaskDuration - a.m.TaskDuration) / w * 100, gpuMsPerS: (b.x.gpu - a.x.gpu) / w, drawnPerS: (b.x.frames - a.x.frames) / w, gpuPerFrame: (b.x.gpu - a.x.gpu) / Math.max(1, b.x.gpuN - a.x.gpuN) });
+    let allocMbPerS = null, gcMsPerS = null;
+    if (abGc) {
+      const { profile } = await cdp.send('Profiler.stop');
+      const gcIds = new Set(profile.nodes.filter(n => n.callFrame.functionName === '(garbage collector)').map(n => n.id));
+      let gc = 0; profile.samples.forEach((id, i) => { if (gcIds.has(id)) gc += (profile.timeDeltas[i + 1] ?? 0) / 1000; });
+      gcMsPerS = gc / w;
+    }
+    if (abAlloc) { const { profile } = await cdp.send('HeapProfiler.stopSampling'); allocMbPerS = sumSelf(profile.head) / 1048576 / w; }
+    ab[mode].push({ s: w, cpu: cpuPerS(a.p, b.p, w), mainPct: (b.m.TaskDuration - a.m.TaskDuration) / w * 100, gpuMsPerS: (b.x.gpu - a.x.gpu) / w, drawnPerS: (b.x.frames - a.x.frames) / w, gpuPerFrame: (b.x.gpu - a.x.gpu) / Math.max(1, b.x.gpuN - a.x.gpuN), allocMbPerS, gcMsPerS });
   }
 }
 for (let i = ab ? ride : 0; i < ride; i++) {
@@ -254,7 +273,7 @@ const s1 = await state(), m1 = await metrics(), p1 = await procs(), wall = (Date
 const raw = await page.evaluate(() => { const w = window; w.__frStop = true; w.__gpuT.recording = false; return { rf: w.__rf.slice(1), fr: w.__fr.slice(1), gpu: w.__gpuT.frames.slice(), phases: w.__canalRecallFramePhases?.() ?? null }; });
 log.loadAtEnd = la();
 let hot = null, gcMs = null;
-if (has('profile')) {
+if (has('profile') && !abMode) {
   const { profile } = await cdp.send('Profiler.stop');
   const byId = new Map(profile.nodes.map(n => [n.id, n])), self = new Map();
   profile.samples.forEach((id, i) => { const f = byId.get(id).callFrame, d = (profile.timeDeltas[i + 1] ?? 0) / 1000; const k = `${f.functionName || '(anon)'} ${f.url.split('/').pop().replace(/\?.*/, '')}:${f.lineNumber}`; self.set(k, (self.get(k) || 0) + d); });
@@ -262,9 +281,11 @@ if (has('profile')) {
   gcMs = +([...self].filter(([k]) => k.startsWith('(garbage collector)')).reduce((s, [, v]) => s + v, 0) / wall).toFixed(2);
   fs.writeFileSync(out.replace(/\.json$/, '.cpuprofile'), JSON.stringify(profile));
 }
+const probe = opt('probe', null) ? await page.evaluate(() => window.__probeRead?.() ?? null) : null;
 let alloc = null;
-if (has('alloc')) {
+if (has('alloc') && !abMode) {
   const { profile } = await cdp.send('HeapProfiler.stopSampling');
+  fs.writeFileSync(out.replace(/\.json$/, '.heapprofile'), JSON.stringify(profile));
   const self = new Map();
   const walk = n => { const f = n.callFrame, k = `${f.functionName || '(anon)'} ${f.url.split('/').pop().replace(/\?.*/, '')}:${f.lineNumber}`; self.set(k, (self.get(k) || 0) + n.selfSize); (n.children || []).forEach(walk); };
   walk(profile.head);
@@ -314,9 +335,9 @@ Object.assign(log, {
   workerRepeatKeys: (() => { let again = 0, keys = 0; for (const [k, v] of Object.entries(s1.wmsg.keys)) { const n = v - (s0.wmsg.keys[k] ?? 0); if (n) { keys++; if ((s0.wmsg.keys[k] ?? 0) > 0 || n > 1) again++; } } return { keysAsked: keys, askedBefore: again }; })(),
   ab: ab && Object.fromEntries(Object.entries(ab).map(([k, v]) => {
     const med = f => { const x = v.map(f).sort((a, b) => a - b); return +(x[Math.floor(x.length / 2)] ?? 0).toFixed(2); };
-    return [k, { windows: v.length, totalCpuPerS: med(r => r.cpu?.total ?? 0), rendererCpuPerS: med(r => r.cpu?.renderer ?? 0), gpuProcCpuPerS: med(r => r.cpu?.GPU ?? 0), mainPct: med(r => r.mainPct), gpuMsPerS: med(r => r.gpuMsPerS), gpuMsPerFrame: med(r => r.gpuPerFrame), drawnPerS: med(r => r.drawnPerS), raw: v }];
+    return [k, { windows: v.length, totalCpuPerS: med(r => r.cpu?.total ?? 0), rendererCpuPerS: med(r => r.cpu?.renderer ?? 0), gpuProcCpuPerS: med(r => r.cpu?.GPU ?? 0), mainPct: med(r => r.mainPct), gpuMsPerS: med(r => r.gpuMsPerS), gpuMsPerFrame: med(r => r.gpuPerFrame), drawnPerS: med(r => r.drawnPerS), allocMbPerS: v[0]?.allocMbPerS == null ? null : med(r => r.allocMbPerS), gcMsPerS: med(r => r.gcMsPerS ?? 0), raw: v }];
   })),
-  hot, alloc, errors: errors.slice(0, 5),
+  probe, hot, alloc, errors: errors.slice(0, 5),
 });
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(log, null, 1));
