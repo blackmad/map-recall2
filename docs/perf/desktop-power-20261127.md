@@ -334,6 +334,38 @@ node scripts/perf/rearr.mjs out.json
 BUNDLES_DIR=<scratch> PORT=4363 /tmp/canal-pw.sh node scripts/perf/desktop-power.mjs out.json --warm 20 --ride 60 [--qs landmarkBudgetMB=0]
 ```
 
+### Quiet-machine re-measure after merging main 4be00232d0 (2026-11-28, load 4–9)
+
+Old = `?landmarkBudgetMB=0` (count budget 72), new = default (256 MB bytes). Interleaved old, new, old, new; committed
+bundles, `CANAL_PW_TIMING=1 /tmp/canal-pw.sh`, exclusive lock, no other lanes (one 3.5-core Python job running).
+
+pop-colour, belt route, n=3 per arm (desktop 1280×800 dpr 2):
+
+| run | landmark-arrival px | on-screen arrivals | all arrivals | resident MB mean |
+|---|---|---|---|---|
+| old 1 / 2 / 3 | 817 / 309 / 200 | 0 / 2 / 2 | 183 / 178 / 169 | 158 / 158 / 161 |
+| new 1 / 2 / 3 | 989 / 386 / 453 | 1 / 2 / 0 | 121 / 122 / 117 | 205 / 205 / 199 |
+
+Mean arrival px old 442 (spread 200–817), new 609 (386–989): within the run-to-run spread. On-screen arrivals are 0–2
+per run in both arms, so px per on-screen arrival (old 331, new 609 pooled) rests on 5 and 3 events and is not a usable
+ratio. Arrivals fall by a third (510 → 360 over three runs): the old arm's extra are re-arrivals off screen.
+
+desktop-power, 60 s ride, n=2 per arm (1512×900 dpr 2, governor):
+
+| run | cores total | renderer | GPU proc | GPU ms/s | GPU ms p50 | fps | tris/frame | draws | GPU MB total | landmark MB | first arr | re-arr | load |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| old 1 | 1.96 | 1.11 | 0.83 | 1785 | 22.0 | 62 | 2,244,176 | 290 | 464 | 79 | 70 | 267 | 6.0 |
+| old 2 | 2.30 | 1.37 | 0.90 | 1795 | 36.4 | 77 | 2,293,292 | 297 | 463 | 83 | 39 | 381 | 3.9 |
+| new 1 | 1.93 | 1.05 | 0.88 | 1786 | 22.5 | 73 | 2,270,440 | 286 | 506 | 213 | 14 | 0 | 5.8 |
+| new 2 | 2.18 | 1.50 | 0.67 | 1575 | 26.6 | 95 | 2,303,574 | 290 | 493 | 209 | 11 | 0 | 9.4 |
+
+Triangles +0.4–1.2 % (not the +5–7 % measured under load 110), GPU ms/s 1790 → 1681 mean (not worse), CPU cores
+2.13 → 2.06, GPU memory +36 MB mean, re-arrivals 267–381 → 0.
+
+engine-own.spec.ts desktop, `PW_PORT=4388`: the `moved` failure under load is gone (moved 80.6 m). The program budget
+(43, budgets.json) is the edge: branch 44 (fail), 43, 37; main's bundle swapped in, 43, 43. More resident landmarks can
+compile one more material variant; a flake risk at the budget line, not a steady regression.
+
 ## Triangles and draws by layer (lane landmark-residency, Part B)
 
 `scripts/perf/layer-tris.mjs` (new): every GL draw (incl. WEBGL_multi_draw) charged to the object three is drawing
