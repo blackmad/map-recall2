@@ -113737,5 +113737,258 @@
     ]
    ]
   }
+ },
+ {
+  "id": "dikker-thijs-leidsestraat",
+  "name": "Dikker & Thijs, Leidsestraat / Prinsengracht",
+  "modelUrl": "./models/dikker-thijs-leidsestraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012169650"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88400098,
+    52.36496156
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 25.7,
+   "widthMetres": 25.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.88400098,
+    52.36496156
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012169650 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/dikker-thijs-leidsestraat-footprints.json, bag-shell-prepare.ts); the Leidsestraat front read from the rectified Gemeente Amsterdam panorama TMX7316060226-000022_pano_0000_000789 (2016) with recording_2025-07-14_05-25-22_01750 (2025), the canal front from TMX7316010203-000355_pano_0000_000172 (2017) for positions and TMX7316010203-001974_pano_0000_001045 (2021) for heights, CC BY 4.0. Rijksmonument 518364. Per wall in scripts/landmarks/dikker-thijs-leidsestraat-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21,
+  "galleryView": {
+   "theta": 0.9,
+   "phi": 1.2
+  },
+  "bagYear": 1926,
+  "materialOverrides": {
+   "brick": "#8c6452",
+   "stone": "#c4bba6",
+   "greyBrick": "#4a4a46",
+   "dark": "#3a322e",
+   "red": "#6b3a2e",
+   "frame": "#4a554f",
+   "glass": "#39424a",
+   "slate": "#55585a",
+   "concrete": "#efede6",
+   "sandstone": "#dedad0"
+  },
+  "attribution": {
+   "title": "Dikker & Thijs, Leidsestraat and Prinsengracht, Amsterdam: corner block with canted oriels (BAG 1926; rijksmonument 518364)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0000_000789/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169650 (CC0): the canted two-storey oriels with stone colonnettes and paned windows, the granite ground piers and shop bays, the stone sign band with the Dikker & Thijs lettering, the brick piers with stone dots, the pierced parapets and the loggia storey, the modillion cornice and the white roof balustrade, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8839989,
+      52.3650363
+     ],
+     [
+      4.8839425,
+      52.3650737
+     ],
+     [
+      4.883942,
+      52.3650734
+     ],
+     [
+      4.883784,
+      52.3650002
+     ],
+     [
+      4.8837566,
+      52.3649875
+     ],
+     [
+      4.8839401,
+      52.3648432
+     ],
+     [
+      4.8839406,
+      52.3648428
+     ],
+     [
+      4.8841127,
+      52.3649238
+     ],
+     [
+      4.884111,
+      52.3649252
+     ],
+     [
+      4.8841251,
+      52.3649318
+     ],
+     [
+      4.8841271,
+      52.3649483
+     ],
+     [
+      4.8841149,
+      52.3649564
+     ],
+     [
+      4.8841173,
+      52.3649578
+     ],
+     [
+      4.8839989,
+      52.3650363
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "raadhuisstraat-52",
+  "name": "Raadhuisstraat 52, corner of the Herengracht",
+  "modelUrl": "./models/raadhuisstraat-52.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012172357"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.88558887,
+    52.3740869
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 14.6,
+   "widthMetres": 21.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.88558887,
+    52.3740869
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012172357 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/raadhuisstraat-52-footprints.json, bag-shell-prepare.ts); the Raadhuisstraat front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001540_pano_0000_000870 (2019) and TMX7316010203-002045_pano_0001_003044 (2021), the canal front from TMX7316010203-000355_pano_0000_000942 (2017), CC BY 4.0. Rijksmonument 518499. Per wall in scripts/landmarks/raadhuisstraat-52-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 24,
+  "galleryView": {
+   "theta": 0.6,
+   "phi": 1.2
+  },
+  "bagYear": 1902,
+  "materialOverrides": {
+   "brick": "#a8705c",
+   "stone": "#c4c0b0",
+   "frame": "#e2ddd2",
+   "green": "#637161",
+   "dark": "#3a3734",
+   "glass": "#39424a",
+   "slate": "#55585a",
+   "bronze": "#2f2f2d",
+   "concrete": "#e8e4da"
+  },
+  "attribution": {
+   "title": "Raadhuisstraat 52, Amsterdam: corner house with a round oriel and a stepped stone-edged gable (BAG 1902; rijksmonument 518499)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001540_pano_0000_000870/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012172357 (CC0), with the front gable redrawn to the photographed outline: the round corner oriel with its corbel and balcony railing, the stepped stone gable edge with pinnacles and three arched lights, the canted oriel on a corbel, the sash windows with stone lintels, the green-glazed ground arches and courses, the shopfront with its lettered fascia and the canal front's hooded windows and balconettes, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.885705,
+      52.374122
+     ],
+     [
+      4.8857181,
+      52.3741364
+     ],
+     [
+      4.8857059,
+      52.3741373
+     ],
+     [
+      4.8857053,
+      52.3741342
+     ],
+     [
+      4.8856612,
+      52.3741377
+     ],
+     [
+      4.8856619,
+      52.3741408
+     ],
+     [
+      4.8854098,
+      52.3741604
+     ],
+     [
+      4.8854101,
+      52.3741592
+     ],
+     [
+      4.8854021,
+      52.3740724
+     ],
+     [
+      4.8855223,
+      52.3740521
+     ],
+     [
+      4.8855292,
+      52.3740507
+     ],
+     [
+      4.8855299,
+      52.3740519
+     ],
+     [
+      4.8855839,
+      52.37404
+     ],
+     [
+      4.8855849,
+      52.3740413
+     ],
+     [
+      4.885614,
+      52.3740343
+     ],
+     [
+      4.8856128,
+      52.3740323
+     ],
+     [
+      4.8856211,
+      52.3740305
+     ],
+     [
+      4.8856222,
+      52.3740307
+     ],
+     [
+      4.885705,
+      52.374122
+     ]
+    ]
+   ]
+  }
  }
 ]
