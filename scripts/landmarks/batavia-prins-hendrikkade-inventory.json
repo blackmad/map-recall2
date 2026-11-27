@@ -1,0 +1,204 @@
+{
+ "schemaVersion": 1,
+ "id": "batavia-prins-hendrikkade",
+ "pand": "0363100012171926",
+ "brief": "scripts/landmarks/batavia-prins-hendrikkade-brief.md",
+ "signature": [
+  "b-window-grid",
+  "b-stair-shaft",
+  "b-lettering",
+  "b-reliefs",
+  "b-parapet"
+ ],
+ "walls": [
+  {
+   "tag": "w01-141",
+   "bearing": 141,
+   "lengthM": 6.1,
+   "centre": [
+    4.9018755,
+    52.3764985
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track19_Sphere_00447",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "Occluded rear wall. The 2025 crop and aimed view show a cream-stuccoed building with a rounded corner, shutters and the GELDERSEKADE street sign; the pand's 6.1 m rear wall is straight in the BAG ring (no rounding), so that is the neighbouring building in front of it. Nothing of this pand is visible."
+  },
+  {
+   "tag": "w02-237",
+   "bearing": 237,
+   "lengthM": 4.3,
+   "centre": [
+    4.9017225,
+    52.376577
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000369",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [],
+   "note": "52 deg oblique 2017 view across the Oudezijds Kolk: red-brick warehouse fronts with white stone arch blocks, segmental-arched barred ground windows and red-and-white shutters on a grey plinth at the water. This 4.3 m segment of the BAG ring lies in the long south-west party line (all its segments face 233-236 deg) behind those houses; their fronts stand at the quay, so the photo shows neighbouring panden, not this wall. Nothing of this pand is confirmed visible."
+  },
+  {
+   "tag": "w03-348",
+   "bearing": 348,
+   "lengthM": 4.2,
+   "centre": [
+    4.901568,
+    52.376735
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03815",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-stair-shaft",
+     "kind": "window-shape",
+     "where": "t 6.6-7.3 m: a slightly projecting rounded brick shaft with horizontal banded courses and a column of four tall narrow single slot windows (16.9-19.1, 13.4-15.6, 9.2-11.5, 5.3-7.4 m) and a small square light at the top (19.6-20.2 m); a black iron gate at its foot",
+     "approxSizeM": [
+      0.9,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "stairShaft(): a half-round brick shaft 0.9 m wide standing 0.25 m proud, thin banded courses every 0.5 m, four tall glazed slot lights and the small top light; the iron gate as a dark grille panel"
+    },
+    {
+     "id": "b-west-pier",
+     "kind": "other",
+     "where": "t 5.0-6.6 m: a broad plain dark-brick pier between the window grid and the stair shaft, running from the pavement to the parapet",
+     "approxSizeM": [
+      1.6,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "the shell wall itself, in the measured brick"
+    }
+   ],
+   "note": "West part of the Prins Hendrikkade front (ring t 4.05-8.2 m from the east end), rectified 2025 crop w03-348.jpg (50 px/m, h = 1.04 (1124 - y)/50: the 3DBAG roof 21.5 m against the crop's 20.6 m) with the aimed view and the 2024 alt. From the east: the last window of the grid, a broad plain dark-brick pier (1.5 m), the stair shaft with its column of round-ended single windows in horizontally banded brick, and a plain brick end strip; the parapet here 1 m lower than over the window grid."
+  },
+  {
+   "tag": "w04-341",
+   "bearing": 341,
+   "lengthM": 4,
+   "centre": [
+    4.901628,
+    52.376741
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03815",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-window-grid",
+     "kind": "window-shape",
+     "where": "five window axes at 0.85 m pitch (t 1.33-4.76) on four storeys: 5.3-7.3, 9.1-11.2, 12.9-15.1 and 16.8-18.7 m, each window 0.6 m wide with a transom, slim piers between",
+     "approxSizeM": [
+      4.3,
+      13.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "windowGrid(): per storey five glazed windows with frame rings and a transom, the brick piers between them proud of the glass"
+    },
+    {
+     "id": "b-reliefs",
+     "kind": "relief",
+     "where": "the spandrel band 11.4-12.7 m under the second-storey windows: five sculpted brick relief panels (figures) one under each window",
+     "approxSizeM": [
+      4.3,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "a raised brick panel per axis with a rounded boss and a projecting head block, darker sandstone"
+    },
+    {
+     "id": "b-spandrel-panels",
+     "kind": "other",
+     "where": "spandrel band 7.5-8.8 m: patterned brick panels with vertical ribs under the first-storey windows",
+     "approxSizeM": [
+      4.3,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "a raised panel per axis with three vertical ribs"
+    },
+    {
+     "id": "b-corbel-bands",
+     "kind": "other",
+     "where": "a corbelled band with small brick brackets over the second-storey windows (15.2-15.6 m) and a row of corbelled arches under the parapet (19.3-20.3 m)",
+     "approxSizeM": [
+      8.2,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "projecting brick bands with a block bracket per axis; the parapet arch row as dark arch recesses between brackets"
+    },
+    {
+     "id": "b-parapet",
+     "kind": "other",
+     "where": "the heavy parapet over the window grid to 21.5 m with a reddish-brown brick coping band (20.3-21.4 m), the east corner pier rising a little above it with a rounded cap",
+     "approxSizeM": [
+      8.2,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "a coping band slab on the parapet, the corner pier cap"
+    },
+    {
+     "id": "b-lettering",
+     "kind": "lettering",
+     "where": "GEBOUW / BATAVIA in two lines of light gilt capitals on the dark brick hood over the entrance (3.4-5.1 m)",
+     "approxSizeM": [
+      1.9,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "glyphRuns() capitals in two lines on the hood face"
+    },
+    {
+     "id": "b-entrance-hood",
+     "kind": "canopy",
+     "where": "a projecting brick hood over the entrance, t 0.6-4.6 m, 3.4-5.1 m, with a corbelled lower edge",
+     "approxSizeM": [
+      4.0,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "a brick slab 0.35 m proud with a stepped corbel under it"
+    },
+    {
+     "id": "b-door",
+     "kind": "other",
+     "where": "the pale oak double door in the recessed porch, t 1.9-3.8 m, 0-3.2 m, glazed in small panes above",
+     "approxSizeM": [
+      1.9,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03815",
+     "how": "an oak slab with two glazed panels and a transom, in the 0.48 m porch recess"
+    }
+   ],
+   "note": "East part of the Prins Hendrikkade front (ring t 0-4.04 m; the BAG ring sets the 2.43 m entrance bay back 0.48 m, which in the photo is only the ground-storey porch: above it the front is flush), rectified 2025 crop w04-341.jpg with the 2024 alt and the aimed view. Amsterdam School: very dark purple-brown brick, a grid of five tall windows per storey between slender brick mullion-piers, four storeys, brick spandrel panels with sculpted reliefs, corbelled bands, a heavy parapet."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

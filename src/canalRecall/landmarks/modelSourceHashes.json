@@ -1,5 +1,5 @@
 {
-  "toolchain": "1b4a4d8dcbd46ba783fa6a4d76faeababe4004ce7c345b67a7612267881ec201",
+  "toolchain": "a41e602662c02e38260662a68925d473d95f5b37a5e0cac7ad3a0f81c343c8d1",
   "models": {
     "abn-amro-hoofdkantoor": "396bbfe3684d56e1b8ff6ce18caf276de146f8e8b5bcf71bdc3367540f3af89b",
     "academie-theater-dans": "d65ff1c6b76a9c37667c229845057ac365b54eee04f5ee91adc80b4857d32a58",
@@ -49,6 +49,7 @@
     "banks-mansion": "5a891c67c1af57b80bcb37cf3a96cac84cadb036944edfdb60b3cc1b309e307e",
     "barbizon-palace": "4c458c9adf55a3adfaa86ba9998b1e78fa08900d9f756d2e4fc0c304197228fa",
     "barlaeus-gymnasium": "7e598c8aa0ee4955cf7b17bf48349a33b08eb9ea24bc12039901868ff4e0b72f",
+    "batavia-prins-hendrikkade": "1a97dd140a68b9c1ad85b3caa369139607041f0b6e2ad65dc7014c7caf38d248",
     "beest-boulders": "6f9a2a3616a745395bd11d6987acbcdc195d19c2e9b1b5e076fb6c74a956c33a",
     "beest-het-lab": "304fcdda499c8185e48b4566b4235be36eb470b0bf4589c324a6cb1795085fac",
     "begijnhof": "95de6ac8fa03ee4ec2c9ec0859f46d82d420a522586c56e0ef73ebe540fc6c73",
@@ -309,6 +310,7 @@
     "lieverdje": "12fe5d40614347751a81377c57b6dd33826d2616466a3ea61eac4f003a06bb2a",
     "ljg-synagoge": "3b21cb3f4d794543293ca5a4f6aa1cd92085056373cc1c1e23a91b010e91fcbb",
     "lloyd-hotel": "02284d95d22bbd41c60cd0b8f3811bcfe40f30f087cd2e260eda9c3a3c556c84",
+    "lloyd-prins-hendrikkade-33": "52d501faa5f0b4ca6cc0c2e4cafe6803c14ddcc73f07fdde6d85a30f4a815e26",
     "lofi": "78c6d5671408bd3b29707daa45997f8ed74fb7e4bf43b1e239909908784f4e82",
     "loods-6": "cdefe08c0c24f20efe386c7282e916a0d24149105b5ed3f79bb8cb26ae1b69af",
     "luther-museum": "869a34567deb51ef1aa712f519cdd66103e82448b0c7bea72caf89a11f563b58",

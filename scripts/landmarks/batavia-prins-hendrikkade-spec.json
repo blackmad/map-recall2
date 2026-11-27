@@ -1,0 +1,31 @@
+{
+ "id": "batavia-prins-hendrikkade",
+ "name": "Gebouw Batavia",
+ "heightMetres": 22,
+ "bagYear": 1703,
+ "galleryView": {
+  "theta": 0.6,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012171926 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/batavia-prins-hendrikkade-footprints.json, bag-shell-prepare.ts), the porch set-back filled above the entrance hood; the Prins Hendrikkade front read from the rectified Gemeente Amsterdam panorama recording_2025-06-17_08-04-10_03815 (2025) with b_20250108_1349_Track19_Sphere_00425 (2024), CC BY 4.0. Rijksmonument 518460. Per wall in scripts/landmarks/batavia-prins-hendrikkade-inventory.json.",
+ "materialOverrides": {
+  "brick": "#4a3a30",
+  "red": "#6a4a38",
+  "sandstone": "#5a4636",
+  "slate": "#4f4a48",
+  "glass": "#3d4f5e",
+  "frame": "#8a7658",
+  "ochre": "#9a7448",
+  "gold": "#c8b07a",
+  "dark": "#26292b"
+ },
+ "attribution": {
+  "title": "Gebouw Batavia, Prins Hendrikkade, Amsterdam (rijksmonument 518460)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_03815/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012171926 (CC0): the Amsterdam School front in dark brick with its grid of five windows over four storeys between brick piers, the relief spandrels and ribbed panels, the corbelled bands, parapet arches and coping, the banded half-round stair shaft with its round-ended lights, the entrance hood with GEBOUW BATAVIA and the oak door, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

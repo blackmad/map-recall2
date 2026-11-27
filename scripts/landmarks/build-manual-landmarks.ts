@@ -314,6 +314,8 @@ import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
+import {buildBataviaPrinsHendrikkade} from './batavia-prins-hendrikkade-builder';
+import {buildLloydPrinsHendrikkade33} from './lloyd-prins-hendrikkade-33-builder';
 import {buildSweederijck} from './sweederijck-builder';
 import {buildOldBellRembrandtplein} from './old-bell-rembrandtplein-builder';
 import {buildCafeRicheRokin} from './cafe-riche-rokin-builder';
@@ -1351,6 +1353,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='metz-keizersgracht-455')buildMetzKeizersgracht455(w,d,helpers);
     else if(id==='hajenius-rokin')buildHajeniusRokin(w,d,helpers);
     else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
+    else if(id==='lloyd-prins-hendrikkade-33')buildLloydPrinsHendrikkade33(w,d,helpers);
+    else if(id==='batavia-prins-hendrikkade')buildBataviaPrinsHendrikkade(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){
