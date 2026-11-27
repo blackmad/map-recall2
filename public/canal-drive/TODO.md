@@ -612,6 +612,8 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
+**Amsterdam flip: done 2026-11-27 (HISTORY round 20261127a).** Own is the default; `?engine=maplibre` rolls back. Left: (1) the own start hold ends on its 10 s cap with `ownGround` pending on desktop: find why the ground never reports settled; (2) desktop JS heap ~1.07 GB at a ride start and the user's Mac fan spins under own: profile at his settings (dpr 2, 120 Hz, no frame cap in `frameHost.ts`); (3) iPhone start memory, both engines, lane `iphone-start-memory-20261127`; (4) decide Utrecht/Rotterdam/Den Haag (own extracts or unplayable), then delete `vector-map.js`, the loader, `mapGuard.ts`, `park-landscape.js` and the MapLibre-only flags. The paragraph below is history.
+
 **Amsterdam flip (L1), after hand-back 20 (`040f36423`, HISTORY "Under own a POI
 label wins the click"):** blockers done (labels win the click, bag-tiles on the
 tile path, overview footprints 4.1 %, Sentry engine/tier tags); checklist

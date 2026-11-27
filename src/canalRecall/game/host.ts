@@ -442,7 +442,7 @@ export interface PresentationHost extends GameCoreHost {
   _waitForMapSettle?(maxMs?: number): Promise<void>;
   _lastMapSettle?: { ms: number; timedOut: boolean; engine?: string; pending?: string[] } | null;
   /** Lane S1 (#313, presentationRuntime.ts _startHoldWait): the start holds so far, and the reveal's dissolve. */
-  _startHold?: { spentMs: number; capped: boolean; holds: Array<{ kind: 'ride' | 'intro'; ms: number; capMs: number; timedOut: boolean; pending: string[] }> } | null;
+  _startHold?: { spentMs: number; capped: boolean; lineOffset?: number; holds: Array<{ kind: 'ride' | 'intro'; ms: number; capMs: number; timedOut: boolean; pending: string[] }> } | null;
   _revealDissolve?: { at: number; capped: boolean } | null;
   /** True while a start hold waits: the loading frame ticks the held world (presentationRuntime._tickHeldWorld). */
   _startHoldTicking?: boolean;
