@@ -112101,5 +112101,242 @@
     ]
    ]
   }
+ },
+ {
+  "id": "hajenius-rokin",
+  "name": "Hajenius, Rokin 92-96",
+  "modelUrl": "./models/hajenius-rokin.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168350"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89187569,
+    52.36962145
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 30.9,
+   "widthMetres": 31
+  },
+  "surveyed": {
+   "anchor": [
+    4.89187569,
+    52.36962145
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168350 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/hajenius-rokin-footprints.json, bag-shell-prepare.ts); the 27.3 m Rokin front read from whole-face rectified Gemeente Amsterdam panoramas recording_2025-06-16_06-42-40_01743 (2025, 36 px/m) and TMX7316010203-000709_pano_0000_001134 (2018), CC BY 4.0; heights fitted to the 3DBAG's 70th-percentile roof (the Hajenius cornice, 20.1 m). The pand also holds the cream bell-gable house on the lane corner and the black neck-gable house beside it; both are drawn. Per wall in scripts/landmarks/hajenius-rokin-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 25,
+  "galleryView": {
+   "theta": 1.2,
+   "phi": 1.2
+  },
+  "bagYear": 1914,
+  "materialOverrides": {
+   "stone": "#cfc6b2",
+   "sandstone": "#a9a596",
+   "slate": "#62696d",
+   "concrete": "#e8e4d6",
+   "greyBrick": "#3a3d40",
+   "glass": "#3a4548",
+   "frame": "#7a3a38",
+   "dark": "#2a2a28",
+   "red": "#b8323a",
+   "white": "#eceae4",
+   "bronze": "#2a2c2e",
+   "ochre": "#e2b64a",
+   "gold": "#e6dcbc",
+   "copper": "#6b4a36"
+  },
+  "attribution": {
+   "title": "Rokin 92-96, Amsterdam: the Hajenius tobacco house (BAG 1914) with the cream bell-gable house and the black neck-gable house on the same pand",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_01743/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168350 (CC0): the sandstone Hajenius front with its pilasters, paterae, three-light windows with sun blinds, red awnings, carved door cartouche, curved end gable with oculus and mansard dormers; the cream house's bell gable, balconies and striped markiezen; the black house's neck gable and white-framed windows, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8919945,
+      52.3696475
+     ],
+     [
+      4.8919929,
+      52.3696477
+     ],
+     [
+      4.8920033,
+      52.3696775
+     ],
+     [
+      4.8920055,
+      52.369684
+     ],
+     [
+      4.8920078,
+      52.3696838
+     ],
+     [
+      4.8920117,
+      52.3696948
+     ],
+     [
+      4.8920024,
+      52.3696961
+     ],
+     [
+      4.8920081,
+      52.3697122
+     ],
+     [
+      4.8920174,
+      52.369711
+     ],
+     [
+      4.8920209,
+      52.3697208
+     ],
+     [
+      4.8920217,
+      52.369722
+     ],
+     [
+      4.8916037,
+      52.369759
+     ],
+     [
+      4.8915918,
+      52.3697089
+     ],
+     [
+      4.8916283,
+      52.3697056
+     ],
+     [
+      4.8916158,
+      52.3696531
+     ],
+     [
+      4.8915788,
+      52.3696562
+     ],
+     [
+      4.891568,
+      52.3696103
+     ],
+     [
+      4.8915825,
+      52.3696091
+     ],
+     [
+      4.8915723,
+      52.3695624
+     ],
+     [
+      4.8915866,
+      52.3695612
+     ],
+     [
+      4.8915764,
+      52.3695149
+     ],
+     [
+      4.8917381,
+      52.3695003
+     ],
+     [
+      4.8917383,
+      52.3695009
+     ],
+     [
+      4.8918204,
+      52.3694937
+     ],
+     [
+      4.8919307,
+      52.3694828
+     ],
+     [
+      4.8919489,
+      52.3695313
+     ],
+     [
+      4.8919497,
+      52.3695315
+     ],
+     [
+      4.8919677,
+      52.3695756
+     ],
+     [
+      4.8919681,
+      52.369578
+     ],
+     [
+      4.8919704,
+      52.3695849
+     ],
+     [
+      4.8919709,
+      52.3695864
+     ],
+     [
+      4.8919661,
+      52.369587
+     ],
+     [
+      4.8919753,
+      52.369614
+     ],
+     [
+      4.8919802,
+      52.3696134
+     ],
+     [
+      4.8919805,
+      52.3696143
+     ],
+     [
+      4.8919818,
+      52.3696141
+     ],
+     [
+      4.8919821,
+      52.3696149
+     ],
+     [
+      4.8919832,
+      52.3696147
+     ],
+     [
+      4.8919856,
+      52.3696216
+     ],
+     [
+      4.8919763,
+      52.3696228
+     ],
+     [
+      4.8919825,
+      52.369641
+     ],
+     [
+      4.8919919,
+      52.3696398
+     ],
+     [
+      4.8919945,
+      52.3696475
+     ]
+    ]
+   ]
+  }
  }
 ]

@@ -1,0 +1,192 @@
+{
+  "id": "hajenius-rokin",
+  "countedBy": "lane landmarks-r19-a-20261127 from the whole-face rectified crop of the 27.3 m Rokin front out of recording_2025-06-16_06-42-40_01743 (2025, 36 px/m), checked against TMX7316010203-000709_pano_0000_001134 (2018); not yet blind-counted. Glazed openings bottom row first; solid doors and the red shutter do not count; lights split by mullions narrower than 0.3 m are one opening. alongM: the silhouette's viewer-left edge is the cream house's south flank roof, 0.35 m south of the front's south corner; the house lines are the crop's (cream 0-5.42 m, black 5.42-10.63 m, Hajenius 10.63-27.33 m).",
+  "facades": [
+    {
+      "name": "Hajenius front",
+      "bearing": 102,
+      "photo": "artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg",
+      "rows": [
+        2,
+        1,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "columns": 4,
+      "symmetric": false,
+      "openings": [
+        "glass",
+        "white"
+      ],
+      "alongM": [
+        10.98,
+        27.68
+      ],
+      "note": "Openings are the glass and the cream sun blinds drawn down over it in both crops (the blinds are part of each window). Bands: the two outer bays' shop windows behind the red awnings (the middle bay's red shutter does not count); the north bay's row of three small lights over its wooden door (3.2-4.4 m, one ribbon); the wide windows at 5.3-7.8 m, one per bay; three storeys of one opening per bay (the outer bays' narrow-wide-narrow lights stand between mullions about 0.22 m wide, one ribbon); on the mansard the three dormers and the end gable's oculus. Axes: the three bays and the north end bay. Not symmetric: the narrower end bay under its gable.",
+      "mixedRows": [
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-16_06-42-40_01743 whole-face crop (artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg, 36 px/m): ground-zone windows at x 425-535, 572-642, 683-790, 865-935",
+          "openings": [
+            {
+              "kind": "three-light window",
+              "w": 3.05
+            },
+            {
+              "kind": "wide window",
+              "w": 1.95
+            },
+            {
+              "kind": "three-light window",
+              "w": 2.95
+            },
+            {
+              "kind": "end-bay window",
+              "w": 1.95
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-16_06-42-40_01743 whole-face crop (artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg, 36 px/m): first storey at x 425-535, 572-642, 680-785, 868-922",
+          "openings": [
+            {
+              "kind": "three-light window",
+              "w": 3.05
+            },
+            {
+              "kind": "wide window",
+              "w": 1.95
+            },
+            {
+              "kind": "three-light window",
+              "w": 2.95
+            },
+            {
+              "kind": "end-bay window",
+              "w": 1.5
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-16_06-42-40_01743 whole-face crop (artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg, 36 px/m): second storey, the same axes",
+          "openings": [
+            {
+              "kind": "three-light window",
+              "w": 3.05
+            },
+            {
+              "kind": "wide window",
+              "w": 1.95
+            },
+            {
+              "kind": "three-light window",
+              "w": 2.95
+            },
+            {
+              "kind": "end-bay window",
+              "w": 1.5
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-16_06-42-40_01743 whole-face crop (artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg, 36 px/m): third storey, the same axes",
+          "openings": [
+            {
+              "kind": "three-light window",
+              "w": 3.05
+            },
+            {
+              "kind": "wide window",
+              "w": 1.95
+            },
+            {
+              "kind": "three-light window",
+              "w": 2.95
+            },
+            {
+              "kind": "end-bay window",
+              "w": 1.5
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-16_06-42-40_01743 whole-face crop (artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg, 36 px/m): the dormers at x 462-500, 587-625, 712-750 and the end gable's oculus at x 885-925",
+          "openings": [
+            {
+              "kind": "dormer",
+              "w": 1.05
+            },
+            {
+              "kind": "dormer",
+              "w": 1.05
+            },
+            {
+              "kind": "dormer",
+              "w": 1.05
+            },
+            {
+              "kind": "oculus",
+              "w": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Black house",
+      "bearing": 102,
+      "photo": "artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg",
+      "rows": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "columns": 3,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "alongM": [
+        5.77,
+        10.98
+      ],
+      "note": "The black neck-gable house between the cream house and Hajenius: the shopfront under the red fascia, three storeys of two sash windows; the hoisting window in the neck is a white panel and does not count. Columns: the two window axes and the shopfront's centre between them."
+    },
+    {
+      "name": "Cream house",
+      "bearing": 102,
+      "photo": "artifacts/landmark-briefs/hajenius-rokin/face-rokin-2025.jpg",
+      "rows": [
+        1,
+        3,
+        3,
+        3,
+        3,
+        2
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "alongM": [
+        0.35,
+        5.77
+      ],
+      "note": "The cream bell-gable house on the lane corner: the shop window, the three transom lights over the sign, three storeys of three lights (the fourth-storey ones round-headed under the half-round markies) and the gable's pair of lights. Columns: the three light axes (the shop window on the middle one) and the gable's pair of lights, which stand 1.1 m either side of the centre, between them."
+    }
+  ]
+}
