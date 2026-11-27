@@ -51,7 +51,6 @@ export async function mountRecipeTiles(vm: any): Promise<TileBuildings> {
     repaint: () => vm.map?.triggerRepaint?.(),
   };
   const tiles = new TileBuildings(host);
-  (globalThis as any).__canalRecallTileBuildings = tiles;
   await tiles.start();
   return tiles;
 }
