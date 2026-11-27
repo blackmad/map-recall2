@@ -4476,6 +4476,11 @@
       "version": "3244957f49b19147",
       "dateSource": "asset-update"
     },
+    "kweekschool-zeevaart": {
+      "updatedAt": "2026-11-27T21:52:39.879Z",
+      "version": "655bd192000d516e",
+      "dateSource": "asset-update"
+    },
     "lab111": {
       "updatedAt": "2026-11-19T17:41:01.381Z",
       "version": "83902baf7de6eb99",
@@ -6029,6 +6034,11 @@
     "park-centraal-stadhouderskade.lod2": {
       "updatedAt": "2026-11-20T06:16:11.520Z",
       "version": "8eed0fb034cb97b9",
+      "dateSource": "asset-update"
+    },
+    "passage-central": {
+      "updatedAt": "2026-11-27T21:52:13.592Z",
+      "version": "38683e5799de02d6",
       "dateSource": "asset-update"
     },
     "pathe-city": {
@@ -8814,16 +8824,6 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
-      "dateSource": "asset-update"
-    },
-    "passage-central": {
-      "updatedAt": "2026-11-27T21:52:13.592Z",
-      "version": "38683e5799de02d6",
-      "dateSource": "asset-update"
-    },
-    "kweekschool-zeevaart": {
-      "updatedAt": "2026-11-27T21:52:39.879Z",
-      "version": "655bd192000d516e",
       "dateSource": "asset-update"
     }
   }

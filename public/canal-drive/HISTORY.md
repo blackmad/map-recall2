@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Round 20261127e: landmarks r20, the last four iconic briefs (2026-11-27)
+
+- Installed four landmarks, each of which won its blind against the photo (fresh opus judge, unlabelled, random order):
+  - Dikker & Thijs on the Leidsestraat/Prinsengracht corner (r20-a, 19.7k tris);
+  - Raadhuisstraat 52 (r20-a, 13.1k);
+  - Passage Central (r20-b, 22.0k);
+  - Kweekschool voor de Zeevaart (r20-b, 32.1k).
+- The blind opponent was today's view, which for Passage Central and the Kweekschool was a bare 3DBAG shell. The absolute verdicts were PASS for both.
+- r20-b fixed the judge's misses but did not re-judge afterwards.
+- New kit parts: `cantedBay` (three-sided oriel, 4 tests) and `voussoirFan` (2 tests), both in test:landmark-kits.
+- Install: `build-manual-landmarks --only` for the four, which refreshed the toolchain hash, then the signature bundle, 10 new LODs, covers, and a world recompile with `--shell`. The recompile used `--against=none`, because Café Hendrix's cell (0363100012132271) changed on purpose when the retail lane removed `shopFrontOverride`. Content stats and buurt pages were regenerated.
+- Open, from the judges and lanes:
+  - The Kweekschool's sculpted centre crown and entrance carving are panels.
+  - The Passage and Dikker ground storeys render darker than the sunlit photos.
+  - The Raadhuisstraat gables fail compare:facades orthographically: the 3DBAG ridge sits within 0.3 m of the apex. They read as peaks in perspective.
+  - Kit gaps: round oriels with curved glazing; true script lettering; carving; pediment crowns; openings on finely faceted 3DBAG curves (the wall-plane pick in geometryAudit.ts).
+
 ## Round 20261127d: baked cells skip hidden buildings; view-change work at 10 Hz (2026-11-27)
 
 - lane/cell-hidden-skip-20261127 (986c7d6d47). Each baked cell's index is now a permutation of building runs: drawn runs first, hidden runs after, with the draw range ending at the drawn runs. The skip is synced from the same `hidden` bytes the shader collapses, so a dissolving copy is still drawn until its fade ends.
