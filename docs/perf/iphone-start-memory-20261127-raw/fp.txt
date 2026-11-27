@@ -1,0 +1,41 @@
+======================================================================
+com.apple.WebKit.WebContent [4099]: 64-bit    Footprint: 573 MB (16384 bytes per page)
+======================================================================
+
+  Dirty      Clean  Reclaimable    Regions    Category
+    ---        ---          ---        ---    ---
+ 453 MB        0 B      1430 MB        175    WebKit malloc
+  70 MB        0 B       275 MB        482    JS VM Gigacage
+  13 MB        0 B        21 MB         12    MALLOC_MEDIUM
+6400 KB        0 B          0 B         13    untagged (VM_ALLOCATE) (graphics)
+6288 KB        0 B      7552 KB         91    untagged (VM_ALLOCATE)
+6224 KB        0 B          0 B         14    MALLOC_SMALL
+5536 KB        0 B       160 KB          1    MALLOC_NANO
+3557 KB        0 B          0 B          1    page table
+2417 KB      16 KB          0 B        769    __DATA
+1584 KB        0 B       103 MB          3    JS JIT generated code
+1552 KB        0 B          0 B         12    dyld private memory
+1232 KB        0 B          0 B         14    MALLOC_TINY
+1167 KB        0 B          0 B        790    __DATA_CONST
+ 592 KB        0 B          0 B         29    ColorSync
+ 306 KB        0 B          0 B       1100    unused dyld shared cache area
+ 256 KB        0 B          0 B         16    MALLOC metadata
+ 160 KB        0 B        32 KB          6    stack
+ 155 KB        0 B          0 B         12    __DATA_DIRTY
+  52 KB        0 B          0 B          3    __TPRO_CONST
+  32 KB        0 B          0 B          1    __AUTH_CONST
+  32 KB        0 B          0 B          1    Activity Tracing
+  16 KB        0 B          0 B          1    CoreServices
+  16 KB        0 B          0 B          1    os_alloc_once
+  16 KB        0 B          0 B          1    MALLOC_LARGE
+    0 B      32 MB          0 B         17    mapped file
+    0 B    1184 KB          0 B        801    __TEXT
+    0 B     192 KB          0 B          9    __LINKEDIT
+    0 B        0 B          0 B          1    __FONT_DATA
+    ---        ---          ---        ---    ---
+ 573 MB      33 MB      1837 MB       4378    TOTAL
+
+Auxiliary data:
+    phys_footprint: 573 MB
+    phys_footprint_peak: 1423 MB
+
