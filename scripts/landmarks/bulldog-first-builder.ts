@@ -1,7 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archBand, disc, getSink, poly, ringFrame, ringSlab, setSink, slab, type Frame} from './nearbar-kit';
-import {arcPts, mosaicPanel, signText, timberWindow} from './wallen-more-kit';
+import {arcPts, frameRing, mosaicPanel, signText, timberWindow} from './wallen-more-kit';
 import source from './bulldog-first-footprints.json';
 
 /**
@@ -79,30 +79,42 @@ function frontWall(b: BuildingTools, f: Frame, len: number) {
   for (const t of [FLAT / 2, len - FLAT / 2]) slab(b, f, t, SHOULDER - 0.32, FLAT + 0.12, 0.16, 0.22, 'stone');
 }
 
-/** Two storeys of two dark-framed windows (axes 1.23 and 3.29 m) with hoods and flower boxes; three round-headed attic windows. */
+/**
+ * Two storeys of two windows (axes 1.23 and 3.29 m) and three round-headed attic windows, re-read 2026-11-27 from the
+ * 2025-06-16 near crop (recording_2025-06-16_06-42-40_02070) and the 2021 rectified crop: dark painted frames and glazing
+ * bars on pale sky-reflecting glass, four lights across (two casements of two) in five rows, the upper two (the transom
+ * light, 40 % of the height) split off by a white transom rail; a white moulded architrave round each window and a
+ * projecting white hood over it. Attic: the centre light three across by four, the side lights two by four. Zinc window
+ * boxes (dark slate, 0.3 m deep) with green leaves and red geraniums hang under each storey window and the attic centre.
+ */
 function windows(b: BuildingTools, f: Frame) {
-  const axes = [1.23, 3.29];
+  const axes = [1.23, 3.29], fw = 0.07, bar = 0.035;
   for (const [y0, y1] of [[4.6, 6.75], [7.6, 9.9]] as [number, number][]) {
+    const h = y1 - y0;
     for (const t of axes) {
-      slab(b, f, t, y0 - 0.12, 1.29 + 0.3, y1 - y0 + 0.2, 0.04, 'stone');
-      timberWindow(b, f, t, y0, 1.29, y1 - y0, {cols: 2, rows: 4, rowWeights: [1, 1, 0.95, 0.9], sill: 'stone', out: 0.04});
-      slab(b, f, t, y1 + 0.05, 1.55, 0.14, 0.12, 'stone');
+      frameRing(b, f, t, y0, 1.29, h, 0.12, 0.08, 'stone', 0.02);
+      timberWindow(b, f, t, y0, 1.29, h, {cols: 4, rows: 5, sill: 'stone', out: 0.04, fw, bar});
+      // the white transom rail between the lower sashes and the two-row transom light
+      slab(b, f, t, y0 + fw + (h - 2 * fw) * 3 / 5 - 0.03, 1.29 - 2 * fw, 0.06, 0.04, 'stone', 0.12);
+      slab(b, f, t, y1 + 0.12, 1.6, 0.16, 0.2, 'stone');
       flowerBox(b, f, t, y0 - 0.06, 1.3);
     }
   }
-  timberWindow(b, f, W / 2, 10.5, 1.1, 1.46, {cols: 2, rows: 3, arch: true, sill: 'stone'});
+  timberWindow(b, f, W / 2, 10.5, 1.1, 1.46, {cols: 3, rows: 4, arch: true, sill: 'stone', fw, bar});
   archBand(b, f, W / 2, 10.5, 1.34, 1.58, 0.12, 0.08, 'stone');
   flowerBox(b, f, W / 2, 10.44, 1.15);
   for (const t of [W / 2 - 1.16, W / 2 + 1.16]) {
-    timberWindow(b, f, t, 10.58, 0.55, 1.1, {cols: 1, rows: 3, arch: true, sill: 'stone'});
+    timberWindow(b, f, t, 10.58, 0.55, 1.1, {cols: 2, rows: 4, arch: true, sill: 'stone', fw: 0.05, bar: 0.03});
     archBand(b, f, t, 10.58, 0.75, 1.2, 0.1, 0.07, 'stone');
   }
 }
 
-/** Grey window box with a band of red geraniums on top, hung under a sill. */
+/** Dark zinc window box (0.28 m high, 0.3 m deep) hung under a sill, green leaves and a band of red geraniums spilling over it. */
 function flowerBox(b: BuildingTools, f: Frame, t: number, yTop: number, w: number) {
-  slab(b, f, t, yTop - 0.3, w, 0.3, 0.25, 'concrete', 0.02);
-  slab(b, f, t, yTop - 0.02, w - 0.06, 0.18, 0.2, 'red', 0.05);
+  slab(b, f, t, yTop - 0.3, w, 0.28, 0.3, 'concrete', 0.02);
+  slab(b, f, t, yTop - 0.04, w - 0.04, 0.12, 0.26, 'green', 0.06);
+  slab(b, f, t, yTop + 0.06, w - 0.14, 0.14, 0.2, 'red', 0.08);
+  for (const k of [-0.32, 0.05, 0.38]) slab(b, f, t + k * w, yTop + 0.18, 0.22 * w, 0.08, 0.14, 'red', 0.1);
 }
 
 /**

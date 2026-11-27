@@ -138037,11 +138037,11 @@
       "materialOverrides": {
         "stone": "#f4f0e4",
         "brick": "#6e4b3d",
-        "frame": "#2b302d",
-        "glass": "#2c3439",
+        "frame": "#262b29",
+        "glass": "#56707e",
         "dark": "#1e2124",
         "slate": "#4f4d4a",
-        "concrete": "#6d6f70",
+        "concrete": "#3b4647",
         "blue": "#26324f",
         "gold": "#e8b923",
         "red": "#c8352b",
@@ -138116,8 +138116,8 @@
         "depthMetres": 9.001930713653564,
         "depthCoverage": 0.6978240863297337
       },
-      "triangles": 12178,
-      "bytes": 170028,
+      "triangles": 12826,
+      "bytes": 179884,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "in-t-aepjen": {
