@@ -49,6 +49,7 @@ import { BakedCoarse, bakedCoarseEnabled, bakedBytesEnabled, bakedReleaseM } fro
 import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
 import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/aerialView';
 import { AerialPower, aerialLeversFromQuery } from './aerialPower';
+import { fpsCap, fpsCapFromQuery } from './frameCap';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { CorridorPost, corridorFocusFlag } from './corridorFocus';
@@ -165,6 +166,8 @@ export class OwnWorldView implements WorldViewOracles {
   _renderGovernor: any = null;
   /** Power from the air (engine/aerialPower.ts, lane R5-F #266): pacing, scale and shadow levers while the camera flies. */
   _aerialPower: AerialPower | null = null;
+  /** `?fpsCap=` read once (engine/frameCap.ts fpsCapFromQuery). */
+  private readonly fpsCapQuery = fpsCapFromQuery(W().location?.search ?? '');
   /** The pixel ratio before the aerial scale lowered it (restored when the camera settles). */
   private aerialBaseRatio: number | null = null;
   /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
@@ -386,7 +389,7 @@ export class OwnWorldView implements WorldViewOracles {
         if (corridor) (this.corridorPost ??= new CorridorPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
       } } : {}),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true), maxFps: fpsCap(fpsCapFromQuery(W().location?.search ?? ''), W().__canalRecallFpsCap) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {
       // three uploads geometry and links programs lazily inside its draw of an object: name that object as the owner.
@@ -1482,6 +1485,8 @@ export class OwnWorldView implements WorldViewOracles {
     lap('jumpTo and move listeners');
     this.updateViewPriority(!!view.detached, view.introFlat);
     if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
+    // The frame cap (engine/frameCap.ts): `?fpsCap=`, else the player's "Full frame rate" setting, else 60.
+    this.host.maxFps = fpsCap(this.fpsCapQuery, W().__canalRecallFpsCap);
     this.lastSubject = view.subject;
     // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
     // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.

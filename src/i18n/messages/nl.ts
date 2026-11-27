@@ -149,6 +149,8 @@ export const nl: Record<MessageKey, string> = {
   'options.distanceHazeHint': 'Verre straten vervagen zacht naar de lucht',
   'options.perfHud': 'Prestaties tonen',
   'options.perfHudHint': 'Geheugen en beeldtijden in de hoek',
+  'options.fullFrameRate': 'Volle beeldsnelheid',
+  'options.fullFrameRateHint': 'Vloeiender op 120Hz-schermen; kost meer stroom',
 
   // --- Ritinstellingen ------------------------------------------------------
   'settings.title': 'Ritinstellingen',

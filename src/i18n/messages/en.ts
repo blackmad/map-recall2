@@ -147,6 +147,8 @@ export const en = {
   'options.distanceHazeHint': 'Far streets fade softly toward the sky',
   'options.perfHud': 'Show performance',
   'options.perfHudHint': 'Memory and frame-time numbers in the corner',
+  'options.fullFrameRate': 'Full frame rate',
+  'options.fullFrameRateHint': 'Smoother on 120 Hz screens; uses more power',
 
   // --- Ride settings panel --------------------------------------------------
   'settings.title': 'Ride settings',

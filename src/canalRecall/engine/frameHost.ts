@@ -20,6 +20,7 @@
 //
 // THREE is injected (window.CanalRecallThree.THREE in the page).
 
+import { FrameCap } from './frameCap';
 import { framePhases } from './framePhases';
 
 export type FrameListener = (event?: unknown) => void;
@@ -76,6 +77,12 @@ export interface FrameHostOptions {
    * headed Chrome on the Mac).
    */
   clearGuard?: boolean;
+  /**
+   * The most animation frames a second the host runs (simulation and render), or null/0 for every frame the display
+   * gives (FrameHost.maxFps; frameCap.ts). A 120 Hz display otherwise runs the whole frame, game and GPU, 120 times a
+   * second: the Mac fan (desktop-perf lane, 2026-11-27).
+   */
+  maxFps?: number | null;
   /** Tests: the clock and the frame scheduler. */
   now?: () => number;
   requestFrame?: (callback: (t: number) => void) => unknown;
@@ -116,7 +123,16 @@ export class FrameHost {
   readonly contextEvents = { lost: 0, restored: 0 };
   readonly clock: StepClock;
   /** Frames drawn, and the last frame's render time (ms, main thread). */
-  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0, coveredSkips: 0, pacedSkips: 0 };
+  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0, coveredSkips: 0, pacedSkips: 0, capSkips: 0 };
+  /**
+   * See FrameHostOptions.maxFps; mutable (the player's frame-rate setting applies at once). A credit clock (frameCap.ts
+   * FrameCap): each animation frame earns its interval × maxFps, a run costs 1, so a 120 Hz display runs every other
+   * frame (60 fps, even), 90 Hz alternates one and two, 60 Hz and below run every frame. A skipped frame is skipped
+   * whole: no simulation step, no game frame, no render. Its time is not lost: the next run's dt spans it, so the
+   * fixed-step clock runs the steps it owes.
+   */
+  maxFps: number | null = null;
+  private readonly cap = new FrameCap();
   private lastRenderAt = -Infinity;
   /**
    * Least ms between rendered frames, measured on the animation-frame clock, or null (render every frame something
@@ -146,6 +162,7 @@ export class FrameHost {
     this.options = options;
     this.pixelRatio = options.pixelRatio ?? 1;
     this.renderOnChange = options.renderOnChange ?? true;
+    this.maxFps = options.maxFps ?? null;
     this.clock = new StepClock(options.fixedDt ?? 1 / 120, options.maxSubsteps ?? 8);
     const doc = container.ownerDocument;
     this.canvas = doc.createElement('canvas');
@@ -269,6 +286,11 @@ export class FrameHost {
   frame(t: number): void {
     this.handle = null;
     if (!this.running) return;
+    if (!this.cap.admit(t, this.maxFps)) {
+      this.stats.capSkips++;
+      this.schedule();
+      return;
+    }
     const dt = this.lastT == null ? 0 : (t - this.lastT) / 1000;
     this.lastT = t;
     const { steps, alpha } = this.clock.advance(dt);
