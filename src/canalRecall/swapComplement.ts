@@ -9,7 +9,12 @@
  * Pure bookkeeping (no three.js): the buildings layer owns the meshes and calls `paintSlot` / `clearSlot` on their
  * `swapSlot` arrays. `?swapComplement=0` (or `window.__canalRecallSwapComplement = false`) keeps the old overlap.
  */
-export const SWAP_SLOT_COUNT = 16;
+/**
+ * Slots in flight at once (the shader's `citySwapUnder` array, look/cityLook.ts SWAP_SLOTS: 8 vec4 uniforms). 32
+ * since lane popin-colour (2026-11-27): landmark arrivals (landmarkYield) share the slots with the detail swaps, and
+ * at 16 the belt ride refused up to 125 of 342 yields a minute, which fell back to the hold-then-cut.
+ */
+export const SWAP_SLOT_COUNT = 32;
 
 export function swapComplementEnabled(search?: string): boolean {
   try {

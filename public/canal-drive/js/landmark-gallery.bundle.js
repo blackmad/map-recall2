@@ -703,7 +703,7 @@ vec3 cityGlassReflect(vec3 n, vec3 v, vec3 albedo, out vec3 keep) {
 float cityGrain(vec3 cell) {
   float g = clamp(dot(cell, vec3(0.299, 0.587, 0.114)) / ${K5(i0/255)}, 0.45, 1.1);
   return mix(1.0, g, ${K5(NT)});
-}`,DT=16,jg=`
+}`,DT=32,jg=`
 #ifdef CITY_SWAP
 attribute float swapSlot;
 uniform vec4 citySwapUnder[${DT/4}];

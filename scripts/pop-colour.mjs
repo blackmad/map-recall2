@@ -1,5 +1,5 @@
 // Colour and texture pop-in on a street ride (lane popin-colour, 2026-11-27): what changes on things already drawn.
-//   PORT=4306 node scripts/pop-colour.mjs <out.json> [--route belt|ring] [--measure 60] [--warmup 6] [--speed 9]
+//   PORT=4306 node scripts/pop-colour.mjs <out.json> [--route belt|ring] [--measure 60] [--warmup 6] [--speed 9] [--timing]
 //     [--qs 'colourFirst=0'] [--frames <dir>] [--explore] [--device desktop|iphone]
 //
 // pop-bands.mjs counts residency (things arriving, leaving, swapping level); this counts the look of objects that are
@@ -92,6 +92,46 @@ await page.evaluate(mps => {
     this.speed = at < cum[cum.length - 1] ? v : 0; this.vx = Math.cos(this.angle) * this.speed; this.vy = Math.sin(this.angle) * this.speed;
   };
 }, speed);
+
+// --timing: no probe (no scene walk, frame diff or screenshots). Main-thread busy time from CDP (TaskDuration,
+// ScriptDuration) over the measured window, and the landmark yield's own cost (arrivalYield incl. beginYield's
+// paint walk, every set, every release) by wrapping its entry points. Run under CANAL_PW_TIMING=1.
+if (argv.includes('--timing')) {
+  const cdp = await context.newCDPSession(page);
+  await cdp.send('Performance.enable');
+  await page.evaluate(() => {
+    const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings, sl = vm._signatureLandmarks;
+    const T = window.__yt = { on: false, asked: 0, begun: 0, arriveMs: 0, sets: 0, setMs: 0, releases: 0, releaseMs: 0, frames: 0, maxUsed: 0 };
+    const f = sl?.onArrivalYield;
+    if (typeof f === 'function') sl.onArrivalYield = e => {
+      const t0 = performance.now(); const h = f(e); const dt = performance.now() - t0;
+      if (T.on) { T.asked++; T.arriveMs += dt; if (h) T.begun++; T.maxUsed = Math.max(T.maxUsed, tb?.swapSlots?.used ?? 0); }
+      if (!h) return h;
+      return {
+        set: v => { const a = performance.now(); h.set(v); if (T.on) { T.sets++; T.setMs += performance.now() - a; } },
+        release: () => { const a = performance.now(); h.release(); if (T.on) { T.releases++; T.releaseMs += performance.now() - a; } },
+      };
+    };
+    const tick = () => { if (T.on) T.frames++; requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+  });
+  const metrics = async () => Object.fromEntries((await cdp.send('Performance.getMetrics')).metrics.map(m => [m.name, m.value]));
+  await page.evaluate(() => { window.__go = true; });
+  await page.waitForTimeout(warmup * 1000);
+  const m0 = await metrics(); const w0 = Date.now();
+  await page.evaluate(() => { window.__yt.on = true; });
+  await page.waitForTimeout(measure * 1000);
+  await page.evaluate(() => { window.__yt.on = false; });
+  const m1 = await metrics(); const secs = (Date.now() - w0) / 1000;
+  const T = await page.evaluate(() => window.__yt);
+  const per = k => +(((m1[k] - m0[k]) * 1000) / secs).toFixed(1);
+  const result = { route, qs, device, secs: +secs.toFixed(1), taskMsPerS: per('TaskDuration'), scriptMsPerS: per('ScriptDuration'), layoutMsPerS: per('LayoutDuration'), fps: +(T.frames / secs).toFixed(1), heapMB: +(m1.JSHeapUsedSize / 1048576).toFixed(0),
+    yield: { asked: T.asked, begun: T.begun, maxUsed: T.maxUsed, arriveMs: +T.arriveMs.toFixed(2), sets: T.sets, setMs: +T.setMs.toFixed(2), releases: T.releases, releaseMs: +T.releaseMs.toFixed(2), totalMsPerS: +((T.arriveMs + T.setMs + T.releaseMs) / secs).toFixed(3) }, errors: errors.slice(0, 5) };
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, JSON.stringify(result, null, 1));
+  console.log(`timing ${route} ${qs}: task ${result.taskMsPerS} ms/s, script ${result.scriptMsPerS} ms/s, ${result.fps} fps; yield ${JSON.stringify(result.yield)}`);
+  await browser.close();
+  process.exit(0);
+}
 
 const setup = await page.evaluate(({ explore, keepFrames, seriesEvery, workerSrc }) => {
   const g = canalRecallGame, vm = g.vectorMap, host = vm.map ?? vm.host, sf = vm._sharedFrame, THREE = sf.THREE;
