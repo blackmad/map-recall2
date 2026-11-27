@@ -108,33 +108,14 @@ test('De Wallen audit (lane R, 394d2f52b): 27 measured window fronts staged with
   } finally { setShopTemplates(null); }
 });
 
-test('acceptance: only blind winners take the real look; ?retailRealAll=1 lifts it for candidate frames', async () => {
+test('acceptance: only blind winners take the real look', async () => {
   const { REAL_ACCEPTED } = await import('./retailTemplates.js');
-  const gg = globalThis as { __canalRecallRetailReal?: boolean; __canalRecallRetailRealAll?: boolean };
+  const gg = globalThis as { __canalRecallRetailReal?: boolean };
   gg.__canalRecallRetailReal = true;
   try {
     assert.ok(REAL_ACCEPTED.has('redLight') && REAL_ACCEPTED.has('brownBar') && !REAL_ACCEPTED.has('butcher'));
     assert.equal(TEMPLATE_LOOKS.cheese.goods, 'cheese');
     assert.equal(TEMPLATE_LOOKS.butcher.goods, undefined); assert.equal(TEMPLATE_LOOKS.butcher.face, undefined);
-    gg.__canalRecallRetailRealAll = true;
-    assert.equal(TEMPLATE_LOOKS.florist.goods, 'flowers');
-  } finally { delete gg.__canalRecallRetailReal; delete gg.__canalRecallRetailRealAll; }
-});
-
-test('round 4 parts: off by default (fronts unchanged); with retailParts a shutter box, a lit neon sign, and a photo frame colour', () => {
-  const gg = globalThis as { __canalRecallRetailReal?: boolean; __canalRecallRetailParts?: boolean };
-  gg.__canalRecallRetailReal = true;
-  try {
-    const input = { template: 'phone' as const, seed: 'x', word: 'BELSHOP', letters: 99, goods: 300, faces: 310 };
-    const off = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6);
-    gg.__canalRecallRetailParts = false;
-    assert.deepEqual(retailFrontTris(input, e, 0.3, 6.3, 0, 3.6), off);
-    gg.__canalRecallRetailParts = true;
-    const on = retailFrontTris(input, e, 0.3, 6.3, 0, 3.6);
-    assert.ok(on.some(t => t.hex === '#8a8c8e'), 'the shutter box');
-    assert.ok(on.some(t => t.hex === '#ff4f7a' && t.lit), 'a lit OPEN sign');
-    assert.ok(on.length - off.length <= 40, `parts cost ${on.length - off.length} tris`);
-    const hendrix = retailFrontTris({ template: 'brownBar', seed: 'h', word: 'HENDRIX', letters: 99, goods: 300, faces: 310, frameHex: '#c8cbc4' }, e, 0.3, 6.3, 0, 3.6);
-    assert.ok(hendrix.filter(t => t.hex === '#c8cbc4').length >= 6, 'the white frame');
-  } finally { delete gg.__canalRecallRetailReal; delete gg.__canalRecallRetailParts; }
+    assert.equal(TEMPLATE_LOOKS.florist.goods, undefined);
+  } finally { delete gg.__canalRecallRetailReal; }
 });

@@ -7,6 +7,11 @@
 - Proof of no visible change: four street poses (Keizersgracht 455, Rokin, Prins Hendrikkade, Osdorpplein) are pixel-identical to cdeead2e12. The Dam aerial pose is within its own run-to-run noise, apart from one hazy frame in 14 that was not reproduced; it is still open in TODO.
 - Kept for named reasons: lookAhead and chunkFade (the pop-in harness sets them); cellMipsKeep and keepVerts (spec probes); newbuildFamily, flatRoofTone and flatRoofSurface (unit suites build their reference frames through the off-switch); rowFrontSteps (rowFront programme). The three retail opt-ins (retailParts, shopGrammar, retailRealAll) went to lane/retail-flags-20261127 for a blind test.
 - Deleted opt-ins that had some evidence, should anyone want them back: aerialScale (5–9 % less GPU busy from the air, #266), groundQuick (centre cell 3.1–3.3 s vs 4.2–5.6 s, but the ring finished later), and groundShare (50 % fewer requests per start, no gain at the gate).
+- The three retail opt-ins were settled by blind test on lane/retail-flags-20261127 (5642d7c43b). There were 34 shop pands in 7 rows (Kinkerstraat, Haarlemmerstraat/-dijk, De Wallen, Hendrix), each shot as photo over today vs flag, and four fresh opus judges saw the pairs unlabelled.
+  - `retailParts` (shutter boxes, neon/LED signs, glass lettering): 1 win, 4 losses, 11 ties. The neon signs and shutter box are not in the photos. Deleted, together with the per-pand front override (`front-overrides.json`); Hendrix's override changed 0.04 % of pixels.
+  - `shopGrammar` (measured shop paint): 2 wins, 11 losses, 12 ties. It darkens surrounds that the photos show cream or white. Deleted.
+  - `retailRealAll` (a review view of losing candidates) was deleted; nothing set it.
+  - Hendrix's published cell still carries `shopFrontOverride` until the next world compile. `shop-templates.json` keeps an inert `fronts` key until the next `build-templates`.
 
 ## Round 20261127b: engine round — own engine only, MapLibre deleted, Amsterdam only, iPhone start memory, pop-in dissolve, desktop power (2026-11-27)
 

@@ -9,7 +9,7 @@ import { fillerCell } from './retailPaneFillers.js';
 import { ROOM_FAMILY_OF } from './retailRoomTone.js';
 import { planPanes, shopVarietyOn } from './shopVariety.js';
 import { drawRedLightFront, type RedLightFront } from './groundParts/redLightFront.js';
-import { retailBrandOn, retailPartsOn } from './retailPages.js';
+import { retailBrandOn } from './retailPages.js';
 import { brandAccepted, brandLook } from './retailBrandStyles.js';
 import { capShare, titleCase, typeLayout, type TypeFace } from './retailTypeFaces.js';
 import { type BikeClass } from './retailBikes.js';
@@ -19,7 +19,7 @@ import { insideProps, outsideProps, SHOP_PROPS, shopPropsFor } from './shopProps
 import { baySeed, goodsTileRect } from './shopProps/variety.js';
 import { shopPassOn } from './shopProps/flags.js';
 import { intoRoom, roomTris } from './shopProps/interiors.js';
-import { CHAIN_TEMPLATES, signText, TEMPLATE_LOOKS, TEMPLATE_PARTS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
+import { CHAIN_TEMPLATES, signText, TEMPLATE_LOOKS, type RetailTemplate, type TemplateLook } from './retailTemplates.js';
 import { archRiseM, type GfFinish, type GfHead, type GfOpeningKind, type GfPier, type GroundFloorDraw } from './groundFloor/types.js';
 
 export type V3 = [number, number, number];
@@ -508,8 +508,8 @@ export type RetailFrontInput = {
   bays?: number;
   /** Lane retail-real: lane R's audited window front (doors, tube, curtains, frame) for this pand; it outranks `bays`. */
   redLight?: RedLightFront;
-  /** Round 4 (`?retailParts=1`): a per-pand frame colour read on a photo (data/retail-ground/front-overrides.json, with
-   *  its receipt): the posts, mullions, transom and riser in place of the template's surround; the board keeps its own. */
+  /** A chain's frame colour (retailChains.ts): the posts, mullions, transom and riser in place of the template's
+   *  surround; the board keeps its own. */
   frameHex?: string;
   /** Lane retail-fit round 5: a register-named historic pui (retailFit/historicPui.ts): the template draws nothing; the
    *  host's measured kit pui stands in its place, or only its name on the pand's own front (historicPuiFront.ts).
@@ -796,29 +796,6 @@ export function retailFrontTris(input: RetailFrontInput, e: WallFrame, s0: numbe
     if (hasLights && look.paneM) for (let k = 0; k < panes; k++) for (const t of [1 / 3, 2 / 3]) { const a = c0 + (k + t) * pw; b.panel(a - 0.02, a + 0.02, 0.055, head + FRONT.transomM, puiTop, frame); }
   }
   if (recs && look.goods) varyPanes(recs, door ? [[door.a0, door.a1]] : [], look.goods, input);
-  // Round 4 (`?retailParts=1`): the template's parts (retailTemplates.ts TEMPLATE_PARTS).
-  const parts = retailPartsOn() && input.goods !== undefined ? TEMPLATE_PARTS[input.template] : undefined;
-  if (parts && !windows) {
-    const glassSegs = segs.filter(([c0, c1]) => c1 - c0 >= 0.9);
-    if (parts.shutter) {
-      // The roller box under the bead, standing a little proud, and a guide rail inside each end post.
-      b.slab(s0 + FRONT.postM, s1 - FRONT.postM, 0, 0.13, puiTop - 0.24, puiTop, '#8a8c8e', 'bottom', true);
-      for (const [c0, c1] of segs) if (c1 - c0 >= 0.4) { b.panel(c0, c0 + 0.045, FRONT.frameOutM, zr, puiTop - 0.24, '#7a7c7e'); b.panel(c1 - 0.045, c1, FRONT.frameOutM, zr, puiTop - 0.24, '#7a7c7e'); }
-    }
-    // The pane nearest the door carries the neon; the widest other one the glass lettering.
-    const byDoor = glassSegs.slice().sort((p, q) => (door ? Math.abs((p[0] + p[1]) / 2 - door.a0) - Math.abs((q[0] + q[1]) / 2 - door.a0) : 0));
-    if (parts.neon && byDoor[0] && input.letters !== undefined) {
-      const [c0, c1] = byDoor[0], w = Math.min(c1 - c0 - 0.2, 0.42 * parts.neon.text.length);
-      const mid = door && door.a0 > (c0 + c1) / 2 ? c1 - 0.1 - w / 2 : c0 + 0.1 + w / 2;
-      b.word(parts.neon.text, mid - w / 2, mid + w / 2, head - 0.45, FRONT.contentOutM + 0.012, 0.42, parts.neon.hex, '#141414', true, input.letters);
-    }
-    const glassWord = parts.glass === 'name' ? (input.chain ? undefined : input.word ? signText(input.word) : undefined) : parts.glass;
-    const gseg = glassSegs.slice().sort((p, q) => (q[1] - q[0]) - (p[1] - p[0]))[0];
-    if (glassWord && gseg) {
-      const face = look.face && input.faces !== undefined ? { face: look.face, layer: input.faces + ['serif', 'condensed', 'script'].indexOf(look.face) } : undefined;
-      b.word(face?.face === 'script' ? titleCase(glassWord) : glassWord, gseg[0] + 0.15, gseg[1] - 0.15, zr + (head - zr) * 0.6, FRONT.contentOutM + 0.012, 0.45, '#e9dcbc', '#1e140c', false, input.letters, face);
-    }
-  }
   const awning = input.awning ?? look.awning;
   if (awning) b.slope(s0, s1, 1.1, bottom - 0.05, bottom - 0.55, awning);
   if (look.blade) {

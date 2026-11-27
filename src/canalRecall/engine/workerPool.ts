@@ -75,7 +75,7 @@ export function withWorkerFlags(url: string, search: string = typeof location !=
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'shopGrammar', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls', 'wallPool', 'wallVariety', 'structurePrior', 'storeyGuard', 'specFields', 'specTemplateFill', 'wallExposure', 'wallFinish', 'modelWallFloor', 'pilasterTone', 'realLook', 'retailGround', 'retailReal', 'retailRealAll', 'retailParts', 'retailBrand', 'groundFloor', 'shopPass', 'shopInteriors', 'shopVariety', 'postwarKit', 'retailFit', 'shopRun'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'paletteLevel', 'industrialKit', 'look', 'toonFronts', 'roofFamily', 'treeCalm', 'brickLift', 'specWalls', 'wallPool', 'wallVariety', 'structurePrior', 'storeyGuard', 'specFields', 'specTemplateFill', 'wallExposure', 'wallFinish', 'modelWallFloor', 'pilasterTone', 'realLook', 'retailGround', 'retailReal', 'retailBrand', 'groundFloor', 'shopPass', 'shopInteriors', 'shopVariety', 'postwarKit', 'retailFit', 'shopRun'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }

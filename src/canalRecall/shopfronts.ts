@@ -102,7 +102,7 @@ let extract: ShopfrontExtract | null = null;
 /** Lane retail-real: a red-light row's audit (lane R, data/retail-ground/dewallen-redlight-audit.json): the measured window
  *  front (`s` its span [lng0, lat0, lng1, lat1], doors, tube, curtains, frame) or `x: 1`, closed or not a window. */
 export type RedLightRow = { s?: [number, number, number, number]; d?: number; t?: 'run' | 'doors' | 'none'; c?: 'drawn' | 'gathered'; f?: string; x?: 1 };
-export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, (0 | 1)?, RedLightRow?]>; paint?: Record<string, string>; prior?: Record<string, string>; /** Round 5b: the measured pands whose reading was dark. */ dark?: string[]; /** Round 6: bike shops' class (retailBikes.ts bikeCode). */ bikes?: Record<string, string>; /** Round 7: measured awning colour per pand (measure-awning.ts). */ awnings?: Record<string, string>; /** Lane retail-real round 4: per-pand front colours read on a photo (front-overrides.json; drawn with ?retailParts=1). */ fronts?: Record<string, { frame?: string; awning?: string }>; /** Lane retail-real round 6 (sign reads, retailSignReads.ts): pands whose read front is an unsigned shop (vacant or unreadable, or a kind no template draws), and pands with no shopfront at all. */ neutral?: string[]; quiet?: string[] };
+export type ShopTemplateExtract = { version: 1; templates: string[]; buildings: Record<string, [number, number, number, string?, (0 | 1)?, RedLightRow?]>; paint?: Record<string, string>; prior?: Record<string, string>; /** Round 5b: the measured pands whose reading was dark. */ dark?: string[]; /** Round 6: bike shops' class (retailBikes.ts bikeCode). */ bikes?: Record<string, string>; /** Round 7: measured awning colour per pand (measure-awning.ts). */ awnings?: Record<string, string>; /** Lane retail-real round 6 (sign reads, retailSignReads.ts): pands whose read front is an unsigned shop (vacant or unreadable, or a kind no template draws), and pands with no shopfront at all. */ neutral?: string[]; quiet?: string[] };
 let templates: ShopTemplateExtract | null = null, darkReads: Set<string> = new Set(), neutralReads: Set<string> = new Set(), quietReads: Set<string> = new Set();
 /** Install the template extract (only the flag's loader calls this); null removes it. Absent = nothing stamped. */
 export function setShopTemplates(data: ShopTemplateExtract | null): void {
@@ -125,12 +125,12 @@ export function decorateShopTemplate<T extends GeoFeature>(feature: T): T {
   const row = templates.buildings[id], paint = templates.paint?.[id] ?? templates.prior?.[id];
   const name = row && feature.properties.shopTemplate === undefined ? templates.templates[row[0]] : undefined;
   const stamp = paint && /^#[0-9a-f]{6}$/i.test(paint) && feature.properties.puiPaint === undefined;
-  const bike = name ? templates.bikes?.[id] : undefined, awning = name ? templates.awnings?.[id] : undefined, front = name ? templates.fronts?.[id] : undefined;
+  const bike = name ? templates.bikes?.[id] : undefined, awning = name ? templates.awnings?.[id] : undefined;
   // Lane ground-floor (`?groundFloor=1`): the pand's ground-floor record, from the extract only the flag's loader installs.
   // Not keyed on `name`: a feature that arrives with its shopTemplate already stamped still takes its record.
   const gf = row && feature.properties.groundFloor === undefined ? groundFloorFor(id) : undefined;
   if (!name && !stamp && !gf) return feature;
-  return { ...feature, properties: { ...feature.properties, ...(gf ? { groundFloor: gf } : {}), ...(name ? { shopTemplate: row![5] ? [name, row![1], row![2], row![3] ?? '', row![4] === 1 ? 1 : 0, row![5]] : [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(front ? { shopFrontOverride: front } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
+  return { ...feature, properties: { ...feature.properties, ...(gf ? { groundFloor: gf } : {}), ...(name ? { shopTemplate: row![5] ? [name, row![1], row![2], row![3] ?? '', row![4] === 1 ? 1 : 0, row![5]] : [name, row![1], row![2], ...(row![3] || row![4] ? [row![3] ?? ''] : []), ...(row![4] === 1 ? [1] : [])] } : {}), ...(bike ? { bikeShop: bike } : {}), ...(awning ? { shopAwning: awning } : {}), ...(stamp ? { puiPaint: paint, ...(darkReads.has(id) && templates.paint?.[id] ? { puiDark: 1 } : {}) } : {}) } };
 }
 
 /** Install the published extract; null removes it (every building falls back to the old random shops). */
