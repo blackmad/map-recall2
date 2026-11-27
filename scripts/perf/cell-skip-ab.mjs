@@ -5,7 +5,7 @@
 // index rewrite over the ride (BakedCoarse.skipStats).
 //
 //   PORT=4633 node scripts/perf/cell-skip-ab.mjs <out.json> [--route belt] [--speed 9] [--poses 24,36,48]
-//     [--swaps 8] [--shots <dir>] [--qs 'a=1'] [--dpr 2] [--w 1512] [--h 900] [--warm 15]
+//     [--swaps 8] [--gpu-n 60 (alternating timed redraws per settled pose)] [--shots <dir>] [--qs 'a=1'] [--dpr 2] [--w 1512] [--h 900] [--warm 15]
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -87,6 +87,34 @@ await page.evaluate(mps => {
     const swapping = tb ? [...tb.fading.keys()].filter(k => k.startsWith('near:')).length + [...tb.leaving].length : 0;
     return { w, h, diffPx: diff, maxDelta: max, skippedTriangles: skipped, afterOff: full, swapping, ...(keep ? { on: png(a), off: png(b) } : {}) };
   };
+  // GPU time of the same frame, skipping vs every triangle, in alternating blocks (EXT_disjoint_timer_query_webgl2 around
+  // a whole redraw), and the main-thread ms of the redraw: medians per mode.
+  window.__gpuAB = async n => {
+    const vm = g.vectorMap, bc = vm._bakedCoarse, host = vm.host, gl = host.renderer.getContext();
+    const ext = gl.getExtension('EXT_disjoint_timer_query_webgl2');
+    const qs = [], cpu = { on: [], off: [] }, syncs = { on: 0, off: 0 }, upMB = { on: 0, off: 0 };
+    // Blocks of 10 draws a mode, the first 3 after each switch untimed (the switch's index upload lands there).
+    for (let i = 0; i < n; i++) {
+      const block = Math.floor(i / 10), mode = block % 2 ? 'off' : 'on';
+      bc.setCellSkipLive(mode === 'on');
+      if (i % 10 < 3) { host.redraw(); await new Promise(r => requestAnimationFrame(r)); continue; }
+      const q = ext ? gl.createQuery() : null;
+      if (q) gl.beginQuery(ext.TIME_ELAPSED_EXT, q);
+      const s0 = bc.skipStats();
+      const t0 = performance.now(); host.redraw(); cpu[mode].push(performance.now() - t0);
+      const s1 = bc.skipStats(); syncs[mode] += s1.syncs - s0.syncs; upMB[mode] += s1.uploadedMB - s0.uploadedMB;
+      if (q) { gl.endQuery(ext.TIME_ELAPSED_EXT); qs.push({ q, mode }); }
+      await new Promise(r => requestAnimationFrame(r));
+    }
+    bc.setCellSkipLive(true);
+    const gpu = { on: [], off: [] };
+    for (let tries = 0; tries < 120 && qs.some(x => !x.done); tries++) {
+      await new Promise(r => setTimeout(r, 30));
+      for (const x of qs) if (!x.done && gl.getQueryParameter(x.q, gl.QUERY_RESULT_AVAILABLE)) { x.done = true; if (!gl.getParameter(ext.GPU_DISJOINT_EXT)) gpu[x.mode].push(gl.getQueryParameter(x.q, gl.QUERY_RESULT) / 1e6); gl.deleteQuery(x.q); }
+    }
+    const med = a => { const b = [...a].sort((x, y) => x - y); return b.length ? +b[b.length >> 1].toFixed(3) : null; };
+    return { n, gpuMs: { on: med(gpu.on), off: med(gpu.off), nOn: gpu.on.length, nOff: gpu.off.length }, cpuMs: { on: med(cpu.on), off: med(cpu.off) }, timedSyncs: syncs, timedUploadMB: { on: +upMB.on.toFixed(2), off: +upMB.off.toFixed(2) } };
+  };
 }, speed);
 
 const T0 = Date.now(), say = m => console.error(`[${((Date.now() - T0) / 1000).toFixed(0)}s] ${m}`);
@@ -123,14 +151,15 @@ for (let i = 0; i < poses.length; i++) {
   await page.evaluate(() => { window.__go = false; });
   await page.waitForTimeout(3000);
   const r = await page.evaluate(() => window.__abFrame(true));
+  r.gpuAB = await page.evaluate(n => window.__gpuAB(n), Number(opt('gpu-n', '60')));
   r.ridden = Math.round(await page.evaluate(() => window.__ridden()));
   save(`pose-${poses[i]}s`, r);
   results.settled.push({ s: poses[i], ...r });
-  say(`settled ${poses[i]} s at ${r.ridden} m: ${r.diffPx} px differ (max ${r.maxDelta}), ${r.skippedTriangles} tris skipped`);
+  say(`settled ${poses[i]} s at ${r.ridden} m: ${r.diffPx} px differ (max ${r.maxDelta}), ${r.skippedTriangles} tris skipped, gpu ${JSON.stringify(r.gpuAB)}`);
   await page.evaluate(() => { window.__go = true; });
 }
 const stats1 = await page.evaluate(() => canalRecallGame.vectorMap._bakedCoarse.skipStats());
 results.skip = { start: stats0, end: stats1, syncs: stats1.syncs - stats0.syncs, msPerSync: +((stats1.ms - stats0.ms) / Math.max(1, stats1.syncs - stats0.syncs)).toFixed(3), maxMs: stats1.maxMs };
 await browser.close();
 fs.writeFileSync(out, JSON.stringify(results, null, 1));
-console.log(JSON.stringify({ settled: results.settled.map(s => [s.s, s.diffPx, s.maxDelta, s.skippedTriangles]), midSwap: results.midSwap.map(s => [s.ridden, s.swapping, s.diffPx, s.maxDelta, s.skippedTriangles]), skip: results.skip, errors: errors.slice(0, 3) }, null, 1));
+console.log(JSON.stringify({ settled: results.settled.map(s => [s.s, s.diffPx, s.maxDelta, s.skippedTriangles, s.gpuAB]), midSwap: results.midSwap.map(s => [s.ridden, s.swapping, s.diffPx, s.maxDelta, s.skippedTriangles]), skip: results.skip, errors: errors.slice(0, 3) }, null, 1));
