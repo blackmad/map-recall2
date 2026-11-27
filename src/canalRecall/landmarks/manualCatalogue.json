@@ -111898,7 +111898,7 @@
   "bagYear": 1695,
   "materialOverrides": {
    "brick": "#3c3e43",
-   "red": "#74593f",
+   "red": "#5f5440",
    "frame": "#e2ddd2",
    "glass": "#34404a",
    "green": "#3e4a4c",
@@ -111993,8 +111993,8 @@
   },
   "bagYear": 1904,
   "materialOverrides": {
-   "stone": "#a39d91",
-   "sandstone": "#8f897d",
+   "stone": "#8e8a7e",
+   "sandstone": "#7d796f",
    "slate": "#4a4f54",
    "glass": "#2f3840",
    "frame": "#ddd6c6",
