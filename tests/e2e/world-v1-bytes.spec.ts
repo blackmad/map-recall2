@@ -32,7 +32,7 @@ const SPOTS = [
   { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
   { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
 ] as const;
-// WORLD_BYTES_QS='&ringFollow=0' is appended to every variant (an A/B of a streaming flag against the same ride).
+// WORLD_BYTES_QS='&<flag>=0' is appended to every variant (an A/B of a streaming flag against the same ride).
 const QS = (process.env.WORLD_BYTES_QS ?? '').replace(/^[?&]/, '');
 const withQs = (q: string) => (QS ? `${q}&${QS}` : q);
 const ALL_VARIANTS = [{ name: 'default', query: withQs('?world=live') }, { name: 'world', query: withQs('?world=v1') }, { name: 'world-main', query: withQs('?world=v1&worldWorker=0') }];

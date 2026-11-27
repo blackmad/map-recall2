@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { footprintBox, rideBox, ringCells, ringFollowEnabled, ringFootprintEnabled, ringSignature, FOOTPRINT_HALF_M, type RingBounds } from './worldRing.ts';
+import { footprintBox, rideBox, ringCells, ringFootprintEnabled, ringSignature, FOOTPRINT_HALF_M, type RingBounds } from './worldRing.ts';
 import { tileFor, tileKey } from '../slippyTiles.ts';
 
 // Regression location (lane E4, #217): the seeded ride east along the Koninginneweg / Van Baerlestraat stays inside the
@@ -18,13 +18,6 @@ test('the ring changes inside one z14 tile, so a follow signature with its cells
   assert.ok(signatures.size >= 2, `the ring moved ${signatures.size - 1} time(s) inside the tile`);
   assert.equal(ringSignature(new Set(['b', 'a'])), 'a,b', 'order-free');
   assert.equal(ringSignature(null), '');
-});
-
-test('?ringFollow=0 turns the follow off', () => {
-  const g = globalThis as { __canalRecallRingFollow?: boolean };
-  assert.equal(ringFollowEnabled(), true);
-  g.__canalRecallRingFollow = false;
-  try { assert.equal(ringFollowEnabled(), false); } finally { delete g.__canalRecallRingFollow; }
 });
 
 // Regression (lane R4-F #249): the aerial pan's oost leg. A pitched view from the air (S1 pose, ~6 km deep) over a

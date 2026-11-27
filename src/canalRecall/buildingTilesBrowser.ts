@@ -29,15 +29,15 @@ import {
 } from './buildingTileSource.js';
 import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
-// The per-area hand-over's helpers ride on this bundle's global (vector-map.js, `?wallsPerArea=1`).
-export { PENDING_SOURCE_LAYERS, PENDING_SUFFIX, pendingDone, pendingLayer, wallsPerAreaEnabled } from './pendingWalls.js';
+// The per-area hand-over's helpers ride on this bundle's global (their reader, vector-map.js, is gone).
+export { PENDING_SOURCE_LAYERS, PENDING_SUFFIX, pendingDone, pendingLayer } from './pendingWalls.js';
 import { mapHasStyle, mapRemoved } from './mapStyle.js';
 import { onViewChange, worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { WorldCellClient, assembleTile, readWorldIndex, worldV1Enabled, type TilePart } from './world/worldCells.js';
-import { footprintBox, rideBox, ringCells, ringFollowEnabled, ringFootprintEnabled, ringSignature, worldRingEnabled } from './world/worldRing.js';
+import { footprintBox, rideBox, ringCells, ringFootprintEnabled, ringSignature } from './world/worldRing.js';
 import { isAerialView } from './rendererShared/aerialView.js';
 import { activeViewPriority, tileBox, viewRank } from './engine/viewPriority.js';
 import { RingPacer, arrivalPaceOption } from './engine/arrivalPace.js';
@@ -210,8 +210,6 @@ export class BuildingTileStreamer {
   private world: WorldCellClient | null = null;
   /** world-v1 fetch ring (world/worldRing.ts): the cells the ride can show; null reads every cell of a tile. */
   private ring: Set<string> | null = null;
-  private readonly ringOn = worldRingEnabled();
-  private readonly ringFollow = ringFollowEnabled();
   /** `?arrivalPace=1|ring` (engine/arrivalPace.ts, lane R4-E #248): a ring jump admits its new cells a few at a time. */
   readonly ringPacer = arrivalPaceOption()?.ring ? new RingPacer() : null;
   /** `?ringFootprint=1` (world/worldRing.ts, lane R4-F #249): from the air the ring follows the view's near footprint. */
@@ -562,8 +560,8 @@ export class BuildingTileStreamer {
     // zoom bucket, and those tiles used to stay unrequested (bare patches).
     const needed = tilesCovering(this.bounds(), this.zoom, 0).map(tileKey).join(',');
     const ahead = this.lookAhead.flatMap(area => tilesCovering(area, this.zoom, 0).map(tileKey)).join(',');
-    // The ring follows the rider (worldRing.ts ringFollowEnabled): its cells change inside one z14 tile.
-    const ring = this.world && this.ringOn && this.ringFollow ? ringSignature(this.planRing()) : '';
+    // The ring follows the rider (worldRing.ts ringSignature): its cells change inside one z14 tile.
+    const ring = this.world ? ringSignature(this.planRing()) : '';
     const signature = `${tileKey(tile)}@${zoomBucket}|${needed}|${ahead}|${ring}`;
     if (signature === this.lastFollowSignature) return;
     this.lastFollowSignature = signature;
@@ -605,7 +603,7 @@ export class BuildingTileStreamer {
       this.worldParts.delete(key);
       changed = true;
     }
-    if (this.world && this.ringOn) {
+    if (this.world) {
       const held = this.ring;
       this.ring = this.planRing();
       if (this.ringPacer) this.ringPacer.commit(held, this.ring, this.planRing(true), performance.now());

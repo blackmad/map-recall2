@@ -590,7 +590,7 @@ export class SharedFrame {
   /** Force the shadow map to be redrawn next frame. */
   invalidateShadows(): void { this.shadowKey = ''; this.map.triggerRepaint?.(); }
 
-  /** The sun's shadow-map size, or null for the tier's own (engine/aerialPower.ts `?aerialShadowMap=0`). */
+  /** The sun's shadow-map size, or null for the tier's own. */
   setShadowMapSize(size: number | null): void {
     this.baseShadowMapSize ??= this.rig.options.shadowMapSize;
     if (this.rig.setShadowMapSize(size ?? this.baseShadowMapSize)) { this.shadowHeld = null; this.invalidateShadows(); }

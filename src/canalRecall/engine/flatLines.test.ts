@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as THREE from 'three';
-import { FlatLines, lineCullFlag, type LngLatLine } from './overlays/flatLines';
+import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { ORIGIN } from '../ownMap/frame';
 
 /** Region-wide lines: 40 east-west and 40 north-south lines over ~8 km round the origin, 50 segments each. */
@@ -31,7 +31,7 @@ function lines(withCasing: boolean): FlatLines {
   return l;
 }
 
-test('flat lines: a chase view draws only the span on screen; the casing shares it; ?lineCull=0 draws whole', () => {
+test('flat lines: a chase view draws only the span on screen; the casing shares it', () => {
   const l = lines(true), camera = chaseCamera();
   assert.equal(l.beforeRender(), true);
   const [casing, fill] = l.root.children as THREE.Mesh[];
@@ -43,13 +43,4 @@ test('flat lines: a chase view draws only the span on screen; the casing shares 
   assert.equal(fill.geometry.drawRange.count, Infinity);
   casing.onBeforeRender(null as any, null as any, camera, casing.geometry, casing.material as THREE.Material, null as any);
   assert.deepEqual([casing.geometry.drawRange.start, casing.geometry.drawRange.count], [start, count]);
-
-  (globalThis as any).__canalRecallLineCull = false;
-  try {
-    assert.equal(lineCullFlag(), false);
-    const whole = lines(false), [mesh] = whole.root.children as THREE.Mesh[];
-    whole.beforeRender();
-    mesh.onBeforeRender(null as any, null as any, camera, mesh.geometry, mesh.material as THREE.Material, null as any);
-    assert.equal(mesh.geometry.drawRange.count, Infinity);
-  } finally { delete (globalThis as any).__canalRecallLineCull; }
 });

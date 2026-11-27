@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { SWAP_SLOT_COUNT, SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
+import { SWAP_SLOT_COUNT, SwapSlots, clearSlot, paintSlot } from './swapComplement.js';
 import { variantDefines, variantKey, cityProgramKey, createCityUniforms, SWAP_SLOTS } from './look/cityLook.js';
 
 const ranges = new Map([['a', { start: 0, count: 4 }], ['b', { start: 4, count: 2 }], ['c', { start: 6, count: 3 }]]);
@@ -32,12 +32,6 @@ test('paint and clear a shell\'s swapSlot bytes per building; a later swap keeps
   assert.equal(clearSlot(array, ranges, ['a', 'b'], 0), true);
   assert.deepEqual([...array], [0, 0, 0, 0, 4, 4, 0, 0, 0]);
   assert.equal(clearSlot(array, ranges, ['a'], 0), false, 'nothing left to clear');
-});
-
-test('flag: on by default, ?swapComplement=0 off', () => {
-  assert.equal(swapComplementEnabled(''), true);
-  assert.equal(swapComplementEnabled('?swapComplement=0'), false);
-  assert.equal(swapComplementEnabled('?swapComplement=1'), true);
 });
 
 test('city look: the swap variant is its own program; without it the defines and keys are unchanged', () => {
