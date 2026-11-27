@@ -1,0 +1,169 @@
+[
+ {
+  "file": "iphone-sim-own-2026-11-27T11-09-13-297Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|car",
+  "peakWebMb": 1046,
+  "peakByPhase": {
+   "boot": 626,
+   "menu": 1046
+  },
+  "peakAt": 30,
+  "peakCats": {
+   "WebKit malloc": 771,
+   "JS VM Gigacage": 173,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 13
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-11-10-764Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|car",
+  "peakWebMb": 1108,
+  "peakByPhase": {
+   "boot": 682,
+   "menu": 1104
+  },
+  "peakAt": 11,
+  "peakCats": {
+   "WebKit malloc": 833,
+   "JS VM Gigacage": 173,
+   "JS JIT generated code": 48
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-11-10-764Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|car",
+  "peakWebMb": 1108,
+  "peakByPhase": {
+   "boot": 87,
+   "menu": 1086
+  },
+  "peakAt": 8,
+  "peakCats": {
+   "WebKit malloc": 834,
+   "JS VM Gigacage": 151,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 12
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-11-10-764Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|car",
+  "peakWebMb": 1047,
+  "peakByPhase": {
+   "boot": 670,
+   "menu": 1013
+  },
+  "peakAt": 8,
+  "peakCats": {
+   "WebKit malloc": 775,
+   "JS VM Gigacage": 140,
+   "JS JIT generated code": 47
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-12-58-171Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 1181,
+  "peakByPhase": {
+   "boot": 646,
+   "menu": 1146
+  },
+  "peakAt": 13.2,
+  "peakCats": {
+   "WebKit malloc": 861,
+   "JS VM Gigacage": 184,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 11
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-12-58-171Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 1214,
+  "peakByPhase": {
+   "boot": 676,
+   "menu": 1162
+  },
+  "peakAt": 10,
+  "peakCats": {
+   "WebKit malloc": 905,
+   "JS VM Gigacage": 158,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 11
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-12-58-171Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 1065,
+  "peakByPhase": {
+   "boot": 368,
+   "menu": 1000
+  },
+  "peakAt": 10,
+  "peakCats": {
+   "WebKit malloc": 756,
+   "JS VM Gigacage": 142,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 13
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-14-44-433Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 958,
+  "peakByPhase": {
+   "boot": 462,
+   "menu": 952
+  },
+  "peakAt": 9,
+  "peakCats": {
+   "WebKit malloc": 689,
+   "JS VM Gigacage": 161,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 13
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-14-44-433Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 991,
+  "peakByPhase": {
+   "boot": 95,
+   "menu": 976
+  },
+  "peakAt": 9.1,
+  "peakCats": {
+   "WebKit malloc": 741,
+   "JS VM Gigacage": 136,
+   "JS JIT generated code": 47
+  }
+ },
+ {
+  "file": "iphone-sim-own-2026-11-27T11-14-44-433Z.json",
+  "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+  "world": "amsterdam|boat",
+  "peakWebMb": 1020,
+  "peakByPhase": {
+   "boot": 537,
+   "menu": 1011
+  },
+  "peakAt": 11,
+  "peakCats": {
+   "WebKit malloc": 765,
+   "JS VM Gigacage": 147,
+   "JS JIT generated code": 47,
+   "MALLOC_MEDIUM": 11
+  }
+ }
+]

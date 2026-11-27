@@ -5,7 +5,7 @@
 //
 //   node_modules/.bin/tsx scripts/perf/iphone-sim-start-memory.ts --udid <booted sim udid> [--engine maplibre|own]
 //     [--runs 3] [--origin http://localhost:4631] [--ride-s 40] [--qs 'a=1'] [--out artifacts/perf/iphone-sim]
-//     [--driver-port 4632] [--max-mb 1400] [--menu]
+//     [--driver-port 4632] [--max-mb 1400] [--menu] [--car]
 //
 // Each run is a fresh WebDriver session (an ephemeral website data store: a cold HTTP cache and empty storage), with
 // Mobile Safari terminated first so no other tab shares the WebContent pool. The page is the default ride at
@@ -37,6 +37,9 @@ const capS = Number(opt('cap-s', '150'));
 
 const START = [52.37665, 4.90115], FINISH = [52.37265, 4.90035];
 // `--menu`: no race hash, the page stops at the menu (what the game's own boot costs before any world loads).
+// `--car`: store the street preference (travelMode car) as a returning street rider has it. Without a race hash the
+// `travel=` parameter is ignored, so a `--menu` run otherwise builds a fresh visitor's boat world at the briefing.
+const carPref = argv.includes('--car');
 const hash = argv.includes('--menu') ? '' : `#race=${START[0]},${START[1]},${START[0]},${START[1]},${FINISH[0]},${FINISH[1]}`;
 // The engine is always named in the URL: own is the default since the Amsterdam flip, `engine=maplibre` the rollback.
 const qs = ['travel=car', `engine=${engine}`, extraQs].filter(Boolean).join('&');
@@ -93,7 +96,7 @@ const PROBE = `const g = window.canalRecallGame, vm = g && g.vectorMap, perf = w
   let glr = null; try { glr = perf && perf.gl && perf.gl.counters ? perf.gl.counters.resident.report() : null; } catch (e) {}
   return { glr, state: g ? g.state : null, intro: !!(g && g._intro), engine: vm ? vm.engine : null, xy: g && g.player ? [Math.round(g.player.x), Math.round(g.player.y)] : null,
     loading: g ? g.loadingMessage : null, workers: window.__canalRecallWorkerPool ? window.__canalRecallWorkerPool.live : null,
-    hc: navigator.hardwareConcurrency, dpr: devicePixelRatio, snap, ml, three, settle: g ? g._lastMapSettle || null : null };`;
+    hc: navigator.hardwareConcurrency, dpr: devicePixelRatio, world: g && g._cityWorldPrep ? g._cityWorldPrep.key : null, snap, ml, three, settle: g ? g._lastMapSettle || null : null };`;
 
 const phaseOf = (p: any): string => !p ? 'boot' : p.state === 4 ? (p.intro ? 'intro' : 'racing') : p.state === 2 ? 'loading' : p.state === 0 || p.state === 1 ? 'menu' : p.state == null ? 'boot' : `state${p.state}`;
 
@@ -110,7 +113,7 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
   try {
     // Same origin first, to mark onboarding seen (a returning rider; the friend's iPhone had ridden before).
     await call('POST', `/session/${sid}/url`, { url: `${origin}/canal-drive/credits.html` });
-    await call('POST', `/session/${sid}/execute/sync`, { script: "localStorage.setItem('canalRecall.onboarding.v1','done'); return 1", args: [] });
+    await call('POST', `/session/${sid}/execute/sync`, { script: "localStorage.setItem('canalRecall.onboarding.v1','done'); if (arguments[0]) localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ cityId: 'amsterdam', travelMode: 'car' })); return 1", args: [carPref] });
     const t0 = Date.now();
     call('POST', `/session/${sid}/url`, { url: gameUrl }, 120_000).catch(e => console.warn('navigate:', String(e).slice(0, 200)));
     let probe: any = null, racingAt: number | null = null, ridden = 0, lastXy: number[] | null = null;

@@ -1,0 +1,316 @@
+{
+ "page": "http://localhost:4323/canal-drive/?engine=own",
+ "label": "boat-menu",
+ "at": "2026-11-27T12:20:56",
+ "targets": [
+  {
+   "totalMB": 200.3,
+   "nodes": 2489904,
+   "top": [
+    {
+     "class": "ArrayBuffer",
+     "MB": 75.3,
+     "count": 7923
+    },
+    {
+     "class": "Object",
+     "MB": 20.0,
+     "count": 355002
+    },
+    {
+     "class": "HTMLCanvasElement",
+     "MB": 18.8,
+     "count": 22
+    },
+    {
+     "class": "string",
+     "MB": 17.3,
+     "count": 564633
+    },
+    {
+     "class": "Array",
+     "MB": 16.0,
+     "count": 1046319
+    },
+    {
+     "class": "Immutable Butterfly",
+     "MB": 11.5,
+     "count": 128568
+    },
+    {
+     "class": "UnlinkedFunctionCodeBlock",
+     "MB": 6.1,
+     "count": 4631
+    },
+    {
+     "class": "PackedStreet",
+     "MB": 5.3,
+     "count": 86367
+    },
+    {
+     "class": "FunctionCodeBlock",
+     "MB": 5.2,
+     "count": 1200
+    },
+    {
+     "class": "Uint8Array",
+     "MB": 4.1,
+     "count": 25
+    },
+    {
+     "class": "WeakMap",
+     "MB": 4.0,
+     "count": 64
+    },
+    {
+     "class": "JSLexicalEnvironment",
+     "MB": 3.9,
+     "count": 82384
+    },
+    {
+     "class": "Function",
+     "MB": 3.0,
+     "count": 97828
+    },
+    {
+     "class": "Structure",
+     "MB": 2.9,
+     "count": 26818
+    },
+    {
+     "class": "FunctionExecutable",
+     "MB": 1.8,
+     "count": 14717
+    },
+    {
+     "class": "UnlinkedFunctionExecutable",
+     "MB": 1.5,
+     "count": 16728
+    },
+    {
+     "class": "GetterSetter",
+     "MB": 0.5,
+     "count": 17737
+    },
+    {
+     "class": "Float32Array",
+     "MB": 0.5,
+     "count": 288
+    },
+    {
+     "class": "CT",
+     "MB": 0.5,
+     "count": 2156
+    },
+    {
+     "class": "r",
+     "MB": 0.4,
+     "count": 9907
+    },
+    {
+     "class": "StructureRareData",
+     "MB": 0.4,
+     "count": 4347
+    },
+    {
+     "class": "Uint32Array",
+     "MB": 0.3,
+     "count": 5159
+    },
+    {
+     "class": "RegExp",
+     "MB": 0.1,
+     "count": 607
+    },
+    {
+     "class": "Uint16Array",
+     "MB": 0.1,
+     "count": 2567
+    },
+    {
+     "class": "DOMAttributeGetterSetter",
+     "MB": 0.1,
+     "count": 2564
+    },
+    {
+     "class": "SymbolTable",
+     "MB": 0.1,
+     "count": 1730
+    },
+    {
+     "class": "NativeExecutable",
+     "MB": 0.1,
+     "count": 1094
+    },
+    {
+     "class": "ue",
+     "MB": 0.1,
+     "count": 1817
+    },
+    {
+     "class": "HTMLOptionElement",
+     "MB": 0.1,
+     "count": 1304
+    },
+    {
+     "class": "Float64Array",
+     "MB": 0.1,
+     "count": 39
+    },
+    {
+     "class": "UnlinkedProgramCodeBlock",
+     "MB": 0.0,
+     "count": 68
+    },
+    {
+     "class": "PropertyTable",
+     "MB": 0.0,
+     "count": 551
+    },
+    {
+     "class": "FunctionRareData",
+     "MB": 0.0,
+     "count": 260
+    },
+    {
+     "class": "UnlinkedModuleProgramCodeBlock",
+     "MB": 0.0,
+     "count": 1
+    },
+    {
+     "class": "Ft",
+     "MB": 0.0,
+     "count": 189
+    },
+    {
+     "class": "CustomGetterSetter",
+     "MB": 0.0,
+     "count": 363
+    },
+    {
+     "class": "AsyncFunction",
+     "MB": 0.0,
+     "count": 341
+    },
+    {
+     "class": "vt",
+     "MB": 0.0,
+     "count": 97
+    },
+    {
+     "class": "it",
+     "MB": 0.0,
+     "count": 221
+    },
+    {
+     "class": "Int32Array",
+     "MB": 0.0,
+     "count": 17
+    },
+    {
+     "class": "Ri",
+     "MB": 0.0,
+     "count": 54
+    },
+    {
+     "class": "Set",
+     "MB": 0.0,
+     "count": 235
+    },
+    {
+     "class": "Gn",
+     "MB": 0.0,
+     "count": 151
+    },
+    {
+     "class": "Map",
+     "MB": 0.0,
+     "count": 219
+    },
+    {
+     "class": "ProgramExecutable",
+     "MB": 0.0,
+     "count": 60
+    },
+    {
+     "class": "HTMLSpanElement",
+     "MB": 0.0,
+     "count": 132
+    },
+    {
+     "class": "HTMLElement",
+     "MB": 0.0,
+     "count": 125
+    },
+    {
+     "class": "cn",
+     "MB": 0.0,
+     "count": 48
+    },
+    {
+     "class": "Lr",
+     "MB": 0.0,
+     "count": 174
+    },
+    {
+     "class": "HTMLOptionsCollection",
+     "MB": 0.0,
+     "count": 9
+    },
+    {
+     "class": "SVGPathElement",
+     "MB": 0.0,
+     "count": 105
+    },
+    {
+     "class": "HTMLDivElement",
+     "MB": 0.0,
+     "count": 104
+    },
+    {
+     "class": "StructureChain",
+     "MB": 0.0,
+     "count": 318
+    },
+    {
+     "class": "Rt",
+     "MB": 0.0,
+     "count": 102
+    },
+    {
+     "class": "JSPropertyNameEnumerator",
+     "MB": 0.0,
+     "count": 98
+    },
+    {
+     "class": "Window",
+     "MB": 0.0,
+     "count": 2
+    },
+    {
+     "class": "HTMLButtonElement",
+     "MB": 0.0,
+     "count": 80
+    },
+    {
+     "class": "Mn",
+     "MB": 0.0,
+     "count": 41
+    },
+    {
+     "class": "Text",
+     "MB": 0.0,
+     "count": 76
+    },
+    {
+     "class": "Fn",
+     "MB": 0.0,
+     "count": 34
+    }
+   ],
+   "target": "page-15",
+   "type": "page",
+   "url": ""
+  }
+ ]
+}

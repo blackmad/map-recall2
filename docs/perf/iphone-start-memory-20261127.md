@@ -142,3 +142,86 @@ python3 -I scripts/perf/sim-heap-snapshot.py --match canal-drive --open 'http://
 
 Raw results: `docs/perf/iphone-start-memory-20261127-raw/` (summaries of every run in this note; the morning's
 MapLibre `simrun.log` and `fp.txt`).
+
+## Follow-up: is the street network the menu's owner? (lane street-network-memory-20261127)
+
+The plan was to move the city street network, routing graph and surface index to typed arrays and so cut at least
+300 MB from the menu. I measured the premise first. It does not hold, so I changed no routing code.
+
+**What the menu builds.** Without a `#race=` hash the game ignores `?travel=car` (game-route.js reads `travel` only
+on the share-link path). A fresh visitor's stored mode is the boat (`preferences.ts`, `travelMode: 'boat'`). So the
+menu runs above (`--menu`) and the earlier JSC snapshot all built the **boat** world: 1,321 waterways, 4.6 k
+vertices, a 2.9 k-node graph. The street world (68 k ways, 343 k vertices, 167 k segment points, 100 k graph nodes,
+69 k connectors) is built at the menu only for a rider whose stored mode is the street ride, and otherwise at ride
+start.
+
+**The Simulator says the street world does not move the menu footprint.** iOS Simulator iPhone 16, iOS 18.4, own
+engine, one building worker, `--menu --ride-s 30`, the page's WebContent `phys_footprint_peak`. The machine was
+shared (load average 20–60), so the spread is wide.
+
+| Menu | n | WebContent peak, MB (each run) | median | built at the menu |
+|---|---|---|---|---|
+| fresh visitor (boat world) | 6 | 958, 991, 1020, 1065, 1181, 1214 | 1,043 | `amsterdam\|boat` |
+| stored street ride (`--car`) | 4 | 1046, 1047, 1108, 1108 | 1,078 | `amsterdam\|car` |
+
+The difference, about 35 MB, is well inside the run-to-run spread of about 250 MB. A `--car ?worldPrewarm=0` control was
+planned, but the loop passed its flags as one zsh word, so that batch ran as three more boat menus (they are the
+1065, 1181 and 1214 above). The Simulator was then taken by another lane and the load average rose to 200, so I did
+not re-run it. Even the boot phase, before any world exists, reaches 368–682 MB in 5 of 6 runs.
+
+**JSC heap at the boat menu** (`sim-heap-snapshot.py`, 25 s after load, the page target): 200 MB live, 2.49 M cells.
+ArrayBuffer 75 MB (7.9 k), Object 20 MB (355 k), canvas 19 MB, string 17 MB (565 k), **Array 16 MB (1.05 M)**,
+Immutable Butterfly 11.5 MB, PackedStreet 5.3 MB (86 k). So the million small arrays exist with no street network
+loaded. They are the overview map's `[x, y]` vertex pairs: `decodeLine` in `ownMap/overviewFormat.ts` decodes water,
+parks, landuse, rail, piers and neighbourhood rings into a `Vec2[]` of two-element arrays. The streets in that same file
+already moved to a packed `Int32Array` (#130).
+
+**Chromium, iPhone 15 emulation** (`scripts/perf/chromium-menu-memory.ts`, V8, live heap after a forced GC; read it
+for ratios only):
+
+| Menu | V8 live heap | Largest live allocators |
+|---|---|---|
+| boat world | 82–98 MB | overview `decodeLine` 17.5 MB, V8 API 11.6, three-buildings 4.8, own-ground-game 3.3, overview `entries` 3.1 |
+| street world | 146 MB | the above, plus `fetchRoads` ways 16.2 + 6.6 MB, road-projection 7.7 + 4.7 + 3.6 MB, road-graph 4.5 MB |
+
+So the whole street world is about 50–60 MB of V8 heap. On top of that come about 40 MB of typed-array backing
+stores, which `Runtime.getHeapUsage` does not count. The surface index is `Int32Array`/`Float64Array` (#130): `ids`
+3.9 M entries (15.6 MB), `keys` 1.1 M (8.8 MB), spans 0.67 M × 2 (5.4 MB). The graph is already compressed sparse
+rows (#136), about 6 MB. When the street-world structures are dropped one after another, the heap falls by: segments
+`{x, y}` points 14.7 MB, routing graph objects (metadata, connectors) 6.2 MB, featureMeta 0.8 MB, snap index 0.6 MB,
+plazas and ferry 0.5 MB. The raw `{lat, lon}` ways (about 23 MB) are not freed by dropping `world.ways`, because
+`_cityWorldPrep.fetched` still resolves to them.
+
+**Conclusion.** Typed storage for what is left of the street network could save perhaps 40–60 MB in JSC: the ways'
+`{lat, lon}` objects, the segment points and the connectors. The graph and the surface index are typed already. That
+is not 300 MB, and the Simulator could not see it against a spread of about 250 MB. So the routing refactor and its
+correctness risk are not worth it for the crash. No routing, snapping, scoring or answer code changed, so no golden
+test was needed.
+
+**Where the menu's memory is instead** (by size, from the categories at the peak): WebKit malloc 690–860 MB (JSC
+objects live here on iOS, as do WebCore, canvases and decoded data), the JS VM Gigacage 160–185 MB (typed-array and
+ArrayBuffer backing stores) and JIT code 47 MB. The live JS heap is only about 200 MB of that. The rest is the
+building and ground workers' VMs, WebCore, and garbage that the Simulator never collects without memory pressure.
+Leads for a next lane, cheapest first:
+
+1. **Overview map vertices** (`overviewFormat.ts` `decodeLine` → packed `Float64Array`/`Int32Array` with an accessor,
+   as #130 did for streets): about 1 M small arrays and 17 MB in V8; in JSC 16 MB of Array cells plus their
+   butterflies. A presentation-lane change.
+2. **The boot before any world** reaches 368–682 MB at 2–5 s. That is script parse/JIT plus the JSON the page fetches.
+   `chromium-start-memory.ts` lists the decoded bytes per file.
+3. **Garbage versus live.** Compare a real iPhone's Web Inspector memory timeline with these Simulator footprints.
+   Without pressure the Simulator keeps garbage that a phone near its limit would collect.
+
+Commands:
+
+```sh
+# Simulator menu, stored street ride vs a fresh visitor (quote multi-flag variants: zsh does not split "$v")
+node_modules/.bin/tsx scripts/perf/iphone-sim-start-memory.ts --udid <udid> --engine own --runs 3 --ride-s 30 --menu [--car] [--qs worldPrewarm=0] --origin http://localhost:<port>
+# Chromium menu owners: drop the city-world structures one by one after a GC; --sample adds live heap by allocator
+/tmp/canal-pw.sh node_modules/.bin/tsx scripts/perf/chromium-menu-memory.ts --origin http://localhost:<port> [--car] [--sample]
+# JSC heap by class at the menu
+python3 -I scripts/perf/sim-heap-snapshot.py --match canal-drive --open 'http://localhost:<port>/canal-drive/?engine=own' --wait 25 --label boat-menu
+```
+
+Raw: `iphone-start-memory-20261127-raw/sim-menu-street-network-20261127.json` (every Simulator menu run, with the
+world it built), `chromium-menu-{car,boat}-*.json`, `sim-heap-boat-menu-20261127T122621.json`.

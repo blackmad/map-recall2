@@ -1,0 +1,332 @@
+{
+ "url": "http://localhost:4323/canal-drive/?travel=car&engine=own",
+ "runs": [
+  {
+   "readyS": 5.302,
+   "census": {
+    "ready": true,
+    "key": "amsterdam|car",
+    "cached": false,
+    "ways": 68399,
+    "wayNodes": 342611,
+    "segCount": 68418,
+    "segPoints": 167410,
+    "segNames": 5411,
+    "graph": {
+     "nodes": 100460,
+     "directed": 318582,
+     "links": 159291,
+     "views": 0,
+     "connectors": 68895
+    },
+    "surfaceIndex": {
+     "cellSize": "number",
+     "keys": 1098384,
+     "offsets": 549196,
+     "ids": 3889524,
+     "stringCells": 0,
+     "spanSeg": 671416,
+     "spanPt": 671416,
+     "widths": 547344,
+     "segments": 68418,
+     "connectors": 68895,
+     "spanCache": 167854
+    },
+    "snapIndex": [
+     "tree:object"
+    ],
+    "featureMeta": 5442,
+    "plaza": 85
+   },
+   "steps": [
+    {
+     "step": "menu, city world built",
+     "heapMB": 146.1,
+     "freedMB": 0
+    },
+    {
+     "step": "ways (raw {lat,lon} way nodes)",
+     "heapMB": 146.2,
+     "freedMB": -0.1
+    },
+    {
+     "step": "surface index",
+     "heapMB": 145.2,
+     "freedMB": 1
+    },
+    {
+     "step": "routing graph",
+     "heapMB": 139,
+     "freedMB": 6.2
+    },
+    {
+     "step": "road snap index",
+     "heapMB": 138.4,
+     "freedMB": 0.6
+    },
+    {
+     "step": "segments ({x,y} points)",
+     "heapMB": 123.7,
+     "freedMB": 14.7
+    },
+    {
+     "step": "plazas + ferry network",
+     "heapMB": 123.2,
+     "freedMB": 0.5
+    },
+    {
+     "step": "featureMeta",
+     "heapMB": 122.4,
+     "freedMB": 0.8
+    }
+   ],
+   "heapTop": {
+    "totalMB": 140.1,
+    "byFile": [
+     {
+      "what": "js/engine.bundle.js",
+      "MB": 47.8
+     },
+     {
+      "what": "(native)",
+      "MB": 22.8
+     },
+     {
+      "what": "js/osm-loader.js",
+      "MB": 22.7
+     },
+     {
+      "what": "js/road-projection.bundle.js",
+      "MB": 17.8
+     },
+     {
+      "what": "js/own-ground-game.bundle.js",
+      "MB": 7.5
+     },
+     {
+      "what": "js/three-buildings.bundle.js",
+      "MB": 6.9
+     },
+     {
+      "what": "js/road-graph.bundle.js",
+      "MB": 4.8
+     },
+     {
+      "what": "js/signature-placement.bundle.js",
+      "MB": 2.4
+     },
+     {
+      "what": "js/three.bundle.js",
+      "MB": 1.6
+     },
+     {
+      "what": "js/overlay.bundle.js",
+      "MB": 1.2
+     },
+     {
+      "what": "js/inventory-trees.bundle.js",
+      "MB": 0.9
+     },
+     {
+      "what": "js/road-surface.bundle.js",
+      "MB": 0.7
+     },
+     {
+      "what": "js/road-network.js",
+      "MB": 0.5
+     },
+     {
+      "what": "js/signature-landmarks.bundle.js",
+      "MB": 0.4
+     },
+     {
+      "what": "js/route-selection.bundle.js",
+      "MB": 0.3
+     },
+     {
+      "what": "js/detailed-buildings.bundle.js",
+      "MB": 0.2
+     },
+     {
+      "what": "js/street-furniture.bundle.js",
+      "MB": 0.2
+     },
+     {
+      "what": "js/building-types.bundle.js",
+      "MB": 0.2
+     },
+     {
+      "what": "js/game-landmarks.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/i18n.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/game-ui.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/notice-cards.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/game-presentation.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/player-vehicles.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/game.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/building-tiles.bundle.js",
+      "MB": 0.1
+     },
+     {
+      "what": "js/collection.bundle.js",
+      "MB": 0
+     },
+     {
+      "what": "js/preferences.bundle.js",
+      "MB": 0
+     },
+     {
+      "what": "js/recall-store/index.js",
+      "MB": 0
+     },
+     {
+      "what": "js/answer-path.bundle.js",
+      "MB": 0
+     }
+    ],
+    "byFrame": [
+     {
+      "what": "ot @ js/engine.bundle.js:77",
+      "MB": 16.2
+     },
+     {
+      "what": "fetchRoads @ js/osm-loader.js:50",
+      "MB": 16.2
+     },
+     {
+      "what": "(V8 API) @ (native):0",
+      "MB": 12.9
+     },
+     {
+      "what": "get points @ js/engine.bundle.js:77",
+      "MB": 9.9
+     },
+     {
+      "what": "entries @ js/engine.bundle.js:504",
+      "MB": 9.3
+     },
+     {
+      "what": "(anon) @ js/road-projection.bundle.js:477",
+      "MB": 7.7
+     },
+     {
+      "what": "(anon) @ js/osm-loader.js:155",
+      "MB": 6.6
+     },
+     {
+      "what": "roadSegmentStages @ js/road-projection.bundle.js:471",
+      "MB": 4.7
+     },
+     {
+      "what": "ze @ js/road-graph.bundle.js:1",
+      "MB": 4.5
+     },
+     {
+      "what": "(anon) @ js/three-buildings.bundle.js:1",
+      "MB": 4.4
+     },
+     {
+      "what": "simplifyPath @ js/road-projection.bundle.js:425",
+      "MB": 3.6
+     },
+     {
+      "what": "set @ (native):0",
+      "MB": 3.4
+     },
+     {
+      "what": "(anon) @ js/engine.bundle.js:77",
+      "MB": 3.2
+     },
+     {
+      "what": "map @ (native):0",
+      "MB": 3.2
+     },
+     {
+      "what": "(anon) @ js/own-ground-game.bundle.js:26",
+      "MB": 2.8
+     },
+     {
+      "what": "s @ js/engine.bundle.js:504",
+      "MB": 2.7
+     },
+     {
+      "what": "decode @ js/engine.bundle.js:77",
+      "MB": 2.2
+     },
+     {
+      "what": "(anon) @ js/signature-placement.bundle.js:1",
+      "MB": 2.1
+     },
+     {
+      "what": "decodeRoadExtract @ js/road-projection.bundle.js:288",
+      "MB": 1.8
+     },
+     {
+      "what": "json @ js/own-ground-game.bundle.js:26",
+      "MB": 1.4
+     },
+     {
+      "what": "f7 @ js/three-buildings.bundle.js:1",
+      "MB": 1.4
+     },
+     {
+      "what": "s.onmessage @ js/own-ground-game.bundle.js:26",
+      "MB": 1.3
+     },
+     {
+      "what": "filter @ (native):0",
+      "MB": 1
+     },
+     {
+      "what": "Jp @ js/engine.bundle.js:106",
+      "MB": 0.7
+     },
+     {
+      "what": "yf @ js/engine.bundle.js:74",
+      "MB": 0.7
+     },
+     {
+      "what": "add @ (native):0",
+      "MB": 0.7
+     },
+     {
+      "what": "roadSurfaceStages @ js/road-surface.bundle.js:259",
+      "MB": 0.7
+     },
+     {
+      "what": "push @ (native):0",
+      "MB": 0.6
+     },
+     {
+      "what": "r @ js/three.bundle.js:1",
+      "MB": 0.5
+     },
+     {
+      "what": "(anon) @ js/road-network.js:22",
+      "MB": 0.5
+     }
+    ]
+   }
+  }
+ ]
+}
