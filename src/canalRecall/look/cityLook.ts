@@ -502,7 +502,7 @@ float cityGrain(vec3 cell) {
  * detail tiles: the slot is a per-vertex byte) or per mesh from `cityUnder` (a rebuilt chunk's old mesh). Only
  * materials of the `swap` variant (CITY_SWAP) carry it; every other program is byte-identical.
  */
-export const SWAP_SLOTS = 16;
+export const SWAP_SLOTS = 32;
 const SWAP_VERTEX_DECLS = /* glsl */ `
 #ifdef CITY_SWAP
 attribute float swapSlot;

@@ -61,6 +61,26 @@ export function landmarkHoldFlag(): boolean {
   if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
   return LANDMARK_HOLD_DEFAULT;
 }
+/**
+ * Lane popin-colour (2026-11-27): under `?landmarkHold` the building a landmark replaces stayed solid for the whole
+ * arrival dissolve and then went in one frame, so wherever the old copy stood outside the model (a taller shell, other
+ * roof colours, a block face's 39 pands) the change was a snap at 600 ms: 145 such cuts in the first 8 s of the belt
+ * ride, the largest one-frame colour changes on it. With the yield the replaced building takes the complement of the
+ * landmark's dissolve (swapComplement.ts slots, painted on every chunk that draws it): it discards exactly where the
+ * landmark draws, so it is gone when the landmark is whole and the suppression at the end changes no pixel.
+ * `?landmarkYield=0` (or `window.__canalRecallLandmarkYield = false`) restores the hold-then-cut; off with
+ * `?landmarkHold=0`.
+ */
+export const LANDMARK_YIELD_DEFAULT = true;
+export function landmarkYieldFlag(): boolean {
+  if (!landmarkHoldFlag()) return false;
+  const g = globalThis as { __canalRecallLandmarkYield?: boolean | string; location?: { search?: string } };
+  const m = /[?&]landmarkYield=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallLandmarkYield ?? (m ? m[1] : null);
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return LANDMARK_YIELD_DEFAULT;
+}
 /** An empty level: the outgoing side of an arrival dissolve. */
 export const NO_LEVEL = { traverse(_fn: (o: any) => void): void { /* nothing drawn */ } };
 
@@ -156,7 +176,7 @@ export class DissolveWarmth {
   }
 }
 
-type Fade = { incoming: Root; outgoing: Root; start: number; band: { in: Band; out: Band }; swapped: [MeshLike, unknown][]; done: () => void };
+type Fade = { incoming: Root; outgoing: Root; start: number; band: { in: Band; out: Band }; swapped: [MeshLike, unknown][]; done: () => void; progress?: (t: number) => void };
 
 /**
  * The running level dissolves, keyed by owner (a landmark entry). `start` puts dissolve clones on both levels' meshes;
@@ -168,7 +188,8 @@ export class LevelDissolves<K> {
   constructor(private readonly ms = LEVEL_DISSOLVE_MS) {}
   has(key: K): boolean { return this.fades.has(key); }
   get size(): number { return this.fades.size; }
-  start(key: K, incoming: Root, outgoing: Root, done: () => void, now = performance.now()): void {
+  /** `progress`, when given, hears the incoming level's coverage t (0 → 1) every step, and 1 when it ends. */
+  start(key: K, incoming: Root, outgoing: Root, done: () => void, now = performance.now(), progress?: (t: number) => void): void {
     this.finish(key);
     const band = { in: { lo: { value: 0 }, hi: { value: 0 } }, out: { lo: { value: 0 }, hi: { value: 2 } } };
     const swapped: [MeshLike, unknown][] = [];
@@ -181,13 +202,14 @@ export class LevelDissolves<K> {
       }
     };
     dress(incoming, band.in); dress(outgoing, band.out);
-    this.fades.set(key, { incoming, outgoing, start: now, band, swapped, done });
+    this.fades.set(key, { incoming, outgoing, start: now, band, swapped, done, progress });
+    progress?.(0);
   }
   /** Advance every dissolve; true while any is running. */
   step(now = performance.now()): boolean {
     for (const [key, f] of this.fades) {
       const t = (now - f.start) / this.ms;
-      if (t < 1) { const v = Math.max(0, t); f.band.in.hi.value = v; f.band.out.lo.value = v; continue; }
+      if (t < 1) { const v = Math.max(0, t); f.band.in.hi.value = v; f.band.out.lo.value = v; f.progress?.(v); continue; }
       this.finish(key);
     }
     return this.fades.size > 0;
@@ -203,6 +225,7 @@ export class LevelDissolves<K> {
       // A material changed under the dissolve (a highlight) is the owner's: keep it.
       if (ours) mesh.material = original;
     }
+    f.progress?.(1);
     f.done();
   }
   flush(): void { for (const key of [...this.fades.keys()]) this.finish(key); }

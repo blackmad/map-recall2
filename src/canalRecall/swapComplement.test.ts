@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { SWAP_SLOT_COUNT, SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
-import { variantDefines, variantKey, cityProgramKey, createCityUniforms } from './look/cityLook.js';
+import { variantDefines, variantKey, cityProgramKey, createCityUniforms, SWAP_SLOTS } from './look/cityLook.js';
 
 const ranges = new Map([['a', { start: 0, count: 4 }], ['b', { start: 4, count: 2 }], ['c', { start: 6, count: 3 }]]);
 
@@ -53,4 +53,70 @@ test('city look: the swap variant is its own program; without it the defines and
   const u = createCityUniforms(fake);
   assert.equal(u.citySwapUnder.value.length, SWAP_SLOT_COUNT);
   assert.equal(u.cityUnder.value, 0);
+});
+
+test('landmarkYield: an everywhere slot is listed for non-shell chunks, a detail swap slot is not; release forgets it', () => {
+  const slots = new SwapSlots(4);
+  const detail = slots.claim(new Set(['a']), 0);
+  const landmark = slots.claim(new Set(['b', 'c']), 0, true);
+  assert.equal(slots.isEverywhere(detail), false, 'a detail chunk over the shells: shells only (it must not yield to itself)');
+  assert.equal(slots.isEverywhere(landmark), true);
+  assert.deepEqual([...slots.activeEverywhere()].map(([s]) => s), [landmark]);
+  assert.deepEqual([...slots.active()].map(([s]) => s), [detail, landmark], 'the shells take both');
+  const array = new Uint8Array(9);
+  assert.ok(paintSlot(array, ranges, [...slots.activeEverywhere()][0][1], landmark));
+  assert.deepEqual([...array], [0, 0, 0, 0, landmark + 1, landmark + 1, landmark + 1, landmark + 1, landmark + 1]);
+  slots.release(landmark);
+  assert.equal(slots.isEverywhere(landmark), false);
+  assert.equal([...slots.activeEverywhere()].length, 0);
+  const again = slots.claim(new Set(['c']), 0);
+  assert.equal(again, landmark, 'the freed slot is reused');
+  assert.equal(slots.isEverywhere(again), false, 'and is not everywhere unless claimed so');
+});
+
+test('swap slots: 32, the shader array and the bookkeeping agree, and a vec4 array holds them', () => {
+  assert.equal(SWAP_SLOT_COUNT, 32);
+  assert.equal(SWAP_SLOTS, SWAP_SLOT_COUNT);
+  assert.equal(SWAP_SLOTS % 4, 0);
+  // The swapSlot byte stores slot + 1.
+  assert.ok(SWAP_SLOT_COUNT + 1 <= 255);
+  const slots = new SwapSlots();
+  for (let k = 0; k < SWAP_SLOT_COUNT; k++) assert.equal(slots.claim(new Set([`b${k}`]), 0, k % 2 === 0), k);
+  assert.equal(slots.claim(new Set(['over']), 0), -1, 'the 33rd swap overlaps, as before');
+});
+
+test('landmarkYield: beginYield paints every chunk holding the ids, set moves the slot, release clears only what it painted', async () => {
+  const { ThreeBuildings } = await import('./threeBuildingsBrowser.js');
+  let repaints = 0;
+  const tb = new ThreeBuildings({ triggerRepaint() { repaints++; }, getZoom: () => 17, getCanvas: () => ({}) } as never, {} as never) as any;
+  class BufferAttribute { needsUpdate = false; constructor(public array: Uint8Array, public itemSize: number) {} }
+  tb.THREE = { BufferAttribute };
+  tb.material = { uniforms: { citySwapUnder: { value: tb.swapSlots.under } } };
+  const geometry = (n: number, slot?: Uint8Array) => {
+    const attrs: Record<string, any> = { position: { count: n } };
+    if (slot) attrs.swapSlot = new BufferAttribute(slot, 1);
+    return { getAttribute: (k: string) => attrs[k], setAttribute: (k: string, a: any) => { attrs[k] = a; } };
+  };
+  const shell = { mesh: { geometry: geometry(6, new Uint8Array(6)) }, ranges: new Map([['a', { start: 0, count: 3 }], ['z', { start: 3, count: 3 }]]) };
+  const detail = { mesh: { geometry: geometry(4) }, ranges: new Map([['a', { start: 0, count: 4 }]]) };
+  const other = { mesh: { geometry: geometry(4) }, ranges: new Map([['q', { start: 0, count: 4 }]]) };
+  tb.chunks.set('coarse:1', shell); tb.chunks.set('near:1', detail); tb.chunks.set('near:2', other);
+  assert.equal(tb.complement, true, "the complementary dissolve is on by default");
+  const y = tb.beginYield(new Set(['a']));
+  assert.ok(y);
+  const s = [...tb.swapSlots.activeEverywhere()][0][0];
+  assert.deepEqual([...shell.mesh.geometry.getAttribute('swapSlot').array], [s + 1, s + 1, s + 1, 0, 0, 0]);
+  assert.deepEqual([...detail.mesh.geometry.getAttribute('swapSlot').array], [s + 1, s + 1, s + 1, s + 1], 'detail gets a slot array');
+  assert.equal(other.mesh.geometry.getAttribute('swapSlot'), undefined, 'a chunk without the ids is untouched');
+  assert.equal(tb.yieldPainted.get(s).size, 2, 'the painted arrays are cached for the release');
+  y.set(0.4);
+  assert.ok(Math.abs(tb.swapSlots.under[s] - 0.4) < 1e-6);
+  // Release walks only the cached arrays: a chunk added after the claim without the slot is never visited.
+  tb.chunks.set('near:3', { mesh: { geometry: { getAttribute() { throw new Error('walked'); } } }, ranges: new Map() });
+  y.release();
+  assert.deepEqual([...shell.mesh.geometry.getAttribute('swapSlot').array], [0, 0, 0, 0, 0, 0]);
+  assert.deepEqual([...detail.mesh.geometry.getAttribute('swapSlot').array], [0, 0, 0, 0]);
+  assert.equal(tb.swapSlots.used, 0);
+  assert.equal(tb.yieldPainted.size, 0);
+  assert.ok(repaints >= 2);
 });

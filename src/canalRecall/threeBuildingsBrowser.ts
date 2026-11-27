@@ -1182,7 +1182,11 @@ export class ThreeBuildings {
         if (this.lit) { entry.mesh.receiveShadow = true; entry.mesh.customDepthMaterial = this.depthMaterial; }
         this.applyHidden(entry, new Set(entry.ranges.keys()));
         const slots = entry.mesh.geometry.getAttribute('swapSlot');
-        if (slots?.array) { let touched = false; for (const [slot, ids] of this.swapSlots.active()) touched = paintSlot(slots.array, entry.ranges, ids, slot) || touched; if (touched) slots.needsUpdate = true; }
+        if (slots?.array) {
+          let touched = false;
+          for (const [slot, ids] of this.swapSlots.active()) if (paintSlot(slots.array, entry.ranges, ids, slot)) { touched = true; if (this.swapSlots.isEverywhere(slot)) this.noteYieldPaint(slot, slots, entry.ranges); }
+          if (touched) slots.needsUpdate = true;
+        }
         if (this.firstShellTime === null) this.firstShellTime = performance.now();
         this.map.triggerRepaint();
       },
@@ -2106,8 +2110,20 @@ export class ThreeBuildings {
     // SWAP_COMPLEMENT: the shells' per-building swap slot (kept on the CPU like `hidden`), marked for swaps under way.
     if (this.complement && key.startsWith(COARSE_PREFIX)) {
       const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
-      for (const [slot, ids] of this.swapSlots.active()) paintSlot(slots, ranges, ids, slot);
-      geometry.setAttribute('swapSlot', new THREE.BufferAttribute(slots, 1, false));
+      const attribute = new THREE.BufferAttribute(slots, 1, false), yields: number[] = [];
+      for (const [slot, ids] of this.swapSlots.active()) if (paintSlot(slots, ranges, ids, slot) && this.swapSlots.isEverywhere(slot)) yields.push(slot);
+      geometry.setAttribute('swapSlot', attribute);
+      for (const slot of yields) this.noteYieldPaint(slot, attribute, ranges);
+    } else if (this.complement && this.swapSlots.used) {
+      // landmarkYield: a chunk built while a landmark it holds is arriving yields where that landmark draws.
+      const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+      const yields: number[] = [];
+      for (const [slot, ids] of this.swapSlots.activeEverywhere()) if (paintSlot(slots, ranges, ids, slot)) yields.push(slot);
+      if (yields.length) {
+        const attribute = new THREE.BufferAttribute(slots, 1, false);
+        geometry.setAttribute('swapSlot', attribute);
+        for (const slot of yields) this.noteYieldPaint(slot, attribute, ranges);
+      }
     }
     geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
     // three.js uploads a new mesh, then computes its bounding sphere to sort it.
@@ -2212,17 +2228,73 @@ export class ThreeBuildings {
 
   private releaseSwapSlot(slot: number | undefined): void {
     if (slot === undefined) return;
+    const painted = this.swapSlots.isEverywhere(slot) ? this.yieldPainted.get(slot) : undefined;
+    this.yieldPainted.delete(slot);
     const ids = this.swapSlots.release(slot);
-    if (ids) this.paintShells(ids, slot, false);
+    if (!ids) return;
+    if (!painted) { this.paintShells(ids, slot, false); return; }
+    // landmarkYield: clear only the arrays this slot was painted on (no walk over every chunk).
+    for (const { attribute, ranges } of painted) if (attribute.array && clearSlot(attribute.array, ranges, ids, slot)) attribute.needsUpdate = true;
   }
 
-  private paintShells(ids: ReadonlySet<string>, slot: number, on: boolean): void {
-    for (const entry of this.coarseEntries()) {
-      if (!entry.mesh) continue;
-      const attribute = entry.mesh.geometry.getAttribute('swapSlot');
-      if (!attribute?.array) continue;
-      if (on ? paintSlot(attribute.array, entry.ranges, ids, slot) : clearSlot(attribute.array, entry.ranges, ids, slot)) attribute.needsUpdate = true;
+  /**
+   * landmarkYield: per everywhere slot, the `swapSlot` attributes painted with it (at the claim, and by chunks and baked
+   * cells that installed during it), so the release clears exactly those instead of walking every chunk again.
+   */
+  private readonly yieldPainted = new Map<number, Set<{ attribute: any; ranges: ReadonlyMap<string, { start: number; count: number }> }>>();
+  private noteYieldPaint(slot: number, attribute: any, ranges: ReadonlyMap<string, { start: number; count: number }>): void {
+    this.yieldPainted.get(slot)?.add({ attribute, ranges });
+  }
+
+  /**
+   * Mark (or clear) `slot` on `ids`' vertices in the coarse shells, or with `everywhere` (landmarkYield) in every chunk
+   * that draws them: a chunk without a `swapSlot` array (detail, kit, extras) gets one when it first draws one of them.
+   */
+  private paintShells(ids: ReadonlySet<string>, slot: number, on: boolean, everywhere = false): void {
+    if (!everywhere) {
+      for (const entry of this.coarseEntries()) {
+        const attribute = entry.mesh?.geometry.getAttribute('swapSlot');
+        if (attribute?.array && (on ? paintSlot(attribute.array, entry.ranges, ids, slot) : clearSlot(attribute.array, entry.ranges, ids, slot))) attribute.needsUpdate = true;
+      }
+      return;
     }
+    const painted = new Set<{ attribute: any; ranges: ReadonlyMap<string, { start: number; count: number }> }>();
+    this.yieldPainted.set(slot, painted);
+    const paint = (entry: { mesh: any; ranges: Map<string, { start: number; count: number }> }) => {
+      if (!entry.mesh) return;
+      let holds = false;
+      for (const id of ids) if (entry.ranges.has(id)) { holds = true; break; }
+      if (!holds) return;
+      let attribute = entry.mesh.geometry.getAttribute('swapSlot');
+      if (!attribute?.array) {
+        if (attribute) return;
+        const count = entry.mesh.geometry.getAttribute('position')?.count ?? 0;
+        if (!count) return;
+        attribute = new this.THREE.BufferAttribute(new Uint8Array(count), 1, false);
+        entry.mesh.geometry.setAttribute('swapSlot', attribute);
+      }
+      if (paintSlot(attribute.array, entry.ranges, ids, slot)) { attribute.needsUpdate = true; painted.add({ attribute, ranges: entry.ranges }); }
+    };
+    for (const entry of this.chunks.values()) paint(entry);
+    for (const entry of this.bakedEntries.values()) paint(entry);
+  }
+
+  /**
+   * Lane popin-colour (`?landmarkYield`, engine/levelDissolve.ts): the buildings `ids` (what one arriving landmark
+   * replaces) yield on every chunk exactly where the landmark's arrival dissolve draws, at its coverage `t`, so they are
+   * gone when it is whole instead of being cut in one frame by the suppression at the end. Null when the complementary
+   * dissolve is off or every slot is taken (the hold-then-cut, as before). `release` after the suppression hid them.
+   */
+  beginYield(ids: ReadonlySet<string>): { set(t: number): void; release(): void } | null {
+    if (!this.complement || !this.THREE || !ids.size) return null;
+    const slot = this.swapSlots.claim(new Set(ids), 0, true);
+    if (slot < 0) return null;
+    this.paintShells(ids, slot, true, true);
+    let done = false;
+    return {
+      set: (t: number) => { if (done) return; this.swapSlots.set(slot, Math.max(0, Math.min(1, t))); this.map.triggerRepaint(); },
+      release: () => { if (done) return; done = true; this.releaseSwapSlot(slot); this.map.triggerRepaint(); },
+    };
   }
 
   /**

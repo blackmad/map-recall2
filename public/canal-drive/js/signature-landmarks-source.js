@@ -24,7 +24,7 @@ import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landm
 import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 // Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
-import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
+import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag, landmarkYieldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -1760,10 +1760,15 @@ export class SignatureLandmarks {
     // Lane P5 (#332): the building it replaces stays until the dissolve ends (`?landmarkHold=0`: it leaves at once).
     if (this._holdOn === undefined) this._holdOn = landmarkHoldFlag();
     entry.arriving = this._holdOn;
+    // Lane popin-colour (`?landmarkYield=0`: hold, then cut): the held building yields where the landmark draws.
+    if (this._yieldOn === undefined) this._yieldOn = landmarkYieldFlag();
+    const yielding = this._holdOn && this._yieldOn ? this.onArrivalYield?.(entry) ?? null : null;
     this._levelFades.start(entry, entry.imported, NO_LEVEL, () => {
       const held = entry.arriving; entry.arriving = false;
       if (this._entries?.includes(entry)) { this._syncBatch(entry); if (held) this._applySuppression(); this.map.triggerRepaint(); }
-    });
+      // After the suppression hid it (it yielded every pixel by now): the slot goes back.
+      yielding?.release();
+    }, undefined, yielding ? t => yielding.set(t) : undefined);
     return true;
   }
 
