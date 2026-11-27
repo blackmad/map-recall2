@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { serveMapLibreOffline } from './helpers';
 
-// A throw inside a MapLibre custom layer aborts the whole frame, so the world
+// A throw inside a frame layer aborts the whole frame, so the world
 // flashes. The three.js facade layer frees its CPU geometry once uploaded, and
 // three.js then computed each new chunk's bounding sphere from the freed array:
 // one throw (one flash) per chunk streamed in while riding.
@@ -11,7 +10,6 @@ test('three.js building chunks stream in without throwing mid-frame', async ({ p
   test.setTimeout(240_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(String(error.stack || error)));
-  await serveMapLibreOffline(page);
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
   await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());

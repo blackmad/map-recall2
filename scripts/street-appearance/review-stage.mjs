@@ -41,7 +41,7 @@ const browser=await chromium.launch({headless:true,executablePath:process.env.PW
 const errors=[];const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));
 try{
  if(process.argv.includes('--collect')){
-  for(const name of ['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js'])await page.route(`**/canal-drive/js/${name}*`,route=>route.fulfill({status:200,contentType:'application/javascript',path:`${opt('collect-bundle-dir','public/canal-drive/js')}/${name}`}));
+  for(const name of ['three-buildings.bundle.js','three-buildings-worker.bundle.js'])await page.route(`**/canal-drive/js/${name}*`,route=>route.fulfill({status:200,contentType:'application/javascript',path:`${opt('collect-bundle-dir','public/canal-drive/js')}/${name}`}));
   await page.route('**/data/street-appearance/profiles.json*',route=>route.fulfill({status:200,contentType:'application/json',body:catalogBytes}));
   await page.goto(`${base}/canal-drive/`);await page.waitForFunction(()=>Boolean(window.canalRecallGame?.ctx));await page.locator('#route-card').waitFor({state:'visible'});
   await page.evaluate(()=>{const g=window.canalRecallGame;const nearest=(lng,lat)=>g.routePois.slice().sort((a,b)=>Math.hypot((a.lng-lng)*.61,a.lat-lat)-Math.hypot((b.lng-lng)*.61,b.lat-lat))[0];g._pickReviewRide=()=>({from:nearest(4.8687372,52.3608814),to:nearest(4.8979412,52.3713544),dueNear:[],alternatives:[]});});

@@ -6,7 +6,7 @@ import {chromium} from 'playwright';
 const option=(n,d)=>process.argv.find(a=>a.startsWith(`--${n}=`))?.slice(n.length+3)??d;
 const output=option('output','artifacts/street-appearance/retry/9/game'),base=option('base-url','http://127.0.0.1:5196');
 await fs.mkdir(path.join(output,'bundles'),{recursive:true});
-const names=['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js','game-route.js'];const hashes={};
+const names=['three-buildings.bundle.js','three-buildings-worker.bundle.js','game-route.js'];const hashes={};
 for(const n of names){const input=option('bundle-dir',null)?path.join(option('bundle-dir',null),n):`public/canal-drive/js/${n}`;const b=await fs.readFile(input);hashes[n]=crypto.createHash('sha256').update(b).digest('hex');await fs.writeFile(path.join(output,'bundles',n),b);}
 const catalogBytes=await fs.readFile(option('catalog-path','public/data/street-appearance/profiles.json')),catalog=JSON.parse(catalogBytes);await fs.writeFile(path.join(output,'profiles.json'),catalogBytes);
 const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}),ctx=await browser.newContext(option('device','desktop')==='phone'?{viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1}:{viewport:{width:1440,height:1000}});const page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));

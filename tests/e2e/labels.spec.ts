@@ -1,7 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
-import { OWN } from './worldCam';
 
 // POI labels (lane 2026-10-13, docs/handoffs/lane-poi-labels-20261013.md).
 // User report: "labels now look really bad against our palette; also not sure
@@ -95,40 +94,6 @@ const overlaps = (l: Seen, r: Box) => {
   const w = Math.max(l.w, 1), h = Math.max(l.h, 1);
   return l.x < r.x + r.width && l.x + w > r.x && l.y < r.y + r.height && l.y + h > r.y;
 };
-
-test('labels: shots and counts at the review viewpoints', async ({ page }, info) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  test.skip(info.project.name !== 'desktop', 'one viewport for the counted shots');
-  test.setTimeout(420_000);
-  mkdirSync(OUT, { recursive: true });
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false, query: process.env.LABEL_SHOTS_QUERY || '' });
-  await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
-  const report: Record<string, { count: number; overHud: string[]; labels: Seen[]; hud: Record<string, Box>; overlay: unknown }> = {};
-  for (const view of LABEL_VIEWS) {
-    await pose(page, view);
-    await page.waitForTimeout(9000);
-    const labels = await readableLabels(page);
-    const hud = await hudRects(page);
-    const overHud = labels.filter(l => Object.values(hud).some(r => overlaps(l, r))).map(l => l.name);
-    const overlay = await page.evaluate(() => {
-      const o = (window as any).canalRecallGame.vectorMap._labelOverlay;
-      if (!o) return null;
-      // Projection check: the overlay's ground projection against MapLibre's own.
-      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, c = (window as any).canalRecallGame.vectorMap.camera.center();
-      const p = (o as any).projector(map)(c.lng, c.lat, 0), q = (window as any).canalRecallGame.vectorMap.camera.project(c);
-      return { ...o.stats, projectionErrorPx: Math.hypot(p.x - q.x, p.y - q.y) };
-    });
-    report[view.name] = { count: labels.length, overHud, labels, hud, overlay };
-    await page.screenshot({ path: `${OUT}/${view.name}.png` });
-  }
-  writeFileSync(`${OUT}/counts.json`, JSON.stringify(report, null, 1));
-  console.log(Object.entries(report).map(([k, v]) => `${k}: ${v.count} labels, ${v.overHud.length} over the HUD ${JSON.stringify(v.overlay)}`).join('\n'));
-  if (process.env.LABEL_SHOTS_BEFORE) return;
-  // The handoff's budget: at most ~12 labels in view at the Damrak, none on the plaque.
-  expect(report['damrak-250m'].count, JSON.stringify(report['damrak-250m'].labels.map(l => l.name))).toBeLessThanOrEqual(12);
-  for (const [name, v] of Object.entries(report)) expect(v.overHud, `${name}: labels over the plaque/destination card`).toEqual([]);
-});
 
 // User 2026-10-16 ("don't show destinations through scrim"): the DOM label
 // layer sits above the game canvas, so it floated venue names over the paper

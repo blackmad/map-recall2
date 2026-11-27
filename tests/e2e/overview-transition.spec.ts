@@ -3,7 +3,6 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { jump, lab, zoomWarp, VIEW_REGION, GROUND_REGION, type Frame, type JumpStats } from '../../src/canalRecall/overviewTransition/frameMetrics';
-import { OWN } from './worldCam';
 
 // The flat overview → shaded city transition (src/canalRecall/overviewTransition/). A plan-view zoom sweep over the
 // Westerstraat through the blend window in 0.1-zoom steps; each frame is compared with the previous one magnified
@@ -126,39 +125,3 @@ test('A/B: the old hard switch (?transition=0) breaks the bound', async ({ page 
 // flat may sit over the tiles at the lawn, and the pixel there is the tiles' lawn.
 const LAWN = { lng: 4.868106, lat: 52.357296 }, PARK_RIDER = { lng: 4.8689, lat: 52.3579, bearing: 0 };
 const MAX_LAWN_DE = 8;
-
-test('overview tiles: the Vondelpark lawn is the tiles\' lawn below the blend, nothing flat over it', async ({ page }, info) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  test.skip(info.project.name !== 'desktop', 'desktop probe');
-  test.setTimeout(240_000);
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await holdAt(page, '', PARK_RIDER);
-  const lawn = await page.evaluate(async () => {
-    const vm = (window as any).canalRecallGame.vectorMap;
-    const root = vm._extractPath || '/data/extracts/amsterdam';
-    return (await (await fetch(`${root.replace(/\/$/, '')}/overview-tiles-v1/manifest.json`)).json()).colours.lawn as number[];
-  });
-  for (const z of [13.5, 14]) {
-    await planZoom(page, z);
-    const at = await page.evaluate(({ lng, lat }) => {
-      const m = (window as any).canalRecallGame.vectorMap.map, p = (window as any).canalRecallGame.vectorMap.camera.project([lng, lat]);
-      const order = m.getStyle().layers as { id: string; type: string }[];
-      const tiles = order.findIndex(l => l.id === 'canal-overview-ground');
-      const over = [...new Set((m.queryRenderedFeatures([p.x, p.y]) as { layer: { id: string; type: string } }[])
-        .filter(f => (f.layer.type === 'fill' || f.layer.type === 'line') && order.findIndex(l => l.id === f.layer.id) > tiles).map(f => f.layer.id))];
-      return { x: p.x, y: p.y, tiles, over, zoom: (window as any).canalRecallGame.vectorMap.camera.zoom() as number, cssW: window.innerWidth };
-    }, LAWN);
-    expect(at.tiles, 'overview tiles layer present').toBeGreaterThanOrEqual(0);
-    const { data, info: im } = await sharp(await page.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-    const dpr = im.width / at.cssW, box: number[][] = [];
-    for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) {
-      const i = ((Math.round(at.y * dpr) + dy) * im.width + Math.round(at.x * dpr) + dx) * 3;
-      box.push([data[i], data[i + 1], data[i + 2]]);
-    }
-    const px = [0, 1, 2].map(c => box.map(b => b[c]).sort((a, b) => a - b)[box.length >> 1]);
-    const a = lab(px[0], px[1], px[2]), b = lab(lawn[0], lawn[1], lawn[2]), dE = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-    console.log(`[desktop] Vondelpark lawn z${at.zoom.toFixed(2)}: rgb(${px.join(',')}) vs tiles' lawn rgb(${lawn.join(',')}) ΔE ${dE.toFixed(1)}; flat over tiles: ${at.over.join(',') || 'none'}`);
-    expect(at.over, `flat layers over the tiles at z${z}`).toEqual([]);
-    expect(dE, `lawn ΔE at z${z}`).toBeLessThanOrEqual(MAX_LAWN_DE);
-  }
-});

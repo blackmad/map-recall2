@@ -52,7 +52,7 @@ async function settle(page, ms = 60000) {
 for (const v of variants) {
   const ctx = await browser.newContext(ctxOpts);
   const page = await ctx.newPage();
-  await page.addInitScript(() => { window.__canalRecallEngine = 'own'; let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
+  await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
   if (v.bundles) await ctx.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
     const file = path.join(v.bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'application/javascript' }) : route.continue();

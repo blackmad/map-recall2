@@ -82,7 +82,6 @@ async function sampleAround(page: Page, name: string, change: 'withhold' | 'rele
 test('own engine: a withheld label fades out and back in over several frames', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'one engine path; the phone draws the same canvas');
   test.setTimeout(180_000);
-  if (process.env.ENGINE !== 'own') await page.addInitScript(() => { (window as any).__canalRecallEngine = 'own'; });
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?landmarkQuestions=0' });
   expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap.engine)).toBe('own');
   // Stand still; wait for labels (a POI preferably: point labels are what the approach withholds).

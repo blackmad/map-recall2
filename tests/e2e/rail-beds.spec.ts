@@ -105,7 +105,6 @@ for (const mode of MODES) for (const spot of SPOTS) for (let i = 0; i < LOADS; i
     test.setTimeout(240_000);
     mkdirSync(OUT, { recursive: true });
     const touch = info.project.name === 'iphone';
-    await page.addInitScript(() => { (window as any).__canalRecallEngine = 'own'; });
     const chasePitch = spot.pitch ?? 60;
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, seed: 0x5eed1234 + i, query: `?${['governor=0', `chasePitch=${chasePitch}`, QUERY].filter(Boolean).join('&')}` });
     await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g.player?.x && g.camera.introOverview === 0 && g.vectorMap?._ownGround?.ready; }, null, { timeout: 120_000 });

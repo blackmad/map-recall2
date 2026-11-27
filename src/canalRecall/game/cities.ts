@@ -33,7 +33,11 @@ export interface CanalCity {
   geocodeViewbox: GeocodeViewbox;
   /** Postcard / place-only caption province. */
   provinceCaption: string;
-  /** Offered on the route briefing. */
+  /**
+   * Reachable from the game. Only Amsterdam since 2026-11-27 (David: "drop Utrecht, Rotterdam and Den Haag for now";
+   * they have no own-engine extracts). The others keep their catalogue entry and their extracts in the repo so they
+   * can come back as own-engine cities by flipping this; `parseCityId` maps them to Amsterdam meanwhile.
+   */
   playable: boolean;
   /**
    * Curated surprise-route anchors. Empty → destinations come only from the
@@ -90,7 +94,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeSuffix: ', Utrecht',
     geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
     provinceCaption: 'Utrecht',
-    playable: true,
+    playable: false,
     // Historic-core anchors — prominence ranking alone prefers universities
     // and Science Park over Dom / Oudegracht destinations.
     curatedPois: [
@@ -115,7 +119,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeSuffix: ', Rotterdam',
     geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
     provinceCaption: 'Zuid-Holland',
-    playable: true,
+    playable: false,
     curatedPois: [
       { id: 'euromast', name: 'Euromast', lat: 51.905356, lng: 4.466785 },
       { id: 'laurenskerk', name: 'Grote of Sint-Laurenskerk', lat: 51.921706, lng: 4.486122 },
@@ -134,7 +138,7 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
     geocodeSuffix: ', Den Haag',
     geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
     provinceCaption: 'Zuid-Holland',
-    playable: true,
+    playable: false,
     curatedPois: [
       { id: 'binnenhof', name: 'Binnenhof', lat: 52.079334, lng: 4.312407 },
       { id: 'huis-ten-bosch', name: 'Huis ten Bosch', lat: 52.093169, lng: 4.343465 },
@@ -147,9 +151,10 @@ export const CANAL_CITIES: Record<CanalCityId, CanalCity> = {
 
 export const DEFAULT_CITY_ID: CanalCityId = 'amsterdam';
 
+/** A playable city id, else `fallback`: a stored or linked Utrecht, Rotterdam or Den Haag resolves to Amsterdam. */
 export function parseCityId(raw: unknown, fallback: CanalCityId = DEFAULT_CITY_ID): CanalCityId {
   if (typeof raw !== 'string') return fallback;
-  return (CANAL_CITY_IDS as readonly string[]).includes(raw)
+  return (CANAL_CITY_IDS as readonly string[]).includes(raw) && CANAL_CITIES[raw as CanalCityId].playable
     ? raw as CanalCityId
     : fallback;
 }

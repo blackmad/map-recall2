@@ -5,12 +5,18 @@ import * as T from 'three';
 import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {MeshoptDecoder} from 'meshoptimizer';
-import maplibregl from 'maplibre-gl';
 import {placementFor,type SignatureModelSpec} from '../src/canalRecall/landmarks/signaturePlacement';
 import {buildCentraleMarkthal} from './landmarks/centrale-markthal-builder';
 import source from './landmarks/centrale-markthal-footprints.json';
 import spec from './landmarks/centrale-markthal-spec.json';
 import type {BuildingTools} from './landmarks/cultural-builders';
+// MapLibre's web-Mercator earth (`maplibregl.MercatorCoordinate`), inline since the maplibre-gl dependency went with
+// the MapLibre world view (2026-11-27). Same constants: the earth's mean radius 6371008.8 m.
+const EARTH_CIRCUMFERENCE_M = 2 * Math.PI * 6371008.8;
+const maplibregl = { MercatorCoordinate: { fromLngLat({ lng, lat }: { lng: number; lat: number }) {
+  const x = (180 + lng) / 360, y = (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))) / 360;
+  return { x, y, meterInMercatorCoordinateUnits: () => 1 / (EARTH_CIRCUMFERENCE_M * Math.cos((lat * Math.PI) / 180)) };
+} } };
 const group=new T.Group();const panes:T.Mesh[]=[],roofs:T.Mesh[]=[];
 const add:BuildingTools['add']=(g,c,x=0,y=0,z=0,a=0)=>{g.rotateY(a);g.translate(x,y,z);const m=new T.Mesh(g,new T.MeshBasicMaterial({side:T.DoubleSide}));m.userData.colour=c;group.add(m);if(c==='glass')panes.push(m);if(g.userData.role?.includes('roof'))roofs.push(m);};
 const unused=()=>{throw new Error('Unexpected lettering/shared detail');};

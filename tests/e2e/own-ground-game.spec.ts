@@ -1,7 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
-import { OWN } from './worldCam';
 
 // Own ground in the game (on by default since 2026-10-14; `?ownGround=0` opts out;
 // docs/research/own-ground-20261009.md). The tests pin it on or off with the window global.
@@ -116,45 +115,6 @@ test('start flight: overview shows the flat basemap, the ground takes over on la
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame._intro), { timeout: 20_000 }).toBe(null);
   await expect.poll(async () => (await status(page)).basemapHidden, { timeout: 120_000, intervals: [1000] }).toBe(true);
   await page.screenshot({ path: `${OUT}/${info.project.name}-intro-landed.png` });
-  expect(errors).toEqual([]);
-});
-
-test('question street is draped without its name; nothing on screen spells it', async ({ page }, info) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  test.setTimeout(600_000);
-  mkdirSync(OUT, { recursive: true });
-  const errors = await boot(page, true);
-  await teleport(page, NASSAUKADE);
-  await settle(page, 2000);
-  const name = 'Nassaukade';
-  const result = await page.evaluate((street) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap;
-    const index = g.track.segments.findIndex((s: any) => s.name === street);
-    if (index < 0) return { index };
-    // Pin the question street (the game re-sends its own every frame).
-    const original = vm.__setHighlightsOriginal || (vm.__setHighlightsOriginal = vm.setStreetHighlights.bind(vm));
-    vm.setStreetHighlights = (track: any, loader: any) => original(track, loader, [], street, index, null);
-    vm.setStreetHighlights(g.track, g.osmLoader);
-    return { index };
-  }, name);
-  expect(result.index).toBeGreaterThanOrEqual(0);
-  await page.waitForTimeout(2500);
-  const s = await status(page);
-  expect(s.overlays.highlight).toBeGreaterThan(0);
-  // The ground draws geometry only; the basemap's labels keep their own rules. No rendered label spells the answer.
-  const texts: string[] = await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
-    return map.queryRenderedFeatures().filter((f: any) => f.layer?.type === 'symbol').map((f: any) => String(f.properties?.name ?? f.properties?.['name:en'] ?? ''));
-  });
-  expect(texts.filter(t => t.includes(name))).toEqual([]);
-  // The own ground holds no text at all (no sprite/label objects in its scene).
-  const ownText = await page.evaluate(() => {
-    let n = 0;
-    (window as any).canalRecallGame.vectorMap._ownGround.root.traverse((o: any) => { if (o.isSprite || o.isPoints || /label|text/i.test(o.name)) n++; });
-    return n;
-  });
-  expect(ownText).toBe(0);
-  await page.screenshot({ path: `${OUT}/${info.project.name}-question-highlight.png` });
   expect(errors).toEqual([]);
 });
 

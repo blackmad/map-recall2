@@ -58,11 +58,11 @@ test('in-process rows: facade texture from the motion ride, world cells from the
 import { SPEC_ENFORCED, AERIAL_ROWS, formatGate } from '../../scripts/perf-gate-lib.mjs';
 
 test('spec-enforced rows print "enforced by <spec>", are never n/a and never over', () => {
-  const b = { cameraParityPx: { value: 3.2 }, iphoneTextureMB: { value: 22 }, skyTransparentClears: { value: 0 }, coverBumpHidden: { value: 0 } };
+  const b = { iphoneTextureMB: { value: 22 }, skyTransparentClears: { value: 0 }, coverBumpHidden: { value: 0 } };
   const v = evaluate(b, good);
   assert.equal(v.exitCode, 0);
   assert.ok(v.rows.every(r => r.status === 'spec-enforced'));
-  assert.match(formatGate(v), /cameraParityPx=3\.2 \(enforced by tests\/e2e\/engine-parity\.spec\.ts\)/);
+  assert.match(formatGate(v), /iphoneTextureMB=22 \(enforced by tests\/e2e\/city-startup-lod\.spec\.ts\)/);
   assert.ok(!/external/.test(formatGate(v)));
 });
 test('every spec-enforced spec exists and reads its row through the budget helper', async () => {

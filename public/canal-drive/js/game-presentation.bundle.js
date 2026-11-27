@@ -8491,7 +8491,7 @@
       geocodeSuffix: ", Utrecht",
       geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
       provinceCaption: "Utrecht",
-      playable: true,
+      playable: false,
       // Historic-core anchors — prominence ranking alone prefers universities
       // and Science Park over Dom / Oudegracht destinations.
       curatedPois: [
@@ -8516,7 +8516,7 @@
       geocodeSuffix: ", Rotterdam",
       geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
       provinceCaption: "Zuid-Holland",
-      playable: true,
+      playable: false,
       curatedPois: [
         { id: "euromast", name: "Euromast", lat: 51.905356, lng: 4.466785 },
         { id: "laurenskerk", name: "Grote of Sint-Laurenskerk", lat: 51.921706, lng: 4.486122 },
@@ -8535,7 +8535,7 @@
       geocodeSuffix: ", Den Haag",
       geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
       provinceCaption: "Zuid-Holland",
-      playable: true,
+      playable: false,
       curatedPois: [
         { id: "binnenhof", name: "Binnenhof", lat: 52.079334, lng: 4.312407 },
         { id: "huis-ten-bosch", name: "Huis ten Bosch", lat: 52.093169, lng: 4.343465 },
@@ -8548,7 +8548,7 @@
   var DEFAULT_CITY_ID = "amsterdam";
   function parseCityId(raw, fallback = DEFAULT_CITY_ID) {
     if (typeof raw !== "string") return fallback;
-    return CANAL_CITY_IDS.includes(raw) ? raw : fallback;
+    return CANAL_CITY_IDS.includes(raw) && CANAL_CITIES[raw].playable ? raw : fallback;
   }
   function cityById(id) {
     return CANAL_CITIES[parseCityId(id)];

@@ -1,6 +1,5 @@
 import { expect, Page, test } from '@playwright/test';
 import { openRoute } from './helpers';
-import { OWN } from './worldCam';
 
 type HarnessGame = {
   state: number;
@@ -77,79 +76,6 @@ test('boots and starts a route from the setup form', async ({ page }) => {
 test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => typeof window.CanalRecallCar?.constrainCarToRoad)).toBe('function');
-});
-
-test('live MapLibre buildings use the OSM-aware color expression', async ({ page }) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  await page.goto('/canal-drive/');
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
-  const paint = await page.evaluate(() => (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)
-    ?.getPaintProperty('building-3d', 'fill-extrusion-color'));
-  expect(Array.isArray(paint)).toBe(true);
-  const serialized = JSON.stringify(paint);
-  expect(serialized).toContain('colour');
-  expect(serialized).toContain('render_height');
-  await expect.poll(() => page.evaluate(() => Boolean((window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)
-    ?.getLayer('osm-colored-building-roofs')))).toBe(true);
-  const nemo = await page.evaluate(async () => {
-    const collection = await fetch('../data/extracts/amsterdam/buildings-colored.geojson').then(response => response.json());
-    return collection.features.find((feature: { properties: { osmId: string } }) => feature.properties.osmId === 'w1390692772')?.properties;
-  });
-  expect(nemo).toMatchObject({ colour: '#43888b', roofColour: '#f5f5dc', roofShape: 'skillion', height: 21.7 });
-});
-
-test('detailed mode owns building depth and selection instead of drawing an OSM slab', async ({ page }) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  await page.goto('/canal-drive/');
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
-  const result = await page.evaluate(() => {
-    const vectorMap = window.canalRecallGame.vectorMap as unknown as {
-      map: {
-        getLayer(id: string): unknown;
-        getLayoutProperty(id: string, property: string): unknown;
-        getSource(id: string): { setData(data: unknown): void };
-      };
-      _detailedBuildings: { ready: boolean; setEnabled(value: boolean): void; setActiveLandmark(value: unknown): void };
-      _detailedBuildingsVisible: boolean;
-      setDetailedBuildingsVisible(value: boolean): void;
-      setActiveLandmark(value: unknown): void;
-    };
-    let forwarded: unknown = null;
-    let overlay: unknown = null;
-    const originalSource = (vectorMap.map ?? vectorMap.cameraMap).getSource('active-landmark');
-    const originalSetData = originalSource.setData.bind(originalSource);
-    originalSource.setData = data => { overlay = data; originalSetData(data); };
-    vectorMap._detailedBuildings = {
-      ready: true,
-      setEnabled: () => undefined,
-      setActiveLandmark: value => { forwarded = value; },
-    };
-    vectorMap.setDetailedBuildingsVisible(true);
-    const landmark = {
-      name: 'Old Church', lngLat: [4.8975, 52.3743],
-      geojson: { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [] } }] },
-    };
-    vectorMap.setActiveLandmark(landmark);
-    return {
-      building: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('building-3d', 'visibility'),
-      coloured: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('osm-colored-buildings', 'visibility'),
-      roofs: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('osm-colored-building-roofs', 'visibility'),
-      forwarded: forwarded === landmark,
-      overlayFeatures: (overlay as { features?: unknown[] })?.features?.length,
-      // The anti-slab guarantee: whatever is drawn must never be an extrusion
-      // fabricated from the landmark's approximate OSM footprint.
-      overlayTypes: ((overlay as { features?: Array<{ geometry: { type: string } }> })?.features ?? [])
-        .map(feature => feature.geometry.type),
-    };
-  });
-  expect(result).toEqual({
-    building: 'none', coloured: 'none', roofs: 'none', forwarded: true,
-    // A locator point, and only a point. The detailed renderer owns depth and
-    // selection, but it raycasts straight down and finds nothing whenever the
-    // place is not its own extruded building — so the dot has to survive here
-    // or a card can name a landmark with nothing on the map pointing at it.
-    overlayFeatures: 1, overlayTypes: ['Point'],
-  });
 });
 
 test('HUD hides a new street before the delayed question opens', async ({ page }) => {
@@ -426,34 +352,6 @@ test('the city overview draws the whole city, not a local scrap', async ({ page 
   });
   expect(drawn.areas, 'the city outline comes from the neighborhood boundaries').toBeGreaterThan(10);
   expect(drawn.lit, 'the overview panel is not blank').toBeGreaterThan(200);
-});
-
-test('an active landmark is always marked on the map', async ({ page }) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
-  await openCarRoute(page);
-  // The highlight layers are created on basemap load, not on game start.
-  await expect.poll(() => page.evaluate(() =>
-    Boolean((window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)?.getSource('active-landmark'))
-  ), { timeout: 30_000 }).toBe(true);
-
-  const marked = await page.evaluate(() => {
-    const game = window.canalRecallGame;
-    const landmark = game.landmarks[0];
-    if (!landmark) return { skipped: true, features: -1 };
-    // Force the branch that used to suppress the dot: detailed mode on, with
-    // the 3D renderer finding no mesh for this landmark.
-    game.vectorMap._detailedBuildingsVisible = true;
-    // A stand-in for the 3D renderer that accepts the landmark and finds no
-    // mesh for it — exactly what happens for a place that is not its own
-    // extruded building.
-    game.vectorMap._detailedBuildings = { ready: true, setActiveLandmark() {} };
-    game.vectorMap.setActiveLandmark(landmark);
-    const source = (game.vectorMap.map ?? game.vectorMap.cameraMap)?.getSource('active-landmark') as
-      { serialize?: () => { data?: { features?: unknown[] } } } | undefined;
-    return { skipped: false, features: source?.serialize?.().data?.features?.length ?? -1 };
-  });
-  if (marked.skipped) test.skip(true, 'no landmarks loaded for this route');
-  expect(marked.features, 'a landmark with no 3D mesh still gets a locator dot').toBeGreaterThan(0);
 });
 
 test('a learned street can open its encyclopedia card and article', async ({ page }) => {
