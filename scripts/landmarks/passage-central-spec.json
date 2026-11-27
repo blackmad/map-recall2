@@ -1,0 +1,38 @@
+{
+ "id": "passage-central",
+ "name": "Passage Central, Prins Hendrikkade",
+ "heightMetres": 25.8,
+ "bagYear": 1910,
+ "partyWallBearings": [
+  340,
+  163
+ ],
+ "galleryView": {
+  "theta": 0.3,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012170968 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1910) in native east/south metres (scripts/landmarks/passage-central-footprints.json, bag-shell-prepare.ts); the Prins Hendrikkade front read from the rectified Gemeente Amsterdam panoramas recording_2025-06-16_03-46-32_00533 (2025, east bay) and TMX7316010203-002310_pano_0001_000033 (2021, west bay), the central balcony bay and crest from both aimed views, CC BY 4.0, cornice fitted under the 3DBAG wall top (24.7 m). The Nieuwendijk-side walls are drawn plainly from oblique crops. Rijksmonument 518505. Per wall in scripts/landmarks/passage-central-inventory.json.",
+ "materialOverrides": {
+  "brick": "#9a5a48",
+  "stone": "#d9cdb4",
+  "greyBrick": "#a3a49f",
+  "slate": "#50565c",
+  "glass": "#323d46",
+  "frame": "#e6e2d8",
+  "bronze": "#2a2c2d",
+  "dark": "#4a4f52",
+  "red": "#4b4440",
+  "white": "#e0d8c4",
+  "ochre": "#7a4a2a"
+ },
+ "attribution": {
+  "title": "Passage Central, Prins Hendrikkade, Amsterdam: shop and office front over a covered passage (1910; rijksmonument 518505)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_03-46-32_00533/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012170968 (CC0): the grey stone ground storey with the passage portal and round-arched windows, the red brick banded with cream stone, the window surrounds and balconettes, the two balustraded balconies on the projecting piers, the cornice, the bull's-eye dormers and the crest, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ },
+ "partyWallNote": "ring edge 10 (60.9 m, faces 340) and ring edge 16 (37.1 m, faces 164) adjoin the neighbouring panden along the whole passage block; the brief lists only edges 1-9, 11, 12 and 14 as exposed"
+}

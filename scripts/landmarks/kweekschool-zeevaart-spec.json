@@ -1,0 +1,30 @@
+{
+ "id": "kweekschool-zeevaart",
+ "name": "Kweekschool voor de Zeevaart, Prins Hendrikkade",
+ "heightMetres": 24.4,
+ "bagYear": 1859,
+ "galleryView": {
+  "theta": 0.3,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012181563 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1859) in native east/south metres (scripts/landmarks/kweekschool-zeevaart-footprints.json, bag-shell-prepare.ts); the main front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002370_pano_0000_000191 (2021, frontal) and b_20250108_1041_Track08_Sphere_00263 (2024, roof and gables), the SE side and rounded corner from b_20241210_1246_Track15_Sphere_00023 (2024), CC BY 4.0, storey lines fitted to the 3DBAG eaves (cornice crown 16.9 m). Courtyard walls are the 3DBAG shell only. Rijksmonument 518430. Per wall in scripts/landmarks/kweekschool-zeevaart-inventory.json.",
+ "materialOverrides": {
+  "brick": "#7d5345",
+  "stone": "#bab29e",
+  "sandstone": "#a59c88",
+  "slate": "#4a5157",
+  "glass": "#2f3a44",
+  "frame": "#e8e4da",
+  "dark": "#5a3424",
+  "bronze": "#2d2f30"
+ },
+ "attribution": {
+  "title": "Kweekschool voor de Zeevaart, Prins Hendrikkade, Amsterdam: neo-renaissance school building with stepped gables (rijksmonument 518430)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002370_pano_0000_000191/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181563 (CC0): the stepped centre and pavilion gables with the relief field, the pointed dormers, the balustraded balconies on consoles, the banded brick with stone quoins, the sunburst voussoirs and niche frieze, the cross windows and triple windows, the arched entrances with oculi, and the rounded east corner, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}
