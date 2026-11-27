@@ -2,22 +2,12 @@
 // earned, drawn as a stamp beside its label, instead of "Passport: Jordaan".
 // Draws the postcard art when the stamp-art bundle has loaded, the plain
 // stand-in until then; the card is redrawn every frame, so it upgrades itself.
-// `?stampCard=0` keeps the old sentence.
 
 import { drawPlainStamp } from './stampAlbumPlain.ts';
 import { stampArtNow } from './stampArtLoader.ts';
 import { t } from '../i18n/index.ts';
 
 export const ARRIVAL_STAMP_HEIGHT = 64;
-
-export function stampCardEnabled(search: string | null | undefined): boolean {
-  if (!search) return true;
-  try {
-    return new URLSearchParams(search).get('stampCard') !== '0';
-  } catch {
-    return true;
-  }
-}
 
 const plainCache = new Map<string, HTMLCanvasElement>();
 
