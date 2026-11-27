@@ -5,7 +5,6 @@ import { OWN } from './worldCam';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
 const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
-const PROGRAMS_BUDGET: number = BUDGETS.programs.value;
 const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
@@ -219,7 +218,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   expect(stats.trees).not.toBeNull();
   expect(stats.roofs).toBe(true);
   expect(stats.calls).toBeLessThanOrEqual(700);
-  expect(stats.programs).toBeLessThanOrEqual(PROGRAMS_BUDGET);
+  expect(stats.programs, 'GL programs after the ride (budgets.json programs, per project)').toBeLessThanOrEqual(BUDGETS.programs.value[test.info().project.name === 'iphone' ? 'iphone' : 'desktop']);
   expect(errors).toEqual([]);
   // Spoiler rule: the name under question is never on the map.
   for (const name of stats.asked) expect(stats.labels.map((t: string) => t.toLowerCase())).not.toContain(String(name).toLowerCase());
