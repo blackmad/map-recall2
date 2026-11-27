@@ -2,7 +2,7 @@
 // Sentry CANAL-RECALL-C: Chrome blocks WebGL for a page after repeated context losses. Under MapLibre the Map
 // constructor threw and vector-map.js carried on without a basemap (webgl-refused.spec.ts). With the own engine as
 // the default, `new OwnWorldView` threw from the Game constructor (three's WebGLRenderer finds no context) and the
-// page never started. game.js takes null as "no world view" and builds the map-less VectorBasemap instead.
+// page never started. game.js takes null as "no world view" and rides on nullWorldView instead (MapLibre's VectorBasemap is deleted).
 import { reportWebglUnavailable } from '../mapGuard';
 import { OwnWorldView } from './ownWorldView';
 

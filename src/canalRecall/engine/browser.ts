@@ -2,6 +2,7 @@
 // game.js builds its world view from it (OwnWorldView, the only one since MapLibre was deleted 2026-11-27).
 export { OwnWorldView, MercatorCoordinate, UNIMPLEMENTED } from './ownWorldView';
 export { ownWorldViewOrNull } from './ownWorldViewOrNull';
+export { nullWorldView } from './nullWorldView';
 export { FrameHost, StepClock } from './frameHost';
 export { CameraMap, EngineCamera } from './cameraMap';
 export { hasWorldCamera } from './worldViewApi';

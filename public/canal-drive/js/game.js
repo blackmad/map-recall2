@@ -107,10 +107,12 @@ class Game {
     // game modules and specs that read it.
     const engine = window.CanalRecallEngine;
     // A browser that refuses WebGL gets no world view (ownWorldViewOrNull reports it and shows the notice); the ride
-    // then opens with vectorMap null (webgl-refused.spec.ts).
+    // then opens on a view that draws nothing (nullWorldView, the stand-in for MapLibre's map-less VectorBasemap;
+    // webgl-refused.spec.ts).
     const mapEl = document.getElementById('vector-map');
     this.vectorMap = engine
-      ? (engine.ownWorldViewOrNull ? engine.ownWorldViewOrNull(mapEl) : new engine.OwnWorldView(mapEl))
+      ? ((engine.ownWorldViewOrNull ? engine.ownWorldViewOrNull(mapEl) : new engine.OwnWorldView(mapEl))
+        || (engine.nullWorldView ? engine.nullWorldView() : null))
       : null;
     this.loadingMessage = '';
     this.loadingProgress = 0;
