@@ -104,6 +104,7 @@ export class CityExtras {
           onModelShown: () => { this.syncHostWallOpenings(); h.relight(); },
         });
       } catch (error) { h.fail('signature landmarks', error); }
+      if (this.signature) this.signature.onArrivalYield = (entry: any) => this.arrivalYield(entry);
     }
     const artis = W().CanalRecallArtisAnimals;
     if (artis?.ArtisAnimals) {
@@ -264,6 +265,20 @@ export class CityExtras {
       ? tiles.hiddenIdsFor(this.bagCovers, s.shownSuppressModels())
       : s.shownSuppressOsmIds?.() || [];
     return [...new Set<string>(ids)];
+  }
+  /**
+   * Lane popin-colour (`?landmarkYield`, levelDissolve.ts): while one landmark dissolves in, the prisms it replaces (the
+   * ids suppressedIds gives that model) discard where it draws, instead of staying solid and going in one frame at the
+   * end. Null keeps the hold-then-cut.
+   */
+  arrivalYield(entry: any): { set(t: number): void; release(): void } | null {
+    const s = this.signature, tb = this.host.threeBuildings() as any;
+    if (!s || !entry?.spec || this.host.measuredColoursOnly() || !s.enabled || !s.suppressing || typeof tb?.beginYield !== 'function') return null;
+    const tiles = W().CanalRecallBuildingTiles, spec = entry.spec;
+    const ids: string[] = this.bagCovers && tiles?.hiddenIdsFor
+      ? tiles.hiddenIdsFor(this.bagCovers, [{ id: spec.id, suppressOsmIds: [...(spec.suppressOsmIds ?? [])] }])
+      : [...(spec.suppressOsmIds ?? [])];
+    return ids.length ? tb.beginYield(new Set<string>(ids)) : null;
   }
   refreshSuppression(): void {
     this.syncHostWallOpenings();

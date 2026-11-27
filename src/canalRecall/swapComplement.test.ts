@@ -54,3 +54,22 @@ test('city look: the swap variant is its own program; without it the defines and
   assert.equal(u.citySwapUnder.value.length, SWAP_SLOT_COUNT);
   assert.equal(u.cityUnder.value, 0);
 });
+
+test('landmarkYield: an everywhere slot is listed for non-shell chunks, a detail swap slot is not; release forgets it', () => {
+  const slots = new SwapSlots(4);
+  const detail = slots.claim(new Set(['a']), 0);
+  const landmark = slots.claim(new Set(['b', 'c']), 0, true);
+  assert.equal(slots.isEverywhere(detail), false, 'a detail chunk over the shells: shells only (it must not yield to itself)');
+  assert.equal(slots.isEverywhere(landmark), true);
+  assert.deepEqual([...slots.activeEverywhere()].map(([s]) => s), [landmark]);
+  assert.deepEqual([...slots.active()].map(([s]) => s), [detail, landmark], 'the shells take both');
+  const array = new Uint8Array(9);
+  assert.ok(paintSlot(array, ranges, [...slots.activeEverywhere()][0][1], landmark));
+  assert.deepEqual([...array], [0, 0, 0, 0, landmark + 1, landmark + 1, landmark + 1, landmark + 1, landmark + 1]);
+  slots.release(landmark);
+  assert.equal(slots.isEverywhere(landmark), false);
+  assert.equal([...slots.activeEverywhere()].length, 0);
+  const again = slots.claim(new Set(['c']), 0);
+  assert.equal(again, landmark, 'the freed slot is reused');
+  assert.equal(slots.isEverywhere(again), false, 'and is not everywhere unless claimed so');
+});

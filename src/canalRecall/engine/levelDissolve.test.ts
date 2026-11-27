@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { DissolveWarmth, LEVEL_DISSOLVE_MS, LevelDissolves, dissolveClone as dissolveCloneTyped, injectDissolve, landmarkDissolveFlag, warmKey as warmKeyTyped } from './levelDissolve.ts';
+import { DissolveWarmth, LEVEL_DISSOLVE_MS, LevelDissolves, NO_LEVEL, dissolveClone as dissolveCloneTyped, injectDissolve, landmarkDissolveFlag, landmarkYieldFlag, warmKey as warmKeyTyped } from './levelDissolve.ts';
 // The fakes are not three materials: call through `any`.
 const dissolveClone = dissolveCloneTyped as (m: any, band: any) => any;
 const warmKey = warmKeyTyped as (m: any, rs: boolean) => string;
@@ -153,4 +153,25 @@ test('arrival (lane P4 #330): a dissolve with no outgoing level draws the newcom
   assert.equal(landmarkArriveFlag(), true);
   g.__canalRecallLandmarkArrive = 'off'; assert.equal(landmarkArriveFlag(), false); delete g.__canalRecallLandmarkArrive;
   g.__canalRecallLandmarkDissolve = false; assert.equal(landmarkArriveFlag(), false); delete g.__canalRecallLandmarkDissolve;
+});
+
+test('landmarkYield: progress follows the arrival band (the held building yields exactly where the landmark draws), 1 at the end', () => {
+  const a = new FakeMaterial(), m = mesh(a);
+  const fades = new LevelDissolves<string>(LEVEL_DISSOLVE_MS);
+  const seen: number[] = []; let done = 0;
+  fades.start('m', root(m), NO_LEVEL as any, () => { done++; assert.equal(seen.at(-1), 1, 'progress reaches 1 before done'); }, 0, t => seen.push(t));
+  const clone = m.material as any;
+  for (const now of [150, 300, 450]) {
+    fades.step(now);
+    const sh = { uniforms: {} as any, fragmentShader: 'void main() {}' }; clone.onBeforeCompile(sh);
+    const under = seen.at(-1)!;
+    // The shell discards where hash < under (cityLook CITY_SWAP); the landmark draws where lo <= hash < hi.
+    for (let h = 0; h < 1; h += 0.01) assert.equal(h >= sh.uniforms.lodDissolveLo.value && h < sh.uniforms.lodDissolveHi.value, h < under, `t=${now} hash=${h}`);
+  }
+  assert.equal(seen[0], 0, 'starts at 0: the held building draws everywhere');
+  fades.step(LEVEL_DISSOLVE_MS);
+  assert.equal(done, 1);
+  const g = globalThis as any;
+  g.__canalRecallLandmarkYield = false; assert.equal(landmarkYieldFlag(), false, '?landmarkYield=0 restores the hold-then-cut');
+  delete g.__canalRecallLandmarkYield; assert.equal(landmarkYieldFlag(), true);
 });

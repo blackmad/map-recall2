@@ -24,18 +24,27 @@ type Ranges = ReadonlyMap<string, { start: number; count: number }>;
 export class SwapSlots {
   readonly under: Float32Array;
   private readonly ids: (ReadonlySet<string> | null)[];
+  /** Slots that yield on every chunk, detail included (a landmark arriving over them), not only on the coarse shells. */
+  private readonly everywhere: boolean[];
   constructor(readonly count = SWAP_SLOT_COUNT) {
     this.under = new Float32Array(count);
     this.ids = new Array(count).fill(null);
+    this.everywhere = new Array(count).fill(false);
   }
-  /** A free slot for `ids` starting at `value`, or -1 when every slot is taken (that swap overlaps, as before). */
-  claim(ids: ReadonlySet<string>, value: number): number {
+  /**
+   * A free slot for `ids` starting at `value`, or -1 when every slot is taken (that swap overlaps, as before).
+   * `everywhere`: the slot is painted on every chunk that draws `ids` (landmarkYield), not only on the coarse shells.
+   */
+  claim(ids: ReadonlySet<string>, value: number, everywhere = false): number {
     const slot = this.ids.indexOf(null);
     if (slot < 0 || !ids.size) return -1;
     this.ids[slot] = ids;
     this.under[slot] = value;
+    this.everywhere[slot] = everywhere;
     return slot;
   }
+  /** Whether `slot` yields on every chunk (claimed with `everywhere`). */
+  isEverywhere(slot: number): boolean { return slot >= 0 && !!this.ids[slot] && this.everywhere[slot]; }
   set(slot: number, value: number): void { if (slot >= 0 && this.ids[slot]) this.under[slot] = value; }
   /** Free `slot`; returns the ids it covered (to clear from the shells), null when it was free. */
   release(slot: number): ReadonlySet<string> | null {
@@ -43,14 +52,19 @@ export class SwapSlots {
     if (!ids) return null;
     this.ids[slot] = null;
     this.under[slot] = 0;
+    this.everywhere[slot] = false;
     return ids;
   }
   /** Every slot in use, for a shell that installs while swaps are under way. */
   *active(): Generator<[number, ReadonlySet<string>]> {
     for (let s = 0; s < this.count; s++) { const ids = this.ids[s]; if (ids) yield [s, ids]; }
   }
+  /** The slots in use that yield on every chunk (for a non-shell chunk that installs while they run). */
+  *activeEverywhere(): Generator<[number, ReadonlySet<string>]> {
+    for (let s = 0; s < this.count; s++) { const ids = this.ids[s]; if (ids && this.everywhere[s]) yield [s, ids]; }
+  }
   get used(): number { return this.ids.filter(Boolean).length; }
-  clear(): void { this.ids.fill(null); this.under.fill(0); }
+  clear(): void { this.ids.fill(null); this.under.fill(0); this.everywhere.fill(false); }
 }
 
 /** Mark `ids`' vertices in a shell's `swapSlot` array with `slot` (stored as slot + 1). True when any changed. */
