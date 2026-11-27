@@ -55,7 +55,7 @@ import { footprintBase, frontBase, FRONT_OUT_M } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
-import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
+import { farBlockCells, farBlocksWithin, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type HeightFn, type Vec2 } from './surface.js';
@@ -66,8 +66,7 @@ import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
-import { groundShareFlag, groundShareMainFlag, groundShareMB, shareClient, type SharePort } from './groundShare.js';
-import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, dispatchTier, groundWorkersFlag, inFocusBlock, nextDispatch, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -468,22 +467,14 @@ export class OwnGround {
   private worker: Worker | null = null;
   /** Every ground worker (`worker` is the first; far blocks go there). Lane R5-A #260. */
   private workers: Worker[] = [];
-  /** Lane R5-A #260 step 3: the share host (groundShare.ts), with more than one worker and `?groundShare` on. */
-  private shareHost: Worker | null = null;
-  private readonly lodAffinityOn = groundAffinityLodFlag();
-  private readonly blockFirstOn = groundBlockFirstFlag();
-  /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
+  /** The worker each requested cell was sent to (the affinity dispatch). */
   private readonly workerOf = new Map<string, number>();
-  /** Pull dispatch (groundWorkers.ts nextDispatch, `?groundPull=0` off): the cells each worker holds, the best-first order, what to ask per cell. */
-  private readonly pullOn = groundPullFlag();
+  /** Pull dispatch (groundWorkers.ts nextDispatch): the cells each worker holds, the best-first order, what to ask per cell. */
   private held: Set<string>[] = [];
   private readonly sentTo = new Map<string, number>();
   private wantedOrder: string[] = [];
   private readonly asks = new Map<string, { lod: 0 | 1; detail: CellDetail }>();
-  /** `?groundQueuedInstall=0` off: a built cell waiting to install counts as asked (gameGround updateResidency). */
-  private readonly queuedInstallOn = (() => { try { return new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get('groundQueuedInstall') !== '0'; } catch { return true; } })();
-  /** Affinity (groundWorkers.ts sharedNeighbours, `?groundAffinity=0` off): the cells whose data each worker has loaded. */
-  private readonly affinityOn = groundAffinityFlag();
+  /** Affinity (groundWorkers.ts sharedNeighbours): the cells whose data each worker has loaded. */
   private loadedBy: Set<string>[] = [];
   private workerReady = false;
   private readonly base: Record<string, any> = {};
@@ -502,14 +493,11 @@ export class OwnGround {
   /** The view's look-at (local metres) and its cell: that cell and its neighbours build first (groundWorkers.ts). */
   private focus: Vec2 | null = null;
   private focusCell: string | null = null;
-  private readonly focusOn = groundFocusFlag();
   /** Follow the camera's pose until the game's first update, asking this many cells (groundPrefetch.ts, `?groundPrefetch=0` off). */
   private readonly prefetchCells = groundPrefetchFlag();
   private gameUpdated = false;
   private prefetchTimer: ReturnType<typeof setInterval> | null = null;
   private prefetchKey: string | null = null;
-  /** Quick first paint (opt-in `?groundQuick=1`) and the LOD the ring wants per cell (a quick install re-plans). */
-  private readonly quickOn = groundQuickFlag();
   /** `?groundFirstAlone=1`: the first LOD 0 cell asked is drawn from its own data first (groundResidency.ts). */
   private readonly firstAloneOn = groundFirstAloneFlag();
   private aloneAsks = 0;
@@ -522,7 +510,6 @@ export class OwnGround {
     this.aloneAsks++;
     return true;
   }
-  private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
   private readonly reachMeshes = new Map<string, any[]>();
   private readonly reachM = groundReachFlag();
@@ -555,7 +542,6 @@ export class OwnGround {
   private readonly retries = new BuildRetries();
   /** Far ring radius now (0: the resident ring reaches what the camera sees). */
   private farRadius = 0;
-  private farHorizon: boolean | undefined;
   /** The far ring's radius now, metres (0: off at this view); the far building tier follows it (engine/farShells.ts). */
   get farRadiusM(): number { return this.farRadius; }
   /** A `view` ring's extra reach ahead of the moving rider, metres (residency.ts touchAheadMarginM). */
@@ -602,19 +588,14 @@ export class OwnGround {
     // store init and waits for the rail manifest the page hands them below. `?groundEarlyWorkers=0`: after it.
     const early = groundEarlyWorkersFlag();
     const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-    const share = count > 1 && groundShareFlag();
-    // With early workers the page's store asks the share host too (groundShareMainFlag): one fetch per file in all.
-    const mainShare = early && share && groundShareMainFlag();
-    const channels = share && early ? this.startShareHost(root, count + (mainShare ? 1 : 0)) : [];
-    const mainPort = mainShare ? channels.pop()?.port1 ?? null : null;
-    this.store = new GroundStore(mainPort ? sharedBytes(mainPort) : httpFetchBytes(root), storeOptions);
+    this.store = new GroundStore(httpFetchBytes(root), storeOptions);
     const gen = this.gen;
-    if (early) this.startWorkers(root, true, count, channels);
+    if (early) this.startWorkers(root, true, count);
     await this.store.init();
     if (gen !== this.gen) return;
     this.startup.storeReadyAt ??= performance.now();
     if (early && this.manifestFollows) { const keys = [...this.store.railCells]; for (const worker of this.workers) worker.postMessage({ type: 'rail-manifest', keys }); }
-    else if (!early) this.startWorkers(root, false, count, share ? this.startShareHost(root, count) : []);
+    else if (!early) this.startWorkers(root, false, count);
     if (!this.unregister) {
       this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
         visible: (zoom: number) => this.beforeRender(zoom),
@@ -630,22 +611,7 @@ export class OwnGround {
   /** Lane LS: true while the workers' init waits for the page's rail manifest (a 'rail-manifest' message). */
   private manifestFollows = false;
 
-  private startShareHost(root: string, clients: number): MessageChannel[] {
-    try {
-      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per client to one more instance of the bundle.
-      const channels = Array.from({ length: clients }, () => new MessageChannel());
-      this.shareHost = new Worker(this.opts.workerUrl);
-      this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
-      const ports = channels.map(c => c.port2);
-      this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
-      return channels;
-    } catch (error) {
-      this.stats.errors.push(`share host unavailable: ${String(error)}`);
-      return [];
-    }
-  }
-
-  private startWorkers(root: string, early: boolean, count: number, channels: MessageChannel[]): void {
+  private startWorkers(root: string, early: boolean, count: number): void {
     this.manifestFollows = early && this.railRetryOn && !!this.opts.rails;
     try {
       const init = { type: 'init', root, ...(groundParallelInitFlag() ? {} : { parallelInit: false }), planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? (early ? { railManifestFollows: true } : { railManifest: [...this.store.railCells] }) : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
@@ -655,9 +621,7 @@ export class OwnGround {
         worker.onmessage = event => this.onWorker(event.data, wi);
         worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
         // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-        const sharePort = channels[i]?.port1;
-        if (sharePort) worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin, sharePort }, [sharePort]);
-        else worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
+        worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
         this.workers.push(worker);
         this.held.push(new Set());
         this.loadedBy.push(new Set());
@@ -697,8 +661,6 @@ export class OwnGround {
     this.prepared.clear();
     for (const worker of this.workers) worker.terminate();
     this.workers = [];
-    this.shareHost?.terminate();
-    this.shareHost = null;
     this.workerOf.clear();
     this.held = [];
     this.loadedBy = [];
@@ -773,7 +735,7 @@ export class OwnGround {
   private place(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
-    if (this.focusOn && focus && this.ready) {
+    if (focus && this.ready) {
       this.focus = toLocal(focus[0], focus[1]);
       const cell = this.store.cellAt(this.focus[0], this.focus[1]);
       if (cell !== this.focusCell) { this.focusCell = cell; this.residencyAt = null; }
@@ -793,7 +755,7 @@ export class OwnGround {
     }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     // The far ring follows the horizon (farRing.ts farReachM, lane R2-B #229): a pitched view that shows it asks for the ring.
-    let far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
+    let far = this.opts.far ? farRadiusM(horizonReachM(reach, zoom, pitchDeg, lngLat[1]), radius) : 0;
     // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): nothing past the opaque haze is built (the far shells follow).
     const limit = currentDrawLimit();
     if (far && limit) far = Math.max(radius, clampToDrawLimit(far, limit, limit.eyeToCentreM, FAR_STEP_M));
@@ -939,7 +901,6 @@ export class OwnGround {
     // During the hold (groundPrefetch.ts) only the best-ranked few: the hold's own tiers load meanwhile.
     if (!this.gameUpdated && this.prefetchCells && wanted.length > this.prefetchCells) wanted = wanted.slice(0, this.prefetchCells);
     const keep = new Set(wanted.map(w => w.key));
-    if (this.quickOn) this.wantedLod = new Map(wanted.map(w => [w.key, w.lod]));
     this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
     for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.asks.delete(key); this.discards.unwanted++; this.retries.forget(key); }
@@ -949,31 +910,21 @@ export class OwnGround {
       // (groundPrefetch.ts): the page is still loading on this thread; the game's first update prepares them.
       if (this.gameUpdated || !this.prefetchCells) this.prepareMain(w.key);
       const have = this.resident.get(w.key);
-      // Quick first paint (groundWorkers.ts groundQuickFlag): a near cell with nothing drawn yet is asked at LOD 1
-      // first (~0.8 s against ~2–3 s for LOD 0); its install re-plans and the LOD 0 build follows.
-      const lod = this.quickOn && w.lod === 0 && !have ? 1 : w.lod;
-      const want = levelOf(lod, w.detail);
+      const want = levelOf(w.lod, w.detail);
       if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
       // Built and waiting its frame to install (no longer pending, not yet resident): not asked again (R5-A #260: the
       // hold's camera cell, arrived just as the game's first update re-planned, was built twice, 1.5 s of a worker).
-      if (this.queuedInstallOn && this.installQueue.some(c => c.key === w.key && levelOf(c.lod, c.detail) === want)) continue;
+      if (this.installQueue.some(c => c.key === w.key && levelOf(c.lod, c.detail) === want)) continue;
       // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
       // request, then the install swaps the whole cell, so two levels are never on screen together.
-      // The worker already holding this cell's earlier request keeps it (its queue replaces the level); a new request
-      // goes to the least busy worker (groundWorkers.ts).
       if (!this.pending.has(w.key)) this.workerOf.delete(w.key);
       this.pending.set(w.key, want);
       this.requestedAt.set(`${w.key}:${want}`, performance.now());
       // Pull: the cell waits here until a worker has room (dispatch below).
-      if (this.pullOn) { this.asks.set(w.key, { lod, detail: w.detail }); continue; }
-      const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
-      this.workerOf.set(w.key, wi);
-      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen, ...(this.askAlone(lod, w.detail) ? { alone: true } : {}) });
+      this.asks.set(w.key, { lod: w.lod, detail: w.detail });
     }
-    if (this.pullOn) { this.wantedOrder = wanted.map(w => w.key); this.dispatch(); }
-    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts). Not with pull: a
-    // worker holds at most PULL_DEPTH cells, and each one it holds must answer (a dropped job would hold its slot).
-    else if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
+    this.wantedOrder = wanted.map(w => w.key);
+    this.dispatch();
     // Relief far behind is dropped on both sides (decks keep their placed heights).
     const keepM = this.radiusM + 2200;
     const evict = { type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) };
@@ -990,9 +941,9 @@ export class OwnGround {
 
   /** Pull (groundWorkers.ts): hand the best-ranked waiting cells to the workers with room. */
   private dispatch(): void {
-    if (!this.pullOn || !this.workers.length) return;
-    const affinity = this.affinityOn ? (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]) : undefined;
-    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity, this.lodAffinityOn ? key => dispatchTier(key, this.asks.get(key)?.lod, this.blockFirstOn ? this.focusCell : undefined) : undefined)) {
+    if (!this.workers.length) return;
+    const affinity = (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]);
+    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, AFFINITY_WINDOW, affinity, key => dispatchTier(key, this.asks.get(key)?.lod, this.focusCell))) {
       const ask = this.asks.get(key);
       if (!ask) continue;
       this.asks.delete(key);
@@ -1006,7 +957,7 @@ export class OwnGround {
 
   /** A worker answered for `key` (built, or failed): its slot is free. */
   private release(key: string | undefined, wi: number | undefined): void {
-    if (!this.pullOn || key == null || wi == null) return;
+    if (key == null || wi == null) return;
     if (this.held[wi]?.delete(key) && this.sentTo.get(key) === wi) this.sentTo.delete(key);
   }
 
@@ -1098,7 +1049,7 @@ export class OwnGround {
       }
       return;
     }
-    if (this.pullOn && (msg.type === 'cell' || (msg.type === 'error' && msg.key))) {
+    if (msg.type === 'cell' || (msg.type === 'error' && msg.key)) {
       this.release(msg.type === 'cell' ? msg.cell?.key : msg.key, wi);
       // After this reply is handled (installed, failed or stale): the freed slot takes the next cell.
       queueMicrotask(() => this.dispatch());
@@ -1469,8 +1420,7 @@ export class OwnGround {
   }
 
   private install(cell: BuiltCell): void {
-    const quick = this.quickOn && cell.lod === 1 && !this.resident.has(cell.key);
-    if (!this.wantedCells().some(w => w.key === cell.key && (w.lod === cell.lod || (quick && w.lod === 0)) && w.detail === cell.detail)) {
+    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) {
       this.discards.install++;
       // The ring changed between request and install (a cell crossed NEAR_M, the radius stepped): ask for what it wants
       // now on the next frame, not after the next 60 m move (a stationary rider kept the old LOD or no cell, #232).
@@ -1528,8 +1478,6 @@ export class OwnGround {
     if (asked !== undefined && !provisional) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
     const now = performance.now(), arrival = (cell as BuiltCell & { arrival?: { at: number } }).arrival;
     this.startup.firstInstallAt ??= now;
-    // A quick LOD 1 stand-in for a near cell: plan again, so its LOD 0 build is asked for on the next update.
-    if (this.quickOn && cell.lod === 1 && this.wantedLod.get(cell.key) === 0) this.residencyAt = null;
     const { at: arrivedAt, ...timing } = arrival ?? { at: undefined };
     this.startup.cells.push({ key: cell.key, lod: cell.lod, detail: cell.detail, installedAt: Math.round(now), latencyMs: asked === undefined ? null : Math.round(now - asked), ...timing, queuedMs: arrivedAt == null ? null : Math.round(t0 - arrivedAt), installMs: Math.round(now - t0) });
     if (this.startup.cells.length > 200) this.startup.cells.shift();
@@ -1832,7 +1780,7 @@ export class OwnGround {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
       cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length,
       // Lane R5-A #260 step 1: the ground workers and the cells pending on each (far blocks all go to worker 0).
-      workers: this.workers.length, focusCell: this.focusCell, workerPending: this.pullOn ? this.held.map(h => [...h]) : this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), pull: this.pullOn, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      workers: this.workers.length, focusCell: this.focusCell, workerPending: this.held.map(h => [...h]), pull: true, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
@@ -1848,10 +1796,4 @@ export class OwnGround {
       rail: { manifest: this.store.railCells.size, workerManifest: this.workerRailCells, discards: { ...this.discards }, retrying: this.retries.size, loadErrors: this.store.loadErrors.slice(-5) },
     };
   }
-}
-
-/** The page store's fetch through the share host (lane LS): the same gunzipped bytes as httpFetchBytes. */
-function sharedBytes(port: MessagePort): (path: string) => Promise<Uint8Array> {
-  const get = shareClient(port as unknown as SharePort);
-  return async path => (await get(path)).bytes;
 }

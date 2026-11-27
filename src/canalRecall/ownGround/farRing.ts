@@ -257,8 +257,8 @@ export const FAR_STEP_M = 1000;
 export const FAR_KEEP_M = 2000;
 
 /**
- * How far the screen's top edge reaches over flat ground, metres, for the far ring (lane R2-B, #229; `?farHorizon=0`
- * uses `viewReachM`). worldStreamer.viewReachM caps the top ray at 86°: right for the resident ring, whose cells cost
+ * How far the screen's top edge reaches over flat ground, metres, for the far ring (lane R2-B, #229).
+ * worldStreamer.viewReachM caps the top ray at 86°: right for the resident ring, whose cells cost
  * build time, but from a pitched view that shows the horizon (pitch + half the field of view ≥ 86°, i.e. pitch ≥
  * ~67.6°) it pegs the reach at tan 86° ≈ 14× the eye height, ~1.25 km at the aerial pan's S1 pose (zoom 17.6, pitch
  * 68–72), under the 1,400 m resident radius: the far ring stayed off (round 1 saw `far.radiusM` 0 in every frame)
@@ -274,9 +274,6 @@ import { AERIAL_EYE_MIN_M, eyeHeightM, farReachM as reachOf } from '../rendererS
  */
 export function horizonReachM(reach: number, zoom: number, pitchDeg: number, latDeg: number): number {
   return eyeHeightM(zoom, pitchDeg, latDeg) >= AERIAL_EYE_MIN_M ? Math.max(reach, reachOf(zoom, pitchDeg, latDeg)) : reach;
-}
-export function farHorizonEnabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
-  try { return new URLSearchParams(search).get('farHorizon') !== '0'; } catch { return true; }
 }
 
 /** Far radius for a view reaching `reachM`, with the resident ring at `residentM`: 0 while the resident ring reaches it. */

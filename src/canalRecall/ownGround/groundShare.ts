@@ -14,7 +14,9 @@
 // per start fell 50 % and the host's real gunzip was 155–251 ms a start, but the LOD 0 cells' data-in and the block
 // did not move (the owner is per-worker parse and planning). Off by default (integrator 2026-11-09: an extra worker and
 // up to 64 MB of heap for no gate gain; lane LS 2026-11-13 re-measured with the HTTP cache on, as a player has it: 0 MB of
-// duplicate downloads either way, since Chrome serves the repeats from its cache, and no earlier ground): `?groundShare=1` (or `window.__canalRecallGroundShare = true`) opts in.
+// duplicate downloads either way, since Chrome serves the repeats from its cache, and no earlier ground). The page's
+// `?groundShare=1` opt-in was retired on 2026-11-27: nothing starts a share host now; this module and the worker's
+// `share-host` role stay until a follow-up removes them.
 
 /** Gunzipped bytes of one extract file (`path` relative to the extract root); throws on a failed fetch. */
 export type RawFetch = (path: string) => Promise<Uint8Array>;
@@ -29,30 +31,6 @@ export type ShareReply = {
 };
 
 export const SHARE_CACHE_MB = 64;
-
-export function groundShareFlag(search?: string): boolean {
-  const g = globalThis as { __canalRecallGroundShare?: boolean; location?: { search?: string } };
-  if (typeof g.__canalRecallGroundShare === 'boolean') return g.__canalRecallGroundShare;
-  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShare') === '1';
-}
-
-/**
- * With early workers (groundResidency.ts groundEarlyWorkersFlag) the page's own store is one more share client, so
- * bridges.json, houseboats.json and the manifests are fetched once in all, not once by the page and once by the host
- * (lane LS 2026-11-13). `?groundShareMain=0`: the page fetches its own.
- */
-export function groundShareMainFlag(search?: string): boolean {
-  const g = globalThis as { location?: { search?: string } };
-  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundShareMain') !== '0';
-}
-
-/** The share host's cache in MB (`?groundShareMB=N`, 0–512), else SHARE_CACHE_MB. */
-export function groundShareMB(search?: string): number {
-  const g = globalThis as { location?: { search?: string } };
-  const raw = new URLSearchParams(search ?? g.location?.search ?? '').get('groundShareMB');
-  const n = Number(raw);
-  return raw != null && raw !== '' && Number.isFinite(n) && n >= 0 && n <= 512 ? n : SHARE_CACHE_MB;
-}
 
 interface Entry { bytes?: Uint8Array; loading?: Promise<Uint8Array>; netMs: number; gunzipMs: number }
 

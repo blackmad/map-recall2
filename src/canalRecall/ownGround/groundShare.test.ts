@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ShareHost, shareClient, groundShareFlag, groundShareMainFlag, groundShareMB, type SharePort, type ShareReply } from './groundShare.js';
+import { ShareHost, shareClient, type SharePort, type ShareReply } from './groundShare.js';
 
 const enc = (s: string) => new TextEncoder().encode(s);
 const tick = () => new Promise(r => setTimeout(r, 0));
@@ -51,15 +51,4 @@ test('the client and answer() round-trip bytes, hits and errors over a port pair
   assert.deepEqual([x1.hit, x2.hit], [false, true]);
   assert.notEqual(x1.bytes.buffer, x2.bytes.buffer, 'each requester gets its own copy');
   await assert.rejects(get('missing/b'), /missing\/b: 404/);
-});
-
-test('flags: groundShare off unless =1, groundShareMB bounded', () => {
-  assert.equal(groundShareFlag(''), false);
-  assert.equal(groundShareFlag('?groundShare=0'), false);
-  assert.equal(groundShareFlag('?groundShare=1'), true);
-  assert.equal(groundShareMainFlag(''), true);
-  assert.equal(groundShareMainFlag('?groundShareMain=0'), false);
-  assert.equal(groundShareMB(''), 64);
-  assert.equal(groundShareMB('?groundShareMB=16'), 16);
-  assert.equal(groundShareMB('?groundShareMB=9999'), 64);
 });
