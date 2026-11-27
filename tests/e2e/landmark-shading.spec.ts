@@ -12,7 +12,7 @@ import { openRoute } from './helpers';
 //
 // Writes oblique shots per landmark for review and asserts every visible landmark material is diffuse.
 //   LANDMARK_SHOTS_OUT=artifacts/landmark-shading/after PW_PORT=4433 npx playwright test landmark-shading
-//   LANDMARK_SHOTS=hotel-jakarta,eye-filmmuseum … to pick landmarks; before shots: LANDMARK_SHOTS_QUERY='?landmarkSpecular=1' LANDMARK_SHOTS_ALLOW_SPECULAR=1.
+//   LANDMARK_SHOTS=hotel-jakarta,eye-filmmuseum … to pick landmarks.
 const OUT = process.env.LANDMARK_SHOTS_OUT || 'artifacts/landmark-shading';
 const DEFAULT = ['hotel-jakarta', 'muziekgebouw-bimhuis', 'scheepvaarthuis', 'zuiderkerk', 'eye-filmmuseum'];
 const ids = process.env.LANDMARK_SHOTS?.split(',').map(s => s.trim()) ?? DEFAULT;
@@ -83,8 +83,6 @@ for (const id of ids) {
     }, { id });
     writeFileSync(`${OUT}/${id}-${info.project.name}.json`, JSON.stringify(materials, null, 1));
     expect(materials.length).toBeGreaterThan(0);
-    if (process.env.LANDMARK_SHOTS_ALLOW_SPECULAR !== '1') {
-      expect(materials.filter(m => m.specular), 'landmark materials must be diffuse-only').toEqual([]);
-    }
+    expect(materials.filter(m => m.specular), 'landmark materials must be diffuse-only').toEqual([]);
   });
 }

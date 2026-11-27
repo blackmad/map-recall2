@@ -245,16 +245,6 @@ export function axisUnitOpenings(o: Openings | undefined): (Openings & { doorU: 
   return { upper, ground, doorWindow: null, door: { ...d, axis: (d.axis - doorU) * 2, width: d.width * 2 }, doorU };
 }
 
-/** ODD_AXIS_CELLS=0 (Node) or `?oddAxisCells=0` keeps every stated odd count on whole cells (the H1b fit). The page flag
- *  reaches only a main-thread build: in the building worker `location` is the worker script's URL. */
-export function oddAxisCellsEnabled(search?: string): boolean {
-  try {
-    if (search === undefined && typeof process !== 'undefined' && process.env?.ODD_AXIS_CELLS === '0') return false;
-    const q = search ?? (typeof location !== 'undefined' ? location.search : '');
-    return new URLSearchParams(q).get('oddAxisCells') !== '0';
-  } catch { return true; }
-}
-
 export type AxisUnitPlan = { units: number; scale: LayoutScale; openings: Openings; doorU: number };
 /**
  * The axis-unit layout of a street run for a stated bay count, or null (whole cells, `frontageLayoutScale`): only an
@@ -264,7 +254,7 @@ export type AxisUnitPlan = { units: number; scale: LayoutScale; openings: Openin
  */
 export function axisUnitPlan(spec: FrontageBays | undefined, openings: Openings | undefined, style: MeshBuilding['style'], lengthM: number, fallback: { bay: number; storey: number; ground: number }): AxisUnitPlan | null {
   const bays = spec?.bays;
-  if (!spec || bays === undefined || spec.axesPerCell !== 2 || !Number.isInteger(bays) || bays % 2 !== 1 || !(lengthM > 0) || !oddAxisCellsEnabled()) return null;
+  if (!spec || bays === undefined || spec.axesPerCell !== 2 || !Number.isInteger(bays) || bays % 2 !== 1 || !(lengthM > 0)) return null;
   const unit = axisUnitOpenings(openings);
   if (!unit) return null;
   const nominal = STYLE_DIMS[style], pitch = lengthM / bays;

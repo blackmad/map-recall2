@@ -15,7 +15,7 @@
 /** Default on since 2026-11-15 (round n); `?retailGround=0` / RETAIL_GROUND=0 turn it off. */
 import type { GoodsKind } from './retailGoods.js';
 import type { TypeFace } from './retailTypeFaces.js';
-import { retailRealAllOn, retailRealOn } from './retailPages.js';
+import { retailRealOn } from './retailPages.js';
 
 export const RETAIL_GROUND_DEFAULT = true;
 export function retailGroundEnabled(search?: string | null, env?: string | null): boolean {
@@ -320,8 +320,7 @@ export const TEMPLATE_REAL: Record<RetailTemplate, Partial<Pick<TemplateLook, 'g
 /**
  * The templates whose retail-real look won its blind photo A/B on held-out fronts (lane retail-real, 2026-11-16: r1 37
  * fronts, r2 38; wins-losses-ties real vs round n). Every other template keeps round n's look under retailReal, and a
- * real-only template (CHAIN_TYPE_TEMPLATES, tattoo, snackbar) not listed is not drawn. `?retailRealAll=1` lifts this for
- * candidate frames.
+ * real-only template (CHAIN_TYPE_TEMPLATES, tattoo, snackbar) not listed is not drawn.
  */
 export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate>([
   'redLight', // 3-0-3, and lane R's part (2-0 in its own review)
@@ -334,24 +333,7 @@ export const REAL_ACCEPTED: ReadonlySet<RetailTemplate> = new Set<RetailTemplate
   // window drew rows of flat yellow chips): Duck Store shows its goods cell, the rubber ducks on shelves. Not blind-judged.
   'duck',
 ]);
-/**
- * Round 4 (lane retail-real, after the r1/r2 judges' notes): template parts the photos show and the fronts lacked, drawn
- * only with `?retailParts=1` (retailPages.ts) until a blind win. `shutter`: the roller-shutter box under the fascia and
- * its guide rails (the shutter itself stays up: an open shop); `neon`: a lit sign hung in the pane by the door; `glass`:
- * the name (or a word) lettered on the glass in white, in the template's face.
- */
-export type TemplateParts = { shutter?: boolean; neon?: { text: string; hex: string }; glass?: 'name' | string };
-export const TEMPLATE_PARTS: Partial<Record<RetailTemplate, TemplateParts>> = {
-  phone: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } }, telecom: { shutter: true },
-  tobacco: { shutter: true }, souvenir: { shutter: true }, exchange: { shutter: true, neon: { text: 'EXCHANGE', hex: '#3fe0ff' } },
-  moneyTransfer: { shutter: true }, toko: { shutter: true }, doner: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } },
-  smartshop: { shutter: true, neon: { text: 'OPEN', hex: '#ff4f7a' } }, coffeeshop: { neon: { text: 'OPEN', hex: '#57ff6a' } },
-  snackbar: { neon: { text: 'OPEN', hex: '#ff4f7a' } }, tattoo: { neon: { text: 'TATTOO', hex: '#ff3b3b' } },
-  // Glass lettering only over a dark room: a letter quad is opaque (its board colour fills round the glyph), so on a
-  // lit room it reads as a dark plate (bakery, butcher, cheese tried in the Node sheet, 2026-11-16, and dropped).
-  brownBar: { neon: { text: 'HEINEKEN', hex: '#ff3b3b' }, glass: 'name' },
-};
-export const realAccepted = (t: string): boolean => retailRealAllOn() || REAL_ACCEPTED.has(t as RetailTemplate);
+export const realAccepted = (t: string): boolean => REAL_ACCEPTED.has(t as RetailTemplate);
 const LOOKS_REAL = Object.fromEntries(Object.entries(LOOKS_N).map(([k, v]) => [k, { ...v, ...TEMPLATE_REAL[k as RetailTemplate] }])) as Record<RetailTemplate, TemplateLook>;
 /** The templates' looks: with retailReal (retailPages.ts) the goods and faces are added; `?retailReal=0` is round n's. */
 export const TEMPLATE_LOOKS: Record<RetailTemplate, TemplateLook> = new Proxy(LOOKS_N, { get: (_, k: string) => (retailRealOn() && realAccepted(k) ? LOOKS_REAL : LOOKS_N)[k as RetailTemplate] });

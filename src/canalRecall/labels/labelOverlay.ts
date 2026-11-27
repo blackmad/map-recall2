@@ -22,7 +22,7 @@ import {
 import { COVER_POLL_MS, isCoveredState } from './coveredState';
 import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, PILL_FONT } from './labelStyle';
 import { fitPillText } from './pillText';
-import { RoadShields, roadShieldsEnabled } from './roadShields';
+import { RoadShields } from './roadShields';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
 import { setDrawnKeys, sharedLedger } from '../game/labelDrawLedger';
 import { nameKey } from '../game/landmarkQuestion';
@@ -163,14 +163,14 @@ export class LabelOverlay {
   duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
   /** Candidate ids the last plan left out as a second label on screen (a marker's place, another spelling). */
   screenDuplicates: string[] = [];
-  /** Road number shields once per ref per stretch (#259; `?roadShields=0` keeps the basemap's). */
+  /** Road number shields once per ref per stretch (#259). */
   readonly shields: RoadShields | null;
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
   constructor(private readonly vm: VectorMapLike, private readonly game: () => GameLike) {
     const map: AnyMap = vm.map;
-    this.shields = roadShieldsEnabled() ? new RoadShields(map) : null;
+    this.shields = new RoadShields(map);
     const container: HTMLElement = map.getContainer();
     const style = document.createElement('style');
     style.textContent = labelCss();

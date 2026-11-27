@@ -1,7 +1,7 @@
 /**
  * Stage container stacks (open industrial yards) and rail sidings from the cached OSM extract
  * (src/canalRecall/yardFill.ts). Staging only: scripts/data/yard-fill/{container-stacks,rail-sidings}.json
- * and yard-fill.report.json; a renderer adapter behind ?yardFill=1 reads them (not wired here).
+ * and yard-fill.report.json (no renderer reads them: the `?yardFill=1` adapter was retired on 2026-11-27).
  *
  * Usage: node --import tsx scripts/build-yard-fill.ts
  */

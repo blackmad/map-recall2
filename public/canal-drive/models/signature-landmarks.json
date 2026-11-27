@@ -97861,6 +97861,12 @@
         "buildVersion": 2,
         "bytes": 43796,
         "triangles": 1359
+      },
+      "lod2": {
+        "sourceHash": "67fd98a5064e4938",
+        "buildVersion": 6,
+        "bytes": 8668,
+        "triangles": 176
       }
     },
     "club-raum": {
@@ -99250,6 +99256,12 @@
         "buildVersion": 2,
         "bytes": 72476,
         "triangles": 3674
+      },
+      "lod2": {
+        "sourceHash": "1bc0ef84380d9fef",
+        "buildVersion": 6,
+        "bytes": 11024,
+        "triangles": 480
       }
     },
     "tolstraat-160-tempel": {
@@ -105097,6 +105109,12 @@
         "buildVersion": 2,
         "bytes": 27308,
         "triangles": 1081
+      },
+      "lod2": {
+        "sourceHash": "cb3733a0c3c11244",
+        "buildVersion": 6,
+        "bytes": 5808,
+        "triangles": 146
       }
     },
     "zaal-100": {
@@ -108373,7 +108391,19 @@
       "triangles": 16154,
       "bytes": 211148,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod1": {
+        "sourceHash": "c1a5018c241c1cc9",
+        "buildVersion": 2,
+        "bytes": 82164,
+        "triangles": 4047
+      },
+      "lod2": {
+        "sourceHash": "c1a5018c241c1cc9",
+        "buildVersion": 6,
+        "bytes": 11784,
+        "triangles": 318
+      }
     },
     "mauritskade-61": {
       "id": "mauritskade-61",
@@ -108932,7 +108962,19 @@
       "triangles": 20185,
       "bytes": 297164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "held": true,
+      "lod1": {
+        "sourceHash": "0a28c8c3db29a13f",
+        "buildVersion": 2,
+        "bytes": 71960,
+        "triangles": 3261
+      },
+      "lod2": {
+        "sourceHash": "0a28c8c3db29a13f",
+        "buildVersion": 6,
+        "bytes": 12184,
+        "triangles": 399
+      }
     },
     "de-mirandabad": {
       "id": "de-mirandabad",
@@ -128326,6 +128368,12 @@
         "buildVersion": 2,
         "bytes": 27512,
         "triangles": 1221
+      },
+      "lod2": {
+        "sourceHash": "048458cd2f2ba4b0",
+        "buildVersion": 6,
+        "bytes": 6356,
+        "triangles": 107
       }
     },
     "generator-mauritskade": {
@@ -140308,6 +140356,916 @@
         "buildVersion": 6,
         "bytes": 6320,
         "triangles": 109
+      }
+    },
+    "dikker-thijs-leidsestraat": {
+      "id": "dikker-thijs-leidsestraat",
+      "name": "Dikker & Thijs, Leidsestraat / Prinsengracht",
+      "modelUrl": "./models/dikker-thijs-leidsestraat.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169650"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88400098,
+          52.36496156
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 25.7,
+        "widthMetres": 25.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.88400098,
+          52.36496156
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012169650 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/dikker-thijs-leidsestraat-footprints.json, bag-shell-prepare.ts); the Leidsestraat front read from the rectified Gemeente Amsterdam panorama TMX7316060226-000022_pano_0000_000789 (2016) with recording_2025-07-14_05-25-22_01750 (2025), the canal front from TMX7316010203-000355_pano_0000_000172 (2017) for positions and TMX7316010203-001974_pano_0000_001045 (2021) for heights, CC BY 4.0. Rijksmonument 518364. Per wall in scripts/landmarks/dikker-thijs-leidsestraat-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.2
+      },
+      "bagYear": 1926,
+      "materialOverrides": {
+        "brick": "#8c6452",
+        "stone": "#c4bba6",
+        "greyBrick": "#4a4a46",
+        "dark": "#3a322e",
+        "red": "#6b3a2e",
+        "frame": "#4a554f",
+        "glass": "#39424a",
+        "slate": "#55585a",
+        "concrete": "#efede6",
+        "sandstone": "#dedad0"
+      },
+      "attribution": {
+        "title": "Dikker & Thijs, Leidsestraat and Prinsengracht, Amsterdam: corner block with canted oriels (BAG 1926; rijksmonument 518364)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0000_000789/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012169650 (CC0): the canted two-storey oriels with stone colonnettes and paned windows, the granite ground piers and shop bays, the stone sign band with the Dikker & Thijs lettering, the brick piers with stone dots, the pierced parapets and the loggia storey, the modillion cornice and the white roof balustrade, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8839989,
+              52.3650363
+            ],
+            [
+              4.8839425,
+              52.3650737
+            ],
+            [
+              4.883942,
+              52.3650734
+            ],
+            [
+              4.883784,
+              52.3650002
+            ],
+            [
+              4.8837566,
+              52.3649875
+            ],
+            [
+              4.8839401,
+              52.3648432
+            ],
+            [
+              4.8839406,
+              52.3648428
+            ],
+            [
+              4.8841127,
+              52.3649238
+            ],
+            [
+              4.884111,
+              52.3649252
+            ],
+            [
+              4.8841251,
+              52.3649318
+            ],
+            [
+              4.8841271,
+              52.3649483
+            ],
+            [
+              4.8841149,
+              52.3649564
+            ],
+            [
+              4.8841173,
+              52.3649578
+            ],
+            [
+              4.8839989,
+              52.3650363
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -16.621999740600586,
+          0,
+          -13.093904495239258
+        ],
+        "max": [
+          9.444397926330566,
+          26.934999465942383,
+          13.87179183959961
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88400098,
+          52.36496156
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.965696334838867,
+        "heightMetres": 26.934999465942383,
+        "depthMetres": 26.066397666931152,
+        "depthCoverage": 1.0343808597988553
+      },
+      "triangles": 19725,
+      "bytes": 295528,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6a931e6059c785c3",
+        "buildVersion": 2,
+        "bytes": 83704,
+        "triangles": 3952
+      },
+      "lod2": {
+        "sourceHash": "6a931e6059c785c3",
+        "buildVersion": 6,
+        "bytes": 13280,
+        "triangles": 393
+      }
+    },
+    "raadhuisstraat-52": {
+      "id": "raadhuisstraat-52",
+      "name": "Raadhuisstraat 52, corner of the Herengracht",
+      "modelUrl": "./models/raadhuisstraat-52.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012172357"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88558887,
+          52.3740869
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 14.6,
+        "widthMetres": 21.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.88558887,
+          52.3740869
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012172357 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/raadhuisstraat-52-footprints.json, bag-shell-prepare.ts); the Raadhuisstraat front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-001540_pano_0000_000870 (2019) and TMX7316010203-002045_pano_0001_003044 (2021), the canal front from TMX7316010203-000355_pano_0000_000942 (2017), CC BY 4.0. Rijksmonument 518499. Per wall in scripts/landmarks/raadhuisstraat-52-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.2
+      },
+      "bagYear": 1902,
+      "materialOverrides": {
+        "brick": "#a8705c",
+        "stone": "#c4c0b0",
+        "frame": "#e2ddd2",
+        "green": "#637161",
+        "dark": "#3a3734",
+        "glass": "#39424a",
+        "slate": "#55585a",
+        "bronze": "#2f2f2d",
+        "concrete": "#e8e4da"
+      },
+      "attribution": {
+        "title": "Raadhuisstraat 52, Amsterdam: corner house with a round oriel and a stepped stone-edged gable (BAG 1902; rijksmonument 518499)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001540_pano_0000_000870/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012172357 (CC0), with the front gable redrawn to the photographed outline: the round corner oriel with its corbel and balcony railing, the stepped stone gable edge with pinnacles and three arched lights, the canted oriel on a corbel, the sash windows with stone lintels, the green-glazed ground arches and courses, the shopfront with its lettered fascia and the canal front's hooded windows and balconettes, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.885705,
+              52.374122
+            ],
+            [
+              4.8857181,
+              52.3741364
+            ],
+            [
+              4.8857059,
+              52.3741373
+            ],
+            [
+              4.8857053,
+              52.3741342
+            ],
+            [
+              4.8856612,
+              52.3741377
+            ],
+            [
+              4.8856619,
+              52.3741408
+            ],
+            [
+              4.8854098,
+              52.3741604
+            ],
+            [
+              4.8854101,
+              52.3741592
+            ],
+            [
+              4.8854021,
+              52.3740724
+            ],
+            [
+              4.8855223,
+              52.3740521
+            ],
+            [
+              4.8855292,
+              52.3740507
+            ],
+            [
+              4.8855299,
+              52.3740519
+            ],
+            [
+              4.8855839,
+              52.37404
+            ],
+            [
+              4.8855849,
+              52.3740413
+            ],
+            [
+              4.885614,
+              52.3740343
+            ],
+            [
+              4.8856128,
+              52.3740323
+            ],
+            [
+              4.8856211,
+              52.3740305
+            ],
+            [
+              4.8856222,
+              52.3740307
+            ],
+            [
+              4.885705,
+              52.374122
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.797359466552734,
+          -3.814697322468419e-7,
+          -8.323034286499023
+        ],
+        "max": [
+          8.836999893188477,
+          24.231000900268555,
+          6.57449197769165
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88558887,
+          52.3740869
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 22.63435935974121,
+        "heightMetres": 24.231001281738287,
+        "depthMetres": 14.897526264190674,
+        "depthCoverage": 0.6897002900088275
+      },
+      "triangles": 13103,
+      "bytes": 191548,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "45764ba95a520fdf",
+        "buildVersion": 2,
+        "bytes": 52540,
+        "triangles": 2190
+      },
+      "lod2": {
+        "sourceHash": "45764ba95a520fdf",
+        "buildVersion": 6,
+        "bytes": 9880,
+        "triangles": 227
+      }
+    },
+    "passage-central": {
+      "id": "passage-central",
+      "name": "Passage Central, Prins Hendrikkade",
+      "modelUrl": "./models/passage-central.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170968"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89609663,
+          52.37850353
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29.4,
+        "widthMetres": 68.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89609663,
+          52.37850353
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012170968 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1910) in native east/south metres (scripts/landmarks/passage-central-footprints.json, bag-shell-prepare.ts); the Prins Hendrikkade front read from the rectified Gemeente Amsterdam panoramas recording_2025-06-16_03-46-32_00533 (2025, east bay) and TMX7316010203-002310_pano_0001_000033 (2021, west bay), the central balcony bay and crest from both aimed views, CC BY 4.0, cornice fitted under the 3DBAG wall top (24.7 m). The Nieuwendijk-side walls are drawn plainly from oblique crops. Rijksmonument 518505. Per wall in scripts/landmarks/passage-central-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.8,
+      "galleryView": {
+        "theta": 0.3,
+        "phi": 1.2
+      },
+      "bagYear": 1910,
+      "materialOverrides": {
+        "brick": "#9a5a48",
+        "stone": "#d9cdb4",
+        "greyBrick": "#a3a49f",
+        "slate": "#50565c",
+        "glass": "#323d46",
+        "frame": "#e6e2d8",
+        "bronze": "#2a2c2d",
+        "dark": "#4a4f52",
+        "red": "#4b4440",
+        "white": "#e0d8c4",
+        "ochre": "#7a4a2a"
+      },
+      "attribution": {
+        "title": "Passage Central, Prins Hendrikkade, Amsterdam: shop and office front over a covered passage (1910; rijksmonument 518505)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_03-46-32_00533/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012170968 (CC0): the grey stone ground storey with the passage portal and round-arched windows, the red brick banded with cream stone, the window surrounds and balconettes, the two balustraded balconies on the projecting piers, the cornice, the bull's-eye dormers and the crest, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.896341,
+              52.3785013
+            ],
+            [
+              4.8963437,
+              52.378503
+            ],
+            [
+              4.8963379,
+              52.3785061
+            ],
+            [
+              4.8963261,
+              52.3785124
+            ],
+            [
+              4.8962937,
+              52.3785296
+            ],
+            [
+              4.8962898,
+              52.3785317
+            ],
+            [
+              4.8962964,
+              52.3785358
+            ],
+            [
+              4.8962921,
+              52.3785384
+            ],
+            [
+              4.8962865,
+              52.3785418
+            ],
+            [
+              4.8962799,
+              52.3785377
+            ],
+            [
+              4.896278,
+              52.3785388
+            ],
+            [
+              4.8962641,
+              52.378547
+            ],
+            [
+              4.8962434,
+              52.3785592
+            ],
+            [
+              4.8962499,
+              52.3785633
+            ],
+            [
+              4.8962399,
+              52.3785693
+            ],
+            [
+              4.8962334,
+              52.3785652
+            ],
+            [
+              4.896229,
+              52.3785681
+            ],
+            [
+              4.8962159,
+              52.3785767
+            ],
+            [
+              4.8961847,
+              52.3785974
+            ],
+            [
+              4.8961828,
+              52.378597
+            ],
+            [
+              4.8956406,
+              52.3784766
+            ],
+            [
+              4.8953449,
+              52.3784089
+            ],
+            [
+              4.8954433,
+              52.3783298
+            ],
+            [
+              4.8956913,
+              52.3783789
+            ],
+            [
+              4.8956961,
+              52.3783693
+            ],
+            [
+              4.8958214,
+              52.3783932
+            ],
+            [
+              4.895818,
+              52.3784089
+            ],
+            [
+              4.8958423,
+              52.3784134
+            ],
+            [
+              4.896341,
+              52.3785013
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -51.3519401550293,
+          -4.7683716530855236e-8,
+          -10.847458839416504
+        ],
+        "max": [
+          17.2581844329834,
+          25.816999435424805,
+          19.096080780029297
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89609663,
+          52.37850353
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 68.6101245880127,
+        "heightMetres": 25.81699948310852,
+        "depthMetres": 29.9435396194458,
+        "depthCoverage": 0.4396995538831983
+      },
+      "triangles": 21993,
+      "bytes": 297332,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "38683e5799de02d6",
+        "buildVersion": 2,
+        "bytes": 80284,
+        "triangles": 3725
+      },
+      "lod2": {
+        "sourceHash": "38683e5799de02d6",
+        "buildVersion": 6,
+        "bytes": 14452,
+        "triangles": 435
+      }
+    },
+    "kweekschool-zeevaart": {
+      "id": "kweekschool-zeevaart",
+      "name": "Kweekschool voor de Zeevaart, Prins Hendrikkade",
+      "modelUrl": "./models/kweekschool-zeevaart.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012181563"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91190727,
+          52.37102924
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 37.7,
+        "widthMetres": 43.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.91190727,
+          52.37102924
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012181563 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1859) in native east/south metres (scripts/landmarks/kweekschool-zeevaart-footprints.json, bag-shell-prepare.ts); the main front read from the rectified Gemeente Amsterdam panoramas TMX7316010203-002370_pano_0000_000191 (2021, frontal) and b_20250108_1041_Track08_Sphere_00263 (2024, roof and gables), the SE side and rounded corner from b_20241210_1246_Track15_Sphere_00023 (2024), CC BY 4.0, storey lines fitted to the 3DBAG eaves (cornice crown 16.9 m). Courtyard walls are the 3DBAG shell only. Rijksmonument 518430. Per wall in scripts/landmarks/kweekschool-zeevaart-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24.4,
+      "galleryView": {
+        "theta": 0.3,
+        "phi": 1.2
+      },
+      "bagYear": 1859,
+      "materialOverrides": {
+        "brick": "#7d5345",
+        "stone": "#bab29e",
+        "sandstone": "#a59c88",
+        "slate": "#4a5157",
+        "glass": "#2f3a44",
+        "frame": "#e8e4da",
+        "dark": "#5a3424",
+        "bronze": "#2d2f30"
+      },
+      "attribution": {
+        "title": "Kweekschool voor de Zeevaart, Prins Hendrikkade, Amsterdam: neo-renaissance school building with stepped gables (rijksmonument 518430)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002370_pano_0000_000191/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012181563 (CC0): the stepped centre and pavilion gables with the relief field, the pointed dormers, the balustraded balconies on consoles, the banded brick with stone quoins, the sunburst voussoirs and niche frieze, the cross windows and triple windows, the arched entrances with oculi, and the rounded east corner, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9115593,
+              52.3712106
+            ],
+            [
+              4.911557,
+              52.3712082
+            ],
+            [
+              4.9114737,
+              52.3711159
+            ],
+            [
+              4.9115509,
+              52.3710897
+            ],
+            [
+              4.9115641,
+              52.3711044
+            ],
+            [
+              4.9116278,
+              52.371083
+            ],
+            [
+              4.9115953,
+              52.3710468
+            ],
+            [
+              4.911591,
+              52.3710459
+            ],
+            [
+              4.9116053,
+              52.3710202
+            ],
+            [
+              4.9116096,
+              52.3710211
+            ],
+            [
+              4.9116249,
+              52.371016
+            ],
+            [
+              4.911734,
+              52.3709557
+            ],
+            [
+              4.9117574,
+              52.3709715
+            ],
+            [
+              4.9117587,
+              52.3709711
+            ],
+            [
+              4.9118054,
+              52.3710234
+            ],
+            [
+              4.9118362,
+              52.3710131
+            ],
+            [
+              4.9118279,
+              52.3710038
+            ],
+            [
+              4.9118604,
+              52.370993
+            ],
+            [
+              4.9118686,
+              52.3710022
+            ],
+            [
+              4.9118994,
+              52.3709919
+            ],
+            [
+              4.9118446,
+              52.3709571
+            ],
+            [
+              4.9118022,
+              52.3709821
+            ],
+            [
+              4.911776,
+              52.3709655
+            ],
+            [
+              4.9119322,
+              52.3708733
+            ],
+            [
+              4.9120132,
+              52.3709246
+            ],
+            [
+              4.9120982,
+              52.3709786
+            ],
+            [
+              4.9120959,
+              52.3709799
+            ],
+            [
+              4.9120992,
+              52.3709817
+            ],
+            [
+              4.9121023,
+              52.3709836
+            ],
+            [
+              4.912105,
+              52.3709856
+            ],
+            [
+              4.9121074,
+              52.3709878
+            ],
+            [
+              4.9121095,
+              52.3709902
+            ],
+            [
+              4.9121113,
+              52.3709926
+            ],
+            [
+              4.9121127,
+              52.3709951
+            ],
+            [
+              4.9121137,
+              52.3709977
+            ],
+            [
+              4.9121143,
+              52.3710004
+            ],
+            [
+              4.9121145,
+              52.371003
+            ],
+            [
+              4.9121144,
+              52.3710057
+            ],
+            [
+              4.9121138,
+              52.3710083
+            ],
+            [
+              4.9121129,
+              52.3710109
+            ],
+            [
+              4.9121116,
+              52.3710134
+            ],
+            [
+              4.9121099,
+              52.3710159
+            ],
+            [
+              4.9121079,
+              52.3710182
+            ],
+            [
+              4.9121056,
+              52.3710204
+            ],
+            [
+              4.912103,
+              52.3710225
+            ],
+            [
+              4.9121,
+              52.3710244
+            ],
+            [
+              4.9120968,
+              52.3710262
+            ],
+            [
+              4.9120933,
+              52.3710278
+            ],
+            [
+              4.9120897,
+              52.3710291
+            ],
+            [
+              4.9120858,
+              52.3710303
+            ],
+            [
+              4.9120818,
+              52.3710313
+            ],
+            [
+              4.9120843,
+              52.3710341
+            ],
+            [
+              4.9120031,
+              52.3710612
+            ],
+            [
+              4.9120009,
+              52.3710589
+            ],
+            [
+              4.9118749,
+              52.3711011
+            ],
+            [
+              4.9118778,
+              52.371104
+            ],
+            [
+              4.9117667,
+              52.3711416
+            ],
+            [
+              4.9117641,
+              52.3711385
+            ],
+            [
+              4.9116385,
+              52.3711807
+            ],
+            [
+              4.9116404,
+              52.3711832
+            ],
+            [
+              4.9115593,
+              52.3712106
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -29.30299949645996,
+          -1.9073486612342094e-7,
+          -20.810646057128906
+        ],
+        "max": [
+          14.730171203613281,
+          25.489999771118164,
+          17.743377685546875
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91190727,
+          52.37102924
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 44.03317070007324,
+        "heightMetres": 25.48999996185303,
+        "depthMetres": 38.55402374267578,
+        "depthCoverage": 0.8842665996026555
+      },
+      "triangles": 32137,
+      "bytes": 454296,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "655bd192000d516e",
+        "buildVersion": 2,
+        "bytes": 105496,
+        "triangles": 5219
+      },
+      "lod2": {
+        "sourceHash": "655bd192000d516e",
+        "buildVersion": 6,
+        "bytes": 17948,
+        "triangles": 635
       }
     }
   }

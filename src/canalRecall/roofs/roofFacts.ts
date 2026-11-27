@@ -11,7 +11,7 @@
  *   roofDormer      3DBAG says the sloped roof has (true) or lacks (false) dormers
  *   roofFurniture   encoded placements (`encodeFurniture`, comma-joined), offsets from the outline's first vertex
  *
- * `?roofFacts=0` turns it off. A missing or unreadable tile leaves the priors in place.
+ * A missing or unreadable tile leaves the priors in place.
  */
 import { decodeRoofFactTile, encodeFurniture, ROOF_SLOTS, type RoofFact, type RoofFactTile, type RoofSlot } from './roofSlots.js';
 import { rgbToHex } from '../look/palette.js';
@@ -19,10 +19,6 @@ import { rgbToHex } from '../look/palette.js';
 type Feature = { properties: Record<string, unknown> };
 export const ROOF_FACTS_ZOOM = 14;
 const PAND_PREFIX = 'NL.IMBAG.Pand.';
-
-export function roofFactsEnabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
-  return new URLSearchParams(search).get('roofFacts') !== '0';
-}
 
 async function readJson(response: Response): Promise<unknown> {
   const bytes = new Uint8Array(await response.arrayBuffer());

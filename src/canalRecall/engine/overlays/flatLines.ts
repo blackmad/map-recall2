@@ -53,11 +53,10 @@ export class FlatLines implements FrameParticipant {
    * Draw the lines over only the span of their index on screen (tiledGeometry.ts drawAsSpans, as the overview): the
    * cycle tracks cover the whole region (~108 k triangles) and were drawn whole every frame, though a chase view sees
    * a few hundred metres of them (#129). One draw call, as before; one colour per mesh with no depth write, so the
-   * reordered index changes no pixel. The casing shares the fill's geometry and its spans. `?lineCull=0` (or
-   * `__canalRecallLineCull = false`) keeps the whole index.
+   * reordered index changes no pixel. The casing shares the fill's geometry and its spans.
    */
   private cut(fill: THREE.Mesh, casing: THREE.Mesh | null): boolean {
-    if (!lineCullFlag() || !cutMesh(THREE, fill, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans' })) return false;
+    if (!cutMesh(THREE, fill, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans' })) return false;
     if (casing) {
       const cull = fill.onBeforeRender, geo = fill.geometry;
       casing.onBeforeRender = (...a) => cull.apply(fill, a);
@@ -93,13 +92,6 @@ export class FlatLines implements FrameParticipant {
     }
     return any;
   }
-}
-
-/** Span culling for the flat lines: on unless `?lineCull=0` / `__canalRecallLineCull = false`. */
-export function lineCullFlag(): boolean {
-  const g = globalThis as { __canalRecallLineCull?: boolean; location?: { search?: string } };
-  if (g.__canalRecallLineCull === false) return false;
-  return new URLSearchParams(g.location?.search ?? '').get('lineCull') !== '0';
 }
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */

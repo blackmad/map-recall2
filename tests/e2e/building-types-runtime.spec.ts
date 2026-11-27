@@ -1,14 +1,12 @@
-// Building types runtime (default on since 2026-10-16; `?buildingTypes=0` turns them off): in-game shots and perf, on vs off.
-//   BT_RUN=1 BT=1 PW_PORT=4458 npx playwright test building-types-runtime --project=iphone   (the default game)
-//   BT_RUN=1 BT=0 ...   (`?buildingTypes=0`: generic extrusions)
+// Building types runtime (default on since 2026-10-16): in-game shots and perf.
+//   BT_RUN=1 PW_PORT=4458 npx playwright test building-types-runtime --project=iphone   (the default game)
 // Writes artifacts/building-types/<label>-<view>-<project>.png and perf-<label>-<project>.json.
 import { test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
 test.skip(!process.env.BT_RUN, 'set BT_RUN=1');
-const on = process.env.BT !== '0';
-const label = on ? 'types' : 'default';
+const label = 'types';
 const pick = (v: number[], q: number) => { const s = [...v].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))] ?? 0; };
 const summary = (v: number[]) => ({ n: v.length, median: +pick(v, 0.5).toFixed(2), p95: +pick(v, 0.95).toFixed(2), mean: +(v.reduce((a, b) => a + b, 0) / Math.max(1, v.length)).toFixed(2) });
 const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: number; bearing: number }> = {
@@ -106,7 +104,7 @@ test(`building types ${label}`, async ({ page }, info) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error' || /Building types|unavailable/.test(m.text())) errors.push(m.text()); });
-  await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: on ? '' : '?buildingTypes=0' });
+  await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: '' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
     const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;

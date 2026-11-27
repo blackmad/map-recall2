@@ -147,10 +147,3 @@ export function instanceSpheres(THREE: any, geometry: any, matrices: Float32Arra
   }
   return out;
 }
-
-/** `?treeCull=0` (or `window.__canalRecallTreeCull = false`) draws every resident tree, as before. */
-export function treeCullFlag(): boolean {
-  const g = globalThis as { __canalRecallTreeCull?: boolean; location?: { search?: string } };
-  if (g.__canalRecallTreeCull === false) return false;
-  return new URLSearchParams(g.location?.search ?? '').get('treeCull') !== '0';
-}

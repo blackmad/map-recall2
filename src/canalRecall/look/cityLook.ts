@@ -494,7 +494,7 @@ float cityGrain(vec3 cell) {
 }`;
 
 /**
- * Complementary dissolve (`?swapComplement=0` turns it off; lane R1-A, #223). A chunk dissolving in draws where
+ * Complementary dissolve (lane R1-A, #223). A chunk dissolving in draws where
  * `hash < cityFade`; the mesh it replaces draws only where `hash >= under`, with `under` the same value, so no pixel
  * is drawn by both during the swap (the coplanar depth fight under a screen-locked dither the user saw as moving
  * stripes) and the replaced mesh dissolves out as its successor dissolves in (no one-frame pop at the end).

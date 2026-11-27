@@ -5798,7 +5798,13 @@
   "sourceHash": "67fd98a5064e4938",
   "buildVersion": 2,
   "bytes": 43796,
-  "triangles": 1359
+  "triangles": 1359,
+  "lod2": {
+   "sourceHash": "67fd98a5064e4938",
+   "buildVersion": 6,
+   "bytes": 8668,
+   "triangles": 176
+  }
  },
  "club-raum": {
   "lod2": {
@@ -5868,7 +5874,13 @@
   "sourceHash": "1bc0ef84380d9fef",
   "buildVersion": 2,
   "bytes": 72476,
-  "triangles": 3674
+  "triangles": 3674,
+  "lod2": {
+   "sourceHash": "1bc0ef84380d9fef",
+   "buildVersion": 6,
+   "bytes": 11024,
+   "triangles": 480
+  }
  },
  "tolstraat-160-tempel": {
   "sourceHash": "13a743aa6bcb4a0e",
@@ -6130,7 +6142,13 @@
   "sourceHash": "cb3733a0c3c11244",
   "buildVersion": 2,
   "bytes": 27308,
-  "triangles": 1081
+  "triangles": 1081,
+  "lod2": {
+   "sourceHash": "cb3733a0c3c11244",
+   "buildVersion": 6,
+   "bytes": 5808,
+   "triangles": 146
+  }
  },
  "zaal-100": {
   "sourceHash": "0ae481bf5e58419a",
@@ -6250,6 +6268,30 @@
    "buildVersion": 6,
    "bytes": 25928,
    "triangles": 1013
+  }
+ },
+ "port-van-cleve": {
+  "sourceHash": "c1a5018c241c1cc9",
+  "buildVersion": 2,
+  "bytes": 82164,
+  "triangles": 4047,
+  "lod2": {
+   "sourceHash": "c1a5018c241c1cc9",
+   "buildVersion": 6,
+   "bytes": 11784,
+   "triangles": 318
+  }
+ },
+ "mauritskade-61": {
+  "sourceHash": "0a28c8c3db29a13f",
+  "buildVersion": 2,
+  "bytes": 71960,
+  "triangles": 3261,
+  "lod2": {
+   "sourceHash": "0a28c8c3db29a13f",
+   "buildVersion": 6,
+   "bytes": 12184,
+   "triangles": 399
   }
  },
  "de-mirandabad": {
@@ -6892,7 +6934,13 @@
   "sourceHash": "048458cd2f2ba4b0",
   "buildVersion": 2,
   "bytes": 27512,
-  "triangles": 1221
+  "triangles": 1221,
+  "lod2": {
+   "sourceHash": "048458cd2f2ba4b0",
+   "buildVersion": 6,
+   "bytes": 6356,
+   "triangles": 107
+  }
  },
  "generator-mauritskade": {
   "sourceHash": "0830a3bd758c1723",
@@ -7408,6 +7456,54 @@
    "buildVersion": 6,
    "bytes": 6320,
    "triangles": 109
+  }
+ },
+ "dikker-thijs-leidsestraat": {
+  "sourceHash": "6a931e6059c785c3",
+  "buildVersion": 2,
+  "bytes": 83704,
+  "triangles": 3952,
+  "lod2": {
+   "sourceHash": "6a931e6059c785c3",
+   "buildVersion": 6,
+   "bytes": 13280,
+   "triangles": 393
+  }
+ },
+ "raadhuisstraat-52": {
+  "sourceHash": "45764ba95a520fdf",
+  "buildVersion": 2,
+  "bytes": 52540,
+  "triangles": 2190,
+  "lod2": {
+   "sourceHash": "45764ba95a520fdf",
+   "buildVersion": 6,
+   "bytes": 9880,
+   "triangles": 227
+  }
+ },
+ "passage-central": {
+  "sourceHash": "38683e5799de02d6",
+  "buildVersion": 2,
+  "bytes": 80284,
+  "triangles": 3725,
+  "lod2": {
+   "sourceHash": "38683e5799de02d6",
+   "buildVersion": 6,
+   "bytes": 14452,
+   "triangles": 435
+  }
+ },
+ "kweekschool-zeevaart": {
+  "sourceHash": "655bd192000d516e",
+  "buildVersion": 2,
+  "bytes": 105496,
+  "triangles": 5219,
+  "lod2": {
+   "sourceHash": "655bd192000d516e",
+   "buildVersion": 6,
+   "bytes": 17948,
+   "triangles": 635
   }
  }
 }

@@ -37,21 +37,11 @@ export const DETAIL_MAX_TILES = 6;
 /**
  * A touch device's z17 tiles are a quarter of a z16 tile: six left room for the 2×2 block and two lingering tiles only,
  * so a tile beside the rider went back to coarse shells 90-115 m away, on screen (lane E4, #217: the seeded ride's
- * iPhone profile, Koninginneweg 67303/43085 and Van Baerlestraat 67311/43083). Eight keep four lingering
- * (`?detailLinger=0`: six, as before).
+ * iPhone profile, Koninginneweg 67303/43085 and Van Baerlestraat 67311/43083). Eight keep four lingering.
  */
 export const DETAIL_MAX_TILES_TOUCH = 8;
 /** With room for them to linger, a touch block's centre leads further (side tiles turned detailed ~115 m away). */
 export const DETAIL_LEAD_M_TOUCH = 160;
-
-/** `?detailLinger=0` (or `window.__canalRecallDetailLinger = false`): the touch block keeps DETAIL_MAX_TILES (A/B). */
-export function detailLingerEnabled(): boolean {
-  try {
-    const g = globalThis as { __canalRecallDetailLinger?: boolean; location?: { search?: string } };
-    if (g.__canalRecallDetailLinger === false) return false;
-    return new URLSearchParams(g.location?.search ?? '').get('detailLinger') !== '0';
-  } catch { return true; }
-}
 
 const M_PER_DEG_LAT = 111_320;
 
@@ -97,33 +87,4 @@ export function detailBlock(rider: LngLat, direction: readonly [number, number] 
     for (const t of lingering) if (keys.length < maxTiles) keys.push(t.k);
   }
   return { x, y, dx, dy, keys };
-}
-
-/**
- * `?detailFreezeAerial=1` (or `window.__canalRecallDetailFreezeAerial = true`) freezes the detail block from the air.
- * Off by default at integration (2026-11-07): the lane measured that in a pan the camera subject is the parked rider,
- * so the block never moves and the freeze changes nothing (uploads 105 % of baseline, detail is ~1 % of them), while
- * riding on from the air it only delays the landing re-plan (0.9 → 1.0–2.0 s to detail resident). The rule, its tests
- * and the harness stats stay for the lane that pins the block's source features while aerial.
- */
-export function detailFreezeAerialEnabled(): boolean {
-  try {
-    const g = globalThis as { __canalRecallDetailFreezeAerial?: boolean; location?: { search?: string } };
-    if (g.__canalRecallDetailFreezeAerial === true) return true;
-    if (g.__canalRecallDetailFreezeAerial === false) return false;
-    return new URLSearchParams(g.location?.search ?? '').get('detailFreezeAerial') === '1';
-  } catch { return false; }
-}
-
-/**
- * Lane R3-G (#242): from the air (rendererShared/aerialView.ts `isAerialView`) the detail block keeps its last plan.
- * Panning at ~150 m eye height moved the camera subject across z16 tile edges continuously, and every move built,
- * uploaded and dissolved detail tiles (plus their extras and trees) whose difference from the coarse shell is a few
- * pixels from that height: the user's "pop-in" and most of a 3-minute pan's 17.8 GB of uploads. True: keep the
- * previous block (no new tiles, the resident ones stay, linger unbounded). False: plan from the current subject — on
- * the ground, on leaving the air (landing, or the camera reattaching), when there is no previous block yet (a ride
- * that starts aerial plans once at its entry pose), and always with `?detailFreezeAerial=0`.
- */
-export function detailBlockFrozen(previous: DetailBlock | null, aerial: boolean, enabled = true): boolean {
-  return enabled && aerial && previous !== null;
 }

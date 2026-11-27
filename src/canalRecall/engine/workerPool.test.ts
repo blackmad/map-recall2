@@ -34,8 +34,8 @@ test('pool: replies go to the subscriber that claims them; a dead worker is repo
 test('pool: worker URL next to any bundle, with the building A/B flags', () => {
   assert.equal(poolWorkerUrl('https://x/canal-drive/js/own-ground-game.bundle.js?v=3'), 'https://x/canal-drive/js/three-buildings-worker.bundle.js?v=3');
   assert.equal(poolWorkerUrl('https://x/canal-drive/js/game.js'), '');
-  assert.equal(withWorkerFlags('w.js', '?modernFacades=1&world=v1'), 'w.js?modernFacades=1');
-  assert.equal(withWorkerFlags('w.js?v=2', '?buurtProfiles=0'), 'w.js?v=2&buurtProfiles=0');
+  assert.equal(withWorkerFlags('w.js', '?paletteLevel=1&world=v1'), 'w.js?paletteLevel=1');
+  assert.equal(withWorkerFlags('w.js?v=2', '?buurtProfiles=debug'), 'w.js?v=2&buurtProfiles=debug');
   // brickLift and specWalls are read where meshBuildingFor runs (the worker): `?brickLift=v1` must reach it.
   assert.equal(withWorkerFlags('w.js?v=2', '?brickLift=v1&specWalls=0&world=live'), 'w.js?v=2&brickLift=v1&specWalls=0');
   assert.equal(withWorkerFlags('w.js', '?a=1&paletteLevel=0'), 'w.js?paletteLevel=0');

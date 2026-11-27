@@ -1,0 +1,176 @@
+{
+  "id": "raadhuisstraat-52",
+  "countedBy": "lane r20-a-20261127b from the rectified panoramas TMX7316010203-001540_pano_0000_000870 (2019, Raadhuisstraat front, w01-198.alt.jpg, about 50 px/m) and TMX7316010203-000355_pano_0000_000942 (2017, canal front, w02-274.jpg, 50 px/m); not yet blind-counted. Openings bottom band first, ribbon convention.",
+  "facades": [
+    {
+      "name": "Raadhuisstraat front",
+      "bearing": 198,
+      "photo": "artifacts/landmark-briefs/raadhuisstraat-52/w01-198.alt.jpg",
+      "rows": [
+        4,
+        5,
+        6,
+        6,
+        6,
+        3
+      ],
+      "symmetric": false,
+      "gables": 2,
+      "openings": [
+        "glass"
+      ],
+      "note": "Bands: the ground storey's two green-framed round arches, the shop window with its transom lights (one ribbon) and the arched shop door; the first storey's three west axes and the two gable-section windows; the second storey's three west axes, the two narrow lights and the canted oriel (its three facets one ribbon); three plus three axes on the third and fourth storeys; the west attic light, the dormer (two lights 0.16 m apart, one opening) and the gable's three arched lights (stone piers about 0.2 m, one opening). The round corner oriel faces south-west and is left to the crop. Peaks: the corner gable and the front gable (the dormer is not a peak). Cropped (alongM) from 2.0 m east of the canal corner, past the round corner oriel whose facets the crop shows only edge-on, to the east party wall (the shell's return beyond it is a neighbour's wall).",
+      "alongM": [
+        4.2,
+        18.2
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w01-198.alt.jpg (TMX7316010203-001540_pano_0000_000870, 2019, 54 px/m across): the two green-framed round arches 2.4 m (x 15-145, 180-310), the shop window with its transom lights 3.3 m (x 440-620), the glazed shop door in its arched case 0.9 m (x 670-720)",
+          "openings": [
+            {
+              "kind": "arch",
+              "w": 2.4
+            },
+            {
+              "kind": "arch",
+              "w": 2.4
+            },
+            {
+              "kind": "shop window",
+              "w": 3.3
+            },
+            {
+              "kind": "shop door",
+              "w": 0.9
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "rowSizes": "mixed",
+          "evidence": "w01-198.alt.jpg (2019): the west attic light 0.55 m (x 65-95), the dormer's pair of lights 1.1 m (x 250-310), the gable's three arched lights 2.7 m (x 510-655)",
+          "openings": [
+            {
+              "kind": "attic light",
+              "w": 0.55
+            },
+            {
+              "kind": "dormer",
+              "w": 1.1
+            },
+            {
+              "kind": "gable lights",
+              "w": 2.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "canal front",
+      "bearing": 274,
+      "photo": "artifacts/landmark-briefs/raadhuisstraat-52/w02-274.jpg",
+      "rows": [
+        3,
+        3,
+        3,
+        3,
+        2
+      ],
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "The ground storey is hidden by the bridge railing and quay wall, so the comparison is cropped above it (heightM from 4.0 m). Bands: the canal column's wide window, the column by the oriel and the oriel's west light on the first three storeys; on the fourth the canal window, the narrow light at 5.1 m and the column window; on top the balcony door in the brick dormer and the attic light in the corner gable's canal side. Cropped (alongM) to 9.6 m from the north end, where the photo's frame ends 0.2 m before the corner; and the oriel's west light (photo t 8.3-9.2, 0.86 m) is the third opening of each storey.",
+      "alongM": [
+        0,
+        9.6
+      ],
+      "heightM": [
+        4.0,
+        25.0
+      ],
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w02-274.jpg (TMX7316010203-000355_pano_0000_000942, 2017, 50 px/m): the canal column's wide window 2.2 m of glass (x 60-170), the column by the oriel 1.05 m (x 340-392), the oriel's west light 0.86 m (x 415-458)",
+          "openings": [
+            {
+              "kind": "canal window",
+              "w": 2.2
+            },
+            {
+              "kind": "column",
+              "w": 1.05
+            },
+            {
+              "kind": "oriel light",
+              "w": 0.86
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w02-274.jpg (TMX7316010203-000355_pano_0000_000942, 2017, 50 px/m): the canal column's wide window 2.2 m of glass (x 60-170), the column by the oriel 1.05 m (x 340-392), the oriel's west light 0.86 m (x 415-458)",
+          "openings": [
+            {
+              "kind": "canal window",
+              "w": 2.2
+            },
+            {
+              "kind": "column",
+              "w": 1.05
+            },
+            {
+              "kind": "oriel light",
+              "w": 0.86
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w02-274.jpg (TMX7316010203-000355_pano_0000_000942, 2017, 50 px/m): the canal column's wide window 2.2 m of glass (x 60-170), the column by the oriel 1.05 m (x 340-392), the oriel's west light 0.86 m (x 415-458)",
+          "openings": [
+            {
+              "kind": "canal window",
+              "w": 2.2
+            },
+            {
+              "kind": "column",
+              "w": 1.05
+            },
+            {
+              "kind": "oriel light",
+              "w": 0.86
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w02-274.jpg (2017): the canal window 2.2 m (x 60-170), the narrow light 0.7 m (x 240-275), the column window 0.85 m (x 335-390)",
+          "openings": [
+            {
+              "kind": "canal window",
+              "w": 2.2
+            },
+            {
+              "kind": "narrow light",
+              "w": 0.7
+            },
+            {
+              "kind": "column",
+              "w": 0.85
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

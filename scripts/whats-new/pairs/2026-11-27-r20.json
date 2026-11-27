@@ -1,0 +1,115 @@
+{
+ "about": "What's New 2026-11-27, landmark round r20 (install 20261127e; tests/e2e/whats-new-pair.spec.ts). before.ref 7db62bacb1 is main before the r20 install (none of the four in signature-landmarks.json), so the before frame shows the generic building each replaced. Own engine (?engine=own), street pose (view cockpit), HUD off. Standpoints follow the panorama cameras of each landmark's photographed front (artifacts/review/<id>/meta.json in the r20 lanes).",
+ "pairs": [
+  {
+   "name": "dikker-thijs-leidsestraat",
+   "centre": [
+    4.88400098,
+    52.36496156
+   ],
+   "standDeg": 44,
+   "standM": 40,
+   "before": {
+    "ref": "7db62bacb1"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "faceDeg": 229
+  },
+  {
+   "name": "raadhuisstraat-52",
+   "centre": [
+    4.88558887,
+    52.3740869
+   ],
+   "standDeg": 270,
+   "standM": 40,
+   "before": {
+    "ref": "7db62bacb1"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "faceDeg": 95,
+   "camZoom": 1.15
+  },
+  {
+   "name": "passage-central",
+   "centre": [
+    4.89609663,
+    52.37850353
+   ],
+   "standDeg": 50,
+   "standM": 50,
+   "before": {
+    "ref": "7db62bacb1"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "faceDeg": 228,
+   "camZoom": 1.35
+  },
+  {
+   "name": "kweekschool-zeevaart",
+   "centre": [
+    4.91190727,
+    52.37102924
+   ],
+   "standDeg": 356,
+   "standM": 40,
+   "before": {
+    "ref": "7db62bacb1"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "faceDeg": 200
+  }
+ ]
+}

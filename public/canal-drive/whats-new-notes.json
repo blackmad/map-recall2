@@ -3,8 +3,83 @@
   "notes": [
     {
       "date": "2026-11-27",
-      "title": "Six more famous fronts",
-      "text": "Metz & Co on the corner of the Keizersgracht and the Leidsestraat, in cream sandstone with its domed clock tower; Hajenius on the Rokin with its striped-awning and black neck-gabled neighbours; art'otel on the Prins Hendrikkade opposite Centraal Station, with its belvedere; the red-turreted corner of Leidsestraat 40; the grey stone front of Damrak 37 with its curved gable; and the white gable of The Bulldog The First on the Oudezijds Voorburgwal.",
+      "title": "Four more famous fronts",
+      "text": "Dikker & Thijs on the corner of the Leidsestraat and the Prinsengracht, in red brick with cream trim, bay windows and its name over the shop; the red-brick corner of Raadhuisstraat 52 at the Herengracht, with its bays and balconies; Passage Central opposite Centraal Station, in cream and red stripes under curved gables; and the old Kweekschool voor de Zeevaart further east on the Prins Hendrikkade, a long brick front with stepped gables.",
+      "where": [
+        4.88400098,
+        52.36496156
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-27-dikker-thijs-leidsestraat.jpg",
+          "alt": "The corner of the Leidsestraat and the Prinsengracht: before, a plain brown-brick block; after, Dikker & Thijs in red brick with cream trim, bay windows, a balustrade and dark shopfronts",
+          "caption": "Dikker & Thijs, Leidsestraat and Prinsengracht: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-raadhuisstraat-52.jpg",
+          "alt": "The corner of the Raadhuisstraat and the Herengracht: before, a plain dark-brown block; after, a red-brick corner with tall arched windows, a corner bay, a balcony and a stepped gable",
+          "caption": "Raadhuisstraat 52: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-passage-central.jpg",
+          "alt": "The Prins Hendrikkade opposite the station: before, a plain dark-grey block with blue shopfronts; after, Passage Central in cream and red-striped brick with curved gables and arched openings at street level",
+          "caption": "Passage Central, Prins Hendrikkade: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-kweekschool-zeevaart.jpg",
+          "alt": "The Prins Hendrikkade by the water: before, a plain dark-brown office block; after, the Kweekschool voor de Zeevaart, a long red-brick front with cream bands and stepped gables",
+          "caption": "Kweekschool voor de Zeevaart, Prins Hendrikkade: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "title": "Ten more famous fronts",
+      "text": "Metz & Co on the corner of the Keizersgracht and the Leidsestraat, in cream sandstone with its domed clock tower; Hajenius on the Rokin with its striped-awning and black neck-gabled neighbours; art'otel on the Prins Hendrikkade opposite Centraal Station, with its belvedere; Gebouw Batavia's tall dark-brick front further along the Prins Hendrikkade; the red-turreted corner of Leidsestraat 40 and the cream stone corner of Leidsestraat 1 by the Herengracht; the grey stone front of Damrak 37 with its curved gable; the white gable of The Bulldog The First on the Oudezijds Voorburgwal; In 't Aepjen's wooden front at the foot of the Zeedijk; and De Sluyswacht, the black wooden lock-keeper's house by the Rembrandthuis.",
       "where": [
         4.8866858,
         52.36621271
@@ -103,6 +178,70 @@
               0.25,
               0.36,
               0.75
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-batavia-prins-hendrikkade.jpg",
+          "alt": "The Prins Hendrikkade by the Sint-Nicolaaskerk: before, a plain grey-brown block; after, Gebouw Batavia, a tall narrow dark-brick front with long window bays and its name over the door",
+          "caption": "Gebouw Batavia, Prins Hendrikkade: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-leidsestraat-1.jpg",
+          "alt": "The corner of the Leidsestraat and the Herengracht from above: before, a plain grey block; after, a cream stone corner with a small tower, banded walls and tall shop windows",
+          "caption": "Leidsestraat 1: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-sluyswacht.jpg",
+          "alt": "The lock by the Rembrandthuis: before, a brick café with a Sluyswacht sign; after, the black wooden lock-keeper's house with a brown roof and a dormer",
+          "caption": "De Sluyswacht, Jodenbreestraat 1: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.3,
+              0.2,
+              0.4,
+              0.65
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-in-t-aepjen.jpg",
+          "alt": "The foot of the Zeedijk from above: before, an orange-roofed brick house; after, In 't Aepjen's grey wooden front under a black pointed gable",
+          "caption": "In 't Aepjen, Zeedijk 1: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.25,
+              0.05,
+              0.5,
+              0.65
             ]
           }
         }

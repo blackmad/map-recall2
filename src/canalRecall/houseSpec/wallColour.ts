@@ -37,27 +37,14 @@ export function liftShare(L: number, C: number): number {
   return 1 - (1 - clamp((C - c0) / (c1 - c0))) * (1 - clamp((L - l0) / (l1 - l0)));
 }
 
-/**
- * `?wallChroma=0` (WALL_CHROMA=0 in Node) restores the round-3 chroma gain and hue pull of `specWallDisplay`; default on
- * (lane W1, 2026-11-12): a pixel reading keeps its own chroma and hue, the lightness lift stays. Measured per stage on the
+/*
+ * Lane W1 (2026-11-12, formerly `?wallChroma`): in `specWallDisplay` a pixel reading keeps its own chroma and hue, the
+ * lightness lift stays (the round-3 chroma gain and hue pull are gone). Measured per stage on the
  * house:frames pairs (docs/house-line.md §11): the readings sit at the photo's chroma (reading vs photo dC +0.01), the
  * decoration added +0.028 and a hue pull of -4 degrees, and the drawn walls ended at pixel C 0.043 against the photos'
  * 0.016, hue 48 against 62: brown brick drawn orange-red. The gain matched the old period palette's chroma, not the photo;
  * the user's ruling of 2026-11-12 is correctness first.
  */
-export const WALL_CHROMA_TRUTH_DEFAULT = true;
-export function wallChromaTruthEnabled(search?: string | null, env?: string | null): boolean {
-  const q = search ? /[?&]wallChroma=([01])\b/.exec(search)?.[1] : undefined, v = q ?? (env === '0' || env === '1' ? env : undefined);
-  return v === undefined ? WALL_CHROMA_TRUTH_DEFAULT : v === '1';
-}
-let chromaCached: boolean | undefined;
-export function wallChromaTruthOn(): boolean {
-  if (chromaCached !== undefined) return chromaCached;
-  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
-  return (chromaCached = wallChromaTruthEnabled(g.location?.search ?? null, g.process?.env?.WALL_CHROMA ?? null));
-}
-/** Tests only: forget the cached flag. */
-export const resetWallChromaFlag = () => { chromaCached = undefined; };
 /** Default on; `?specWalls=0` in the page or SPEC_WALLS=0 in Node keeps the period colour (the H1 hold). */
 export const SPEC_WALLS_DEFAULT = true;
 export function specWallsEnabled(search?: string | null, env?: string | null): boolean {
@@ -127,29 +114,13 @@ export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean
   const k = SPEC_WALL_LIFT.k * share * Math.max(0, Math.min(1, (L - SPEC_WALL_LIFT.darkLift[0]) / (SPEC_WALL_LIFT.darkLift[1] - SPEC_WALL_LIFT.darkLift[0])));
   const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(opts.minL ?? SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
   if (opts.fromPixel === false || C < 1e-6) return oklabToHex([L2, a, b]);
-  const lift = SPEC_WALL_LIFT, clamp = (v: number) => Math.max(0, Math.min(1, v));
-  // A near-neutral reading stays neutral (its faint tint is camera cast: lifted, greys went blue or green).
-  const colourful = clamp((C - lift.neutralC[0]) / (lift.neutralC[1] - lift.neutralC[0])) * share;
-  // Round 3 (the ruling on round 2: "relative darkness is lost"): a dark reading (OKLab L under darkL, about HSL 0.30-0.36)
-  // gains little chroma, so a dark brown street stays darker than a red one instead of rising into terracotta; a pale
-  // reading (over paleL) keeps its own chroma and hue, so beige stays beige rather than turning peach.
-  const darkRamp = clamp((L - lift.darkL[0]) / (lift.darkL[1] - lift.darkL[0])), dark = lift.darkGain + (1 - lift.darkGain) * darkRamp, pale = 1 - clamp((L - lift.paleL[0]) / (lift.paleL[1] - lift.paleL[0]));
-  const gain = colourful * dark * pale;
-  let h = (Math.atan2(b, a) * 180) / Math.PI;
+  const lift = SPEC_WALL_LIFT;
+  const h = (Math.atan2(b, a) * 180) / Math.PI;
   // Only warm readings gain chroma. A cool tint (blue, green) on a wall reading is camera cast, not paint, and keeps only
   // `coolKeep` of it (0363100012167431, a grey front read blue-grey, drew lilac).
   if (h < lift.hue.warm[0] || h > lift.hue.warm[1]) return oklabToHex([L2, a * lift.coolKeep, b * lift.coolKeep]);
-  // Lane W1 (`?wallChroma`, default on): a warm reading keeps its measured chroma and hue.
-  if (wallChromaTruthOn()) return oklabToHex([L2, a, b]);
-  // Overcast readings sit yellower than brick (readings hue 52-72 vs the brown tone 46 and red-brown 33; J2: the pixel
-  // turns red-brown into dull brown). Half of the shift past `toward` (40, the brick edge of the orange band) comes back,
-  // so a lifted brown stays brown rather than orange-tan; a pale front keeps its hue.
-  // A dark reading keeps its brown hue (pulled towards 40 and given chroma, it turned terracotta).
-  if (h > lift.hue.toward) h += (lift.hue.toward - h) * lift.hue.pull * colourful * pale * darkRamp;
-  const t = clamp((h - lift.hue.capAt[0]) / (lift.hue.capAt[1] - lift.hue.capAt[0]));
-  const cap = lift.hue.capC[0] + (lift.hue.capC[1] - lift.hue.capC[0]) * t;
-  const C2 = Math.min(C * (1 + (lift.chroma - 1) * gain), Math.max(C, cap));
-  return oklabToHex([L2, C2 * Math.cos((h * Math.PI) / 180), C2 * Math.sin((h * Math.PI) / 180)]);
+  // Lane W1: a warm reading keeps its measured chroma and hue.
+  return oklabToHex([L2, a, b]);
 }
 
 /** A reader's wall-colour family (the H5h hand-set vocabulary, docs/house-line.md §4c; J2's words map onto it). */

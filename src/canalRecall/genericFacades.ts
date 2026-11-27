@@ -236,7 +236,7 @@ export function constructionYearEnricher(baseUrl: string, fetchImpl: typeof fetc
 }
 
 // Measured roofs (PDOK orthophoto): the roof-facts tile enricher, composed with the years above in vector-map.js.
-export { roofFactsEnricher, composeEnrichers, roofFactsEnabled } from './roofs/roofFacts.js';
+export { roofFactsEnricher, composeEnrichers } from './roofs/roofFacts.js';
 
 // ---------------------------------------------------------------------------
 // Pattern images

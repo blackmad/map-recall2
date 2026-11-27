@@ -1997,14 +1997,6 @@
 
   // src/canalRecall/stampArrival.ts
   var ARRIVAL_STAMP_HEIGHT = 64;
-  function stampCardEnabled(search) {
-    if (!search) return true;
-    try {
-      return new URLSearchParams(search).get("stampCard") !== "0";
-    } catch {
-      return true;
-    }
-  }
   var plainCache = /* @__PURE__ */ new Map();
   function plainStamp(name, size) {
     if (typeof document === "undefined") return null;
@@ -12337,7 +12329,7 @@
           const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level2];
           const storyLines = [];
           const passportFresh = this._finishPassportFresh || [];
-          const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === "undefined" ? "" : location.search);
+          const stampCard = passportFresh.length > 0;
           for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
             if (!sentence) continue;
             const room2 = lineBudget - storyLines.length;
@@ -12797,7 +12789,7 @@
         );
         if (stamped.fresh.length) {
           savePassport(localStorage, stamped.passport);
-          if (stampCardEnabled(typeof location === "undefined" ? "" : location.search)) void loadStampArt();
+          void loadStampArt();
         }
         this._finishPassportFresh = stamped.fresh;
         return after;

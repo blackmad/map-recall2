@@ -4,7 +4,7 @@
 // are typed; this file streams z15 tiles by view (ViewResidency), fills one InstancedMesh per kind with one shared
 // vertex-colour material, and culls each with rendererShared/instanceCull.ts. Draws from zoom 16 within 220 m of the
 // rider (`options.rider`, the own engine's camera subject; the view centre when there is none: feedback 4d7706de,
-// rendererShared/riderViewBox.ts). `?furniture=0` turns it off. No shadows (the budget is six instanced draws, not twelve).
+// rendererShared/riderViewBox.ts). No shadows (the budget is six instanced draws, not twelve).
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {radiusCentre,riderViewBox} from '../../../src/canalRecall/rendererShared/riderViewBox.ts';
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
@@ -17,10 +17,6 @@ const {THREE} = window.CanalRecallThree;
 export const MIN_ZOOM = 16;
 export const RADIUS_M = 220;
 const BUDGET = 9;
-
-export function furnitureFlag() {
-  try { return new URLSearchParams(location.search).get('furniture') !== '0'; } catch { return true; }
-}
 
 /** The view box clipped to RADIUS_M round the rider (the view centre without one); null when they do not meet. */
 function viewBox(camera, rider) {
@@ -56,7 +52,7 @@ export function furnitureGeometry(id) {
 export class StreetFurniture {
   constructor(map, maplibregl, options = {}) {
     this.map=map;this.camera=options.camera||worldCameraOf(map);this.maplibregl=maplibregl;this.rider=typeof options.rider==='function'?options.rider:null;
-    this.enabled=furnitureFlag();this.ready=false;this.generation=0;
+    this.enabled=true;this.ready=false;this.generation=0;
     this.tiles=new Map();this.pending=new Map();this.meshes=[];this.culls=[];this.queue=[];
     this.residency=new ViewResidency(.25,60);
     // One rebuild per burst of tile arrivals / ground re-bases, after a frame (lane E6 #219, rendererShared/rebuildCoalescer.ts;
@@ -107,7 +103,7 @@ export class StreetFurniture {
   }
   setGroundBase(fn){this.groundBase=fn||null;this.refreshGroundBases();}
   refreshGroundBases(){this.residency.invalidate();if(this.enabled&&this.ready&&(this.meshes.length||this.rebuilds.pending))this.rebuilds.request();this.map.triggerRepaint?.();}
-  setEnabled(value){this.enabled=!!value&&furnitureFlag();if(this.enabled)this.update();else this.clear();this.map.triggerRepaint?.();}
+  setEnabled(value){this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint?.();}
   setSuspended(value){if(this.suspended===!!value)return;this.suspended=!!value;if(!this.suspended)this.update();}
   clear(){
     for(const c of this.pending.values())c.abort();

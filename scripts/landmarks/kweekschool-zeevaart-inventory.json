@@ -1,0 +1,447 @@
+{
+ "schemaVersion": 1,
+ "id": "kweekschool-zeevaart",
+ "pand": "0363100012181563",
+ "brief": "scripts/landmarks/kweekschool-zeevaart-brief.md",
+ "signature": [
+  "kz-centre-gable",
+  "kz-pavilion-gables",
+  "kz-dormers",
+  "kz-centre-balcony",
+  "kz-banding",
+  "kz-entrance",
+  "kz-rounded-corner",
+  "kz-sunbursts",
+  "kz-triple-windows",
+  "kz-cross-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-29",
+   "bearing": 29,
+   "lengthM": 40.8,
+   "centre": [
+    4.9118245,
+    52.3711245
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002370_pano_0000_000191",
+   "capturedAt": "2021-12-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "kz-centre-gable",
+     "kind": "other",
+     "where": "the centre risalit's stone-dressed stepped gable over the cornice, with a semicircular sculpted relief field and a crowning pedestal (alt x 760-1110, y 0-280)",
+     "approxSizeM": [
+      7.8,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "steppedGable kit tiers with copings and pinnacles; the relief simplified as a raised half-disc field with relief blocks laid by pedimentRelief"
+    },
+    {
+     "id": "kz-centre-relief",
+     "kind": "relief",
+     "where": "the semicircular relief in the centre gable: a sculpted group in a round-headed field (alt x 830-1020, y 150-245)",
+     "approxSizeM": [
+      4.2,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "a raised half-disc stone field with seated and standing relief blocks (pedimentRelief layout)"
+    },
+    {
+     "id": "kz-pavilion-gables",
+     "kind": "other",
+     "where": "the two end pavilions' stepped gables, each with a two-light window and stone copings and pinnacles (alt x 0-300 and 1530-1841, y 0-270)",
+     "approxSizeM": [
+      6.0,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "steppedGable kit, symmetric pair, window in the lowest tier"
+    },
+    {
+     "id": "kz-dormers",
+     "kind": "window-shape",
+     "where": "six pointed dormers with finials on the slate roof, three over each wing (alt y 140-265)",
+     "approxSizeM": [
+      0.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "pointed dormer: cheeks, a gabled roof, a white window and a spike finial"
+    },
+    {
+     "id": "kz-roof",
+     "kind": "other",
+     "where": "grey slate roof rising behind the cornice to the 3DBAG ridge",
+     "approxSizeM": [
+      40.8,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "the 3DBAG roof surfaces in slate; cornice skin over the eaves"
+    },
+    {
+     "id": "kz-centre-balcony",
+     "kind": "balcony-ironwork",
+     "where": "the stone balcony with a balustrade on carved consoles over the main entrance at the first floor (x 770-1080, y 680-760)",
+     "approxSizeM": [
+      6.8,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "balustrade kit on a slab with four console blocks"
+    },
+    {
+     "id": "kz-pavilion-balconies",
+     "kind": "balcony-ironwork",
+     "where": "a stone balustrade balcony across each end pavilion at the first floor (x 60-250 and 1600-1790, y 690-760)",
+     "approxSizeM": [
+      4.2,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "balustrade kit on a slab with console blocks"
+    },
+    {
+     "id": "kz-entrance",
+     "kind": "window-shape",
+     "where": "the main entrance: a round-arched doorway with a glazed fanlight under a carved cartouche, flanked by two smaller doors under oculi in carved stone frames (x 760-1090, y 760-975)",
+     "approxSizeM": [
+      7.2,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "entrance(): door leaves, archSlab fanlight, archivolt, cartouche block, ringSlab oculi with scroll cheeks"
+    },
+    {
+     "id": "kz-pavilion-doors",
+     "kind": "window-shape",
+     "where": "a door with a round-arched fanlight in each end pavilion's ground storey, between two small windows (x 140-220 and 1640-1720)",
+     "approxSizeM": [
+      1.6,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "how": "door leaf with arched fanlight and stone archivolt"
+    },
+    {
+     "id": "kz-banding",
+     "kind": "other",
+     "where": "pale stone bands through the brick of the ground storey and block quoins at every window jamb and pier on all storeys (speklagen)",
+     "approxSizeM": [
+      40.8,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "speklagen kit runs stopped at the openings; jamb blocks per window"
+    },
+    {
+     "id": "kz-sunbursts",
+     "kind": "relief",
+     "where": "radiating stone voussoirs (sunbursts) over the first-floor windows in the frieze between the first and second storey, with wrought-iron wall anchors between them (y 505-560)",
+     "approxSizeM": [
+      1.8,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "fan of thin stone slabs over each window and a dark anchor block between"
+    },
+    {
+     "id": "kz-niche-frieze",
+     "kind": "relief",
+     "where": "a frieze of shallow round-headed niches with shell infill under the cornice (y 300-355)",
+     "approxSizeM": [
+      1.2,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "archBand per niche with a sunk panel"
+    },
+    {
+     "id": "kz-triple-windows",
+     "kind": "window-shape",
+     "where": "the centre risalit's triple windows on the first and second floor between stone mullions (x 810-1035)",
+     "approxSizeM": [
+      5.0,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "three crossWindow lights between stone mullion slabs"
+    },
+    {
+     "id": "kz-cross-windows",
+     "kind": "window-shape",
+     "where": "tall white cross windows with small panes; wings three axes, pavilions two (all storeys)",
+     "approxSizeM": [
+      1.4,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "crossWindow(): frame, glass, mullion and transom"
+    },
+    {
+     "id": "kz-cornice",
+     "kind": "other",
+     "where": "the stone cornice over a moulded bed (y 265-300)",
+     "approxSizeM": [
+      40.8,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "how": "cornice slabs with a projecting corona"
+    },
+    {
+     "id": "kz-awnings",
+     "kind": "other",
+     "where": "three red awnings over the west wing's ground windows",
+     "approxSizeM": [
+      1.6,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1041_Track08_Sphere_00263",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant awnings"
+     }
+    },
+    {
+     "id": "kz-postbox",
+     "kind": "other",
+     "where": "an orange post box on the pavement",
+     "approxSizeM": [
+      0.5,
+      1.1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002370_pano_0000_000191",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ],
+   "note": "The main front (facade ring edges 30-38, 40.8 m: end pavilions 6.3 m, wings 9.8 m 0.3 m back, a centre risalit 8.6 m 0.08 m proud of the pavilions), read on the frontal 2021 crop (w01-29.jpg, 45.1 px/m) and the sharper-topped 2024 crop (w01-29.alt.jpg), which shows the roof, dormers and gables against the sky. Symmetric about the centre axis. Vertical scale fitted to the 3DBAG eaves (cornice crown 16.6 m; the crop reads 15.6 m at its nominal scale)."
+  },
+  {
+   "tag": "w02-134",
+   "bearing": 134,
+   "lengthM": 17.2,
+   "centre": [
+    4.9120215,
+    52.3709315
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track15_Sphere_00023",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "kz-rounded-corner",
+     "kind": "other",
+     "where": "the curved east corner between the SE side and the front, carrying the storey bands, cornice and one window axis per facet",
+     "approxSizeM": [
+      8.0,
+      16.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "how": "per facet: band courses, a window per storey, cornice; the 3DBAG facets"
+    },
+    {
+     "id": "kz-se-crowns",
+     "kind": "other",
+     "where": "two stepped attic crowns with a window over the SE side (x 10-250 and 500-670, y 10-260)",
+     "approxSizeM": [
+      4.5,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "how": "steppedGable kit with a window, finial"
+    },
+    {
+     "id": "kz-se-door",
+     "kind": "window-shape",
+     "where": "a pair of panelled doors under two round-arched fanlights with a carved cartouche over them, number 13 (x 240-360, y 900-1084)",
+     "approxSizeM": [
+      2.4,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "how": "doublePortal(): two door leaves, two arched fanlights, the central colonnette and a cartouche block"
+    },
+    {
+     "id": "kz-se-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "iron balconettes on the SW pavilion windows of the first and ground storeys (x 40-190)",
+     "approxSizeM": [
+      1.3,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "how": "bar railings"
+    },
+    {
+     "id": "kz-se-sunbursts",
+     "kind": "relief",
+     "where": "the sunburst voussoirs and wall anchors of the front continue along this side (y 545-600)",
+     "approxSizeM": [
+      1.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "how": "as kz-sunbursts"
+    },
+    {
+     "id": "kz-sign-bracket",
+     "kind": "sign",
+     "where": "a wrought-iron hanging sign bracket and a round cafe sign",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241210_1246_Track15_Sphere_00023",
+     "skip": {
+      "reason": "too-small",
+      "note": "tenant sign"
+     }
+    }
+   ],
+   "note": "The SE side (ring edge 21, 16.3 m) on the 2024 rectified crop (50 px/m; vertical fitted to the 3DBAG eaves, cornice 16.6 m) and the rounded east corner (ring edges 22-28, seven 1.2 m facets) in the aimed view: the same three storeys, bands and frieze run round the curve. Two stepped attic crowns rise over the SE side (x 10-250 and 500-670) and a small pointed dormer between."
+  },
+  {
+   "tag": "w03-299",
+   "bearing": 299,
+   "lengthM": 12.1,
+   "centre": [
+    4.911519,
+    52.3711655
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track18_Sphere_00008",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [],
+   "note": "The NW end wall (ring edge 0, 12 m): the 2024 crop at 23 m and 35 deg shows the new brick block next door standing in front of most of it; only the front's west corner pier is legible. Nothing notable to model; the 3DBAG wall is drawn with the brick and band colour."
+  },
+  {
+   "tag": "w04-119",
+   "bearing": 119,
+   "lengthM": 6.7,
+   "centre": [
+    4.9117845,
+    52.3709995
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01558",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "kz-rear-door",
+     "kind": "window-shape",
+     "where": "a pair of panelled doors under two round-arched fanlights with a carved cartouche (x 0-150, y 650-1084)",
+     "approxSizeM": [
+      2.4,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_01558",
+     "how": "doublePortal() as kz-se-door"
+    }
+   ],
+   "note": "Ring edge 11 (6.6 m, SE-facing, set back from the street): the 2025 crop shows a pair of panelled doors under arched fanlights and a carved cartouche, stone bands in brick, a cornice ledge and an iron sign bracket."
+  },
+  {
+   "tag": "w05-209",
+   "bearing": 209,
+   "lengthM": 6,
+   "centre": [
+    4.911515,
+    52.371105
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama (courtyard side); the 3DBAG wall in brick, nothing claimed."
+  },
+  {
+   "tag": "w06-314",
+   "bearing": 314,
+   "lengthM": 5.4,
+   "centre": [
+    4.9118745,
+    52.3709765
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track18_Sphere_00015",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [],
+   "note": "The crop at 39 deg from 24-25 m shows the main front's pavilion door and balcony at a raking angle, not this courtyard-side wall; nothing of this wall is legible, so it is drawn as banded brick shell only."
+  },
+  {
+   "tag": "w07-210",
+   "bearing": 210,
+   "lengthM": 5,
+   "centre": [
+    4.911599,
+    52.371096
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama (courtyard side); the 3DBAG wall in brick, nothing claimed."
+  },
+  {
+   "tag": "w08-300",
+   "bearing": 300,
+   "lengthM": 4.6,
+   "centre": [
+    4.9116145,
+    52.371067
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track18_Sphere_00011",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [],
+   "note": "The crop at 54 deg from 24-25 m shows the main front's pavilion door and balcony at a raking angle, not this courtyard-side wall; nothing of this wall is legible, so it is drawn as banded brick shell only."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

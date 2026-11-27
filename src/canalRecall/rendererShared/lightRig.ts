@@ -185,7 +185,7 @@ export type LightRig = {
   /** Move the sun (time of day, debugging). Takes effect on the next follow(). */
   setSun(azimuthDeg: number, elevationDeg: number): void;
   /**
-   * Resize the sun's shadow map (engine/aerialPower.ts `?aerialShadowMap=0`: 1024² from the air). The old map's render
+   * Resize the sun's shadow map (tier changes). The old map's render
    * target is released and three allocates the new one at the next shadow redraw; the caller forces that redraw.
    * Returns whether the size changed.
    */

@@ -1,0 +1,70 @@
+{
+  "id": "passage-central",
+  "countedBy": "lane r20-b-20261127b from the rectified panorama crops w04-42 (2025, whole Prins Hendrikkade front in the contact frame and the portal bay rectified) and w05-47 (2021, the shop bay rectified); not yet blind-counted. Glazed openings bottom row first; the ground storey (portal, shop arches, basement lights at three heights) is cropped off and judged on the review sheet instead.",
+  "facades": [
+    {
+      "name": "Prins Hendrikkade front, upper storeys",
+      "bearing": 45,
+      "photo": "artifacts/landmark-briefs/passage-central/w04-42.jpg",
+      "rows": [
+        7,
+        7,
+        7,
+        7,
+        4
+      ],
+      "columns": 7,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "depthBand": 4,
+      "heightM": [
+        8,
+        26
+      ],
+      "note": "Cropped to 8-26 m: the four window storeys and the dormers. Each side bay carries two window axes per storey and two oculus dormers on the mansard; the recessed centre bay carries three axes per storey (balcony on the first two) and the crest, which has no glazed light. The 2025 contact frame shows the full front; the bay crops give the side-bay counts (w04 the portal bay, w05 the shop bay). alongM: the silhouette's viewer-right 1.5 m is the brick flank of the shell beyond the east corner, not the front.",
+      "alongM": [
+        0.1,
+        15.2
+      ],
+      "mixedRows": [
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "recording 2025 w04-42 contact frame and 2021 w05-47: the second storey's two lights per side bay (1.1 m) are full-height sashes; the centre bay's three lights (0.86 m) open onto the upper balcony and show only over its balustrade. The model starts their glass over the balcony slab (12.65 m) because the 3DBAG recess roof at 12.1 m lies behind them; the street view of the two is the same.",
+          "openings": [
+            {
+              "kind": "side-bay sash",
+              "w": 1.1
+            },
+            {
+              "kind": "side-bay sash",
+              "w": 1.1
+            },
+            {
+              "kind": "centre balcony light",
+              "w": 0.86
+            },
+            {
+              "kind": "centre balcony light",
+              "w": 0.86
+            },
+            {
+              "kind": "centre balcony light",
+              "w": 0.86
+            },
+            {
+              "kind": "side-bay sash",
+              "w": 1.1
+            },
+            {
+              "kind": "side-bay sash",
+              "w": 1.1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

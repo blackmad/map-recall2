@@ -1,6 +1,5 @@
-// Measured roofs (roof-facts, PDOK orthophoto): before/after aerial shots and frame cost.
-//   ROOF_RUN=1 ROOF=0 PW_PORT=4456 npx playwright test roof-facts-shots --project=desktop   (before: ?roofFacts=0)
-//   ROOF_RUN=1 ROOF=1 PW_PORT=4456 npx playwright test roof-facts-shots --project=desktop   (after)
+// Measured roofs (roof-facts, PDOK orthophoto): aerial shots and frame cost.
+//   ROOF_RUN=1 PW_PORT=4456 npx playwright test roof-facts-shots --project=desktop
 // ROOF_BUNDLES=<dir> serves *.bundle.js from there (measure source before the integrator rebuilds bundles).
 // Writes artifacts/roofs/shots/<label>-<view>-<project>.png and perf-<label>-<project>.json.
 import { test } from '@playwright/test';
@@ -9,8 +8,7 @@ import path from 'node:path';
 import { openRoute } from './helpers';
 
 test.skip(!process.env.ROOF_RUN, 'set ROOF_RUN=1');
-const on = process.env.ROOF !== '0';
-const label = on ? 'after' : 'before';
+const label = 'after';
 const pick = (v: number[], q: number) => { const s = [...v].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))] ?? 0; };
 const summary = (v: number[]) => ({ n: v.length, median: +pick(v, 0.5).toFixed(2), p95: +pick(v, 0.95).toFixed(2), mean: +(v.reduce((a, b) => a + b, 0) / Math.max(1, v.length)).toFixed(2) });
 const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: number; bearing: number }> = {
@@ -31,7 +29,7 @@ test(`roof facts ${label}`, async ({ page }, info) => {
     const file = path.join(process.env.ROOF_BUNDLES!, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
     return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
-  await openRoute(page, { travelMode: 'car', abortHeavyTiles: true, enterRacing: false, query: on ? '' : '?roofFacts=0' });
+  await openRoute(page, { travelMode: 'car', abortHeavyTiles: true, enterRacing: false, query: '' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
     const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;

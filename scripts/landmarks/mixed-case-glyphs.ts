@@ -32,6 +32,9 @@ export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
   h: ['10000', '10000', '10110', '11001', '10001', '10001', '10001'],
   Q: ['01110', '10001', '10001', '10001', '10101', '10010', '01101'],
   y: ['00000', '00000', '10001', '10001', '01111', '00001', '01110'],
+  // Dikker & Thijs, Leidsestraat (landmarks r20-A, 2026-11-27): the script lettering "Dikker & Thijs" on the sign band
+  // (TMX7316010203-000355_pano_0000_000172, 2017) needs a lowercase j; its dot sits in row 0 like i, the hook on the baseline.
+  j: ['00010', '00000', '00110', '00010', '00010', '10010', '01100'],
 };
 
 /** GL plus the extra glyphs; GL wins where both define a character, so nothing GL already draws changes. */

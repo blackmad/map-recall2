@@ -41,24 +41,6 @@ export function retailPageCount(real = retailRealOn(), variety = shopVarietyOn()
   return real ? VARIETY_BASE + (variety ? FILLER_LAYERS : 0) : 2;
 }
 
-let cachedAll: boolean | undefined;
-/** `?retailRealAll=1` (RETAIL_REAL_ALL=1): every template takes its retail-real look, accepted or not (candidate frames for
- *  the blind A/B). Off by default: only REAL_ACCEPTED templates (retailTemplates.ts) do. */
-export function retailRealAllOn(): boolean {
-  const g = globalThis as { __canalRecallRetailRealAll?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
-  if (typeof g.__canalRecallRetailRealAll === 'boolean') return g.__canalRecallRetailRealAll;
-  return (cachedAll ??= /[?&]retailRealAll=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_REAL_ALL === '1');
-}
-
-let cachedParts: boolean | undefined;
-/** `?retailParts=1` (RETAIL_PARTS=1): round 4's template parts (retailTemplates.ts TEMPLATE_PARTS: shutter boxes, neon
- *  window signs, lettering on the glass) and per-pand front overrides. Off until they win a blind A/B. */
-export function retailPartsOn(): boolean {
-  const g = globalThis as { __canalRecallRetailParts?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
-  if (typeof g.__canalRecallRetailParts === 'boolean') return g.__canalRecallRetailParts;
-  return (cachedParts ??= /[?&]retailParts=1\b/.test(g.location?.search ?? '') || g.process?.env?.RETAIL_PARTS === '1');
-}
-
 let cachedBrand: boolean | undefined;
 let cachedBrandAll: boolean | undefined;
 /** Round 7 (lane retail-real; default on since round t, 2026-11-16, after its blind): the brands in ACCEPTED_BRANDS

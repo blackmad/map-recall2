@@ -12,8 +12,8 @@ import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
-import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
-import {trunkGeometry,treeCapsFlag} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
+import {InstanceCull} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
+import {trunkGeometry} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
 import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
 import {isAerialView} from '../../../src/canalRecall/rendererShared/aerialView.ts';
@@ -71,9 +71,8 @@ export class InventoryTrees {
     if(this.incremental!=='off'){this.instanceCache=new TreeInstanceCache();this.treeEmit=(tree,push)=>{const shape=this.shapeOf(tree);if(!shape.t)return null;this.appendTree(shape,0,push);return {archetype:shape.t.archetype,authored:tree.source==='allotment-prior'};};}
     // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).
     this.sharedFrame=options.sharedFrame||null;
-    // `?treeCull=0`: every resident instance drawn and casting, as before. `?treeCull=twin` (diagnostic): the shadow
-    // twins without the culling, to tell the two halves apart in a pixel A/B.
-    this.cullOn=!!this.sharedFrame&&treeCullFlag();this.cullTwinOnly=new URLSearchParams(location.search).get('treeCull')==='twin';this.culls=[];this.clipFromLocal=new THREE.Matrix4();this.cullFrustum=new THREE.Frustum();
+    // `?treeCull=twin` (diagnostic): the shadow twins without the culling, to tell the two halves apart in a pixel A/B.
+    this.cullOn=!!this.sharedFrame;this.cullTwinOnly=new URLSearchParams(location.search).get('treeCull')==='twin';this.culls=[];this.clipFromLocal=new THREE.Matrix4();this.cullFrustum=new THREE.Frustum();
     this.scene=new THREE.Group();
     // `?treeFade` (lane P5 #332, rendererShared/treeFade.ts): trees a rebuild adds dissolve in, trees it drops dissolve
     // out on a leaving mesh; kept trees are untouched. Off (`=0`, or `?popFade=0`): the one-frame swap as before.
@@ -312,7 +311,7 @@ export class InventoryTrees {
     const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
     const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
     if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
-      wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
+      wood?trunkGeometry(THREE)
         :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
         :rose?roseBushGeometry()
         :realLookOn('trees')?sphereNormals(new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0)):new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));

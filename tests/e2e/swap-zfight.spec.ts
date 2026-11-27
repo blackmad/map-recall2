@@ -12,7 +12,7 @@ import { debugLevelOf, layerDigitOf } from '../../src/canalRecall/look/cellMips'
 // stepped by hand (the clock of every fading chunk set to each step) while the camera pans sub-pixel between steps.
 // Per step: the area on the slab whose colour moves by ΔE > 20 from the step before (CIE76 in Lab). A still frame
 // has none; a dissolve that draws shell and detail over each other z-fights there. Gate: 0 px during the swap with
-// the complementary dissolve (the default); `?swapComplement=0` reports the old overlap.
+// the complementary dissolve (the default); `?chunkFade=0` reports without the dissolve.
 //   PW_PORT=4640 BUNDLES_DIR=<scratch> /tmp/canal-pw.sh npx playwright test swap-zfight --project=desktop --workers=1
 // ZFIGHT_QS adds query flags; ZFIGHT_REPORT_ONLY=1 reports without failing; ZFIGHT_SPOT picks a spot (default s3-slab);
 // ZFIGHT_STEPS (24) and ZFIGHT_PAN_PX (0.35 CSS px per step) shape the pan. Output: artifacts/swap-zfight/<project><label>.
@@ -267,8 +267,11 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     for (let step = 0; step <= STEPS; step++) {
       await page.evaluate(([pose, step, panPx, steps, swap]) => {
         const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, g = vm._ownGround;
-        // Hold every fading chunk at t = step / STEPS of its dissolve (CHUNK_FADE_MS 700), whatever the wall clock.
-        if (swap) for (const f of tb.fading.values()) f.start = performance.now() - 700 * Math.min(0.999, step / steps);
+        // Hold every fading chunk at t = step / STEPS of its dissolve (CHUNK_FADE_MS 700), whatever the wall clock. A
+        // getter, not a value (lane cell-hidden-skip 2026-11-27): a value set here aged with every frame drawn before the
+        // capture and the `fading` read after it (100-200 ms on a loaded machine), so the late steps' fades ended early
+        // ("the swap was dissolving through the steps": 18-21 of 25 on cdeead2e12, in both cellSkip arms).
+        if (swap) for (const f of tb.fading.values()) { const x = Math.min(0.999, step / steps); Object.defineProperty(f, 'start', { configurable: true, enumerable: true, get: () => performance.now() - 700 * x, set: () => {} }); }
         const mPerPx = 156543.03 * Math.cos(pose.center[1] * Math.PI / 180) / 2 ** pose.zoom;
         const along = step * panPx * mPerPx, b = pose.bearing * Math.PI / 180;
         const dLng = along * Math.cos(b) / (111320 * Math.cos(pose.center[1] * Math.PI / 180)), dLat = -along * Math.sin(b) / 110540;
@@ -301,6 +304,8 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
         await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}${TAG}${capture === grab ? '' : '-ref'}-${swap ? 'swap' : 'still'}-mid.png`);
       }
     }
+    // Let the held fades run out from where they are (a plain value again).
+    if (swap) await page.evaluate(() => { for (const f of (window as any).canalRecallGame.vectorMap._threeBuildings.fading.values()) { const s = f.start; Object.defineProperty(f, 'start', { configurable: true, enumerable: true, writable: true, value: s }); } });
     if (swap) await settle(page);
     return { areas, fadingSteps: under.filter(n => n > 0).length, frames };
   };
@@ -580,6 +585,6 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   expect(errors, 'page errors').toEqual([]);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(swap.fadingSteps, 'the swap was dissolving through the steps').toBeGreaterThan(STEPS * 0.8);
   // Complementary (the default): the shell yields the detail's share of the slab at mid-swap (0.5 ± 0.1).
-  if (!process.env.ZFIGHT_REPORT_ONLY && !FRAME_MASK && !process.env.ZFIGHT_ALIAS_ONLY && !/swapComplement=0|chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
+  if (!process.env.ZFIGHT_REPORT_ONLY && !FRAME_MASK && !process.env.ZFIGHT_ALIAS_ONLY && !/chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(sum(report.excess), 'ΔE>20 px on the slab beyond the still pan, during the swap').toBe(0);
 });

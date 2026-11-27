@@ -1,5 +1,46 @@
 # Canal Recall — what is built
 
+## Round 20261127e: landmarks r20, the last four iconic briefs (2026-11-27)
+
+- Installed four landmarks, each of which won its blind against the photo (fresh opus judge, unlabelled, random order):
+  - Dikker & Thijs on the Leidsestraat/Prinsengracht corner (r20-a, 19.7k tris);
+  - Raadhuisstraat 52 (r20-a, 13.1k);
+  - Passage Central (r20-b, 22.0k);
+  - Kweekschool voor de Zeevaart (r20-b, 32.1k).
+- The blind opponent was today's view, which for Passage Central and the Kweekschool was a bare 3DBAG shell. The absolute verdicts were PASS for both.
+- r20-b fixed the judge's misses but did not re-judge afterwards.
+- New kit parts: `cantedBay` (three-sided oriel, 4 tests) and `voussoirFan` (2 tests), both in test:landmark-kits.
+- Install: `build-manual-landmarks --only` for the four, which refreshed the toolchain hash, then the signature bundle, 10 new LODs, covers, and a world recompile with `--shell`. The recompile used `--against=none`, because Café Hendrix's cell (0363100012132271) changed on purpose when the retail lane removed `shopFrontOverride`. Content stats and buurt pages were regenerated.
+- Open, from the judges and lanes:
+  - The Kweekschool's sculpted centre crown and entrance carving are panels.
+  - The Passage and Dikker ground storeys render darker than the sunlit photos.
+  - The Raadhuisstraat gables fail compare:facades orthographically: the 3DBAG ridge sits within 0.3 m of the apex. They read as peaks in perspective.
+  - Kit gaps: round oriels with curved glazing; true script lettering; carving; pediment crowns; openings on finely faceted 3DBAG curves (the wall-plane pick in geometryAudit.ts).
+
+## Round 20261127d: baked cells skip hidden buildings; view-change work at 10 Hz (2026-11-27)
+
+- lane/cell-hidden-skip-20261127 (986c7d6d47). Each baked cell's index is now a permutation of building runs: drawn runs first, hidden runs after, with the draw range ending at the drawn runs. The skip is synced from the same `hidden` bytes the shader collapses, so a dissolving copy is still drawn until its fade ends.
+  - Belt ride: 2.38 → 2.18 M triangles a frame (−7.6 %, n=2), and the cells under the rider draw 371/675/573 → 197/482/385 k at three poses.
+  - Frames are pixel-identical, settled and mid-swap (0 px, max Δ 0).
+  - GPU time is only 3–4 % less per frame (timer queries, 4.72 → 4.57 ms), because a collapsed vertex was already cheap. The frame is less triangle-bound than the counts suggested.
+  - The swap costs 0.2 ms mean to rewrite the index, plus about 5 MB/s of index uploads while riding.
+  - Off-switch `?cellSkip=0`.
+- `onViewChange` runs at most 10 Hz. The first and last changes always run. Its listener cost drops from 17–18 to 3 ms/s. Off-switch `?viewChangeHz=0`.
+- flatRoof.test "surface layer" was stale since retail-real became the default and is fixed. The swap-zfight step race is fixed (25/25 steps); its 0-px excess gate still fails on main at 77–98 px, independent of this change (TODO).
+
+## Round 20261127c: stale flags retired (2026-11-27)
+
+- David agreed the flag plan on 2026-11-27: delete the off-switches whose default had been on for over a week and the opt-in experiments nobody ran, and keep the opt-ins owned by live programmes (designUnits, rowFront) until those decide. lane/retire-flags-20261127 (678893a51f) removed 40 flags, net −841 source lines. The list and plain-English descriptions are in the flag inventory, docs/handoffs/dead-paths-20261127.md.
+- The inventory had two defaults wrong: `wallChroma` and `windowSdfTent` were on, not off. Both were handled as off-switches, so the measured wall colours and the window shading stay.
+- Proof of no visible change: four street poses (Keizersgracht 455, Rokin, Prins Hendrikkade, Osdorpplein) are pixel-identical to cdeead2e12. The Dam aerial pose is within its own run-to-run noise, apart from one hazy frame in 14 that was not reproduced; it is still open in TODO.
+- Kept for named reasons: lookAhead and chunkFade (the pop-in harness sets them); cellMipsKeep and keepVerts (spec probes); newbuildFamily, flatRoofTone and flatRoofSurface (unit suites build their reference frames through the off-switch); rowFrontSteps (rowFront programme). The three retail opt-ins (retailParts, shopGrammar, retailRealAll) went to lane/retail-flags-20261127 for a blind test.
+- Deleted opt-ins that had some evidence, should anyone want them back: aerialScale (5–9 % less GPU busy from the air, #266), groundQuick (centre cell 3.1–3.3 s vs 4.2–5.6 s, but the ring finished later), and groundShare (50 % fewer requests per start, no gain at the gate).
+- The three retail opt-ins were settled by blind test on lane/retail-flags-20261127 (5642d7c43b). There were 34 shop pands in 7 rows (Kinkerstraat, Haarlemmerstraat/-dijk, De Wallen, Hendrix), each shot as photo over today vs flag, and four fresh opus judges saw the pairs unlabelled.
+  - `retailParts` (shutter boxes, neon/LED signs, glass lettering): 1 win, 4 losses, 11 ties. The neon signs and shutter box are not in the photos. Deleted, together with the per-pand front override (`front-overrides.json`); Hendrix's override changed 0.04 % of pixels.
+  - `shopGrammar` (measured shop paint): 2 wins, 11 losses, 12 ties. It darkens surrounds that the photos show cream or white. Deleted.
+  - `retailRealAll` (a review view of losing candidates) was deleted; nothing set it.
+  - Hendrix's published cell still carries `shopFrontOverride` until the next world compile. `shop-templates.json` keeps an inert `fronts` key until the next `build-templates`.
+
 ## Round 20261127b: engine round — own engine only, MapLibre deleted, Amsterdam only, iPhone start memory, pop-in dissolve, desktop power (2026-11-27)
 
 - **Why:** David: "let's switch to engine=own by default please, I don't want to continue maintaining two codepaths." A friend's iPhone was killed three times in a minute on 2026-11-26 (Sentry CANAL-RECALL-V, heartbeat "previous ride ended without unload", all `engine: maplibre`, 5–21 s after load), so the tab-kill is on the MapLibre path; the iPhone start memory of both engines is being measured on `lane/iphone-start-memory-20261127` (iOS Simulator WebContent footprint + Chromium memory-infra).

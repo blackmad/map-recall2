@@ -691,6 +691,16 @@
       "version": "13ab40d70bbcbd59",
       "dateSource": "asset-update"
     },
+    "batavia-prins-hendrikkade.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.033Z",
+      "version": "69460bacf70a2d78",
+      "dateSource": "asset-update"
+    },
+    "batavia-prins-hendrikkade.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.033Z",
+      "version": "df8c72766134bdfd",
+      "dateSource": "asset-update"
+    },
     "beest-boulders": {
       "updatedAt": "2026-10-20T10:13:46.563Z",
       "version": "706557a1657d97f0",
@@ -1076,6 +1086,21 @@
       "version": "a95be9d7439406d7",
       "dateSource": "asset-update"
     },
+    "bulldog-first": {
+      "updatedAt": "2026-11-27T20:55:01.035Z",
+      "version": "f2b4a9a5c2f8d321",
+      "dateSource": "asset-update"
+    },
+    "bulldog-first.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.036Z",
+      "version": "e28065222db82bc2",
+      "dateSource": "asset-update"
+    },
+    "bulldog-first.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.036Z",
+      "version": "b9fa273666bf758f",
+      "dateSource": "asset-update"
+    },
     "bungehuis": {
       "updatedAt": "2026-11-01T20:55:51.081Z",
       "version": "0e987c34023206c1",
@@ -1139,6 +1164,16 @@
     "cafe-riche-rokin": {
       "updatedAt": "2026-11-23T07:33:20.598Z",
       "version": "aef8ebbab4f6edbe",
+      "dateSource": "asset-update"
+    },
+    "cafe-riche-rokin.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.409Z",
+      "version": "eebccbe07957b975",
+      "dateSource": "asset-update"
+    },
+    "cafe-riche-rokin.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.178Z",
+      "version": "79ae9c5f85440ddf",
       "dateSource": "asset-update"
     },
     "canals-museum": {
@@ -1574,6 +1609,16 @@
     "damrak-37": {
       "updatedAt": "2026-11-27T10:57:01.193Z",
       "version": "76bc2be97c59bedb",
+      "dateSource": "asset-update"
+    },
+    "damrak-37.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.049Z",
+      "version": "7cfcfb423e62d821",
+      "dateSource": "asset-update"
+    },
+    "damrak-37.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.049Z",
+      "version": "47743bb515419e70",
       "dateSource": "asset-update"
     },
     "de-ateliers": {
@@ -2079,6 +2124,11 @@
     "diamant-museum.lod2": {
       "updatedAt": "2026-11-15T09:10:17.364Z",
       "version": "b5195e7c1ae72874",
+      "dateSource": "asset-update"
+    },
+    "dikker-thijs-leidsestraat": {
+      "updatedAt": "2026-11-27T21:57:19.268Z",
+      "version": "6a931e6059c785c3",
       "dateSource": "asset-update"
     },
     "doelen-hotel": {
@@ -2834,6 +2884,16 @@
     "hajenius-rokin": {
       "updatedAt": "2026-11-27T10:50:54.134Z",
       "version": "56be35e645b61307",
+      "dateSource": "asset-update"
+    },
+    "hajenius-rokin.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.077Z",
+      "version": "f123cfe981586ad5",
+      "dateSource": "asset-update"
+    },
+    "hajenius-rokin.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.077Z",
+      "version": "d94d08a1f9f7b9fd",
       "dateSource": "asset-update"
     },
     "handelsbank-singel-250": {
@@ -3721,6 +3781,21 @@
       "version": "018ac16d7d227b21",
       "dateSource": "asset-update"
     },
+    "in-t-aepjen": {
+      "updatedAt": "2026-11-27T10:09:41.536Z",
+      "version": "40ec7263a0004ec3",
+      "dateSource": "asset-update"
+    },
+    "in-t-aepjen.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.104Z",
+      "version": "3845c5d52b443ea1",
+      "dateSource": "asset-update"
+    },
+    "in-t-aepjen.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.104Z",
+      "version": "323377d9aeec7a47",
+      "dateSource": "asset-update"
+    },
     "industrieele-groote-club": {
       "updatedAt": "2026-11-15T08:53:49.395Z",
       "version": "55d60746e50d2bff",
@@ -4162,13 +4237,13 @@
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30.lod1": {
-      "updatedAt": "2026-11-23T04:03:19.255Z",
-      "version": "993076b6a8c57fd6",
+      "updatedAt": "2026-11-27T20:55:01.116Z",
+      "version": "9bda247d87787bfa",
       "dateSource": "asset-update"
     },
     "klapmutsenveem-30.lod2": {
-      "updatedAt": "2026-11-23T04:03:21.907Z",
-      "version": "0529bb78cc30e337",
+      "updatedAt": "2026-11-27T20:55:01.116Z",
+      "version": "4ce3482591a6a590",
       "dateSource": "asset-update"
     },
     "kleine-komedie": {
@@ -4254,6 +4329,16 @@
     "koningsplein-1": {
       "updatedAt": "2026-11-23T07:38:57.989Z",
       "version": "9fcbb90bb6d4940e",
+      "dateSource": "asset-update"
+    },
+    "koningsplein-1.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.473Z",
+      "version": "a1cb9ed726cbde1c",
+      "dateSource": "asset-update"
+    },
+    "koningsplein-1.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.955Z",
+      "version": "e5bd525b6a136cb6",
       "dateSource": "asset-update"
     },
     "kpn-teleport": {
@@ -4391,6 +4476,11 @@
       "version": "3244957f49b19147",
       "dateSource": "asset-update"
     },
+    "kweekschool-zeevaart": {
+      "updatedAt": "2026-11-27T21:52:39.879Z",
+      "version": "655bd192000d516e",
+      "dateSource": "asset-update"
+    },
     "lab111": {
       "updatedAt": "2026-11-19T17:41:01.381Z",
       "version": "83902baf7de6eb99",
@@ -4411,9 +4501,29 @@
       "version": "37fd2d0c3e767ee4",
       "dateSource": "asset-update"
     },
+    "leidsestraat-1.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.136Z",
+      "version": "d505583ea5d99b08",
+      "dateSource": "asset-update"
+    },
+    "leidsestraat-1.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.137Z",
+      "version": "e62c84a727654b12",
+      "dateSource": "asset-update"
+    },
     "leidsestraat-40": {
       "updatedAt": "2026-11-27T11:09:16.467Z",
       "version": "343aac157e974e1d",
+      "dateSource": "asset-update"
+    },
+    "leidsestraat-40.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.137Z",
+      "version": "2dd01db3b3dc3c9b",
+      "dateSource": "asset-update"
+    },
+    "leidsestraat-40.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.137Z",
+      "version": "7435b51182765795",
       "dateSource": "asset-update"
     },
     "lekstraat-synagoge": {
@@ -4504,6 +4614,16 @@
     "lloyd-prins-hendrikkade-33": {
       "updatedAt": "2026-11-27T10:19:58.632Z",
       "version": "f13db3e2a1e5d751",
+      "dateSource": "asset-update"
+    },
+    "lloyd-prins-hendrikkade-33.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.138Z",
+      "version": "447b05cf420479c1",
+      "dateSource": "asset-update"
+    },
+    "lloyd-prins-hendrikkade-33.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.138Z",
+      "version": "d717f1c4707faa95",
       "dateSource": "asset-update"
     },
     "lofi": {
@@ -4806,6 +4926,21 @@
       "version": "64aba2633dcc681d",
       "dateSource": "asset-update"
     },
+    "metz-keizersgracht-455": {
+      "updatedAt": "2026-11-27T10:16:12.010Z",
+      "version": "0f22e7fb211c492b",
+      "dateSource": "asset-update"
+    },
+    "metz-keizersgracht-455.lod1": {
+      "updatedAt": "2026-11-27T20:55:01.158Z",
+      "version": "dcede932b8810ceb",
+      "dateSource": "asset-update"
+    },
+    "metz-keizersgracht-455.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.158Z",
+      "version": "942d195892238882",
+      "dateSource": "asset-update"
+    },
     "micropia-ledenlokalen": {
       "updatedAt": "2026-10-20T10:12:36.462Z",
       "version": "ca2663737e6c853f",
@@ -5034,6 +5169,16 @@
     "muntplein-1": {
       "updatedAt": "2026-11-23T07:42:24.073Z",
       "version": "2cf58c3785d84c0d",
+      "dateSource": "asset-update"
+    },
+    "muntplein-1.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.454Z",
+      "version": "11bf882c2d5dbba3",
+      "dateSource": "asset-update"
+    },
+    "muntplein-1.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.664Z",
+      "version": "62dd61c4663f31be",
       "dateSource": "asset-update"
     },
     "munttoren-amsterdam": {
@@ -5476,6 +5621,16 @@
       "version": "1db8816711642a8b",
       "dateSource": "asset-update"
     },
+    "old-bell-rembrandtplein.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.380Z",
+      "version": "8965b62869759865",
+      "dateSource": "asset-update"
+    },
+    "old-bell-rembrandtplein.lod2": {
+      "updatedAt": "2026-11-23T09:07:32.640Z",
+      "version": "cf2b5aea95bbbbeb",
+      "dateSource": "asset-update"
+    },
     "olvg-oost": {
       "updatedAt": "2026-10-20T10:19:37.460Z",
       "version": "844cf40bd35b8f8e",
@@ -5881,6 +6036,11 @@
       "version": "8eed0fb034cb97b9",
       "dateSource": "asset-update"
     },
+    "passage-central": {
+      "updatedAt": "2026-11-27T21:52:13.592Z",
+      "version": "38683e5799de02d6",
+      "dateSource": "asset-update"
+    },
     "pathe-city": {
       "updatedAt": "2026-10-20T10:12:04.614Z",
       "version": "7722dbfe0633ea77",
@@ -6199,6 +6359,11 @@
     "q-factory.lod2": {
       "updatedAt": "2026-11-14T13:20:58.481Z",
       "version": "45ad7e7d458a5be4",
+      "dateSource": "asset-update"
+    },
+    "raadhuisstraat-52": {
+      "updatedAt": "2026-11-27T21:55:56.335Z",
+      "version": "45764ba95a520fdf",
       "dateSource": "asset-update"
     },
     "raadhuisstraat-galerij": {
@@ -6976,6 +7141,11 @@
       "version": "a7c8c296bf7110fe",
       "dateSource": "asset-update"
     },
+    "sluyswacht.lod2": {
+      "updatedAt": "2026-11-27T20:55:01.553Z",
+      "version": "607f283202131240",
+      "dateSource": "asset-update"
+    },
     "social-history": {
       "updatedAt": "2026-10-20T10:13:42.443Z",
       "version": "0d97bc6ba8d2a685",
@@ -7652,13 +7822,13 @@
       "dateSource": "asset-update"
     },
     "tweede-hugo-de-grootstraat-43.lod1": {
-      "updatedAt": "2026-11-23T04:03:19.293Z",
-      "version": "6445851bae59089d",
+      "updatedAt": "2026-11-27T20:55:01.575Z",
+      "version": "38c2e5408d66e03a",
       "dateSource": "asset-update"
     },
     "tweede-hugo-de-grootstraat-43.lod2": {
-      "updatedAt": "2026-11-23T04:03:23.118Z",
-      "version": "16d70b3a35bbf732",
+      "updatedAt": "2026-11-27T20:55:01.577Z",
+      "version": "e6e4c5df7c3ffcbf",
       "dateSource": "asset-update"
     },
     "uilenburger-synagoge": {
@@ -8094,6 +8264,36 @@
     "watertoren-amstelveenseweg.lod2": {
       "updatedAt": "2026-11-07T14:08:58.199Z",
       "version": "dac7744d41db0b8e",
+      "dateSource": "asset-update"
+    },
+    "welgelegen": {
+      "updatedAt": "2026-11-23T07:53:15.575Z",
+      "version": "5894dda4be49c5c3",
+      "dateSource": "asset-update"
+    },
+    "welgelegen.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.421Z",
+      "version": "7afff05640a6b6b6",
+      "dateSource": "asset-update"
+    },
+    "welgelegen.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.274Z",
+      "version": "bcb9ebd51818b542",
+      "dateSource": "asset-update"
+    },
+    "weltevreden": {
+      "updatedAt": "2026-11-23T07:45:16.374Z",
+      "version": "1cd78b2059a7dd93",
+      "dateSource": "asset-update"
+    },
+    "weltevreden.lod1": {
+      "updatedAt": "2026-11-23T09:07:32.434Z",
+      "version": "dc2b057ee24f2f47",
+      "dateSource": "asset-update"
+    },
+    "weltevreden.lod2": {
+      "updatedAt": "2026-11-23T09:07:33.332Z",
+      "version": "a5c30a204abafd4f",
       "dateSource": "asset-update"
     },
     "wereldmuseum-amsterdam": {
@@ -8624,91 +8824,6 @@
     "zwembad-bijlmer.lod2": {
       "updatedAt": "2026-11-16T04:16:49.812Z",
       "version": "b159bc3f84538b1b",
-      "dateSource": "asset-update"
-    },
-    "welgelegen": {
-      "updatedAt": "2026-11-23T07:53:15.575Z",
-      "version": "5894dda4be49c5c3",
-      "dateSource": "asset-update"
-    },
-    "weltevreden": {
-      "updatedAt": "2026-11-23T07:45:16.374Z",
-      "version": "1cd78b2059a7dd93",
-      "dateSource": "asset-update"
-    },
-    "cafe-riche-rokin.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.409Z",
-      "version": "eebccbe07957b975",
-      "dateSource": "asset-update"
-    },
-    "cafe-riche-rokin.lod2": {
-      "updatedAt": "2026-11-23T09:07:33.178Z",
-      "version": "79ae9c5f85440ddf",
-      "dateSource": "asset-update"
-    },
-    "koningsplein-1.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.473Z",
-      "version": "a1cb9ed726cbde1c",
-      "dateSource": "asset-update"
-    },
-    "koningsplein-1.lod2": {
-      "updatedAt": "2026-11-23T09:07:33.955Z",
-      "version": "e5bd525b6a136cb6",
-      "dateSource": "asset-update"
-    },
-    "muntplein-1.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.454Z",
-      "version": "11bf882c2d5dbba3",
-      "dateSource": "asset-update"
-    },
-    "muntplein-1.lod2": {
-      "updatedAt": "2026-11-23T09:07:33.664Z",
-      "version": "62dd61c4663f31be",
-      "dateSource": "asset-update"
-    },
-    "old-bell-rembrandtplein.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.380Z",
-      "version": "8965b62869759865",
-      "dateSource": "asset-update"
-    },
-    "old-bell-rembrandtplein.lod2": {
-      "updatedAt": "2026-11-23T09:07:32.640Z",
-      "version": "cf2b5aea95bbbbeb",
-      "dateSource": "asset-update"
-    },
-    "welgelegen.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.421Z",
-      "version": "7afff05640a6b6b6",
-      "dateSource": "asset-update"
-    },
-    "welgelegen.lod2": {
-      "updatedAt": "2026-11-23T09:07:33.274Z",
-      "version": "bcb9ebd51818b542",
-      "dateSource": "asset-update"
-    },
-    "weltevreden.lod1": {
-      "updatedAt": "2026-11-23T09:07:32.434Z",
-      "version": "dc2b057ee24f2f47",
-      "dateSource": "asset-update"
-    },
-    "weltevreden.lod2": {
-      "updatedAt": "2026-11-23T09:07:33.332Z",
-      "version": "a5c30a204abafd4f",
-      "dateSource": "asset-update"
-    },
-    "metz-keizersgracht-455": {
-      "updatedAt": "2026-11-27T10:16:12.010Z",
-      "version": "0f22e7fb211c492b",
-      "dateSource": "asset-update"
-    },
-    "bulldog-first": {
-      "updatedAt": "2026-11-27T10:04:32.753Z",
-      "version": "f3d33dc25a6054ec",
-      "dateSource": "asset-update"
-    },
-    "in-t-aepjen": {
-      "updatedAt": "2026-11-27T10:09:41.536Z",
-      "version": "40ec7263a0004ec3",
       "dateSource": "asset-update"
     }
   }

@@ -2,8 +2,6 @@
 // The wall-colour rule is held (SPEC_WALLS_HELD, holds.test.ts); these tests exercise it through the explicit opt-in.
 process.env.SPEC_WALLS = '1';
 import test from 'node:test';
-// These pins are the round-3 chroma rule; lane W1's measured-chroma default (`?wallChroma`) is off here and tested below.
-process.env.WALL_CHROMA = '0';
 import assert from 'node:assert/strict';
 import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, specWallColour, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD, RENDER_HEX } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';

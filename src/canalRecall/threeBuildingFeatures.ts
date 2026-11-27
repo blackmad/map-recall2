@@ -1,6 +1,6 @@
 import { groundFloorOf, groundFloorOn } from './groundFloor/extract.js';
 import { logoFor, retailLogoLayer } from './retailLogos.js';
-import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, VARIETY_BASE, retailBrandOn, retailPartsOn, retailRealOn } from './retailPages.js';
+import { CHAIN_LOGO_BASE, GOODS_BASE, TYPE_BASE, VARIETY_BASE, retailBrandOn, retailRealOn } from './retailPages.js';
 import { shopVarietyOn } from './shopVariety.js';
 import { BRAND_STYLES } from './retailBrandStyles.js';
 import { RETAIL_CHAINS, chainOfWord, chainOwnFront } from './retailChains.js';
@@ -358,9 +358,6 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Lane retail-real: lane R's De Wallen audit on a red-light row (shopfronts.ts RedLightRow): closed or not a window
   // draws no template under retailReal; a measured window front draws over its own span.
   const redRow = retailRealOn() && template?.[0] === 'redLight' ? template[5] : undefined;
-  // Round 4 (`?retailParts=1`): a per-pand front colour read on a photo (shopfronts.ts fronts, front-overrides.json).
-  const ovRaw = retailPartsOn() ? p.shopFrontOverride as { frame?: string; awning?: string } | undefined : undefined, hex6 = (v: unknown) => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v);
-  const ov = ovRaw ? { ...(hex6(ovRaw.frame) ? { frame: ovRaw.frame } : {}), ...(hex6(ovRaw.awning) ? { awning: ovRaw.awning } : {}) } : undefined;
   // Lane retail-real: a chain's row carries '@<key>' as its word (retailChains.ts); its type template draws only with
   // retailReal on, under the chain's colours and logo.
   const chainKey = chainOfWord(template?.[3]), chainRow = chainKey ? RETAIL_CHAINS[chainKey] : undefined;
@@ -372,7 +369,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     && (!(REAL_ONLY_TEMPLATES as readonly string[]).includes(template[0]) || (retailRealOn() && (realAccepted(template[0]) || !!(retailChain && chainOwnFront(chainKey!)))))) {
     const logoLayer = retailLogoLayer(cellSetOf(look)), tk = templateLogoKey(template[0], retailRealOn(), realAccepted(template[0])), cl = retailChain && chainKey ? chainLogo(chainKey) : tk ? chainLogo(tk) : null;
     const logo = cl ? { rect: cl.rect, aspect: cl.aspect, page: CHAIN_LOGO_BASE + cl.page } : logoFor(template[0] as RetailTemplate);
-    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word, ...(retailChain.goods ? { goods: retailChain.goods } : {}) } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE, ...(shopVarietyOn() ? { variety: logoLayer + VARIETY_BASE } : {}) } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(retailChain?.awning ? { awning: retailChain.awning } : {}), ...(retailChain?.frame ? { frameHex: retailChain.frame } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}), ...(ov?.awning ? { awning: ov.awning } : {}), ...(ov?.frame ? { frameHex: ov.frame } : {}), ...(retailBrandOn() && (chainKey ?? template[0]) in BRAND_STYLES ? { brand: chainKey ?? template[0] } : {}) };
+    building.retailFront = { template: template[0] as RetailTemplate, at: [template[1], template[2]], ...(template[3] && !chainKey ? { word: template[3] } : chainWord ? { word: chainWord } : {}), ...(retailChain ? { chain: { fascia: retailChain.fascia, letters: retailChain.letters, word: retailChain.word, ...(retailChain.goods ? { goods: retailChain.goods } : {}) } } : {}), ...(redRow?.s ? { redLight: { span: redRow.s, ...(redRow.d ? { doors: redRow.d } : {}), ...(redRow.t ? { tube: redRow.t } : {}), ...(redRow.c ? { curtains: redRow.c } : {}), ...(redRow.f ? { frameHex: redRow.f } : {}) } } : {}), ...(template[4] === 1 ? { nearest: true } : {}), ...(logo && logoLayer !== null ? { logo: { layer: logoLayer + logo.page, rect: logo.rect, aspect: logo.aspect } } : {}), ...(logoLayer !== null ? { letters: logoLayer } : {}), ...(logoLayer !== null && retailRealOn() && realAccepted(template[0]) ? { goods: logoLayer + GOODS_BASE, faces: logoLayer + TYPE_BASE, ...(shopVarietyOn() ? { variety: logoLayer + VARIETY_BASE } : {}) } : {}), ...(puiPaint && p.puiDark !== 1 && !retailChain ? { paint: puiPaint } : {}), ...(bikeFromCode(p.bikeShop) ? { bike: bikeFromCode(p.bikeShop)! } : {}), ...(retailChain?.awning ? { awning: retailChain.awning } : {}), ...(retailChain?.frame ? { frameHex: retailChain.frame } : {}), ...(typeof p.shopAwning === 'string' && /^#[0-9a-f]{6}$/i.test(p.shopAwning) ? { awning: p.shopAwning } : {}), ...(retailBrandOn() && (chainKey ?? template[0]) in BRAND_STYLES ? { brand: chainKey ?? template[0] } : {}) };
     // Lane ground-floor (`?groundFloor=1`): the building's own ground floor, the shop in its openings.
     const gf = groundFloorOn() ? groundFloorOf(p.groundFloor) : undefined;
     if (gf && !redRow?.s) building.retailFront.groundFloor = gf;
@@ -603,7 +600,7 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
 }
 
 /**
- * Shell roofs (lane R1-A, #223, `?shellRoofs=0` off): a coarse or touch shell under a planned roof stops its walls at
+ * Shell roofs (lane R1-A, #223): a coarse or touch shell under a planned roof stops its walls at
  * the eaves and carries the detail path's planned roof, low-poly (no dormers, chimneys, white trim, shutters, turned
  * street ridges or ornamental crowns; a shaped gable becomes a plain one) in the same measured or planned roof colour.
  * Before, it was a full-height box under a flat lid (often a grey prior), so the detail chunk replacing it two to five

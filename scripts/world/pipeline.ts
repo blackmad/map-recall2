@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
-import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
+import { constructionYearEnricher, roofFactsEnricher, composeEnrichers } from '../../src/canalRecall/genericFacades.js';
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
 import { setShopfronts, setShopTemplates } from '../../src/canalRecall/shopfronts.js';
 import { retailGroundOn } from '../../src/canalRecall/retailTemplates.js';
@@ -146,7 +146,7 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
   // (gameTileEnricher.ts), and the runtime adopts cells without enriching, so the rail table must be baked here.
   // HouseSpecs (houseSpec/decorate.ts): HOUSE_SPECS=0 turns them off; HOUSE_SPECS_DIR reads another extract directory
   // (the lane's verification compiles against staging/house-specs before the integrator publishes).
-  const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE,
+  const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers }, FILE_BASE,
     { fetch: fileFetch, search: '', houseSpecs: houseSpecsEnabled(null, process.env.HOUSE_SPECS), houseSpecsDir: houseSpecsDir(), ridgeAxesDir: ridgeAxesDir() });
   return { decorate, featureDecorator, enricher, fileFetch, fileBase: FILE_BASE };
 }
