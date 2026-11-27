@@ -138270,7 +138270,19 @@
       },
       "triangles": 22726,
       "bytes": 309044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "0f22e7fb211c492b",
+        "buildVersion": 2,
+        "bytes": 86512,
+        "triangles": 4090
+      },
+      "lod2": {
+        "sourceHash": "0f22e7fb211c492b",
+        "buildVersion": 6,
+        "bytes": 14112,
+        "triangles": 442
+      }
     },
     "hajenius-rokin": {
       "id": "hajenius-rokin",
@@ -138539,7 +138551,19 @@
       },
       "triangles": 18109,
       "bytes": 234280,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "56be35e645b61307",
+        "buildVersion": 2,
+        "bytes": 70724,
+        "triangles": 3111
+      },
+      "lod2": {
+        "sourceHash": "56be35e645b61307",
+        "buildVersion": 6,
+        "bytes": 13020,
+        "triangles": 359
+      }
     },
     "lloyd-prins-hendrikkade-33": {
       "id": "lloyd-prins-hendrikkade-33",
@@ -139177,7 +139201,19 @@
       },
       "triangles": 27899,
       "bytes": 376764,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f13db3e2a1e5d751",
+        "buildVersion": 2,
+        "bytes": 106672,
+        "triangles": 5042
+      },
+      "lod2": {
+        "sourceHash": "f13db3e2a1e5d751",
+        "buildVersion": 6,
+        "bytes": 17200,
+        "triangles": 557
+      }
     },
     "batavia-prins-hendrikkade": {
       "id": "batavia-prins-hendrikkade",
@@ -139337,7 +139373,19 @@
       },
       "triangles": 5021,
       "bytes": 74316,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "13ab40d70bbcbd59",
+        "buildVersion": 2,
+        "bytes": 47272,
+        "triangles": 2784
+      },
+      "lod2": {
+        "sourceHash": "13ab40d70bbcbd59",
+        "buildVersion": 6,
+        "bytes": 6212,
+        "triangles": 100
+      }
     },
     "leidsestraat-1": {
       "id": "leidsestraat-1",
@@ -139548,7 +139596,19 @@
       },
       "triangles": 10203,
       "bytes": 166692,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "37fd2d0c3e767ee4",
+        "buildVersion": 2,
+        "bytes": 50732,
+        "triangles": 1869
+      },
+      "lod2": {
+        "sourceHash": "37fd2d0c3e767ee4",
+        "buildVersion": 6,
+        "bytes": 8936,
+        "triangles": 203
+      }
     },
     "leidsestraat-40": {
       "id": "leidsestraat-40",
@@ -139676,7 +139736,19 @@
       },
       "triangles": 6577,
       "bytes": 106896,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "343aac157e974e1d",
+        "buildVersion": 2,
+        "bytes": 48336,
+        "triangles": 1766
+      },
+      "lod2": {
+        "sourceHash": "343aac157e974e1d",
+        "buildVersion": 6,
+        "bytes": 8072,
+        "triangles": 126
+      }
     },
     "bulldog-first": {
       "id": "bulldog-first",
@@ -139795,7 +139867,19 @@
       },
       "triangles": 12826,
       "bytes": 179884,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f2b4a9a5c2f8d321",
+        "buildVersion": 2,
+        "bytes": 61684,
+        "triangles": 2231
+      },
+      "lod2": {
+        "sourceHash": "f2b4a9a5c2f8d321",
+        "buildVersion": 6,
+        "bytes": 11288,
+        "triangles": 237
+      }
     },
     "in-t-aepjen": {
       "id": "in-t-aepjen",
@@ -139943,7 +140027,19 @@
       },
       "triangles": 6060,
       "bytes": 83468,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "40ec7263a0004ec3",
+        "buildVersion": 2,
+        "bytes": 45972,
+        "triangles": 1800
+      },
+      "lod2": {
+        "sourceHash": "40ec7263a0004ec3",
+        "buildVersion": 6,
+        "bytes": 6800,
+        "triangles": 119
+      }
     },
     "sluyswacht": {
       "id": "sluyswacht",
@@ -140071,7 +140167,13 @@
       },
       "triangles": 1500,
       "bytes": 35928,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod2": {
+        "sourceHash": "a7c8c296bf7110fe",
+        "buildVersion": 6,
+        "bytes": 3924,
+        "triangles": 89
+      }
     },
     "damrak-37": {
       "id": "damrak-37",
@@ -140194,7 +140296,19 @@
       },
       "triangles": 5692,
       "bytes": 79084,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "76bc2be97c59bedb",
+        "buildVersion": 2,
+        "bytes": 28324,
+        "triangles": 950
+      },
+      "lod2": {
+        "sourceHash": "76bc2be97c59bedb",
+        "buildVersion": 6,
+        "bytes": 6320,
+        "triangles": 109
+      }
     }
   }
 }
