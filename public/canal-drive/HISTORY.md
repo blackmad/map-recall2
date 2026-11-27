@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Round 20261127a: landmarks r19, ten iconic buildings (2026-11-27)
+
+- **Why:** the programme resumed after the 2026-11-23 pause. The r18 iconic list still had twelve briefs, and Bulldog The First and In 't Aepjen had been held after two lost blinds on 2026-11-21.
+- **Ten buildings, five Opus lanes (lane/landmarks-r19-{a..e}-20261127).** Every one won a fresh blind A/B against today's render, and every one passes audit:glb, check:landmark-inventory and compare:facades.
+  - `metz-keizersgracht-455` (r19-a): Metz & Co with the domed clock tower, pediments, glazed roof storey and shopfront. The Leidsestraat front had no frontal photo, so it mirrors the Keizersgracht rhythm.
+  - `hajenius-rokin` (r19-a): Hajenius, Rokin 92-96, with its pilasters, red awnings, the "De Rijnstroom" lettering, and the two neighbours in the same pand: the cream bell-gable house with striped awnings and the black neck-gable house.
+  - `lloyd-prins-hendrikkade-33` (r19-b): art'otel, with the belvedere (new `openRotunda` kit part), dormers, giant order and red-apostrophe lettering.
+  - `batavia-prins-hendrikkade` (r19-b): Gebouw Batavia, dark Amsterdam School brick, window grid, stair shaft and gilt lettering.
+  - `leidsestraat-1` (r19-c): the Kreymborg store (1904) on the Herengracht corner: glazed iron front, corner oriel, and a crow-stepped corner gable (steppedGable).
+  - `leidsestraat-40` (r19-c): the 1881 corner with its octagonal oxblood turret, cream ground storey with white shop joinery, and the gold fanlight. `corner-turret-kit` gained an optional `windowOn` filter; output is byte-identical when it is absent.
+  - `sluyswacht` (r19-d): the black 1695 lock-keeper's house with "de Sluyswacht" lettering, both gables and pantiles. The lean measured at most 1.3 deg, so it is not modelled.
+  - `damrak-37` (r19-d): grey stone (re-toned #a39d91 → #8e8a7e after the blind called it cream), curved gable, arcade, NE bay and spired dormer.
+  - `bulldog-first` (r19-e, retry): the 2026-11-21 losses came from a full-round bell crown (the photo has flat shoulders, then an ogee), a grey front, and no lettering. Now: ogee gable, white front with white architraves and dark sashes, flower boxes, a navy mural and THE BULLDOG / COFFEESHOP signs.
+  - `in-t-aepjen` (r19-e, retry): the old storeys stood only 0.15–0.42 m apart, and the old blind compared an orthographic front with a street crop. Now the jetties measure 0.4/0.85/1.05/1.5 m out, with two-tone boards. New `jettyProfile` kit part.
+- **Integration:**
+  - The generic `keepboth.sh` resolver dropped a closing brace, and Sluyswacht's entry, in `material-slot-tags.ts`. That file now merges through `_integrator-tools/slot-union.py`, a three-way union per entry. Result: main's 88 entries unchanged plus the 10 new ones.
+  - `merge-lane.sh` hung on a conflict-free merge (grep with no file list read stdin); fixed.
+  - The `new.sh` worktree helper can leave a branch on c3899d0106; fast-forward to main after creating one.
+- **Open:** see TODO "Landmarks after r19".
+
 ## Round 20261123d: landmarks r18, iconic picks (2026-11-23)
 
 - **Why:** David loved the striped-awning building and asked for more iconic picks: buildings a rider remembers, not only the ones the exposure ranking surfaces.
