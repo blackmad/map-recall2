@@ -1,5 +1,5 @@
 {
-  "toolchain": "c6a9784c88394a7e8cd383176358aef4d45b6ddbae1108a3ebee3da677616c85",
+  "toolchain": "0f2e0d2d029f1e78ef763035f493282dd86668b39950c28cc5afd41629c3e933",
   "models": {
     "abn-amro-hoofdkantoor": "ed14dd75b396a1b18efebd25a1173b040a761fdb0e74b982f197c01eaa69b5ab",
     "academie-theater-dans": "6dd471231c2e29efefb4668a2ce92430492e91afde41ef71b2993eb9331b6f0e",
@@ -307,6 +307,7 @@
     "krijtberg": "f4c70fcd643be82853013e861cf9ef8a166dad0c970856986d7d123a0e1557d0",
     "kriterion": "cf94a4fe5e6ea475e1b26a4225544cf3ffcf5926151e7aff6d91d6581179c73f",
     "kweekschool-machinisten": "c0d5c32729820fed8fa2f36666f0f5b5a7ad7050a84da0296ceaabd8fef8bc1f",
+    "kweekschool-zeevaart": "c080c6bb4d5b9d2be14cc3bbea61d9b77ad8aa8a0f2dadf6eca96c54b2fd63ef",
     "lab111": "e8a776699a4daced25a681cc921b7e814933b601a658e63585098018824f9e9b",
     "leidsestraat-1": "e0036011f3c09f6d51ae234a130dfe7de00b4366443c3e820fef648190bc1701",
     "leidsestraat-40": "638810d6cba49b1f5be2d44afc2e4751dc7ddda27333ed4b0883d8e0725da13e",
@@ -413,6 +414,7 @@
     "panamalaan-10": "7dd48aa7b6fa2c772a6982d7764d80d34fd1f60ace4001ecdae217038cbf18a6",
     "paradiso": "bc8059cfa139be4dba4ddbea7e053fb8c15e162a77e9dac1e5a9e14eb09c74bf",
     "park-centraal-stadhouderskade": "a8fa2b016eb13a2dbd56701b9fcf3cb19d555cc776fa784985c31ad8be4af098",
+    "passage-central": "2b1a386fcd3e9cba8f69797affdc6a0bd09d02682337d648a4491faa6aef9d35",
     "pathe-city": "b8144c0e164f12b2978bd9774fc1fabe8229b66254687f24afc30a2ef0c7cee1",
     "pathe-de-munt": "e8b04ccca8b3439fae6f87cf115eb89ec6af85100bf1f9d666f0ee5c51c32ac2",
     "pentagon": "e056f718589adfb8be2ce5fa44d2917a2ddd45b95718826a4e93ccaeb61d3bba",

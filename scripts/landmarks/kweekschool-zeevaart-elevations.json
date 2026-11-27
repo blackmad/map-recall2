@@ -1,0 +1,246 @@
+{
+  "id": "kweekschool-zeevaart",
+  "countedBy": "lane r20-b-20261127b from the rectified panorama crop w01-29 (2021, the whole Prins Hendrikkade front, 40.8 m) with the 2024 close crops w06-314 and w08-300 for the centre entrance and the pavilion doors; not yet blind-counted. Glazed openings bottom row first.",
+  "facades": [
+    {
+      "name": "Prins Hendrikkade front",
+      "bearing": 28,
+      "photo": "artifacts/landmark-briefs/kweekschool-zeevaart/w01-29.jpg",
+      "rows": [
+        15,
+        11,
+        11,
+        null
+      ],
+      "columns": 15,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "depthBand": 4,
+      "alongM": [
+        4.4,
+        45.2
+      ],
+      "note": "Cropped to the 40.8 m front between the pavilions' outer corners (alongM: the silhouette's viewer-left 4.4 m is the rounded east corner, a separate wall). Ground: each pavilion's door fanlight and the narrow light either side (3), each wing's three windows, the centre fanlight between the two oculi (3). First and second storeys: two lights per pavilion, three per wing and the centre's triple window (stone mullions narrower than 0.3 m, one opening by the ribbon convention). The top band (six dormers and the pavilion gables' two-light windows) is cut off by this crop's top edge, so its count is null; the wider alt crop shows its kinds, declared in mixedRows.",
+      "mixedRows": [
+        {
+          "row": 0,
+          "rowSizes": "mixed",
+          "evidence": "w01-29 (2021, rectified, about 45 px/m): each pavilion door's arched fanlight (1.2-1.3 m) between two narrow lights (0.5-0.6 m), the wings' three windows (1.4-1.5 m), the centre door's fanlight (1.6 m) between two oculi (0.7 m)",
+          "openings": [
+            {
+              "kind": "pavilion narrow light",
+              "w": 0.55
+            },
+            {
+              "kind": "pavilion door fanlight",
+              "w": 1.25
+            },
+            {
+              "kind": "pavilion narrow light",
+              "w": 0.55
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "centre oculus",
+              "w": 0.7
+            },
+            {
+              "kind": "centre door fanlight",
+              "w": 1.6
+            },
+            {
+              "kind": "centre oculus",
+              "w": 0.7
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "pavilion narrow light",
+              "w": 0.55
+            },
+            {
+              "kind": "pavilion door fanlight",
+              "w": 1.25
+            },
+            {
+              "kind": "pavilion narrow light",
+              "w": 0.55
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "rowSizes": "mixed",
+          "evidence": "w01-29 (2021, rectified, about 45 px/m): two pavilion lights (1.4 m), three wing windows (1.45 m), the centre's triple window between stone mullions under 0.3 m (4.6-4.9 m, 815-1035 px)",
+          "openings": [
+            {
+              "kind": "pavilion light",
+              "w": 1.4
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.4
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "centre triple window",
+              "w": 4.7
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.45
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.45
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w01-29 (2021, rectified, about 45 px/m): as the first floor: pavilion lights, wing windows and the centre's triple window over the balcony",
+          "openings": [
+            {
+              "kind": "pavilion light",
+              "w": 1.4
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.4
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "centre triple window",
+              "w": 4.7
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "wing window",
+              "w": 1.45
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.45
+            },
+            {
+              "kind": "pavilion light",
+              "w": 1.45
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w01-29.alt (2021, the wider crop with the roofline): each pavilion's stepped gable carries a two-light window in its lowest tier (two 0.75 m lights) and three pointed dormers with smaller lights stand over each wing (0.65 m); the dormers' lights sit lower in the roof than the gable lights",
+          "openings": [
+            {
+              "kind": "gable light",
+              "w": 0.75
+            },
+            {
+              "kind": "gable light",
+              "w": 0.75
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "dormer light",
+              "w": 0.65
+            },
+            {
+              "kind": "gable light",
+              "w": 0.75
+            },
+            {
+              "kind": "gable light",
+              "w": 0.75
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

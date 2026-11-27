@@ -25,6 +25,29 @@ export const MATERIAL_SLOT_TAG = 'builder';
 
 export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string, SlotTag>>>> = {
 
+  'kweekschool-zeevaart': {
+    brick: {slot: 'brick', measured: '#7d5345', why: 'the red-brown brick of the Prins Hendrikkade front, pavilions and corner (overcast crop w02 #4a3a2c), authored lighter for the game light; #8a5a48 read orange beside the photo in the blind judge'},
+    stone: {slot: 'stone', measured: '#bab29e', why: 'the greyish stone bands, sills, surrounds, gables, balcony, dormers and the centre relief; #cbc3ad read near-white beside the photo in the blind judge'},
+    sandstone: {slot: 'stone', measured: '#a59c88', why: 'palette name only: the darker stone of the cornice, niche panels and pedestal (crop cornice #5e5b4a in shade)'},
+    slate: {slot: 'slate', measured: '#4a5157', why: 'the slate roofs behind the gables (crop #1a272c), authored lighter'},
+    glass: {slot: 'glass', measured: '#2f3a44', why: 'window and door glass'},
+    frame: {slot: 'frame', measured: '#e8e4da', why: 'the white cross-window frames and transoms'},
+    dark: {slot: 'door', measured: '#5a3424', why: 'palette name only: the varnished brown doors of the pavilions and the double portal (crop #2b1708), authored lighter'},
+    bronze: {slot: 'paint', measured: '#2d2f30', why: 'palette name only: the black iron balcony rail and the wall anchors'},
+  },
+  'passage-central': {
+    brick: {slot: 'brick', measured: '#9a5a48', why: 'the red brick of the Prins Hendrikkade front and the shell (2025 sunlit aimed view #f6c3af-#d8b3a4 washed out, 2021 overcast #5f4f4b-#604d45), authored between them'},
+    stone: {slot: 'stone', measured: '#d9cdb4', why: 'the cream stone bands, window surrounds, cornice, balconies, dormers and crest (2025 sunlit band #f7d3bd, 2021 overcast cornice #847f78); also the cream-painted Nieuwendijk-side shopfronts'},
+    greyBrick: {slot: 'stone', measured: '#a3a49f', why: 'palette name only: the grey stone ground storey, piers and archivolts (2025 #697173, 2021 #4d4c4e in shade); #8a8b87 read too dark beside the 2025 photo on the review sheet'},
+    slate: {slot: 'slate', why: 'the roof skin behind the cornice and the 3DBAG roofs'},
+    glass: {slot: 'glass', why: 'window glass, the arched windows and the passage screen'},
+    frame: {slot: 'frame', measured: '#e6e2d8', why: 'the white window frames and transoms'},
+    bronze: {slot: 'paint', measured: '#2a2c2d', why: 'palette name only: the black wrought-iron balconettes'},
+    dark: {slot: 'door', measured: '#4a4f52', why: 'palette name only: the dark grey steel frame of the passage portal (2025 #5b6265)'},
+    red: {slot: 'brick', measured: '#4b4440', why: 'palette name only: the dark brick of the Nieuwendijk-side houses (2019 and 2025 crops)'},
+    white: {slot: 'paint', measured: '#e0d8c4', why: 'palette name only: the white basement door and window sills'},
+    ochre: {slot: 'paint', measured: '#7a4a2a', why: 'palette name only: the varnished timber shop window on the Nieuwendijk side (2025)'},
+  },
   sluyswacht: {
     brick: {slot: 'brick', measured: '#3c3e43', why: 'the black-painted brick of all four walls and both gables (2021 overcast crops #393b3f NW, #3d3e44 NE; the 2025 dusk crop reads #252623)'},
     red: {slot: 'roofTile', measured: '#5f5440', why: 'palette name only: the weathered dark brown pantiles with moss. Luminance from the 2021 overcast NW crop (w02-313.alt.jpg roof #4d4844 against its white eave board #c0c3bc, scaled to the authored white #e2ddd2: #5a5450), hue from the 2025 dusk crop (w02-313.jpg roof #484127); was #74593f, which read warm and light against the black walls in the r19 blind'},
