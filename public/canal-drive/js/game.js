@@ -106,14 +106,9 @@ class Game {
     // only one since MapLibre was deleted (2026-11-27). The name `vectorMap` is kept for the
     // game modules and specs that read it.
     const engine = window.CanalRecallEngine;
-    // A browser that refuses WebGL gets no world view (ownWorldViewOrNull reports it and shows the notice); the ride
-    // then opens on a view that draws nothing (nullWorldView, the stand-in for MapLibre's map-less VectorBasemap;
-    // webgl-refused.spec.ts).
-    const mapEl = document.getElementById('vector-map');
-    this.vectorMap = engine
-      ? ((engine.ownWorldViewOrNull ? engine.ownWorldViewOrNull(mapEl) : new engine.OwnWorldView(mapEl))
-        || (engine.nullWorldView ? engine.nullWorldView() : null))
-      : null;
+    // WebGL refused: ownWorldViewOrNull reports it and the ride opens on nullWorldView (webgl-refused.spec.ts).
+    const mapEl = document.getElementById('vector-map'), own = engine && (engine.ownWorldViewOrNull ? engine.ownWorldViewOrNull(mapEl) : new engine.OwnWorldView(mapEl));
+    this.vectorMap = own || (engine && engine.nullWorldView ? engine.nullWorldView() : null);
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;
