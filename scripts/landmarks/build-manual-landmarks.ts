@@ -326,6 +326,8 @@ import {buildMetzKeizersgracht455} from './metz-keizersgracht-455-builder';
 import {buildHajeniusRokin} from './hajenius-rokin-builder';
 import {buildLeidsestraat1} from './leidsestraat-1-builder';
 import {buildLeidsestraat40} from './leidsestraat-40-builder';
+import {buildSluyswacht} from './sluyswacht-builder';
+import {buildDamrak37} from './damrak-37-builder';
 import {buildKoningsplein1} from './koningsplein-1-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
@@ -1360,6 +1362,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='hajenius-rokin')buildHajeniusRokin(w,d,helpers);
     else if(id==='leidsestraat-1')buildLeidsestraat1(w,d,helpers);
     else if(id==='leidsestraat-40')buildLeidsestraat40(w,d,helpers);
+    else if(id==='sluyswacht')buildSluyswacht(w,d,helpers);
+    else if(id==='damrak-37')buildDamrak37(w,d,helpers);
     else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
     else if(id==='lloyd-prins-hendrikkade-33')buildLloydPrinsHendrikkade33(w,d,helpers);
     else if(id==='batavia-prins-hendrikkade')buildBataviaPrinsHendrikkade(w,d,helpers);

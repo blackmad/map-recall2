@@ -139944,6 +139944,257 @@
       "triangles": 6060,
       "bytes": 83468,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sluyswacht": {
+      "id": "sluyswacht",
+      "name": "De Sluyswacht",
+      "modelUrl": "./models/sluyswacht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012182908"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90167569,
+          52.3698671
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 10.9,
+        "widthMetres": 10.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.90167569,
+          52.3698671
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG ring of pand 0363100012182908 (BAG CC0, bouwjaar 1695) with the 3DBAG LoD2.2 ridge (10.1 m) and NW eave (6.9 m) (3DBAG CC BY 4.0) in native east/south metres (scripts/landmarks/sluyswacht-footprints.json, bag-shell-prepare.ts); the massing is authored symmetric because both gables show it. The NW side read from the rectified Gemeente Amsterdam panorama b_20250108_1349_Track08_Sphere_00001 (2025) with TMX7316010203-001981_pano_0000_000794 (2021), the NE gable from TMX7316010203-000354_pano_0001_001178 (2017, square on) and TMX7316010203-001981_pano_0000_000796 (2021), the SW street gable from TMX7316010203-001664_pano_0000_001558 (2020) and TMX7316010203-000492_pano_0000_000027 (2017), CC BY 4.0; the SE side has no panorama and is inferred. Per wall in scripts/landmarks/sluyswacht-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 10.3,
+      "galleryView": {
+        "theta": -0.6,
+        "phi": 1.2
+      },
+      "bagYear": 1695,
+      "materialOverrides": {
+        "brick": "#3c3e43",
+        "red": "#5f5440",
+        "frame": "#e2ddd2",
+        "glass": "#34404a",
+        "green": "#3e4a4c",
+        "dark": "#33393b",
+        "white": "#efebe2",
+        "stone": "#8e8c86",
+        "concrete": "#e2ddd2"
+      },
+      "attribution": {
+        "title": "De Sluyswacht, Jodenbreestraat 1, Amsterdam: the lock-keeper's house on the Sint Antoniessluis (1695, rijksmonument)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001664_pano_0000_001558/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG ring (CC0) of pand 0363100012182908 with the 3DBAG LoD2.2 ridge and eave heights (CC BY 4.0): the two pointed gables with white verge boards and kneelers, the black-painted walls, the white-framed cross windows, shutters and hoist hatch, the pantile roof with its dormer, the ground-storey doors and the \"de Sluyswacht\" lettering, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9017223,
+              52.3699107
+            ],
+            [
+              4.9017193,
+              52.3699125
+            ],
+            [
+              4.9016468,
+              52.3698649
+            ],
+            [
+              4.9016403,
+              52.3698606
+            ],
+            [
+              4.9016197,
+              52.369847
+            ],
+            [
+              4.9016164,
+              52.3698448
+            ],
+            [
+              4.901669,
+              52.3698143
+            ],
+            [
+              4.9017719,
+              52.369882
+            ],
+            [
+              4.9017223,
+              52.3699107
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -4.414524555206299,
+          -0.01999998837709427,
+          -5.365584850311279
+        ],
+        "max": [
+          6.919524669647217,
+          10.260000228881836,
+          6.205584526062012
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90167569,
+          52.3698671
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 11.571169376373291,
+        "heightMetres": 10.28000021725893,
+        "depthMetres": 11.334049224853516,
+        "depthCoverage": 1.0692499268729732
+      },
+      "triangles": 1500,
+      "bytes": 35928,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "damrak-37": {
+      "id": "damrak-37",
+      "name": "Damrak 37",
+      "modelUrl": "./models/damrak-37.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012178237"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89624334,
+          52.37587702
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 14.6,
+        "widthMetres": 16.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89624334,
+          52.37587702
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178237 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1904) in native east/south metres (scripts/landmarks/damrak-37-footprints.json, bag-shell-prepare.ts); the Damrak front read from the rectified Gemeente Amsterdam panorama b_20250108_1349_Track19_Sphere_00344 (2025, square on) with TMX7316010203-001054_pano_0000_000512 (2018), CC BY 4.0, heights fitted to the 3DBAG roof (gable cap 21.7 m against 21.4 m). The SW flank stands behind the Damrak 38-41 row. Rijksmonument 518424. Per wall in scripts/landmarks/damrak-37-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.7,
+      "galleryView": {
+        "theta": 0.35,
+        "phi": 1.25
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#8e8a7e",
+        "sandstone": "#7d796f",
+        "slate": "#4a4f54",
+        "glass": "#2f3840",
+        "frame": "#ddd6c6",
+        "dark": "#2c2926",
+        "concrete": "#cfcac0",
+        "bronze": "#3a3c3a"
+      },
+      "attribution": {
+        "title": "Damrak 37, Amsterdam: stone-fronted shop and house with a curved dormer gable and a spired dormer (1904; rijksmonument 518424)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track19_Sphere_00344/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178237 (CC0): the curved stone dormer gable, the spired mansard dormer and the corner pinnacle, the segmental-arched shop window and entrance, the projecting bay on corbels with its carved parapet panel, the arcade of round-arched windows, the windows, cornice and slate mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8963702,
+              52.37589
+            ],
+            [
+              4.8962018,
+              52.3759624
+            ],
+            [
+              4.8961332,
+              52.3758954
+            ],
+            [
+              4.8961339,
+              52.3758953
+            ],
+            [
+              4.8962858,
+              52.375832
+            ],
+            [
+              4.896288,
+              52.3758316
+            ],
+            [
+              4.8962904,
+              52.3758323
+            ],
+            [
+              4.8963702,
+              52.37589
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.435999870300293,
+          0,
+          -9.505999565124512
+        ],
+        "max": [
+          9.249429702758789,
+          21.732999801635742,
+          5.594368934631348
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89624334,
+          52.37587702
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.685429573059082,
+        "heightMetres": 21.732999801635742,
+        "depthMetres": 15.10036849975586,
+        "depthCoverage": 0.9379110869413576
+      },
+      "triangles": 5692,
+      "bytes": 79084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

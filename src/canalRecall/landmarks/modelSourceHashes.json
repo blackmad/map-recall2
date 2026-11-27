@@ -1,5 +1,5 @@
 {
-  "toolchain": "e6eb48c9f81a400aeee5e960203bbd83638b5cdad105223306b0c2b0094df30d",
+  "toolchain": "3ff8885186cda0198eb1c2ae4ec511437958d2509561531b635a252fb726aa14",
   "models": {
     "abn-amro-hoofdkantoor": "ed14dd75b396a1b18efebd25a1173b040a761fdb0e74b982f197c01eaa69b5ab",
     "academie-theater-dans": "6dd471231c2e29efefb4668a2ce92430492e91afde41ef71b2993eb9331b6f0e",
@@ -112,6 +112,7 @@
     "da-costakade-13": "a5d8ea8bf227a58c77c62c915ea43bcd764cfbc71306641954bb625f74b3fe8a",
     "da-costakade-146": "b4972fc95deb5c9736e25627c8f031dcc6cb8505c83a2ac8e20b1d645c133088",
     "dageraad": "179eb703566c898f23657dc7976e2fb02906a50ea35a6a0baad33eb9e5c65ced",
+    "damrak-37": "af6040f6f4f00c187503f211e30918921534cd33bca1aee2791f12b87446a9ef",
     "de-ateliers": "2c7702cccd3d44ae080a08c5bd3a16d4a7bbd9d57b79c98f270d750edbcafbaf",
     "de-balie": "106b17311d244cf03d5bedf59253b08b1404a5e251bb31cc0a91b773f4d5f927",
     "de-bazel": "152ee0ccd86fc44365d8b0b19b2a7043f5f435c9d5a1e2214d4f9e2565ed6da7",
@@ -486,6 +487,7 @@
     "slavernijmonument": "962eb0d1e23e64fe6fd26c8ff42b42269f74f0d26335a3186b9953ed0a92f230",
     "sloterdijk-station": "defd999fdb021e522448948c1ead39004594b3cdc04d48ef86863a50dc9f3830",
     "sloterparkbad": "81ac174272848883d06e7d17cc8b3ae1ea7bd75fd8049cfe2a5d41555d2d74b1",
+    "sluyswacht": "fd4a4634983b88cbdc52c3563a4093a52e687520494c09c1d067259d567a509a",
     "social-history": "493eca92dbeec15e0a43edc1b0f0e6ad50dd5b0dd91fb5cfd9ef289730c73c9d",
     "sofitel-the-grand-1926": "aafcf252528eb441f9123b6bcffdef5f7885fbe3ce998426069f5f069e793898",
     "spaarbank-singel-548": "2fc349c189c723acc6f8e8a7c738cf2249c3f867bb749aa1067d5fa4ae69f006",

@@ -1,0 +1,31 @@
+{
+ "id": "sluyswacht",
+ "name": "De Sluyswacht",
+ "heightMetres": 10.3,
+ "bagYear": 1695,
+ "galleryView": {
+  "theta": -0.6,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "BAG ring of pand 0363100012182908 (BAG CC0, bouwjaar 1695) with the 3DBAG LoD2.2 ridge (10.1 m) and NW eave (6.9 m) (3DBAG CC BY 4.0) in native east/south metres (scripts/landmarks/sluyswacht-footprints.json, bag-shell-prepare.ts); the massing is authored symmetric because both gables show it. The NW side read from the rectified Gemeente Amsterdam panorama b_20250108_1349_Track08_Sphere_00001 (2025) with TMX7316010203-001981_pano_0000_000794 (2021), the NE gable from TMX7316010203-000354_pano_0001_001178 (2017, square on) and TMX7316010203-001981_pano_0000_000796 (2021), the SW street gable from TMX7316010203-001664_pano_0000_001558 (2020) and TMX7316010203-000492_pano_0000_000027 (2017), CC BY 4.0; the SE side has no panorama and is inferred. Per wall in scripts/landmarks/sluyswacht-inventory.json.",
+ "materialOverrides": {
+  "brick": "#3c3e43",
+  "red": "#5f5440",
+  "frame": "#e2ddd2",
+  "glass": "#34404a",
+  "green": "#3e4a4c",
+  "dark": "#33393b",
+  "white": "#efebe2",
+  "stone": "#8e8c86",
+  "concrete": "#e2ddd2"
+ },
+ "attribution": {
+  "title": "De Sluyswacht, Jodenbreestraat 1, Amsterdam: the lock-keeper's house on the Sint Antoniessluis (1695, rijksmonument)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001664_pano_0000_001558/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG ring (CC0) of pand 0363100012182908 with the 3DBAG LoD2.2 ridge and eave heights (CC BY 4.0): the two pointed gables with white verge boards and kneelers, the black-painted walls, the white-framed cross windows, shutters and hoist hatch, the pantile roof with its dormer, the ground-storey doors and the \"de Sluyswacht\" lettering, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

@@ -1,0 +1,290 @@
+{
+ "schemaVersion": 1,
+ "id": "sluyswacht",
+ "pand": "0363100012182908",
+ "brief": "scripts/landmarks/sluyswacht-brief.md",
+ "signature": [
+  "s-sw-gable",
+  "s-lettering",
+  "s-black-walls",
+  "s-ne-gable",
+  "s-pantile-roof"
+ ],
+ "walls": [
+  {
+   "tag": "w01-133",
+   "bearing": 133,
+   "lengthM": 10.3,
+   "centre": [
+    4.9017235,
+    52.36985
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "The SE long side (ring edge 3, 10.3 m) faces the conservatory grounds: no panorama within 35 m, and the four 50-59 m candidates (TMX7316010203-000354_pano_0001_001184, -001981_pano_0000_000801 and _000613, -000354_pano_0001_001183) are blocked by the conservatory's stone plinth. Inferred: the black-painted wall up to the 7.0 m eave the NE gable photo shows on this side (its left rake meets the SE corner at the NW eave's height; the 3DBAG's 5.96 m SE eave is the lopsided-plane artefact), white eave board, pantile roof; no openings asserted."
+  },
+  {
+   "tag": "w02-313",
+   "bearing": 313,
+   "lengthM": 10.3,
+   "centre": [
+    4.9016705,
+    52.369881
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track08_Sphere_00001",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-nw-windows",
+     "kind": "window-shape",
+     "where": "two lower windows at x 58-105 and 158-213, y 350-445 (t 1.16-2.09 and 3.15-4.24 m, h 1.6-3.5 m): white frames, four lights over a dark lower panel",
+     "approxSizeM": [
+      1.0,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track08_Sphere_00001",
+     "how": "crossWindow(): white frame, 2x2 lights over a dark panel with a white rail"
+    },
+    {
+     "id": "s-nw-upper",
+     "kind": "window-shape",
+     "where": "small upper window x 283-325, y 245-293 (t 5.64-6.47, h 4.6-5.6) with a dark-green shutter hooked back on its right (x 330-362)",
+     "approxSizeM": [
+      1.5,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track08_Sphere_00001"
+    },
+    {
+     "id": "s-nw-dormer",
+     "kind": "window-shape",
+     "where": "one small flat-roofed dormer in the roof over t 4.8-5.8 (x 240-292, y 112-168, h 7.2-8.3) with a white-framed window",
+     "approxSizeM": [
+      1.0,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track08_Sphere_00001"
+    },
+    {
+     "id": "s-eave-board",
+     "kind": "other",
+     "where": "white boarded eave and gutter along the whole side, y 172-182",
+     "approxSizeM": [
+      10.3,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track08_Sphere_00001"
+    },
+    {
+     "id": "s-black-walls",
+     "kind": "other",
+     "where": "the whole house: brick painted black-grey (2021 overcast #393b3f-#3d3e44), every frame white",
+     "approxSizeM": [
+      10.3,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001981_pano_0000_000794",
+     "note": "measured wall colour on the 2021 crops (the 2025 crop is dusk, #252623)"
+    },
+    {
+     "id": "s-pantile-roof",
+     "kind": "other",
+     "where": "steep roof of weathered red-brown pantiles with moss, ridge 10.1 m, eaves 7.0 m, white verge boards at both gables",
+     "approxSizeM": [
+      10.6,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track08_Sphere_00001",
+     "how": "two tile-coloured roof slabs from the 7.0 m eaves to the 10.1 m ridge with raised tile courses every 0.33 m and a ridge capping; colour scaled from the dusk crop by the wall ratio (2025 #4c3e2a x 1.6)"
+    }
+   ],
+   "note": "The NW long side over the lock (ring edge 1, 10.28 m, t from the NE end), read on the 2025 rectified crop (w02-313.jpg, 516 px = 10.28 m, 50.2 px/m) and the 2021 boat crop (w02-313.alt.jpg). Heights h = 7.0 + (178 - y) / 50.2: the white eave board at y 172-182 is the 6.9 m 3DBAG wall top. Both crops agree that the two lower windows' heads sit 3.4 m under the eave (2025: 172 px, 2021: 170 px), level with the NE gable's first-floor sills: a split floor. The white balance beams and the lock gate in front belong to the Sint Antoniessluis, not to the pand. The sloping right edge of the roof is the SW verge seen 18 deg off square (parallax of the ridge 2.5 m behind the wall plane), not a hip."
+  },
+  {
+   "tag": "w03-224",
+   "bearing": 224,
+   "lengthM": 5,
+   "centre": [
+    4.9016455,
+    52.3698315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001664_pano_0000_001558",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-sw-gable",
+     "kind": "other",
+     "where": "the pointed street gable: straight rakes from shoulders at 7.1 m to the 10.1 m apex, white verge boards, two white cross windows on the first floor (y 400-485, h 4.0-5.7, 1.3 m wide, 2.25 m apart) and two small attic windows (y 300-345, h 6.8-7.7)",
+     "approxSizeM": [
+      4.9,
+      10.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001664_pano_0000_001558"
+    },
+    {
+     "id": "s-lettering",
+     "kind": "lettering",
+     "where": "\"de Sluyswacht\" in white painted script across the gable between the ground storey and the first-floor windows (2017-11 crop x 55-185, y 497-520: about 2.6 x 0.45 m, h 3.3-3.75)",
+     "approxSizeM": [
+      2.6,
+      0.45
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000492_pano_0000_000027",
+     "how": "white 5x7 relief letters in mixed case, \"de Sluyswacht\", 0.036 m pixels, 0.42 m tall with the ascenders; the script's joins are not drawn",
+     "note": "new lower-case glyphs d, u, y, s, w, a, h, t in nearbar-kit GL"
+    },
+    {
+     "id": "s-sw-ground",
+     "kind": "window-shape",
+     "where": "ground storey at street level: a white-framed glazed door with a four-light transom on the left (t 0.8-2.05) and a window with transom lights on the right (t 2.75-4.0), heads at 2.75 m (2017-11 crop y 548; 2021 boat view)",
+     "approxSizeM": [
+      3.2,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000492_pano_0000_000027"
+    },
+    {
+     "id": "s-sw-words",
+     "kind": "lettering",
+     "where": "two short white painted words over the first-floor windows (2020 crop y 378-390)",
+     "approxSizeM": [
+      0.6,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 x 0.15 m each and illegible at 50 px/m in every crop; a 0.15 m word is under one pixel on the gallery card"
+     },
+     "seenIn": "TMX7316010203-001664_pano_0000_001558"
+    }
+   ],
+   "note": "The SW street gable on the Jodenbreestraat (ring edge 2, 4.94 m, t from the W corner). The brief's crop (TMX7316010203-000355_pano_0001_001614) and every face-crops candidate under 35 m look up at the underside of the Sint Antoniessluis bridge from a boat; the street front is read on four 41-43 m frontal street panoramas through a tree: TMX7316010203-001664_pano_0000_001558 (2020-04, leafless, sharpest), TMX7316010203-000224_pano_0000_000446 (2017-03), TMX7316010203-000492_pano_0000_000027 (2017-11) and TMX7316010203-002623_pano_0006_000018 (2022, in leaf), rectified at 50 px/m with h = 10.1 + (180 - y) / 50 (apex at the 3DBAG ridge), plus the 2021 boat view w03-224.alt.jpg for the ground storey. Window axes differ by up to 0.5 m between crops; they are placed symmetric about t 2.4, their mean."
+  },
+  {
+   "tag": "w04-44",
+   "bearing": 44,
+   "lengthM": 5,
+   "centre": [
+    4.9017485,
+    52.3698995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001981_pano_0000_000796",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-ne-gable",
+     "kind": "other",
+     "where": "the pointed NE gable: straight rakes with white verge boards to the 10.1 m apex (rake about 56 deg in both directions), a white kneeler at the NW shoulder (y 95, h 7.0), a white-framed hoist hatch under the apex (x 85-122, y 0-45, h 8.0-8.9)",
+     "approxSizeM": [
+      4.9,
+      10.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001178"
+    },
+    {
+     "id": "s-ne-windows",
+     "kind": "window-shape",
+     "where": "two first-floor cross windows of 6 over 6 lights (x 20-90 and 132-200, y 180-265: t 0.4-1.8 and 2.64-4.0, h 3.7-5.4) and the attic window (x 78-132, y 70-135, h 6.2-7.5) between dark-green shutters",
+     "approxSizeM": [
+      3.6,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001178"
+    },
+    {
+     "id": "s-ne-ground",
+     "kind": "window-shape",
+     "where": "ground storey on the terrace: a white-framed glazed door and window under one transom of 2x4 lights (x 110-205, t 2.2-4.1, to h 2.56) and a window with a transom over a dark shutter panel on the left (2021 x 36-85, t 0.72-1.7)",
+     "approxSizeM": [
+      3.4,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_001178"
+    },
+    {
+     "id": "s-ne-lantern",
+     "kind": "lamp",
+     "where": "black wall lantern on a bracket right of the right window (x 198, y 255-275, h 3.4-3.8)",
+     "approxSizeM": [
+      0.2,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001981_pano_0000_000796",
+     "how": "a dark box lantern with a pale glass block on a short bracket"
+    },
+    {
+     "id": "s-ne-drainpipe",
+     "kind": "other",
+     "where": "dark downpipe at the NW corner from the gutter to the terrace",
+     "approxSizeM": [
+      0.1,
+      7.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.1 m wide and dark on the dark wall: invisible at gallery size"
+     },
+     "seenIn": "TMX7316010203-001981_pano_0000_000796"
+    },
+    {
+     "id": "s-umbrellas",
+     "kind": "canopy",
+     "where": "two furled cream terrace parasols in front of the left window",
+     "approxSizeM": [
+      1.2,
+      3.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "cafe terrace furniture, furled in 2021 and present in 2017"
+     },
+     "seenIn": "TMX7316010203-001981_pano_0000_000796"
+    }
+   ],
+   "note": "The NE gable over the lock and the terrace (ring edge 4, 4.65 m, t from the E corner), read on the frontal 2017 crop TMX7316010203-000354_pano_0001_001178 (face-crops, 247 px = 4.93 m, 50 px/m, h = 7.0 + (95 - y) / 50 with the NW shoulder at the eave) and the 2021 crops w04-44.jpg (13 m, from a boat; the quay edge hides the bottom 0.6 m) and TMX7316010203-001983_pano_0000_000061 (2021, square on). Lean: the 2021 square-on crop shows the NW corner 4 px (0.08 m) in at the shoulder over 3.5 m (1.3 deg); the 2017 crop shows it plumb. Under 0.1 m either way, smaller than a gallery-card pixel: not modelled, the house stands plumb."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG (pand 0363100012182908, bouwjaar 1695)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012182908",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "budget": "hand triangles about 4-6k: gables and roof courses 1.5k, 14 windows with bars 2.5k, lettering 1k (13 glyphs), dormer, lantern, boards"
+}
