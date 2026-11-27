@@ -64,10 +64,11 @@ test('chains: brand:wikidata or name picks the chain; the extract word round-tri
 });
 
 test('chain-logos2: own-front chains of a real-only type have a logo; a chain frame and awning reach the front; Lidl mark is a lightbox panel', async () => {
-  const { CHAINS_OWN_FRONT } = await import('./retailChains.js');
+  const { CHAINS_OWN_FRONT_NEW, chainOwnFront, chainOwnFrontsEnabled } = await import('./retailChains.js');
+  assert.equal(chainOwnFrontsEnabled('?chainOwnFronts=0'), false); assert.equal(chainOwnFrontsEnabled('?x=1', '1'), true); assert.ok(chainOwnFront('benu'));
   const { retailFrontTris } = await import('./retailFront.js');
   for (const k of ['new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']) {
-    assert.ok(CHAINS_OWN_FRONT.has(k) && RETAIL_CHAINS[k], k);
+    assert.ok(CHAINS_OWN_FRONT_NEW.has(k) && RETAIL_CHAINS[k], k);
     assert.ok(REAL_ONLY_TEMPLATES.includes(RETAIL_CHAINS[k].template), `${k}: a real-only type`);
     assert.ok(chainLogo(k), `${k}: logo packed`);
   }

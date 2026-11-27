@@ -31,9 +31,22 @@ export const chainOfWord = (word: string | undefined): string | null => (word &&
  *  board, letters and logo under their type's template even where that template's real look has not won its blind
  *  (Benu's pands are apotheek fronts, which otherwise letter APOTHEEK), and even where that template is real-only
  *  (lane chain-logos2). Its goods still follow the template. */
-export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu',
-  // Lane chain-logos2-20261120 (David's Shopfronts notes of 2026-11-20, "find logo"): chains of a real-only type template
-  // that has not won its blind (fast food, restaurant, optician, telecom, liquor, variety) drew no front at all; these
-  // draw it under their own board and logo (round n's window, not the type's goods).
-  'new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']);
-export const chainOwnFront = (key: string): boolean => CHAINS_OWN_FRONT.has(key);
+export const CHAINS_OWN_FRONT: ReadonlySet<string> = new Set(['benu']);
+/** Lane chain-logos2-20261120 (David's Shopfronts notes of 2026-11-20, "find logo"): chains of a real-only type template
+ *  that has not won its blind (fast food, restaurant, optician, telecom, liquor, variety) drew no front at all; these
+ *  draw it under their own board and logo (round n's window, not the type's goods) while `chainOwnFronts` is on. */
+export const CHAINS_OWN_FRONT_NEW: ReadonlySet<string> = new Set(['new-york-pizza', 'domino-s', 'subway', 'de-pizzabakkers', 'pearle', 'odido', 'grapedistrict', 'gamma', 'blokker']);
+/** `?chainOwnFronts=0|1` (CHAIN_OWN_FRONTS env; forwarded to the building worker): the CHAINS_OWN_FRONT_NEW fronts. */
+export const CHAIN_OWN_FRONTS_DEFAULT = true;
+export function chainOwnFrontsEnabled(search?: string | null, env?: string | null): boolean {
+  const q = search ? /[?&]chainOwnFronts=([01])\b/.exec(search)?.[1] : undefined;
+  const v = q ?? (env === '0' || env === '1' ? env : undefined);
+  return v === undefined ? CHAIN_OWN_FRONTS_DEFAULT : v === '1';
+}
+let ownFrontsCached: boolean | undefined;
+export function chainOwnFrontsOn(): boolean {
+  const g = globalThis as { __canalRecallChainOwnFronts?: boolean; location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  if (typeof g.__canalRecallChainOwnFronts === 'boolean') return g.__canalRecallChainOwnFronts;
+  return (ownFrontsCached ??= chainOwnFrontsEnabled(g.location?.search ?? null, g.process?.env?.CHAIN_OWN_FRONTS ?? null));
+}
+export const chainOwnFront = (key: string): boolean => CHAINS_OWN_FRONT.has(key) || (CHAINS_OWN_FRONT_NEW.has(key) && chainOwnFrontsOn());
