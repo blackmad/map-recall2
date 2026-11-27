@@ -25,6 +25,26 @@ export const MATERIAL_SLOT_TAG = 'builder';
 
 export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string, SlotTag>>>> = {
 
+  'bulldog-first': {
+    stone: {slot: 'stucco', why: 'white-plastered front (b_20250114_1026_Track02_Sphere_00186), not stone'},
+    blue: {slot: 'paint', why: 'navy painted mural ground and fascia on the ground storey, sign rim'},
+    gold: {slot: 'paint', why: 'painted mural, fascia lettering and sign face, not metal'},
+    pink: {slot: 'paint', why: 'painted mural'},
+    ochre: {slot: 'paint', why: 'painted mural'},
+    copper: {slot: 'paint', why: 'painted mural and blue neon lettering, not metal'},
+    bronze: {slot: 'paint', why: 'painted brown window frame and the bulldog head on the sign'},
+    concrete: {slot: 'paint', why: 'painted window flower boxes'},
+    sandstone: {slot: 'paint', why: 'the bulldog sign muzzle and lantern lights, painted'},
+  },
+  'in-t-aepjen': {
+    dark: {slot: 'paint', why: 'tarred black timber storey, beams and hood (recording_2025-06-30_05-16-46_01845)'},
+    copper: {slot: 'paint', why: 'weathered blue-grey timber lap boards, not metal'},
+    green: {slot: 'paint', why: 'the darker weathered lap boards'},
+    greyBrick: {slot: 'paint', why: 'timber window posts and sill boards'},
+    sandstone: {slot: 'paint', why: 'cream painted timber shopfront pilasters'},
+    gold: {slot: 'paint', why: 'cream script lettering on the glass'},
+    bronze: {slot: 'paint', why: 'black sign rim, bracket and GULPENER lettering'},
+  },
   'erotic-museum': {
     bronze: {slot: 'paint', why: 'black painted sign board behind the neon'},
   },

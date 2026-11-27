@@ -1,0 +1,30 @@
+{
+  "id": "bulldog-first",
+  "countedBy": "lane landmarks-r19-e-20261127 from the 2025-01-14 opposite-bank panorama b_20250114_1026_Track02_Sphere_00186 (68.6 px/m on the 1.29 m windows) and the 2021 rectified crop w02-128.jpg; glazed openings bottom row first.",
+  "facades": [
+    {
+      "name": "Canal front",
+      "bearing": 128,
+      "photo": "artifacts/landmark-briefs/bulldog-first/w02-128.jpg",
+      "rows": [
+        2,
+        2,
+        3
+      ],
+      "columns": 3,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "Counted above the painted ground storey (heightM 4.3-14 m: the shop window and the door light below are a shopfront, not a window row). Two storeys of two windows on axes 1.23 and 3.29 m. Attic: three round-headed windows, the centre one wider, at 1.1, 2.26 and 3.42 m: three columns. The side attic windows are smaller than the centre one. alongM: the silhouette's viewer-left 1.95 m is the alley side seen edge-on past the front's west corner; the 4.52 m front is cropped.",
+      "heightM": [
+        4.3,
+        14
+      ],
+      "alongM": [
+        1.95,
+        6.47
+      ]
+    }
+  ]
+}

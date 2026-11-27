@@ -26,17 +26,19 @@ const src = source as unknown as Src;
 const FRONT = 2, SIDE = 1;
 const W = 4.52;
 /**
- * Raised cornice gable: a broad, shallow parabolic arc from the 12.35 m shoulders at both edges to a 13.6 m crown, read off
- * the 2025-01-14 opposite-bank crop (b_20250114_1026_Track02_Sphere_00186: edges at ~12.6, crown ~14.0 crop m, crop 0.25 m
- * over the model datum). The first cut (11.75 m shoulders, a quarter-cosine) read as a tall pointed dome to the blind judge.
- * A 13.75 m crown (the crop's reading) made the openings gate read all nine front openings as buried; 13.6 m passes.
+ * Raised cornice gable, read again 2026-11-27 (lane landmarks-r19-e) off the 2025-01-14 opposite-bank crop
+ * (b_20250114_1026_Track02_Sphere_00186, 68.6 px/m on the 1.29 m windows): flat cornice shoulders 0.3 m wide at both edges
+ * at 12.2 m, then an ogee (concave at the foot, convex at the top) rising 1.3 m to a rounded crown at 13.5 m. The first cut
+ * (a quarter-cosine) read as a pointed dome and the second (a parabola from the very edges) as a full round bell to the blind
+ * judge (2026-11-21); both lacked the flat shoulders and the S-curve.
  */
-const SHOULDER = 12.35, CROWN = 13.6;
+const SHOULDER = 12.2, CROWN = 13.5, FLAT = 0.3;
 function gableTop(t: number) {
-  const u = Math.min(1, Math.abs(t - W / 2) / (W / 2));
-  return SHOULDER + (CROWN - SHOULDER) * (1 - u * u);
+  const u = Math.min(1, Math.max(0, (Math.abs(t - W / 2)) / (W / 2 - FLAT)));
+  return SHOULDER + (CROWN - SHOULDER) * (1 - u * u * (3 - 2 * u));
 }
-const MOSAIC = ['blue', 'gold', 'red', 'green', 'pink', 'ochre', 'copper'];
+/** Mural inks on the navy ground: the 2025 near crops read a dark blue ground with scattered figures, not a bright tiling. */
+const MOSAIC = ['copper', 'gold', 'red', 'green', 'pink', 'ochre'];
 
 export function buildBulldogFirst(_w: number, _d: number, b: BuildingTools) {
   const {f, len} = ringFrame(src.facadeRing, FRONT);
@@ -51,13 +53,18 @@ export function buildBulldogFirst(_w: number, _d: number, b: BuildingTools) {
   groundStorey(b, f, len);
   side(b);
   for (const t of [0.3, len - 0.3]) bulldogSign(b, f, t);
+  lamps(b, f);
   setSink(sink0);
 }
 
 /** The white plastered front with its bell gable (replaces the 3DBAG's pitched front wall), the coping along the gable and the band over the ground storey. */
 function frontWall(b: BuildingTools, f: Frame, len: number) {
   const top: [number, number][] = [];
-  for (let i = 0; i <= 16; i++) { const t = len * i / 16; top.push([t, gableTop(t)]); }
+  // 16 segments: the flat shoulders, then 14 along the ogee (32 segments made the openings gate read all nine front openings
+  // as buried, the wall-plane quirk of 2026-11-21 under another trigger; geometryAudit not changed here)
+  top.push([0, SHOULDER]);
+  for (let i = 0; i <= 14; i++) { const t = FLAT + (len - 2 * FLAT) * i / 14; top.push([t, gableTop(t)]); }
+  top.push([len, SHOULDER]);
   poly(b, f, 0, 0, [[0, 0], ...top, [len, 0]].reverse() as [number, number][], 0.25, 'stone', -0.25);
   // coping: a 14 cm band riding the gable outline, lifted 5 cm over it
   const s0 = getSink();
@@ -65,12 +72,11 @@ function frontWall(b: BuildingTools, f: Frame, len: number) {
   for (let i = 0; i < 16; i++) {
     const [t0, y0] = top[i], [t1, y1] = top[i + 1];
     const L = Math.hypot(t1 - t0, y1 - y0), a = Math.atan2(y1 - y0, t1 - t0);
-    poly(b, f, (t0 + t1) / 2, (y0 + y1) / 2 + 0.05, [[-L / 2 - 0.02, -0.07], [L / 2 + 0.02, -0.07], [L / 2 + 0.02, 0.07], [-L / 2 - 0.02, 0.07]].map(([x, y]) => [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)]) as [number, number][], 0.1, 'stone', 0);
+    poly(b, f, (t0 + t1) / 2, (y0 + y1) / 2 - 0.02, [[-L / 2 - 0.02, -0.12], [L / 2 + 0.02, -0.12], [L / 2 + 0.02, 0.12], [-L / 2 - 0.02, 0.12]].map(([x, y]) => [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)]) as [number, number][], 0.1, 'stone', 0);
   }
   setSink(s0, true);
-  // shoulder ledges and the small finial block on the crown
-  for (const t of [0.2, len - 0.2]) slab(b, f, t, SHOULDER - 0.1, 0.45, 0.12, 0.16, 'stone');
-  slab(b, f, len / 2, CROWN, 0.5, 0.12, 0.14, 'stone');
+  // the moulded cornice under the flat shoulders, returned along the front: a second, deeper band 0.25 m under the coping
+  for (const t of [FLAT / 2, len - FLAT / 2]) slab(b, f, t, SHOULDER - 0.32, FLAT + 0.12, 0.16, 0.22, 'stone');
 }
 
 /** Two storeys of two dark-framed windows (axes 1.23 and 3.29 m) with hoods and flower boxes; three round-headed attic windows. */
@@ -104,11 +110,16 @@ function flowerBox(b: BuildingTools, f: Frame, t: number, yTop: number, w: numbe
  * multi-pane window on the left (t 0.35-1.75 m, 1.1-3.6 m), the door (t 2.55-3.45 m, to 2.6 m) with the yellow 90 over it.
  */
 function groundStorey(b: BuildingTools, f: Frame, len: number) {
-  mosaicPanel(b, f, len / 2, 0, len, 4.3, MOSAIC, {ground: 'blue', cell: 0.24, fill: 0.9, seed: 3, d: 0.04});
+  mosaicPanel(b, f, len / 2, 0, len, 4.3, MOSAIC, {ground: 'blue', cell: 0.22, fill: 0.45, seed: 3, d: 0.04});
   slab(b, f, len / 2, 4.3, len + 0.04, 0.28, 0.12, 'blue');
+  signText(b, f, 'THE BULLDOG', len / 2, 4.36, 0.12, {width: 2.6, height: 0.17, d: 0.02, colour: 'gold'});
   // window: brown timber frame, many small panes
   slab(b, f, 1.05, 1.0, 1.55, 2.7, 0.06, 'bronze', 0.08);
   timberWindow(b, f, 1.05, 1.1, 1.4, 2.5, {cols: 4, rows: 5, frame: 'bronze', sill: null, out: 0.14, bar: 0.04});
+  // the blue neon board over the window: THE FIRST / COFFEESHOP
+  slab(b, f, 1.05, 3.72, 1.5, 0.5, 0.05, 'dark', 0.08);
+  signText(b, f, 'THE FIRST', 1.05, 3.98, 0.13, {width: 1.1, height: 0.17, d: 0.02, colour: 'copper'});
+  signText(b, f, 'COFFEESHOP', 1.05, 3.77, 0.13, {width: 1.3, height: 0.15, d: 0.02, colour: 'copper'});
   // door and its number board
   slab(b, f, 3.0, 0, 1.0, 2.75, 0.06, 'dark', 0.08);
   const sk = getSink();
@@ -117,6 +128,15 @@ function groundStorey(b: BuildingTools, f: Frame, len: number) {
   setSink(sk, true);
   slab(b, f, 3.0, 2.82, 0.7, 0.42, 0.05, 'dark', 0.08);
   signText(b, f, '90', 3.0, 2.88, 0.14, {width: 0.34, height: 0.28, d: 0.04, colour: 'gold'});
+}
+
+/** Wall lanterns: three at 7.2 m (between the storeys, outside and between the window axes) as lit in the 2025-01-14 crop. */
+function lamps(b: BuildingTools, f: Frame) {
+  for (const t of [0.22, W / 2, W - 0.22]) {
+    slab(b, f, t, 7.05, 0.05, 0.05, 0.22, 'dark');
+    slab(b, f, t, 7.05, 0.16, 0.32, 0.14, 'dark', 0.12);
+    slab(b, f, t, 7.1, 0.11, 0.22, 0.05, 'sandstone', 0.26);
+  }
 }
 
 /** The alley side (edge 1): one green-framed second-floor window by the front corner and the mosaic wrapping 3 m round it. */
@@ -128,9 +148,9 @@ function side(b: BuildingTools) {
   const fm = [fr.origin[0] + fr.tangent[0] * W / 2, fr.origin[1] + fr.tangent[1] * W / 2];
   const corner = Math.hypot(ends[0][0] - fm[0], ends[0][1] - fm[1]) < Math.hypot(ends[1][0] - fm[0], ends[1][1] - fm[1]) ? 0 : len;
   const dir = corner === 0 ? 1 : -1;
-  mosaicPanel(b, f, corner + dir * 1.5, 0, 3.0, 4.3, MOSAIC, {ground: 'blue', cell: 0.24, fill: 0.9, seed: 5, d: 0.04});
+  mosaicPanel(b, f, corner + dir * 1.5, 0, 3.0, 4.3, MOSAIC, {ground: 'blue', cell: 0.22, fill: 0.45, seed: 5, d: 0.04});
   slab(b, f, corner + dir * 1.5, 4.3, 3.0, 0.28, 0.12, 'blue');
-  timberWindow(b, f, corner + dir * 1.3, 7.7, 0.9, 1.7, {cols: 2, rows: 3, frame: 'green', sill: 'stone'});
+  timberWindow(b, f, corner + dir * 1.1, 6.0, 1.2, 1.5, {cols: 2, rows: 2, frame: 'stone', sill: 'stone'});
 }
 
 /**
@@ -139,7 +159,7 @@ function side(b: BuildingTools) {
  * FIRST COFFEESHOP lettering round the rim is too small at this size and is left out.
  */
 function bulldogSign(b: BuildingTools, f: Frame, t: number) {
-  const yc = 4.95, s0 = 0.25, r = 0.5, c = s0 + r, th = 0.08;
+  const yc = 4.62, s0 = 0.2, r = 0.6, c = s0 + r, th = 0.08;
   slab(b, f, t, yc + r + 0.02, 0.05, 0.05, s0 + 2 * r + 0.05, 'slate');
   slab(b, f, t, yc + r - 0.3, 0.12, 0.4, 0.04, 'slate');
   const P: [number, number] = [f.origin[0] + f.tangent[0] * t, f.origin[1] + f.tangent[1] * t];
