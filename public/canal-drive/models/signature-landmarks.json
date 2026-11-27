@@ -138000,6 +138000,217 @@
         "bytes": 13620,
         "triangles": 365
       }
+    },
+    "leidsestraat-1": {
+      "id": "leidsestraat-1",
+      "name": "Leidsestraat 1 (Kreymborg store)",
+      "modelUrl": "./models/leidsestraat-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012177446"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88799209,
+          52.3665982
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 27.4,
+        "widthMetres": 31
+      },
+      "surveyed": {
+        "anchor": [
+          4.88799209,
+          52.3665982
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177446 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/leidsestraat-1-footprints.json, bag-shell-prepare.ts); the Herengracht front read from the rectified Gemeente Amsterdam panorama TMX7316010203-001543_pano_0000_003117 (2020) and its aimed view, the stuccoed house in the same pand from TMX7316010203-000355_pano_0000_000791 (2017), the Leidsestraat front from pitched looks out of TMX7316010203-002860_pano_0000_000032 (2022) and TMX7316010203-002306_pano_0002_001838 (2021), CC BY 4.0, heights fitted to the 3DBAG front top (24.1 m) and balcony roof (11.5 m). Rijksmonument 518332. Per wall in scripts/landmarks/leidsestraat-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 31,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.2
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#d3c6ae",
+        "ochre": "#c4a46a",
+        "sandstone": "#c8c2b4",
+        "bronze": "#5b625f",
+        "red": "#332c2a",
+        "copper": "#4e4a47",
+        "concrete": "#dedbd0",
+        "frame": "#e6e3da",
+        "glass": "#343e47",
+        "slate": "#4f5257",
+        "brick": "#7a5a48",
+        "greyBrick": "#7d6f63"
+      },
+      "attribution": {
+        "title": "Leidsestraat 1 / Herengracht, Amsterdam: clothing store for Kreymborg & Co. (P.A. Weeldenburg, 1904-1905; rijksmonument 518332)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001543_pano_0000_003117/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177446 (CC0): the cream glazed-brick corner piers with ochre courses, the iron-framed glazed storeys on cast-iron colonnettes with segmental heads on the Herengracht, the small-pane mezzanine and fascia, the attic windows, the tiled frieze and copper-clad cornice, the rounded corner oriel with its balcony railing, the stepped pier crest, the rooftop glazing and the stuccoed house in the same pand, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8881161,
+              52.366574
+            ],
+            [
+              4.8881126,
+              52.3665718
+            ],
+            [
+              4.8880417,
+              52.3666122
+            ],
+            [
+              4.8880452,
+              52.3666144
+            ],
+            [
+              4.8880308,
+              52.3666226
+            ],
+            [
+              4.8880279,
+              52.3666241
+            ],
+            [
+              4.8880248,
+              52.3666255
+            ],
+            [
+              4.8880215,
+              52.3666267
+            ],
+            [
+              4.888018,
+              52.3666277
+            ],
+            [
+              4.8880145,
+              52.3666285
+            ],
+            [
+              4.8880108,
+              52.3666291
+            ],
+            [
+              4.888007,
+              52.3666296
+            ],
+            [
+              4.8880032,
+              52.3666298
+            ],
+            [
+              4.8879993,
+              52.3666298
+            ],
+            [
+              4.8879954,
+              52.3666296
+            ],
+            [
+              4.8879915,
+              52.3666292
+            ],
+            [
+              4.8879877,
+              52.3666286
+            ],
+            [
+              4.887984,
+              52.3666278
+            ],
+            [
+              4.8879804,
+              52.3666268
+            ],
+            [
+              4.887977,
+              52.3666256
+            ],
+            [
+              4.8879738,
+              52.3666242
+            ],
+            [
+              4.8879585,
+              52.3666169
+            ],
+            [
+              4.8879628,
+              52.3666136
+            ],
+            [
+              4.8877826,
+              52.3665279
+            ],
+            [
+              4.8877783,
+              52.3665313
+            ],
+            [
+              4.8877656,
+              52.3665253
+            ],
+            [
+              4.887946,
+              52.3663831
+            ],
+            [
+              4.8882216,
+              52.366514
+            ],
+            [
+              4.8881161,
+              52.366574
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.480999946594238,
+          -1.945495569088962e-7,
+          -4.003408908843994
+        ],
+        "max": [
+          15.812809944152832,
+          30.51099967956543,
+          23.92799949645996
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88799209,
+          52.3665982
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.29380989074707,
+        "heightMetres": 30.510999874114987,
+        "depthMetres": 27.931408405303955,
+        "depthCoverage": 0.9010131743646437
+      },
+      "triangles": 9663,
+      "bytes": 159280,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
