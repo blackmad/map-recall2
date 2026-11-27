@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Round 20261128a: landmark residency by bytes (2026-11-28)
+
+- lane/landmark-residency-20261127 (4bc2c6e342). At street level the landmark budget is now GPU bytes rather than a model count: 256 MB on desktop, 20 MB on touch. Nothing within 500 m is given back while a farther model can be. Aerial keeps the old count budget, because aerial GPU memory is already over its 700 MB line.
+  - The old 72-model count was never really in force: the in-view set on the belt alone is 150–260 models, so every off-view model was given back at once, and that is what drove the churn.
+  - Quiet machine (load 4–9, interleaved old/new):
+    - re-arrivals 267–381 a run → 0;
+    - all arrivals 530 → 360 over three belt runs;
+    - GPU 1,790 → 1,681 ms/s (n=2);
+    - CPU 2.13 → 2.06 cores;
+    - triangles +0.4–1.2 % (the +5–7 % reading was taken under load 110);
+    - GPU memory +36 MB;
+    - landmark-arrival pixels 442 → 609 mean, inside the old arm's 200–817 spread (n=3; 0–2 on-screen arrivals a run, too few to judge per arrival).
+  - Off-switches: `?landmarkBudgetMB=0` restores the count budget; `?landmarkBudgetMB=<n>`, `?landmarkKeepM=<n>`.
+- `?landmarkFarLod=<m>` (street-level landmarks beyond m on their lod1) is merged off. Frames on 2026-11-27 showed a clear loss on De Bijenkorf, Hotel de l'Europe and the Stopera at 300 m, for a 4–12 % triangle saving. David asked to see the frames; the lod1s would need to be better before any default.
+- The desktop GL program budget went from 43 to 45 (measured max + 1). With more landmarks resident, one more material variant can compile (44, 43, 37 on the branch; main was at 43).
+- New harnesses: `scripts/perf/rearr.mjs`, `scripts/perf/layer-tris.mjs`, `scripts/perf/farlod-frames.mjs`. Triangles-by-layer and both measurement rounds are in docs/perf/desktop-power-20261127.md.
+
 ## Round 20261127e: landmarks r20, the last four iconic briefs (2026-11-27)
 
 - Installed four landmarks, each of which won its blind against the photo (fresh opus judge, unlabelled, random order):
