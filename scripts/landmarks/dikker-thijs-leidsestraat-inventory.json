@@ -1,0 +1,340 @@
+{
+ "schemaVersion": 1,
+ "id": "dikker-thijs-leidsestraat",
+ "pand": "0363100012169650",
+ "brief": "scripts/landmarks/dikker-thijs-leidsestraat-brief.md",
+ "signature": [
+  "l-oriels",
+  "c-oriels",
+  "c-lettering",
+  "l-loggia",
+  "c-cornice",
+  "l-granite",
+  "c-piers"
+ ],
+ "walls": [
+  {
+   "tag": "w01-48",
+   "bearing": 48,
+   "lengthM": 18.9,
+   "centre": [
+    4.8840375,
+    52.365013
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000172",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-oriels",
+     "kind": "window-shape",
+     "where": "three canted two-storey oriels over the sign band (first and second storeys), each three-faceted with round stone corner colonnettes, a stone lintel band, small-paned sash windows (front 3 x 4 panes per sash) in dark green frames, a decorated brick spandrel with a small stone plaque between the storeys and a stone base band (2021 crop x 90-235, 295-435, 500-635; y 355-700)",
+     "approxSizeM": [
+      3.1,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "cantedBay kit: a trapezoid plan (3.1 m at the wall, 1.5 m front, 0.75 m out) with a brick shell, stone base, lintel band, colonnettes at the facet corners and paned windows on all three facets per storey"
+    },
+    {
+     "id": "c-loggia",
+     "kind": "colonnade",
+     "where": "top storey: windows set back behind brick posts with stone corbel capitals carrying the cornice, three lights per bay (2021 crop y 180-290)",
+     "approxSizeM": [
+      17.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "posts proud of the recessed glazing, a dark soffit band and stone capitals"
+    },
+    {
+     "id": "c-parapet",
+     "kind": "other",
+     "where": "pierced brick parapet band over each oriel bay (the loggia balcony): a row of small square holes under a stone coping, on a corbelled soffit (2021 crop y 290-350)",
+     "approxSizeM": [
+      3.9,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "brick band 0.75 m out with a dark hole row and a stone coping; a sloped soffit under it"
+    },
+    {
+     "id": "c-cornice",
+     "kind": "other",
+     "where": "stone cornice on a row of square modillion blocks over a brick frieze, with an open white balustrade between brick piers on top (2021 crop y 90-200)",
+     "approxSizeM": [
+      18.9,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "corona slab, modillion blocks every 0.66 m, balustrade rails and balusters between piers"
+    },
+    {
+     "id": "c-piers",
+     "kind": "other",
+     "where": "full-height brick piers between the bays from the sign band to the cornice, with dotted lines of light stone blocks down both edges (2021 crop x 240-290, 445-495, 640-690)",
+     "approxSizeM": [
+      1.0,
+      11.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "piers 0.2 m proud with stone dot strips"
+    },
+    {
+     "id": "c-lettering",
+     "kind": "lettering",
+     "where": "\"Dikker & Thijs\" in white script letters on the stone sign band over the shops (2017 crop x 125-470, y 705-750)",
+     "approxSizeM": [
+      7.0,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000355_pano_0000_000172",
+     "how": "white mixed-case pixel letters (glyphRuns) on the stone band; the script flourishes as an upright face"
+    },
+    {
+     "id": "c-signband",
+     "kind": "other",
+     "where": "light stone sign band and string course between the shops and the oriels (2021 crop y 700-780)",
+     "approxSizeM": [
+      18.9,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045"
+    },
+    {
+     "id": "c-granite",
+     "kind": "other",
+     "where": "rusticated dark granite piers framing the shop bays from the pavement to the sign band (2017 crop x 290-330, 490-530, 700-740)",
+     "approxSizeM": [
+      1.0,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000172",
+     "how": "alternating long and short dark granite blocks"
+    },
+    {
+     "id": "c-shops",
+     "kind": "window-shape",
+     "where": "ground storey: wide shop windows with dark frames and a mezzanine band of tall transomed windows over them in each bay (2017 crop y 780-1000)",
+     "approxSizeM": [
+      3.5,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000172"
+    },
+    {
+     "id": "c-flatbay",
+     "kind": "window-shape",
+     "where": "north-west bay without an oriel: paired windows in a stone surround on each storey (2021 crop x 690-850)",
+     "approxSizeM": [
+      3.2,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045"
+    },
+    {
+     "id": "c-consoles",
+     "kind": "sculpture",
+     "where": "carved stone consoles at the pier heads under the oriel bases, with lamps (2021 crop x 255-290, 455-490, y 660-700)",
+     "approxSizeM": [
+      0.5,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001974_pano_0000_001045",
+     "how": "stone console blocks stepped out under each oriel base"
+    },
+    {
+     "id": "c-flag",
+     "kind": "other",
+     "where": "flagpole on the roof at the corner",
+     "approxSizeM": [
+      0.1,
+      4.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000355_pano_0000_000172",
+     "skip": {
+      "reason": "temporary",
+      "note": "a flagpole and flag, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-142",
+   "bearing": 142,
+   "lengthM": 16,
+   "centre": [
+    4.8840355,
+    52.3648895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000789",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "l-oriels",
+     "kind": "window-shape",
+     "where": "three canted two-storey oriels on the Leidsestraat, as on the canal front: stone corner colonnettes with capitals, small-paned windows in dark green frames with red-brown sashes, brick spandrel with a stone plaque (2016 crop x 60-225, 290-450, 515-680; y 470-830)",
+     "approxSizeM": [
+      3.2,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789",
+     "how": "cantedBay kit, the same bay as the canal front"
+    },
+    {
+     "id": "l-loggia",
+     "kind": "colonnade",
+     "where": "top storey loggia: recessed windows behind brick posts, stone diagonal brackets under a deep dark soffit (2016 crop y 290-380)",
+     "approxSizeM": [
+      15.0,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789",
+     "how": "posts, stone corbel capitals and a dark soffit band over set-back glazing"
+    },
+    {
+     "id": "l-parapet",
+     "kind": "other",
+     "where": "pierced brick parapet band on a corbel table over the oriels (2016 crop y 380-470)",
+     "approxSizeM": [
+      4.0,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789"
+    },
+    {
+     "id": "l-cornice",
+     "kind": "other",
+     "where": "stone cornice with modillion blocks and the white balustrade between brick piers on the roof edge (2016 crop y 170-300)",
+     "approxSizeM": [
+      16.0,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789"
+    },
+    {
+     "id": "l-piers",
+     "kind": "other",
+     "where": "brick piers with dotted stone edges between the bays (2016 crop x 225-290, 450-515, 680-745)",
+     "approxSizeM": [
+      1.2,
+      11.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789"
+    },
+    {
+     "id": "l-granite",
+     "kind": "other",
+     "where": "rusticated dark granite piers at the ground storey (2025 crop x 0-45, 225-270, 455-505, 700-745)",
+     "approxSizeM": [
+      0.9,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_01750",
+     "how": "alternating long and short dark granite blocks"
+    },
+    {
+     "id": "l-signband",
+     "kind": "other",
+     "where": "stone sign band over the mezzanine (2025 crop y 830-895) with the \"Dikker & Thijs\" lettering over the corner bay (2016 crop x 480-750, y 820-860)",
+     "approxSizeM": [
+      16.0,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789"
+    },
+    {
+     "id": "l-lettering",
+     "kind": "lettering",
+     "where": "\"Dikker & Thijs\" in white script on the sign band at the corner end (2016 crop x 480-750)",
+     "approxSizeM": [
+      5.4,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789",
+     "how": "white mixed-case pixel letters on the stone band"
+    },
+    {
+     "id": "l-shops",
+     "kind": "window-shape",
+     "where": "shop windows and the transomed mezzanine window band in each bay, dark red-brown frames; the shop door in the middle bay (2025 crop y 915-1250)",
+     "approxSizeM": [
+      4.0,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_01750"
+    },
+    {
+     "id": "l-corner",
+     "kind": "window-shape",
+     "where": "the canted corner between the two fronts: a narrow face with one window per storey, granite at the ground storey (2016 crop x 745-801; 2017 canal crop x 0-40)",
+     "approxSizeM": [
+      1.8,
+      20.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000789"
+    },
+    {
+     "id": "l-awnings",
+     "kind": "canopy",
+     "where": "grey shop awnings over the two outer shop windows (2025)",
+     "approxSizeM": [
+      3.5,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_05-25-22_01750",
+     "skip": {
+      "reason": "temporary",
+      "note": "roll-down shop awnings of the current tenant, absent in 2016"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG (pand 0363100012169650)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169650",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "triangleBudget": {
+  "handTriangles": "about 20-25k: six oriels with paned windows take half; the balustrade, modillions and pier dots a quarter"
+ }
+}
