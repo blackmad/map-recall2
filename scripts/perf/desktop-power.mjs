@@ -104,6 +104,11 @@ await context.addInitScript(({ hz }) => {
   wrap('renderbufferStorage', (gl, a) => { if (rbBound) M.rb.set(rbBound, a[2] * a[3] * bpp(a[1])); });
   wrap('renderbufferStorageMultisample', (gl, a) => { if (rbBound) M.rb.set(rbBound, a[3] * a[4] * bpp(a[2]) * Math.max(1, a[1])); });
   wrap('deleteRenderbuffer', (gl, a) => { M.rb.delete(a[0]); });
+  // Vertex/index buffers (lane landmark-residency): bufferData sizes per buffer object, from page start.
+  M.buf = new Map(); const bufBound = {};
+  wrap('bindBuffer', (gl, a) => { bufBound[a[0]] = a[1]; });
+  wrap('bufferData', (gl, a) => { const b = bufBound[a[0]]; if (b) M.buf.set(b, typeof a[1] === 'number' ? a[1] : (a[1]?.byteLength ?? 0)); });
+  wrap('deleteBuffer', (gl, a) => { M.buf.delete(a[0]); });
   const tri = (mode, n) => (mode === 4 ? n / 3 : mode === 5 || mode === 6 ? Math.max(0, n - 2) : 0);
   wrap('drawArrays', (gl, a) => { M.draws++; M.tris += tri(a[0], a[2]); });
   wrap('drawElements', (gl, a) => { M.draws++; M.tris += tri(a[0], a[1]); });
@@ -113,7 +118,8 @@ await context.addInitScript(({ hz }) => {
   window.__gpuMemMB = () => {
     let tex = 0; for (const e of M.tex.values()) for (const b of e.values()) tex += b;
     let rb = 0; for (const b of M.rb.values()) rb += b;
-    return { textures: M.tex.size, textureMB: +(tex / 1048576).toFixed(1), renderbuffers: M.rb.size, renderbufferMB: +(rb / 1048576).toFixed(1) };
+    let buf = 0; for (const b of M.buf.values()) buf += b;
+    return { textures: M.tex.size, textureMB: +(tex / 1048576).toFixed(1), renderbuffers: M.rb.size, renderbufferMB: +(rb / 1048576).toFixed(1), buffers: M.buf.size, bufferMB: +(buf / 1048576).toFixed(1), totalMB: +((tex + rb + buf) / 1048576).toFixed(1) };
   };
 }, { hz: HZ });
 
@@ -221,6 +227,15 @@ if (has('alloc') && !abMode) await cdp.send('HeapProfiler.startSampling', SAMPLI
 // --probe <file.js>: a script evaluated in the page before the window that may set window.__probeRead (a function);
 // its return value after the window lands in the result as `probe` (ad-hoc owner hunts).
 if (opt('probe', null)) await page.evaluate(fs.readFileSync(opt('probe', null), 'utf8'));
+// Landmark residency (lane landmark-residency): arrivals and give-backs by id, and the layer's resident bytes each second.
+await page.evaluate(() => {
+  const sl = canalRecallGame.vectorMap._signatureLandmarks, L = window.__lmRes = { events: [], samples: [], t0: performance.now() };
+  if (!sl) return;
+  const add = sl._add, drop = sl._dropEntries;
+  sl._add = function (spec, ...rest) { L.events.push({ t: performance.now() - L.t0, id: spec?.id, k: 'arrive' }); return add.call(this, spec, ...rest); };
+  sl._dropEntries = function (ids, ...rest) { for (const e of this._entries || []) if (ids?.has?.(e.spec.id)) L.events.push({ t: performance.now() - L.t0, id: e.spec.id, k: 'leave' }); return drop.call(this, ids, ...rest); };
+  L.timer = setInterval(() => { try { const r = sl.residencyStats?.(); if (r) L.samples.push({ t: performance.now() - L.t0, models: r.models, mb: r.bytes / 1048576, gpuMB: window.__gpuMemMB().totalMB }); } catch (_) {} }, 1000);
+});
 const s0 = await state(), m0 = await metrics(), p0 = await procs(), t0 = Date.now();
 log.loadAtMeasure = la();
 const util = [];
@@ -272,6 +287,20 @@ for (let i = ab ? ride : 0; i < ride; i++) {
 const s1 = await state(), m1 = await metrics(), p1 = await procs(), wall = (Date.now() - t0) / 1000;
 const raw = await page.evaluate(() => { const w = window; w.__frStop = true; w.__gpuT.recording = false; return { rf: w.__rf.slice(1), fr: w.__fr.slice(1), gpu: w.__gpuT.frames.slice(), phases: w.__canalRecallFramePhases?.() ?? null }; });
 log.loadAtEnd = la();
+log.landmarks = await page.evaluate(() => {
+  const L = window.__lmRes, sl = canalRecallGame.vectorMap._signatureLandmarks; clearInterval(L.timer);
+  const mins = (performance.now() - L.t0) / 60000, seen = new Set(), left = new Set(); let firsts = 0, re = 0;
+  for (const e of L.events) {
+    if (e.k === 'leave') { left.add(e.id); continue; }
+    if (left.has(e.id)) { re++; left.delete(e.id); } else if (!seen.has(e.id)) firsts++;
+    seen.add(e.id);
+  }
+  const mb = L.samples.map(s => s.mb), models = L.samples.map(s => s.models), gpu = L.samples.map(s => s.gpuMB);
+  const mean = a => a.length ? +(a.reduce((x, y) => x + y, 0) / a.length).toFixed(1) : null, max = a => a.length ? +Math.max(...a).toFixed(1) : null;
+  return { minutes: +mins.toFixed(2), firstArrivals: firsts, reArrivals: re, reArrivalsPerMin: +(re / mins).toFixed(1), leaves: L.events.filter(e => e.k === 'leave').length,
+    residentMB: { mean: mean(mb), max: max(mb) }, residentModels: { mean: mean(models), max: max(models) }, gpuTotalMB: { mean: mean(gpu), max: max(gpu) }, stats: sl?.residencyStats?.() ?? null, cooldownSkips: sl?.cooldownSkips ?? 0 };
+});
+say(`landmarks ${JSON.stringify(log.landmarks)}`);
 let hot = null, gcMs = null;
 if (has('profile') && !abMode) {
   const { profile } = await cdp.send('Profiler.stop');
@@ -347,5 +376,5 @@ Object.assign(log, {
 });
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(log, null, 1));
-console.log(JSON.stringify({ hz: HZ, dpr: DPR, qs: log.qs, tier: log.tier, pr: log.pixelRatio, frames: log.frames, drawn: log.drawnFrames, renderedPerS: log.renderedPerS, mainBusyPct: log.mainBusyPct, cpuPerS: log.cpuPerS, gpu: { p50: log.gpu.msPerFrameP50, msPerS: log.gpu.msPerS, util: log.gpu.utilMeanPct }, draws: log.drawsPerFrame, tris: log.trisPerFrame, heap: [log.heapAtRideStartMB, log.heapAtEndMB], gpuMem: log.gpuMem, workerMsgs: log.workerMsgs, workerRepeatKeys: log.workerRepeatKeys, ab: log.ab && Object.fromEntries(Object.entries(log.ab).map(([k, v]) => [k, { ...v, raw: undefined }])), still: log.still ?? null, load: [log.loadAtMeasure[0], log.loadAtEnd[0]] }));
+console.log(JSON.stringify({ hz: HZ, dpr: DPR, qs: log.qs, tier: log.tier, pr: log.pixelRatio, frames: log.frames, drawn: log.drawnFrames, renderedPerS: log.renderedPerS, mainBusyPct: log.mainBusyPct, cpuPerS: log.cpuPerS, gpu: { p50: log.gpu.msPerFrameP50, msPerS: log.gpu.msPerS, util: log.gpu.utilMeanPct }, draws: log.drawsPerFrame, tris: log.trisPerFrame, heap: [log.heapAtRideStartMB, log.heapAtEndMB], gpuMem: log.gpuMem, landmarks: log.landmarks, workerMsgs: log.workerMsgs, workerRepeatKeys: log.workerRepeatKeys, ab: log.ab && Object.fromEntries(Object.entries(log.ab).map(([k, v]) => [k, { ...v, raw: undefined }])), still: log.still ?? null, load: [log.loadAtMeasure[0], log.loadAtEnd[0]] }));
 await browser.close();

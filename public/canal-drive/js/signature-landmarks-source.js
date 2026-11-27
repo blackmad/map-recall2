@@ -21,7 +21,8 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
-import { anchorDistanceM, coolingDown, keepReachM, landmarkCooldownMs, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, sphereOnScreen, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { anchorDistanceM, coolingDown, keepReachM, landmarkCooldownMs, landmarkReachM, landmarkResidencyPolicy, pastMinDwell, pickEvictions, pickEvictionsByBytes, residentBytes, sphereOnScreen, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { levelGpuBytes } from '../../../src/canalRecall/landmarks/residentBytes.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 // Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
 import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag, landmarkYieldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
@@ -37,7 +38,7 @@ import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/wor
 import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
-import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url, nearestRadiusPx, ordinaryLod1DowngradePx, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
+import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, farLodLevel, landmarkFarLodM, initialLandmarkLevel, lod2IsCurrent, lod2Url, nearestRadiusPx, ordinaryLod1DowngradePx, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
@@ -153,8 +154,15 @@ export class SignatureLandmarks {
     this._generation = 0;
     this._removed = false;
     this._onMove = () => { this._evictFar(); this._requestModels(); this._updateLevels(); };
-    /** Resident model budget (landmarks/landmarkResidency.ts): 24 on touch, 72 on desktop; `?landmarkBudget=`. */
-    this.residencyBudget = options.residencyBudget ?? landmarkResidencyBudget(window.location?.search ?? '', !!window.matchMedia?.('(pointer: coarse)')?.matches);
+    /**
+     * Residency (landmarks/landmarkResidency.ts): by GPU bytes of the resident levels with a keep radius (lane
+     * landmark-residency 2026-11-27), or the fixed model count before (`?landmarkBudgetMB=0`, `?landmarkBudget=N`, or a
+     * host's `options.residencyBudget`). `residencyBudget` is the model count in count mode, the model ceiling in bytes mode.
+     */
+    this.residency = options.residencyBudget != null
+      ? { mode: 'count', models: options.residencyBudget, budgetBytes: Infinity, keepM: 0, airModels: options.residencyBudget }
+      : landmarkResidencyPolicy(window.location?.search ?? '', !!window.matchMedia?.('(pointer: coarse)')?.matches);
+    this.residencyBudget = this.residency.models;
     this._lastEvictCheck = 0;
     /**
      * Landmark reach (landmarks/landmarkResidency.ts, lane R1-C #225): metres from the view centre within which a
@@ -724,7 +732,11 @@ export class SignatureLandmarks {
    * `loadVisibleOnly`: the demo pages draw their whole list on purpose.
    */
   _evictFar() {
-    if (!this.loadVisibleOnly || this._removed || !this._entries || this._entries.length <= this.residencyBudget) return;
+    if (!this.loadVisibleOnly || this._removed || !this._entries) return;
+    // Bytes at street level; from the air the count budget before (landmarkResidency.ts ResidencyPolicy.airModels).
+    let bytesMode = this.residency.mode === 'bytes', countBudget = this.residencyBudget;
+    if (bytesMode && this._aerialNow()) { bytesMode = false; countBudget = this.residency.airModels; }
+    if (!bytesMode && this._entries.length <= countBudget) return;
     const now = performance.now();
     if (now - this._lastEvictCheck < 500) return;
     this._lastEvictCheck = now;
@@ -748,13 +760,37 @@ export class SignatureLandmarks {
         evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted && pastMinDwell(this._arrivedAt?.get(entry.spec.id), now, hysteresis),
       };
     });
-    const ids = new Set(pickEvictions(models, { budget: this.residencyBudget }));
+    let ids;
+    if (bytesMode) {
+      // Lane landmark-residency: GPU bytes of each model's levels (drawn + spare), a shared master once.
+      for (let i = 0; i < models.length; i++) { const entry = this._entries[i]; models[i].bytes = this._entryBytes(entry); models[i].sharedKey = entry.spec.sharedModel ? entry.url : null; }
+      const keep = this.residency.keepM / 111_320;
+      ids = new Set(pickEvictionsByBytes(models, { budgetBytes: this.residency.budgetBytes, maxModels: this.residency.models, keepDistanceSq: keep * keep }));
+    } else ids = new Set(pickEvictions(models, { budget: countBudget }));
     if (!ids.size) return;
     this.evictions += ids.size;
     // Desktop-perf 2026-11-27: a model given back cools down before it is asked for again (unless on screen).
     const evicted = this._evictedAt ??= new Map();
     for (const id of ids) evicted.set(id, now);
     this._dropEntries(ids);
+  }
+
+  /** From the air (rendererShared/aerialView.ts), as the level rule judges it. */
+  _aerialNow() {
+    const cam = this.camera, centre = cam.center();
+    return isAerialView(cam.zoom(), cam.pitch(), centre.lat);
+  }
+
+  /** GPU bytes a drawn model holds: its drawn level and a kept spare level (landmarks/residentBytes.ts). */
+  _entryBytes(entry) {
+    const skip = material => !!material.userData?.[RECIPE_LOOK_SHARED];
+    return levelGpuBytes(entry.imported, skip) + (entry.spare && entry.spare !== entry.imported ? levelGpuBytes(entry.spare, skip) : 0);
+  }
+
+  /** Probe: resident models and their GPU bytes (a shared master once), the policy, evictions so far (harness / specs). */
+  residencyStats() {
+    const models = (this._entries || []).map(entry => ({ bytes: this._entryBytes(entry), sharedKey: entry.spec.sharedModel ? entry.url : null }));
+    return { mode: this.residency.mode, aerial: this._aerialNow(), models: models.length, bytes: residentBytes(models), budgetBytes: this.residency.budgetBytes, maxModels: this.residency.models, keepM: this.residency.keepM, evictions: this.evictions };
   }
 
   /**
@@ -1160,7 +1196,11 @@ export class SignatureLandmarks {
     // A chunk drawn at its lod2 (lane R4-C #245) is not split: it measures its pands (from the full level once that has
     // been separated, else from its own geometry, read only) and the holder takes the lowest pand base, one matrix.
     const lod2 = entry.level === 'lod2';
-    if (!lod2 && !entry.chunkPands) entry.chunkPands = { meshes: this._chunkPandMeshes(entry, api, true), bases: null };
+    if (!lod2 && !entry.chunkPands) {
+      entry.chunkPands = { meshes: this._chunkPandMeshes(entry, api, true), bases: null };
+      // Its pands got their own vertices: the level's GPU bytes are worked out again (landmarks/residentBytes.ts).
+      if (entry.imported?.userData) delete entry.imported.userData.gpuParts;
+    }
     let state = entry.chunkPands;
     if (lod2 && !state) {
       if (entry.chunkPandsLod2?.level !== entry.imported) entry.chunkPandsLod2 = { level: entry.imported, meshes: this._chunkPandMeshes(entry, api, false), bases: null };
@@ -1508,10 +1548,27 @@ export class SignatureLandmarks {
     return lodApi().footprintRadiusPixels(radiusMetres, this.camera.zoom(), anchor[1]);
   }
 
+  /** `?landmarkFarLod=<m>`, read once (null: off, the default). */
+  _farLodM() {
+    if (this._farLodValue === undefined) this._farLodValue = this.sharedFrame ? landmarkFarLodM(window.location?.search ?? '') : null;
+    return this._farLodValue;
+  }
+
+  /** Metres from the eye to a model's mid-height (the shared frame's world has the eye at its origin); the view centre before a frame. */
+  _eyeDistanceM(spec, anchor) {
+    if (!anchor) return null;
+    if (!this._sharedRoot || !this._clipFromWorld) return anchorDistanceM(anchor, this.camera.center());
+    const m = this.maplibregl.MercatorCoordinate.fromLngLat(anchor, (spec.heightMetres || 20) / 2);
+    const p = (this._eyeV ??= new THREE.Vector3()).set(m.x, m.y, m.z).applyMatrix4(this._sharedRoot.matrixWorld);
+    return Math.hypot(p.x, p.y, p.z);
+  }
+
   /** Level to load first: lod1 for models that are small on screen (lod2 from the air). Unknown size or no lower level means full. */
   _startLevel(spec) {
     const lod2 = this._hasLod2(spec);
     if (!this._hasLod(spec) && !lod2) return 'full';
+    const farM = this._farLodM(), farAnchor = spec.surveyed?.anchor || spec.footprint?.centre;
+    if (farM != null && this._hasLod(spec) && farLodLevel('full', 'full', this._eyeDistanceM(spec, farAnchor), farM, true, this._aerialNow()) === 'lod1') return 'lod1';
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
@@ -1537,14 +1594,17 @@ export class SignatureLandmarks {
   _updateLevelsPass() {
     const view = this._viewBounds(), levelView = this._lod2On() ? this._levelView() : null;
     const now = performance.now(), dwell = window.__canalRecallLevelDwell === false ? 0 : (this._levelDwellUrl ??= levelDwellMs(window.location.search, undefined));
+    // `?landmarkFarLod=<m>` (off by default; landmarkLod.ts farLodLevel): street-level models beyond <m> on their lod1.
+    const farM = this._farLodM(), aerial = farM != null && this._aerialNow();
     for (const entry of this._entries) {
       if (entry.levelLoading || entry.lodFailed) continue;
       const lod2 = this._hasLod2(entry.spec);
       if (!lod2 && !this._hasLod(entry.spec)) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
-      const wanted = lod2 || this._ordinaryLod(entry.spec)
+      let wanted = lod2 || this._ordinaryLod(entry.spec)
         ? chooseLandmarkLevel(entry.level, this._levelInputs(entry.spec, entry.radiusMetres, entry.placement.anchor, levelView, this._isLit(entry)))
         : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
+      if (farM != null && !this._isLit(entry)) wanted = farLodLevel(entry.level, wanted, this._eyeDistanceM(entry.spec, entry.placement.anchor), farM, this._hasLod(entry.spec), aerial);
       if (wanted === entry.level) continue;
       // Desktop-perf 2026-11-27 (landmarks/levelDwell.ts, `?levelDwell=0` off): a downgrade waits until the level has
       // been on screen LEVEL_DWELL_MS, so a weaving ride does not flip models (a load, a compile and a weld each time).

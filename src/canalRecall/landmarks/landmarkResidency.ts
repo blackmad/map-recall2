@@ -46,14 +46,119 @@ export function pickEvictions(models: readonly ResidentModel[], { budget, slack 
 }
 
 /**
- * Resident landmark budget: 24 on touch devices, 72 on desktop. `?landmarkBudget=N`
- * overrides it for before/after measurement.
+ * Resident landmark model count (the budget before 2026-11-27, and the off-switch `?landmarkBudgetMB=0`): 24 on touch
+ * devices, 72 on desktop. `?landmarkBudget=N` overrides it for before/after measurement.
  */
 export function landmarkResidencyBudget(search: string, coarsePointer: boolean): number {
   // A regex, not URLSearchParams: the bundle also runs in check sandboxes without it.
   const asked = Number(/[?&]landmarkBudget=(\d+)/.exec(search)?.[1]);
   if (Number.isFinite(asked) && asked >= 4) return Math.min(asked, 1000);
   return coarsePointer ? 24 : 72;
+}
+
+// ------------------------------------------------------------------ residency by bytes (lane landmark-residency, 2026-11-27)
+// The count budget treated a 40 kB street-chunk lod2 and a 6 MB full Rijksmuseum alike. On the belt route at 72 the set
+// thrashed: ~45-60 models a minute given back ~260 m off to the side and loaded again when they re-entered the view box,
+// never seen in between (desktop-power-20261127.md). The budget is now GPU bytes of the resident levels
+// (residentBytes.ts), with a keep radius: nothing within it is given back while anything beyond it can be.
+
+export interface ByteResidentModel extends ResidentModel {
+  /** GPU bytes this model's levels hold (drawn level + kept spare). */
+  bytes: number;
+  /** Models drawing one shared master (shared-mesh clones) carry its key: its bytes count once, freed with the last. */
+  sharedKey?: string | null;
+}
+
+export interface ByteBudget {
+  /** Resident GPU bytes allowed. */
+  budgetBytes: number;
+  /** Once eviction starts, go this fraction below the budget, so the next checks do not evict one at a time. */
+  slackFraction?: number;
+  /** A ceiling on the model count as well (per-model CPU walks, draw records); Infinity for none. */
+  maxModels?: number;
+  /** Models nearer than this (same unit as `distanceSq`) go only once none beyond it is left to give back. */
+  keepDistanceSq?: number;
+}
+
+/** Resident bytes of a set, a shared master counted once. */
+export function residentBytes(models: readonly ByteResidentModel[]): number {
+  let total = 0;
+  const shared = new Map<string, number>();
+  for (const m of models) {
+    if (m.sharedKey) shared.set(m.sharedKey, Math.max(shared.get(m.sharedKey) ?? 0, m.bytes));
+    else total += m.bytes;
+  }
+  for (const b of shared.values()) total += b;
+  return total;
+}
+
+/**
+ * Which models to give back so the set fits `budgetBytes` (and `maxModels`). Never one in view or pinned. Order: beyond
+ * the keep radius before within it, behind the heading before ahead, furthest first. A shared master's bytes come free
+ * only with its last holder.
+ */
+export function pickEvictionsByBytes(models: readonly ByteResidentModel[], { budgetBytes, slackFraction = 0.05, maxModels = Infinity, keepDistanceSq = 0 }: ByteBudget): string[] {
+  let total = residentBytes(models), count = models.length;
+  if (total <= budgetBytes && count <= maxModels) return [];
+  const targetBytes = budgetBytes * (1 - slackFraction), targetCount = Number.isFinite(maxModels) ? Math.max(0, maxModels - 4) : Infinity;
+  const holders = new Map<string, number>();
+  for (const m of models) if (m.sharedKey) holders.set(m.sharedKey, (holders.get(m.sharedKey) ?? 0) + 1);
+  const kept = (m: ByteResidentModel) => Number(m.distanceSq < keepDistanceSq);
+  const candidates = models
+    .filter(m => m.evictable && !m.inView)
+    .sort((a, b) => (kept(a) - kept(b)) || (Number(!!b.behind) - Number(!!a.behind)) || b.distanceSq - a.distanceSq);
+  const out: string[] = [];
+  for (const m of candidates) {
+    if (total <= targetBytes && count <= targetCount) break;
+    out.push(m.id);
+    count--;
+    if (m.sharedKey) {
+      const left = (holders.get(m.sharedKey) ?? 1) - 1;
+      holders.set(m.sharedKey, left);
+      if (left === 0) total -= m.bytes;
+    } else total -= m.bytes;
+  }
+  return out;
+}
+
+/** Per-tier byte budgets (MB): measured on the belt route, see desktop-power-20261127.md "Residency by bytes". */
+export const LANDMARK_BUDGET_MB = { desktop: 256, touch: 20 };
+/** The keep radius in metres (`?landmarkKeepM=`; 0 turns it off). */
+export const LANDMARK_KEEP_M = 500;
+/** The model-count ceiling under the byte budget. */
+export const LANDMARK_MAX_MODELS = { desktop: 400, touch: 24 };
+
+export interface ResidencyPolicy {
+  /** 'bytes' (the default) or 'count' (the fixed model count before, `?landmarkBudgetMB=0` or `?landmarkBudget=N`). */
+  mode: 'bytes' | 'count';
+  /** Count mode: the model budget. Bytes mode: the model ceiling. */
+  models: number;
+  /** Bytes mode: the byte budget. */
+  budgetBytes: number;
+  /** Bytes mode: the keep radius in metres (0: none). */
+  keepM: number;
+  /**
+   * Bytes mode, from the air (isAerialView): the count budget before. The aerial pan's GPU row (aerialGlMaxMB) is already
+   * over its 700 MB budget and from the air the in-view set alone fills it, so the byte budget is a street-level policy.
+   */
+  airModels: number;
+}
+
+/**
+ * The residency policy from the page's query. `?landmarkBudgetMB=N` sets the byte budget (0: the count budget before);
+ * `?landmarkBudget=N` alone asks for the old count budget of N (measurement A/B, as before); `?landmarkKeepM=N` sets the
+ * keep radius (0: off).
+ */
+export function landmarkResidencyPolicy(search: string, coarsePointer: boolean): ResidencyPolicy {
+  const tier = coarsePointer ? 'touch' : 'desktop';
+  const mbMatch = /[?&]landmarkBudgetMB=(\d+(?:\.\d+)?)/.exec(search), countAsked = /[?&]landmarkBudget=(\d+)/.test(search);
+  const keepMatch = /[?&]landmarkKeepM=(\d+)/.exec(search);
+  const keepM = keepMatch ? Number(keepMatch[1]) : LANDMARK_KEEP_M;
+  const mb = mbMatch ? Number(mbMatch[1]) : null;
+  const count = landmarkResidencyBudget(search, coarsePointer);
+  if (mb === 0 || (mb === null && countAsked)) return { mode: 'count', models: count, budgetBytes: Infinity, keepM: 0, airModels: count };
+  const budgetBytes = Math.max(1, mb ?? LANDMARK_BUDGET_MB[tier]) * 1024 * 1024;
+  return { mode: 'bytes', models: countAsked ? count : LANDMARK_MAX_MODELS[tier], budgetBytes, keepM, airModels: count };
 }
 
 /**

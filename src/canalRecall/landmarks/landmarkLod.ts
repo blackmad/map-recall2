@@ -305,3 +305,30 @@ export function projectedRadiusPx(clipFromWorld: ArrayLike<number>, centre: read
   }
   return best;
 }
+
+// ------------------------------------------------------------------ far lod1 at street level (lane landmark-residency, 2026-11-27)
+// Off by default (David 2026-11-27: "Show me frames first"). At street level the level rule reads the footprint radius at
+// the view centre's zoom, so a bespoke landmark 500 m down the street is drawn full like one at 30 m (250-260 k triangles
+// a frame on the belt at 300-600 m, docs/perf/desktop-power-20261127.md). `?landmarkFarLod=<m>` puts a model whose eye
+// distance is over <m> on its lod1, judged per model; it comes back to full once nearer than FAR_LOD_RETURN x <m>.
+
+/** Share of the far-lod distance below which a model on lod1 returns to the ordinary rule (hysteresis). */
+export const FAR_LOD_RETURN = 0.9;
+
+/** `?landmarkFarLod=<m>` (metres, floor 50) or null (off, the default; `=0` is off too). */
+export function landmarkFarLodM(search: string): number | null {
+  const m = /[?&]landmarkFarLod=(\d+)/.exec(search);
+  if (!m) return null;
+  const v = Number(m[1]);
+  return v > 0 ? Math.max(50, v) : null;
+}
+
+/**
+ * The level with the far-lod rule applied to what the ordinary rule `wanted`: lod1 for a model with a lod1 whose eye
+ * distance is beyond `farM` (beyond FAR_LOD_RETURN x `farM` while it is on lod1 already). Off (`farM` null), without a
+ * lod1, from the air (`aerial`), or when the rule wants lod2, it is `wanted` unchanged.
+ */
+export function farLodLevel(current: LandmarkLevel, wanted: LandmarkLevel, distanceM: number | null, farM: number | null, hasLod1: boolean, aerial: boolean): LandmarkLevel {
+  if (farM == null || !hasLod1 || aerial || wanted === 'lod2' || distanceM == null || !Number.isFinite(distanceM)) return wanted;
+  return distanceM > (current === 'lod1' ? farM * FAR_LOD_RETURN : farM) ? 'lod1' : wanted;
+}

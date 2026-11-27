@@ -180,3 +180,25 @@ test('ordinary installs (R4-H): the nearest point of the footprint sphere is lar
   assert.equal(nearestRadiusPx(1500, 1500), Infinity, 'the sphere reaches the camera');
   assert.ok(nearestRadiusPx(1, 1500) - 1 < 0.001, 'far off: the same');
 });
+
+test('far lod (?landmarkFarLod=<m>, off by default): street-level models beyond <m> by eye distance go to lod1, back under 0.9 x', async () => {
+  const { farLodLevel, landmarkFarLodM, FAR_LOD_RETURN } = await import('./landmarkLod');
+  assert.equal(landmarkFarLodM(''), null, 'off by default: today\'s look');
+  assert.equal(landmarkFarLodM('?engine=own'), null);
+  assert.equal(landmarkFarLodM('?landmarkFarLod=0'), null);
+  assert.equal(landmarkFarLodM('?engine=own&landmarkFarLod=300'), 300);
+  assert.equal(landmarkFarLodM('?landmarkFarLod=10'), 50, 'floor');
+  // Off: the ordinary rule's answer, whatever the distance.
+  assert.equal(farLodLevel('full', 'full', 2000, null, true, false), 'full');
+  // Beyond 300 m with a lod1: lod1; within: the ordinary answer.
+  assert.equal(farLodLevel('full', 'full', 301, 300, true, false), 'lod1');
+  assert.equal(farLodLevel('full', 'full', 299, 300, true, false), 'full');
+  // Hysteresis: a model on lod1 stays until nearer than 0.9 x.
+  assert.equal(farLodLevel('lod1', 'full', 300 * FAR_LOD_RETURN + 1, 300, true, false), 'lod1');
+  assert.equal(farLodLevel('lod1', 'full', 300 * FAR_LOD_RETURN - 1, 300, true, false), 'full');
+  // No lod1, from the air, a lod2 wanted, or no distance: untouched.
+  assert.equal(farLodLevel('full', 'full', 900, 300, false, false), 'full');
+  assert.equal(farLodLevel('full', 'full', 900, 300, true, true), 'full');
+  assert.equal(farLodLevel('full', 'lod2', 900, 300, true, false), 'lod2');
+  assert.equal(farLodLevel('full', 'full', null, 300, true, false), 'full');
+});
