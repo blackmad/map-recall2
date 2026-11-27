@@ -138638,6 +138638,166 @@
       "triangles": 27899,
       "bytes": 376764,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "batavia-prins-hendrikkade": {
+      "id": "batavia-prins-hendrikkade",
+      "name": "Gebouw Batavia",
+      "modelUrl": "./models/batavia-prins-hendrikkade.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171926"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90167613,
+          52.37664969
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29.7,
+        "widthMetres": 25.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.90167613,
+          52.37664969
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012171926 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/batavia-prins-hendrikkade-footprints.json, bag-shell-prepare.ts), the porch set-back filled above the entrance hood; the Prins Hendrikkade front read from the rectified Gemeente Amsterdam panorama recording_2025-06-17_08-04-10_03815 (2025) with b_20250108_1349_Track19_Sphere_00425 (2024), CC BY 4.0. Rijksmonument 518460. Per wall in scripts/landmarks/batavia-prins-hendrikkade-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.2
+      },
+      "bagYear": 1703,
+      "materialOverrides": {
+        "brick": "#4a3a30",
+        "red": "#6a4a38",
+        "sandstone": "#5a4636",
+        "slate": "#4f4a48",
+        "glass": "#3d4f5e",
+        "frame": "#8a7658",
+        "ochre": "#9a7448",
+        "gold": "#c8b07a",
+        "dark": "#26292b"
+      },
+      "attribution": {
+        "title": "Gebouw Batavia, Prins Hendrikkade, Amsterdam (rijksmonument 518460)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_03815/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012171926 (CC0): the Amsterdam School front in dark brick with its grid of five windows over four storeys between brick piers, the relief spandrels and ribbed panels, the corbelled bands, parapet arches and coping, the banded half-round stair shaft with its round-ended lights, the entrance hood with GEBOUW BATAVIA and the oak door, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9016534,
+              52.3767446
+            ],
+            [
+              4.9016306,
+              52.3767409
+            ],
+            [
+              4.9016318,
+              52.3767373
+            ],
+            [
+              4.9015969,
+              52.3767326
+            ],
+            [
+              4.9015954,
+              52.3767364
+            ],
+            [
+              4.9015752,
+              52.376734
+            ],
+            [
+              4.9015357,
+              52.3767292
+            ],
+            [
+              4.9015345,
+              52.3767293
+            ],
+            [
+              4.9016231,
+              52.3766491
+            ],
+            [
+              4.9016559,
+              52.3766194
+            ],
+            [
+              4.9016923,
+              52.3765864
+            ],
+            [
+              4.9017021,
+              52.3765904
+            ],
+            [
+              4.9017374,
+              52.3765584
+            ],
+            [
+              4.9018386,
+              52.3764788
+            ],
+            [
+              4.9019072,
+              52.3765138
+            ],
+            [
+              4.9019078,
+              52.3765143
+            ],
+            [
+              4.9016534,
+              52.3767446
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -9.583999633789062,
+          0,
+          -10.859166145324707
+        ],
+        "max": [
+          15.675000190734863,
+          22.149999618530273,
+          19.089000701904297
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90167613,
+          52.37664969
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 29.948166847229004,
+        "heightMetres": 22.149999618530273,
+        "depthMetres": 25.258999824523926,
+        "depthCoverage": 0.9983794397045029
+      },
+      "triangles": 5021,
+      "bytes": 74316,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

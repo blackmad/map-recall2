@@ -1,0 +1,89 @@
+{
+  "id": "batavia-prins-hendrikkade",
+  "countedBy": "lane landmarks-r19-b-20261127 from the rectified 2025 crops w04-341.jpg and w03-348.jpg (recording_2025-06-17_08-04-10_03815, 50 px/m) and its aimed view w04-341.thumb.jpg; not yet blind-counted. Glazed openings bottom row first.",
+  "facades": [
+    {
+      "name": "Prins Hendrikkade front",
+      "bearing": 348,
+      "photo": "artifacts/landmark-briefs/batavia-prins-hendrikkade/w04-341.thumb.jpg",
+      "rows": [
+        2,
+        6,
+        6,
+        6,
+        6,
+        1
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "The whole 8.2 m front. Rows as the model's: the two glazed leaves of the oak entrance door (no fanlight); four storeys of the five-window grid plus the stair shaft's tall light beside it (the shaft lights sit 0.1-0.5 m higher than the grid row, landings); the small square light at the top of the shaft. Axes from the east end (crop px/50 x 1.04): grid 1.33, 2.18, 3.04, 3.91, 4.76 m, shaft 6.95 m.",
+      "mixedRows": [
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-17_08-04-10_03815, crops w04-341.jpg and w03-348.jpg at 50 px/m: grid windows 0.56-0.6 m wide; the stair shaft's slot light beside them 13.4-15.6 m against the grid's 12.9-15.1 m (a landing level), 0.5 m",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "stair-light",
+              "w": 0.5
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "rowSizes": "mixed",
+          "evidence": "recording_2025-06-17_08-04-10_03815, crops w04-341.jpg and w03-348.jpg at 50 px/m: grid windows 0.56-0.6 m wide; the stair shaft's slot light beside them 16.9-19.1 m against the grid's 16.8-18.7 m (a landing level), 0.5 m",
+          "openings": [
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "window",
+              "w": 0.56
+            },
+            {
+              "kind": "stair-light",
+              "w": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
