@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "roundId": "ring-r2",
+  "revision": 56,
+  "updatedAt": "2026-11-21T09:40:25.989Z",
+  "verdicts": {
+    "rustenburgerstraat": {
+      "verdict": "better",
+      "note": "missing white detailing",
+      "revision": 3,
+      "at": "2026-11-21T09:32:11.544Z"
+    },
+    "van-ostadestraat": {
+      "verdict": "better",
+      "note": "better, though the houses with the roof-window \"on top of\" the roof should be drawn differently",
+      "revision": 5,
+      "at": "2026-11-21T09:33:04.124Z"
+    },
+    "tweede-jacob-van-campenstraat-9051-0": {
+      "verdict": "better",
+      "note": "house 1 - inaccurate roof (has three windows), house 2 - same, house 3 - wrong number of floors (shows 4, has 3 in real life)",
+      "revision": 3,
+      "at": "2026-11-21T09:33:42.844Z"
+    },
+    "ceintuurbaan-8543": {
+      "verdict": "better",
+      "note": " better though fails to capure the precise style of the roofs with three windows on the roofline",
+      "revision": 3,
+      "at": "2026-11-21T09:34:02.997Z"
+    },
+    "tweede-jan-steenstraat-8487": {
+      "verdict": "same",
+      "note": "very weird ",
+      "revision": 2,
+      "at": "2026-11-21T09:34:26.546Z"
+    },
+    "ceintuurbaan-8823": {
+      "verdict": "better",
+      "note": "missing white detailing, fails to draw the roof-window correctly (it's in the roof, not on top of it), doesn't quite understand the gable of pand 160089",
+      "revision": 6,
+      "at": "2026-11-21T09:35:24.757Z"
+    },
+    "roemer-visscherstraat-16068": {
+      "verdict": "same",
+      "note": "photo is weird - the cut strips are more normal but don't look anything like the r2 render",
+      "revision": 4,
+      "at": "2026-11-21T09:35:51.034Z"
+    },
+    "bilderdijkstraat-15353": {
+      "verdict": "better",
+      "note": "",
+      "revision": 1,
+      "at": "2026-11-21T09:36:05.110Z"
+    },
+    "admiraal-de-ruijterweg-14817": {
+      "verdict": "better",
+      "note": "triangle houses are not tall enough and missing the window in the triagnel. ",
+      "revision": 2,
+      "at": "2026-11-21T09:36:28.182Z"
+    },
+    "bilderdijkkade-15291": {
+      "verdict": "same",
+      "note": "all bad, look again",
+      "revision": 2,
+      "at": "2026-11-21T09:36:37.852Z"
+    },
+    "johannes-verhulststraat-9613": {
+      "verdict": "same",
+      "note": "all bad, these are more modern builds I think that need a whole new geometry/kit",
+      "revision": 2,
+      "at": "2026-11-21T09:37:35.427Z"
+    },
+    "roelof-hartstraat-9162": {
+      "verdict": "better",
+      "note": "",
+      "revision": 1,
+      "at": "2026-11-21T09:37:46.840Z"
+    },
+    "jan-luijkenstraat-9308": {
+      "verdict": "better",
+      "note": "misssing curvature of windows, white detailing roof windows, pand 160504 and 166029 having an offset triagnel roof that doesn't go thr whole width, probably needs kit changes",
+      "revision": 7,
+      "at": "2026-11-21T09:38:26.619Z"
+    },
+    "commelinstraat-12327": {
+      "verdict": "better",
+      "note": "wrong color for middle house, missing the white center column on other two, roof doesn't quite capture the vibe",
+      "revision": 5,
+      "at": "2026-11-21T09:38:58.820Z"
+    },
+    "ruyschstraat-12494": {
+      "verdict": "better",
+      "note": "I think this street is more regular than the reconstruction - they're all basically identical except one of the roofs",
+      "revision": 3,
+      "at": "2026-11-21T09:39:40.993Z"
+    },
+    "blasiusstraat-12604": {
+      "verdict": "better",
+      "note": "white detailing missing",
+      "revision": 2,
+      "at": "2026-11-21T09:39:58.314Z"
+    },
+    "nassaukade-14713": {
+      "verdict": "better",
+      "note": "totally missing the vibe of these houses with the heavyy white detailing in many places and the grey stone",
+      "revision": 5,
+      "at": "2026-11-21T09:40:25.989Z"
+    }
+  }
+}
