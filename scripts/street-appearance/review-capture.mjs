@@ -27,7 +27,7 @@ let targets=targetSet==='all'?[...mainTargets,...holdoutTargets]:targetSet==='ho
 const onlyTarget=option('only-target',null);if(onlyTarget)targets=targets.filter(t=>t.id===onlyTarget);if(!targets.length)throw Error('No review target');
 const customCentre=option('center',null);if(customCentre){const point=customCentre.split(',').map(Number);if(point.length!==2||!point.every(Number.isFinite)||Math.abs(point[0])>180||Math.abs(point[1])>90)throw Error('Invalid center');targets=targets.map(t=>({...t,center:point,bearing:Number(option('bearing',String(t.bearing)))}));}
 const views=option('views','gameplay,street').split(',');if(views.some(v=>!['gameplay','street'].includes(v)))throw Error('Invalid view');
-const bundleNames=['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js'];
+const bundleNames=['three-buildings.bundle.js','three-buildings-worker.bundle.js'];
 const hashes=async()=>Object.fromEntries(await Promise.all(bundleNames.map(async n=>[n,crypto.createHash('sha256').update(await fs.readFile(`public/canal-drive/js/${n}`)).digest('hex')])));
 const bundlePhase=option('bundle-phase',null);
 let catalogBytes=bundlePhase?null:await fs.readFile('public/data/street-appearance/profiles.json');

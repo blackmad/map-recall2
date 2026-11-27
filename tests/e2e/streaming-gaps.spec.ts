@@ -1,6 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
 import { setHiddenSelect, settleWorld, useEngine } from './helpers';
-import { OWN } from './worldCam';
 
 // Lane F7 (2026-11-13 feedback round, theme 9): the streaming / loading notes, pinned at their poses in the players'
 // world (compiled cells, `?engine=own`, storybook look as the notes were sent). Poses are the notes' player x/y/angle
@@ -43,7 +42,6 @@ async function groundCovers(page: Page): Promise<boolean> {
 }
 
 test.describe('streaming gaps (F7)', () => {
-  test.skip(!OWN, 'own engine only: the notes were sent from it (street furniture draws only there)');
   test.beforeEach(async ({ page }, info) => {
     test.skip(info.project.name !== 'desktop', 'desktop poses');
     test.setTimeout(300_000);

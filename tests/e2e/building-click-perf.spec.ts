@@ -32,7 +32,7 @@ const LARGE_TIER = { id: 'NL.IMBAG.Pand.0363100012165429', lngLat: [4.889672, 52
 const WALLEN_CHUNK = 'chunk-face-wallen-ozv-115-125';
 
 async function serveBefore(page: Page) {
-  for (const file of ['three-buildings.bundle.js', 'game-landmarks.bundle.js', 'vector-map.js']) {
+  for (const file of ['three-buildings.bundle.js', 'game-landmarks.bundle.js']) {
     const path = `tests/e2e/.before/${file}`;
     if (!existsSync(path)) throw new Error(`BEFORE=1 needs ${path} (git show <base>:public/canal-drive/js/${file})`);
     await page.route(new RegExp(`/js/${file.replace(/\./g, '\\.')}`), route => route.fulfill({ body: readFileSync(path), contentType: 'application/javascript' }));

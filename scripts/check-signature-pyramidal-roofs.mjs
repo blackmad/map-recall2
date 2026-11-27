@@ -25,20 +25,5 @@ assert.equal(roofs._entries[0].mesh.visible, false, 'both source identities iden
 roofs.setHidden([]);
 assert.ok(roofs._entries.every(e => e.mesh.visible), 'restore fallback when replacement is disabled or unavailable');
 
-// Exercise the basemap's actual feature-integration method too.
-const source = fs.readFileSync('public/canal-drive/js/vector-map.js', 'utf8');
-const start = source.indexOf('  _syncPyramidalRoofs(features) {'), end = source.indexOf('\n  // The basemap keeps', start);
-assert.ok(start > 0 && end > start);
-context.window.CanalRecallPyramidalRoofs = context.CanalRecallPyramidalRoofs;
-context.maplibregl = maplibregl;
-const Basemap = vm.runInContext(`(class {${source.slice(start, end)}})`, context);
-const basemap = new Basemap(); basemap.map = map; basemap._pyramidalRoofs = roofs;
-let loadedIds = [];
-basemap._signatureSuppressOsmIds = () => loadedIds;
-basemap._syncPyramidalRoofs(features);
-assert.ok(roofs._entries.every(e => e.mesh.visible));
-loadedIds = ['w754269608'];
-basemap._syncPyramidalRoofs(features);
-assert.equal(roofs._entries[0].mesh.visible, false);
-assert.equal(roofs._entries[1].mesh.visible, true);
+// The MapLibre basemap's `_syncPyramidalRoofs` half went with vector-map.js (2026-11-27).
 console.log('Separate pyramidal roofs respect loaded signature replacements, source aliases, streamed refresh, neighbors and fallback restoration.');

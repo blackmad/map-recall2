@@ -1,7 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
-import { OWN } from './worldCam';
 
 // Named regression (user report 2026-10-01, "driving through this tunnel in
 // centraal is really hard"): the Cuyperspassage cycle tunnel runs under
@@ -61,40 +60,16 @@ test('the rider can see the Cuyperspassage under Centraal\'s train shed', async 
   // building tiles (not aborted here).
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
   await placeRider(page, PASSAGE);
-  if (OWN) {
-    // Under the own engine the streamed footprints over the passage already start at 8 m (w451533147 and its
-    // neighbours, min_height 8, measured 2026-11-05), so nothing covers the rider and nothing needs to fade: the pin
-    // is the corridor itself, and that no cover took a building away.
-    await page.waitForTimeout(15_000);
-    const share = await slabShare(page);
-    const own = await page.evaluate(() => {
-      const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings;
-      return { covered: vm.riderCovered, hidden: [...(tb?.hiddenBy?.get('cover') ?? [])], ghosted: tb?.ghostedIds?.() ?? [] };
-    });
-    console.log(`own, under the train shed: ${JSON.stringify(own)}, slab share ${share.toFixed(2)}`);
-    expect(share, 'the corridor is not hidden behind the shed').toBeLessThan(0.2);
-    expect([...own.hidden, ...own.ghosted], 'no cover holds a building').toEqual([]);
-    return;
-  }
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.riderCovered), { timeout: 90_000 }).toBe(true);
-  await page.waitForTimeout(1000);
-  const under = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.riderCovered);
+  // Under the own engine the streamed footprints over the passage already start at 8 m (w451533147 and its
+  // neighbours, min_height 8, measured 2026-11-05), so nothing covers the rider and nothing needs to fade: the pin
+  // is the corridor itself, and that no cover took a building away.
+  await page.waitForTimeout(15_000);
   const share = await slabShare(page);
-  console.log(`under the train shed: riderCovered=${under}, slab share ${share.toFixed(2)}`);
-  expect(under, 'the train shed is recognised as covering the rider').toBe(true);
-  expect(share, 'the corridor is not hidden behind the shed').toBeLessThan(0.2);
-
-  await placeRider(page, OPEN_STREET);
-  await page.waitForTimeout(2500);
-  const open = await page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap;
-    const three = vm._threeOwnsTops?.();
-    return { covered: vm.riderCovered, three, opacity: (vm.map ?? vm.cameraMap).getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...(vm._threeBuildings.hiddenBy.get('cover') ?? [])] : [] };
+  const own = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings;
+    return { covered: vm.riderCovered, hidden: [...(tb?.hiddenBy?.get('cover') ?? [])], ghosted: tb?.ghostedIds?.() ?? [] };
   });
-  expect(open.covered, 'out in the open the buildings come back').toBe(false);
-  // The default (Photo) look draws buildings in three.js: the covering building is hidden while covered, then back.
-  // Only the cover reason is checked: the shed also stays hidden under the Centraal landmark model ('signature'),
-  // and the cover's id comes from the streamed city (not the OSM way id), so out in the open the cover holds nothing.
-  if (open.three) expect(open.hidden, 'the cover releases the shed').toEqual([]);
-  else expect(typeof open.opacity === 'number' && open.opacity < 0.5, 'opacity restored').toBe(false);
+  console.log(`own, under the train shed: ${JSON.stringify(own)}, slab share ${share.toFixed(2)}`);
+  expect(share, 'the corridor is not hidden behind the shed').toBeLessThan(0.2);
+  expect([...own.hidden, ...own.ghosted], 'no cover holds a building').toEqual([]);
 });

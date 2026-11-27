@@ -34,15 +34,11 @@ export type OpenRouteOptions = {
 };
 
 /**
- * The engine a spec runs. The own engine (src/canalRecall/engine/ownWorldView.ts) is the default since the Amsterdam
- * flip (#129); `ENGINE=maplibre` runs the MapLibre world view (`window.__canalRecallEngine = 'maplibre'`, the same
- * switch as `?engine=maplibre`) for the MapLibre lane until P5. `ENGINE=own` pins own explicitly. openRoute applies
- * it; specs that `goto` themselves call it.
+ * Page setup every ride spec shares. The own engine (src/canalRecall/engine/ownWorldView.ts) is the only world view
+ * since MapLibre was deleted (2026-11-27), so `ENGINE=` and `?engine=` no longer choose anything; this only applies
+ * `BUNDLES_DIR`. openRoute calls it; specs that `goto` themselves call it.
  */
 export async function useEngine(page: Page): Promise<void> {
-  const engine = process.env.ENGINE;
-  // A page that names its engine in the URL (`?engine=own` specs) keeps it: the global would beat the query.
-  if (engine === 'own' || engine === 'maplibre') await page.addInitScript((e) => { if (!/[?&]engine=/.test(location.search)) (window as any).__canalRecallEngine = e; }, engine);
   await useBundlesDir(page);
 }
 
@@ -99,12 +95,11 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   if (abortHeavyTiles) {
     await page.route(/3dbag|cesium3dtiles/i, (route) => route.abort());
   }
-  if (process.env.PW_OFFLINE_MAP) await serveMapLibreOffline(page);
   await useEngine(page);
 
   await page.goto(`/canal-drive/${query}`);
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
-  if (!/[?&]engine=/.test(query)) expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap.engine ?? 'maplibre'), `ENGINE=${process.env.ENGINE ?? '(default)'}: the asked world view is in charge`).toBe(process.env.ENGINE === 'maplibre' ? 'maplibre' : 'own');
+  expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap?.engine), 'the own engine is the world view').toBe('own');
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);
   if (viewMode) await setHiddenSelect(page, 'view-mode', viewMode);
@@ -122,22 +117,6 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   if (enterRacing) {
     await page.evaluate(() => { window.canalRecallGame.state = 4; });
   }
-}
-
-/**
- * Sandboxes without internet (cloud sessions) cannot reach unpkg or the
- * basemap host. `PW_OFFLINE_MAP=1` serves the installed maplibre-gl and a
- * background-only style instead: the streamed building tiles, trees and route
- * layers still draw (they come from the local extract), the basemap does not.
- */
-export async function serveMapLibreOffline(page: Page): Promise<void> {
-  const dist = resolve(process.cwd(), 'node_modules/maplibre-gl/dist');
-  await page.route(/unpkg\.com\/maplibre-gl@5(\.[0-9.]+)?\/dist\/maplibre-gl\.js/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.js'), contentType: 'application/javascript' }));
-  await page.route(/unpkg\.com\/maplibre-gl@5(\.[0-9.]+)?\/dist\/maplibre-gl\.css/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.css'), contentType: 'text/css' }));
-  await page.route(/tiles\.openfreemap\.org/, route => route.fulfill({
-    contentType: 'application/json',
-    body: JSON.stringify({ version: 8, name: 'offline', sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ece6d6' } }] }),
-  }));
 }
 
 /**

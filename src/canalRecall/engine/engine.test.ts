@@ -3,7 +3,6 @@ import test from 'node:test';
 import { EngineCamera, mercatorX, mercatorY, unitsPerMetre } from './cameraMap';
 import { StepClock } from './frameHost';
 import { frameMatrices } from '../rendererShared/frameMath';
-import { engineFlag } from './worldViewApi';
 import { basemapGroundColour, overviewGroundColours } from '../ownGround/basemapPalette';
 import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 
@@ -73,37 +72,24 @@ test('StepClock: fixed steps, leftover alpha, stalls capped', () => {
   assert.equal(clock.advance(0).steps, 0);
 });
 
-test('engine flag: own by default for Amsterdam (the flip), ?engine=maplibre and the global roll back', () => {
-  assert.equal(engineFlag('?engine=own'), 'own');
-  assert.equal(engineFlag('?engine=maplibre'), 'maplibre');
-  assert.equal(engineFlag(''), 'own', 'the default is the own engine');
-  assert.equal(engineFlag('', 'amsterdam'), 'own');
-  assert.equal(engineFlag('?engine=', 'amsterdam'), 'own', 'an empty value is not a rollback');
-  assert.equal(engineFlag('?engine=MapLibre', 'amsterdam'), 'own', 'the rollback value is exact, as the loader reads it');
-  (globalThis as any).__canalRecallEngine = 'maplibre';
-  try {
-    assert.equal(engineFlag('', 'amsterdam'), 'maplibre', 'the specs\' ENGINE=maplibre global');
-    assert.equal(engineFlag('?engine=own', 'amsterdam'), 'maplibre', 'the global beats the query');
-  } finally { delete (globalThis as any).__canalRecallEngine; }
+test('the own engine is the only world view: no MapLibre path, no ?engine=maplibre rollback (2026-11-27)', async () => {
+  const { readFileSync, existsSync } = await import('node:fs');
+  const game = readFileSync('public/canal-drive/js/game.js', 'utf8');
+  const page = readFileSync('public/canal-drive/index.html', 'utf8');
+  assert.ok(!/VectorBasemap|engineFlag/.test(game), 'game.js builds OwnWorldView unconditionally');
+  assert.match(game, /new engine\.OwnWorldView\(/);
+  for (const gone of ['vector-map.js', 'maplibre-loader.bundle.js', 'map-guard.bundle.js', 'park-landscape.js']) {
+    assert.ok(!page.includes(`js/${gone}`), `index.html no longer loads ${gone}`);
+  }
+  assert.ok(!existsSync('public/canal-drive/js/vector-map.js'), 'vector-map.js is deleted');
+  const api = await import('./worldViewApi');
+  for (const name of ['engineFlag', 'engineForCity', 'OWN_ENGINE_CITIES', 'ENGINE_ROLLBACK']) assert.ok(!(name in api), `${name} is gone`);
 });
 
-test('engine choice is city-aware: own only in listed cities, each with the own map and the roads binary', async () => {
-  const { existsSync, readdirSync } = await import('node:fs');
-  const { OWN_ENGINE_CITIES, OWN_ENGINE_FILES, engineForCity } = await import('./worldViewApi');
-  const root = 'public/data/extracts';
-  // The flip is Amsterdam-only (user decision, 2026-11-01): a city with both files (Utrecht has roads-v2 since
-  // origin/main 2026-11-01) still draws with MapLibre until it is listed; a listed city must have both.
-  for (const city of OWN_ENGINE_CITIES) {
-    for (const f of OWN_ENGINE_FILES) assert.ok(existsSync(`${root}/${city}/${f}`), `${city}: listed for the own engine, has ${f}`);
-  }
-  for (const city of readdirSync(root)) {
-    assert.equal(engineFlag('?engine=own', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', city);
-    assert.equal(engineFlag('', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', `${city}: the default is own only where listed`);
-    assert.equal(engineFlag('?engine=maplibre', city), 'maplibre', `${city}: ?engine=maplibre rolls back`);
-  }
-  assert.deepEqual([...OWN_ENGINE_CITIES], ['amsterdam']);
-  for (const city of ['utrecht', 'rotterdam', 'den-haag']) assert.equal(engineForCity('own', city), 'maplibre', city);
-  assert.equal(engineForCity('own', null), 'own', 'no city yet: Amsterdam, the default');
+test('Amsterdam, the only city, has the own map and the roads binary the own engine needs', async () => {
+  const { existsSync } = await import('node:fs');
+  const { OWN_ENGINE_FILES } = await import('./worldViewApi');
+  for (const f of OWN_ENGINE_FILES) assert.ok(existsSync(`public/data/extracts/amsterdam/${f}`), `amsterdam has ${f}`);
 });
 
 test('FrameHost: fixed ticks, render on demand, context loss and restore, guarded', async () => {
@@ -584,7 +570,7 @@ test('the own overview takes the colours MapLibre\'s patched basemap draws under
   for (const cls of LANDUSE_CLASSES) assert.ok(g.landuse[cls], `landuse ${cls} has a ground colour`);
 });
 
-test('a URL building look reads as vector-map.js reads it, so both engines honour the same links', async () => {
+test('a URL building look (?buildings3d= or the global) parses to one look id', async () => {
   const { urlBuildingLook } = await import('./worldViewApi');
   for (const [raw, look] of [['cartoon', 'cartoon'], ['photo', 'photo'], ['storybook', 'storybook'], ['untextured', 'untextured'],
     ['1', 'procedural'], [true, 'procedural'], ['on', 'procedural'], ['procedural', 'procedural'], ['off', 'default'], ['default', 'default'],

@@ -11,7 +11,7 @@ const device=opt('device','desktop'),base=opt('base-url','http://127.0.0.1:49231
 assert(!fs.existsSync(path.join(out,'report.json')),'Preserve prior evidence; choose a fresh output');fs.mkdirSync(out,{recursive:true});
 const scope=JSON.parse(fs.readFileSync('docs/references/marnixstraat-repeated-row/scope.json'));
 const ids=scope.parents.map(p=>p.installedId),pilot=JSON.parse(fs.readFileSync('public/data/street-appearance/marnixstraat-pilot.json'));
-const hashes=Object.fromEntries(['three-buildings.bundle.js','three-buildings-worker.bundle.js','pyramidal-roofs.bundle.js','vector-map.js','game-route.js'].map(n=>[n,crypto.createHash('sha256').update(fs.readFileSync(`public/canal-drive/js/${n}`)).digest('hex')]));
+const hashes=Object.fromEntries(['three-buildings.bundle.js','three-buildings-worker.bundle.js','pyramidal-roofs.bundle.js','game-route.js'].map(n=>[n,crypto.createHash('sha256').update(fs.readFileSync(`public/canal-drive/js/${n}`)).digest('hex')]));
 const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const context=await browser.newContext(device==='touch'?{viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1}:{viewport:{width:1440,height:900}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await context.addInitScript(()=>{let seed=0x5eed1234;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};localStorage.setItem('canalRecall.preferences.v1',JSON.stringify({travelMode:'car',viewMode:'chase',buildingLook:'photo',reducedMotion:false}));});

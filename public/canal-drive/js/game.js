@@ -102,12 +102,11 @@ class Game {
     // OSM components
     this.osmLoader = new OSMLoader();
     this.loadingScreen = new LoadingScreen();
-    // Engine programme (2026-10-30): `?engine=own` picks the three.js-owned
-    // world view (src/canalRecall/engine/ownWorldView.ts); default stays MapLibre.
+    // The world view: the three.js-owned engine (src/canalRecall/engine/ownWorldView.ts), the
+    // only one since MapLibre was deleted (2026-11-27). The name `vectorMap` is kept for the
+    // game modules and specs that read it.
     const engine = window.CanalRecallEngine;
-    this.vectorMap = engine && engine.engineFlag(undefined, this.cityId) === 'own'
-      ? new engine.OwnWorldView(document.getElementById('vector-map'))
-      : new VectorBasemap(document.getElementById('vector-map'));
+    this.vectorMap = engine ? new engine.OwnWorldView(document.getElementById('vector-map')) : null;
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;
@@ -245,9 +244,9 @@ class Game {
       this.canvas.style.cursor = hovering ? 'pointer' : 'default';
     });
 
-    // Engine programme (2026-10-31, #129): under `?engine=own` the frame host owns
-    // requestAnimationFrame and the fixed-step accumulator; the game hands it
-    // its per-frame body (`_frame`). Default MapLibre path keeps its own rAF.
+    // Engine programme (2026-10-31, #129): the frame host owns requestAnimationFrame
+    // and the fixed-step accumulator; the game hands it its per-frame body
+    // (`_frame`). Without the engine bundle the game keeps its own rAF.
     if (this.vectorMap && typeof this.vectorMap.setLoop === 'function') {
       this.vectorMap.setLoop({ frame: dt => this._frame(dt) });
     } else {
@@ -305,7 +304,7 @@ class Game {
   // The logical drawing space fills the window. It used to be fixed at 1280×720
   // and letterboxed into whatever was given, so a tall desktop window and a
   // portrait phone both got a landscape strip floating in white paper while
-  // the MapLibre layer underneath kept its own size.
+  // the world view underneath kept its own size.
   _resize() {
     const viewport = window.CanalRecallUi.readWindowViewport(window);
     this.viewport = viewport;
@@ -354,7 +353,7 @@ class Game {
     try { this._frame(dt); } finally { requestAnimationFrame(t => this._loop(t)); }
   }
 
-  /** One game frame of `rawDt` seconds: caches, update, render, input clear. Called by `_loop` (MapLibre) or the frame host (`?engine=own`). */
+  /** One game frame of `rawDt` seconds: caches, update, render, input clear. Called by the frame host, or `_loop` without the engine bundle. */
   _frame(rawDt) {
     let dt = rawDt;
     this._cameraDt = dt > 0 ? dt : 1 / 60;

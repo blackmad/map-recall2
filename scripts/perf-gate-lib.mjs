@@ -52,7 +52,6 @@ export const EXTERNAL = {
   iphoneHeapMB: 'node scripts/heap-ride.mjs --device iphone (forced GC)',
   iphoneArrayBuffersMB: 'node scripts/heap-ride.mjs --device iphone',
   iphoneGlBuffersMB: 'node scripts/heap-ride.mjs --device iphone --gl',
-  iphoneMapLibreWorkersMB: 'node scripts/heap-ride.mjs --device iphone',
   roadGraphMB: 'node scripts/heap-ride.mjs (claimed owners)',
   worldRideDownloadMB: 'tests/e2e/world-v1-bytes.spec.ts with WORLD_BYTES=1 (gzip fetched)',
   desktopRideHeapGrowthPct: 'node scripts/heap-ride.mjs --ride 10 min',
@@ -66,7 +65,6 @@ export const EXTERNAL = {
 };
 // Rows a spec enforces itself against the same budgets.json value (spec path relative to the repo root).
 export const SPEC_ENFORCED = {
-  cameraParityPx: 'tests/e2e/engine-parity.spec.ts',
   iphoneTextureMB: 'tests/e2e/city-startup-lod.spec.ts',
   skyTransparentClears: 'tests/e2e/sky-flicker.spec.ts',
   coverBumpHidden: 'tests/e2e/rider-cover-bump.spec.ts',

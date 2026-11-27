@@ -1,12 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
 import { openRoute, useEngine } from './helpers';
-import { OWN } from './worldCam';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
 const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
 const PROGRAMS_BUDGET: number = BUDGETS.programs.value;
-const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 // Engine programme P1 (docs/handoffs/lane-engine-host-20261030.md): `?engine=own`
 // is the second world view. Three.js owns the canvas; MapLibre is never
@@ -15,20 +13,6 @@ const PARITY_PX: number = BUDGETS.cameraParityPx.value;
 
 /** The maplibre-gl script and stylesheet (unpkg, or a self-hosted copy). */
 const MAPLIBRE_ASSET = /maplibre-gl(@[\d.]+)?\/dist\/maplibre-gl(-csp)?\.(js|css)|\/maplibre-gl(-csp)?\.(js|css)(\?|$)/;
-
-test('the default path still loads maplibre-gl (script and stylesheet) and builds its map', async ({ page }) => {
-  test.setTimeout(120_000);
-  const requests: string[] = [];
-  page.on('request', r => { if (MAPLIBRE_ASSET.test(r.url())) requests.push(r.url()); });
-  test.skip(OWN, 'the MapLibre path only: ENGINE=maplibre');
-  await useEngine(page);
-  await page.goto('/canal-drive/');
-  await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame?.vectorMap?.map), { timeout: 90_000 }).toBe(true);
-  expect(requests.some(u => /\.js(\?|$)/.test(u)), 'maplibre-gl.js requested').toBe(true);
-  expect(requests.some(u => /\.css(\?|$)/.test(u)), 'maplibre-gl.css requested').toBe(true);
-  expect(await page.evaluate(() => ({ lib: typeof (window as any).maplibregl, engine: (window as any).canalRecallGame.vectorMap.engine ?? 'maplibre' })))
-    .toEqual({ lib: 'object', engine: 'maplibre' });
-});
 
 async function countMapLibre(page: Page): Promise<void> {
   await page.addInitScript(() => {
@@ -228,47 +212,4 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   console.log('labels with every name earned', allEarned.labels.length, JSON.stringify(allEarned.labels.slice(0, 12)));
   expect(allEarned.labels).not.toContain(allEarned.asked);
   for (const other of allEarned.aliasOf) expect(allEarned.labels).not.toContain(other);
-});
-
-// The parity oracle: at MapLibre's own cameras (the start flight and a chase ride), the engine camera
-// (engine/cameraMap.ts EngineCamera) projects the same ground points to within the budget (tests/perf/budgets.json cameraParityPx).
-// Under `?engine=own` itself: engine-parity.spec.ts.
-test('engine camera matches MapLibre within the parity budget along the intro and a ride', async ({ page }) => {
-  test.skip(OWN, 'the oracle is MapLibre: ENGINE=maplibre');
-  test.setTimeout(180_000);
-  await openRoute(page, { viewMode: 'chase', enterRacing: false });
-  const samples: number[][] = [];
-  const sample = () => page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap;
-    const map = vm.map ?? vm.cameraMap, E = (window as any).CanalRecallEngine;
-    const el = map.getCanvas();
-    const c = map.getCenter();
-    const cam = new E.EngineCamera(() => ({ width: el.clientWidth, height: el.clientHeight }), {
-      center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch(), maxPitch: 85,
-      elevation: map.transform.elevation ?? 0,
-    });
-    // What MapLibre draws: its view-projection matrix lifts the camera by the centre elevation, which `map.project`
-    // (`_pixelMatrix`) leaves out (engine-parity.spec.ts); off by ~5 px on the iPhone ride's deck.
-    const T = map.transform, vp = T._viewProjMatrix ?? T.currentTransform?._viewProjMatrix, ws = T.worldSize;
-    const MC = (window as any).maplibregl.MercatorCoordinate;
-    const drawn = (lng: number, lat: number) => {
-      const q = MC.fromLngLat([lng, lat], 0), X = q.x * ws, Y = q.y * ws;
-      const cx = vp[0] * X + vp[4] * Y + vp[12], cy = vp[1] * X + vp[5] * Y + vp[13], cw = vp[3] * X + vp[7] * Y + vp[15];
-      return { x: (cx / cw + 1) / 2 * el.clientWidth, y: (1 - cy / cw) / 2 * el.clientHeight };
-    };
-    const out: number[] = [];
-    for (const [fx, fy] of [[0.5, 0.5], [0.2, 0.8], [0.8, 0.8], [0.5, 0.95], [0.3, 0.6], [0.7, 0.55]]) {
-      const ll = map.unproject([fx * el.clientWidth, fy * el.clientHeight]);
-      const a = drawn(ll.lng, ll.lat), b = cam.project([ll.lng, ll.lat]);
-      if (b.depth > 0) out.push(Math.hypot(a.x - b.x, a.y - b.y));
-    }
-    return [map.getZoom(), map.getPitch(), Math.max(...out)];
-  });
-  await page.evaluate(() => { (window as any).canalRecallGame.state = 4; });
-  for (let i = 0; i < 12; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
-  await page.keyboard.down('ArrowUp');
-  for (let i = 0; i < 10; i++) { samples.push(await sample()); await page.waitForTimeout(400); }
-  await page.keyboard.up('ArrowUp');
-  console.log('parity (zoom, pitch, max px):', JSON.stringify(samples.map(s => s.map(v => Math.round(v * 100) / 100))));
-  expect(Math.max(...samples.map(s => s[2]))).toBeLessThanOrEqual(PARITY_PX);
 });
