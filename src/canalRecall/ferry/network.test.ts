@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildRoadGraph } from '../routing/roadGraph';
-import { BERTH_RADIUS, ferrySegments, connectFerryGraph, connectedTerminals, terminalLabels, type Segment } from './network';
+import { BERTH_RADIUS, nearestOnLand, ferrySegments, connectFerryGraph, connectedTerminals, terminalLabels, type Segment } from './network';
 import type { TransitNetwork } from '../transit/network';
 const net = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json','utf8')) as TransitNetwork;
 const project = (lat:number,lng:number) => ({x:(lng-4.9)*200000,y:(52.38-lat)*333960});
@@ -77,3 +77,26 @@ const start=isolated.allNodes.find(n=>n.x===-100&&n.y===0)!, other=isolated.allN
 const reached=new Set([start]), queue=[start];for(let i=0;i<queue.length;i++)for(const e of queue[i].edges)if(!reached.has(e.node)){reached.add(e.node);queue.push(e.node);}
 assert.ok(!reached.has(other),'crossing ferry services cannot transfer at sea');
 console.log('Ferry topology and GTFS terminal restrictions passed');
+
+// iPhone start memory (2026-11-27): nearestOnLand walks every city street point per terminal without allocating; it must
+// answer exactly as the object-per-point version did (same point, same distance, ties keep the first).
+{
+  const reference = (point: {x:number;y:number}, segments: readonly Segment[]) => {
+    let best = { ...point, distance: Infinity };
+    for (const segment of segments) {
+      if (segment.type === 'ferry') continue;
+      for (let i = 1; i < segment.points.length; i++) {
+        const a = segment.points[i - 1], b = segment.points[i], dx = b.x - a.x, dy = b.y - a.y;
+        const t = Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+        const c = { x: a.x + t * dx, y: a.y + t * dy }, d = Math.hypot(point.x - c.x, point.y - c.y);
+        if (d < best.distance) best = { ...c, distance: d };
+      }
+    }
+    return best;
+  };
+  let seed = 7; const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648) * 2000 - 1000;
+  const segs: Segment[] = Array.from({ length: 60 }, (_, k) => ({ points: Array.from({ length: 2 + (k % 5) }, () => ({ x: rnd(), y: rnd() })), width: 6, type: k % 9 === 0 ? 'ferry' : 'residential', name: '' }));
+  segs.push({ points: [{ x: 5, y: 5 }, { x: 5, y: 5 }], width: 6, type: 'residential', name: '' }); // zero-length piece
+  for (let n = 0; n < 200; n++) { const p = { x: rnd(), y: rnd() }; assert.deepEqual(nearestOnLand(p, segs), reference(p, segs)); }
+  assert.deepEqual(nearestOnLand({ x: 1, y: 2 }, []), { x: 1, y: 2, distance: Infinity }, 'no land: the point itself, infinitely far');
+}

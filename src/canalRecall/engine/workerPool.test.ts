@@ -2,7 +2,7 @@
 // when a worker dies. Run: node --import tsx --test src/canalRecall/engine/workerPool.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { WorkerPool, existingWorkerPool, poolWorkerUrl, sharedWorkerPool, withWorkerFlags } from './workerPool.js';
+import { TOUCH_POOL_WORKERS, WorkerPool, existingWorkerPool, pagePoolSize, poolWorkerUrl, sharedWorkerPool, withWorkerFlags } from './workerPool.js';
 
 class Echo {
   onmessage: ((event: { data: unknown }) => void) | null = null;
@@ -51,4 +51,15 @@ test('pool: the page shares one; none without Worker', () => {
   assert.equal(sharedWorkerPool('w.js'), null, 'remembered');
   assert.equal(existingWorkerPool(), null, 'joins only a started pool');
   delete (globalThis as Record<string, unknown>).__canalRecallWorkerPool;
+});
+
+test('pool size: a touch device starts TOUCH_POOL_WORKERS (iPhone start memory, 2026-11-27); ?touchPool=0 and ?poolWorkers=N override', () => {
+  assert.equal(TOUCH_POOL_WORKERS, 1);
+  assert.equal(pagePoolSize({ cores: 6, coarse: true, search: '' }), 1, 'an iPhone: one building worker');
+  assert.equal(pagePoolSize({ cores: 6, coarse: true, search: '?touchPool=0' }), 3, 'off-switch: the desktop count');
+  assert.equal(pagePoolSize({ cores: 10, coarse: false, search: '' }), 3, 'desktop unchanged');
+  assert.equal(pagePoolSize({ cores: 2, coarse: false, search: '' }), 1);
+  assert.equal(pagePoolSize({ cores: 6, coarse: true, search: '?poolWorkers=2' }), 2);
+  assert.equal(pagePoolSize({ cores: 10, coarse: false, search: '?poolWorkers=1' }), 1);
+  assert.equal(pagePoolSize({ cores: 10, coarse: false, search: '?poolWorkers=9' }), 3, 'out of range: ignored');
 });

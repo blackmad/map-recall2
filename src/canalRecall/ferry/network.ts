@@ -13,19 +13,22 @@ export type Segment = { points: Point[]; width: number; type: string; name: stri
 const distance = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
 
 export function nearestOnLand(point: Point, segments: readonly Segment[]): Point & { distance: number } {
-  let best = { ...point, distance: Infinity };
+  // Scalars only: this walks every street point of the city once per terminal, and an object per point was ~100 MB
+  // of garbage at each ride start (iPhone start memory, 2026-11-27). Same arithmetic, same answer.
+  let bx = point.x, by = point.y, bd = Infinity;
   for (const segment of segments) {
     if (segment.type === 'ferry') continue;
-    for (let i = 1; i < segment.points.length; i++) {
-      const a = segment.points[i - 1], b = segment.points[i];
+    const pts = segment.points;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i];
       const dx = b.x - a.x, dy = b.y - a.y;
       const t = Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
-      const candidate = { x: a.x + t * dx, y: a.y + t * dy };
-      const d = distance(point, candidate);
-      if (d < best.distance) best = { ...candidate, distance: d };
+      const cx = a.x + t * dx, cy = a.y + t * dy;
+      const d = Math.hypot(point.x - cx, point.y - cy);
+      if (d < bd) { bx = cx; by = cy; bd = d; }
     }
   }
-  return best;
+  return bd === Infinity ? { ...point, distance: Infinity } : { x: bx, y: by, distance: bd };
 }
 
 /**

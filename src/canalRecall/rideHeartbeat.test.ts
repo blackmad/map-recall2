@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { HEARTBEAT_KEY, type HeartbeatSample, PeerTabs, RideHeartbeat, phaseName, readStamp, unendedReport } from './rideHeartbeat';
+import { LOAD_STEPS_MAX, LOAD_STEPS_REPORTED, type LoadStep, loadStepSummary, markLoadStep } from './loadSteps';
 
 function memory() {
   const m = new Map<string, string>();
@@ -138,4 +139,44 @@ test('stall watch: six long frames in 10 s, or one of 2 s, is a stall; at most t
   const single = w.note(200_000, 2500)!;
   assert.equal(single.longest, 2500);
   assert.equal(w.note(400_000, 3000), null, 'two reports a page');
+});
+
+test('loading steps: the last completed step and its trail ride in the stamp and the report (CANAL-RECALL-V, 2026-11-27)', () => {
+  const scope: { __canalRecallLoadSteps?: LoadStep[]; performance: { now(): number }; dispatchEvent(e: Event): boolean } = {
+    performance: { now: () => 0 }, dispatchEvent: () => { events++; return true; },
+  };
+  let events = 0, ms = 0;
+  scope.performance.now = () => ms;
+  for (const [name, at] of [['world:start', 900], ['pool:1', 1400], ['world:fetched', 4200], ['world:segments', 9800]] as const) { ms = at; markLoadStep(name, scope); }
+  assert.equal(events, 4, 'each step asks for an immediate beat');
+  const summary = loadStepSummary(scope.__canalRecallLoadSteps);
+  assert.deepEqual(summary, { step: 'world:segments', stepAtS: 9.8, steps: 'world:start@0.9,pool:1@1.4,world:fetched@4.2,world:segments@9.8' });
+  // The memory proxy Safari can fill (no performance.memory): counts of what the page decoded.
+  const sample = { engine: 'maplibre', tier: 'high', phase: 'loading', geometries: 812, textures: 64, groundCells: 0, worldSegments: 41_230, ...summary };
+  const storage = memory();
+  const a = harness(storage, () => sample);
+  a.hb.start(); a.advance(5000); a.advance(5000);
+  const report = unendedReport(readStamp(storage), a.now() + 5000);
+  assert.equal(report?.tags.loadStep, 'world:segments');
+  assert.equal(report?.tags.phase, 'loading');
+  assert.deepEqual([report?.extra.stepAtS, report?.extra.steps, report?.extra.geometries, report?.extra.textures, report?.extra.worldSegments, report?.extra.groundCells],
+    [9.8, summary.steps, 812, 64, 41_230, 0]);
+  // A page that marked nothing reports nulls and no loadStep tag (the old payload).
+  const b = harness(memory());
+  b.hb.start();
+  const plain = unendedReport(readStamp(b.storage), b.now() + 1000)!;
+  assert.equal('loadStep' in plain.tags, false);
+  assert.equal(plain.extra.steps, null);
+});
+
+test('loading steps: the page list is bounded, malformed entries are skipped, a broken scope never throws', () => {
+  const scope: { __canalRecallLoadSteps?: LoadStep[] } = {};
+  for (let i = 0; i < LOAD_STEPS_MAX + 10; i++) markLoadStep(`s${i}`, scope);
+  assert.equal(scope.__canalRecallLoadSteps!.length, LOAD_STEPS_MAX);
+  assert.equal(scope.__canalRecallLoadSteps![0][0], 's10');
+  assert.equal(loadStepSummary(scope.__canalRecallLoadSteps)!.steps!.split(',').length, LOAD_STEPS_REPORTED);
+  assert.deepEqual(loadStepSummary(null), {});
+  assert.deepEqual(loadStepSummary([['ok', 1200], [3 as unknown as string, 5], ['nan', Number.NaN]] as LoadStep[]), { step: 'ok', stepAtS: 1.2, steps: 'ok@1.2' });
+  const frozen = Object.freeze({}) as { __canalRecallLoadSteps?: LoadStep[] };
+  assert.doesNotThrow(() => markLoadStep('x', frozen));
 });

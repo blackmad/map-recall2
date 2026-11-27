@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { PENDING_GRAPHICS_FAILURES } from './mapGuard';
 import { IGNORED_ERRORS } from './monitoringFilters';
+import { LOAD_STEP_EVENT, LOAD_STEPS_KEY, type LoadStep, loadStepSummary } from './loadSteps';
 import { type HeartbeatSample, type KeyedStorage, PeerTabs, RideHeartbeat, SHARED_HEARTBEAT_PREFIX, StallWatch, orphanReport, phaseName, takeOrphans, unendedReport } from './rideHeartbeat';
 
 /**
@@ -158,6 +159,27 @@ function perfSample(): Partial<HeartbeatSample> {
   return out;
 }
 
+/**
+ * The coarse memory proxy for engines and browsers without `__canalPerf.snapshot()` or performance.memory (Safari):
+ * three.js geometries and textures from the shared frame (both engines), own-ground cells built, and road segments
+ * in the city world. Read during loading too (iPhone start memory, 2026-11-27).
+ */
+function memoryProxy(game: CanalRecallGameGlobals | undefined): Partial<HeartbeatSample> {
+  const out: Partial<HeartbeatSample> = {};
+  const finite = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
+  try {
+    const info = (window as unknown as { __canalPerf?: { rendererInfo?: () => { geometries?: number; textures?: number } | null } }).__canalPerf?.rendererInfo?.();
+    if (finite(info?.geometries)) out.geometries = info.geometries;
+    if (finite(info?.textures)) out.textures = info.textures;
+  } catch { /* a renderer half torn down */ }
+  const g = game as (CanalRecallGameGlobals & { osmLoader?: { _roadSnapSegments?: { length?: number } | null } }) | undefined;
+  const segments = g?.osmLoader?._roadSnapSegments?.length;
+  if (finite(segments)) out.worldSegments = segments;
+  const cells = (game?.vectorMap as { _ownGround?: { stats?: { cellsBuilt?: number } } | null } | null | undefined)?._ownGround?.stats?.cellsBuilt;
+  if (finite(cells)) out.groundCells = cells;
+  return out;
+}
+
 /** The page's dedicated workers: the shared pool (engine/workerPool.ts) plus the own ground's worker. */
 function workerCount(game: CanalRecallGameGlobals | undefined): number | undefined {
   const pool = (window as unknown as { __canalRecallWorkerPool?: { live?: number } | null }).__canalRecallWorkerPool;
@@ -197,10 +219,14 @@ if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
         distanceM: Number.isFinite(distancePx) ? Math.round(distancePx / 3) : undefined,
         workers: workerCount(game),
         tabs: (() => { try { channel?.postMessage({ id: peers.id }); } catch { /* closed */ } return peers.count(Date.now()); })(),
+        ...memoryProxy(game),
         ...perfSample(),
+        ...loadStepSummary((window as unknown as Record<string, LoadStep[] | undefined>)[LOAD_STEPS_KEY]),
       };
     },
   });
+  // A loading step stamps at once: a tab killed between two 5 s beats keeps the step it died after.
+  window.addEventListener(LOAD_STEP_EVENT, () => heartbeat.beat());
   const previous = heartbeat.start(document.visibilityState !== 'hidden');
   const report = unendedReport(previous, Date.now());
   if (report) Sentry.captureMessage(report.message, { level: 'error', tags: report.tags, extra: report.extra, fingerprint: ['canal-recall', 'unended-ride', report.tags.engine ?? 'unknown'] });

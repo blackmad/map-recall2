@@ -10,6 +10,7 @@
  * (returns true); jobs carry their own ids, so subscribers never see one another's replies as theirs.
  */
 import { poolSize } from './worldStreamer.js';
+import { markLoadStep } from '../loadSteps';
 
 export type PoolMessage = (data: unknown, worker: number) => boolean;
 export type PoolFailure = (worker: number, error: unknown) => void;
@@ -84,12 +85,37 @@ export function poolWorkerUrl(scriptSrc: string): string {
   return /[\w-]+\.bundle\.js(\?.*)?$/.test(scriptSrc) ? scriptSrc.replace(/[\w-]+\.bundle\.js(\?.*)?$/, 'three-buildings-worker.bundle.js$1') : '';
 }
 
+/**
+ * Building workers on a touch device (lane iphone-start-memory-20261127). Each pool worker is a whole JS VM in the
+ * page's WebContent process, with its own copy of the 6 MB worker bundle, its JIT code and its decoded-cell cache;
+ * on the iOS Simulator the pool of three cost ~300 MB of the start's WebContent footprint (docs/perf/
+ * iphone-start-memory-20261127.md), which is what iOS counts against the tab's jetsam limit.
+ */
+export const TOUCH_POOL_WORKERS = 1;
+
+/**
+ * The pool's size for this page: `?poolWorkers=N` (1–3) first; a touch device (`pointer: coarse`) gets
+ * TOUCH_POOL_WORKERS unless `?touchPool=0` (the off-switch: the desktop count); else `poolSize(cores)`.
+ */
+export function pagePoolSize(env: { cores?: number; coarse?: boolean; search?: string } = {}): number {
+  const g = globalThis as { navigator?: { hardwareConcurrency?: number }; location?: { search?: string }; matchMedia?: (q: string) => { matches: boolean } };
+  const cores = env.cores ?? g.navigator?.hardwareConcurrency;
+  let q: URLSearchParams | null = null;
+  try { q = new URLSearchParams(env.search ?? g.location?.search ?? ''); } catch { /* no location */ }
+  const asked = Number(q?.get('poolWorkers'));
+  if (Number.isInteger(asked) && asked >= 1 && asked <= 3) return asked;
+  let coarse = env.coarse;
+  if (coarse === undefined) { try { coarse = !!g.matchMedia?.('(pointer: coarse)')?.matches; } catch { coarse = false; } }
+  if (coarse && q?.get('touchPool') !== '0') return Math.min(TOUCH_POOL_WORKERS, poolSize(cores));
+  return poolSize(cores);
+}
+
 const KEY = '__canalRecallWorkerPool';
 /**
  * The page's pool, started on first use with `url` (the building worker bundle); null without Worker support,
  * without a URL, under `?workerPool=0`, or when no worker started.
  */
-export function sharedWorkerPool(url: string, size = poolSize()): WorkerPool | null {
+export function sharedWorkerPool(url: string, size = pagePoolSize()): WorkerPool | null {
   const g = globalThis as unknown as Record<string, WorkerPool | null | undefined>;
   if (g[KEY] !== undefined) return g[KEY] ?? null;
   let off = false;
@@ -97,6 +123,7 @@ export function sharedWorkerPool(url: string, size = poolSize()): WorkerPool | n
   if (off || typeof Worker === 'undefined' || !url) { g[KEY] = null; return null; }
   const pool = new WorkerPool(withWorkerFlags(url), size);
   g[KEY] = pool.size ? pool : null;
+  markLoadStep(`pool:${pool.size}`);
   return g[KEY] ?? null;
 }
 

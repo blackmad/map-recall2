@@ -277,7 +277,12 @@ export class SharedFrame {
   /** The renderer exists: attach new participants, or after a restore let every participant rebuild. */
   private rendererReady(): void {
     const g = globalThis as { __canalPerf?: Record<string, unknown> };
-    g.__canalPerf = Object.assign(g.__canalPerf ?? {}, { shaderErrors: () => this.shaderErrors() });
+    // rendererInfo: what three.js holds, under either engine (the ride heartbeat's memory proxy on Safari, which has no
+    // performance.memory; monitoring.ts). The own engine's fuller snapshot() wins where it exists.
+    g.__canalPerf = Object.assign(g.__canalPerf ?? {}, {
+      shaderErrors: () => this.shaderErrors(),
+      rendererInfo: () => { const m = this.renderer?.info?.memory; return m ? { geometries: m.geometries, textures: m.textures } : null; },
+    });
     const debug = this.renderer.debug;
     if (debug && !debug.onShaderError?.__counted) {
       // Replaces three's report (which also prints source context) with the info logs, counted.

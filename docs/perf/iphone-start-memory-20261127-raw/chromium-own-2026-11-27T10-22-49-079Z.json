@@ -1,0 +1,666 @@
+{
+ "engine": "own",
+ "gameUrl": "http://localhost:4631/canal-drive/?travel=car&engine=own#race=52.37665,4.90115,52.37665,4.90115,52.37265,4.90035",
+ "atS": 3,
+ "workerHeaps": [
+  {
+   "url": "js/three-buildings-worker.bundle.js",
+   "usedMB": 140
+  },
+  {
+   "url": "js/own-ground-worker.bundle.js",
+   "usedMB": 128
+  }
+ ],
+ "netTotalMB": 132.9,
+ "net": [
+  {
+   "file": "/data/extracts/amsterdam/own-map-v1/overview.json.gz",
+   "MB": 11.22,
+   "n": 2
+  },
+  {
+   "file": "/data/front-records/row-front.json",
+   "MB": 6.21,
+   "n": 2
+  },
+  {
+   "file": "/canal-drive/building-types/instances.json",
+   "MB": 3.3,
+   "n": 1
+  },
+  {
+   "file": "/canal-drive/js/signature-placement.bundle.js",
+   "MB": 3.21,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/landmarks.json",
+   "MB": 3.12,
+   "n": 4
+  },
+  {
+   "file": "/canal-drive/materials/ambientcg/Bricks057/colour.jpg",
+   "MB": 2.81,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/elevation-v1/bridges.json",
+   "MB": 2.66,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/streets.json",
+   "MB": 2.36,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/facts.json",
+   "MB": 2.3,
+   "n": 1
+  },
+  {
+   "file": "/canal-drive/js/three-buildings.bundle.js",
+   "MB": 2.23,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/street-name-origins.json",
+   "MB": 2.17,
+   "n": 1
+  },
+  {
+   "file": "/canal-drive/ordinary-buildings-data/chunks.json",
+   "MB": 2.15,
+   "n": 1
+  },
+  {
+   "file": "/canal-drive/js/three-buildings-worker.bundle.js",
+   "MB": 2,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/houseboats.json",
+   "MB": 1.94,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz",
+   "MB": 1.9,
+   "n": 1
+  },
+  {
+   "file": "upload.wikimedia.org/wikipedia/commons/thumb/a/a1/2022_Plaquette_Chet_Baker%2C_Asd_%281%29.jpg/960px-2022_Plaquette_Chet_Baker%2C_Asd_%281%29.jpg",
+   "MB": 1.83,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/water.json",
+   "MB": 1.66,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/own-ground-osm-v1/cells/1_-3.json.gz",
+   "MB": 1.61,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-2_-1.json.gz",
+   "MB": 1.56,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-2_0.json.gz",
+   "MB": 1.56,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/monument-facts.json",
+   "MB": 1.5,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-2_-2.json.gz",
+   "MB": 1.41,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-1_-2.json.gz",
+   "MB": 1.38,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_-2.json.gz",
+   "MB": 1.38,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-2_1.json.gz",
+   "MB": 1.34,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/click-poi-info.json",
+   "MB": 1.23,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/own-ground-osm-v1/cells/2_-3.json.gz",
+   "MB": 1.13,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/bridges.json",
+   "MB": 1.06,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/2_-1.json.gz",
+   "MB": 1.06,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_-2.json.gz",
+   "MB": 0.97,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/own-ground-osm-v1/cells/0_1.json.gz",
+   "MB": 0.96,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-3_-1.json.gz",
+   "MB": 0.95,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/street-knowledge.json",
+   "MB": 0.93,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-1_-3.json.gz",
+   "MB": 0.92,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_-3.json.gz",
+   "MB": 0.91,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/piers-v1/piers.json.gz",
+   "MB": 0.88,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-1_1.json.gz",
+   "MB": 0.88,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_-3.json.gz",
+   "MB": 0.87,
+   "n": 2
+  },
+  {
+   "file": "/canal-drive/js/three.bundle.js",
+   "MB": 0.86,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_-1.json.gz",
+   "MB": 0.86,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_-1.json.gz",
+   "MB": 0.86,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-3_0.json.gz",
+   "MB": 0.85,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-1_-1.json.gz",
+   "MB": 0.83,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-1_0.json.gz",
+   "MB": 0.82,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/shopfronts.json",
+   "MB": 0.81,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-3_-2.json.gz",
+   "MB": 0.78,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/shop-anchors.json",
+   "MB": 0.76,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/street-art.json",
+   "MB": 0.71,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/2_-2.json.gz",
+   "MB": 0.7,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_1.json.gz",
+   "MB": 0.7,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_2.json.gz",
+   "MB": 0.69,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_1.json.gz",
+   "MB": 0.67,
+   "n": 3
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_3.json.gz",
+   "MB": 0.65,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/-2_2.json.gz",
+   "MB": 0.64,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_2.json.gz",
+   "MB": 0.62,
+   "n": 2
+  },
+  {
+   "file": "/canal-drive/js/game-presentation.bundle.js",
+   "MB": 0.61,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/0_0.json.gz",
+   "MB": 0.6,
+   "n": 2
+  },
+  {
+   "file": "/data/extracts/amsterdam/roads-v1/cells-v3/1_3.json.gz",
+   "MB": 0.6,
+   "n": 2
+  },
+  {
+   "file": "/canal-drive/js/overlay.bundle.js",
+   "MB": 0.58,
+   "n": 1
+  },
+  {
+   "file": "/data/extracts/amsterdam/own-ground-osm-v1/cells/0_-3.json.gz",
+   "MB": 0.55,
+   "n": 2
+  }
+ ],
+ "heapTop": {
+  "totalMB": 1795.4,
+  "byFile": [
+   {
+    "what": "(native)",
+    "MB": 391.5
+   },
+   {
+    "what": "js/three-buildings.bundle.js",
+    "MB": 244.3
+   },
+   {
+    "what": "js/road-graph.bundle.js",
+    "MB": 223.7
+   },
+   {
+    "what": "js/engine.bundle.js",
+    "MB": 196
+   },
+   {
+    "what": "js/own-ground-game.bundle.js",
+    "MB": 181.4
+   },
+   {
+    "what": "js/road-projection.bundle.js",
+    "MB": 133.5
+   },
+   {
+    "what": "js/ferry-network.bundle.js",
+    "MB": 133.5
+   },
+   {
+    "what": "js/three.bundle.js",
+    "MB": 49.2
+   },
+   {
+    "what": "js/road-surface.bundle.js",
+    "MB": 39.6
+   },
+   {
+    "what": "js/osm-loader.js",
+    "MB": 34.8
+   },
+   {
+    "what": "js/road-network.js",
+    "MB": 24.9
+   },
+   {
+    "what": "js/signature-landmarks.bundle.js",
+    "MB": 23
+   },
+   {
+    "what": "js/building-types.bundle.js",
+    "MB": 22.7
+   },
+   {
+    "what": "js/game-landmarks.bundle.js",
+    "MB": 18.2
+   },
+   {
+    "what": "js/inventory-trees.bundle.js",
+    "MB": 16.1
+   },
+   {
+    "what": "js/collection.bundle.js",
+    "MB": 12.3
+   },
+   {
+    "what": "js/game-presentation.bundle.js",
+    "MB": 12.2
+   },
+   {
+    "what": "js/building-tiles.bundle.js",
+    "MB": 8.1
+   },
+   {
+    "what": "js/route-selection.bundle.js",
+    "MB": 7
+   },
+   {
+    "what": "js/street-furniture.bundle.js",
+    "MB": 6.4
+   },
+   {
+    "what": "js/signature-placement.bundle.js",
+    "MB": 4.9
+   },
+   {
+    "what": "js/orientation-pois.bundle.js",
+    "MB": 4.1
+   },
+   {
+    "what": "js/overlay.bundle.js",
+    "MB": 2.8
+   },
+   {
+    "what": "js/game-ui.bundle.js",
+    "MB": 1
+   },
+   {
+    "what": "js/game.js",
+    "MB": 0.8
+   },
+   {
+    "what": "js/building-style.bundle.js",
+    "MB": 0.7
+   },
+   {
+    "what": "js/player-vehicles.bundle.js",
+    "MB": 0.6
+   },
+   {
+    "what": "js/notice-cards.bundle.js",
+    "MB": 0.4
+   },
+   {
+    "what": "js/detailed-buildings.bundle.js",
+    "MB": 0.3
+   },
+   {
+    "what": "js/game-recall.bundle.js",
+    "MB": 0.2
+   },
+   {
+    "what": "js/game-route.js",
+    "MB": 0.2
+   },
+   {
+    "what": "js/pyramidal-roofs.bundle.js",
+    "MB": 0.2
+   },
+   {
+    "what": "js/utils.js",
+    "MB": 0.2
+   },
+   {
+    "what": "js/answer-path.bundle.js",
+    "MB": 0.2
+   },
+   {
+    "what": "js/i18n.bundle.js",
+    "MB": 0.1
+   },
+   {
+    "what": "js/recall-store/index.js",
+    "MB": 0.1
+   },
+   {
+    "what": "js/preferences.bundle.js",
+    "MB": 0.1
+   },
+   {
+    "what": "js/hud.js",
+    "MB": 0.1
+   },
+   {
+    "what": "js/camera.js",
+    "MB": 0.1
+   },
+   {
+    "what": "js/input.js",
+    "MB": 0
+   }
+  ],
+  "byFrame": [
+   {
+    "what": "next @ (native):0",
+    "MB": 122.7
+   },
+   {
+    "what": "J @ js/ferry-network.bundle.js:1",
+    "MB": 96
+   },
+   {
+    "what": "ze @ js/road-graph.bundle.js:1",
+    "MB": 68
+   },
+   {
+    "what": "hypot @ (native):0",
+    "MB": 55.3
+   },
+   {
+    "what": "cu @ js/three-buildings.bundle.js:5",
+    "MB": 55.2
+   },
+   {
+    "what": "wr @ js/three-buildings.bundle.js:5",
+    "MB": 36.4
+   },
+   {
+    "what": "(V8 API) @ (native):0",
+    "MB": 36.2
+   },
+   {
+    "what": "i @ js/ferry-network.bundle.js:1",
+    "MB": 32.9
+   },
+   {
+    "what": "set @ (native):0",
+    "MB": 32.5
+   },
+   {
+    "what": "decodeRoadExtract @ js/road-projection.bundle.js:288",
+    "MB": 28.7
+   },
+   {
+    "what": "Q6 @ js/three-buildings.bundle.js:5",
+    "MB": 28.4
+   },
+   {
+    "what": "I @ js/road-graph.bundle.js:1",
+    "MB": 28.2
+   },
+   {
+    "what": "roadSurfaceStages @ js/road-surface.bundle.js:259",
+    "MB": 27.6
+   },
+   {
+    "what": "g @ js/road-graph.bundle.js:1",
+    "MB": 27.4
+   },
+   {
+    "what": "replace @ (native):0",
+    "MB": 26.9
+   },
+   {
+    "what": "s.onmessage @ js/own-ground-game.bundle.js:26",
+    "MB": 26.6
+   },
+   {
+    "what": "T @ js/road-graph.bundle.js:1",
+    "MB": 25.4
+   },
+   {
+    "what": "streetsFor @ js/three-buildings.bundle.js:1055",
+    "MB": 22.1
+   },
+   {
+    "what": "(anon) @ js/osm-loader.js:155",
+    "MB": 20.7
+   },
+   {
+    "what": "(anon) @ js/engine.bundle.js:106",
+    "MB": 20.1
+   },
+   {
+    "what": "simplifyPath @ js/road-projection.bundle.js:425",
+    "MB": 20.1
+   },
+   {
+    "what": "r @ js/three-buildings.bundle.js:5",
+    "MB": 19.2
+   },
+   {
+    "what": "ot @ js/engine.bundle.js:77",
+    "MB": 19.1
+   },
+   {
+    "what": "map @ (native):0",
+    "MB": 18.1
+   },
+   {
+    "what": "(anon) @ js/own-ground-game.bundle.js:26",
+    "MB": 17.6
+   },
+   {
+    "what": "Tu @ js/engine.bundle.js:106",
+    "MB": 17.2
+   },
+   {
+    "what": "k @ js/road-graph.bundle.js:1",
+    "MB": 16.9
+   },
+   {
+    "what": "build @ js/road-projection.bundle.js:110",
+    "MB": 16.9
+   },
+   {
+    "what": "(anon) @ js/three-buildings.bundle.js:1055",
+    "MB": 15.9
+   },
+   {
+    "what": "(anon) @ js/three-buildings.bundle.js:1",
+    "MB": 15.6
+   },
+   {
+    "what": "closestPointOnSegment @ js/road-projection.bundle.js:410",
+    "MB": 15.3
+   },
+   {
+    "what": "join @ (native):0",
+    "MB": 15.3
+   },
+   {
+    "what": "Jp @ js/engine.bundle.js:106",
+    "MB": 14.8
+   },
+   {
+    "what": "entries @ js/engine.bundle.js:504",
+    "MB": 14.4
+   },
+   {
+    "what": "(anon) @ js/road-projection.bundle.js:477",
+    "MB": 13.9
+   },
+   {
+    "what": "fetchRoads @ js/osm-loader.js:50",
+    "MB": 13.9
+   },
+   {
+    "what": "Cs @ js/building-types.bundle.js:944",
+    "MB": 13.8
+   },
+   {
+    "what": "we @ js/road-graph.bundle.js:1",
+    "MB": 13.5
+   },
+   {
+    "what": "motorOnlyNames @ js/road-projection.bundle.js:218",
+    "MB": 13.1
+   },
+   {
+    "what": "roadSegmentStages @ js/road-projection.bundle.js:471",
+    "MB": 12.9
+   }
+  ]
+ },
+ "final": {
+  "state": 4,
+  "intro": false,
+  "engine": "own",
+  "snap": {
+   "tier": "low",
+   "dpr": 1,
+   "heapMB": 384,
+   "gpuMB": null,
+   "geometries": 205,
+   "textures": 19,
+   "cells": 4,
+   "chunks": 0,
+   "models": 6,
+   "p99Ms": null
+  },
+  "glr": null,
+  "ml": null,
+  "heapMB": 384,
+  "workers": 1
+ }
+}

@@ -36,6 +36,7 @@ import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type L
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
 import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintsNear, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
+import { markLoadStep } from '../loadSteps';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, footprintContains, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
@@ -628,8 +629,14 @@ export class OwnWorldView implements WorldViewOracles {
     this.extras.start();
     this.ready = true;
     this.applyPendingAim();
-    await Promise.all([this.loadOverview(), this.loadBuildings().then(() => this.extras.loadBagCovers()), this.loadOwnGround()]);
+    // Each part marks the heartbeat's loading trail (loadSteps.ts) as it completes.
+    await Promise.all([
+      this.loadOverview().then(() => markLoadStep('own:overview')),
+      this.loadBuildings().then(() => markLoadStep('own:buildings')).then(() => this.extras.loadBagCovers()),
+      this.loadOwnGround().then(() => markLoadStep('own:ground')),
+    ]);
     this.status.booted = true;
+    markLoadStep('own:booted');
   }
 
   private fail(what: string, error: unknown): void {
