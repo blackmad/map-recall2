@@ -251,10 +251,8 @@ test('street furniture (#170): built with the extras, suspended with the flight,
   try {
     new CityExtras(host).start();
     assert.equal(g.__canalStreetFurniture, undefined, 'no bundle, no layer');
-    g.CanalRecallStreetFurniture = { StreetFurniture, furnitureFlag: () => false };
+    g.CanalRecallStreetFurniture = { StreetFurniture };
     assert.equal(new CityExtras(host).furniture, null);
-    const off = new CityExtras(host); off.start(); assert.equal(off.furniture, null, '?furniture=0');
-    g.CanalRecallStreetFurniture.furnitureFlag = () => true;
     const extras = new CityExtras(host); extras.start();
     extras.setSuspended(true);
     const ground = { ready: true, pointBase: () => 0 };

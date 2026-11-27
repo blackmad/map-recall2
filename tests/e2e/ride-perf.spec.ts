@@ -145,8 +145,7 @@ for (const variant of variants) {
       const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
       return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
     });
-    // BUILDING_TYPES=0 boots with `?buildingTypes=0` (the Nieuw-West building types are on by default since 2026-10-16).
-    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: process.env.BUILDING_TYPES === '0' ? '?buildingTypes=0' : '' });
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '' });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     await page.evaluate(async (mode) => {
       const landmarks = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
@@ -207,9 +206,9 @@ for (const variant of variants) {
     results.push(sample);
     console.log(JSON.stringify(sample));
     mkdirSync('artifacts/perf', { recursive: true });
-    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.OWN_GROUND ? `-ownGround${process.env.OWN_GROUND}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}${process.env.RECIPE_TILES ? `-recipe${process.env.RECIPE_TILES}` : ''}${process.env.BUILDING_TYPES ? `-types${process.env.BUILDING_TYPES}` : ''}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.OWN_GROUND ? `-ownGround${process.env.OWN_GROUND}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}${process.env.RECIPE_TILES ? `-recipe${process.env.RECIPE_TILES}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
-    if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.OWN_GROUND && !process.env.RECIPE_TILES && !process.env.BUILDING_TYPES) {
+    if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.OWN_GROUND && !process.env.RECIPE_TILES) {
       expect(sample.mapRender.median, 'map render median (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderMedianMs);
       expect(sample.mapRender.p95, 'map render p95 (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderP95Ms);
       if (raw.t.labelFrame.length) {
@@ -248,7 +247,7 @@ test('motion stutter: steady ride through the Jordaan to Kinkerstraat', async ({
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
   if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
   await useEngine(page);
-  await page.goto(process.env.BUILDING_TYPES === '0' ? '/canal-drive/?buildingTypes=0' : '/canal-drive/');
+  await page.goto('/canal-drive/');
   await page.waitForFunction(([a, b]) => (window as any).canalRecallGame?.routePois?.some((p: any) => p.id === a) && (window as any).canalRecallGame.routePois.some((p: any) => p.id === b), [MOTION_START, MOTION_DEST], { timeout: 90_000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });
   await page.locator('#view-mode').selectOption('chase', { force: true });

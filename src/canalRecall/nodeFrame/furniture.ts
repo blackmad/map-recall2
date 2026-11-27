@@ -8,7 +8,7 @@
  *   shade  = MeshStandardMaterial roughness 0.82, flat shading (smooth where the model carries normals), receives the
  *            sun's shadow, casts none
  *
- * Drawn within RADIUS_M of the rider (the camera subject), as the adapter's riderViewBox does; `?furniture=0` off.
+ * Drawn within RADIUS_M of the rider (the camera subject), as the adapter's riderViewBox does.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,9 +21,6 @@ import type { WorldDraw } from './worldRaster.ts';
 
 /** street-furniture-source.js RADIUS_M: furniture draws within this many metres of the rider. */
 export const FURNITURE_RADIUS_M = 220;
-
-/** `?furniture=0` turns it off (street-furniture-source.js furnitureFlag). */
-export const furnitureOn = (search: string): boolean => new URLSearchParams(search).get('furniture') !== '0';
 
 const TILE_CACHE = new Map<string, FurnitureInstance[]>();
 const MODEL_CACHE = new Map<FurnitureModelId, FurnitureMesh>();

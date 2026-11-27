@@ -230,14 +230,11 @@ export class SignatureLandmarks {
    * Building types (default ON since 2026-10-16; game host only): shared unit meshes drawn with THREE.InstancedMesh
    * for the Nieuw-West areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
    * One spec per area; its scene is built by `spec.sceneFactory`, and its `suppressOsmIds` are the BAG panden it
-   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. `?buildingTypes=0` keeps the
-   * generic extrusions (building-types-runtime.spec BT=0); the host passes `buildingTypes: false` under
-   * `?recipeTiles=1`, whose tiles carry the types.
+   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. The host passes
+   * `buildingTypes: false` under `?recipeTiles=1`, whose tiles carry the types.
    */
   _loadBuildingTypes() {
-    let on = true;
-    try { on = new URLSearchParams(window.location.search).get('buildingTypes') !== '0'; } catch { /* no location */ }
-    if (!on || this.streetChunks !== true || !this.buildingTypes) return;
+    if (this.streetChunks !== true || !this.buildingTypes) return;
     const script = document.createElement('script');
     script.src = new URL('./js/building-types.bundle.js', window.location.href).href;
     const loaded = new Promise((resolve, reject) => { script.onload = resolve; script.onerror = () => reject(new Error('building-types.bundle.js')); });
@@ -778,11 +775,6 @@ export class SignatureLandmarks {
     return slack;
   }
 
-  _gateOn() {
-    if (this._gateFlag === undefined) { try { this._gateFlag = new URLSearchParams(window.location?.search ?? '').get('landmarkGate') !== '0'; } catch { this._gateFlag = true; } }
-    return this._gateFlag;
-  }
-
   /**
    * The gate's pin, on the page only when asked (`window.__canalRecallLandmarkGateCheck = {}`): each skipped walk is
    * run anyway, and any model it would have requested is recorded (`misses`; must stay empty).
@@ -817,9 +809,9 @@ export class SignatureLandmarks {
     const view = this.loadVisibleOnly ? this._viewBounds() : null;
     // The request gate (#129): the last walk found nothing to load, nothing it read has changed since, and the view's
     // edges have moved less than half the margin of the nearest loadable model outside it, so this walk would find
-    // nothing too. A walk ran on every frame that moved the view, ~0.8 s a minute at 4x. `?landmarkGate=0` walks always.
+    // nothing too. A walk ran on every frame that moved the view, ~0.8 s a minute at 4x.
     const idle = this._requestIdle;
-    if (view && idle && !reveal && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
+    if (view && idle && !reveal && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
       this._gateCheck(view);
       return;
     }
@@ -1038,12 +1030,9 @@ export class SignatureLandmarks {
    * the legacy layer's camera sits at the model origin, so any specular term
    * was a hotspot computed for an eye inside the building. Runs once per
    * decoded GLB (a shared mesh's master, before it is cloned).
-   * `?landmarkSpecular=1` keeps the GLB's own materials, for A/B shots.
    */
   _shade(gltf) {
-    let keep = window.__canalRecallLandmarkSpecular === true;
-    try { keep ||= new URLSearchParams(window.location.search).get('landmarkSpecular') === '1'; } catch { /* no location */ }
-    if (!keep) normaliseLandmarkMaterials(THREE, gltf.scene);
+    normaliseLandmarkMaterials(THREE, gltf.scene);
     return gltf;
   }
 

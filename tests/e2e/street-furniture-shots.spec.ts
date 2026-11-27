@@ -1,6 +1,5 @@
 /**
- * Street-furniture frames (lane #170): the ride camera (?engine=own, chase) at three spots, with and without the
- * furniture layer (`?furniture=0`), for the likeness sheets beside the data.amsterdam panorama of the same corner
+ * Street-furniture frames (lane #170): the ride camera (?engine=own, chase) at three spots, for the likeness sheets beside the data.amsterdam panorama of the same corner
  * (scripts/street-furniture/likeness-sheet.ts). Asserts the layer drew instances within its draw budget.
  *
  *   PW_PORT=4818 SF_OUT=staging/street-furniture/frames npx playwright test tests/e2e/street-furniture-shots.spec.ts --workers=1 --project=desktop
@@ -47,31 +46,25 @@ async function prepare(page: Page) {
 
 for (const spot of SPOTS) {
   if (only && !only.includes(spot.name)) continue;
-  for (const variant of ['before', 'after'] as const) {
-    test(`street furniture: ${spot.name} ${variant}`, async ({ page }, info) => {
-      test.setTimeout(300_000);
-      if (info.project.name === 'desktop') await page.setViewportSize({ width: 1440, height: 900 });
-      await prepare(page);
-      await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: `?engine=own${variant === 'before' ? '&furniture=0' : ''}` });
-      await teleport(page, standBack(spot));
-      await page.waitForTimeout(2500);
-      await teleport(page, standBack(spot));
-      // Closer than the chase default (1): furniture is a metre or two; SF_CAMZOOM=1 keeps the riding frame.
-      const camZoom = Number(process.env.SF_CAMZOOM ?? 3);
-      await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, camZoom);
-      await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.pendingWork().length), { timeout: 150_000, intervals: [1000] }).toBe(0);
-      if (variant === 'after') {
-        await expect.poll(() => page.evaluate(() => (window as any).__canalStreetFurniture?.debug?.instances ?? 0), { timeout: 60_000, intervals: [500] }).toBeGreaterThan(0);
-      }
-      await page.waitForTimeout(Number(process.env.SF_WAIT ?? 4000));
-      const debug = await page.evaluate(() => { const d = (window as any).__canalStreetFurniture?.debug; return d ? { ...d } : null; });
-      console.log(JSON.stringify({ spot: spot.name, variant, project: info.project.name, debug }));
-      if (variant === 'after') {
-        expect(debug.draws, 'instanced furniture draws').toBeLessThanOrEqual(7); // 7 since the krul urinal (2026-11-12): one instanced draw per furniture type in view, Amstelveld has seven.
-        expect(debug.triangles, 'furniture triangles on screen').toBeLessThanOrEqual(40_000);
-      } else expect(debug, '?furniture=0 builds no layer').toBeNull();
-      mkdirSync(OUT, { recursive: true });
-      await page.screenshot({ path: `${OUT}/${spot.name}-${variant}-${info.project.name}${camZoom === 3 ? '' : `-z${camZoom}`}.png` });
-    });
-  }
+  test(`street furniture: ${spot.name}`, async ({ page }, info) => {
+    test.setTimeout(300_000);
+    if (info.project.name === 'desktop') await page.setViewportSize({ width: 1440, height: 900 });
+    await prepare(page);
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?engine=own' });
+    await teleport(page, standBack(spot));
+    await page.waitForTimeout(2500);
+    await teleport(page, standBack(spot));
+    // Closer than the chase default (1): furniture is a metre or two; SF_CAMZOOM=1 keeps the riding frame.
+    const camZoom = Number(process.env.SF_CAMZOOM ?? 3);
+    await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, camZoom);
+    await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.pendingWork().length), { timeout: 150_000, intervals: [1000] }).toBe(0);
+    await expect.poll(() => page.evaluate(() => (window as any).__canalStreetFurniture?.debug?.instances ?? 0), { timeout: 60_000, intervals: [500] }).toBeGreaterThan(0);
+    await page.waitForTimeout(Number(process.env.SF_WAIT ?? 4000));
+    const debug = await page.evaluate(() => { const d = (window as any).__canalStreetFurniture?.debug; return d ? { ...d } : null; });
+    console.log(JSON.stringify({ spot: spot.name, project: info.project.name, debug }));
+    expect(debug.draws, 'instanced furniture draws').toBeLessThanOrEqual(7); // 7 since the krul urinal (2026-11-12): one instanced draw per furniture type in view, Amstelveld has seven.
+    expect(debug.triangles, 'furniture triangles on screen').toBeLessThanOrEqual(40_000);
+    mkdirSync(OUT, { recursive: true });
+    await page.screenshot({ path: `${OUT}/${spot.name}-${info.project.name}${camZoom === 3 ? '' : `-z${camZoom}`}.png` });
+  });
 }

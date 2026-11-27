@@ -21,7 +21,7 @@ import { geoFrame, chunkToWorld, lngLatOfWorld, transformPositions, worldOfLngLa
 import { fogFor, type FogSetup } from './fog.ts';
 import { groundDraws, groundLook, loadGround } from './ground.ts';
 import { sceneLight } from './light.ts';
-import { furnitureDraws, furnitureInstances, furnitureOn } from './furniture.ts';
+import { furnitureDraws, furnitureInstances } from './furniture.ts';
 import { liftChunkPands, separateChunkPands } from './models.ts';
 import { gameModels, glbBounds, loadGlbFile, LOD1_M, modelDraws, modelFile, modelMatrix, type ModelSpec } from './models.ts';
 import { shadowMap } from './shadow.ts';
@@ -296,7 +296,7 @@ export async function renderNodeFrame(view: NodeView, opts: NodeFrameOptions): P
 
   // ---- street furniture (street-furniture-source.js: lamps, containers, hoops, abris, columns round the rider) ------
   t = performance.now();
-  if (opts.furniture !== false && !view.aerial && furnitureOn(view.search ?? '')) {
+  if (opts.furniture !== false && !view.aerial) {
     // gameGround.ts surfaceBase: the riding surface, never below the relief; 0 off the relief survey.
     const surfaceBase = (lng: number, lat: number): number | undefined => {
       const [x, y] = toLocal(lng, lat);
