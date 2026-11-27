@@ -199,8 +199,9 @@ const memory = () => {
 
 {
   assert.equal(defaultPreferences(zoom).cityId, 'amsterdam');
-  assert.equal(parsePreferences({ cityId: 'utrecht' }, zoom).cityId, 'utrecht');
-  assert.equal(parsePreferences({ cityId: 'den-haag' }, zoom).cityId, 'den-haag');
+  // Retired 2026-11-27 (Amsterdam only): stored Utrecht and Den Haag fold to Amsterdam.
+  assert.equal(parsePreferences({ cityId: 'utrecht' }, zoom).cityId, 'amsterdam');
+  assert.equal(parsePreferences({ cityId: 'den-haag' }, zoom).cityId, 'amsterdam');
   assert.equal(parsePreferences({ cityId: 'paris' }, zoom).cityId, 'amsterdam');
   assert.equal(parsePreferences({}, zoom).cityId, 'amsterdam');
 }

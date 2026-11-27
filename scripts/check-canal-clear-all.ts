@@ -41,7 +41,9 @@ saveExploration(store, {
 recordBestTime(store, 'route-a', { time: 120, date: '2026-09-05', distance: 1.2 });
 store.setItem(HOME_GEOCODE_CACHE_KEY, JSON.stringify({ Domplein: [5.12, 52.09] }));
 
-assert.equal(readPreferences(store, zoom).cityId, 'utrecht');
+// Utrecht was retired on 2026-11-27, so a stored Utrecht reads back as Amsterdam; the address shows the write stuck.
+assert.equal(readPreferences(store, zoom).cityId, 'amsterdam');
+assert.equal(readPreferences(store, zoom).homeAddress, 'Domplein 1');
 assert.equal(readExploration(store).learnedStreets.length, 1);
 assert.ok(readBestTimes(store)['route-a']);
 

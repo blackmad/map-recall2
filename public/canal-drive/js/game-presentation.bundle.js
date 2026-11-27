@@ -289,6 +289,8 @@
     "options.distanceHazeHint": "Far streets fade softly toward the sky",
     "options.perfHud": "Show performance",
     "options.perfHudHint": "Memory and frame-time numbers in the corner",
+    "options.fullFrameRate": "Full frame rate",
+    "options.fullFrameRateHint": "Smoother on 120 Hz screens; uses more power",
     // --- Ride settings panel --------------------------------------------------
     "settings.title": "Ride settings",
     "settings.progress": "My progress",
@@ -1083,6 +1085,8 @@
     "options.distanceHazeHint": "Verre straten vervagen zacht naar de lucht",
     "options.perfHud": "Prestaties tonen",
     "options.perfHudHint": "Geheugen en beeldtijden in de hoek",
+    "options.fullFrameRate": "Volle beeldsnelheid",
+    "options.fullFrameRateHint": "Vloeiender op 120Hz-schermen; kost meer stroom",
     // --- Ritinstellingen ------------------------------------------------------
     "settings.title": "Ritinstellingen",
     "settings.progress": "Mijn voortgang",
