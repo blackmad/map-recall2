@@ -437,6 +437,20 @@
     "ride.load.renderingWaterways": "Rendering waterways\u2026",
     "ride.load.settling": "Settling the map\u2026",
     "ride.load.buildingCity": "Building the city\u2026",
+    "ride.load.line.dredging": "Dredging the canals\u2026",
+    "ride.load.line.polders": "Aligning the polders\u2026",
+    "ride.load.line.narrowing": "Narrowing the canal houses\u2026",
+    "ride.load.line.piles": "Driving piles into the mud\u2026",
+    "ride.load.line.gables": "Tilting the gables forward\u2026",
+    "ride.load.line.hoists": "Fitting the hoist beams\u2026",
+    "ride.load.line.pumping": "Pumping out the polder\u2026",
+    "ride.load.line.bridges": "Raising the bridges\u2026",
+    "ride.load.line.bikes": "Parking the bicycles\u2026",
+    "ride.load.line.fishing": "Fishing bikes out of the canal\u2026",
+    "ride.load.line.houseboats": "Mooring the houseboats\u2026",
+    "ride.load.line.shutters": "Painting the shutters\u2026",
+    "ride.load.line.trams": "Tuning the tram bells\u2026",
+    "ride.load.line.windowBoxes": "Watering the window boxes\u2026",
     "ride.load.ready": "Ready!",
     "ride.load.findingWay": "Finding your way\u2026",
     "ride.error.noStartPoint": "No reachable starting point is available for this destination.",
@@ -1217,6 +1231,20 @@
     "ride.load.renderingWaterways": "Waterwegen tekenen\u2026",
     "ride.load.settling": "De kaart wordt bijgewerkt\u2026",
     "ride.load.buildingCity": "De stad wordt opgebouwd\u2026",
+    "ride.load.line.dredging": "Grachten baggeren\u2026",
+    "ride.load.line.polders": "Polders uitlijnen\u2026",
+    "ride.load.line.narrowing": "Grachtenpanden versmallen\u2026",
+    "ride.load.line.piles": "Palen in de modder heien\u2026",
+    "ride.load.line.gables": "Gevels voorover kantelen\u2026",
+    "ride.load.line.hoists": "Hijsbalken monteren\u2026",
+    "ride.load.line.pumping": "De polder droogmalen\u2026",
+    "ride.load.line.bridges": "Bruggen ophalen\u2026",
+    "ride.load.line.bikes": "Fietsen parkeren\u2026",
+    "ride.load.line.fishing": "Fietsen uit de gracht vissen\u2026",
+    "ride.load.line.houseboats": "Woonboten aanmeren\u2026",
+    "ride.load.line.shutters": "Luiken schilderen\u2026",
+    "ride.load.line.trams": "Trambellen stemmen\u2026",
+    "ride.load.line.windowBoxes": "Bloembakken water geven\u2026",
     "ride.load.ready": "Klaar!",
     "ride.load.findingWay": "Je route wordt gezocht\u2026",
     "ride.error.noStartPoint": "Er is geen bereikbaar startpunt voor deze bestemming.",
@@ -2315,8 +2343,30 @@
   function introHoldCapMs(spentMs, capMs = START_HOLD_CAP_MS) {
     return Math.max(START_HOLD_INTRO_MIN_MS, Math.round(capMs - Math.max(0, spentMs)));
   }
-  function startHoldMessageKey(elapsedMs, base = "ride.load.settling") {
-    return elapsedMs >= START_HOLD_MESSAGE_AFTER_MS ? "ride.load.buildingCity" : base;
+  var START_HOLD_BUILDING_LINES = [
+    "ride.load.buildingCity",
+    "ride.load.line.dredging",
+    "ride.load.line.polders",
+    "ride.load.line.narrowing",
+    "ride.load.line.piles",
+    "ride.load.line.gables",
+    "ride.load.line.hoists",
+    "ride.load.line.pumping",
+    "ride.load.line.bridges",
+    "ride.load.line.bikes",
+    "ride.load.line.fishing",
+    "ride.load.line.houseboats",
+    "ride.load.line.shutters",
+    "ride.load.line.trams",
+    "ride.load.line.windowBoxes"
+  ];
+  var START_HOLD_LINE_MS = 1600;
+  function startHoldMessageKey(elapsedMs, base = "ride.load.settling", offset = 0) {
+    if (!(elapsedMs >= START_HOLD_MESSAGE_AFTER_MS)) return base;
+    const n = START_HOLD_BUILDING_LINES.length;
+    const step = Math.floor((elapsedMs - START_HOLD_MESSAGE_AFTER_MS) / START_HOLD_LINE_MS);
+    const i = ((Math.floor(offset) + step) % n + n) % n;
+    return START_HOLD_BUILDING_LINES[i];
   }
   function revealDissolveAlpha(sinceRevealMs, capped, durationMs = REVEAL_DISSOLVE_MS) {
     if (!capped || !(durationMs > 0) || sinceRevealMs >= durationMs) return 0;
@@ -10888,10 +10938,16 @@
       const capMs = kind === "ride" ? cap : introHoldCapMs(hold.spentMs, cap);
       const base = kind === "ride" ? "ride.load.settling" : "ride.load.findingWay";
       const started = performance.now();
+      const offset = hold.lineOffset ?? 0;
+      let shown = 0;
       const timer = setInterval(() => {
         if (this.state !== GameState.LOADING) return;
-        const key = startHoldMessageKey(performance.now() - started, base);
-        if (key !== base) this.loadingMessage = t(key);
+        const elapsed = performance.now() - started;
+        const key = startHoldMessageKey(elapsed, base, offset);
+        if (key !== base) {
+          this.loadingMessage = t(key);
+          shown = Math.floor((elapsed - START_HOLD_MESSAGE_AFTER_MS) / START_HOLD_LINE_MS) + 1;
+        }
       }, 250);
       this._startHoldTicking = true;
       try {
@@ -10903,6 +10959,7 @@
       const out = this._lastMapSettle;
       const ms = out?.ms ?? Math.round(performance.now() - started);
       hold.spentMs += ms;
+      hold.lineOffset = offset + shown;
       hold.capped = !!out?.timedOut;
       hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
       this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;

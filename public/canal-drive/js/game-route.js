@@ -2136,26 +2136,28 @@ class GameRouteRuntime {
         if (stale()) return;
       }
 
-      this.loadingMessage = routeText('ride.load.ready');
-      this.loadingProgress = 1.0;
+      this.loadingProgress = 0.96;
 
       // Generate leaderboard key from route coordinates
       this._raceKey = (startLL && finishLL)
         ? `${keyCenter.lat.toFixed(3)},${keyCenter.lng.toFixed(3)}_${startLL.lat.toFixed(3)},${startLL.lng.toFixed(3)}_${finishLL.lat.toFixed(3)},${finishLL.lng.toFixed(3)}`
         : null;
 
-      // Riding on there is no loading screen to hide the overview tiles
-      // behind; the flight starts at once and they stream in under it.
-      if (!world) {
-        await new Promise(r => setTimeout(r, 200));
-        if (stale()) return;
-      }
-
       // Load the start flight's overview tiles while the loading screen is
-      // still up; see _prepareIntro.
+      // still up; see _prepareIntro. Riding on there is no loading screen to
+      // hide them behind; the flight starts at once and they stream in under it.
       if (!world && this._prepareIntro()) {
         this.loadingMessage = routeText('ride.load.findingWay');
         await (this._startHoldWait ? this._startHoldWait('intro') : this._waitForMapSettle(1800));
+        if (stale()) return;
+      }
+
+      // "Ready!" is the last line, a beat before the ride (user 2026-11-27: it
+      // used to show before "Finding your way…").
+      this.loadingMessage = routeText('ride.load.ready');
+      this.loadingProgress = 1.0;
+      if (!world) {
+        await new Promise(r => setTimeout(r, 200));
         if (stale()) return;
       }
 

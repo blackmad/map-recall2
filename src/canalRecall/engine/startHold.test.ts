@@ -1,9 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  REVEAL_DISSOLVE_MS, START_HOLD_CAP_MS, START_HOLD_INTRO_MIN_MS, START_HOLD_MESSAGE_AFTER_MS, censusGrid, introHoldCapMs, isStandIn,
+  REVEAL_DISSOLVE_MS, START_HOLD_BUILDING_LINES, START_HOLD_CAP_MS, START_HOLD_LINE_MS, START_HOLD_INTRO_MIN_MS, START_HOLD_MESSAGE_AFTER_MS, censusGrid, introHoldCapMs, isStandIn,
   revealDissolveAlpha, startHoldCapMs, startHoldTickDue, startHoldTicks, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
 } from './startHold';
+import { en } from '../../i18n/messages/en';
+import { nl } from '../../i18n/messages/nl';
 
 test('the flag is on unless asked off', () => {
   for (const v of [undefined, null, '1', 'on', true]) assert.equal(startHoldEnabled(v), true);
@@ -83,4 +85,15 @@ test('on touch only far prisms hold, and the held world is not ticked', () => {
   assert.equal(startTierCensus([{ distanceM: 100, owner: 'coarse' }], 600, true).standIns, 0);
   assert.equal(startHoldTicks(true), false);
   assert.equal(startHoldTicks(false), true);
+});
+
+test('a long hold rotates the building lines, and the intro hold continues where the ride hold stopped', () => {
+  assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS - 1), 'ride.load.settling');
+  assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS), START_HOLD_BUILDING_LINES[0]);
+  assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS + START_HOLD_LINE_MS), START_HOLD_BUILDING_LINES[1]);
+  assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS, 'ride.load.findingWay', 3), START_HOLD_BUILDING_LINES[3]);
+  const n = START_HOLD_BUILDING_LINES.length;
+  assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS + n * START_HOLD_LINE_MS), START_HOLD_BUILDING_LINES[0]);
+  for (const key of START_HOLD_BUILDING_LINES) { assert.ok(key in en, key); assert.ok(key in nl, key); }
+  assert.equal(new Set(START_HOLD_BUILDING_LINES).size, n);
 });

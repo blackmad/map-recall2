@@ -101,9 +101,46 @@ export function censusGrid(width: number, height: number, [cols, rows]: readonly
   return out;
 }
 
-/** The loading line for a hold that has run this long (message keys in src/i18n/messages). */
-export function startHoldMessageKey(elapsedMs: number, base: 'ride.load.settling' | 'ride.load.findingWay' = 'ride.load.settling'): string {
-  return elapsedMs >= START_HOLD_MESSAGE_AFTER_MS ? 'ride.load.buildingCity' : base;
+/**
+ * The lines a long hold rotates through after "Building the city…" (user 2026-11-27: "we can do the simcity thing of
+ * 'dredging canals…' 'aligning polders'…"), so a 10 s hold reads as work under way, not a stuck screen.
+ */
+export const START_HOLD_BUILDING_LINES = [
+  'ride.load.buildingCity',
+  'ride.load.line.dredging',
+  'ride.load.line.polders',
+  'ride.load.line.narrowing',
+  'ride.load.line.piles',
+  'ride.load.line.gables',
+  'ride.load.line.hoists',
+  'ride.load.line.pumping',
+  'ride.load.line.bridges',
+  'ride.load.line.bikes',
+  'ride.load.line.fishing',
+  'ride.load.line.houseboats',
+  'ride.load.line.shutters',
+  'ride.load.line.trams',
+  'ride.load.line.windowBoxes',
+] as const;
+/** How long each rotating line stays up, ms. */
+export const START_HOLD_LINE_MS = 1600;
+
+/**
+ * The loading line for a hold that has run this long (message keys in src/i18n/messages). Past
+ * START_HOLD_MESSAGE_AFTER_MS it rotates through START_HOLD_BUILDING_LINES every START_HOLD_LINE_MS, starting at
+ * `offset` (the first slot of a start is always "Building the city…"; the intro hold continues where the ride hold
+ * stopped, so a line never repeats back to back).
+ */
+export function startHoldMessageKey(
+  elapsedMs: number,
+  base: 'ride.load.settling' | 'ride.load.findingWay' = 'ride.load.settling',
+  offset = 0,
+): string {
+  if (!(elapsedMs >= START_HOLD_MESSAGE_AFTER_MS)) return base;
+  const n = START_HOLD_BUILDING_LINES.length;
+  const step = Math.floor((elapsedMs - START_HOLD_MESSAGE_AFTER_MS) / START_HOLD_LINE_MS);
+  const i = (((Math.floor(offset) + step) % n) + n) % n;
+  return START_HOLD_BUILDING_LINES[i];
 }
 
 /**
