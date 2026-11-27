@@ -5,7 +5,7 @@
 //
 //   node_modules/.bin/tsx scripts/perf/iphone-sim-start-memory.ts --udid <booted sim udid> [--engine maplibre|own]
 //     [--runs 3] [--origin http://localhost:4631] [--ride-s 40] [--qs 'a=1'] [--out artifacts/perf/iphone-sim]
-//     [--driver-port 4632] [--max-mb 1400]
+//     [--driver-port 4632] [--max-mb 1400] [--menu]
 //
 // Each run is a fresh WebDriver session (an ephemeral website data store: a cold HTTP cache and empty storage), with
 // Mobile Safari terminated first so no other tab shares the WebContent pool. The page is the default ride at
@@ -36,8 +36,10 @@ const maxMb = opt('max-mb') ? Number(opt('max-mb')) : null;
 const capS = Number(opt('cap-s', '150'));
 
 const START = [52.37665, 4.90115], FINISH = [52.37265, 4.90035];
-const hash = `#race=${START[0]},${START[1]},${START[0]},${START[1]},${FINISH[0]},${FINISH[1]}`;
-const qs = ['travel=car', engine === 'own' ? 'engine=own' : '', extraQs].filter(Boolean).join('&');
+// `--menu`: no race hash, the page stops at the menu (what the game's own boot costs before any world loads).
+const hash = argv.includes('--menu') ? '' : `#race=${START[0]},${START[1]},${START[0]},${START[1]},${FINISH[0]},${FINISH[1]}`;
+// The engine is always named in the URL: own is the default since the Amsterdam flip, `engine=maplibre` the rollback.
+const qs = ['travel=car', `engine=${engine}`, extraQs].filter(Boolean).join('&');
 const gameUrl = `${origin}/canal-drive/?${qs}${hash}`;
 
 const wd = `http://127.0.0.1:${driverPort}`;
@@ -88,20 +90,23 @@ const PROBE = `const g = window.canalRecallGame, vm = g && g.vectorMap, perf = w
   let snap = null; try { snap = perf && perf.snapshot ? perf.snapshot() : null; } catch (e) {}
   let ml = null; try { const m = vm && (vm.map || (vm.host && vm.host.map)); if (m && m.style) { ml = {}; for (const [id, sc] of Object.entries(m.style.sourceCaches || m.style.tileManagers || {})) { const t = sc._tiles ? Object.keys(sc._tiles).length : null; const c = sc._cache ? sc._cache.order.length : null; ml[id] = [t, c]; } } } catch (e) {}
   const three = (() => { try { const r = vm && (vm.renderer || (vm._threeBuildings && vm._threeBuildings.renderer)); return r && r.info ? { geometries: r.info.memory.geometries, textures: r.info.memory.textures } : null; } catch (e) { return null; } })();
-  return { state: g ? g.state : null, intro: !!(g && g._intro), engine: vm ? vm.engine : null, xy: g && g.player ? [Math.round(g.player.x), Math.round(g.player.y)] : null,
+  let glr = null; try { glr = perf && perf.gl && perf.gl.counters ? perf.gl.counters.resident.report() : null; } catch (e) {}
+  return { glr, state: g ? g.state : null, intro: !!(g && g._intro), engine: vm ? vm.engine : null, xy: g && g.player ? [Math.round(g.player.x), Math.round(g.player.y)] : null,
     loading: g ? g.loadingMessage : null, workers: window.__canalRecallWorkerPool ? window.__canalRecallWorkerPool.live : null,
     hc: navigator.hardwareConcurrency, dpr: devicePixelRatio, snap, ml, three, settle: g ? g._lastMapSettle || null : null };`;
 
 const phaseOf = (p: any): string => !p ? 'boot' : p.state === 4 ? (p.intro ? 'intro' : 'racing') : p.state === 2 ? 'loading' : p.state === 0 || p.state === 1 ? 'menu' : p.state == null ? 'boot' : `state${p.state}`;
 
 type Row = { t: number; riddenM: number; webMb: number; webPeakMb: number; webPid: number; gpuMb: number; netMb: number; phase: string; procMb: Record<string, number>; cats: Record<string, number>; probe: any };
-async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; peakSampledMb: number; peakAt: { t: number; phase: string; cats: Record<string, number> }; peakGpuMb: number; peakByPhase: Record<string, number>; crashed: boolean }> {
+async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; peakSampledMb: number; peakAt: { t: number; phase: string; cats: Record<string, number> }; peakGpuMb: number; peakByPhase: Record<string, number>; crashed: boolean; lostAt: number | null; racingS: number | null }> {
   await run('xcrun', ['simctl', 'terminate', udid!, 'com.apple.mobilesafari']).catch(() => {});
   await new Promise(r => setTimeout(r, 3000));
+  // WebContent processes that outlived Mobile Safari (a previous run's) are not this page: never sample them.
+  const stale = new Set((await simProcs()).filter(p => p.kind === 'web').map(p => p.pid));
   const session = await call('POST', '/session', { capabilities: { alwaysMatch: { browserName: 'Safari', platformName: 'iOS', 'safari:useSimulator': true, 'safari:deviceUDID': udid } } }, 120_000);
   const sid = session.sessionId as string;
   const rows: Row[] = [];
-  let crashed = false;
+  let crashed = false, pagePid = 0, lostAt: number | null = null;
   try {
     // Same origin first, to mark onboarding seen (a returning rider; the friend's iPhone had ridden before).
     await call('POST', `/session/${sid}/url`, { url: `${origin}/canal-drive/credits.html` });
@@ -120,7 +125,7 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
     })();
     while (true) {
       const tick = Date.now();
-      const procs = await simProcs();
+      const procs = (await simProcs()).filter(p => !stale.has(p.pid));
       const fp = await footprints(procs);
       // The page is the WebContent that is largest now (Safari keeps a prewarmed spare and the credits page's).
       let web = 0, webPeak = 0, gpu = 0, net = 0, webPid = 0, cats: Record<string, number> = {};
@@ -133,6 +138,10 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
         if (p.kind === 'net') net = Math.max(net, f.mb);
       }
       const phase = phaseOf(probe);
+      // The page's WebContent: the largest one once the page is loading. If it later vanishes, the tab's process died
+      // (Safari reloads into a new one); the crash report in ~/Library/Logs/DiagnosticReports says why.
+      if (!pagePid && phase !== 'boot' && webPid) pagePid = webPid;
+      if (pagePid && lostAt == null && !procs.some(p => p.pid === pagePid)) { lostAt = Math.round((tick - t0) / 100) / 10; crashed = true; console.warn(`run ${index}: WebContent ${pagePid} gone at ${lostAt} s`); }
       const t = Math.round((tick - t0) / 100) / 10;
       rows.push({ t, riddenM: Math.round(ridden), webMb: Math.round(web), webPeakMb: Math.round(webPeak), webPid, gpuMb: Math.round(gpu), netMb: Math.round(net), phase, procMb, cats, probe });
       console.log(`run ${index} t=${String(t).padStart(5)} ${phase.padEnd(7)} web ${String(Math.round(web)).padStart(5)} MB (peak ${Math.round(webPeak)}) gpu ${Math.round(gpu)} MB ridden ${Math.round(ridden)} m`);
@@ -140,6 +149,7 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
       if (probe?.xy && lastXy) ridden += Math.hypot(probe.xy[0] - lastXy[0], probe.xy[1] - lastXy[1]) / 3; // 3 px per metre
       if (probe?.xy) lastXy = probe.xy;
       if (racingAt != null && tick - racingAt > rideS * 1000) break;
+      if (argv.includes('--menu') && tick - t0 > rideS * 1000) break;
       if (tick - t0 > capS * 1000) { console.warn(`run ${index}: cap ${capS} s reached in phase ${phase}`); break; }
       await new Promise(r => setTimeout(r, Math.max(0, 1000 - (Date.now() - tick))));
     }
@@ -152,7 +162,8 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
   for (const r of rows) peakByPhase[r.phase] = Math.max(peakByPhase[r.phase] ?? 0, r.webMb);
   // footprint's lifetime peak catches spikes between two samples; it is the page's process only if it was fresh.
   const peakRow = rows.reduce((a, b) => (b.webMb > a.webMb ? b : a), rows[0]);
-  return { rows, peakWebMb: Math.max(...rows.map(r => r.webPeakMb || r.webMb)), peakSampledMb: peakRow.webMb, peakAt: { t: peakRow.t, phase: peakRow.phase, cats: peakRow.cats }, peakGpuMb: Math.max(...rows.map(r => r.gpuMb)), peakByPhase, crashed };
+  const racingRow = rows.find(r => r.phase === 'racing');
+  return { racingS: racingRow ? racingRow.t : null, rows, peakWebMb: Math.max(...rows.map(r => r.webPeakMb || r.webMb)), peakSampledMb: peakRow.webMb, peakAt: { t: peakRow.t, phase: peakRow.phase, cats: peakRow.cats }, peakGpuMb: Math.max(...rows.map(r => r.gpuMb)), peakByPhase, crashed, lostAt };
 }
 
 const results = [];
@@ -160,6 +171,6 @@ for (let i = 1; i <= runs; i++) results.push(await oneRun(i));
 mkdirSync(outDir, { recursive: true });
 const file = `${outDir}/iphone-sim-${engine}-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
 writeFileSync(file, JSON.stringify({ engine, gameUrl, udid, rideS, results }, null, 1));
-for (const [i, r] of results.entries()) console.log(`run ${i + 1}: WebContent peak ${Math.round(r.peakWebMb)} MB (sampled ${r.peakSampledMb} at ${r.peakAt.t} s, ${r.peakAt.phase}), GPU ${r.peakGpuMb} MB, by phase ${JSON.stringify(r.peakByPhase)}`);
+for (const [i, r] of results.entries()) console.log(`run ${i + 1}: WebContent peak ${Math.round(r.peakWebMb)} MB (sampled ${r.peakSampledMb} at ${r.peakAt.t} s, ${r.peakAt.phase}), GPU ${r.peakGpuMb} MB, racing at ${r.racingS ?? '-'} s, by phase ${JSON.stringify(r.peakByPhase)}${r.lostAt != null ? `, WEBCONTENT LOST at ${r.lostAt} s` : ''}`);
 console.log(`wrote ${file}`);
 if (maxMb != null && results.some(r => r.peakWebMb > maxMb)) { console.error(`FAIL: WebContent peak above ${maxMb} MB`); process.exit(1); }
