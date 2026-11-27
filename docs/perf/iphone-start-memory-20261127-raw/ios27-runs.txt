@@ -1,0 +1,24 @@
+== ios27-maplibre (maplibre )
+run 1: WebContent peak 1097 MB (sampled 1085 at 36.3 s, nodriver), GPU 190 MB, racing at - s, by phase {"boot":0,"nodriver":1085}
+run 2: WebContent peak 1265 MB (sampled 1265 at 46.4 s, nodriver), GPU 188 MB, racing at - s, by phase {"boot":2,"nodriver":1265}
+run 3: WebContent peak 1519 MB (sampled 1517 at 31.8 s, nodriver), GPU 206 MB, racing at - s, by phase {"boot":0,"nodriver":1517}
+run 4: WebContent peak 1319 MB (sampled 1299 at 29.2 s, nodriver), GPU 186 MB, racing at - s, by phase {"boot":0,"nodriver":1299}
+run 5: WebContent peak 1322 MB (sampled 1303 at 38.9 s, nodriver), GPU 198 MB, racing at - s, by phase {"boot":0,"nodriver":1303}
+== ios27-own (own )
+run 1: WebContent peak 1168 MB (sampled 1082 at 18.3 s, nodriver), GPU 241 MB, racing at - s, by phase {"boot":0,"nodriver":1082}
+run 2: WebContent peak 793 MB (sampled 790 at 31.2 s, nodriver), GPU 212 MB, racing at - s, by phase {"boot":0,"nodriver":790}
+run 3: WebContent peak 1232 MB (sampled 1228 at 39.7 s, nodriver), GPU 220 MB, racing at - s, by phase {"boot":0,"nodriver":1228}
+run 4: WebContent peak 1251 MB (sampled 1251 at 32.9 s, nodriver), GPU 238 MB, racing at - s, by phase {"boot":0,"nodriver":1251}
+run 5: WebContent peak 1334 MB (sampled 1321 at 27.7 s, nodriver), GPU 234 MB, racing at - s, by phase {"boot":0,"nodriver":1321}
+== ios27-maplibre-pool3 (maplibre touchPool=0)
+run 1: WebContent peak 1159 MB (sampled 1150 at 25 s, nodriver), GPU 182 MB, racing at - s, by phase {"boot":0,"nodriver":1150}
+run 2: WebContent peak 1250 MB (sampled 1211 at 24.3 s, nodriver), GPU 202 MB, racing at - s, by phase {"boot":0,"nodriver":1211}
+run 3: WebContent peak 1202 MB (sampled 1174 at 25.4 s, nodriver), GPU 200 MB, racing at - s, by phase {"boot":0,"nodriver":1174}
+run 4: WebContent peak 1286 MB (sampled 1275 at 22.2 s, nodriver), GPU 223 MB, racing at - s, by phase {"boot":2,"nodriver":1275}
+run 5: WebContent peak 1678 MB (sampled 1643 at 28.3 s, nodriver), GPU 210 MB, racing at - s, by phase {"boot":0,"nodriver":1643}
+== ios27-own-pool3 (own touchPool=0)
+run 1: WebContent peak 1190 MB (sampled 1174 at 17.2 s, nodriver), GPU 230 MB, racing at - s, by phase {"boot":0,"nodriver":1174}
+run 2: WebContent peak 1337 MB (sampled 1337 at 45.1 s, nodriver), GPU 176 MB, racing at - s, by phase {"boot":0,"nodriver":1337}
+run 3: WebContent peak 1379 MB (sampled 1303 at 46.7 s, nodriver), GPU 224 MB, racing at - s, by phase {"boot":0,"nodriver":1303}
+run 4: WebContent peak 1228 MB (sampled 1228 at 46.9 s, nodriver), GPU 184 MB, racing at - s, by phase {"boot":0,"nodriver":1228}
+run 5: WebContent peak 1223 MB (sampled 1207 at 36.3 s, nodriver), GPU 216 MB, racing at - s, by phase {"boot":0,"nodriver":1207}

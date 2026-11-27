@@ -34,6 +34,10 @@ const outDir = opt('out', 'artifacts/perf/iphone-sim')!;
 const driverPort = Number(opt('driver-port', '4632'));
 const maxMb = opt('max-mb') ? Number(opt('max-mb')) : null;
 const capS = Number(opt('cap-s', '150'));
+// `--openurl`: no WebDriver (safaridriver finds no session host for the iOS 27.2 runtime under Xcode 27.2): the page is
+// opened with `simctl openurl`, sampled for `--ride-s` seconds of wall time, and only footprint and process loss are
+// recorded (no in-page probe, so no phase). Mark onboarding once beforehand (sim-heap-snapshot.py --eval).
+const openUrl = argv.includes('--openurl');
 
 const START = [52.37665, 4.90115], FINISH = [52.37265, 4.90035];
 // `--menu`: no race hash, the page stops at the menu (what the game's own boot costs before any world loads).
@@ -99,25 +103,30 @@ const phaseOf = (p: any): string => !p ? 'boot' : p.state === 4 ? (p.intro ? 'in
 
 type Row = { t: number; riddenM: number; webMb: number; webPeakMb: number; webPid: number; gpuMb: number; netMb: number; phase: string; procMb: Record<string, number>; cats: Record<string, number>; probe: any };
 async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; peakSampledMb: number; peakAt: { t: number; phase: string; cats: Record<string, number> }; peakGpuMb: number; peakByPhase: Record<string, number>; crashed: boolean; lostAt: number | null; racingS: number | null }> {
+  // Safari restores its last tab on relaunch: leave it on a light page so the restore never loads a second game.
+  if (openUrl) { await run('xcrun', ['simctl', 'openurl', udid!, `${origin}/canal-drive/credits.html`]).catch(() => {}); await new Promise(r => setTimeout(r, 2000)); }
   await run('xcrun', ['simctl', 'terminate', udid!, 'com.apple.mobilesafari']).catch(() => {});
   await new Promise(r => setTimeout(r, 3000));
   // WebContent processes that outlived Mobile Safari (a previous run's) are not this page: never sample them.
   const stale = new Set((await simProcs()).filter(p => p.kind === 'web').map(p => p.pid));
-  const session = await call('POST', '/session', { capabilities: { alwaysMatch: { browserName: 'Safari', platformName: 'iOS', 'safari:useSimulator': true, 'safari:deviceUDID': udid } } }, 120_000);
+  const session = openUrl ? { sessionId: '' } : await call('POST', '/session', { capabilities: { alwaysMatch: { browserName: 'Safari', platformName: 'iOS', 'safari:useSimulator': true, 'safari:deviceUDID': udid } } }, 120_000);
   const sid = session.sessionId as string;
   const rows: Row[] = [];
   let crashed = false, pagePid = 0, lostAt: number | null = null;
   try {
     // Same origin first, to mark onboarding seen (a returning rider; the friend's iPhone had ridden before).
-    await call('POST', `/session/${sid}/url`, { url: `${origin}/canal-drive/credits.html` });
-    await call('POST', `/session/${sid}/execute/sync`, { script: "localStorage.setItem('canalRecall.onboarding.v1','done'); return 1", args: [] });
+    if (!openUrl) {
+      await call('POST', `/session/${sid}/url`, { url: `${origin}/canal-drive/credits.html` });
+      await call('POST', `/session/${sid}/execute/sync`, { script: "localStorage.setItem('canalRecall.onboarding.v1','done'); return 1", args: [] });
+    }
     const t0 = Date.now();
-    call('POST', `/session/${sid}/url`, { url: gameUrl }, 120_000).catch(e => console.warn('navigate:', String(e).slice(0, 200)));
+    if (openUrl) await run('xcrun', ['simctl', 'openurl', udid!, gameUrl]);
+    else call('POST', `/session/${sid}/url`, { url: gameUrl }, 120_000).catch(e => console.warn('navigate:', String(e).slice(0, 200)));
     let probe: any = null, racingAt: number | null = null, ridden = 0, lastXy: number[] | null = null;
     // Probe loop: as often as the page answers (a busy main thread delays executeScript, so it is decoupled).
     let stop = false;
     const prober = (async () => {
-      while (!stop) {
+      while (!stop && !openUrl) {
         try { probe = await call('POST', `/session/${sid}/execute/sync`, { script: PROBE, args: [] }, 5000); }
         catch (e) { if (/no such window|session|terminated|crash/i.test(String(e))) crashed = /crash|terminated/i.test(String(e)) || crashed; }
         await new Promise(r => setTimeout(r, 500));
@@ -137,7 +146,7 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
         if (p.kind === 'gpu') gpu = Math.max(gpu, f.mb);
         if (p.kind === 'net') net = Math.max(net, f.mb);
       }
-      const phase = phaseOf(probe);
+      const phase = openUrl ? (Date.now() - t0 > 3000 ? 'nodriver' : 'boot') : phaseOf(probe);
       // The page's WebContent: the largest one once the page is loading. If it later vanishes, the tab's process died
       // (Safari reloads into a new one); the crash report in ~/Library/Logs/DiagnosticReports says why.
       if (!pagePid && phase !== 'boot' && webPid) pagePid = webPid;
@@ -149,14 +158,14 @@ async function oneRun(index: number): Promise<{ rows: Row[]; peakWebMb: number; 
       if (probe?.xy && lastXy) ridden += Math.hypot(probe.xy[0] - lastXy[0], probe.xy[1] - lastXy[1]) / 3; // 3 px per metre
       if (probe?.xy) lastXy = probe.xy;
       if (racingAt != null && tick - racingAt > rideS * 1000) break;
-      if (argv.includes('--menu') && tick - t0 > rideS * 1000) break;
+      if ((openUrl || argv.includes('--menu')) && tick - t0 > rideS * 1000) break;
       if (tick - t0 > capS * 1000) { console.warn(`run ${index}: cap ${capS} s reached in phase ${phase}`); break; }
       await new Promise(r => setTimeout(r, Math.max(0, 1000 - (Date.now() - tick))));
     }
     stop = true;
     await prober;
   } finally {
-    await call('DELETE', `/session/${sid}`).catch(() => {});
+    if (!openUrl) await call('DELETE', `/session/${sid}`).catch(() => {});
   }
   const peakByPhase: Record<string, number> = {};
   for (const r of rows) peakByPhase[r.phase] = Math.max(peakByPhase[r.phase] ?? 0, r.webMb);

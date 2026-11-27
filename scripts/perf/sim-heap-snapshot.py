@@ -25,7 +25,8 @@ ap.add_argument('--label', default='')
 ap.add_argument('--eval', help='evaluate this expression in the page (Runtime.evaluate) and exit, e.g. to set storage and navigate')
 args = ap.parse_args()
 
-paths = glob.glob('/private/tmp/com.apple.launchd.*/com.apple.webinspectord_sim.socket')
+# Newest first: sockets of earlier simulator boots linger and never answer.
+paths = sorted(glob.glob('/private/tmp/com.apple.launchd.*/com.apple.webinspectord_sim.socket'), key=os.path.getmtime, reverse=True)
 if not paths: sys.exit('no simulator webinspectord socket (is a simulator booted?)')
 
 if args.open:
