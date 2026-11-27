@@ -3,7 +3,14 @@
  "id": "damrak-37",
  "pand": "0363100012178237",
  "brief": "scripts/landmarks/damrak-37-brief.md",
- "signature": [],
+ "signature": [
+  "d-gable",
+  "d-dormer-spire",
+  "d-arch-window",
+  "d-arcade",
+  "d-reliefs",
+  "d-corner-pinnacle"
+ ],
  "walls": [
   {
    "tag": "w01-214",
@@ -16,8 +23,9 @@
    "evidence": "photo",
    "panoId": "TMX7316010203-001643_pano_0002_000113",
    "capturedAt": "2020-02-14",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [],
+   "note": "The SW flank (ring edge 2, 12.7 m). The brief's crop (TMX7316010203-001643_pano_0002_000113, 2020, 28 deg off) and six more views along the Damrak from the south (TMX7316010203-001643_pano_0002_000115/000116/000289, -001658_pano_0000_002044/002045, -002623_pano_0003_000053; 2020-2022) all show the flank behind the Damrak 38-41 row (Hotel Continental, Mannekenpis, Delta Hotel): what the crop's right third shows is the SE front at a grazing angle. Above the neighbours' cornices only a plain strip of the stone flank and the corner pinnacle (listed on the front) show; nothing notable. The flank is drawn as the 3DBAG shell in the front's stone."
   },
   {
    "tag": "w02-131",
@@ -30,8 +38,163 @@
    "evidence": "photo",
    "panoId": "b_20250108_1349_Track19_Sphere_00344",
    "capturedAt": "2025-01-08",
-   "checked": false,
-   "items": []
+   "checked": true,
+   "items": [
+    {
+     "id": "d-gable",
+     "kind": "other",
+     "where": "stone dormer gable over the SW bay (x 45-200, cornice to y 30: h 17.4-21.7): vertical cheeks to shoulders at h 20.1, concave curves in to a neck (x 97-150), a moulded cap; a round-arched two-light window with a curved transom bar in a stone ring (x 80-165, y 150-245)",
+     "approxSizeM": [
+      3.1,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-dormer-spire",
+     "kind": "tower",
+     "where": "the NE bay's dormer in the slate mansard (x 270-335, window y 185-245) under a tall pointed slate spire with a ball finial (tip y 50, h 21.3)",
+     "approxSizeM": [
+      1.4,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-corner-pinnacle",
+     "kind": "tower",
+     "where": "small slate cone with a ball finial on a square stone base on the SW corner over the cornice (x 0-45, y 120-250, h 17.3-19.9)",
+     "approxSizeM": [
+      0.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-mansard",
+     "kind": "other",
+     "where": "slate mansard between the gable and the NE corner, cornice to y 120 (h 19.9), its sheer 3DBAG wall behind",
+     "approxSizeM": [
+      4.3,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344",
+     "how": "a slate skin leaning from 0.45 m out at the cornice crown back to the shell wall top (muntplein-1 mansardSkin)"
+    },
+    {
+     "id": "d-arch-window",
+     "kind": "window-shape",
+     "where": "the shop window of the SW bay: one wide segmental-arched opening (x 35-205, y 880-1075, h 0.9-4.8) with two mullions and a waved Art Nouveau glazing bar at the springing, a moulded stone archivolt (to y 855), three basement lights below (y 1080-1105)",
+     "approxSizeM": [
+      3.5,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-entrance",
+     "kind": "window-shape",
+     "where": "the entrance in the NE bay: a segmental-arched doorway (x 255-345, y 875-1075) in a stone surround, a glazed fanlight, the dark door recessed, three stone steps; two corbels (x 230-245, 380-395, y 840-870) carry the projecting bay above",
+     "approxSizeM": [
+      1.9,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-arcade",
+     "kind": "colonnade",
+     "where": "third storey of the SW bay: three round-arched windows (x 35-80, 100-148, 165-210; y 318-430, h 13.8-16.0) under linked stone archivolts",
+     "approxSizeM": [
+      3.6,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-ne-arch",
+     "kind": "window-shape",
+     "where": "third storey of the NE bay: a wide round-arched three-light window (x 262-345, y 318-385) in a large stone ring (top y 300)",
+     "approxSizeM": [
+      2.2,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-reliefs",
+     "kind": "relief",
+     "where": "the stone parapet panel of the NE bay under the arched window (x 240-375, y 385-440, h 13.5-14.6), carved with two round reliefs (masks or rosettes, centres x 270 and 330, about 0.6 m across)",
+     "approxSizeM": [
+      2.7,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344",
+     "how": "a projecting stone panel with two raised discs in rings, each with a smaller boss: the carving's figures are not drawn"
+    },
+    {
+     "id": "d-windows",
+     "kind": "window-shape",
+     "where": "first and second storeys: in the SW bay three windows per storey, the middle a pair under a raised head (x 35-70, 85-155, 170-205); in the NE bay two windows with top lights on the first storey (x 258-295, 305-345) and one wide window with a curved transom bar on the second (x 258-345); all cream frames in plain stone surrounds with sills",
+     "approxSizeM": [
+      7.6,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-cornice",
+     "kind": "other",
+     "where": "moulded stone cornice on brackets across the front at y 245-262 (h 17.1-17.4), string course at y 840-850 over the ground storey",
+     "approxSizeM": [
+      8.0,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-shop-sign",
+     "kind": "sign",
+     "where": "STROOPERIE lettering inside the shop window and an A-board on the pavement",
+     "approxSizeM": [
+      1.2,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "the tenant's window lettering and pavement board (2025); the 2018 view has neither"
+     },
+     "seenIn": "b_20250108_1349_Track19_Sphere_00344"
+    },
+    {
+     "id": "d-downpipe",
+     "kind": "other",
+     "where": "downpipe at the NE edge from the mansard to the pavement (x 392)",
+     "approxSizeM": [
+      0.12,
+      17.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.12 m wide grey pipe on the grey stone, under a pixel on the gallery card"
+     },
+     "seenIn": "TMX7316010203-001054_pano_0000_000512"
+    }
+   ],
+   "note": "The Damrak front (ring edge 3, 8.57 m, t from the SW corner), read on the rectified 2025 crop w02-131.jpg (50.2 px/m, warm dusk light) and the overcast 2018 crop w02-131.alt.jpg (same layout). Heights h = (1120 - y) / 50.2 from the pavement: the gable cap lands at 21.7 m (3DBAG roof max 21.4), the cornice crown at 17.4 m (3DBAG SW corner wall 17.8). The facade spans x 0-400 of the 422 px crop (8.0 of 8.4 m); t = x / 50.2 + 0.25 centres it on the 8.57 m ring edge. Two bays: the wider SW bay (x 0-230) under the stone gable, the NE bay (x 230-395) a shallow projecting bay on two consoles over the entrance, under the slate mansard and its spired dormer."
   }
  ],
  "sources": [
@@ -39,6 +202,17 @@
    "name": "Gemeente Amsterdam panoramas",
    "url": "https://api.data.amsterdam.nl/panorama/",
    "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG (pand 0363100012178237, bouwjaar 1904)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178237",
+   "licence": "CC BY 4.0"
   }
- ]
+ ],
+ "budget": "hand triangles about 6-9k: gable and spires 1k, 15 windows with surrounds 3k, arches and archivolts 2k, cornice and brackets 0.6k, reliefs 0.4k"
 }

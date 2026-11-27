@@ -1,0 +1,30 @@
+{
+ "id": "damrak-37",
+ "name": "Damrak 37",
+ "heightMetres": 21.7,
+ "bagYear": 1904,
+ "galleryView": {
+  "theta": 0.35,
+  "phi": 1.25
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012178237 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1904) in native east/south metres (scripts/landmarks/damrak-37-footprints.json, bag-shell-prepare.ts); the Damrak front read from the rectified Gemeente Amsterdam panorama b_20250108_1349_Track19_Sphere_00344 (2025, square on) with TMX7316010203-001054_pano_0000_000512 (2018), CC BY 4.0, heights fitted to the 3DBAG roof (gable cap 21.7 m against 21.4 m). The SW flank stands behind the Damrak 38-41 row. Rijksmonument 518424. Per wall in scripts/landmarks/damrak-37-inventory.json.",
+ "materialOverrides": {
+  "stone": "#a39d91",
+  "sandstone": "#8f897d",
+  "slate": "#4a4f54",
+  "glass": "#2f3840",
+  "frame": "#ddd6c6",
+  "dark": "#2c2926",
+  "concrete": "#cfcac0",
+  "bronze": "#3a3c3a"
+ },
+ "attribution": {
+  "title": "Damrak 37, Amsterdam: stone-fronted shop and house with a curved dormer gable and a spired dormer (1904; rijksmonument 518424)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track19_Sphere_00344/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178237 (CC0): the curved stone dormer gable, the spired mansard dormer and the corner pinnacle, the segmental-arched shop window and entrance, the projecting bay on corbels with its carved parapet panel, the arcade of round-arched windows, the windows, cornice and slate mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}

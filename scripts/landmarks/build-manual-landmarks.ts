@@ -321,6 +321,7 @@ import {buildWelgelegen} from './welgelegen-builder';
 import {buildWeltevreden} from './weltevreden-builder';
 import {buildMuntplein1} from './muntplein-1-builder';
 import {buildSluyswacht} from './sluyswacht-builder';
+import {buildDamrak37} from './damrak-37-builder';
 import {buildKoningsplein1} from './koningsplein-1-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
@@ -1348,6 +1349,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='weltevreden')buildWeltevreden(w,d,helpers);
     else if(id==='muntplein-1')buildMuntplein1(w,d,helpers);
     else if(id==='sluyswacht')buildSluyswacht(w,d,helpers);
+    else if(id==='damrak-37')buildDamrak37(w,d,helpers);
     else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }

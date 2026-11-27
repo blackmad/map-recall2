@@ -138128,6 +138128,129 @@
       "triangles": 1500,
       "bytes": 35924,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "damrak-37": {
+      "id": "damrak-37",
+      "name": "Damrak 37",
+      "modelUrl": "./models/damrak-37.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012178237"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89624334,
+          52.37587702
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 14.6,
+        "widthMetres": 16.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89624334,
+          52.37587702
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178237 (3DBAG CC BY 4.0, BAG CC0, bouwjaar 1904) in native east/south metres (scripts/landmarks/damrak-37-footprints.json, bag-shell-prepare.ts); the Damrak front read from the rectified Gemeente Amsterdam panorama b_20250108_1349_Track19_Sphere_00344 (2025, square on) with TMX7316010203-001054_pano_0000_000512 (2018), CC BY 4.0, heights fitted to the 3DBAG roof (gable cap 21.7 m against 21.4 m). The SW flank stands behind the Damrak 38-41 row. Rijksmonument 518424. Per wall in scripts/landmarks/damrak-37-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.7,
+      "galleryView": {
+        "theta": 0.35,
+        "phi": 1.25
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#a39d91",
+        "sandstone": "#8f897d",
+        "slate": "#4a4f54",
+        "glass": "#2f3840",
+        "frame": "#ddd6c6",
+        "dark": "#2c2926",
+        "concrete": "#cfcac0",
+        "bronze": "#3a3c3a"
+      },
+      "attribution": {
+        "title": "Damrak 37, Amsterdam: stone-fronted shop and house with a curved dormer gable and a spired dormer (1904; rijksmonument 518424)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track19_Sphere_00344/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178237 (CC0): the curved stone dormer gable, the spired mansard dormer and the corner pinnacle, the segmental-arched shop window and entrance, the projecting bay on corbels with its carved parapet panel, the arcade of round-arched windows, the windows, cornice and slate mansard, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8963702,
+              52.37589
+            ],
+            [
+              4.8962018,
+              52.3759624
+            ],
+            [
+              4.8961332,
+              52.3758954
+            ],
+            [
+              4.8961339,
+              52.3758953
+            ],
+            [
+              4.8962858,
+              52.375832
+            ],
+            [
+              4.896288,
+              52.3758316
+            ],
+            [
+              4.8962904,
+              52.3758323
+            ],
+            [
+              4.8963702,
+              52.37589
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -7.435999870300293,
+          0,
+          -9.505999565124512
+        ],
+        "max": [
+          9.249429702758789,
+          21.732999801635742,
+          5.594368934631348
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89624334,
+          52.37587702
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.685429573059082,
+        "heightMetres": 21.732999801635742,
+        "depthMetres": 15.10036849975586,
+        "depthCoverage": 0.9379110869413576
+      },
+      "triangles": 5692,
+      "bytes": 79084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
