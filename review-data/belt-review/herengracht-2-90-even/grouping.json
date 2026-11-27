@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 1,
+  "faceId": "herengracht-2-90-even",
+  "revision": 7,
+  "updatedAt": "2026-11-21T13:39:28.048Z",
+  "units": [
+    {
+      "id": "house-0363100012175701",
+      "pandIds": [
+        "0363100012175701"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012169010",
+      "pandIds": [
+        "0363100012169010"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175692",
+      "pandIds": [
+        "0363100012175692"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175702",
+      "pandIds": [
+        "0363100012175702"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175703",
+      "pandIds": [
+        "0363100012175703"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175783",
+      "pandIds": [
+        "0363100012175783"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "david-175784-mwqf2wnc",
+      "pandIds": [
+        "0363100012175784"
+      ],
+      "source": "david"
+    },
+    {
+      "id": "house-0363100012175616",
+      "pandIds": [
+        "0363100012175616"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175617",
+      "pandIds": [
+        "0363100012175617"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175618",
+      "pandIds": [
+        "0363100012175618"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012175698",
+      "pandIds": [
+        "0363100012175698"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012168544",
+      "pandIds": [
+        "0363100012168544"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012168545",
+      "pandIds": [
+        "0363100012168545"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012167493",
+      "pandIds": [
+        "0363100012167493"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012167492",
+      "pandIds": [
+        "0363100012167492"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012167495",
+      "pandIds": [
+        "0363100012167495"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012167494",
+      "pandIds": [
+        "0363100012167494"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012169218",
+      "pandIds": [
+        "0363100012169218"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "david-169272-mwqf2g3s",
+      "pandIds": [
+        "0363100012169272"
+      ],
+      "source": "david"
+    },
+    {
+      "id": "house-0363100012169270",
+      "pandIds": [
+        "0363100012169270"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179667",
+      "pandIds": [
+        "0363100012179667"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179669",
+      "pandIds": [
+        "0363100012179669"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179670",
+      "pandIds": [
+        "0363100012179670"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179668",
+      "pandIds": [
+        "0363100012179668"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179671",
+      "pandIds": [
+        "0363100012179671"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179684",
+      "pandIds": [
+        "0363100012179684"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012168139",
+      "pandIds": [
+        "0363100012168139"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012168069",
+      "pandIds": [
+        "0363100012168069"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012168138",
+      "pandIds": [
+        "0363100012168138"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179837",
+      "pandIds": [
+        "0363100012179837"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179836",
+      "pandIds": [
+        "0363100012179836"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179838",
+      "pandIds": [
+        "0363100012179838"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179752",
+      "pandIds": [
+        "0363100012179752"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179753",
+      "pandIds": [
+        "0363100012179753"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179760",
+      "pandIds": [
+        "0363100012179760"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179761",
+      "pandIds": [
+        "0363100012179761"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179764",
+      "pandIds": [
+        "0363100012179764"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179765",
+      "pandIds": [
+        "0363100012179765"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179763",
+      "pandIds": [
+        "0363100012179763"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179833",
+      "pandIds": [
+        "0363100012179833"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100012179834",
+      "pandIds": [
+        "0363100012179834"
+      ],
+      "source": "pairs"
+    },
+    {
+      "id": "house-0363100100091828",
+      "pandIds": [
+        "0363100100091828"
+      ],
+      "source": "pairs"
+    }
+  ],
+  "links": [
+    {
+      "pandId": "0363100012175618",
+      "kind": "sameAs",
+      "target": "0363100012175617",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z"
+    },
+    {
+      "pandId": "0363100012167492",
+      "kind": "sameAs",
+      "target": "0363100012167493",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z"
+    },
+    {
+      "pandId": "0363100012179669",
+      "kind": "sameAs",
+      "target": "0363100012179667",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z"
+    },
+    {
+      "pandId": "0363100012179834",
+      "kind": "sameAs",
+      "target": "0363100012179833",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z"
+    }
+  ],
+  "pairs": {
+    "0363100012175692|0363100012175702": {
+      "answer": "separate",
+      "by": "david",
+      "at": "2026-11-21T13:07:26.027Z"
+    },
+    "0363100012175616|0363100012175617": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 74 has a red-brick front with segmental arched windows and a curved top gable, while 72 has a plastered, dark-painted front with pilasters, oval attic windows and a different storey height and window rhythm. (93% sure)"
+    },
+    "0363100012175617|0363100012175618": {
+      "answer": "twin",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Both fronts share dark brick with light stucco pilasters, cornice bands and two-bay window rhythm, but each has its own entrance and slightly different top-storey ornaments (oval medallions vs shell cartouches). (55% sure)"
+    },
+    "0363100012175618|0363100012175698": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 70 is a narrow front with heavy stone window surrounds, a pilastered cornice and large ground-floor windows, while 68 is a plain five-storey, four-bay brick front with simple sash windows and its own pediment-topped cornice with consoles, so storey heights and window rhythm don't match. "
+    },
+    "0363100012175698|0363100012168544": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 68 is a taller four-bay front with four upper storeys and a raised pediment-like cornice, while no. 66 is a three-bay front with three upper storeys and a lower, plain cornice, so their storey lines and window rhythm do not match. (90% sure)"
+    },
+    "0363100012168544|0363100012168545": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 66 is a dark grey plastered front with a flat classical cornice and attic windows, while No. 64 is a pink-red brick front with a sculpted neck gable, scroll ornaments and oeil-de-boeuf cartouches, and the two fronts have different storey heights and window patterns. (95% sure)"
+    },
+    "0363100012168545|0363100012167493": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 64 is a plastered/red-painted neck-gable house with sculpted claw-pieces and a ground-floor entrance, while 62 is a dark brick front with different window sizes, storey heights and a raised stoop entrance. (85% sure)"
+    },
+    "0363100012167493|0363100012167492": {
+      "answer": "twin",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Both fronts are two-bay dark brick with matching window sizes, storey lines and white ornamental cornice work, but a white pilaster and door surround divides them, and No. 60's cornice is centred on its own two bays. (50% sure)"
+    },
+    "0363100012167492|0363100012167495": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 60 is a narrow two-bay dark brick front with a stucco arched-window attic, while no. 58 is a wider three-bay front with segmental relieving arches, stone banding, a different cornice and different storey heights. (90% sure)"
+    },
+    "0363100012169270|0363100012179667": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 48 is a grey-plastered front with a heavy bracketed cornice and four storeys, while no. 46 is a narrower brick house with a neck gable and different window rhythm and storey heights. (95% sure)"
+    },
+    "0363100012179667|0363100012179669": {
+      "answer": "twin",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Both have matching neck gables with scrolled claw-pieces, hoisting beams, and the same three-bay window rhythm with a left-hand door, but each is its own house with a separate entrance; the main difference is that 46 is unpainted red brick and 44 is painted dark grey, and its storey heights differ s"
+    },
+    "0363100012179668|0363100012179671": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 40 is a wide stone-clad five-storey block with a heavy overhanging bracketed cornice and five window bays, while no. 38 is a narrow three-bay brick house with a neck/step gable, relieving arches and a different storey height. (95% sure)"
+    },
+    "0363100012179671|0363100012179684": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 38 has a 17th-century neck/step-style gable with relieving arches and ornamental claw pieces, while 36 has a flat 19th-century cornice with a dormer, different storey heights and window rhythm. (95% sure)"
+    },
+    "0363100012168069|0363100012168138": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 32 has a plain dark-brick front with a flat projecting cornice and plain rectangular windows, while no. 30 is in orange-red brick with white stone banding, segmental arched lintels, balconies and a stepped dormer-like top gable, so material, cornice and storey lines differ. (93% sure)"
+    },
+    "0363100012168138|0363100012179837": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 30 is a narrow late-19th-century red-brick front with white banding, a wrought-iron balcony and a cornice-topped attic, whereas Herengracht 28 is a wider dark-brick 18th-century neck gable with scrolled claw-pieces and a different window rhythm and storey heights. (95% sure)"
+    },
+    "0363100012179837|0363100012179836": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 28 has a dark-brick neck gable with scrolled claw-pieces and a crowned top, while no. 26 is a taller cornice-topped house with an oculus frieze, an ornate door surround and a different window rhythm and storey heights. (93% sure)"
+    },
+    "0363100012179836|0363100012179838": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 26 is taller and three bays wide, with an ornate bracketed cornice with oculi, a raised stoop and a decorated doorcase, while no. 24 is a plain two-bay dark-brick front with a simple flat cornice and different storey heights. (90% sure)"
+    },
+    "0363100012179753|0363100012179760": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 20 is a five-storey, three-bay front with a flat projecting eave and shopfront, while no. 18 is a three-storey, two-bay front with a classical cornice, stoop and framed doorway, so storey lines, window rhythm and crowning all differ. (90% sure)"
+    },
+    "0363100012179760|0363100012179761": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "No. 18 has a dark brick front with a flat straight cornice and two window bays, while No. 16 has a lighter brown brick neck gable with sandstone scroll ornaments and three bays, with differing storey heights. (95% sure)"
+    },
+    "0363100012179761|0363100012179764": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 16 is a narrow three-bay brick house with a sandstone-trimmed neck gable, while Herengracht 14 is a wide four-bay plastered/stone front with pilasters and a triangular pediment cornice, so their material, storey heights and window rhythm all differ. (95% sure)"
+    },
+    "0363100012179764|0363100012179765": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 14 is a four-bay grey stone/stucco front with a triangular pediment and arched sash windows. Herengracht 12 is a three-bay brick front with a cream stucco ground floor, a central oriel, and an ornate cornice, so the material, window rhythm, storey lines and crowning all differ. (95% sure"
+    },
+    "0363100012179833|0363100012179834": {
+      "answer": "twin",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Both fronts share the same red-brick-and-white-band neo-Renaissance design, cornice and crowned dormer, but each has its own door, placed in mirror image. (65% sure)"
+    },
+    "0363100012179834|0363100100091828": {
+      "answer": "separate",
+      "by": "claude",
+      "at": "2026-11-21T13:39:28.046Z",
+      "why": "Herengracht 6 is a 19th-century polychrome brick front with a tall dormer-topped cornice, arched window hoods and two-bay rhythm, while 2–4 is a plain dark-brick three-bay house with a white cornice, red pantile hipped roof and hoist dormer, so the storey heights and materials differ. (93% sure)"
+    }
+  }
+}

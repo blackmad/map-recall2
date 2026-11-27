@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "faceId": "herengracht-2-90-even",
+  "revision": 6,
+  "updatedAt": "2026-11-22T08:15:15.288Z",
+  "stage": 2,
+  "status": "with-claude",
+  "confirmed": {
+    "1": "2026-11-22T08:15:15.288Z"
+  },
+  "passes": 1,
+  "events": [
+    {
+      "at": "2026-11-21T10:05:39.455Z",
+      "by": "david",
+      "action": "confirm-stage",
+      "stage": 1
+    },
+    {
+      "at": "2026-11-21T13:00:47.889Z",
+      "by": "david",
+      "action": "confirm-stage",
+      "stage": 2
+    },
+    {
+      "at": "2026-11-21T13:07:28.468Z",
+      "by": "david",
+      "action": "confirm-stage",
+      "stage": 3
+    },
+    {
+      "at": "2026-11-21T13:07:34.024Z",
+      "by": "david",
+      "action": "send-to-claude",
+      "stage": 4
+    },
+    {
+      "at": "2026-11-22T08:15:15.202Z",
+      "by": "claude",
+      "action": "reopen-stage",
+      "stage": 1
+    },
+    {
+      "at": "2026-11-22T08:15:15.288Z",
+      "by": "claude",
+      "action": "confirm-stage",
+      "stage": 1
+    }
+  ]
+}
