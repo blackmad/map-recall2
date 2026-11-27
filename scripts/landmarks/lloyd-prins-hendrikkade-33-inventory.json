@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "id": "lloyd-prins-hendrikkade-33",
+  "pand": "0363100012170961",
+  "brief": "scripts/landmarks/lloyd-prins-hendrikkade-33-brief.md",
+  "signature": [
+    "l-tower",
+    "l-dormers",
+    "l-corner-gables",
+    "l-giant-order",
+    "l-entrance-bay",
+    "l-rustication",
+    "l-balconies",
+    "l-artotel"
+  ],
+  "walls": [
+    {
+      "tag": "w01-341",
+      "bearing": 341,
+      "lengthM": 25.7,
+      "centre": [
+        4.896782,
+        52.377858
+      ],
+      "evidence": "photo",
+      "panoId": "b_20250109_1300_Track01_Sphere_00091",
+      "capturedAt": "2025-01-09",
+      "checked": true,
+      "items": [
+        {
+          "id": "l-tower",
+          "kind": "tower",
+          "where": "over the rounded north-east corner: a round colonnaded drum (columns between windows) on a square stone base, cornice, a low ribbed dome and a small lantern with finial; corner gable with cartouche below it on the attic",
+          "approxSizeM": [
+            4.2,
+            11.5
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "belvedere(): a stone base drum from the attic roof, a floor ring, eight square stone piers laid out by the new kit part openRotunda.ts (pier angles, openings, balusters per opening), a balustrade rail and lintel block in each opening in front of a dark interior drum, entablature and overhanging cornice ring, a lathe dome (roundTower.domeProfile) in the measured grey, a lantern of six posts under a cap, a small dome and a bronze finial",
+          "note": "seen in the aimed views from b_20250109_1300_Track01_Sphere_00091 (heading 122) and TMX7316060226-000030_pano_0006_000132 (heading 273); 3DBAG puts the drum roof at 29.4 m and the crown at 32.9 m above ground"
+        },
+        {
+          "id": "l-giant-order",
+          "kind": "colonnade",
+          "where": "giant brick pilasters through the first to third storeys between the five middle axes, carved stone capitals at 16.5-17.2 m (x 375-410, 545-580, 715-750, 885-920 in w01-341.jpg)",
+          "approxSizeM": [
+            1.05,
+            10.5
+          ],
+          "plan": "modelled",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "the shell carries the pilasters (BAG ring); stone base panels, capitals (two stacked blocks with volute discs) and the stone frieze over them"
+        },
+        {
+          "id": "l-dormers",
+          "kind": "window-shape",
+          "where": "attic: seven dormers with segmental (bow) hoods in dark copper over two-light windows, between stone posts, above the dentilled cornice (y 70-185)",
+          "approxSizeM": [
+            1.9,
+            2
+          ],
+          "plan": "modelled",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "per axis a stone dormer body with a three-light window wholly above the 20.9 m shell wall top, and a segmental hood (segBand) in the measured dark slate"
+        },
+        {
+          "id": "l-corner-gables",
+          "kind": "gable-stone",
+          "where": "over each end bay a stone gable with scrolled sides and a segmental top over a three-light dormer, a cartouche in its tympanum (x 40-230 and 1090-1287, y 25-180)",
+          "approxSizeM": [
+            4,
+            2.4
+          ],
+          "plan": "simplified",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "gable(): stone outline (poly) with concave scroll shoulders, a segmental crown band, a cartouche block and scroll bosses; the two north end-bay gables and the east stone-bay gable carry a 1.8 m three-light window (the east one lower and squatter: its sill must stand above the 21.3 m shell wall); the corner gable has none"
+        },
+        {
+          "id": "l-artotel",
+          "kind": "lettering",
+          "where": "art'otel letters in white on the frieze over the middle axis (x 500-625, y 245-280)",
+          "approxSizeM": [
+            2.5,
+            0.6
+          ],
+          "plan": "modelled",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "glyphRuns() letters in white ('concrete'), the apostrophe red, on the frieze over the middle brick axis",
+          "note": "hotel name; fixed letters on the stone frieze since at least 2016"
+        },
+        {
+          "id": "l-cornice",
+          "kind": "other",
+          "where": "dentilled main cornice with a plain frieze below it, 18.5-19.6 m, full length",
+          "approxSizeM": [
+            25.7,
+            1.1
+          ],
+          "plan": "modelled",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "frieze slab, dentil row and corona slab"
+        },
+        {
+          "id": "l-balconies",
+          "kind": "balcony-ironwork",
+          "where": "wrought-iron balconies under the third-storey windows of axes 1, 3, 5 and 7 (y 615-670)",
+          "approxSizeM": [
+            1.3,
+            0.6
+          ],
+          "plan": "simplified",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "ironBalcony(): a stone slab on two consoles, a dark iron panel (the scrolled grille as one plane) between side posts, and a rail"
+        },
+        {
+          "id": "l-end-balustrades",
+          "kind": "other",
+          "where": "stone balustrades in front of the first-storey windows of the stone end bays, with urn-topped posts (x 20-200, y 760-840)",
+          "approxSizeM": [
+            3.6,
+            0.9
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002623_pano_0001_000038",
+          "how": "balustrade.ts layout: plinth, balusters, posts and rail; urn knobs on the posts"
+        },
+        {
+          "id": "l-cartouches",
+          "kind": "relief",
+          "where": "carved cartouches at the top of the stone strips of both end bays (x 30, 205, 1075, 1250; y 310-375)",
+          "approxSizeM": [
+            0.6,
+            1.2
+          ],
+          "plan": "simplified",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "a raised stone panel with a smaller oval boss"
+        },
+        {
+          "id": "l-spandrels",
+          "kind": "other",
+          "where": "fluted stone spandrel panels between the storeys in every axis (y 465-505 and 640-685)",
+          "approxSizeM": [
+            1.8,
+            0.8
+          ],
+          "plan": "simplified",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "a stone panel with three raised vertical flutes"
+        },
+        {
+          "id": "l-windows",
+          "kind": "window-shape",
+          "where": "tall cross windows with white frames and small upper panes, three storeys (7.1-9.7, 11.1-13.6, 14.6-16.8 m)",
+          "approxSizeM": [
+            1.8,
+            2.6
+          ],
+          "plan": "modelled",
+          "seenIn": "b_20250109_1300_Track01_Sphere_00091",
+          "how": "windowAt(): cream frame ring, glass, a mullion and transom in white bars; the small upper panes are not drawn"
+        },
+        {
+          "id": "l-corner",
+          "kind": "other",
+          "where": "the rounded corner bay in light stone between the two fronts: one window per storey, a balustrade at the first storey, an iron balcony at the third, scrolled consoles on the ground storey",
+          "approxSizeM": [
+            4,
+            19
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "corner(): stone bands as cylinder sectors on the circle fitted to the BAG quarter-round (cladding, rustication joints, string course, frieze, two-step cornice, attic), a window axis on the curve with spandrels, a dressed surround on the ground storey, consoles, balustrade, iron balcony and a lightless gable"
+        }
+      ],
+      "note": "The Prins Hendrikkade-facing north front (ring t 0-25.8 m from the east corner), read on the 2025 rectified crop (w01-341.jpg, 50 px/m, h = (1169 - y)/50) with the 2022 crop (w01-341.alt.jpg) and the aimed views; a tram hides the ground storey in both crops, so the ground storey is read from the east front (same rusticated stone in the corner views). Seven axes: a light stone end bay at each end (one window per storey between stone strips with carved cartouches at the top) and five brick bays between giant brick pilasters (footprint: 2.41 m bays, 1.04 m pilasters 0.22 m proud) with carved stone capitals at 16.5-17.2 m."
+    },
+    {
+      "tag": "w02-63",
+      "bearing": 63,
+      "lengthM": 23.5,
+      "centre": [
+        4.8970835,
+        52.3777935
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316060226-000030_pano_0006_000132",
+      "capturedAt": "2020-04-22",
+      "checked": true,
+      "items": [
+        {
+          "id": "l-rustication",
+          "kind": "other",
+          "where": "banded rusticated light stone ground storey with deep horizontal joints, a moulded string course at 6.5 m, one window and one barred cellar light per axis (y 845-1169)",
+          "approxSizeM": [
+            23.5,
+            6.5
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "rustic(): a stone run slab per ring run with sandstone joint bands every 0.55 m, the string course over it; ground windows per axis on stone sills; the cellar lights and grilles are not drawn (they read as buried in the openings gate in every variant tried)"
+        },
+        {
+          "id": "l-first-balustrades",
+          "kind": "other",
+          "where": "short stone balustrade panels under every first-storey window (y 815-845)",
+          "approxSizeM": [
+            1.8,
+            0.5
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "balustrade.ts: seven balusters between posts on the sill line"
+        },
+        {
+          "id": "l-east-balconies",
+          "kind": "balcony-ironwork",
+          "where": "wrought-iron balconies under the third-storey windows of the second and fourth brick axes and the stone bay (y 600-650)",
+          "approxSizeM": [
+            1.3,
+            0.6
+          ],
+          "plan": "simplified",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "as l-balconies"
+        },
+        {
+          "id": "l-east-dormers",
+          "kind": "window-shape",
+          "where": "six segmental-hooded dormers on the attic over the brick axes (y 55-150)",
+          "approxSizeM": [
+            1.9,
+            2
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "as l-dormers"
+        },
+        {
+          "id": "l-pilaster-panels",
+          "kind": "other",
+          "where": "plain stone panels at the foot of each giant pilaster (y 765-835)",
+          "approxSizeM": [
+            1.1,
+            1.4
+          ],
+          "plan": "simplified",
+          "seenIn": "TMX7316060226-000030_pano_0006_000132",
+          "how": "a stone panel inset on each pilaster face at the base of the giant order"
+        }
+      ],
+      "note": "The east front (ring t 8.8-33.7 m from the south end; this crop starts at t 11.45), read on the 2016 crop (w02-63.alt.jpg, sunlit, 50 px/m); the 2020 crop is behind scaffolding. Six brick bays of 2.44 m between 1.29 m giant pilasters (0.22 m proud) and the light stone end bay at the corner (t 29.9-33.7). Ground storey 0-6.5 m: banded rusticated stone, a cellar light with a grille (0.8-2.1 m) and a ground-storey window (3.0-5.6 m) per axis. First storey: a stone balustrade panel under every window. Wrought-iron balconies on axes 2 and 4 and the stone bay at the third storey."
+    },
+    {
+      "tag": "w03-349",
+      "bearing": 349,
+      "lengthM": 10.6,
+      "centre": [
+        4.896616,
+        52.3776345
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-07-03_03-29-47_02448",
+      "capturedAt": "2025-07-03",
+      "checked": true,
+      "items": [],
+      "note": "Occluded rear wall (3DBAG wall top 14.3 m on its east 3.5 m, 10.4 m beyond). The crop shows a nearer house front magnified about two times (its arched windows read 2.8 m wide at 50 px/m): the Martelaarsgracht house with the brown wooden shop front stands in front of this wall and is another building. Nothing of this pand is visible on it."
+    },
+    {
+      "tag": "w04-61",
+      "bearing": 61,
+      "lengthM": 7.9,
+      "centre": [
+        4.897227,
+        52.377646
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-06-16_06-42-40_02645",
+      "capturedAt": "2025-06-16",
+      "checked": true,
+      "items": [
+        {
+          "id": "l-entrance-bay",
+          "kind": "other",
+          "where": "the stone entrance risalit with the door of 33, triple windows and side lights",
+          "approxSizeM": [
+            7.5,
+            23
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "entranceBay(): rusticated stone runs, return slabs, the door surround, transom and side lights, the centre three-light window groups, spandrels, pilaster strips, string courses, balustraded balcony, iron balcony, frieze with lettering, cornice with dentils, attic slab and windows, the wide gable"
+        },
+        {
+          "id": "l-entrance-gable",
+          "kind": "gable-stone",
+          "where": "scrolled stone gable with a cartouche relief over the attic (y 0-110 and higher)",
+          "approxSizeM": [
+            6.5,
+            2.8
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "gable() 7.0 m wide over the risalit, cartouche block, no light (the attic windows sit under it)"
+        },
+        {
+          "id": "l-entrance-balustrade",
+          "kind": "other",
+          "where": "stone balustrade balcony across the bay at the first storey with two ball-finial posts (y 790-850)",
+          "approxSizeM": [
+            6,
+            1.2
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "balustrade.ts with three bays and ball knobs on the posts, on a slab with consoles"
+        },
+        {
+          "id": "l-entrance-iron",
+          "kind": "balcony-ironwork",
+          "where": "wrought-iron balcony at the second storey over the door axis (y 600-655)",
+          "approxSizeM": [
+            2.8,
+            0.6
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "as l-balconies"
+        },
+        {
+          "id": "l-entrance-artotel",
+          "kind": "lettering",
+          "where": "art'otel letters on the frieze (x 125-250, y 237-268)",
+          "approxSizeM": [
+            2.5,
+            0.6
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "letters() as l-artotel"
+        },
+        {
+          "id": "l-entrance-arms",
+          "kind": "crest",
+          "where": "carved cartouches with arms either side of the bay at the ground and third storeys (x 30, 345; y 300-370 and 880-930)",
+          "approxSizeM": [
+            0.7,
+            1
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "raised stone panel with an oval boss"
+        },
+        {
+          "id": "l-door-33",
+          "kind": "other",
+          "where": "dark revolving-door entrance with the house number 33 on the pier",
+          "approxSizeM": [
+            1.8,
+            3.5
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2025-06-16_06-42-40_02645",
+          "how": "dark door slab in a stone surround with a glazed transom; the house number is too small to letter"
+        }
+      ],
+      "note": "The entrance bay of number 33 at the south end of the east front (ring t 0-7.5 m), a stone risalit 1.4 m proud of the brick bays. Read on the 2025 crop (w04-61.jpg, 50 px/m, h = (1169 - y)/50): central door 0.5-4.0 m under a transom, a three-light window group over it on three storeys with narrower side lights, a stone balustrade balcony with ball-finial posts at 6.4-7.6 m, an iron balcony at 10.3-11.4 m, art'otel letters 18.0-18.6 m, the cornice, a three-light attic window and a scrolled stone gable with a cartouche (crown above the crop)."
+    },
+    {
+      "tag": "w05-169",
+      "bearing": 169,
+      "lengthM": 6.3,
+      "centre": [
+        4.8967475,
+        52.3775525
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002360_pano_0002_000052",
+      "capturedAt": "2021-12-29",
+      "checked": true,
+      "items": [],
+      "note": "Occluded rear wall in the alley. The crop shows a nearer white-painted shop front (a casino with seasonal lights) magnified about three times (its 1.5 m purple panel reads 5 m): another building in front of this wall. Nothing of this pand is visible on it."
+    }
+  ],
+  "sources": [
+    {
+      "name": "Gemeente Amsterdam panoramas",
+      "url": "https://api.data.amsterdam.nl/panorama/",
+      "licence": "CC BY 4.0"
+    }
+  ]
+}
