@@ -36,6 +36,7 @@
 
 import { groundFixFlags, groundFixOptions } from './groundFixes.js';
 import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
+import { COVERED_GROUND_INSTALLS_PER_FRAME } from '../engine/startHold';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
@@ -79,6 +80,8 @@ export interface GroundHost {
   setBasemapGroundHidden(hidden: boolean): void;
   /** The camera's pose now (groundPrefetch.ts): followed until the game's first `update`, so the start builds during the hold. */
   startView?(): StartView | null;
+  /** The world is covered (the game's loading screen): an arriving cell installs without its dissolve, several a frame. */
+  covered?(): boolean;
 }
 
 export interface OwnGroundOptions {
@@ -780,6 +783,8 @@ export class OwnGround {
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
   }
 
+  private covered(): boolean { try { return !!this.host.covered?.(); } catch { return false; } }
+
   private visibleAtZoom(zoom: number): boolean {
     if (!this.enabled || !this.ready) return false;
     return this.opts.transition ? this.blend.active : zoom >= this.opts.minZoom;
@@ -799,8 +804,13 @@ export class OwnGround {
     }
     const visible = this.visibleAtZoom(zoom);
     // One cell per frame: geometry upload is the cost, not the build (that is in the worker).
-    const next = this.installQueue.shift();
-    if (next) { this.install(next); if (this.installQueue.length) this.host.repaint(); }
+    // Under the loading screen several (startHold.ts COVERED_GROUND_INSTALLS_PER_FRAME): nobody sees the frame's hitch.
+    for (let n = this.covered() ? COVERED_GROUND_INSTALLS_PER_FRAME : 1; n > 0; n--) {
+      const next = this.installQueue.shift();
+      if (!next) break;
+      this.install(next);
+    }
+    if (this.installQueue.length) this.host.repaint();
     this.tickFades();
     if (this.reachMeshes.size) {
       const c = this.centre, reach = c ? { x: c[0], y: c[1], r: this.reachM, h: 25 } : null;
@@ -1450,7 +1460,8 @@ export class OwnGround {
     const t0 = performance.now();
     const THREE = this.THREE;
     // A cell swapping its LOD or its detail keeps the picture (same colours): only a cell new to the ring fades in.
-    const arriving = !this.resident.has(cell.key) && this.opts.fadeMs > 0;
+    // Not under the loading screen: a dissolve nobody sees only kept settle.ts's ownGround check waiting (startHold.ts).
+    const arriving = !this.resident.has(cell.key) && this.opts.fadeMs > 0 && !this.covered();
     this.drop(cell.key);
     const group = new THREE.Group();
     group.name = `own-ground/${cell.key}/lod${cell.lod}${cell.detail === 'touch' ? '-touch' : ''}`;

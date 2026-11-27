@@ -36,6 +36,27 @@ export function startHoldTickDue(now: number, last: number | null | undefined, t
   return last == null || !Number.isFinite(last) || now - last >= (touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) || now < last;
 }
 
+/**
+ * Covered frames while something waits on the view (lane loading-lines, 2026-11-27). Behind the loading screen the
+ * world rendered once a second (ownWorldView.ts COVERED_FRAME_MS) unless the census still saw a stand-in. The ground
+ * installs its cells on rendered frames, finishes their dissolve on rendered frames, and the idle checks are polled on
+ * rendered frames, so once the census cleared, the last ~3 s of a desktop start (Westermarkt, real GPU) were built
+ * ground cells queued for 1 Hz frames: settle.ts's `ownGround` was the only check pending and ended the hold at
+ * 7.8-9.6 s, or on the 10 s cap under SwiftShader. While a hold waits (the camera has idle waiters) covered frames run
+ * at the start hold's tick, and the ground installs what is built without its dissolve (nobody sees it).
+ * `?startHoldFrames=0` (or `window.__canalRecallStartHoldFrames = false`) restores 1 Hz covered frames and dissolves.
+ */
+export function startHoldFramesEnabled(asked: unknown): boolean { return startHoldEnabled(asked); }
+
+/** Least ms between covered renders (FrameHost.coveredFrameMs), or null when the world is not covered. */
+export function coveredFrameMs(o: { loading: boolean; waiting: boolean; touch: boolean; framesOn: boolean; idleMs: number }): number | null {
+  if (!o.loading) return null;
+  return o.waiting && o.framesOn ? (o.touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) : o.idleMs;
+}
+
+/** Ground cells installed per rendered frame while the loading screen covers the world (one when it does not). */
+export const COVERED_GROUND_INSTALLS_PER_FRAME = 4;
+
 /** Grid the census samples the view on (columns × rows). */
 export const START_HOLD_GRID: readonly [number, number] = [24, 16];
 

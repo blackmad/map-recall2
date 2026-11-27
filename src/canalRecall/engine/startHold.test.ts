@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   REVEAL_DISSOLVE_MS, START_HOLD_BUILDING_LINES, START_HOLD_CAP_MS, START_HOLD_LINE_MS, START_HOLD_INTRO_MIN_MS, START_HOLD_MESSAGE_AFTER_MS, censusGrid, introHoldCapMs, isStandIn,
-  revealDissolveAlpha, startHoldCapMs, startHoldTickDue, startHoldTicks, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
+  revealDissolveAlpha, startHoldCapMs, coveredFrameMs, startHoldFramesEnabled, COVERED_GROUND_INSTALLS_PER_FRAME, startHoldTickDue, startHoldTicks, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
 } from './startHold';
 import { en } from '../../i18n/messages/en';
 import { nl } from '../../i18n/messages/nl';
@@ -96,4 +96,24 @@ test('a long hold rotates the building lines, and the intro hold continues where
   assert.equal(startHoldMessageKey(START_HOLD_MESSAGE_AFTER_MS + n * START_HOLD_LINE_MS), START_HOLD_BUILDING_LINES[0]);
   for (const key of START_HOLD_BUILDING_LINES) { assert.ok(key in en, key); assert.ok(key in nl, key); }
   assert.equal(new Set(START_HOLD_BUILDING_LINES).size, n);
+});
+
+// Named regression (2026-11-27, own engine default): at Westermarkt on a real GPU the census cleared ~4.4 s after
+// navigation and the covered world fell back to 1 Hz frames; the ground installs one cell per rendered frame, so its
+// built cells waited 1-2.8 s each and settle.ts's ownGround alone held the start to 7.8-9.6 s (the 10 s cap under
+// SwiftShader). While a hold waits the covered frames run at the hold's tick.
+test('covered frames run at the hold tick while a hold waits, 1 Hz otherwise, none once uncovered', () => {
+  const base = { loading: true, waiting: true, touch: false, framesOn: true, idleMs: 1000 };
+  assert.equal(coveredFrameMs(base), START_HOLD_TICK_MS_DESKTOP);
+  assert.equal(coveredFrameMs({ ...base, touch: true }), START_HOLD_TICK_MS_TOUCH);
+  assert.equal(coveredFrameMs({ ...base, waiting: false }), 1000);
+  assert.equal(coveredFrameMs({ ...base, framesOn: false }), 1000, '?startHoldFrames=0 is the 1 Hz covered world');
+  assert.equal(coveredFrameMs({ ...base, loading: false }), null);
+  assert.ok(START_HOLD_TICK_MS_DESKTOP < 1000 && START_HOLD_TICK_MS_TOUCH < 1000);
+  assert.ok(COVERED_GROUND_INSTALLS_PER_FRAME > 1);
+});
+
+test('?startHoldFrames is on unless asked off', () => {
+  for (const v of [undefined, null, '1', true]) assert.equal(startHoldFramesEnabled(v), true);
+  for (const v of ['0', 0, false, 'off']) assert.equal(startHoldFramesEnabled(v), false);
 });

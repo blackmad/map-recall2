@@ -37,6 +37,7 @@ import { updateDrawnWorld, type WorldNode } from './drawnWorld.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
 import { disposeShadowPrimer, shadowPrimer } from './shadowPrimer.js';
+import { installDepthIgnoresInstanceColor } from './depthInstanceColor.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -224,6 +225,9 @@ export class SharedFrame {
     this.shadowsOn = options.shadows ?? true;
     this.scene = new THREE.Scene();
     this.scene.name = 'shared-frame';
+    // Shadow depth ignores instance colour: one depth program fewer per shadow side (depthInstanceColor.ts).
+    { const g = globalThis as { __canalRecallDepthInstanceColor?: unknown; location?: { search?: string } };
+      installDepthIgnoresInstanceColor(THREE, g.__canalRecallDepthInstanceColor ?? /[?&]depthInstanceColor=([^&]*)/.exec(g.location?.search ?? '')?.[1]); }
     // `?depthFade=1`: aerial perspective toward the horizon haze (look/depthFade.ts), ranged per frame by the
     // eye-to-centre distance.
     if (depthFadeFlag()) { installDepthFade(THREE); this.scene.fog = new THREE.Fog(SKY.horizon, 1e7, 2e7); }
