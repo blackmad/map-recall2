@@ -1,0 +1,36 @@
+{
+  "id": "sluyswacht",
+  "countedBy": "lane landmarks-r19-d-20261127 from the rectified panoramas b_20250108_1349_Track08_Sphere_00001 (2025, NW side, w02-313.jpg), TMX7316010203-000354_pano_0001_001178 (2017, NE gable, ne-2017.jpg from face-crops.ts) and TMX7316010203-001664_pano_0000_001558 (2020, SW street gable, sw-street-2020.jpg); not yet blind-counted. Glazed or framed openings bottom row first; shutters standing open beside a window do not count.",
+  "facades": [
+    {
+      "name": "NW side over the lock",
+      "bearing": 313,
+      "photo": "artifacts/landmark-briefs/sluyswacht/w02-313.jpg",
+      "rows": [2, 1, 1],
+      "columns": 4,
+      "symmetric": false,
+      "openings": ["glass"],
+      "note": "The two lower windows (x 58-105, 158-213), the small upper window (x 283-325) and the roof dormer (x 240-292). Axes from the NE end: 1.6, 3.7, 5.3 (dormer), 6.1 m."
+    },
+    {
+      "name": "NE gable",
+      "bearing": 44,
+      "photo": "artifacts/landmark-briefs/sluyswacht/ne-2017.jpg",
+      "rows": [3, 2, 1, 1],
+      "columns": 3,
+      "symmetric": false,
+      "openings": ["glass"],
+      "note": "Ground storey: the left window over its shutter panel, the glazed door and the window beside it under one transom; the two 6-over-6 first-floor windows; the attic window between its shutters; the hoist hatch under the apex."
+    },
+    {
+      "name": "SW street gable",
+      "bearing": 224,
+      "photo": "artifacts/landmark-briefs/sluyswacht/sw-street-2020.jpg",
+      "rows": [2, 2, 2],
+      "columns": 2,
+      "symmetric": true,
+      "openings": ["glass"],
+      "note": "The glazed door and the window at street level, the two first-floor cross windows, the two small attic windows; the painted name between the ground storey and the first floor is not an opening."
+    }
+  ]
+}
