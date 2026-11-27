@@ -210,6 +210,8 @@ class GameRouteRuntime {
     window.__canalRecallDistanceHaze = prefs.distanceHaze !== false;
     // "Show performance" (engine/perfHud.ts): the own engine's HUD reads this once a second.
     window.__canalRecallPerfHud = prefs.perfHud === true;
+    // "Full frame rate" (engine/frameCap.ts): 0 draws every display frame; otherwise the own engine caps the ride at 60.
+    window.__canalRecallFpsCap = prefs.fullFrameRate === true ? 0 : 60;
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
     if (typeof this.vectorMap.setTransitNetwork === 'function') {

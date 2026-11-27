@@ -419,6 +419,8 @@ function RideOptions({
           title={t('options.distanceHaze')} hint={t('options.distanceHazeHint')} />
         <ToggleTile id={id('perf-hud', 'live-perf-hud')} checked={prefs.perfHud} onChange={perfHud => set({ perfHud })}
           title={t('options.perfHud')} hint={t('options.perfHudHint')} />
+        <ToggleTile id={id('full-frame-rate', 'live-full-frame-rate')} checked={prefs.fullFrameRate} onChange={fullFrameRate => set({ fullFrameRate })}
+          title={t('options.fullFrameRate')} hint={t('options.fullFrameRateHint')} />
       </ToggleGroup>
     </>
   );

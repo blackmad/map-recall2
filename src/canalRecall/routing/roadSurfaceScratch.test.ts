@@ -141,3 +141,40 @@ test('after warm-up a scratch query writes into the same array and the same cont
   assert.equal(roadsNearInto(index, p.x, p.y, 2, scratch), roadsNear(index, p.x, p.y, 2).length);
   assert.equal(contactsInto(scratch, p.x, p.y), scratch.spanCount);
 });
+
+test('a repeated query on one scratch returns what it holds; any change of point, ring or index recomputes (desktop-perf 2026-11-27)', async () => {
+  const { segments, index } = await network([52.3745, 4.8840]);
+  const other = (await network([52.3830, 4.8790])).index;
+  const memo = new RoadQueryScratch(), fresh = new RoadQueryScratch();
+  fresh.memo = false;
+  assert.equal(memo.memo, true, 'on by default');
+  const pts = [...probes(segments, 3000)];
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i], q = pts[Math.max(0, i - 1)];
+    // The guard and the plaque ask at the same point (twice), then a neighbour, a wider ring, another network.
+    for (const [ix, x, y, ring] of [[index, p.x, p.y, 2], [index, p.x, p.y, 2], [index, q.x, q.y, 2], [index, p.x, p.y, 4], [other, p.x, p.y, 2], [index, p.x, p.y, 2]] as const) {
+      const n = nearbyContacts(ix, x, y, ring, memo), m = nearbyContacts(ix, x, y, ring, fresh);
+      assert.equal(n, m);
+      assert.deepStrictEqual(memo.contacts.slice(0, n), fresh.contacts.slice(0, m));
+    }
+    // The halves alone: roadsNearInto then contactsInto at another point re-measures the contacts.
+    roadsNearInto(index, p.x, p.y, 1, memo); roadsNearInto(index, p.x, p.y, 1, fresh);
+    assert.deepStrictEqual(memo.contacts.slice(0, contactsInto(memo, q.x, q.y)), fresh.contacts.slice(0, contactsInto(fresh, q.x, q.y)));
+  }
+});
+
+test('a warmed contactsInto allocates (almost) nothing per span (desktop-perf 2026-11-27: Math.hypot boxed ~90 bytes a span)', async () => {
+  const { segments, index } = await network([52.3745, 4.8840]);
+  const v8 = await import('node:v8');
+  const scratch = new RoadQueryScratch();
+  scratch.memo = false;
+  const points = [...probes(segments, 2000)];
+  for (let r = 0; r < 3; r++) for (const p of points) nearbyContacts(index, p.x, p.y, 2, scratch);
+  let spans = 0;
+  for (const p of points) spans += roadsNearInto(index, p.x, p.y, 2, scratch);
+  const before = (v8.getHeapStatistics() as unknown as { total_allocated_bytes: number }).total_allocated_bytes;
+  for (let r = 0; r < 3; r++) for (const p of points) { roadsNearInto(index, p.x, p.y, 2, scratch); contactsInto(scratch, p.x, p.y); }
+  // roadsNearInto is part of the loop (its share is the same before and after); the bar is far under the old ~90.
+  const perSpan = ((v8.getHeapStatistics() as unknown as { total_allocated_bytes: number }).total_allocated_bytes - before) / (3 * spans);
+  assert.ok(perSpan < 20, `${perSpan.toFixed(1)} bytes a span`);
+});

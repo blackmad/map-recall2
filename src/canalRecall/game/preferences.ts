@@ -200,6 +200,12 @@ export interface CanalPreferences {
   distanceHaze: boolean;
   /** "Show performance" (engine/perfHud.ts): a small line of tier, memory and frame numbers; off by default. */
   perfHud: boolean;
+  /**
+   * "Full frame rate" (engine/frameCap.ts): draw every frame the display gives (120 on a ProMotion Mac). Off by default:
+   * the ride draws at most 60 frames a second, about half the CPU and GPU work on a 120 Hz screen (the Mac fan,
+   * docs/perf/desktop-power-20261127.md).
+   */
+  fullFrameRate: boolean;
   /** Free Ride "Quiz me on landmarks" (G3, landmarkQuestion.ts): off by default; routes always ask.
    *  Since 2026-11-09 (F1, #311) Free Ride ignores it unless `?freeRideQuiz=1` (featureFlags.ts); kept, never cleared. */
   landmarkQuiz: boolean;
@@ -268,6 +274,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     trees: true,
     distanceHaze: true,
     perfHud: false,
+    fullFrameRate: false,
     landmarkQuiz: false,
     measuredColoursOnly: false,
     detailed3d: false,
@@ -363,6 +370,7 @@ function fillPreferences(
     trees: parseBoolean(source.trees, base.trees),
     distanceHaze: parseBoolean(source.distanceHaze, base.distanceHaze),
     perfHud: parseBoolean(source.perfHud, base.perfHud),
+    fullFrameRate: parseBoolean(source.fullFrameRate, base.fullFrameRate),
     landmarkQuiz: parseBoolean(source.landmarkQuiz, base.landmarkQuiz),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: base.detailed3d,

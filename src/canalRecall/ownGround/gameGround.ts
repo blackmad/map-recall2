@@ -41,7 +41,7 @@ import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { BuildRetries, groundEarlyWorkersFlag, groundFirstAloneFlag, groundParallelInitFlag, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
-import { readGroundTile } from './heightField.js';
+import { applyLocalToRdInto, readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
 /** The page's worker pool runs the building worker bundle next to this one (engine/workerPool.ts). */
@@ -51,7 +51,7 @@ import { compileWithinBudget, precompileBudget, precompileStepDue } from '../ren
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
-import { footprintBase, frontBase } from './placement.js';
+import { footprintBase, frontBase, FRONT_OUT_M } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
@@ -430,9 +430,29 @@ const levelOf = (lod: 0 | 1, detail: CellDetail): string => `${lod}:${detail}`;
 /** Lane F4: building bases on the street wall with draped wall feet (default on); `?groundFronts=0` is the lowest-relief before. */
 export function groundFrontsOn(): boolean {
   const g = globalThis as { __canalRecallGroundFronts?: unknown; location?: { search?: string } };
-  const asked = g.__canalRecallGroundFronts ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundFronts') : null);
+  // The query is parsed once per distinct search string (this runs per building base: a URLSearchParams each time was
+  // part of the ride's allocation, desktop-perf 2026-11-27).
+  const search = g.location?.search ?? '';
+  if (search !== frontsQuery.search) { frontsQuery.search = search; frontsQuery.asked = search ? new URLSearchParams(search).get('groundFronts') : null; }
+  const asked = g.__canalRecallGroundFronts ?? frontsQuery.asked;
   return !(asked === false || asked === 0 || asked === '0' || asked === 'false');
 }
+const frontsQuery: { search: string | null; asked: string | null } = { search: null, asked: null };
+
+/**
+ * `?baseMemo=0` (or `__canalRecallBaseMemo = false`): OwnGround.footprintBase recomputes every call. On (default), a
+ * footprint's base is remembered per ring array while the relief tiles, the tunnel cuts and the rule are unchanged
+ * (GroundField.version, GroundSurface.cutVersion): a cell that leaves and re-enters the lift radius, or a chunk built
+ * again, no longer samples ~100 relief points per building again (desktop-perf 2026-11-27).
+ */
+export function baseMemoOn(): boolean {
+  const g = globalThis as { __canalRecallBaseMemo?: unknown; location?: { search?: string } };
+  if (typeof g.__canalRecallBaseMemo === 'boolean') return g.__canalRecallBaseMemo;
+  const search = g.location?.search ?? '';
+  if (search !== memoQuery.search) { memoQuery.search = search; memoQuery.off = /[?&]baseMemo=(0|false|off)\b/.test(search); }
+  return !memoQuery.off;
+}
+const memoQuery: { search: string | null; off: boolean } = { search: null, off: false };
 
 export class OwnGround {
   readonly root: any;
@@ -1556,7 +1576,42 @@ export class OwnGround {
    */
   footprintBase(ring: readonly LngLat[]): number | null | undefined {
     if (!this.ready || ring.length < 3) return undefined;
+    if (!baseMemoOn()) return this.computeFootprintBase(ring, null);
+    const store = this.store, fronts = groundFrontsOn(), field = store.field;
+    const v0 = field.version, v1 = store.surface.cutVersion, v2 = store.surface.fallbackZ;
+    const hit = this.baseMemo.get(ring);
+    // Good while no relief tile under it changed (tiles land and leave all ride long, mostly elsewhere), the cuts and
+    // the fallback are the ones it was taken with, and the store is the same.
+    if (hit && hit.cuts === v1 && hit.fallback === v2 && hit.fronts === fronts && hit.store === store && hit.surface === store.surface && hit.f === field
+      && (hit.field === v0 || !field.changedSince(hit.field, hit.box[0], hit.box[1], hit.box[2], hit.box[3]))) {
+      hit.field = v0;
+      this.baseMemoStats.hits++;
+      return hit.base;
+    }
+    const box = new Float64Array(4);
+    const base = this.computeFootprintBase(ring, box);
+    this.baseMemoStats.misses++;
+    // Not resident yet (undefined) is not remembered: it changes as tiles land without a version a ring could miss.
+    if (base !== undefined) this.baseMemo.set(ring, { field: v0, cuts: v1, fallback: v2, fronts, store, surface: store.surface, f: field, base, box });
+    return base;
+  }
+  private baseMemo = new WeakMap<readonly LngLat[], { field: number; cuts: number; fallback: number; fronts: boolean; store: GroundStore; surface: unknown; f: unknown; base: number | null; box: Float64Array }>();
+  /** footprintBase memo hits and misses (diagnostics, the desktop-power probe). */
+  readonly baseMemoStats = { hits: 0, misses: 0 };
+  /** `box` (when given) gets the RD extent the base read: the footprint's, widened past the outside samples. */
+  private computeFootprintBase(ring: readonly LngLat[], box: Float64Array | null): number | null | undefined {
     const local = ring.map(p => toLocal(p[0], p[1]));
+    if (box) {
+      const rd = new Float64Array(2), m = this.store.surface.localToRd;
+      box[0] = box[1] = Infinity; box[2] = box[3] = -Infinity;
+      for (const p of local) {
+        applyLocalToRdInto(m, p[0], p[1], rd);
+        box[0] = Math.min(box[0], rd[0]); box[1] = Math.min(box[1], rd[1]); box[2] = Math.max(box[2], rd[0]); box[3] = Math.max(box[3], rd[1]);
+      }
+      // frontBase samples FRONT_OUT_M outside the walls; the local → RD fit is metres to within millimetres here.
+      const pad = FRONT_OUT_M + 2;
+      box[0] -= pad; box[1] -= pad; box[2] += pad; box[3] += pad;
+    }
     // Outside the relief extract: street level for good (null), not "later".
     if (!this.store.reliefCovered(local[0][0], local[0][1])) return null;
     if (!local.every(p => this.store.hasRelief(p[0], p[1]))) return undefined;

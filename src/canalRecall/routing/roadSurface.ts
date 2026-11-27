@@ -15,6 +15,7 @@
  * finding roads it should.
  */
 
+import { hypot2 } from '../hypot2.ts';
 import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
 // Open squares are part of the rideable surface (road-network.js getGuardRoad).
 export { buildPlazaIndex, plazaAt, plazaGuardContact, plazaSurface } from './pedestrianAreas.ts';
@@ -332,10 +333,31 @@ export class RoadQueryScratch {
   spanCount = 0;
   readonly contacts: RoadContact[] = [];
   contactCount = 0;
+  /**
+   * The last query's arguments (desktop-perf 2026-11-27): the road guard and the HUD plaque both ask for the contacts
+   * around the rider, at the same point, every frame. The same query on the same scratch returns what it already holds.
+   * The index is never changed in place (a new network builds a new one), so its identity is the key. `memo = false`
+   * (or `?roadMemo=0` through roadQueryMemoOn) recomputes every query.
+   */
+  memo = roadQueryMemoOn();
+  spansFor: { index: RoadSpatialIndex | null; x: number; y: number; ring: number } = { index: null, x: NaN, y: NaN, ring: -1 };
+  /** Bumped whenever `spans` is rewritten. */
+  spanStamp = 0;
+  contactsFor = { stamp: -1, x: NaN, y: NaN };
+}
+
+/** `?roadMemo=0` (or `__canalRecallRoadMemo = false`): RoadQueryScratch recomputes a repeated query. */
+export function roadQueryMemoOn(): boolean {
+  const g = globalThis as { __canalRecallRoadMemo?: unknown; location?: { search?: string } };
+  if (typeof g.__canalRecallRoadMemo === 'boolean') return g.__canalRecallRoadMemo;
+  return !/[?&]roadMemo=(0|false|off)\b/.test(g.location?.search ?? '');
 }
 
 /** `roadsNear` into `scratch.spans` (the same spans, in the same order); returns the count. */
 export function roadsNearInto(index: RoadSpatialIndex, x: number, y: number, ring: number, scratch: RoadQueryScratch): number {
+  const f = scratch.spansFor;
+  if (scratch.memo && f.index === index && f.x === x && f.y === y && f.ring === ring) return scratch.spanCount;
+  f.index = index; f.x = x; f.y = y; f.ring = ring; scratch.spanStamp++;
   const gx = Math.floor(x / index.cellSize);
   const gy = Math.floor(y / index.cellSize);
   const out = scratch.spans;
@@ -359,18 +381,21 @@ export function roadsNearInto(index: RoadSpatialIndex, x: number, y: number, rin
 
 /** `contactsAt` over `scratch.spans[0..spanCount)` into the pooled `scratch.contacts` (same values); returns the count. */
 export function contactsInto(scratch: RoadQueryScratch, x: number, y: number): number {
+  const m = scratch.contactsFor;
+  if (scratch.memo && m.stamp === scratch.spanStamp && m.x === x && m.y === y) return scratch.contactCount;
+  m.stamp = scratch.spanStamp; m.x = x; m.y = y;
   const n = scratch.spanCount, spans = scratch.spans, out = scratch.contacts;
   for (let i = 0; i < n; i++) {
     const span = spans[i], a = span.a, b = span.b;
     // closestPointOnSpan, inline (no hit object).
     const abx = b.x - a.x, aby = b.y - a.y, lengthSquared = abx * abx + aby * aby;
     let hx: number, hy: number, dist: number;
-    if (lengthSquared === 0) { hx = a.x; hy = a.y; dist = Math.hypot(x - a.x, y - a.y); }
+    if (lengthSquared === 0) { hx = a.x; hy = a.y; dist = hypot2(x - a.x, y - a.y); }
     else {
       const t = Math.max(0, Math.min(1, ((x - a.x) * abx + (y - a.y) * aby) / lengthSquared));
-      hx = a.x + abx * t; hy = a.y + aby * t; dist = Math.hypot(x - hx, y - hy);
+      hx = a.x + abx * t; hy = a.y + aby * t; dist = hypot2(x - hx, y - hy);
     }
-    const rdx = b.x - a.x, rdy = b.y - a.y, length = Math.hypot(rdx, rdy) || 1;
+    const rdx = b.x - a.x, rdy = b.y - a.y, length = hypot2(rdx, rdy) || 1;
     let c = out[i];
     if (!c) {
       c = { x: 0, y: 0, dist: 0, angle: 0, width: 0, segIdx: 0, ptIdx: 0, nx: 0, ny: 0, length: 0, along: 0 };
@@ -378,7 +403,7 @@ export function contactsInto(scratch: RoadQueryScratch, x: number, y: number): n
     }
     c.x = hx; c.y = hy; c.dist = dist; c.angle = Math.atan2(rdy, rdx); c.width = span.width;
     c.segIdx = span.segIdx; c.ptIdx = span.ptIdx; c.nx = -rdy / length; c.ny = rdx / length;
-    c.length = length; c.along = Math.hypot(hx - a.x, hy - a.y);
+    c.length = length; c.along = hypot2(hx - a.x, hy - a.y);
   }
   scratch.contactCount = n;
   return n;
