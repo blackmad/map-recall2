@@ -94,6 +94,9 @@ test('a moved view before the first explicit followCamera (a restore\'s resize) 
   let west = 4.89;
   map.getBounds = () => ({ getWest: () => west, getSouth: () => 52.37, getEast: () => 4.9, getNorth: () => 52.38 });
   const moved = () => { west -= 0.001; for (const h of handlers.render ?? []) h(); };
+  // Every moved frame re-plans here (the 10 Hz moveend throttle, engine/worldCameraOf.ts viewChangeHz, is off): this
+  // test is about which moves plan, not how often.
+  (globalThis as { __canalRecallViewChangeHz?: number }).__canalRecallViewChangeHz = 0;
   const streamer = new BuildingTileStreamer(map as never, 'buildings', '/data');
   const internals = streamer as unknown as { available: boolean; update(): void; lastFollowSignature: string };
   internals.available = true;
@@ -111,4 +114,5 @@ test('a moved view before the first explicit followCamera (a restore\'s resize) 
   for (const h of handlers.render ?? []) h();
   assert.equal(plans, 2, 'a redraw of the same view does not re-plan');
   streamer.dispose();
+  delete (globalThis as { __canalRecallViewChangeHz?: number }).__canalRecallViewChangeHz;
 });

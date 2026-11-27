@@ -45,16 +45,58 @@ export function boundsContain(b: ViewBounds | null, lngLat: LngLatLike): boolean
 }
 
 /**
+ * How often a participant's moveend work may run while the view moves (lane cell-hidden-skip 2026-11-27): 10 a second.
+ * Riding, the view changes every frame, so the landmarks' evict/request/levels walk, the streamer's re-plan and the
+ * animals' update ran 60–120 times a second (15–19 ms/s of main thread, docs/perf/desktop-power-20261127.md). None of
+ * it draws on that frame: each asks for loads or levels that arrive later anyway. `?viewChangeHz=0` (or
+ * `window.__canalRecallViewChangeHz = 0`): every changed frame, as before; `?viewChangeHz=<n>` another rate.
+ */
+export const VIEW_CHANGE_HZ = 10;
+export function viewChangeHz(search: string = typeof location !== 'undefined' ? location.search : '', w: any = globalThis): number {
+  let v: string | null = null;
+  try { v = new URLSearchParams(search).get('viewChangeHz'); } catch { /* no location */ }
+  if (v === null && w.__canalRecallViewChangeHz !== undefined) v = String(w.__canalRecallViewChangeHz);
+  if (v === null) return VIEW_CHANGE_HZ;
+  const n = Number(v);
+  return Number.isFinite(n) && n >= 0 ? n : VIEW_CHANGE_HZ;
+}
+
+/**
  * Call `onMove` after a rendered frame whose view (zoom and bounds) differs from the last one: `on('moveend')` for a
  * participant on WorldCamera. A frame that only redraws (an animation, a fade) does not call it, so an `onMove` that
- * asks for a repaint never loops. Returns the unsubscribe.
+ * asks for a repaint never loops. At most `hz` a second (viewChangeHz; 0: every changed frame): the first change runs
+ * at once, later ones wait out the interval, and the last change always runs (on the next frame past the interval, or
+ * from a timer when the view has stopped and no frame comes). Returns the unsubscribe.
  */
-export function onViewChange(camera: WorldCamera, onMove: () => void): () => void {
-  let last = '';
-  return camera.onFrame(() => {
-    const b = camera.bounds(), key = b ? `${camera.zoom()},${b.west},${b.south},${b.east},${b.north}` : '';
-    if (key === last) return;
-    last = key;
+export function onViewChange(camera: WorldCamera, onMove: () => void, options: { hz?: number; now?: () => number; setTimer?: (f: () => void, ms: number) => unknown; clearTimer?: (t: unknown) => void } = {}): () => void {
+  const hz = options.hz ?? viewChangeHz();
+  const interval = hz > 0 ? 1000 / hz : 0;
+  const now = options.now ?? (() => performance.now());
+  const setTimer = options.setTimer ?? ((f: () => void, ms: number) => setTimeout(f, ms));
+  const clearTimer = options.clearTimer ?? ((t: unknown) => clearTimeout(t as ReturnType<typeof setTimeout>));
+  // The last view seen, as numbers (no key string a frame); `none`: no bounds (the start, as the old '' key).
+  let z = 0, w = 0, s = 0, e = 0, n = 0, none = true;
+  let lastRun = -Infinity, pending = false, timer: unknown = null, live = true;
+  const run = () => {
+    if (timer !== null) { clearTimer(timer); timer = null; }
+    pending = false; lastRun = now();
     onMove();
+  };
+  const off = camera.onFrame(() => {
+    const b = camera.bounds();
+    let changed: boolean;
+    if (!b) { changed = !none; none = true; }
+    else {
+      const zoom = camera.zoom();
+      changed = none || zoom !== z || b.west !== w || b.south !== s || b.east !== e || b.north !== n;
+      if (changed) { none = false; z = zoom; w = b.west; s = b.south; e = b.east; n = b.north; }
+    }
+    if (!changed && !pending) return;
+    if (!interval) { run(); return; }
+    const wait = lastRun + interval - now();
+    if (wait <= 0) { run(); return; }
+    pending = true;
+    if (timer === null) timer = setTimer(() => { timer = null; if (live && pending) run(); }, wait);
   });
+  return () => { live = false; if (timer !== null) { clearTimer(timer); timer = null; } off(); };
 }

@@ -81,11 +81,24 @@ test('surface layer: after the slot layers, inside the byte range; none for the 
     const layer = flatRoofSurfaceLayer(look)!, { layers } = withSearch(OFF, () => lookAtlasLayers(look, true));
     assert.equal(layer, layers + SLOT_LAYER_COUNT, look);
     assert.ok(layer < 256);
-    assert.equal(lookAtlasLayers(look, false).total, layer + 1, 'the array holds it with or without slot layers');
+    // The array holds it with or without slot layers. Since round n (8946319907, 2026-11-15) the retail look is on by
+    // default and its chain-logo pages sit after the surface (retailLogos.ts), so the total is the surface's + 1 only
+    // with the retail look off; on, the surface is still inside it.
+    const g = globalThis as { __canalRecallRetailGround?: boolean };
+    try {
+      g.__canalRecallRetailGround = false;
+      assert.equal(lookAtlasLayers(look, false).total, layer + 1, 'the array holds it with or without slot layers');
+      g.__canalRecallRetailGround = true;
+      assert.ok(lookAtlasLayers(look, false).total > layer, 'with the retail pages after it');
+    } finally { delete g.__canalRecallRetailGround; }
   }
   assert.equal(flatRoofSurfaceLayer('procedural'), null);
-  // Off: the arrays are as before.
-  withSearch(OFF, () => { const { layers, total } = lookAtlasLayers('photo', true); assert.equal(total, layers + SLOT_LAYER_COUNT); });
+  // Off: the arrays are as before (the retail look off too: its pages extend any array).
+  const g = globalThis as { __canalRecallRetailGround?: boolean };
+  try {
+    g.__canalRecallRetailGround = false;
+    withSearch(OFF, () => { const { layers, total } = lookAtlasLayers('photo', true); assert.equal(total, layers + SLOT_LAYER_COUNT); });
+  } finally { delete g.__canalRecallRetailGround; }
 });
 
 test('parapet lip: a near-reversal in the ring never twists the coping (every inset end on the roof side of its edge)', () => {
