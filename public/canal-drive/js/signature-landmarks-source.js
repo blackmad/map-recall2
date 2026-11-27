@@ -38,7 +38,7 @@ import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/wor
 import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
-import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url, nearestRadiusPx, ordinaryLod1DowngradePx, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
+import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, farLodLevel, landmarkFarLodM, initialLandmarkLevel, lod2IsCurrent, lod2Url, nearestRadiusPx, ordinaryLod1DowngradePx, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
@@ -1559,10 +1559,27 @@ export class SignatureLandmarks {
     return lodApi().footprintRadiusPixels(radiusMetres, this.camera.zoom(), anchor[1]);
   }
 
+  /** `?landmarkFarLod=<m>`, read once (null: off, the default). */
+  _farLodM() {
+    if (this._farLodValue === undefined) this._farLodValue = this.sharedFrame ? landmarkFarLodM(window.location?.search ?? '') : null;
+    return this._farLodValue;
+  }
+
+  /** Metres from the eye to a model's mid-height (the shared frame's world has the eye at its origin); the view centre before a frame. */
+  _eyeDistanceM(spec, anchor) {
+    if (!anchor) return null;
+    if (!this._sharedRoot || !this._clipFromWorld) return anchorDistanceM(anchor, this.camera.center());
+    const m = this.maplibregl.MercatorCoordinate.fromLngLat(anchor, (spec.heightMetres || 20) / 2);
+    const p = (this._eyeV ??= new THREE.Vector3()).set(m.x, m.y, m.z).applyMatrix4(this._sharedRoot.matrixWorld);
+    return Math.hypot(p.x, p.y, p.z);
+  }
+
   /** Level to load first: lod1 for models that are small on screen (lod2 from the air). Unknown size or no lower level means full. */
   _startLevel(spec) {
     const lod2 = this._hasLod2(spec);
     if (!this._hasLod(spec) && !lod2) return 'full';
+    const farM = this._farLodM(), farAnchor = spec.surveyed?.anchor || spec.footprint?.centre;
+    if (farM != null && this._hasLod(spec) && farLodLevel('full', 'full', this._eyeDistanceM(spec, farAnchor), farM, true, this._aerialNow()) === 'lod1') return 'lod1';
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
@@ -1588,14 +1605,17 @@ export class SignatureLandmarks {
   _updateLevelsPass() {
     const view = this._viewBounds(), levelView = this._lod2On() ? this._levelView() : null;
     const now = performance.now(), dwell = window.__canalRecallLevelDwell === false ? 0 : (this._levelDwellUrl ??= levelDwellMs(window.location.search, undefined));
+    // `?landmarkFarLod=<m>` (off by default; landmarkLod.ts farLodLevel): street-level models beyond <m> on their lod1.
+    const farM = this._farLodM(), aerial = farM != null && this._aerialNow();
     for (const entry of this._entries) {
       if (entry.levelLoading || entry.lodFailed) continue;
       const lod2 = this._hasLod2(entry.spec);
       if (!lod2 && !this._hasLod(entry.spec)) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
-      const wanted = lod2 || this._ordinaryLod(entry.spec)
+      let wanted = lod2 || this._ordinaryLod(entry.spec)
         ? chooseLandmarkLevel(entry.level, this._levelInputs(entry.spec, entry.radiusMetres, entry.placement.anchor, levelView, this._isLit(entry)))
         : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
+      if (farM != null && !this._isLit(entry)) wanted = farLodLevel(entry.level, wanted, this._eyeDistanceM(entry.spec, entry.placement.anchor), farM, this._hasLod(entry.spec), aerial);
       if (wanted === entry.level) continue;
       // Desktop-perf 2026-11-27 (landmarks/levelDwell.ts, `?levelDwell=0` off): a downgrade waits until the level has
       // been on screen LEVEL_DWELL_MS, so a weaving ride does not flip models (a load, a compile and a weld each time).
