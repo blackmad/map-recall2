@@ -348,14 +348,22 @@ if (argv.includes('--tier-tints')) {
   });
   console.log('tier tints', JSON.stringify(tt, null, 1));
 }
-await page.evaluate(() => { window.__pc.on = true; });
+await page.evaluate(() => {
+  window.__pc.on = true;
+  // Landmark residency (lane landmark-residency): the layer's resident models and GPU MB each second.
+  const sl = canalRecallGame.vectorMap._signatureLandmarks, R = window.__lmRes = [];
+  window.__lmResTimer = setInterval(() => { try { const r = sl?.residencyStats?.(); if (r) R.push([r.models, r.bytes / 1048576]); } catch (_) {} }, 1000);
+});
 await page.waitForTimeout(measure * 1000);
 await page.evaluate(() => { window.__pc.on = false; });
 await page.waitForFunction(() => window.__pc.diff.length >= window.__pc.posted - 1, null, { timeout: 900_000, polling: 1000 });
 const raw = await page.evaluate(() => {
   const P = window.__pc;
   const w = P.walkMs.slice().sort((a, b) => a - b);
-  return { yields: P.yields, hides: P.hides, slots: P.slots, handovers: P.handovers, diffPairs: P.diffPairs || [], diff: P.diff, marks: P.marks || [], hooked: P.hooked, events: P.events, frames: P.frames, objects: P.objs.size, churn: P.uniformChurn, pairs: P.pairs, series: P.series || [], walkP50: w[Math.floor(w.length / 2)], walkP99: w[Math.floor(w.length * 0.99)], railsM: window.__railsM };
+  clearInterval(window.__lmResTimer);
+  const R = window.__lmRes || [], mean = i => R.length ? +(R.reduce((t, r) => t + r[i], 0) / R.length).toFixed(1) : null, max = i => R.length ? +Math.max(...R.map(r => r[i])).toFixed(1) : null;
+  const residency = { models: { mean: mean(0), max: max(0) }, mb: { mean: mean(1), max: max(1) }, policy: canalRecallGame.vectorMap._signatureLandmarks?.residencyStats?.() ?? null };
+  return { residency, yields: P.yields, hides: P.hides, slots: P.slots, handovers: P.handovers, diffPairs: P.diffPairs || [], diff: P.diff, marks: P.marks || [], hooked: P.hooked, events: P.events, frames: P.frames, objects: P.objs.size, churn: P.uniformChurn, pairs: P.pairs, series: P.series || [], walkP50: w[Math.floor(w.length / 2)], walkP99: w[Math.floor(w.length * 0.99)], railsM: window.__railsM };
 });
 await browser.close();
 
@@ -392,7 +400,7 @@ const ho = raw.handovers || [];
 const handover = { n: ho.length, byPair: {} };
 for (const h of ho) { const k = `${h.from}->${h.to}`; const b = handover.byPair[k] ||= { n: 0, dE5: 0, dE10: 0, dE20: 0, layer: 0, faded: 0 }; b.n++; if (h.dE >= 5) b.dE5++; if (h.dE >= 10) b.dE10++; if (h.dE >= 20) b.dE20++; if (h.layerChange) b.layer++; if (h.faded) b.faded++; }
 const churn = Object.fromEntries(Object.entries(raw.churn).filter(([, c]) => c.changes > 0).map(([k, c]) => [k, c.changes]));
-const summary = { landmarkHandover, slots: raw.slots, handover, diffPx: { total: diffTotal, frames: diffFrames, byCause: diffBy }, marks: raw.marks, hooked: raw.hooked, route, start: ids.start, dest: ids.dest, qs, device, railsM: raw.railsM, frames: raw.frames, objects: raw.objects, walkMs: { p50: +(raw.walkP50 ?? 0).toFixed(2), p99: +(raw.walkP99 ?? 0).toFixed(2) }, byCause, uniformChurn: churn, errors: errors.slice(0, 5) };
+const summary = { residency: raw.residency, landmarkHandover, slots: raw.slots, handover, diffPx: { total: diffTotal, frames: diffFrames, byCause: diffBy }, marks: raw.marks, hooked: raw.hooked, route, start: ids.start, dest: ids.dest, qs, device, railsM: raw.railsM, frames: raw.frames, objects: raw.objects, walkMs: { p50: +(raw.walkP50 ?? 0).toFixed(2), p99: +(raw.walkP99 ?? 0).toFixed(2) }, byCause, uniformChurn: churn, errors: errors.slice(0, 5) };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ summary, hides: raw.hides, handovers: ho, diff: raw.diff.filter(d => d[1]), events: raw.events }, null, 1));
 if (framesDir) {
@@ -406,6 +414,7 @@ console.log(`${route} ${ids.start}->${ids.dest} ${qs}: ${raw.frames} frames, ${r
 console.log('cause                         events visible near nearVisible fading  top labels');
 for (const [k, b] of Object.entries(byCause).sort((x, y) => y[1].events - x[1].events)) console.log(`${k.padEnd(30)} ${String(b.events).padStart(6)} ${String(b.visible).padStart(7)} ${String(b.near).padStart(4)} ${String(b.nearVisible).padStart(11)} ${String(b.fading).padStart(6)}  ${JSON.stringify(b.labels)}`);
 console.log('frame diff px', diffTotal, 'in', diffFrames, 'frames; by cause', JSON.stringify(diffBy), 'marks', JSON.stringify(raw.marks));
+console.log('landmark residency', JSON.stringify(summary.residency));
 console.log('landmark hand-overs', JSON.stringify(landmarkHandover), 'wiring', JSON.stringify(setup.wiring));
 console.log('tier hand-overs', JSON.stringify(handover), 'swap slots', JSON.stringify(raw.slots));
 console.log('numeric uniform churn (changes per 30-frame sample)', JSON.stringify(churn));
