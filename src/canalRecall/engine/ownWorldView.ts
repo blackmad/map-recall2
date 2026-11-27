@@ -28,7 +28,7 @@ import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
 import { RevealSurface, revealLightEnabled } from './revealSurface';
 import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
-import { censusGrid, startHoldEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
+import { censusGrid, coveredFrameMs, startHoldEnabled, startHoldFramesEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
 import { cellBounds, cellKeyOf, cellOf, parseCellKey } from '../world/cellGrid';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { anchorInView, CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
@@ -379,7 +379,11 @@ export class OwnWorldView implements WorldViewOracles {
       // While the cold-start hold is armed (holdRidePose) the covered world renders faster: the ground installs one cell
       // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
       // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
-      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose || this._startShellsBusy ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
+      // While a start hold waits on the view (camera idle waiters), at the hold's tick too (startHold.ts coveredFrameMs):
+      // once the census cleared, the ground's built cells sat queued for 1 Hz frames (2026-11-27).
+      coveredFrameMs: () => (this._startPose || this._startShellsBusy) && W().canalRecallGame?.state === LOADING_STATE
+        ? startSettleCoveredFrameMs(isTouchPointer(W()))
+        : coveredFrameMs({ loading: W().canalRecallGame?.state === LOADING_STATE, waiting: !!this.cameraMap?.idleWaiting, touch: isTouchPointer(W()), framesOn: this.startHoldFramesOn, idleMs: COVERED_FRAME_MS }),
       ...(toon || smaa || corridor ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
         // Corridor emphasis first: the toon palette then remaps what it leaves.
@@ -790,6 +794,8 @@ export class OwnWorldView implements WorldViewOracles {
         setBasemapGroundHidden: () => { /* no basemap */ },
         // The start neighbourhood builds during the hold (ownGround/groundPrefetch.ts, R5-A #260).
         startView: () => { const c = this.cameraMap.camera; return { lngLat: [c.lng, c.lat], zoom: c.zoom, pitch: c.pitch }; },
+        // Under the loading screen: cells install without the dissolve, several a frame (startHold.ts, `?startHoldFrames=0` off).
+        covered: () => this.startHoldFramesOn && W().canalRecallGame?.state === LOADING_STATE,
       }, { workerUrl: new URL(OWN_GROUND_WORKER, W().location.href).href, ...budget });
       await this._ownGround.load(this.absoluteExtractRoot());
       if (this._threeBuildings?.setWaterLevel) this._threeBuildings.setWaterLevel(this._ownGround.waterLevelM());
@@ -1141,6 +1147,8 @@ export class OwnWorldView implements WorldViewOracles {
     this.host.triggerRepaint();
   }
 
+  /** Covered frames at the hold's tick while it waits, and covered ground installs without a dissolve (startHold.ts); `?startHoldFrames=0` is off. */
+  private readonly startHoldFramesOn: boolean = startHoldFramesEnabled(W().__canalRecallStartHoldFrames ?? new URLSearchParams(W().location?.search ?? '').get('startHoldFrames'));
   /** Lane S1 (#313): the start hold's census check; `?startHold=0` (or `__canalRecallStartHold = false`) restores today's hold. */
   private readonly startHoldOn: boolean = startHoldEnabled(W().__canalRecallStartHold ?? new URLSearchParams(W().location?.search ?? '').get('startHold'));
   /** The last census the start hold judged (probes read it), and whether it was still holding. */

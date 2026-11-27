@@ -132,11 +132,19 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     const w = window as any;
     const watch = () => {
       const g = w.canalRecallGame;
+      // Named regression (2026-11-27): while the start hold waits on the view, the covered world renders at the hold's
+      // tick, not 1 Hz (startHold.ts coveredFrameMs): at 1 Hz the built ground cells queued for frames and settle.ts's
+      // ownGround held the start to the 10 s cap.
+      const vm = g?.vectorMap;
+      if (g?.state === 2 && g._startHoldTicking && vm?.cameraMap?.idleWaiting && typeof vm.host?.hooks?.coveredFrameMs === 'function') {
+        const ms = vm.host.hooks.coveredFrameMs();
+        w.__holdCoveredMs = Math.max(w.__holdCoveredMs ?? 0, ms ?? 0);
+      }
       if (g?.state === 4) {
         const tb = g.vectorMap?._threeBuildings;
         let count = 0;
         for (const chunk of tb?.chunks?.values?.() ?? []) if (chunk.mesh?.parent && chunk.mesh.visible !== false && chunk.info?.vertexCount > 0) count++;
-        w.__facadesAtRacing = { count, ready: !!tb?.ready, settle: g._lastMapSettle ?? null };
+        w.__facadesAtRacing = { count, ready: !!tb?.ready, settle: g._lastMapSettle ?? null, hold: g._startHold ?? null, holdCoveredMs: w.__holdCoveredMs ?? null };
         return;
       }
       requestAnimationFrame(watch);
@@ -148,6 +156,8 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
   const atRacing = await page.evaluate(() => (window as any).__facadesAtRacing);
   console.log('facades at the first racing frame', JSON.stringify(atRacing));
   expect(atRacing.ready, 'the facade atlas is bound when racing begins').toBe(true);
+  expect(atRacing.holdCoveredMs, 'the covered world renders at the start hold tick while the hold waits (startHold.ts coveredFrameMs)').not.toBeNull();
+  expect(atRacing.holdCoveredMs).toBeLessThanOrEqual(250);
   expect(atRacing.count, 'facade chunk meshes are visible in the first racing frame').toBeGreaterThan(0);
   // Not a token few: standing still, the set 3 s later is what the spawn view holds.
   await page.waitForTimeout(3000);
