@@ -348,7 +348,7 @@ pop-colour, belt route, n=3 per arm (desktop 1280×800 dpr 2):
 
 Mean arrival px old 442 (spread 200–817), new 609 (386–989): within the run-to-run spread. On-screen arrivals are 0–2
 per run in both arms, so px per on-screen arrival (old 331, new 609 pooled) rests on 5 and 3 events and is not a usable
-ratio. Arrivals fall by a third (510 → 360 over three runs): the old arm's extra are re-arrivals off screen.
+ratio. Arrivals fall by a third (530 → 360 over three runs): the old arm's extra are re-arrivals off screen.
 
 desktop-power, 60 s ride, n=2 per arm (1512×900 dpr 2, governor):
 
