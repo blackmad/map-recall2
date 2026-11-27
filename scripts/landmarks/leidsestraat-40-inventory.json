@@ -39,7 +39,7 @@
     {
      "id": "t-arch",
      "kind": "window-shape",
-     "where": "round-arched shop window in grey stone with a stained-glass fanlight, archivolt and cartouche keystone (crop x 222-358, y 525-740)",
+     "where": "round-arched shop window in cream stone (white in the 2016 sun) with white shop joinery with a stained-glass fanlight, archivolt and cartouche keystone (crop x 222-358, y 525-740)",
      "approxSizeM": [
       2.8,
       4.6
@@ -118,7 +118,7 @@
     {
      "id": "t-shopfront",
      "kind": "window-shape",
-     "where": "white-painted shopfront with two display windows and a glazed door (crop x 0-215, y 605-768)",
+     "where": "white-painted shopfront with two display windows and a glazed door, each framed in white stiles and rails over a stone sill (crop x 0-215, y 605-768)",
      "approxSizeM": [
       4.3,
       3.2

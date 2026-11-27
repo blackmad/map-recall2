@@ -2,6 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {archSlab, getSink, patternPanel, put, ringFrame, segBand, setSink, slab, type Frame} from './nearbar-kit';
+import {steppedGable} from '../../src/canalRecall/landmarks/steppedGable';
 import source from './leidsestraat-1-footprints.json';
 
 /**
@@ -91,7 +92,7 @@ function pier(b: BuildingTools, F: Frame, t0: number, t1: number, top: number, o
 
 /** One storey of iron glazing between iron posts: bays [t0, t1], `lights` per bay, an optional transom and segmental head. */
 function ironGlazing(b: BuildingTools, F: Frame, bays: [number, number][], y0: number, y1: number, o: {lights: number; transom?: number; head?: number; back: (t: number) => number}) {
-  for (const [a, c] of bays) {
+  for (const [bi, [a, c]] of bays.entries()) {
     const tc = (a + c) / 2, w = c - a, back = Math.max(o.back(a + 0.05), o.back(c - 0.05));
     const rise = o.head ?? 0;
     slab(b, F, tc, y0, w, y1 - y0 - rise, 0.06 + back, 'glass', -back);
@@ -102,8 +103,12 @@ function ironGlazing(b: BuildingTools, F: Frame, bays: [number, number][], y0: n
       put(b, F, new T.ExtrudeGeometry(s, {depth: 0.06 + back, bevelEnabled: false, curveSegments: 6}), tc, y1 - rise, -back, 'glass');
       segBand(b, F, tc, y1 - rise, w, rise, 0.12, 0.12, 'bronze');
     }
-    for (let k = 1; k < o.lights; k++) slab(b, F, a + (w * k) / o.lights, y0, 0.07, y1 - y0 - rise * 0.6, 0.12, 'bronze');
-    if (o.transom) slab(b, F, tc, y0 + o.transom, w, 0.07, 0.16, 'bronze');
+    // the iron frame of the bay: jamb posts at the run's two ends (between bays the cast-iron colonnettes are the posts, and a
+    // second post there would widen the gap past the 0.3 m ribbon convention), mullions between the lights, the transom
+    // (iron is not an opening material, so the grid stands in front of the glass without splitting the bay into openings)
+    for (const t of [...(bi === 0 ? [a + 0.1] : []), ...(bi === bays.length - 1 ? [c - 0.1] : [])]) slab(b, F, t, y0, 0.12, y1 - y0 - rise, 0.12, 'bronze');
+    for (let k = 1; k < o.lights; k++) slab(b, F, a + (w * k) / o.lights, y0, 0.1, y1 - y0 - rise * 0.6, 0.12, 'bronze');
+    if (o.transom) slab(b, F, tc, y0 + o.transom, w - 0.2, 0.1, 0.16, 'bronze');
     slab(b, F, tc, y0 - 0.06, w, 0.08, 0.14, 'bronze');
   }
 }
@@ -261,6 +266,35 @@ function corner(b: BuildingTools) {
   const ring = src.facadeRing, cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cz = ring.reduce((s, p) => s + p[1], 0) / ring.length;
   if (F.n[0] * (A[0] - cx) + F.n[1] * (A[1] - cz) < 0) { F.n = [tg[1], -tg[0]]; F.origin = [B[0], B[1]]; F.tangent = [-tg[0], -tg[1]]; }
   for (let y = LV.beam1[1] + 0.5; y < LV.cornice[0]; y += 0.62) slab(b, F, len / 2, y, len, 0.1, 0.04, 'ochre');
-  slab(b, F, len / 2, LV.cornice[0], len + 0.3, LV.cornice[1] - LV.cornice[0], 0.9, 'copper');
-  void archSlab;
+  cornerGable(b);
+}
+
+/**
+ * The stepped gable over the corner (2022 Leidsestraat look TMX7316010203-002860_pano_0000_000032 and the 2020 aimed view):
+ * over the attic it breaks the cornice as a cream glazed-brick crow-stepped gable, two treads a side under stone copings,
+ * with a tiled lunette at its foot, a small twin window in the top tier and stone pinnacles at the top corners. It stands on
+ * the 3DBAG corner mass that rises to 24.8-25.1 m between x -0.9 and 0.8 (ring edge 5 and the start of edge 6, the outer
+ * line), so the gable hangs on ring edge 5 extended past its end: t 0.4-2.3 from the edge-5 vertex.
+ */
+function cornerGable(b: BuildingTools) {
+  const F = CORNER[1].f, tc = 1.35, W = 1.9, D = 0.62, back = -0.42;
+  const g = steppedGable({width: W, y0: LV.frieze[0], stepsPerSide: 2, rise: [2.45, 1.1, 1.15], run: [0.25, 0.2], coping: 0.12, overhang: 0.06});
+  for (const k of g.tiers) slab(b, F, tc + (k.t0 + k.t1) / 2, k.y0, k.t1 - k.t0, k.y1 - k.y0, D, 'stone', back);
+  // ochre courses on the lowest tier, as on the piers
+  for (let y = LV.frieze[0] + 0.3; y < g.tiers[0].y1 - 0.2; y += 0.62) slab(b, F, tc, y, W + 0.06, 0.1, D + 0.05, 'ochre', back);
+  for (const c of g.copings) slab(b, F, tc + (c.t0 + c.t1) / 2, c.y, c.t1 - c.t0, c.h, D + 0.14, 'sandstone', back - 0.02);
+  // the tiled lunette over the attic: a stone arch band round a tile tympanum
+  archSlab(b, F, tc, LV.frieze[0] + 0.25, 1.5, 1.35, D + 0.1, 'sandstone', back);
+  archSlab(b, F, tc, LV.frieze[0] + 0.33, 1.3, 1.18, D + 0.15, 'greyBrick', back);
+  // the twin window of the top tier, white-framed over a stone sill; its dark panes are drawn as solid dark panels, since
+  // glass there stands past the 3DBAG corner mass's sloping top (the openings gate's 'outside' rule)
+  const t2 = g.tiers[2], wy0 = t2.y0 + 0.2, wy1 = t2.y1 - 0.25;
+  slab(b, F, tc, wy0 - 0.08, 0.74, 0.08, D + 0.12, 'sandstone', back);
+  slab(b, F, tc, wy0, 0.6, wy1 - wy0, D + 0.05, 'concrete', back);
+  for (const s of [-1, 1]) slab(b, F, tc + s * 0.15, wy0 + 0.06, 0.22, wy1 - wy0 - 0.12, D + 0.09, 'red', back);
+  // stone pinnacles on the top corners
+  for (const s of [-1, 1]) {
+    slab(b, F, tc + s * (t2.t1 - 0.1), g.top, 0.24, 0.42, 0.3, 'sandstone', back + D - 0.28);
+    slab(b, F, tc + s * (t2.t1 - 0.1), g.top + 0.42, 0.14, 0.24, 0.22, 'stone', back + D - 0.24);
+  }
 }

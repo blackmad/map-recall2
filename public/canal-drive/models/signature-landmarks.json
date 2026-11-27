@@ -138208,8 +138208,8 @@
         "depthMetres": 27.931408405303955,
         "depthCoverage": 0.9010131743646437
       },
-      "triangles": 9663,
-      "bytes": 159280,
+      "triangles": 10203,
+      "bytes": 166692,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "leidsestraat-40": {
@@ -138336,8 +138336,8 @@
         "depthMetres": 9.796290874481201,
         "depthCoverage": 1.042158603668213
       },
-      "triangles": 6325,
-      "bytes": 103288,
+      "triangles": 6577,
+      "bytes": 106896,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

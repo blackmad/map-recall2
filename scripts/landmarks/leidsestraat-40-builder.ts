@@ -8,7 +8,7 @@ import source from './leidsestraat-40-footprints.json';
 /**
  * LEIDSESTRAAT 40 (BAG pand 0363100012176402, 1881, rijksmonument; municipal register 2628 has no description text): the
  * Dutch neo-renaissance corner house on the Leidsestraat and the Keizersgracht, in orange-red brick with light stone bands
- * and dressings, a stepped dormer gable, a grey stone ground storey with a round-arched shop window under a sculpted
+ * and dressings, a stepped dormer gable, a cream stone ground storey with white shop joinery and a round-arched shop window under a sculpted
  * frieze, and on the canted corner a corbelled oxblood timber oriel turret through two storeys, carried past the eaves as
  * a glazed tower stage under a tall zinc spire, with a bust and carved consoles under its corbel.
  *
@@ -90,15 +90,20 @@ function pairedWindow(b: BuildingTools, F: Frame, m: number, y0: number, y1: num
 /** Round-arched shop window in grey stone: glass, a stained-glass fanlight, the archivolt and a cartouche keystone. */
 function archWindow(b: BuildingTools, F: Frame, t0: number, t1: number, top: number) {
   const tc = (t0 + t1) / 2, w = t1 - t0, spring = top - w / 2;
-  archSlab(b, F, tc, 0.35, w + 0.5, top + 0.3 - 0.35, 0.1, 'greyBrick');
+  archSlab(b, F, tc, 0.35, w + 0.5, top + 0.3 - 0.35, 0.1, 'stone');
   archSlab(b, F, tc, 0.42, w, top - 0.42, 0.16, 'glass');
   // stained fanlight over the transom
   const s = new T.Shape(); s.moveTo(-w / 2 + 0.08, 0); s.lineTo(w / 2 - 0.08, 0); s.absarc(0, 0, w / 2 - 0.08, 0, Math.PI, false);
   put(b, F, new T.ExtrudeGeometry(s, {depth: 0.2, bevelEnabled: false, curveSegments: 8}), tc, spring + 0.02, 0, 'gold');
-  slab(b, F, tc, spring - 0.06, w, 0.1, 0.25, 'frame');
-  archBand(b, F, tc, spring, w + 0.56, w / 2 + 0.28, 0.28, 0.26, 'greyBrick', 0, 10);
+  // white-painted shop joinery (2016 crop: the frames read as white as the stone, x 235 and 350): jamb stiles, the
+  // transom under the fanlight, the white stallriser panel, thin in depth so they stay frame members
+  slab(b, F, tc, spring - 0.06, w, 0.1, 0.12, 'concrete', 0.12);
+  for (const s of [-1, 1]) slab(b, F, tc + s * (w / 2 - 0.02), 0.4, 0.12, spring - 0.46, 0.07, 'concrete', 0.13);
+  slab(b, F, tc, 0.4, w - 0.22, 0.57, 0.07, 'concrete', 0.13);
+  slab(b, F, tc, 0.97, w - 0.22, 0.09, 0.07, 'concrete', 0.13);
+  archBand(b, F, tc, spring, w + 0.56, w / 2 + 0.28, 0.28, 0.26, 'stone', 0, 10);
   slab(b, F, tc, top - 0.05, 0.42, 0.55, 0.34, 'sandstone');
-  slab(b, F, tc, 0, w + 0.5, 0.35, 0.3, 'greyBrick');
+  slab(b, F, tc, 0, w + 0.5, 0.35, 0.3, 'stone');
 }
 
 /** Sculpted frieze panel: a stone ground with relief figure blocks in two depths. */
@@ -110,12 +115,22 @@ function reliefPanel(b: BuildingTools, F: Frame, t0: number, t1: number, y0: num
 
 function leidsestraatFront(b: BuildingTools) {
   const F = FF, L = EF.len;
-  // ground: the white-painted shopfront on the left, grey stone round the arch on the right
+  // ground: the white-painted shopfront on the left, cream stone round the arch on the right (2016 crop: the ground
+  // storey reads as light as the white joinery; the 2024 dusk look is too dark to measure)
   slab(b, F, 2.17, 0, 4.26, L40.shop, 0.12, 'concrete');
   for (const [a, c] of [[0.4, 1.3], [2.5, 3.62]]) slab(b, F, (a + c) / 2, 0.45, c - a, 1.95, 0.16, 'glass');
   slab(b, F, 1.9, 0.05, 0.9, 2.3, 0.16, 'glass'); // the glazed shop door
   slab(b, F, 2.15, 2.62, 4.0, 0.5, 0.16, 'concrete');
-  slab(b, F, (4.3 + L) / 2, 0, L - 4.3, L40.relief[0] - 0.05, 0.06, 'greyBrick');
+  // white shop joinery over the glass: stiles, head and sill rails per window, the door's stiles and head rail
+  // (no glazing bars across the glass: the openings audit would count each light as a window) (2016 crop x 20-65, 70-120, 125-180); thin in depth (0.06) so they read as frames, not walls
+  for (const [a, c] of [[0.4, 1.3], [2.5, 3.62]]) {
+    for (const t of [a - 0.005, c + 0.005]) slab(b, F, t, 0.43, 0.09, 1.99, 0.06, 'concrete', 0.15);
+    for (const [y, hh] of [[0.43, 0.1], [2.32, 0.1]]) slab(b, F, (a + c) / 2, y, c - a - 0.08, hh, 0.06, 'concrete', 0.15);
+    slab(b, F, (a + c) / 2, 0.4, c - a + 0.12, 0.08, 0.12, 'stone', 0.12); // the sill
+  }
+  for (const t of [1.40, 2.40]) slab(b, F, t, 0.03, 0.1, 2.34, 0.06, 'concrete', 0.15);
+  slab(b, F, 1.9, 2.22, 0.84, 0.08, 0.06, 'concrete', 0.15);
+  slab(b, F, (4.3 + L) / 2, 0, L - 4.3, L40.relief[0] - 0.05, 0.06, 'stone');
   archWindow(b, F, L40.arch[0], L40.arch[1], L40.archTop);
   reliefPanel(b, F, tX(222), tX(358), L40.relief[0], L40.relief[1]);
   // the low windows over the shop and the stone string course
@@ -174,7 +189,7 @@ function dormerGable(b: BuildingTools, F: Frame) {
   for (const s of [-1, 1]) slab(b, F, tc + s * (w / 2 - 0.05), y0, 0.3, 0.5, 0.35, 'stone');
 }
 
-/** The Keizersgracht return (3.74 m): grey stone ground with the second arched window, the frieze, the paired axis. */
+/** The Keizersgracht return (3.74 m): cream stone ground with the second arched window, the frieze, the paired axis. */
 function keizersgrachtReturn(b: BuildingTools) {
   // the 3DBAG return wall runs from 0.15 m behind ring edge 4 at the corner end to 0.02 m behind it at t 3.39: hang the
   // return on that wall's own line
@@ -182,7 +197,7 @@ function keizersgrachtReturn(b: BuildingTools) {
   const tg: [number, number] = [(FK.tangent[0] + FK.n[0] * k) / nt, (FK.tangent[1] + FK.n[1] * k) / nt];
   const F: Frame = {origin: [FK.origin[0] - FK.n[0] * 0.12, FK.origin[1] - FK.n[1] * 0.12], tangent: tg, n: [(FK.n[0] - FK.tangent[0] * k) / nt, (FK.n[1] - FK.tangent[1] * k) / nt]};
   const L = EK.len, m = L / 2 + 0.45; // clear of the turret's buried half at the corner end
-  slab(b, F, L / 2, 0, L - 0.04, L40.relief[0] - 0.05, 0.06, 'greyBrick');
+  slab(b, F, L / 2, 0, L - 0.04, L40.relief[0] - 0.05, 0.06, 'stone');
   archWindow(b, F, m - 1.0, m + 1.0, L40.archTop);
   reliefPanel(b, F, 0.25, L - 0.25, L40.relief[0], L40.relief[1]);
   slab(b, F, L / 2, L40.string1[0], L - 0.04, L40.string1[1] - L40.string1[0], 0.22, 'stone');
@@ -200,7 +215,7 @@ function keizersgrachtReturn(b: BuildingTools) {
 /** The canted corner: a glazed door between carved consoles, the bust under the corbel, the oriel turret and its spire. */
 function corner(b: BuildingTools) {
   const F = FC, L = EC.len, tc = L / 2;
-  slab(b, F, tc, 0, L - 0.1, 4.3, 0.12, 'greyBrick');
+  slab(b, F, tc, 0, L - 0.1, 4.3, 0.12, 'stone');
   slab(b, F, tc, 0.05, 0.95, 2.6, 0.2, 'concrete'); // white door case
   slab(b, F, tc, 0.12, 0.75, 2.4, 0.25, 'glass');
   slab(b, F, tc, 2.7, 0.95, 0.5, 0.25, 'glass'); // transom light
