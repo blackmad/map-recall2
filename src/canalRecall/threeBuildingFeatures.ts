@@ -603,7 +603,7 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
 }
 
 /**
- * Shell roofs (lane R1-A, #223, `?shellRoofs=0` off): a coarse or touch shell under a planned roof stops its walls at
+ * Shell roofs (lane R1-A, #223): a coarse or touch shell under a planned roof stops its walls at
  * the eaves and carries the detail path's planned roof, low-poly (no dormers, chimneys, white trim, shutters, turned
  * street ridges or ornamental crowns; a shaped gable becomes a plain one) in the same measured or planned roof colour.
  * Before, it was a full-height box under a flat lid (often a grey prior), so the detail chunk replacing it two to five

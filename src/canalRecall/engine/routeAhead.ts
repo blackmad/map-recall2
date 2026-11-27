@@ -110,12 +110,3 @@ export function withAhead(block: readonly string[], ahead: readonly string[] | n
   }
   return out;
 }
-
-/** `?routeAhead=0` (or `window.__canalRecallRouteAhead = false`): no route-ahead prefetch (A/B). */
-export function routeAheadEnabled(): boolean {
-  try {
-    const g = globalThis as { __canalRecallRouteAhead?: boolean; location?: { search?: string } };
-    if (g.__canalRecallRouteAhead === false) return false;
-    return new URLSearchParams(g.location?.search ?? '').get('routeAhead') !== '0';
-  } catch { return true; }
-}

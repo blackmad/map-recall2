@@ -1,7 +1,7 @@
 // H1c (#350): odd bay counts on two-window cells, drawn as half-cell axis units (streetFacadeRendering.ts axisUnitPlan).
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { axisUnitOpenings, axisUnitPlan, oddAxisCellsEnabled, AXIS_UNIT_U, DOOR_UNIT_CLEARANCE, MIN_AXIS_PITCH_M } from './streetFacadeRendering.js';
+import { axisUnitOpenings, axisUnitPlan, AXIS_UNIT_U, DOOR_UNIT_CLEARANCE, MIN_AXIS_PITCH_M } from './streetFacadeRendering.js';
 import { layoutWall } from './facadeLayout.js';
 import { STYLE_DIMS } from './facadeCells.js';
 import type { Openings } from './facadeOpenings.js';
@@ -47,17 +47,12 @@ test('an odd stated count on a two-window cell lays exactly that many units', ()
   }
 });
 
-test('even counts, one-window cells, unmeasured pitches and the kill switch keep whole cells', () => {
+test('even counts, one-window cells and unmeasured pitches keep whole cells', () => {
   assert.equal(axisUnitPlan({ bays: 2, axesPerCell: 2 }, two(), 'canal', 5.6, fallback), null);
   assert.equal(axisUnitPlan({ bays: 3, axesPerCell: 1 }, two(), 'canal', 5.6, fallback), null);
   assert.equal(axisUnitPlan(undefined, two(), 'canal', 5.6, fallback), null);
   assert.equal(axisUnitPlan({ bays: 3, axesPerCell: 2 }, two(), 'canal', 3 * (MIN_AXIS_PITCH_M - 0.05), fallback), null);
   assert.equal(axisUnitPlan({ bays: 3, axesPerCell: 2 }, two(), 'canal', 3 * STYLE_DIMS.canal.bay * 2, fallback), null);
-  process.env.ODD_AXIS_CELLS = '0';
-  try { assert.equal(axisUnitPlan({ bays: 3, axesPerCell: 2 }, two(), 'canal', 5.6, fallback), null); }
-  finally { delete process.env.ODD_AXIS_CELLS; }
-  assert.equal(oddAxisCellsEnabled('?oddAxisCells=0'), false);
-  assert.equal(oddAxisCellsEnabled('?x=1'), true);
 });
 
 test('doorMinBayM absent is the old 2.4 m door rule', () => {

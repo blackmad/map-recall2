@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as THREE from 'three';
-import { CULL_MARGIN, InstanceCull, treeCullFlag } from './instanceCull';
+import { CULL_MARGIN, InstanceCull } from './instanceCull';
 import { SHADOW_ONLY_LAYER } from './shadowStandIns';
 
 function grid(n: number, step: number): THREE.InstancedMesh {
@@ -57,13 +57,4 @@ test('InstanceCull: the buffers hold every instance the view meets, in order, pl
   assert.equal(mesh.count, n * n);
   assert.deepEqual(Array.from(mesh.instanceMatrix.array), Array.from(full));
   assert.ok(CULL_MARGIN > 0);
-});
-
-test('treeCullFlag: on unless ?treeCull=0 or the global is false', () => {
-  const g = globalThis as any, saved = { location: g.location, flag: g.__canalRecallTreeCull };
-  try {
-    g.location = { search: '?engine=own' }; assert.equal(treeCullFlag(), true);
-    g.location = { search: '?treeCull=0' }; assert.equal(treeCullFlag(), false);
-    g.location = { search: '' }; g.__canalRecallTreeCull = false; assert.equal(treeCullFlag(), false);
-  } finally { g.location = saved.location; g.__canalRecallTreeCull = saved.flag; }
 });

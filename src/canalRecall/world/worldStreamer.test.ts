@@ -162,7 +162,7 @@ test('worker batches: property strings are interned on arrival, values and objec
 });
 
 test('fetch ring (#130): ride box at ride zoom, a ride-sized square around the rider in the intro, cells grown by the margin', async () => {
-  const { rideBox, ringCells, grow, worldRingEnabled, RIDE_HALF_M, WORLD_RING_MARGIN_M } = await import('./worldRing.ts');
+  const { rideBox, ringCells, grow, RIDE_HALF_M, WORLD_RING_MARGIN_M } = await import('./worldRing.ts');
   const view = { west: 4.880, south: 52.370, east: 4.889, north: 52.376 };
   assert.equal(rideBox(view, 17.8, [4.882, 52.371]), view, 'ride zoom: the camera box');
   const intro = rideBox(view, 17, [4.882, 52.371]);
@@ -179,7 +179,6 @@ test('fetch ring (#130): ride box at ride zoom, a ride-sized square around the r
   assert.ok(!cells.has(cellKeyOf(...cellOf(view.west - 1400 / 67967.53053174692, view.south))), 'beyond it');
   const ahead = { west: 4.95, south: 52.40, east: 4.951, north: 52.401 };
   assert.ok(ringCells(view, [ahead]).has(cellKeyOf(...cellOf(4.95, 52.40))), 'look-ahead boxes join the ring');
-  assert.equal(worldRingEnabled('?worldRing=0'), false); assert.equal(worldRingEnabled('?world=v1'), true);
 });
 
 test('fetch ring (#130): a tile cut from some of its cells is topped up with the same objects and ends equal to the whole tile', async () => {

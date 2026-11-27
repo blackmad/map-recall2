@@ -12,8 +12,7 @@ import { summariseSwaps, swapSummaryMarkdown, type SwapRecord } from '../../src/
 // seconds (60). src/canalRecall/engine/swapProbe.ts logs every swap (shell → detail, detail rebuilds, buildings a
 // rebuilt chunk gains or loses, extras, detail → shell, ground lifts, landmark arrivals/LODs, tree rebuilds) per object
 // with its distance from the rider and its visible on-screen area (CSS px², occlusion included) right after the frame
-// that shows it. Gate: no swapped object ≥ 400 px² within 120 m; SWAP_GATE_MID=1 also 0 at 120–300 m (popInSwapsMid). SWAP_QS adds query flags (A/B, the pre-#217 swaps:
-// `&swapFade=0&routeAhead=0&ringFollow=0&detailLinger=0`), SWAP_REPORT_ONLY=1 reports without failing, SWAP_TRACE=1
+// that shows it. Gate: no swapped object ≥ 400 px² within 120 m; SWAP_GATE_MID=1 also 0 at 120–300 m (popInSwapsMid). SWAP_QS adds query flags (A/B), SWAP_REPORT_ONLY=1 reports without failing, SWAP_TRACE=1
 // adds the buildings layer's install/drop/fade steps to the JSON, BUNDLES_DIR serves bundles built from this checkout.
 // Output: artifacts/perf/swaps/<project><label>.{json,md}.
 test.skip(!process.env.PERF_SWAPS, 'set PERF_SWAPS=1 to measure');

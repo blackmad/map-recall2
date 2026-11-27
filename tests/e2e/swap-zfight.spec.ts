@@ -12,7 +12,7 @@ import { debugLevelOf, layerDigitOf } from '../../src/canalRecall/look/cellMips'
 // stepped by hand (the clock of every fading chunk set to each step) while the camera pans sub-pixel between steps.
 // Per step: the area on the slab whose colour moves by ΔE > 20 from the step before (CIE76 in Lab). A still frame
 // has none; a dissolve that draws shell and detail over each other z-fights there. Gate: 0 px during the swap with
-// the complementary dissolve (the default); `?swapComplement=0` reports the old overlap.
+// the complementary dissolve (the default); `?chunkFade=0` reports without the dissolve.
 //   PW_PORT=4640 BUNDLES_DIR=<scratch> /tmp/canal-pw.sh npx playwright test swap-zfight --project=desktop --workers=1
 // ZFIGHT_QS adds query flags; ZFIGHT_REPORT_ONLY=1 reports without failing; ZFIGHT_SPOT picks a spot (default s3-slab);
 // ZFIGHT_STEPS (24) and ZFIGHT_PAN_PX (0.35 CSS px per step) shape the pan. Output: artifacts/swap-zfight/<project><label>.
@@ -580,6 +580,6 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   expect(errors, 'page errors').toEqual([]);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(swap.fadingSteps, 'the swap was dissolving through the steps').toBeGreaterThan(STEPS * 0.8);
   // Complementary (the default): the shell yields the detail's share of the slab at mid-swap (0.5 ± 0.1).
-  if (!process.env.ZFIGHT_REPORT_ONLY && !FRAME_MASK && !process.env.ZFIGHT_ALIAS_ONLY && !/swapComplement=0|chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
+  if (!process.env.ZFIGHT_REPORT_ONLY && !FRAME_MASK && !process.env.ZFIGHT_ALIAS_ONLY && !/chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(sum(report.excess), 'ΔE>20 px on the slab beyond the still pan, during the swap').toBe(0);
 });

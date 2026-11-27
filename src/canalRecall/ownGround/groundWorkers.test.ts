@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { defaultGroundWorkers, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, sharedNeighbours } from './groundWorkers';
+import { defaultGroundWorkers, dispatchTier, groundWorkersFlag, inFocusBlock, nextDispatch, sharedNeighbours } from './groundWorkers';
 
 test('groundWorkersFlag reads 1–4 from the query, else the fallback', () => {
   assert.equal(groundWorkersFlag(1, '?groundWorkers=3'), 3);
@@ -11,43 +11,16 @@ test('groundWorkersFlag reads 1–4 from the query, else the fallback', () => {
   assert.equal(groundWorkersFlag(7, ''), 4);
 });
 
-test('pickWorker: one worker is always 0', () => {
-  assert.equal(pickWorker('a', 1, new Map([['a', 0]]), ['a', 'b']), 0);
-});
-
-test('pickWorker balances new cells over the workers', () => {
-  const assigned = new Map<string, number>(), pending: string[] = [];
-  for (const k of ['a', 'b', 'c', 'd', 'e', 'f']) { pending.push(k); const w = pickWorker(k, 3, assigned, pending); assigned.set(k, w); }
-  assert.deepEqual([...assigned.values()], [0, 1, 2, 0, 1, 2]);
-});
-
-test('pickWorker keeps a still-pending cell on its worker (a new level replaces the queued one there)', () => {
-  assert.equal(pickWorker('a', 2, new Map([['a', 1], ['b', 0], ['c', 0]]), ['a', 'b', 'c']), 1);
-});
-
-test('pickWorker sends an unassigned cell to the least busy worker', () => {
-  assert.equal(pickWorker('d', 2, new Map([['b', 0], ['c', 0]]), ['b', 'c', 'd']), 1);
-});
-
 test('inFocusBlock: the focus cell and its 8 neighbours', () => {
   assert.equal(inFocusBlock('0_0', '0_0'), true);
   assert.equal(inFocusBlock('-1_1', '0_0'), true);
   assert.equal(inFocusBlock('2_0', '0_0'), false);
   assert.equal(inFocusBlock('0_0', null), false);
-  assert.equal(groundFocusFlag('?groundFocus=0'), false);
-  assert.equal(groundFocusFlag(''), true);
 });
 
-test('defaults: three workers on desktop, one on touch; quick first paint opt-in', () => {
+test('defaults: three workers on desktop, one on touch', () => {
   assert.equal(defaultGroundWorkers('full'), 3);
   assert.equal(defaultGroundWorkers('touch'), 1);
-  assert.equal(groundQuickFlag(''), false);
-  assert.equal(groundQuickFlag('?groundQuick=1'), true);
-});
-
-test('groundPullFlag: on unless ?groundPull=0', () => {
-  assert.equal(groundPullFlag(''), true);
-  assert.equal(groundPullFlag('?groundPull=0'), false);
 });
 
 test('nextDispatch fills each worker up to the depth, best-ranked first, least-held worker first', () => {
@@ -76,8 +49,6 @@ test('nextDispatch with a window: a worker takes the nearby cell it shares neigh
   assert.deepEqual(nextDispatch(['0_1', '2_0', '1_0', '9_9'], pending, new Set(), [0, 0], 1, 3, aff), [['2_0', 0], ['0_1', 1]]);
   // No affinity anywhere: rank order.
   assert.deepEqual(nextDispatch(['9_9', '0_1'], new Set(['9_9', '0_1']), new Set(), [0], 1, 3, () => 0), [['9_9', 0]]);
-  assert.equal(groundAffinityFlag('?groundAffinity=0'), false);
-  assert.equal(groundAffinityFlag(''), true);
 });
 
 test('nextDispatch with lodOf: affinity never takes a coarser cell ahead of the best-ranked level (R5-A #260 step 3)', () => {
@@ -91,8 +62,6 @@ test('nextDispatch with lodOf: affinity never takes a coarser cell ahead of the 
   // Among L1 cells affinity still chooses.
   const l1 = ['-2_-2', '-2_0'], lod1 = () => 1;
   assert.deepEqual(nextDispatch(l1, new Set(l1), new Set(), [0], 1, 4, aff, lod1), [['-2_0', 0]]);
-  assert.equal(groundAffinityLodFlag('?groundAffinityLod=0'), false);
-  assert.equal(groundAffinityLodFlag(''), true);
 });
 
 test('dispatchTier with the focus block: affinity never takes an L1 cell outside the block ahead of one inside (R5-A #260)', () => {
@@ -105,6 +74,4 @@ test('dispatchTier with the focus block: affinity never takes an L1 cell outside
   assert.equal(dispatchTier('1_-2', 1, '0_-1'), '1:1');
   assert.equal(dispatchTier('-1_1', 1, '0_-1'), '1:0');
   assert.equal(dispatchTier('-1_1', 0, undefined), '0');
-  assert.equal(groundBlockFirstFlag('?groundBlockFirst=0'), false);
-  assert.equal(groundBlockFirstFlag(''), true);
 });

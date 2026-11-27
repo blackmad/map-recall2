@@ -11,7 +11,6 @@ const BUURT_PROFILES_FOR_TEST = buurtProfileAt(4.8821, 52.3768);
 
 // 9... is no BAG gemeente code: these synthetic ids never meet a measured pand in modern-pand-walls.json (0363...121xxxxx did once the wide pass measured it).
 const ids = Array.from({ length: 1000 }, (_, i) => `NL.IMBAG.Pand.93631000121${String(i).padStart(5, '0')}`);
-const setFlag = (v: boolean | undefined) => { (globalThis as { __canalRecallModernFacades?: boolean }).__canalRecallModernFacades = v; };
 
 test('preset indices name the presets they claim', () => {
   const m = BAY_STYLES.modern;
@@ -36,7 +35,7 @@ test('pre-1945 and undated buildings never take the modern vocabulary', () => {
   assert.equal(modernEraFor(1980), 'renewal');
 });
 
-test('bayLookFor is byte-identical before 1945, without facts, off the photo look and with the flag off', () => {
+test('bayLookFor is byte-identical before 1945, without facts, and off the photo look', () => {
   for (const [i, id] of ids.entries()) {
     const year = [1620, 1870, 1905, 1925, 1944, null][i % 6], h = 8 + (i % 30);
     const facts = { footprintM2: 200 + i * 7, buildingType: i % 9 === 0 ? 'office' : null };
@@ -45,10 +44,6 @@ test('bayLookFor is byte-identical before 1945, without facts, off the photo loo
   for (const id of ids.slice(0, 300)) {
     const facts = { footprintM2: 900 };
     assert.deepEqual(bayLookFor(id, 1985, 15, 'cartoon', undefined, undefined, undefined, null, facts), bayLookFor(id, 1985, 15, 'cartoon'));
-    setFlag(false);
-    const off = bayLookFor(id, 1985, 15, 'photo', undefined, undefined, undefined, null, facts);
-    setFlag(undefined);
-    assert.deepEqual(off, bayLookFor(id, 1985, 15, 'photo'));
   }
 });
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { PENDING_CAP_MS, pendingDone, pendingFilter, pendingLayer, wallsPerAreaEnabled } from './pendingWalls.ts';
+import { PENDING_CAP_MS, pendingDone, pendingFilter, pendingLayer } from './pendingWalls.ts';
 import { buildingTile14, stampTile } from './buildingTilesBrowser.ts';
 
 test('the stand-in filter keeps the original filter and drops buildings in drawn tiles', () => {
@@ -38,9 +38,4 @@ test('t14 is the facade layer\'s coarse key: the first vertex at z14 (Polygon an
   const features = [{ type: 'Feature' as const, properties: {} as Record<string, unknown>, geometry: { type: 'Polygon', coordinates: [ring] } }];
   stampTile(features);
   assert.equal(features[0].properties.t14, want);
-});
-
-test('the flag is off unless asked', () => {
-  assert.equal(wallsPerAreaEnabled(''), false);
-  assert.equal(wallsPerAreaEnabled('?wallsPerArea=1'), true);
 });

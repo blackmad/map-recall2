@@ -15,7 +15,6 @@
  *
  * During the intro the camera is at the overview zoom, whose box is about twice the ride's; the ring then uses
  * a ride-sized square around the rider (`RIDE_HALF_M` each way, any heading), not the overview box.
- * `?worldRing=0` reads whole tiles as before (A/B and fallback).
  */
 import { CELL_GRID, cellsCovering } from './cellGrid.js';
 
@@ -27,10 +26,6 @@ export const WORLD_RING_MARGIN_M = 300;
 export const RIDE_ZOOM_MIN = 17.5;
 /** Half-size of the ride-zoom stand-in box around the rider during the intro: the ride view box reaches ~520 m. */
 export const RIDE_HALF_M = 530;
-
-export function worldRingEnabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
-  try { return new URLSearchParams(search).get('worldRing') !== '0'; } catch { return true; }
-}
 
 const [M_LNG, M_LAT] = CELL_GRID.metresPerDegree;
 
@@ -101,21 +96,12 @@ export function ringCells(ride: RingBounds, ahead: readonly RingBounds[], margin
 }
 
 /**
- * `?ringFollow=0` (or `window.__canalRecallRingFollow = false`): the streamer re-plans only when its z14 tiles change,
- * as before (A/B). On (lane E4, #217), the ring's own cells join the streamer's follow signature, so the ring follows
- * the rider: a z14 tile is ~1.5 km and 1 km cells change inside it, and before this a cell the ring had reached was read
+ * The ring follows the rider (lane E4, #217): the ring's own cells join the streamer's follow signature. A z14 tile is
+ * ~1.5 km and 1 km cells change inside it, and before this a cell the ring had reached was read
  * only once the next z14 tile came into view, ~60 m from the rider (Koninginneweg → Van Baerlestraat, the seeded
  * ride: 1,586 buildings arrived in coarse:8413/5385 at 57 m, and 112 in the detailed tile 33654/21541 at 59 m).
+ * A stable key of a ring's cells (sorted), for that follow signature.
  */
-export function ringFollowEnabled(): boolean {
-  try {
-    const g = globalThis as { __canalRecallRingFollow?: boolean; location?: { search?: string } };
-    if (g.__canalRecallRingFollow === false) return false;
-    return new URLSearchParams(g.location?.search ?? '').get('ringFollow') !== '0';
-  } catch { return true; }
-}
-
-/** A stable key of a ring's cells (sorted), for a follow signature. */
 export function ringSignature(ring: ReadonlySet<string> | null): string {
   return ring ? [...ring].sort().join(',') : '';
 }

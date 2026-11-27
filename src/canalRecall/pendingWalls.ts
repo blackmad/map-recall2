@@ -1,5 +1,6 @@
 /**
- * Per-area hand-over from MapLibre's building layers to the three.js facades (lane LS, 2026-11-14; `?wallsPerArea=1`).
+ * Per-area hand-over from MapLibre's building layers to the three.js facades (lane LS, 2026-11-14). Its opt-in
+ * (`?wallsPerArea=1`) and its reader (vector-map.js) are gone; the helpers have no caller in the game.
  *
  * Under the three.js look, vector-map.js ghosts MapLibre's walls (opacity 0) and hides its roofs and ground floors as
  * soon as the facade layer is on, before that layer has drawn anything: districts the facades have not built yet
@@ -36,13 +37,4 @@ export function pendingLayer(spec: LayerSpec, drawn: readonly string[], opacity:
 export function pendingDone(drawn: number, resident: number, shownAt: number | null, now: number, capMs = PENDING_CAP_MS): boolean {
   if (resident > 0 && drawn >= resident) return true;
   return shownAt !== null && now - shownAt > capMs;
-}
-
-/** `?wallsPerArea=1` turns the per-area hand-over on (`window.__canalRecallWallsPerArea` overrides). */
-export function wallsPerAreaEnabled(search?: string): boolean {
-  try {
-    const g = globalThis as { __canalRecallWallsPerArea?: boolean; location?: { search?: string } };
-    if (typeof g.__canalRecallWallsPerArea === 'boolean') return g.__canalRecallWallsPerArea;
-    return new URLSearchParams(search ?? g.location?.search ?? '').get('wallsPerArea') === '1';
-  } catch { return false; }
 }

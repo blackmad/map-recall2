@@ -30,7 +30,7 @@ import {
   savePassport,
   stampNewNeighborhoods,
 } from './neighborhoodPassport';
-import { drawArrivalStamp, ARRIVAL_STAMP_HEIGHT, stampCardEnabled } from '../stampArrival';
+import { drawArrivalStamp, ARRIVAL_STAMP_HEIGHT } from '../stampArrival';
 import { loadStampArt } from '../stampArtLoader';
 import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
@@ -1792,10 +1792,9 @@ export class GamePresentationRuntime {
         // At the tightest level a run's line takes the story's last line, so the card does not grow.
         const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level];
         const storyLines: string[] = [];
-        // G5: the passport stamp is drawn as a stamp (below), not a sentence;
-        // ?stampCard=0 keeps the sentence.
+        // G5: the passport stamp is drawn as a stamp (below), not a sentence.
         const passportFresh = this._finishPassportFresh || [];
-        const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === 'undefined' ? '' : location.search);
+        const stampCard = passportFresh.length > 0;
         for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
           if (!sentence) continue;
           const room = lineBudget - storyLines.length;
@@ -2305,7 +2304,7 @@ export class GamePresentationRuntime {
       if (stamped.fresh.length) {
         savePassport(localStorage, stamped.passport);
         // The arrival card draws the stamp; fetch its postcard art now.
-        if (stampCardEnabled(typeof location === 'undefined' ? '' : location.search)) void loadStampArt();
+        void loadStampArt();
       }
       this._finishPassportFresh = stamped.fresh;
       return after;

@@ -2,7 +2,6 @@
 // bays through frontageLayoutScale) against the hand-grid photo counts in bays-gate-photo.json.
 //   npx tsx scripts/house-specs/bays-gate.ts [--old-rule]    --old-rule replays the pre-H1b cell rounding (validation)
 //   --dir=staging/house-specs reads the staged extract (default: the published house-specs)
-//   ODD_AXIS_CELLS=0 npx tsx scripts/house-specs/bays-gate.ts   the H1b whole-cell fit (the H1c 'before')
 // Drawn columns = layoutWall's cells x the cell's axes on the pand's street front (reference.json facts.footprint
 // .frontWidthM, the longest wall on the nearest road), with the building's own jittered bay scale, as the mesher does.
 import '../world/useBrowserMath.js';
@@ -14,7 +13,7 @@ import { axisUnitPlan, frontageLayoutScale } from '../../src/canalRecall/streetF
 import { layoutWall } from '../../src/canalRecall/facadeLayout.ts';
 import { STYLE_DIMS } from '../../src/canalRecall/facadeCells.ts';
 
-export const HELP = 'bays-gate [--old-rule] [--dir=staging/house-specs] (ODD_AXIS_CELLS=0: whole cells): before/after drawn window columns vs hand-grid photo counts for the #348 sample';
+export const HELP = 'bays-gate [--old-rule] [--dir=staging/house-specs]: before/after drawn window columns vs hand-grid photo counts for the #348 sample';
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 const oldRule = process.argv.includes('--old-rule');
 const hash01 = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296; };

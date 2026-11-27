@@ -64,7 +64,7 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
 import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
-import { SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
+import { SwapSlots, clearSlot, paintSlot } from './swapComplement.js';
 import { buildingCell, cellKeyOf, cellOf } from './world/cellGrid.js';
 import { CoarseTileIndex, coarseBoxOf, coarseKey, coarseSplitEnabled } from './coarseSplit.js';
 import { shellLayerHash } from './world/shellLayers.js';
@@ -78,8 +78,8 @@ import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGe
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
 import { activeViewPriority, viewRank } from './engine/viewPriority.js';
-import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailBlockFrozen, detailFreezeAerialEnabled, detailLingerEnabled, type DetailBlock } from './detailRing.js';
-import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnabled, routeAheadTiles, withAhead } from './engine/routeAhead.js';
+import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, type DetailBlock } from './detailRing.js';
+import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadTiles, withAhead } from './engine/routeAhead.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
@@ -265,34 +265,21 @@ const CHUNK_FADE = (() => {
  * out (it used to replace it in one frame, so faces it added or lost popped); a chunk that leaves (a detail tile the
  * block left, its extras) dissolves out over the coarse shells instead of vanishing; and the dissolve is
  * CHUNK_FADE_MS 700 (350 before). Both reuse the arriving chunk's material clone,
- * which shares the program (no link in the frame). `?swapFade=0` or `window.__canalRecallSwapFade = false` restores
- * the old swaps for A/B.
+ * which shares the program (no link in the frame).
  */
-const SWAP_FADE = (() => {
-  try {
-    const g = globalThis as { __canalRecallSwapFade?: boolean; location?: { search?: string } };
-    return g.__canalRecallSwapFade !== false && new URLSearchParams(g.location?.search ?? '').get('swapFade') !== '0';
-  } catch { return true; }
-})();
 /** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
-const CHUNK_FADE_MS = SWAP_FADE ? 700 : 350;
+const CHUNK_FADE_MS = 700;
 /**
  * Complementary dissolve (swapComplement.ts, lane R1-A #223): the mesh a dissolving chunk replaces (the coarse shells
  * under a detail chunk, a rebuilt chunk's old mesh) draws only where the newcomer does not, on the city look's
- * `swap` program variant. `?swapComplement=0` keeps both drawn over each other during the fade, as before.
+ * `swap` program variant.
  */
-const SWAP_COMPLEMENT = CHUNK_FADE && swapComplementEnabled();
+const SWAP_COMPLEMENT = CHUNK_FADE;
 /**
  * Shell roofs (threeBuildingFeatures.ts shellRoofPlan, lane R1-A #223): coarse and touch shells stop their walls at
  * the eaves under the detail path's planned roof, low-poly, in its colour, so a detail chunk replacing them changes
- * extras and shading, not the roof. `?shellRoofs=0` or `window.__canalRecallShellRoofs = false` keeps the flat lids.
+ * extras and shading, not the roof. Every shell group is built with `shellRoofs: true`.
  */
-const SHELL_ROOFS = (() => {
-  try {
-    const g = globalThis as { __canalRecallShellRoofs?: boolean; location?: { search?: string } };
-    return g.__canalRecallShellRoofs !== false && new URLSearchParams(g.location?.search ?? '').get('shellRoofs') !== '0';
-  } catch { return true; }
-})();
 /**
  * A clone of a city material whose `cityFade` (the screen-door dissolve) is its own, starting at `value`; it shares the
  * source's program (same defines and cache key: no compile, no link in the frame). Null when the material has no fade.
@@ -344,14 +331,6 @@ export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look:
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
-/** `?featureGroupCache=0` (or `window.__canalRecallFeatureGroupCache = false`): the uncached grouping loop. */
-export function featureGroupCacheEnabled(): boolean {
-  try {
-    const g = globalThis as { __canalRecallFeatureGroupCache?: boolean; location?: { search?: string } };
-    if (typeof g.__canalRecallFeatureGroupCache === 'boolean') return g.__canalRecallFeatureGroupCache;
-    return new URLSearchParams(g.location?.search ?? '').get('featureGroupCache') !== '0';
-  } catch { return true; }
-}
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
@@ -1043,36 +1022,10 @@ export class ThreeBuildings {
     } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
-    const gate = (this.groupCacheOn ??= featureGroupCacheEnabled()) ? null : this.bakedPlan(features);
-    if (this.groupCacheOn) this.groupCached(features, groups, kitParts);
-    else for (const feature of features) {
-      const p = feature.properties;
-      const id = String(p.id ?? '');
-      if (KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id)) kitParts.push(feature);
-      // Every building draws here (bare walls when it has no facade), except the parts a kit
-      // replaces and the few houseboats the tiles carry (the houseboat generator draws those).
-      if (KIT_HIDE_SET.has(id) || this.boatIds.has(id)) continue;
-      const polygons = asPolygons(feature.geometry);
-      if (!polygons.length) continue;
-      const near = tileKeyOf(polygons, this.detailZoom);
-      const detailed = this.detailTiles.has(near);
-      const cell = gate || this.coarseSplit ? buildingCell(feature.geometry as any) : null;
-      const key = coarseKey(tileKeyOf(polygons), cell, this.coarseSplit);
-      if (gate && cell !== null && gate.covers(cell)) this.bakedSourceOf(cell).push(feature);
-      else { let list = groups.get(key); if (!list) groups.set(key, list = []); list.push(feature); }
-      // The cheap shell remains available until the detailed mesh actually installs.
-      if (detailed) { const k = `near:${near}`; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
-      if (detailed) { const k = EXTRAS_PREFIX + near; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
-    }
+    this.groupCached(features, groups, kitParts);
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
     // Houseboats ride along with the resident building tiles, one chunk per tile.
-    if (this.groupCacheOn) { if (this.boatTiles.size) for (const feature of features) { const g = this.groupOf(feature); if (g.tile !== null && this.boatTiles.has(g.tile)) groups.set(BOAT_PREFIX + g.tile, NO_SOURCE); } }
-    else for (const feature of features) {
-      const polygons = asPolygons(feature.geometry);
-      if (!polygons.length) continue;
-      const key = tileKeyOf(polygons);
-      if (this.boatTiles.has(key)) groups.set(BOAT_PREFIX + key, NO_SOURCE);
-    }
+    if (this.boatTiles.size) for (const feature of features) { const g = this.groupOf(feature); if (g.tile !== null && this.boatTiles.has(g.tile)) groups.set(BOAT_PREFIX + g.tile, NO_SOURCE); }
     this.lastFeatures = features;
     this.sourceGroups = groups;
     this.coarseIndex.clear();
@@ -1096,12 +1049,11 @@ export class ThreeBuildings {
   }
 
   /**
-   * Feature grouping memo (lane E5, #218; `?featureGroupCache=0` off): a feature's id, kit role and tile keys are fixed,
+   * Feature grouping memo (lane E5, #218): a feature's id, kit role and tile keys are fixed,
    * so they are derived once per feature object instead of on every call. setFeatures runs over every resident
    * building (~36,000) on each tile flush and each detail-centre move; at ride start on the iPhone profile (4x) one call
-   * was 40-107 ms, mostly this loop. The groups, their order and their lists are the same as the uncached loop's.
+   * was 40-107 ms, mostly this loop.
    */
-  private groupCacheOn: boolean | undefined;
   /** `?coarseSplit` (coarseSplit.ts): one runtime coarse shell per z14 tile and world cell, not per tile. */
   readonly coarseSplit = coarseSplitEnabled();
   /** The coarse keys of each z14 tile in the current grouping (one per tile unless split). */
@@ -1572,22 +1524,19 @@ export class ThreeBuildings {
   /**
    * Detail follows the rider; touch devices use a smaller z17 neighbourhood.
    * Cheap to call every frame; regroups only when that block changes.
-   * `aerial` (rendererShared/aerialView.ts, passed by the own engine): the block keeps its last plan from the air
-   * (detailRing.ts detailBlockFrozen, lane R3-G #242; `?detailFreezeAerial=0` follows the subject as before).
    */
-  setDetailCentre(lng: number, lat: number, aerial = false): void {
+  setDetailCentre(lng: number, lat: number): void {
     const on = this.lookAheadOn ??= lookAheadEnabled();
     this.rider = [lng, lat];
     if (on) this.motion.update(lng, lat, performance.now());
-    if (detailBlockFrozen(this.detailBlockState, aerial, this.detailFreezeOn ??= detailFreezeAerialEnabled())) return;
     // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
     // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
-    const touch = this.detailZoom >= 17 && (this.detailLingerOn ??= detailLingerEnabled());
+    const touch = this.detailZoom >= 17;
     const block = detailBlock([lng, lat], on ? this.motion.direction : null, this.detailZoom, this.detailBlockState, { legacy: !on, maxTiles: touch ? DETAIL_MAX_TILES_TOUCH : DETAIL_MAX_TILES, leadM: touch ? DETAIL_LEAD_M_TOUCH : DETAIL_LEAD_M });
     this.detailBlockState = block;
     // Route-ahead prefetch (engine/routeAhead.ts, lane E4): the tiles the next ROUTE_AHEAD_M of the planned route (or the
-    // heading, off a route) crosses join the detailed set, so their detail is built before it is near; `?routeAhead=0` off.
-    const aheadOn = this.routeAheadOn ??= on && routeAheadEnabled();
+    // heading, off a route) crosses join the detailed set, so their detail is built before it is near.
+    const aheadOn = on;
     const direction = this.motion.direction, aheadM = ROUTE_AHEAD_M[this.detailZoom] ?? 300;
     const ahead = !aheadOn ? null : routeAheadTiles(this.route, [lng, lat], this.detailZoom, aheadM, this.routeCursor) ?? (direction ? headingAheadTiles([lng, lat], direction, this.detailZoom, aheadM) : null);
     const next = withAhead(block.keys, ahead, ROUTE_AHEAD_MAX_TILES[this.detailZoom] ?? 2);
@@ -1599,9 +1548,6 @@ export class ThreeBuildings {
   /** Detail (`near:`) chunks installed so far, for the aerial pan harness (scripts/aerial-pan.mjs `detailInstalls`). */
   detailInstalls = 0;
   private readonly motion = new MotionEstimate();
-  private routeAheadOn: boolean | undefined;
-  private detailLingerOn: boolean | undefined;
-  private detailFreezeOn: boolean | undefined;
   /** The planned route (lng/lat), for the route-ahead prefetch; null in Free Ride. */
   private route: [number, number][] | null = null;
   private readonly routeCursor = { index: -1 };
@@ -1807,7 +1753,7 @@ export class ThreeBuildings {
       this.busy.set(w, key);
       const mode = this.modeFor(key), special = key === KIT_KEY || key.startsWith(BOAT_PREFIX);
       // `?terraceRows=1` (terraceRows.ts): the worker cannot read the page's query, so the job carries the flag.
-      pool.post(w, { key, gen, ...options, features: source, mode, ...(SHELL_ROOFS ? { shellRoofs: true } : {}), ...(terraceRowsOn() ? { terraceRows: true } : {}), ...(roofEdgeOn() ? { roofEdge: true } : {}),
+      pool.post(w, { key, gen, ...options, features: source, mode, shellRoofs: true, ...(terraceRowsOn() ? { terraceRows: true } : {}), ...(roofEdgeOn() ? { roofEdge: true } : {}),
         ...(mode === 'walls' && !special && this.recordChunks() ? { facadeRecord: { specBase: houseSpecsBase() } } : {}),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
@@ -1818,7 +1764,7 @@ export class ThreeBuildings {
     const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
     const result = key === KIT_KEY ? {chunk:this.buildKits(source),boundParentIds:[]}
       : key.startsWith(BOAT_PREFIX) ? {chunk:this.buildBoats(key.slice(BOAT_PREFIX.length)),boundParentIds:[]}
-      : buildTransportedEnvelopeChunk(source,{...options,mode:this.modeFor(key),...(SHELL_ROOFS?{shellRoofs:true}:{})});
+      : buildTransportedEnvelopeChunk(source,{...options,mode:this.modeFor(key),shellRoofs:true});
     this.install(key, source, result.chunk, performance.now() - t0, options, result.boundParentIds);
   }
 
@@ -2061,7 +2007,7 @@ export class ThreeBuildings {
     const arriving = !this.chunks.get(key)?.mesh;
     // SWAP_FADE: a rebuilt chunk's drawn mesh stays (opaque) under the new one while it dissolves in; a rebuild of a
     // chunk still dissolving keeps the older, solid mesh and drops the half-faded one.
-    const crossFade = SWAP_FADE && !arriving && this.fades(key);
+    const crossFade = !arriving && this.fades(key);
     if (crossFade && !this.outgoing.has(key) && !this.fading.has(key)) {
       const held = this.chunks.get(key)!;
       this.outgoing.set(key, { mesh: held.mesh, ranges: held.ranges });
@@ -2399,7 +2345,7 @@ export class ThreeBuildings {
     if (!keepOutgoing) this.dropOutgoing(key);
     const held = this.chunks.get(key);
     if (!held) return;
-    if (held.mesh && !(fadeOut && SWAP_FADE && this.fades(key) && this.fadeOut(held.mesh, key.startsWith('near:') ? new Set(held.ranges.keys()) : undefined))) this.disposeMesh(held.mesh);
+    if (held.mesh && !(fadeOut && this.fades(key) && this.fadeOut(held.mesh, key.startsWith('near:') ? new Set(held.ranges.keys()) : undefined))) this.disposeMesh(held.mesh);
     this.chunks.delete(key);
     this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();

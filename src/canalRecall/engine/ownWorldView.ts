@@ -165,12 +165,10 @@ export class OwnWorldView implements WorldViewOracles {
   readonly camera: WorldCamera;
   readonly _sharedFrame: SharedFrame;
   _renderGovernor: any = null;
-  /** Power from the air (engine/aerialPower.ts, lane R5-F #266): pacing, scale and shadow levers while the camera flies. */
+  /** Power from the air (engine/aerialPower.ts, lane R5-F #266): pacing and shadow levers while the camera flies. */
   _aerialPower: AerialPower | null = null;
   /** `?fpsCap=` read once (engine/frameCap.ts fpsCapFromQuery). */
   private readonly fpsCapQuery = fpsCapFromQuery(W().location?.search ?? '');
-  /** The pixel ratio before the aerial scale lowered it (restored when the camera settles). */
-  private aerialBaseRatio: number | null = null;
   /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
   qualityTier: { tier: QualityTier; reasons: string[]; settings: Record<string, unknown>; probe: unknown } | null = null;
   _cameraTilt = 0;
@@ -510,7 +508,7 @@ export class OwnWorldView implements WorldViewOracles {
     const guards = guardFrameHost(this.host, {
       governor: flag('governor', '__canalRecallGovernor', true),
       fixedPixelRatio: new URLSearchParams(W().location?.search ?? '').has('dpr'),
-      // A paced or scaled aerial flight (aerialPower.ts) is not a slow machine: its frames are not judged.
+      // A paced aerial flight (aerialPower.ts) is not a slow machine: its frames are not judged.
       active: () => !!W().canalRecallGame && W().canalRecallGame.state === 4 && !this.aerialFlying(),
       setShadows: shadows ? on => this._sharedFrame.setShadows(on) : undefined,
       restoredOk: () => !!this._sharedFrame.renderer,
@@ -1309,31 +1307,20 @@ export class OwnWorldView implements WorldViewOracles {
     return { settled: ground && city && buildings && far && baked, ground, city, buildings, far, baked, detail: { groundFading: fading, city: c && { inFlight: c.inFlight, queued: c.queued, styling: !!c.styling }, buildingsPending: tb?.pending?.length ?? 0, far: fs && { pending: fs.pending }, baked: bs && { covered: bs.covered, cells: bs.cells, drawn: bs.drawn, fading: bs.fading, pending: bs.pending } } };
   }
 
-  /** The aerial levers hold the frame rate or the pixel ratio below native this frame. */
+  /** The aerial levers hold the frame rate below native this frame. */
   private aerialFlying(): boolean {
-    const d = this._aerialPower?.decision;
-    return !!d && (d.frameMs != null || d.scale !== 1);
+    return this._aerialPower?.decision.frameMs != null;
   }
 
   /** Lane R5-F (#266): this frame's aerial power decision, applied to the frame host and the shared frame. */
   private applyAerialPower(view: { lngLat: [number, number]; zoom: number; bearing: number; detached?: boolean; introFlat: number }, pitch: number): void {
-    const power = this._aerialPower!, before = power.decision;
-    const d = power.update({
+    const d = this._aerialPower!.update({
       now: performance.now(), aerial: view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]), detached: !!view.detached,
       high: view.introFlat === 0 && eyeHeightM(view.zoom, pitch, view.lngLat[1]) >= AERIAL_EYE_MIN_M,
       lng: view.lngLat[0], lat: view.lngLat[1], zoom: view.zoom, pitch, bearing: view.bearing,
     });
     this.host.minFrameMs = d.frameMs;
-    if (d.scale !== before.scale) {
-      // Inside the game frame, before this frame's render: the resized canvas is drawn at once (never shown cleared).
-      if (d.scale !== 1) { this.aerialBaseRatio = this.host.getPixelRatio(); this.host.setPixelRatio(this.aerialBaseRatio * d.scale); }
-      else if (this.aerialBaseRatio != null) { this.host.setPixelRatio(this.aerialBaseRatio); this.aerialBaseRatio = null; }
-    }
-    const frame = this._sharedFrame;
-    if (frame) {
-      frame.shadowEvery = d.shadowEvery;
-      if (d.shadowMapSize !== before.shadowMapSize) frame.setShadowMapSize(d.shadowMapSize);
-    }
+    if (this._sharedFrame) this._sharedFrame.shadowEvery = d.shadowEvery;
   }
 
   setExtractRoot(path: string): void { if (path) this.extractPath = path.replace(/\/$/, ''); }
@@ -1462,8 +1449,8 @@ export class OwnWorldView implements WorldViewOracles {
     const eased = fps ? fps.pitch : this.solver.applyClearance(view, !!camera.reducedMotion);
     lap('camera solve and clearance');
     // The eye never enters a building (streetVisibility.ts, lane F4 #320): chunks draw FrontSide, so a camera inside a
-    // house drew none of it. Checked every frame; pulled in at once, eased back out. `?eyeClear=0` turns it off.
-    const eye = fps ? { pitch: fps.pitch, zoom: fps.zoom } : this.eyeClear && !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
+    // house drew none of it. Checked every frame; pulled in at once, eased back out.
+    const eye = fps ? { pitch: fps.pitch, zoom: fps.zoom } : !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
     if (fps) { view.lngLat = fps.center; view.bearing = fps.bearing; }
     const pitch = eye.pitch;
     const drawZoom = eye.zoom;
@@ -1503,9 +1490,7 @@ export class OwnWorldView implements WorldViewOracles {
     // The frame cap (engine/frameCap.ts): `?fpsCap=`, else the player's "Full frame rate" setting, else 60.
     this.host.maxFps = fpsCap(this.fpsCapQuery, W().__canalRecallFpsCap);
     this.lastSubject = view.subject;
-    // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
-    // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
-    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1], view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]));
+    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
     // A paced delivery (`?arrivalPace=features`) waiting when the view comes down is handed over now.
     if (this._featureDelivery?.waiting && !isAerialView(view.zoom, pitch, view.lngLat[1])) this._featureDelivery.flush();
     lap('building detail centre');
@@ -1555,8 +1540,7 @@ export class OwnWorldView implements WorldViewOracles {
   /**
    * Rider cover (coveredPassage.ts): the building over the rider draws see-through. Route-aware (lane E1 2026-11-05):
    * the route ahead (or, off the route, the centreline of the road underfoot) must run through the footprint too, so
-   * a bump into a house front no longer counts. `?coverRoute=0` restores the point-only rule; `?coverDim=0` hides the
-   * building outright as before instead of ghosting it.
+   * a bump into a house front no longer counts. `?coverRoute=0` restores the point-only rule.
    */
   private updateRiderCover(rider: [number, number], active: boolean): void {
     const city = this._completeCity;
@@ -1565,7 +1549,7 @@ export class OwnWorldView implements WorldViewOracles {
     if (!r.changed) return;
     const ids = r.covered && r.id ? [r.id] : [];
     const tb = this._threeBuildings;
-    if (this.coverDim && tb?.setGhosted) tb.setGhosted('cover', ids);
+    if (tb?.setGhosted) tb.setGhosted('cover', ids);
     else tb?.setHidden?.('cover', ids);
     this.riderCovered = r.covered;
   }
@@ -1613,7 +1597,7 @@ export class OwnWorldView implements WorldViewOracles {
     const base = { rider: view.subject, bearingDeg: this.fpsYaw, viewportHeightPx: vp.height, bobM, maxPitchDeg };
     let backM = 0, stuckId: string | null = null;
     const city = this._completeCity as { sampleFeatures?(limit: number): any[] } | null;
-    if (this.eyeClear && city?.sampleFeatures) {
+    if (city?.sampleFeatures) {
       const resident = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
       const probe = fpsPose({ ...base });
       const aspect = vp.width / Math.max(1, vp.height);
@@ -1636,7 +1620,6 @@ export class OwnWorldView implements WorldViewOracles {
     this._lastFps = { pose, backM, stuckId, elevation };
     return pose;
   }
-  private readonly eyeClear = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('eyeClear') !== '0'; } catch { return true; } })();
   /** The drawn pull-in fraction and pitch cap (null: none), and the building ghosted while the eye cannot get out. */
   private eyeFraction: number | null = null;
   private eyePitch: number | null = null;
@@ -1669,7 +1652,6 @@ export class OwnWorldView implements WorldViewOracles {
     return { pitch: capped, zoom: view.zoom + Math.log2(1 / fraction) };
   }
   private readonly coverRoute = coverRouteFlag();
-  private readonly coverDim = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('coverDim') !== '0'; } catch { return true; } })();
   /** The route as lng/lat for the cover rule (kept when the route line is not drawn), and its source array. */
   private coverRouteCoords: CoverLngLat[] | null = null;
   private coverRouteSource: unknown = null;

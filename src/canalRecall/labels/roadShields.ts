@@ -3,7 +3,7 @@
 // every `symbol-spacing` 200 tile pixels along every way piece in every tile: 8 × "A10", 7 × "A5" and 8 × "S101" in the
 // user's Sloterdijk frame. Here that layer never draws; a point layer with the same look shows the shields
 // placeRoadShields picks from anchors sampled along the same features on screen. Free Ride's label toggle still owns
-// the visibility (vector-map.js shows and hides every symbol layer; ours is one). `?roadShields=0` keeps the basemap's.
+// the visibility (vector-map.js shows and hides every symbol layer; ours is one).
 //
 // Driven by the label overlay's frame (labelOverlay.ts), at most every PLAN_MS, only while our layer is visible.
 
@@ -23,10 +23,6 @@ const PLAN_MS = 1000;
 const SAMPLE_PX = 32;
 
 interface Shield extends ShieldAnchor { lng?: number; lat?: number; refLength: number }
-
-export function roadShieldsEnabled(search = (globalThis as { location?: { search?: string } }).location?.search ?? ''): boolean {
-  return new URLSearchParams(search).get('roadShields') !== '0';
-}
 
 export class RoadShields {
   private ready = false;
