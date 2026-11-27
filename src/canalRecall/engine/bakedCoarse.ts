@@ -32,6 +32,7 @@ import type { BakedRange } from '../world/bakedCellArrays.js';
 import type { FacadeRecordSet } from '../world/facadeStreams.js';
 import { orderByDistance } from '../rendererShared/baseRefreshBudget.js';
 import { FrameAdmit } from './arrivalPace.js';
+import { HiddenRunSkip, cellSkipEnabled } from './cellSkip.js';
 
 /** A cell's SW corner in chunk metres (the baked meshes' position). */
 export function bakedCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
@@ -207,13 +208,13 @@ export function liftRanges(positions: Float32Array | Int16Array, ranges: Readonl
 }
 
 /** A decoded, regrouped cell (world/worldCells.ts ShellCellData). */
-export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; /** 3 or 4 bytes a vertex (`accentSize`; absent: 4). */ accents: Uint8Array; accentSize?: 3 | 4; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; /** look/thinFade.ts pairs, 2 per vertex (SHEL level 2). */ thin?: Uint8Array };
+export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; /** 3 or 4 bytes a vertex (`accentSize`; absent: 4). */ accents: Uint8Array; accentSize?: 3 | 4; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; /** bakedCellArrays indexRuns (absent: no hidden skip). */ runs?: Uint32Array; triangles: number; gzBytes: number; /** look/thinFade.ts pairs, 2 per vertex (SHEL level 2). */ thin?: Uint8Array };
 
 /**
  * A record shell cell (F1 #380, `?shaderFacades=1`; world/worldCells.ts RecordShellCellData): the level 3 mesh (wall
  * metres, record index and wall kind per vertex) and the cell's records, drawn by the record material.
  */
-export type BakedRecordCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; records: FacadeRecordSet };
+export type BakedRecordCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; runs?: Uint32Array; triangles: number; gzBytes: number; records: FacadeRecordSet };
 const isRecordCell = (d: BakedCellData | BakedRecordCellData): d is BakedRecordCellData => 'walls' in d;
 
 /** One drawn cell as the facade layer sees it (ThreeBuildings applyHidden / paintShells read `mesh` and `ranges`). */
@@ -264,7 +265,9 @@ type Resident = BakedEntry & { /** F1: the cell's own record material (drawn onc
   /** Street-level lift: the CPU positions kept while buildings wait for their base. */
   lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number>;
     /** The `baseToken` at which a full pass found no pending base known: skipped until the token or the ground changes. */
-    stalled?: unknown }; lifted: boolean; liftable: boolean };
+    stalled?: unknown }; lifted: boolean; liftable: boolean;
+  /** `?cellSkip` (engine/cellSkip.ts): the CPU index permuted so hidden buildings sit past the draw range. */
+  skip?: { runs: HiddenRunSkip; starts: Uint32Array; version: number } };
 
 export class BakedCoarse {
   private readonly residents = new Map<string, Resident>();
@@ -298,13 +301,29 @@ export class BakedCoarse {
   private released = new Set<string>();
   private lastWant: string[] = [];
   private releases = 0;
-  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean; compact?: boolean; releaseM?: number | null; /** The clock the dissolve starts on (tests inject one; the frame's `now` is read on the same one). */ now?: () => number } = {}) {
+  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean; compact?: boolean; releaseM?: number | null; /** `?cellSkip` (default: the flag). */ cellSkip?: boolean; /** The clock the dissolve starts on (tests inject one; the frame's `now` is read on the same one). */ now?: () => number } = {}) {
     this.now = options.now ?? (() => performance.now());
     this.budget = options.budget ?? bakedCoarseBudget(!!options.touch);
     this.compact = options.compact ?? false;
     this.releaseM = options.releaseM ?? null;
     this.admit = options.paceInstalls ? new FrameAdmit() : null;
+    this.cellSkip = options.cellSkip ?? cellSkipEnabled();
   }
+
+  /** `?cellSkip` (engine/cellSkip.ts): hidden buildings' triangles are not submitted. */
+  private readonly cellSkip: boolean;
+  /**
+   * Whether the installed cells skip now (in-page A/B and frame diffs: `setCellSkipLive(false)` draws every triangle
+   * again on the next draw, from the original index order, without a reload). Only meaningful with `cellSkip`.
+   */
+  private skipLive = true;
+  private skipSyncs = 0;
+  private skipMs = 0;
+  private skipMaxMs = 0;
+  /** Syncs over 1 ms and over 4 ms (the stall check). */
+  private skipOver1 = 0;
+  private skipOver4 = 0;
+  private skipUploaded = 0;
 
   get isEnabled(): boolean { return this.enabled; }
   setEnabled(on: boolean): void {
@@ -504,7 +523,10 @@ export class BakedCoarse {
     }
     g.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     if (this.host.swapSlots()) g.setAttribute('swapSlot', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
-    g.setIndex(release(new THREE.BufferAttribute(data.indices, 1)));
+    // `?cellSkip`: the index stays on the CPU, permuted as buildings hide and show (HiddenRunSkip).
+    const runs = this.cellSkip && data.runs?.length ? new HiddenRunSkip(data.indices, data.runs, data.ranges.length) : null;
+    const index = new THREE.BufferAttribute(data.indices, 1);
+    g.setIndex(runs ? index : release(index));
     g.computeBoundingSphere();
     if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5 / unit; // lifts are a few metres either way
     const old = this.residents.get(data.key);
@@ -530,7 +552,9 @@ export class BakedCoarse {
       // A cell widened from the decimetre grid is drawn and lifted now, and fetched again exact (reliftNear).
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
       ...(clone ? { fade: { start: this.now(), clone, source: material } } : {}),
-      ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
+      ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}),
+      ...(runs ? { skip: { runs, starts: Uint32Array.from(data.ranges, x => x.start), version: -1 } } : {}) };
+    if (r.skip) mesh.onBeforeRender = () => this.syncSkip(r);
     if (old) this.drop(data.key, true, !!own);
     this.host.attach(r);
     scene.add(mesh);
@@ -539,6 +563,36 @@ export class BakedCoarse {
     this.residentsVersion++;
     this.host.repaint();
     if (keepPositions && !r.liftable) this.reliftNear();
+  }
+
+  /**
+   * `?cellSkip`: just before the cell draws, skip what its `hidden` bytes collapse now (a change of the attribute's
+   * version since the last draw): the index from the first changed run is rewritten and its drawn part uploaded.
+   */
+  private syncSkip(r: Resident): void {
+    const skip = r.skip!, g = r.mesh.geometry, hidden = g.getAttribute('hidden');
+    if (!hidden?.array) return;
+    const live = this.skipLive;
+    if (live ? hidden.version === skip.version : skip.version === -2) return;
+    skip.version = live ? hidden.version : -2;
+    const t0 = this.now();
+    const change = live ? skip.runs.syncHidden(hidden.array, skip.starts) : skip.runs.sync(new Uint8Array(0));
+    if (!change) return;
+    const index = g.index;
+    if (change.to > change.from) { index.addUpdateRange(change.from, change.to - change.from); index.needsUpdate = true; this.skipUploaded += (change.to - change.from) * index.array.BYTES_PER_ELEMENT; }
+    g.setDrawRange(0, change.drawCount);
+    const ms = this.now() - t0;
+    this.skipSyncs++; this.skipMs += ms; if (ms > this.skipMaxMs) this.skipMaxMs = ms; if (ms > 1) this.skipOver1++; if (ms > 4) this.skipOver4++;
+  }
+
+  /** In-page A/B: `false` submits every triangle again (original order), `true` skips again; no reload. */
+  setCellSkipLive(on: boolean): void { if (this.skipLive !== on) { this.skipLive = on; this.host.repaint(); } }
+
+  /** `?cellSkip` diagnostics: index rewrites, their main-thread ms, triangles skipped now, CPU index bytes kept. */
+  skipStats(): { on: boolean; syncs: number; ms: number; maxMs: number; over1ms: number; over4ms: number; uploadedMB: number; skippedTriangles: number; triangles: number; cpuIndexMB: number } {
+    let skipped = 0, triangles = 0, cpu = 0;
+    for (const r of this.residents.values()) { triangles += r.triangles; if (r.skip) { skipped += r.skip.runs.skipped / 3; cpu += r.skip.runs.index.byteLength; } }
+    return { on: this.cellSkip, syncs: this.skipSyncs, ms: +this.skipMs.toFixed(2), maxMs: +this.skipMaxMs.toFixed(3), over1ms: this.skipOver1, over4ms: this.skipOver4, uploadedMB: +(this.skipUploaded / 1048576).toFixed(2), skippedTriangles: skipped, triangles, cpuIndexMB: +(cpu / 1048576).toFixed(1) };
   }
 
   /** Cells within the lift radius installed without their CPU positions are fetched again to be lifted. */

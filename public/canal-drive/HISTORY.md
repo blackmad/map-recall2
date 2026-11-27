@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Round 20261127d: baked cells skip hidden buildings; view-change work at 10 Hz (2026-11-27)
+
+- lane/cell-hidden-skip-20261127 (986c7d6d47). Each baked cell's index is now a permutation of building runs: drawn runs first, hidden runs after, with the draw range ending at the drawn runs. The skip is synced from the same `hidden` bytes the shader collapses, so a dissolving copy is still drawn until its fade ends.
+  - Belt ride: 2.38 → 2.18 M triangles a frame (−7.6 %, n=2), and the cells under the rider draw 371/675/573 → 197/482/385 k at three poses.
+  - Frames are pixel-identical, settled and mid-swap (0 px, max Δ 0).
+  - GPU time is only 3–4 % less per frame (timer queries, 4.72 → 4.57 ms), because a collapsed vertex was already cheap. The frame is less triangle-bound than the counts suggested.
+  - The swap costs 0.2 ms mean to rewrite the index, plus about 5 MB/s of index uploads while riding.
+  - Off-switch `?cellSkip=0`.
+- `onViewChange` runs at most 10 Hz. The first and last changes always run. Its listener cost drops from 17–18 to 3 ms/s. Off-switch `?viewChangeHz=0`.
+- flatRoof.test "surface layer" was stale since retail-real became the default and is fixed. The swap-zfight step race is fixed (25/25 steps); its 0-px excess gate still fails on main at 77–98 px, independent of this change (TODO).
+
 ## Round 20261127c: stale flags retired (2026-11-27)
 
 - David agreed the flag plan on 2026-11-27: delete the off-switches whose default had been on for over a week and the opt-in experiments nobody ran, and keep the opt-ins owned by live programmes (designUnits, rowFront) until those decide. lane/retire-flags-20261127 (678893a51f) removed 40 flags, net −841 source lines. The list and plain-English descriptions are in the flag inventory, docs/handoffs/dead-paths-20261127.md.

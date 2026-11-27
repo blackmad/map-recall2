@@ -267,8 +267,11 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     for (let step = 0; step <= STEPS; step++) {
       await page.evaluate(([pose, step, panPx, steps, swap]) => {
         const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, g = vm._ownGround;
-        // Hold every fading chunk at t = step / STEPS of its dissolve (CHUNK_FADE_MS 700), whatever the wall clock.
-        if (swap) for (const f of tb.fading.values()) f.start = performance.now() - 700 * Math.min(0.999, step / steps);
+        // Hold every fading chunk at t = step / STEPS of its dissolve (CHUNK_FADE_MS 700), whatever the wall clock. A
+        // getter, not a value (lane cell-hidden-skip 2026-11-27): a value set here aged with every frame drawn before the
+        // capture and the `fading` read after it (100-200 ms on a loaded machine), so the late steps' fades ended early
+        // ("the swap was dissolving through the steps": 18-21 of 25 on cdeead2e12, in both cellSkip arms).
+        if (swap) for (const f of tb.fading.values()) { const x = Math.min(0.999, step / steps); Object.defineProperty(f, 'start', { configurable: true, enumerable: true, get: () => performance.now() - 700 * x, set: () => {} }); }
         const mPerPx = 156543.03 * Math.cos(pose.center[1] * Math.PI / 180) / 2 ** pose.zoom;
         const along = step * panPx * mPerPx, b = pose.bearing * Math.PI / 180;
         const dLng = along * Math.cos(b) / (111320 * Math.cos(pose.center[1] * Math.PI / 180)), dLat = -along * Math.sin(b) / 110540;
@@ -301,6 +304,8 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
         await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}${TAG}${capture === grab ? '' : '-ref'}-${swap ? 'swap' : 'still'}-mid.png`);
       }
     }
+    // Let the held fades run out from where they are (a plain value again).
+    if (swap) await page.evaluate(() => { for (const f of (window as any).canalRecallGame.vectorMap._threeBuildings.fading.values()) { const s = f.start; Object.defineProperty(f, 'start', { configurable: true, enumerable: true, writable: true, value: s }); } });
     if (swap) await settle(page);
     return { areas, fadingSteps: under.filter(n => n > 0).length, frames };
   };

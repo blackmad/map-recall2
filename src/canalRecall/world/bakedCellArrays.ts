@@ -15,6 +15,29 @@ import { NO_BID, WALL_UV_UNIT_M, type RecordShellMesh, type ShellMesh } from './
 export const BAKED_GRID_M = 0.1;
 
 export type BakedRange = { id: string; start: number; count: number };
+
+/**
+ * The index's building runs (lane cell-hidden-skip 2026-11-27): triples `[first index, index count, range ordinal]`,
+ * one per maximal run of consecutive triangles of one building, in index order. A SHEL lists a building's walls and its
+ * roof in separate passes, so a building is ~2 runs. The baked tier skips the runs of hidden buildings
+ * (engine/cellSkip.ts) without reordering the rest. Every triangle's three vertices belong to one building.
+ */
+/** indexRuns' range ordinal for a run of triangles that span buildings: no building's state skips it. */
+export const MIXED_RUN = 0xffffffff;
+export function indexRuns(indices: ArrayLike<number>, starts: readonly number[], counts: readonly number[], vertexCount: number): Uint32Array {
+  const rangeOf = new Uint32Array(vertexCount);
+  for (let r = 0; r < starts.length; r++) rangeOf.fill(r, starts[r], starts[r] + counts[r]);
+  const out: number[] = [];
+  let at = -1, prev = -1;
+  for (let k = 0; k < indices.length; k += 3) {
+    const r0 = rangeOf[indices[k]];
+    // A triangle across two buildings (none in the compiled SHELs; the unit fixtures have one) is never skipped.
+    const r = rangeOf[indices[k + 1]] === r0 && rangeOf[indices[k + 2]] === r0 ? r0 : MIXED_RUN;
+    if (r !== prev) { if (prev >= 0) out.push(at, k - at, prev); at = k; prev = r; }
+  }
+  if (prev >= 0) out.push(at, indices.length - at, prev);
+  return Uint32Array.from(out);
+}
 /**
  * Positions are from the cell origin (shellOrigin), z up from 0 (the layer lifts buildings onto the ground), in
  * `positionUnit` metres: 1 (Float32), or BAKED_GRID_M (Int16; `quantised`, 6 bytes a vertex less
@@ -23,6 +46,8 @@ export type BakedRange = { id: string; start: number; count: number };
 export type BakedCellArrays = {
   positions: Float32Array | Int16Array; positionUnit: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array;
   indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
+  /** indexRuns: the index's building runs (the hidden-building skip). */
+  runs: Uint32Array;
   /** look/thinFade.ts pairs (2 per vertex) when the SHEL carries them (level 2): the runtime coarse chunk's `thin`. */
   thin?: Uint8Array;
   /**
@@ -64,7 +89,8 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
   for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
   const q = quantised ? toGrid(positions) : null;
-  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3, accentSize: as, ...(thin ? { thin } : {}) };
+  const runs = indexRuns(indices, starts, counts, n);
+  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, uvs, layers, tints, accents, indices, ranges, runs, triangles: shel.indices.length / 3, accentSize: as, ...(thin ? { thin } : {}) };
 }
 
 /**
@@ -75,6 +101,8 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
 export type BakedRecordArrays = {
   positions: Float32Array | Int16Array; positionUnit: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array;
   indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
+  /** indexRuns: the index's building runs (the hidden-building skip). */
+  runs: Uint32Array;
 };
 export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[], quantised = false): BakedRecordArrays {
   const n = shel.recs.length;
@@ -104,7 +132,8 @@ export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[],
   for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
   const q = quantised ? toGrid(positions) : null;
-  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, walls, wallUnit: WALL_UV_UNIT_M, recs, wallKinds, indices, ranges, triangles: shel.indices.length / 3 };
+  const runs = indexRuns(indices, starts, counts, n);
+  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, walls, wallUnit: WALL_UV_UNIT_M, recs, wallKinds, indices, ranges, runs, triangles: shel.indices.length / 3 };
 }
 
 /** Metres on the SHEL grid as Int16 grid steps; null when a coordinate does not fit (it then stays Float32). */
