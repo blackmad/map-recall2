@@ -1,0 +1,272 @@
+{
+ "about": "What's New 2026-11-27, landmark round r19 (tests/e2e/whats-new-pair.spec.ts). before.ref 9a1354476b is main before r19 (none of the ten landmarks in signature-landmarks.json), so the before frame shows the generic building each replaced. Own engine (?engine=own, ENGINE=own), street level (view cockpit), HUD off; standDeg is the bearing of the landmark's photographed street front (artifacts/review/<id>/meta.json in the r19 lanes).",
+ "pairs": [
+  {
+   "name": "metz-keizersgracht-455",
+   "centre": [
+    4.8866858,
+    52.36621271
+   ],
+   "standDeg": 200,
+   "standM": 48,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit"
+  },
+  {
+   "name": "hajenius-rokin",
+   "centre": [
+    4.89187569,
+    52.36962145
+   ],
+   "standDeg": 100,
+   "standM": 42,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit"
+  },
+  {
+   "name": "lloyd-prins-hendrikkade-33",
+   "centre": [
+    4.89689703,
+    52.37771955
+   ],
+   "standDeg": 350,
+   "standM": 65,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit"
+  },
+  {
+   "name": "batavia-prins-hendrikkade",
+   "centre": [
+    4.90167613,
+    52.37664969
+   ],
+   "standDeg": 345,
+   "standM": 50,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit"
+  },
+  {
+   "name": "leidsestraat-1",
+   "centre": [
+    4.88799209,
+    52.3665982
+   ],
+   "standDeg": 330,
+   "standM": 45,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "camZoom": 1.2
+  },
+  {
+   "name": "leidsestraat-40",
+   "centre": [
+    4.88602886,
+    52.36585136
+   ],
+   "standDeg": 80,
+   "standM": 35,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "camZoom": 1.6
+  },
+  {
+   "name": "sluyswacht",
+   "centre": [
+    4.90167569,
+    52.3698671
+   ],
+   "standDeg": 235,
+   "standM": 40,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "faceDeg": 30,
+   "camZoom": 1.5
+  },
+  {
+   "name": "damrak-37",
+   "centre": [
+    4.89624334,
+    52.37587702
+   ],
+   "standDeg": 121,
+   "standM": 40,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "camZoom": 1.4
+  },
+  {
+   "name": "bulldog-first",
+   "centre": [
+    4.89765521,
+    52.37367817
+   ],
+   "standDeg": 128,
+   "standM": 32,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "camZoom": 1.6
+  },
+  {
+   "name": "in-t-aepjen",
+   "centre": [
+    4.90013807,
+    52.37629298
+   ],
+   "standDeg": 250,
+   "standM": 25,
+   "before": {
+    "ref": "9a1354476b"
+   },
+   "query": "?engine=own",
+   "target": {
+    "x": 0.25,
+    "y": 0.05,
+    "w": 0.5,
+    "h": 0.65
+   },
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "view": "cockpit",
+   "camZoom": 1.8
+  }
+ ]
+}

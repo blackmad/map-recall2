@@ -2,6 +2,113 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-27",
+      "title": "Six more famous fronts",
+      "text": "Metz & Co on the corner of the Keizersgracht and the Leidsestraat, in cream sandstone with its domed clock tower; Hajenius on the Rokin with its striped-awning and black neck-gabled neighbours; art'otel on the Prins Hendrikkade opposite Centraal Station, with its belvedere; the red-turreted corner of Leidsestraat 40; the grey stone front of Damrak 37 with its curved gable; and the white gable of The Bulldog The First on the Oudezijds Voorburgwal.",
+      "where": [
+        4.8866858,
+        52.36621271
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-27-metz-keizersgracht-455.jpg",
+          "alt": "The corner of the Keizersgracht and the Leidsestraat: before, a plain brown-brick block; after, Metz & Co in cream sandstone with a domed clock tower on the corner",
+          "caption": "Metz & Co, Keizersgracht 455: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.33,
+              0,
+              0.3,
+              0.6
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-hajenius-rokin.jpg",
+          "alt": "The Rokin: before, a plain brown-brick block; after, a cream house with striped awnings, a narrow black neck-gabled house and the pale stone Hajenius building with red awnings",
+          "caption": "Hajenius, Rokin 92-96: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.33,
+              0.22,
+              0.32,
+              0.46
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-lloyd-prins-hendrikkade-33.jpg",
+          "alt": "The Prins Hendrikkade opposite the station: before, a plain red-brick block; after, the cream stone art'otel with a domed belvedere on the corner",
+          "caption": "art'otel, Prins Hendrikkade 33: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.33,
+              0.04,
+              0.35,
+              0.52
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-leidsestraat-40.jpg",
+          "alt": "A Leidsestraat corner at the Keizersgracht: before, a plain grey stepped-gable house; after, red brick with cream bands, a dark-red corner turret with a spire and a pale arched shopfront",
+          "caption": "Leidsestraat 40: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.34,
+              0.1,
+              0.32,
+              0.9
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-damrak-37.jpg",
+          "alt": "The Damrak: before, a plain brick block with a cheese shop; after, a grey stone front with arched windows, a curved gable and large arched openings at street level",
+          "caption": "Damrak 37: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.4,
+              0,
+              0.31,
+              0.95
+            ]
+          }
+        },
+        {
+          "src": "whats-new/2026-11-27-bulldog-first.jpg",
+          "alt": "The Oudezijds Voorburgwal from above: before, a brown neck-gabled house; after, The Bulldog The First with a white ogee gable, three arched attic windows and a flower box",
+          "caption": "The Bulldog The First, Oudezijds Voorburgwal 90: before, after",
+          "guard": {
+            "kind": "pair",
+            "panels": 2,
+            "gutter": 6,
+            "target": [
+              0.4,
+              0.25,
+              0.36,
+              0.75
+            ]
+          }
+        }
+      ]
+    },
+    {
       "date": "2026-11-23",
       "title": "Six iconic corners",
       "text": "The turreted Volharding building opposite the Munttoren, The Old Bell's banded brick corner on the Rembrandtplein, the domed Kosmos bank tower on the Koningsplein by the Bloemenmarkt, the carved white front of the old Café Riche with its red awnings on the Rokin, and the two Plantage garden houses Welgelegen and Weltevreden.",
