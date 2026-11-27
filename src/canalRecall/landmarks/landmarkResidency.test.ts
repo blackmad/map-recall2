@@ -77,3 +77,121 @@ test('sphereOnScreen: in front and inside the view (with its radius), not behind
   assert.equal(sphereOnScreen(clip, [400, 0, -100], 5), false, 'far to the side');
   assert.equal(sphereOnScreen(clip, [105, 0, -100], 30), true, 'its edge reaches into the view');
 });
+
+// ------------------------------------------------------------------ residency by bytes (lane landmark-residency 2026-11-27)
+import { landmarkResidencyPolicy, LANDMARK_BUDGET_MB, LANDMARK_KEEP_M, LANDMARK_MAX_MODELS, pickEvictionsByBytes, residentBytes, type ByteResidentModel } from './landmarkResidency';
+import { geometryGpuBytes, levelGpuBytes, objectGpuBytes, textureGpuBytes } from './residentBytes';
+import { releaseVertexDataOnUpload } from './releaseVertexData';
+
+const MB = 1024 * 1024;
+const bm = (id: string, metres: number, mb: number, extra: Partial<ByteResidentModel> = {}): ByteResidentModel =>
+  ({ id, distanceSq: (metres / 111_320) ** 2, inView: false, evictable: true, bytes: mb * MB, ...extra });
+const keep = (m: number) => (m / 111_320) ** 2;
+
+test('bytes: nothing goes while the set fits the byte budget, whatever the count', () => {
+  const models = Array.from({ length: 200 }, (_, i) => bm(`m${i}`, 1000 + i, 0.5));
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 100 * MB }), []);
+});
+
+test('bytes: over budget, beyond the keep radius goes first (furthest first), down to budget minus slack', () => {
+  const models = [bm('near', 260, 30), bm('far', 900, 30), bm('farther', 1500, 30), bm('view', 2000, 30, { inView: true })];
+  // 120 MB resident, budget 100, slack 5 % -> must free >= 25 MB: one model beyond the keep radius is enough.
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 100 * MB, keepDistanceSq: keep(500) }), ['farther']);
+  // 70 MB budget (target 66.5): both beyond the keep radius go (120 -> 60 MB); the near one stays.
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 70 * MB, keepDistanceSq: keep(500) }), ['farther', 'far']);
+});
+
+test('bytes: the keep radius holds while anything beyond it can go; within it only as a last resort', () => {
+  // The belt case: a model ~260 m to the side and behind is kept, a 1.2 km one ahead goes instead.
+  const models = [bm('sideBehind', 260, 10, { behind: true }), bm('aheadFar', 1200, 10), bm('v', 100, 10, { inView: true })];
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 25 * MB, keepDistanceSq: keep(500) }), ['aheadFar']);
+  // Without the keep radius the old order (behind first) gives the side model back.
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 25 * MB }), ['sideBehind']);
+  // A budget that nothing beyond the radius can meet: the kept one goes too.
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 12 * MB, keepDistanceSq: keep(500) }), ['aheadFar', 'sideBehind']);
+});
+
+test('bytes: in view and pinned never go, even over budget', () => {
+  const models = [bm('v', 3000, 50, { inView: true }), bm('p', 3000, 50, { evictable: false }), bm('x', 3000, 1)];
+  assert.deepEqual(pickEvictionsByBytes(models, { budgetBytes: 10 * MB }), ['x']);
+});
+
+test('bytes: a shared master counts once and frees only with its last holder', () => {
+  const shared = [bm('a', 1500, 8, { sharedKey: 'u' }), bm('b', 1400, 8, { sharedKey: 'u' }), bm('c', 300, 8)];
+  assert.equal(residentBytes(shared), 16 * MB);
+  // Must free 16 - 9.5 -> both clones go before the master's bytes come free (c is nearer, so after them).
+  assert.deepEqual(pickEvictionsByBytes(shared, { budgetBytes: 10 * MB }), ['a', 'b']);
+});
+
+test('bytes: the model ceiling applies under the byte budget too', () => {
+  const models = Array.from({ length: 12 }, (_, i) => bm(`m${i}`, 600 + i * 100, 0.1));
+  const out = pickEvictionsByBytes(models, { budgetBytes: 1000 * MB, maxModels: 10 });
+  assert.deepEqual(out, ['m11', 'm10', 'm9', 'm8', 'm7', 'm6'], 'down to the ceiling minus 4, furthest first');
+});
+
+test('policy: bytes by default with the measured tier budgets; ?landmarkBudgetMB=0 and ?landmarkBudget=N are the count budget before', () => {
+  const desk = landmarkResidencyPolicy('', false), touch = landmarkResidencyPolicy('?engine=own', true);
+  assert.deepEqual(desk, { mode: 'bytes', models: LANDMARK_MAX_MODELS.desktop, budgetBytes: LANDMARK_BUDGET_MB.desktop * MB, keepM: LANDMARK_KEEP_M, airModels: 72 });
+  assert.deepEqual(touch, { mode: 'bytes', models: LANDMARK_MAX_MODELS.touch, budgetBytes: LANDMARK_BUDGET_MB.touch * MB, keepM: LANDMARK_KEEP_M, airModels: 24 });
+  assert.ok(LANDMARK_BUDGET_MB.touch < LANDMARK_BUDGET_MB.desktop);
+  assert.deepEqual(landmarkResidencyPolicy('?landmarkBudgetMB=0', false), { mode: 'count', models: 72, budgetBytes: Infinity, keepM: 0, airModels: 72 });
+  assert.deepEqual(landmarkResidencyPolicy('?landmarkBudgetMB=0', true), { mode: 'count', models: 24, budgetBytes: Infinity, keepM: 0, airModels: 24 });
+  assert.deepEqual(landmarkResidencyPolicy('?landmarkBudget=96', false), { mode: 'count', models: 96, budgetBytes: Infinity, keepM: 0, airModels: 96 });
+  const mb = landmarkResidencyPolicy('?landmarkBudgetMB=300&landmarkKeepM=0', false);
+  assert.equal(mb.mode, 'bytes'); assert.equal(mb.budgetBytes, 300 * MB); assert.equal(mb.keepM, 0);
+  assert.equal(landmarkResidencyPolicy('?landmarkBudgetMB=64&landmarkBudget=50', true).models, 50, 'both: bytes with that count ceiling');
+  assert.equal(landmarkResidencyPolicy('?landmarkKeepM=800', false).keepM, 800);
+});
+
+test('resident bytes: attributes, index, interleaved once, and a released attribute still counts', () => {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(30), 3));
+  g.setAttribute('normal', new THREE.BufferAttribute(new Int8Array(40), 4, true));
+  g.setIndex(new THREE.BufferAttribute(new Uint16Array(12), 1));
+  assert.equal(geometryGpuBytes(g), 120 + 40 + 24);
+  const il = new THREE.InterleavedBuffer(new Float32Array(10 * 8), 8);
+  const g2 = new THREE.BufferGeometry();
+  g2.setAttribute('position', new THREE.InterleavedBufferAttribute(il, 3, 0));
+  g2.setAttribute('uv', new THREE.InterleavedBufferAttribute(il, 2, 3));
+  assert.equal(geometryGpuBytes(g2), 320, 'one interleaved buffer');
+  // After upload the normal array is an empty Int8Array; the GPU still holds its 40 bytes.
+  const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial());
+  releaseVertexDataOnUpload(mesh);
+  (g.attributes.normal as unknown as { onUploadCallback: () => void }).onUploadCallback.call(g.attributes.normal);
+  assert.equal((g.attributes.normal.array as Int8Array).length, 0);
+  assert.equal(geometryGpuBytes(g), 184);
+});
+
+test('resident bytes: textures (mipmaps, compressed), a geometry shared by two meshes once, shared look materials left out', () => {
+  const tex = new THREE.Texture({ width: 256, height: 128 } as unknown as HTMLImageElement);
+  assert.equal(textureGpuBytes(tex), Math.round(256 * 128 * 4 * 4 / 3));
+  tex.generateMipmaps = false;
+  assert.equal(textureGpuBytes(tex), 256 * 128 * 4);
+  const ct = new THREE.CompressedTexture([{ data: new Uint8Array(1000), width: 64, height: 64 }, { data: new Uint8Array(250), width: 32, height: 32 }] as unknown as ImageData[], 64, 64);
+  assert.equal(textureGpuBytes(ct), 1250);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(30), 3));
+  const lookMat = new THREE.MeshStandardMaterial({ map: ct as unknown as THREE.Texture });
+  lookMat.userData.shared = true;
+  const root = new THREE.Group();
+  root.add(new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex })), new THREE.Mesh(g, lookMat));
+  assert.deepEqual(objectGpuBytes(root, m => !!m.userData.shared), { geometry: 120, texture: 256 * 128 * 4 });
+  assert.equal(objectGpuBytes(root).texture, 256 * 128 * 4 + 1250);
+});
+
+test('resident bytes: a level is walked once, its texture bytes read live (the texture cap swaps images)', () => {
+  const tex = new THREE.Texture({ width: 512, height: 512 } as unknown as HTMLImageElement);
+  tex.generateMipmaps = false;
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(30), 3));
+  const level = new THREE.Group();
+  level.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ map: tex })));
+  assert.equal(levelGpuBytes(level), 120 + 512 * 512 * 4);
+  g.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(30), 3));
+  assert.equal(levelGpuBytes(level), 120 + 512 * 512 * 4, 'geometry kept from the first walk');
+  tex.image = { width: 128, height: 128 } as unknown as HTMLImageElement;
+  assert.equal(levelGpuBytes(level), 120 + 128 * 128 * 4, 'capped image');
+  delete level.userData.gpuParts;
+  assert.equal(levelGpuBytes(level), 240 + 128 * 128 * 4, 'walked again once invalidated');
+  assert.equal(levelGpuBytes(null), 0);
+});
