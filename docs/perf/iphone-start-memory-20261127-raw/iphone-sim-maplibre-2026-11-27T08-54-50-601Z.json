@@ -1,0 +1,1940 @@
+{
+ "engine": "maplibre",
+ "gameUrl": "http://localhost:4631/canal-drive/?travel=car#race=52.37665,4.90115,52.37665,4.90115,52.37265,4.90035",
+ "udid": "49390F3D-288B-4948-B4EF-7029D2FC0620",
+ "rideS": 15,
+ "results": [
+  {
+   "rows": [
+    {
+     "t": 0,
+     "webMb": 33,
+     "webPeakMb": 33,
+     "gpuMb": 0,
+     "netMb": 0,
+     "phase": "boot",
+     "probe": null
+    },
+    {
+     "t": 1,
+     "webMb": 39,
+     "webPeakMb": 43,
+     "gpuMb": 0,
+     "netMb": 0,
+     "phase": "loading",
+     "probe": {
+      "state": 2,
+      "intro": false,
+      "hc": 8,
+      "distM": null,
+      "workers": null,
+      "dpr": 3,
+      "ml": {},
+      "engine": null,
+      "three": null,
+      "snap": null,
+      "loading": "Loading Amsterdam streets…",
+      "settle": null
+     }
+    },
+    {
+     "t": 2,
+     "webMb": 606,
+     "webPeakMb": 606,
+     "gpuMb": 0,
+     "netMb": 0,
+     "phase": "loading",
+     "probe": {
+      "state": 2,
+      "intro": false,
+      "hc": 8,
+      "distM": null,
+      "workers": null,
+      "dpr": 3,
+      "ml": {
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": null,
+      "snap": null,
+      "loading": "Loading Amsterdam streets…",
+      "settle": null
+     }
+    },
+    {
+     "t": 3,
+     "webMb": 766,
+     "webPeakMb": 824,
+     "gpuMb": 110,
+     "netMb": 0,
+     "phase": "loading",
+     "probe": {
+      "state": 2,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "answered-street": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "active-landmark": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 0,
+       "textures": 0
+      },
+      "snap": null,
+      "loading": "Settling the map…",
+      "settle": null
+     }
+    },
+    {
+     "t": 4,
+     "webMb": 717,
+     "webPeakMb": 824,
+     "gpuMb": 103,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "active-landmark": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 25,
+       "textures": 3
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 5,
+     "webMb": 716,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "active-landmark": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 32,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 6,
+     "webMb": 716,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 70,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 7,
+     "webMb": 716,
+     "webPeakMb": 824,
+     "gpuMb": 101,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 89,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 8,
+     "webMb": 716,
+     "webPeakMb": 824,
+     "gpuMb": 97,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 95,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 9,
+     "webMb": 716,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 99,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 10,
+     "webMb": 714,
+     "webPeakMb": 824,
+     "gpuMb": 92,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 113,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 11,
+     "webMb": 711,
+     "webPeakMb": 824,
+     "gpuMb": 87,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 130,
+       "textures": 5
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 12,
+     "webMb": 711,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 155,
+       "textures": 7
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 13,
+     "webMb": 710,
+     "webPeakMb": 824,
+     "gpuMb": 86,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 181,
+       "textures": 7
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 14,
+     "webMb": 710,
+     "webPeakMb": 824,
+     "gpuMb": 82,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 201,
+       "textures": 7
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 15,
+     "webMb": 683,
+     "webPeakMb": 824,
+     "gpuMb": 80,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 211,
+       "textures": 7
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 16,
+     "webMb": 683,
+     "webPeakMb": 824,
+     "gpuMb": 79,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 211,
+       "textures": 7
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 17,
+     "webMb": 683,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 327,
+       "textures": 18
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 18,
+     "webMb": 683,
+     "webPeakMb": 824,
+     "gpuMb": 19,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 327,
+       "textures": 18
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    },
+    {
+     "t": 19,
+     "webMb": 683,
+     "webPeakMb": 824,
+     "gpuMb": 73,
+     "netMb": 0,
+     "phase": "racing",
+     "probe": {
+      "state": 4,
+      "intro": false,
+      "hc": 8,
+      "distM": 0,
+      "workers": 3,
+      "dpr": 3,
+      "ml": {
+       "active-landmark": [
+        null,
+        null
+       ],
+       "canal-overview-ground": [
+        null,
+        null
+       ],
+       "cr-road-shields": [
+        null,
+        null
+       ],
+       "own-pois": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminal-names": [
+        null,
+        null
+       ],
+       "ne2_shaded": [
+        null,
+        null
+       ],
+       "amsterdam-pois": [
+        null,
+        null
+       ],
+       "answered-street": [
+        null,
+        null
+       ],
+       "branded-pois": [
+        null,
+        null
+       ],
+       "park-landscape": [
+        null,
+        null
+       ],
+       "navigation-route": [
+        null,
+        null
+       ],
+       "amsterdam-trees": [
+        null,
+        null
+       ],
+       "openmaptiles": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhoods": [
+        null,
+        null
+       ],
+       "active-street": [
+        null,
+        null
+       ],
+       "amsterdam-neighborhood-labels": [
+        null,
+        null
+       ],
+       "osm-building-appearance": [
+        null,
+        null
+       ],
+       "cycling-ferry-terminals": [
+        null,
+        null
+       ],
+       "cycle-tracks": [
+        null,
+        null
+       ],
+       "city-building-overview": [
+        null,
+        null
+       ]
+      },
+      "engine": null,
+      "three": {
+       "geometries": 327,
+       "textures": 18
+      },
+      "snap": null,
+      "loading": "Ready!",
+      "settle": {
+       "ms": 976,
+       "timedOut": true,
+       "engine": "maplibre",
+       "pending": []
+      }
+     }
+    }
+   ],
+   "peakWebMb": 824,
+   "peakGpuMb": 110,
+   "peakByPhase": {
+    "boot": 33,
+    "loading": 766,
+    "racing": 717
+   },
+   "crashed": false
+  }
+ ]
+}
