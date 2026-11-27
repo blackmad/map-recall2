@@ -109,6 +109,11 @@
       ]
     },
     {
+      "date": "2026-11-27",
+      "title": "Lighter, cooler, and no more popping buildings",
+      "text": "The ride now runs on one 3D engine only; the old map engine is gone, which takes about 220 KB off every load. On fast displays the ride draws at most 60 frames a second, and it allocates less than half the memory it did each second, so laptops run cooler and quieter. When a famous building arrives, the plain block it replaces now fades out in step with it instead of vanishing in one frame, and the loading screen now ends on \"Ready!\" after Amsterdam lines like \"Dredging the canals…\". The game is Amsterdam only for now."
+    },
+    {
       "date": "2026-11-23",
       "title": "Six iconic corners",
       "text": "The turreted Volharding building opposite the Munttoren, The Old Bell's banded brick corner on the Rembrandtplein, the domed Kosmos bank tower on the Koningsplein by the Bloemenmarkt, the carved white front of the old Café Riche with its red awnings on the Rokin, and the two Plantage garden houses Welgelegen and Weltevreden.",
