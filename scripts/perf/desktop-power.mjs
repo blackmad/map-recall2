@@ -232,7 +232,7 @@ const abOn = opt('ab-on', null), abOff = opt('ab-off', null), abS = Number(opt('
 const ab = abOn && abOff ? { on: [], off: [] } : null;
 if (ab) {
   await page.evaluate(() => { const w = window; w.__abGpu = 0; w.__abGpuN = 0; const T = w.__gpuT; const push = T.frames.push.bind(T.frames); T.frames.push = v => { w.__abGpu += v; w.__abGpuN++; return push(v); }; });
-  const read = async () => ({ m: await metrics(), p: await procs(), t: Date.now(), x: await page.evaluate(() => ({ gpu: window.__abGpu, gpuN: window.__abGpuN, frames: canalRecallGame.vectorMap.host.stats.frames })) });
+  const read = async () => ({ m: await metrics(), p: await procs(), t: Date.now(), x: await page.evaluate(() => ({ gpu: window.__abGpu, gpuN: window.__abGpuN, frames: canalRecallGame.vectorMap.host.stats.frames, standIn: window.__wmsg?.kinds?.standIn ?? 0 })) });
   const abAlloc = has('alloc'), abGc = true;
   if (abGc) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); }
   const sumSelf = n => n.selfSize + (n.children || []).reduce((t, c) => t + sumSelf(c), 0);
@@ -252,7 +252,7 @@ if (ab) {
       gcMsPerS = gc / w;
     }
     if (abAlloc) { const { profile } = await cdp.send('HeapProfiler.stopSampling'); allocMbPerS = sumSelf(profile.head) / 1048576 / w; }
-    ab[mode].push({ s: w, cpu: cpuPerS(a.p, b.p, w), mainPct: (b.m.TaskDuration - a.m.TaskDuration) / w * 100, gpuMsPerS: (b.x.gpu - a.x.gpu) / w, drawnPerS: (b.x.frames - a.x.frames) / w, gpuPerFrame: (b.x.gpu - a.x.gpu) / Math.max(1, b.x.gpuN - a.x.gpuN), allocMbPerS, gcMsPerS });
+    ab[mode].push({ s: w, cpu: cpuPerS(a.p, b.p, w), mainPct: (b.m.TaskDuration - a.m.TaskDuration) / w * 100, gpuMsPerS: (b.x.gpu - a.x.gpu) / w, drawnPerS: (b.x.frames - a.x.frames) / w, gpuPerFrame: (b.x.gpu - a.x.gpu) / Math.max(1, b.x.gpuN - a.x.gpuN), allocMbPerS, gcMsPerS, weldsPerMin: (b.x.standIn - a.x.standIn) / w * 60 });
   }
 }
 for (let i = ab ? ride : 0; i < ride; i++) {
@@ -260,7 +260,7 @@ for (let i = ab ? ride : 0; i < ride; i++) {
     traceEvents = [];
     cdp.on('Tracing.dataCollected', e => traceEvents.push(...e.value));
     const done = new Promise(r => cdp.once('Tracing.tracingComplete', r));
-    await cdp.send('Tracing.start', { transferMode: 'ReportEvents', traceConfig: { includedCategories: ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'disabled-by-default-devtools.timeline.frame', 'v8', 'v8.execute', 'blink', 'gpu', 'cc', 'viz', 'toplevel', 'disabled-by-default-v8.gc'] } });
+    await cdp.send('Tracing.start', { transferMode: 'ReportEvents', traceConfig: { includedCategories: has('trace-lean') ? ['toplevel', 'v8', 'disabled-by-default-v8.gc'] : ['devtools.timeline', 'disabled-by-default-devtools.timeline', 'disabled-by-default-devtools.timeline.frame', 'v8', 'v8.execute', 'blink', 'gpu', 'cc', 'viz', 'toplevel', 'disabled-by-default-v8.gc'] } });
     await page.waitForTimeout(traceS * 1000);
     await cdp.send('Tracing.end'); await done;
     i += traceS - 1; util.push(gpuUtil());
@@ -292,7 +292,13 @@ if (has('alloc') && !abMode) {
   const total = [...self.values()].reduce((a, b) => a + b, 0);
   alloc = { mbPerS: +(total / 1048576 / wall).toFixed(2), top: [...self].sort((a, b) => b[1] - a[1]).slice(0, 30).map(([fn, b]) => ({ fn, mbPerS: +(b / 1048576 / wall).toFixed(3) })) };
 }
-if (traceEvents) fs.writeFileSync(out.replace(/\.json$/, '.trace.json'), JSON.stringify({ traceEvents }));
+if (traceEvents) {
+  // Streamed event by event: one JSON.stringify of a 10 s trace passes V8's string limit and kills the run.
+  const fd = fs.openSync(out.replace(/\.json$/, '.trace.json'), 'w');
+  fs.writeSync(fd, '{"traceEvents":[');
+  traceEvents.forEach((e, i) => fs.writeSync(fd, (i ? ',\n' : '') + JSON.stringify(e)));
+  fs.writeSync(fd, ']}'); fs.closeSync(fd);
+}
 if (stillS) {
   // Stopped (the rider at rest, a menu open over a still world): the work per second when nothing moves.
   await page.evaluate(() => { window.__rails.stop = true; });
@@ -335,7 +341,7 @@ Object.assign(log, {
   workerRepeatKeys: (() => { let again = 0, keys = 0; for (const [k, v] of Object.entries(s1.wmsg.keys)) { const n = v - (s0.wmsg.keys[k] ?? 0); if (n) { keys++; if ((s0.wmsg.keys[k] ?? 0) > 0 || n > 1) again++; } } return { keysAsked: keys, askedBefore: again }; })(),
   ab: ab && Object.fromEntries(Object.entries(ab).map(([k, v]) => {
     const med = f => { const x = v.map(f).sort((a, b) => a - b); return +(x[Math.floor(x.length / 2)] ?? 0).toFixed(2); };
-    return [k, { windows: v.length, totalCpuPerS: med(r => r.cpu?.total ?? 0), rendererCpuPerS: med(r => r.cpu?.renderer ?? 0), gpuProcCpuPerS: med(r => r.cpu?.GPU ?? 0), mainPct: med(r => r.mainPct), gpuMsPerS: med(r => r.gpuMsPerS), gpuMsPerFrame: med(r => r.gpuPerFrame), drawnPerS: med(r => r.drawnPerS), allocMbPerS: v[0]?.allocMbPerS == null ? null : med(r => r.allocMbPerS), gcMsPerS: med(r => r.gcMsPerS ?? 0), raw: v }];
+    return [k, { windows: v.length, totalCpuPerS: med(r => r.cpu?.total ?? 0), rendererCpuPerS: med(r => r.cpu?.renderer ?? 0), gpuProcCpuPerS: med(r => r.cpu?.GPU ?? 0), mainPct: med(r => r.mainPct), gpuMsPerS: med(r => r.gpuMsPerS), gpuMsPerFrame: med(r => r.gpuPerFrame), drawnPerS: med(r => r.drawnPerS), allocMbPerS: v[0]?.allocMbPerS == null ? null : med(r => r.allocMbPerS), gcMsPerS: med(r => r.gcMsPerS ?? 0), weldsPerMin: +(v.reduce((t, r) => t + r.weldsPerMin * r.s, 0) / Math.max(1e-9, v.reduce((t, r) => t + r.s, 0))).toFixed(1), raw: v }];
   })),
   probe, hot, alloc, errors: errors.slice(0, 5),
 });

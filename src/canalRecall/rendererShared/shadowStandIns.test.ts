@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import * as THREE from 'three';
 
 import {
-  SHADOW_ONLY_LAYER, SHADOW_STAND_IN_PENDING, SHADOW_STAND_IN_SOURCE, answerStandIn, buildShadowStandIn, canStandIn, disposeShadowStandIn, isStandInRequest, shadowOnlyLayerPass, shadowSideOf, shadowStandInFor,
+  SHADOW_ONLY_LAYER, SHADOW_STAND_IN_PENDING, SHADOW_STAND_IN_SOURCE, StandInCache, answerStandIn, buildShadowStandIn, canStandIn, disposeShadowStandIn, isStandInRequest, shadowOnlyLayerPass, shadowSideOf, shadowStandInFor,
 } from './shadowStandIns';
 import { SharedFrame } from './sharedFrame';
 
@@ -313,4 +313,50 @@ test('a cancelled pool weld is dropped (dispose, context restore)', async () => 
   assert.equal(called, false); assert.equal(root.userData.shadowStandIn, undefined);
   let casting = 0; root.traverse((m: any) => { if (m.isMesh && m.castShadow) casting++; });
   assert.ok(casting >= 7, 'nothing stopped casting');
+});
+
+// ------------------------------------------------------------------ desktop-perf 2026-11-27: welded stand-ins kept by level
+
+test('a level welded before gets the same stand-in at once from the cache, nothing posted; a changed level welds again', async () => {
+  const store = new StandInCache(256 * 1048576), pool = fakePool();
+  const first = glbLikeScene(5);
+  let ready: any = null;
+  assert.equal(shadowStandInFor(THREE, first, pool, s => { ready = s; }, { store, key: 'lvl-5' }), null, 'a miss welds in the pool');
+  await new Promise(r => setTimeout(r, 20));
+  assert.ok(ready); assert.equal(pool.posts, 1); assert.equal(store.size, 1);
+  // The same GLB parsed again (a model streamed back in): at once, byte-identical, sources flagged.
+  const again = glbLikeScene(5);
+  const hit = shadowStandInFor(THREE, again, pool, () => assert.fail('no callback on a hit'), { store, key: 'lvl-5' });
+  assert.equal(pool.posts, 1, 'nothing posted');
+  assertSameStandIn(hit, legacyBuildShadowStandIn(THREE, glbLikeScene(5)), 'cached');
+  assert.ok(hit!.sources.every((m: any) => m.castShadow === false && m.userData[SHADOW_STAND_IN_SOURCE]));
+  assert.ok(hit!.sources.every((m: any) => again.getObjectById(m.id)), 'the sources are the new level\'s meshes');
+  // Bounds as three computes them.
+  for (const m of hit!.object.children as any[]) {
+    const ref = m.geometry.clone(); ref.boundingBox = null; ref.boundingSphere = null; ref.computeBoundingBox(); ref.computeBoundingSphere();
+    assert.deepEqual(m.geometry.boundingBox.min.toArray(), ref.boundingBox.min.toArray());
+    assert.equal(m.geometry.boundingSphere.radius, ref.boundingSphere.radius);
+  }
+  // Same key, different content (a part moved): the signature misses and it welds afresh.
+  const moved = glbLikeScene(5);
+  moved.children[0].position.x += 1; moved.updateMatrixWorld(true);
+  assert.equal(shadowStandInFor(THREE, moved, pool, () => {}, { store, key: 'lvl-5' }), null);
+  assert.equal(pool.posts, 2);
+  assert.deepEqual(store.stats, { hits: 1, misses: 2, stored: 1, evicted: 0 });
+  await new Promise(r => setTimeout(r, 20));
+  assert.equal(store.stats.stored, 2);
+});
+
+test('StandInCache gives back the least recently used levels past its byte budget', () => {
+  const side = (n: number) => ({ side: 0, positions: new Int16Array(n * 3), indices: new Uint16Array(n * 3), centre: [0, 0, 0] as [number, number, number], half: 1 });
+  const store = new StandInCache(3 * 1200);
+  store.put('a', 's', [side(100)]); store.put('b', 's', [side(100)]); store.put('c', 's', [side(100)]);
+  assert.equal(store.size, 3); assert.equal(store.bytes, 3600);
+  assert.ok(store.get('a', 's'));
+  store.put('d', 's', [side(100)]);
+  assert.equal(store.get('b', 's'), null, 'b was the least recently used');
+  assert.ok(store.get('a', 's') && store.get('c', 's') && store.get('d', 's'));
+  store.put('huge', 's', [side(10000)]);
+  assert.equal(store.get('huge', 's'), null, 'larger than the budget: not kept');
+  assert.equal(store.get('a', 'other'), null, 'another signature misses');
 });

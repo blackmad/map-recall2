@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { landmarkResidencyBudget, pickEvictions, type ResidentModel } from './landmarkResidency';
+import * as THREE from 'three';
+import { coolingDown, LANDMARK_COOLDOWN_MS, landmarkCooldownMs, landmarkResidencyBudget, pickEvictions, sphereOnScreen, type ResidentModel } from './landmarkResidency';
 
 const model = (id: string, distanceSq: number, inView = false, evictable = true): ResidentModel => ({ id, distanceSq, inView, evictable });
 
@@ -45,4 +46,34 @@ test('within reach: metres from the view centre, less the model radius; off reac
   assert.equal(withinReach(zuidas, dam, Infinity), true);
   assert.equal(withinReach(null, dam, 2000), true, 'an anchorless model is not the reach\'s to drop');
   assert.equal(withinReach(rijks, dam, 1500, 100), true, 'the radius counts toward reach');
+});
+
+test('evictions go behind the heading first, then furthest first (desktop-perf 2026-11-27)', () => {
+  const m = (id: string, d: number, behind?: boolean) => ({ id, distanceSq: d, inView: false, evictable: true, behind });
+  const ids = pickEvictions([m('aheadFar', 900), m('behindNear', 10, true), m('behindFar', 400, true), m('aheadNear', 5), m('x', 1), m('y', 1)], { budget: 4, slack: 1 });
+  assert.deepEqual(ids, ['behindFar', 'behindNear', 'aheadFar']);
+  // Without `behind` the old order.
+  assert.deepEqual(pickEvictions([m('a', 1), m('b', 9), m('c', 4)], { budget: 2, slack: 0 }), ['b']);
+});
+
+test('a model given back cools down unless it is on screen; the switch and the tuning', () => {
+  assert.equal(coolingDown(1000, 1000 + LANDMARK_COOLDOWN_MS - 1, LANDMARK_COOLDOWN_MS, false), true);
+  assert.equal(coolingDown(1000, 1000 + LANDMARK_COOLDOWN_MS, LANDMARK_COOLDOWN_MS, false), false);
+  assert.equal(coolingDown(1000, 1001, LANDMARK_COOLDOWN_MS, true), false, 'on screen: loads at once');
+  assert.equal(coolingDown(undefined, 5, LANDMARK_COOLDOWN_MS, false), false, 'never given back');
+  assert.equal(coolingDown(1000, 1001, 0, false), false, 'off');
+  assert.equal(landmarkCooldownMs('', undefined), LANDMARK_COOLDOWN_MS);
+  assert.equal(landmarkCooldownMs('?landmarkCooldown=0', undefined), 0);
+  assert.equal(landmarkCooldownMs('', false), 0);
+  assert.equal(landmarkCooldownMs('?landmarkCooldownS=12', undefined), 12000);
+});
+
+test('sphereOnScreen: in front and inside the view (with its radius), not behind or off to the side', () => {
+  const cam = new THREE.PerspectiveCamera(60, 1.5, 1, 5000);
+  cam.position.set(0, 0, 0); cam.lookAt(0, 0, -1); cam.updateMatrixWorld(true);
+  const clip = cam.projectionMatrix.clone().multiply(cam.matrixWorldInverse).elements;
+  assert.equal(sphereOnScreen(clip, [0, 0, -100], 5), true);
+  assert.equal(sphereOnScreen(clip, [0, 0, 100], 5), false, 'behind');
+  assert.equal(sphereOnScreen(clip, [400, 0, -100], 5), false, 'far to the side');
+  assert.equal(sphereOnScreen(clip, [105, 0, -100], 30), true, 'its edge reaches into the view');
 });

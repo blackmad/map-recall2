@@ -19,6 +19,8 @@
 // depth write (alpha-tested maps, displacement, clipping, alpha to coverage,
 // invisible), and any mesh carrying a custom depth material.
 
+import { ensureGeometryBounds, pageFastBounds, positionsOf } from './fastBounds';
+
 /** Layer the shadow pass enables on the camera; nothing else draws it. Clear of TILE_OWNER_LAYER (31). */
 export const SHADOW_ONLY_LAYER = 30;
 /** userData flag on a source mesh whose shadow a stand-in casts: SharedFrame.setShadows keeps it from casting. */
@@ -103,20 +105,8 @@ export type StandInPart = {
 /** One shadow side's welded stand-in. */
 export type WeldedSide = { side: number; positions: Int16Array; indices: Uint16Array | Uint32Array; centre: [number, number, number]; half: number };
 
-/** A position attribute's xyz as `Vector3.fromBufferAttribute` reads it, copied. */
-function positionsOf(position: any): Float32Array | Float64Array {
-  const n = position.count;
-  if (!position.isInterleavedBufferAttribute && !position.normalized && position.array instanceof Float32Array && position.array.length === n * 3) return position.array.slice();
-  const out = new Float64Array(n * 3);
-  for (let i = 0; i < n; i++) { out[i * 3] = position.getX(i); out[i * 3 + 1] = position.getY(i); out[i * 3 + 2] = position.getZ(i); }
-  return out;
-}
-
-/**
- * The main-thread half of a stand-in: `root`'s casting, visible meshes grouped by shadow side, their positions and
- * index copied out with their matrix within `root`. Cheap (copies); the weld (`weldStandInSide`) is the heavy part.
- */
-export function collectStandInParts(THREE: any, root: any): { sides: { side: number; parts: StandInPart[] }[]; meshes: any[][] } {
+/** `root`'s casting, visible meshes grouped by shadow side (traversal order, as the weld reads them). No copies. */
+export function standInMeshes(root: any): { side: number; meshes: any[] }[] {
   const bySide = new Map<number, any[]>();
   root.traverse((mesh: any) => {
     if (!canStandIn(mesh) || !visibleWithin(root, mesh)) return;
@@ -124,8 +114,16 @@ export function collectStandInParts(THREE: any, root: any): { sides: { side: num
     if (!bySide.has(side)) bySide.set(side, []);
     bySide.get(side)!.push(mesh);
   });
+  return [...bySide].map(([side, meshes]) => ({ side, meshes }));
+}
+
+/**
+ * The main-thread half of a stand-in: `root`'s casting, visible meshes grouped by shadow side, their positions and
+ * index copied out with their matrix within `root`. Cheap (copies); the weld (`weldStandInSide`) is the heavy part.
+ */
+export function collectStandInParts(THREE: any, root: any, grouped = standInMeshes(root)): { sides: { side: number; parts: StandInPart[] }[]; meshes: any[][] } {
   const sides: { side: number; parts: StandInPart[] }[] = [], meshes: any[][] = [];
-  for (const [side, list] of bySide) {
+  for (const { side, meshes: list } of grouped) {
     sides.push({ side, parts: list.map(mesh => {
       const matrix = matrixWithin(THREE, root, mesh), geometry = mesh.geometry, position = geometry.attributes.position;
       return { positions: positionsOf(position), index: geometry.index ? geometry.index.array.slice() : null, indexCount: geometry.index ? geometry.index.count : position.count, matrix: [...matrix.elements], flip: matrix.determinant() < 0 };
@@ -133,6 +131,73 @@ export function collectStandInParts(THREE: any, root: any): { sides: { side: num
     meshes.push(list);
   }
   return { sides, meshes };
+}
+
+/**
+ * What a weld of `root` would read, as a string: per side its meshes' vertex and index counts and their matrices within
+ * `root`. Two levels with the same signature weld to the same stand-in (StandInCache checks it on every hit).
+ */
+export function standInSignature(THREE: any, root: any, grouped: { side: number; meshes: any[] }[]): string {
+  let out = '';
+  for (const { side, meshes } of grouped) {
+    out += `|${side}`;
+    for (const mesh of meshes) {
+      const g = mesh.geometry, e = matrixWithin(THREE, root, mesh).elements;
+      out += `;${g.attributes.position.count},${g.index ? g.index.count : -1}`;
+      for (let i = 0; i < 16; i++) out += `,${e[i]}`;
+    }
+  }
+  return out;
+}
+
+type Welded = (WeldedSide | { empty: true } | null)[];
+/**
+ * Welded stand-ins by model level, least recently used out first (desktop-perf 2026-11-27). A level that comes back
+ * (a model given back and streamed in again, a level swapped out and in) was welded again in the worker pool each
+ * time: 178-415 welds a minute on the ride, the main thread copying every position out first. The welded arrays are
+ * kept (never transferred or changed: the stand-in's geometry reads them), keyed by the level's URL and checked against
+ * the signature of what a weld would read. `?standInCache=0` (or `__canalRecallStandInCache = false`) welds every time.
+ */
+export class StandInCache {
+  private readonly entries = new Map<string, { signature: string; welded: Welded; bytes: number }>();
+  bytes = 0;
+  readonly stats = { hits: 0, misses: 0, stored: 0, evicted: 0 };
+  constructor(public budgetBytes: number) {}
+
+  get(key: string, signature: string): Welded | null {
+    const e = this.entries.get(key);
+    if (!e || e.signature !== signature) { this.stats.misses++; return null; }
+    this.entries.delete(key); this.entries.set(key, e);
+    this.stats.hits++;
+    return e.welded;
+  }
+
+  put(key: string, signature: string, welded: Welded): void {
+    let bytes = 0;
+    for (const w of welded) if (w && !('empty' in w)) bytes += w.positions.byteLength + w.indices.byteLength;
+    if (bytes > this.budgetBytes) return;
+    const old = this.entries.get(key);
+    if (old) { this.entries.delete(key); this.bytes -= old.bytes; }
+    this.entries.set(key, { signature, welded, bytes });
+    this.bytes += bytes; this.stats.stored++;
+    for (const [k, e] of this.entries) {
+      if (this.bytes <= this.budgetBytes) break;
+      this.entries.delete(k); this.bytes -= e.bytes; this.stats.evicted++;
+    }
+  }
+
+  get size(): number { return this.entries.size; }
+}
+
+/** The page's stand-in cache (null with `?standInCache=0`); `?standInCacheMB=` sets its budget (default 32 MB). */
+export function pageStandInCache(): StandInCache | null {
+  const g = globalThis as { __canalRecallStandInCache?: unknown; __canalRecallStandInCacheStore?: StandInCache; location?: { search?: string } };
+  if (g.__canalRecallStandInCache === false) return null;
+  const search = g.location?.search ?? '';
+  if (/[?&]standInCache=(0|false|off)\b/.test(search)) return null;
+  if (g.__canalRecallStandInCacheStore) return g.__canalRecallStandInCacheStore;
+  const mb = Number(/[?&]standInCacheMB=([\d.]+)/.exec(search)?.[1] ?? 32);
+  return g.__canalRecallStandInCacheStore = new StandInCache(mb * 1048576);
 }
 
 /**
@@ -225,8 +290,8 @@ export function assembleStandIn(THREE: any, sides: readonly (WeldedSide | { empt
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3, true));
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
-    geometry.computeBoundingSphere();
-    geometry.computeBoundingBox();
+    // As computeBoundingSphere / computeBoundingBox, without boxing every int16 coordinate (fastBounds.ts).
+    if (!pageFastBounds() || !ensureGeometryBounds(THREE, geometry)) { geometry.computeBoundingSphere(); geometry.computeBoundingBox(); }
     // The CPU copies are not needed once uploaded.
     for (const attribute of [geometry.attributes.position, geometry.index]) attribute.onUpload(function (this: any) { this.array = null; });
     const mesh = new THREE.Mesh(geometry, standInMaterial(THREE, side));
@@ -251,10 +316,12 @@ export function assembleStandIn(THREE: any, sides: readonly (WeldedSide | { empt
  * flagged SHADOW_STAND_IN_SOURCE). Returns null when nothing qualifies.
  * On the main thread; `shadowStandInFor` welds in the worker pool.
  */
-export function buildShadowStandIn(THREE: any, root: any): ShadowStandIn | null {
+export function buildShadowStandIn(THREE: any, root: any, keep?: (welded: Welded) => void): ShadowStandIn | null {
   const { sides, meshes } = collectStandInParts(THREE, root);
   if (!sides.length) return null;
-  return assembleStandIn(THREE, sides.map(s => weldStandInSide(s.side, s.parts)), meshes);
+  const welded = sides.map(s => weldStandInSide(s.side, s.parts));
+  keep?.(welded);
+  return assembleStandIn(THREE, welded, meshes);
 }
 
 // ------------------------------------------------------------------ the weld in the worker pool (#129)
@@ -305,16 +372,26 @@ export const SHADOW_STAND_IN_PENDING = 'shadowStandInPending';
  * `root.userData[SHADOW_STAND_IN_PENDING]`). Until then the sources keep casting their own shadow. Returns the
  * stand-in when it already exists, else null.
  */
-export function shadowStandInFor(THREE: any, root: any, pool: PoolLike | null, ready: (standIn: ShadowStandIn | null) => void): ShadowStandIn | null {
+export function shadowStandInFor(THREE: any, root: any, pool: PoolLike | null, ready: (standIn: ShadowStandIn | null) => void, cache: { store: StandInCache; key: string } | null = null): ShadowStandIn | null {
   if (root.userData.shadowStandIn !== undefined) return root.userData.shadowStandIn;
   if (root.userData[SHADOW_STAND_IN_PENDING]) return null;
-  if (!pool?.live) return root.userData.shadowStandIn = buildShadowStandIn(THREE, root);
-  const { sides, meshes } = collectStandInParts(THREE, root);
+  // A level welded before (StandInCache): the same stand-in at once, nothing copied, nothing posted.
+  let keep: ((welded: Welded) => void) | undefined;
+  let grouped: { side: number; meshes: any[] }[] | undefined;
+  if (cache) {
+    grouped = standInMeshes(root);
+    if (!grouped.length) return root.userData.shadowStandIn = null;
+    const signature = standInSignature(THREE, root, grouped), hit = cache.store.get(cache.key, signature);
+    if (hit) return root.userData.shadowStandIn = assembleStandIn(THREE, hit, grouped.map(g => g.meshes));
+    keep = welded => cache.store.put(cache.key, signature, welded);
+  }
+  if (!pool?.live) return root.userData.shadowStandIn = buildShadowStandIn(THREE, root, keep);
+  const { sides, meshes } = collectStandInParts(THREE, root, grouped);
   if (!sides.length) return root.userData.shadowStandIn = null;
   const pending = pendingFor(pool);
   let worker = -1;
   for (let i = 0; i < pool.size && worker < 0; i++) { const w = (pending.turn + i) % pool.size; if (pool.alive(w)) worker = w; }
-  if (worker < 0) return root.userData.shadowStandIn = assembleStandIn(THREE, sides.map(s => weldStandInSide(s.side, s.parts)), meshes);
+  if (worker < 0) { const welded = sides.map(s => weldStandInSide(s.side, s.parts)); keep?.(welded); return root.userData.shadowStandIn = assembleStandIn(THREE, welded, meshes); }
   pending.turn = worker + 1;
   const id = ++pending.next, token = { id };
   root.userData[SHADOW_STAND_IN_PENDING] = token;
@@ -322,7 +399,8 @@ export function shadowStandInFor(THREE: any, root: any, pool: PoolLike | null, r
     if (root.userData[SHADOW_STAND_IN_PENDING] !== token) return; // cancelled
     delete root.userData[SHADOW_STAND_IN_PENDING];
     // A failed worker or weld: build here, as without a pool (the parts went to the worker: collect them again).
-    root.userData.shadowStandIn = welded ? assembleStandIn(THREE, welded, meshes) : buildShadowStandIn(THREE, root);
+    if (welded) keep?.(welded);
+    root.userData.shadowStandIn = welded ? assembleStandIn(THREE, welded, meshes) : buildShadowStandIn(THREE, root, keep);
     ready(root.userData.shadowStandIn);
   } });
   const transfer = sides.flatMap(s => s.parts.flatMap(p => [p.positions.buffer as ArrayBuffer, ...(p.index ? [p.index.buffer as ArrayBuffer] : [])]));
@@ -330,7 +408,7 @@ export function shadowStandInFor(THREE: any, root: any, pool: PoolLike | null, r
   try { posted = pool.post(worker, { type: 'standIn', id, sides } satisfies StandInRequest, transfer); } catch { posted = false; }
   if (!posted) {
     pending.waiting.delete(id); delete root.userData[SHADOW_STAND_IN_PENDING];
-    return root.userData.shadowStandIn = buildShadowStandIn(THREE, root);
+    return root.userData.shadowStandIn = buildShadowStandIn(THREE, root, keep);
   }
   return null;
 }

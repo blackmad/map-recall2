@@ -22,6 +22,11 @@ export interface ResidentModel {
   inView: boolean;
   /** False for models that must stay (being swapped, highlighted, procedural). */
   evictable: boolean;
+  /**
+   * Behind the camera's heading (desktop-perf 2026-11-27): the ride is leaving it, so it is needed again later than a
+   * model ahead at the same distance. Behind ones go first; absent counts as ahead (the old order).
+   */
+  behind?: boolean;
 }
 
 export interface ResidencyBudget {
@@ -35,7 +40,7 @@ export function pickEvictions(models: readonly ResidentModel[], { budget, slack 
   const target = Math.max(0, budget - slack);
   const candidates = models
     .filter(model => model.evictable && !model.inView)
-    .sort((a, b) => b.distanceSq - a.distanceSq);
+    .sort((a, b) => (Number(!!b.behind) - Number(!!a.behind)) || b.distanceSq - a.distanceSq);
   const excess = models.length - target;
   return candidates.slice(0, excess).map(model => model.id);
 }
@@ -95,4 +100,48 @@ export function keepReachM(reachM: number, hysteresis: boolean): number {
 /** Whether a model that arrived at `addedAt` may be evicted at `now` (always with hysteresis off or no arrival time). */
 export function pastMinDwell(addedAt: number | undefined, now: number, hysteresis: boolean): boolean {
   return !hysteresis || addedAt === undefined || !Number.isFinite(addedAt) || now - addedAt >= RESIDENCY_MIN_DWELL_MS;
+}
+
+// ------------------------------------------------------------------ re-arrival cool-down (desktop-perf 2026-11-27)
+// On the belt route at the desktop budget of 72 the set thrashed: 127-218 leaves a minute and ~65 re-arrivals, the same
+// id given back at ~260 m off view and loaded again 1-25 s later (median 7 s), never on screen when it came back
+// (pop-in lane, lane/popin-colour-20261127). Each re-arrival is a fetch, a parse, an upload, a weld and a dissolve nobody
+// sees. A model given back now waits LANDMARK_COOLDOWN_MS before it is asked for again, unless it is on screen through
+// the last drawn camera: what the rider can see still loads at once. `?landmarkCooldown=0` (or
+// `__canalRecallLandmarkCooldown = false`) asks again at once; `?landmarkCooldownS=` tunes it.
+
+export const LANDMARK_COOLDOWN_MS = 30_000;
+
+/** The cool-down in ms (0: off). */
+export function landmarkCooldownMs(search: string, global?: unknown): number {
+  if (global === false) return 0;
+  if (/[?&]landmarkCooldown=(0|false|off)\b/.test(search)) return 0;
+  const s = Number(/[?&]landmarkCooldownS=(\d+)/.exec(search)?.[1]);
+  return Number.isFinite(s) ? s * 1000 : LANDMARK_COOLDOWN_MS;
+}
+
+/** Whether a model given back at `evictedAt` is still cooling at `now` (never when it is on screen). */
+export function coolingDown(evictedAt: number | undefined, now: number, cooldownMs: number, onScreen: boolean): boolean {
+  return !onScreen && cooldownMs > 0 && evictedAt !== undefined && now - evictedAt < cooldownMs;
+}
+
+/**
+ * Whether a sphere (world `centre`, `radius`) is inside the view of the column-major `clipFromWorld`, with `marginNdc`
+ * to spare: its centre in front of the camera and its screen extent touching [-1, 1]².
+ */
+export function sphereOnScreen(clipFromWorld: ArrayLike<number>, centre: readonly [number, number, number], radius: number, marginNdc = 0.1): boolean {
+  const m = clipFromWorld, [x, y, z] = centre;
+  const w = m[3] * x + m[7] * y + m[11] * z + m[15];
+  if (!(w > 1e-9)) return false;
+  const nx = (m[0] * x + m[4] * y + m[8] * z + m[12]) / w, ny = (m[1] * x + m[5] * y + m[9] * z + m[13]) / w;
+  // The radius in NDC: the largest offset of the three axis points (as projectedRadiusPx).
+  let r = 0;
+  for (let k = 0; k < 3; k++) {
+    const dx = k === 0 ? radius : 0, dy = k === 1 ? radius : 0, dz = k === 2 ? radius : 0;
+    const pw = m[3] * (x + dx) + m[7] * (y + dy) + m[11] * (z + dz) + m[15];
+    if (!(pw > 1e-9)) { r = Infinity; break; }
+    const px = (m[0] * (x + dx) + m[4] * (y + dy) + m[8] * (z + dz) + m[12]) / pw, py = (m[1] * (x + dx) + m[5] * (y + dy) + m[9] * (z + dz) + m[13]) / pw;
+    r = Math.max(r, Math.abs(px - nx), Math.abs(py - ny));
+  }
+  return Math.abs(nx) - r <= 1 + marginNdc && Math.abs(ny) - r <= 1 + marginNdc;
 }

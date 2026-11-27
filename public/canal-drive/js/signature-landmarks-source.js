@@ -21,13 +21,15 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
-import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { anchorDistanceM, coolingDown, keepReachM, landmarkCooldownMs, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, sphereOnScreen, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 // Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
 import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
-import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
+import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, pageStandInCache, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
+import { ensureBounds, pageFastBounds } from '../../../src/canalRecall/rendererShared/fastBounds.ts';
+import { levelDwellMs, levelSwapDue } from '../../../src/canalRecall/landmarks/levelDwell.ts';
 // The page's worker pool (engine/workerPool.ts; started by the building and ground layers) welds the shadow stand-ins off the main thread (#129).
 import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the MapLibre-shaped map.
@@ -731,6 +733,10 @@ export class SignatureLandmarks {
     this._lastEvictCheck = now;
     const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
     const view = this._viewBounds();
+    // Desktop-perf 2026-11-27: the heading, so models the ride is leaving go first (landmarkResidency.ts pickEvictions).
+    // `?landmarkCooldown=0` restores the plain furthest-first order along with no cool-down.
+    const ahead = !(window.__canalRecallLandmarkCooldown === false || (this._cooldownUrl ??= landmarkCooldownMs(window.location.search)) === 0);
+    const heading = this.camera.bearing() * Math.PI / 180, fx = Math.sin(heading), fy = Math.cos(heading);
     // Lane P2 (#325, `?popFade`): kept while within 1.25 x the reach, and never given back in its first 10 s.
     const hysteresis = this._popFade ??= popFadeFlag(), keepReach = keepReachM(this.reachM, hysteresis);
     const models = this._entries.map(entry => {
@@ -739,6 +745,7 @@ export class SignatureLandmarks {
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
+        behind: ahead && !!anchor && ((anchor[0] - center.lng) * cos * fx + (anchor[1] - center.lat) * fy) < 0,
         inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, keepReach, this._radiusM(entry.spec))),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
         evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted && pastMinDwell(this._arrivedAt?.get(entry.spec.id), now, hysteresis),
@@ -747,6 +754,9 @@ export class SignatureLandmarks {
     const ids = new Set(pickEvictions(models, { budget: this.residencyBudget }));
     if (!ids.size) return;
     this.evictions += ids.size;
+    // Desktop-perf 2026-11-27: a model given back cools down before it is asked for again (unless on screen).
+    const evicted = this._evictedAt ??= new Map();
+    for (const id of ids) evicted.set(id, now);
     this._dropEntries(ids);
   }
 
@@ -814,10 +824,24 @@ export class SignatureLandmarks {
       return;
     }
     const reachFrom = this.loadVisibleOnly && Number.isFinite(this.reachM) ? this.camera.center() : null;
-    const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
+    let candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || (this._nearby(spec, undefined, view)
         && (!reachFrom || withinReach(spec.surveyed?.anchor || spec.footprint?.centre, reachFrom, this.reachM, this._radiusM(spec))))));
-    this._requestIdle = view && !reveal && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
+    // Desktop-perf 2026-11-27 (landmarkResidency.ts, `?landmarkCooldown=0` off): one given back lately waits, unless on
+    // screen. While any waits the gate stays open, so it is asked for the walk after its wait ends.
+    let cooling = 0;
+    const evicted = this._evictedAt;
+    if (evicted?.size) {
+      const now = performance.now(), cooldown = window.__canalRecallLandmarkCooldown === false ? 0 : (this._cooldownUrl ??= landmarkCooldownMs(window.location.search));
+      for (const [id, at] of evicted) if (now - at >= cooldown) evicted.delete(id);
+      if (cooldown > 0 && evicted.size) candidates = candidates.filter(spec => {
+        const wait = coolingDown(evicted.get(spec.id), now, cooldown, this._onScreen(spec));
+        if (wait) cooling++;
+        return !wait;
+      });
+    }
+    this.cooldownSkips = (this.cooldownSkips || 0) + cooling;
+    this._requestIdle = view && !reveal && !candidates.length && !cooling ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
     const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
@@ -990,6 +1014,9 @@ export class SignatureLandmarks {
 
   /** Shared frame: compile a decoded model's programs (as it will draw: receiving shadows) before it is placed. */
   _precompile(scene) {
+    // Desktop-perf 2026-11-27 (`?fastBounds=0` off): bounds as three computes them, from the typed arrays, before the
+    // placement's Box3 and the first frustum test box every coordinate of a quantised GLB (rendererShared/fastBounds.ts).
+    if (scene && pageFastBounds()) ensureBounds(THREE, scene);
     if (!this.sharedFrame?.compileAsync) return Promise.resolve();
     this.sharedFrame.constructor.setShadows(scene, true, true);
     return this.sharedFrame.compileAsync(scene);
@@ -1331,7 +1358,7 @@ export class SignatureLandmarks {
     const size = bounds.getSize(new THREE.Vector3());
     const entry = { spec, group, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld,
       // Level of detail: `level` is what `group` holds now; `spare` is the other level once loaded (detached, kept for reuse).
-      level, imported, spare: null, spareLevel: null, levelLoading: false,
+      level, imported, spare: null, spareLevel: null, levelLoading: false, levelSince: performance.now(),
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
     this._releaseVertexData(spec, imported);
@@ -1468,6 +1495,15 @@ export class SignatureLandmarks {
     };
   }
 
+  /** Whether a model's footprint sphere is on screen through the last drawn camera (true before a frame: unknown). */
+  _onScreen(spec) {
+    const clip = this._clipFromWorld, anchor = spec.surveyed?.anchor || spec.footprint?.centre;
+    if (!clip || !this._sharedRoot || !anchor) return true;
+    const h = spec.heightMetres || 20, m = this.maplibregl.MercatorCoordinate.fromLngLat(anchor, h / 2);
+    const p = (this._onScreenV ??= new THREE.Vector3()).set(m.x, m.y, m.z).applyMatrix4(this._sharedRoot.matrixWorld);
+    return sphereOnScreen(clip.elements, [p.x, p.y, p.z], Math.hypot(this._radiusM(spec), h / 2));
+  }
+
   /** A footprint radius at `anchor` in CSS pixels through the last drawn camera (null before a frame or behind it). */
   _chunkRadiusPx(anchor, radiusMetres) {
     const clip = this._clipFromWorld, canvas = this.map?.getCanvas?.();
@@ -1511,6 +1547,7 @@ export class SignatureLandmarks {
 
   _updateLevelsPass() {
     const view = this._viewBounds(), levelView = this._lod2On() ? this._levelView() : null;
+    const now = performance.now(), dwell = window.__canalRecallLevelDwell === false ? 0 : (this._levelDwellUrl ??= levelDwellMs(window.location.search, undefined));
     for (const entry of this._entries) {
       if (entry.levelLoading || entry.lodFailed) continue;
       const lod2 = this._hasLod2(entry.spec);
@@ -1520,6 +1557,9 @@ export class SignatureLandmarks {
         ? chooseLandmarkLevel(entry.level, this._levelInputs(entry.spec, entry.radiusMetres, entry.placement.anchor, levelView, this._isLit(entry)))
         : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
+      // Desktop-perf 2026-11-27 (landmarks/levelDwell.ts, `?levelDwell=0` off): a downgrade waits until the level has
+      // been on screen LEVEL_DWELL_MS, so a weaving ride does not flip models (a load, a compile and a weld each time).
+      if (!levelSwapDue(entry.level, wanted, entry.levelSince, now, dwell)) continue;
       if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }
       // A lod2 is ~10 kB: from the air the pan outruns two loads at a time and models it left behind stay at full
       // (measured: the west leg peaked at 1,059 landmark draws). lod2 downgrades take their own, wider limit.
@@ -1718,6 +1758,7 @@ export class SignatureLandmarks {
     if (entry.spare && entry.spare !== incoming) this._disposeResources(entry.spare);
     entry.spare = outgoing; entry.spareLevel = entry.level;
     entry.level = level;
+    entry.levelSince = performance.now();
     // Highlight, depth bias and shadows are per material: reapply to the new level.
     const active = entry.highlighted || !!entry.highlightState;
     entry.highlighted = false; entry.highlightState = null; entry.depthBias = null;
@@ -1799,11 +1840,13 @@ export class SignatureLandmarks {
     if (entry.level === 'lod2') return;
     const imported = entry.imported;
     // Welded in the worker pool: until it arrives the level's meshes cast their own (same) shadow.
+    // Desktop-perf 2026-11-27: a level welded before (given back and streamed in again) takes its kept weld at once.
+    const store = pageStandInCache();
     const standIn = shadowStandInFor(THREE, imported, existingWorkerPool(), () => {
       if (this._removed || entry.imported !== imported || !this._entries?.includes(entry)) return;
       this._attachShadowStandIn(entry);
       this.map.triggerRepaint();
-    });
+    }, store ? { store, key: `${entry.spec.id}|${entry.level}` } : null);
     if (!standIn) return;
     standIn.object.matrix.multiplyMatrices(entry.group.matrix, imported.matrix);
     standIn.object.matrixWorldNeedsUpdate = true;
