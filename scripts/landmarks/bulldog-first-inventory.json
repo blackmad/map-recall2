@@ -41,14 +41,14 @@
     {
      "id": "s-side-window",
      "kind": "window-shape",
-     "where": "one green-framed window on the second floor near the front corner, brick wall otherwise",
+     "where": "one white-framed window about 6-7.5 m up near the front corner, brick wall otherwise",
      "approxSizeM": [
       0.9,
       1.7
      ],
      "plan": "simplified",
      "seenIn": "b_20250114_1026_Track02_Sphere_00088",
-     "how": "timberWindow 2 x 3 in green 1.3 m from the corner; position approximate"
+     "how": "timberWindow 2 x 2 in white 1.1 m from the corner; position approximate"
     }
    ]
   },
@@ -68,14 +68,14 @@
     {
      "id": "s-mosaic",
      "kind": "other",
-     "where": "whole ground storey 0-4.3 m painted in a bright multicolour mosaic/mural (blue, yellow, red, green, purple, orange) under a dark blue fascia",
+     "where": "whole ground storey 0-4.3 m painted with a busy mural of figures and texts in many colours on a dark navy ground, under a navy fascia lettered THE BULLDOG; blue neon THE FIRST / COFFEESHOP board over the brown window",
      "approxSizeM": [
       4.52,
       4.3
      ],
      "plan": "simplified",
      "seenIn": "recording_2025-06-16_06-42-40_02070",
-     "how": "mosaicPanel: blue ground with 0.32 m patches in seven flat colours; the painted figures and texts are not drawn"
+     "how": "mosaicPanel: navy ground with 0.22 m patches (45% painted) in six flat colours; fascia lettering and neon board in Archivo Black; the painted figures are not drawn"
     },
     {
      "id": "s-signs",
@@ -87,19 +87,19 @@
      ],
      "plan": "simplified",
      "seenIn": "b_20250114_1026_Track02_Sphere_00088",
-     "how": "blue disc, red ring, yellow face, brown head with ears, pale muzzle, dark nose and eyes, both faces, iron arm; rim lettering left out (too small)"
+     "how": "1.2 m disc (blue rim, red ring, yellow face, brown head with ears, pale muzzle, dark nose and eyes), both faces, iron arm, centre 4.6 m at the top of the shopfront; rim lettering left out"
     },
     {
      "id": "s-gable",
      "kind": "other",
-     "where": "bell gable: shoulders at ~11.8 m, crown at ~13.7 m, white with a moulded coping",
+     "where": "raised cornice gable: flat cornice shoulders 0.3 m wide at 12.2 m at both edges, then an ogee (concave foot, convex top) to a rounded crown at 13.5 m; moulded coping",
      "approxSizeM": [
       4.52,
       1.9
      ],
      "plan": "modelled",
      "seenIn": "b_20250114_1026_Track02_Sphere_00186",
-     "how": "the 3DBAG pitched front wall replaced by a bell profile wall with a coping band, shoulder ledges and crown block"
+     "how": "own front wall to the ogee outline (smoothstep), 24 cm coping band, deeper cornice under the shoulders"
     },
     {
      "id": "s-white-front",
@@ -111,7 +111,7 @@
      ],
      "plan": "modelled",
      "seenIn": "b_20250114_1026_Track02_Sphere_00186",
-     "how": "front wall in the measured off-white"
+     "how": "front wall in the measured warm white #f4f0e4"
     },
     {
      "id": "s-attic-windows",
@@ -175,6 +175,18 @@
       "note": "10-15 cm iron anchors, invisible at gallery size"
      },
      "seenIn": "b_20250114_1026_Track02_Sphere_00186"
+    },
+    {
+     "id": "s-lamps",
+     "kind": "lamp",
+     "where": "three wall lanterns at about 7.2 m: both ends and between the window axes, lit in the 2025-01-14 crop",
+     "approxSizeM": [
+      0.16,
+      0.32
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track02_Sphere_00186",
+     "how": "dark bracket and box with a pale light"
     }
    ]
   }

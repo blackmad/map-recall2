@@ -1,0 +1,23 @@
+{
+  "id": "in-t-aepjen",
+  "countedBy": "lane landmarks-r19-e-20261127 from the 2025-06-30 panorama recording_2025-06-30_05-16-46_01845 (rectified grid crop of lane lm-wallen-more and the aimed views) and the side-on view b_20250114_1026_Track08_Sphere_00164; glazed openings bottom row first.",
+  "facades": [
+    {
+      "name": "Zeedijk front",
+      "bearing": 232,
+      "photo": "artifacts/landmark-briefs/in-t-aepjen/w01-232.jpg",
+      "rows": [
+        4,
+        4,
+        2,
+        1
+      ],
+      "columns": 4,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Counted by the ribbon convention (lights split by posts narrower than 0.3 m are one opening). Shopfront: four glazed bays between five cream posts (0.34 m), each with a transom light over it (two rows). Tarred storey: two groups of two small-paned casements, the lights in each group split by a slim post, the groups by a heavy central post: 2. Blue-grey storey: three casements split by slim posts (about 0.1-0.15 m in the grid crop) on the right two thirds, boards on the left third: 1 ribbon, asymmetric. The pointed top has no window in any crop."
+    }
+  ]
+}

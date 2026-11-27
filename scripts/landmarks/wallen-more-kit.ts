@@ -189,3 +189,18 @@ export function frameRing(b: BuildingTools, f: Frame, t: number, y: number, w: n
   slab(b, f, t, y + h, w + 2 * fw, fw, d, colour, out);
   for (const s of [-1, 1]) slab(b, f, t + s * (w / 2 + fw / 2), y, fw, h, d, colour, out);
 }
+
+/**
+ * A wall-section polygon (points [out, y]: metres in front of the wall plane, up) extruded along the wall from t0 to t1: a
+ * jetty, apron, moulding or lap board in profile (src/canalRecall/landmarks/jettyProfile.ts). Built in a frame turned to
+ * face along the wall, whose local x is the wall's outward normal.
+ */
+export function sectionAlong(b: BuildingTools, f: Frame, t0: number, t1: number, pts: [number, number][], colour: string) {
+  const side: Frame = {origin: [f.origin[0] + f.tangent[0] * t1, f.origin[1] + f.tangent[1] * t1], tangent: [-f.n[0], -f.n[1]], n: [-f.tangent[0], -f.tangent[1]]};
+  const s0 = getSink();
+  setSink(0);
+  // the turned frame maps section x onto the wall's normal, a reflection of put()'s usual (x along the wall) mapping, so the
+  // section is wound clockwise to keep every face turned outward
+  poly(b, side, 0, 0, [...pts].reverse(), t1 - t0, colour, 0);
+  setSink(s0, true);
+}

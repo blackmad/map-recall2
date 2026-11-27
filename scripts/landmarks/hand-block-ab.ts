@@ -10,7 +10,9 @@
  * the landmark the game draws; lane hand-blocks-d-20261123); the new model is
  * public/canal-drive/models/<id>.glb placed at <id>-footprints.json's anchor (north offset 0), both through the
  * preview's GLB elevation renderer on the same wall line, plus (--pano) a street view from that panorama's camera aimed at
- * the wall centre as the brief's aimed thumbnail is (house:preview --pose), set beside the thumbnail. The photo is artifacts/landmark-briefs/<id>/<tag>.jpg (rectified on the same line). Writes
+ * the wall centre as the brief's aimed thumbnail is (house:preview --pose), set beside the thumbnail. --aim=<heading,fov,pitch>
+ * (with --pano) overrides that aim and cuts the same pinhole view out of the equirectangular panorama as the street photo, for a jettied or
+ * overhanging front only an up-looking street view shows (lane landmarks-r19-e). The photo is artifacts/landmark-briefs/<id>/<tag>.jpg (rectified on the same line). Writes
  * <out>/<tag>-front.jpg and <tag>-street.jpg (sides from a seeded RNG: hash of seed + tag) and <out>/key-<tag>.json.
  */
 import fs from 'node:fs';
@@ -18,6 +20,8 @@ import path from 'node:path';
 import sharp from 'sharp';
 import {parseArgs, PreviewSession, renderInstalled, renderPand} from '../house-preview/preview.ts';
 import {cachedJson} from '../pand-reference/core.ts';
+import {loadPano} from '../pand-reference/rectify.ts';
+import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
 
 const arg = (n: string, d?: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const id = arg('id')!, pand = arg('pand')!, tag = arg('tag')!, line = arg('line')!;
@@ -36,9 +40,25 @@ export function seededFlip(s: string): boolean {
   return (((t ^ (t >>> 14)) >>> 0) / 4294967296) < 0.5;
 }
 
+/** Pinhole view out of a world-aligned equirectangular panorama (as review-sheet.ts's perspectiveFromPano), square, fov on both axes. */
+function perspectiveFromPano(img: EquirectangularImage, headingDeg: number, pitchDeg: number, fovDeg: number, size: number): Promise<Buffer> {
+  const h = headingDeg * Math.PI / 180, p = pitchDeg * Math.PI / 180, t = Math.tan(fovDeg * Math.PI / 360);
+  const f = [Math.sin(h) * Math.cos(p), Math.cos(h) * Math.cos(p), Math.sin(p)], r = [Math.cos(h), -Math.sin(h), 0];
+  const u = [-Math.sin(h) * Math.sin(p), -Math.cos(h) * Math.sin(p), Math.cos(p)];
+  const buf = Buffer.alloc(size * size * 3), rgb = [0, 0, 0];
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const a = ((x + 0.5) / size * 2 - 1) * t, b = -((y + 0.5) / size * 2 - 1) * t;
+    const [pu, pv] = directionToPixel([f[0] + r[0] * a + u[0] * b, f[1] + r[1] * a + u[1] * b, f[2] + r[2] * a + u[2] * b], img, 'centre');
+    sampleEquirectangular(img, pu, pv, rgb);
+    const o = (y * size + x) * 3;
+    buf[o] = rgb[0]; buf[o + 1] = rgb[1]; buf[o + 2] = rgb[2];
+  }
+  return sharp(buf, {raw: {width: size, height: size, channels: 3}}).jpeg({quality: 88}).toBuffer();
+}
+
 const session = new PreviewSession('photo');
 // --pano: the aimed-thumbnail pose (pand-reference/rectify.ts aimedThumbnail), eye 1.7 m instead of the camera's 2.4 m
-let pose: string | null = null;
+let pose: string | null = null, aimPhoto: string | null = null;
 if (arg('pano')) {
   const rec = await cachedJson(`https://api.data.amsterdam.nl/panorama/panoramas/${arg('pano')}/`);
   const cam = rec.geometry.coordinates as number[], [a0, a1, b0, b1] = line.split(',').map(Number), lngC = (a0 + b0) / 2, latC = (a1 + b1) / 2;
@@ -47,6 +67,17 @@ if (arg('pano')) {
   const fov = Math.round(Math.min(100, Math.max(40, 2 * Math.atan(Math.max(lenM / 2 + 1.5, h / 2 + 1) / d) * 180 / Math.PI)));
   const pitch = Math.round(Math.atan((h / 2 - 2.4) / d) * 180 / Math.PI);
   pose = `${cam[0]},${cam[1]},${(Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360},${fov},${pitch}`;
+  if (arg('aim')) {
+    const [ah, af, ap] = arg('aim')!.split(',').map(Number);
+    // --cam=<dE,dN> shifts the render camera (metres east, north) off the panorama's recorded position: the 2025 Zeedijk
+    // recordings sit a few metres off the street they show, so the render is matched to the photo by eye (sheet records it)
+    const [dE, dN] = (arg('cam') ?? '0,0').split(',').map(Number);
+    pose = `${cam[0] + dE / (111320 * Math.cos(cam[1] * Math.PI / 180))},${cam[1] + dN / 110540},${ah},${af},${ap}`;
+    aimPhoto = path.join(out, `${tag}-aim-photo.jpg`);
+    const pano = await loadPano({panoId: arg('pano')!, record: rec} as never);
+    if (!pano) throw new Error(`--aim: no equirectangular image for ${arg('pano')}`);
+    fs.writeFileSync(aimPhoto, await perspectiveFromPano(pano.img, ah, ap, af, 800));
+  }
 }
 const base = parseArgs([pand, `--wall=line:${line}`, '--threeq', `--ppm=${ppm}`, ...(pose ? [`--pose=${pose}`] : [])]);
 const place = (file: string) => ({key: id, glb: path.resolve(file), anchor: src.anchor, northOffsetDegrees: 0, mirror: false, source: `${id}-footprints.json`});
@@ -75,6 +106,6 @@ async function stack(imgs: {f: string; label: string}[], W: number, dest: string
 const photo = `artifacts/landmark-briefs/${id}/${tag}.jpg`, thumb = `artifacts/landmark-briefs/${id}/${tag}.thumb.jpg`;
 await stack([{f: photo, label: 'PHOTO (Gemeente Amsterdam panorama, rectified)'}, {f: file(A, 'front.png'), label: 'A'}, {f: file(B, 'front.png'), label: 'B'}], 1400, path.join(out, `${tag}-front.jpg`), true);
 const view = pose ? 'pose.png' : 'threeq.png';
-await stack([{f: fs.existsSync(thumb) ? thumb : photo, label: 'PHOTO'}, {f: file(A, view), label: 'A'}, {f: file(B, view), label: 'B'}], 620, path.join(out, `${tag}-street.jpg`), false);
+await stack([{f: aimPhoto ?? (fs.existsSync(thumb) ? thumb : photo), label: 'PHOTO'}, {f: file(A, view), label: 'A'}, {f: file(B, view), label: 'B'}], 620, path.join(out, `${tag}-street.jpg`), false);
 fs.writeFileSync(path.join(out, `key-${tag}.json`), JSON.stringify({id, tag, seed: `${seed}:${tag}`, A: flip ? 'new' : 'today', B: flip ? 'today' : 'new', todayRoute: today.measure.route, todayWhy: today.measure.routeWhy, ...(arg('today-glb') ? {todayGlb: arg('today-glb')} : {})}, null, 1) + '\n');
 console.log(`${tag}: ${path.relative(process.cwd(), path.join(out, `${tag}-front.jpg`))}, ${tag}-street.jpg; key in key-${tag}.json`);

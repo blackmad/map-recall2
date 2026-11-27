@@ -347,6 +347,8 @@ import {buildEroticMuseum} from './erotic-museum-builder';
 import {buildCondomerie} from './condomerie-builder';
 import {buildRedLightSecrets} from './red-light-secrets-builder';
 import {buildBananaBar} from './banana-bar-builder';
+import {buildBulldogFirst} from './bulldog-first-builder';
+import {buildInTAepjen} from './in-t-aepjen-builder';
 import {buildPentagon} from './pentagon-builder';
 import {buildKramatplantsoen} from './kramatplantsoen-builder';
 import {buildMagnaPlaza} from './magna-plaza-builder';
@@ -1296,6 +1298,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='condomerie')buildCondomerie(w,d,helpers);
     else if(id==='red-light-secrets')buildRedLightSecrets(w,d,helpers);
     else if(id==='banana-bar')buildBananaBar(w,d,helpers);
+    else if(id==='bulldog-first')buildBulldogFirst(w,d,helpers);
+    else if(id==='in-t-aepjen')buildInTAepjen(w,d,helpers);
     else if(id==='pentagon')buildPentagon(w,d,helpers);
     else if(id==='kramatplantsoen')buildKramatplantsoen(w,d,helpers);
     else if(id==='magna-plaza')buildMagnaPlaza(w,d,helpers);

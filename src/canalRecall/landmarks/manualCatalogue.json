@@ -97316,6 +97316,209 @@
   }
  },
  {
+  "id": "bulldog-first",
+  "name": "The Bulldog The First, Oudezijds Voorburgwal 90",
+  "modelUrl": "./models/bulldog-first.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012178229"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89765521,
+    52.37367817
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 8.3,
+   "widthMetres": 12.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.89765521,
+    52.37367817
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012178229 (3DBAG CC BY 4.0, BAG CC0; Oudezijds Voorburgwal 90-H and 90-1) in native east/south metres (scripts/landmarks/bulldog-first-footprints.json, bag-shell-prepare.ts), its pitched front wall replaced by the bell gable; the canal front (facade ring edge 2, 4.52 m) read from the rectified Gemeente Amsterdam panoramas b_20250114_1026_Track02_Sphere_00186 (2025-01-14), b_20250114_1026_Track02_Sphere_00088 (2025-01-14) and recording_2025-06-16_06-42-40_02070 (2025-06-16), CC BY 4.0. Per wall in scripts/landmarks/bulldog-first-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 13.9,
+  "galleryView": {
+   "theta": 0.5,
+   "phi": 1.05
+  },
+  "bagYear": 1683,
+  "materialOverrides": {
+   "stone": "#f4f0e4",
+   "brick": "#6e4b3d",
+   "frame": "#262b29",
+   "glass": "#56707e",
+   "dark": "#1e2124",
+   "slate": "#4f4d4a",
+   "concrete": "#3b4647",
+   "blue": "#26324f",
+   "gold": "#e8b923",
+   "red": "#c8352b",
+   "green": "#3d8a48",
+   "pink": "#8f4a9e",
+   "ochre": "#de7a2a",
+   "copper": "#3f8fd0",
+   "bronze": "#7a4a28",
+   "sandstone": "#e3c9a0"
+  },
+  "attribution": {
+   "title": "The Bulldog The First, Oudezijds Voorburgwal 90, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250114_1026_Track02_Sphere_00186/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012178229 (CC0): the white bell-gabled front, its dark-framed windows with red flower boxes, the round-headed attic windows, the painted mosaic ground storey and the two round bulldog-head hanging signs, read from Gemeente Amsterdam panoramas (CC BY 4.0). Door number in Archivo Black (SIL OFL 1.1). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8975873,
+      52.3737153
+     ],
+     [
+      4.8975654,
+      52.3736833
+     ],
+     [
+      4.8977135,
+      52.3736412
+     ],
+     [
+      4.8977547,
+      52.3736729
+     ],
+     [
+      4.8975873,
+      52.3737153
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "in-t-aepjen",
+  "name": "In 't Aepjen, Zeedijk 1",
+  "modelUrl": "./models/in-t-aepjen.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012177880"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.90013807,
+    52.37629298
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 9.1,
+   "widthMetres": 9.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.90013807,
+    52.37629298
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177880 (3DBAG CC BY 4.0, BAG CC0; Zeedijk 1) in native east/south metres (scripts/landmarks/in-t-aepjen-footprints.json, bag-shell-prepare.ts), its Zeedijk front replaced by the timber front; read from the rectified Gemeente Amsterdam panorama recording_2025-06-30_05-16-46_01845 (2025-06-30) and the aimed views b_20250114_1026_Track08_Sphere_00126 (2025-01-14) and recording_2025-06-30_05-16-46_01844 and _01846, CC BY 4.0. Rijksmonument 6500. Per wall in scripts/landmarks/in-t-aepjen-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 15.8,
+  "galleryView": {
+   "theta": 5.5,
+   "phi": 1.05
+  },
+  "bagYear": 1550,
+  "materialOverrides": {
+   "brick": "#5e4536",
+   "copper": "#9db3bf",
+   "green": "#73868f",
+   "greyBrick": "#5d6c75",
+   "sandstone": "#f3ecd6",
+   "frame": "#1d201f",
+   "glass": "#1d1f20",
+   "bronze": "#161616",
+   "stone": "#f2f0ea",
+   "red": "#c8312b",
+   "gold": "#f1ead2",
+   "slate": "#4a4846",
+   "dark": "#26292c"
+  },
+  "attribution": {
+   "title": "In 't Aepjen, Zeedijk 1, Amsterdam",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01845/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177880 (CC0): the cream timber shopfront with the cafe's name (Pacifico, SIL OFL 1.1) and the Gulpener disc, the tarred jettied storey with its window band, the pale planked upper storeys and the hood, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9000798,
+      52.376319
+     ],
+     [
+      4.9001215,
+      52.3762844
+     ],
+     [
+      4.9001239,
+      52.3762855
+     ],
+     [
+      4.9001334,
+      52.3762775
+     ],
+     [
+      4.900131,
+      52.3762764
+     ],
+     [
+      4.9001385,
+      52.3762703
+     ],
+     [
+      4.9001376,
+      52.3762699
+     ],
+     [
+      4.9001402,
+      52.3762677
+     ],
+     [
+      4.9001438,
+      52.3762693
+     ],
+     [
+      4.9002157,
+      52.3763017
+     ],
+     [
+      4.9001513,
+      52.3763495
+     ],
+     [
+      4.9001402,
+      52.3763446
+     ],
+     [
+      4.9000798,
+      52.376319
+     ]
+    ]
+   ]
+  }
+ },
+ {
   "id": "rinus-michelslaan-1",
   "name": "Rinus Michelslaan 1-343 housing block",
   "modelUrl": "./models/rinus-michelslaan-1.glb",
