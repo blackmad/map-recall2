@@ -119,24 +119,130 @@ frame-proportional work (≈ −0.3 GPU s/s and ≈ −0.5 main-thread s/s again
 | skip re-renders when nothing changed (stopped, menus) | already done: `renderOnChange` draws 2.3–2.6 frames/s at rest, 0.26–0.5 CPU s/s | nothing to do |
 | MSAA off | not measured live (needs a reload) | the frame is not fill-bound, so little to expect; MSAA's 4× framebuffer is ~175 MB of GPU memory at 3024×1800, a memory question rather than power |
 
+## Follow-up round (same day): allocation churn, landmark churn, static subtrees
+
+The coordinator kept the cap and asked for three of the "what is left" items, each with an in-page A/B (CPU cores, GPU
+ms/s, GC ms/s, allocation MB/s; `desktop-power.mjs --ab-on/--ab-off` now reports `allocMbPerS`, `gcMsPerS` and
+`weldsPerMin` per window) and an off-switch. The machine stayed contended throughout (load 7–750, iOS simulators, other
+lanes' browsers; in two runs the Apple GPU sat at 90–94 % from other work, so GPU ms/s in those runs is not usable).
+Read the A/B deltas, not the absolutes.
+
+### 1. Allocation churn (landed, 02a4ec62a8)
+
+| change | off-switch | test |
+|---|---|---|
+| `contactsInto` without `Math.hypot` (`hypot2.ts`, bit-identical; the builtin is not inlined and boxes ~48 B a call), and a per-frame memo of span lookups / nearest contacts (`RoadQueryScratch`) | `?roadMemo=0` | `hypot2.test.ts` (1 M pairs, `Object.is`), `roadSurfaceScratch.test.ts` (memo, and < 20 B a span once warm: fails with `Math.hypot`) |
+| own-ground `surface/relief/heightRd`: scratch RD output, coverage edge without arrays | always (bit-identical) | `placementAlloc.test.ts` (old vs new, 5,000 points over holes) |
+| `footprintBase` / `frontBase` without arrays or closures; `gameGround` memoises a footprint's base per ring until a ground tile it reads (one sample wider) changes (`GroundField.version` / `changedSince`) | `?baseMemo=0` | `placementAlloc.test.ts` (2,000 random footprints bit-identical; `changedSince` edges) |
+| landmark bounds read the typed array directly (`rendererShared/fastBounds.ts`, bit-identical to three's `computeBoundingBox/Sphere`, filled before the first frustum test); stand-in position copies the same way | `?fastBounds=0` | `fastBounds.test.ts` (float32, normalised int8/16, uint8/16, interleaved, against three itself) |
+
+The "bounding sphere recomputed every frame" was not one geometry losing its sphere: every landmark level that arrived
+or swapped had its bounds computed lazily through `getY` → `denormalize` on quantised int16 GLBs, which boxes every
+coordinate. With ~4–8 level arrivals a second on the ride, three's `getY`/bounds were the top allocator (~15 MB/s).
+
+| | before (E-before) | memo on (E2-ab) | memo off (E2-ab) | item 1 + 2 on (F-ab) | item 1 memos on, item 2 off (F-ab) |
+|---|---|---|---|---|---|
+| allocation | 84.3 MB/s | 71.2 | 75.7 | **32.8** | 44.7 |
+| GC (main thread) | 9.6 ms/s | 13.8 | 13.5 | 8.8 | 11.5 |
+| main thread busy | 39 % | 33 % | 38 % | (GPU-starved run) | |
+| CPU, all processes | 1.97 cores | 1.87 | — | 1.94 | 3.6 (noisy) |
+
+`contactsInto`, `heightRd`, `footprintBase` and three's `getY` left the top of the heap profile. **The < 20 MB/s target is
+not reached**: what remains is spread thin — three's uniform upload (`setValueM4` and friends, 4–7 MB/s: a fresh
+array per matrix uniform per draw), `withOpeningsTimed`'s `some` (1.8), `_updateLandmarks` (1.4–1.9), and boxing of
+doubles at non-inlined call boundaries across the game frame (~45 B a call; not fixable piecemeal).
+
+### 2. Landmark churn (landed)
+
+| change | off-switch | test |
+|---|---|---|
+| **Stand-in LRU**: a welded shadow stand-in is kept (32 MB budget, least recently used out) keyed by model id and level, validated by a signature of its parts (per-side counts and world matrices); a level that returns assembles synchronously and posts nothing to the worker | `?standInCache=0`, `?standInCacheMB=<n>` | `shadowStandIns.test.ts` (hit byte-identical to a fresh weld, no post, a moved part misses; LRU budget) |
+| **Level hysteresis**: a level upgrade swaps at once, a downgrade only after the wanted level has been lower for 4 s | `?levelDwell=0`, `?levelDwellMs=<n>` | `levelDwell.test.ts` |
+| **Evict what the ride is leaving first**: among off-view models, those behind the heading go before those ahead, then furthest first | `?landmarkCooldown=0` (restores the old furthest-first order and no cool-down together) | `landmarkResidency.test.ts` |
+| **Re-arrival cool-down**: a model given back is not asked for again for 30 s unless it is on screen (its bounding sphere in the frustum, 10 % margin) | `?landmarkCooldown=0`, `?landmarkCooldownS=<n>` | `landmarkResidency.test.ts` (`coolingDown`, `sphereOnScreen`) |
+
+Welds (worker posts of stand-in jobs) — the worker cost the brief asked about:
+
+| | off | on |
+|---|---|---|
+| stand-in posts per run (F, 2 runs) | 233, 209 | 7, 6 |
+| welds / min, in-page A/B windows (F-ab) | 277.5 | **43.8** |
+| stand-in posts per 40 s ride (K-ride, cache on in both) | 6 | 6 |
+
+Worker CPU itself could not be attributed cleanly: in 10 s lean traces the three-buildings pool is dominated by
+chunk-build jobs, and the pool read 12–27 % of a core off vs 16–34 % on across four traces (contended machine; chunk
+jobs vary with the rails' ping-pong). Weld posts are the direct measure: −84 % in-page, −97 % per run.
+
+Re-arrivals (the pop-in lane's measure: an id given back and loaded again; `rearr.py` over pop-colour's landmark events),
+belt route, 60 s, two runs an arm:
+
+| | cool-down off | cool-down 30 s (default) | cool-down 90 s |
+|---|---|---|---|
+| re-arrivals / min | 61, 58 | **45, 47** (−23 %) | 27, 32 (−50 %) |
+| leave → re-arrive p10 / p50 / p90 | 0.7–1.3 / 5.2–5.6 / 17.7–17.9 s | 2.4–2.6 / 17.0–21.8 / 30.1 s | 0.8–2.3 / 5.4–8.3 / 25–30 s |
+| on screen when it re-arrived | 1, 1 | 0, 0 | 0, 0 |
+| visible frame-diff px from landmark arrivals (pop-colour) | 27.7 k, 21.1 k | 19.9 k, 19.0 k | 26.3 k, **50.9 k** |
+
+On the Geldersekade ride (K-ride, 40 s): re-arrivals 63 → 33 (−48 %), first arrivals 155 → 126, drops 398 → 365, total
+CPU 2.46 → 2.30 cores (sequential, ±10 %).
+
+Why not more: the re-arrivals are models ~260 m off to the side that leave the lat/lng view box and come back into it
+(280–460 m) without ever reaching the screen. The p90 of 30.1 s is the cool-down ending, not a need.A 90 s cool-down halves them, but one of its two runs doubled the
+visible landmark-arrival pixels (a cooled model loading late, on screen), so the default stays at 30 s, which is neutral
+on visible diffs. 90 s (`?landmarkCooldownS=90`) is a candidate for the pop-in lane to judge with its frames. The
+remaining short re-arrivals (p10 under 3 s) are models the on-screen test lets through (10 % margin).
+
+Not done, and why:
+- **A CPU-side cache of parsed levels.** `_releaseVertexData` frees the CPU arrays after upload, so a parsed level only
+  exists as GPU buffers; keeping those defeats the residency budget, and keeping a second CPU copy is ~the GLB size
+  again per model. The fetch is an HTTP-cache hit; parse + upload are what a re-arrival costs, and the cool-down avoids
+  the re-arrival instead.
+- **Raising the budget (72).** No clean GPU-memory measurement was possible on this machine today (the GPU was shared
+  at 90 %+), so per the brief it stays.
+- Level swaps were 0 on the ride (all levels are chosen on arrival), so the 4 s dwell matters for the aerial and slow
+  pans, not this ride.
+
+### 3. `onViewChange` throttling — skipped, note for the pop-in lane
+
+Not touched (pop-in owns it). Callers: `signature-landmarks-source.js` (`_onMove`: evict, request, update levels),
+`artis-animals.js`, `buildingTilesBrowser.ts`. While riding the view changes every frame, so each frame builds a view key
+string (`${zoom},${b.west},…`) and runs the moveend work: 15–19 ms/s of main thread. Suggest: run it at ~10 Hz or after a
+minimum view change (metres / degrees of bearing), and compare the key as numbers rather than a fresh string. The
+cool-down above keeps the gate open while any model is cooling, so a throttle would also cut those walks.
+
+### 5. Static subtrees (`matrixAutoUpdate = false`) — measured, not landed
+
+`probe-matrix.js` counted `Object3D.updateMatrix` calls per frame on the ride (H-census, 872 frames): **193 a frame**.
+
+| owner | calls / frame |
+|---|---|
+| engine overview mesh | 45 |
+| player bike (animated: must stay) | 44 |
+| scene root and its direct children | 37 |
+| pyramidal roofs | 12 |
+| facade meshes | 10 |
+| trees | 10 |
+| everything else | ~35 |
+
+About 77 of those are static composes; at ~0.1 µs each they cost tens of µs a frame. The world-matrix phase (~0.4
+ms/frame) is not the composes but the multiplies forced through whole subtrees by the per-frame participant wrappers
+(`SharedFrame`), which `matrixAutoUpdate = false` does not stop (the parent's `matrixWorldNeedsUpdate` forces the children).
+Turning it off for static content saves < 0.05 ms/frame and risks a stale matrix on anything a later lane moves, so it is
+not landed. The real lever is to stop the wrappers forcing their subtrees (only update a subtree when its wrapper's own
+matrix changed), which is an engine change for the engine lane.
+
 ## What is left, ranked by expected saving
 
-1. **Allocation churn, 84 MB/s → GC ~10–25 % of a core.** Own-ground height lookups on chunk installs
-   (`ownGround/surface.ts relief/ground` returns a fresh `[rx, ry]` from `applyLocalToRd` per call; `heightRd`'s edge
-   path builds arrays), `contactsInto` every frame for the HUD plaque and the road guard, three.js bounds recomputed in
-   the frustum test (`computeBoundingSphere` under `intersectsObject`: some geometry loses its bounding sphere every
-   frame). Fix with scratch vectors / reused arrays and a per-frame memo of the nearest road.
-2. **Landmark level churn in the worker pool.** Cache a landmark's welded stand-in (and parsed level) across
-   dispose/re-import by model URL with an LRU, so passing the same landmark twice does not weld again; add hysteresis to
-   level swaps. Also cuts GLB re-parse and the `_updateLevels` work.
-3. **`onViewChange` is per-frame "moveend".** Signature landmarks (and artis animals, building tiles) do their
-   moveend work every frame while riding (15–19 ms/s). Throttle to ~10 Hz or to a minimum view change. Interacts with
-   pop-in (question 6), so it wants that lane's review.
+1. **Allocation, 33–50 MB/s → < 20.** three's uniform uploads (a fresh array per matrix uniform per draw; a patch or
+   upgrade in the three bundle), and call-boundary boxing in the game frame.
+2. **World-matrix force propagation** (~0.4 ms/frame): participant wrappers force subtree multiplies every frame.
+3. **`onViewChange` per frame** (15–19 ms/s): the pop-in lane's, above.
 4. **Triangles: 2.1–2.5 M a frame.** The GPU is geometry-bound at dpr 2; LOD distances for building chunks and
    landmarks, and the shadow pass's casters, are where GPU time goes, not pixels.
-5. **Main thread render (~2.3 ms/frame) and world matrices (~0.4 ms/frame):** static subtrees with
-   `matrixAutoUpdate = false`, so `updateMatrixWorld` stops walking them every frame.
-6. A 10-minute ride with post-GC heap samples, to rule caches that never evict in or out over a real session.
+5. **Landmark budget vs GPU memory**: measure on a quiet GPU whether 96 fits; with the cool-down it would mostly cut the
+   remaining belt re-arrivals.
+6. A 10-minute ride with post-GC heap samples, to rule caches that never evict in or out over a real session (the
+   stand-in LRU is bounded at 32 MB).
 
 ## Commands
 
