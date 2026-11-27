@@ -218,3 +218,20 @@ test('the compiled SHELs: no triangle spans two buildings, and a building is at 
   assert.equal(mixed, 0);
   assert.ok(runCount <= buildings * 3, `${runCount} runs for ${buildings} buildings`);
 });
+
+test('BakedCoarse.setCellSkipLive: off restores the original index and the whole draw on the next draw, on skips again (the in-page A/B)', async () => {
+  const { baked, mesh } = await installOne(true);
+  const g = mesh.geometry, hidden = g.getAttribute('hidden'), index = g.index!;
+  hidden.array.fill(HIDDEN.hide, 0, 3); hidden.needsUpdate = true;
+  mesh.onBeforeRender();
+  assert.equal(g.drawRange.count, 12);
+  baked.setCellSkipLive(false);
+  mesh.onBeforeRender();
+  assert.equal(g.drawRange.count, 18);
+  assert.deepEqual([...index.array], [0, 1, 2, 3, 4, 5, 6, 7, 8, 2, 1, 0, 5, 4, 3, 8, 7, 6]);
+  mesh.onBeforeRender();
+  assert.equal(baked.skipStats().syncs, 2, 'off: once');
+  baked.setCellSkipLive(true);
+  mesh.onBeforeRender();
+  assert.equal(g.drawRange.count, 12);
+});

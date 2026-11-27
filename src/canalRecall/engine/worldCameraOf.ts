@@ -69,8 +69,9 @@ export function viewChangeHz(search: string = typeof location !== 'undefined' ? 
  * from a timer when the view has stopped and no frame comes). Returns the unsubscribe.
  */
 export function onViewChange(camera: WorldCamera, onMove: () => void, options: { hz?: number; now?: () => number; setTimer?: (f: () => void, ms: number) => unknown; clearTimer?: (t: unknown) => void } = {}): () => void {
-  const hz = options.hz ?? viewChangeHz();
-  const interval = hz > 0 ? 1000 / hz : 0;
+  // The rate: `options.hz`, else a live `window.__canalRecallViewChangeHz` number (in-page A/B), else the query's.
+  const base = options.hz ?? viewChangeHz(), g = globalThis as { __canalRecallViewChangeHz?: unknown };
+  const intervalNow = () => { const live = options.hz === undefined ? g.__canalRecallViewChangeHz : undefined; const hz = typeof live === 'number' && live >= 0 ? live : base; return hz > 0 ? 1000 / hz : 0; };
   const now = options.now ?? (() => performance.now());
   const setTimer = options.setTimer ?? ((f: () => void, ms: number) => setTimeout(f, ms));
   const clearTimer = options.clearTimer ?? ((t: unknown) => clearTimeout(t as ReturnType<typeof setTimeout>));
@@ -92,6 +93,7 @@ export function onViewChange(camera: WorldCamera, onMove: () => void, options: {
       if (changed) { none = false; z = zoom; w = b.west; s = b.south; e = b.east; n = b.north; }
     }
     if (!changed && !pending) return;
+    const interval = intervalNow();
     if (!interval) { run(); return; }
     const wait = lastRun + interval - now();
     if (wait <= 0) { run(); return; }

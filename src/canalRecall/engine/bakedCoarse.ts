@@ -312,9 +312,17 @@ export class BakedCoarse {
 
   /** `?cellSkip` (engine/cellSkip.ts): hidden buildings' triangles are not submitted. */
   private readonly cellSkip: boolean;
+  /**
+   * Whether the installed cells skip now (in-page A/B and frame diffs: `setCellSkipLive(false)` draws every triangle
+   * again on the next draw, from the original index order, without a reload). Only meaningful with `cellSkip`.
+   */
+  private skipLive = true;
   private skipSyncs = 0;
   private skipMs = 0;
   private skipMaxMs = 0;
+  /** Syncs over 1 ms and over 4 ms (the stall check). */
+  private skipOver1 = 0;
+  private skipOver4 = 0;
   private skipUploaded = 0;
 
   get isEnabled(): boolean { return this.enabled; }
@@ -563,23 +571,28 @@ export class BakedCoarse {
    */
   private syncSkip(r: Resident): void {
     const skip = r.skip!, g = r.mesh.geometry, hidden = g.getAttribute('hidden');
-    if (!hidden?.array || hidden.version === skip.version) return;
-    skip.version = hidden.version;
+    if (!hidden?.array) return;
+    const live = this.skipLive;
+    if (live ? hidden.version === skip.version : skip.version === -2) return;
+    skip.version = live ? hidden.version : -2;
     const t0 = this.now();
-    const change = skip.runs.syncHidden(hidden.array, skip.starts);
+    const change = live ? skip.runs.syncHidden(hidden.array, skip.starts) : skip.runs.sync(new Uint8Array(0));
     if (!change) return;
     const index = g.index;
     if (change.to > change.from) { index.addUpdateRange(change.from, change.to - change.from); index.needsUpdate = true; this.skipUploaded += (change.to - change.from) * index.array.BYTES_PER_ELEMENT; }
     g.setDrawRange(0, change.drawCount);
     const ms = this.now() - t0;
-    this.skipSyncs++; this.skipMs += ms; if (ms > this.skipMaxMs) this.skipMaxMs = ms;
+    this.skipSyncs++; this.skipMs += ms; if (ms > this.skipMaxMs) this.skipMaxMs = ms; if (ms > 1) this.skipOver1++; if (ms > 4) this.skipOver4++;
   }
 
+  /** In-page A/B: `false` submits every triangle again (original order), `true` skips again; no reload. */
+  setCellSkipLive(on: boolean): void { if (this.skipLive !== on) { this.skipLive = on; this.host.repaint(); } }
+
   /** `?cellSkip` diagnostics: index rewrites, their main-thread ms, triangles skipped now, CPU index bytes kept. */
-  skipStats(): { on: boolean; syncs: number; ms: number; maxMs: number; uploadedMB: number; skippedTriangles: number; triangles: number; cpuIndexMB: number } {
+  skipStats(): { on: boolean; syncs: number; ms: number; maxMs: number; over1ms: number; over4ms: number; uploadedMB: number; skippedTriangles: number; triangles: number; cpuIndexMB: number } {
     let skipped = 0, triangles = 0, cpu = 0;
     for (const r of this.residents.values()) { triangles += r.triangles; if (r.skip) { skipped += r.skip.runs.skipped / 3; cpu += r.skip.runs.index.byteLength; } }
-    return { on: this.cellSkip, syncs: this.skipSyncs, ms: +this.skipMs.toFixed(2), maxMs: +this.skipMaxMs.toFixed(3), uploadedMB: +(this.skipUploaded / 1048576).toFixed(2), skippedTriangles: skipped, triangles, cpuIndexMB: +(cpu / 1048576).toFixed(1) };
+    return { on: this.cellSkip, syncs: this.skipSyncs, ms: +this.skipMs.toFixed(2), maxMs: +this.skipMaxMs.toFixed(3), over1ms: this.skipOver1, over4ms: this.skipOver4, uploadedMB: +(this.skipUploaded / 1048576).toFixed(2), skippedTriangles: skipped, triangles, cpuIndexMB: +(cpu / 1048576).toFixed(1) };
   }
 
   /** Cells within the lift radius installed without their CPU positions are fetched again to be lifted. */
