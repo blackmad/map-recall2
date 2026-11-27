@@ -111862,5 +111862,481 @@
     ]
    ]
   }
+ },
+ {
+  "id": "metz-keizersgracht-455",
+  "name": "Metz & Co, Keizersgracht 455",
+  "modelUrl": "./models/metz-keizersgracht-455.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012176395"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8866858,
+    52.36621271
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 26.3,
+   "widthMetres": 28.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.8866858,
+    52.36621271
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176395 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/metz-keizersgracht-455-footprints.json, bag-shell-prepare.ts), the corner tower drawn over its 3DBAG square; the Keizersgracht front read from the rectified Gemeente Amsterdam panoramas b_20250120_0926_Track25_Sphere_00005 (2025, frontal) and TMX7316010203-002619_pano_0025_000006 (2022), the chamfer from TMX7316010203-002865_pano_0011_000218 (2022), the Leidsestraat front from TMX7316010203-002860_pano_0000_000046 (2022, oblique), the tower and dome from TMX7316010203-002537_pano_0002_000574 (2022) and TMX7316010203-003014_pano_0005_000022 (2023), CC BY 4.0; heights fitted to the 3DBAG eaves (21.3 m) and lantern top (38.3 m). Rijksmonument 408905. Per wall in scripts/landmarks/metz-keizersgracht-455-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 40,
+  "galleryView": {
+   "theta": -0.35,
+   "phi": 1.2
+  },
+  "bagYear": 1892,
+  "materialOverrides": {
+   "stone": "#cbbd9c",
+   "sandstone": "#a39578",
+   "ochre": "#b0a07e",
+   "slate": "#555b5a",
+   "concrete": "#8e959c",
+   "glass": "#343e47",
+   "frame": "#4a3a32",
+   "dark": "#2a2a26",
+   "red": "#6b3f22",
+   "pink": "#dedbd2",
+   "white": "#e8e6df",
+   "bronze": "#33363a"
+  },
+  "attribution": {
+   "title": "Keizersgracht 455, Amsterdam: the corner block with the domed clock tower on the Leidsestraat (Metz & Co; BAG 1892; rijksmonument 408905)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0002_000574/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176395 (CC0): the corner tower with its clock stage, lead bell dome, lucarnes and open lantern, the chamfer with its figures, bowed balcony, fluted columns and pedimented attic, the pavilioned Keizersgracht and Leidsestraat fronts with figure pairs, pediments, balconies and two-storey shopfronts, the modillion cornice, the glazed roof storey and the METZ roof sign, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8867185,
+      52.3663826
+     ],
+     [
+      4.8866406,
+      52.3663448
+     ],
+     [
+      4.8866312,
+      52.3663483
+     ],
+     [
+      4.8864746,
+      52.3662452
+     ],
+     [
+      4.8864752,
+      52.3662444
+     ],
+     [
+      4.8864795,
+      52.3662419
+     ],
+     [
+      4.8864784,
+      52.3662412
+     ],
+     [
+      4.8864795,
+      52.3662406
+     ],
+     [
+      4.886478,
+      52.3662396
+     ],
+     [
+      4.8865121,
+      52.3662199
+     ],
+     [
+      4.8865136,
+      52.3662208
+     ],
+     [
+      4.8865146,
+      52.3662202
+     ],
+     [
+      4.8865158,
+      52.3662209
+     ],
+     [
+      4.88652,
+      52.3662185
+     ],
+     [
+      4.886522,
+      52.3662198
+     ],
+     [
+      4.8865986,
+      52.3661754
+     ],
+     [
+      4.8865966,
+      52.3661741
+     ],
+     [
+      4.8866408,
+      52.3661485
+     ],
+     [
+      4.8866428,
+      52.3661498
+     ],
+     [
+      4.8866442,
+      52.366149
+     ],
+     [
+      4.8866447,
+      52.3661462
+     ],
+     [
+      4.886709,
+      52.3661496
+     ],
+     [
+      4.8867087,
+      52.3661523
+     ],
+     [
+      4.8867104,
+      52.3661531
+     ],
+     [
+      4.8867123,
+      52.3661517
+     ],
+     [
+      4.8867203,
+      52.3661556
+     ],
+     [
+      4.8867185,
+      52.366157
+     ],
+     [
+      4.8867503,
+      52.3661724
+     ],
+     [
+      4.8867521,
+      52.366171
+     ],
+     [
+      4.88676,
+      52.3661749
+     ],
+     [
+      4.8867591,
+      52.3661756
+     ],
+     [
+      4.8868465,
+      52.3662179
+     ],
+     [
+      4.8868474,
+      52.3662172
+     ],
+     [
+      4.8868519,
+      52.3662194
+     ],
+     [
+      4.8868528,
+      52.3662187
+     ],
+     [
+      4.8868539,
+      52.3662193
+     ],
+     [
+      4.8868553,
+      52.3662182
+     ],
+     [
+      4.8868923,
+      52.3662361
+     ],
+     [
+      4.8868909,
+      52.3662372
+     ],
+     [
+      4.886892,
+      52.3662377
+     ],
+     [
+      4.8868911,
+      52.3662384
+     ],
+     [
+      4.8868958,
+      52.3662407
+     ],
+     [
+      4.8868974,
+      52.3662406
+     ],
+     [
+      4.8867185,
+      52.3663826
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "hajenius-rokin",
+  "name": "Hajenius, Rokin 92-96",
+  "modelUrl": "./models/hajenius-rokin.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168350"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89187569,
+    52.36962145
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 30.9,
+   "widthMetres": 31
+  },
+  "surveyed": {
+   "anchor": [
+    4.89187569,
+    52.36962145
+   ],
+   "northOffsetDegrees": 0,
+   "source": "3DBAG LoD2.2 shell of BAG pand 0363100012168350 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/hajenius-rokin-footprints.json, bag-shell-prepare.ts); the 27.3 m Rokin front read from whole-face rectified Gemeente Amsterdam panoramas recording_2025-06-16_06-42-40_01743 (2025, 36 px/m) and TMX7316010203-000709_pano_0000_001134 (2018), CC BY 4.0; heights fitted to the 3DBAG's 70th-percentile roof (the Hajenius cornice, 20.1 m). The pand also holds the cream bell-gable house on the lane corner and the black neck-gable house beside it; both are drawn. Per wall in scripts/landmarks/hajenius-rokin-inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 25,
+  "galleryView": {
+   "theta": 1.2,
+   "phi": 1.2
+  },
+  "bagYear": 1914,
+  "materialOverrides": {
+   "stone": "#cfc6b2",
+   "sandstone": "#a9a596",
+   "slate": "#62696d",
+   "concrete": "#e8e4d6",
+   "greyBrick": "#3a3d40",
+   "glass": "#3a4548",
+   "frame": "#7a3a38",
+   "dark": "#2a2a28",
+   "red": "#b8323a",
+   "white": "#eceae4",
+   "bronze": "#2a2c2e",
+   "ochre": "#e2b64a",
+   "gold": "#e6dcbc",
+   "copper": "#6b4a36"
+  },
+  "attribution": {
+   "title": "Rokin 92-96, Amsterdam: the Hajenius tobacco house (BAG 1914) with the cream bell-gable house and the black neck-gable house on the same pand",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_01743/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012168350 (CC0): the sandstone Hajenius front with its pilasters, paterae, three-light windows with sun blinds, red awnings, carved door cartouche, curved end gable with oculus and mansard dormers; the cream house's bell gable, balconies and striped markiezen; the black house's neck gable and white-framed windows, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8919945,
+      52.3696475
+     ],
+     [
+      4.8919929,
+      52.3696477
+     ],
+     [
+      4.8920033,
+      52.3696775
+     ],
+     [
+      4.8920055,
+      52.369684
+     ],
+     [
+      4.8920078,
+      52.3696838
+     ],
+     [
+      4.8920117,
+      52.3696948
+     ],
+     [
+      4.8920024,
+      52.3696961
+     ],
+     [
+      4.8920081,
+      52.3697122
+     ],
+     [
+      4.8920174,
+      52.369711
+     ],
+     [
+      4.8920209,
+      52.3697208
+     ],
+     [
+      4.8920217,
+      52.369722
+     ],
+     [
+      4.8916037,
+      52.369759
+     ],
+     [
+      4.8915918,
+      52.3697089
+     ],
+     [
+      4.8916283,
+      52.3697056
+     ],
+     [
+      4.8916158,
+      52.3696531
+     ],
+     [
+      4.8915788,
+      52.3696562
+     ],
+     [
+      4.891568,
+      52.3696103
+     ],
+     [
+      4.8915825,
+      52.3696091
+     ],
+     [
+      4.8915723,
+      52.3695624
+     ],
+     [
+      4.8915866,
+      52.3695612
+     ],
+     [
+      4.8915764,
+      52.3695149
+     ],
+     [
+      4.8917381,
+      52.3695003
+     ],
+     [
+      4.8917383,
+      52.3695009
+     ],
+     [
+      4.8918204,
+      52.3694937
+     ],
+     [
+      4.8919307,
+      52.3694828
+     ],
+     [
+      4.8919489,
+      52.3695313
+     ],
+     [
+      4.8919497,
+      52.3695315
+     ],
+     [
+      4.8919677,
+      52.3695756
+     ],
+     [
+      4.8919681,
+      52.369578
+     ],
+     [
+      4.8919704,
+      52.3695849
+     ],
+     [
+      4.8919709,
+      52.3695864
+     ],
+     [
+      4.8919661,
+      52.369587
+     ],
+     [
+      4.8919753,
+      52.369614
+     ],
+     [
+      4.8919802,
+      52.3696134
+     ],
+     [
+      4.8919805,
+      52.3696143
+     ],
+     [
+      4.8919818,
+      52.3696141
+     ],
+     [
+      4.8919821,
+      52.3696149
+     ],
+     [
+      4.8919832,
+      52.3696147
+     ],
+     [
+      4.8919856,
+      52.3696216
+     ],
+     [
+      4.8919763,
+      52.3696228
+     ],
+     [
+      4.8919825,
+      52.369641
+     ],
+     [
+      4.8919919,
+      52.3696398
+     ],
+     [
+      4.8919945,
+      52.3696475
+     ]
+    ]
+   ]
+  }
  }
 ]

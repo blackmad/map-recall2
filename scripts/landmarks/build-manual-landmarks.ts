@@ -320,6 +320,8 @@ import {buildCafeRicheRokin} from './cafe-riche-rokin-builder';
 import {buildWelgelegen} from './welgelegen-builder';
 import {buildWeltevreden} from './weltevreden-builder';
 import {buildMuntplein1} from './muntplein-1-builder';
+import {buildMetzKeizersgracht455} from './metz-keizersgracht-455-builder';
+import {buildHajeniusRokin} from './hajenius-rokin-builder';
 import {buildKoningsplein1} from './koningsplein-1-builder';
 import {buildDeAteliers} from './de-ateliers-builder';
 import {buildHouthavenkade26} from './houthavenkade-26-builder';
@@ -1346,6 +1348,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='welgelegen')buildWelgelegen(w,d,helpers);
     else if(id==='weltevreden')buildWeltevreden(w,d,helpers);
     else if(id==='muntplein-1')buildMuntplein1(w,d,helpers);
+    else if(id==='metz-keizersgracht-455')buildMetzKeizersgracht455(w,d,helpers);
+    else if(id==='hajenius-rokin')buildHajeniusRokin(w,d,helpers);
     else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }

@@ -2821,6 +2821,11 @@
       "version": "c4a500441e941173",
       "dateSource": "asset-update"
     },
+    "hajenius-rokin": {
+      "updatedAt": "2026-11-27T10:50:54.134Z",
+      "version": "56be35e645b61307",
+      "dateSource": "asset-update"
+    },
     "handelsbank-singel-250": {
       "updatedAt": "2026-11-20T09:29:45.955Z",
       "version": "035277b8c4379f91",
@@ -8659,6 +8664,11 @@
     "weltevreden.lod2": {
       "updatedAt": "2026-11-23T09:07:33.332Z",
       "version": "a5c30a204abafd4f",
+      "dateSource": "asset-update"
+    },
+    "metz-keizersgracht-455": {
+      "updatedAt": "2026-11-27T10:16:12.010Z",
+      "version": "0f22e7fb211c492b",
       "dateSource": "asset-update"
     }
   }

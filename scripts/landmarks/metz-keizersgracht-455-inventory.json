@@ -1,0 +1,305 @@
+{
+ "schemaVersion": 1,
+ "id": "metz-keizersgracht-455",
+ "pand": "0363100012176395",
+ "brief": "scripts/landmarks/metz-keizersgracht-455-brief.md",
+ "signature": [
+  "metz-cupola",
+  "metz-clock-stage",
+  "metz-caryatids",
+  "metz-glass-storey",
+  "metz-sign",
+  "metz-corner-attic",
+  "metz-pediments",
+  "metz-shopfront"
+ ],
+ "walls": [
+  {
+   "tag": "w01-224",
+   "bearing": 224,
+   "lengthM": 11.8,
+   "centre": [
+    4.8865805,
+    52.3661865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0025_000006",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "metz-caryatids",
+     "kind": "sculpture",
+     "where": "second storey (8.7-11.3 m) of both end pavilions: a standing female figure either side of the window, on the balustraded sill; the same pair flanks the corner window (w03)",
+     "approxSizeM": [
+      0.45,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002619_pano_0025_000006",
+     "how": "per figure a plinth block, a tapered body box, a head disc and a capital block on the pier, in the shaded stone"
+    },
+    {
+     "id": "metz-pediments",
+     "kind": "window-shape",
+     "where": "window hoods: triangular pediments over the third-storey windows of the centre axes (15.4-16.9 m), a broken pediment with a cartouche over the middle axis, segmental pediments with a relief over both pavilion windows, triangular pediments over the second-storey pavilion windows",
+     "approxSizeM": [
+      1.9,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005",
+     "how": "poly() pediments with a raking cornice strip and a cartouche block; segmental hoods as segBand"
+    },
+    {
+     "id": "metz-shopfront",
+     "kind": "window-shape",
+     "where": "ground and mezzanine of the three centre axes (0.45-7.0 m): one dark-framed shop window two storeys tall, split by a dark transom band at 3.8-4.5 m into the shop glazing and the mezzanine glazing",
+     "approxSizeM": [
+      7,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005"
+    },
+    {
+     "id": "metz-entrance",
+     "kind": "window-shape",
+     "where": "north-west pavilion ground storey: dark wooden double door (1.7 x 3.4 m) under a carved segmental pediment with a cartouche (3.8-5.0 m), the mezzanine window above",
+     "approxSizeM": [
+      2.2,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005"
+    },
+    {
+     "id": "metz-centre-balcony",
+     "kind": "balcony-ironwork",
+     "where": "middle axis, under the third-storey window (12.0-12.8 m): a projecting stone balcony with a pierced balustrade (round openings)",
+     "approxSizeM": [
+      2,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002619_pano_0025_000006"
+    },
+    {
+     "id": "metz-pavilion-balconies",
+     "kind": "balcony-ironwork",
+     "where": "under both second-storey pavilion windows (8.2-8.7 m): stone balustrades between the figure plinths",
+     "approxSizeM": [
+      2.4,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002619_pano_0025_000006"
+    },
+    {
+     "id": "metz-cornice",
+     "kind": "other",
+     "where": "crowning cornice over the whole front (19.3-21.3 m): a frieze, a dentil course and modillion brackets under the corona",
+     "approxSizeM": [
+      15.6,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005"
+    },
+    {
+     "id": "metz-pilasters",
+     "kind": "colonnade",
+     "where": "pilaster stacks with panelled faces between the centre axes and banded piers at the pavilion edges, from the entablature to the frieze",
+     "approxSizeM": [
+      0.5,
+      12
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005",
+     "how": "stone strips with stacked panel blocks; pavilion edge piers banded every 0.6 m"
+    },
+    {
+     "id": "metz-attic-gable",
+     "kind": "window-shape",
+     "where": "north-west pavilion attic over the cornice (21.3-25.2 m): stone face with two small round-headed windows, an entablature and a triangular pediment with a finial",
+     "approxSizeM": [
+      3.9,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005"
+    },
+    {
+     "id": "metz-glass-storey",
+     "kind": "window-shape",
+     "where": "roof storey over the three centre axes, set back about 1 m behind the cornice (21.4-25.0 m): a steel-framed glazed wall of many tall lights over a row of low lights, with a pale coping; slate mansard between it and the corner tower",
+     "approxSizeM": [
+      7.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00005",
+     "how": "a slate storey body over the cornice with a glazed band 0.35 m behind the wall line between bronze posts and a light rail, a slate sill, the stone coping; slate skins to the 27 m roof over the pavilions"
+    },
+    {
+     "id": "metz-sign",
+     "kind": "sign",
+     "where": "on the roof behind the glazed storey, about 27.4-28.9 m: the word METZ in tall pale letters inside a semicircular steel frame",
+     "approxSizeM": [
+      6,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000574",
+     "how": "5x7 slab letters 1.4 m tall and an arched steel band",
+     "note": "seen in the 2022 aimed view from the Keizersgracht and the 2025 face crop"
+    }
+   ],
+   "note": "The Keizersgracht front (BAG ring vertex 3 to vertex 8, 15.6 m), read on the whole-face rectified crop of b_20250120_0926_Track25_Sphere_00005 (2025, 40 px/m, obliquity 7 deg) and the brief crop w01-224.alt.jpg (2022). The brief's primary 2017 crop looks at the underside of the Leidsestraat bridge from a boat and shows nothing of the building. Symmetric five-axis front: two 4.3 m end pavilions (the north-west one 0.5 m proud, BAG edge 5) round three centre axes; the north-west pavilion carries the entrance and an attic gable, the south-east pavilion runs into the corner tower. Heights from the 3DBAG cornice (21.3 m) and the 2025 crop (h = 2.44 + 0.02575 x (1162 - y))."
+  },
+  {
+   "tag": "w02-143",
+   "bearing": 143,
+   "lengthM": 11.4,
+   "centre": [
+    4.886788,
+    52.36619
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002860_pano_0000_000046",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "metz-ls-front",
+     "kind": "other",
+     "where": "the whole Leidsestraat front: corner pavilion with the figure pair at the second storey, three centre axes over a two-storey dark shop window, the north-east entrance pavilion with a carved doorway and an attic gable, the cornice and the glazed roof storey",
+     "approxSizeM": [
+      16.3,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002860_pano_0000_000046",
+     "how": "the Keizersgracht front scheme mirrored onto this front, centre axes respaced over the 0.7 m longer centre zone"
+    },
+    {
+     "id": "metz-ls-doorway",
+     "kind": "window-shape",
+     "where": "north-east pavilion ground storey: carved doorway with a broken pediment and cartouche over a dark wooden door",
+     "approxSizeM": [
+      2.2,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002860_pano_0000_000046"
+    }
+   ],
+   "note": "The Leidsestraat front (BAG ring vertex 11 to vertex 20, 16.35 m). The brief crop w02-143 is the red-brick corner building on the other side of the Leidsestraat (the panorama stands on the Keizersgracht quay south-east of the junction and looks through it): no evidence for this pand. Read instead from the oblique view up the Leidsestraat out of TMX7316010203-002860_pano_0000_000046 (2022, heading 252, pitch 31) and the right wing of the aimed corner view w03-175.thumb.jpg: the same storey lines and five axes as the Keizersgracht front, mirrored, with the entrance pavilion (0.36 m proud, BAG edge 19) at the north-east end and the corner pavilion at the chamfer."
+  },
+  {
+   "tag": "w03-175",
+   "bearing": 175,
+   "lengthM": 4.4,
+   "centre": [
+    4.8866795,
+    52.36615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0011_000218",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "metz-cupola",
+     "kind": "dome",
+     "where": "on the corner tower: a lead-grey square-plan bell dome (31.6-36.2 m) with an oeil-de-boeuf lucarne on each face, an open columned lantern (36.2-38.3 m), a small cap dome, a ball and a spike (to about 40.4 m)",
+     "approxSizeM": [
+      4.1,
+      8.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000574",
+     "how": "4-sided lathe bell profile turned 45 deg, ring-and-disc lucarnes, 8 column cylinders under an entablature ring, cap lathe, sphere, cone"
+    },
+    {
+     "id": "metz-clock-stage",
+     "kind": "clock",
+     "where": "tower stage 27.5-31.6 m over the roof: a stone square with a white clock face on the west and east faces, plain panels on the south and north, balls on the corners of the ledge below, a moulded cornice",
+     "approxSizeM": [
+      4.4,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0002_000574",
+     "note": "the west clock seen frontal from the Keizersgracht (2022) and on the left face from the Leidsestraat bridge (2023); the east clock is the symmetric counterpart"
+    },
+    {
+     "id": "metz-corner-attic",
+     "kind": "relief",
+     "where": "chamfer attic over the cornice (21.3-26.0 m): a semicircular pediment framing a carved relief over two small windows, scrolls at the sides, an entablature over it",
+     "approxSizeM": [
+      3.6,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0011_000218",
+     "how": "archBand pediment, a stone relief block with a raised disc, two small lights, side scroll discs"
+    },
+    {
+     "id": "metz-corner-columns",
+     "kind": "colonnade",
+     "where": "fluted colossal columns either side of the third- and fourth-storey corner windows (12.9-19.3 m)",
+     "approxSizeM": [
+      0.45,
+      6.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0011_000218",
+     "how": "12-sided cylinders with base and capital blocks"
+    },
+    {
+     "id": "metz-corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "the bowed stone balcony on a basket corbel under the third-storey corner window (11.2-12.9 m) and the straight balustraded balcony under the fourth-storey window (15.7-16.8 m)",
+     "approxSizeM": [
+      2,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0011_000218"
+    },
+    {
+     "id": "metz-corner-door",
+     "kind": "window-shape",
+     "where": "ground storey: tall wooden corner entrance with a transom of two lights (0.4-3.0 m), a white mezzanine panel over it (3.8-5.8 m), large carved consoles carrying the entablature, carved panels either side",
+     "approxSizeM": [
+      2.2,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0011_000218"
+    },
+    {
+     "id": "metz-lanterns",
+     "kind": "lamp",
+     "where": "a wall lantern on a bracket either side of the corner door (about 1.2-2.4 m)",
+     "approxSizeM": [
+      0.35,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0011_000218",
+     "how": "a bracket bar and a lantern box with a cap"
+    }
+   ],
+   "note": "The 4.4 m chamfer on the corner, read on w03-175.jpg (2022, 50.45 px/m, obliquity 1 deg; heights h = (1393 - y)/50.45 fitted to the 3DBAG cornice 21.3 m) and the 2021 crop. The corner tower above it is BAG/3DBAG square (x -2.85..1.45, z 2.8..7.25 in footprints.json: the chamfer is its south face) and was read from pitched views out of TMX7316010203-002537_pano_0002_000574 (2022, 51 m, across the Keizersgracht) and TMX7316010203-003014_pano_0005_000022 (2023, 51 m, from the Leidsestraat bridge); heights from the pitch angles fitted to the 3DBAG lantern top (38.3 m)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

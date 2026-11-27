@@ -1,0 +1,34 @@
+{
+ "id": "metz-keizersgracht-455",
+ "name": "Metz & Co, Keizersgracht 455",
+ "heightMetres": 40,
+ "bagYear": 1892,
+ "galleryView": {
+  "theta": -0.35,
+  "phi": 1.2
+ },
+ "measuredOverrides": true,
+ "surveyedSource": "3DBAG LoD2.2 shell of BAG pand 0363100012176395 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/metz-keizersgracht-455-footprints.json, bag-shell-prepare.ts), the corner tower drawn over its 3DBAG square; the Keizersgracht front read from the rectified Gemeente Amsterdam panoramas b_20250120_0926_Track25_Sphere_00005 (2025, frontal) and TMX7316010203-002619_pano_0025_000006 (2022), the chamfer from TMX7316010203-002865_pano_0011_000218 (2022), the Leidsestraat front from TMX7316010203-002860_pano_0000_000046 (2022, oblique), the tower and dome from TMX7316010203-002537_pano_0002_000574 (2022) and TMX7316010203-003014_pano_0005_000022 (2023), CC BY 4.0; heights fitted to the 3DBAG eaves (21.3 m) and lantern top (38.3 m). Rijksmonument 408905. Per wall in scripts/landmarks/metz-keizersgracht-455-inventory.json.",
+ "materialOverrides": {
+  "stone": "#cbbd9c",
+  "sandstone": "#a39578",
+  "ochre": "#b0a07e",
+  "slate": "#555b5a",
+  "concrete": "#8e959c",
+  "glass": "#343e47",
+  "frame": "#4a3a32",
+  "dark": "#2a2a26",
+  "red": "#6b3f22",
+  "pink": "#dedbd2",
+  "white": "#e8e6df",
+  "bronze": "#33363a"
+ },
+ "attribution": {
+  "title": "Keizersgracht 455, Amsterdam: the corner block with the domed clock tower on the Leidsestraat (Metz & Co; BAG 1892; rijksmonument 408905)",
+  "author": "Map Recall",
+  "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0002_000574/",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176395 (CC0): the corner tower with its clock stage, lead bell dome, lucarnes and open lantern, the chamfer with its figures, bowed balcony, fluted columns and pedimented attic, the pavilioned Keizersgracht and Leidsestraat fronts with figure pairs, pediments, balconies and two-storey shopfronts, the modillion cornice, the glazed roof storey and the METZ roof sign, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+ }
+}
