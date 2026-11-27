@@ -2,6 +2,18 @@
 // Keeping each subsystem in a class preserves private runtime state on the Game instance
 // while making ownership and review boundaries explicit.
 
+// Loading steps for the ride heartbeat (src/canalRecall/loadSteps.ts is the contract: `[name, ms since navigation]`
+// on window.__canalRecallLoadSteps, then a `canal-load-step` event). Sentry CANAL-RECALL-V tabs died ~10 s into
+// loading and could not say where (2026-11-27). Never throws.
+function markLoadStep(name) {
+  try {
+    const steps = (window.__canalRecallLoadSteps = window.__canalRecallLoadSteps || []);
+    steps.push([name, Math.round(performance.now())]);
+    if (steps.length > 64) steps.splice(0, steps.length - 64);
+    window.dispatchEvent(new Event('canal-load-step'));
+  } catch (_) { /* a page half torn down */ }
+}
+
 // Dev tools the backtick debug overlay links to. Plain relative hrefs: the
 // game is served from the same directory as these pages. Opened by the canvas
 // click handler in game.js, which hit-tests `_debugLinkBounds`.
@@ -1672,12 +1684,15 @@ class GameRouteRuntime {
       if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
       return loader.fetchRoads(centre.lat, centre.lng, OSM_FETCH_RADIUS, travelMode, cityId);
     });
+    markLoadStep('world:start');
     next.promise = (async () => {
       const ways = await next.fetched;
+      markLoadStep('world:fetched');
       // What this fetch set on the loader, put back when a ride takes this world (a later fetch may have run).
       const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork, roadExtractVersion: loader.roadExtractVersion };
       if (!ways.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments: [], loaded };
       const segments = await loader.buildRoadSegmentsAsync(ways, centre.lat, centre.lng, cancelled, scheduling);
+      markLoadStep('world:segments');
       loaded.projection = {
         _lastCenterLat: loader._lastCenterLat, _lastCenterLng: loader._lastCenterLng,
         _lastOffsetX: loader._lastOffsetX, _lastOffsetY: loader._lastOffsetY,
@@ -1701,7 +1716,7 @@ class GameRouteRuntime {
       const restoring = RoadNetwork.restoreWorld(segments, cache).then(r => { if (r) restored = r; return r; });
       if (cache) await Promise.race([restoring, new Promise(resolve => setTimeout(resolve, ROAD_WORLD_CACHE_HEAD_START_MS))]);
       if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
-      if (restored) return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true };
+      if (restored) { markLoadStep('world:restored'); return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true }; }
       const buildScheduling = { cancelled: () => cancelled() || !!restored, get budgetMs() { return scheduling.budgetMs; } };
       const building = (async () => {
         const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, buildScheduling.cancelled, buildScheduling);
@@ -1711,7 +1726,8 @@ class GameRouteRuntime {
       building.catch(() => {});
       const won = await Promise.race([restoring.then(r => r || building), building.catch(error => (restored ? restored : Promise.reject(error)))]);
       if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
-      if (restored && won === restored) return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true };
+      if (restored && won === restored) { markLoadStep('world:restored'); return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true }; }
+      markLoadStep('world:graph');
       RoadNetwork.storeWorld(cache, segments, won.routingGraph, won.surfaceIndex);
       return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph: won.routingGraph, surfaceIndex: won.surfaceIndex, loaded };
     })();
@@ -1759,6 +1775,7 @@ class GameRouteRuntime {
       this.state = GameState.LOADING;
       this._loadedWorld = null;
     }
+    markLoadStep(world ? 'ride:reuse' : 'ride:loading');
     this.loadingProgress = 0.05;
     const Prefs = window.CanalRecallPreferences;
     const profile = Prefs && Prefs.travelProfile
@@ -1785,6 +1802,7 @@ class GameRouteRuntime {
         const preparing = this._cityWorldPrepEnabled() && !this._loadedWorld ? this._prepareCityWorld(true) : null;
         if (preparing) {
           try { prepared = await preparing; } catch (error) { console.warn('City world build failed; loading at submit.', error); prepared = null; }
+          markLoadStep(prepared ? 'ride:worldJoined' : 'ride:worldFailed');
           if (stale()) return;
           if (prepared && prepared.key !== this._cityWorldKey()) prepared = null;
         }
@@ -1844,6 +1862,7 @@ class GameRouteRuntime {
       }
 
       // Step 4: Find start/finish — use user-picked points or auto-find
+      markLoadStep('ride:mapPrepared');
       this.loadingMessage = routeText('ride.load.choosingStart', { noun: routeNoun(profile, false) });
       this.loadingProgress = 0.6;
 
@@ -2123,7 +2142,9 @@ class GameRouteRuntime {
       // Step 5: Setup race
       this.loadingMessage = routeText('ride.load.settling');
       this.loadingProgress = 0.92;
+      markLoadStep('ride:routed');
       this._setupRace();
+      markLoadStep('ride:raceSetUp');
 
       // Hold briefly until MapLibre finishes the first idle at the spawn so
       // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
@@ -2133,6 +2154,7 @@ class GameRouteRuntime {
       if (!world) {
         // Lane S1 (#313): one 10 s cap over this hold and the intro's, the city in the first frame (startHold.ts).
         await (this._startHoldWait ? this._startHoldWait('ride') : this._waitForMapSettle(4000));
+        markLoadStep('ride:holdReleased');
         if (stale()) return;
       }
 
@@ -2149,6 +2171,7 @@ class GameRouteRuntime {
       if (!world && this._prepareIntro()) {
         this.loadingMessage = routeText('ride.load.findingWay');
         await (this._startHoldWait ? this._startHoldWait('intro') : this._waitForMapSettle(1800));
+        markLoadStep('ride:introHoldReleased');
         if (stale()) return;
       }
 
@@ -2162,6 +2185,7 @@ class GameRouteRuntime {
       }
 
       this.state = GameState.RACING;
+      markLoadStep('ride:racing');
       this._beginIntro();
 
     } catch (err) {

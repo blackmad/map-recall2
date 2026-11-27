@@ -10,6 +10,7 @@
  * (returns true); jobs carry their own ids, so subscribers never see one another's replies as theirs.
  */
 import { poolSize } from './worldStreamer.js';
+import { markLoadStep } from '../loadSteps';
 
 export type PoolMessage = (data: unknown, worker: number) => boolean;
 export type PoolFailure = (worker: number, error: unknown) => void;
@@ -122,6 +123,7 @@ export function sharedWorkerPool(url: string, size = pagePoolSize()): WorkerPool
   if (off || typeof Worker === 'undefined' || !url) { g[KEY] = null; return null; }
   const pool = new WorkerPool(withWorkerFlags(url), size);
   g[KEY] = pool.size ? pool : null;
+  markLoadStep(`pool:${pool.size}`);
   return g[KEY] ?? null;
 }
 

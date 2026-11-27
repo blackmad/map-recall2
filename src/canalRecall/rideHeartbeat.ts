@@ -32,6 +32,20 @@ export interface HeartbeatSample {
   chunks?: number;
   models?: number;
   dpr?: number;
+  /**
+   * The last loading step the page completed (loadSteps.ts), when (s since navigation) and the recent trail
+   * `name@s,…`: Sentry CANAL-RECALL-V tabs died ~10 s into `phase=loading` and said nothing more (2026-11-27).
+   */
+  step?: string;
+  stepAtS?: number;
+  steps?: string;
+  /**
+   * Coarse memory proxy Safari can report (it has no performance.memory, so heapMB is null there): counts of what
+   * the page has decoded, from both engines' renderer and the city world, filled during loading too.
+   * worldSegments: road segments in the prepared city world; groundCells: own-ground cells built.
+   */
+  worldSegments?: number;
+  groundCells?: number;
 }
 
 export interface HeartbeatStamp extends HeartbeatSample {
@@ -67,6 +81,7 @@ export function unendedReport(stamp: HeartbeatStamp | null, now: number, maxAgeM
   if (stamp.engine) tags.engine = stamp.engine;
   if (stamp.tier) tags.tier = stamp.tier;
   if (stamp.phase) tags.phase = stamp.phase;
+  if (stamp.step) tags.loadStep = stamp.step;
   return {
     message: 'previous ride ended without unload',
     tags,
@@ -75,6 +90,7 @@ export function unendedReport(stamp: HeartbeatStamp | null, now: number, maxAgeM
       heapMB: stamp.heapMB ?? null, peakHeapMB: stamp.peakHeapMB ?? null, distanceM: stamp.distanceM ?? null, workers: stamp.workers ?? null, tabs: stamp.tabs ?? null,
       gpuMB: stamp.gpuMB ?? null, geometries: stamp.geometries ?? null, textures: stamp.textures ?? null,
       cells: stamp.cells ?? null, chunks: stamp.chunks ?? null, models: stamp.models ?? null, dpr: stamp.dpr ?? null,
+      stepAtS: stamp.stepAtS ?? null, steps: stamp.steps ?? null, worldSegments: stamp.worldSegments ?? null, groundCells: stamp.groundCells ?? null,
     },
   };
 }
