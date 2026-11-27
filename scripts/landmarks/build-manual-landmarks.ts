@@ -326,6 +326,8 @@ import {buildMetzKeizersgracht455} from './metz-keizersgracht-455-builder';
 import {buildHajeniusRokin} from './hajenius-rokin-builder';
 import {buildLeidsestraat1} from './leidsestraat-1-builder';
 import {buildLeidsestraat40} from './leidsestraat-40-builder';
+import {buildDikkerThijsLeidsestraat} from './dikker-thijs-leidsestraat-builder';
+import {buildRaadhuisstraat52} from './raadhuisstraat-52-builder';
 import {buildSluyswacht} from './sluyswacht-builder';
 import {buildDamrak37} from './damrak-37-builder';
 import {buildKoningsplein1} from './koningsplein-1-builder';
@@ -1367,6 +1369,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='koningsplein-1')buildKoningsplein1(w,d,helpers);
     else if(id==='lloyd-prins-hendrikkade-33')buildLloydPrinsHendrikkade33(w,d,helpers);
     else if(id==='batavia-prins-hendrikkade')buildBataviaPrinsHendrikkade(w,d,helpers);
+    else if(id==='dikker-thijs-leidsestraat')buildDikkerThijsLeidsestraat(w,d,helpers);
+    else if(id==='raadhuisstraat-52')buildRaadhuisstraat52(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

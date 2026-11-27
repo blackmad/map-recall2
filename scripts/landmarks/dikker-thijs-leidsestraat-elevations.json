@@ -1,0 +1,98 @@
+{
+  "id": "dikker-thijs-leidsestraat",
+  "countedBy": "lane r20-a-20261127b from the rectified panoramas TMX7316060226-000022_pano_0000_000789 (2016, Leidsestraat front, w02-142.jpg, 50 px/m) and TMX7316010203-000355_pano_0000_000172 (2017, canal front, w01-48.jpg, 50 px/m); not yet blind-counted. Openings bottom band first, ribbon convention (an oriel's three facets, split by colonnettes under 0.3 m, are one opening).",
+  "facades": [
+    {
+      "name": "Leidsestraat front",
+      "bearing": 142,
+      "photo": "artifacts/landmark-briefs/dikker-thijs-leidsestraat/w02-142.jpg",
+      "rows": [
+        null,
+        3,
+        3,
+        3,
+        9
+      ],
+      "symmetric": true,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "note": "Bands: the shop windows (a delivery truck hides the second and third bays: null); the mezzanine ribbon of each of the three bays; the first and second oriel storeys, one canted oriel per bay; the loggia storey, nine lights between the brick posts. The level cornice and balustrade have no peak. Cropped (alongM) to the 14.79 m front from the party wall; the chamfer tower beyond it faces the corner.",
+      "alongM": [
+        0,
+        14.79
+      ]
+    },
+    {
+      "name": "canal front",
+      "bearing": 48,
+      "photo": "artifacts/landmark-briefs/dikker-thijs-leidsestraat/w01-48.jpg",
+      "rows": [
+        null,
+        4,
+        4,
+        4,
+        null
+      ],
+      "symmetric": false,
+      "gables": 0,
+      "openings": [
+        "glass"
+      ],
+      "note": "Bands: the shop storey (hidden by the quay wall: null); the mezzanine ribbon in each of the four bays; the first and second oriel storeys, three canted oriels and the flat bay at the east end; the loggia storey (a tree hides its east half: null). Cropped (alongM) from the corner: the chamfer tower and its return face the corner, not the canal. The flat bay's pair of windows is split by a stone mullion under 0.3 m: one opening.",
+      "alongM": [
+        2.0,
+        21.8
+      ],
+      "mixedRows": [
+        {
+          "row": 2,
+          "rowSizes": "mixed",
+          "evidence": "w01-48.jpg (TMX7316010203-000355_pano_0000_000172, 2017, 50 px/m): the three canted oriels about 3.1 m at the wall (x 197-352, 407-562, 617-772), the flat bay's mullioned pair 2.6 m (x 764-893)",
+          "openings": [
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "flat bay pair",
+              "w": 2.6
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "rowSizes": "mixed",
+          "evidence": "w01-48.jpg (TMX7316010203-000355_pano_0000_000172, 2017, 50 px/m): the three canted oriels about 3.1 m at the wall (x 197-352, 407-562, 617-772), the flat bay's mullioned pair 2.6 m (x 764-893)",
+          "openings": [
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "oriel",
+              "w": 3.1
+            },
+            {
+              "kind": "flat bay pair",
+              "w": 2.6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
