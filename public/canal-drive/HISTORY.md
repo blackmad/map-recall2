@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Round 20261127c: stale flags retired (2026-11-27)
+
+- David agreed the flag plan on 2026-11-27: delete the off-switches whose default had been on for over a week and the opt-in experiments nobody ran, and keep the opt-ins owned by live programmes (designUnits, rowFront) until those decide. lane/retire-flags-20261127 (678893a51f) removed 40 flags, net −841 source lines. The list and plain-English descriptions are in the flag inventory, docs/handoffs/dead-paths-20261127.md.
+- The inventory had two defaults wrong: `wallChroma` and `windowSdfTent` were on, not off. Both were handled as off-switches, so the measured wall colours and the window shading stay.
+- Proof of no visible change: four street poses (Keizersgracht 455, Rokin, Prins Hendrikkade, Osdorpplein) are pixel-identical to cdeead2e12. The Dam aerial pose is within its own run-to-run noise, apart from one hazy frame in 14 that was not reproduced; it is still open in TODO.
+- Kept for named reasons: lookAhead and chunkFade (the pop-in harness sets them); cellMipsKeep and keepVerts (spec probes); newbuildFamily, flatRoofTone and flatRoofSurface (unit suites build their reference frames through the off-switch); rowFrontSteps (rowFront programme). The three retail opt-ins (retailParts, shopGrammar, retailRealAll) went to lane/retail-flags-20261127 for a blind test.
+- Deleted opt-ins that had some evidence, should anyone want them back: aerialScale (5–9 % less GPU busy from the air, #266), groundQuick (centre cell 3.1–3.3 s vs 4.2–5.6 s, but the ring finished later), and groundShare (50 % fewer requests per start, no gain at the gate).
+
 ## Round 20261127b: engine round — own engine only, MapLibre deleted, Amsterdam only, iPhone start memory, pop-in dissolve, desktop power (2026-11-27)
 
 - **Why:** David: "let's switch to engine=own by default please, I don't want to continue maintaining two codepaths." A friend's iPhone was killed three times in a minute on 2026-11-26 (Sentry CANAL-RECALL-V, heartbeat "previous ride ended without unload", all `engine: maplibre`, 5–21 s after load), so the tab-kill is on the MapLibre path; the iPhone start memory of both engines is being measured on `lane/iphone-start-memory-20261127` (iOS Simulator WebContent footprint + Chromium memory-infra).
