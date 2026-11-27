@@ -711,6 +711,7 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     pink: {slot: 'paint', measured: '#dedbd2', why: 'palette name only: the pale METZ roof letters (2022 aimed view)'},
     white: {slot: 'paint', measured: '#e8e6df', why: 'palette name only: the white panel over the chamfer door (2022 w03-175)'},
     bronze: {slot: 'paint', why: 'palette name only: the dark painted steel of the sign arc, glazing posts, lanterns and the spike'},
+  },
   'leidsestraat-1': {
     stone: {slot: 'brick', measured: '#d3c6ae', why: 'palette name only: the white glazed brick of the piers, attic and shell (2020 overcast crop #a39483-#a5998c), authored lighter for the game light'},
     ochre: {slot: 'brick', measured: '#c4a46a', why: 'palette name only: the coloured (yellow) glazed brick courses and the yellow pier bases (2020 aimed view #7e694b in shade)'},
