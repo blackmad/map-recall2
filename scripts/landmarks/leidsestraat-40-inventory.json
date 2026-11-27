@@ -1,0 +1,302 @@
+{
+ "schemaVersion": 1,
+ "id": "leidsestraat-40",
+ "pand": "0363100012176402",
+ "brief": "scripts/landmarks/leidsestraat-40-brief.md",
+ "signature": [
+  "t-turret",
+  "t-arch",
+  "t-gable",
+  "t-relief",
+  "t-bust",
+  "t-pair-window"
+ ],
+ "walls": [
+  {
+   "tag": "w01-140",
+   "bearing": 140,
+   "lengthM": 7.5,
+   "centre": [
+    4.886024,
+    52.3658285
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000825",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-turret",
+     "kind": "tower",
+     "where": "corbelled oxblood timber oriel turret on the canted corner through the first and second storeys, a glazed tower stage above the eaves and a tall zinc spire with a small dormer and an iron finial (aimed view x 700-890, y 25-470; 2024 look x 760-910, y 290-800)",
+     "approxSizeM": [
+      2.2,
+      14.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_0939_Track09_Sphere_00353"
+    },
+    {
+     "id": "t-arch",
+     "kind": "window-shape",
+     "where": "round-arched shop window in cream stone (white in the 2016 sun) with white shop joinery with a stained-glass fanlight, archivolt and cartouche keystone (crop x 222-358, y 525-740)",
+     "approxSizeM": [
+      2.8,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-relief",
+     "kind": "relief",
+     "where": "sculpted frieze of figures over the arch (crop x 222-358, y 492-520)",
+     "approxSizeM": [
+      2.75,
+      0.56
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825",
+     "how": "a stone panel with a two-depth pattern of relief blocks (patternPanel)"
+    },
+    {
+     "id": "t-gable",
+     "kind": "other",
+     "where": "stepped dormer gable over the two left axes, brick with stone bands, step cappings and scroll shoulders, a round-arched window (crop x 20-160, y 0-165)",
+     "approxSizeM": [
+      2.8,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-pair-window",
+     "kind": "window-shape",
+     "where": "the right axis: paired cross windows either side of a carved figure mullion on both storeys, a broken segmental pediment between them (crop x 235-350, y 222-465)",
+     "approxSizeM": [
+      2.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-hoods",
+     "kind": "other",
+     "where": "straight stone hoods on consoles over the left first-storey windows (crop y 325-365)",
+     "approxSizeM": [
+      1.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-bands",
+     "kind": "other",
+     "where": "light stone bands through the orange-red brick and stone quoins at the left edge",
+     "approxSizeM": [
+      7.5,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-anchors",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron scrolled wall anchors at two levels (crop y 205 and 345)",
+     "approxSizeM": [
+      0.35,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825",
+     "how": "flat iron bars with a cross piece and two scroll blocks"
+    },
+    {
+     "id": "t-shopfront",
+     "kind": "window-shape",
+     "where": "white-painted shopfront with two display windows and a glazed door, each framed in white stiles and rails over a stone sill (crop x 0-215, y 605-768)",
+     "approxSizeM": [
+      4.3,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-low-windows",
+     "kind": "window-shape",
+     "where": "two low windows over the shop (crop x 30-160, y 515-600)",
+     "approxSizeM": [
+      2.6,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-chimney",
+     "kind": "other",
+     "where": "brick chimney stack behind the gable (crop x 185-220, y 70-140)",
+     "approxSizeM": [
+      0.7,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-red-dormer",
+     "kind": "other",
+     "where": "small red dormer on the roof between the gable and the turret (crop x 235-280, y 110-160)",
+     "approxSizeM": [
+      0.9,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825"
+    },
+    {
+     "id": "t-shop-signs",
+     "kind": "sign",
+     "where": "FOL lettering, gear sign and banners of the shops",
+     "approxSizeM": [
+      1.5,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000022_pano_0000_000825",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant shop signs"
+     }
+    }
+   ],
+   "note": "The Leidsestraat front (ring edge 2, 7.58 m, t from the south-west end), read on the rectified 2016 crop (w01-140.jpg, 49.7 px/m, h = (768 - y) / 50.5 so the dormer gable lands on the 3DBAG 15.2 m wall top) and its aimed view. The brief's 2019 alternative crop shows a different (stone) canal house and is not used."
+  },
+  {
+   "tag": "w02-95",
+   "bearing": 95,
+   "lengthM": 2.0,
+   "centre": [
+    4.886067,
+    52.36586
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_0939_Track09_Sphere_00353",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "note": "The canted corner (ring edge 3, 2.0 m), not in the brief (under 4 m); read from pitched looks out of the 2024 and 2025 panoramas (artifacts/landmark-briefs/leidsestraat-40/extra/e-2024.jpg, ne-2025.jpg).",
+   "items": [
+    {
+     "id": "t-bust",
+     "kind": "sculpture",
+     "where": "a white bust in a niche on the face of the turret corbel (2025 look x 710-745, y 750-795)",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003",
+     "how": "a stone block with a sphere head on a pedestal block in the niche block"
+    },
+    {
+     "id": "t-consoles",
+     "kind": "sculpture",
+     "where": "carved consoles with figures (atlantes) either side of the corner, carrying the corbel (2025 look x 690-860, y 800-900)",
+     "approxSizeM": [
+      0.45,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003",
+     "how": "grey stone piers with a projecting figure block and a head block under the corbel"
+    },
+    {
+     "id": "t-corner-door",
+     "kind": "window-shape",
+     "where": "the glazed corner shop door in a white case with a transom light",
+     "approxSizeM": [
+      0.95,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003"
+    }
+   ]
+  },
+  {
+   "tag": "w03-41",
+   "bearing": 41,
+   "lengthM": 3.74,
+   "centre": [
+    4.886046,
+    52.365873
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track25_Sphere_00003",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "note": "The Keizersgracht return (ring edge 4, 3.74 m), the brief's second exposed wall ('shorter/extra not shown'); read from the 2025 pitched look (extra/ne-2025.jpg): the same right-axis treatment as the Leidsestraat front.",
+   "items": [
+    {
+     "id": "k-arch",
+     "kind": "window-shape",
+     "where": "round-arched shop window with a stained-glass fanlight under the continued relief frieze (2025 look x 930-1100, y 790-940)",
+     "approxSizeM": [
+      2.3,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003"
+    },
+    {
+     "id": "k-relief",
+     "kind": "relief",
+     "where": "the sculpted frieze continuing round the corner (2025 look x 875-1100, y 735-780)",
+     "approxSizeM": [
+      3.2,
+      0.56
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003",
+     "how": "the same stone relief panel as the front"
+    },
+    {
+     "id": "k-pair-window",
+     "kind": "window-shape",
+     "where": "paired windows on a figure mullion under a broken pediment (2025 look x 840-1020, y 390-690)",
+     "approxSizeM": [
+      2.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_0926_Track25_Sphere_00003"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG (pand 0363100012176402)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012176402",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "triangleBudget": {
+  "handTriangles": "about 8-10k: the turret kit (octagon body, drum, cone, two window rows) takes about a third"
+ }
+}

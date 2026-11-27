@@ -1,0 +1,51 @@
+{
+  "id": "leidsestraat-1",
+  "countedBy": "lane landmarks-r19-c-20261127 from the aimed 2020 view of TMX7316010203-001543_pano_0000_003117 (w03-45.thumb.jpg) and the pitched 2022 look out of TMX7316010203-002860_pano_0000_000032 (extra/ls-front-2022.jpg); not yet blind-counted. Ribbon convention: the iron-framed shop, mezzanine and the two glazed storeys are divided only by iron posts and colonnettes under 0.3 m, so each is one opening per band.",
+  "facades": [
+    {
+      "name": "Herengracht store front",
+      "bearing": 43,
+      "photo": "artifacts/landmark-briefs/leidsestraat-1/w03-45.thumb.jpg",
+      "rows": [
+        3,
+        1,
+        1,
+        1,
+        6,
+        1
+      ],
+      "columns": 9,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "Cropped to the glazing between the two glazed-brick piers (alongM from the stuccoed house's east end, the face's viewer-left edge: piers at 5.4-6.65 and 17.0-18.2). Bands from the bottom: shop windows, small-pane mezzanine, first glazed storey, second glazed storey (segmental heads), six attic windows, the rooftop glazing over the cornice. The shop band is three openings: the display windows stand between broad dark iron piers (about 0.4 m in the aimed view, wider than the 0.3 m ribbon gap). Axes: the three glazed bays' centres do not line up with the six attic windows, so the photo has nine distinct axes.",
+      "alongM": [
+        6.7,
+        16.95
+      ]
+    },
+    {
+      "name": "Leidsestraat front",
+      "bearing": 323,
+      "photo": "artifacts/landmark-briefs/leidsestraat-1/extra/ls-front-2022.jpg",
+      "rows": [
+        3,
+        1,
+        1,
+        1,
+        8
+      ],
+      "columns": 9,
+      "symmetric": true,
+      "openings": [
+        "glass"
+      ],
+      "note": "Bands from the bottom: shop windows, mezzanine, the two glazed storeys in three bays, eight attic windows; the 2022 look shows no rooftop glazing over this cornice. alongM from the face's viewer-left silhouette edge, which is the Herengracht store's side seen edge-on beyond the rounded corner, to the inner faces of the two end piers (7.85-19.8 m). The shop band is three openings between broad dark iron piers (2022 look). Axes: the eight attic windows plus the middle bay's centre, which falls between two attic windows (the outer bay centres fall within 0.3 m of an attic axis): nine.",
+      "alongM": [
+        7.85,
+        19.8
+      ]
+    }
+  ]
+}

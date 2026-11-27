@@ -139338,6 +139338,345 @@
       "triangles": 5021,
       "bytes": 74316,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "leidsestraat-1": {
+      "id": "leidsestraat-1",
+      "name": "Leidsestraat 1 (Kreymborg store)",
+      "modelUrl": "./models/leidsestraat-1.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012177446"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88799209,
+          52.3665982
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 27.4,
+        "widthMetres": 31
+      },
+      "surveyed": {
+        "anchor": [
+          4.88799209,
+          52.3665982
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012177446 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/leidsestraat-1-footprints.json, bag-shell-prepare.ts); the Herengracht front read from the rectified Gemeente Amsterdam panorama TMX7316010203-001543_pano_0000_003117 (2020) and its aimed view, the stuccoed house in the same pand from TMX7316010203-000355_pano_0000_000791 (2017), the Leidsestraat front from pitched looks out of TMX7316010203-002860_pano_0000_000032 (2022) and TMX7316010203-002306_pano_0002_001838 (2021), CC BY 4.0, heights fitted to the 3DBAG front top (24.1 m) and balcony roof (11.5 m). Rijksmonument 518332. Per wall in scripts/landmarks/leidsestraat-1-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 31,
+      "galleryView": {
+        "theta": 0.6,
+        "phi": 1.2
+      },
+      "bagYear": 1904,
+      "materialOverrides": {
+        "stone": "#d3c6ae",
+        "ochre": "#c4a46a",
+        "sandstone": "#c8c2b4",
+        "bronze": "#5b625f",
+        "red": "#332c2a",
+        "copper": "#4e4a47",
+        "concrete": "#dedbd0",
+        "frame": "#e6e3da",
+        "glass": "#343e47",
+        "slate": "#4f5257",
+        "brick": "#7a5a48",
+        "greyBrick": "#7d6f63"
+      },
+      "attribution": {
+        "title": "Leidsestraat 1 / Herengracht, Amsterdam: clothing store for Kreymborg & Co. (P.A. Weeldenburg, 1904-1905; rijksmonument 518332)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001543_pano_0000_003117/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012177446 (CC0): the cream glazed-brick corner piers with ochre courses, the iron-framed glazed storeys on cast-iron colonnettes with segmental heads on the Herengracht, the small-pane mezzanine and fascia, the attic windows, the tiled frieze and copper-clad cornice, the rounded corner oriel with its balcony railing, the stepped pier crest, the rooftop glazing and the stuccoed house in the same pand, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8881161,
+              52.366574
+            ],
+            [
+              4.8881126,
+              52.3665718
+            ],
+            [
+              4.8880417,
+              52.3666122
+            ],
+            [
+              4.8880452,
+              52.3666144
+            ],
+            [
+              4.8880308,
+              52.3666226
+            ],
+            [
+              4.8880279,
+              52.3666241
+            ],
+            [
+              4.8880248,
+              52.3666255
+            ],
+            [
+              4.8880215,
+              52.3666267
+            ],
+            [
+              4.888018,
+              52.3666277
+            ],
+            [
+              4.8880145,
+              52.3666285
+            ],
+            [
+              4.8880108,
+              52.3666291
+            ],
+            [
+              4.888007,
+              52.3666296
+            ],
+            [
+              4.8880032,
+              52.3666298
+            ],
+            [
+              4.8879993,
+              52.3666298
+            ],
+            [
+              4.8879954,
+              52.3666296
+            ],
+            [
+              4.8879915,
+              52.3666292
+            ],
+            [
+              4.8879877,
+              52.3666286
+            ],
+            [
+              4.887984,
+              52.3666278
+            ],
+            [
+              4.8879804,
+              52.3666268
+            ],
+            [
+              4.887977,
+              52.3666256
+            ],
+            [
+              4.8879738,
+              52.3666242
+            ],
+            [
+              4.8879585,
+              52.3666169
+            ],
+            [
+              4.8879628,
+              52.3666136
+            ],
+            [
+              4.8877826,
+              52.3665279
+            ],
+            [
+              4.8877783,
+              52.3665313
+            ],
+            [
+              4.8877656,
+              52.3665253
+            ],
+            [
+              4.887946,
+              52.3663831
+            ],
+            [
+              4.8882216,
+              52.366514
+            ],
+            [
+              4.8881161,
+              52.366574
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.480999946594238,
+          -1.945495569088962e-7,
+          -4.003408908843994
+        ],
+        "max": [
+          15.812809944152832,
+          30.51099967956543,
+          23.92799949645996
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88799209,
+          52.3665982
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.29380989074707,
+        "heightMetres": 30.510999874114987,
+        "depthMetres": 27.931408405303955,
+        "depthCoverage": 0.9010131743646437
+      },
+      "triangles": 10203,
+      "bytes": 166692,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "leidsestraat-40": {
+      "id": "leidsestraat-40",
+      "name": "Leidsestraat 40",
+      "modelUrl": "./models/leidsestraat-40.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176402"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88602886,
+          52.36585136
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 9.1,
+        "widthMetres": 9.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.88602886,
+          52.36585136
+        ],
+        "northOffsetDegrees": 0,
+        "source": "3DBAG LoD2.2 shell of BAG pand 0363100012176402 (3DBAG CC BY 4.0, BAG CC0) in native east/south metres (scripts/landmarks/leidsestraat-40-footprints.json, bag-shell-prepare.ts); the Leidsestraat front read from the rectified Gemeente Amsterdam panorama TMX7316060226-000022_pano_0000_000825 (2016), the corner turret and the Keizersgracht return from pitched looks out of b_20241203_0939_Track09_Sphere_00353 (2024) and b_20250120_0926_Track25_Sphere_00003 (2025), CC BY 4.0, heights fitted to the 3DBAG gable top (15.2 m). Per wall in scripts/landmarks/leidsestraat-40-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19,
+      "galleryView": {
+        "theta": 0.9,
+        "phi": 1.2
+      },
+      "bagYear": 1881,
+      "materialOverrides": {
+        "brick": "#9a5a3e",
+        "stone": "#cdc5ad",
+        "greyBrick": "#a9aca3",
+        "concrete": "#e2e0d8",
+        "red": "#7a2e35",
+        "pink": "#5c2229",
+        "frame": "#a0402f",
+        "glass": "#343e47",
+        "slate": "#55585b",
+        "copper": "#8a8d8c",
+        "gold": "#9a8a5c",
+        "sandstone": "#c2b48c",
+        "bronze": "#2c2a28"
+      },
+      "attribution": {
+        "title": "Leidsestraat 40, Amsterdam: neo-renaissance corner house with an oriel turret (1881)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0000_000825/",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) of BAG pand 0363100012176402 (CC0): the corbelled oxblood oriel turret with its tower stage and zinc spire, the bust and carved consoles under it, the round-arched shop windows with stained fanlights under the sculpted frieze, the stepped dormer gable, the paired windows on figure mullions under broken pediments, the stone bands, hoods and wall anchors, read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8860274,
+              52.3658873
+            ],
+            [
+              4.8859313,
+              52.3658417
+            ],
+            [
+              4.8859791,
+              52.3658051
+            ],
+            [
+              4.8860634,
+              52.3658475
+            ],
+            [
+              4.8860664,
+              52.3658474
+            ],
+            [
+              4.8860688,
+              52.3658653
+            ],
+            [
+              4.8860657,
+              52.3658652
+            ],
+            [
+              4.8860274,
+              52.3658873
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -6.6529998779296875,
+          -9.536743306171047e-8,
+          -4.327834606170654
+        ],
+        "max": [
+          3.5890119075775146,
+          18.799999237060547,
+          5.468456268310547
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88602886,
+          52.36585136
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 10.242011785507202,
+        "heightMetres": 18.79999933242798,
+        "depthMetres": 9.796290874481201,
+        "depthCoverage": 1.042158603668213
+      },
+      "triangles": 6577,
+      "bytes": 106896,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

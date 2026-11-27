@@ -1,0 +1,28 @@
+{
+  "id": "leidsestraat-40",
+  "countedBy": "lane landmarks-r19-c-20261127 from the rectified 2016 crop TMX7316060226-000022_pano_0000_000825 (w01-140.jpg); not yet blind-counted. Ribbon convention: the shop's display windows and glazed door stand between frames under 0.3 m and are one opening.",
+  "facades": [
+    {
+      "name": "Leidsestraat front",
+      "bearing": 140,
+      "photo": "artifacts/landmark-briefs/leidsestraat-40/w01-140.jpg",
+      "rows": [
+        2,
+        2,
+        4,
+        4,
+        1
+      ],
+      "columns": 6,
+      "symmetric": false,
+      "openings": [
+        "glass"
+      ],
+      "note": "Bands from the bottom: the shopfront ribbon and the round-arched shop window; the two low windows over the shop; first storey: two cross windows on the left axes and the pair on the right axis, whose lights stand either side of a carved figure pier about 0.35 m wide (two openings); second storey the same; the round-arched dormer gable window. Axes (crop px / 49.7 from the left end): left windows 1.17 and 2.78, the shop ribbon centre about 2.0 and the gable window 1.9-2.0, the pair 5.3 and 6.4, the arch 5.9: six.",
+      "alongM": [
+        0.0,
+        7.0
+      ]
+    }
+  ]
+}
