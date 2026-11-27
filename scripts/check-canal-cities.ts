@@ -11,13 +11,19 @@ import {
 } from '../src/canalRecall/game/cities.ts';
 
 assert.equal(DEFAULT_CITY_ID, 'amsterdam');
-assert.equal(parseCityId('utrecht'), 'utrecht');
 assert.equal(parseCityId('nope'), 'amsterdam');
-assert.equal(cityById('rotterdam').name, 'Rotterdam');
-assert.equal(cityById('den-haag').geocodeSuffix, ', Den Haag');
-assert.equal(extractPath('utrecht'), '../data/extracts/utrecht');
+// Amsterdam only (David, 2026-11-27): a stored or linked Utrecht, Rotterdam or Den Haag rides Amsterdam, and no loader
+// can reach their extracts through the catalogue. Their entries (and extracts) stay for a later own-engine return.
+for (const id of ['utrecht', 'rotterdam', 'den-haag'] as const) {
+  assert.equal(parseCityId(id), 'amsterdam', `${id} is not playable`);
+  assert.equal(cityById(id).id, 'amsterdam', `${id} resolves to Amsterdam`);
+  assert.equal(extractPath(id), '../data/extracts/amsterdam', `${id} cannot reach its extract`);
+  assert.ok(!extractUrl(id, 'water.json').includes(`/${id}/`), `${id} extract URL`);
+  assert.equal(CANAL_CITIES[id].playable, false);
+}
+assert.equal(CANAL_CITIES.rotterdam.name, 'Rotterdam', 'the catalogue entry is kept');
 assert.ok(extractUrl('amsterdam', 'water.json').includes('/amsterdam/water.json'));
-assert.deepEqual(playableCities().map(city => city.id).sort(), [...CANAL_CITY_IDS].sort());
+assert.deepEqual(playableCities().map(city => city.id), ['amsterdam']);
 for (const id of CANAL_CITY_IDS) {
   assert.equal(CANAL_CITIES[id].id, id);
   assert.ok(Number.isFinite(CANAL_CITIES[id].center.lat));
